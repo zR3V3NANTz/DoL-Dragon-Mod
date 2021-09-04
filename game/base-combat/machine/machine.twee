@@ -212,7 +212,7 @@
 				<span class="pink">The <<machine_damage vaginal>> phallic machine thrusts into your <<pussy>>.</span>
 			<<else>>
 				<<sex 100>>
-				<<takeVirginity "sex machine" "vaginal">><<bruise vagina>><<vaginalstat>><<raped>><<vaginaraped>>
+				<<bruise vagina>><<vaginalstat>><<raped>><<vaginaraped>>
 				<<set $vaginastate to "penetrated">><<set $machine.vaginal.state to "penetrated">>
 				<span class="red">The <<machine_damage vaginal>> phallic machine thrusts into your virgin pussy,
 					<<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>
@@ -222,6 +222,7 @@
 					<</if>>
 				</span>
 			<</if>>
+			<<takeVirginity "sex machine" "vaginal">>
 		<<case "penetrated">>
 
 			<<set $rng to random(1, 5)>>

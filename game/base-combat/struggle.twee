@@ -1857,9 +1857,10 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 			<<else>>
 				<span class="red">breaking your hymen and forever robbing you of your purity.</span>
 			<</if>>
-			<<takeVirginity $struggle.vagina.creature "vaginal">><<set $vaginastate to "struggle_pen">><<vaginalstat>><<vaginaraped>>
+			<<set $vaginastate to "struggle_pen">><<vaginalstat>><<vaginaraped>>
 			<<sex 30>><<pain _pain>>
 		<</if>>
+		<<takeVirginity $struggle.vagina.creature "vaginal">>
 		<<if $consensual isnot 1>><<bruise vagina>><<violence 2>><<raped>><<vaginaraped>><</if>>
 		<<neutral 5>>
 	<<case 5>>
@@ -1903,9 +1904,10 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 			<<sex 30>><<pain _pain>>
 		<<else>>
 			The <<print $struggle.penis.creature>> <span class="pink">forces your <<penis>> into its body,</span> <span class="red">separating your foreskin from your glans and forever robbing you of your purity.</span>
-			<<takeVirginity $struggle.penis.creature "penile">><<set $penisstate to "struggle_pen">><<penilestat>><<penisraped>>
+			<<set $penisstate to "struggle_pen">><<penilestat>><<penisraped>>
 			<<sex 30>><<pain _pain>>
 		<</if>>
+		<<takeVirginity $struggle.penis.creature "penile">>
 		<<if $consensual isnot 1>><<bruise penis>><<violence 2>><<raped>><<penisraped>><</if>>
 		<<neutral 5>>
 	<<case 5>>

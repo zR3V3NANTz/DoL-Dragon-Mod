@@ -152,7 +152,6 @@ The _tentacle.desc tentacle writhes between your feet.
 			<</switch>>
 			<<violence 100>>
 		<</if>>
-		<<takeVirginity _tentacle.fullDesc "vaginal">>
 	<<else>>
 		<<switch _tentacle.size>>
 		<<case 3>>
@@ -162,6 +161,7 @@ The _tentacle.desc tentacle writhes between your feet.
 		<</switch>>
 	<</if>>
 	<br>
+	<<takeVirginity _tentacle.fullDesc "vaginal">>
 	<<set $vaginastate to "tentacle">><<set _tentacle.head to "vagina">><<sex 5>><<raped>><<vaginaraped>><<vaginalstat>><<violence 1>><<pain $vaginalPain>>
 <</if>>
 
@@ -200,11 +200,12 @@ The _tentacle.desc tentacle writhes between your feet.
 <<if _tentacle.head is "penisimminent">>
 	<<if $player.virginity.penile is true>>
 		<span class="pink"> and thrusts against your <<penis>>, swallowing you to the base and</span> <span class="red"> tearing the membrane between your glans and foreskin, forever robbing you of your purity.</span>
-		<<takeVirginity _tentacle.fullDesc "penile">><<violence 100>>
+		<<violence 100>>
 	<<else>>
 		<span class="pink"> and thrusts against your <<penis>>, swallowing you to the base.</span>
 	<</if>>
 	<br>
+	<<takeVirginity _tentacle.fullDesc "penile">>
 	<<set $penisstate to "tentacle">><<set _tentacle.head to "penis">><<sex 5>><<raped>><<penisraped>><<penilestat>><<violence 1>>
 <</if>>
 

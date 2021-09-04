@@ -67,7 +67,7 @@ Tulips grow in great patches near the riverbank.
 			<br>
 		<</if>>
 		<<if !$plants_known.includes("tulip")>>
-			<<if $science gte 300>>
+			<<if $sciencetrait gte 1>>
 				<<link [[Search for seeds (0:30)|Park Tulip]]>><<set $plants_known.push("tulip")>><<pass 30>><<tending 6>><</link>><<gtending>>
 				<br>
 			<<else>>

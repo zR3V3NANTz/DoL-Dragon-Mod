@@ -381,7 +381,7 @@ There's a rocky alcove where you could store your clothes.
 <<if $schoolday isnot 1 and $weather is "rain" and $daystate is "day">>
 	Someone is swimming further out, past the dock.
 <</if>>
-<<if $science gte 400 and !$plants_known.includes("lotus")>>
+<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
 	Lotus flowers float by you.
 <</if>>
 <br><br>
@@ -473,7 +473,7 @@ There's a rocky alcove where you could store your clothes.
 		<<link [[Make a skirt out of plants (0:20)|Lake Shallows]]>><<pass 20>><<set $phase to 2>><</link>>
 		<br>
 	<</if>>
-	<<if $science gte 400 and !$plants_known.includes("lotus")>>
+	<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
 		<<link [[Search for seeds (0:30)|Lake Lotus]]>><<set $plants_known.push("lotus")>><<pass 30>><<tending 6>><</link>><<gtending>>
 		<br>
 	<</if>>
@@ -540,7 +540,7 @@ There's a rocky alcove where you could store your clothes.
 		You are stood alone on the frozen lake near the shore. The sound of the forest fills the air.
 	<</if>>
 <</if>>
-<<if $science gte 400 and !$plants_known.includes("lotus")>>
+<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
 	You see lotus flowers trapped within the ice.
 <</if>>
 <br><br>
@@ -561,7 +561,7 @@ There's a rocky alcove where you could store your clothes.
 
 	<<link [[Ice skate (0:30)|Lake Skate]]>><<pass 30>><<tiredness 5>><<danceskill 5>><</link>><<gtiredness>> | <span class="green">+ Dancing Skill</span>
 	<br>
-	<<if $science gte 400 and !$plants_known.includes("lotus")>>
+	<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
 		<<link [[Search for seeds (0:30)|Lake Lotus Ice]]>><<set $plants_known.push("lotus")>><<pass 30>><<tending 6>><</link>><<gtending>>
 		<br>
 	<</if>>

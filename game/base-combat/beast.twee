@@ -199,9 +199,9 @@
 					<<violence 100>><<pain _pain>>
 			<</switch>>
 		<</if>>
-		<<sex 100>><<set $NPCList[_n].penis to "vagina">><<takeVirginity $NPCList[_n].fullDescription "vaginal">><<bruise vagina>><<vaginalstat>><<raped>><<vaginaraped>><<set $vaginastate to "penetrated">>
+		<<sex 100>><<set $NPCList[_n].penis to "vagina">><<bruise vagina>><<vaginalstat>><<raped>><<vaginaraped>><<set $vaginastate to "penetrated">>
 	<</if>>
-	<<takeNPCVirginity $NPCList[_n].fullDescription "penile">>
+	<<takeVirginity $NPCList[_n].fullDescription "vaginal">><<takeNPCVirginity $NPCList[_n].fullDescription "penile">>
 <</if>>
 
 <<set $rng to random(1, 100)>>
@@ -565,7 +565,7 @@
 				<<set $enemyanger += 5>><<arousal 300>><<set $speechotheranuswithhold to 1>>
 			<<elseif $player.virginity.penile isnot true>>
 				<span class="pink"><<bHe>> eases your <<penis>> into <<bhis>> ass, swallowing you to the base.</span>
-				<<sex 30>><<set $NPCList[_n].penis to "otheranus">><<takeNPCVirginity $NPCList[_n].fullDescription "anal">><<penilestat>><<bruise penis>><<violence 1>><<raped>><<penisraped>><<set $penisstate to "otheranus">><<set $speechotheranuspenetrated to 1>>
+				<<sex 30>><<set $NPCList[_n].penis to "otheranus">><<takeVirginity $NPCList[_n].fullDescription "penile">><<takeNPCVirginity $NPCList[_n].fullDescription "anal">><<penilestat>><<bruise penis>><<violence 1>><<raped>><<penisraped>><<set $penisstate to "otheranus">><<set $speechotheranuspenetrated to 1>>
 			<<elseif $player.virginity.penile is true>>
 				<span class="pink"><<bHe>> eases your virgin penis into <<bhis>> ass,</span><span class="red"> separating your foreskin from your glans and forever robbing you of your purity.</span>
 				<<sex 100>><<set $NPCList[_n].penis to "otheranus">><<takeVirginity $NPCList[_n].fullDescription "penile">><<takeNPCVirginity $NPCList[_n].fullDescription "anal">><<bruise penis>><<penilestat>><<violence 100>><<raped>><<penisraped>><<set $penisstate to "otheranus">><<set $speechpenisvirgin to 1>>
@@ -685,11 +685,12 @@
 <<elseif $NPCList[_n].vagina is "penisimminent">>
 	<<if $player.virginity.penile isnot true>>
 		<span class="pink"><<bHe>> takes your <<penis>> deep into <<bhis>> <<pussy>>.</span>
-		<<sex 30>><<set $NPCList[_n].vagina to "penis">><<takeNPCVirginity $NPCList[_n].fullDescription "vaginal">><<penilestat>><<bruise penis>><<violence 2>><<raped>><<penisraped>><<set $penisstate to "penetrated">>
+		<<sex 30>><<set $NPCList[_n].vagina to "penis">><<penilestat>><<bruise penis>><<violence 2>><<raped>><<penisraped>><<set $penisstate to "penetrated">>
 	<<elseif $player.virginity.penile is true>>
 		<span class="pink"><<bHe>> takes your <<penis>> deep into <<bhis>> pussy,</span><span class="red"> separating your foreskin from your glans and forever robbing you of your purity.</span>
-		<<sex 100>><<set $NPCList[_n].vagina to "penis">><<takeVirginity $NPCList[_n].fullDescription "penile">><<takeNPCVirginity $NPCList[_n].fullDescription "vaginal">><<bruise penis>><<penilestat>><<violence 100>><<raped>><<penisraped>><<set $penisstate to "penetrated">>
+		<<sex 100>><<set $NPCList[_n].vagina to "penis">><<bruise penis>><<penilestat>><<violence 100>><<raped>><<penisraped>><<set $penisstate to "penetrated">>
 	<</if>>
+	<<takeVirginity $NPCList[_n].fullDescription "penile">><<takeNPCVirginity $NPCList[_n].fullDescription "vaginal">>
 <</if>>
 
 <<set $rng to random(1, 100)>>
@@ -898,7 +899,7 @@
 				<<set $enemyanger += 5>><<arousal 300>><<set $speechotheranuswithhold to 1>>
 			<<elseif $player.virginity.penile isnot true>>
 				<span class="pink"><<bHe>> eases your <<penis>> into <<bhis>> ass, swallowing you to the base.</span>
-				<<sex 30>><<set $NPCList[_n].vagina to "otheranus">><<takeNPCVirginity $NPCList[_n].fullDescription "anal">><<penilestat>><<bruise penis>><<violence 1>><<raped>><<penisraped>><<set $penisstate to "otheranus">><<set $speechotheranuspenetrated to 1>>
+				<<sex 30>><<set $NPCList[_n].vagina to "otheranus">><<takeVirginity $NPCList[_n].fullDescription "penile">><<takeNPCVirginity $NPCList[_n].fullDescription "anal">><<penilestat>><<bruise penis>><<violence 1>><<raped>><<penisraped>><<set $penisstate to "otheranus">><<set $speechotheranuspenetrated to 1>>
 			<<elseif $player.virginity.penile is true>>
 				<span class="pink"><<bHe>> eases your virgin penis into <<bhis>> ass,</span><span class="red"> separating your foreskin from your glans and forever robbing you of your purity.</span>
 				<<sex 100>><<set $NPCList[_n].vagina to "otheranus">><<takeVirginity $NPCList[_n].fullDescription "penile">><<takeNPCVirginity $NPCList[_n].fullDescription "anal">><<bruise penis>><<penilestat>><<violence 100>><<raped>><<penisraped>><<set $penisstate to "otheranus">><<set $speechpenisvirgin to 1>>
