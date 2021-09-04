@@ -146,10 +146,10 @@
 			<span class="red">tearing your hymen and forever robbing you of your purity.</span>
 			<<violence 100>>
 		<</if>>
-		<<takeVirginity $tentacles[$tentacleindex].fullDesc "vaginal">>
 	<<else>>
 		<span class="pink"> and thrusts into your <<pussy>>.</span>
 	<</if>>
+	<<takeVirginity $tentacles[$tentacleindex].fullDesc "vaginal">>
 	<<set $vaginastate to "tentacle">><<set $tentacles[$tentacleindex].head to "vagina">><<sex 5>><<raped>><<vaginaraped>><<vaginalstat>><<violence 1>>
 <</if>>
 
@@ -185,10 +185,11 @@
 <<if $tentacles[$tentacleindex].head is "penisimminent">>
 	<<if $player.virginity.penile is true>>
 		<span class="pink"> and thrusts against your <<penis>>, swallowing you to the base and</span> <span class="red"> tearing the membrane between your glans and foreskin, forever robbing you of your purity.</span>
-		<<takeVirginity $tentacles[$tentacleindex].fullDesc "penile">><<violence 100>>
+		<<violence 100>>
 	<<else>>
 		<span class="pink"> and thrusts against your <<penis>>, swallowing you to the base.</span>
 	<</if>>
+	<<takeVirginity $tentacles[$tentacleindex].fullDesc "penile">>
 	<<set $penisstate to "tentacle">><<set $tentacles[$tentacleindex].head to "penis">><<sex 5>><<raped>><<penisraped>><<penilestat>><<violence 1>>
 <</if>>
 

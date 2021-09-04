@@ -963,7 +963,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 <<if $forest lte 20>>
 	<<if _forest_item is 1>>
 		<<if !$plants_known.includes("lily")>>
-			<<if $science gte 300>>
+			<<if $sciencetrait gte 1>>
 				<<link [[Search for seeds (0:30)|Forest Lily]]>><<pass 30>><<tending 6>><<set $plants_known.push("lily")>><</link>><<gtending>>
 				<br>
 			<<else>>
@@ -985,7 +985,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 <<elseif $forest lte 50>>
 	<<if _forest_item is 1>>
 		<<if !$plants_known.includes("red_rose")>>
-			<<if $science gte 400>>
+			<<if $sciencetrait gte 2>>
 				<<link [[Search for seeds (0:30)|Forest Red Rose]]>><<pass 30>><<tending 6>><<set $plants_known.push("red_rose")>><<pain 6>><</link>><<gpain>><<gtending>>
 				<br>
 			<<else>>
@@ -1013,7 +1013,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 <<else>>
 	<<if _forest_item is 1>>
 		<<if !$plants_known.includes("orchid")>>
-			<<if $science gte 500>>
+			<<if $sciencetrait gte 3>>
 				<<link [[Search for seeds (0:30)|Forest Orchid]]>><<pass 30>><<tending 6>><<set $plants_known.push("orchid")>><</link>><<gtending>>
 				<br>
 			<<else>>

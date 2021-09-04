@@ -18,13 +18,8 @@ You are in the antechamber outside the school toilets.
 		<br><br>
 	<</if>>
 	<<if $brothel_basement_intro is 1>>
-		<<if $promiscuity gte 15>>
-			<<link [[Set up gloryhole in antechamber|School Gloryhole Start]]>><</link>><<promiscuous2>>
-			<br><br>
-		<<elseif $uncomfortable.prostituting is false>>
-			The thought repulses you, but you need the money.
-			<br>
-			<<link [[Set up gloryhole in antechamber|School Gloryhole Start]]>><</link>><<set $desperateaction to 1>><<promiscuous2>>
+		<<if $promiscuity gte 55>>
+			<<link [[Set up gloryhole in antechamber|School Gloryhole Start]]>><</link>><<promiscuous4>>
 			<br><br>
 		<</if>>
 	<</if>>

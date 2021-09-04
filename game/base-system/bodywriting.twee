@@ -1291,7 +1291,7 @@ Second arg: tool */
 <</widget>>
 
 <<widget "bodypart_admire_chance">>
-<<if random(1, 5) is 5 and $NPCList[_n].mouth is 0>>
+<<if random(1, 5) is 5 and $NPCList[_n].mouth is 0 and $enemytype isnot "beast">>
 	<<bodypart_admire $args[0]>>
 <</if>>
 <</widget>>

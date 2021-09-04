@@ -1335,7 +1335,6 @@ Wren doesn't hesitate.
 <<if $estate.cards.position is "penile">>
 	<<He>> pushes down on your shoulders, moving <<his>> pelvis above yours and resting <<his>> pussy against your <<penis>><<if $semen_amount gte 1>>, catching your seed.<<else>>.<</if>> Your spasms leave you helpless as <<he>> lets <<his>> weight push <<him>> down, <span class="pink">swallowing you to the base.</span>
 	<<if $player.virginity.penile is true>>
-		<<takeVirginity "Wren" "penile">>
 		<span class="red">Your foreskin separates from your glans, forever robbing you of your purity.</span>
 		<br><br>
 		<<penileejacstat>>
@@ -1343,7 +1342,7 @@ Wren doesn't hesitate.
 	<<else>>
 		<<He>> gasps against your ear as you enter <<him>>. "I need this," <<he>> whispers. "Now be a good <<girl>> and hold still."
 	<</if>>
-	<<takeNPCVirginity "Wren" "vaginal">>
+	<<takeVirginity "Wren" "penile">><<takeNPCVirginity "Wren" "vaginal">>
 	<br><br>
 	<<bruise penis>><<penilestat>><<raped>><<penisraped>>
 	<<if $semen_amount gte 1>>
@@ -1356,7 +1355,6 @@ Wren doesn't hesitate.
 <<elseif $estate.cards.position is "vaginal">>
 	<<He>> grasps your <<bottom>> and lifts you, pushing your <<pussy>> against the tip of <<his>> <<print $NPCList[0].penisdesc>>. <<He>> eases you down, your spasms leaving you helpless as <<he>> <span class="pink">pushes into you,</span>
 	<<if $player.virginity.vaginal is true>>
-	<<takeVirginity "Wren" "vaginal">>
 		<span class="red">tearing your hymen and forever robbing you of your purity.</span>
 		<br><br>
 
@@ -1364,7 +1362,7 @@ Wren doesn't hesitate.
 	<<else>>
 		filling you. <<He>> gasps against your ear as <<he>> enters. "I need this," <<he>> whispers. "Now be a good <<girl>> and hold still."
 	<</if>>
-	<<takeNPCVirginity "Wren" "penile">>
+	<<takeVirginity "Wren" "vaginal">><<takeNPCVirginity "Wren" "penile">>
 	<br><br>
 	<<bruise vagina>><<vaginalstat>><<raped>><<vaginaraped>>
 
