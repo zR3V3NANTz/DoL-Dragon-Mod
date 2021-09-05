@@ -225,6 +225,16 @@ Zohar
 		<</if>>
 	<</if>>
 <</if>>
+
+<!-- Set Genital Existence -->
+<<if $NPCName[_i].type isnot "human">>
+	<<set $NPCName[_i].penis to  ($NPCName[_i].gender !== "f" ? 0 : "none")>>
+	<<set $NPCName[_i].vagina to ($NPCName[_i].gender !== "m" ? 0 : "none")>>
+<<else>>
+	<<set $NPCName[_i].penis to  ($NPCName[_i].gender !== "f" ? "clothed" : "none")>>
+	<<set $NPCName[_i].vagina to ($NPCName[_i].gender !== "m" ? "clothed" : "none")>>
+<</if>>
+
 <!-- Set breast defaults-->
 
 <<set _b_mod_lower to Math.clamp($breast_mod, 0, 12)>>
@@ -242,13 +252,32 @@ Zohar
 <</if>>
 <<if $NPCName[_i].breastsize gt 0>>
 	<<set _brdes to ["nipple","budding","tiny","small","pert","modest","full","large","ample","massive","huge","gigantic","enormous"]>>
-	<<set $NPCName[_i].breastsdesc to _brdes[$NPCName[_i].breastsize]+" breasts">>
 	<<set $NPCName[_i].breastdesc to _brdes[$NPCName[_i].breastsize]+" breast">>
 <<else>>
-	<<set $NPCName[_i].breastsdesc to "nipples">>
 	<<set $NPCName[_i].breastdesc to "nipple">>
 <</if>>
+<<set $NPCName[_i].breastsdesc to $NPCName[_i].breastdesc + "s">>
+
 <!-- Set pp to defaults-->
+
+/* New way to set upper and lower bounds.
+ * This method makes use of all other slider positions, but does nothing when slider is between -1 and 1, 
+ * for a total of 15 unique positions vs the current method's 9. (max would be 17)
+ * Changing the penis_mod slider to range from -7 to 7 would work to make every slider position unique here, but potentially affects unnamed npc generation. 
+ */
+
+/*
+<<set _p_mod_upper to 8>><<set _p_mod_lower to 1>>
+<<if $penis_mod gt 0>>
+	<<set _p_mod_lower += $penis_mod - 1>>
+<<elseif $penis_mod lt 0>>
+	<<set _p_mod_upper += $penis_mod + 1>>
+<</if>>
+
+alternative way to write that:
+<<set _p_mod_lower to ($penis_mod > 0 ? $penis_mod : 1)>>
+<<set _p_mod_upper to ($penis_mod < 0 ? 9 + $penis_mod : 8)>>
+ */
 
 <<if $penis_mod is 8>>/*Clumsy way to get average penis size setting working for NNPCs.*/
 	<<set _p_mod_upper to 8>><<set _p_mod_lower to 8>>
@@ -276,13 +305,13 @@ Zohar
 		<<set $NPCName[_i].penisdesc to "none">>
 	<<else>>
 		<<switch random (_p_mod_lower, _p_mod_upper)>>
-		<<case 5 6 7>>
-			<<set $NPCName[_i].penisdesc to either("thick cock","hefty cock","big cock","large cock","veiny cock","meaty cock")>>
-			<<set $NPCName[_i].penissize to 3>>
 		<<case 8>>
 			<<set $NPCName[_i].penisdesc to either("massive cock","huge cock","humongous cock","immense cock","gigantic cock","enormous cock")>>
 			<<set $NPCName[_i].penissize to 4>>
-		<<case 2 3 4 5>>
+		<<case 5 6 7>>
+			<<set $NPCName[_i].penisdesc to either("thick cock","hefty cock","big cock","large cock","veiny cock","meaty cock")>>
+			<<set $NPCName[_i].penissize to 3>>
+		<<case 2 3 4>>
 			<<set $NPCName[_i].penisdesc to "penis">>
 			<<set $NPCName[_i].penissize to 2>>
 		<<default>>
@@ -522,19 +551,11 @@ Zohar
 <<set $NPCList[_npcno].breastsize to $NPCName[_i].breastsize>>
 <<set $NPCList[_npcno].breastsdesc to $NPCName[_i].breastsdesc>>
 <<set $NPCList[_npcno].breastdesc to $NPCName[_i].breastdesc>>
-<<set $NPCList[_npcno].vagina to "clothed">>
+<<set $NPCList[_npcno].vagina to $NPCName[_i].vagina>>
 
-<<set $NPCList[_npcno].penis to "clothed">>
+<<set $NPCList[_npcno].penis to $NPCName[_i].penis>>
 <<set $NPCList[_npcno].penissize to $NPCName[_i].penissize>>
 <<set $NPCList[_npcno].penisdesc to $NPCName[_i].penisdesc>>
-
-<<if $NPCName[_i].gender is "m">>
-	<<set $NPCList[_npcno].vagina to "none">>
-<</if>>
-<<if $NPCName[_i].gender is "f">>
-	<<set $NPCList[_npcno].penis to "none">>
-<</if>>
-
 
 <<set $NPCList[0].chastity to clone($NPCName[_i].chastity)>>
 
@@ -571,23 +592,11 @@ Zohar
 	<<set $NPCList[0].lefthand to "none">>
 	<<set $NPCList[0].righthand to "none">>
 	<<set $NPCList[0].stance to "approach">>
-	<<set $NPCList[0].penis to 0>>
-	<<set $NPCList[0].vagina to 0>>
-	<<if $NPCName[_i].gender is "m">>
-		<<set $NPCList[0].vagina to "none">>
-	<</if>>
-	<<if $NPCName[_i].gender is "f">>
-		<<set $NPCList[0].penis to "none">>
-	<</if>>
 	<<if $blackWolfMonsterRoll isnot undefined and $blackwolfmonster is 1>>
 		<<if $blackWolfMonsterRoll is true>>
 			<<set $NPCList[0].monster to "monster">>
 			<<set $monster to 1>>
-			<<if $NPCList[0].pronoun is "f">>
-				<<set $NPCList[0].type to $NPCList[0].type + "girl">>
-			<<else>>
-				<<set $NPCList[0].type to $NPCList[0].type + "boy">>
-			<</if>>
+			<<set $NPCList[0].type to ($NPCList[0].pronoun is "f" ? "wolfgirl" : "wolfboy")>>
 			<<set $NPCList[_npcno].lefthand to 0>>
 			<<set $NPCList[_npcno].righthand to 0>>
 		<<else>>
@@ -599,11 +608,7 @@ Zohar
 			<<set $blackWolfMonsterRoll to true>>
 			<<set $NPCList[0].monster to "monster">>
 			<<set $monster to 1>>
-			<<if $NPCList[0].pronoun is "f">>
-				<<set $NPCList[0].type to $NPCList[0].type + "girl">>
-			<<else>>
-				<<set $NPCList[0].type to $NPCList[0].type + "boy">>
-			<</if>>
+			<<set $NPCList[0].type to ($NPCList[0].pronoun is "f" ? "wolfgirl" : "wolfboy")>>
 			<<set $NPCList[_npcno].lefthand to 0>>
 			<<set $NPCList[_npcno].righthand to 0>>
 		<<else>>
@@ -623,13 +628,6 @@ Zohar
 	<<set $NPCList[0].lefthand to "none">>
 	<<set $NPCList[0].righthand to "none">>
 	<<set $NPCList[0].stance to "approach">>
-	<<if $NPCName[_i].gender is "m">>
-		<<set $NPCList[0].penis to 0>>
-		<<set $NPCList[0].vagina to "none">>
-	<<else>>
-		<<set $NPCList[0].vagina to 0>>
-		<<set $NPCList[0].penis to "none">>
-	<</if>>
 	<<if $greatHawkMonsterRoll isnot undefined and $greathawkmonster is 1>>
 		<<if $greatHawkMonsterRoll is true>>
 			<<set $NPCList[0].monster to "monster">>

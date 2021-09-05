@@ -352,8 +352,7 @@ window.settingsNamedNpcBreastSize = function () {
 	const breastSizes = ["nipple","budding","tiny","small","pert","modest","full","large","ample","massive","huge","gigantic","enormous"];
 
 	let updateText = () => {
-		const npcId = T.npcId;
-		const npc = V.NPCName[npcId];
+		const npc = V.NPCName[T.npcId];
 		const val = npc.breastsize;
 
 		const text = breastSizes[val];
@@ -366,11 +365,34 @@ window.settingsNamedNpcBreastSize = function () {
 			npc.breastsdesc = text + "s";
 		}
 
-		jQuery('#numberslider-value-npcname-npcidbreastsize').text('').append(npc.breastsdesc);
+		jQuery('#numberslider-value-npcname-npcidbreastsize').text(npc.breastsdesc);
 	};
 
 	jQuery(document).ready(() => {
 		updateText();
 		jQuery('#numberslider-input-npcname-npcidbreastsize').on('input change', function (e) { updateText(); });
+	});
+}
+
+window.settingsNamedNpcGenderUpdate = function () {
+	let updateButtonsActive = () => {
+		jQuery('[id*=radiobutton-npcname-npcidpenissize]').prop("disabled", V.NPCName[T.npcId].gender == "f");
+	};
+
+	jQuery(document).ready(() => {
+		updateButtonsActive();
+		jQuery('[id*=radiobutton-npcname-npcidgender]').on('change', function (e) { updateButtonsActive(); });
+	});
+}
+
+window.settingsPCGenderUpdate = function () {
+	let updateButtonsActive = () => {
+		jQuery('[id*=radiobutton-penissize]').prop("disabled", V.player.gender == "f");
+		jQuery('[id*=radiobutton-playerballsexist]').prop("disabled", V.player.gender !== "h");
+	};
+
+	jQuery(document).ready(() => {
+		updateButtonsActive();
+		jQuery('.playergender [id*=radiobutton-playergender]').on('change', function (e) { updateButtonsActive(); });
 	});
 }

@@ -259,7 +259,7 @@
 	<<hirsuteHideCheck>>
 	<<tanned 0 "ignoreCoverage">>
 	<<if $player.freckles is "random">>
-		<<set $player.freckles to random(1, 5) == 1 ? true : false>>
+		<<set $player.freckles to (random(1, 5) is 1)>>
 	<</if>>
 	<!-- check if specified face style is installed -->
 	<img id="testImage" class="hidden" @scr="'img/face/' + $facestyle + '/base.png'">
@@ -268,8 +268,8 @@
 	<</if>>
 	<!-- Init shop mannequin gender -->
 	<<if $mannequinHasPenis is undefined>>
-		<<set $mannequinHasPenis = $player.penisexist ? 1 : 0>>
-		<<set $mannequinBreastsSize = $mannequinHasPenis ? 0 : 3>>
+		<<set $mannequinHasPenis to $player.penisExist>>
+		<<set $mannequinBreastsSize to ($mannequinHasPenis ? 0 : 3)>>
 	<</if>>
 	<<if $clothesPriceLewd lt Math.ceil(10 / $clothesPrice) * 0.1>>
 		<<set $clothesPriceLewd to parseFloat((Math.ceil(10 / $clothesPrice) * 0.1).toFixed(1))>>
@@ -377,10 +377,13 @@
 
 	<span class="gold">Gender</span>
 	<br>
+	<div class="playergender">
 	<label>Male <<radiobutton "$player.gender" "m" autocheck>></label> |
 	<label>Female <<radiobutton "$player.gender" "f" autocheck>></label> |
 	<label>Hermaphrodite <<radiobutton "$player.gender" "h" autocheck>></label>
 	<br><br>
+	</div>
+	<<run settingsPCGenderUpdate()>>
 
 	<span class="gold">Natural features</span>
 	<br>
@@ -684,24 +687,24 @@
 			<<numberslider "$penis_mod" $penis_mod -8 8 1>>
 			<br><br>
 
-			<span class="gold">Likelihood of npcs having pale skin</span>
+			<span class="gold">Percentage of people that have pale skin</span>
 			<br>
 			<<numberslider "$whitechance" $whitechance 0 100 1>>
 			<br><br>
 
-			<span class="gold">Likelihood of npcs having dark skin</span>
+			<span class="gold">Percentage of people that have dark skin</span>
 			<br>
 			<<numberslider "$blackchance" $blackchance 0 100 1>>
 			<br><br>
 			
 			<<if $pregnancyTesting>>
 				/*ToDo: Pregnancy, remove check to properly enable*/
-				<span class="gold">Likelihood of npcs having condoms on them</span>
+				<span class="gold">Likelihood of NPCs having condoms on them</span>
 				<br>
 				<<numberslider "$condomchance" $condomchance 0 100 1>>
 				<br><br>
 
-				<span class="gold">Likelihood of npcs using a condom without being asked</span>
+				<span class="gold">Likelihood of NPCs using a condom without being asked</span>
 				<br>
 				<<numberslider "$condomautochance" $condomautochance 0 100 1>>
 				<br><br>
@@ -959,7 +962,7 @@
 	<span class="gold">Minimum player character breast size</span> - Breasts already below this size won't automatically grow.
 	<br>
 	<<for _i to 0; _i lt 5; _i++>>
-		<label><<print _name[_i]>> <<radiobutton "$breastsizemin" `_i` autocheck>></label> |
+		<label><<print _name[_i]>> <<radiobutton "$breastsizemin" _i autocheck>></label> |
 	<</for>>
 	<br><br>
 
@@ -967,7 +970,7 @@
 	<br>
 	<<set _name to ["Slender", "Slim", "Modest", "Cushioned", "Soft", "Round", "Plump", "Large", "Huge"]>>
 	<<for _i to 0; _i lt _name.length; _i++>>
-		<label><<print _name[_i]>> <<print '<<radiobutton "$bottomsizemax" _i ' + ($bottomsizemax is _i ? "checked" : "") + '>>'>></label> |
+		<label><<print _name[_i]>> <<radiobutton "$bottomsizemax" _i autocheck>></label> |
 	<</for>>
 	<br><br>
 
@@ -1197,10 +1200,9 @@
 <</widget>>
 
 <<widget "npcSettings">>
-<<set _penisNames to ["Tiny", "Average", "Thick", "Huge"]>>
 <<if $passage is "Start">>
-<span class="red">Untouched options will be automatically generated for you.</span>
-<br>
+	<span class="red">Untouched options will be automatically generated for you.</span>
+	<br>
 <</if>>
 <<link "Generate all genders based on game settings">>
 	<<initnpcgender "genders">>
@@ -1296,7 +1298,7 @@ Click on "Copy Text Area" to copy the current contents for you. The button name 
 <br><br>
 
 <label>
-	<<print '<<checkbox "$disableAutoSelect" false true '+($disableAutoSelect is true? "checked":"")+'>>'>>
+	<<checkbox "$disableAutoSelect" false true autocheck>>
 	Disables auto select.
 </label>
 
@@ -1325,19 +1327,22 @@ Click on "Copy Text Area" to copy the current contents for you. The button name 
 <label><<radiobutton "$NPCName[_npcId].pronoun" "m" autocheck>> Male</label>
 <br>
 <<if $NPCName[_npcId].pregnancy[0] is null>>
-<label><<radiobutton "$NPCName[_npcId].gender" "f" autocheck>> Vagina</label> |
-<label><<radiobutton "$NPCName[_npcId].gender" "m" autocheck>> Penis</label>
+	<label><<radiobutton "$NPCName[_npcId].gender" "f" autocheck>> Vagina</label> |
+	<label><<radiobutton "$NPCName[_npcId].gender" "m" autocheck>> Penis</label>
+	<<run settingsNamedNpcGenderUpdate()>>
 <<else>>
 	Unable to change the npc genitals due to their pregnancy.
 <</if>>
 <br><br>
 Penis size - if applicable:
 <br>
-<<for _j to 0; _j lt _penisNames.length; _j++>>
+<<set _penisNames to ["", "Tiny", "Average", "Thick", "Huge"]>> /* the empty first element is necessary because _j starts at 1 */
+<<for _j to 1; _j lt _penisNames.length; _j++>>
 	<label>
-		<<print '<<radiobutton "$NPCName['+_npcId+'].penissize" ' + (_j + 1) + ' ' + ($NPCName[_npcId].penissize is (_j + 1) ? "checked" : "") + '>>'>>
+		<<radiobutton "$NPCName[_npcId].penissize" _j autocheck>>
 		<<print _penisNames[_j]>>
-	</label> |
+	</label>
+	<<if _j isnot _penisNames.length -1>>|<</if>>
 <</for>>
 <br><br>
 
