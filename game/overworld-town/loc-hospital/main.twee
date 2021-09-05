@@ -749,21 +749,23 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
 
 <<set $money -= (($breastsize - $phase) * 200000)>>
-<<set $breastsize to $phase>>
 <<set $breastgrowthtimer to 700>>
-<<set $breastsizeold to $breastsize>>
 
 <<upperstrip>>
 <<lowerstrip>>
 <<underlowerstrip>>
 <<underupperstrip>>
-Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room. You remove your clothing and stand waiting, feeling more than a little exposed. <<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem. <</if>><<He>> soon returns, carrying a medical gown.
+Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room.
+You remove your clothing and stand waiting, feeling more than a little exposed.
+<<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem.<</if>>
+<<He>> soon returns, carrying a medical gown.
 <br><br>
 
 "Wear this." <<He>> instructs. You put the gown on. "Right, if you'd like to come with me, it's just a short walk away."
 <br><br>
 
-<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down. <<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
+<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down.
+<<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
 <br><br>
 
 <<fameexhibitionism 10 pic>>
@@ -773,6 +775,9 @@ Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to le
 
 :: Hospital Breast Done
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
+
+<<set $breastsize to $phase>>
+<<set $breastsizeold to $breastsize>>
 
 You awaken in the same room you passed out in. You don't feel any different, until you look down and see your <<breasts>>. Harper enters the room.
 <br><br>
@@ -898,21 +903,23 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
 
 <<set $money -= (($phase - $breastsize) * 500000)>>
-<<set $breastsize to $phase>>
 <<set $breastgrowthtimer to 700>>
-<<set $breastsizeold to $breastsize>>
 
 <<upperstrip>>
 <<lowerstrip>>
 <<underlowerstrip>>
 <<underupperstrip>>
-Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room. You remove your clothing and stand waiting, feeling more than a little exposed. <<if $worn.genitals.type.includes("chastity")>>You can't remove your chastity belt, you hope it won't be a problem. <</if>><<He>> soon returns, carrying a medical gown.
+Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room.
+You remove your clothing and stand waiting, feeling more than a little exposed.
+<<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem.<</if>>
+<<He>> soon returns, carrying a medical gown.
 <br><br>
 
 "Wear this." <<He>> instructs. You put the gown on. "Right, if you'd like to come with me, it's just a short walk away."
 <br><br>
 
-<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down. <<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
+<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down.
+<<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
 <br><br>
 
 <<fameexhibitionism 10 pic>>
@@ -936,7 +943,7 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 	<<case -1>>the bottom
 	<<default>>a
 <</switch>>
-picture labelled <span class="lewd">"<<if $penissize is 2>>average<<else>><<penissize>><</if>> penis."</span>
+picture labelled <span class="lewd">"<<print ($penissize is 2 ? "average" : "<<penissize>>")>> penis."</span>
 <br><br>
 
 "It costs £2000 to decrease your penis by a single size, and a further £2000 for each size beyond that."
@@ -988,20 +995,23 @@ picture labelled <span class="lewd">"<<if $penissize is 2>>average<<else>><<peni
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
 
 <<set $money -= (($penissize - $phase) * 200000)>>
-<<set $penissize to $phase>>
 <<set $penisgrowthtimer to 700>>
 
 <<upperstrip>>
 <<lowerstrip>>
 <<underlowerstrip>>
 <<underupperstrip>>
-Harper accepts the payment. "Please undress," <<he>> says as <<he>> leaves the room. You remove your clothing and stand waiting, feeling more than a little exposed. <<if $worn.genitals.type.includes("chastity")>>You can't remove your chastity belt, you hope it won't be a problem. <</if>><<He>> soon returns, carrying a medical gown.
+Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room.
+You remove your clothing and stand waiting, feeling more than a little exposed.
+<<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem.<</if>>
+<<He>> soon returns, carrying a medical gown.
 <br><br>
 
 "Wear this." <<He>> instructs. You put the gown on. "Right, if you'd like to come with me, it's just a short walk away."
 <br><br>
 
-<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down. <<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
+<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down.
+<<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
 <br><br>
 
 <<fameexhibitionism 10 pic>>
@@ -1012,7 +1022,9 @@ Harper accepts the payment. "Please undress," <<he>> says as <<he>> leaves the r
 :: Hospital Penis Done
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
 
-You awaken in the same room you passed out in. You don't feel any different, until you look down and see your <<penissize>> <<penis>>. Harper enters the room.
+<<set $penissize to $phase>>
+
+You awaken in the same room you passed out in. You don't feel any different, until you look down and see your <<penissize>> penis. Harper enters the room.
 <br><br>
 
 "The operation was a success," <<he>> says. <<He>> looks at your groin.
@@ -1054,7 +1066,7 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 		<<case -1>>the bottom
 		<<default>>a
 	<</switch>>
-	picture labelled <span class="lewd">"<<if $penissize is 2>>average<<else>><<penissize>><</if>> penis."</span>
+	picture labelled <span class="lewd">"<<print ($penissize is 2 ? "average" : "<<penissize>>")>> penis."</span>
 	<br><br>
 
 	"It costs £5000 to increase your penis by a single size, and a further £5000 for each size beyond that."
@@ -1081,7 +1093,7 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 		<br>
 	<</if>>
 <<else>>
-	"This would normally be a simple procedure..." <<He>> pulls a chart of penis sizes from <<his>> desk. "You're not even at the smallest size." <<He>> points at a picture labelled <span class="lewd">"mini penis."</span>
+	"This would normally be a simple procedure..." <<He>> pulls a chart of penis sizes from <<his>> desk. "However, you're not even at the smallest size." <<He>> points at a picture labelled <span class="lewd">"mini penis."</span>
 	<br><br>
 	While taking a closer look, <<he>> continues, "You should head to our Pharmacy and buy some penis growth pills, I personally recommend taking two doses per day to start with, however, I'm not quite sure if that would be enough to revive it."
 	<br>
@@ -1111,20 +1123,23 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
 
 <<set $money -= (($phase - $penissize) * 500000)>>
-<<set $penissize to $phase>>
 <<set $penisgrowthtimer to 300>>
 
 <<upperstrip>>
 <<lowerstrip>>
 <<underlowerstrip>>
 <<underupperstrip>>
-Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room. You remove your clothing and stand waiting, feeling more than a little exposed. <<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem. <</if>><<He>> soon returns, carrying a medical gown.
+Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room.
+You remove your clothing and stand waiting, feeling more than a little exposed.
+<<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem.<</if>>
+<<He>> soon returns, carrying a medical gown.
 <br><br>
 
 "Wear this." <<He>> instructs. You put the gown on. "Right, if you'd like to come with me, it's just a short walk away."
 <br><br>
 
-<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down. <<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
+<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down.
+<<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
 <br><br>
 
 <<fameexhibitionism 10 pic>>
@@ -1159,20 +1174,20 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 <br>
 
 :: Hospital Tattoo Removal 2
-<<effects>>
+<<set $outside to 0>><<set $location to "hospital">><<effects>>
 
-<<upperstrip>>
-<<lowerstrip>>
-<<underlowerstrip>>
-<<underupperstrip>>
-
-Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room. "Everything. The presence of clothing interferes with the delicate apparatus." You remove your clothing and stand waiting, feeling more than a little exposed. <<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem. <</if>><<He>> soon returns, carrying a medical gown.
+<<strip>>
+Harper accepts the payment. "Please undress," <<he>> says as <<he>> stands to leave the room. "Everything. The presence of clothing interferes with the delicate apparatus." 
+You remove your clothing and stand waiting, feeling more than a little exposed.
+<<if $worn.genitals.type.includes("chastity")>>You can't remove your $worn.genitals.name, you hope it won't be a problem.<</if>>
+<<He>> soon returns, carrying a medical gown.
 <br><br>
 
 "Wear this." <<He>> instructs. You put the gown on. "Right, if you'd like to come with me, it's just a short walk away."
 <br><br>
 
-<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down. <<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
+<<He>> leads you to another room, containing a small bed. "Please lie down. I'll put you under then move you to the theatre." You lie down.
+<<He>> presses a mask against your face, and you feel your consciousness start to slip. <<He>> pulls a camera from <<his>> pocket as you pass out.
 <br><br>
 
 <<fameexhibitionism 10 pic>>
