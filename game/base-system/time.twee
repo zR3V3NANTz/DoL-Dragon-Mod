@@ -985,7 +985,6 @@
 		<<set $kylarspray to 0>>
 		<<set $kylarstreettimer += (10 + ($NPCName[$NPCNameList.indexOf("Kylar")].lust / 4))>>
 		<<unset $kylar_bodywriting>>
-		<<unset $kylarsydneywriting>>
 		<<unset $kylar_invite>>
 		<<unset $kylar_undies_taken>>
 		<<if $kylar_riddle is 1>>

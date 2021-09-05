@@ -2063,7 +2063,7 @@ Jordan gives you a solemn nod. "Please come with me."
 <</if>>
 <br><br>
 <<npc "Sydney" 2>><<person2>>
-You both remove your clothing, wishing it wasn't quite so cold in here. Jordan rubs grey powder between <<his>> hands, then kneels in front of you.
+You both remove your clothing, wishing it wasn't quite so cold in here. Jordan rubs grey powder between <<person1>><<his>> hands, then kneels in front of you.
 <<if $worn.genitals.type.includes("chastity") and $worn.genitals.origin is "temple">>
 <<He>> holds a strange rod against your $worn.genitals.name, and the device clatters to the floor.
 <</if>>
@@ -2149,7 +2149,7 @@ Jordan scrapes away the grey powder into the same jar. You and Sydney watch with
 		With one anxious motion, <<he>> returns your $worn.genitals.name to its place, guarding your crotch.
 	<</if>>
 	<br><br>
-	<<He>> turns away to let you both dress.
+	<<person1>><<He>> turns away to let you both dress.
 	<<if $grace gte 90>>
 		Without looking, <<he>> places an envelope on the shelf beside you. "Your monthly allowance. Your behaviour has been remarkable. <span class="green">You're a credit to our faith, and every one of us could learn from you.</span> Thank you."
 		<br><br>

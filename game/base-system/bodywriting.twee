@@ -1233,6 +1233,95 @@ Second arg: tool */
 <</if>>
 <</widget>>
 
+<<widget "bodypart_admire_kylar">>
+<<set _silent to 1>>
+<<switch $skin[$args[0]].special>>
+	<<case "Kylar">>
+		<<if $skin[$args[0]].arrow is 1>>
+			"Reserved for me," <<he>> says lovingly as <<he>>
+			<<if $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and $NPCList[_n].penis is 0 and $mouthuse is 0>>
+				<span class="blue">positions <<his>> $NPCList[_n].penisdesc in front of your mouth</span>.
+				<<neutral 5>><<set $mouthuse to "penis">><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthstate to "entrance">><<set $NPCList[_n].location.genitals to "head">>
+			<<elseif $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and $NPCList[_n].vagina is 0 and $mouthuse is 0>>
+				<<if random(4) is 0>>
+					gently rolls you onto your back and <span class="purple">straddles your face, lowering <<his>> pussy down onto your mouth</span>.
+					<<submission 5>><<set $NPCList[_n].vagina to "facesit">><<set $mouthuse to "facesit">><<set $mouthstate to "vagina">><<set $position to "missionary">>
+				<<else>>
+					<span class="blue">wraps <<his>> legs around your head, pressing <<his>> pussy against your mouth</span>.
+					<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[_n].vagina to "mouth">><<set $mouthstate to "othervagina">>
+				<</if>>
+			<<elseif $args[0] is "back" or $args[0] is "right_bottom" or $args[0] is "left_bottom" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1 and $NPCList[0].penis is 0 and $anususe is 0>>
+				<span class="blue">positions <<his>> penis in front of your <<bottom>></span>.
+				<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">>
+			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $vaginaexist is 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
+				<span class="blue">moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your pussy</span>.
+				<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
+			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $penisexist is 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
+				<span class="blue">straddles you, <<his>> pussy hovering close to your <<penis>></span>.
+				<<neutral 5>><<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
+			<<else>>
+				smiles at you.
+			<</if>>
+		<<else>>
+			<<He>> smiles at you.
+		<</if>>
+		<<set $enemyanger -= 10>><<set $enemytrust += 10>><<npcincr Kylar rage -2>><<lksuspicion>>
+	<<case "Robin">>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+			<<He>> snarls. "Forget about <<nnpc_him "Robin">>! I'm better than <<nnpc_him "Robin">>!"
+		<<else>>
+			<<He>> growls. "Robin can't take care of you like I can!"
+		<</if>>
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+	<<case "Whitney">>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+			<<He>> snarls. "You're not Whitney's! You're mine!"
+		<<else>>
+			<<He>> freezes. "H... <<nnpc_He "Whitney">> doesn't treat you right! I can!"
+		<</if>>
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+	<<case "Sydney">>
+		<<if $skin[$args[0]].lewd isnot 1>>
+			<<He>> frowns, but doesn't say anything.
+			<<set $enemyanger += 5>><<set $enemytrust -= 5>>
+		<<elseif !$sydneySeen.includes("kylarwriting") and $args[0].lewd is 1>>
+			<<He>> frowns, reading it again, and <<his>> lip curls. "<<nnpc_He "Sydney">>... Forget about <<nnpc_him "Sydney">>."
+			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>><<set $sydneySeen.pushUnique("kylarwriting")>>
+		<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+			<<He>> growls. "Sydney doesn't know you like I do!"
+			<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+		<<else>>
+			<<He>> frowns. "I don't like how close you are to <<nnpc_him "Sydney">>."
+			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>>
+		<</if>>
+	<<case "Black Wolf" "Great Hawk">>
+		<<His>> eyes narrow. "I can be an animal, too. Watch!"
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+	<<case "Eden" "Avery" "Alex">>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+			<<He>> snarls. "Whoever they are, they're worthless!"
+		<<else>>
+			<<He>> growls. "You don't need them! You only need me!"
+		<</if>>
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+	<<case "prostitution" "rape" "exhibitionism" "sex">>
+		<<He>> grimaces.
+		<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>>
+	<<case "pregnancy">>
+		/*ToDo: Pregnancy, write once Kylar's reaction to/thoughts on pregnancy is better understood.
+		May differ based on gender, jealousy and whether or not Kylar has impregnated the PC in the past.*/
+	<<case "combat" "violence" "criminal">>
+		<<His>> eyes widen, but <<he>> doesn't say anything.
+	<<default>>
+		<<if $skin[$args[0]].lewd is 1>>
+			<<He>> frowns.
+			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>>
+		<<else>>
+			/*Do nothing.*/
+		<</if>>
+<</switch>>
+<</widget>>
+
 <<widget "bodypart_admire">>
 <<if $skin[$args[0]] is undefined>>
 <<elseif $skin[$args[0]].writing>>
@@ -1249,7 +1338,9 @@ Second arg: tool */
 		<<else>>
 			<<He>> examines the "<<print $skin[$args[0]].writing>>" image on your <<bodypart $args[0]>>.
 		<</if>>
-		<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
+		<<if $npc[$npcrow.indexOf(_n)] is "Kylar">>
+			<<bodypart_admire_kylar $args[0]>>
+		<<elseif $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
 			<<if $skin[$args[0]].arrow is 1 and
 			($args[0] is "left_cheek" or
 			$args[0] is "right_cheek" or

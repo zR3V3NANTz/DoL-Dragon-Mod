@@ -4431,10 +4431,10 @@
 				<<case "Robin">>
 					<<set $_text_output to `<<He>> growls. "Robin can't take care of you like I can!"`>>
 				<<case "Whitney">>
-					<<set $_text_output to `<<He>> freezes. "W...Whitney can't stop me!"`>>
+					<<set $_text_output to `<<He>> freezes. "W... Whitney can't stop me!"`>>
 				<<case "Sydney">>
 					<<set $_text_output to `<<He>> growls. "Sydney doesn't know you like I do!"`>>
-					<<set $kylarsydneywriting to 1>>
+					<<set $sydneySeen.pushUnique("kylarwriting")>>
 				<<default>>
 					<<set $_text_output to `<<He>> freezes. "Who... are you talking about...?"`>>
 				<</switch>>
@@ -4443,53 +4443,59 @@
 				<<set $_text_output to `<<He>> freezes. "You don't need them! You only need me!"`>>
 				<<npcincr Kylar rage 10>><<ggksuspicion>>
 			<</if>>
-		<<elseif $kylarsexcycle is 0>>
-			<<set $kylarsexcycle += 1>>
-			<<if ($penisexist is 1 and $NPCList[_n].vagina isnot "none") or ($vaginaexist is 1 and $NPCList[_n].penis isnot "none")>>
-				<<set $_text_output to `<<He>> whispers into your ear. "We're going <<printTo>> make lots of babies."`>>
+		<<elseif _silent isnot 1>>
+			<<if $kylarsexcycle is 0>>
+				<<set $kylarsexcycle += 1>>
+				<<if ($genderknown.includes("Kylar") and ($penisexist is 1 and $NPCList[_n].vagina isnot "none") or ($vaginaexist is 1 and $NPCList[_n].penis isnot "none"))
+				or (($player.gender_appearance is "m" and $NPCList[_n].vagina isnot "none") or ($player.gender_appearance is "f" and $NPCList[_n].penis isnot "none"))>>
+					<<set $_text_output to `<<He>> whispers into your ear. "We're going <<printTo>> make lots of babies."`>>
+				<<else>>
+					<<set $_text_output to `"We're going <<printTo>> adopt lots of babies," <<he>> says.`>>
+				<</if>>
+			<<elseif $kylarsexcycle is 1>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"You'll be the best`>>
+				<<if $player.gender_appearance is "m">>
+					<<set $_text_output += ` daddy`>>
+				<<else>>
+					<<set $_text_output += ` mummy`>>
+				<</if>>
+				<<set $_text_output += ` ever," <<he>> says.`>>
+			<<elseif $kylarsexcycle is 2>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"You're so naughty," <<he>> says. "We're not even married yet!"`>>
+			<<elseif $kylarsexcycle is 3>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"I want you <<printTo>> wear me out," <<he>> says, "<<printAnd>> then keep going."`>>
+			<<elseif $kylarsexcycle is 4>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"I'm going <<printTo>> do this again <<printAnd>> again until you forget about every other`>>
+				<<if $pronoun is "m">>
+					<<set $_text_output += ` bastard`>>
+				<<else>>
+					<<set $_text_output += ` whore`>>
+				<</if>>
+				<<set $_text_output += ` who's looked at you," <<he>> says.`>>
+			<<elseif $kylarsexcycle is 5>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"I'll be the only one you ever think about," <<he>> says.`>>
+			<<elseif $kylarsexcycle is 6>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"Everyone is bad," <<he>> says. "Except you. You're perfect."`>>
+			<<elseif $kylarsexcycle is 7>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"I feel safe like this," <<he>> says. "I never want it <<printTo>> end."`>>
+			<<elseif $kylarsexcycle is 8>>
+				<<set $kylarsexcycle += 1>>
+				<<set $_text_output to `"I l-love you," <<he>> says.`>>
+				<<set $kylarsaidlove to 1>>
 			<<else>>
-				<<set $_text_output to `"We're going <<printTo>> adopt lots of babies," <<he>> says.`>>
+				<<set $kylarsexcycle to 0>>
+				<<set $_text_output to `"You're so lewd <<printAnd>> naughty <<printAnd>> all mine," <<he>> says.`>>
 			<</if>>
-		<<elseif $kylarsexcycle is 1>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"You'll be the best`>>
-			<<if $player.gender_appearance is "m">>
-				<<set $_text_output += ` daddy`>>
-			<<else>>
-				<<set $_text_output += ` mummy`>>
-			<</if>>
-			<<set $_text_output += ` ever," <<he>> says.`>>
-		<<elseif $kylarsexcycle is 2>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"You're so naughty," <<he>> says. "We're not even married yet!"`>>
-		<<elseif $kylarsexcycle is 3>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"I want you <<printTo>> wear me out," <<he>> says, "<<printAnd>> then keep going."`>>
-		<<elseif $kylarsexcycle is 4>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"I'm going <<printTo>> do this again <<printAnd>> again until you forget about every other`>>
-			<<if $pronoun is "m">>
-				<<set $_text_output += ` bastard`>>
-			<<else>>
-				<<set $_text_output += ` whore`>>
-			<</if>>
-			<<set $_text_output += ` who's looked at you," <<he>> says.`>>
-		<<elseif $kylarsexcycle is 5>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"I'll be the only one you ever think about," <<he>> says.`>>
-		<<elseif $kylarsexcycle is 6>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"Everyone is bad," <<he>> says. "Except you. You're perfect."`>>
-		<<elseif $kylarsexcycle is 7>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"I feel safe like this," <<he>> says. "I never want it <<printTo>> end."`>>
-		<<elseif $kylarsexcycle is 8>>
-			<<set $kylarsexcycle += 1>>
-			<<set $_text_output to `"I l-love you," <<he>> says.`>>
-			<<set $kylarsaidlove to 1>>
-		<<else>>
-			<<set $kylarsexcycle to 0>>
-			<<set $_text_output to `"You're so lewd <<printAnd>> naughty <<printAnd>> all mine," <<he>> says.`>>
+		<</if>>
+		<<if _silent>>
+			<<unset _silent>>
 		<</if>>
 	<<case "Eden">>
 		<<if $speechpenisvirgin is 1 or $speechvaginavirgin is 1>>

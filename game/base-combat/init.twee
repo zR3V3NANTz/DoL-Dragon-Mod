@@ -1047,7 +1047,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 			<<else>>
 				<<He>> eyes your <<genitals>> with great curiosity. "B...both? I didn't know that was possible!"
 			<</if>><<npcincr Sydney purity -2>><<lspurity>>
-		<<elseif $rng gte 96>>
+		<<elseif $rng gte 96 and !$npc.includes("Kylar")>>
 			<span class="red"><<He>> recoils in horror and disgust at the sight of your <<genitals>>!</span>
 			<<set $enemyanger += 200>><<set $enemytrust -= 100>><<set $speechhermangry to 2>>
 		<<elseif $rng gte 85 or $npc.includes("Kylar")>>
@@ -1107,7 +1107,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 			<<else>>
 				<<He>> stares at your <<genitals>> with confusion. "You're... a <<gender>>? Th-that's okay! I don't think of you any differently!"
 			<</if>><<npcincr Sydney purity -2>><<lspurity>>
-		<<elseif $rng gte 96>>
+		<<elseif $rng gte 96 and !$npc.includes("Kylar")>>
 			<span class="red"><<He>> recoils in horror upon seeing your <<genitals>>. The deception has driven <<him>> mad with rage!</span>
 			<<set $enemyanger += 200>><<set $enemytrust -= 100>><<set $speechcrossdressangry to 2>>
 		<<elseif $rng gte 86 or ($npc.includes("Kylar") and $NPCList[0].gender isnot $player.gender)>>

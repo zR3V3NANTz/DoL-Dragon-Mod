@@ -1221,6 +1221,10 @@ You plant a kiss on <<his>> cheek. "I'm sure." You can't quite gauge <<his>> exc
 <</if>>
 <<set $sydneyromance to 1>>
 <br><br>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+	<span class="red">Kylar stares in horror from across the library.</span> <<gggksuspicion>><<npcincr Kylar rage 10>>
+	<br><br>
+<</if>>
 <<link [[Next|Sydney Romance 3]]>><</link>>
 <br>
 
@@ -3437,8 +3441,7 @@ You get on your knees and crawl under the counter.
 
 <<effectsman>><<man>>
 <<if !["early","late"].includes($schoolstate)>>
-	<<if ["letout","letoutorgasm","plead","moan","ask","demand","mock","scream","apologise","forgive"].includes($mouthaction)>>
-		<<set _sound to 1>>
+	<<if _sound is 1>>
 		<<set $sydneyOral.Sound to 1>>
 	<</if>>
 	<<if $enemyarousal gte ($enemyarousalmax / 5) * 3>>
@@ -3640,7 +3643,10 @@ You get on your knees and crawl under the counter.
 			<</if>>
 			<br><br>
 
-			<<tearful>> you climb to your feet. Sydney leans against you. "That was... with so many people around... So sinful..."
+			<<tearful>> you climb to your feet. There's a <<person2>><<person>> walking away from the counter<<if $sydneyOral.Book is 2>>, with "<span class="pink">Book Crimlax/xa&*gh=</span>" written on <<his>> forehead. You must have messed up Sydney's handwriting<</if>>. <<He>> didn't notice you.
+			<br><br>
+
+			Sydney leans against you. "That was... with so many people around... So sinful..."
 		<</if>>
 		<<person1>>
 	<<else>>
@@ -3674,7 +3680,6 @@ You get on your knees and crawl under the counter.
 	<</if>>
 	<<npcincr Sydney purity -2>><<lspurity>>
 	<br>
-
 
 	<<clotheson>>
 	<<endcombat>>
