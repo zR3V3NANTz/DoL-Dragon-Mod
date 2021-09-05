@@ -875,17 +875,20 @@ Your $worn.under_upper.name <<underupperhas>> been pulled to your $worn.under_up
 	<<set _showClothes to true>>
 <</if>>
 
-<<if ($player.gender is "f" and $background isnot "crossdresser") or
-	($player.gender is "m" and $background is "crossdresser") or
-	($player.gender is "h" and
-		(
-			(($player.gender_body is "m" or ($player.gender_body is "a" and $player.perceived_breastsize lte 3)) and $background is "crossdresser") or
-			(($player.gender_body is "f" or ($player.gender_body is "a" and $breastsize gt 3)) and $background isnot "crossdresser")
-		)
-	)>>
-	<<set _clothesType to "female">>
-<<else>>
+<<if $player.gender is "m">>
 	<<set _clothesType to "male">>
+<<elseif $player.gender is "h">>
+	<<if $player.gender_body is "m" or ($player.gender_body is "a" and $breastsize lte 3)>>
+		<<set _clothesType to "male">>
+	<<else>> <!-- if $player.gender_body is "f" or ($player.gender_body is "a" and $breastsize gt 3)) --> 
+		<<set _clothesType to "female">>
+	<</if>>
+<<else>> <!-- if $player.gender is "f" -->
+	<<set _clothesType to "female">>
+<</if>>
+
+<<if $background is "crossdresser">>
+	<<set _clothesType to (_clothesType is "male" ? "female" : "male")>>
 <</if>>
 
 <div id="img" @class="'hair-'+ $hairselect + ' eye-' + $eyeselect.replace(/ /g,'-') + ($imgLighten isnot '' ? ' '+ $imgLighten :'') + ' noAnimations'">
@@ -922,7 +925,7 @@ Your $worn.under_upper.name <<underupperhas>> been pulled to your $worn.under_up
 			if (_penisSize isnot undefined) {
 				_modeloptions.penis = $player.virginity.penile is true ? "virgin" : "default";
 				_modeloptions.penis_size = _penisSize;
-				_modeloptions.balls = $player.ballsExist;
+				_modeloptions.balls = $player.gender is "h" ? $player.ballsExist : true;
 			}
 
 			_modeloptions.skin_type = $skinColor.natural;

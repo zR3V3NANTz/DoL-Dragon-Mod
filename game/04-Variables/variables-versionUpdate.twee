@@ -1997,8 +1997,8 @@
 <</if>>
 
 <<if $mannequinHasPenis is undefined>>
-	<<set $mannequinHasPenis = $player.penisexist ? 1 : 0>>
-	<<set $mannequinBreastsSize = $mannequinHasPenis ? 0 : 3>>
+	<<set $mannequinHasPenis to $player.penisExist>>
+	<<set $mannequinBreastsSize to $mannequinHasPenis ? 0 : 3>>
 <</if>>
 <<if $shopPage is undefined>>
 	<<set $shopPage = 0>>
@@ -2367,6 +2367,10 @@
 	<<set $vaginaexist to ($player.gender isnot "m" ? 1 : 0)>>
 	<<set $player.penisExist to ($player.gender isnot "f")>>
 	<<set $penisexist to ($player.gender isnot "f" ? 1 : 0)>>
+<</if>>
+
+<<if $NPCName[0].penis is 0>>
+	<<initnpcgender>>
 <</if>>
 
 <</widget>>

@@ -407,7 +407,7 @@
 <</widget>>
 
 <<widget "shopDetailsv2">>
-	<<unset _mannequinGenderOverrite>>
+	<<unset _mannequinGenderOverride>>
 	<<if $clothes_choice and setup.clothes[$clothingShopSlot][$clothes_choice] is undefined>>
 		<<unset $clothes_choice>>
 
@@ -875,31 +875,27 @@
 
 		<<if _item>>
 			<!-- Set gender of the mannequin -->
-			<<if _mannequinGenderOverrite>>
-				<<set _mannequinGender = _mannequinGenderOverrite>>
+			<<if _mannequinGenderOverride>>
+				<<set _mannequinGender to _mannequinGenderOverride>>
 			<<else>>
 				<<if $shopDefaults.mannequinGenderFromClothes and _item.gender != "n">>
-					<<set _mannequinGender = _item.gender>>
+					<<set _mannequinGender to _item.gender>>
 				<<else>>
-					<<if $shopDefaults.mannequinGender == "same">>
-						<<set _mannequinGender = $player.gender>>
-					<<elseif $shopDefaults.mannequinGender == "opposite">>
-						<<set _mannequinGender = $player.gender == "f" ? "m" : "f">>
+					<<if $shopDefaults.mannequinGender is "same">>
+						<<set _mannequinGender to $player.gender>>
+					<<elseif $shopDefaults.mannequinGender is "opposite">>
+						<<set _mannequinGender to ($player.gender is "f" ? "m" : "f")>>
 					<<else>>
-						<<set _mannequinGender = $shopDefaults.mannequinGender.first()>>
+						<<set _mannequinGender to $shopDefaults.mannequinGender.first()>>
 					<</if>>
 				<</if>>
 			<</if>>
-			<<if _mannequinGender == "m" or _mannequinGender == "h">>
-				<<set $mannequinHasPenis = 1>>
-			<<else>>
-				<<set $mannequinHasPenis = 0>>
-			<</if>>
+			<<set $mannequinHasPenis to (_mannequinGender isnot "f")>>
 
 			<<if _item.type.includes("chest_bind")>>
-				<<set _breastImg = 0>>
+				<<set _breastImg to 0>>
 			<<else>>
-				<<set _breastImg = $mannequinBreastsSize is undefined ? 3 : (_mannequinGender == "f" or _mannequinGender == "h" ? $mannequinBreastsSize : 0)>>
+				<<set _breastImg to ($mannequinBreastsSize is undefined ? 3 : (_mannequinGender is "m" ? 0 : $mannequinBreastsSize))>>
 			<</if>>
 			<<set _clothed = (((_slot != "under_upper" and $neverNudeMenus) or (_slot == "under_upper" and !_item.type.includes("naked"))) and _breastImg >= 2) ? "_clothed" : "">>
 
@@ -1082,10 +1078,14 @@
 <</widget>>
 
 <<widget "toggleMannequinGender">>
-	<<if _mannequinGender == "f">>
-		<<set _mannequinGenderOverrite = "m">>
+	<<if _mannequinGender is "f">>
+		<<set _mannequinGenderOverride to "m">>
 	<<else>>
-		<<set _mannequinGenderOverrite = "f">>
+		<<if $player.gender is "h" and _mannequinGender is "m">> /* if player is herm, toggle mannequin through herm gender */
+			<<set _mannequinGenderOverride to "h">>
+		<<else>>
+			<<set _mannequinGenderOverride to "f">>
+		<</if>>
 	<</if>>
 	<<updatemannequin>>
 <</widget>>
@@ -1139,9 +1139,9 @@
 				<</if>>
 
 				<span class="bold gold">Gender</span>
-				<label><<checkbox "$shopClothingFilter.gender.female" false true `$shopClothingFilter.gender.female ? "checked" : ""`>> Female</label>
-				<label><<checkbox "$shopClothingFilter.gender.neutral" false true `$shopClothingFilter.gender.neutral ? "checked" : ""`>> Unisex</label>
-				<label><<checkbox "$shopClothingFilter.gender.male" false true `$shopClothingFilter.gender.male ? "checked" : ""`>> Male</label>
+				<label><<checkbox "$shopClothingFilter.gender.female" false true autocheck>> Female</label>
+				<label><<checkbox "$shopClothingFilter.gender.neutral" false true autocheck>> Unisex</label>
+				<label><<checkbox "$shopClothingFilter.gender.male" false true autocheck>> Male</label>
 			</div>
 
 			<div id="filter-reveal" class="filter-block">
@@ -1215,8 +1215,8 @@
 			<br>
 			<<for _col range _colorOptions>>
 				<label>
-					<<print '<<radiobutton "$shopDefaults.color" "'+ _col +'" ' + ($shopDefaults.color is _col ? "checked" : "") + '>>'>>
-					<<print '<span class="'+ _col +'">' + _col + '</span>'>>
+					<<radiobutton "$shopDefaults.color" _col autocheck>>
+					<span @class="_col">_col</span>
 				</label>
 				|
 			<</for>>
@@ -1225,21 +1225,21 @@
 			<br>
 			<<for _col range _colorOptions>>
 				<label>
-					<<print '<<radiobutton "$shopDefaults.secColor" "'+ _col +'" ' + ($shopDefaults.secColor is _col ? "checked" : "") + '>>'>>
-					<<print '<span class="'+ _col +'">' + _col + '</span>'>>
+					<<radiobutton "$shopDefaults.secColor" _col autocheck>>
+					<span @class="_col">_col</span>
 				</label>
 				|
 			<</for>>
 			<br><hr>
 
 			<label>
-				<<print '<<checkbox "$shopDefaults.disableReturn" false true ' + ($shopDefaults.disableReturn is true? "checked" : "")+'>>'>>
+				<<checkbox "$shopDefaults.disableReturn" false true autocheck>>
 				Don't return to catalogue after buying an item.
 			</label>
 			<br><hr>
 
 			<label>
-				<<print '<<checkbox "$shopDefaults.alwaysBackToShopButton" false true ' + ($shopDefaults.alwaysBackToShopButton is true? "checked" : "")+'>>'>>
+				<<checkbox "$shopDefaults.alwaysBackToShopButton" false true autocheck>>
 				Always show "Back to shop" button.
 			</label>
 			<br><hr>
@@ -1267,7 +1267,7 @@
 
 			<div class="high-contrast-example">
 				<label>
-					<<print '<<checkbox "$shopDefaults.highContrast" false true ' + ($shopDefaults.highContrast is true? "checked" : "")+'>>'>>
+					<<checkbox "$shopDefaults.highContrast" false true autocheck>>
 					Use high contrast text on colour buttons.
 				</label>
 				&nbsp;&nbsp;Example:&nbsp;&nbsp;
@@ -1278,7 +1278,7 @@
 			<hr>
 
 			<label>
-				<<print '<<checkbox "$shopDefaults.mannequinGenderFromClothes" false true ' + ($shopDefaults.mannequinGenderFromClothes is true? "checked" : "")+'>>'>>
+				<<checkbox "$shopDefaults.mannequinGenderFromClothes" false true autocheck>>
 				Set mannequin's gender to that of a clothing item (fallback to setting below for unisex).
 			</label>
 			<br>
@@ -1301,17 +1301,17 @@
 			<br><hr>
 
 			<label>
-				<<print '<<checkbox "$shopDefaults.compactMode" false true ' + ($shopDefaults.compactMode is true? "checked" : "")+'>>'>>
+				<<checkbox "$shopDefaults.compactMode" false true autocheck>>
 				Display less information to make catalogue more compact.
 			</label>
 			<br>
 			<label>
-				<<print '<<checkbox "$shopDefaults.noTraits" false true ' + ($shopDefaults.noTraits is true? "checked" : "")+'>>'>>
+				<<checkbox "$shopDefaults.noTraits" false true autocheck>>
 				Hide clothing trait icons.
 			</label>
 			<br>
 			<label>
-				<<print '<<checkbox "$shopDefaults.noHelp" false true ' + ($shopDefaults.noHelp is true? "checked" : "")+'>>'>>
+				<<checkbox "$shopDefaults.noHelp" false true autocheck>>
 				Don't show help / legend button in catalogue.
 			</label>
 		</div>
