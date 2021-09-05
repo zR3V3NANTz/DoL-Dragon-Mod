@@ -391,7 +391,7 @@ The <<person>> shrugs. "Suit yourself," <<he>> says. "Good luck." <<He>> skates 
 :: Lake Skate Shove
 <<effects>>
 
-You shove the <<person>> away from you. <<He>> looses <<his>> footing, and lands on <<his>> back. You hear laughter from several directions.
+You shove the <<person>> away from you. <<He>> loses <<his>> footing, and lands on <<his>> back. You hear laughter from several directions.
 <br><br>
 
 <<if $rng gte 81>>
