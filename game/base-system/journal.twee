@@ -500,13 +500,16 @@
 
 
 <<if $museumAntiqueJournalHints is not undefined>>
-<br><br>
-<h4>Winter has mentioned some items missing from the museum</h4>
-	<<for _hint range $museumAntiqueJournalHints>>
-
-		<<print $museumAntiqueText[_hint].journal>>
-		<br><br>
-	<</for>>
+	<<museumAntiqueText>>
+	<br><br>
+	<h4>Winter has mentioned some items missing from the museum</h4>
+	<ul>
+		<<for _hint range $museumAntiqueJournalHints>>
+			<li>
+				<<print _museumAntiqueText[_hint].journal>>
+			</li>
+		<</for>>
+	</ul>
 <</if>>
 
 <<if $farm>>

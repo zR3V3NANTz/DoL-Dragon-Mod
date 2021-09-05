@@ -7,7 +7,7 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 <<if $museumAntiques.museumCount is 0>>
 	The museum is empty.
 <<elseif $museumAntiques.museumCount lt $museumAntiques.maxCount / 3>>
-	The museum is almost empty
+	The museum is almost empty.
 <<elseif $museumAntiques.museumCount lt $museumAntiques.maxCount / 2>>
 	The museum looks better than it did.
 <<elseif $museumAntiques.museumCount lt $museumAntiques.maxCount / 1.5>>
@@ -25,10 +25,10 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 <ul>
 <<for _labelM, _valueM range $museumAntiques.antiques>>
 	<<switch _valueM>>
-		<<case "museum">><li><<print $museumAntiqueText[_labelM].museum>></li>
-		<<case "stolen">><li><<print $museumAntiqueText[_labelM].stolen>></li>
-		<<case "recovered">><li><<print $museumAntiqueText[_labelM].recovered>></li>
-		<<case "found" "talk">><li>You should show the <<print $museumAntiqueText[_labelM].name>> to Winter.</li>
+		<<case "museum">><li><<print _museumAntiqueText[_labelM].museum>></li>
+		<<case "stolen">><li><<print _museumAntiqueText[_labelM].stolen>></li>
+		<<case "recovered">><li><<print _museumAntiqueText[_labelM].recovered>></li>
+		<<case "found" "talk">><li>You should show the <<print _museumAntiqueText[_labelM].name>> to Winter.</li>
 		<<case "notFound">><li>Empty. <<run _possibleHints.push(_labelM)>></li>
 	<</switch>>
 <</for>>
@@ -39,7 +39,7 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 		<<set $winterHint to _possibleHints[random(0,_possibleHints.length - 1)]>>
 		As you look around, Winter approaches.
 		<br><br>
-		<<print $museumAntiqueText[$winterHint].hint>>
+		<<print _museumAntiqueText[$winterHint].hint>>
 		<<if $museumAntiqueJournalHints is undefined>>
 			<<set $museumAntiqueJournalHints to []>>
 		<</if>>
@@ -69,8 +69,10 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 <</widget>>
 
 <<widget "museumAntiqueText">>
-<<if $museumAntiqueText is undefined>>
-	<<set $museumAntiqueText to {
+<<if _museumAntiqueText is undefined>>
+	<!--Should not have been converted to a $ variable-->
+	<<unset $museumAntiqueText>>
+	<<set _museumAntiqueText to {
 		"antiquebox":{
 			hint:`"For a jewellery case," Winter says while gesturing at an empty pedestal. "People around here used <<printTo>> keep their valuables in ornate boxes, sculpted of the finest ivory <<printAnd>> hewn from wood found right outside town.
 				I'd imagine they don't look like anything you'd find today."<br><br> <<He>> turns away. "If you had paid attention in my class, you might know what <<printTo>> look for."`,
