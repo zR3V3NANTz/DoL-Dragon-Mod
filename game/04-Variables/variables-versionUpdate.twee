@@ -2369,6 +2369,11 @@
 	<<set $penisexist to ($player.gender isnot "f" ? 1 : 0)>>
 <</if>>
 
+<<if $kylarsydneywriting is 1>>
+	<<set $sydneySeen.pushUnique("kylarwriting")>>
+	<<unset $kylarsydneywriting>>
+<</if>>
+
 <<if $NPCName[0].penis is 0>>
 	<<initnpcgender>>
 <</if>>

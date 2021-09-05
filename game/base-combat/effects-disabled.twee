@@ -127,7 +127,7 @@
 <</if>>
 
 <<if $mouthaction is "letout">>
-	<<set $mouthaction to 0>><<set $mouthactiondefault to "letout">>
+	<<set $mouthaction to 0>><<set $mouthactiondefault to "letout">><<set _sound to 1>>
 	You don't hold back your tears. Your sobs are punctuated by cries and whimpers. <span class="green"> - Stress</span>
 	<<meek 1>><<stress -2>>
 <</if>>
@@ -269,7 +269,7 @@
 <</if>>
 
 <<if $mouthaction is "letoutorgasm">>
-	<<set $mouthaction to 0>><<set $mouthactiondefault to "letoutorgasm">>
+	<<set $mouthaction to 0>><<set $mouthactiondefault to "letoutorgasm">><<set _sound to 1>>
 	You don't hold back, letting gasps and moans escape as they will.
 	<<meek 1>><span class="green"> - Arousal</span><<arousal -300>>
 <</if>>

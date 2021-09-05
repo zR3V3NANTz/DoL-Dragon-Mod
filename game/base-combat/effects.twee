@@ -1821,7 +1821,7 @@
 <</if>>
 
 <<if $mouthaction is "plead">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "plead with <<him>>">>
 	<<else>>
@@ -1832,7 +1832,7 @@
 <</if>>
 
 <<if $mouthaction is "moan">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "say something sexy" 2>><<set $speechmoan to 1>>
 	<<else>>
@@ -1843,7 +1843,7 @@
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "askchoke" and $askedtochoke isnot 1>>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "ask to choke you" 1>>
 	<<else>>
@@ -1855,7 +1855,7 @@
 <</if>>
 
 <<if $mouthaction is "demand">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "demand something">>
 	<<else>>
@@ -1866,7 +1866,7 @@
 <</if>>
 
 <<if $mouthaction is "mock">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "mock <<him>>">>
 	<<else>>
@@ -2086,7 +2086,7 @@
 <</if>>
 
 <<if $mouthaction is "scream">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "scream for help">>
 	<<elseif $drugged gt 0>>
@@ -2118,7 +2118,7 @@
 <</if>>
 
 <<if $mouthaction is "apologise">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "apologise">>
 	<<elseif $enemytype is "beast">>
@@ -2151,7 +2151,7 @@
 <</if>>
 
 <<if $mouthaction is "forgive">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze>>
 	<<else>>
@@ -3302,7 +3302,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "finish">>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2 and $gamemode isnot "soft">>
 		<<wheeze "tell <<him>> you want to stop">>
 	<<else>>
@@ -3334,7 +3334,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "novaginal">>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "tell <<him>> you don't want anything penetrating your vagina">>
 	<<else>>
@@ -3364,7 +3364,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "noanal">>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "tell <<him>> you don't want anything inside your anus">>
 	<<else>>
@@ -3394,7 +3394,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "nopenile">>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "tell <<him>> you don't want your penis put inside anything">>
 	<<else>>
@@ -3442,7 +3442,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "noupper">>
-	<<set $mouthaction to 0>>
+	<<set $mouthaction to 0>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "tell <<him>> to leave your top on">>
 	<<else>>
@@ -3485,7 +3485,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "nochoke">>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "tell <<him>> you don't want to be choked">>
 	<<else>>
@@ -3528,7 +3528,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "condoms">>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "tell <<him>> to use condoms">>
 	<<else>>
@@ -3652,7 +3652,7 @@ You try to pull your head away from the penis threatening your mouth.
 <</if>>
 
 <<if $mouthaction is "ask" and $askAction is "noCondoms">>
-	<<set $mouthaction to 0>><<unset $askAction>>
+	<<set $mouthaction to 0>><<unset $askAction>><<set _sound to 1>>
 	<<if $neckuse is "hand" and $oxygen lt $oxygenmax and $asphyxiaLvl gte 2>>
 		<<wheeze "tell <<him>> to not use condoms">>
 	<<else>>

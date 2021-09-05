@@ -21,9 +21,6 @@ It takes a moment to recognise <<him>>. It's Kylar.
 	Less than a minute later <<he>> returns, carrying rolls of toilet paper. "On another night," <<he>> says. "This wouldn't do. But you could dress as a mummy and not look too out of place."
 	<br><br>
 
-
-
-
 	<<link [[Tell Kylar to look away|Kylar Halloween Look]]>><<npcincr Kylar dom -1>><</link>>
 	<br>
 	<<if $exhibitionism gte 35>>
@@ -55,7 +52,6 @@ You pass the hospital, and walk down a small lane leading away from town. The tr
 <<link [[Hesitate|Kylar Halloween Hesitate]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Hesitate
 <<effects>>
 
@@ -67,16 +63,13 @@ You stop at the edge of the road. Kylar turns. <<He>> hesitates <<himself>> befo
 <<link [[Refuse|Kylar Halloween Forest Refuse]]>><<npcincr Kylar love -1>><</link>><<llove>>
 <br>
 
-
 :: Kylar Halloween Forest Refuse
 <<effects>>
-
 
 You turn and walk away. Kylar watches you go, stood alone at the edge of the forest.
 <br><br>
 
 <<link [[Next|Nightingale Street]]>><<endevent>><<set $eventskip to 1>><</link>>
-
 
 :: Kylar Halloween Refuse
 <<effects>>
@@ -85,7 +78,6 @@ You turn and walk away. Kylar watches you go, stood alone in the park.
 <br><br>
 
 <<link [[Next|Park]]>><<endevent>><<set $eventskip to 1>><</link>>
-
 
 :: Kylar Halloween Watch
 <<effects>>
@@ -123,7 +115,6 @@ You ask Kylar if it looks okay. <<He>> nods, but <<his>> leering suggests it's s
 <</if>>
 <br><br>
 
-
 <<if $worn.upper.exposed gte 1>>
 	<<upperwear 65>>
 <</if>>
@@ -144,8 +135,6 @@ You ask Kylar if it looks okay. <<He>> nods, but <<his>> leering suggests it's s
 <<link [[Refuse|Kylar Halloween Refuse]]>><<npcincr Kylar love -1>><</link>><<llove>>
 <br>
 
-
-
 :: Kylar Halloween Walk
 <<location "forest">><<effects>>
 <<pass 15>>
@@ -159,8 +148,6 @@ The trees become denser, until they at once give way, opening onto the cemetery.
 <br>
 <<link [[Get angry|Kylar Halloween Angry]]>><<npcincr Kylar love -1>><</link>><<llove>>
 <br>
-
-
 
 :: Kylar Halloween Angry
 <<effects>>
@@ -178,12 +165,10 @@ You shake Kylar's hand away.
 Kylar looks at <<his>> feet. "S-sorry," <<he>> says. "I-I thought we could be alone a-and do something fun."
 <br><br>
 
-
 <<link [[Walk to the manor|Kylar Halloween Continue Walk]]>><<npcincr Kylar love 1>><</link>><<glove>>
 <br>
 <<link [[Insist on leaving|Kylar Halloween Leave]]>><<npcincr Kylar love -1>><</link>><<llove>>
 <br>
-
 
 :: Kylar Halloween Leave
 <<effects>>
@@ -208,7 +193,6 @@ You continue marching through the forest, with Kylar in tow. You soon see light 
 <<link [[No|Kylar Halloween No]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 5>><</link>><<llove>><<ggksuspicion>>
 <br>
 
-
 :: Kylar Halloween Yes
 <<effects>>
 
@@ -227,8 +211,6 @@ Kylar sighs with relief. You walk onto Wolf Street. You look behind you, but Kyl
 <<link [[Next|Nightingale Street]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
 
-
-
 :: Kylar Halloween No
 <<effects>>
 
@@ -237,8 +219,6 @@ You ignore Kylar, and walk around <<him>> onto Wolf Street. You look behind you,
 
 <<link [[Next|Nightingale Street]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
-
-
 
 :: Kylar Halloween Kiss
 <<effects>>
@@ -259,7 +239,7 @@ You pull away, leaving <<him>> with a blissful smile and smudged makeup.
 :: Kylar Halloween Town
 <<effects>>
 
-You hold Kylar's hand the rest of the way back to town.
+You hold Kylar's hand the rest of the way back to town. <<takeHandholdingVirginity "Kylar" "romantic">>
 
 <<if $submissive gte 1150>>
 	"I-I thought you just wanted me in the forest for privacy," you say. "Sorry if I was rude."
@@ -278,7 +258,6 @@ You hold Kylar's hand the rest of the way back to town.
 
 <<link [[Next|Wolf Street]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
-
 
 :: Kylar Halloween Sex
 <<effects>>
@@ -308,7 +287,6 @@ You hold Kylar's hand the rest of the way back to town.
 	<span id="next"><<link [[Next|Kylar Halloween Sex]]>><</link>></span><<nexttext>>
 <</if>>
 
-
 :: Kylar Halloween Sex Finish
 
 <<set $outside to 0>><<effects>>
@@ -323,87 +301,10 @@ You hold Kylar's hand the rest of the way back to town.
 		<</if>>
 		<br><br>
 
-		<<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<He>> sticks to licking at first, but soon lurches forward and impales <<his>> throat on your <<genitals>>. <<His>> free hand grabs your <<bottom>>, and <<he>> uses it as leverage to push <<himself>> further onto you. Between <<his>> sucking and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<else>>
-			<<He>> probes your labia with <<his>> tongue for a few seconds, before thrusting <<his>> entire face as deep into your <<genitals>> as <<he>> can. <<His>> small hands grasp your <<bottom>> and pull you closer to <<him>>.
-			<<if $vaginalvirginity is 1>>
-				<<His>> tongue brushes against your <<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>vagina<<else>>hymen<</if>>, and <<he>> prods it, but not hard enough to penetrate it. <<if $NPCList[0].penis isnot "none">>"Later," <<he>> whispers.<</if>>
-			<<elseif $vaginafucked is 1>>
-				You feel <<his>> cum slide out of your pussy, and <<he>> pushes it back in with <<his>> tongue. "Keep my mark in you," <<he>> murmurs.
-			<</if>>
-
-			<br><br>
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>>
-			<<else>>
-				<<He>> removes a hand from your <<bottom>> and grasps your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> licking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><</if>>
-			<</if>>
-		<</if>>
-		Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
-		<<if $semen_amount gte 1 or $penisexist isnot 1>>
-			and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
-		<<else>>
-			and smiles.
-		<</if>>
-		<br><br>
-
+		<<kylarFinish>>
 		<<He>> stands up, wiping grass stains off <<his>> <<if $pronoun is "m">>suit<<else>>dress<</if>>.
-
 	<<else>>
-		Kylar does likewise.
+		Kylar does likewise, wiping grass stains off <<his>> <<if $pronoun is "m">>suit<<else>>dress<</if>>.
 	<</if>>
 	<br><br>
 	<<clothesonplant>>
@@ -414,7 +315,7 @@ You hold Kylar's hand the rest of the way back to town.
 		<br><br>
 	<</if>>
 
-	You hold Kylar's hand the rest of the way back to town. "I need to go," <<he>> says once on Wolf Street. "Thank you." <<He>> gives you a lingering hug, then scurries away.
+	You hold Kylar's hand the rest of the way back to town. <<takeHandholdingVirginity "Kylar" "romantic">> "I need to go," <<he>> says once on Wolf Street. "Thank you." <<He>> gives you a lingering hug, then scurries away.
 	<br><br>
 
 	<<link [[Next|Wolf Street]]>><<endevent>><<set $eventskip to 1>><</link>>
@@ -440,13 +341,12 @@ You hold Kylar's hand the rest of the way back to town.
 		<br><br>
 	<</if>>
 
-	You hold Kylar's hand the rest of the way back to town. "I need to go," <<he>> says once on Wolf Street. "Thank you." <<He>> gives you a lingering hug, then scurries away.
+	You hold Kylar's hand the rest of the way back to town. <<takeHandholdingVirginity "Kylar" "romantic">> "I need to go," <<he>> says once on Wolf Street. "Thank you." <<He>> gives you a lingering hug, then scurries away.
 	<br><br>
 
 	<<link [[Next|Wolf Street]]>><<endevent>><<set $eventskip to 1>><</link>>
 	<br>
 <</if>>
-
 
 :: Kylar Halloween Continue Walk
 <<effects>>
@@ -456,7 +356,6 @@ Despite your misgivings, you march past Kylar and into the cemetery. <<He>> hurr
 
 <<link [[Next|Kylar Halloween Continue]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Continue
 <<effects>>
@@ -473,8 +372,6 @@ Kylar pushes in a key, and turns it. The door clicks open.
 
 <<link [[Next|Kylar Halloween Mansion]]>><</link>>
 <br>
-
-
 
 :: Kylar Halloween Mansion
 <<set $outside to 0>><<effects>>
@@ -493,8 +390,6 @@ You hear a floorboard creak in the previous room, and climb down after Kylar.<<g
 
 <<link [[Next|Kylar Halloween Mansion 2]]>><</link>>
 <br>
-
-
 
 :: Kylar Halloween Mansion 2
 <<effects>>
@@ -533,7 +428,6 @@ There's a strange purple fruit on the label.
 	<br>
 <</if>>
 
-
 :: Kylar Halloween Known Drink
 <<effects>>
 
@@ -568,7 +462,6 @@ Kylar's breath quickens. "I-it worked," <<he>> says. "I-I mean... D-do you want 
 <<link [[Scare Kylar|Kylar Halloween Known Scare]]>><<npcincr Kylar rage -10>><<trauma -6>><</link>><<lllksuspicion>><<ltrauma>>
 <br>
 
-
 :: Kylar Halloween Known Go
 <<effects>>
 
@@ -577,8 +470,6 @@ You throw your arms around Kylar, and smother <<him>> with kisses. <<He>> wraps 
 
 <<link [[Next|Kylar Halloween Mansion Sex]]>><<set $sexstart to 1>><</link>>
 <br>
-
-
 
 :: Kylar Halloween Mansion Sex
 <<effects>>
@@ -634,87 +525,11 @@ You throw your arms around Kylar, and smother <<him>> with kisses. <<He>> wraps 
 		<</if>>
 		<br><br>
 
-		<<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<He>> sticks to licking at first, but soon lurches forward and impales <<his>> throat on your <<genitals>>. <<His>> free hand grabs your <<bottom>>, and <<he>> uses it as leverage to push <<himself>> further onto you. Between <<his>> sucking and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<else>>
-			<<He>> probes your labia with <<his>> tongue for a few seconds, before thrusting <<his>> entire face as deep into your <<genitals>> as <<he>> can. <<His>> small hands grasp your <<bottom>> and pull you closer to <<him>>.
-			<<if $vaginalvirginity is 1>>
-				<<His>> tongue brushes against your <<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>vagina<<else>>hymen<</if>>, and <<he>> prods it, but not hard enough to penetrate it. <<if $NPCList[0].penis isnot "none">>"Later," <<he>> whispers.<</if>>
-			<<elseif $vaginafucked is 1>>
-				You feel <<his>> cum slide out of your pussy, and <<he>> pushes it back in with <<his>> tongue. "Keep my mark in you," <<he>> murmurs.
-			<</if>>
-
-			<br><br>
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>>
-			<<else>>
-				<<He>> removes a hand from your <<bottom>> and grasps your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> licking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><</if>>
-			<</if>>
-		<</if>>
-		Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
-		<<if $semen_amount gte 1 or $penisexist isnot 1>>
-			and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
-		<<else>>
-			and smiles.
-		<</if>>
-		<br><br>
-
+		<<kylarFinish>>
 		<<He>> stands up, dusting off <<his>> <<if $pronoun is "m">>suit<<else>>dress<</if>>.
 
 	<<else>>
-		Kylar does likewise.
+		Kylar does likewise, dusting off <<his>> <<if $pronoun is "m">>suit<<else>>dress<</if>>.
 	<</if>>
 
 	<br><br>
@@ -783,7 +598,6 @@ Kylar gulps. "We-we will be together," <<he>> says. "J-just put the bottle down.
 <<link [[Next|Kylar Halloween Known Chase]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Known Chase
 <<effects>>
 
@@ -799,7 +613,6 @@ It might not have been a love potion, but you can feel the wine working some dev
 <<link [[Look beneath the sheet|Kylar Halloween Known Sheet]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Known Curtain
 <<effects>>
 
@@ -812,7 +625,6 @@ You hear a creak, then a scrambling of limbs. Kylar emerges from beneath the tab
 <<link [[Next|Kylar Halloween Known Front]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Known Sheet
 <<effects>>
 
@@ -821,8 +633,6 @@ You creep towards the sheet, grasp the hem, and lift it. Kylar's face greets you
 
 <<link [[Next|Kylar Halloween Known Front]]>><</link>>
 <br>
-
-
 
 :: Kylar Halloween Known Front
 <<effects>>
@@ -837,7 +647,6 @@ You straddle <<him>>, and raise the bottle above your head. <<He>> screams and p
 <br>
 <<link [[Come clean|Kylar Halloween Known Clean]]>><<npcincr Kylar love -3>><</link>><<lllove>>
 <br>
-
 
 :: Kylar Halloween Known Dumb
 <<effects>>
@@ -859,10 +668,8 @@ Kylar's eyes close, and <<he>> breathes a sigh of relief.
 You climb to your feet, releasing Kylar. <<He>> searches for the key in the dust.
 <br><br>
 
-
 <<link [[Next|Kylar Halloween Exit]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Known Kiss
 <<effects>>
@@ -871,7 +678,6 @@ You rest your hands on Kylar's shoulders, and plant a kiss of <<his>> lips. <<ta
 
 <<link [[Next|Kylar Halloween Known Sex]]>><<set $sexstart to 1>><</link>>
 <br>
-
 
 :: Kylar Halloween Known Clean
 <<effects>>
@@ -894,7 +700,6 @@ Kylar's eye close, and <<he>> breathes a sigh of relief.
 <br>
 <<link [[Stand up|Kylar Halloween Known Stand]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Known Sex
 <<if $sexstart is 1>>
@@ -935,87 +740,11 @@ Kylar's eye close, and <<he>> breathes a sigh of relief.
 		<</if>>
 		<br><br>
 
-		<<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<He>> sticks to licking at first, but soon lurches forward and impales <<his>> throat on your <<genitals>>. <<His>> free hand grabs your <<bottom>>, and <<he>> uses it as leverage to push <<himself>> further onto you. Between <<his>> sucking and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<else>>
-			<<He>> probes your labia with <<his>> tongue for a few seconds, before thrusting <<his>> entire face as deep into your <<genitals>> as <<he>> can. <<His>> small hands grasp your <<bottom>> and pull you closer to <<him>>.
-			<<if $vaginalvirginity is 1>>
-				<<His>> tongue brushes against your <<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>vagina<<else>>hymen<</if>>, and <<he>> prods it, but not hard enough to penetrate it. <<if $NPCList[0].penis isnot "none">>"Later," <<he>> whispers.<</if>>
-			<<elseif $vaginafucked is 1>>
-				You feel <<his>> cum slide out of your pussy, and <<he>> pushes it back in with <<his>> tongue. "Keep my mark in you," <<he>> murmurs.
-			<</if>>
-
-			<br><br>
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>>
-			<<else>>
-				<<He>> removes a hand from your <<bottom>> and grasps your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> licking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><</if>>
-			<</if>>
-		<</if>>
-		Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
-		<<if $semen_amount gte 1 or $penisexist isnot 1>>
-			and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
-		<<else>>
-			and smiles.
-		<</if>>
-		<br><br>
-
+		<<kylarFinish>>
 		<<He>> stands up, dusting off <<his>> <<if $pronoun is "m">>suit<<else>>dress<</if>>.
 
 	<<else>>
-		Kylar does likewise.
+		Kylar does likewise, dusting off <<his>> <<if $pronoun is "m">>suit<<else>>dress<</if>>.
 	<</if>>
 	<br><br>
 	<<clothesontowel>>
@@ -1037,11 +766,6 @@ Kylar's eye close, and <<he>> breathes a sigh of relief.
 <<link [[Next|Kylar Halloween Exit]]>><</link>>
 <br>
 
-
-
-
-
-
 :: Kylar Halloween Known Hand
 <<effects>>
 
@@ -1053,7 +777,6 @@ You climb from the cellar, and walk back to the front door.
 
 <<link [[Next|Kylar Halloween Exit]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Known Angry
 <<effects>>
@@ -1080,10 +803,8 @@ Kylar shakes <<his>> heads. "N-no," <<he>> says. "That's not-"
 "I-I-I-" Kylar manages between breaths. <<He>> turns and runs.
 <br><br>
 
-
 <<link [[Next|Kylar Halloween Rough Exit]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Unknown Drink
 <<effects>>
@@ -1099,9 +820,6 @@ You and Kylar leave the cellar.
 
 <<link [[Next|Kylar Halloween Exit]]>><</link>>
 <br>
-
-
-
 
 :: Kylar Halloween Unknown Refuse
 <<effects>>
@@ -1127,7 +845,6 @@ You and Kylar leave the cellar.
 <<link [[Refuse again|Kylar Halloween Unknown Refuse 2]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Unknown Refuse 2
 <<effects>>
 
@@ -1139,7 +856,6 @@ You and Kylar leave the cellar.
 
 <<link [[Next|Kylar Halloween Exit]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Exit
 <<effects>>
@@ -1161,7 +877,7 @@ You and Kylar leave the cellar.
 	<span class="red">A pale hand protrudes from the earth,</span> and clutches Kylar's ankle. <<He>> shakes it free, just as another erupts and gropes after <<him>>.<<ggawareness>><<awareness 12>>
 	<br><br>
 
-	More hands emerge around you. Kylar grasps your hand, and together you run for the forest.
+	More hands emerge around you. Kylar grasps your hand, and together you run for the forest. <<takeHandholdingVirginity "Kylar" "romantic">>
 	<br><br>
 
 	<<link [[Next|Kylar Halloween Skulduggery 2]]>><</link>>
@@ -1215,11 +931,8 @@ You and Kylar leave the cellar.
 <<link [[Search upstairs|Kylar Halloween Upstairs]]>><</link>>
 <br>
 
-
-
 :: Kylar Halloween Pick
 <<effects>>
-
 
 <<set $lock to 1000>>
 You peer into the lock.
@@ -1247,8 +960,6 @@ You peer into the lock.
 
 <</if>>
 
-
-
 :: Kylar Halloween Skulduggery
 <<effects>>
 
@@ -1264,7 +975,6 @@ More hands emerge around you. Kylar grasps your arm, and together you run for th
 <<link [[Next|Kylar Halloween Skulduggery 2]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Skulduggery 2
 <<effects>>
 
@@ -1279,7 +989,6 @@ You keep running, unbothered by fatigue, until you see the lights of town up ahe
 <<link [[Pull away|Kylar Halloween Skulduggery Pull]]>><<npcincr Kylar love -1>><</link>><<llove>>
 <br>
 
-
 :: Kylar Halloween Skulduggery Kiss
 <<effects>>
 
@@ -1288,8 +997,6 @@ You lean forward, and plant a kiss on Kylar's lips. <<takeKissVirginity "Kylar" 
 
 <<link [[Next|Kylar Halloween Sex]]>><<set $sexstart to 1>><</link>>
 <br>
-
-
 
 :: Kylar Halloween Skulduggery Pull
 <<effects>>
@@ -1309,11 +1016,6 @@ Kylar looks away. You continue towards town. You turn when you arrive on Wolf St
 
 <<link [[Next|Wolf Street]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
-
-
-
-
-
 
 :: Kylar Halloween Upstairs
 <<effects>>
@@ -1340,7 +1042,6 @@ You follow <<him>> up the creaky staircase, and into the closest room. Several t
 	<br>
 <</if>>
 
-
 :: Kylar Halloween Upstairs Dodge
 <<effects>>
 
@@ -1359,8 +1060,6 @@ Kylar seems no less terrified. <<His>> eyes dart around the room, searching for 
 <br>
 <<link [[Get Angry|Kylar Halloween Upstairs Angry]]>><</link>>
 <br>
-
-
 
 :: Kylar Halloween Upstairs Applaud
 <<effects>>
@@ -1423,7 +1122,6 @@ Kylar grips the pepper spray, <<his>> knuckles white.
 <<link [[Refuse|Kylar Halloween Kneel Refuse]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Kneel Refuse
 <<effects>>
 
@@ -1441,7 +1139,6 @@ The three of them retreat into the corner. Whitney gestures again, but <<his>> r
 
 <<link [[Next|Kylar Halloween Kneel Refuse 2]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Kneel Refuse 2
 <<effects>>
@@ -1465,7 +1162,6 @@ Kylar pulls you behind <<him>>, keeping a grip on your arm as you both walk to t
 	<br>
 <</if>>
 
-
 :: Kylar Halloween Kneel Run
 <<effects>>
 <<pass 15>>
@@ -1481,7 +1177,6 @@ You run for a couple more minutes, then take cover behind a tree, and listen. Yo
 
 <<link [[Next|Forest]]>><<endevent>><<set $eventskip to 1>><<set $forest to 0>><</link>>
 <br>
-
 
 :: Kylar Halloween Kneel Help
 <<effects>>
@@ -1509,15 +1204,13 @@ You run for a couple more minutes, then take cover behind a tree, and listen. Yo
 	<br>
 <</if>>
 
-
-
 :: Kylar Halloween Kneel Spray
 <<effects>>
 
 <<endevent>><<npc Whitney>><<person1>>
 You point your pepper spray above Kylar's head, and unload it into Whitney's eyes. <<He>> staggers backward, clutching <<his>> face.
 
-Kylar grasps your hand, and together you escape down the stairs and through the now-open front doors, into the red moonlight. You run into the forest.<<ldom>><<npcincr Whitney dom -1>>
+Kylar grasps your hand, and together you escape down the stairs and through the now-open front doors, into the red moonlight. <<takeHandholdingVirginity "Kylar" "romantic">> You run into the forest.<<ldom>><<npcincr Whitney dom -1>>
 <br><br>
 <<endevent>><<npc Kylar>><<person1>>
 Kylar stops and leans against a tree and pants for a moment, before lunging forward and throwing <<his>> arms around you. "You shouldn't have risked it," <<he>> says.<<glove>><<llksuspicion>><<npcincr Kylar love 1>><<npcincr Kylar rage -5>>
@@ -1528,12 +1221,8 @@ Kylar stops and leans against a tree and pants for a moment, before lunging forw
 <<link [[Pull away|Kylar Halloween Skulduggery Pull]]>><<npcincr Kylar love -1>><</link>><<llove>>
 <br>
 
-
-
 :: Kylar Halloween Kneel
 <<effects>>
-
-
 
 <<if $phase is 0>>
 	<<endevent>><<npc Whitney>><<person1>>
@@ -1570,7 +1259,6 @@ Kylar stops and leans against a tree and pants for a moment, before lunging forw
 		<<glust>><<npcincr Whitney lust 5>><<promiscuity4>>
 	<</if>>
 
-
 	<<endevent>><<npc Kylar>><<person1>>
 	Kylar tries to intervene, but Whitney's friends restrain <<him>>. They hold <<his>> head back, forcing <<him>> to watch.<<gggksuspicion>><<npcincr Kylar rage 20>>
 	<br><br>
@@ -1581,10 +1269,8 @@ Kylar stops and leans against a tree and pants for a moment, before lunging forw
 	<br>
 <</if>>
 
-
 :: Kylar Halloween Caught
 <<effects>>
-
 
 The rest of the tall sheet-covered furniture comes to life, screeching as they rush toward Kylar. Now that they're moving, you see human outlines beneath. They grasp, <<his>> arms, and force <<him>> to <<his>> knees.
 <br><br>
@@ -1599,10 +1285,8 @@ Kylar struggles forward in a desperate attempt to reach you, but another of Whit
 <<link [[Next|Kylar Halloween Forced Kneel]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Forced Kneel
 <<effects>>
-
 
 <<endevent>><<person1>><<npc Whitney>>
 <<if $NPCList[0].penis isnot "none">>
@@ -1654,7 +1338,6 @@ Kylar's expression is blank. "D-don't do it."
 :: Kylar Halloween Lick Refuse 2
 <<effects>>
 
-
 You shake your head. "Are you fucking serious?" Whitney says. "Fucking fine." <<He>> shoves you to the ground, and marches toward Kylar. "Give me that," <<he>> says to the <<person2>><<person>>. <<person1>><<He>> looks at the knife, <span class="green">then discards it.</span><<llstress>><<stress -12>>
 <br><br>
 
@@ -1663,7 +1346,6 @@ Instead, <<he>> pulls back <<his>> hand, and punches Kylar's nose. Kylar falls b
 
 <<link [[Next|Kylar Halloween End]]>><<endevent>><</link>>
 <br>
-
 
 :: Kylar Halloween End
 <<effects>>
@@ -1689,7 +1371,6 @@ Without warning, <<he>> lunges, wrapping <<his>> arms tight around you.
 :: Kylar Halloween Lick
 <<effects>>
 
-
 <<if $phase is 0>>
 	<<endevent>><<npc Whitney>><<person1>>
 	You hesitate, then lean closer to Whitney's crotch. <<He>> rests a hand on your head, clutching your hair.<<gdom>><<npcincr Whitney dom 1>>
@@ -1711,7 +1392,6 @@ Without warning, <<he>> lunges, wrapping <<his>> arms tight around you.
 		<<gglust>><<npcincr Whitney lust 5>><<promiscuity4>>
 	<</if>>
 
-
 	<<endevent>><<npc Kylar>><<person1>>
 	One of Whitney's friends holds Kylar's head back, forcing <<him>> to watch.<<gggksuspicion>><<npcincr Kylar rage 20>>
 	<br><br>
@@ -1722,11 +1402,8 @@ Without warning, <<he>> lunges, wrapping <<his>> arms tight around you.
 	<br>
 <</if>>
 
-
-
 :: Kylar Halloween Oral
 <<effects>>
-
 
 <<if $sexstart is 1>>
 	<<set $sexstart to 0>>
@@ -1795,8 +1472,6 @@ Kylar watches with a blank expression.
 	<<link [[Next|Kylar Halloween Bed]]>><</link>>
 <</if>>
 
-
-
 :: Kylar Halloween Bed
 <<effects>>
 
@@ -1813,7 +1488,6 @@ Whitney's friends surround you, groping and probing, but Whitney interrupts. "Wh
 
 <<link [[Next|Kylar Halloween Bed 2]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Bed 2
 <<effects>>
@@ -1832,7 +1506,6 @@ You follow the hallway in the direction of the scream, and find a <<person>> lyi
 <<link [[Next|Kylar Halloween Bed 3]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Bed 3
 <<effects>>
 
@@ -1848,7 +1521,6 @@ Whitney interrupts <<him>> with a smack to the face. "Don't be a fucking coward,
 
 <<link [[Next|Kylar Halloween Bed 4]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Bed 4
 <<effects>>
@@ -1868,7 +1540,6 @@ The door opens, and <<his>> friends tumble out. They flee down the stairs, the p
 <<link [[Next|Kylar Halloween Bed 5]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Bed 5
 <<effects>>
 
@@ -1886,7 +1557,6 @@ You spot Kylar, hiding in the shadows beside the door frame, <<his>> eyes intens
 <<link [[Warn Whitney|Kylar Halloween Warn]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Wait
 <<effects>>
 
@@ -1903,8 +1573,6 @@ Whitney spins and shoves Kylar, sending <<him>> sprawling to the ground.
 <<link [[Next|Kylar Halloween Escape]]>><</link>>
 <br>
 
-
-
 :: Kylar Halloween Escape
 <<effects>>
 <<pass 15>>
@@ -1913,7 +1581,6 @@ Kylar jumps to <<his>> feet, and grasps your arm. You dodge a weak grasp by Whit
 
 You keep running when you reach the forest, until Kylar stops to rest against a tree. <<His>> clothes and hair are disheveled, but <<hes>> smiling. "I-I won," <<he>> says, throwing <<his>> arms around you. "You're all mine."<<lllksuspicion>><<npcincr Kylar rage -20>>
 <br><br>
-
 
 <<link [[Ask about Kylar's tricks|Kylar Halloween Tricks]]>><</link>>
 <br>
@@ -1946,8 +1613,6 @@ Kylar's expression doesn't change. "That wasn't me," <<he>> says. "I just used m
 <<link [[Pull away|Kylar Halloween Skulduggery Pull]]>><<npcincr Kylar love -1>><</link>><<llove>>
 <br>
 
-
-
 :: Kylar Halloween Warn
 <<effects>>
 
@@ -1964,7 +1629,6 @@ Kylar crashes into the floorboards below, but manages to stagger to <<his>> feet
 <<link [[Next|Kylar Halloween Whitney]]>><</link>>
 <br>
 
-
 :: Kylar Halloween Whitney
 <<effects>>
 
@@ -1979,7 +1643,6 @@ Whitney walks back into the room with the moving furniture, now silent. Through 
 <br>
 <<link [[Walk back alone|Kylar Halloween Alone]]>><</link>>
 <br>
-
 
 :: Kylar Halloween Accompany
 <<effects>>
@@ -2014,7 +1677,6 @@ Whitney walks back into the room with the moving furniture, now silent. Through 
 	<br>
 <</if>>
 
-
 :: Kylar Halloween Thank
 <<effects>>
 <<pass 15>>
@@ -2034,7 +1696,6 @@ You try to hold <<him>> closer, but <<he>> steps back and looks away. <<He>> ope
 
 <<link [[Next|Wolf Street]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
-
 
 :: Kylar Halloween Ask
 <<effects>>
@@ -2058,8 +1719,6 @@ Whitney raises a hand to your chest, and pushes you against a tree. "What the fu
 <<link [[Remain silent|Kylar Halloween Whitney Silent]]>><</link>>
 <br>
 
-
-
 :: Kylar Halloween Whitney Kiss
 <<effects>>
 
@@ -2071,7 +1730,6 @@ Whitney leans close, close enough that you can lean forward and plant a kiss on 
 
 <<link [[Next|Wolf Street]]>><<set $eventskip to 1>><<endevent>><</link>>
 <br>
-
 
 :: Kylar Halloween Whitney Apologise
 <<effects>>
@@ -2094,8 +1752,6 @@ Whitney releases <<his>> grip. "I'm not upset," <<he>> says. "But I might have o
 <<link [[Next|Wolf Street]]>><<set $eventskip to 1>><<endevent>><</link>>
 <br>
 
-
-
 :: Kylar Halloween Whitney Silent
 <<effects>>
 
@@ -2105,8 +1761,6 @@ Whitney glares at you a moment, then lets <<his>> hand fall. <<He>> turns and st
 <<link [[Next|Wolf Street]]>><<set $eventskip to 1>><<endevent>><</link>>
 <br>
 
-
-
 :: Kylar Halloween Alone
 <<effects>>
 
@@ -2115,5 +1769,3 @@ You walk into the red moonlight. Whitney strides away, glancing back to make sur
 
 <<link [[Next|Churchyard]]>><<endevent>><</link>>
 <br>
-
-

@@ -250,6 +250,95 @@
 <br><br>
 <</widget>>
 
+<<widget "kylarFinish">>
+<<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
+	<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
+	<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
+		<<acceptance "penis_tiny" 10>>
+		<<gacceptance>>
+	<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
+		<<acceptance "penis_small" 10>>
+		<<gacceptance>>
+	<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
+		<<acceptance "penis_big" 10>>
+		<<gacceptance>>
+	<</if>>
+	<br><br>
+
+	<<arousal 2500>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasm>><<penileejacstat>><<penilestat>>
+	<<else>>
+		<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
+		<br><br>
+
+		<<set $arousal to $arousalmax>>
+		<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
+	<</if>>
+
+<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
+	<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
+	<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
+		<<acceptance "penis_tiny" 10>>
+		<<gacceptance>>
+	<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
+		<<acceptance "penis_small" 10>>
+		<<gacceptance>>
+	<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
+		<<acceptance "penis_big" 10>>
+		<<gacceptance>>
+	<</if>>
+	<br><br>
+
+	<<arousal 2500>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasm>><<penileejacstat>><<penilestat>>
+	<<else>>
+		<<He>> sticks to licking at first, but soon lurches forward and impales <<his>> throat on your <<genitals>>. <<His>> free hand grabs your <<bottom>>, and <<he>> uses it as leverage to push <<himself>> further onto you. Between <<his>> sucking and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
+		<br><br>
+
+		<<set $arousal to $arousalmax>>
+		<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
+	<</if>>
+
+<<else>>
+	<<He>> probes your labia with <<his>> tongue for a few seconds, before thrusting <<his>> entire face as deep into your <<genitals>> as <<he>> can. <<His>> small hands grasp your <<bottom>> and pull you closer to <<him>>.
+	<<if $vaginalvirginity is 1 and $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>
+		<<His>> tongue brushes against your hymen, and <<he>> prods it, but not hard enough to penetrate it. <<if $NPCList[0].penis isnot "none">>"Later," <<he>> whispers.<</if>>
+	<<elseif $vaginafucked is 1>>
+		You feel <<his>> cum slide out of your pussy, and <<he>> pushes it back in with <<his>> tongue. "Keep my mark in you," <<he>> murmurs.
+	<</if>>
+
+	<br><br>
+	<<arousal 2500>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasm>>
+	<<else>>
+		<<He>> removes a hand from your <<bottom>> and grasps your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> licking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
+		<br><br>
+		<<set $arousal to $arousalmax>>
+		<<if $arousal gte $arousalmax>><<orgasm>><</if>>
+	<</if>>
+<</if>>
+Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
+<<if $semen_amount gte 1 or $penisexist isnot 1>>
+	and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
+<<else>>
+	and smiles.
+<</if>>
+<br><br>
+<<if $acceptance_penis_tiny gte 1000>>
+	You think about what Kylar said, and realisation dawns on you. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Tiny Penis</span> trait.
+	<br><br>
+<<elseif $acceptance_penis_small gte 1000>>
+	You think about what Kylar said, and realisation dawns on you. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Small Penis</span> trait.
+	<br><br>
+<<elseif $acceptance_penis_big gte 1000>>
+	You think about what Kylar said, and realisation dawns on you. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Big Penis</span> trait.
+	<br><br>
+<</if>>
+<</widget>>
+
 :: Kylar Intro Intervene
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 
@@ -1158,86 +1247,8 @@ You lean forward, and your lips meet. <<takeKissVirginity "Kylar" `($kylarenglis
 			After a few seconds, <<he>> backs up until <<hes>> facing your <<genitals>>. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. You're the one that invited me. Here, I'll make it up."
 		<</if>>
 		<br><br>
-
-		<<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<He>> sticks to licking at first, but soon lurches forward and impales <<his>> throat on your <<genitals>>. <<His>> free hand grabs your <<bottom>>, and <<he>> uses it as leverage to push <<himself>> further onto you. Between <<his>> sucking and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<else>>
-			<<He>> probes your labia with <<his>> tongue for a few seconds, before thrusting <<his>> entire face as deep into your <<genitals>> as <<he>> can. <<His>> small hands grasp your <<bottom>> and pull you closer to <<him>>.
-			<<if $vaginalvirginity is 1>>
-				<<His>> tongue brushes against your <<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>vagina<<else>>hymen<</if>>, and <<he>> prods it, but not hard enough to penetrate it. <<if $NPCList[0].penis isnot "none">>"Later," <<he>> whispers.<</if>>
-			<<elseif $vaginafucked is 1>>
-				You feel <<his>> cum slide out of your pussy, and <<he>> pushes it back in with <<his>> tongue. "Keep my mark in you," <<he>> murmurs.
-			<</if>>
-
-			<br><br>
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>>
-			<<else>>
-				<<He>> removes a hand from your <<bottom>> and grasps your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> licking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><</if>>
-			<</if>>
-		<</if>>
-		Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
-		<<if $semen_amount gte 1 or $penisexist isnot 1>>
-			and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
-		<<else>>
-			and smiles.
-		<</if>>
-		<br><br>
-
+		<<kylarFinish>>
 		<<He>> looks like <<hes>> about to say something, but is cut off by the sound of voices from the corridor outside, making <<him>> tense up.
-
 	<<else>>
 		It's ended by the sound of voices from the corridor outside, making <<him>> tense once more.
 	<</if>>
@@ -1793,84 +1804,8 @@ The bathroom is empty. You make your way to a stall and pull Kylar in. <<Hes>> u
 			After a few seconds, <<he>> kneels down in front of you. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. You're the one that invited me. Here, I'll make it up."
 		<</if>>
 		<br><br>
-
-		<<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<He>> sticks to licking at first, but soon lurches forward and impales <<his>> throat on your <<genitals>>. <<His>> free hand grabs your <<bottom>>, and <<he>> uses it as leverage to push <<himself>> further onto you. Between <<his>> sucking and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<else>>
-			<<He>> probes your labia with <<his>> tongue for a few seconds, before thrusting <<his>> entire face as deep into your <<genitals>> as <<he>> can. <<His>> small hands grasp your <<bottom>> and pull you closer to <<him>>.
-			<<if $vaginalvirginity is 1>>
-				<<His>> tongue brushes against your <<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>vagina<<else>>hymen<</if>>, and <<he>> prods it, but not hard enough to penetrate it. <<if $NPCList[0].penis isnot "none">>"Later," <<he>> whispers.<</if>>
-			<<elseif $vaginafucked is 1>>
-				You feel <<his>> cum slide out of your pussy, and <<he>> pushes it back in with <<his>> tongue. "Keep my mark in you," <<he>> murmurs.
-			<</if>>
-
-			<br><br>
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>>
-			<<else>>
-				<<He>> removes a hand from your <<bottom>> and grasps your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> licking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><</if>>
-			<</if>>
-		<</if>>
-		Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
-		<<if $semen_amount gte 1 or $penisexist isnot 1>>
-			and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
-		<<else>>
-			and smiles.
-		<</if>>
+		<<kylarFinish>>
 	<</if>>
-	<br><br>
 
 	<<clotheson>>
 	<<endcombat>>
@@ -2047,7 +1982,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 				You chat with Kylar. <<He>> gently traces a finger over your <<tattoo _bodypart>> on your <<bodypart _bodypart>>, blushing.
 				<<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<glove>><<lksuspicion>>
 			<</if>>
-		<<elseif ["Robin","Whitney","Eden","Avery","Alex","Black Wolf","Great Hawk"].includes($skin[_bodypart].special) or ($skin[_bodypart].special is "Sydney" and $kylarsydneywriting is 1 and ($skin[_bodypart].lewd is 1 or $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 35))>>
+		<<elseif ["Robin","Whitney","Eden","Avery","Alex","Black Wolf","Great Hawk"].includes($skin[_bodypart].special) or ($skin[_bodypart].special is "Sydney" and $sydneySeen.includes("kylarwriting") and ($skin[_bodypart].lewd is 1 or $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 35))>>
 			<<if ["marker","tattoo","brand","magic"].includes($skin[_bodypart].pen)>>
 				You chat with Kylar. <<He>> tries to wipe off your <<tattoo _bodypart>> on your <<bodypart _bodypart>>. <<He>> scowls when it doesn't come off, and eventually sits back down with a huff.
 				<<ggksuspicion>><<glust>><<npcincr Kylar lust 1>><<npcincr Kylar rage 3>>
@@ -2067,7 +2002,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
                 You chat with Kylar. <<He>> stares at the <<tattoo _bodypart>> on your <<bodypart _bodypart>> and shakes <<his>> head. "You need to stop letting <<nnpc_him "Sydney">> do that."
 				<<He>> grumpily lifts <<his>> hair to reveal <span class="purple">"Kylar >:("</span> still written on <<his>> forehead from lunch.
 			<<elseif $skin[_bodypart].lewd is 1>>
-				<<set $kylarsydneywriting to 1>>
+				<<set $sydneySeen.pushUnique("kylarwriting")>>
 				You chat with Kylar. <<He>> stares at the <<tattoo _bodypart>> on your <<bodypart _bodypart>> and chuckles. "<<nnpc_He "Sydney">> got to you too?" <<He>> pauses, before rereading it. <<His>> smile morphs into a confused frown.
 				<<if $skin[_bodypart].writing is "Book Criminal <3">>
 					"Hey, why is it a heart?" <<he>> asks. "It's normally an angry face."
@@ -2085,10 +2020,29 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 					written on <<his>> forehead.
 				<</if>>
 			<</if>>
-		<<else>>
+		<<elseif ["combat","violence","criminal"].includes($skin[_bodypart].special)>>
+			You chat with Kylar. <<He>> glances at the <<tattoo _bodypart>> on your <<bodypart _bodypart>> in surprise, but doesn't mention it.
+		<<elseif $skin[_bodypart].special is "pregnancy">>
+			/*ToDo: Pregnancy, write once Kylar's reaction to/thoughts on pregnancy is better understood.
+			May differ based on gender, jealousy and whether or not Kylar has impregnated the PC in the past.*/
+		<<elseif ["prostitution","rape","exhibitionism","sex"].includes($skin[_bodypart].special) or $skin[_bodypart].lewd is 1>>
 			You chat with Kylar. <<He>> stares at the <<tattoo _bodypart>> on your <<bodypart _bodypart>>, but doesn't mention it.
 			<<gksuspicion>><<glust>><<npcincr Kylar lust 1>><<npcincr Kylar rage 1>>
-		<</if>>
+		<<else>>
+			You chat with Kylar. <<He>> looks at <<tattoo _bodypart>> on your <<bodypart _bodypart>>.
+			<<switch $skin[_bodypart].pen>>
+				<<case "tattoo">>
+					"Did it hurt getting that done?" <<he>> asks.
+				<<case "brand">>
+					"Did it hurt getting that burnt on?" <<he>> asks. "You're hardcore."
+				<<case "magic">>
+					"How'd you make it glow like that?" <<he>> asks.
+				<<case "lipstick" "mud">>
+					"Is that <<print $skin[_bodypart].pen>>" <<he>> asks. "Weird thing to use."
+				<<default>>
+					"That won't stay on forever, you know," <<he>> says. "I used to write on myself a lot when I was younger. The ink always fades away eventually."
+			<</switch>>
+			<</if>>
 	<<elseif $rng gte 96>>
 		You chat with Kylar. "You haven't been thinking of anyone else, right?" <<he>> says. "I'll know."
 		<<if $loveInterest.primary isnot "Kylar" or $loveInterest.secondary isnot "None">>
@@ -2096,7 +2050,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 		<<else>>
 			<<glove>><<npcincr Kylar love 1>>
 		<</if>>
-	<<elseif $rng gte 86>>
+	<<elseif $rng gte 91>>
 		You chat with Kylar. "I've been thinking up names for our children," <<he>> says.
 		<<gstress>><<stress 1>>
 	<<elseif $rng gte 81>>
@@ -2136,15 +2090,16 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 			You chat with Kylar. "I like your eyes," <<he>> says. "Sorry. That came out of nowhere."
 		<</if>>
 	<<else>>
-		You chat with Kylar. <<He>> reaches <<his>> hand to your hair, but draws it back and looks at you. "Can I?" At your nod of assurance, <<he>> reaches forward and runs <<his>> fingers through. It feels nice.
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+			You chat with Kylar. <<He>> reaches <<his>> hand to your hair and runs <<his>> fingers through. It feels nice.
+		<<else>>
+			You chat with Kylar. <<He>> reaches <<his>> hand to your hair, but draws it back and looks at you. "Can I?" At your nod of assurance, <<he>> reaches forward and runs <<his>> fingers through. It feels nice.
+		<</if>>
 		<<ltiredness>><<tiredness -6>>
 		<br><br>
-		<<if $angel gte 4 and $transformationParts.angel.halo isnot "hidden" and $rng % 2 is 0>>
-			After a while, <<he>> reaches up to poke your halo, before quickly retracting <<his>> finger. "Agh, hot!" <<He>> sucks on <<his>> finger for a moment, before carefully bringing <<his>> hand back to your hair.
-			<br><br>
-		<<elseif $fallenangel gte 2 and $transformationParts.fallenAngel.halo isnot "hidden" and $rng % 2 is 0>>
-			After a while, <<he>> reaches up to poke a fragment of your halo, before quickly retracting <<his>> finger. "Agh, sharp!" <<He>> sucks on <<his>> finger for a moment, before carefully bringing <<his>> hand back to your hair.
-			<br><br>
+        <<if ($angel gte 4 and $transformationParts.angel.halo isnot "hidden" or $fallenangel gte 2 and $transformationParts.fallenAngel.halo isnot "hidden") and $rng % 2 is 0>>
+            After a while, <<his>> eyes turn to your <<if $fallenangel>>broken <</if>>halo, and <<he>> slowly reaches <<his>> hand up to touch it. <<His>> brow furrows as <<his>> hand reaches nothing, and <<he>> squints at the air above your head. "I could've sworn there was..." <<He>> retracts <<his>> hand and returns to stroking your hair, a confused frown on <<his>> face.
+            <br><br>
 		<<elseif ($demon gte 2 and $transformationParts.demon.horns isnot "hidden") and ($cow gte 2 and $transformationParts.cow.horns isnot "hidden")>>
 			After a while, <<he>> reaches up and pokes your demon horns. "Are these real?" <<he>> asks. "What about these ones?" <<His>> hand drifts down to your cow horns. For a few minutes, <<he>> alternates between the two sets, sometimes stroking, sometimes tapping.
 			<br><br>
@@ -3749,83 +3704,7 @@ When <<he>> finishes, <<he>> opens <<his>> mouth to say something. You turn away
 			After a few seconds, <<he>> backs up until <<hes>> facing your <<genitals>>. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. Not after you made me. Here, I'll make it up."
 		<</if>>
 		<br><br>
-
-		<<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-			<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
-			<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
-				<<acceptance "penis_tiny" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_small gte 1 and $penissize is 1 and $acceptance_penis_small lte 999>>
-				<<acceptance "penis_small" 10>>
-				<<gacceptance>>
-			<<elseif $insecurity_penis_big gte 1 and $penissize gte 3 and $acceptance_penis_big lte 999>>
-				<<acceptance "penis_big" 10>>
-				<<gacceptance>>
-			<</if>>
-			<br><br>
-
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>><<penileejacstat>><<penilestat>>
-			<<else>>
-				<<He>> sticks to licking at first, but soon lurches forward and impales <<his>> throat on your <<genitals>>. <<His>> free hand grabs your <<bottom>>, and <<he>> uses it as leverage to push <<himself>> further onto you. Between <<his>> sucking and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
-			<</if>>
-
-		<<else>>
-			<<He>> probes your labia with <<his>> tongue for a few seconds, before thrusting <<his>> entire face as deep into your <<genitals>> as <<he>> can. <<His>> small hands grasp your <<bottom>> and pull you closer to <<him>>.
-			<<if $vaginalvirginity is 1>>
-				<<His>> tongue brushes against your <<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>vagina<<else>>hymen<</if>>, and <<he>> prods it, but not hard enough to penetrate it. <<if $NPCList[0].penis isnot "none">>"Later," <<he>> whispers.<</if>>
-			<<elseif $vaginafucked is 1>>
-				You feel <<his>> cum slide out of your pussy, and <<he>> pushes it back in with <<his>> tongue. "Keep my mark in you," <<he>> murmurs.
-			<</if>>
-
-			<br><br>
-			<<arousal 2500>>
-			<<if $arousal gte $arousalmax>>
-				<<orgasm>>
-			<<else>>
-				<<He>> removes a hand from your <<bottom>> and grasps your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> licking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
-				<br><br>
-				<<set $arousal to $arousalmax>>
-				<<if $arousal gte $arousalmax>><<orgasm>><</if>>
-			<</if>>
-		<</if>>
-		Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
-		<<if $semen_amount gte 1 or $penisexist isnot 1>>
-			and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
-		<<else>>
-			and smiles.
-		<</if>>
-		<br><br>
+		<<kylarFinish>>
 
 		<<He>> collapses back onto you, closing <<his>> eyes again.
 	<</if>>
@@ -3880,11 +3759,20 @@ When <<he>> finishes, <<he>> opens <<his>> mouth to say something. You turn away
 	<<molested>>
 	<<maninit>><<set $kylarraped += 1>>
 	<<if $daystate isnot "night">><<enable_rescue>><</if>>
-	Kylar pushes you toward the alley, <<his>> knife poking the small of your back. You turn another corner and find a mattress already lying there. <<He>> shoves you on top of it, discards the knife and leaps on you.
+	Kylar pushes you toward the alley, <<his>> knife poking the small of your back. You turn another corner and find a mattress already lying there.
+	<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 90>>
+		<<set $NPCList[0].righthand to "none">>
+		<<He>> shoves you on top of it, leaps on you and holds the knife to your neck.
+	<<else>>
+		<<He>> shoves you on top of it, discards the knife and leaps on you.
+	<</if>>
 	<br><br>
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
+<<if $NPCList[0].righthand is "none">>
+	<<He>> holds the knife to your throat. <<if $enemyarousal gte ($enemyarousalmax / 3)>>It trembles in <<his>> grip.<</if>><<gpain>><<violence 5>><br><br>
+<</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
