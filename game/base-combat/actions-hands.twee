@@ -393,7 +393,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 	<</if>>
 <</widget>>
 
-<<widget "leftComdom">>
+<<widget "leftCondom">>
 <<if !["mouthEntrance","mouthImminent","mouthPenetration","pussyPenetration","anusPenetration"].includes($penisstate) and $penisexist>>
 	<<if $player.condom is false and $condoms gt 0 and $parasite.penis.name is undefined>>
 		<<set _leftaction["Put on a condom (" + $condoms + ")"] to "peniscondom">>
@@ -810,7 +810,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 	<</if>>
 <</widget>>
 
-<<widget "rightComdom">>
+<<widget "rightCondom">>
 <<if !["mouthEntrance","mouthImminent","mouthPenetration","pussyPenetration","anusPenetration"].includes($penisstate) and $penisexist>>
 	<<if $player.condom is false and $condoms gt 0>>
 		<<set _rightaction["Put on a condom (" + $condoms + ")"] to "peniscondom">>
