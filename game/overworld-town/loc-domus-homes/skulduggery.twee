@@ -654,7 +654,7 @@ You open the trapdoor and peek out.
 :: Domus House Prisoner
 <<set $outside to 0>><<set $location to "town">><<effects>><<set $bus to "domus">>
 <<set _risk to 10>><<set $resc to 1>><<generateyv1>><<person1>>
-You unbolt the door. Behind, curled up like a dog, sleeping naked on the bare floor, you find a <<person>>, curled up naked on the bare floor. <<His>> body is covered in marks and bruises.
+You unbolt the door. Behind, curled up like a dog, sleeping naked on the bare floor, you find a <<person>>. <<His>> body is covered in marks and bruises.
 <<He>> snorts, and two wild eyes stare up at you.
 <br>
 <<if $english gte (350+$rng)>>

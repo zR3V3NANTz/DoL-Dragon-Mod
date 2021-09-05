@@ -1361,7 +1361,7 @@ You kiss the <<beasttype>> on the head.
 						<<if $arousal lte $arousalmax / 5>>
 							You <<voice "plead">>. "What have you done..."
 						<<elseif $arousal lte ($arousalmax / 5) * 4>>
-							You <<voice "plead">>. "I'm sorry, Sydney, I'm so sorry...
+							You <<voice "plead">>. "I'm sorry, Sydney, I'm so sorry..."
 						<<else>>
 							You <<voice "plead">>. "S-Sydney... It was supposed to be you..."
 						<</if>>
@@ -1427,7 +1427,7 @@ You kiss the <<beasttype>> on the head.
 						<<elseif $pain lte 60>>
 							You <<voice "plead">>. "The temple sanctioned me and Sydney's union, so leave me alone!"
 						<<else>>
-							You <<voice "plead">>. "S-Sydney... I need a savior..."
+							You <<voice "plead">>. "S-Sydney... I need a saviour..."
 						<</if>>
 					<<else>>
 						<<if $pain lte 20>>
@@ -2706,7 +2706,7 @@ You kiss the <<beasttype>> on the head.
 					<<if $templePromised is "Sydney">>
 						<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is imminent) or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent")>>
 							<<if $awarelevel gte 1>>
-								You <<voice "demand">>. "I'm bound to Sydney, not you! Get off me!
+								You <<voice "demand">>. "I'm bound to Sydney, not you! Get off me!"
 							<<else>>
 								You <<voice "demand">>. "You can't! Me and Sydney are bound as one!"
 							<</if>>

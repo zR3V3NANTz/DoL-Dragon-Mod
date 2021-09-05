@@ -440,7 +440,7 @@ You walk to the front of the classroom, and Winter gestures you to bend over the
 <<bind>>
 <<if $rng gte 51>>
 	<<endevent>>
-	<<npc Leighton>><<person1>>Before Winter can speak further, the door opens to reveal Leighton, who doesn't look twice at the <<girl>> in the pillory. <<He>> looks at Winter. "We need to talk." Winter nods, and leaves the room without a word.
+	Before Winter can speak further, the door opens to reveal Leighton, who doesn't look twice at the <<girl>> in the pillory. <<npc Leighton>><<person1>><<He>> looks at Winter. "We need to talk." Winter nods, and leaves the room without a word.
 	<<endevent>>
 	<br><br>
 	<<if $robinhistory is "active" or $robinhistory is "seat">>

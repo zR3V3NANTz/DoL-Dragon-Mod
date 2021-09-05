@@ -3380,6 +3380,8 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 		<<arousal 5000>><<ggarousal>>
 		<<if $arousal gte $arousalmax>>
 			<<orgasm>><<He>> smiles.
+			<br><br>
+			<<whitneyoptions>>
 		<<else>>
 			"Come on, hurry up and finish already you useless shit."
 			<br><br>

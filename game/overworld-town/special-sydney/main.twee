@@ -877,7 +877,7 @@ You push Sydney away from you.
 		<<case 3>>
 			You creep up behind Sydney, and place your hands on <<his>> shoulders. You <<handtext>> begin to massage <<him>>.
 			<<if $submissive gte 1150>>
-				"I hope you don't mind if I try to make you more confortable,"
+				"I hope you don't mind if I try to make you more comfortable,"
 			<<elseif $submissive lte 850>>
 				"Just relax for a few minutes, I think you've earned a break,"
 			<<else>>
@@ -1970,7 +1970,7 @@ Sydney leaves your sight, and soon you feel something cold, wet, and soothing pr
 		<</if>>
 		<br><br>
 	<<elseif _sydneyStatus.includes("pure")>>
-		<<He>> looks your <<genitals>> with curiosity. "Uhm... what did you do to me, by the way? When you were hitting me, and you..." <<he>> stammers off. After a few moments, <<he>> manages to speak coherently again. "It... it felt really good..."
+		<<He>> looks at your <<genitals>> with curiosity. "Uhm... what did you do to me, by the way? When you were hitting me, and you..." <<he>> stammers off. After a few moments, <<he>> manages to speak coherently again. "It... it felt really good..."
 		<br><br>
 	<</if>>
 <</if>>
@@ -2300,7 +2300,7 @@ Sydney leaves first, peeking to make sure no one will see you both leave. Once t
 			<<towelup>>
 			<<set $exposedTemp to 1>>
 		<</if>>
-		You hear Sydney's voiuce outside. "N...no, the changing room is occupied at the moment. No, you can't check! Because it's occupied!" After a moment, the curtain shifts aside as <<he>> backs into the booth.
+		You hear Sydney's voice outside. "N...no, the changing room is occupied at the moment. No, you can't check! Because it's occupied!" After a moment, the curtain shifts aside as <<he>> backs into the booth.
 		<<He>> turns around, and jumps when <<he>> realises you're awake.
 		<br><br>
 		"You're awake! I'm so glad. I found you out there, you were all limp, and the nurse was nowhere to be found, and I thought you might be hurt,
@@ -2836,7 +2836,7 @@ Sydney stretches and yawns.
 					<br>
 				<</if>>
 			<<else>>
-				Sydney quickly finishes <<his>> food. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>. Kylar glares at <<him>>, <<if _sydneyStatus.includes("corrupt")>>and <<he>> and <<he>> <<if $sydneyromance is 1>>shoots an icy glare right back.<<else>>rolls <<his>> eyes.<</if>><<else>>but <<he>> gives no sign of noticing.<</if>>
+				Sydney quickly finishes <<his>> food. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>. Kylar glares at <<him>>, <<if _sydneyStatus.includes("corrupt")>>and <<he>> <<if $sydneyromance is 1>>shoots an icy glare right back.<<else>>rolls <<his>> eyes.<</if>><<else>>but <<he>> gives no sign of noticing.<</if>>
 				<br><br>
 				<<link [[Next|Canteen]]>><<endevent>><</link>>
 				<br>
@@ -3001,7 +3001,7 @@ You push away Kylar's hand. <<His>> expression falters, and you think you see a 
 	<</if>>
 <</if>>
 <br><br>
-Sydney quickly finishes <<person1>><<his>> food. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>.<<if !_kylarGone>> Kylar glares at <<him>>, <<if _sydneyStatus.includes("corrupt")>>and <<he>> and <<he>> <<if $sydneyromance is 1>>shoots an icy glare right back.<<else>>rolls <<his>> eyes.<</if>><<else>>but <<he>> gives no sign of noticing.<</if>><</if>>
+Sydney quickly finishes <<person1>><<his>> food. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>.<<if !_kylarGone>> Kylar glares at <<him>>, <<if _sydneyStatus.includes("corrupt")>>and <<he>> <<if $sydneyromance is 1>>shoots an icy glare right back.<<else>>rolls <<his>> eyes.<</if>><<else>>but <<he>> gives no sign of noticing.<</if>><</if>>
 <br><br>
 <<link [[Next|Canteen]]>><<endevent>><</link>>
 <br>
@@ -3015,7 +3015,7 @@ You let Kylar write on you.
 <</if>>
 <br><br>
 Sydney giggles. "Looks like you're a popular canvas." <<person1>><<He>> seems completely unbothered by Kyar's actions.
-<<He>> quickly finishes <<his>> food. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>. Kylar glares at <<him>>, <<if _sydneyStatus.includes("corrupt")>>and <<he>> and <<he>> <<if $sydneyromance is 1>>shoots an icy glare right back.<<else>>rolls <<his>> eyes.<</if>><<else>>but <<he>> gives no sign of noticing.<</if>>
+<<He>> quickly finishes <<his>> food. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>. Kylar glares at <<him>>, <<if _sydneyStatus.includes("corrupt")>>and <<he>> <<if $sydneyromance is 1>>shoots an icy glare right back.<<else>>rolls <<his>> eyes.<</if>><<else>>but <<he>> gives no sign of noticing.<</if>>
 <br><br>
 <<link [[Next|Canteen]]>><<endevent>><</link>>
 <br>

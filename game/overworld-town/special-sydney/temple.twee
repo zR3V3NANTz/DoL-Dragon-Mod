@@ -1414,7 +1414,7 @@ Sirris raises <<person2>><<his>> hand. "It's okay, dear." <<He>> turns to you ag
 		<br><br>
 		You can feel Sydney's pulse through <<his>> hand. "Y-yes, we agree." <<He>> steps forward, and motions for you to do the same. "We'd like to be evaluated for the rite of promise."
 	<<else>>
-		You tell Sydney you're ready. The two of you approach Jordan again. "Welcome back," <<nnpc_he "Jordan">> says. "I take it you're here to be evaluated again?" you both nod.
+		You tell Sydney you're ready. The two of you approach Jordan again. "Welcome back," <<nnpc_he "Jordan">> says. "I take it you're here to be evaluated again?" You both nod.
 	<</if>>
 	<br><br>
 	Jordan gives you both a solemn smile. "Please come with me. You're both up to date on your chastity exams, so we can skip that step. For now." <<nnpc_He "Jordan">> begins to lead you out of the main hall and into a small room.

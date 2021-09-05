@@ -375,7 +375,7 @@
 		<<case 1 2>>
 			<span class="purple">Your chest looks flatter.</span>
 		<<case 0>>
-			<span class="purple">Your chest look flat.</span>
+			<span class="purple">Your chest looks flat.</span>
 		<</switch>>
 		<<unset $breastshrinkmessage>>
 	<</if>>

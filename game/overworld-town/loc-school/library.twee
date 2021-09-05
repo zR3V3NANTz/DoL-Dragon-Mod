@@ -516,6 +516,7 @@ You follow <<him>> down the corridor toward the entrance. "H-here," <<he>> says 
 			You feel Sydney's arms wrap around you. 
 		<</if>>
 		"I hope they didn't hurt you." You spend some time reassuring <<nnpc_him "Sydney">>, but <<nnpc_he "Sydney">> still seems hesitant to leave your side. After some time, <<nnpc_he "Sydney">> returns to the rental counter, looking back over <<nnpc_his "Sydney">> shoulder a few times.
+		<br><br>
 	<<else>>
 		"Are you alright?" Sydney puts a hand on your shoulder. You nod, but Sydney seems hesitant to leave your side. After a moment, <<nnpc_he "Sydney">> returns to the rental counter, looking back over <<nnpc_his "Sydney">> shoulder a few times.
 		<br><br>

@@ -295,7 +295,7 @@ After an hour, a <<generate1>><<person1>><<person>> in a police uniform arrives 
 	<<else>>
 		Once seated, the <<person2>><<person>> continues. "These are only petty crimes. You'll be given the chance to make amends, and give back to the community. <span class="pink">You are to report to the police station every day.</span> There you will be assigned a service. It'll take about an hour. You can arrive any time during daylight hours."
 		<br><br>
-		"These crimes warrant,
+		"These crimes warrant
 		<<set _service to Math.trunc($crime / 200)>>
 		<span class="pink">_service days</span> of community service. If you don't reform your ways, or don't turn up, the situation could get much worse for you. Take <<phim>> outside."
 		<br><br>
