@@ -2377,7 +2377,7 @@ or $args[0] is "force">>
 
 <<widget "exposure">>
 
-<<if $location isnot "beach" and $location isnot "pool" and $location isnot "sea" and $location isnot "lake" and $location isnot "lake_ruin">>
+<<if !["beach","pool","sea","lake","lake_ruin"].includes($location)>>
 	<<set $libertine to 0>>
 <<else>>
 	<<set $libertine to 1>>

@@ -1035,7 +1035,7 @@ It is getting cold though, so you decide to get dressed for now.
 	<<if $penisexist is 1 and $vaginaexist is 1 and !$worn.genitals.type.includesAll("chastity", "hidden") and $rng % 2 == 0>>gawking at your <<genitals>>.
 	<<elseif $bottomsize gte 4 and $rng % 2 == 0>>leering at your swaying <<bottom>>
 	<<elseif $breastsize gte 6 and $rng % 2 == 0>>gawking at your <<breasts>>
-	<<elseif $penisexist and $penissize gte 3 and !$worn.genitals.type.includesAll("chastity", "hidden")>>gawking at your <<penissize>><<penis>>.
+	<<elseif $penisexist and $penissize gte 3 and !$worn.genitals.type.includesAll("chastity", "hidden")>>gawking at your <<penis>>.
 	<<elseif $beauty gte (($beautymax / 7) * 5) and $rng % 3>>admiring your beautiful naked body
 	<<elseif $physique gte (($physiquesize / 7) * 5)>>admiring your stunning physique so fully displayed
 	<<else>>leering at you
