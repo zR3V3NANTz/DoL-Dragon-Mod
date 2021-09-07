@@ -1428,7 +1428,7 @@ in dev alternative to current "breasts" widget
 		<<elseif $pblevel gte 8 and $pbdisable is "f">>
 			<<set _text_output += "bushy ">>
 		<</if>>
-		<<set _text_output += ["pussy", "quim"].pluck()>>
+		<<set _text_output += ["pussy", "pussy", "pussy", "quim"].pluck()>>
 	<</if>>
 <</if>>
 <</silently>><<print _text_output>><</widget>>

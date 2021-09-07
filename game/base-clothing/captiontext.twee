@@ -215,158 +215,127 @@ $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
 <</silently>><<if $_text_output>><span class="red"><<print $_text_output>></span><</if>>
 <</widget>>
 
+<<widget "clothingstatecompare">>
+	/* One argument, a clothing article whose state you want to compare against its original state. Must be the ENTIRE variable, not .name! */
+	/* Returns the difference between the current and base states. Negative means it's pulled down, positive means it's pulled up.  */
+	/* If the clothing was pulled to the side, this returns 0. It would also return 0 if the current state is the base state. */
+	<<set $_clothing_levels to [0,"ankles","knees","thighs","waist","midriff","chest"]>>
+	<<set _compare_result to $_clothing_levels.indexOf($worn[$args[0]].state) - $_clothing_levels.indexOf($worn[$args[0]].state_base)>>
+	<<if $worn[$args[0]].state is "totheside">><<set _compare_result to 0>><</if>>
+<</widget>>
+
 <<widget "clothingCpationTextStrip">>
-<<outfitChecks>>
-<<if !$worn.upper.type.includes("naked") and $upperwetstage gte 3 and !$worn.lower.type.includes("naked") and $lowerwetstage gte 3 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $underlowerwetstage gte 3 and !$worn.under_upper.type.includes("naked") and $underupperwetstage gte 3>>
-	<<if _underOutfit is true>>
-		<<if _middleOutfit is true>>
-			<br>
-			Your $worn.upper.name and $worn.under_upper.name are drenched, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
+	<<outfitChecks>>
+	<br>
+	/* <<run console.log("-------upper-------")>> */
+	<<clothingCaptionExposed "upper">>
+	<br>
+	/* <<run console.log("-------lower-------")>> */
+	<<clothingCaptionExposed "lower">>
+	<br><br>
+<</widget>>
+
+<<widget "clothingCaptionExposed">>
+	<<set $_clothes to {"naked": [], "wet": [], "up": [], "down": [], "totheside": [], "exposed": []}>>
+	<<set $_plural to {"naked": false, "wet": false, "up": false, "down": false, "totheside": false, "exposed": false}>>
+	<<set $_exposed to {"upper": false, "lower": false}>>
+	<<set $_revealColour to "purple">>
+	<<set $_highestLevelCovered to "">>
+	<<set $_clothingRevealType to {}>>
+	<<set $_outfitType to $args[0]>>
+
+	/* Find which clothes are failing to cover the player */
+	<<for $_i, $_outfitLayer range ["over", "", "under"]>>
+		<<set $_clothing to [$_outfitLayer, $_outfitType].filter(Boolean).join("_")>>
+		<<set _wetstage to $_outfitLayer + $_outfitType + "wetstage">>
+
+		/* <<run console.log("i: ", $_i, "clothing: ", $_clothing)>> */
+		
+		<<if $worn[$_clothing].type.includes("naked")>>
+			<<set $_clothingRevealType[$_clothing] to "naked">>
+			<<continue>>
+		<<elseif $worn[$_clothing].state isnot $worn[$_clothing].state_base>>
+			<<clothingstatecompare $_clothing>>
+			<<if _compare_result gte 1>>
+				<<set $_clothingRevealType[$_clothing] to "up">>
+			<<elseif _compare_result lte -1>>
+				<<set $_clothingRevealType[$_clothing] to "down">>
+			<<else>>
+				<<set $_clothingRevealType[$_clothing] to "totheside">>
+			<</if>>
+		<<elseif $worn[$_clothing].exposed is 2>>
+			<<set $_clothingRevealType[$_clothing] to "exposed">>
+		<<elseif V[_wetstage] gte 3>>
+			<<set $_clothingRevealType[$_clothing] to "wet">>
 		<<else>>
-			<br>
-			Your $worn.upper.name, $worn.lower.name and $worn.under_upper.name are drenched, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
+			<<set $_clothingRevealType[$_clothing] to false>>
+			<<set $_highestLevelCovered to $worn[$_clothing].name>>
+			<<break>> /* don't check clothing below the current layer if this layer is blocking visibility */
 		<</if>>
-	<<else>>
-		<<if _middleOutfit is true>>
-			<br>
-			Your $worn.upper.name, $worn.under_lower.name and $worn.under_upper.name are drenched, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
-		<<else>>
-			<br>
-			Your $worn.upper.name, $worn.lower.name, $worn.under_lower.name and $worn.under_upper.name are drenched, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
-		<</if>>
+		
+		<<set $_revealType to $_clothingRevealType[$_clothing]>>
+		
+		<<set $_clothes[$_revealType].pushUnique($worn[$_clothing].name)>>
+		<<set $_plural[$_revealType] to $_plural[$_revealType] or $worn[$_clothing].plural is 1>>
+		<<set $_exposed[$_outfitType] to true>>
+	<</for>>
+	
+	/* Find which sensitive areas are exposed */
+	<<if $_exposed[$_outfitType]>>
+		<<silently>>
+			<<if $_highestLevelCovered is "">>
+				<<if $_outfitType is "upper">>
+					<<breasts>><<set $_undertext to _text_output>>
+				<<else>>
+					<<set $_revealColour to "pink">>
+					<<genitals>><<set $_undertext to _text_output>>
+				<</if>>
+			<<else>>
+				<<set $_undertext to $_highestLevelCovered>>
+			<</if>>
+		<</silently>>
 	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $upperwetstage gte 3 and !$worn.lower.type.includes("naked") and $lowerwetstage gte 3 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $underlowerwetstage gte 3>>
-	<<if _middleOutfit is true>>
-		<br>
-		Your $worn.upper.name, and $worn.under_lower.name are drenched, <span class="pink">revealing your <<undertop>> and <<genitals>>.</span>
-		<br>
-	<<else>>
-		<br>
-		Your $worn.upper.name, $worn.lower.name and $worn.under_lower.name are drenched, <span class="pink">revealing your <<undertop>> and <<genitals>>.</span>
-		<br>
+
+	/* <<run console.log($_clothes)>> */
+	/* <<run console.log($_clothingRevealType)>> */
+	
+	/* Piece together the caption */
+	<<if $_exposed[$_outfitType]>>
+		<<set _output to "">>
+		<<for $_type range ["wet", "up", "down", "totheside", "exposed"]>>
+			<<if $_type is "wet" and $_clothes[$_type].length gte 1>>
+				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "are drenched, " : "is drenched, ")>>
+			<<elseif $_type is "exposed" and $_clothes[$_type].length gte 1>>
+				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled aside, " : "has been pulled aside, ")>>
+			<<elseif $_type is "up" and $_clothes[$_type].length gte 1>>
+				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled up, " : "has been pulled up, ")>>
+			<<elseif $_type is "down" and $_clothes[$_type].length gte 1>>
+				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled down, " : "has been pulled down, ")>>
+			<<elseif $_type is "totheside" and $_clothes[$_type].length gte 1>>
+				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled to the side, " : "has been pulled to the side, ")>>
+			<</if>>
+
+			<<if $_type and $_clothes[$_type].length gte 1>>
+				<<if _output isnot "">><<set _output += " and your ">><</if>>
+				<<if $_clothes[$_type].length is 1>>
+					<<set _output += $_clothes[$_type][0] + " " + $_verb>>
+				<<elseif $_clothes[$_type].length is 2>>
+					<<set _output += $_clothes[$_type][0] + " and " + $_clothes[$_type][1] + " " + $_verb>>
+				<<else>>
+					<<set _lastClothes to $_clothes[$_type].pop()>>
+					<<set _output += $_clothes[$_type].join(", ")) + "and _lastClothes " + $_verb>>
+				<</if>>
+			<</if>>
+		<</for>>
+
+		/* Print the caption */
+		Your _output <span @class="$_revealColour">revealing your $_undertext.</span>
 	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $upperwetstage gte 3 and !$worn.under_upper.type.includes("naked") and $underupperwetstage gte 3 and $lowerwetstage gte 3 and !$worn.lower.type.includes("naked")>>
-	<<if _middleOutfit is true>>
-		<br>
-		Your $worn.upper.name and $worn.under_upper.name are drenched, <span class="purple">revealing your <<breasts>> and <<undies>>.</span>
-		<br>
-	<<else>>
-		<br>
-		Your $worn.upper.name, $worn.lower.name and $worn.under_upper.name are drenched, <span class="purple">revealing your <<breasts>> and <<undies>>.</span>
-		<br>
-	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $upperwetstage gte 3 and $lowerwetstage gte 3 and !$worn.lower.type.includes("naked")>>
-	<<if _middleOutfit is true>>
-		<br>
-		Your $worn.upper.name is drenched, <span class="purple">revealing your <<undertop>> and <<undies>>.</span>
-		<br>
-	<<else>>
-		<br>
-		Your $worn.upper.name and $worn.lower.name are drenched, <span class="purple">revealing your <<undertop>> and <<undies>>.</span>
-		<br>
-	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $upperwetstage gte 3>>
-	<br>
-	Your $worn.upper.name <<upperplural>> drenched, <span class="purple">revealing your <<breasts>>.</span>
-	<br>
-<<elseif !$worn.lower.type.includes("naked") and $lowerwetstage gte 3 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $underlowerwetstage gte 3>>
-	<br>
-	Your $worn.lower.name and $worn.under_lower.name are drenched, <span class="pink">revealing your <<genitals>>.</span>
-	<br>
-<<elseif !$worn.lower.type.includes("naked") and $lowerwetstage gte 3>>
-	<br>
-	Your $worn.lower.name <<lowerplural>> drenched, <span class="purple">revealing your <<undies>>.</span>
-	<br>
-<<elseif !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $underlowerwetstage gte 3>>
-	<br>
-	Your $worn.under_lower.name <<underlowerplural>> drenched, <span class="pink">revealing your <<genitals>>.</span>
-	<br>
-<<elseif !$worn.under_upper.type.includes("naked") and $underupperwetstage gte 3>>
-	<br>
-	Your $worn.under_upper.name <<underupperplural>> drenched, <span class="pink">revealing your <<breasts>>.</span>
-	<br>
-<<elseif !$worn.upper.type.includes("naked") and $worn.upper.exposed is 2 and !$worn.lower.type.includes("naked") and $worn.lower.exposed is 2 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $worn.under_lower.state isnot "waist" and !$worn.under_upper.type.includes("naked") and $worn.under_upper.state isnot $worn.under_upper.state_base>>
-	<<if _underOutfit is true>>
-		<<if _middleOutfit is true>>
-			<br>
-			Your $worn.upper.name, skirt and $worn.under_upper.name have been pulled aside, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
-		<<else>>
-			<br>
-			Your $worn.upper.name, $worn.lower.name and $worn.under_upper.name have been pulled aside, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
-		<</if>>
-	<<else>>
-		<<if _middleOutfit is true>>
-			<br>
-			Your $worn.upper.name, skirt, $worn.under_upper.name and $worn.under_lower.name have been pulled aside, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
-		<<else>>
-			<br>
-			Your $worn.upper.name, $worn.lower.name, $worn.under_upper.name and $worn.under_lower.name have been pulled aside, <span class="pink">revealing your <<breasts>> and <<genitals>>.</span>
-			<br>
-		<</if>>
-	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $worn.upper.exposed is 2 and !$worn.lower.type.includes("naked") and $worn.lower.exposed is 2 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $worn.under_lower.state isnot "waist">>
-	<<if _middleOutfit is true>>
-		<br>
-		Your $worn.upper.name, skirt and $worn.under_lower.name have been pulled aside, <span class="pink">revealing your <<undertop>> and <<genitals>>.</span>
-		<br>
-	<<else>>
-		<br>
-		Your $worn.upper.name, $worn.lower.name and $worn.under_lower.name have been pulled aside, <span class="pink">revealing your <<undertop>> and <<genitals>>.</span>
-		<br>
-	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $worn.upper.exposed is 2 and $worn.lower.exposed is 2 and !$worn.lower.type.includes("naked") and !$worn.under_upper.type.includes("naked") and $worn.under_upper.state isnot $worn.under_upper.state_base>>
-	<<if _middleOutfit is true>>
-		<br>
-		Your $worn.upper.name, skirt and $worn.under_upper.name have been pulled aside, <span class="purple">revealing your <<breasts>> and <<undies>>.</span>
-		<br>
-	<<else>>
-		<br>
-		Your $worn.upper.name, $worn.lower.name and $worn.under_upper.name have been pulled aside, <span class="purple">revealing your <<breasts>> and <<undies>>.</span>
-		<br>
-	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $worn.upper.exposed is 2 and $worn.lower.exposed is 2 and !$worn.lower.type.includes("naked")>>
-	<<if _middleOutfit is true>>
-		<br>
-		Your $worn.upper.name and skirt have been pulled aside, <span class="purple">revealing your <<undertop>> and <<undies>>.</span>
-		<br>
-	<<else>>
-		<br>
-		Your $worn.upper.name and $worn.lower.name have been pulled aside, <span class="purple">revealing your <<undertop>> and <<undies>>.</span>
-		<br>
-	<</if>>
-<<elseif !$worn.upper.type.includes("naked") and $worn.upper.exposed is 2>>
-	<br>
-	Your $worn.upper.name <<upperhas>> been pulled aside, <span class="purple">revealing your <<breasts>>.</span>
-	<br>
-<<elseif !$worn.lower.type.includes("naked") and $worn.lower.exposed is 2 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $worn.under_lower.state isnot "waist">>
-	<br>
-	Your $worn.lower.name <<lowerhas>> been pulled aside and your $worn.under_lower.name pulled down, <span class="pink">revealing your <<genitals>>.</span>
-	<br>
-<<elseif !$worn.lower.type.includes("naked") and $worn.lower.exposed is 2>>
-	<br>
-	Your $worn.lower.name <<lowerhas>> been pulled aside, <span class="purple">revealing your <<undies>>.</span>
-	<br>
-<<elseif !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $worn.under_lower.state isnot $worn.under_lower.state_base>>
-	<br>
-	Your $worn.under_lower.name <<underlowerhas>> been pulled down to your $worn.under_lower.state, <span class="pink">revealing your <<genitals>>.</span>
-	<br>
-<<elseif !$worn.under_upper.type.includes("naked") and $worn.under_upper.state isnot $worn.under_upper.state_base>>
-	<br>
-	Your $worn.under_upper.name <<underupperhas>> been pulled down to your $worn.under_upper.state, <span class="pink">revealing your <<breasts>>.</span>
-	<br>
-<</if>>
 <</widget>>
 
 <<widget "clothingCpationTextGender">><<silently>>
 
-<<if ($player.gender is "m" or $player.gender is "h") and $player.gender_appearance is "f">>
+<<if $player.gender isnot "f" and $player.gender_appearance is "f">>
 	<<if $breastindicator is 1>>
 		<<set $_text_output to "Your exposed breasts will make people think you're a girl!">>
 	<<elseif $exposed gte 2>>
@@ -374,7 +343,7 @@ $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
 	<<else>>
 		<<set $_text_output to "The way you're dressed, people will think you're a girl!">>
 	<</if>>
-<<elseif ($player.gender is "f" or $player.gender is "h") and $player.gender_appearance is "m">>
+<<elseif $player.gender isnot "m" and $player.gender_appearance is "m">>
 	<<if $breastindicator is 0 and $worn.upper.exposed is 2 and $worn.under_upper.exposed gte 1>>
 		<<set $_text_output to "Your exposed flat chest will make people think you're a boy!">>
 	<<elseif $exposed gte 2>>

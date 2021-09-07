@@ -187,8 +187,7 @@ Passage: <<print $passage>>
 <<link [[Make all beasts male animals|$passage]]>><<set $monsterchance to 0>><<set $beastmalechance to 100>><</link>>
 <br>
 <<link [[Make all beasts female animals|$passage]]>><<set $monsterchance to 0>><<set $beastmalechance to 0>><</link>>
-<br>
-<br>
+<br><br>
 
 <<link [[Spring|$passage]]>><<set $season to "spring">><</link>>
 <br>
@@ -197,8 +196,7 @@ Passage: <<print $passage>>
 <<link [[Autumn|$passage]]>><<set $season to "autumn">><</link>>
 <br>
 <<link [[Winter|$passage]]>><<set $season to "winter">><</link>>
-<br>
-<br>
+<br><br>
 
 <<link [[Enable basic Pregnancy features|$passage]]>><<set $sexStats.anus.pregnancy.seenDoctor to 2>><<set $sexStats.anus.pregnancy.maxCount to 2>><</link>>
 <br>
@@ -288,94 +286,105 @@ These still require Fertilise
 <<widget "debugCharacter">>
 
 <<if $alluretest gte 1>>
-<<link [[Default allure|$passage]]>><<set $alluretest to 0>><</link>>
-<br>
+	<<link [[Default allure|$passage]]>><<set $alluretest to 0>><</link>>
+	<br>
 <<else>>
-<<link [[Become Alluring|$passage]]>><<set $alluretest to 1>><</link>>
-<br>
-<<link [[Become Unalluring|$passage]]>><<set $alluretest to 2>><</link>>
-<br>
+	<<link [[Become Alluring|$passage]]>><<set $alluretest to 1>><</link>>
+	<br>
+	<<link [[Become Unalluring|$passage]]>><<set $alluretest to 2>><</link>>
+	<br>
 <</if>>
 <<if $dontHide is true>>
 	<<link [[Hide|$passage]]>><<dontHideRevert>><</link>>
-	<br>
 <<else>>
 	<<link [[Don't hide|$passage]]>><<dontHideForNow>><</link>>
-	<br>
 <</if>>
-<<link [[Fame|$passage]]>><<set $fame += 4000>><<famescrap 1000>><<famebusiness 1000>><<famegood 1000>><<famepimp 1000>><<set $fameexhibitionism += 1000>><<set $famesex += 1000>><<set $famerape += 1000>><<set $famebestiality += 1000>><<set $fameprostitution += 1000>><</link>>
-<br>
+<br><br>
 
+<<link [[All Fame|$passage]]>><<set $fame += 4000>><<famescrap 1000>><<famebusiness 1000>><<famegood 1000>><<famepimp 1000>><<set $fameexhibitionism += 1000>><<set $famesex += 1000>><<set $famerape += 1000>><<set $famebestiality += 1000>><<set $fameprostitution += 1000>><</link>>
+<br>
 <<link [[Fame Sex|$passage]]>><<set $fame += 4000>><<set $famesex += 4000>><</link>>
 <br>
-
 <<link [[Timer|$passage]]>><<set $timer -= 60>><</link>>
 <br>
-
 <<link [[Size Up|$passage]]>><<set $devlevel += 1>><</link>>
-<br>
+<br><br>
 
-<<link [[Stress|$passage]]>><<set $stress to $stress + 5000>><</link>>
+<<link [[Full Lewd Characteristics|$passage]]>><<set $promiscuity += 100>><<set $exhibitionism += 100>><<set $deviancy += 100>><</link>>
 <br>
-
-<<link [[Destress|$passage]]>><<set $stress to $stress - 5000>><</link>>
+<<link [[Exhibitionism|$passage]]>><<set $exhibitionism += 20>><</link>>
 <br>
-
-<<link [[Traumatise me|$passage]]>><<set $trauma to $trauma + 2000>><</link>>
+<<link [[Promiscuity|$passage]]>><<set $promiscuity += 20>><</link>>
 <br>
-
-<<link [[DeTraumatise me|$passage]]>><<set $trauma to $trauma - 2000>><</link>>
+<<link [[Deviancy|$passage]]>><<set $deviancy += 20>><</link>>
 <br>
-
-<<link [[Exhibitionism|$passage]]>><<set $exhibitionism to $exhibitionism + 20>><</link>>
+<<link [[Beauty|$passage]]>><<set $beauty += 10000>><</link>>
 <br>
-
-<<link [[Promiscuity|$passage]]>><<set $promiscuity to $promiscuity + 20>><</link>>
+<<link [[Physique|$passage]]>><<set $physique += 2000>><</link>>
 <br>
-
-<<link [[Deviancy|$passage]]>><<set $deviancy to $deviancy + 20>><</link>>
+<<link [[Awareness up|$passage]]>><<set $awareness += 200>><</link>>
 <br>
-
-<<link [[Full Lewd|$passage]]>><<set $promiscuity to $promiscuity + 100>><<set $exhibitionism to $exhibitionism + 100>><<set $deviancy += 100>><</link>>
+<<link [[Awareness down|$passage]]>><<set $awareness -= 200>><</link>>
 <br>
-
-<<link [[Beauty|$passage]]>><<set $beauty to $beauty + 10000>><</link>>
+<<link [[Purity Up|$passage]]>><<set $purity += 500>><</link>>
 <br>
+<<link [[Purity Down|$passage]]>><<set $purity -= 500>><</link>>
+<br><br>
 
-<<link [[Physique|$passage]]>><<set $physique to $physique + 2000>><</link>>
+<<link [[Pain Up|$passage]]>><<set $pain += 50>><</link>>
 <br>
-
-<<link [[Sunlight|$passage]]>><<set $weather to "clear">><</link>>
+<<link [[Pain Down|$passage]]>><<set $pain -= 200>><</link>>
+<br>
+<<link [[Stress|$passage]]>><<set $stress += 5000>><</link>>
+<br>
+<<link [[Destress|$passage]]>><<set $stress -= 5000>><</link>>
+<br>
+<<link [[Traumatise me|$passage]]>><<set $trauma += 2000>><</link>>
+<br>
+<<link [[DeTraumatise me|$passage]]>><<set $trauma -= 2000>><</link>>
+<br>
+<<link [[Arousal max|$passage]]>><<arousal $arousalmax>><</link>>
+<br>
+<<link [[Arousal zero|$passage]]>><<arousal 0>><</link>>
 <br>
 
 <<link [[Booze|$passage]]>><<set $drunk += 60>><</link>>
 <br>
-
 <<link [[Drugged|$passage]]>><<set $drugged += 600>><</link>>
 <br>
-
-<<link [[Wash|$passage]]>><<wash>><</link>>
-<br>
-
 <<link [[Hallucinogen|$passage]]>><<set $hallucinogen += 600>><</link>>
-<br>
+<br><br>
 
-<<link [[Seduction|$passage]]>><<set $seductionskill to $seductionskill + 200>><</link>>
+<<link [[Sunlight|$passage]]>><<set $weather to "clear">><</link>>
 <br>
+<<link [[Wash|$passage]]>><<wash>><</link>>
+<br><br>
 
-<<link [[Skulduggery|$passage]]>><<set $skulduggery to $skulduggery + 200>><</link>>
+<<link [[Seduction|$passage]]>><<set $seductionskill += 200>><</link>>
 <br>
-
-<<link [[Crime|$passage]]>><<set $crime to $crime + 500>><<set $crimehistory += 500>><</link>>
+<<link [[Skulduggery|$passage]]>><<set $skulduggery += 200>><</link>>
 <br>
+<<link [[Swimming Skill|$passage]]>><<set $swimmingskill += 100>><</link>>
+<br><br>
 
+<<link [[Crime Up|$passage]]>><<set $crime += 500>><</link>>
+<br>
+<<link [[Crime Down|$passage]]>><<set $crime -= 500>><</link>>
+<br><br>
+
+<<link [[Reset NPC[0]'s Hands|$passage]]>><<set $NPCList[0].lefthand to 0>><<set $NPCList[0].righthand to 0>><</link>>
+<br><br>
+
+<<link [[Chastity Belt|$passage]]>><<genitalswear 1>><</link>>
+<br>
+<<link [[Chastity Cage|$passage]]>><<genitalswear 2>><</link>>
+<br>
+<<link [[Collar|$passage]]>><<neckwear 1>><</link>>
+<br>
 <<link [[Bind|$passage]]>><<set $leftarm to "bound">><<set $rightarm to "bound">><</link>>
 <br>
-
-<<link [[UnBind|$passage]]>>
-<<unbind>>
-<</link>>
-<br>
+<<link [[UnBind|$passage]]>><<unbind>><</link>>
+<br><br>
 
 <<link [[Breasts up|$passage]]>><<set $breastsize += 1>><</link>>
 <br>
@@ -392,66 +401,7 @@ These still require Fertilise
 <<link [[Balls up|$passage]]>><<set $ballssize += 1>><</link>>
 <br>
 <<link [[Balls down|$passage]]>><<set $ballssize -= 1>><</link>>
-<br>
-
-<<link [[Fame|$passage]]>><<set $fame += 4000>><<set $fameexhibitionism += 1000>><<set $famesex += 1000>><<set $famerape += 1000>><<set $famebestiality += 1000>><<set $fameprostitution += 1000>><</link>>
-<br>
-
-<<link [[Fame Sex|$passage]]>><<set $fame += 4000>><<set $famesex += 4000>><</link>>
-<br>
-
-<<link [[Timer|$passage]]>><<set $timer -= 60>><</link>>
-<br>
-
-<<link [[Stress|$passage]]>><<set $stress += 5000>><</link>>
-<br>
-<<link [[Destress|$passage]]>><<set $stress -= 5000>><</link>>
-<br>
-<<link [[Traumatise me|$passage]]>><<set $trauma += 2000>><</link>>
-<br>
-<<link [[DeTraumatise me|$passage]]>><<set $trauma -= 2000>><</link>>
-<br>
-<<link [[Exhibitionism|$passage]]>><<set $exhibitionism += 20>><</link>>
-<br>
-<<link [[Promiscuity|$passage]]>><<set $promiscuity += 20>><</link>>
-<br>
-
-<<link [[Full Lewd|$passage]]>><<set $promiscuity += 100>><<set $exhibitionism += 100>><<set $deviancy += 100>><</link>>
-<br>
-
-<<link [[Beauty|$passage]]>><<set $beauty += 10000>><</link>>
-<br>
-
-<<link [[Physique|$passage]]>><<set $physique += 2000>><</link>>
-<br>
-
-<<link [[Sunlight|$passage]]>><<set $weather to "clear">><</link>>
-<br>
-
-<<link [[Booze|$passage]]>><<set $drunk += 60>><</link>>
-<br>
-<<link [[Drugged|$passage]]>><<set $drugged += 600>><</link>>
-<br>
-<<link [[Hallucinogen|$passage]]>><<set $hallucinogen += 600>><</link>>
-<br>
-
-<<link [[Seduction|$passage]]>><<set $seductionskill += 200>><</link>>
-<br>
-
-<<link [[Skulduggery|$passage]]>><<set $skulduggery += 200>><</link>>
-<br>
-
-<<link [[Crime|$passage]]>><<set $crime += 500>><</link>>
-<br>
-
-<<link [[Chastity Belt|$passage]]>><<genitalswear 1>><</link>>
-<br>
-<<link [[Chastity Cage|$passage]]>><<genitalswear 2>><</link>>
-<br>
-<<link [[Collar|$passage]]>><<neckwear 1>><</link>>
-<br>
-<<link [[Bind|$passage]]>><<set $leftarm to "bound">><<set $rightarm to "bound">><</link>>
-<br>
+<br><br>
 
 <<link [[Money|$passage]]>><<set $money += 500000>><</link>>
 <br>
@@ -459,17 +409,14 @@ These still require Fertilise
 <br>
 <<link [[Grow fringe|$passage]]>><<set $fringelength += 100>><</link>>
 <br>
-<<link [[Arousal|$passage]]>><<arousal 10000>><</link>>
-<br>
-<<link [[Arousal down|$passage]]>><<arousal -10000>><</link>>
-<br>
 <<link [[Chest Parasite|$passage]]>><<parasite nipples urchin>><</link>> |
-<<link [[Penis Parasite|$passage]]>><<parasite penis urchin>><</link>> |
+<<link [[Penis Parasite|$passage]]>><<parasite penis urchin>><</link>>
 <br>
 <<link [[Chastity Parasite|$passage]]>><<set $analchastityparasite to "worms">><</link>>
 <br>
 <<link [[Month|$passage]]>><<set $monthday += 31>><<day>><</link>>
-<br>
+<br><br>
+
 <<link [[Delinquency|$passage]]>><<set $delinquency += 1000>><</link>>
 <br>
 <<link [[Detention|$passage]]>><<set $detention += 10>><</link>>
@@ -485,37 +432,28 @@ These still require Fertilise
 <<link [[Status|$passage]]>><<set $cool += 400>><</link>>
 <br>
 <<link [[Status Down|$passage]]>><<set $cool -= 400>><</link>>
-<br>
+<br><br>
+
 <<link [[Destroy Swimming Outfits|$passage]]>><<set $upperschoolswimsuitno to 0>><<set $lowerschoolswimsuitno to 0>><<set $schoolswimshortsno to 0>><</link>>
 <br>
-
 <<link [[Towels|$passage]]>><<clothesontowel>><</link>>
 <br>
-<<link [[Submission|$passage]]>><<set $submissive += 250>><</link>>
-<br>
-<<link [[Defiance|$passage]]>><<set $submissive -= 250>><</link>>
-<br>
-
-<<link [[Imprison Me|Underground Intro2]]>><<generate1>><<person1>><</link>>
-<br>
-
 <<link [[Towels Please|$passage]]>><<towelup>><</link>>
 <br>
 
-<<link [[Pain Up|$passage]]>><<set $pain += 50>><</link>>
+<<link [[Submission|$passage]]>><<set $submissive += 250>><</link>>
 <br>
-
-<<link [[Pain Down|$passage]]>><<set $pain -= 200>><</link>>
-<br>
+<<link [[Defiance|$passage]]>><<set $submissive -= 250>><</link>>
+<br><br>
 
 <<link [[Robin Love|$passage]]>><<set $NPCName[$NPCNameList.indexOf("Robin")].love += 100>><<set $NPCName[$NPCNameList.indexOf("Robin")].lust += 100>><</link>>
 <br>
-
 <<link [[Robin Note|$passage]]>><<set $robinnote to 1>><</link>>
-<<link [[Robin Romance|$passage]]>><<set $robinromance to 1>><</link>>
 <br>
+<<link [[Robin Romance|$passage]]>><<set $robinromance to 1>><</link>>
+<br><br>
 
-<<link [[Stats Up|$passage]]>>
+<<link [[Sex Statistics Up|$passage]]>>
 <<set $orgasmstat += 2000>>
 <<set $ejacstat += 2000>>
 <<set $moleststat += 2000>>
@@ -525,7 +463,7 @@ These still require Fertilise
 <<set $swallowedstat += 100>>
 <<set $prostitutionstat += 10>>
 <</link>>
-<br>
+<br><br>
 
 <<link [[Almost Destroy Lowerclothes|$passage]]>><<set $worn.lower.integrity to 1>><</link>>
 <br>
@@ -544,57 +482,44 @@ These still require Fertilise
 <<link [[Damage Underclothes|$passage]]>><<set $worn.under_lower.integrity -= 200>><</link>>
 <br>
 <<link [[Damage Chastity|$passage]]>><<set $worn.genitals.integrity -= 5000>><</link>>
-<br>
-<<link [[Swimming Skill|$passage]]>><<set $swimmingskill += 100>><</link>>
-<br>
-
-<<link [[Disable Hands|$passage]]>><<set $NPCList[0].lefthand to 0>><<set $NPCList[0].righthand to 0>><</link>>
-<br>
-
-<<link [[Purity Down|$passage]]>><<set $purity -= 500>><</link>>
-<br>
+<br><br>
 
 <<if $wolfgirl is 6>>
-<<link [[Wolf off|$passage]]>><<set $wolfgirl to 0>><</link>>
-<br>
+	<<link [[Wolf off|$passage]]>><<set $wolfgirl to 0>><</link>>
 <<else>>
-<<link [[Wolf up|$passage]]>><<set $wolfgirl += 1>><</link>>
-<br>
+	<<link [[Wolf up|$passage]]>><<set $wolfgirl += 1>><</link>>
 <</if>>
+<br>
 
 <<link [[Wolf build up|$passage]]>><<set $wolfbuild += 40>><</link>>
 <br>
-
 <<link [[Wolf build down|$passage]]>><<set $wolfbuild -= 40>><</link>>
 <br>
 
 <<link [[Angel build up|$passage]]>><<set $angelbuild += 40>><</link>>
 <br>
-
 <<link [[Angel build down|$passage]]>><<set $angelbuild -= 40>><</link>>
 <br>
 
 <<link [[Demon build up|$passage]]>><<set $demonbuild += 40>><</link>>
 <br>
 <<link [[Demon build down|$passage]]>><<set $demonbuild -= 40>><</link>>
-<br>
-
-<<link [[Awareness up|$passage]]>><<set $awareness += 200>><</link>>
-<br>
-
-<<link [[Awareness down|$passage]]>><<set $awareness -= 200>><</link>>
-<br>
-
-<<link [[Goo Me|$passage]]>><<drench both 5>><</link>>
-<br>
-
-<<link [[Goo Me Small|$passage]]>><<drench both 1>><</link>>
-<br>
+<br><br>
 
 <<link [[Undertemp off|$passage]]>><<set $undertemp to 0>><</link>>
 <br>
 
-<<link [[Drench me|$passage]]>><<set $upperwet to 200>><<set $lowerwet to 200>><<set $underlowerwet to 200>><</link>>
+<<link [[Goo Me|$passage]]>><<drench both 5>><</link>>
+<br>
+<<link [[Goo Me Small|$passage]]>><<drench both 1>><</link>>
+<br>
+<<link [[Drench me|$passage]]>><<set $upperwet to 200>><<set $lowerwet to 200>><<set $underupperwet to 200>><<set $underlowerwet to 200>><</link>>
+<br>
+<<link [[Drench over-outfit only|$passage]]>><<set $overupperwet to 200>><<set $overlowerwet to 200>><</link>>
+<br>
+<<link [[Drench middle-outfit only|$passage]]>><<set $upperwet to 200>><<set $lowerwet to 200>><</link>>
+<br>
+<<link [[Drench under-outfit only|$passage]]>><<set $underupperwet to 200>><<set $underlowerwet to 200>><</link>>
 <br>
 
 <<link [[Bully Timer|$passage]]>><<set $bullytimer to 100>><<set $bullytimeroutside to 100>><</link>>
@@ -602,13 +527,11 @@ These still require Fertilise
 
 <<link [[Whitney Lower Dominance|$passage]]>><<set $NPCName[$NPCNameList.indexOf("Whitney")].dom -= 20>><</link>>
 <br>
-
 <<link [[Whitney Raise Dominance|$passage]]>><<set $NPCName[$NPCNameList.indexOf("Whitney")].dom += 20>><</link>>
 <br>
 
 <<link [[Whitney Love|$passage]]>><<set $NPCName[$NPCNameList.indexOf("Whitney")].love += 20>><<set $NPCName[$NPCNameList.indexOf("Whitney")].lust += 20>><</link>>
 <br>
-
 <<link [[Whitney Romance|$passage]]>><<set $whitneyromance to 1>><</link>>
 <br>
 
@@ -625,6 +548,8 @@ These still require Fertilise
 
 <<widget "debugEvents">>
 
+<<link [[Imprison Me|Underground Intro2]]>><<generate1>><<person1>><</link>>
+<br>
 <<link [[Start Robin Event|$passage]]>><<set $robindebt to 9>><</link>>
 <br>
 <<link [[School Start|Oxford Street]]>><<pass 1 day>><</link>>
