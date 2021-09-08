@@ -140,129 +140,238 @@ The air is thick with the smell of a sweet incense. You can't see where its bein
 
 :: Temple Prayer
 <<temple_effects>><<pass 60>><<effects>>
+<<NPCStatusCheck "Kylar Sydney">>
+<<set _rng to random(1,7)>>
 
 <<set $hallucinogen += 60>>
 You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 
-<<if $rng gte 81>>
-	<<if $NPCName[$NPCNameList.indexOf("Robin")].love gte 60 and random(1, 2) is 2>>
-		Your thoughts turn to Robin.
-			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 21>>
-				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
-			<<else>>
-				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
-			<</if>>
-	<<elseif $trauma gte ($traumamax / 5) * 4>>
-		You think about how relentless people have been in their horrible pursuits. You realise you're surviving, despite it all.
-		<<gawareness>><<awareness 1>>
-	<<elseif $trauma gte ($traumamax / 5) * 3>>
-		You think about all the horrible things people have done to you. It's oddly cathartic.
-		<<lltrauma>><<trauma -12>>
-	<<elseif $trauma gte ($traumamax / 5) * 2>>
-		You think about all the pain you've endured. It's oddly cathartic.
-		<<ltrauma>><<trauma -6>>
-	<<elseif $trauma gte $traumamax / 5>>
-		You think about how horrible some people can be. You don't feel as vindictive as you expected.
-		<<gpurity>><<purity 1>>
-	<<else>>
-		You think about how, despite everything, you've managed to look after yourself.
-		<<lstress>><<stress -6>>
-	<</if>>
-<<elseif $rng gte 61>>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and random(1, 2) is 2>>
-		Your thoughts turn to Kylar.
-			<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
-				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
-			<<else>>
-				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
-			<</if>>
-	<<elseif $stress gte ($stressmax / 5) * 4>>
-		You try to shut your eyes, but you find you need them open, watching the door. You realise how afraid you are of an assailant bursting in. You tell yourself the temple wouldn't allow that.
-		<<gcontrol>><<control 10>>
-	<<elseif $stress gte ($stressmax / 5) * 3>>
-		You realise how quickly your heart is beating, even at rest. You calm down a little.
-		<<llstress>><<stress -12>>
-	<<elseif $stress gte ($stressmax / 5) * 2>>
-		You feel your heart beat. It calms over time.
-		<<lstress>><<stress -6>>
-	<<elseif $stress gte $stressmax / 5>>
-		You find yourself worrying about being attacked on the way home. You tell yourself there's no sense worrying now.
-		<<gcontrol>><<control 5>>
-	<<else>>
-		You feel at peace.
-		<<ltrauma>><<trauma -6>>
-	<</if>>
-<<elseif $rng gte 41>>
-	<<if $NPCName[$NPCNameList.indexOf("Whitney")].love gte 21 and random(1, 2) is 2>>
-		Your thoughts turn to Whitney.
-			<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 14>>
-				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
-			<<else>>
-				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
-			<</if>>
-	<<elseif $arousal gte ($arousalmax / 5) * 4>>
-		Try as you might, you can't keep your thoughts from turning to sex.
-		<<gstress>><<larousal>><<stress 6>><<arousal -6>>
-	<<elseif $arousal gte ($arousalmax / 5) * 3>>
-		Thoughts of sex intrude. You struggle to keep them at bay.
-		<<larousal>><<arousal 600>>
-	<<elseif $arousal gte ($arousalmax / 5) * 2>>
-		Your thoughts keep turning to sex, but you manage to keep them at bay.
-		<<larousal>><<arousal 600>>
-	<<elseif $arousal gte $arousalmax / 5>>
-		You struggle to keep your mind clear and focused.
-	<<else>>
-		You're able to keep your mind clear and focused.
-		<<gwillpower>><<willpower 1>>
-	<</if>>
-<<elseif $rng gte 21>>
-	<<if $NPCName[$NPCNameList.indexOf("Eden")].love gte 120 and random(1, 2) is 2>>
-		Your thoughts turn to Eden.
-		<<if $NPCName[$NPCNameList.indexOf("Eden")].lust gte 60>>
-			<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+<<switch _rng>>
+	<<case 1>>
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].love gte 60 and random(1, 2) is 2>>
+			Your thoughts turn to Robin,
+				<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 21>>
+					and the pain <<nnpc_hes "Robin">> in.
+					<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+				<<else>>
+					and you smile on reflex.
+					<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+				<</if>>
+		<<elseif $trauma gte ($traumamax / 5) * 4>>
+			You think about how relentless people have been in their horrible pursuits. You realise you're surviving, despite it all.
+			<<gawareness>><<awareness 1>>
+		<<elseif $trauma gte ($traumamax / 5) * 3>>
+			You think about all the horrible things people have done to you. It's oddly cathartic.
+			<<lltrauma>><<trauma -12>>
+		<<elseif $trauma gte ($traumamax / 5) * 2>>
+			You think about all the pain you've endured. It's oddly cathartic.
+			<<ltrauma>><<trauma -6>>
+		<<elseif $trauma gte $traumamax / 5>>
+			You think about how horrible some people can be. You don't feel as vindictive as you expected.
+			<<gpurity>><<purity 1>>
 		<<else>>
-			<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+			You think about how, despite everything, you've managed to look after yourself.
+			<<lstress>><<stress -6>>
 		<</if>>
-	<<elseif $control gte ($controlmax / 5) * 4>>
-		You feel safe, secure and at peace.
-		<<gpurity>><<purity 1>><<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
-	<<elseif $control gte ($controlmax / 5) * 3>>
-		The thick stone walls reassure you.
-		<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
-	<<elseif $control gte ($controlmax / 5) * 2>>
-		You have trouble keeping your eyes closed in case something sneaks in.
-		<<ltrauma>><<trauma -6>>
-	<<elseif $control gte $controlmax / 5>>
-		Fear dominates your mind, but your heart steadies and you feel less anxious over time.
-		<<gcontrol>><<control 10>>
-	<<else>>
-		You struggle to keep panic at bay. Your heart steadies and you feel less anxious over time.
-		<<gcontrol>><<control 10>>
-	<</if>>
-<<else>>
-	<<if $NPCName[$NPCNameList.indexOf("Avery")].love gte 60 and random(1, 2) is 2>>
-		Your thoughts turn to Avery.
-		<<if $NPCName[$NPCNameList.indexOf("Avery")].rage gte 60>>
-			<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+	<<case 2>>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and random(1, 2) is 2>>
+			Your thoughts turn to Kylar,
+				<<if _kylarStatus.includes("Rage")>>
+					and you wonder if <<nnpc_hes "Kylar">> looking for you. <<nnpc_He "Kylar">> probably is.
+					<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+				<<else>>
+					and the doodles <<nnpc_he "Kylar">> makes of you.
+					<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+				<</if>>
+		<<elseif $stress gte ($stressmax / 5) * 4>>
+			You try to shut your eyes, but you find you need them open, watching the door. You realise how afraid you are of an assailant bursting in. You tell yourself the temple wouldn't allow that.
+			<<gcontrol>><<control 10>>
+		<<elseif $stress gte ($stressmax / 5) * 3>>
+			You realise how quickly your heart is beating, even at rest. You calm down a little.
+			<<llstress>><<stress -12>>
+		<<elseif $stress gte ($stressmax / 5) * 2>>
+			You feel your heart beat. It calms over time.
+			<<lstress>><<stress -6>>
+		<<elseif $stress gte $stressmax / 5>>
+			You find yourself worrying about being attacked on the way home. You tell yourself there's no sense worrying now.
+			<<gcontrol>><<control 5>>
 		<<else>>
-			<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+			You feel at peace.
+			<<ltrauma>><<trauma -6>>
 		<</if>>
-	<<elseif $awareness gte 800>>
-		You feel some power press against you. Something unseen.
-		<<ggwillpower>><<gtrauma>><<willpower 3>><<trauma 6>><<gstress>><<stress 6>>
-	<<elseif $awareness gte 600>>
-		You know this location isn't arbitrary. They built it here for a reason. You feel uneasy wondering what the priests know, and what they don't.
-		<<gwillpower>><<willpower 1>><<gtrauma>><<trauma 6>>
-	<<elseif $awareness gte 400>>
-		You wonder if this room is as safe as it appears.
-		<<gstress>><<stress 6>>
-	<<elseif $awareness gte 200>>
-		You follow the trail of incense as it swirls up from grates in the floor.
-	<<else>>
-		The incense swirls around you and makes pretty patterns.
-		<<lstress>><<stress -6>>
-	<</if>>
-<</if>>
+	<<case 3>>
+		<<if $NPCName[$NPCNameList.indexOf("Whitney")].love gte 21 and random(1, 2) is 2>>
+			Your thoughts turn to Whitney,
+				<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 14>>
+					and how <<nnpc_he "Whitney">> always tries to control you.
+					<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+				<<else>>
+					and how you feel oddly safe with <<nnpc_him "Whitney">>. Safe from other people, at least.
+					<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+				<</if>>
+		<<elseif $arousal gte ($arousalmax / 5) * 4>>
+			Try as you might, you can't keep your thoughts from turning to sex.
+			<<gstress>><<larousal>><<stress 6>><<arousal -6>>
+		<<elseif $arousal gte ($arousalmax / 5) * 3>>
+			Thoughts of sex intrude. You struggle to keep them at bay.
+			<<larousal>><<arousal 600>>
+		<<elseif $arousal gte ($arousalmax / 5) * 2>>
+			Your thoughts keep turning to sex, but you manage to keep them at bay.
+			<<larousal>><<arousal 600>>
+		<<elseif $arousal gte $arousalmax / 5>>
+			You struggle to keep your mind clear and focused.
+		<<else>>
+			You're able to keep your mind clear and focused.
+			<<gwillpower>><<willpower 1>>
+		<</if>>
+	<<case 4>>
+		<<if $NPCName[$NPCNameList.indexOf("Eden")].love gte 120 and random(1, 2) is 2>>
+			Your thoughts turn to Eden,
+			<<if $NPCName[$NPCNameList.indexOf("Eden")].lust gte 60>>
+				and how insatiable <<nnpc_he "Eden">> can be.
+				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+			<<else>>
+				and you wonder how <<nnpc_hes "Eden">> doing in the forest.
+				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+			<</if>>
+		<<elseif $control gte ($controlmax / 5) * 4>>
+			You feel safe, secure and at peace.
+			<<gpurity>><<purity 1>><<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+		<<elseif $control gte ($controlmax / 5) * 3>>
+			The thick stone walls reassure you.
+			<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+		<<elseif $control gte ($controlmax / 5) * 2>>
+			You have trouble keeping your eyes closed in case something sneaks in.
+			<<ltrauma>><<trauma -6>>
+		<<elseif $control gte $controlmax / 5>>
+			Fear dominates your mind, but your heart steadies and you feel less anxious over time.
+			<<gcontrol>><<control 10>>
+		<<else>>
+			You struggle to keep panic at bay. Your heart steadies and you feel less anxious over time.
+			<<gcontrol>><<control 10>>
+		<</if>>
+	<<case 5>>
+		<<if $NPCName[$NPCNameList.indexOf("Avery")].love gte 60 and random(1, 2) is 2>>
+			Your thoughts turn to Avery,
+			<<if $NPCName[$NPCNameList.indexOf("Avery")].rage gte 60 and $averyragerevealed is 1>>
+				and <<nnpc_his "Avery">> attitude when you disappoint him. You clutch your arm.
+				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+			<<else>>
+				and the dates <<nnpc_hes "Avery">> taken you on. <<nnpc_he "Avery">> treats you well.
+				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+			<</if>>
+		<<elseif $awareness gte 800>>
+			You feel some power press against you. Something unseen.
+			<<ggwillpower>><<gtrauma>><<willpower 3>><<trauma 6>><<gstress>><<stress 6>>
+		<<elseif $awareness gte 600>>
+			You know this location isn't arbitrary. They built it here for a reason. You feel uneasy wondering what the priests know, and what they don't.
+			<<gwillpower>><<willpower 1>><<gtrauma>><<trauma 6>>
+		<<elseif $awareness gte 400>>
+			You wonder if this room is as safe as it appears.
+			<<gstress>><<stress 6>>
+		<<elseif $awareness gte 200>>
+			You follow the trail of incense as it swirls up from grates in the floor.
+		<<else>>
+			The incense swirls around you and makes pretty patterns.
+			<<lstress>><<stress -6>>
+		<</if>>
+	<<case 6>>
+		<<if $NPCName[$NPCNameList.indexOf("Sydney")].love gte 90 and random(1, 2) is 2>>
+			Your thoughts turn to Sydney,
+			<<if ($templePromised is "Sydney" and $player.virginity.temple is false) or $NPCName[$NPCNameList.indexOf("Sydney")].virginity.temple is false or ($templePromised isnot "Sydney" and !_sydneyVirgin)>>
+				and your broken vow with the temple.
+				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+			<<else>>
+				<<if _sydneySeen.includes("corruptroom")>>
+					and how you've used this room in the past. Your face flushes.
+					<<garousal>><<arousal 600>>
+				<<else>>
+					and you wonder if <<nnpc_hes "Sydney">> used this room in the past too.
+				<</if>>
+				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+			<</if>>
+		<<elseif $fatigue gte 1600>>
+			Your body threatens to collapse at any moment. You somehow find it in you to stay awake.
+			<<ggwillpower>><<willpower 6>><<gstress>><<stress 6>><<ltired>><<tiredness -12>>
+		<<elseif $fatigue gte 1200>>
+			You feel your eyelids drooping, but the smell of the incense and a quick pinch to the thigh keeps you awake.
+			<<gwillpower>><<willpower 3>><<ltired>><<tiredness -6>>
+		<<elseif $fatigue gte 800>>
+			You zone out for a moment, before snapping back to reality.
+			<<gtired>><<tiredness 6>>
+		<<elseif $fatigue gte 400>>
+			You take a deep breath and relax your shoulders.
+			<<lstress>><<stress -6>><<ltired>><<tiredness -6>>
+		<<else>>
+			The incense seeps into your muscles, soothing you. You let out a comfortable sigh.
+			<<lstress>><<stress -6>><<ltrauma>><<trauma -6>><<gtired>><<tiredness 6>>
+		<</if>>
+	<<case 7>>
+		<<if $NPCName[$NPCNameList.indexOf("Alex")].love gte 60 and random(1, 2) is 2>>
+			Your thoughts turn to Alex, and the farm.
+			<<if $farm_attacked is 1>>
+				You realise you missed the raid, and <span class="red">Remy attacked while you were away</span>. Your heart sinks.
+				<<lcontrol>><<control -10>><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+			<<elseif $farm_attack_timer is 0>>
+				<<if $hour gte 21>>
+					<<if $minute gte 30>>
+						Remy will attack tonight, and <span class="red">you won't be able to get to the farm in time to help</span>. Your heart sinks.
+						<<lcontrol>><<control -10>>
+					<<else>>
+						<span class="pink">Remy might already be attacking.</span>
+					<</if>>
+				<<else>>
+					<span class="purple">Remy will attack tonight.</span>
+				<</if>>
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+			<<elseif $farm.aggro gte 60>>
+				Remy's goons just won't leave you alone.
+				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
+			<<else>>
+				You hope for a good harvest.
+				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+			<</if>>
+		<<else>>
+			Your thoughts turn to Bailey.
+			<<if $renttime lte 0>>
+				<<if $money gte $rentmoney>>
+					You have enough to pay <<nnpc_him "Bailey">>,
+					<<if $baileydefeatedchain gte 1>>
+						but you wonder if you even need to.
+					<<else>>
+						fortunately.
+					<</if>>
+					<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+				<<else>>
+					You don't have enough to pay <<nnpc_him "Bailey">>.
+					<<if $baileydefeatedchain gte 1>>
+						You wonder if you even need to.
+					<<else>>
+						You wonder if there are any ways to earn money fast enough.
+					<</if>>
+					<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+				<</if>>
+			<<else>>
+				<<if $money gte $rentmoney>>
+					You have enough to pay <<nnpc_him "Bailey">> on <<rentday>>,
+					<<if $baileydefeatedchain gte 1>>
+						but you wonder if you even need to.
+					<<else>>
+						fortunately.
+					<</if>>
+					<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
+				<<else>>
+					You don't have enough to pay <<nnpc_him "Bailey">> on <<rentday>>.
+					<<if $baileydefeatedchain gte 1>>
+						You wonder if you even need to.
+					<<else>>
+						You wonder if there are any ways to earn money fast enough.
+					<</if>>
+					<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+				<</if>>
+			<</if>>
+		<</if>>
+<</switch>>
 <br><br>
 
 <<set $rng to random(1, 100)>>

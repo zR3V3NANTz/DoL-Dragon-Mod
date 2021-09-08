@@ -85,7 +85,7 @@ Tulips grow in great patches near the riverbank.
 		<</if>>
 		<<if $exposed lte 0 and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $weather isnot "rain" and $weather isnot "snow" and $daystate is "day">>
 			<<if $schoolday isnot 1 or $hour lte 8 or $hour gte 15>>
-				<<if $kylarFountain is 1>>
+				<<if $kylar.fountain is 1>>
 					<br>
 					Kylar sits at the fountain, occasionally tossing coins in.
 					<br>

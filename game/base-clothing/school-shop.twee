@@ -24,7 +24,7 @@
         <<if $schoolShopAction is undefined>>
             <<set $schoolShopAction to []>>
         <</if>>
-		<<sydneyStatusCheck>>
+		<<NPCStatusCheck "Sydney">>
         <<if $schoolShopAction.includes("wear") or $schoolShopAction.includes("try") or $schoolShopAction.includes("under")>>
 			<<if random(1,10) is 1>>
 				You hear Sydney speaking outside. "Um, the changing room is currently occupied! Sorry."

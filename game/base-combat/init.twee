@@ -1041,7 +1041,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 	<<else>>
 		<<if $npc.includes("Sydney") and !$sydneySeen.includes("herm")>>
 			<<set $sydneySeen.pushUnique("herm")>>
-			<<sydneyStatusCheck>>
+			<<NPCStatusCheck "Sydney">>
 			<<if _sydneyStatus.includes("corrupt")>>
 				<<He>> stares with wonder at your <<genitals>>. "Woah! <<sydneyMum>> never told me that was possible."
 			<<else>>
@@ -1101,7 +1101,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 	<<else>>
 		<<if $npc.includes("Sydney") and !$sydneySeen.includes("crossdress")>>
 			<<set $sydneySeen.pushUnique("crossdress")>>
-			<<sydneyStatusCheck>>
+			<<NPCStatusCheck "Sydney">>
 			<<if _sydneyStatus.includes("corrupt")>>
 				<<He>> looks taken aback by your <<genitals>>. "All this time, you were a <<gender>>? Well, that doesn't change how I feel about you."
 			<<else>>

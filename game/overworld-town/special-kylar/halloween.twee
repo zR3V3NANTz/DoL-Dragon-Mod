@@ -40,6 +40,7 @@ It takes a moment to recognise <<him>>. It's Kylar.
 
 :: Kylar Halloween
 <<set $location to "town">><<effects>>
+<<set $dateCount.Total++>><<set $dateCount.Kylar++>>
 
 Kylar leads you through the park, and onto Nightingale Street. You pass by some delinquent students, but they're too drunk to recognise <<him>>.
 <br><br>
@@ -227,6 +228,9 @@ You turn and wrap your arms around Kylar, pulling <<him>> into a kiss. <<takeKis
 <br><br>
 
 You pull away, leaving <<him>> with a blissful smile and smudged makeup.
+<<if _npcKissVirginTemp>>
+	"Th-that was my first kiss," <<he>> whispers, <<his>> eyes shining. "It was better than I could've ever dreamed."
+<</if>>
 <br><br>
 
 <<link [[Walk back to town|Kylar Halloween Town]]>><</link>>
@@ -288,13 +292,13 @@ You hold Kylar's hand the rest of the way back to town. <<takeHandholdingVirgini
 <</if>>
 
 :: Kylar Halloween Sex Finish
-
 <<set $outside to 0>><<effects>>
+<<NPCStatusCheck "Kylar">>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	<<He>> lies on the ground beside you, <<his>> costume disheveled. <<tearful>> you climb to your feet.
 	<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+		<<if _kylarStatus.includes("Rage")>>
 			Kylar rises to <<his>> knees and faces your <<genitals>>. "You didn't cum," <<he>> murmurs. "Was I... not good enough?" <<He>> shakes <<his>> head violently. "I'll make up for it. I'll show you."
 		<<else>>
 			Kylar rises to <<his>> knees and faces your <<genitals>>. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. Not after you made me. Here, I'll make it up."
@@ -499,7 +503,7 @@ You throw your arms around Kylar, and smother <<him>> with kisses. <<He>> wraps 
 <</if>>
 
 :: Kylar Halloween Mansion Sex Finish
-
+<<NPCStatusCheck "Kylar">>
 <<set $outside to 0>><<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
@@ -518,7 +522,7 @@ You throw your arms around Kylar, and smother <<him>> with kisses. <<He>> wraps 
 
 	<<tearful>> you rise to your feet.
 	<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+		<<if _kylarStatus.includes("Rage")>>
 			Kylar rises to <<his>> knees and faces your <<genitals>>. "You didn't cum," <<he>> murmurs. "Don't you love me?" <<He>> shakes <<his>> head violently. "I'll make up for it. I'll show you."
 		<<else>>
 			Kylar rises to <<his>> knees and faces your <<genitals>>. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. Not after you made me. Here, I'll make it up."
@@ -674,7 +678,14 @@ You climb to your feet, releasing Kylar. <<He>> searches for the key in the dust
 :: Kylar Halloween Known Kiss
 <<effects>>
 
-You rest your hands on Kylar's shoulders, and plant a kiss of <<his>> lips. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>><<He>> wraps <<his>> arms around yours in turn, and tugs you back down. <<His>> pulse races.<<promiscuity1>>
+You rest your hands on Kylar's shoulders, and plant a kiss of <<his>> lips. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>>
+<<if _npcKissVirginTemp>>
+	<<His>> breath hitches, and <<he>> wraps <<his>> arms around yours in turn, tugging you back down.
+<<else>>
+	<<He>> wraps <<his>> arms around yours in turn, and tugs you back down.
+<</if>>
+<<His>> pulse races.
+<<promiscuity1>>
 
 <<link [[Next|Kylar Halloween Known Sex]]>><<set $sexstart to 1>><</link>>
 <br>
@@ -727,13 +738,13 @@ Kylar's eye close, and <<he>> breathes a sigh of relief.
 <</if>>
 
 :: Kylar Halloween Known Sex Finish
-
+<<NPCStatusCheck "Kylar">>
 <<set $outside to 0>><<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	Kylar falls back, now panting even harder. <<tearful>> you climb to your feet.
 	<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+		<<if _kylarStatus.includes("Rage")>>
 			Kylar rises to <<his>> knees and faces your <<genitals>>. "You didn't cum," <<he>> murmurs. "Don't you love me?" <<He>> shakes <<his>> head violently. "I'll make up for it. I'll show you."
 		<<else>>
 			Kylar rises to <<his>> knees and faces your <<genitals>>. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. Not after you made me. Here, I'll make it up."
@@ -992,7 +1003,13 @@ You keep running, unbothered by fatigue, until you see the lights of town up ahe
 :: Kylar Halloween Skulduggery Kiss
 <<effects>>
 
-You lean forward, and plant a kiss on Kylar's lips. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>><<He>> pulls you to the forest floor.
+You lean forward, and plant a kiss on Kylar's lips. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>>
+<<if _npcKissVirginTemp>>
+	<<His>> breath hitches, and <<he>>
+<<else>>
+	<<He>>
+<</if>>
+pulls you to the forest floor.
 <<promiscuity1>>
 
 <<link [[Next|Kylar Halloween Sex]]>><<set $sexstart to 1>><</link>>

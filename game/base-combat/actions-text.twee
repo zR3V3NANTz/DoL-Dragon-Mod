@@ -1330,13 +1330,18 @@ You kiss the <<beasttype>> on the head.
 				<</if>>
 
 			<<case "Sydney">>
+				<<NPCStatusCheck "Sydney">>
 				<<set $speechnamedrop to 1>>
 				<<if $npc.includes("Sydney")>>
-					You speak. "I thought... you said lust was a sin..."
+					<<if _sydneyStatus.includes("corrupt")>>
+						You speak. "I thought... you said lust was a sin..."
+					<<else>>
+						You speak. "I'm sorry, I'll be pure! Please stop!"
+					<</if>>
 					<<set $speechnamedrop to 0>>
 				<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 					<<if $templePromised is "Sydney">>
-						<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is imminent) or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent")>>
+						<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is imminent) or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent"))>>
 							<<if $awarelevel gte 1>>
 								You <<voice "plead">>. "Please, not that! I'm bound to Sydney, you can't!"
 							<<else>>
@@ -2698,13 +2703,18 @@ You kiss the <<beasttype>> on the head.
 				<</if>>
 
 			<<case "Sydney">>
+				<<NPCStatusCheck "Sydney">>
 				<<set $speechnamedrop to 1>>
 				<<if $npc.includes("Sydney")>>
-					You speak. "I miss when you were pure. At least you didn't pull shit like this."
+					<<if _sydneyStatus.includes("corrupt")>>
+						You speak. "I miss when you were pure. At least you didn't pull shit like this."
+					<<else>>
+						You speak. "What sort of punishment is this? Get off me!"
+					<</if>>
 					<<set $speechnamedrop to 0>>
 				<<elseif $vaginastate is "imminent" or $penisstate is "imminent" or $penisstate is "otheranusimminent">>
 					<<if $templePromised is "Sydney">>
-						<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is imminent) or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent")>>
+						<<if (($player.virginity.vaginal is true or $player.virginity.temple is true) and $vaginastate is imminent) or (($player.virginity.penile is true and $player.virginity.temple is true) and ($penisstate is "imminent" or $penisstate is "otheranusimminent"))>>
 							<<if $awarelevel gte 1>>
 								You <<voice "demand">>. "I'm bound to Sydney, not you! Get off me!"
 							<<else>>

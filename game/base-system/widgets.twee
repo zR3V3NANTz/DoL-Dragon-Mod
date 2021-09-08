@@ -3353,21 +3353,8 @@ __Map__<br>
 <</widget>>
 
 <<widget "rentday">>
-	<<if $rentday is 1>>
-		Sunday.
-	<<elseif $rentday is 2>>
-		Monday.
-	<<elseif $rentday is 3>>
-		Tuesday.
-	<<elseif $rentday is 4>>
-		Wednesday.
-	<<elseif $rentday is 5>>
-		Thursday.
-	<<elseif $rentday is 6>>
-		Friday.
-	<<else>>
-		Saturday.
-	<</if>>
+	<<set $_text_output to  ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][$rentday-1]>>
+	<<print $_text_output>>
 <</widget>>
 
 <<widget "tearup">>

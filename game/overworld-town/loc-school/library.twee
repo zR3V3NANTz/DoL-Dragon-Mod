@@ -492,7 +492,7 @@ You follow <<him>> down the corridor toward the entrance. "H-here," <<he>> says 
 
 	<<link [[Next|School Library]]>><<endevent>><</link>>
 <<elseif $phase is 2>>
-	<<sydneyStatusCheck>>
+	<<NPCStatusCheck "Sydney">>
 	You shout for Sydney. The <<person2>><<person>> sneers. "Oh no, not Sydney, <<nnpc_he "Sydney">>'s gonna write on us, whatever will we do?" The two begin to laugh.
 	<br>
 	However, they're cut off by the thwap of a ruler against skin. The <<person1>><<person>> cries out in pain. You turn to see Sydney's furious gaze, just in time for a second ruler to bounce off of the <<person2>><<persons>> head.
@@ -699,7 +699,7 @@ You follow <<him>> down the corridor toward the entrance. "H-here," <<he>> says 
 
 :: Book Rental
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
-<<sydneySchedule>><<sydneyStatusCheck>>
+<<sydneySchedule>><<NPCStatusCheck "Sydney">>
 You
 <<switch $bookRent>>
 	<<case "return">>
@@ -805,7 +805,7 @@ You
 
 :: Book Rental Return Stolen
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
-<<sydneySchedule>><<sydneyStatusCheck>>
+<<sydneySchedule>><<NPCStatusCheck "Sydney">>
 You return the stolen
 <<if $phase is 5>>
 	copy of "Raul and Janet".

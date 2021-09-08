@@ -361,11 +361,14 @@ alternative way to write that:
 	<!-- Special Cases NNPC Variables, Introductions, Adjustments -->
 	<<switch _nam>>
 	<<case Kylar>>
-		<<set $kylartimer to 0>>
-		<<set $kylarstreettimer to 0>>
-		<<set $kylarraped to 0>>
+		<<set $kylar to {}>>
+		<<set $kylar.raped to 0>>
+		<<set $kylar.riddle to 0>>
+		<<set $kylar.timer to {halls:0,street:0,home:0,love:0}>>
 		<<set $NPCName[$NPCNameList.indexOf("Kylar")].state to 0>>
 		<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
+		<<set $kylarSeen to []>>
+		<<set $kylarDaily to {}>>
 	<<case Robin>>
 		<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
 	<<case River>>
@@ -790,7 +793,7 @@ alternative way to write that:
 <<widget "relationshiptext">>
 <<set _npc to $args[0]>>
 <<set _i to $NPCNameList.indexOf(_npc)>>
-<!-- Special cases for Robin, Avery, Kylar -->
+<!-- Special cases for Robin, Avery, Kylar, Whitney, Sydney -->
 <<switch _npc>>
 	<<case Robin>>
 		Robin
@@ -1043,5 +1046,16 @@ alternative way to write that:
 			<</for>>
 		<</if>>
 	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "NPCStatusCheck">>
+<!-- When NPCs are updated and made compatible with statusCheck-style widgets, add them to here. Make a new if statement, NOT an elseif -->
+<!-- Usage: call a SINGLE argument with every relevant NPC. <<NPCStatusCheck "Kylar Sydney">> will call <<kylarStatusCheck>> and <<sydneyStatusCheck>> -->
+<<if $args[0].includes("Kylar") and $NPCName[$NPCNameList.indexOf("Kylar")].init is 1>>
+	<<kylarStatusCheck>>
+<</if>>
+<<if $args[0].includes("Sydney") and $NPCName[$NPCNameList.indexOf("Sydney")].init is 1>>
+	<<sydneyStatusCheck>>
 <</if>>
 <</widget>>

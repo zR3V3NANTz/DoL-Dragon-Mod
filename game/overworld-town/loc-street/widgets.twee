@@ -1387,29 +1387,30 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 <</widget>>
 
 <<widget "kylarwatched">>
+<<NPCStatusCheck "Kylar">>
 
 <<if $dangerevent gte 81>>
-<<set $kylarwatchedtimer -= 1>>
-<<generate1>><<person1>>You hear a <<person>> behind you. <<catcall>> Before you can respond, a pair of intruding hands grasp you, but only for a moment. <<He>> winces and clutches <<his>> neck. <<He>> pulls out a small dart, looks at it, and collapses.
-<br><br>
+	<<set $kylarwatchedtimer -= 1>>
+	<<generate1>><<person1>>You hear a <<person>> behind you. <<catcall>> Before you can respond, a pair of intruding hands grasp you, but only for a moment. <<He>> winces and clutches <<his>> neck. <<He>> pulls out a small dart, looks at it, and collapses.
+	<br><br>
 
-<<link [[Rob|Street Kylar Rob]]>><</link>><<crime>>
-<br>
-<<link [[Get help (0:10)|Street Kylar Help]]>><<pass 10>><<famegood 2>><</link>>
-<br>
-<<link [[Leave|Street Kylar Leave]]>><</link>>
-<br>
+	<<link [[Rob|Street Kylar Rob]]>><</link>><<crime>>
+	<br>
+	<<link [[Get help (0:10)|Street Kylar Help]]>><<pass 10>><<famegood 2>><</link>>
+	<br>
+	<<link [[Leave|Street Kylar Leave]]>><</link>>
+	<br>
 
 <<elseif $dangerevent gte 61>>
-<<set $kylarwatchedtimer -= 1>>
+	<<set $kylarwatchedtimer -= 1>>
 
-<<generate1>><<person1>>You catch a <<person>> checking you out. <<He>> winks.
-<br><br>
+	<<generate1>><<person1>>You catch a <<person>> checking you out. <<He>> winks.
+	<br><br>
 
-<<link [[Wink back|Street Kylar Wink]]>><<npcincr Kylar rage 5>><</link>><<promiscuous1>><<gksuspicion>>
-<br>
-<<link [[Ignore|Street Kylar Ignore]]>><</link>>
-<br>
+	<<link [[Wink back|Street Kylar Wink]]>><<npcincr Kylar rage 5>><</link>><<promiscuous1>><<gksuspicion>>
+	<br>
+	<<link [[Ignore|Street Kylar Ignore]]>><</link>>
+	<br>
 
 <<elseif $dangerevent gte 41>>
 	<<set $kylarwatchedtimer -= 1>>
@@ -1460,28 +1461,25 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 		<</if>>
 	<</if>>
 
-<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].lust gte 60 and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
-<<set $kylarwatchedtimer to 0>>
+<<elseif _kylarStatus.includes("LoveLust")>>
+	<<set $kylarwatchedtimer to 0>>
 
-<<npc Kylar>><<person1>>Something tugs your arm. It's Kylar. "H-hi," <<he>> gulps. <<He>> tries to pull you toward a dark alley. "We need privacy. I need you to do things to me."
-<br><br>
+	<<npc Kylar>><<person1>>Something tugs your arm. It's Kylar. "H-hi," <<he>> gulps. <<He>> tries to pull you toward a dark alley. "We need privacy. I need you to do things to me."
+	<br><br>
 
-<<link [[Go with Kylar|Street Kylar Sex]]>><<set $sexstart to 1>><<npcincr Kylar love 5>><<npcincr Kylar rage -10>><</link>><<promiscuous1>><<gglove>><<llksuspicion>>
-<br>
-<<link [[Refuse|Street Kylar Refuse]]>><<npcincr Kylar love -5>><<npcincr Kylar rage 20>><</link>><<lllove>><<gggksuspicion>>
-<br><br>
+	<<link [[Go with Kylar|Street Kylar Sex]]>><<set $sexstart to 1>><<npcincr Kylar love 5>><<npcincr Kylar rage -10>><</link>><<promiscuous1>><<gglove>><<llksuspicion>>
+	<br>
+	<<link [[Refuse|Street Kylar Refuse]]>><<npcincr Kylar love -5>><<npcincr Kylar rage 20>><</link>><<lllove>><<gggksuspicion>>
+	<br><br>
 
 <<else>>
+	<<npc Kylar>><<person1>>You see Kylar staring at you from across the road. A bus passes between you. By the time it leaves, <<hes>> gone.
+	<<gstress>><<stress 6>>
+	<br><br>
 
-<<npc Kylar>><<person1>>You see Kylar staring at you from across the road. A bus passes between you. By the time it leaves, <<hes>> gone.
-<<gstress>><<stress 6>>
-<br><br>
-
-<<endevent>>
-<<destinationeventend>>
-
+	<<endevent>>
+	<<destinationeventend>>
 <</if>>
-
 <</widget>>
 
 <<widget "streetsexfame">>
@@ -2785,8 +2783,8 @@ You find a quiet place and open the <<wallet>>.
 <</widget>>
 
 <<widget "streeteffects">>
-	<<if $kylarstreettimer gte ($rng + 65) and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $kylarwatched isnot 1 and $exposed lte 0>>
-		<<set $kylarstreettimer to 0>><<set $kylarwatchedtimer to 2>>
+	<<if $kylar and $kylar.timer.street gte ($rng + 65) and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $kylarwatched isnot 1 and $exposed lte 0>>
+		<<set $kylar.timer.street to 0>><<set $kylarwatchedtimer to 2>>
 		You shiver, a warning from some primal instinct. <span class="blue">Something is watching you.</span>
 		<<set $kylarwatched to 1>><<set $eventskip to 1>>
 	<<elseif $kylarwatched is 1>>

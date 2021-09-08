@@ -33,41 +33,40 @@
 <</widget>>
 
 <<widget "kylaroptions">>
-
 <<kylaroptionstext>>
 
 <<if $location is "school" and $hour isnot 12>>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
-	<<He>> looks at <<his>> watch. "I need to go," <<he>> says. "I'll be late for my lesson." <<He>> keeps looking over <<his>> shoulder as <<he>> walks.
-	<br><br>
+	<<if _kylarStatus.includes("Love")>>
+		<<He>> looks at <<his>> watch. "I need to go," <<he>> says. "I'll be late for my lesson." <<He>> keeps looking over <<his>> shoulder as <<he>> walks.
+		<br><br>
 	<<else>>
-	<<He>> looks at <<his>> watch, mumbles something, then walks away.
-	<br><br>
+		<<He>> looks at <<his>> watch, mumbles something, then walks away.
+		<br><br>
 	<</if>>
-<<kylaroptionsleave>>
+	<<kylaroptionsleave>>
 <<elseif ($bus is "starfish" or $bus is "park") and $daystate isnot "day">>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
-	<<He>> looks at <<his>> watch. "I need to go," <<he>> says. "They're waiting for me." <<He>> keeps looking over <<his>> shoulder as <<he>> walks.
-	<br><br>
+	<<if _kylarStatus.includes("Love")>>
+		<<He>> looks at <<his>> watch. "I need to go," <<he>> says. "They're waiting for me." <<He>> keeps looking over <<his>> shoulder as <<he>> walks.
+		<br><br>
 	<<else>>
-	<<He>> looks at <<his>> watch, mumbles something, then walks away.
-	<br><br>
+		<<He>> looks at <<his>> watch, mumbles something, then walks away.
+		<br><br>
 	<</if>>
-<<kylaroptionsleave>>
+	<<kylaroptionsleave>>
 <<else>>
-	<<if $kylarFountainKiss is 1 and $kylar_action is "walk">>
+	<<if !$kylarDaily.walkKiss and $kylar_action is "walk">>
 		<<link [[Kiss|Kylar Walk In The Park End 2]]>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<npcincr Kylar rage -5>><</link>><<glove>><<glust>><<llksuspicion>><<kissvirginitywarning>>
 		<br>
 	<</if>>
 	<<link [[Chat (0:15)|Kylar Chat]]>><<pass 15>><<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<stress -2>><</link>><<lstress>><<glove>><<lksuspicion>>
 	<br>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+	<<if _kylarStatus.includes("Love")>>
 		<<link [[Flirt (0:15)|Kylar Tease]]>><<pass 15>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<stress -2>><</link>><<promiscuous1>><<lstress>><<glove>><<glust>>
 	<<else>>
 		<<link [[Tease (0:15)|Kylar Tease]]>><<pass 15>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<stress -2>><</link>><<promiscuous1>><<lstress>><<glove>><<glust>>
 	<</if>>
 	<br>
-	<<if $kylar_action is "panties" and $promiscuity gte 35 and ($whitneypantiescheck is 1 or $exhibitionism gte 75 or $kylarhomeinterrupted is 1)>>
+	<<if $kylar_action is "panties" and $promiscuity gte 35 and ($whitneypantiescheck is 1 or $exhibitionism gte 75 or $kylarSeen.includes("home"))>>
 		<<if $pronoun is "m">>
 			<<link [[Ask Kylar for his underwear|Kylar Tease Underwear]]>><<arousal 600>><<npcincr Kylar lust 3>><</link>><<promiscuous3>><<garousal>><<gglust>>
 		<<else>>
@@ -75,7 +74,7 @@
 		<</if>>
 		<br>
 	<</if>>
-	<<if $kylar_action is "tease" and $promiscuity gte 15 and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50 and (($location is "school" and $kylar_invite isnot 1 and $kylar_invite isnot 2) or ($location isnot "school" and $kylar_invite isnot 1))>>
+	<<if $kylar_action is "tease" and $promiscuity gte 15 and _kylarStatus.includes("Love") and (($location is "school" and $kylarDaily.invite isnot "school") or ($location isnot "school" and $kylarDaily.invite isnot "home"))>>
 		<<link [[Take it further|Kylar Tease 2]]>><<npcincr Kylar lust 3>><</link>><<promiscuous2>><<gglust>>
 		<br>
 	<</if>>
@@ -93,20 +92,20 @@
 			<br>
 		<</if>>
 	<</if>>
-	<<if $bus is "park" and $kylarwalk isnot 1 and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
-		<<link [[Ask to go for a walk (0:15)|Kylar Walk In The Park]]>><<pass 15>><<stress -3>><<npcincr Kylar love 1>><<npcincr Kylar rage -3>><<set $kylarwalk to 1>><</link>><<lstress>><<glove>><<llksuspicion>>
+	<<if $bus is "park" and !$kylarDaily.walk and _kylarStatus.includes("Love")>>
+		<<link [[Ask to go for a walk (0:15)|Kylar Walk In The Park]]>><<pass 15>><<stress -3>><<npcincr Kylar love 1>><<npcincr Kylar rage -3>><<set $kylarDaily.walk to true>><</link>><<lstress>><<glove>><<llksuspicion>>
 		<br>
 	<</if>>
 	<<if $loft_known is 1 and $loft_kylar isnot 1 and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 90 and $kylar_action isnot "loft">>
-	<<link [[Tell Kylar about the orphanage loft|Kylar Loft]]>><</link>>
-	<br>
+		<<link [[Tell Kylar about the orphanage loft|Kylar Loft]]>><</link>>
+		<br>
 	<</if>>
 
-	<<if random(1, 100) gte 61 and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50 and $kylar_action isnot "stop">>
-	<<link [[Leave|Kylar Stop]]>><</link>>
-	<br>
+	<<if random(1, 100) gte 61 and _kylarStatus.includes("Love") and $kylar_action isnot "stop">>
+		<<link [[Leave|Kylar Stop]]>><</link>>
+		<br>
 	<<else>>
-	<<kylaroptionsleave>>
+		<<kylaroptionsleave>>
 	<</if>>
 <</if>>
 <</widget>>
@@ -130,14 +129,15 @@
 <</widget>>
 
 <<widget "kylaroptionstext">>
+<<NPCStatusCheck "Kylar">>
 <<set $rng to random(1, 100)>>
 <<if $kylar_text_trigger is true>>
 	<<unset $kylar_text_trigger>>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
-		<<if $kylarchatintro isnot 1>>
-			<<set $kylarchatintro to 1>>
+	<<if _kylarStatus.includes("Love")>>
+		<<if !$kylarSeen.includes("chatIntro")>>
+			<<set $kylarSeen.pushUnique("chatIntro")>>
 			<<He>> clenches <<his>> fists and lifts <<his>> head, looking you straight in the eye. "H-hey," <<he>> says.
-				<<if $kylarhomeinterrupted is 1>>
+				<<if $kylarSeen.includes("home")>>
 				"I-I'm sorry about the thing in your bedroom." <<He>> gulps. 
 					<<if $kylarignored isnot 1>>
 						"I just wanted to thank you for helping me."
@@ -153,79 +153,79 @@
 				<</if>>
 			<<He>> looks away.
 			<br><br>
-		<<elseif $bus is "park" and $kylarFountain is 1 and $season is "winter" and $kylarFountainIntroWinter isnot 1>>
-			<<set $kylarFountainIntroWinter to 1>>
+		<<elseif $bus is "park" and $kylar.fountain is 1 and $season is "winter" and !$kylarSeen.includes("fountainWinter")>>
+			<<set $kylarSeen.pushUnique("fountainWinter") to 1>>
 			<<He>> seems spellbound. The constantly running water and the cold temperature has caused much of the fountain's structure to freeze over and form icicles thicker than your arm, and at least twice as long. Near the centre, some water remains unfrozen.
 			"It's so pretty. It's the most amazing thing I've ever seen!" <<He>> glances at you. "W-well, second most."
 			<br><br>
-		<<elseif $famesex gte 100 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylarfamestage is undefined>>
-			<<set $kylarfameconfront to 1>><<set $kylarfamestage to 0>>
+		<<elseif $famesex gte 100 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylar.fameStage is undefined>>
+			<<set $kylarfameconfront to 1>><<set $kylar.fameStage to 0>>
 			"I-I found a strange picture of you," <<he>> says. "Someone doctored it to make it look like you were doing lewd things." <<He>> laughs. "Some people have no shame."
 			<<npcincr Kylar rage 3>><<gksuspicion>>
 			<br><br>
-		<<elseif $famesex gte 300 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylarfamestage is 0>>
-			<<set $kylarfameconfront to 1>><<set $kylarfamestage to 1>>
+		<<elseif $famesex gte 300 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylar.fameStage is 0>>
+			<<set $kylarfameconfront to 1>><<set $kylar.fameStage to 1>>
 			"I-I found another strange picture of you," <<he>> laughs. "Doctored to make it look like you were doing lewd things." <<He>> laughs again. "You must be popular with perverts."
 			<<npcincr Kylar rage 10>><<ggksuspicion>>
 			<br><br>
-		<<elseif $famesex gte 500 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylarfamestage is 1>>
+		<<elseif $famesex gte 500 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylar.fameStage is 1>>
 			<<set $kylarfameconfront to 1>>
 			"Y-you'll never guess what I found," <<he>> laughs. "More doctored pictures of you doing perverted things." <<His>> laughter reaches a hysterical pitch. "S-Someone spent a lot of time on them. There are so many."
 			<<gggksuspicion>><<npcincr Kylar rage 30>>
 			<br><br>
-		<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+		<<elseif _kylarStatus.includes("Rage")>>
 			"You came to see me," <<he>> says. "Of course you did. Why wouldn't you." <<He>> laughs.
 			<br><br>
 		<<else>>
 			<<He>> smiles at you.
 			<br><br>
 		<</if>>
-	<<elseif $bus is "park" and $kylarFountain is 1 and $season is "winter" and $kylarFountainIntroWinter isnot 1>>
-		<<set $kylarFountainIntroWinter to 1>>
+	<<elseif $bus is "park" and $kylar.fountain is 1 and $season is "winter" and !$kylarSeen.includes("fountainWinter")>>
+		<<set $$kylarSeen.pushUnique("fountainWinter")>>
 		<<He>> seems spellbound. The constantly running water and the cold temperature has caused much of the fountain's structure to freeze over and form icicles thicker than your arm, and at least twice as long. Near the centre, some water remains unfrozen.
 		"It's so pretty. It's the most amazing thing I've ever seen!" <<He>> glances at you. "W-well, second most."
 		<br><br>
-	<<elseif $famesex gte 100 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylarfamestage is undefined>>
-		<<set $kylarfameconfront to 1>><<set $kylarfamestage to 0>>
+	<<elseif $famesex gte 100 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylar.fameStage is undefined>>
+		<<set $kylarfameconfront to 1>><<set $kylar.fameStage to 0>>
 		"I-I found a strange picture of you," <<he>> says. "Someone doctored it to make it look like you were doing lewd things." <<He>> laughs. "Some people have no shame."
 		<<npcincr Kylar rage 3>><<gksuspicion>>
 		<br><br>
-	<<elseif $famesex gte 300 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylarfamestage is 0>>
-		<<set $kylarfameconfront to 1>><<set $kylarfamestage to 1>>
+	<<elseif $famesex gte 300 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylar.fameStage is 0>>
+		<<set $kylarfameconfront to 1>><<set $kylar.fameStage to 1>>
 		"I-I found another strange picture of you," <<he>> laughs. "Doctored to make it look like you were doing lewd things." <<He>> laughs again. "You must be popular with perverts."
 		<<npcincr Kylar rage 10>><<ggksuspicion>>
 		<br><br>
-	<<elseif $famesex gte 500 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylarfamestage is 1>>
+	<<elseif $famesex gte 500 and $rng gte 91 and $kylarfameconfront isnot 1 and $kylar.fameStage is 1>>
 		<<set $kylarfameconfront to 1>>
 		"Y-you'll never guess what I found," <<he>> laughs. "More doctored pictures of you doing perverted things." <<His>> laughter reaches a hysterical pitch. "S-Someone spent a lot of time on them. There are so many."
 		<<gggksuspicion>><<npcincr Kylar rage 30>>
 		<br><br>
-	<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+	<<elseif _kylarStatus.includes("Rage")>>
 		"You came to see me," <<he>> says. "Of course you did. Why wouldn't you." <<He>> laughs.
 		<br><br>
-	<<elseif $kylarFountain is 1 and $rng gte 85>>
+	<<elseif $kylar.fountain is 1 and $rng gte 85>>
 		<<He>> tosses another coin into the fountain.
 	<<else>>
 		<<He>> smiles at you.
 		<br><br>
 	<</if>>
 <<else>>
-	<<He>> blushes and looks away.
-	<br><br>
-<</if>>
+	<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 90 and $spray lt $spraymax and !$kylarDaily.spray is true>><<set $kylarDaily.spray to true>>
+		"I made you something," <<he>> says as <<he>> rummages in <<his>> bag. <<He>> hands you a charge for your pepper spray. "I made it myself. It'll keep sluts and perverts away." <<He>> beams.
+		<<spray 1>><<gspray>>
+		<br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 90 and $spray lt $spraymax and $kylarspray isnot 1>><<set $kylarspray to 1>>
-	"I made you something," <<he>> says as <<he>> rummages in <<his>> bag. <<He>> hands you a charge for your pepper spray. "I made it myself. It'll keep sluts and perverts away." <<He>> beams.
-	<<spray 1>><<gspray>>
-	<br><br>
-
-<<elseif $kylar_riddle is 2>>
-	<<set $kylar_riddle to 0>>
-	"<<print either("A sphinx", "Shadow", "Plumbers", "A jester", "Blue", "The letter E", "French fries", "Leighton", "An eraser", "A snake", "Eggs", "Pepper spray", "Forty-two", "Me", "Autumn", "A video game", "A horror movie", "Insight", "Raul and Janet", "The sewers", "Footsteps", "Starting", "Yesterday, today and tomorrow", "Fire", "Because they were on the left side of the street")>>," <<he>> says<<if $kylarspray isnot 1>> once you've arrived next to <<him>><</if>><<if $bus is "starfish" and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>, not taking <<his>> attention off the game<</if>>.
-	"Th<<if $NPCName[$NPCNameList.indexOf("Kylar")].love lte 49>>-th<</if>>e riddle from yesterday. That's the answer, right?"
-	<br><br>
-	<<He>> <<print either("got it right", "got it right", "got it right", "got it wrong", "got it wrong", "was close", "was way off", "probably forgot what your riddle was", "got it right. You're surprised, it was a toughie")>>.
-	<br><br>
+	<<elseif $kylar.riddle is 2>>
+		<<set $kylar.riddle to 0>>
+		"<<print either("A sphinx", "Shadow", "Plumbers", "A jester", "Blue", "The letter E", "French fries", "Leighton", "An eraser", "A snake", "Eggs", "Pepper spray", "Forty-two", "Me", "Autumn", "A video game", "A horror movie", "Insight", "Raul and Janet", "The sewers", "Footsteps", "Starting", "Yesterday, today and tomorrow", "Fire", "Because they were on the left side of the street")>>," <<he>> says<<if $bus is "starfish" and _kylarStatus.includes("Love")>>, not taking <<his>> attention off the game<</if>>.
+		"Th<<if !_kylarStatus.includes("Love")>>-th<</if>>e riddle from yesterday. That's the answer, right?"
+		<br><br>
+		<<He>> <<print either("got it right", "got it right", "got it right", "got it wrong", "got it wrong", "was close", "was way off", "probably forgot what your riddle was", "got it right. You're surprised, it was a toughie")>>.
+		<br><br>
+	<<else>>
+		<<He>> blushes and looks away.
+		<br><br>
+	<</if>>
 <</if>>
 <</widget>>
 
@@ -238,12 +238,12 @@
 	<<else>>
 		<<set $loveInterest.primary to "None">>
 	<</if>>
-	<span class="red">Kylar is no longer your love interest.</span>
+	<span class="red">Kylar has been imprisoned. <<nnpc_He "Kylar">> is no longer your love interest.</span>
 <<elseif $loveInterest.secondary is "Kylar">>
 	<<set $loveInterest.secondary to "None">>
-	<span class="red">Kylar is no longer your love interest.</span>
+	<span class="red">Kylar has been imprisoned. <<nnpc_He "Kylar">> is no longer your love interest.</span>
 <<elseif $kylarenglish gte 1>>
-	<span class="red">Kylar can no longer be claimed as your love interest.</span>
+	<span class="red">Kylar has been imprisoned. <<nnpc_He "Kylar">> can no longer be claimed as your love interest.</span>
 <<else>>
 	<span class="red">Kylar has been imprisoned.</span>
 <</if>>
@@ -252,7 +252,7 @@
 
 <<widget "kylarFinish">>
 <<if $player.gender is "h">><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
-	<<He>> licks up the base of your shaft, while rubbing your clit with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
+	<<He>> licks up the base of your shaft, while rubbing your pussy entrance with one hand. <<He>> uses <<his>> other hand to hold your penis steady, and engulfs it with <<his>> mouth. <<His>> tongue runs along the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
 	<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
 		<<acceptance "penis_tiny" 10>>
 		<<gacceptance>>
@@ -269,7 +269,7 @@
 	<<if $arousal gte $arousalmax>>
 		<<orgasm>><<penileejacstat>><<penilestat>>
 	<<else>>
-		<<His>> attentions suddenly turn to your clit. <<He>> rubs it with <<his>> free hand, making consistent circular motions. Between <<his>> rubbing, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
+		<<His>> attentions suddenly turn to your pussy. <<He>> thrusts two fingers in, making consistent pistoning motions. Between <<his>> thrusting, <<his>> sucking, and the way <<he>> looks up at you in nigh-worship, you can't hold back any longer.
 		<br><br>
 
 		<<set $arousal to $arousalmax>>
@@ -336,6 +336,30 @@ Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he
 <<elseif $acceptance_penis_big gte 1000>>
 	You think about what Kylar said, and realisation dawns on you. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Big Penis</span> trait.
 	<br><br>
+<</if>>
+<</widget>>
+
+<<widget "kylarStatusCheck">>
+<!-- USAGE: if Kylar's love is over 50, <<if _kylarStatus.includes("Love")>>; if otherwise, <<else>> -->
+<<set _kylarStatus to "">>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+	<<set _kylarStatus to "Love">>
+<<else>>
+	 <<set _kylarStatus to "">>
+<</if>>
+<!-- USAGE: if Kylar's lust is over 60, <<if _kylarStatus.includes("Love")>>; otherwise, <<else>>  -->
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].lust gte 60>>
+	<<set _kylarStatus += "Lust">>
+<</if>>
+<!-- USAGE: if Kylar's jealousy is over 90: <<if _kylarStatus.includes("MaxRage")>>; otherwise if Kylar's jealousy is over 60: <<elseif _kylarStatus.includes("Rage")>>; otherwise if Kylar's jealousy is over 30: <<if !_kylarStatus.includes("Calm")>>; otherwise, <<else>> -->
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 90>>
+	<<set _kylarStatus += "MaxRage">>
+<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+	<<set _kylarStatus += "Rage">>
+<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 30>>
+	<<set _kylarStatus += "Sus">>
+<<else>>
+	<<set _kylarStatus += "Calm">>
 <</if>>
 <</widget>>
 
@@ -523,14 +547,14 @@ You hear a door open above. A person walks down a staircase, carrying something 
 <br>
 
 :: Kylar Basement Rape
-
+<<NPCStatusCheck "Kylar">>
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
 	<<controlloss>>
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<maninit>><<set $enemyarousalmax *= 2>><<set $kylarraped += 1>>
+	<<maninit>><<set $enemyarousalmax *= 2>><<set $kylar.raped += 1>>
 	<<if $worn.under_lower.type.includes("naked")>><<set $NPCList[0].lefthand to "none">><<else>><<set $NPCList[0].lefthand to "underclothes">><</if>>
 	<<if $worn.lower.type.includes("naked")>><<set $NPCList[0].righthand to "none">><<else>><<set $NPCList[0].righthand to "lowerclothes">><</if>>
 	<<if $NPCList[0].penis isnot "none" and $vaginaexist is 1>>
@@ -566,6 +590,9 @@ You hear a door open above. A person walks down a staircase, carrying something 
 
 	<<if $mouthuse isnot "gagged">>
 		<<He>> kisses your mouth. <<takeKissVirginity "Kylar" "rape">>
+		<<if _npcKissVirginTemp>>
+			"That was my first kiss," <<he>> whispers. "After so long. We have so many other firsts ahead of us, my love."
+		<</if>>
 	<<else>>
 		<<He>> kisses your forehead.
 	<</if>>
@@ -803,7 +830,7 @@ Your bedroom door is ajar. You peek through the gap. Kylar stands beside the win
 
 :: Kylar Bedroom Angry
 <<set $outside to 0>><<set $location to "home">><<effects>>
-<<set $kylarhomeinterrupted to 1>>
+<<set $kylarSeen.pushUnique("home")>>
 
 <<if $submissive gte 1150>>
 	"Pervert," you declare. <<He>> jumps in fright and throws the bedding away. "You've been playing with my clothes."
@@ -824,7 +851,7 @@ Kylar tears up as you speak. "I-It's not what it looks like," <<he>> tries to pr
 :: Kylar Bedroom Tease
 
 <<set $outside to 0>><<set $location to "home">><<effects>>
-<<set $kylarhomeinterrupted to 1>>
+<<set $kylarSeen.pushUnique("home")>>
 <<covered>>
 
 <<if $submissive gte 1150>>
@@ -882,10 +909,10 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 <<kylaroptionsleave>>
 
 :: Kylar Tease
-<<set $outside to 0>><<effects>>
+<<set $outside to 0>><<effects>><<NPCStatusCheck "Kylar">>
 <<set $kylar_action to "tease">>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	<<if $rng gte 91>>
 		You pat Kylar's head. <<His>> eyes close in bliss.
 	<<elseif $rng gte 81>>
@@ -898,7 +925,7 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 	<<elseif $rng gte 61>>
 		You lick Kylar's cheek. <<He>> licks you back.
 	<<elseif $rng gte 51>>
-		<<if $kylarpantiescheck is 1 or $kylar_undies_taken is 1>>
+		<<if $kylarSeen.includes("commando") or $kylarDaily.undies is true>>
 			You ask to see Kylar's underwear. "Just to make sure you don't have any, of course," you say.
 			<<if $pronoun is "m">>
 				<<He>> blushes, but pulls down the hem of <<his>> shorts, revealing <<his>> <<if $NPCList[0].penis isnot "none">>$NPCList[0].penisdesc<<else>>pussy<</if>>.
@@ -919,10 +946,10 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 			<</if>>
 			<br><br>
 			"D-don't tell anyone," <<he>> says. "That's for you only."
-			<<if $promiscuity gte 35 and $kylarpantiescheck isnot 1 and ($whitneypantiescheck is 1 or $exhibitionism gte 75 or $kylarhomeinterrupted is 1) and (($location is "school" and $hour is 12) or ($location isnot "school" and $daystate is "day"))>>
+			<<if $promiscuity gte 35 and !$kylarSeen.includes("commando") and ($whitneypantiescheck is 1 or $exhibitionism gte 75 or $kylarSeen.includes("home")) and (($location is "school" and $hour is 12) or ($location isnot "school" and $daystate is "day" and (!$NPCName[$NPCNameList.indexOf("Kylar")].love gte 80 or !_kylarStatus.includes("Lust") or !$kylarDaily.invite is "home")))>>
 				<<set $kylar_action to "panties">>
 				<br><br>
-				<<if $kylarhomeinterrupted is 1>>
+				<<if $kylarSeen.includes("home")>>
 					You remember seeing Kylar snooping around your room, as well as noticing a pair of underwear missing before that, and
 				<<elseif $whitneypantiescheck is 1>>
 					You remember the deal Whitney made with you, about coming to school with no underwear, and
@@ -930,7 +957,7 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 					You think of your own experiences with being exposed in public, and
 				<</if>>
 				<span class="lewd">a lewd idea strikes you.</span>
-				<br><br>
+				<br>
 			<</if>>
 		<</if>>
 	<<elseif $rng gte 41>>
@@ -940,7 +967,7 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 		<<if $rng gte 26>>
 			"Your ears were very sensitive in my dream," <<he>> says. "I guess they're not as sensitive here."
 			<<gstress>><<stress 1>>
-			<br><br>
+			<br>
 		<</if>>
 	<<elseif $rng gte 21>>
 		You lean in to whisper something naughty in Kylar's ear, but end up bonking your head on <<hers>>. <<He>> had turned to lean in at the same time.
@@ -955,6 +982,7 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 		<<elseif random(1,11) is 11 and $sadism_level gte 1>>
 			You whisper to Kylar that you like hurting others. You feel guilty about it, but with how you've been abused, it feels nice to inflict that pain on someone else. "I can lend you my knife during sex if you want," <<he>> says. You're not sure you want to go that far.
 			<<gstress>><<stress 3>>
+			<br>
 		<<elseif random(1,11) is 10 and $orgasmtrait gte 1>>
 			You whisper to Kylar that you can't be satisfied with just one orgasm. You want two, three, more. Dozens if you have the time to spare. Hundreds if you thought your body could handle it. "I can make that happen," <<he>> says. "Promise."
 		<<elseif random(1,11) is 9 and $choketrait gte 1>>
@@ -969,15 +997,15 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 		<<elseif random(1,11) is 7 and $molesttrait gte 1>>
 			You whisper to Kylar that even though you wish you weren't molested all the time, part of you is still excited by it. The knowledge that complete strangers are driven to do such things, just because of your body, makes you shiver. Kylar doesn't respond.
 			<<gksuspicion>><<npcincr Kylar rage 1>>
-			<br><br>
+			<br>
 		<<elseif random(1,11) is 6 and $rapetrait gte 1>>
 			You whisper to Kylar that even though you hate all the rapists in town, part of you is still excited by them. Somehow, the feeling of being taken against your will isn't as scary as it used to be. Kylar doesn't respond.
 			<<gksuspicion>><<npcincr Kylar rage 1>>
-			<br><br>
+			<br>
 		<<elseif random(1,11) is 5 and $bestialitytrait gte 1>>
 			You whisper to Kylar that you find <<if $bestialitydisable is "f">>beasts<<else>>monsters<</if>> almost as good as people, sometimes better. Their instinct-driven, animalistic mating makes you shiver. Kylar doesn't seem to know what to say.
 			<<gksuspicion>><<npcincr Kylar rage 1>>
-			<br><br>
+			<br>
 		<<elseif random(1,11) is 4 and $tentacletrait gte 1>>
 			You whisper to Kylar that you've fantasized about being accosted by a hoard of tentacles to have their way with you. Writhing, thrusting, wrapping around you and using your every hole to obey their primal urges. "I wish I could give myself tentacles for you," <<he>> says. <<He>> pauses and thinks for a moment, before shaking <<his>> head.
 		<<elseif random(1,11) is 3 and $voretrait gte 1>>
@@ -1018,7 +1046,7 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 	<<elseif $rng gte 41>>
 		You lay your hand on Kylar's inner thigh. <<He>> flinches and clenches <<his>> legs shut, crushing your hand. "S-sorry!" <<He>> yelps, opening them again.
 		<<gpain>><<pain 3>>
-		<br><br>
+		<br>
 	<<elseif $rng gte 31>>
 		You blow into Kylar's ear. <<His>> breathing becomes funny for a moment.
 	<<elseif $rng gte 21>>
@@ -1075,8 +1103,8 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 <</if>>
 <<promiscuity1>>
 
-<<if ($location is "park" or $bus is "starfish") and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 80 and $NPCName[$NPCNameList.indexOf("Kylar")].lust gte 80 and $kylar_invite isnot 1>>
-	<<set $kylar_invite to 1>>
+<<if ($location is "park" or $bus is "starfish") and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 80 and $NPCName[$NPCNameList.indexOf("Kylar")].lust gte 80 and $kylarDaily.invite isnot "home">>
+	<<set $kylarDaily.invite to "home">>
 	Kylar stares at you, eyes full of intensity. It melts away at once. "D-do you," <<he>> manages before averting <<his>> eyes. "Do you want to go somewhere private, where we can do th-things?"
 	<br><br>
 
@@ -1091,8 +1119,8 @@ You shake off Kylar's grip and leave. <<He>> watches you with <<his>> fists clen
 :: Kylar Invite
 <<set $outside to 0>><<set $location to "home">><<effects>>
 
-You lean close, and whisper your invite into Kylar's ear. <<He>> shivers.<<promiscuity1>>
-<br><br>
+You lean close, and whisper your invite into Kylar's ear. <<He>> shivers.
+<<promiscuity1>>
 
 Kylar hugs your arm on the walk over, as if afraid you'll run.
 
@@ -1201,14 +1229,20 @@ You turn away from <<him>>. "S-sorry," <<he>> says. Overcome by nerves, <<he>> j
 :: Kylar Orphanage Kiss
 <<effects>>
 
-You lean forward, and your lips meet. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>><<He>> pushes <<his>> tongue into your mouth as <<his>> arms rest on your shoulders, pushing you down to the bed.
+You lean forward, and your lips meet. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>>
+<<if _npcKissVirginTemp>>
+	<<His>> breath hitches, and <<he>> clings to you,
+<<else>>
+	<<He>> pushes <<his>> tongue into your mouth as <<his>> arms rest on your shoulders,
+<</if>>
+pushing you down to the bed.
 <br><br>
 
 <<link [[Next|Kylar Orphanage Sex]]>><<set $sexstart to 1>><</link>>
 <br>
 
 :: Kylar Orphanage Sex
-
+<<NPCStatusCheck "Kylar">>
 <<if $sexstart is 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -1235,13 +1269,13 @@ You lean forward, and your lips meet. <<takeKissVirginity "Kylar" `($kylarenglis
 
 :: Kylar Orphanage Sex Finish
 
-<<set $outside to 0>><<effects>>
+<<set $outside to 0>><<effects>><<NPCStatusCheck "Kylar">>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>><<npcincr Kylar lust -20>>
 
 	<<He>> lies on top of you for a few moments, eyes closed in contentment.
 	<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+		<<if _kylarStatus.includes("Rage")>>
 			After a few seconds, <<he>> backs up until <<hes>> facing your <<genitals>>. "You didn't cum," <<he>> murmurs. "Was I... not good enough?" <<He>> shakes <<his>> head violently. "I'll make up for it. I'll show you."
 		<<else>>
 			After a few seconds, <<he>> backs up until <<hes>> facing your <<genitals>>. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. You're the one that invited me. Here, I'll make it up."
@@ -1295,7 +1329,7 @@ You lean forward, and your lips meet. <<takeKissVirginity "Kylar" `($kylarenglis
 :: Kylar Orphanage Nap
 <<effects>>
 
-<<set $kylarconfessiontimer -= 1>>
+<<set $kylar.timer.love -= 1>>
 You ignore the voices in the corridor and lay back down, your arms still wrapped around Kylar. <<He>> squeaks as <<hes>> pulled down next to you. "D-Do you want to go again?" <<he>> asks.
 <br><br>
 
@@ -1334,19 +1368,16 @@ You ignore the voices in the corridor and lay back down, your arms still wrapped
 
 <<endevent>>
 <<npc Kylar>><<person1>>
-<<if $kylarconfessiontimer is undefined>>
-	<<set $kylarconfessiontimer to 0>>
-<</if>>
 
 You and Kylar lay there, entangled in each other's arms.
 <<if $phase is 1>>
-	You're partially surprised <<if $arousal gte 6000>>and a little disappointed <</if>>Kylar doesn't try to get handsy with you- <<his>> arms remain wrapped around your <<if $submissive gte 1150 or $kylarsleeprape is 1>>shoulders<<else>>waist<</if>>.
+	You're partially surprised <<if $arousal gte 6000>>and a little disappointed <</if>>Kylar doesn't try to get handsy with you- <<his>> arms remain wrapped around your <<if $submissive gte 1150 or $kylarDaily.sleepRape is true>>shoulders<<else>>waist<</if>>.
 <</if>>
 You can feel <<his>> breath, now stabilized and calm, against your skin.
 <br><br>
 
-<<if ($kylarenglish is undefined or $kylarenglish is 0) and $kylarconfessiontimer lte 0>>
-	<span class="lewd">"I love you,"</span> <<he>> murmurs into your <<if $submissive gte 1150 or $kylarsleeprape is 1>>hair<<else>>chest<</if>>.
+<<if ($kylarenglish is undefined or $kylarenglish is 0) and $kylar.timer.love lte 0>>
+	<span class="lewd">"I love you,"</span> <<he>> murmurs into your <<if $submissive gte 1150 or $kylarDaily.sleepRape is true>>hair<<else>>chest<</if>>.
 	<br><br>
 
 	It takes <<him>> a few seconds to realize what <<he>> said. When <<he>> does, <<he>> stiffens, before jolting away from you and almost falling off the bed. "I-I didn't mean that," <<he>> stammers. "I mean I d-did! But not like, you know, romantically! Well, yeah, but I didn't- I just- I didn't mean to say-" <<Hes>> panicking.
@@ -1354,7 +1385,7 @@ You can feel <<his>> breath, now stabilized and calm, against your skin.
 
 	<<link [[Kiss|Kylar Orphanage Cuddle Kiss]]>><<npcincr Kylar love 10>><<npcincr Kylar lust 5>><<npcincr Kylar rage -10>><</link>><<ggglove>><<gglust>><<llksuspicion>>
 	<br>
-	<<link [[Berate|Kylar Orphanage Cuddle Berate]]>><<set $kylarconfessiontimer to random(2,5)>><<npcincr Kylar love -5>><</link>><<lllove>>
+	<<link [[Berate|Kylar Orphanage Cuddle Berate]]>><<set $kylar.timer.love to random(2,5)>><<npcincr Kylar love -5>><</link>><<lllove>>
 	<br>
 	<<link [[Pretend it didn't happen|Kylar Orphanage Cuddle Ignore]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><</link>><<llove>><<gksuspicion>>
 
@@ -1462,7 +1493,7 @@ Kylar's grip on your hand tightens, before <<he>> lunges forward and kisses you 
 <<link [[Next|Kylar Orphanage Cuddle 2]]>><<set $phase to 1>><</link>>
 
 :: Kylar Orphanage Cuddle Berate
-<<effects>>
+<<effects>><<NPCStatusCheck "Kylar">>
 
 <<if $submissive gte 1150>>
 	"You're being creepy again," you say. "I don't think we're there yet." 'Love' is a bit much for what you have, you think.
@@ -1471,12 +1502,12 @@ Kylar's grip on your hand tightens, before <<he>> lunges forward and kisses you 
 <<else>>
 	"You shouldn't say that unless you know you mean it," you say. It feels a bit early for <<him>> to be saying that.
 <</if>>
-<<if $kylarsaidlove is 1>>
+<<if $kylarSeen.includes("saidLove")>>
 	<<Hes>> said it before, but only during the heat of sex.
 <</if>>
 <br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 35>>
+<<if !_kylarStatus.includes("Calm")>>
 	<<He>> gapes at you for a moment, before scowling. <<He>> clenches his fists and shakes them, then turns and stomps away from you. <<He>> flings the door open and storms out.
 <<else>>
 	<<He>> gapes at you for a moment, before sniffling. <<He>> slowly backs away from you, then turns and runs to the door. <<He>> takes a moment to swipe at <<his>> eyes before bolting out.
@@ -1486,10 +1517,10 @@ Kylar's grip on your hand tightens, before <<he>> lunges forward and kisses you 
 <<link [[Next|Bedroom]]>><</link>>
 
 :: Kylar Orphanage Cuddle Ignore
-<<effects>>
+<<effects>><<NPCStatusCheck "Kylar">>
 
 You decide to ignore what <<hes>> saying. <<His>> stammering slowly stops, and <<he>> falls silent.
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 35>>
+<<if !_kylarStatus.includes("Calm")>>
 	<<He>> seems disappointed by your lack of reaction.
 <<else>>
 	<<He>> seems both disappointed and relieved by your lack of reaction.
@@ -1504,7 +1535,7 @@ You decide to ignore what <<hes>> saying. <<His>> stammering slowly stops, and <
 <<if $phase is 1>>
 	Eventually <<he>> pulls back from you, looking disappointed. "I shouldn't stay here much longer," <<he>> says. <<if $hour gte 18 or $hour lte 7>>"They're waiting for me."<</if>>You look at him. <<His>> hair is sticking to <<his>> face<<if $makeup.lipstick isnot 0>>, and <<his>> mouth is smeared with your lipstick<</if>>. You reach forward and brush <<his>> hair away, and <<he>> smiles.
 <br><br>
-	"I'm so happy you love me back," <<he>> says. "Well, of course I am, but I'm also relieved. That was... that was the first time I told you I loved you<<if $kylarsaidlove is 1>>, and meant it<</if>>. I was so scared that you'd... not accept me. That you'd think I was going too fast." <<He>> grabs your hand in both of <<his>>. "Thank you. For... thank you."
+	"I'm so happy you love me back," <<he>> says. "Well, of course I am, but I'm also relieved. That was... that was the first time I told you I loved you<<if $kylarSeen.includes("saidLove")>>, and meant it<</if>>. I was so scared that you'd... not accept me. That you'd think I was going too fast." <<He>> grabs your hand in both of <<his>>. "Thank you. For... thank you."
 <<else>>
 	<<He>> stands up from the bed, looking disappointed. "I shouldn't stay here much longer," <<he>> says. <<if $hour gte 18 or $hour lte 7>>"They're waiting for me."<</if>>You look at <<him>>. <<His>> hair is sticking to <<his>> face. You reach forward and brush <<his>> hair away, and <<he>> smiles.
 <</if>>
@@ -1546,7 +1577,7 @@ You decide to ignore what <<hes>> saying. <<His>> stammering slowly stops, and <
 <<link [[Next|Kylar Orphanage Cuddle]]>><</link>>
 
 :: Kylar Orphanage Sleep Berate
-<<effects>>
+<<effects>><<NPCStatusCheck "Kylar">>
 
 <<if $submissive gte 1150>>
 	You turn to Kylar. "How did you get in-"
@@ -1567,7 +1598,7 @@ Your words are cut off by the <<persons>> loud laughter. "Oh my god, are you try
 You watch <<him>> leave for a moment, before turning to Kylar. You open your mouth to say something, but <<person1>><<he>> cuts you off. "You're that ashamed to be seen with me, huh." It's not a question.
 <br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+<<if _kylarStatus.includes("Rage")>>
 	<<He>> starts to untangle <<himself>> from you. Once <<his>> arms are free, <<he>> lunges at you, pinning you to the bed.
 	<br><br>
 
@@ -1596,7 +1627,7 @@ Content, you walk back to the bed. Kylar gazes at you with reverence. <<person1>
 <<link [[Next|Kylar Orphanage Cuddle]]>><<set $phase to 2>><</link>>
 
 :: Kylar Orphanage Rape
-
+<<NPCStatusCheck "Kylar">>
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
 	<<endevent>><<npc Kylar>><<person1>>
@@ -1606,7 +1637,7 @@ Content, you walk back to the bed. Kylar gazes at you with reverence. <<person1>
 	<<molested>>
 	<<maninit>>
 	<<set $leftarm to "grappled">><<set $rightarm to "grappled">>
-	<<set $kylarraped += 1>>
+	<<set $kylar.raped += 1>>
 	"You're ashamed to be seen with me?" Kylar whispers in your ear. "Well, nobody's watching."
 	<br><br>
 <</if>>
@@ -1683,11 +1714,11 @@ You accompany Kylar to the arcade. <<He>> grasps your hand once outside the orph
 <<kylaroptions>>
 
 :: Kylar Tease 2
-<<effects>>
+<<effects>><<NPCStatusCheck "Kylar">>
 <<if $location is "school">>
-	<<set $kylar_invite to 2>>
+	<<set $kylarDaily.invite to "school">>
 <<else>>
-	<<set $kylar_invite to 1>>
+	<<set $kylarDaily.invite to "home">>
 <</if>>
 
 You lean in again, and press your lips to Kylar's cheek, lingering for a few seconds. You can feel <<his>> cheek shift as <<he>> smiles. You're not done yet, though. You hold <<his>> head in place with one hand and kiss <<him>> again, this time a little lower, near the jawline. You keep kissing <<him>>, going over <<his>> chin and down <<his>> neck. <<His>> breathing becomes heavy.
@@ -1704,9 +1735,8 @@ You rest your other hand on <<his>> <<if $pronoun is "m">>shorts<<else>>skirt<</
 	"I want to touch you, Kylar," you murmur in <<his>> ear. "Aaaaall over."
 <</if>>
 <<promiscuity2>>
-<br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].lust gte 60>>
+<<if _kylarStatus.includes("Lust")>>
 	Kylar whimpers, before placing <<his>> hands on your shoulders. "I-I need you," <<he>> says. "We can find somewhere private, right?" <<He>> grinds against your hand.
 <<else>>
 	Kylar whimpers, before placing a hand on your shoulder. "W-We can find somewhere private," <<he>> says. "Anywhere you want."
@@ -1723,7 +1753,7 @@ You rest your other hand on <<his>> <<if $pronoun is "m">>shorts<<else>>skirt<</
 <br>
 
 :: Kylar Tease 2 Decline
-
+<<NPCStatusCheck "Kylar">>
 <<if $submissive gte 1150>>
 	"S-sorry," you say, leaning away from <<him>>. "Not now."
 <<elseif $submissive lte 850>>
@@ -1734,7 +1764,7 @@ You rest your other hand on <<his>> <<if $pronoun is "m">>shorts<<else>>skirt<</
 <br><br>
 
 "But then why-" Kylar frowns, looking at you in betrayal.
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 35>>
+<<if !_kylarStatus.includes("Calm")>>
 	<<His>> grip on your shoulders tightens for a moment and <<he>> scowls, but eventually <<he>> lets go of you. <<He>> avoids looking at you.
 	<<pain 3>><<stress 6>><<gpain>><<gstress>>
 <<else>>
@@ -1762,7 +1792,7 @@ The bathroom is empty. You make your way to a stall and pull Kylar in. <<Hes>> u
 <<link [[Next|Kylar Bathroom Sex]]>><<set $sexstart to 1>><</link>>
 
 :: Kylar Bathroom Sex
-
+<<NPCStatusCheck "Kylar">>
 <<if $sexstart is 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -1789,7 +1819,7 @@ The bathroom is empty. You make your way to a stall and pull Kylar in. <<Hes>> u
 <</if>>
 
 :: Kylar Bathroom Sex Finish
-
+<<NPCStatusCheck "Kylar">>
 <<set $outside to 0>><<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>><<npcincr Kylar lust -20>>
@@ -1798,7 +1828,7 @@ The bathroom is empty. You make your way to a stall and pull Kylar in. <<Hes>> u
 	<br><br>
 
 	<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+		<<if _kylarStatus.includes("Rage")>>
 			After a few seconds, <<he>> kneels down in front of you. "You didn't cum," <<he>> murmurs. "Was I... not good enough?" <<He>> shakes <<his>> head violently. "I'll make up for it. I'll show you."
 		<<else>>
 			After a few seconds, <<he>> kneels down in front of you. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. You're the one that invited me. Here, I'll make it up."
@@ -1879,7 +1909,7 @@ The bathroom is empty. You make your way to a stall and pull Kylar in. <<Hes>> u
 Kylar balks at your words, looking at you nervously. "W-what?"
 <br><br>
 
-<<if $kylarhomeinterrupted is 1>>
+<<if $kylarSeen.includes("home")>>
 	"It's only fair, since you took mine," you say. "...I think. Please?"
 	<br><br>
 
@@ -1912,7 +1942,7 @@ Kylar balks at your words, looking at you nervously. "W-what?"
 
 :: Kylar Tease Underwear Thank
 <<effects>>
-<<set $kylar_undies_taken to 1>>
+<<set $kylarDaily.undies to true>>
 
 <<if $submissive gte 1150>>
 	"Thank you," you say, holding the <<if $pronoun is "m">>underwear<<else>>panties<</if>> to your chest. "I'll treasure these."
@@ -1934,7 +1964,7 @@ Kylar balks at your words, looking at you nervously. "W-what?"
 
 :: Kylar Tease Underwear Commando
 <<effects>>
-<<set $kylarpantiescheck to 1>>
+<<set $kylarSeen.pushUnique("commando")>>
 
 <<if $submissive gte 1150>>
 	"Thank you," you say, holding the <<if $pronoun is "m">>underwear<<else>>panties<</if>> to your chest. You blush. "Can you, um... stay like this? Tomorrow and, uh, later?"
@@ -1957,13 +1987,13 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 <<kylaroptions>>
 
 :: Kylar Chat
-<<set $outside to 0>><<effects>>
+<<set $outside to 0>><<effects>><<NPCStatusCheck "Kylar">>
 <<set $kylar_action to "chat">>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	<<bodywriting_exposure_check>>
-	<<if _bodywriting_exposed gte 1 and $kylar_bodywriting isnot 1>>
-		<<set $kylar_bodywriting to 1>>
+	<<if _bodywriting_exposed gte 1 and !$kylarDaily.bodywriting>>
+		<<set $kylarDaily.bodywriting to true>>
 		<<if $skin[_bodypart].special is "Kylar">>
 			<<if $kylarenglish gte 1>>
 				<<if $skin[_bodypart].pen is "tattoo" and $kylar_tattoo isnot 1>>
@@ -1982,7 +2012,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 				You chat with Kylar. <<He>> gently traces a finger over your <<tattoo _bodypart>> on your <<bodypart _bodypart>>, blushing.
 				<<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<glove>><<lksuspicion>>
 			<</if>>
-		<<elseif ["Robin","Whitney","Eden","Avery","Alex","Black Wolf","Great Hawk"].includes($skin[_bodypart].special) or ($skin[_bodypart].special is "Sydney" and $sydneySeen.includes("kylarwriting") and ($skin[_bodypart].lewd is 1 or $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 35))>>
+		<<elseif ["Robin","Whitney","Eden","Avery","Alex","Black Wolf","Great Hawk"].includes($skin[_bodypart].special) or ($skin[_bodypart].special is "Sydney" and $kylarSeen.includes("sydneyWriting") and ($skin[_bodypart].lewd is 1 or !_kylarStatus.includes("Calm")))>>
 			<<if ["marker","tattoo","brand","magic"].includes($skin[_bodypart].pen)>>
 				You chat with Kylar. <<He>> tries to wipe off your <<tattoo _bodypart>> on your <<bodypart _bodypart>>. <<He>> scowls when it doesn't come off, and eventually sits back down with a huff.
 				<<ggksuspicion>><<glust>><<npcincr Kylar lust 1>><<npcincr Kylar rage 3>>
@@ -2002,7 +2032,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
                 You chat with Kylar. <<He>> stares at the <<tattoo _bodypart>> on your <<bodypart _bodypart>> and shakes <<his>> head. "You need to stop letting <<nnpc_him "Sydney">> do that."
 				<<He>> grumpily lifts <<his>> hair to reveal <span class="purple">"Kylar >:("</span> still written on <<his>> forehead from lunch.
 			<<elseif $skin[_bodypart].lewd is 1>>
-				<<set $sydneySeen.pushUnique("kylarwriting")>>
+				<<set $kylarSeen.pushUnique("sydneyWriting")>>
 				You chat with Kylar. <<He>> stares at the <<tattoo _bodypart>> on your <<bodypart _bodypart>> and chuckles. "<<nnpc_He "Sydney">> got to you too?" <<He>> pauses, before rereading it. <<His>> smile morphs into a confused frown.
 				<<if $skin[_bodypart].writing is "Book Criminal <3">>
 					"Hey, why is it a heart?" <<he>> asks. "It's normally an angry face."
@@ -2079,10 +2109,10 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 		You chat with Kylar. <<He>> pulls out <<his>> sketchbook and starts drawing a picture of you. <<He>> doesn't so much as glance at you for reference, but it's still very accurate.
 	<<elseif $rng gte 21>>
 		You chat with Kylar. <<He>> pulls out <<his>> sketchbook and starts drawing a picture of you in a silly <<print either("outfit", "hat")>>. Your laughter draws <<his>> attention, and <<he>> smiles.
-	<<elseif $rng gte 11 and $kylar_riddle isnot 1>>
-		<<set $kylar_riddle to 1>>
+	<<elseif $rng gte 11 and $kylar.riddle is 0>>
+		<<set $kylar.riddle to 1>>
 		You tell Kylar a riddle you read about recently. "I haven't heard that one before," <<he>> says. <<He>> scrunches up <<his>> face in thought for a few seconds.
-	<<elseif $rng gte 11 and $kylar_riddle is 1>>
+	<<elseif $rng gte 11 and $kylar.riddle is 1>>
 		<<if $dissociation gte 1>>
 			You chat with Kylar. "Your eyes," <<he>> says, out of nowhere. <<He>> stares at you for a few seconds, before pulling you into a hug. "It'll be okay. I promise."
 			<<trauma -12>><<lltrauma>>
@@ -2090,7 +2120,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 			You chat with Kylar. "I like your eyes," <<he>> says. "Sorry. That came out of nowhere."
 		<</if>>
 	<<else>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+		<<if _kylarStatus.includes("Rage")>>
 			You chat with Kylar. <<He>> reaches <<his>> hand to your hair and runs <<his>> fingers through. It feels nice.
 		<<else>>
 			You chat with Kylar. <<He>> reaches <<his>> hand to your hair, but draws it back and looks at you. "Can I?" At your nod of assurance, <<he>> reaches forward and runs <<his>> fingers through. It feels nice.
@@ -2143,8 +2173,8 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 		<</if>>
 	<<elseif $rng gte 21>>
 		You make small talk. "Yeah," <<he>> mutters. You didn't ask a yes-or-no question.
-	<<elseif $rng gte 11 and $kylar_riddle isnot 1>>
-		<<set $kylar_riddle to 1>>
+	<<elseif $rng gte 11 and $kylar.riddle isnot 1>>
+		<<set $kylar.riddle to 1>>
 		You tell Kylar a riddle you read about recently. <<He>> doesn't respond, but seems to think on it for a bit.
 	<<else>>
 		You ask if <<he>> likes to draw. <<He>> perks up a bit, but quickly quiets down.
@@ -2154,10 +2184,10 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 <<kylaroptions>>
 
 :: Kylar Game
-<<set $outside to 0>><<effects>>
+<<set $outside to 0>><<effects>><<NPCStatusCheck "Kylar">>
 <<set $kylar_action to "game">>
 
-<<if $kylar_play isnot 1>>
+<<if $kylar.play isnot 1>>
 	<<if $submissive gte 1150>>
 	"L-let's play a game," you say. "It'll be fun!"
 	<<elseif $submissive lte 850>>
@@ -2168,10 +2198,10 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 <<else>>
 	You ask if <<he>> would like to play again.
 <</if>>
-<<set $kylar_play to 1>>
+<<set $kylar.play to 1>>
 <br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	Kylar nods. "I'll pay," <<he>> says.
 <<else>>
 	Kylar looks away, but nods. "I-I'll pay," <<he>> mumbles.
@@ -2244,7 +2274,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 		<<kylaroptions>>
 	<</if>>
 <<else>>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+	<<if _kylarStatus.includes("Love")>>
 		<<if $phase is 0>>
 			<<Hes>> really good. You can't keep up, but <<he>> manages to carry you.
 			<br><br>
@@ -2268,7 +2298,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 <</if>>
 
 :: Kylar Arcade Angry
-<<effects>>
+<<effects>><<NPCStatusCheck "Kylar">>
 
 You turn and face the pair.
 <<if $submissive gte 1150>>
@@ -2283,7 +2313,7 @@ You turn and face the pair.
 The pair laugh. "Or what?" the <<person2>><<person>> says. "You gonna fight for your <<nnpc_girlfriend "Kylar">>?"
 <br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	"You better listen to <<phim>>," Kylar says from behind. "My <<if $player.gender_appearance is "m">>boyfriend<<else>>girlfriend<</if>> is really strong."
 	<br><br>
 
@@ -2543,6 +2573,11 @@ You let Kylar pull you into the cupboard. The door shuts, plunging you into dark
 You take <<his>> head in your hands and guide <<his>> kiss. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>> <<He>> falls limp in your arms. You pull back. Your eyes have adjusted, and you can see <<him>> a little. <<His>> eyes glint. You lean forward, breathe on <<his>> neck and feel <<him>> shiver.
 <br><br>
 
+<<if _npcKissVirginTemp>>
+	"My first kiss," <<he>> whispers, <<his>> eyes shining. "It was better than I could've ever dreamed."
+	<br><br>
+<</if>>
+
 <<if $rng gte 85>>
 	The door swings open. <<generatey2>><<generatey3>>A <<person2>><<person>> and <<person3>><<person>> stand there, giggling at each other. They barge part way in before noticing you. Seems they had the same idea.
 	<br><br>
@@ -2637,9 +2672,9 @@ Kylar laughs. "I-I forgot," <<he>> says. "I have somewhere I need to be." <<He>>
 	<br><br>
 
 	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
-	Kylar watches from across the canteen.
-	<<ggksuspicion>><<npcincr Kylar rage 3>>
-	<br><br>
+		Kylar watches from across the canteen.
+		<<ggksuspicion>><<npcincr Kylar rage 3>>
+		<br><br>
 	<</if>>
 	<<endevent>>
 
@@ -2650,9 +2685,9 @@ Kylar laughs. "I-I forgot," <<he>> says. "I have somewhere I need to be." <<He>>
 	<br><br>
 
 		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
-		Kylar watches from across the canteen.
-		<<gksuspicion>><<npcincr Kylar rage 1>>
-		<br><br>
+			Kylar watches from across the canteen.
+			<<gksuspicion>><<npcincr Kylar rage 1>>
+			<br><br>
 		<</if>>
 	<<endevent>>
 	<<link [[Next|Canteen]]>><</link>>
@@ -2720,6 +2755,11 @@ You kiss Kylar. <<He>> almost tackles you off your seat. <<takeKissVirginity "Ky
 	<br><br>
 <</if>>
 
+<<if _npcKissVirginTemp>>
+	"Th-that was my first kiss," Kylar whispers, <<nnpc_his>> eyes shining. "It was better than I could've ever dreamed. <<if $kylarenglish gte 1>>I'm so glad <<he>> got to see how much we love each other.<</if>>"
+	<br><br>
+<</if>>
+
 <<endevent>>
 <<link [[Next|Canteen]]>><</link>>
 <br>
@@ -2772,7 +2812,7 @@ You finish the food. "I'm going to wait in the classroom," Robin says when you'r
 <br>
 
 :: Canteen Lunch Kylar
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Kylar">>
 <<endevent>><<npc Kylar>><<person1>>
 
 You sit beside Kylar and say hello.
@@ -2792,7 +2832,7 @@ You sit beside Kylar and say hello.
 <<elseif $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $rng gte 80>>
 	Before <<he>> can open <<his>> mouth to greet you, a figure slides into the seat on your other side. It's Whitney.
 	<br><br>
-	<<endevent>><<npc Whitney>><<person1>>
+	<<NPC Whitney 2>><<person2>>
 
 	"Thought I saw my favourite slut sitting next to a freak," <<he>> says before grabbing you by the hair and forcing your lips against <<his>>.<<takeKissVirginity "Whitney" `($whitneyromance is 1?"loveInterest":"rape")`>>
 	<<gstress>><<stress 6>>
@@ -2810,9 +2850,9 @@ You sit beside Kylar and say hello.
 		<br>
 	<</if>>
 
-<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
-	<<if $kylarcanteen isnot 1>>
-		<<set $kylarcanteen to 1>>
+<<elseif _kylarStatus.includes("Love")>>
+	<<if !$kylarSeen.includes("canteen")>>
+		<<set $kylarSeen.pushUnique("canteen")>>
 		"Th-thanks," <<he>> begins. "Thanks for sitting with me."
 	<<elseif $rng gte 81>>
 		<<Hes>> distracted by <<his>> cutlery. <<His>> knife in particular.
@@ -2848,16 +2888,14 @@ You sit beside Kylar and say hello.
 <<effects>>
 You close your eyes and kiss back. <<npcincr Whitney love 1>><<glove>>
 <br><br>
-<<endevent>><<npc Kylar>><<person1>>
 
-Kylar is still frozen in place when your eyes open, <<his>> lips moving in a feeble attempt to speak.
+Kylar is still frozen in place when your eyes open, <<person1>><<his>> lips moving in a feeble attempt to speak.
 <br><br>
 
 "S-stop it," <<he>> manages, <<his>> breathing heavy. Whitney doesn't let up, and continues to assault your mouth. "I said stop!" Kylar's shouting turns heads. <<Hes>> on the verge of tears.
 <br><br>
-<<endevent>><<npc Whitney>><<person1>>
 
-Whitney pulls away from you at last, brushing a stray hair away from <<his>> face. <<He>> throws a smug grin at Kylar.
+Whitney pulls away from you at last, brushing a stray hair away from <<person2>><<his>> face. <<He>> throws a smug grin at Kylar.
 <br><br>
 
 <<link [[Next|Canteen Kylar Whitney Confrontation]]>><</link>>
@@ -2891,9 +2929,7 @@ Heads turn around the canteen. You pull Kylar closer.
 "Fucking freaks," Whitneys says. "I'm done with you losers." <<He>> leaves the canteen, <<his>> cronies in tow.
 <br><br>
 
-<<endevent>>
-<<npc Kylar>><<person1>>
-The other students lose interest. You finish your food beside a relieved Kylar. <<He>> carries your trays away once finished, then walks in the direction of the <<if $weather is "rain" or $weather is "snow">>library<<else>>rear playground<</if>>.
+The other students lose interest. You finish your food beside a relieved Kylar. <<person1>><<He>> carries your trays away once finished, then walks in the direction of the <<if $weather is "rain" or $weather is "snow">>library<<else>>rear playground<</if>>.
 <br><br>
 
 <<link [[Next|Canteen]]>><<endevent>><</link>>
@@ -2901,26 +2937,22 @@ The other students lose interest. You finish your food beside a relieved Kylar. 
 
 :: Canteen Kylar Whitney Confrontation
 <<effects>>
-<<endevent>><<npc Whitney>><<person1>>
-"Well," Whitney says as <<he>> stands. <<He>> approaches Kylar, who stands and takes a step back. "This is adorable. The slut has a fan<<nnpc_gendery "Kylar">>."
+"Well," Whitney says as <<person2>><<he>> stands. <<He>> approaches Kylar, who stands and takes a step back. "This is adorable. The slut has a fan<<nnpc_gendery "Kylar">>."
 <br><br>
-<<endevent>><<npc Kylar>><<person1>>
 
-Whitney lunges for the smaller student, grasps <<his>> collar, and shoves <<him>> against a wall. Kylar's panicked gaze meets yours for a moment, before Whitney obscures your view.
+Whitney lunges for the smaller student, grasps <<person1>><<his>> collar, and shoves <<him>> against a wall. Kylar's panicked gaze meets yours for a moment, before Whitney obscures your view.
 <<if $loveInterest.primary is "Kylar" or $loveInterest.secondary is "Kylar">><<gstress>><<stress 6>><</if>>
 <br><br>
 
 Excited at the prospect of violence, other students gather around.
 <br><br>
-<<endevent>><<npc Whitney>><<person1>>
 
-<<link [[Intervene|Canteen Kylar Whitney Intervene]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><<status -10>><</link>><<ldom>><<lcool>>
+<<link [[Intervene|Canteen Kylar Whitney Intervene]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><<status -10>><<endevent>><<npc Whitney>><<person1>><</link>><<ldom>><<lcool>>
 <br>
-<<link [[Encourage|Canteen Kylar Whitney Encourage]]>><<npcincr Kylar rage 20>><<status 1>><</link>><<promiscuous1>><<gcool>><<ggksuspicion>>
+<<link [[Encourage|Canteen Kylar Whitney Encourage]]>><<npcincr Kylar rage 20>><<status 1>><</link>><<promiscuous1>><<gcool>><<gggksuspicion>>
 <br>
 <<link [[Remain silent|Canteen Kylar Whitney Fight]]>><</link>>
 <br>
-
 
 :: Canteen Kylar Whitney Intervene
 
@@ -2976,7 +3008,7 @@ Excited at the prospect of violence, other students gather around.
 <</if>>
 
 :: Canteen Kylar Whitney Intervene Finish
-<<effects>>
+<<effects>><<NPCStatusCheck "Kylar">>
 
 <<if $enemyhealth lte 0>>
 	You bring Whitney to <<his>> knees, and the crowd cheers for you. <<gcool>><<status 1>>
@@ -2985,12 +3017,12 @@ Excited at the prospect of violence, other students gather around.
 	<<clotheson>>
 	<<endcombat>>
 
-	<<npc Kylar>><<person1>>
+	<<npc Kylar 1>><<person1>><<npc Whitney 2>><<person2>>
 	<<if $loveInterest.primary is "Kylar" or $loveInterest.secondary is "Kylar">>
 		<<if $submissive gte 1150>>
 			"Bullying me is one thing," you say. "But please leave my <<nnpc_girlfriend "Kylar">> alone."
 		<<elseif $submissive lte 850>>
-			You grab Whitney's collar and pull <<nnpc_his "Whitney">> face up to yours. "Don't you dare touch my <<nnpc_girlfriend "Kylar">> again," you say.
+			You grab Whitney's collar and pull <<his>> face up to yours. "Don't you dare touch my <<nnpc_girlfriend "Kylar">> again," you say.
 		<<else>>
 			"Leave my <<nnpc_girlfriend "Kylar">> alone," you say.
 		<</if>>
@@ -2999,19 +3031,18 @@ Excited at the prospect of violence, other students gather around.
 		<<if $submissive gte 1150>>
 			"Bullying me is one thing," you say. "But please leave my friend alone."
 		<<elseif $submissive lte 850>>
-			You grab Whitney's shirt and pull <<nnpc_his "Whitney">> face up to yours. "Don't you dare touch my friends again," you say.
+			You grab Whitney's shirt and pull <<his>> face up to yours. "Don't you dare touch my friends again," you say.
 		<<else>>
 			"Leave my friend alone," you say.
 		<</if>>
+		<<npcincr Kylar rage -10>><<llksuspicion>>
 	<</if>>
 	<br><br>
-	<<endevent>><<npc Whitney>><<person1>>
 	
 	Whitney pushes <<himself>> away from you, and scrambles into the crowd.
 	<br><br>
-	<<endevent>><<npc Kylar>><<person1>>
 
-	Kylar hugs you from behind. "I-I knew you'd save me," <<he>> says.<<gglove>><<npcincr Kylar love 3>>
+	Kylar hugs you from behind. "I-I knew you'd save me," <<person1>><<he>> says.<<gglove>><<npcincr Kylar love 3>>
 	<br><br>
 
 	The other students lose interest after Whitney's departure. You finish your food beside a relieved Kylar. <<He>> carries your trays away when you're done, then walks in the direction of the <<if $weather is "rain" or $weather is "snow">>library<<else>>rear playground<</if>>.
@@ -3080,10 +3111,10 @@ Excited at the prospect of violence, other students gather around.
 	<br><br>
 
 	"I-I'm sorry," <<he>> says, touching your arm. "I'm sorry I couldn't help you." <<He>> glares in the direction that Whitney left in.
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+	<<if _kylarStatus.includes("Rage")>>
 		 "Stupid rat," <<he>> hisses under <<his>> breath. "Worthless, stupid, horrible, just wanna..." <<His>> muttering becomes inaudible.
 	<<else>>
-		"I want to be able to stand up to <<nnpc_him "Whitney">>. Especially for you. But <<nnpc_hes "Whitney">> so..." <<He>> trails off.
+		"I want to be able to stand up to <<nnpc_him "Whitney">>. Especially for you. B-but <<nnpc_hes "Whitney">> so..." <<He>> trails off.
 	<</if>>
 
 	<<tearful>> you finish your food beside a brooding Kylar. <<He>> carries your trays away when you're done, then walks in the direction of the <<if $weather is "rain" or $weather is "snow">>library<<else>>rear playground<</if>>.
@@ -3106,19 +3137,16 @@ Whitney smirks at you, but Kylar looks betrayed.
 :: Canteen Kylar Whitney Fight
 <<effects>>
 
-<<endevent>><<npc Whitney>><<person1>>
-Whitney ponders a moment, then drops Kylar. "Tell you what," <<he>> says, stepping backwards. "You can have the first hit."
+Whitney ponders a moment, then drops Kylar. "Tell you what," <<person2>><<he>> says, stepping backwards. "You can have the first hit."
 <br><br>
-<<endevent>><<npc Kylar>><<person1>>
 
-Kylar looks around, as if looking for a way out, until <<his>> eyes rest on you.
+Kylar looks around, as if looking for a way out, until <<person1>><<his>> eyes rest on you.
 <br><br>
-<<endevent>><<npc Whitney>><<person1>>
 
 "What's the matter?" Whitney smirks. "Afraid? Why the slut sees anything in a creep like y-"
 <br><br>
 
-<<Hes>> cut off by a punch to the nose, and stumbles back in shock. "Don't call <<phim>> a slut," Kylar says as <span class="red">Whitney wipes the blood from <<his>> face.</span> The crowd quiets.
+<<person2>><<Hes>> cut off by a punch to the nose, and stumbles back in shock. "Don't call <<phim>> a slut," Kylar says as <span class="red">Whitney wipes the blood from <<his>> face.</span> The crowd quiets.
 <br><br>
 
 <<link [[Next|Canteen Kylar Whitney Fight 2]]>><</link>>
@@ -3127,13 +3155,12 @@ Kylar looks around, as if looking for a way out, until <<his>> eyes rest on you.
 :: Canteen Kylar Whitney Fight 2
 <<effects>>
 
-"Alright," Whitney says. "My turn, freak." <<He>> charges. Kylar <<endevent>><<npc Kylar>><<person1>>raises <<his>> arms to defend <<himself>>, but the force shoves <<him>> to the ground. The crowd liven up again, and cheer for Whitney.
+"Alright," Whitney says. "My turn, freak." <<He>> charges. Kylar <<person1>>raises <<his>> arms to defend <<himself>>, but the force shoves <<him>> to the ground. The crowd livens up again, and cheers for Whitney.
 <br><br>
 
 "That hurt?" Whitney asks. <<He>> delivers a kick to Kylar's stomach, much to the delight of the onlookers.
 <br><br>
 
-<<endevent>><<npc Whitney>><<person1>>
 <<link [[Cheer for Kylar|Canteen Kylar Cheer]]>><<status -10>><<npcincr Kylar rage -10>><<npcincr Kylar love 3>><<npcincr Whitney dom -1>><</link>><<lcool>><<llksuspicion>><<glove>><<ldom>>
 <br>
 <<link [[Cheer for Whitney|Canteen Whitney Cheer]]>><<status 1>><<npcincr Kylar rage 10>><<npcincr Whitney dom 1>><</link>><<ggcool>><<ggksuspicion>><<gdom>>
@@ -3141,7 +3168,6 @@ Kylar looks around, as if looking for a way out, until <<his>> eyes rest on you.
 
 :: Canteen Kylar Cheer
 <<effects>>
-<<endevent>><<npc Whitney>><<person1>>
 <<if $submissive gte 1150>>
 	"Pl-please win, Kylar!"
 <<elseif $submissive lte 850>>
@@ -3149,8 +3175,7 @@ Kylar looks around, as if looking for a way out, until <<his>> eyes rest on you.
 <<else>>
 	"You can do it, Kylar!"
 <</if>>
-<<endevent>><<npc Kylar>><<person1>>
-you shout, locking eyes with <<him>>. The other students give you disgusted looks, but you don't care. Whitney tears <<his>> gaze away from Kylar, and gives you a dark look.
+you shout, locking eyes with <<person1>><<him>>. The other students give you disgusted looks, but you don't care. Whitney tears <<person2>><<his>> gaze away from Kylar, and gives you a dark look.
 <br><br>
 
 Kylar seizes the opportunity, and delivers a kick from <<his>> position on the floor. It connects with Whitney's crotch. The crowd quiets again as Whitney groans and falls to the ground.
@@ -3158,9 +3183,8 @@ Kylar seizes the opportunity, and delivers a kick from <<his>> position on the f
 
 Something clatters to the ground beside Kylar as <<he>> gets <<his>> footing. <<His>> knife. <<He>> hurries to retrieve it, but it's too late. The circle of onlookers widens, but you hear someone push through the crowd behind you.
 <br><br>
-<<endevent>><<npc Whitney>><<person1>>
 
-"I saw that," Whitney sneers between grunts of pain. "Go on. Show everyone what a psycho you are-" A pair of arms grasp <<his>>, and hoist <<him>> to <<his>> feet. "Get the fuck away from-" Whitney begins, but cuts off as <<he>> comes face to face with Leighton.
+"I saw that," Whitney sneers between grunts of pain. "Go on. Show everyone what a psycho you are-" A pair of arms grasp <<person2>><<his>>, and hoist <<him>> to <<his>> feet. "Get the fuck away from-" Whitney begins, but cuts off as <<he>> comes face to face with Leighton.
 <br><br>
 
 "My office. Now."
@@ -3174,8 +3198,7 @@ Whitney regains some composure as <<he>> follows Leighton from the room. <<He>> 
 :: Canteen Kylar Cheer 2
 <<effects>>
 
-<<endevent>><<npc Kylar>><<person1>>
-The crowd disperses, leaving a lone, trembling Kylar on the ground. You approach <<him>>, <<his>> eyes staring into space. You extend your hand to <<his>>.
+The crowd disperses, leaving a lone, trembling Kylar on the ground. You approach <<person1>><<him>>, <<his>> eyes staring into space. You extend your hand to <<his>>.
 <br><br>
 
 Your touch makes <<him>> jump, and you find the knife pointed at you in a blink.
@@ -3201,9 +3224,8 @@ You continue eating, sat beside a dazed Kylar. <<He>> carries your trays away wh
 <<link [[Next|Canteen]]>><<endevent>><</link>><br>
 
 :: Canteen Whitney Cheer
-<<effects>>
+<<effects>><<NPCStatusCheck "Kylar">>
 
-<<endevent>><<npc Kylar>><<person1>>
 <<if $submissive gte 1150>>
 	"P-please win, Whitney!" you shout.
 <<elseif $submissive lte 850>>
@@ -3213,16 +3235,15 @@ You continue eating, sat beside a dazed Kylar. <<He>> carries your trays away wh
 <</if>>
 Kylar stirs on the ground.
 <br><br>
-<<endevent>><<npc Whitney>><<person1>>
 
-"Want some more?" Whitney laughs as Kylar struggles to <<endevent>><<npc Kylar>><<person1>><<his>> feet. "Fine by me-" <<endevent>><<npc Whitney>><<person1>><<he>> cuts off as something flashes in Kylar's hand. <span class="red">A knife.</span> The crowd's chanting stops, and the circle widens.
+"Want some more?" Whitney laughs as Kylar struggles to <<person1>><<his>> feet. "Fine by me-" <<person2>><<he>> cuts off as something flashes in Kylar's hand. <span class="red">A knife.</span> The crowd's chanting stops, and the circle widens.
 <br><br>
 
 "You really are a psycho," Whitney says. <<He>> doesn't back away, but <<his>> voice betrays <<his>> nervousness. Kylar points the knife at <<him>>. "What you waiting for, freak? Try it."<<ggstress>><<stress 12>>
 <br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 85>>
-	<span class="red">Kylar screams and charges forward.</span> Whitney flinches backwards, and Kylar manages a full body tackle. <<endevent>><<npc Kylar>><<person1>><<He>> holds the knife above <<his>> head, <<his>> eyes crazed and murderous.
+<<if _kylarStatus.includes("MaxRage")>>
+	<span class="red">Kylar screams and charges forward.</span> Whitney flinches backwards, and Kylar manages a full body tackle. <<person1>><<He>> holds the knife above <<his>> head, <<his>> eyes crazed and murderous.
 	<br><br>
 	<<endevent>><<npc Leighton>><<person1>>
 
@@ -3231,45 +3252,41 @@ Kylar stirs on the ground.
 
 	Kylar shoots you one last betrayed look before the doors slam shut. The students lose interest, and walk away.
 	<br><br>
-	<<endevent>><<npc Whitney>><<person1>>
 
-	"What a fucking nutcase," Whitney says. <<He>> gives you a playful shove. "I expect a reward for winning later, slut." <<He>> leaves the canteen, <<his>> cronies in tow.
+	"What a fucking nutcase," Whitney says. <<person2>><<He>> gives you a playful shove. "I expect a reward for winning later, slut." <<He>> leaves the canteen, <<his>> cronies in tow.
 	<br><br>
 
 	<<link [[Next|Canteen]]>><</link>><<endevent>><br>
 
 <<else>>
-	<<endevent>><<npc Kylar>><<person1>>
 	<span class="green">Kylar doesn't attack.</span> <<He>> doesn't move at all.
 	<br><br>
-	"Don't waste my time," Whitney taunts as <<he>> slaps the knife from Kylar's hands.
+	"Don't waste my time," Whitney taunts as <<person2>><<he>> slaps the knife from Kylar's hands.
 	<br><br>
-	<<endevent>><<npc Leighton>><<person1>>
+	<<npc Leighton 3>><<person3>>
 
 	Leighton pushes <<his>> way through the crowd. "What do we have here?" <<he>> asks, pushing a final student aside in order to reach the centre. <<His>> eyes pass over the beaten Kylar, and rest on Whitney.
 	<br>
 
 	"To my office," <<he>> continues "Now!"
 	<br><br>
-	<<endevent>><<npc Whitney>><<person1>>
 	
-	Whitney shrugs, and follows without protest. "See you later," <<he>> says as <<he>> passes. "Slut. I expect a reward for winning."
+	Whitney shrugs, and follows without protest. "See you later," <<person2>><<he>> says as <<he>> passes. "Slut. I expect a reward for winning."
 	<br><br>
-	<<endevent>><<npc Kylar>><<person1>>
 
-	You look back to Kylar, but <<hes>> already gone. The other students disperse.
+	You look back to Kylar, but <<person1>><<hes>> already gone. The other students disperse.
 	<br><br>
 
 	<<link [[Next|Canteen]]>><</link>><<endevent>><br>
 <</if>>
 
 :: Kylar Library
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Kylar">>
 
 <<npc Kylar>><<person1>>
 You approach Kylar's desk.
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	<<Hes>> sketching a picture of you in <<his>> sketchbook.
 <<else>>
 	<<He>> hides whatever <<he>> was sketching when <<he>> sees you.
@@ -3278,12 +3295,12 @@ You approach Kylar's desk.
 <<kylaroptions>>
 
 :: Kylar Playground
-<<set $outside to 1>><<set $location to "school">><<schooleffects>><<effects>>
+<<set $outside to 1>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Kylar">>
 
 <<npc Kylar>><<person1>>
 You approach Kylar's stump.
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	<<He>> smiles when <<he>> sees you.
 <<else>>
 	<<He>> blushes and looks away when <<he>> sees you.
@@ -3292,15 +3309,15 @@ You approach Kylar's stump.
 <<kylaroptions>>
 
 :: Kylar Park
-<<set $outside to 1>><<set $location to "park">><<effects>>
+<<set $outside to 1>><<set $location to "park">><<effects>><<NPCStatusCheck "Kylar">>
 
 <<npc Kylar>><<person1>>
-<<if $kylarFountain is 1>>
+<<if $kylar.fountain is 1>>
 	You approach Kylar's spot at the fountain.
 <<else>>
 	You approach Kylar's bench.
 <</if>>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	<<Hes>> sketching a picture of you in <<his>> sketchbook.
 <<else>>
 	<<He>> hides whatever <<he>> was sketching when <<he>> sees you.
@@ -3310,12 +3327,12 @@ You approach Kylar's stump.
 <<kylaroptions>>
 
 :: Kylar Arcade
-<<set $outside to 1>><<set $location to "arcade">><<effects>>
+<<set $outside to 1>><<set $location to "arcade">><<effects>><<NPCStatusCheck "Kylar">>
 
 <<npc Kylar>><<person1>>
 You approach Kylar. <<Hes>> racking up quite a score.
 <br><br>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	<<He>> moves even faster after noticing you. <<He>> gives you the occasional glance to make sure you're still watching.
 <<else>>
 	When <<he>> notices you, though, <<his>> skill evaporates. <<Hes>> soon facing a game over screen.
@@ -3433,7 +3450,7 @@ You run for the cover of a <<if $bus is "park">>bush<<else>>parked car<</if>> an
 <<destinationeventend>>
 
 :: Street Kylar Refuse
-<<set $outside to 1>><<set $location to "town">><<effects>>
+<<set $outside to 1>><<set $location to "town">><<effects>><<NPCStatusCheck "Kylar">>
 
 <<if $submissive gte 1150>>
 	You look away from Kylar. "S-sorry," you say. "Not today."
@@ -3443,7 +3460,7 @@ You run for the cover of a <<if $bus is "park">>bush<<else>>parked car<</if>> an
 	You shake your head.
 <</if>>
 <br><br>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 70>>
+<<if _kylarStatus.includes("Rage")>>
 	Kylar stares at the ground and nods. <<He>> turns as if to leave, but then lunges forward and shoves you against a wall with <<his>> hand. <<He>> raises <<his>> other to your throat. <<Hes>> holding a knife.
 	<br><br>
 
@@ -3533,7 +3550,7 @@ You kick Kylar on to <<his>> back and stand over <<him>>.
 
 <<if $pronoun is "f">>
 	<<if $NPCList[0].penis isnot "none">>
-		<<if $kylarpantiescheck is 1>>
+		<<if $kylarSeen.includes("commando")>>
 			You flick up <<his>> skirt with your foot, and press your toes against <<his>> exposed $NPCList[0].penisdesc. "At least you remembered my rule," you say. <<He>> grasps your ankle and makes a weak effort to stop you, but you push down harder and <<he>> lies back with a yelp.
 			<br><br>
 
@@ -3547,7 +3564,7 @@ You kick Kylar on to <<his>> back and stand over <<him>>.
 			<<feetejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.feet.semen += 1>>
 		<</if>>
 	<<else>>
-		<<if $kylarpantiescheck is 1>>
+		<<if $kylarSeen.includes("commando")>>
 			You flick up <<his>> skirt with your foot, and press your toes against <<his>> exposed pussy. "At least you remembered my rule," you say. <<He>> grasps your ankle and makes a weak effort to stop you, but you push down harder and <<he>> lies back with a yelp.
 			<br><br>
 
@@ -3594,7 +3611,7 @@ You push Kylar against the wall and loom over <<him>>.
 
 <<if $pronoun is "f">>
 	<<if $NPCList[0].penis isnot "none">>
-		<<if $kylarpantiescheck is 1>>
+		<<if $kylarSeen.includes("commando")>>
 			You flick up <<his>> skirt with your left hand, and press your fingers against <<his>> exposed $NPCList[0].penisdesc. "At least you remembered my rule," you say. <<He>> opens <<his>> mouth to say something, but you cover it with your other hand, slipping your thumb inside.
 			<br><br>
 
@@ -3608,7 +3625,7 @@ You push Kylar against the wall and loom over <<him>>.
 			<<handejacstat>><<ejacstat>>
 		<</if>>
 	<<else>>
-		<<if $kylarpantiescheck is 1>>
+		<<if $kylarSeen.includes("commando")>>
 			You flick up <<his>> skirt with your left hand, and press your fingers against <<his>> exposed pussy. "At least you remembered my rule," you say. <<He>> opens <<his>> mouth to say something, but you cover it with your other hand, slipping your thumb inside.
 			<br><br>
 
@@ -3649,6 +3666,7 @@ When <<he>> finishes, <<he>> opens <<his>> mouth to say something. You turn away
 <<destinationeventend>>
 
 :: Street Kylar Sex
+<<NPCStatusCheck "Kylar">>
 <<if $sexstart is 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -3691,14 +3709,14 @@ When <<he>> finishes, <<he>> opens <<his>> mouth to say something. You turn away
 <</if>>
 
 :: Street Kylar Sex Finish
-<<set $outside to 0>><<set $location to "town">><<effects>>
+<<set $outside to 0>><<set $location to "town">><<effects>><<NPCStatusCheck "Kylar">>
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>><<npcincr Kylar lust -20>>
 
 	Kylar closes <<his>> eyes and rests <<his>> head on you.
 	<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+		<<if _kylarStatus.includes("Rage")>>
 			After a few seconds, <<he>> backs up until <<hes>> facing your <<genitals>>. "You didn't cum," <<he>> murmurs. "Was I... not good enough?" <<He>> shakes <<his>> head violently. "I'll make up for it. I'll show you."
 		<<else>>
 			After a few seconds, <<he>> backs up until <<hes>> facing your <<genitals>>. "You didn't get to cum," <<he>> murmurs. "That's not fair to you. Not after you made me. Here, I'll make it up."
@@ -3750,17 +3768,17 @@ When <<he>> finishes, <<he>> opens <<his>> mouth to say something. You turn away
 <</if>>
 
 :: Street Kylar Rape
-
+<<NPCStatusCheck "Kylar">>
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
 	<<controlloss>>
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<maninit>><<set $kylarraped += 1>>
+	<<maninit>><<set $kylar.raped += 1>>
 	<<if $daystate isnot "night">><<enable_rescue>><</if>>
 	Kylar pushes you toward the alley, <<his>> knife poking the small of your back. You turn another corner and find a mattress already lying there.
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 90>>
+	<<if _kylarStatus.includes("MaxRage")>>
 		<<set $NPCList[0].righthand to "none">>
 		<<He>> shoves you on top of it, leaps on you and holds the knife to your neck.
 	<<else>>
@@ -3941,7 +3959,13 @@ Kylar explains the fermentation process, and demonstrates how to prepare the che
 You take <<his>> hands and pull <<him>> against you. <<He>> leans in, letting you support <<his>> trembling body. Your lips meet. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>> <<Hes>> inhibited at first, but becomes more confident as the kiss deepens. You feel <<his>> hand grope your <<bottom>>.
 <br><br>
 
-When you pull away <<his>> eyes remain closed. <<He>> looks serene, if red-faced. <<His>> eyes open. "Th-Thank you," <<he>> manages. <<He>> departs with a blissful smile.
+When you pull away <<his>> eyes remain closed. <<He>> looks serene, if red-faced. <<His>> eyes open.
+<<if _npcKissVirginTemp>>
+	"Th-that was my first kiss," <<he>> whispers, <<his>> eyes shining. "It was better than I could've ever dreamed."
+<<else>>
+	"Th-Thank you," <<he>> manages.
+<</if>>
+<<He>> departs with a blissful smile.
 <br><br>
 
 <<link [[Next|Orphanage Loft]]>><<endevent>><</link>>
@@ -3966,7 +3990,7 @@ You shove <<him>> back against the table, holding <<him>> down with one hand whi
 	<</if>>
 <</if>>
 <br><br>
-<<if $kylarpantiescheck is 1>>
+<<if $kylarSeen.includes("commando")>>
 	"You remembered my rule," you tease. "But is that the only reason?"
 <<else>>
 	"No underwear?" you tease. "Someone's naughty."
@@ -4017,8 +4041,9 @@ Kylar nods, still looking at <<his>> feet. <<He>> opens <<his>> mouth to speak, 
 <br>
 
 :: Kylar Walk In The Park
-<<set $location to "park">><<set $outside to 1>><<effects>>
+<<set $location to "park">><<set $outside to 1>><<effects>><<NPCStatusCheck "Kylar">>
 <<set $kylar_action to "walk">>
+<<set $dateCount.Total++>><<set $dateCount.Kylar++>>
 <<if $weather is "clear">>
 	<<if $submissive gte 1150>>
 		"It's pretty nice today. Can you walk with me?" you ask shyly.
@@ -4037,21 +4062,21 @@ Kylar nods, still looking at <<his>> feet. <<He>> opens <<his>> mouth to speak, 
 	<</if>>
 <</if>>
 <br><br>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 70>>
+<<if _kylarStatus.includes("Rage")>>
 	Kylar fixates <<his>> eyes on you. "Yes! Everyone needs to see what a happy couple we are," <<he>> says, standing up and grabbing you by the arm a bit too tightly. <<pain 5>><<stress 3>><<gpain>><<gstress>>
-<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 40>>
+<<elseif _kylarStatus.includes("Sus")>>
 	"So you do want to be seen with me," <<he>> says, standing up and walking toward you. "Of course, yeah."
 <<else>>
 	You can see the sparks of joy in <<his>> eyes. <<He>> quickly stands up and walks by your side.
 <</if>>
 The two of you begin to walk around the park, enjoying the view.
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 70>>
+<<if _kylarStatus.includes("Rage")>>
 	After a few minutes, Kylar's grip starts to hurt.
 	<br><br>
 	<<link [[Offer your hand instead|Kylar Walk In The Park 2]]>><<set $phase to 1>><<npcincr Kylar love 1>><</link>><<glove>><<lksuspicion>><<handholdingvirginitywarning>><<NPCvirginitywarning "Kylar" "handholding">>
 	<br>
 	<<link [[Endure|Kylar Walk In The Park 2]]>><<pain 5>><<stress 3>><</link>><<gpain>><<gstress>>
-<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 40>>
+<<elseif _kylarStatus.includes("Sus")>>
 	You notice Kylar's hands lightly trembling. <<He>> steals glances at you when <<he>> thinks you're not looking.
 	<br><br>
 	<<link [[Offer your hand|Kylar Walk In The Park 2]]>><<set $phase to 1>><<npcincr Kylar love 1>><</link>><<glove>><<lksuspicion>><<handholdingvirginitywarning>><<NPCvirginitywarning "Kylar" "handholding">>
@@ -4067,9 +4092,9 @@ The two of you begin to walk around the park, enjoying the view.
 <br>
 
 :: Kylar Walk In The Park 2
-<<set $outside to 1>><<effects>>
+<<set $outside to 1>><<effects>><<NPCStatusCheck "Kylar">>
 <<if $phase is 1>>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 70>>
+	<<if _kylarStatus.includes("Rage")>>
 		<<if $submissive gte 1150>>
 			"You're starting to make my arm sore, can we hold hands instead?" you ask quietly.
 		<<elseif $submissive lte 850>>
@@ -4078,7 +4103,7 @@ The two of you begin to walk around the park, enjoying the view.
 			"Wouldn't you rather hold hands?" you say, trying to mask the pain from Kylar's grip.
 		<</if>>
 		<<He>> releases your arm, but quickly takes your hand with just as much force.
-	<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 40>>
+	<<elseif _kylarStatus.includes("Sus")>>
 		You grab Kylar's hand and give it a squeeze. <<He>> seems surprised at first, but quickly locks <<his>> fingers with yours just a bit too tightly.
 	<<else>>
 		You gently squeeze Kylar's hand. <<He>> looks at you with a big smile.
@@ -4088,9 +4113,9 @@ The two of you begin to walk around the park, enjoying the view.
 	<br><br>
 <</if>>
 The two of you continue walking.
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 70>>
+<<if _kylarStatus.includes("Rage")>>
 	Kylar waves at each passerby, beaming as <<he>> pulls you closer.
-<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 40>>
+<<elseif _kylarStatus.includes("Sus")>>
 	Kylar tenses up whenever <<he>> sees you glance at a passerby.
 <<else>>
 	<<if $phase is 1>>
@@ -4099,29 +4124,29 @@ The two of you continue walking.
 		Kylar eases closer to you as you walk.
 	<</if>>
 <</if>>
-<<if $kylarFountain is 1>>
+<<if $kylar.fountain is 1>>
 	Eventually, you're back at the fountain.
 <<else>>
 	Eventually, you reach the park's fountain.
 <</if>>
 <<if $season is "winter">>
-	<<if $kylarFountainIntroWinter isnot 1>>
-		<<set $kylarFountainIntroWinter to 1>>
+	<<if !$kylarSeen.includes("fountainWinter")>>
+		<<set $kylarSeen.pushUnique("fountainWinter")>>
 		Kylar stops in place, staring at the fountain. <<He>> seems spellbound. The constantly running water and the cold temperature has caused much of the fountain's structure to freeze over and form icicles thicker than your arm, and at least twice as long. Near the centre, some water remains unfrozen.
 		"It's so pretty. It's the most amazing thing I've ever seen!" <<He>> glances at you. "W-well, second most."
 	<</if>>
 	It's largely frozen over, but there are patches of unfrozen water here and there.
 <</if>>
-<<if $kylarFountainIntro isnot 1>>
+<<if !$kylarSeen.includes("fountainIntro")>>
 	You notice something shining in the water. Upon closer inspection, they appear to be coins.
 <</if>>
 <br><br>
 
 <<if $money gte 10>>
-	<<link [[Toss a coin (£0.10)|Kylar Fountain Wish]]>><<set $money -= 10>><<trauma -3>><<set $kylarFountainCoin to 1>><</link>><<ltrauma>><br>
+	<<link [[Toss a coin (£0.10)|Kylar Fountain Wish]]>><<set $money -= 10>><<trauma -3>><<set $kylar.fountainCoin to 1>><</link>><<ltrauma>><br>
 <</if>>
-<<link [[Take a coin from the fountain and toss it|Kylar Fountain Wish]]>><<set $kylarFountainCoin to 0>><</link>><br>
-<<if $kylarFountain is 1>>
+<<link [[Take a coin from the fountain and toss it|Kylar Fountain Wish]]>><<set $kylar.fountainCoin to 0>><</link>><br>
+<<if $kylar.fountain is 1>>
 	<<link [[Sit at the fountain|Kylar Walk In The Park End]]>><</link>><br>
 <<else>>
 	<<link [[Move on|Kylar Walk In The Park End]]>><</link>><br>
@@ -4131,17 +4156,17 @@ The two of you continue walking.
 :: Kylar Fountain Wish
 <<set $outside to 1>><<effects>>
 "Make a wish," you say, tossing a coin into the fountain.
-<<if $kylarFountainIntro isnot 1>>
-	<<set $kylarFountainIntro to 1>>
+<<if $kylarSeen.includes("fountainIntro")>>
+	<<set $kylarSeen.pushUnique("fountainIntro")>>
 	Kylar watches you, as if entranced by what you're doing.
-	<<if $kylarFountainCoin is 1>>
+	<<if $kylar.fountainCoin is 1>>
 		<<He>> digs through <<his>> pockets, and tosses in a coin of <<his>> own.
 	<<else>>
 		<<He>> takes a coin from the fountain, seemingly trying to copy your every movement before tossing the coin back in.
 	<</if>>
 	"What did you wish for?" <<he>> asks. You tell <<him>> that it won't come true if you say it out loud.
 <<else>>
-	<<if $kylarFountainCoin is 1>>
+	<<if $kylar.fountainCoin is 1>>
 		Kylar digs out a coin and throws it in, aiming for the same spot you threw yours.
 	<<else>>
 		Kylar takes a coin from the fountain and throws it back in, aiming for the coin you threw.
@@ -4150,8 +4175,8 @@ The two of you continue walking.
 <<He>> smiles at you.
 <br><br>
 
-<<if $kylarFountain is 0>>
-	<<link [[Stay at the fountain|Kylar Walk In The Park End]]>><<set $kylarFountain to 1>><</link>>
+<<if $kylar.fountain is 0>>
+	<<link [[Stay at the fountain|Kylar Walk In The Park End]]>><<set $kylar.fountain to 1>><</link>>
 	<br>
 	<<link [[Go back to Kylar's bench|Kylar Walk In The Park End]]>><</link>>
 <<else>>
@@ -4160,26 +4185,24 @@ The two of you continue walking.
 <br>
 
 :: Kylar Walk In The Park End
-<<set $outside to 1>><<effects>><<set $phase to 0>>
-<<if $kylarFountain is 0>>
+<<set $outside to 1>><<effects>><<set $phase to 0>><<NPCStatusCheck "Kylar">>
+<<if $kylar.fountain is 0>>
 	You walk back to the bench with Kylar.
 <<else>>
 	Kylar sits on the edge of the fountain.
 <</if>>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 70>>
+<<if _kylarStatus.includes("Rage")>>
 	<<He>> pulls you down to sit with <<him>>. "That was... interesting," you say. Kylar looks around. Suddenly, <<he>> kisses you on the lips and holds your shoulders.
 	<<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>>
 	<br><br>
-	<<link [[Kiss back|Kylar Walk In The Park End 2]]>><<set $phase to 1>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<npcincr Kylar rage -1>><</link>><<glove>><<glust>><<lksuspicion>>
+	<<link [[Kiss back|Kylar Walk In The Park End 2]]>><<if _npcKissVirginTemp>><<set $phase to 10>><<else>><<set $phase to 1>><</if>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<npcincr Kylar rage -1>><</link>><<glove>><<glust>><<lksuspicion>>
 	<br>
 	<<link [[Pull away|Kylar Walk In The Park End 2]]>><<set $phase to 2>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><</link>><<llove>><<gksuspicion>>
-<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 40>>
-	<<set $kylarFountainKiss to 1>>
+<<elseif _kylarStatus.includes("Sus")>>
 	You take a seat next to <<him>>. "That was fun," you say. <<He>> looks happy.
 	<br><br>
 	<<kylaroptions>>
 <<else>>
-	<<set $kylarFountainKiss to 1>>
 	You take a seat next to <<him>>. "That was fun, we should do it again," you say. <<He>> looks overjoyed.
 	<br><br>
 	<<kylaroptions>>
@@ -4198,10 +4221,20 @@ The two of you continue walking.
 		"That was rude, you could have warned me first," you say.
 	<</if>>
 	Embarrassed, <<he>> nods. "Sorry."
+<<elseif $phase is 10>>
+	You feel like Kylar's hands are going to pierce through your shoulder, but you do your best to endure it. After an excessive amount of time, <<he>> releases you.
+	<<if $submissive gte 1150>>
+		"That wasn't very polite," you murmur.
+	<<elseif $submissive lte 850>>
+		"Have you calmed down now?" you ask.
+	<<else>>
+		"That was rude, you could have warned me first," you say.
+	<</if>>
+	Embarrassed, <<he>> nods. "Sorry, I got... excited." <<He>> looks at you, <<his>> eyes shining. "That was my first kiss. And we have so many other firsts ahead of us."
 <<elseif $phase is 2>>
 	You shake Kylar off of you. <<He>> looks stunned for a moment, before putting <<his>> face to <<his>> hands in shame. "I'm sorry, I don't know what came over me."
 <<else>>
-	<<set $kylarFountainKiss to 0>>
+	<<set $kylarDaily.walkKiss to true>>
 	<<if $submissive gte 1150>>
 		You slowly bring your face closer to <<his>>, and plant a kiss on <<his>> lips.
 	<<elseif $submissive lte 850>>
@@ -4213,7 +4246,12 @@ The two of you continue walking.
 	<br><br>
 	<<He>> holds you for some time. You place a hand on <<his>> head. "Are you okay?" you ask.
 	<br><br>
-	"Y-yeah..." <<he>> sighs in contentment. "I just wish we could stay like this forever." <<He>> reluctantly lets you go, but rests <<his>> head on your shoulder for a while.
+	<<if _npcKissVirginTemp>>
+		"Th-that was my first kiss," <<he>> whispers, <<his>> eyes shining. "It was better than I could've ever dreamed."
+	<<else>>
+		"Y-yeah..." <<he>> sighs in contentment. "I just wish we could stay like this forever."
+	<</if>>
+	<<He>> reluctantly lets you go, but rests <<his>> head on your shoulder for a while.
 <</if>>
 <br><br>
 <<kylaroptions>>
