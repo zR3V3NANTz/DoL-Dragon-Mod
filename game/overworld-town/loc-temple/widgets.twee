@@ -478,7 +478,7 @@
 		<br><br>
 
 		<<if _sydneyTemple>>
-			<<sydneyStatusCheck>>
+			<<NPCStatusCheck "Sydney">>
 			<<if _sydneyStatus.includes("corrupt")>>
 				You think Sydney might see it too.
 			<<else>>

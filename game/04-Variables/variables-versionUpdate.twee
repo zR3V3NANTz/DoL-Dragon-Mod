@@ -525,20 +525,12 @@
 	<<set $spraystat to 0>>
 <</if>>
 
-<<if $kylarstreettimer is undefined>>
-	<<set $kylarstreettimer to 0>>
-<</if>>
-
 <<if $silhouettedisable is undefined>>
 	<<set $silhouettedisable to "f">>
 <</if>>
 
 <<if $watersportsdisable is undefined>>
 	<<set $watersportsdisable to "f">>
-<</if>>
-
-<<if $kylarraped is undefined>>
-	<<set $kylarraped to 0>>
 <</if>>
 
 <<if $averyrage isnot undefined>>
@@ -2369,13 +2361,124 @@
 	<<set $penisexist to ($player.gender isnot "f" ? 1 : 0)>>
 <</if>>
 
-<<if $kylarsydneywriting is 1>>
-	<<set $sydneySeen.pushUnique("kylarwriting")>>
-	<<unset $kylarsydneywriting>>
-<</if>>
-
 <<if $NPCName[0].penis is 0>>
 	<<initnpcgender>>
 <</if>>
 
+<<if $kylarsydneywriting is 1>>
+	<<set $kylarSeen.pushUnique("sydneyWriting")>>
+	<<unset $kylarsydneywriting>>
+<</if>>
+<<if $sydneySeen isnot undefined>>
+	<<if $sydneySeen.includes("kylarwriting")>>
+		<<run delete $sydneySeen.pushUnique("kylarwriting")>>
+	<</if>>
+<</if>>
+<<if $kylarraped isnot undefined>>
+	<<set $kylar.raped to $kylarraped>>
+	<<unset $kylarraped>>
+<</if>>
+<<if $kylartimer isnot undefined>>
+	<<set $kylar.timer.halls to $kylartimer>>
+	<<unset $kylartimer>>
+<</if>>
+<<if $kylarstreettimer isnot undefined>>
+	<<set $kylar.timer.street to $kylarstreettimer>>
+	<<unset $kylarstreettimer>>
+<</if>>
+<<if $kylarsaidlove isnot undefined>>
+	<<set $kylarSeen.pushUnique("saidLove")>>
+	<<unset $kylarsaidlove>>
+<</if>>
+<<if $kylarspray is 1>>
+	<<set $kylarDaily.spray to true>>
+	<<unset $kylarspray>>
+<</if>>
+<<if $kylar_bodywriting is 1>>
+	<<set $kylarDaily.bodywriting to true>>
+	<<unset $kylar_bodywriting>>
+<</if>>
+<<if $kylar_invite isnot undefined>>
+	<<if $kylar_invite is 1>>
+		<<set $kylarDaily.invite to "home">>
+	<<else>>
+		<<set $kylarDaily.invite to "school">>
+	<</if>>
+	<<unset $kylar_invite>>
+<</if>>
+<<if $kylar_undies_taken isnot undefined>>
+	<<set $kylarDaily.undies to true>>
+<</if>>
+<<if $kylarpantiescheck isnot undefined>>
+	<<set $kylarSeen.pushUnique("commando")>>
+	<<unset $kylarpantiescheck>>
+<</if>>
+<<if $kylarsleeprape isnot undefined>>
+	<<set $kylarDaily.sleepRape to true>>
+	<<unset $kylarsleeprape>>
+<</if>>
+<<if $kylarconfessiontimer isnot undefined>>
+	<<set $kylar.timer.love to $kylarconfessiontimer>>
+	<<unset $kylarconfessiontimer>>
+<</if>>
+<<if $kylarhome isnot undefined>>
+	<<set $kylar.home to $kylarhome>>
+	<<unset $kylarhome>>
+<</if>>
+<<if $kylarhometimer isnot undefined>>
+	<<set $kylar.timer.home to $kylarhometimer>>
+	<<unset $kylarhometimer>>
+<</if>>
+<<if $kylarhomeinterrupted isnot undefined>>
+	<<set $kylarSeen.includes("home")>>
+	<<unset $kylarhomeinterrupted>>
+<</if>>
+<<if $kylarwalk isnot undefined>>
+	<<set $kylarDaily.walk to true>>
+	<<unset $kylarwalk>>
+<</if>>
+<<if $kylarFountain isnot undefined>>
+	<<set $kylar.fountain to $kylarFountain>>
+	<<unset $kylarFountain>>
+<</if>>
+<<if $kylarFountainIntroWinter>>
+	<<set $kylarSeen.pushUnique("fountainWinter")>>
+	<<unset $kylarFountainIntroWinter>>
+<</if>>
+<<if $kylarFountainKiss isnot undefined>>
+	<<if $kylarFountainKiss is 1>>
+		<<set $kylarDaily.walkKiss to true>>
+	<</if>>
+	<<unset $kylarFountainKiss>>
+<</if>>
+<<if $kylarFountainIntro isnot undefined>>
+	<<if $kylarFountainIntro is 1>>
+		<<set $kylarSeen.pushUnique("fountainIntro")>>
+	<</if>>
+	<<unset $kylarFountainIntro>>
+<</if>>
+<<if $kylarFountainCoin isnot undefined>>
+	<<set $kylar.fountainCoin to $kylarFountainCoin>>
+	<<unset $kylarFountainCoin>>
+<</if>>
+<<if $kylarfamestage isnot undefined>>
+	<<set $kylar.fameStage to $kylarfamestage>>
+	<<unset $kylarfamestage>>
+<</if>>
+<<if $kylarchatintro isnot undefined>>
+	<<set $kylarSeen.pushUnique("chatIntro")>>
+	<<unset $kylarchatintro>>
+<</if>>
+<<if $kylarcanteen isnot undefined>>
+	<<set $kylarSeen.pushUnique("canteen")>>
+	<<unset $kylarcanteen>>
+<</if>>
+<<if $kylarriddle isnot undefined>>
+	<<set $kylar.riddle to $kylarriddle>>
+	<<unset $kylarriddle>>
+<</if>>
+<<if $kylar_play isnot undefined>>
+	<<set $kylar.play to $kylar_play>>
+	<<unset $kylar_play>>
+<</if>>
 <</widget>>

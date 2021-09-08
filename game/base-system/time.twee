@@ -980,24 +980,20 @@
 		<<set $NPCName[$NPCNameList.indexOf("Kylar")].lust to Math.clamp($NPCName[$NPCNameList.indexOf("Kylar")].lust, 0, 100)>>
 		<<set $NPCName[$NPCNameList.indexOf("Kylar")].love to Math.clamp($NPCName[$NPCNameList.indexOf("Kylar")].love, 0, 100)>>
 		<<set $NPCName[$NPCNameList.indexOf("Kylar")].rage to Math.clamp($NPCName[$NPCNameList.indexOf("Kylar")].rage, 0, 100)>>
-		<<set $kylartimer += (10 + ($NPCName[$NPCNameList.indexOf("Kylar")].lust / 4))>>
-		<<set $kylarhometimer += (10 + ($NPCName[$NPCNameList.indexOf("Kylar")].lust / 4))>>
-		<<set $kylarspray to 0>>
-		<<set $kylarstreettimer += (10 + ($NPCName[$NPCNameList.indexOf("Kylar")].lust / 4))>>
-		<<unset $kylar_bodywriting>>
-		<<unset $kylar_invite>>
-		<<unset $kylar_undies_taken>>
-		<<if $kylar_riddle is 1>>
-			<<set $kylar_riddle to 2>>
+		<<set $kylar.timer.halls += (10 + ($NPCName[$NPCNameList.indexOf("Kylar")].lust / 4))>>
+		<<set $kylar.timer.home += (10 + ($NPCName[$NPCNameList.indexOf("Kylar")].lust / 4))>>
+		<<set $kylar.timer.street += (10 + ($NPCName[$NPCNameList.indexOf("Kylar")].lust / 4))>>
+		<<if $kylar.riddle is 1>>
+			<<set $kylar.riddle to 2>>
 		<<else>>
-			<<unset $kylar_riddle>>
+			<<set $kylar.riddle to 0>>
 		<</if>>
-		<<set $kylarwalk to 0>>
-		<<if $kylarFountainIntro is 1 and random(1,100) gte 20>>
-			<<set $kylarFountain to 1>>
+		<<if $kylarSeen.includes("fountainIntro") and random(1,100) gte 20>>
+			<<set $kylar.fountain to 1>>
 		<<else>>
-			<<set $kylarFountain to 0>>
+			<<set $kylar.fountain to 0>>
 		<</if>>
+		<<set $kylarDaily to {}>>
 	<</if>>
 
 	<<if $NPCName[$NPCNameList.indexOf("Avery")].state isnot "dismissed">>
@@ -1024,7 +1020,7 @@
 	<</if>>
 
 	<<if $NPCName[$NPCNameList.indexOf("Sydney")].init is 1>>
-		<<sydneyStatusCheck>>
+		<<NPCStatusCheck "Sydney">>
 		<<if $NPCName[$NPCNameList.indexOf("Sydney")].purity gte 1 and $NPCName[$NPCNameList.indexOf("Sydney")].virginity.temple is true>>
 			<<npcincr Sydney purity 1>>
 		<</if>>

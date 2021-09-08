@@ -232,15 +232,15 @@
 Other students ignore what is happening, or watch in amusement.
 <br><br>
 
-<<link [[Intervene|Kylar Intro Intervene]]>><<npcset Kylar state "active">><<set $kylarhometimer to 0>><<status -10>><<npcincr Kylar love 1>><</link>><<glove>><<lcool>>
+<<link [[Intervene|Kylar Intro Intervene]]>><<npcset Kylar state "active">><<status -10>><<npcincr Kylar love 1>><</link>><<glove>><<lcool>>
 <br>
-<<link [[Watch but make sure they're okay after|Kylar Intro Help]]>><<npcset Kylar state "active">><<set $kylarhometimer to 0>><<npcincr Kylar love 1>><</link>><<glove>>
+<<link [[Watch but make sure they're okay after|Kylar Intro Help]]>><<npcset Kylar state "active">><<npcincr Kylar love 1>><</link>><<glove>>
 <br>
 <<link [[Ignore|Kylar Intro Ignore]]>><<set $kylarignored to 1>><</link>>
 <br>
 
 <<elseif $days gte 14 and $kylarignored is 1 and $NPCName[$NPCNameList.indexOf("Kylar")].state isnot "active" and $NPCName[$NPCNameList.indexOf("Kylar")].state isnot "prison">>
-<<npcset Kylar state "active">><<set $kylarhometimer to 0>>
+<<npcset Kylar state "active">>
 
 <<npc Kylar>><<person1>>You round a corner and bump into a <<nnpc_gendery "Kylar">>. <<He>> scowls and looks up at you, but then <<his>> face softens and <<his>> mouth gapes.
 <br><br>
@@ -265,8 +265,8 @@ Other students ignore what is happening, or watch in amusement.
 <<set $bullytimer to 0>>
 <<schoolbully>>
 
-<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $kylartimer gte $rng>>
-<<set $kylartimer to 0>>
+<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $kylar.timer.halls gte $rng>>
+<<set $kylar.timer.halls to 0>>
 <<kylarhallways>>
 
 <<elseif $mathsproject is "ongoing" and $mathsdruggedstudent isnot 1 and $mathsprojectdays lt 20 and $stimdealerknown is 1>>
@@ -1869,8 +1869,9 @@ Whitney steps looms around a corner and rests <<his>> arm on your shoulder. <<Hi
 <</widget>>
 
 <<widget "kylarhallways">>
+<<NPCStatusCheck "Kylar">>
 <<set $rng to random(1, 100)>>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 50>>
+<<if _kylarStatus.includes("Love")>>
 	<<if $rng gte 60>>
 	<<npc Kylar>><<person1>>Kylar appears beside you and clutches your arm. "Hey," <<he>> says, smiling. <<He>> spots a <<generatey2>><<person2>><<person>> watching, and waves at <<him>>. "This is my <<if $player.gender_appearance is "m">>boyfriend<<else>>girlfriend<</if>>," <<person1>><<he>> announces. More turn to look. Someone snickers.
 	<<status -10>><<lcool>>

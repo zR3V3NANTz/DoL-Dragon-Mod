@@ -1,6 +1,6 @@
 :: Widgets speech-SYDNEY [widget]
 <<widget "speech-sydney">>
-<<sydneyStatusCheck>><<set $rng to random(1, 100)>>
+<<NPCStatusCheck "Sydney">><<set $rng to random(1, 100)>>
 <<if !$sydneyComments>>
 	<<set $sydneyComments to {}>>
 	<<set $sydneyComments.penetrated to 0>>
@@ -31,7 +31,7 @@
 	<<else>>
 		<<if _sydneyStatus.includes("corrupt")>>
 			<<if $sydneySeen.includes("corruptroom")>>
-				<<set _sydneyText to `<<He>> moans, looking <<printTo>> you with pure ecstasy. "The feeling of you ruining me gets better every time! I belong <<printTo>> you, now <<printAnd>> forever!" <<He>> holds on <<printTo>> you tightly. <<set $corruptionEvent to 1>><<npcincr Sydney purity -5>><<llspurity>>`>>
+				<<set _sydneyText to `<<He>> moans, looking <<printTo>> you with pure ecstasy. "The feeling of you ruining me gets better every time. I belong <<printTo>> you, now <<printAnd>> forever!" <<He>> holds on <<printTo>> you tightly. <<set $corruptionEvent to 1>><<npcincr Sydney purity -5>><<llspurity>>`>>
 			<<else>>
 				<<set _sydneyText to `<<He>> moans, looking <<printTo>> you with pure ecstasy. "You did it. You defiled me at last. We belong <<printTo>> each other forever now!" <<He>> holds on <<printTo>> you tight. <<set $corruptionEvent to 1>><<npcincr Sydney purity -20>><<lllspurity>>`>>
 			<</if>>
@@ -525,19 +525,19 @@
 		<<case "pure" "pureLust" "neutral" "neutralLust">>
 			<<if _sydneyChastity>>
 				<<if $rng lte 35>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "We're matching!"`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "We're matching!"`>>
 				<<elseif $rng lte 70>>
 					<<set _sydneyText to `<<He>> speaks. "We're both still pure if we both have chastity devices, right?"`>>
 				<<else>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "At least we don't have <<printTo>> worry since we're both protected."`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "At least we don't have <<printTo>> worry since we're both protected."`>>
 				<</if>>				
 			<<else>>
 				<<if $rng lte 35>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "You got me <<printTo>> remove mine, but now you have one?"`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "You got me <<printTo>> remove mine, but now you have one?"`>>
 				<<elseif $rng lte 70>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "So this is how it feels."`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "So this is how it feels."`>>
 				<<else>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "Oh."`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "Oh."`>>
 				<</if>>
 			<</if>>
 		<<case "corrupt" "corruptLust">>
@@ -547,15 +547,15 @@
 				<<elseif $rng lte 70>>
 					<<set _sydneyText to `<<He>> speaks. "We need <<printTo>> find the keys for our chastity devices soon."`>>
 				<<else>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "I guess we're both just lusty sinners, <<printAnd>> can't do anything about it."`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "I guess we're both just lusty sinners, <<printAnd>> can't do anything about it."`>>
 				<</if>>
 			<<else>>
 				<<if $rng lte 35>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "You're kidding me, right?"`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "You're kidding me, right?"`>>
 				<<elseif $rng lte 70>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "Is this a joke?"`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "Is this a joke?"`>>
 				<<else>>
-					<<set _sydneyText to `<<He>> stares at your <<printChastity>> "Oh you absolute sextease, you got me <<printTo>> remove mine just <<printTo>>-"`>>
+					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "Oh you absolute sextease, you got me <<printTo>> remove mine just <<printTo>>-"`>>
 				<</if>>
 			<</if>>
 	<</switch>>
@@ -563,7 +563,7 @@
 	<<switch _sydneyStatus>>
 		<<case "pure" "pureLust">>
 			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
-				<<set _sydneyText to `<<He>> winces. "H...harder..."`>>
+				<<set _sydneyText to `<<He>> winces. "H... harder..."`>>
 			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
 				<<set _sydneyText to `<<He>> winces. "You're hurting me..."`>>
 			<<else>>
@@ -766,7 +766,7 @@
 			<<if $rng lte 35>>
 				<<set _sydneyText to `<<He>> speaks. "You're staring. At least let me look at yours, too..."`>>
 			<<elseif $rng lte 70>>
-				<<set _sydneyText to `<<He>> speaks. "What are you going <<printto>> do?"`>>
+				<<set _sydneyText to `<<He>> speaks. "What are you going <<printTo>> do?"`>>
 			<<else>>
 				<<set _sydneyText to `<<He>> speaks. "W...well? Don't just stand there..."`>>
 			<</if>>

@@ -522,82 +522,85 @@ PenActiv: <span class="gold">$NPCList[_x].penis</span> VagActiv: <span class="go
 Add the NPCs you want.<br>
 <<if $enemyno lt 6>>
 	<<if !($npc.includes("Alex"))>>
-		<<link [[Add Alex|$passage]]>><<npc Alex>><</link>><br>
+		<<link [[Add Alex|$passage]]>><<npc Alex $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Avery"))>>
-		<<link [[Add Avery|$passage]]>><<npc Avery>><</link>><br>
+		<<link [[Add Avery|$passage]]>><<npc Avery $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Bailey"))>>
-		<<link [[Add Bailey|$passage]]>><<npc Bailey>><</link>><br>
+		<<link [[Add Bailey|$passage]]>><<npc Bailey $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Briar"))>>
-		<<link [[Add Briar|$passage]]>><<npc Briar>><</link>><br>
+		<<link [[Add Briar|$passage]]>><<npc Briar $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Charlie"))>>
-		<<link [[Add Charlie|$passage]]>><<npc Charlie>><</link>><br>
+		<<link [[Add Charlie|$passage]]>><<npc Charlie $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Darryl"))>>
-		<<link [[Add Darryl|$passage]]>><<npc Darryl>><</link>><br>
+		<<link [[Add Darryl|$passage]]>><<npc Darryl $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Doren"))>>
-		<<link [[Add Doren|$passage]]>><<npc Doren>><</link>><br>
+		<<link [[Add Doren|$passage]]>><<npc Doren $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Eden"))>>
-		<<link [[Add Eden|$passage]]>><<npc Eden>><</link>><br>
+		<<link [[Add Eden|$passage]]>><<npc Eden $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Gwylan"))>>
-		<<link [[Add Gwylan|$passage]]>><<npc Gwylan>><</link>><br>
+		<<link [[Add Gwylan|$passage]]>><<npc Gwylan $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Harper"))>>
-		<<link [[Add Harper|$passage]]>><<npc Harper>><</link>><br>
+		<<link [[Add Harper|$passage]]>><<npc Harper $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Jordan"))>>
-		<<link [[Add Jordan|$passage]]>><<npc Jordan>><</link>><br>
+		<<link [[Add Jordan|$passage]]>><<npc Jordan $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Kylar"))>>
-		<<link [[Add Kylar|$passage]]>><<npc Kylar>><</link>><br>
+		<<link [[Add Kylar|$passage]]>><<npc Kylar $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Landry"))>>
-		<<link [[Add Landry|$passage]]>><<npc Landry>><</link>><br>
+		<<link [[Add Landry|$passage]]>><<npc Landry $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Leighton"))>>
-		<<link [[Add Leighton|$passage]]>><<npc Leighton>><</link>><br>
+		<<link [[Add Leighton|$passage]]>><<npc Leighton $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Mason"))>>
-		<<link [[Add Mason|$passage]]>><<npc Mason>><</link>><br>
+		<<link [[Add Mason|$passage]]>><<npc Mason $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Morgan"))>>
-		<<link [[Add Morgan|$passage]]>><<npc Morgan>><</link>><br>
+		<<link [[Add Morgan|$passage]]>><<npc Morgan $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Niki"))>>
-		<<link [[Add Niki|$passage]]>><<npc Niki>><</link>><br>
+		<<link [[Add Niki|$passage]]>><<npc Niki $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Quinn"))>>
-		<<link [[Add Quinn|$passage]]>><<npc Quinn>><</link>><br>
+		<<link [[Add Quinn|$passage]]>><<npc Quinn $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Remy"))>>
-		<<link [[Add Remy|$passage]]>><<npc Remy>><</link>><br>
+		<<link [[Add Remy|$passage]]>><<npc Remy $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("River"))>>
-		<<link [[Add River|$passage]]>><<npc River>><</link>><br>
+		<<link [[Add River|$passage]]>><<npc River $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Robin"))>>
-		<<link [[Add Robin|$passage]]>><<npc Robin>><</link>><br>
+		<<link [[Add Robin|$passage]]>><<npc Robin $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Sam"))>>
-		<<link [[Add Sam|$passage]]>><<npc Sam>><</link>><br>
+		<<link [[Add Sam|$passage]]>><<npc Sam $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Sirris"))>>
-		<<link [[Add Sirris|$passage]]>><<npc Sirris>><</link>><br>
+		<<link [[Add Sirris|$passage]]>><<npc Sirris $enemyno+1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Sydney"))>>
+		<<link [[Add Sydney|$passage]]>><<npc Sydney $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Whitney"))>>
-		<<link [[Add Whitney|$passage]]>><<npc Whitney>><</link>><br>
+		<<link [[Add Whitney|$passage]]>><<npc Whitney $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Winter"))>>
-		<<link [[Add Winter|$passage]]>><<npc Winter>><</link>><br>
+		<<link [[Add Winter|$passage]]>><<npc Winter $enemyno+1>><</link>><br>
 	<</if>>
 	<<if !($npc.includes("Wren"))>>
-		<<link [[Add Wren|$passage]]>><<npc Wren>><</link>><br>
+		<<link [[Add Wren|$passage]]>><<npc Wren $enemyno+1>><</link>><br>
 	<</if>>
 <</if>>
 <br><br>

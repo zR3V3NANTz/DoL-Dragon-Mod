@@ -47,7 +47,7 @@ You sit on the grass beside the initiates.
 
 :: Temple Garden Join Sydney
 
-<<temple_effects>><<effects>><<sydneyStatusCheck>>
+<<temple_effects>><<effects>><<NPCStatusCheck "Sydney">>
 You sit on the grass beside Sydney. <<sydneyGreeting>> <<if $sydneyromance is 1>><<He>> scoots closer to you, and puts <<his>> head on your shoulder.<<else>><<He>> smiles at you.<</if>>
 <<if $temple_rank is "initiate">>
 	They're happy to accept you. You recognise a couple from school.
@@ -82,7 +82,7 @@ You encourage the initiates to help tidy the garden. They don't seem motivated, 
 
 :: Temple Garden Encourage Sydney
 
-<<temple_effects>><<effects>><<sydneyStatusCheck>>
+<<temple_effects>><<effects>>
 <<set $temple_garden += 15>>
 You encourage the initiates to help tidy the garden. They don't seem motivated, up until Sydney joins in. Together you soon have the garden looking much more presentable.
 <br><br>
