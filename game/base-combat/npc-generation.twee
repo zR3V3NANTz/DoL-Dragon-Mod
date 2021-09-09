@@ -95,6 +95,14 @@
 
 <<npcattribute _n _gen _lvl>>
 
+<<if $event is undefined>>
+	<<set $event to []>>
+<</if>>
+<<set $event.push($passage)>>
+<<if $eventslot is undefined>>
+	<<set $eventslot to []>>
+<</if>>
+<<set $eventslot.push(_n)>>
 <</widget>>
 
 <<widget "generate1">>

@@ -471,6 +471,10 @@
 <<set $npc.splice(0)>>
 <<set $npcnum.splice(0)>>
 <<set $npcrow.splice(0)>>
+<<if $endeventerror is undefined>>
+	<<unset $event>>
+	<<unset $eventslot>>
+<</if>>
 <</widget>>
 
 :: Widgets Clear Single NPC [widget]
@@ -526,7 +530,17 @@
 <<if $enemyno gt 0>>
 	<<set $enemyno -= 1>>
 <</if>>
-
+<<if $endeventerror is undefined>>
+	<<set $event.splice($eventslot.indexOf(_ii), 1)>>
+	<<set $eventslot.splice($eventslot.indexOf(_ii), 1)>>
+<</if>>
+<<if $enemyno is 0>>
+	<<set $pronoun to 0>>
+	<<if $endeventerror is undefined>>
+		<<unset $event>>
+		<<unset $eventslot>>
+	<</if>>
+<</if>>
 <</widget>>
 
 :: Widgets End Event [widget]
