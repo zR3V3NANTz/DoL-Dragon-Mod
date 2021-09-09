@@ -2057,6 +2057,7 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 	<br><br>
 	<<bird_perch_options>>
 <<elseif $rng gte 71>>
+<<NPCStatusCheck "Kylar">>
 	Your thoughts turn to
 	<<if random(1,2) is 1>>
 		<<switch $loveInterest.primary>>
@@ -2071,7 +2072,7 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 				<</if>>
 			<<case "Kylar">>
 				Kylar.
-				<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+				<<if _kylarStatus.includes("Rage")>>
 					You wonder if <<nnpc_he "Kylar">> will come looking for you. After mulling it over, you realise that "if" should be replaced with "when". <<stress 3>><<gstress>>
 				<<else>>
 					You hope <<nnpc_he "Kylar">> isn't being bullied in your absence.
@@ -2098,6 +2099,15 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 				<<else>>
 					You laugh, picturing <<nnpc_him "Avery">> trying to save face explaining your current situation.
 				<</if>>
+			<<case "Alex">>
+				Alex, and the farm.
+				<<if $farm_aggro gte 60>>
+					You hope Remy's not causing <<nnpc_him "Alex">> too much trouble.
+				<<elseif $farm.tower_guard_unpaid gte 1>>
+					$farm.tower_guard hasn't been paid yet. You hope it's not a dealbreaker.
+				<<else>>
+					You hope the harvest is good.
+				<</if>>
 			<<case "Black Wolf">>
 				the forest, and your pack. You wonder if they miss you.
 			<<default>>
@@ -2122,7 +2132,7 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 				<</if>>
 			<<case "Kylar">>
 				Kylar.
-				<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+				<<if _kylarStatus.includes("Rage")>>
 					You wonder if <<nnpc_he "Kylar">> will come looking for you. After mulling it over, you realise that "if" should be replaced with "when". <<stress 3>><<gstress>>
 				<<else>>
 					You hope <<nnpc_he "Kylar">> isn't being bullied in your absence.
@@ -2148,6 +2158,15 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 					You're glad to be so far away, at least until <<nnpc_he "Avery">> calms down.
 				<<else>>
 					You laugh, picturing <<nnpc_him "Avery">> trying to save face explaining your current situation.
+				<</if>>
+			<<case "Alex">>
+				Alex, and the farm.
+				<<if $farm_aggro gte 60>>
+					You hope Remy's not causing <<nnpc_him "Alex">> too much trouble.
+				<<elseif $farm.tower_guard_unpaid gte 1>>
+					$farm.tower_guard hasn't been paid yet. You hope it's not a dealbreaker.
+				<<else>>
+					You hope the harvest is good.
 				<</if>>
 			<<case "Black Wolf">>
 				the forest, and your pack. You wonder if they miss you.

@@ -23,7 +23,7 @@
 <<else>>
 	<<set $pronoun to "i">>
 <</if>>
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 
 <!-- Female SYDNEY -->
 <<if $NPCList[_nn].vagina isnot "none" and $NPCList[_nn].penis is "none">>

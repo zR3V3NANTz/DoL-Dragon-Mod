@@ -558,7 +558,7 @@ You are in the bathroom.
 			<</if>>
 
 		<<else>>
-			You wake up, <<if $submissive gte 1150 or $kylarsleeprape is 1>>Kylar still holding on to you<<else>>still holding on to Kylar<</if>>. Kylar stirs shortly after, blinking lazily.
+			You wake up, <<if $submissive gte 1150 or $kylarDaily.sleepRape is true>>Kylar still holding on to you<<else>>still holding on to Kylar<</if>>. Kylar stirs shortly after, blinking lazily.
 			<<if _orgasm is true>>
 				<<He>> sniffs the air for a moment, before looking at you. "Were you dreaming of us too?" <<he>> asks.
 			<</if>>
@@ -1173,11 +1173,11 @@ You are in the main hall of the orphanage.
 	<br><br>
 	<<ind>><<link [[Bailey's office (0:01)|Bailey's Office]]>><<pass 1>><</link>>
 	<br>
-	<<if $kylarhometimer gte 100 and $kylarhome is undefined>>
-		<<bedroomicon>><<link [[Bedroom (0:01)|Kylar Bedroom 1]]>><<pass 1>><<set $kylarhometimer to 0>><<set $kylarhome to 0>><</link>>
+	<<if $kylar.timer.home gte 100 and $kylar.home is undefined>>
+		<<bedroomicon>><<link [[Bedroom (0:01)|Kylar Bedroom 1]]>><<pass 1>><<set $kylar.timer.home to 0>><<set $kylar.home to 0>><</link>>
 		<br>
-	<<elseif $kylarhometimer gte 100 and $kylarhome is 0 and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
-		<<bedroomicon>><<link [[Bedroom (0:01)|Kylar Bedroom 2]]>><<pass 1>><<set $kylarhometimer to 0>><<set $kylarhome to 1>><</link>>
+	<<elseif $kylar.timer.home gte 100 and $kylar.home is 0 and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
+		<<bedroomicon>><<link [[Bedroom (0:01)|Kylar Bedroom 2]]>><<pass 1>><<set $kylar.timer.home to 0>><<set $kylar.home to 1>><</link>>
 		<br>
 	<<else>>
 		<<bedroomicon>><<link [[Bedroom (0:01)|Bedroom]]>><<pass 1>><</link>>
@@ -1904,7 +1904,7 @@ You reach out and pet the <<beasttype>>. <<bHe>> stretches into your hand and ya
 	<<endevent>>
 	<<link [[Next|Bed]]>><</link>>
 <<else>>
-	<<set $kylarsleeprape to 1>>
+	<<set $kylarDaily.sleepRape to true>>
 	Kylar's eyes snap open the moment you cry out. <<nnpc_He "Kylar">> lunges out of the bed, tackling the <<person>> to the floor. <<nnpc_He "Kylar">> pulls out a knife from
 	<<if $skulduggery gte 200>>
 		a hidden pocket on the inside of <<nnpc_his "Kylar">> <<if $NPCName[$NPCNameList.indexOf("Kylar")].pronoun is "m">>pant leg<<else>>skirt<</if>>

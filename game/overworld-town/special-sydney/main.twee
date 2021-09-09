@@ -64,7 +64,7 @@
 <br>
 
 :: Sydney Chat
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<set $rng to random(1, 100)>>
 <<if !$sydneyChatState>>
 	<<set $sydneyChatState to 1>>
@@ -104,7 +104,7 @@
 				You see tears welling in Sydney's eyes before <<he>> wipes them away. "I... I'll never blame someone for their own suffering... and... it's clear that <<nnpc_hes "Whitney">> suffering a lot." <<He>> reaches under the counter and opens a drawer completely filled with an unacceptable number of red markers, picking one out.
 			<</if>>
 		<</if>>
-	<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].init is 1 and $schoolstate isnot "third" and $rng gte 95>>
+	<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].init is 1 and $schoolstate isnot "third" and $rng gte 95 and !$kylarDaily.leightonPunch>>
 		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison">>
 			After some time, <<he>> begins to fumble around with some papers. They appear to be rental records. <<His>> eyes stop on Kylar's name.
 			<br><br>
@@ -505,7 +505,7 @@
 						<</if>>
 					<</if>>
 					<<npcincr Sydney lust 1>><<glust>><<arousal 200>><<garousal>>
-					<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+					<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 						<br><br>
 						Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
 					<</if>>
@@ -598,7 +598,7 @@
 <</if>>
 
 :: Sydney Chat Comfort
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $phase is 1>>
 	<<if $submissive gte 1150>>
 		"You're pretty nice to be around... especially compared to some of the other students," you say.
@@ -626,7 +626,7 @@
 <<sydneyOptions>>
 
 :: Sydney Library Bodywriting Stop
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 <<if $schoolstate is "early" or $schoolstate is "morning">>
 	You shake <<him>> awake. <<He>> looks startled, but immediately goes back to work.
 <<else>>
@@ -636,7 +636,7 @@
 <<sydneyOptions>>
 
 :: Sydney Library Bodywriting Allow
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $schoolstate is "early" or $schoolstate is "morning">>
 	Sydney's pen trails up your arm,
 	<<if !$skin.right_shoulder.pen>>
@@ -684,10 +684,10 @@ You shake your head, and Sydney nods in understanding. "Right. I wouldn't want s
 <<sydneyOptions>>
 
 :: Sydney Chat Nap Stroke
-<<effects>><<sydneyStatusCheck>>
+<<effects>><<NPCStatusCheck "Kylar Sydney">>
 You sit back in Sydney's chair, and <<he>> <<if ["early","morning","first","second"].includes($schoolstate)>>sleepily<<else>>obediently<</if>> follows you. <<He>> ends up kneeling on the floor with <<his>> head in your lap, and you run your fingers through <<his>> <<npcHairColour "Sydney">> hair. You're worried that it's uncomfortable for <<him>> to be kneeling like that, but <<he>> lets out a sigh of contentment. Before long, <<hes>> fast asleep.
 <br><br>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50 and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and _kylarState.includes("Rage") and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 	<<pass 5>>
 	You and Sydney stay like that for a few minutes, before a loud bang disrupts the library. You look around, and see that Kylar has dropped a dictionary on the floor. Sydney grumbles about the noise and climbs away from you. "Sorry about that..." <<He>> returns to the counter, frowning. The other students return to what they were doing.
 	<br><br>
@@ -721,7 +721,7 @@ You sit back in Sydney's chair, and <<he>> <<if ["early","morning","first","seco
 		<<person1>>
 	<</if>>
 
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 		Kylar scowls from across the library. <<ggksuspicion>><<npcincr Kylar rage 3>>
 		<br><br>
 	<</if>>
@@ -740,7 +740,7 @@ You push Sydney away from you.
 "I know I shouldn't fall asleep at the counter, but... aww..."
 <br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 	Kylar smiles in approval from across the library. <<lksuspicion>><<npcincr Kylar rage -1>>
 	<br><br>
 <</if>>
@@ -748,7 +748,7 @@ You push Sydney away from you.
 <<sydneyOptions>>
 
 :: Sydney Flirt
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if _sydneyChastity and $sydneyChastityKnown and $rng gte 92>>
 	"You should get that belt removed," you say, gesturing to <<his>> groin. "Imagine all the fun you could have with it gone."
 	<br><br>
@@ -982,7 +982,7 @@ You push Sydney away from you.
 <</if>>
 <<if _noOptions isnot 1>>
 	<<promiscuity1>>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 		Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
 		<br><br>
 	<</if>>
@@ -990,7 +990,7 @@ You push Sydney away from you.
 <</if>>
 
 :: Sydney Flirt Book Grab
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionevent to 1>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionevent to 1>>
 You nod. Sydney crouches down and puts <<his>> arms out. "I think I'm strong enough, don't worry."
 <br><br>
 You vault Sydney, and <<he>> gradually stands. You're surprised by how easy <<he>> keeps <<his>> balance. You're able to reach the book like this.
@@ -1042,7 +1042,7 @@ You vault Sydney, and <<he>> gradually stands. You're surprised by how easy <<he
 <<sydneyOptions>>
 
 :: Sydney Flirt Book Refuse
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 <<if $submissive gte 1150>>
 	"Th... that's too dangerous."
 <<elseif $submissive lte 850>>
@@ -1056,7 +1056,7 @@ Sydney looks annoyed, but nods. "You're right. Can you watch the counter for a m
 <<sydneyOptions>>
 
 :: Sydney Flirt Book Tall
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 You stand on the tips of your toes, and easily grab the book. You hand it to Sydney.
 <br><br>
 <<He>> blinks twice. "That works too." <<He>> suddenly seems as though <<he>> feels dwarfed by you, and you see <<his>> face turn red.
@@ -1067,7 +1067,7 @@ You stand on the tips of your toes, and easily grab the book. You hand it to Syd
 <<sydneyOptions>>
 
 :: Sydney Give Milkshake
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 
 You take out your milkshake and place it on the rental counter. 
 
@@ -1086,7 +1086,7 @@ You spend the next fifteen minutes chatting, as Sydney takes extra care not to s
 <<sydneyOptions>>
 
 :: Sydney Share Milkshake
-<<set $outside to 1>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 1>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 
 You take out your milkshake and place it on the rental counter.
 
@@ -1108,10 +1108,14 @@ You take out your milkshake and place it on the rental counter.
 	"That's..." <<his>> face turns red. "You're so romantic!" You spend the next fifteen minutes chatting with <<him>> as you sip away at the creamy treat. <<He>> takes extra care not to soil any books with the sugary substance. <<He>> seems much happier.
 <</if>>
 <br><br>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
+	Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
+	<br><br>
+<</if>>
 <<sydneyOptions>>
 
 :: Sydney Romance
-<<set $outside to 0>><<if $location is "school">><<schooleffects>><</if>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<if $location is "school">><<schooleffects>><</if>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $submissive gte 1150>>
 	"You're all red... are you alright?" You lean in, looking <<him>> over.
 <<elseif $submissive lte 850>>
@@ -1147,7 +1151,7 @@ You're different, though."
 <br>
 
 :: Sydney Romance 2
-<<effects>><<sydneyStatusCheck>>
+<<effects>><<NPCStatusCheck "Sydney">>
 "I was always taught by <<nnpc_brother "Jordan">> Jordan that lust is the most dangerous sin. I can't tell where the love ends and the lust begins, I can't... I don't know. I'm sorry.
 <<if $purity lte 500 or $demon gte 6>>
 	You're everything the temple taught me to fear and avoid,
@@ -1185,7 +1189,7 @@ I don't know what to do." You see tears begin to well in <<his>> eyes.
 <br>
 
 :: Sydney Romance Accept
-<<effects>><<sydneyStatusCheck>>
+<<effects>>
 <<if $sydneyFriendZoned>>
 	<<unset $sydneyFriendZoned>>
 	<<set $sydneySeen.pushUnique("friendzone")>>
@@ -1221,7 +1225,7 @@ You plant a kiss on <<his>> cheek. "I'm sure." You can't quite gauge <<his>> exc
 <</if>>
 <<set $sydneyromance to 1>>
 <br><br>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 	<span class="red">Kylar stares in horror from across the library.</span> <<gggksuspicion>><<npcincr Kylar rage 10>>
 	<br><br>
 <</if>>
@@ -1229,13 +1233,13 @@ You plant a kiss on <<his>> cheek. "I'm sure." You can't quite gauge <<his>> exc
 <br>
 
 :: Sydney Romance 3
-<<set $outside to 0>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<effects>>
 <<He>> whispers something to you. "Just... can you promise me that, even if this doesn't work, we'll stay friends?" You nod, hugging <<him>> tighter before pulling away.
 <br><br>
 <<sydneyOptions>>
 
 :: Sydney Friendzone
-<<set $outside to 0>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<effects>>
 <<set $sydneyFriendZoned to true>>
 <<if $submissive gte 1150>>
 	You shamefully look to the floor. "I... I'm sorry. I like you, but... I don't think we're ready for that."
@@ -1252,7 +1256,7 @@ You pull away after some time, and Sydney looks to be at peace. <<He>> gives you
 <<sydneyOptions>>
 
 :: Sydney Chastity Remove Intro
-<<set $outside to 0>><<if $location is "school">><<schooleffects>><</if>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<if $location is "school">><<schooleffects>><</if>><<effects>><<NPCStatusCheck "Sydney">>
 You open your mouth to speak. Sydney cuts you off. "I want this belt off of me." <<He>> sounds determined, and <<his>> expression is serious.
 <br><br>
 <<if $submissive gte 1150>>
@@ -1268,7 +1272,7 @@ You open your mouth to speak. Sydney cuts you off. "I want this belt off of me."
 	<<set $sydneyChastityRemoveCorrupt to true>>
 	"They won't just let me get my belt removed for no reason, but I'm not going to let that stop me. I've been an initiate for a long time. I've watched monks and nuns travel this way and that, and I know where they store all the chastity devices, along with some real kinky shit that I didn't understand until recently. Devices for punishment and purification." <<He>> makes a lewd gesture with <<his>> fingers as <<he>> speaks.
 	<br><br>
-	"We're going to sneak in at night, find the <<if $temple_rank is "initiate" and $worn.genitals.type.includes("chastity")>>keys to our belts<<else>>key to my belt<</if>>, and then you're going to fuck me raw right then and there." <<He>> pays no mind to <<his>> volume level, and for a moment, you're worried someone will overhear. "I need this. I need you to defile me. It will bind us together forever." <<He>> gently takes you by the hands. <<takeHandholdingVirginity "Sydney" "romantic">>
+	"They say they don't use keys, and they don't, but the keys are still there. They're just hidden away in a cabinet or something, and not given out. We're going to sneak in at night, find the <<if $temple_rank is "initiate" and $worn.genitals.type.includes("chastity")>>keys to our belts<<else>>key to my belt<</if>>, and then you're going to fuck me raw right then and there." <<He>> pays no mind to <<his>> volume level, and for a moment, you're worried someone will overhear. "I need this. I need you to defile me. It will bind us together forever." <<He>> gently takes you by the hands. <<takeHandholdingVirginity "Sydney" "romantic">>
 	<br><br>
 	"<span class="blue"><<if $location is "school">>The next time we're both at the temple<<else>>Some time after the sun sets<</if>>, we can get started.</span> I can't wait." Sydney releases you, and goes back to <<if $location is "school">>work<<else>>praying<</if>>.
 <<else>>
@@ -1289,7 +1293,7 @@ You open your mouth to speak. Sydney cuts you off. "I want this belt off of me."
 <<sydneyOptions>>
 
 :: Sydney Library Break
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 <<if $sydneySeen.includes("breakdown") or $sydneySeen.includes("persecute") or $sydneySeen.includes("punch")>>
 	You look up to see Sydney's smiling face. <span class="red">That familiar wave of anger washes over you again.</span>
 	<br><br>
@@ -1311,7 +1315,7 @@ You open your mouth to speak. Sydney cuts you off. "I want this belt off of me."
 <</if>>
 
 :: Sydney Library Break 2
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 <<if ($sydneySeen.includes("breakdown") and $phase is 1) or ($sydneySeen.includes("persecute") and $phase is 2)>>
 	<<if $phase is 1>>
 		You open your mouth to speak, but no words follow. Sydney notices. "Remember what I said? Everything is going to be okay." You stifle a sob.
@@ -1345,7 +1349,7 @@ You open your mouth to speak. Sydney cuts you off. "I want this belt off of me."
 <</if>>
 
 :: Sydney Library Break 3
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $phase is 1>>
 	<<He>> rubs your head, and after some time, you hear what sounds like humming. <span class="teal">The melody is faintly familiar,</span> but you're not sure where you've heard it. It fills you with a sense of ease and calm.
 	<<if _sydneyStatus.includes("corrupt")>>
@@ -1372,7 +1376,7 @@ You part, your face red and sore. Sydney hands you a bottle of water from under 
 <<sydneyOptions>>
 
 :: Sydney Library Punch
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<set _defiance_arousal to ($sadism / 40)>>
 <<arousal _defiance_arousal>>
 <<if $arousal gte ($arousalmax * 0.8)>>
@@ -1427,7 +1431,7 @@ You part, your face red and sore. Sydney hands you a bottle of water from under 
 <</if>>
 
 :: Sydney Library Punch 2
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 Sydney seems to notice your thoughts. "I've spent my whole life being taught the value of forgiveness," <<he>> says as <<he>> wipes away tears. <span class="green">"I'll never blame someone for their own suffering."</span> <<trauma -6>><<ltrauma>>
 <br><br>
 <<if $sydney.glasses is "glasses" or $sydney.glasses is "playerbought">>
@@ -1445,7 +1449,7 @@ Sydney seems to notice your thoughts. "I've spent my whole life being taught the
 <<sydneyOptions>>
 
 :: Sydney Leighton Intervene
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<npc "Sydney">><<person1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<npc "Sydney">><<person1>>
 You march up to the rental counter. Leighton and Sydney both notice your approach.
 <<if $submissive gte 1150>>
 	"Wh-what are you doing to Sydney?" you ask.
@@ -1504,7 +1508,7 @@ Sydney looks to you with tearful, pleading eyes.
 <br>
 
 :: Sydney Leighton Frame
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>>
 <<if $submissive gte 1150>>
 	"I... think I saw Whitney leaving with a book," you say. "<<nnpc_He "Whitney">> looked like <<nnpc_he "Whitney">> was trying to sneak out with it."
 <<elseif $submissive lte 850>>
@@ -1544,7 +1548,7 @@ Sydney looks to you with tearful, pleading eyes.
 			<br><br>
 		<</if>>
 		Sydney gently wraps <<his>> hands around your arm as Leighton departs without another word. "You're a life saver. I hope Whitney doesn't come after you for this."
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 			Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
 		<</if>>
 		<br><br>
@@ -1572,14 +1576,15 @@ Sydney looks to you with tearful, pleading eyes.
 <</if>>
 
 :: Sydney Leighton Punch
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Kylar Sydney">>
 Leighton takes Sydney by the arm again. You spring into action.
 <<if $leightonAssaulted>>
 	However, <span class="red">Leighton catches your arm.</span> "You didn't think that'd work again, did you?" <<nnpc_He "Leighton">> pins your arm behind your back, and pushes you against the rental counter. Sydney gasps. <<pain 3>><<gpain>>
 	<br><br>
 	"Everyone please exit the library at once. A pair of students are about to be disciplined." You hear the students around the library comply, packing up their things and shuffling out.
 	<br><br>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50 and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and _kylarStatus.includes("Rage") and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch">>
+		<<set $kylarDaily.leightonPunch to true>>
 		You hear a scream, and <span class="green">you suddenly feel Leighton's grip on you release.</span> You turn to see Kylar on top of Leighton. They both look stunned. Leighton grabs Kylar by the arms, lifting <<nnpc_him "Kylar">> and standing up. "Unacceptable," the headteacher says in a softer voice. "If not for your parents-"
 		<br><br>
 		Kylar is dragged out of the library, using <<nnpc_his "Kylar">> free arm to wave to you.
@@ -1615,7 +1620,7 @@ Leighton takes Sydney by the arm again. You spring into action.
 		Sydney squeezes your arm. "You're a life saver. But I'm worried about what <<nnpc_he "Leighton">> will do to you, now. You just attacked the head teacher, you absolute nut!"
 	<</if>>
 	<br><br>
-	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
+	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch">>
 		Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
 		<br><br>
 	<</if>>
@@ -1630,7 +1635,7 @@ Leighton takes Sydney by the arm again. You spring into action.
 <</if>>
 
 :: Sydney Leighton Aftermath
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $phase is 1>>
 	"It's the least I could do, considering it's my fault." Sydney looks to you with confusion.
 	<br><br>
@@ -1639,10 +1644,11 @@ Leighton takes Sydney by the arm again. You spring into action.
 	"I'm the one that stole from the library." <<if $bookStolenKnown isnot undefined>><<if $studyBooks.stolen isnot "none">><<set $studyBooks.stolen to "none">><<unset $sydneyStolenKnown>><<set $bookStolenKnown += 1>><<set $recentReturnTimer to 14>>You hand <<him>> the stolen book.<</if>><</if>>
 	<br><br>
 	<<if $NPCName[$NPCNameList.indexOf("Sydney")].love gte 40>>
-		Sydney looks to you with shock, but it soon fades. "That was a nasty thing to do. I'm disappointed in you, but thank you for being honest with me in the end. You have a good heart." <<He>> releases your arm. <<gglove>><<stress -3>><<lstress>>
+		Sydney looks to you with shock, but it soon fades. "That was a nasty thing to do. I'm disappointed in you, but thank you for being honest with me in the end. You have a good heart." <<He>> releases your arm.
 	<<else>>
-		Sydney releases you, looking to you with disgust. "How could you do that? Do you have any concept of consequence?! I-" <<He>> stops <<himself>>, taking a deep breath. "Sorry. I sounded like the <<nnpc_title "Leighton">> there. Thank you for being honest. You have a good heart." <<gglove>><<stress 3>><<gstress>>
+		Sydney releases you, looking to you with disgust. "How could you do that? Do you have any concept of consequence?! I-" <<He>> stops <<himself>>, taking a deep breath. "Sorry. I sounded like the <<nnpc_title "Leighton">> there. Thank you for being honest. You have a good heart."
 	<</if>>
+	<<gglove>><<stress 3>><<gstress>>
 	<br><br>
 	<<He>><<if $sydneyromance is 1>> stands on <<his>> toes, giving you a kiss on the cheek before <<he>><</if>> walks back to the rental counter.
 <<elseif $phase is 2>>
@@ -1690,15 +1696,15 @@ Leighton takes Sydney by the arm again. You spring into action.
 			<<He>> wraps <<his>> arms around you, enjoying your touch.
 		<</if>>
 		You separate after a few moments. <<if _npcKissVirginTemp>>"That was my first kiss," <<he>> giggles.<<else>>"I, uhm... I need to... get back to... yeah."<</if>> Sydney pecks you on the lips once more, before retreating to the rental counter.
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
-		<br><br>
-		<span class="red">Kylar stares in horror from across the library.</span> <<gggksuspicion>><<npcincr Kylar rage 10>>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
+			<br><br>
+			<span class="red">Kylar stares in horror from across the library.</span> <<gggksuspicion>><<npcincr Kylar rage 10>>
 		<</if>>
 	<<else>>
 		After a moment, <<he>> slips from your embrace. <<He>> opens <<his>> mouth, but no words follow. <<He>> returns to the rental counter without a word.
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and $luncheaten is 1>>
-		<br><br>
-		Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
+			<br><br>
+			Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
 		<</if>>
 	<</if>>
 <</if>>
@@ -1707,7 +1713,7 @@ Leighton takes Sydney by the arm again. You spring into action.
 <br>
 
 :: Sydney Leighton Spank
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<set $sydneySeen.pushUnique("spank")>>
 <<switch $phase>>
 	<<case 1>>
@@ -1775,7 +1781,7 @@ Leighton takes Sydney by the arm again. You spring into action.
 <br>
 
 :: Sydney Leighton Spank 2
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 Your palm comes down on Sydney's rear with a resounding slap. <<He>> cries out, and <<his>> hands grip the counter. You notice in the corner of your eye Leighton licking <<nnpc_his "Leighton">> lips.
 <<if $phase is 2>>
 	<<set $sydneyGroped to 1>>
@@ -1838,7 +1844,7 @@ Your palm comes down on Sydney's rear with a resounding slap. <<He>> cries out, 
 		<<case "pure">>
 			<<His>> whimpers flood the library. "It's... okay, this is... just discipline," <<he>> manages. You continue to abuse <<his>> rear, and by the time you're done, Sydney's bottom is flaming red and <<his>> face is wet with tears.
 		<<case "pureLust" "neutralLust" "corrupt">>
-			You continue to abuse <<his>> rear. You give <<him>> one final slap, and <<he>> involuntarily moans before quickly covering <<his>> mouth. "My, my. Looks to me like <<he>> secretly enjoys being punsihed by you," Leighton whispers. <<arousal 50>><<garousal>>
+			You continue to abuse <<his>> rear. You give <<him>> one final slap, and <<he>> involuntarily moans before quickly covering <<his>> mouth. "My, my. Looks to me like <<he>> secretly enjoys being punished by you," Leighton whispers. <<arousal 50>><<garousal>>
 		<<case "corruptLust">>
 			As you resume your assault, you quickly realise that Sydney seems to be enjoying <<himself>>, almost laughing after each spank. <<He>> looks back to you. "Harder. I know you can hit me harder." Leighton stifles a chuckle, before halting your spanks. <<arousal 100>><<garousal>>
 		<<default>>
@@ -1872,7 +1878,7 @@ Your palm comes down on Sydney's rear with a resounding slap. <<He>> cries out, 
 <br>
 
 :: Sydney Leighton Spank 3
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<if $phase is 1>>
 	"I can take it," you say. "Hit me as hard as I hit you." <<He>> still seems hesitant to hurt you.<br><br>
 <<elseif $phase is 2>>
@@ -1918,7 +1924,7 @@ Sydney's soft voice asks. All you can do is murmur that, "Yes, Leighton is gone.
 <br>
 
 :: Sydney Leighton Spank 4
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $phase is 1>>
 	<<if $submissive gte 1150>>
 		"I was more worried about you hating me," you say.
@@ -1943,7 +1949,7 @@ Sydney's soft voice asks. All you can do is murmur that, "Yes, Leighton is gone.
 	<<elseif $submissive lte 850>>
 		"The hell are you worried for? That was a blast," you exclaim.
 	<<else>>
-		"Thanks for 'keping me in line' and punishing me," you say suggestively.
+		"Thanks for 'keeping me in line' and punishing me," you say suggestively.
 	<</if>>
 	<br><br>
 	<<if _sydneyStatus.includes("corrupt")>>
@@ -1999,7 +2005,7 @@ With your agony lessened, you stand and pull up your <<if !$worn.lower.type.incl
 <<sydneyOptions>>
 
 :: Sydney Leighton Spank Refuse
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>>
 You let your hand fall, refusing to harm Sydney. Leighton looks disappointed. "Very well then. Sydney will be getting the full punishment."
 <br><br>
 You watch as Leighton brings down <<nnpc_his "Leighton">> hand on Sydney's bottom. Hard. Sydney cries out in pain. Leighton spanks <<him>> again. Then again. The assault continues. Sydney's bottom begins to turn very red. "I'll give you one last chance to change your mind." <<stress 6>><<gstress>>
@@ -2030,7 +2036,7 @@ After a moment, you can hear Sydney's cries resume. They sound much more agonize
 <br>
 
 :: Sydney Peek Confront
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<if $submissive gte 1150>>
 	"I... I saw you peek in on me," you say.
 <<elseif $submissive lte 850>>
@@ -2059,7 +2065,7 @@ After a moment, you can hear Sydney's cries resume. They sound much more agonize
 <br>
 
 :: Sydney Peek Proposition
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 You place your hands on Sydney's chest. "How about I go back in there, and you can undress me yourself? Then we can have some real fun." <<promiscuity1>>
 <br><br>
 <<if _sydneyStatus.includes("corrupt")>>
@@ -2075,7 +2081,7 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 <br>
 
 :: Sydney Peek Scold
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $submissive gte 1150>>
 	"That was wrong... you really shouldn't do that," you say.
 <<elseif $submissive lte 850>>
@@ -2095,7 +2101,7 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 <<sydneyOptions>>
 
 :: Sydney Peek Reassure
-<<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $submissive gte 1150>>
 	"It's okay... you just surprised me," you say.
 <<elseif $submissive lte 850>>
@@ -2116,7 +2122,7 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 <<sydneyOptions>>
 
 :: Sydney Peek Sex
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 <<if $sexstart is 1>>
 	<<set $corruptionEvent to 1>>
 	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
@@ -2158,7 +2164,7 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 <</if>>
 
 :: Sydney Peek Sex Finish
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
@@ -2223,7 +2229,7 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 <br>
 
 :: Sydney Peek End
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 Sydney leaves first, peeking to make sure no one will see you both leave. Once the path is clear, you both walk back to the rental counter.
 <br><br>
 <<sydneyOptions>>
@@ -2268,7 +2274,7 @@ Sydney leaves first, peeking to make sure no one will see you both leave. Once t
 	<<link [[Flirt|Sydney Library Rescue Intro 2]]>><<set $phase to 2>><<npcincr Sydney purity -2>><</link>><<lspurity>><<promiscuous1>>
 	<br>
 <<else>>
-	<<npc "Sydney">><<person1>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+	<<npc "Sydney">><<person1>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 	<<set $sydneySeen.pushUnique("libRescue")>>
 	<<if $sydneySeen.includes("library")>>
 		When you regain consciousness, you find yourself lying in the changing room of the library's clothing shop.
@@ -2365,7 +2371,7 @@ Sydney leaves first, peeking to make sure no one will see you both leave. Once t
 <</if>>
 
 :: Sydney Library Rescue 2
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $phase is 1>>
 	<<if $sydneyromance is 1>>
 		"My hero," you say as you press youself closer to <<him>>.
@@ -2437,7 +2443,7 @@ Sydney helps you stand.
 <</if>>
 
 :: Sydney Library Rescue Rest
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 You can't help but close your eyes again. You feel Sydney stroking your hair. The rhythm of <<his>> breathing gradually lulls you into a light sleep. You feel a kiss on your forehead. <<stress -3>><<lstress>>
 <br><br>
 
@@ -2479,7 +2485,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 <</if>>
 
 :: Sydney Library Rescue Reward
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $submissive gte 1150>>
 	"You saved me. How can I ever repay you?" you say, bringing a hand up to your chin in exaggerated thought. "I think I have an idea."
 <<elseif $submissive lte 850>>
@@ -2550,7 +2556,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 <</if>>
 
 :: Sydney Reward Sex
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 <<if $sexstart is 1>>
 	<<set $corruptionEvent to 1>>
 	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
@@ -2591,7 +2597,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 <</if>>
 
 :: Sydney Reward Sex Finish
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
@@ -2656,7 +2662,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 <br>
 
 :: Sydney Library Rescue Reward End
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<if $phase is 1>>
 	<<switch _sydneyStatus>>
 		<<case "pure">>
@@ -2710,7 +2716,7 @@ Sydney stretches and yawns.
 <</if>>
 
 :: Canteen Lunch Sydney
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneyStatusCheck>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 <<npc "Sydney">><<person1>><<set $corruptionEvent to 1>>
 <<if $phase2 is 1>>
 	You enter the canteen with Sydney, helping <<him>> carry in <<his>> books. You take your seats in an isolated corner.
@@ -2931,7 +2937,7 @@ Sydney stretches and yawns.
 <</if>>
 
 :: Sydney Kylar Bodywriting Encourage
-<<effects>><<sydneyStatusCheck>><<person2>>
+<<effects>><<NPCStatusCheck "Sydney">><<person2>>
 "Looks like we have some competition." You place both of your arms on the table. Kylar continues writing.
 <<sydneyBodywritingLocation>>
 <<if _writingFail isnot 1>>
@@ -2974,9 +2980,9 @@ Sydney stretches and yawns.
 <br>
 
 :: Sydney Kylar Bodywriting Refuse
-<<effects>><<sydneyStatusCheck>><<person2>>
+<<effects>><<NPCStatusCheck "Kylar Sydney">><<person2>>
 You push away Kylar's hand. <<His>> expression falters, and you think you see a twitch.
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 60>>
+<<if _kylarStatus.includes("Rage")>>
 	"But... don't you want the world to know you're mine?"
 	<br><br>
 	<<if $sydneyromance is 1>>
@@ -3011,21 +3017,20 @@ Sydney quickly finishes <<person1>><<his>> food. You chat with <<him>>, and <<he
 <br>
 
 :: Sydney Kylar Bodywriting Ignore
-<<effects>><<sydneyStatusCheck>><<person2>>
+<<effects>><<NPCStatusCheck "Kylar">><<person2>>
 You let Kylar write on you.
 <<sydneyBodywritingLocation>>
 <<if _writingFail isnot 1>>
 	Your <<bodypart _bodypart>> now reads: <<bodywriting_npc_kylar _bodypart "pen">>
 <</if>>
 <br><br>
-Sydney giggles. "Looks like you're a popular canvas." <<person1>><<He>> seems completely unbothered by Kyar's actions.
+Sydney giggles. "Looks like you're a popular canvas." <<person1>><<He>> seems completely unbothered by Kylar's actions.
 <<He>> quickly finishes <<his>> food. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>. Kylar glares at <<him>>, <<if _sydneyStatus.includes("corrupt")>>and <<he>> <<if $sydneyromance is 1>>shoots an icy glare right back.<<else>>rolls <<his>> eyes.<</if>><<else>>but <<he>> gives no sign of noticing.<</if>>
 <br><br>
 <<link [[Next|Canteen]]>><<endevent>><</link>>
 <br>
 
 :: Sydney Canteen Bodywriting Stop
-<<sydneyStatusCheck>>
 You shake your head. <<He>> frowns. "Sorry, it's a bad habit." <<He>> returns to <<his>> multitasking. You chat with <<him>>, and <<hes>> happy to stay and listen for a while. "I need to get back to the library now. Thank you for keeping me company." <<He>> gathers <<his>> books and speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>.
 <br><br>
 <<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
@@ -3037,7 +3042,7 @@ You shake your head. <<He>> frowns. "Sorry, it's a bad habit." <<He>> returns to
 <br>
 
 :: Sydney Canteen Bodywriting Allow
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 Sydney's pen trails up your arm,
 <<if !$skin.right_shoulder.pen>>
 	and <<he>> scribbles something on your right shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
@@ -3062,7 +3067,7 @@ Sydney's pen trails up your arm,
 <br>
 
 :: Sydney Canteen Encourage
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 <<if $submissive gte 1150>>
 	"Well, your glasses are important," you say.
 <<elseif $submissive lte 850>>
@@ -3108,7 +3113,7 @@ The <<person2>><<person>> looks surprised, but smiles. "Alright, a deal's a deal
 <br>
 
 :: Sydney Canteen Intervene
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 <<if $submissive gte 1150>>
 	"S-stop! <<person1>><<He>> needs those!"
 <<elseif $submissive lte 850>>
@@ -3223,7 +3228,7 @@ The <<person2>><<person>> looks surprised, but smiles. "Alright, a deal's a deal
 <br>
 
 :: Sydney Canteen Break
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 You shrug at Sydney. 
 <<if _sydneyStatus.includes("corrupt")>>
 	<<person1>><<He>> casually
@@ -3257,7 +3262,7 @@ You shrug at Sydney.
 <br>
 
 :: Sydney Crawl
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 
 You get on your knees and crawl under the counter.
 <<if _sydneyStatus.includes("corrupt")>>
@@ -3323,7 +3328,7 @@ You get on your knees and crawl under the counter.
 <</if>>
 
 :: Sydney Crawl Sex
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 <<if $sexstart is 1>>
 	<<set $corruptionEvent to 1>>
 	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
@@ -3365,7 +3370,7 @@ You get on your knees and crawl under the counter.
 <</if>>
 
 :: Sydney Crawl Sex Finish
-<<effects>><<sydneyStatusCheck>>
+<<effects>><<NPCStatusCheck "Sydney">>
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
@@ -3399,7 +3404,7 @@ You get on your knees and crawl under the counter.
 <br>
 
 :: Sydney Crawl Sex End
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 
 <<if $phase is 1>>
 	"Wasn't that so much better than just <<if $NPCName[$NPCNameList.indexOf("Sydney")].gender is "m">>sucking me off<<else>>eating me out<</if>>?" <<he>> asks, face smug, as the two of you stand up. "I can't let me have all the pleasure."
@@ -3421,7 +3426,7 @@ You get on your knees and crawl under the counter.
 <<sydneyOptions>>
 
 :: Sydney Crawl Oral
-<<sydneyStatusCheck>>
+<<NPCStatusCheck "Sydney">>
 <<if $sexstart is 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -3614,7 +3619,7 @@ You get on your knees and crawl under the counter.
 <</if>>
 
 :: Sydney Crawl Oral Finish
-<<schooleffects>><<effects>><<sydneyStatusCheck>><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	<<if $sydneyOral.Student is 1>>

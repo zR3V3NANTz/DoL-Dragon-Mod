@@ -1264,60 +1264,66 @@ Second arg: tool */
 			<</if>>
 		<<else>>
 			<<He>> smiles at you.
+			<<unset _silent>>
 		<</if>>
-		<<set $enemyanger -= 10>><<set $enemytrust += 10>><<npcincr Kylar rage -2>><<lksuspicion>>
+		<<set $enemyanger -= 10>><<set $enemytrust += 10>><<npcincr Kylar rage -2>>
 	<<case "Robin">>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+		<<if _kylarStatus.includes("Rage")>>
 			<<He>> snarls. "Forget about <<nnpc_him "Robin">>! I'm better than <<nnpc_him "Robin">>!"
 		<<else>>
 			<<He>> growls. "Robin can't take care of you like I can!"
 		<</if>>
-		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>>
 	<<case "Whitney">>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+		<<if _kylarStatus.includes("Rage")>>
 			<<He>> snarls. "You're not Whitney's! You're mine!"
 		<<else>>
 			<<He>> freezes. "H... <<nnpc_He "Whitney">> doesn't treat you right! I can!"
 		<</if>>
-		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>>
 	<<case "Sydney">>
 		<<if $skin[$args[0]].lewd isnot 1>>
-			<<He>> frowns, but doesn't say anything.
+			<<He>> frowns, but doesn't say anything about it.
+			<<unset _silent>>
 			<<set $enemyanger += 5>><<set $enemytrust -= 5>>
-		<<elseif !$sydneySeen.includes("kylarwriting") and $args[0].lewd is 1>>
+		<<elseif !$kylarSeen.includes("sydneyWriting") and $args[0].lewd is 1>>
 			<<He>> frowns, reading it again, and <<his>> lip curls. "<<nnpc_He "Sydney">>... Forget about <<nnpc_him "Sydney">>."
-			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>><<set $sydneySeen.pushUnique("kylarwriting")>>
-		<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<set $kylarSeen.pushUnique("sydneyWriting")>>
+		<<elseif _kylarStatus.includes("Rage")>>
 			<<He>> growls. "Sydney doesn't know you like I do!"
-			<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+			<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>>
 		<<else>>
 			<<He>> frowns. "I don't like how close you are to <<nnpc_him "Sydney">>."
-			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>>
+			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>>
 		<</if>>
 	<<case "Black Wolf" "Great Hawk">>
 		<<His>> eyes narrow. "I can be an animal, too. Watch!"
-		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>>
 	<<case "Eden" "Avery" "Alex">>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].rage gte 50>>
+		<<if _kylarStatus.includes("Rage")>>
 			<<He>> snarls. "Whoever they are, they're worthless!"
 		<<else>>
 			<<He>> growls. "You don't need them! You only need me!"
 		<</if>>
-		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>><<ggksuspicion>>
+		<<set $enemyanger += 30>><<set $enemytrust -= 30>><<npcincr Kylar rage 3>>
 	<<case "prostitution" "rape" "exhibitionism" "sex">>
 		<<He>> grimaces.
-		<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>>
+		<<unset _silent>>
+		<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>>
 	<<case "pregnancy">>
 		/*ToDo: Pregnancy, write once Kylar's reaction to/thoughts on pregnancy is better understood.
 		May differ based on gender, jealousy and whether or not Kylar has impregnated the PC in the past.*/
 	<<case "combat" "violence" "criminal">>
-		<<His>> eyes widen, but <<he>> doesn't say anything.
+		<<His>> eyes widen, but <<he>> doesn't say anything about it.
+		<<unset _silent>>
 	<<default>>
 		<<if $skin[$args[0]].lewd is 1>>
 			<<He>> frowns.
-			<<set $enemyanger += 20>><<set $enemytrust -= 20>><<npcincr Kylar rage 1>><<gksuspicion>>
+			<<unset _silent>>
+			<<set $enemyanger += 10>><<set $enemytrust -= 10>><<npcincr Kylar rage 1>>
 		<<else>>
 			/*Do nothing.*/
+			<<unset _silent>>
 		<</if>>
 <</switch>>
 <</widget>>

@@ -17,7 +17,7 @@
 		Bailey is looking for you, and wants <<printmoney $rentmoney>>.
 		<br>
 	<<else>>
-		Bailey wants <<printmoney $rentmoney>> on <<rentday>>
+		Bailey wants <<printmoney $rentmoney>> on <<rentday>>.
 		<br>
 	<</if>>
 <<elseif $rentmoney isnot undefined>>

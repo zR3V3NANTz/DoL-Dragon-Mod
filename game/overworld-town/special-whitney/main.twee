@@ -3478,7 +3478,7 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 	<<else>>
 		Rain drops shake the surface of the water.
 	<</if>>
-	Whitney begins to pilfer coins from the bottom. <<if $kylarFountainIntro is 1>>"There's a lot more coins than there used to be. Losers."<<else>>"Can't believe people just throw these away. Superstitious morons."<</if>> <<He>> faintly smiles.
+	Whitney begins to pilfer coins from the bottom. <<if $kylarSeen.includes("fountainIntro") is 1>>"There's a lot more coins than there used to be. Losers."<<else>>"Can't believe people just throw these away. Superstitious morons."<</if>> <<He>> faintly smiles.
 	<br><br>
 	<<link [[Join in|Whitney Ask 2]]>><<set $phase to 0>><<npcincr Whitney love 1>><</link>><<crime>><<glove>><br>
 	<<link [[Watch|Whitney Ask 2]]>><<set $phase to 1>><</link>><br>
@@ -3519,7 +3519,7 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 	<<else>>
 		"They wouldn't have thrown these away if they wanted them," you say.
 	<</if>>
-	You stick your hand in the<<if $season is "winter">> freezing<</if>> water, hunting for the most valuable coins. You manage to find <<if $kylarFountainIntro is 1>><<moneyGain 6 true true>><<else>><<moneyGain 3 true true>><</if>>.
+	You stick your hand in the<<if $season is "winter">> freezing<</if>> water, hunting for the most valuable coins. You manage to find <<if $kylarSeen.includes("fountainIntro")>><<moneyGain 6 true true>><<else>><<moneyGain 3 true true>><</if>>.
 	<br><br>
 	Whitney pulls <<his>> hands out of the water, looking <<print either("proud", "disappointed", "annoyed", "blankly")>> at <<his>> haul. <<He>> dries <<his>> hands off on your <<if $worn.over_upper.name isnot "naked">>$worn.over_upper.name<<elseif $worn.upper.name isnot "naked">>$worn.upper.name<<elseif $worn.under_upper.name isnot "naked">>$worn.under_upper.name<<else>>$worn.lower.name<</if>>.
 <<elseif $phase is 1>>

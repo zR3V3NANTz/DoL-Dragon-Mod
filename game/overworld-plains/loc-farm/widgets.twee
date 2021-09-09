@@ -2733,6 +2733,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 <</if>>
 <<damage_farm _farm_damage>>
 <<set $farm_attack_timer to random(17, 24)>>
+<<set $farm_attacked to 1>>
 <</widget>>
 
 <<widget "damage_farm">>
@@ -2778,6 +2779,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 <</if>>
 <<unset $fields_damaged>>
 <<unset $farm_destroyed>>
+<<unset $farm_attacked>>
 <</widget>>
 
 <<widget "farm_assault_intro">>

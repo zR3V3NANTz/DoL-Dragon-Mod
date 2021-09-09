@@ -236,7 +236,7 @@ You find Alex lying on <<his>> face, an empty bottle beside <<him>>. <<Hes>> unc
 <<npc Alex>><<person1>>
 You walk back to the cottage. Alex pats your shoulder. "We won, but Remy will be back. We'll be ready."
 <br><br>
-<span class="red">Remy will attack again in $farm_attack_timer days.</span>
+<span class="red">Remy will attack again in <<number $farm_attack_timer>> days.</span>
 <br><br>
 
 <<unset $fields_damaged>>

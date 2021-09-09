@@ -16,7 +16,7 @@ The arcade is closed. A glowing sign beside the door reads "Opens: <span class="
 
 :: Arcade
 <<set $outside to 0>><<set $location to "arcade">><<effects>>
-<<set $kylar_play to 0>>
+<<set $kylar.play to 0>>
 You are in the amusement arcade on Starfish Street.
 
 <<if $daystate is "day" or $daystate is "dusk">>

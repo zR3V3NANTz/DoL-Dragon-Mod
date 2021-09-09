@@ -367,7 +367,7 @@
 			<<set _pregnancy.ultrasoundDone-->>
 		<</if>>
 		<<switch _pregnancy.type>>
-			<<case "npc">><<set _multiplier to (1/(1/9*$humanPregnancyMonths))>>
+			<<case "human">><<set _multiplier to (1/(1/9*$humanPregnancyMonths))>>
 			<<case "wolf">><<set _multiplier to (1/(1/12*$wolfPregnancyWeeks))>>
 			<<default>><<set _multiplier to 1>>
 		<</switch>>

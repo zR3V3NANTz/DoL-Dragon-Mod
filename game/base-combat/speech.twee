@@ -4410,7 +4410,7 @@
 			<<set $_text_output to `<<He>> gasps. "Finally, you're kissing the most intimate part of me. Just like in my dreams!"`>>
 		<<elseif $speechkissvirgin is 1>>
 			<<set $_text_output to `<<He>> gasps. "Iloveyouiloveyouiloveyou!!!"`>>
-			<<set $kylarsaidlove to 1>>
+			<<set $kylarSeen.pushUnique("saidLove")>>
 		<<elseif $speechcrossdressaroused is 1>>
 			<<if $penisexist is 1>>
 				<<set $_text_output to `<<He>> gasps. "You can make me pregnant. I'd given up on making a family, but..." <<He>> starts <<printTo>> cry. "You can make me pregnant...!"`>>
@@ -4434,7 +4434,7 @@
 					<<set $_text_output to `<<He>> freezes. "W... Whitney can't stop me!"`>>
 				<<case "Sydney">>
 					<<set $_text_output to `<<He>> growls. "Sydney doesn't know you like I do!"`>>
-					<<set $sydneySeen.pushUnique("kylarwriting")>>
+					<<set $kylarSeen.pushUnique("sydneyWriting")>>
 				<<default>>
 					<<set $_text_output to `<<He>> freezes. "Who... are you talking about...?"`>>
 				<</switch>>
@@ -4488,14 +4488,13 @@
 			<<elseif $kylarsexcycle is 8>>
 				<<set $kylarsexcycle += 1>>
 				<<set $_text_output to `"I l-love you," <<he>> says.`>>
-				<<set $kylarsaidlove to 1>>
+				<<set $kylarSeen.pushUnique("saidLove")>>
 			<<else>>
 				<<set $kylarsexcycle to 0>>
 				<<set $_text_output to `"You're so lewd <<printAnd>> naughty <<printAnd>> all mine," <<he>> says.`>>
 			<</if>>
-		<</if>>
-		<<if _silent>>
-			<<unset _silent>>
+		<<else>>
+			<<set $_text_output to ``>>
 		<</if>>
 	<<case "Eden">>
 		<<if $speechpenisvirgin is 1 or $speechvaginavirgin is 1>>
@@ -4543,7 +4542,7 @@
 			<<set $edenhuntcaught += 1>>
 			<<set $_text_output to `"Don't forget who you belong to," Eden says.`>>
 		<<elseif $edenhuntcaught is 10>>
-			<<set $edenhuntcaught += 1>>
+			<<set $edenhuntcaught to 1>>
 			<<set $_text_output to `"I own every single part of you," Eden growls.`>>
 		<</if>>
 	<<case "Whitney">>
@@ -4562,6 +4561,12 @@
 					<<set $_text_output to `<<He>> laughs. "Did you just admit <<printTo>> fucking a dog? You're making this too easy."`>>
 				<<else>>
 					<<set $_text_output to `<<He>> laughs. "I think I need <<printTo>> remind you who's bitch you actually are."`>>
+				<</if>>
+			<<elseif _loveInterest is "Great Hawk">>
+				<<if random(1, 2) lte 1>>
+					<<set $_text_output to `<<He>> laughs. "Did you just admit <<printTo>> fucking a bird? You're making this too easy."`>>
+				<<else>>
+					<<set $_text_output to `<<He>> laughs. "You can't fly away. Not from me."`>>
 				<</if>>
 			<<elseif random(1, 2) lte 1>>
 				<<switch _loveInterest>>
@@ -4686,5 +4691,5 @@
 			<<set $_text_output to _sydneyText>>
 		<</if>>
 <</switch>>
-<</silently>><<if $_text_output>>$_text_output<<else>><<set _noNameComment to true>><</if>>
+<</silently>><<if $_text_output or _silent>>$_text_output<<else>><<set _noNameComment to true>><</if>>
 <</widget>>
