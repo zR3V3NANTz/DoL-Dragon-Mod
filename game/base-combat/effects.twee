@@ -3672,7 +3672,7 @@ You try to pull your head away from the penis threatening your mouth.
 				<span class="green">"<<print _response.pluck()>>"</span>
 				<<set $condomUse to false>>
 			<<else>>
-				<<if $npc and $NPCList[_j].pregnancyAvoidance gt random(0, 99)>>
+				<<if $npc and $NPCList[0].pregnancyAvoidance gt random(0, 99)>>
 					<<set _npcReject to true>>
 				<</if>>
 				<<if _npcReject>>
