@@ -104,29 +104,19 @@
 <<widget "lowerbodyparts">><<print either("hands", "feet", "thighs", "bottom")>><</widget>>
 
 <<widget "word">><<silently>>
+	/* usage example: <<word "upper">> */
 	<<set _text_output to "">>
-	<<if $args[0] and $worn[$args[0]].word isnot "n">>
-		<<set _text_output to $worn[$args[0]].word>>
+	<<if $args[0]>>
+		/* note: we rely on the .index of clothing items to never change. */
+		<<set $_result to setup.clothes[$args[0]][$worn[$args[0]].index].word>>
+		<<set _text_output to ($_result isnot "n" ? $_result : "")>>
 	<</if>>
 <</silently>>_text_output <</widget>>
 
-<<widget "overupperword">><<word "over_upper">><</widget>>
-<<widget "overlowerword">><<word "over_lower">><</widget>>
-<<widget "upperword">>
-<<if $worn.upper.name is "oversized sweater">>
-	<<set _text_output to "an">>
-	<<print _text_output>>
-<<else>>
-	<<word "upper">>
-<</if>>
-<</widget>>
-<<widget "lowerword">><<word "lower">><</widget>>
-<<widget "underupperword">><<word "under_upper">><</widget>>
-<<widget "underlowerword">><<word "under_lower">><</widget>>
 <<widget "genitalsword">><<word "genitals">><</widget>>
 
 <<widget "plural">><<silently>>
-	<<if $worn[$args[0]].plural is 1>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].plural is 1>>
 		<<set _text_output to "are">>
 	<<else>>
 		<<set _text_output to "is">>
@@ -142,7 +132,7 @@
 <<widget "genitalsplural">><<plural "genitals">><</widget>>
 
 <<widget "itis">><<silently>>
-	<<if $worn[$args[0]].plural is 1>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].plural is 1>>
 		<<set _text_output to "they are">>
 	<<else>>
 		<<set _text_output to "it is">>
@@ -157,7 +147,7 @@
 <<widget "underloweritis">><<itis "under_lower">><</widget>>
 
 <<widget "it">><<silently>>
-	<<if $worn[$args[0]].plural is 1>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].plural is 1>>
 		<<set _text_output to "them">>
 	<<else>>
 		<<set _text_output to "it">>
@@ -175,7 +165,7 @@
 <<widget "handsit">><<it "hands">><</widget>>
 
 <<widget "has">><<silently>>
-	<<if $worn[$args[0]].plural is 1>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].plural is 1>>
 		<<set _text_output to "have">>
 	<<else>>
 		<<set _text_output to "has">>
@@ -190,7 +180,7 @@
 <<widget "underlowerhas">><<has "under_lower">><</widget>>
 
 <<widget "that">><<silently>>
-	<<if $worn[$args[0]].plural is 1>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].plural is 1>>
 		<<set _text_output to "those">>
 	<<else>>
 		<<set _text_output to "that">>

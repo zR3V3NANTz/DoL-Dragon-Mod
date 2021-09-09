@@ -1535,6 +1535,14 @@
 <<else>>
 	<<set _overOutfit to false>>
 <</if>>
+
+<<set _underNaked to ($worn.under_lower.name is "naked" and $worn.under_upper.name is "naked")>>
+<<set _middleNaked to ($worn.lower.name is "naked" and $worn.upper.name is "naked")>>
+<<set _overNaked to ($worn.over_lower.name is "naked" and $worn.over_upper.name is "naked")>>
+<<set _topless to ($worn.over_upper.name is "naked" and $worn.upper.name is "naked" and $worn.under_upper.name is "naked")>>
+<<set _bottomless to ($worn.over_lower.name is "naked" and $worn.lower.name is "naked" and $worn.under_lower.name is "naked")>>
+<<set _fullyNaked to (_topless and _bottomless)>>
+
 <</widget>>
 
 <<widget "otherOutfitChecks">>

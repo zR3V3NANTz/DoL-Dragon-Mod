@@ -3962,20 +3962,20 @@ __Map__<br>
 	<</if>>
 <</widget>>
 
-<<widget "clothescolour">>
-	<<set _slot = $args[0]>>
+<<widget "clothescolour">><<silently>>
+	<<set _slot to $args[0]>>
 	<<if $worn[_slot].colour isnot 0 and $worn[_slot].colour isnot undefined>>
 		<<if $worn[_slot].colour.substring(0, 3) is "wet">>
-			<<print $worn[_slot].colour.substring(3)>>
+			<<set _text_output to $worn[_slot].colour.substring(3)>>
 		<<elseif $worn[_slot].colour_sidebar is 1>>
 			<<if $worn[_slot].colour == "custom">>
-				<<print getCustomColourName($worn[_slot].colourCustom)>>
+				<<set _text_output to getCustomColourName($worn[_slot].colourCustom)>>
 			<<else>>
-				$worn[_slot].colour
+				<<set _text_output to $worn[_slot].colour>>
 			<</if>>
 		<</if>>
 	<</if>>
-<</widget>>
+<</silently>><<print _text_output>><</widget>>
 
 <<widget "nounderwearcheck">>
 	/*Checks if the PC is pantiless, but otherwise decent. Results in low level exhibitionism increases.*/

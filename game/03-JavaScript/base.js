@@ -255,12 +255,15 @@ function integrityWord(worn) {
 		case "tattered":
 		case "torn":
 		case "frayed":
-			return kw+" ";
+			T.text_output = kw+" ";
+			break;
 		case "full":
 		default:
-			return "";
+			T.text_output = "";
 	}
+	return T.text_output;
 }
+DefineMacroS("integrityWord", integrityWord);
 
 function underlowerintegrity() {
 	return integrityWord(V.worn.under_lower);

@@ -434,8 +434,8 @@
 	<<if $makeup.mascara != 0>><<set $attractiveness += 100>><</if>>
 <</widget>>
 
+/* NOTE: THIS WIDGET IS UNUSED
 <<widget "clothingcaption">>
-/* NOTE: THIS WIDGET IS UNUSED */
 <<if $worn.upper.name is "naked">>
 	<<if $worn.lower.name is "naked">>
 		<<if $worn.under_lower.name is "naked" and $worn.genitals.name is "naked">>
@@ -589,9 +589,10 @@ Your identity is concealed by your $worn.face.name.
 <</if>>
 
 <</widget>>
+*/
 
+/* NOTE: THIS WIDGET IS UNUSED 
 <<widget "stripcaption">>
-/* NOTE: THIS WIDGET IS UNUSED */
 
 <<if !$worn.upper.type.includes("naked") and $upperwetstage gte 3 and !$worn.lower.type.includes("naked") and $lowerwetstage gte 3 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $underlowerwetstage gte 3 and !$worn.under_upper.type.includes("naked") and $underupperwetstage gte 3>>
 	<<if $worn.under_upper.set is $worn.under_lower.set>>
@@ -767,6 +768,7 @@ Your $worn.under_upper.name <<underupperhas>> been pulled to your $worn.under_up
 <</if>>
 
 <</widget>>
+*/
 
 <<widget "clock">><<silently>>
 <<if $hour gte 12>>

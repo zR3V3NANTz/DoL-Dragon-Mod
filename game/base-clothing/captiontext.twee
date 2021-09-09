@@ -1,10 +1,31 @@
 :: Widgets Clothing caption text [widget]
 
 <<widget "clothingCpationText">>
-<<clothingCpationTextNothing>>
-<<if _naked is undefined>>
-	<<clothingCpationTextOver>><<clothingCpationTextMiddle>><<clothingCpationTextUnder>><<clothingCpationTextGenitals>>
+<<outfitChecks>>
+<<if _fullyNaked is false>>
+	<<set _clothingCaptionItems to []>>
+	<<set _finally to "">>
+	<<set _text_output to "">>
+	<<clothingCpationTextOver>><<clothingCpationTextMiddle>><<clothingCpationTextUnder>>
+	<<clothingCpationBeginning>>
+	
+	<<if _finally is "" or !_finally.contains("You are wearing")>>
+		<<if _clothingCaptionItems.length gte 3>>
+			<<set _lastItem to _clothingCaptionItems.pop()>>
+			<<set _text_output to _wearing + _clothingCaptionItems.join(", ") + " and " + _lastItem>>
+		<<elseif _clothingCaptionItems.length is 2>>
+			<<set _text_output to _wearing + _clothingCaptionItems[0] + " and " + _clothingCaptionItems[1]>>
+		<<elseif _clothingCaptionItems.length is 1>>
+			<<set _text_output to _wearing + "only " + _clothingCaptionItems[0]>>
+		<</if>>
+		<<set _text_output += (_finally or ".")>>
+		<<print _text_output>>
+	<<else>>
+		<<print _finally>>
+	<</if>>
+	<<clothingCpationTextGenitals>>
 <</if>>
+<<clothingCpationTextNothing>>
 <<clothingCpationTextMask>>
 <br>
 <<clothingCpationTextStrip>>
@@ -12,181 +33,123 @@
 <br>
 <</widget>>
 
-<<widget "clothingCpationTextOver">><<silently>>
-<<if $worn.over_upper.name isnot "naked">>
-	<!--Upper and maybe lower-->
-	<<if $worn.over_lower.name is "naked">>
-	<<elseif $worn.over_lower.outfitSecondary is undefined>>
-		<<set $_notOutfit to true>>
-	<<elseif $worn.over_lower.outfitSecondary[1] is "broken">>
-		<<set $_notOutfit to true>>
-	<</if>>
-	<<if $worn.upper.name is "naked" and $worn.lower.name is "naked" and $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
-		<<set $_nothing to " nothing but">>
+<<widget "pushClothingCaption">>
+	<<set $_output to " ">>
+	
+	/* word 1: article, example: "a" or "an" or "a pair of" */
+	<<if $args[1] isnot undefined>>
+		<<set $_output += $args[1] + " ">>
 	<<else>>
-		<<set $_nothing to "">>
+		<<word $args[0]>><<set $_output += _text_output + " ">>
 	<</if>>
-	<<set $_text_output to "You are wearing" + $_nothing + " <<overupperword>> <<overupperintegrity>> <<clothescolour 'over_upper'>> $worn.over_upper.name">>
-	<<if $_notOutfit>>
-		<<if $worn.upper.name is "naked" and $worn.lower.name is "naked" and $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
-			<<set $_and to " and">>
-		<<else>>
-			<<set $_and to ",">>
-		<</if>>
-		<<set $_text_output += $_and + " <<overlowerword>> <<overlowerintegrity>> <<clothescolour 'over_lower'>> $worn.over_lower.name">>
-	<</if>>
-<<elseif $worn.over_lower.name isnot "naked">>
-	<!--Lower only-->
-	<<if $worn.over_upper.name is "naked" and $worn.upper.name is "naked" and $worn.under_upper.name is "naked">>
-		<<set $_topless to "<span class='pink'>topless</span>">>
-	<<else>>
-		<<set $_topless to "">>
-	<</if>>
-	<<if $worn.upper.name is "naked" and $worn.lower.name is "naked" and $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
-		<<set $_nothing to " nothing but">>
-	<<else>>
-		<<set $_nothing to "">>
-	<</if>>
-	<<set $_text_output to "You are "+$_topless+" wearing" + $_nothing + " <<overupperword>> <<overupperintegrity>> <<clothescolour 'over_upper'>> $worn.over_upper.name">>
-<</if>>
-<</silently>><<if $_text_output>><<print $_text_output>><</if>>
+	
+	/* word 2: damage, example "frayed" */
+	<<integrityWord $worn[$args[0]]>><<set $_output += _text_output>>
+
+	/* word 3: colour, example: "red" */
+	<<clothescolour $args[0]>><<set $_output += _text_output + " ">>
+	
+	/* word 4: clothes name, example: "school shirt" */
+	<<set $_output += $worn[$args[0]].name>>
+
+	/* push */
+	<<set _clothingCaptionItems.pushUnique($_output)>>	
 <</widget>>
 
+<<widget "clothingCpationBeginning">><<silently>>
+	<<set _wearing to "You are ">>
+	<<if _topless>>
+		<<set _wearing += "<span class='pink'>topless</span>, ">>
+	<</if>>
+	<<set _wearing += "wearing ">>
+<</silently>><</widget>>
+
+<<widget "clothingCpationTextOver">><<silently>>
+	<<if $worn.over_upper.name isnot "naked">>
+		<!--Upper and maybe lower-->
+		<<pushClothingCaption "over_upper">>
+
+		<<if !_overOutfit and $worn.over_lower.name isnot "naked">>
+			<<pushClothingCaption "over_lower">>
+		<</if>>
+	<<elseif $worn.over_lower.name isnot "naked">>
+		<!--Lower only-->
+		<<pushClothingCaption "over_lower">>
+	<</if>>
+<</silently>><</widget>>
+
 <<widget "clothingCpationTextMiddle">><<silently>>
+
 <<if $worn.upper.name isnot "naked">>
 	<!--Upper and maybe lower-->
-	<<if $worn.lower.name is "naked">>
-	<<elseif $worn.lower.outfitSecondary is undefined>>
-		<<set $_notOutfit to true>>
-	<<elseif $worn.lower.outfitSecondary[1] is "broken">>
-		<<set $_notOutfit to true>>
-	<</if>>
-	<<if $worn.over_upper.name is "naked" and $worn.over_lower.name is "naked">>
-		<<if $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked" and ($_notOutfit isnot true or $worn.lower.name is "naked")>>
-			<<set $_nothing to " nothing but">>
-		<<else>>
-			<<set $_nothing to "">>
-		<</if>>
-		<<set $_wearing to "You are wearing" + $_nothing>>
-	<<else>>
-		<<if $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked" and $_notOutfit is undefined>>
-			<<set $_wearing to " and">>
-		<<else>>
-			<<set $_wearing to ",">>
-		<</if>>
-	<</if>>
-	<<set $_text_output to $_wearing + " <<upperword>> <<upperintegrity>> <<clothescolour 'upper'>> $worn.upper.name">>
-	<<if $_notOutfit>>
-		<<if $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
-			<<set $_and to " and">>
-		<<else>>
-			<<set $_and to ",">>
-		<</if>>
-		<<set $_text_output += $_and + " <<lowerword>> <<lowerintegrity>> <<clothescolour 'lower'>> $worn.lower.name">>
+	<<pushClothingCaption "upper">>
+	<<if !_middleOutfit and $worn.lower.name isnot "naked">>
+		<<pushClothingCaption "lower">>
 	<</if>>
 <<elseif $worn.lower.name isnot "naked">>
 	<!--Lower only-->
-	<<if $worn.over_upper.name is "naked" and $worn.over_lower.name is "naked">>
-		<<if $worn.over_upper.name is "naked" and $worn.upper.name is "naked" and $worn.under_upper.name is "naked">>
-			<<set $_topless to "<span class='pink'>topless</span>">>
-		<<else>>
-			<<set $_topless to "">>
-		<</if>>
-		<<if $worn.over_upper.name is "naked" and $worn.over_lower.name is "naked" and $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
-			<<set $_nothing to " nothing but">>
-		<<else>>
-			<<set $_nothing to "">>
-		<</if>>
-		<<set $_wearing to "You are " + $_topless + " wearing " + $_nothing>>
-	<<else>>
-		<<set $_wearing to ",">>
-	<</if>>
-	<<set $_text_output to $_wearing + " <<lowerword>> <<lowerintegrity>> <<clothescolour 'lower'>> $worn.lower.name">>
+	<<pushClothingCaption "lower">>
 <</if>>
-<</silently>><<if $_text_output>><<print $_text_output>><</if>>
-<</widget>>
+<</silently>><</widget>>
 
 <<widget "clothingCpationTextUnder">><<silently>>
-<<if $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
+<<set $_exposed to (_overNaked and _middleNaked)>>
+
+<<if _underNaked>>
 	<!--Not wearing-->
 	<<if ($worn.over_upper.name isnot "naked" or $worn.upper.name isnot "naked") and
 	($worn.over_lower.name isnot "naked" or $worn.lower.name isnot "naked")>>
-		<<set $_text_output to " <span class='purple'>with nothing beneath.</span>">>
+		<<set _finally to " <span class='purple'>with nothing beneath.</span>">>
 	<<elseif $worn.over_upper.name is "naked" or $worn.over_lower.name is "naked" or
 	$worn.upper.name is "naked" or $worn.lower.name is "naked">>
-		<<set $_text_output to " <span class='purple'>and no underwear.</span>">>
+		<<set _finally to " <span class='purple'>and no underwear.</span>">>
 	<</if>>
 <<elseif $worn.under_upper.name isnot "naked" and $worn.under_lower.name isnot "naked">>
 	<!--Both-->
-	<<if $worn.under_lower.outfitSecondary is undefined>>
-		<<set $_notOutfit to true>>
-	<<elseif $worn.under_lower.outfitSecondary[1] is "broken">>
-		<<set $_notOutfit to true>>
-	<</if>>
-	<<if $worn.over_upper.name is "naked" and $worn.over_lower.name is "naked" and $worn.upper.name is "naked" and $worn.lower.name is "naked">>
-		<<set $_nothing to ($_notOutfit ? "" : " nothing but")>>
-		<<set $_exposed to true>>
-		<<set $_wearing to "You are wearing" + $_nothing>>
-	<<else>>
-		<<if $_notOutfit is undefined>>
-			<<set $_wearing to " and">>
-		<<else>>
-			<<set $_wearing to "">>
-		<</if>>
-	<</if>>
 	<<if $_exposed>>
-		<<set $_text_output to "<span class='pink'>" + $_wearing + " <<underupperword>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name">>
-		<<if $_notOutfit>>
-			<<set $_text_output += " and <<underlowerword>> <<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name</span>">>
+		<<if !_underOutfit>>
+			<<set _finally to "<span class='pink'>You are wearing <<word underupper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name">>
+			<<set _finally += " and <<word underlower>> <<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.</span>">>
 		<<else>>
-			<<set $_text_output += "</span>">>
+			<<set _finally to "<span class='pink'>You are wearing nothing but <<word underupper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.</span>">>
 		<</if>>
 	<<else>>
-		<<set $_text_output to $_wearing + " <<underupperword>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name" + ($_notOutfit is undefined? '.':'')>>
-		<<if $_notOutfit>>
-			<<set $_text_output += " and <<underlowerword>> <<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.">>
+		<<pushClothingCaption "under_upper">>
+		<<if !_underOutfit>>
+			<<pushClothingCaption "under_lower">>
 		<</if>>
 	<</if>>
-<<elseif $worn.under_upper.name isnot "naked" and $worn.under_lower.name is "naked">>
+<<elseif $worn.under_upper.name isnot "naked">>
 	<!--Upper only-->
-	<<if $worn.over_upper.name is "naked" and $worn.over_lower.name is "naked" and $worn.upper.name is "naked" and $worn.lower.name is "naked">>
-		<<set $_nothing to " nothing but">>
-		<<set $_exposed to true>>
-		<<set $_wearing to "You are wearing" + $_nothing>>
-	<<else>>
-		<<set $_wearing to " and">>
-	<</if>>
 	<<if $_exposed>>
-		<<set $_text_output to "<span class='pink'>" + $_wearing + " <<underupperword>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.</span>">>
+		<<set _finally to "<span class='pink'>You are wearing nothing but <<word underupper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.</span>">>
 	<<else>>
-		<<set $_text_output to $_wearing + " <<underupperword>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.">>
+		<<pushClothingCaption "under_upper">>
+		<<if !_bottomless>>
+			<<if $player.gender isnot "m">>
+				<<set _finally to ". <span class='purple'>You are not wearing any panties.</span>">>
+			<<else>>
+				<<set _finally to ". <span class='purple'>You are not wearing undies.</span>">>
+			<</if>>
+		<</if>>
 	<</if>>
-<<elseif $worn.under_upper.name is "naked" and $worn.under_lower.name isnot "naked">>
+<<elseif $worn.under_lower.name isnot "naked">>
 	<!--Lower only-->
-	<<if $worn.over_upper.name is "naked" and $worn.over_lower.name is "naked" and $worn.upper.name is "naked" and $worn.lower.name is "naked">>
-		<<set $_nothing to " nothing but">>
-		<<set $_exposed to true>>
-		<<set $_wearing to "You are wearing" + $_nothing>>
-	<<else>>
-		<<set $_wearing to " and">>
-	<</if>>
-	<<if $worn.under_lower.name.last() is "s">>
-		<<set $_pair to ' a pair of '>>
-	<<else>>
-		<<set $_pair to ' <<underlowerword>> '>>
-	<</if>>
+	<<set $_pair to ($worn.under_lower.name.last() is "s" ? "a pair of" : "<<word underlower>>")>>
 	<<if $_exposed>>
-		<<set $_text_output to "<span class='pink'>" + $_wearing + $_pair + "<<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.</span>">>
+		<<set _finally to "<span class='pink'>You are topless, wearing nothing but " + $_pair + " <<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.</span>">>
 	<<else>>
-		<<set $_text_output to $_wearing + $_pair + "<<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.">>
+		<<pushClothingCaption "under_lower" $_pair>>
+		<<if $player.gender isnot "m" and $breastsize gte 4>>
+			<<set _finally to ". <span class='purple'>You are not wearing a bra.</span>">>
+		<</if>>
 	<</if>>
 <</if>>
-<</silently>><<if $_text_output>><<print $_text_output>><</if>>
-<</widget>>
+<</silently>><</widget>>
 
 <<widget "clothingCpationTextGenitals">><<silently>>
 <<if $worn.genitals.name isnot "naked">>
-	<<if $worn.over_lower.name is "naked" and $worn.lower.name is "naked" and $worn.under_lower.name is "naked">>
+	<<if _bottomless>>
 		<<set $_text_output to " <span class='red'>Your <<genitalsintegrity>> $worn.genitals.name <<if $worn.genitals.anal_shield is 1>>with an anal shield<</if>> gives you no comfort.</span>">>
 	<<else>>
 		<<set $_text_output to " You wear <<genitalsword>> <<genitalsintegrity>> $worn.genitals.name<<if $worn.genitals.anal_shield is 1>> with an anal shield<</if>>.">>
@@ -196,20 +159,17 @@
 <</widget>>
 
 <<widget "clothingCpationTextMask">>
-<<if $worn.face.type.includes("mask")>><br>Your identity is concealed by your $worn.face.name.<</if>>
+	<<if $worn.face.type.includes("mask")>><br>Your identity is concealed by your $worn.face.name.<</if>>
 <</widget>>
 
 <<widget "clothingCpationTextNothing">><<silently>>
-<<if $worn.over_upper.name is "naked" and $worn.over_lower.name is "naked" and
-$worn.upper.name is "naked" and $worn.lower.name is "naked" and
-$worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
+<<if _fullyNaked>>
 	<<if $worn.genitals.name isnot "naked">>
 		<<set $_text_output to "Your <<genitalsintegrity>> $worn.genitals.name <<if $worn.genitals.anal_shield is 1>>with an anal shield<</if>> gives you no comfort.">>
 	<<else>>
 		<<set $_text_output to "You are completely naked!">>
 	<</if>>
-	<<set _naked to true>>
-<<elseif $worn.over_lower.name is "naked" and $worn.lower.name is "naked" and $worn.under_lower.name is "naked">>
+<<elseif _bottomless>>
 	<<set $_text_output to "Your bottom half is completely exposed!">>
 <</if>>
 <</silently>><<if $_text_output>><span class="red"><<print $_text_output>></span><</if>>
@@ -225,14 +185,16 @@ $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
 <</widget>>
 
 <<widget "clothingCpationTextStrip">>
-	<<outfitChecks>>
-	<br>
+	<<set _captionCount to 0>>
 	/* <<run console.log("-------upper-------")>> */
 	<<clothingCaptionExposed "upper">>
-	<br>
 	/* <<run console.log("-------lower-------")>> */
 	<<clothingCaptionExposed "lower">>
-	<br><br>
+
+	<<if _captionCount gte 1>>
+		<br><br>
+	<</if>>
+	<<unset _captionCount>>
 <</widget>>
 
 <<widget "clothingCaptionExposed">>
@@ -294,25 +256,25 @@ $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
 				<<set $_undertext to $_highestLevelCovered>>
 			<</if>>
 		<</silently>>
-	<</if>>
 
-	/* <<run console.log($_clothes)>> */
-	/* <<run console.log($_clothingRevealType)>> */
-	
-	/* Piece together the caption */
-	<<if $_exposed[$_outfitType]>>
+		/* <<run console.log($_clothes)>> */
+		/* <<run console.log($_clothingRevealType)>> */
+		
+		/* Piece together the caption */
+
 		<<set _output to "">>
 		<<for $_type range ["wet", "up", "down", "totheside", "exposed"]>>
+			<<set $_plural to ($_clothes[$_type].length gte 2 or $_plural[$_type])>>
 			<<if $_type is "wet" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "are drenched, " : "is drenched, ")>>
+				<<set $_verb to ($_plural ? "are drenched, " : "is drenched, ")>>
 			<<elseif $_type is "exposed" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled aside, " : "has been pulled aside, ")>>
+				<<set $_verb to ($_plural ? "have been pulled aside, " : "has been pulled aside, ")>>
 			<<elseif $_type is "up" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled up, " : "has been pulled up, ")>>
+				<<set $_verb to ($_plural ? "have been pulled up, " : "has been pulled up, ")>>
 			<<elseif $_type is "down" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled down, " : "has been pulled down, ")>>
+				<<set $_verb to ($_plural ? "have been pulled down, " : "has been pulled down, ")>>
 			<<elseif $_type is "totheside" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_clothes[$_type].length gte 2 or $_plural[$_type]? "have been pulled to the side, " : "has been pulled to the side, ")>>
+				<<set $_verb to ($_plural ? "have been pulled to the side, " : "has been pulled to the side, ")>>
 			<</if>>
 
 			<<if $_type and $_clothes[$_type].length gte 1>>
@@ -329,6 +291,8 @@ $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
 		<</for>>
 
 		/* Print the caption */
+		<<set _captionCount += 1>>
+		<br>
 		Your _output <span @class="$_revealColour">revealing your $_undertext.</span>
 	<</if>>
 <</widget>>
