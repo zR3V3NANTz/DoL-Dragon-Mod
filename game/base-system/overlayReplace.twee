@@ -62,6 +62,9 @@
 			<<case "blackjackHelp">>
 				<<replace #customOverlayTitle>><<OverlayTitle>><</replace>>
 				<<replace #customOverlayContent>><<blackjackHelp>><</replace>>
+			<<case "eventExtraInfo">>
+				<<replace #customOverlayTitle>><<OverlayTitle>><</replace>>
+				<<replace #customOverlayContent>><<eventExtraInfo>><</replace>>
 			<</switch>>
 			<<removeclass "#customOverlay" "hidden">>
 			<<run document.getElementById("customOverlay").scrollTop = 0>>

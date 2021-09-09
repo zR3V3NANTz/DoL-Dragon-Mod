@@ -56,8 +56,16 @@
 			<<set $NPCList[_ii].health to 0>>
 		<</if>>
 		<<set $enemyno -= 1>>
+		<<if $endeventerror is undefined>>
+			<<set $event.splice($eventslot.indexOf(_ii), 1)>>
+			<<set $eventslot.splice($eventslot.indexOf(_ii), 1)>>
+		<</if>>
 		<<if $enemyno is 0>>
 			<<set $pronoun to 0>>
+			<<if $endeventerror is undefined>>
+				<<unset $event>>
+				<<unset $eventslot>>
+			<</if>>
 		<</if>>
 		<<set $npc.splice(_leindex, 1)>>
 		<<set $npcnum.splice(_leindex, 1)>>
@@ -361,14 +369,11 @@ alternative way to write that:
 	<!-- Special Cases NNPC Variables, Introductions, Adjustments -->
 	<<switch _nam>>
 	<<case Kylar>>
-		<<set $kylar to {}>>
-		<<set $kylar.raped to 0>>
-		<<set $kylar.riddle to 0>>
-		<<set $kylar.timer to {halls:0,street:0,home:0,love:0}>>
+		<<set $kylartimer to 0>>
+		<<set $kylarstreettimer to 0>>
+		<<set $kylarraped to 0>>
 		<<set $NPCName[$NPCNameList.indexOf("Kylar")].state to 0>>
 		<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
-		<<set $kylarSeen to []>>
-		<<set $kylarDaily to {}>>
 	<<case Robin>>
 		<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
 	<<case River>>
@@ -670,6 +675,14 @@ alternative way to write that:
 	<<set $monster to 0>>
 <</if>>
 
+<<if $event is undefined>>
+	<<set $event to []>>
+<</if>>
+<<set $event.push($passage)>>
+<<if $eventslot is undefined>>
+	<<set $eventslot to []>>
+<</if>>
+<<set $eventslot.push(_npcno)>>
 <</widget>>
 
 <<widget "npcrelationship">>
@@ -793,7 +806,7 @@ alternative way to write that:
 <<widget "relationshiptext">>
 <<set _npc to $args[0]>>
 <<set _i to $NPCNameList.indexOf(_npc)>>
-<!-- Special cases for Robin, Avery, Kylar, Whitney, Sydney -->
+<!-- Special cases for Robin, Avery, Kylar -->
 <<switch _npc>>
 	<<case Robin>>
 		Robin

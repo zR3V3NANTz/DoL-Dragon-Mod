@@ -2428,7 +2428,6 @@ Not waiting for your response, <<he>> and <<his>> friends continue down the hall
 <<violence 1>>
 <<neutral 1>>
 <<molested>>
-<<set $event to "molestationhome">>
 <<maninit>>
 <<set $enemyanger += 30>><<set $enemytrust -= 50>>
 Whitney shoves you into the cubicle. <<His>> hands find you as soon as the door shuts.
@@ -2501,7 +2500,6 @@ You shove Whitney onto the toilet and flee the cubicle. <<His>> bemused friends 
 <<set $fightstart to 0>>
 
 <<neutral 1>>
-<<set $event to "molestationhome">>
 <<maninit>>
 <<set $enemytrust -= 100>>
 <<set $enemyanger += 200>>
@@ -2585,7 +2583,6 @@ Whitney's friends surround you and deliver blows with their feet. You curl up to
 <<violence 1>>
 <<neutral 1>>
 <<molested>>
-<<set $event to "molestationhome">>
 <<maninit>>
 	<<if $phase is 1>>
 		You drop to your knees. "P-please be gentle," you say. They glance in surprise at each other, but you think it had the desired effect<<set $enemytrust += 50>>

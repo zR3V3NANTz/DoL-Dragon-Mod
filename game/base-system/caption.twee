@@ -50,6 +50,11 @@
 		<</if>>
 		<<unset $endeventerror>>
 	<</if>>
+	<<if $debugdisable is "f">>
+		<<if $event isnot undefined>>
+			<br><<eventAlert>><br><br>
+		<</if>>
+	<</if>>
 
 	<<if $physiquechange is 1>><<set $physiquechange to 0>>
 		<<if $physiqueuse gte $physique / 1000>>
