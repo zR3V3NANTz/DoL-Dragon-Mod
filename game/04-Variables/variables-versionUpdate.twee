@@ -2365,12 +2365,21 @@
 	<<initnpcgender>>
 <</if>>
 
+<<if $kylar is undefined>>
+	<<set $kylar to {}>>
+	<<set $kylar.raped to 0>>
+	<<set $kylar.riddle to 0>>
+	<<set $kylar.timer to {halls:0,street:0,home:0,love:0}>>
+	<<set $kylarSeen to []>>
+	<<set $kylarDaily to {}>>
+<</if>>
 <<if $kylarsydneywriting is 1>>
 	<<set $kylarSeen.pushUnique("sydneyWriting")>>
 	<<unset $kylarsydneywriting>>
 <</if>>
 <<if $sydneySeen isnot undefined>>
 	<<if $sydneySeen.includes("kylarwriting")>>
+		<<set $kylarSeen.pushUnique("sydneyWriting")>>
 		<<run delete $sydneySeen.pushUnique("kylarwriting")>>
 	<</if>>
 <</if>>
