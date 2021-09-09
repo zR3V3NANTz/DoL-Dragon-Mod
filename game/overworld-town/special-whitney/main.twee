@@ -1610,7 +1610,7 @@ The crew make sure you're okay, then head back to their ship.
 			<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
 			<br><br>
 
-			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 1>><<npcincr Whitney love 1>><</link>><<glove>>
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 1>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 			<br>
 			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 			<br>
@@ -1619,7 +1619,7 @@ The crew make sure you're okay, then head back to their ship.
 			<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
 			<br><br>
 
-			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>>
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 			<br>
 			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 			<br>
@@ -1627,7 +1627,7 @@ The crew make sure you're okay, then head back to their ship.
 			<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
 			<br><br>
 
-			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>>
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 			<br>
 			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 			<br>
@@ -1635,7 +1635,7 @@ The crew make sure you're okay, then head back to their ship.
 			<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
 			<br><br>
 
-			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>>
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 			<br>
 			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 			<br>
@@ -2718,7 +2718,7 @@ Whitney pulls your mask aside.
 	<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
 	<br><br>
 
-	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 1>><<npcincr Whitney love 1>><</link>><<glove>>
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 1>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 	<br>
 	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 	<br>
@@ -2727,7 +2727,7 @@ Whitney pulls your mask aside.
 	<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
 	<br><br>
 
-	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>>
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 	<br>
 	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 	<br>
@@ -2735,7 +2735,7 @@ Whitney pulls your mask aside.
 	<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
 	<br><br>
 
-	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>>
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 	<br>
 	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 	<br>
@@ -2743,7 +2743,7 @@ Whitney pulls your mask aside.
 	<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
 	<br><br>
 
-	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>>
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
 	<br>
 	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
 	<br>

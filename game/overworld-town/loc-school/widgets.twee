@@ -821,7 +821,7 @@ As you are doing well in this class, River has you sit with a <<person1>><<perso
 <<link [[Move away|Maths Event3]]>><<detention 2>><<set $phase to 1>><</link>><<gdelinquency>>
 <br>
 <<if $whitneymaths is "seat">>
-	<<link [[Tell Whitney|Maths Event3 Whitney]]>><<npcincr Whitney dom 1>><</link>> | <span class="purple">+ Whitney's Dominance</span>
+	<<link [[Tell Whitney|Maths Event3 Whitney]]>><<npcincr Whitney dom 1>><</link>><<gdom "Whitney">>
 	<br>
 <</if>>
 
@@ -834,7 +834,7 @@ As you are doing well in this class, River has you sit with a <<person1>><<perso
 <<link [[Move away|Maths Event3]]>><<detention 2>><<set $phase to 1>><</link>><<gdelinquency>>
 <br>
 <<if $whitneymaths is "seat">>
-	<<link [[Tell Whitney|Maths Event3 Whitney]]>><<npcincr Whitney dom 1>><</link>> | <span class="purple">+ Whitney's Dominance</span>
+	<<link [[Tell Whitney|Maths Event3 Whitney]]>><<npcincr Whitney dom 1>><</link>><<gdom "Whitney">>
 	<br>
 <</if>>
 

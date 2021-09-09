@@ -532,8 +532,7 @@ You are in the bathroom.
 			<br><br>
 
 			<<if $robinromance is 1>>
-				<<npcincr Robin love -5>>
-				<span class="red">- - Robin's Love</span>
+				<<npcincr Robin love -5>><<lllove "Robin">>
 				<br><br>
 			<</if>>
 			<<link [[Next|Kylar Orphanage Cuddle]]>><<set $kylarbed to 0>><</link>>

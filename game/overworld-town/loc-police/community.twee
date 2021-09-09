@@ -172,7 +172,7 @@ Removing the paint with just water and a coarse brush is difficult. The <<person
 		"Come here <<girl>>," the <<person>> says, <span class="pink">pulling the lid off a permanent marker.</span>
 		<br><br>
 
-		<<link [[Do as bid|Police Community Graffiti Pen]]>><<sub 1>><</link>>
+		<<link [[Do as bid|Police Community Graffiti Pen]]>><<sub 1>><</link>><<if !$worn.face.type.includes("mask")>><<gbodywriting>><</if>>
 		<br>
 		<<link [[Refuse|Police Community Graffiti Refuse]]>><<def 1>><</link>>
 		<br>
@@ -409,7 +409,7 @@ You step closer.<<person2>>
 		"Take off your mask," the officer demands.
 		<br><br>
 
-		<<link [[Take it off|Police Community Graffiti Take]]>><<sub 1>><<trauma 6>><</link>><<gtrauma>>
+		<<link [[Take it off|Police Community Graffiti Take]]>><<sub 1>><<trauma 6>><</link>><<gtrauma>><<gbodywriting>>
 		<br>
 		<<link [[Refuse|Police Community Graffiti Refuse]]>><<def 1>><</link>>
 		<br>
@@ -430,7 +430,7 @@ You step closer.<<person2>>
 		"Take off your mask," the officer demands.
 		<br><br>
 
-		<<link [[Take it off|Police Community Graffiti Take]]>><<sub 1>><<trauma 6>><</link>><<gtrauma>>
+		<<link [[Take it off|Police Community Graffiti Take]]>><<sub 1>><<trauma 6>><</link>><<gtrauma>><<gbodywriting>>
 		<br>
 		<<link [[Refuse|Police Community Graffiti Refuse]]>><<def 1>><</link>>
 		<br>

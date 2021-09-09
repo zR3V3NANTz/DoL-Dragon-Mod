@@ -1448,7 +1448,7 @@ You arrive at Wolf Street just in time to see the <<nnpc_gendery "Gwylan">> disa
 					<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." Robin blinks, but doesn't question it.
 
 				<<else>>
-					<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest." Robin blinks, but doesn't question it.
+					<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest." Robin blinks, but doesn't question it.
 				<</if>>
 
 			<<elseif $gwylan_aborted is 2>>
@@ -1474,7 +1474,6 @@ You arrive at Wolf Street just in time to see the <<nnpc_gendery "Gwylan">> disa
 		<</if>>
 
 	<<else>>
-		<<endevent>><<npc Gwylan>><<person1>>
 		You catch occasional glimpses of the through the trees, until at last you come to a strange building. Gwylan's shop.
 		<br><br>
 
@@ -1489,7 +1488,7 @@ You arrive at Wolf Street just in time to see the <<nnpc_gendery "Gwylan">> disa
 			<<if $gwylan_eden_coop gte 1>>
 				<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." Robin blinks, but doesn't question it.
 			<<else>>
-				<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest." Robin blinks, but doesn't question it.
+				<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest." Robin blinks, but doesn't question it.
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>
@@ -1508,7 +1507,7 @@ You arrive at Wolf Street just in time to see the <<nnpc_gendery "Gwylan">> disa
 		<<if $gwylan_eden_coop gte 1>>
 			<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." Robin blinks, but doesn't question it.
 		<<else>>
-			<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest." Robin blinks, but doesn't question it.
+			<<He>> turns to you with an apologetic smile. "By the way, sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest." Robin blinks, but doesn't question it.
 		<</if>>
 
 	<<elseif $gwylan_aborted is 2>>

@@ -2101,122 +2101,170 @@ in dev alternative to current "breasts" widget
 <</widget>>
 
 <<widget "glove">> |
-<span class="green">+ Love</span>
+<<if $args[0]>>
+	<span class="green">+ $args[0]'s Love</span>
+<<else>>
+	<span class="green">+ Love</span>
+<</if>>
 <</widget>>
 
 <<widget "gglove">> |
-<span class="green">+ + Love</span>
+<<if $args[0]>>
+	<span class="green">+ + $args[0]'s Love</span>
+<<else>>
+	<span class="green">+ + Love</span>
+<</if>>
 <</widget>>
 
 <<widget "ggglove">> |
-<span class="green">+ + + Love</span>
+<<if $args[0]>>
+	<span class="green">+ + + $args[0]'s Love</span>
+<<else>>
+	<span class="green">+ + + Love</span>
+<</if>>
 <</widget>>
 
 <<widget "llove">> |
-<span class="red">- Love</span>
+<<if $args[0]>>
+	<span class="red">- $args[0]'s Love</span>
+<<else>>
+	<span class="red">- Love</span>
+<</if>>
 <</widget>>
 
 <<widget "lllove">> |
-<span class="red">- - Love</span>
+<<if $args[0]>>
+	<span class="red">- - $args[0]'s Love</span>
+<<else>>
+	<span class="red">- - Love</span>
+<</if>>
 <</widget>>
 
 <<widget "llllove">> |
-<span class="red">- - - Love</span>
+<<if $args[0]>>
+	<span class="red">- - - $args[0]'s Love</span>
+<<else>>
+	<span class="red">- - - Love</span>
+<</if>>
 <</widget>>
 
 <<widget "glust">> |
-<span class="lewd">+ Lust</span>
+<<if $args[0]>>
+	<span class="lewd">+ $args[0]'s Lust</span>
+<<else>>
+	<span class="lewd">+ Lust</span>
+<</if>>
 <</widget>>
 
 <<widget "gglust">> |
-<span class="lewd">+ + Lust</span>
+<<if $args[0]>>
+	<span class="lewd">+ + $args[0]'s Lust</span>
+<<else>>
+	<span class="lewd">+ + Lust</span>
+<</if>>
 <</widget>>
 
 <<widget "ggglust">> |
-<span class="lewd">+ + + Lust</span>
+<<if $args[0]>>
+	<span class="lewd">+ + + $args[0]'s Lust</span>
+<<else>>
+	<span class="lewd">+ + + Lust</span>
+<</if>>
 <</widget>>
 
 <<widget "llust">> |
-<span class="teal">- Lust</span>
+<<if $args[0]>>
+	<span class="teal">- $args[0]'s Lust</span>
+<<else>>
+	<span class="teal">- Lust</span>
+<</if>>
 <</widget>>
 
 <<widget "lllust">> |
-<span class="teal">- - Lust</span>
+<<if $args[0]>>
+	<span class="teal">- - $args[0]'s Lust</span>
+<<else>>
+	<span class="teal">- - Lust</span>
+<</if>>
 <</widget>>
 
 <<widget "llllust">> |
-<span class="teal">- - - Lust</span>
+<<if $args[0]>>
+	<span class="teal">- - - $args[0]'s Lust</span>
+<<else>>
+	<span class="teal">- - - Lust</span>
+<</if>>
 <</widget>>
 
 <<widget "gdom">> |
-<<if $npc.includes("Robin") or $args[0] is "Robin">>
-<span class="purple">+ Robin's Confidence</span>
+<<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
+	<span class="purple">+ Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-<span class="purple">+ $args[0]'s Dominance</span>
+	<span class="purple">+ $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
-<span class="purple">+ $npc[0]'s Dominance</span>
+	<span class="purple">+ $npc[0]'s Dominance</span>
 <<else>>
-<span class="purple">+ NPC Dominance</span>
+	<span class="purple">+ NPC Dominance</span>
 <</if>>
 <</widget>>
 
 <<widget "ggdom">> |
-<<if $npc.includes("Robin") or $args[0] is "Robin">>
-<span class="purple">+ + Robin's Confidence</span>
+<<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
+	<span class="purple">+ + Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-<span class="purple">+ + $args[0]'s Dominance</span>
+	<span class="purple">+ + $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
-<span class="purple">+ + $npc[0]'s Dominance</span>
+	<span class="purple">+ + $npc[0]'s Dominance</span>
 <<else>>
-<span class="purple">+ + NPC Dominance</span>
+	<span class="purple">+ + NPC Dominance</span>
 <</if>>
 <</widget>>
 
 <<widget "gggdom">> |
-<<if $npc.includes("Robin") or $args[0] is "Robin">>
-<span class="purple">+ + + Robin's Confidence</span>
+<<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
+	<span class="purple">+ + + Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-<span class="purple">+ + + $args[0]'s Dominance</span>
+	<span class="purple">+ + + $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
-<span class="purple">+ + + $npc[0]'s Dominance</span>
+	<span class="purple">+ + + $npc[0]'s Dominance</span>
 <<else>>
-<span class="purple">+ + + NPC Dominance</span>
+	<span class="purple">+ + + NPC Dominance</span>
 <</if>>
 <</widget>>
 
 <<widget "ldom">> |
-<<if $npc.includes("Robin") or $args[0] is "Robin">>
-<span class="lblue">- Robin's Confidence</span>
+<<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
+	<span class="lblue">- Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-<span class="purple">- $args[0]'s Dominance</span>
+	<span class="purple">- $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
-<span class="lblue">- $npc[0]'s Dominance</span>
+	<span class="lblue">- $npc[0]'s Dominance</span>
 <<else>>
-<span class="lblue">- NPC Dominance</span>
+	<span class="lblue">- NPC Dominance</span>
 <</if>>
 <</widget>>
 
 <<widget "lldom">> |
-<<if $npc.includes("Robin") or $args[0] is "Robin">>
-<span class="lblue">- - Robin's Confidence</span>
+<<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
+	<span class="lblue">- - Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-<span class="purple">- - $args[0]'s Dominance</span>
+	<span class="purple">- - $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
-<span class="lblue">- - $npc[0]'s Dominance</span>
+	<span class="lblue">- - $npc[0]'s Dominance</span>
 <<else>>
-<span class="lblue">- - NPC Dominance</span>
+	<span class="lblue">- - NPC Dominance</span>
 <</if>>
 <</widget>>
 
 <<widget "llldom">> |
-<<if $npc.includes("Robin") or $args[0] is "Robin">>
-<span class="lblue">- - - Robin's Confidence</span>
+<<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
+	<span class="lblue">- - - Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-<span class="purple">- - - $args[0]'s Dominance</span>
+	<span class="purple">- - - $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
-<span class="lblue">- - - $npc[0]'s Dominance</span>
+	<span class="lblue">- - - $npc[0]'s Dominance</span>
 <<else>>
-<span class="lblue">- - - NPC Dominance</span>
+	<span class="lblue">- - - NPC Dominance</span>
 <</if>>
 <</widget>>
 
@@ -2598,6 +2646,18 @@ in dev alternative to current "breasts" widget
 
 <<widget "gknowledge">> |
 <span class="green">+ Knowledge</span>
+<</widget>>
+
+<<widget "gbodywriting">> | 
+<span class="purple">+ Bodywriting</span>
+<</widget>>
+
+<<widget "ggbodywriting">> | 
+<span class="purple">+ + + Bodywriting</span>
+<</widget>>
+
+<<widget "gggbodywriting">> | 
+<span class="purple">+ + + Bodywriting</span>
 <</widget>>
 
 <<widget "flight_text">> |
