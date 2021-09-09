@@ -387,7 +387,7 @@ A <<generate1>><<person1>><<person>> in a police uniform arrives. <<He>> removes
 		<</if>>
 		<<link [[Warn them off|Pillory Pen Warn]]>><<set $pilloryaudience += 1>><</link>> | <span class="pink">Attracts attention</span>
 		<br>
-		<<link [[Brace|Pillory Pen]]>><</link>>
+		<<link [[Brace|Pillory Pen]]>><</link>><<gbodywriting>>
 		<br>
 	<<else>>
 		<<set $rng to random(1, 100)>>

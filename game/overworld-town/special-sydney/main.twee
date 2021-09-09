@@ -380,7 +380,7 @@
 						<br>
 					<</if>>
 					<<if $bodywritingdisable is "f">>
-						<<link [[Allow it|Sydney Library Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>> | <span class="purple">+ Bodywriting</span>
+						<<link [[Allow it|Sydney Library Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>><<gbodywriting>>
 						<br>
 					<<else>>
 						<span class="purple">You aren't comfortable having others write on you.</span>
@@ -2735,7 +2735,7 @@ Sydney stretches and yawns.
 		<<link [[Push away|Sydney Canteen Bodywriting Stop]]>><</link>>
 		<br>
 		<<if $bodywritingdisable is "f">>
-			<<link [[Allow it|Sydney Canteen Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>> | <span class="purple">+ Bodywriting</span>
+			<<link [[Allow it|Sydney Canteen Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>><<gbodywriting>>
 			<br>
 		<<else>>
 			<span class="purple">You aren't comfortable having others write on you.</span>
@@ -2831,11 +2831,11 @@ Sydney stretches and yawns.
 					<br><br>
 					<<He>> returns to <<his>> multitasking. As you chat with <<him>>, you feel another pen on your skin. This time, it's Kylar.
 					<br><br>
-					<<link [[Encourage them both|Sydney Kylar Bodywriting Encourage]]>><<npcincr Sydney love 1>><<npcincr Kylar lust 1>><</link>> | <span class="green">+ Sydney's Love</span> | <span class="pink">+ Kylar's Lust</span> | <span class="purple">+ + + Bodywriting</span>
+					<<link [[Encourage them both|Sydney Kylar Bodywriting Encourage]]>><<npcincr Sydney love 1>><<npcincr Kylar lust 1>><</link>><<glove "Sydney">><<glust "Kylar">><<gggbodywriting>>
 					<br>
-					<<link [[Push Kylar away|Sydney Kylar Bodywriting Refuse]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><</link>> | <span class="red">- Kylar's Love </span><<gksuspicion>>
+					<<link [[Push Kylar away|Sydney Kylar Bodywriting Refuse]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><</link>><<llove "Kylar">><<gksuspicion>>
 					<br>
-					<<link [[Ignore it|Sydney Kylar Bodywriting Ignore]]>><</link>> | <span class="purple">+ Bodywriting</span>
+					<<link [[Ignore it|Sydney Kylar Bodywriting Ignore]]>><</link>><<gbodywriting>>
 					<br>
 				<<else>>
 					However, <<hes>> unable to find anywhere to write. <<He>> caps the pen with a pout, and Kylar giggles.
