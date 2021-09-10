@@ -238,7 +238,7 @@
 		<<set $_revealType to $_clothingRevealType[$_clothing]>>
 		
 		<<set $_clothes[$_revealType].pushUnique($worn[$_clothing].name)>>
-		<<set $_plural[$_revealType] to $_plural[$_revealType] or $worn[$_clothing].plural is 1>>
+		<<set $_plural[$_revealType] to ($_plural[$_revealType] or ($worn[$_clothing].plural is 1))>>
 		<<set $_exposed[$_outfitType] to true>>
 	<</for>>
 	
@@ -257,24 +257,25 @@
 			<</if>>
 		<</silently>>
 
-		/* <<run console.log($_clothes)>> */
+		/* <<run console.log("clothes: ", $_clothes)>> */
+		/* <<run console.log("plural: ", $_plural)>> */
 		/* <<run console.log($_clothingRevealType)>> */
 		
 		/* Piece together the caption */
 
 		<<set _output to "">>
 		<<for $_type range ["wet", "up", "down", "totheside", "exposed"]>>
-			<<set $_plural to ($_clothes[$_type].length gte 2 or $_plural[$_type])>>
+			<<set $_pluralVerb to ($_clothes[$_type].length gte 2 or $_plural[$_type])>>
 			<<if $_type is "wet" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_plural ? "are drenched, " : "is drenched, ")>>
+				<<set $_verb to ($_pluralVerb ? "are drenched, " : "is drenched, ")>>
 			<<elseif $_type is "exposed" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_plural ? "have been pulled aside, " : "has been pulled aside, ")>>
+				<<set $_verb to ($_pluralVerb ? "have been pulled aside, " : "has been pulled aside, ")>>
 			<<elseif $_type is "up" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_plural ? "have been pulled up, " : "has been pulled up, ")>>
+				<<set $_verb to ($_pluralVerb ? "have been pulled up, " : "has been pulled up, ")>>
 			<<elseif $_type is "down" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_plural ? "have been pulled down, " : "has been pulled down, ")>>
+				<<set $_verb to ($_pluralVerb ? "have been pulled down, " : "has been pulled down, ")>>
 			<<elseif $_type is "totheside" and $_clothes[$_type].length gte 1>>
-				<<set $_verb to ($_plural ? "have been pulled to the side, " : "has been pulled to the side, ")>>
+				<<set $_verb to ($_pluralVerb ? "have been pulled to the side, " : "has been pulled to the side, ")>>
 			<</if>>
 
 			<<if $_type and $_clothes[$_type].length gte 1>>
