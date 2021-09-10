@@ -30,7 +30,7 @@
 					<<He>> rubs the back of <<his>> neck. "By the way, sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<He>> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 				<<else>>
-					<<He>> rubs the back of <<his>> neck. "By the way, sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+					<<He>> rubs the back of <<his>> neck. "By the way, sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 				<</if>>
 
 			<<elseif $gwylan_aborted is 2>>
@@ -64,7 +64,7 @@
 				"Hey," Gwylan says as you walk in. "Sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<He>> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 			<<else>>
-				"Hey," Gwylan says as you walk in. "Sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+				"Hey," Gwylan says as you walk in. "Sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>

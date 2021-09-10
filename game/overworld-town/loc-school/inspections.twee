@@ -364,7 +364,7 @@ the boys line up at the front of the class please?"
 						Recognition flashes across as <<his>> face, and <<his>> once apologetic expression morphs into a vengeful sneer.	
 						<br><br>
 					<</if>>
-					"Excuse me, <<print $NPCName[$NPCNameList.indexOf("Leighton")].title>>!" <<he>> calls out, commanding the attention of the class. 
+					"Excuse me, <<nnpc_title "Leighton">>!" <<he>> calls out, commanding the attention of the class. 
 					Leighton fixes <<him>> with a glare for the interruption, but the <<person>> continues, pointing at you.
 					
 					<<if $player.gender is "h">>
@@ -556,7 +556,7 @@ Leighton clears Sirris' desk. "Could all the girls form an orderly line please? 
 				Recognition flashes across as <<his>> face, and <<his>> once apologetic expression morphs into a vengeful sneer.	
 				<br><br>
 			<</if>>
-			"Excuse me, <<print $NPCName[$NPCNameList.indexOf("Leighton")].title>>!" <<he>> calls out, commanding the attention of the class. 
+			"Excuse me, <<nnpc_title "Leighton">>!" <<he>> calls out, commanding the attention of the class. 
 			Leighton fixes <<him>> with a glare for the interruption, but the <<person>> continues, pointing at you.
 			
 			<<if $player.gender is "h">>
@@ -676,7 +676,7 @@ A well-endowed <<person2>><<person>> stood beside <<person1>><<him>> starts sobb
 <<if $inspection.choice is "forced">>
 	<br>
 	"As for you," <<person1>><<he>> starts, giving you a cold look. 
-	"Trying to pull one over on your <<print $NPCName[$NPCNameList.indexOf("Leighton")].title>> - during a government mandated inspection, no less? Perhaps some time in detention will teach you some responsibility."<<detention 3>><<gdelinquency>>
+	"Trying to pull one over on your <<nnpc_title "Leighton">> - during a government mandated inspection, no less? Perhaps some time in detention will teach you some responsibility."<<detention 3>><<gdelinquency>>
 <</if>>
 
 <br><br>
@@ -763,7 +763,7 @@ You enjoy the attention.
 
 <<if $inspection.choice is "forced">>
 	<br>
-	"As for you," <<person1>><<he>> starts, giving you a cold look. "Trying to pull one over on your <<print $NPCName[$NPCNameList.indexOf("Leighton")].title>> - during a government mandated inspection, no less? Perhaps some time in detention will teach you some responsibility."<<detention 3>><<gdelinquency>>
+	"As for you," <<person1>><<he>> starts, giving you a cold look. "Trying to pull one over on your <<nnpc_title "Leighton">> - during a government mandated inspection, no less? Perhaps some time in detention will teach you some responsibility."<<detention 3>><<gdelinquency>>
 <</if>>
 <br><br>
 

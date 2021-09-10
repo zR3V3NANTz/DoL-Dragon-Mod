@@ -648,7 +648,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<nnpc_He "Gwylan">> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 			<<else>>
-				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>
@@ -658,7 +658,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 	<br><br>
 
 	<<if $gwylan_eden_coop gte 1 and $gwylan_aborted isnot 1>>
-		<<nnpc_He "Gwylan">> looks around for a moment, as if waiting for something. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "Usually the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>> is here too. Must be busy."
+		<<nnpc_He "Gwylan">> looks around for a moment, as if waiting for something. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "Usually the <<nnpc_title "Eden">> is here too. Must be busy."
 	<br><br>
 	<</if>>
 
@@ -873,7 +873,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<nnpc_He "Gwylan">> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 			<<else>>
-				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>
@@ -883,7 +883,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 	<br><br>
 
 	<<if $gwylan_eden_coop gte 1 and $gwylan_aborted isnot 1>>
-		<<nnpc_He "Gwylan">> glances around. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>> would be here too. Must be busy. Ah well."
+		<<nnpc_He "Gwylan">> glances around. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<nnpc_title "Eden">> would be here too. Must be busy. Ah well."
 	<br><br>
 	<</if>>
 
@@ -1171,7 +1171,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<nnpc_He "Gwylan">> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 			<<else>>
-				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>
@@ -1181,7 +1181,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 	<br><br>
 
 	<<if $gwylan_eden_coop gte 1 and $gwylan_aborted isnot 1>>
-		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>> would be here. Must be busy. Ah well."
+		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<nnpc_title "Eden">> would be here. Must be busy. Ah well."
 	<br><br>
 	<</if>>
 
@@ -1770,7 +1770,7 @@ You throw your head back and howl into the canopy. The <<if $phase is 1>><<beast
 				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<nnpc_He "Gwylan">> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 			<<else>>
-				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>
@@ -1780,7 +1780,7 @@ You throw your head back and howl into the canopy. The <<if $phase is 1>><<beast
 	<br><br>
 
 	<<if $gwylan_eden_coop gte 1 and $gwylan_aborted isnot 1>>
-		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>> would be here. Must be busy. Ah well."
+		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<nnpc_title "Eden">> would be here. Must be busy. Ah well."
 		<br><br>
 	<</if>>
 
@@ -2359,7 +2359,7 @@ The pair share a grin. "We'll be happy to oblige," <<he>> says, stepping closer.
 				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<nnpc_He "Gwylan">> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 			<<else>>
-				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>
@@ -2369,7 +2369,7 @@ The pair share a grin. "We'll be happy to oblige," <<he>> says, stepping closer.
 	<br><br>
 
 	<<if $gwylan_eden_coop gte 1 and $gwylan_aborted isnot 1>>
-		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>> would be here. Must be busy. Ah well."
+		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<nnpc_title "Eden">> would be here. Must be busy. Ah well."
 		<br><br>
 	<</if>>
 
@@ -2614,7 +2614,7 @@ A <<beasttype>> steps out from the forest, sniffs you, then mounts.
 				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with Eden. <<nnpc_He "Eden">> still scares me." <<nnpc_He "Gwylan">> frowns. "Why were you two fighting anyway? Did you fall out?"
 
 			<<else>>
-				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
+				<<nnpc_He "Gwylan">> can't meet your gaze. "Sorry for not saving you before, but I'm not messing with the <<nnpc_title "Eden">>. <<nnpc_Hes "Eden">> the scariest thing in the forest."
 			<</if>>
 
 		<<elseif $gwylan_aborted is 2>>
@@ -2624,7 +2624,7 @@ A <<beasttype>> steps out from the forest, sniffs you, then mounts.
 	<br><br>
 
 	<<if $gwylan_eden_coop gte 1 and $gwylan_aborted isnot 1>>
-		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<print $NPCName[$NPCNameList.indexOf("Eden")].title>> would be here. Must be busy. Ah well."
+		<<nnpc_He "Gwylan">> looks around for a moment. "Strange," <<nnpc_he "Gwylan">> says to <<nnpc_himself "Gwylan">>. "I thought the <<nnpc_title "Eden">> would be here. Must be busy. Ah well."
 		<br><br>
 	<</if>>
 
