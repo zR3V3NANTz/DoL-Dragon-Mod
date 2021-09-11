@@ -80,10 +80,8 @@
 <<if $player.gender is "f">>
 	<<set $vaginause to 0>>
 	<<set $vaginastate to 0>>
-	<<set $vaginaexist to 1>>
 	<<set $penisuse to "none">>
 	<<set $penisstate to "none">>
-	<<set $penisexist to 0>>
 	<<set $player.sex to "f">>
 	<<set $player.vaginaExist to true>>
 	<<set $player.penisExist to false>>
@@ -91,10 +89,8 @@
 <<elseif $player.gender is "m">>
 	<<set $vaginause to "none">>
 	<<set $vaginastate to "none">>
-	<<set $vaginaexist to 0>>
 	<<set $penisuse to 0>>
 	<<set $penisstate to 0>>
-	<<set $penisexist to 1>>
 	<<set $player.sex to "m">>
 	<<set $player.vaginaExist to false>>
 	<<set $player.penisExist to true>>
@@ -102,11 +98,8 @@
 <<elseif $player.gender is "h">>
 	<<set $vaginause to 0>>
 	<<set $vaginastate to 0>>
-	<<set $vaginaexist to 1>>
 	<<set $penisuse to 0>>
 	<<set $penisstate to 0>>
-	<<set $penisexist to 1>>
-	<<set $player.gender to "h">>
 	<<set $player.sex to "h">>
 	<<set $player.penisExist to true>>
 	<<set $player.vaginaExist to true>>
@@ -181,7 +174,7 @@
 	<<applyFeatsBoost>>
 <</if>>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<set $semen_amount to 90>>
 	<<set $semen_volume to 90>>
 <<else>>

@@ -1428,15 +1428,15 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 
 	<<switch _eventnum>>
 	<<case 0>>
-		<<if $vaginaexist is 0 and $penisexist is 0>>
+		<<if !$player.vaginaExist and !$player.penisExist>>
 			<<eventwhitneyparasitenogenitalspresent>>
 		<<else>>
-			<<if $penisexist is 1 and !$parasite.penis.name>>
+			<<if $player.penisExist and !$parasite.penis.name>>
 				With your <<genitals>> exposed and helpless you can do nothing to stop a smirking Whitney as they bring the urchin directly in front of your vulnerable place, where it immediately latches onto you. The squelching sounds it makes are as lewd as they are disgusting.
 				<<parasite penis urchin>>
 				<br><br>
 				<<eventwhitneyparasitesucessful>>
-			<<elseif $vaginaexist is 1 and !$parasite.clit.name and $penisexist isnot 1>>
+			<<elseif $player.vaginaExist and !$parasite.clit.name and !$player.penisExist>>
 				With your <<genitals>> exposed and helpless you can do nothing to stop a smirking Whitney as they bring the urchin directly in front of your vulnerable place, where it immediately latches onto you. The squelching sounds it makes are as lewd as they are disgusting.
 				<<parasite clit urchin>>
 				<br><br>
@@ -1446,15 +1446,15 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 			<</if>>
 		<</if>>
 	<<case 1>>
-		<<if $vaginaexist is 0 and $penisexist is 0>>
+		<<if !$player.vaginaExist and !$player.penisExist>>
 			<<eventwhitneyparasitenogenitalspresent>>
 		<<else>>
-			<<if $penisexist is 1 and !$parasite.penis.name>>
+			<<if $player.penisExist and !$parasite.penis.name>>
 				With your <<genitals>> exposed and helpless you can do nothing to stop a smirking Whitney as they bring the slime directly in front of your vulnerable place, where it immediately latches onto you. The squelching sounds it makes are as lewd as they are disgusting.
 				<<parasite penis slime>>
 				<br><br>
 				<<eventwhitneyparasitesucessful>>
-			<<elseif $vaginaexist is 1 and !$parasite.clit.name and $penisexist isnot 1>>
+			<<elseif $player.vaginaExist and !$parasite.clit.name and !$player.penisExist>>
 				With your <<genitals>> exposed and helpless you can do nothing to stop a smirking Whitney as they bring the slime directly in front of your vulnerable place, where it immediately latches onto you. The squelching sounds it makes are as lewd as they are disgusting.
 				<<parasite clit slime>>
 				<br><br>
@@ -1557,7 +1557,7 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 <</widget>>
 
 <<widget "eventwhitneyparasitepeniscomment">>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<if $penissize is 4 or $penissize lte 1>>
 			A passing student stops and gawks at your exposed genitals before bursting into laughter.
 			<<Penisremarkstopquote>>
@@ -1993,7 +1993,7 @@ A gust of wind blows over you.
 
 <<widget "eventsschoolchangingroomsboys">>
 	<<set $rng to random(0, 100)>>
-	<<if $rng gte 95 and $schoollesson is 1 and $schoolstate is "fifth" and $penisexist and $exposed gte 2>>
+	<<if $rng gte 95 and $schoollesson is 1 and $schoolstate is "fifth" and $player.penisExist and $exposed gte 2>>
 		<br><br>
 		One of your classmates grabs both of your arms and tugs them behind your back as he yells for everyone to look.
 		<<if $penissize is 4>>
@@ -2009,7 +2009,7 @@ A gust of wind blows over you.
 			The changing room erupts into laughter and a few students make crude comments about your <<genitals>>. Having had their fun the boy lets you go, and the room goes back to how it was.
 			<<trauma +5>><<gtrauma>>
 		<</if>>
-	<<elseif $rng gte 90 and $schoollesson is 1 and $schoolstate is "fifth" and $penisexist and $exposed is 0 and ($worn.lower.name is "towel" or $worn.lower.name is "large towel bottom")>>
+	<<elseif $rng gte 90 and $schoollesson is 1 and $schoolstate is "fifth" and $player.penisExist and $exposed is 0 and ($worn.lower.name is "towel" or $worn.lower.name is "large towel bottom")>>
 		<br><br>
 		One of your classmates yanks your towel off your hips while your hands are out of the way, exposing your <<genitals>> in front of your classmates.
 		<<underlowerstrip>>

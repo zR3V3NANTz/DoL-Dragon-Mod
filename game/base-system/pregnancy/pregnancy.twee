@@ -264,7 +264,7 @@
 <</widget>>
 
 <<widget "menstruationCycle">>
-<<if $sexStats.vagina.menstruation.running is true and $vaginaexist is 1>>
+<<if $sexStats.vagina.menstruation.running is true and $player.vaginaExist>>
 	<<set _menstruation to $sexStats.vagina.menstruation>>
 	<<set _pills to $sexStats.pills>>
 	<<if $sexStats.vagina.menstruation.currentState is "normal">>
@@ -1299,7 +1299,7 @@
 	<<if $args[0] is "pc">>
 		<<pregnancyBabyBase $args[0] $args[1] $args[2]>>
 		<<set $_pregnancy to $sexStats.vagina.pregnancy>>
-		<<if $vaginaexist isnot 1 or $_pregnancy[0] isnot null>>
+		<<if !$player.vaginaExist or $_pregnancy[0] isnot null>>
 			<<set _prevent to true>>
 		<</if>>
 		<<if _pills.pregnancy.type is "fertility">>
@@ -1442,7 +1442,7 @@
 	<<pregnancyBabyBase $args[0] $args[1] $args[2]>>
 	<<if $args[0] is "pc">>
 		<<set $_pregnancy to $sexStats.vagina.pregnancy>>
-		<<if $vaginaexist isnot 1 or $_pregnancy[0] isnot null>>
+		<<if !$player.vaginaExist or $_pregnancy[0] isnot null>>
 			<<set _prevent to true>>
 		<</if>>
 	<<else>>

@@ -5,7 +5,7 @@
 	<span class="green">Virgin</span> - Your purity recovers faster. Your virginity might be worth something.
 	<br>
 <<elseif $player.virginity.temple is true>>
-	<span class="blue">Chastity Vow</span> - Lost when your <<if $penisexist is 1>>penis is enveloped<</if>><<if $penisexist is 1 and $vaginaexist is 1>> or your <</if>><<if $vaginaexist is 1>>vagina is penetrated<</if>>. The temple will know.
+	<span class="blue">Chastity Vow</span> - Lost when your <<if $player.penisExist>>penis is enveloped<</if>><<if $player.penisExist and $player.vaginaExist>> or your <</if>><<if $player.vaginaExist>>vagina is penetrated<</if>>. The temple will know.
 	<br>
 <<elseif $player.virginity.temple is false and $temple_rank isnot "prospective" and $temple_rank isnot undefined>>
 	<span class="red">Broken Vow</span> - The temple will know.
@@ -74,7 +74,7 @@
 	<</if>>
 <</if>>
 
-<<if $semen_volume gte 1000 and $penisexist is 1>>
+<<if $semen_volume gte 1000 and $player.penisExist>>
 	<span class="blue">Sperm bank</span> - You carry a tremendous amount of semen.
 	<br>
 <</if>>

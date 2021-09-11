@@ -72,7 +72,7 @@ You are
 <<else>>
 	You have $eyecolour eyes.
 <</if>>
-You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if>> You have a <<bottom>>. <<if $penisexist is 1>>You have a <<penis>>.<</if>>
+You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if>> You have a <<bottom>>. <<if $player.penisExist>>You have a <<penis>>.<</if>>
 
 <!--Hair Details-->
 <<set _hairTextConfig = { currentValue : $hairlength, states : [
@@ -112,7 +112,7 @@ You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if
 	<br><br>
 <</if>>
 <!--Semen Details-->
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<set _semenCapacityTextConfig = { currentValue : $semen_volume, preText: 'You produce ', states : [
 			{ requiredValue: 0,   	color: '',		 description: '', 				postText: ' no cum.' },
 			{ requiredValue: 1, 	color: 'red',	 description: 'a tiny', 		postText: ' amount of cum, ' },
@@ -191,13 +191,13 @@ You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if
 		{ requiredValue: 90,	color: 'red',	description: 'drenched.',		postText: ' Even the largest penises will have an easy time sliding in.' }
 ]>>
 <!--Vagina Wetness-->
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<set _vaginaWetnessTextConfig = { currentValue : $vaginaWetness, preText: 'Your vagina is ', states: _holeWetnessStates}>>
 	<<characteristic-text _vaginaWetnessTextConfig>>
 	<br>
 <</if>>
 <!--Penis Wetness-->
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<set _penisWetnessTextConfig = { currentValue : $penisWetness, preText: 'Your penis is ', states: [
 		{ requiredValue: 0,		color: 'green',	description: 'dry.',				postText: ($penissize >= 2) ? " Insertions may be difficult." : ''},
 		{ requiredValue: 15,	color: 'teal',	description: 'a little slick.',	postText: ''},
@@ -515,10 +515,10 @@ You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if
 		<<set _analConfig = 		{ name : "Anal", 		displayType : "grade",	currentValue : $analskill, 		modifier: 100,		states : _basicSkillGrades}>>
 		<<set _thighsConfig = 		{ name : "Thighs", 		displayType : "grade",	currentValue : $thighskill, 	modifier: 100,		states : _basicSkillGrades}>>
 		<<set _feetConfig = 		{ name : "Feet", 		displayType : "grade",	currentValue : $feetskill, 		modifier: 100,		states : _basicSkillGrades}>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set _penileConfig = 	{ name : "Penile", 		displayType : "grade",	currentValue : $penileskill, 	modifier: 100,	states : _basicSkillGrades}>>
 		<</if>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<<set _vaginalConfig = 	{ name : "Vaginal", 	displayType : "grade",	currentValue : $vaginalskill, 	modifier: 100,	states : _basicSkillGrades}>>
 		<</if>>
 	<</silently>>
@@ -541,7 +541,7 @@ You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if
 					<<characteristic-box _buttocksConfig>>
 					<<connector-box 37 50 20>>
 				</div>
-				<<if $vaginaexist is 1>>
+				<<if $player.vaginaExist>>
 					<div class="sex-diagram-box">
 						<<characteristic-box _vaginalConfig>>
 						<<connector-box 0 50 3>>
@@ -566,7 +566,7 @@ You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if
 					<<connector-box 74 50 15>>
 					<<characteristic-box _handsConfig>>
 				</div>
-				<<if $penisexist is 1>>
+				<<if $player.penisExist>>
 					<div class="sex-diagram-box">
 						<<connector-box 36 65 2>>
 						<<characteristic-box _penileConfig>>
@@ -595,10 +595,10 @@ You have a <<skincolourtext>> <<if $breastsize gte 1>>You have <<breasts>>.<</if
 		<div id="sex-skills" class="characteristic-box-list">
 			<<characteristic-box _seductionConfig>>
 			<<characteristic-box _oralConfig>>
-			<<if $vaginaexist is 1>>
+			<<if $player.vaginaExist>>
 				<<characteristic-box _vaginalConfig>>
 			<</if>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				<<characteristic-box _penileConfig>>
 			<</if>>
 			<<characteristic-box _analConfig>>

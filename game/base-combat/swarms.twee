@@ -448,7 +448,7 @@
 
 <<if _swarmamounts.butt[1] gte 1>>
 	<<neutral 10>><<impregnate $swarm["type"] _swarmamounts.butt[1]>>
-	They writhe inside your lower intestine<<if $penisexist is 1>>, blindly teasing your prostate<</if>><<if _impreg is true>>, and <span class="red">attempt to move further inside you</span><</if>>.
+	They writhe inside your lower intestine<<if $player.penisExist>>, blindly teasing your prostate<</if>><<if _impreg is true>>, and <span class="red">attempt to move further inside you</span><</if>>.
 	<<set _impreg to false>>
 	<<arousal `_swarmamounts.butt[1] * 20`>>
 <</if>>
@@ -511,9 +511,9 @@
 	<<set _swarmnote.genitalchasity to 0>>
 	<span class="purple">Some of them wriggle their way into your $worn.genitals.name, you feel them moving toward your <<genitals>>.</span> <span class="pink">With your $worn.genitals.name in the way, you won't be able to get them out!</span>
 	<<if $parasitedisable is "f">>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<<set $vaginalchastityparasite to $swarm["type"]>>
-		<<elseif $penisexist is 1>>
+		<<elseif $player.penisExist>>
 			<<set $penilechastityparasite to $swarm["type"]>>
 		<</if>>
 	<</if>>
@@ -526,19 +526,19 @@
 
 <<if _swarmnote.genitalinsideintro gte 1>>
 	<<set _swarmnote.genitalinsideintro to 0>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<span class="pink">They start squirming their way into your pussy!</span>
-	<<elseif $penisexist is 1>>
+	<<elseif $player.penisExist>>
 		<span class="pink">They start enveloping your penis!</span>
 	<</if>>
 <</if>>
 
 <<if _swarmamounts.genital[1] gte 1>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		They writhe and squirm inside your vagina, probing and teasing without mercy.
 		<<arousal `_swarmamounts.genital[1] * 20 * $genitalsensitivity`>>
 		<<neutral 10>>
-	<<elseif $penisexist is 1>>
+	<<elseif $player.penisExist>>
 		They writhe and squirm over your penis, rubbing and teasing the entire length.
 		<<arousal `_swarmamounts.genital[1] * 20 * $genitalsensitivity`>>
 		<<neutral 10>>

@@ -907,7 +907,7 @@ You've read about the old sewers beneath the storm drains. They haven't been use
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $struggle.penis.creature to "slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
 	<<else>>
 		<<set $struggle.vagina.creature to "slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>

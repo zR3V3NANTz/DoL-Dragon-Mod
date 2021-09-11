@@ -1350,7 +1350,7 @@ The audience applauds. Whitney gasps and climbs off you.
 	<<He>> quickly grabs your <<genitals>> and
 	<<if $player.gender is "h">>
 		starts to jerk you off with one hand, plunging a finger from <<his>> other hand into your <<pussy>>.
-	<<elseif $penisexist is 1>>
+	<<elseif $player.penisExist>>
 		starts to jerk you off, paying extra attention to the tip of your <<penis>>.
 	<<else>>
 		plunges a finger into your <<pussy>>, swirling it around.
@@ -1364,7 +1364,7 @@ The audience applauds. Whitney gasps and climbs off you.
 		<<He>> locks eyes with you, and the speed of <<his>> assault increases.
 		<<if $player.gender is "h">>
 			<<He>> uses <<his>> thumb to rub your tip in circles, while sliding a second finger into your <<pussy>>.
-		<<elseif $penisexist is 1>>
+		<<elseif $player.penisExist>>
 			<<He>> uses <<his>> thumb to rub your tip in circles<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $analdisable is "f">>, and slowly slides a finger into your <<bottom>>. <<He>> grins as <<he>> reaches your prostate<<else>>, giving your <<bottom>> a slap with <<his>> other hand<</if>>.
 		<<else>>
 			<<He>> plunges a second finger into your <<pussy>>, and uses <<his>> other hand to fondle your <<breasts>>.
@@ -3333,9 +3333,9 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 		<<else>>
 			pussy.
 		<</if>>
-		You <<if $penisexist is 1>><<peniletext>><<else>><<vaginaltext>><</if>> begin to move on your own, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000>>
+		You <<if $player.penisExist>><<peniletext>><<else>><<vaginaltext>><</if>> begin to move on your own, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000>>
 		<br><br>
-		<<if ($penisexist is 1 and $penileskill gte random(200, 600)) or ($vaginaexist is 1 and $vaginalskill gte random(200, 600))>>
+		<<if ($player.penisExist and $penileskill gte random(200, 600)) or ($player.vaginaExist and $vaginalskill gte random(200, 600))>>
 			You can feel Whitney approaching <<his>> peak as <<his>> pace increases, and you increase yours to match. In a matter of moments, <<hes>> fully pressed together with you, convulsing.
 			It pushes you over the edge. <<orgasm>>
 			<br><br>
@@ -3369,7 +3369,7 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 		<<He>> quickly grabs your <<genitals>> and
 		<<if $player.gender is "h">>
 			starts to jerk you off with one hand, plunging a finger from <<his>> other hand into your <<pussy>>.
-		<<elseif $penisexist is 1>>
+		<<elseif $player.penisExist>>
 			starts to jerk you off, paying extra attention to the tip of your <<penis>>.
 		<<else>>
 			plunges a finger into your <<pussy>>, swirling it around.
@@ -3385,7 +3385,7 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 			<<He>> locks eyes with you, and the speed of <<his>> assault increases.
 			<<if $player.gender is "h">>
 				<<He>> uses <<his>> thumb to rub your tip in circles, while sliding a second finger into your <<pussy>>.
-			<<elseif $penisexist is 1>>
+			<<elseif $player.penisExist>>
 				<<He>> uses <<his>> thumb to rub your tip in circles<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $analdisable is "f">>, and slowly slides a finger into your <<bottom>>. <<He>> grins as <<he>> reaches your prostate<<else>>, and uses <<his>> other hand to focus on your shaft<</if>>.
 			<<else>>
 				<<He>> plunges a second finger into your <<pussy>>, and uses <<his>> other hand to fondle your <<breasts>>.
@@ -3405,9 +3405,9 @@ You press forward, putting your hands on <<his>> waist and pulling yourself clos
 		"You make a nice bench," <<he>> says before turning around for a kiss. <<garousal>><<arousal 400>>
 		<br><br>
 		<<He>> moves your hands to be wrapped around <<his>> waist, and <<he>> begins to grind on you.
-		You <<if $penisexist is 1>><<peniletext>><<else>><<vaginaltext>><</if>> begin to help <<him>> move, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000>>
+		You <<if $player.penisExist>><<peniletext>><<else>><<vaginaltext>><</if>> begin to help <<him>> move, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000>>
 		<br><br>
-		<<if ($penisexist is 1 and $penileskill gte random(200, 600)) or ($vaginaexist is 1 and $vaginalskill gte random(200, 600))>>
+		<<if ($player.penisExist and $penileskill gte random(200, 600)) or ($player.vaginaExist and $vaginalskill gte random(200, 600))>>
 			You can feel Whitney approaching <<his>> peak as <<his>> pace increases, and you increase yours to match. In a matter of moments, <<hes>> fully pressed against you, convulsing.
 			It pushes you over the edge. <<orgasm>>
 			<br><br>
@@ -3694,7 +3694,7 @@ Whitney brings you to your knees. "All I wanted was some fucking peace and quiet
 		<<He>> quickly grabs your <<genitals>> and
 		<<if $player.gender is "h">>
 			starts to jerk you off with one hand, plunging a finger from <<his>> other hand into your <<pussy>>.
-		<<elseif $penisexist is 1>>
+		<<elseif $player.penisExist>>
 			starts to jerk you off, paying extra attention to the tip of your <<penis>>.
 		<<else>>
 			plunges a finger into your <<pussy>>, swirling it around.
@@ -3708,7 +3708,7 @@ Whitney brings you to your knees. "All I wanted was some fucking peace and quiet
 			<<He>> locks eyes with you, and the speed of <<his>> assault increases.
 			<<if $player.gender is "h">>
 				<<He>> uses <<his>> thumb to rub your tip in circles, while sliding a second finger into your <<pussy>>.
-			<<elseif $penisexist is 1>>
+			<<elseif $player.penisExist>>
 				<<He>> uses <<his>> thumb to rub your tip in circles<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $analdisable is "f">>, and slowly slides a finger into your <<bottom>>. <<He>> grins as <<he>> reaches your prostate<<else>>, giving your <<bottom>> a slap with <<his>> other hand<</if>>.
 			<<else>>
 				<<He>> plunges a second finger into your <<pussy>>, and uses <<his>> other hand to fondle your <<breasts>>.

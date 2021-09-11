@@ -220,7 +220,7 @@ You can do nothing about your <<lewdness>> displayed for everyone to see, humili
 	<br><br>
 	<<fameexhibitionism 10 pic>>
 <</if>>
-<<if $exposed gte 2 and $pilloryaudience and $penisexist and random(0, 9) gte 7>><<pillorypeniscomment>><</if>>
+<<if $exposed gte 2 and $pilloryaudience and $player.penisExist and random(0, 9) gte 7>><<pillorypeniscomment>><</if>>
 
 <br><br>
 
@@ -711,7 +711,7 @@ You kick the <<person>> in the shin. "Ow!" <<he>> says. "Fucking bitch." <<He>> 
 <<He>> pulls your $worn.under_lower.name down to your thighs, revealing your <<genitals>> for all to see.
 
 <<He>> returns to the crowd, leaving you exposed and humiliated.
-<<if $penisexist>><<pillorypeniscomment>><</if>>
+<<if $player.penisExist>><<pillorypeniscomment>><</if>>
 <br><br>
 
 <<set $worn.under_lower.vagina_exposed to 1>><<set $worn.under_lower.anus_exposed to 1>><<set $worn.under_lower.exposed to 1>><<set $worn.under_lower.state to "thighs">>

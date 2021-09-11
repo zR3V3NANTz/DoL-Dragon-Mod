@@ -288,13 +288,13 @@
 
 <<widget "npc_attempt_sex">>
 <<if $NPCList[0].penis isnot "none">>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<set $NPCList[0].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">>
 	<<elseif $analdisable is "f">>
 		<<set $NPCList[0].penis to "anusentrance">><<set $anususe to "penis">><<set $anusstate to "entrance">>
 	<</if>>
 <<else>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $NPCList[0].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">>
 	<</if>>
 <</if>>

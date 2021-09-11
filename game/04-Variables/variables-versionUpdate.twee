@@ -64,10 +64,15 @@
 	<<unset $temple_virginity>>
 <</if>>
 
-<<if $player.penisExist is undefined>>
+<<if $player.penisExist is undefined and $penisexist isnot undefined>>
 	<<set $player.penisExist to ($penisexist is 1 ? true : false)>>
 	<<set $player.vaginaExist to ($vaginaexist is 1 ? true : false)>>
 <</if>>
+/* uncomment when we are ready to remove $penisexist completely
+<<if $penisexist isnot undefined>>
+	<<unset $penisexist>>
+	<<unset $vaginaexist>>
+<</if>> */
 
 <<if $player.ballsExist is undefined>>
 	<<set $player.ballsExist to ($player.gender isnot "f")>>

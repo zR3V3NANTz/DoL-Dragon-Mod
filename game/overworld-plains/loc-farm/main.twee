@@ -1570,7 +1570,7 @@ You enter the shed with the shower, remove your clothes, and wash until you're s
 		<br><br>
 
 		<<He>> shuts the door after a moment, restoring your privacy.
-		<<if $penisexist is 1 and ($penissize lte 1 or $penissize is 4) and random(0,9) gte 6>>
+		<<if $player.penisExist and ($penissize lte 1 or $penissize is 4) and random(0,9) gte 6>>
 			<<if $penissize lte 1>>
 				"So <<EZsmall>>," <<he>> mutters after closing it. You look down at your <<penis>> and flush in embarrassment.
 			<<elseif $penissize is 4>>

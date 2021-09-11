@@ -170,7 +170,7 @@ __If consensual:__
 	<<sexDefaults false>>
 <</if>>
 <<for _i to 0; _i lt _titles.length; _i++>>
-	<<if (_titles[_i] is "Penis" and $penisexist is 0) or (_titles[_i] is "Vagina" and $vaginaexist is 0)>>
+	<<if (_titles[_i] is "Penis" and !$player.penisExist) or (_titles[_i] is "Vagina" and !$player.vaginaExist)>>
 		<<continue>>
 	<</if>>
 	<span class="listMargin">
@@ -200,7 +200,7 @@ __If consensual:__
 	<br><br>
 
 	<<for _i to 0; _i lt _titles.length; _i++>>
-		<<if (_titles[_i] is "Penis" and $penisexist is 0) or (_titles[_i] is "Vagina" and $vaginaexist is 0)>>
+		<<if (_titles[_i] is "Penis" and !$player.penisExist) or (_titles[_i] is "Vagina" and !$player.vaginaExist)>>
 			<<continue>>
 		<</if>>
 		<span class="listMargin">
@@ -535,15 +535,13 @@ __If consensual:__
 <<set _askActions to {"Nothing":"rest"}>>
 <<if $args[0] is false>>
 	<<set _askActions["to stop"] to "finish">>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<set _askActions["to not put anything in your pussy"] to "novaginal">>
 	<</if>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set _askActions["to not put your penis in anything"] to "nopenile">>
 	<</if>>
-	<<if $vaginaexist is 1>>
-		<<set _askActions["to not put anything in your anus"] to "noanal">>
-	<</if>>
+	<<set _askActions["to not put anything in your anus"] to "noanal">>
 	<<if $asphyxiaLvl gte 1>>
 		<<set _askActions["to not choke you"] to "nochoke">>
 	<</if>>
@@ -653,7 +651,7 @@ __If consensual:__
 <<set _anus to {
 	"Rest":"rest",
 }>>
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<set _anus["Offer your pussy instead"] to "penispussy">>
 <</if>>
 

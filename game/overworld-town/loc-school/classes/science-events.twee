@@ -245,8 +245,8 @@
 		"As you can see, <<pshe>> is wearing a $worn.genitals.name, but we should be able to move it slightly for a better look..."<<person1>><<He>> starts tugging on your $worn.genitals.name, this way and that, rubbing it against your <<genitals 1>>. A small moan escapes your lips, and the class erupts into laughter. Sirris recoils from the belt, and stammers. "We... This will do. OK class, listen closely."
 		<br><br>
 
-	<<elseif $vaginaexist is 1>>
-		<<if $penisexist>>
+	<<elseif $player.vaginaExist>>
+		<<if $player.penisExist>>
 			<<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position. "As you can see, <<pshe>> is someone who is rather unique in having both a penis and a vagina.
 			<br><br>
 			<<person2>>"<<pShes>><<if $penissize lt 0>> not<</if>> getting hard!" exclaims the <<person>>, redoubling your humiliation. Sirris ignores the interjection and continues.
@@ -308,8 +308,8 @@
 	<<if $worn.genitals.type.includes("chastity")>>
 		"As you can see, <<pshe>> is wearing a $worn.genitals.name, but we should be able to move it slightly for a better look..."<<person1>><<He>> starts tugging on your $worn.genitals.name, this way and that, rubbing it against your <<genitals 1>>. A small moan escapes your lips, and the class erupts into laughter. Sirris recoils from the belt, and stammers. "We... This will do. OK class, listen closely."
 		<br><br>
-	<<elseif $vaginaexist is 1>>
-		<<if $penisexist>>
+	<<elseif $player.vaginaExist>>
+		<<if $player.penisExist>>
 			<<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position. "As you can see, <<pshe>> is someone who is rather unique in having both a penis and a vagina.
 			<br><br>
 			<<person2>>"<<pShes>><<if $penissize lt 0>> not<</if>> getting hard!" exclaims the <<person>>, redoubling your humiliation. Sirris ignores the interjection and continues.

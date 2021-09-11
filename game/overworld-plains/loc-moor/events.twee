@@ -2231,7 +2231,7 @@ You shuffle deeper into the dark.
 
 	<<beastNEWinit 1 creature>>
 	<<beastCombatInit>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $position to "missionary">>
 	<<else>>
 		<<set $position to "doggy">>

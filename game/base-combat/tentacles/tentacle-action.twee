@@ -337,14 +337,14 @@
 			<<tentacledefault>>
 		<</if>>
 	<<elseif $rng lte 60>>
-		<<if $vaginaexist is 1 and $vaginause is 0>>
+		<<if $player.vaginaExist and $vaginause is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<pussy>>.</span>
 			<<neutralgenitals 2>><<set $vaginause to "tentacle">><<set $vaginastate to "tentacleentrance">><<set $tentacles[$tentacleindex].head to "vaginaentrance">>
 		<<else>>
 			<<tentacledefault>>
 		<</if>>
 	<<elseif $rng lte 70>>
-		<<if $penisexist is 1 and $penisuse is 0>>
+		<<if $player.penisExist and $penisuse is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<penis>>.</span>
 			<<neutralgenitals 2>><<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set $tentacles[$tentacleindex].head to "penisentrance">>
 		<<else>>
@@ -352,14 +352,14 @@
 		<</if>>
 	<<elseif $rng lte 80>>
 		<<if $thighuse is 0>>
-			<<if $penisexist is 1 and $penisuse is 0>>
+			<<if $player.penisExist and $penisuse is 0>>
 				<<if $tentacles[$tentacleindex].shaft is "thighs">>
 					<<underslither>> <span class="blue">where it <<slithers>> against your tummy and <<penis>>.</span>
 				<<else>>
 					<<underslither>> <span class="blue">where it <<slithers>> between your thighs and against your tummy and <<penis>>.</span>
 				<</if>>
 				<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set $tentacles[$tentacleindex].head to "penisrub">><<sex 3>><<thighstat>>
-			<<elseif $vaginaexist is 1 and $vaginause is 0>>
+			<<elseif $player.vaginaExist and $vaginause is 0>>
 				<<if $tentacles[$tentacleindex].shaft is "thighs">>
 					<<underslither>> <span class="blue">where it <<slithers>> against your tummy and <<pussy>>.</span>
 				<<else>>

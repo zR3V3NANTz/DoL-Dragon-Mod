@@ -22,10 +22,10 @@
 			<<set _askActions["to stop" + _diffText] to "finish">>
 		<</if>>
 		<<if $enemytype is "man" and !$npcSub>>
-			<<if $vaginaexist is 1 and $vaginalchastity is 0 and $novaginal is 0>>
+			<<if $player.vaginaExist and $vaginalchastity is 0 and $novaginal is 0>>
 				<<set _askActions["to not put anything in your pussy" + _diffText] to "novaginal">>
 			<</if>>
-			<<if $penisexist is 1 and $penilechastity is 0 and $nopenile is 0>>
+			<<if $player.penisExist and $penilechastity is 0 and $nopenile is 0>>
 				<<set _askActions["to not put your penis in anything" + _diffText] to "nopenile">>
 			<</if>>
 			<<if $analchastity is 0 and $noanal is 0>>

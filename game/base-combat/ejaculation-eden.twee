@@ -216,7 +216,7 @@
 		<!-- following appear to be Male PC to Female Antagonist only? -->
 		<<elseif $NPCList[_nn].vagina is "otheranus">>
 			<<He>> shakes as <<he>> cums, grasping your
-			<<if $player.ballsExist>>balls<<elseif $vaginaexist is 1>>pussy<</if>>
+			<<if $player.ballsExist>>balls<<elseif $player.vaginaExist>>pussy<</if>>
 			and taking your <<penis>> deep into <<his>> ass as <<he>> releases a final moan.
 		<<elseif $NPCList[_nn].vagina is "penis">>
 			<<He>> digs <<his>> nails into your shoulders as <<he>> cums, driving <<his>> pussy down hard against your cock. <<He>> shudders with pleasure.
@@ -868,7 +868,7 @@
 			
 		<<case 6 7>>
 			<<He>> grasps your
-			<<if $player.ballsExist>>balls<<elseif $vaginaexist is 1>>pussy<</if>>
+			<<if $player.ballsExist>>balls<<elseif $player.vaginaExist>>pussy<</if>>
 			and drives your cock down <<his>> throat. <<He>> ejcaultes on <<his>> own chest as <<he>> shudders around your length.
 			
 		<</switch>>

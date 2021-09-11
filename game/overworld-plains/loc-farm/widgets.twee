@@ -1246,7 +1246,7 @@
 		<</link>><<deviant2>>
 		<br>
 	<</if>>
-	<<if $penisexist is 1 and $semen_amount gte 1>>
+	<<if $player.penisExist and $semen_amount gte 1>>
 		<<if $worn.genitals.type.includes("chastity")>>
 			<span class="blue">You could milk your penis, if the <<print $worn.genitals.name>> wasn't in the way.</span>
 			<br>
@@ -2295,10 +2295,10 @@
 	<</if>>
 	<<if $farm_fight.genitals isnot 1>>
 		<<if $exhibitionism gte 75>>
-			<<if $penisexist is 1 and $vaginaexist is 1>>
+			<<if $player.penisExist and $player.vaginaExist>>
 				<<link [[Expose your genitals through the window|Farm Fight]]>><<set $farm_fight.action to "penis">><<set $farm_fight.genitals to 1>><</link>><<exhibitionist5>>
 				<br>
-			<<elseif $penisexist is 1>>
+			<<elseif $player.penisExist>>
 				<<link [[Expose your penis through the window|Farm Fight]]>><<set $farm_fight.action to "penis">><<set $farm_fight.genitals to 1>><</link>><<exhibitionist5>>
 				<br>
 			<<else>>

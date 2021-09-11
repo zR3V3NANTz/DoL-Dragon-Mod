@@ -334,13 +334,13 @@ $worn.under_upper.type.includes("naked") and $worn.under_lower.type.includes("na
 	<<set _modeloptions.pbhair_strip = $pbstrip>>
 	<<set _modeloptions.pbhair_balls = $pblevelballs>>
 <</if>>
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<set _modeloptions.penis_size to Math.clamp($penissize, -2, 4)>>
 	<<set _modeloptions.penis to ($player.virginity.penile === true ? "virgin" : "default") >>
 	<<set _modeloptions.balls to $player.ballsExist>>
 	<<set _modeloptions.penis_parasite to $parasite.penis.name>>
 <</if>>
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<set _modeloptions.clit_parasite to $parasite.clit.name>>
 <</if>>
 

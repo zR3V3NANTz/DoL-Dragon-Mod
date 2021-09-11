@@ -4,7 +4,7 @@
 <<if $leftarm is 0>>
 	Your left hand is free.
 	<br>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<if $awareness gte 400 and $masturbationorgasmsemen gte 1 and $leftFingersSemen isnot 1>>
 			| <label><<print '<<radiobutton "$leftaction" "msemencover" '+($leftactiondefault is "msemencover"?"checked":"")+'>>'>> <span class="sub">Cover your fingers in semen</span></label>
 		<</if>>
@@ -14,7 +14,7 @@
 			| <label><<print '<<radiobutton "$leftaction" "mchastity" '+($leftactiondefault is "mchastity"?"checked":"")+'>>'>> <span class="sub">Try to fondle your penis</span></label>
 		<</if>>
 	<</if>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<if !$worn.genitals.type.includes("chastity")>>
 			| <label><<print '<<radiobutton "$leftaction" "mvaginaentrance" '+($leftactiondefault is "mvaginaentrance"?"checked":"")+'>>'>> <span class="sub">Fondle your pussy</span></label>
 		<<else>>
@@ -49,7 +49,7 @@
 	<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
 		| <label><<print '<<radiobutton "$leftaction" "mvagina" '+($leftactiondefault is "mvagina"?"checked":"")+'>>'>> <span class="sub">Push a finger in</span></label>
 	<</if>>
-	<<if $penisexist isnot 1>>
+	<<if !$player.penisExist>>
 		| <label><<print '<<radiobutton "$leftaction" "mvaginaclit" '+($leftactiondefault is "mvaginaclit"?"checked":"")+'>>'>> <span class="sub">Play with your clit</span></label>
 	<</if>>
 	| <label><<print '<<radiobutton "$leftaction" "mvaginarub" '+($leftactiondefault is "mvaginarub"?"checked":"")+'>>'>> <span class="sub">Tease your vagina</span></label>
@@ -74,7 +74,7 @@
 	You tease your anus with your left hand.
 	<br>
 	| <label><<print '<<radiobutton "$leftaction" "manustease" '+($leftactiondefault is "manustease"?"checked":"")+'>>'>> <span class="sub">Tease</span></label>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		| <label><<print '<<radiobutton "$leftaction" "manusprostate" '+($leftactiondefault is "manusprostate"?"checked":"")+'>>'>> <span class="sub">Tease your prostate</span></label>
 	<</if>>
 	| <label><<print '<<radiobutton "$leftaction" "manusstop" '+($leftactiondefault is "manusstop"?"checked":"")+'>>'>> Move your hand away</label>
@@ -107,7 +107,7 @@
 <<if $rightarm is 0>>
 	Your right hand is free.
 	<br>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<if $awareness gte 400 and $masturbationorgasmsemen gte 1 and $rightFingersSemen isnot 1>>
 			| <label><<print '<<radiobutton "$rightaction" "msemencover" '+($rightactiondefault is "msemencover"?"checked":"")+'>>'>> <span class="sub">Cover your fingers in semen</span></label>
 		<</if>>
@@ -117,7 +117,7 @@
 			| <label><<print '<<radiobutton "$rightaction" "mchastity" '+($rightactiondefault is "mchastity"?"checked":"")+'>>'>> <span class="sub">Try to fondle your penis</span></label>
 		<</if>>
 	<</if>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<if !$worn.genitals.type.includes("chastity")>>
 			| <label><<print '<<radiobutton "$rightaction" "mvaginaentrance" '+($rightactiondefault is "mvaginaentrance"?"checked":"")+'>>'>> <span class="sub">Fondle your pussy</span></label>
 		<<else>>
@@ -152,7 +152,7 @@
 	<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
 		| <label><<print '<<radiobutton "$rightaction" "mvagina" '+($rightactiondefault is "mvagina"?"checked":"")+'>>'>> <span class="sub">Push a finger in</span></label>
 	<</if>>
-	<<if $penisexist isnot 1>>
+	<<if !$player.penisExist>>
 		| <label><<print '<<radiobutton "$rightaction" "mvaginaclit" '+($rightactiondefault is "mvaginaclit"?"checked":"")+'>>'>> <span class="sub">Play with your clit</span></label>
 	<</if>>
 	| <label><<print '<<radiobutton "$rightaction" "mvaginarub" '+($rightactiondefault is "mvaginarub"?"checked":"")+'>>'>> <span class="sub">Tease your vagina</span></label>
@@ -177,7 +177,7 @@
 	You tease your anus with your right hand.
 	<br>
 	| <label><<print '<<radiobutton "$rightaction" "manustease" '+($rightactiondefault is "manustease"?"checked":"")+'>>'>> <span class="sub">Tease</span></label>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		| <label><<print '<<radiobutton "$rightaction" "manusprostate" '+($rightactiondefault is "manusprostate"?"checked":"")+'>>'>> <span class="sub">Tease your prostate</span></label>
 	<</if>>
 	| <label><<print '<<radiobutton "$rightaction" "manusstop" '+($rightactiondefault is "manusstop"?"checked":"")+'>>'>> Move your hand away</label>
@@ -213,10 +213,10 @@
 		<br>
 		<<if $awareness gte 200 and ($danceskill gte 800 or $cat is 6) and !$worn.genitals.type.includes("chastity") and
 		$worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed is 1 and $worn.under_lower.vagina_exposed is 1>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				| <label><<print '<<radiobutton "$mouthaction" "mpenisentrance" '+($mouthactiondefault is "mpenisentrance"?"checked":"")+'>>'>> <span class="sub">Lick your penis</span></label>
 			<</if>>
-			<<if $vaginaexist is 1 and !($leftarm is "mvaginaentrance" or $rightarm is "mvaginaentrance") and $vaginause is 0>>
+			<<if $player.vaginaExist and !($leftarm is "mvaginaentrance" or $rightarm is "mvaginaentrance") and $vaginause is 0>>
 				| <label><<print '<<radiobutton "$mouthaction" "mvaginaentrance" '+($mouthactiondefault is "mvaginaentrance"?"checked":"")+'>>'>> <span class="sub">Lick your pussy</span></label>
 			<</if>>
 		<</if>>
@@ -240,7 +240,7 @@
 		You're licking your pussy.
 		<br>
 		| <label><<print '<<radiobutton "$mouthaction" "mvaginalick" '+($mouthactiondefault is "mvaginalick"?"checked":"")+'>>'>> <span class="sub">Lick your pussy</span></label>
-		<<if $penisexist isnot 1>>
+		<<if !$player.penisExist>>
 			| <label><<print '<<radiobutton "$mouthaction" "mvaginaclit" '+($mouthactiondefault is "mvaginaclit"?"checked":"")+'>>'>> <span class="sub">Focus on your clit</span></label>
 		<</if>>
 		| <label><<print '<<radiobutton "$mouthaction" "mvaginastop" '+($mouthactiondefault is "mvaginastop"?"checked":"")+'>>'>> Move your mouth away</label>
@@ -273,7 +273,7 @@
 <</if>>
 
 <<if $moorPhallusPlant>>
-	<<if $vaginaexist is 1 and $vaginause is 0 and !$worn.genitals.type.includes("chastity")>>
+	<<if $player.vaginaExist and $vaginause is 0 and !$worn.genitals.type.includes("chastity")>>
 		<br><br>
 		Your pussy is free.
 		<br>

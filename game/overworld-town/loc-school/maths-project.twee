@@ -1864,7 +1864,7 @@ Gasps and laughter fill the hall. Some look away, but most stare in astonishment
 <br><<schoolrep crossdress 1>>
 <</if>>
 
-With a shaking voice you try to talk through your solution as if nothing is amiss. <<if $worn.under_lower.type.includes("naked")>> As if your <<if $penisexist is 1>><<penis>><<else>><<pussy>><</if>> does not have the attention of everyone in the room. <</if>>The photographer darts around in front of the stage, taking pictures of you from every angle.
+With a shaking voice you try to talk through your solution as if nothing is amiss. <<if $worn.under_lower.type.includes("naked")>> As if your <<if $player.penisExist>><<penis>><<else>><<pussy>><</if>> does not have the attention of everyone in the room. <</if>>The photographer darts around in front of the stage, taking pictures of you from every angle.
 <br><br>
 
 You reach the end of your presentation. The audience cheer and applaud. You feel around for the hooks, and remove them one by one. Your skirt falls back into place, covering your <<undies>>. Whitney leans back and smirks.
@@ -1934,7 +1934,7 @@ Gasps and laughter fill the hall. Some look away, but most stare in astonishment
 	<br><<schoolrep crossdress 1>>
 <</if>>
 
-With a shaking voice you try to talk through your solution as if nothing is amiss. <<if $worn.under_lower.type.includes("naked")>> As if your <<if $penisexist is 1>><<penis>><<else>><<pussy>><</if>> does not have the attention of everyone in the room. <</if>>The photographer darts around in front of the stage, taking pictures of you from every angle.
+With a shaking voice you try to talk through your solution as if nothing is amiss. <<if $worn.under_lower.type.includes("naked")>> As if your <<if $player.penisExist>><<penis>><<else>><<pussy>><</if>> does not have the attention of everyone in the room. <</if>>The photographer darts around in front of the stage, taking pictures of you from every angle.
 <br><br>
 
 You reach the end of your presentation. The audience cheer and applaud. You crouch to feel around for the hooks, and remove them one by one. You pull your $worn.lower.name into place, covering your <<undies>>. Whitney leans back and smirks.

@@ -72,13 +72,13 @@
 			<<mouthactionInit>>
 		</div>
 
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<div id="penisaction" @class="$combatControls + 'Control'">
 				<<penisactionInit>>
 			</div>
 		<</if>>
 
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<div id="vaginaaction" @class="$combatControls + 'Control'">
 				<<vaginaactionInit>>
 			</div>
@@ -187,10 +187,10 @@
 <<replace #rightaction>><<rightActionInit true>><</replace>>
 <<replace #feetaction>><<feetactionInit true>><</replace>>
 <<replace #mouthaction>><<mouthactionInit true>><</replace>>
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<replace #penisaction>><<penisactionInit true>><</replace>>
 <</if>>
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<replace #vaginaaction>><<vaginaactionInit true>><</replace>>
 <</if>>
 <<replace #anusaction>><<anusactionInit true>><</replace>>

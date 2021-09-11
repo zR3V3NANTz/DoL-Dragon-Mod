@@ -545,11 +545,11 @@ A red light glows from the front as it scans you. It moves its phallus in front 
 	<<neutral 1>>
 
 	<<set $machine_health to 10>><<set $machine_ammo to 8>>
-	<<if $vaginaexist is 1 and $analdisable is "f">>
+	<<if $player.vaginaExist and $analdisable is "f">>
 		<<machine_init vaginal anal>>
 		<<set $machine.vaginal.armed to 1>>
 		<<set $machine.anal.armed to 1>>
-	<<elseif $vaginaexist is 1>>
+	<<elseif $player.vaginaExist>>
 		<<machine_init vaginal>>
 		<<set $machine.vaginal.armed to 1>>
 	<<else>>

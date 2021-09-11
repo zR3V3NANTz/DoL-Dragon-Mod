@@ -186,7 +186,7 @@ Robin clings to you and smiles.
 		<br>
 		You nod.
 	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].dom lte 41>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set $penisuse to 0>><<set $penisstate to 0>>
 		<</if>>
 		playful. "But you didn't cum yet," <<he>> whispers. <<His>> hands wander over your <<genitals>>.
@@ -200,7 +200,7 @@ Robin clings to you and smiles.
 		<br>
 		<</if>>
 	<<else>><<set _mouthful to 1>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set $penisuse to "othermouth">><<set $penisstate to "othermouth">><<takeNPCVirginity "Robin" "oral">>
 		<</if>>
 		playful. "And now," <<he>> smiles. "<<print either("I make you squeal.","You squeal.","It's your turn.","You cum.","I make you cum.","I get you off.")>>"
@@ -213,7 +213,7 @@ Robin clings to you and smiles.
 			<br>
 			After a while of this, Robin crawls back up. "I'm not giving up," <<he>> breathes. <<He>> nips your ear. "That isn't happening."
 			<br>
-			Robin disappears back under the cover and goes at it with renewed determination. <<if $penisexist is 1>><<takeNPCVirginity "Robin" "oral">><</if>>
+			Robin disappears back under the cover and goes at it with renewed determination. <<if $player.penisExist>><<takeNPCVirginity "Robin" "oral">><</if>>
 			<<set $arousal to 10000>>
 			<<if $arousal gte $arousalmax>><<orgasm>><</if>>
 		<</if>>
@@ -1577,7 +1577,7 @@ Robin leans on to you, panting, beads of sweat dripping down <<his>> naked body.
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].dom lte 26>>
 		worried. "But," Robin says. "You didn't finish. Did you atleast feel good?" <<he>> asks. You nod, and <<he>> smiles cheerfully. "That's good."
 	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].dom lte 41>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set $penisuse to 0>><<set $penisstate to 0>>
 		<</if>>
 		disappointed. "But you didn't finish yet," Robin says. <<His>> hands wander over your <<genitals>>, and a tenacious look crosses <<his>> face. <br><br>
@@ -1592,14 +1592,14 @@ Robin leans on to you, panting, beads of sweat dripping down <<his>> naked body.
 
 		<</if>>
 	<<else>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set $penisuse to "othermouth">><<set $penisstate to 0>>
 		<</if>>
 		playful. "But you didn't cum yet," Robin smiles. "Sit down on the seat." You do as <<he>> says. <<He>> gets down on <<his>> knees, and pushes <<himself>> between your legs.
 		<br><br>
 		<<if $player.gender is "h">>
 			<<He>> kisses the tip of your <<penis>>, and runs <<his>> tongue along your length. Meanwhile, <<he>> plunges a finger into your quim, and begins pumping in and out. <<He>> gazes up at you.
-		<<elseif $penisexist is 1>>
+		<<elseif $player.penisExist>>
 			<<He>> kisses the tip of your <<penis>>, and runs <<his>> tongue along your length, flicking and licking as <<he>> does.
 		<<else>>
 			<<He>> explores your <<pussy>> with <<his>> tongue, occasionally focusing on your clit.
@@ -1617,7 +1617,7 @@ Robin leans on to you, panting, beads of sweat dripping down <<his>> naked body.
 				<<if $arousal gte $arousalmax>>
 					<<orgasm>>
 				<</if>>
-			<<elseif $penisexist is 1>>
+			<<elseif $player.penisExist>>
 				Robin pulls back, and reaches for you with <<his>> free hand. <<He>> rubs your slick cock up and down. "I'm not giving up," <<he>> says, picking up the pace.
 				<br><<set $arousal to 10000>>
 				<<if $arousal gte $arousalmax>>
@@ -1888,7 +1888,7 @@ Robin clings to you and smiles.
 		<br>
 		You nod.
 	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].dom lte 41>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set $penisuse to 0>><<set $penisstate to 0>>
 		<</if>>
 		playful. "But you didn't cum yet," <<he>> whispers. <<His>> hands wander over your <<genitals>>.
@@ -1902,7 +1902,7 @@ Robin clings to you and smiles.
 		<br>
 		<</if>>
 	<<else>><<set _mouthful to 1>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set $penisuse to "othermouth">><<set $penisstate to "othermouth">><<takeNPCVirginity "Robin" "oral">>
 		<</if>>
 		playful. "And now," <<he>> smiles. "<<print either("I make you squeal.","You squeal.","It's your turn.","You cum.","I make you cum.","I get you off.")>>"
@@ -1915,7 +1915,7 @@ Robin clings to you and smiles.
 			<br>
 			After a while of this, Robin crawls back up. "I'm not giving up," <<he>> breathes. <<He>> nips your ear. "That isn't happening."
 			<br>
-			Robin disappears back under the cover and goes at it with renewed determination. <<if $penisexist is 1>><<takeNPCVirginity "Robin" "oral">><</if>>
+			Robin disappears back under the cover and goes at it with renewed determination. <<if $player.penisExist>><<takeNPCVirginity "Robin" "oral">><</if>>
 			<<set $arousal to 10000>>
 			<<if $arousal gte $arousalmax>><<orgasm>><</if>>
 		<</if>>

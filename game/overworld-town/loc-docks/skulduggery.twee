@@ -1335,10 +1335,10 @@ They push you towards the entrance.
 	<<neutral 1>>
 
 	<<set $machine_health to 10>><<set $machine_ammo to 8>>
-	<<if $vaginaexist is 1 and $analdisable is "f">>
+	<<if $player.vaginaExist and $analdisable is "f">>
 		<<machine_init vaginal arm_chains>>
 		<<set $machine.vaginal.armed to 1>>
-	<<elseif $vaginaexist is 1>>
+	<<elseif $player.vaginaExist>>
 		<<machine_init vaginal arm_chains>>
 		<<set $machine.vaginal.armed to 1>>
 	<<else>>

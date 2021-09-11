@@ -1376,13 +1376,13 @@ You hold the back of Alex's head, and pull <<him>> into a kiss.<<set $consensual
 	<<neutral 1>>
 	Alex looks you in the eye as <<he>> drops to <<his>> knees in front of you. <<He>> rests <<his>> hands on <<his>> thighs.
 	<<maninit>>
-	<<if $penisexist is 1 and $vaginaexist is 1>>
+	<<if $player.penisExist and $player.vaginaExist>>
 		<<if random(1, 2) is 2>>
 			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">>
 		<<else>>
 			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>
 		<</if>>
-	<<elseif $penisexist is 1>>
+	<<elseif $player.penisExist>>
 		<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">>
 	<<else>>
 		<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>

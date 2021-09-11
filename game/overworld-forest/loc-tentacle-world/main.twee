@@ -161,7 +161,7 @@ receding. Your mind, soaked for so long in a fog of unrelenting pleasure, starts
 :: Passout Tentacle World 3
 <<location "tentworld">><<effects>>
 
-Then a tentacle flicks the tip of your <<if $penisexist is 1>>penis<<else>>clit<</if>> hard, sending a jolt right to your brain. With
+Then a tentacle flicks the tip of your <<if $player.penisExist>>penis<<else>>clit<</if>> hard, sending a jolt right to your brain. With
 tentacles torturing your ass and nipples, this lone strike against your most sensitive place, which up until now had not been subjected
 to any sensations, overloads your system. You cum suddenly, your body unprepared for the unstoppable pleasure. The explosion within you
 causes your body to spasm, your hands clenched tight and your feet kicking out spastically.
@@ -327,7 +327,7 @@ whatever else they can reach. The air is sweet.
 		<<link [[Let the tentacles milk your breasts|Tentacle Cow Breasts]]>><<transform cow 1>><</link>><<cow>>
 		<br>
 	<</if>>
-	<<if $cow gte 6 and $penisexist is 1 and !$worn.genitals.type.includes("chastity")>>
+	<<if $cow gte 6 and $player.penisExist and !$worn.genitals.type.includes("chastity")>>
 		<<link [[Let the tentacles milk your penis|Tentacle Cow Penis]]>><<transform cow 1>><</link>><<cow>>
 		<br>
 	<</if>>

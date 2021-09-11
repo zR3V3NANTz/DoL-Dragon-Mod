@@ -11,7 +11,7 @@
 	<</if>>
 <<elseif $monster isnot 1>>
 	<<if $enemytype is "beast" and $NPCList[_na].stance is "top" or $enemytype is "beast" and $vaginause is "penis" or $enemytype is "beast" and $anususe is "penis" or $enemytype is "beast" and $penisuse is "othervagina" or $enemytype is "beast" and $penisuse is "otheranus">>
-		<<if $NPCList[_na].penis is "none" and $penisexist is 1 or $penisuse is "othervagina" or $penisuse is "otheranus">>
+		<<if $NPCList[_na].penis is "none" and $player.penisExist or $penisuse is "othervagina" or $penisuse is "otheranus">>
 			<<if $NPCList[_na].type is "lizard">>
 				<img @class="'layer-beastback anim-doggy-4f-'+_animspeed" src="img/sex/doggy/femalebeast/activelizard.png">
 				<img @class="'layer-beastforeground anim-doggy-4f-'+_animspeed" src="img/sex/doggy/femalebeast/activelizardfrontleg.png">

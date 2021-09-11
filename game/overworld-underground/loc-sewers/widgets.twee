@@ -413,7 +413,7 @@
 				<<destinationsewers>>
 			<</if>>
 		<<else>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				<<if !$parasite.penis.name>>
 					A warm, slimy and sticky liquid sprays you from a nearby pipe. It gets all over your <<penis>>.
 					<<if $parasitedisable is "f">>

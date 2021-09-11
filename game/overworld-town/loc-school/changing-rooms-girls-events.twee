@@ -688,7 +688,7 @@ You watch the girls dress, oblivious to your gaze. Your heart beats faster with 
 <<flaunting>> you enter the changing room. The response to a naked boy arriving is mixed. Some grab whatever they can to cover with. Some freeze on the spot. Others cheer and whistle. All stare at you.
 <<exhibitionism5>>
 <<set _rejected to 0>>
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<if $penissize is 4>>
 		The girls eyes seem glued to your <<genitals>>.
 		<<Penisremarkquote>> one girl manages to let out as she gawks at it.

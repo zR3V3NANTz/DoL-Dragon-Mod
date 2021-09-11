@@ -456,7 +456,7 @@
 				<!-- following appear to be Male PC to Female Antagonist only? -->
 				<<elseif $NPCList[_nn].vagina is "otheranus">>
 					<<He>> trembles as <<he>> cums, cups your
-					<<if $player.ballsExist>>balls<<elseif $vaginaexist is 1>>pussy<</if>>
+					<<if $player.ballsExist>>balls<<elseif $player.vaginaExist>>pussy<</if>>
 					and drags your <<penis>> deeper into <<his>> ass.
 				<<elseif $NPCList[_nn].vagina is "penis">>
 					<<He>> digs <<his>> nails into your shoulders as <<he>> cums, driving <<his>> pussy down hard against your <<penis>> and shuddering with pleasure.
@@ -1163,7 +1163,7 @@
 
 					<<case 6 7>>
 						<<He>>
-						<<if $player.ballsExist>>cups your balls<<elseif $vaginaexist is 1>>grabs your pussy<</if>>
+						<<if $player.ballsExist>>cups your balls<<elseif $player.vaginaExist>>grabs your pussy<</if>>
 						and painfully drives your <<penis>> down <<his>> throat. <<He>> ejaculates on <<his>> chest as <<he>> gags on your cock. "T-Topping from the bottom is my speciality, bitch."
 
 					<</switch>>
@@ -1751,12 +1751,12 @@
 	<span class="red">ERROR: Beastejac index error</span>
 <</switch>>
 
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<set $vaginause to 0>>
 	<<set $vaginastate to 0>>
 <</if>>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<set $penisuse to 0>>
 	<<set $penisstate to 0>>
 <</if>>
@@ -1844,12 +1844,12 @@
 	<span class="red">ERROR: Beastwound index error</span>
 <</switch>>
 
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<set $vaginause to 0>>
 	<<set $vaginastate to 0>>
 <</if>>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<set $penisuse to 0>>
 	<<set $penisstate to 0>>
 <</if>>

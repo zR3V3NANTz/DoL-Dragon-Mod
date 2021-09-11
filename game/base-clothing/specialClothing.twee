@@ -19,7 +19,7 @@
 <<widget "bimboUpdate">>
 <<if $specialClothesEffects.bimbo gt 0>>
 	<<set $breastgrowthtimer -= $specialClothesEffects.bimbo * 5>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $penisgrowthtimer += $specialClothesEffects.bimbo * 5>>
 	<</if>>
 	<<set $bottomgrowthtimer -= $specialClothesEffects.bimbo * 5>>

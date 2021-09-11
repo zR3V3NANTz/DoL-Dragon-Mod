@@ -12,7 +12,7 @@ You walk forward, careful not to make any sudden movements. You grind your <<gen
 :: Sewers Lizard Vore 2
 
 <<effects>><<set $location to "sewers">><<set $outside to 0>>
-You thrust your <<genitals>> against the beasts tongue as it twists and folds underneath your crotch. <<if $penisexist is 1>>The tongue fondles your penis, squeezing and twirling around it, jerking you again and again.<<else>>The tongue fondles your clit, flicking it again and again.<</if>>
+You thrust your <<genitals>> against the beasts tongue as it twists and folds underneath your crotch. <<if $player.penisExist>>The tongue fondles your penis, squeezing and twirling around it, jerking you again and again.<<else>>The tongue fondles your clit, flicking it again and again.<</if>>
 <<deviancy4>>
 The beast continues its assault, and begins lowering your body into its mouth, swallowing you down.
 <br><br>
@@ -39,7 +39,7 @@ The tongue continues to move as you go deeper, caressing your <<nipples>> and sw
 <<effects>><<set $location to "sewers">><<set $outside to 0>>
 The beast pushes you down its throat in a single, powerful, swallow. You land in a small, tight chamber, with pulsing walls. They press in on you, squeezing and caressing your body with each movement. Viscous fluids seep into the stomach, making your body slippery with slime.
 <<deviancy5>>
-The lizard starts to move, and with each step the walls of the stomach compress your body, rubbing against your <<breasts>> and your slime-covered <<genitals>>. Your body arches from the pleasure, straining against the smothering flesh around you while your <<if $penisexist is 1>>penis<<else>>clit<</if>> presses into the folds of the lizard's stomach. The stomach tightens around your shaking body, as if responding to your thrashes.
+The lizard starts to move, and with each step the walls of the stomach compress your body, rubbing against your <<breasts>> and your slime-covered <<genitals>>. Your body arches from the pleasure, straining against the smothering flesh around you while your <<if $player.penisExist>>penis<<else>>clit<</if>> presses into the folds of the lizard's stomach. The stomach tightens around your shaking body, as if responding to your thrashes.
 <br><br>
 The stimulation is too much for you. You pass out.
 <<passout>>
@@ -326,10 +326,10 @@ Then the slime pressed up against your <<genitals>> seems to come alive, the goo
 <<if $worn.genitals.type.includes("hidden")>>
 	finds it's way inside of your $worn.genitals.name and despite the lack of space, causes immense pleasure to your <<genitals 1>>.
 <<else>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		feeling as if it is stroking you from <<if $player.ballsExist>>your balls<<else>>the bottom<</if>> to the tip of your
-		boycock<<if $vaginaexist is 1>>, while rubbing up, down, and between your pussy lips<</if>>.
-	<<elseif $vaginaexist is 1>>
+		boycock<<if $player.vaginaExist>>, while rubbing up, down, and between your pussy lips<</if>>.
+	<<elseif $player.vaginaExist>>
 		vibrating right on top of your excited clit as it rubs up, down, and between your pussy lips.
 	<</if>>
 <</if>>
@@ -346,7 +346,7 @@ Your nude body is engulfed almost entirely, and being teased mercilessly. It's t
 
 <<effects>><<set $location to "sewers">><<set $outside to 0>>
 <<if $worn.genitals.type.includes("hidden")>>
-<<elseif $penisexist is 1>>
+<<elseif $player.penisExist>>
 	Your cum erupts from your throbbing cock, the blast firing deep into the slime before it is stopped. You watch in pleasurable fascination as your cum begins to dissolve into nothingness. Almost, you realise, as if the creature is feeding on it. The creature does not relent it assault as your climax fades, though, and you soon find yourself back in the darkness as you and the creature move through the tunnels at breakneck speed.
 	<br><br>
 <<else>>

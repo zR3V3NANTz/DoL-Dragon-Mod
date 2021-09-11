@@ -448,7 +448,7 @@
 					<<break>>
 				<</if>>
 			<<else>>
-				You <<vaginaltext>> press your <<pussy>> against <<personselect _j>><<combatpersons>> <<print $NPCList[_j].penisdesc>>, <span class="blue">but fail to envelop.</span> <<His>> penis angles away and rubs against your <<if $penisexist is 1>><<penis>><<else>>clit<</if>>.
+				You <<vaginaltext>> press your <<pussy>> against <<personselect _j>><<combatpersons>> <<print $NPCList[_j].penisdesc>>, <span class="blue">but fail to envelop.</span> <<His>> penis angles away and rubs against your <<if $player.penisExist>><<penis>><<else>>clit<</if>>.
 				<<sex 20>>
 				<<break>>
 			<</if>>

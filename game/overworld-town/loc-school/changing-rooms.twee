@@ -1347,7 +1347,7 @@ You watch through the slits as a <<person>> rushes in, and opens the locker next
 
 Mason struggles to remain silent as you pump <<his>> cock with your hand.
 
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<if $submissive gte 1150>>
 		"I'm so helpless," you tease. "Trapped in here with teacher's thing so close." You angle <<his>> cock towards your pussy. "I couldn't stop you ravaging me."
 	<<elseif $submissive lte 850>>
@@ -1446,7 +1446,7 @@ You watch through the slits as a <<person>> rushes in, and opens the locker next
 
 Mason struggles to remain silent as you slide a finger into <<his>> slit.
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<if $submissive gte 1150>>
 		"I'm so helpless," you tease. "Trapped in here with teacher. Forced to do perverted things." You thrust your pelvis against <<his>> butt. "What would people think?"
 	<<elseif $submissive lte 850>>

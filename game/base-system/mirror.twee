@@ -883,14 +883,14 @@ __Body Writing__<br>
 		<<if $promiscuity gte 75>>
 			<<set _bodyWritingOptions.Submission["Fuckdoll"] to "fuckdoll">>
 			<<set _bodyWritingOptions.Submission["Fucktoy"] to "fucktoy">>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				<<set _bodyWritingOptions.Submission["Walking dildo"] to "walking_dildo">>
 			<</if>> 
 		<</if>>
 	<</if>>
 <</if>>
 /*ToDo: Pregnancy, remove $pregnancyTesting to properly enable*/
-<<if $vaginaexist and $promiscuity gte 75 and $pregnancyTesting>>
+<<if $player.vaginaExist and $promiscuity gte 75 and $pregnancyTesting>>
 	<<set _bodyWritingOptions.Pregnancy to {}>>
 	<<set _bodyWritingOptions.Pregnancy["Brood mother"] to "brood_mother">>
 	<<set _bodyWritingOptions.Pregnancy["Inseminate me"] to "inseminate_me">>

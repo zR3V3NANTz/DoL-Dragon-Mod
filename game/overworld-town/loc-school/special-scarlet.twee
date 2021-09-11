@@ -535,8 +535,8 @@ The words you have just read echo in your head. You can no longer ignore what yo
 <<set $statFreeze to true>>
 <<set $real_playersex to $player.sex>>
 <<set $real_playergender to $player.gender>>
-<<set $real_penisexist to $penisexist>>
-<<set $real_vaginaexist to $vaginaexist>>
+<<set $real_penisexist to $player.penisExist>>
+<<set $real_vaginaexist to $player.vaginaExist>>
 <<set $real_eyecolour to $eyecolour>>
 <<set $real_haircolour to $haircolour>>
 <<set $real_hairlength to $hairlength>>
@@ -585,9 +585,9 @@ The words you have just read echo in your head. You can no longer ignore what yo
 /*morph player into Janet*/
 <<set $player.gender to "f">>
 <<set $player.sex to "f">>
-<<set $vaginaexist to 1>>
+<<set $player.vaginaExist to 1>>
 <<set $vaginastate to 0>>
-<<set $penisexist to 0>>
+<<set $player.penisExist to 0>>
 <<set $player.virginity to {anal:true,oral:true,penile:true,vaginal:true,temple:false,handholding:true,kiss:true}>>
 <<set $eyecolour to "light blue">>
 <<set $haircolour to "platinumblond">>
@@ -644,9 +644,9 @@ The words you have just read echo in your head. You can no longer ignore what yo
 /*restore players stats*/
 <<set $player.sex to $real_playersex>>
 <<set $player.gender to $real_playergender>>
-<<set $penisexist to $real_penisexist>>
-<<set $vaginaexist to $real_vaginaexist>>
-<<if $vaginaexist is 0>>
+<<set $player.penisExist to $real_penisexist>>
+<<set $player.vaginaExist to $real_vaginaexist>>
+<<if !$player.vaginaExist>>
 	<<set $player.bodyliquid.vaginaoutside.semen to 0>>
 	<<set $player.bodyliquid.vaginaoutside.goo to 0>>
 <</if>>

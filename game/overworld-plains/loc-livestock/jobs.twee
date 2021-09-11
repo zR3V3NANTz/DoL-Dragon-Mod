@@ -656,16 +656,16 @@ Harper steps closer. <<He>> pulls a stethoscope from behind <<his>> coat, and pr
 	<<He>> prods around inside you as <<his>> other hand
 	<<if $worn.genitals.type.includes("hidden")>>
 		slowly strokes your thighs.
-	<<elseif $penisexist is 1 and $vaginaexist is 1>>
+	<<elseif $player.penisExist and $player.vaginaExist>>
 		cups and buoys your <<penis>>, as if weighing it, before spreading your <<pussy>>.
-	<<elseif $penisexist is 1>>
+	<<elseif $player.penisExist>>
 		cups and buoys your <<penis>>, as if weighing it.
 	<<else>>
 		spreads your <<pussy>>.
 	<</if>>
 	<<garousal>><<arousal 600>>
 <<elseif !$worn.genitals.type.includes("chastity")>>
-	<<if $penisexist is 1 and $vaginaexist is 1>><<He>> cups and buoys your <<penis>>, as if weighing it, before spreading your <<pussy>>.<<elseif $penisexist is 1>><<He>> cups and buoys your <<penis>>, as if weighing it.<<else>><<His>> fingers spread your <<pussy>>, while another hovers in front, as if ready to plunge in at any moment.<</if>>
+	<<if $player.penisExist and $player.vaginaExist>><<He>> cups and buoys your <<penis>>, as if weighing it, before spreading your <<pussy>>.<<elseif $player.penisExist>><<He>> cups and buoys your <<penis>>, as if weighing it.<<else>><<His>> fingers spread your <<pussy>>, while another hovers in front, as if ready to plunge in at any moment.<</if>>
 	<<garousal>><<arousal 600>>
 <</if>>
 <br><br>
@@ -771,7 +771,7 @@ Harper pours the liquid into your mouth. It's even sweeter than it smells, and s
 "As you can see," the doctor says, turning you on the spot to give each person a look at you from all angles. "The treatment is already working."
 
 <<if $worn.genitals.type.includes("chastity")>>
-	<<if $penisexist is 1 and $vaginaexist is 1>>
+	<<if $player.penisExist and $player.vaginaExist>>
 		The audience murmur about your hermaphroditism. "You might be wondering," Harper continues. "If all the livestock here are blessed with both male and female genitalia. They are not. This specimen is unique."
 		<br><br>
 	<</if>>
@@ -779,15 +779,15 @@ Harper pours the liquid into your mouth. It's even sweeter than it smells, and s
 	<<He>> points at your <<genitals 1>>, semi-concealed behind your $worn.genitals.name. "A virile <<if $player.gender_appearance is "m">>bull<<else>>cow<</if>> like this would be foolish to leave unshackled at the best of times. With my treatment, it would be dangerous."
 	<br><br>
 
-	<<He>> runs <<his>> fingers over the front of the device. <<if $penisexist is 1>>"<<pShes>> already erect and straining against the metal."<<else>>"<<pShes>> already wet and dripping through the metal."<</if>>
+	<<He>> runs <<his>> fingers over the front of the device. <<if $player.penisExist>>"<<pShes>> already erect and straining against the metal."<<else>>"<<pShes>> already wet and dripping through the metal."<</if>>
 	<br><br>
 <<else>>
-	<<if $penisexist is 1 and $vaginaexist is 1>>
+	<<if $player.penisExist and $player.vaginaExist>>
 		The audience murmur about your hermaphroditism. "You might be wondering," Harper continues. "If all the livestock here are blessed with both male and female genitalia. They are not. This specimen is unique."
 		<br><br>
 	<</if>>
 
-	<<He>> points at your <<if $penisexist is 1>><<penis>>. "<<pShes>> already erect and ready to breed.<<else>><<pussy>>. "<<pShes>> already wet and ready to breed.<</if>>" The audience lean forward in their seats, staring at your <<genitals 1>> with a lewd thirst in their eyes.
+	<<He>> points at your <<if $player.penisExist>><<penis>>. "<<pShes>> already erect and ready to breed.<<else>><<pussy>>. "<<pShes>> already wet and ready to breed.<</if>>" The audience lean forward in their seats, staring at your <<genitals 1>> with a lewd thirst in their eyes.
 	<br><br>
 <</if>>
 
@@ -990,7 +990,7 @@ Remy laughs and takes your leash. "It is. Until we meet again."
 Harper pulls you into the middle of the room. You're surrounded by hungry eyes. <<if $uncomfortable.nude is true>><<covered>><</if>> "This specimen," <<he>> begins, stepping behind you and grasping your arms. <<He>> pulls them back, making sure you can't cover. "Has been administered certain treatments to improve yield. Observe."
 <br><br>
 
-<<if $penisexist is 1 and !$worn.genitals.type.includes("chastity")>>
+<<if $player.penisExist and !$worn.genitals.type.includes("chastity")>>
 	<<if $penissize gte 4>>
 		<<He>> reaches around your body and takes your <<penis>> in <<his>> hand. You flinch at <<his>> touch. "As you can see," <<he>> continues, rubbing your length. "This one is of prodigious size."
 		<<garousal>><<arousal 600>>
@@ -1059,7 +1059,7 @@ Harper pulls you into the middle of the room. You're surrounded by hungry eyes. 
 :: Livestock Job Harper 3 Obey 2
 <<effects>>
 <<pass 60>>
-<<if $penisexist is 1 and !$worn.genitals.type.includes("chastity")>>
+<<if $player.penisExist and !$worn.genitals.type.includes("chastity")>>
 	Harper continues to assault your <<penis>> in front of everyone, teasing without mercy.
 	<<ggarousal>><<arousal 1800>>
 <<else>>
@@ -1090,7 +1090,7 @@ Harper continues as if nothing were amiss. Others follow suit, and you're soon s
 	<br><br>
 	"<<pShe>> came!"
 	<br>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<if $semen_count gte 1>>
 			"Look at all that tasty cum."
 		<<else>>
@@ -1202,7 +1202,7 @@ Remy makes you kneel on the mat in front of the camera, and pulls the pig beside
 
 It's a while before Niki is satisfied, but eventually <<nnpc_he "Niki">> has you adopt different poses alongside the <<beasttype>>.
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	Your <<penis>> and <<breasts>> seem to be the focus.
 <<else>>
 	Your <<breasts>> seem to be the focus.
@@ -1622,7 +1622,7 @@ You slip deeper into the trance. <span class="green">You don't remember ever fee
 
 Tranquility invades your mind. You wonder at how lucky you are, a simple <<if $player.gender_appearance is "m">>bull<<else>>cow<</if>>, to be cared for so. You climb onto the table thinking about how you should follow <<his>> directions.
 <br><br>
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	You start munching on the grass, and while you feel what feels like a small tube enter your vagina, followed by some cold liquid entering, it doesn't bother you.
 	<<recordVaginalSperm "pc" "Harpers Serum" "human" 8>>
 	<<recordVaginalSperm "pc" "Harpers Serum" "human" 8>>

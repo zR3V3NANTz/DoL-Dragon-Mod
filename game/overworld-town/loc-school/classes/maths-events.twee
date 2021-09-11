@@ -75,16 +75,16 @@ You turn and bite River's hand. You feel your fangs sink into <<his>> flesh.
 			<<if $worn.genitals.type.includes("chastity")>>
 				$worn.genitals.name.
 			<<else>>
-				<<if $penisexist is 1>>penis<</if>><<if $penisexist is 1 and $vaginaexist is 1>> and <</if>><<if $vaginaexist is 1>>cute pussy<</if>>.
+				<<if $player.penisExist>>penis<</if>><<if $player.penisExist and $player.vaginaExist>> and <</if>><<if $player.vaginaExist>>cute pussy<</if>>.
 			<</if>>
 		<</if>>
 	<</if>>
 	<br>
 	The girl hands you the ruler. You walk to Riven's desk and sit on it legs fully spread so your classmates can clearly see your
-	<<if $penisexist is 1>>asshole<<else>>vagina<</if>>.
+	<<if $player.penisExist>>asshole<<else>>vagina<</if>>.
 	<br>
 	With one hand you push two fingers into your
-	<<if $penisexist is 1>>asshole<<else>>vagina<</if>> and start spreading it as much as you can.
+	<<if $player.penisExist>>asshole<<else>>vagina<</if>> and start spreading it as much as you can.
 
 	<<if $player.bodyliquid.anus.semen gte 1 or $player.bodyliquid.vagina.semen gte 1>>
 		<br>
@@ -94,7 +94,7 @@ You turn and bite River's hand. You feel your fangs sink into <<his>> flesh.
 	<</if>>
 	<br><br>
 	<<if $arousal gte ($arousalmax / 5) * 3>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			You are already completely wet and it takes not much effort to insert the tip of the ruler in your vagina.
 		<<else>>
 			It takes not much effort to insert the tip of the ruler in your asshole.
@@ -111,7 +111,7 @@ You turn and bite River's hand. You feel your fangs sink into <<his>> flesh.
 		Your classmates are enthralled and not a single sound escapes them as they watch your presentation.
 		<br>
 		You keep pushing and almost the whole ruler is inside of you now.
-		<<if $deviancy gte 35 and $vaginaexist is 1>>
+		<<if $deviancy gte 35 and $player.vaginaExist>>
 			<br><br>
 			You feel that the ruler has hit your cervix. It just needs a bit more and it would be fully inside you.
 			<br><br>
@@ -121,7 +121,7 @@ You turn and bite River's hand. You feel your fangs sink into <<his>> flesh.
 			<</if>>
 		<</if>>
 	<<elseif $arousal gte ($arousalmax / 10) * 3>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			You are a bit wet and it takes a small effort to insert the tip of the ruler in your vagina.
 		<<else>>
 			It takes a bit effort to insert the tip of the ruler in your asshole.
@@ -150,7 +150,7 @@ You turn and bite River's hand. You feel your fangs sink into <<his>> flesh.
 
 		<<link [[Next|Maths Lesson]]>><<endevent>><</link>>
 	<<elseif $arousal gte ($arousalmax / 20) * 3>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			You are barely wet and it takes some effort to insert the tip of the ruler in your vagina.
 		<<else>>
 			It takes some effort to insert the tip of the ruler in your asshole.

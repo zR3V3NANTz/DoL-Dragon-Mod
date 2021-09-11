@@ -17,7 +17,7 @@
 		<<His>> hand crawls beneath your skirt, where it finds your exposed <<genitals>>.
 		<<if $worn.genitals.type.includes("chastity")>>
 			<<He>> grasps it, and tugs, to no avail. The pressure on your <<genitals 1>> makes you squirm. "You're such a tease," <<he>> says. "All these people slavering over you, but they haven't a chance." <<He>> steps aside to give the rest of the audience a better look, but doesn't stop fondling you. <<He>> leans close and whispers. "Maybe I should lift this cute skirt of yours. Then everyone will see."
-		<<elseif $penisexist is 1 and $vaginaexist is 1>>
+		<<elseif $player.penisExist and $player.vaginaExist>>
 			<<He>> pulls <<his>> hand away in surprise, but soon recovers, reaching in again. The light touch is enough to make you squirm. "You have a special secret indeed," <<he>> teases. <<He>> steps aside to give the rest of the audience a better look, but doesn't stop fondling you. <<He>> leans close and whispers. "Maybe I should lift this cute skirt of yours. Then everyone will see."
 			<<ggarousal>><<arousal 1200>>
 			<br><br>
@@ -41,7 +41,7 @@
 	<</if>>
 	<<if $arousal gte $arousalmax>>
 		<<orgasm>>
-		<<if $worn.under_lower.type.includes("naked") and (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked"))) and $penisexist is 1>>
+		<<if $worn.under_lower.type.includes("naked") and (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked"))) and $player.penisExist>>
 			<<if $femaleclimax is 1>>
 				Your lack of cum causes several to laugh at you. <<person2>>The <<person>> grins as <<he>> releases you. <<tearful>> you clamber to your feet.
 				<<set $audiencearousal += 15>><<set $audienceexcitement += 15>><<set $audiencemod += 4>><<set $dancespeech to "nocum">>
@@ -674,13 +674,13 @@
 		<</if>>
 	<<elseif $dancespeech is "crossdressaroused">>
 		<<if $rng gte 76>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				"The cock makes it better."
 			<<else>>
 				"The pussy makes it better."
 			<</if>>
 		<<elseif $rng gte 51>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				"Surprise cock is the best."
 			<<else>>
 				"Surprise pussy is the best."
@@ -698,7 +698,7 @@
 		<<elseif $rng gte 26>>
 			"I was completely fooled."
 		<<else>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				"A penis? No way."
 			<<else>>
 				"A pussy? No way."
@@ -708,7 +708,7 @@
 		<<if $rng gte 76>>
 			"This isn't what I'm normally into. Still cute though."
 		<<elseif $rng gte 51>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				"Dunno what to make of that cock."
 			<<else>>
 				"Dunno what to make of that pussy."
@@ -914,7 +914,7 @@
 		<<elseif $rng gte 1>>
 			<<if $worn.over_lower.type.includes("naked") and $worn.lower.type.includes("naked")>>
 				<<if $worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity")>>
-					<<if $penisexist is 1 and $vaginaexist is 1 and random(1, 2) is 2>>
+					<<if $player.penisExist and $player.vaginaExist and random(1, 2) is 2>>
 						<<set $rng to random(1, 10)>>
 						<<switch $rng>>
 						<<case 1>>
@@ -938,7 +938,7 @@
 						<<default>>
 							"Do you think <<pshe>> was born with both genitals?"
 						<</switch>>
-					<<elseif $penisexist is 1>>
+					<<elseif $player.penisExist>>
 						<<set $rng to random(1, 100)>>
 						<<if $penissize gte 4>>
 							<<if $rng gte 76>>

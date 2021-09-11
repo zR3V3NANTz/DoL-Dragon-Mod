@@ -264,7 +264,7 @@
 	<<warmth_description>>
 </div>
 <br>
-<<if $upperwet gte 1 or $lowerwet gte 1 or $underlowerwet or $underupperwet gte 1>>
+<<if $upperwet gte 1 or $lowerwet gte 1 or $underlowerwet gte 1 or $underupperwet gte 1>>
 	<<link "Dry your clothes">>
 		<<set $wear to "dry">>
 		<<updatewardrobe>>

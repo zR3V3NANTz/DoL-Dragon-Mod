@@ -1641,8 +1641,8 @@ You know complying will give the <<person>> more time to film you, but <<he>> al
 <</if>>
 <br><br>
 
-<<if $penisexist is 1>>
-	<<if $vaginaexist is 1>>
+<<if $player.penisExist>>
+	<<if $player.vaginaExist>>
 		"Your cock hangs so delightfully beside your pussy," <<he>> says behind you. Your legs close in response. "Open them up," <<he>> adds. "That's what we agreed to, and I'm not missing this opportunity."
 	<<else>>
 		"Your cock hangs so delightfully between your thighs," <<he>> says behind you. Your legs close in response. "Open them up," <<he>> adds. "That's what we agreed to."
@@ -3097,7 +3097,7 @@ You continue into the nearby alley before the situation gets any worse, only sto
 	<<link [[Keep running|Road Ex Keep 2]]>><</link>><<athleticsdifficulty 1 1000>>
 	<br>
 <<elseif $exposed gte 2>>
-	"I saw <<pher>> <<if $penisexist is 1>>cock<<else>>pussy<</if>>!"
+	"I saw <<pher>> <<if $player.penisExist>>cock<<else>>pussy<</if>>!"
 	<br><br>
 
 	You round a corner, and come to rest against a wall. Your whole body shakes.

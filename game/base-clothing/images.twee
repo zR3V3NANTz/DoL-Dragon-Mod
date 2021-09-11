@@ -35,7 +35,7 @@
 			<<set _breastSize to 1>>
 		<</switch>>
 	<</if>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set _penisSize to Math.clamp($penissize, -2, 4)>>
 	<</if>>
 	<<if ($worn.over_head.hood is 1 or $worn.head.hood is 1) and $hoodDown is 0>>
@@ -511,7 +511,7 @@
 		<</if>>
 	<</if>>
 
-	<<if $vaginaexist is 1 and $parasite.clit.name isnot undefined and !$worn.genitals.type.includes("chastity")>>
+	<<if $player.vaginaExist and $parasite.clit.name isnot undefined and !$worn.genitals.type.includes("chastity")>>
 		<<switch $parasite.clit.name>>
 			<<case "urchin">><<set _clitImage to "clitparasite">>
 			<<case "slime">><<set _clitImage to "clitslime">>
@@ -2422,7 +2422,7 @@
 			<img @class="_classAcc" @src="'img/clothes/under_lower/' + $worn.under_lower.variable + '/' + 'acc.png'" @style="_styleAcc">
 		<</if>>
 	</div>
-	<<if $worn.under_lower.penis_img is 1 and $penisexist is 1>>
+	<<if $worn.under_lower.penis_img is 1 and $player.penisExist>>
 		<div @class="'clothes-div layer-under_lower-top' + _underlowerWetness">
 			<img @class="_class" @src="'img/clothes/under_lower/' + $worn.under_lower.variable + '/' + 'penis.png'" @style="_style">
 			<<if $worn.under_lower.accessory is 1>>
@@ -2729,7 +2729,7 @@
 		<<case 0 1 2>>
 			<<set _breastSize to 1>>
 		<</switch>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<set _penisSize to Math.clamp($penissize, -2, 4)>>
 		<</if>>
 		<<set _disabled to ["disabled","hidden"]>>

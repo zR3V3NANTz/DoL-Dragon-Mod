@@ -449,9 +449,9 @@ You wait as the last of the pigs run by. <<covered>> The pair walk closer.
 <<effects>>
 
 You answer the <<person2>><<persons>> questions as the <<person1>><<person>> uses the opportunity to toy with your body, groping your <<breasts>> and <<bottom>>.
-<<if $penisexist is 1 and $vaginaexist is 1>>
+<<if $player.penisExist and $player.vaginaExist>>
 	Your <<penis>> and <<pussy>> aren't safe either.
-<<elseif $penisexist is 1>>
+<<elseif $player.penisExist>>
 	Your <<penis>> isn't safe either.
 <<else>>
 	Your <<pussy>> isn't safe either.

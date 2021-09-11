@@ -702,12 +702,12 @@ You manage to get beneath the flimsy protection of the water, but not before the
 
 You pay little attention to the lesson, instead opting to practise your backstroke.
 <<swimmingskilluse>>
-Your classmates gasp as they see you swimming on your back completely naked, showing off your <<if pregnancyBellyVisible()>>pregnant belly<<if $penisexist and $vaginaexist>>,<<else>> and<</if>><</if>> <<genitals>> in the air for everyone to see.
+Your classmates gasp as they see you swimming on your back completely naked, showing off your <<if pregnancyBellyVisible()>>pregnant belly<<if $player.penisExist and $player.vaginaExist>>,<<else>> and<</if>><</if>> <<genitals>> in the air for everyone to see.
 <<exhibitionism5>>
 
 Mason seems displeased by your choice of activity.
-<<if $penisexist>>
-	<<if $vaginaexist>>
+<<if $player.penisExist>>
+	<<if $player.vaginaExist>>
 		Some of both the boys and girls stare in awe of your unique set of genitals.
 	<<elseif $penissize lte 0>>
 		Some of the girls giggle at the sight, a few smirk. <<incgpenisinsecurity>>

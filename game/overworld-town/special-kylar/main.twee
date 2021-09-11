@@ -276,7 +276,7 @@
 		<<if $arousal gte $arousalmax>><<orgasm>><<penileejacstat>><<penilestat>><</if>>
 	<</if>>
 
-<<elseif $penisexist is 1>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
+<<elseif $player.penisExist>><<set $penisuse to "othermouth">><<set $penisstate to "othermouth">>
 	<<He>> licks up the base of your shaft, before wrapping around it with <<his>> hand. <<He>> strokes it slowly but firmly, while also guiding it to <<his>> mouth. You can feel <<his>> breath on your tip for a few seconds, before <<he>> wraps <<his>> mouth around the glans. "It's perfect," <<he>> mumbles around your penis. "It's so perfect."
 	<<if $insecurity_penis_tiny gte 1 and $penissize lte 0 and $acceptance_penis_tiny lte 999>>
 		<<acceptance "penis_tiny" 10>>
@@ -321,7 +321,7 @@
 	<</if>>
 <</if>>
 Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he>> pulls away from your <<genitals>>
-<<if $semen_amount gte 1 or $penisexist isnot 1>>
+<<if $semen_amount gte 1 or !$player.penisExist>>
 	and swallows, before opening <<his>> mouth to you. <<He>> swallowed every drop.
 <<else>>
 	and smiles.
@@ -557,10 +557,10 @@ You hear a door open above. A person walks down a staircase, carrying something 
 	<<maninit>><<set $enemyarousalmax *= 2>><<set $kylar.raped += 1>>
 	<<if $worn.under_lower.type.includes("naked")>><<set $NPCList[0].lefthand to "none">><<else>><<set $NPCList[0].lefthand to "underclothes">><</if>>
 	<<if $worn.lower.type.includes("naked")>><<set $NPCList[0].righthand to "none">><<else>><<set $NPCList[0].righthand to "lowerclothes">><</if>>
-	<<if $NPCList[0].penis isnot "none" and $vaginaexist is 1>>
+	<<if $NPCList[0].penis isnot "none" and $player.vaginaExist>>
 		<<set $NPCList[0].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[0].location.genitals to "genitals">>
 	<</if>>
-	<<if $NPCList[0].vagina isnot "none" and $penisexist is 1>>
+	<<if $NPCList[0].vagina isnot "none" and $player.penisExist>>
 		<<set $NPCList[0].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">><<set $NPCList[0].location.genitals to "genitals">>
 	<</if>>
 <</if>>
@@ -2243,7 +2243,7 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 	<<link [[Get angry|Kylar Arcade Angry]]>><<status -10>><<npcincr Kylar love 3>><</link>><<lcool>><<gglove>>
 	<br>
 <<elseif $rng gte 61>>
-		<<if $phase is 0>>
+	<<if $phase is 0>>
 		It's close, but you manage to edge out a victory. Kylar is sweating by the end.
 		<br><br>
 		<<kylaroptions>>
@@ -2609,7 +2609,7 @@ You raise a knee into <<his>> crotch. <<He>> yelps in surprise as you lean forwa
 <<His>> breath quickens. You switch to a vertical movement, grinding your knee up and down <<his>> groin. Your hands remain on <<his>> shoulders, and you feel <<him>> tremble.
 <<promiscuity2>>
 
-	<<if $rng gte 85>>
+<<if $rng gte 85>>
 	The door swings open. <<generatey2>><<generatey3>>A <<person2>><<person>> and <<person3>><<person>> stand there, giggling at each other. They barge part way in before noticing you. Seems they had the same idea.
 	<br><br>
 
@@ -3403,15 +3403,15 @@ You ignore the <<person>> and continue walking.
 	<<destinationeventend>>
 <<else>>
 	<<if !$worn.upper.type.includes("naked")>>
-	You cross your arms under your <<breasts>> and meet <<his>> gaze, pushing them up and outlining them against your $worn.upper.name. The <<person>> admires you before walking on.
-	<<exhibitionism2>>
-	<<endevent>>
-	<<destinationeventend>>
+		You cross your arms under your <<breasts>> and meet <<his>> gaze, pushing them up and outlining them against your $worn.upper.name. The <<person>> admires you before walking on.
+		<<exhibitionism2>>
+		<<endevent>>
+		<<destinationeventend>>
 	<<else>>
-	You run your hand over your <<breasts>> as you meet <<his>> gaze. The <<person>> admires you before walking on.
-	<<exhibitionism2>>
-	<<endevent>>
-	<<destinationeventend>>
+		You run your hand over your <<breasts>> as you meet <<his>> gaze. The <<person>> admires you before walking on.
+		<<exhibitionism2>>
+		<<endevent>>
+		<<destinationeventend>>
 	<</if>>
 <</if>>
 

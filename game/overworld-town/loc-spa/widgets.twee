@@ -239,7 +239,7 @@ A <<person>> enters,
 
 <<widget "spa_genitals_reaction">>
 <<if $player.gender_appearance is "m">>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<if $penissize gte 3>>
 			"Damn <<girl>>," <<he>> says. "Why are you so bashful with a monster like that?" <<He>> releases you after having a good look.
 		<<elseif $penissize lte 1>>
@@ -256,7 +256,7 @@ A <<person>> enters,
 		<</if>>
 	<</if>>
 <<else>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		"Nice," <<he>> says, releasing you after having a good look.
 	<<else>>
 		<<He>> stares for a moment, dumbfounded.
@@ -290,13 +290,13 @@ A <<person>> enters,
 
 <<widget "spa_rape_failed">>
 <<if $NPCList[0].penis isnot "none">>
-	<<if $vaginaexist is 1 or $analdisable is "f">>
+	<<if $player.vaginaExist or $analdisable is "f">>
 		<<He>> grasps your <<bottom>>, and tries to force <<his>> cock inside you.
 	<<else>>
 		<<He>> grasps your <<bottom>>
 	<</if>>
 <<else>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<He>> grasps your <<bottom>>, and tries to force your <<penis>> inside <<him>>.
 	<<else>>
 		<<He>> grasps your <<bottom>>.

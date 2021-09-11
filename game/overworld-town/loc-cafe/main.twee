@@ -1045,7 +1045,7 @@ The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 Cheeks flushing, you press down on your skirt to cover your dignity before the situation worsens, and hasten back inside.
 <br><br>
 
-<<if $player.gender_appearance is "f" and $penisexist is 1>>
+<<if $player.gender_appearance is "f" and $player.penisExist>>
 As you escape into the cafe you think you hear someone say, "Was that a penis?"
 <br><br>
 <</if>>
@@ -1138,7 +1138,7 @@ The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 <<link [[Next|Ocean Breeze]]>><<endevent>><<pass 1 hour>><</link>>
 
 <<else>>
-	<<if $penisexist is 1 and $vaginaexist is 1>>
+	<<if $player.penisExist and $player.vaginaExist>>
 		<<His>> eyes light up as <<he>> exposes your <<genitals>>. "They're beautiful," <<he>> says, before closing <<his>> eyes in rapture and planting kisses down your shaft, from tip to base, and then over your labia.
 		<br><br>
 
@@ -1150,10 +1150,10 @@ The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 		<</if>>
 		<<He>> leans forward again, and runs <<his>> tongue along your length.
 	<<else>>
-		<<His>> eyes light up as <<he>> exposes your <<genitals>>, then close in rapture as <<he>> kisses it. <<He>> looks up at you. "Your <<if $penisexist is 1>>penis<<else>>pussy<</if>> is beautiful," <<he>> says. <<He>> closes <<his>> eyes and plants another kiss. Then another.
+		<<His>> eyes light up as <<he>> exposes your <<genitals>>, then close in rapture as <<he>> kisses it. <<He>> looks up at you. "Your <<if $player.penisExist>>penis<<else>>pussy<</if>> is beautiful," <<he>> says. <<He>> closes <<his>> eyes and plants another kiss. Then another.
 		<<promiscuity1>>
 
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 		You erect in response. <<He>> pulls away and examines you.
 			<<if $player.virginity.penile is true>>
 			"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
@@ -1178,7 +1178,7 @@ The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 
 <<arousal 1000>><<orgasm>>
 
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 	<<He>> closes <<his>> eyes as you shudder, and catches your semen with <<his>> face. <<He>> scoops with <<his>> fingers and laps it up. "The best cream," <<he>> whispers.
 	<<else>>
 	<<He>> watches as you shudder, and smiles. "I hope you enjoyed the treat," <<he>> whispers.

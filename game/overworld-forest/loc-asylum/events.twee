@@ -2,7 +2,7 @@
 
 <<set $outside to 0>><<set $location to "asylum">><<asylumeffects>><<effects>>
 You wake up strapped to a chair. The room is bare, except a window covering the length of one side.
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	You feel something odd on your penis.
 <<else>>
 	You feel something odd on your pussy.
