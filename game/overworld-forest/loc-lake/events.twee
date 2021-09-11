@@ -190,7 +190,7 @@ You had enough fun for now and decide to return. You finish your walk. You feel 
 	<br><br>
 	A really lewd and crazy idea pops in your head.
 	<br>
-	You have one 'pocket' at your disposal. A natural one. Your <<if $player.vaginaExist>>vagina<<else>>asshole<</if>>!
+	You have one 'pocket' at your disposal. A natural one. Your <<print ($player.vaginaExist ? "vagina" : "asshole")>>!
 	<br>
 	Not wasting any time you pick up one gold bar. Your heart is beating loudly.
 	<<if $arousal gte ($arousalmax / 5) * 3>>
@@ -277,15 +277,15 @@ You raise your empty hands as proof, but this just makes you even more aroused.
 <<arousal 1000>>
 
 <<if $arousal gte ($arousalmax / 5) * 3>>
-<br>
-The couple has a hard time not looking at your <<if $player.penisExist>>fully erect penis<<else>>dripping wet pussy as your juices keep leaking out of you like honey.<</if>>.
-<br>
-After a long moment they look at your hand.
-<br>
+	<br>
+	The couple has a hard time not looking at your <<if $player.penisExist>>fully erect penis<<else>>dripping wet pussy as your juices keep leaking out of you like honey<</if>>.
+	<br>
+	After a long moment they look at your hand.
+	<br>
 <<else>>
-<br>
-The couple checks out your <<genitals>>. After a moment they look at your hand.
-<br>
+	<br>
+	The couple checks out your <<genitals>>. After a moment they look at your hand.
+	<br>
 <</if>>
 <br>
 "I don't see anything in <<pher>> hands, <<pshe>> is obviously just a pervert." says the man.

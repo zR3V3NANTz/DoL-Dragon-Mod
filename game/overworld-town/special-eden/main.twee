@@ -1148,7 +1148,7 @@ into your chest.
 	<<link [[Refuse|Town Eden Shopping Clothes PC Dress Up Flaunt Refuse]]>><</link>>
 <<elseif $phase is 3>>
 	<<if $player.gender_appearance is "f">>
-		You run the thong through your fingers. It will keep your <<if $player.vaginaExist>>pussy<<else>>genitals<</if>> covered, but only just. It will leave most of your <<bottom>> exposed as well.
+		You run the thong through your fingers. It will keep your <<print ($player.vaginaExist ? "pussy" : "genitals")>> covered, but only just. It will leave most of your <<bottom>> exposed as well.
 	<<else>>
 		You run the g-string through your fingers. There is just about enough fabric to cover your <<if $player.penisExist>>penis<<else>>genitals<</if>>, but your <<bottom>> will be exposed.
 	<</if>>

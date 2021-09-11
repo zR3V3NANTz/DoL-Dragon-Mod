@@ -1121,25 +1121,20 @@ The rest of the shift passes uneventfully. You earn <<moneyGain 5>>.
 You let the <<person>> continue.
 
 <<if $worn.genitals.type.includes("chastity")>>
-<<His>> eyes widen as <<he>> exposes your chastity belt.
-<<promiscuity1>>
+	<<His>> eyes widen as <<he>> exposes your chastity belt.
+	<<promiscuity1>>
 
-"You're all locked up," <<he>> says. "And I was so keen on having a taste." <<He>> disappears once more, and emerges beside <<his>> chair. "Your secret's safe with me." <<He>> winks.
-<br><br>
+	"You're all locked up," <<he>> says. "And I was so keen on having a taste." <<He>> disappears once more, and emerges beside <<his>> chair. 
+	"Your secret's safe with me." <<He>> winks.
+	<br><br>
 
-<<set $tipmod to 0.2>><<tipset "serving">>
-
-<<set $tip += 500>>
-<<set $tip += 100>>
-
-The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
-<br><br>
-
-<<link [[Next|Ocean Breeze]]>><<endevent>><<pass 1 hour>><</link>>
+	<<set $tip += 500>>
+	<<set $tip += 100>>
 
 <<else>>
 	<<if $player.penisExist and $player.vaginaExist>>
-		<<His>> eyes light up as <<he>> exposes your <<genitals>>. "They're beautiful," <<he>> says, before closing <<his>> eyes in rapture and planting kisses down your shaft, from tip to base, and then over your labia.
+		<<His>> eyes light up as <<he>> exposes your <<genitals>>. "They're beautiful," <<he>> says,
+		before closing <<his>> eyes in rapture and planting kisses down your shaft, from tip to base, and then over your labia.
 		<br><br>
 
 		You erect in response. <<He>> pulls away and examines you.
@@ -1150,55 +1145,58 @@ The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 		<</if>>
 		<<He>> leans forward again, and runs <<his>> tongue along your length.
 	<<else>>
-		<<His>> eyes light up as <<he>> exposes your <<genitals>>, then close in rapture as <<he>> kisses it. <<He>> looks up at you. "Your <<if $player.penisExist>>penis<<else>>pussy<</if>> is beautiful," <<he>> says. <<He>> closes <<his>> eyes and plants another kiss. Then another.
+		<<His>> eyes light up as <<he>> exposes your <<genitals>>, then close in rapture as <<he>> kisses it. <<He>> looks up at you. 
+		"Your <<print ($player.penisExist ? "penis" : "pussy")>> is beautiful," <<he>> says. <<He>> closes <<his>> eyes and plants another kiss. Then another.
 		<<promiscuity1>>
 
 		<<if $player.penisExist>>
-		You erect in response. <<He>> pulls away and examines you.
+			You erect in response. <<He>> pulls away and examines you.
 			<<if $player.virginity.penile is true>>
-			"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
+				"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
 			<<else>>
-			"It's working," <<he>> whispers. <<He>> sounds satisfied.
+				"It's working," <<he>> whispers. <<He>> sounds satisfied.
 			<</if>>
 			<<He>> leans forward again, and runs <<his>> tongue along your length.
 		<<else>>
-		<<He>> pulls away and examines you.
+			<<He>> pulls away and examines you.
 			<<if $player.virginity.vaginal is true>>
-			"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
+				"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
 			<<else>>
-			"It's working," <<he>> whispers. <<He>> sounds satisfied.
+				"It's working," <<he>> whispers. <<He>> sounds satisfied.
 			<</if>>
-		<<He>> leans forward again, and runs <<his>> tongue around your clit.
+			<<He>> leans forward again, and runs <<his>> tongue around your clit.
 		<</if>>
 	<</if>>
 	<br><br>
 
-<<He>> continues licking, kissing and blowing you. <<He>> alternates between looking up at your face, and at your <<genitals>>. <<Hes>> sensitive to your responses, and adapts before you get too used to any one technique. Your breath quickens.
-<br><br>
+	<<He>> continues licking, kissing and blowing you. <<He>> alternates between looking up at your face, and at your <<genitals>>. 
+	<<Hes>> sensitive to your responses, and adapts before you get too used to any one technique. Your breath quickens.
+	<br><br>
 
-<<arousal 1000>><<orgasm>>
+	<<arousal 1000>><<orgasm>>
 
 	<<if $player.penisExist>>
-	<<He>> closes <<his>> eyes as you shudder, and catches your semen with <<his>> face. <<He>> scoops with <<his>> fingers and laps it up. "The best cream," <<he>> whispers.
+		<<He>> closes <<his>> eyes as you shudder, and catches your semen with <<his>> face. <<He>> scoops with <<his>> fingers and laps it up. "The best cream," <<he>> whispers.
 	<<else>>
-	<<He>> watches as you shudder, and smiles. "I hope you enjoyed the treat," <<he>> whispers.
+		<<He>> watches as you shudder, and smiles. "I hope you enjoyed the treat," <<he>> whispers.
 	<</if>>
 	<br><br>
 
-<<He>> emerges from beneath the table and sits back down. <<He>> winks as you return to work.
-<br><br>
+	<<He>> emerges from beneath the table and sits back down. <<He>> winks as you return to work.
+	<br><br>
+
+	<<set $tip += 500>>
+	<<set $tip += 500>>
+
+<</if>>
 
 <<set $tipmod to 0.2>><<tipset "serving">>
-
-<<set $tip += 500>>
-<<set $tip += 500>>
 
 The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 <br><br>
 
 <<link [[Next|Ocean Breeze]]>><<endevent>><<pass 1 hour>><</link>>
-
-<</if>>
+<br>
 
 :: Cafe Coffee
 <<endevent>>
@@ -1220,13 +1218,12 @@ You take a seat at one of the elevated seats at the window and order a <<print _
 	<<else>>
 		<br><br>
 	<</if>>
-	<br><br>
-	<<link [[Finish your drink|Cafe Coffee Finish]]>><</link>>
 <<else>>
 	You take your time with your coffee, enjoying the indulgent richness of it one sip at a time.
-	<br><br>
-	<<link [[Finish your drink|Cafe Coffee Finish]]>><</link>>
 <</if>>
+
+<br><br>
+<<link [[Finish your drink|Cafe Coffee Finish]]>><</link>>
 
 :: Cafe Coffee Flash
 <<if ndef _caught>> <<set _caught to 0>> <</if>>

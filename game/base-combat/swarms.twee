@@ -301,7 +301,8 @@
 	There <<if _swarmamounts.active[1] + _swarmamounts.active[2]>>are<<else>>is<</if>> <<number _swarmamounts.active[1] + _swarmamounts.active[2]>> $swarm.name and <span class="blue"><<if _swarmamounts.active[1] + _swarmamounts.active[2] is 1>>it's<<else>><<number _swarmamounts.active[2]>> of them<</if>> <<if _swarmamounts.active[2] gte 2>>are<<else>>is<</if>> $swarm.move.</span>
 <</if>>
 
-<<if _swarmnote.activate gte 1>><<set _swarmnote.activate to 0>>
+<<if _swarmnote.activate gte 1>>
+	<<set _swarmnote.activate to 0>>
 	The $swarm.name $swarm.spill, surrounding you with more $swarm.type.
 <</if>>
 
@@ -355,7 +356,8 @@
 	trying to get to the skin beneath.
 <</if>>
 
-<<if _swarmnote.chestintro gte 1>><<set _swarmnote.chestintro to 0>>
+<<if _swarmnote.chestintro gte 1>>
+	<<set _swarmnote.chestintro to 0>>
 	<<if _swarmamounts.chest gte 1>>
 		<span class="purple">More $swarm["type"] gather around your <<breasts>>.</span>
 	<<else>>
@@ -363,7 +365,8 @@
 	<</if>>
 <</if>>
 
-<<if _swarmnote.chestintroclothed gte 1>><<set _swarmnote.chestintroclothed to 0>>
+<<if _swarmnote.chestintroclothed gte 1>>
+	<<set _swarmnote.chestintroclothed to 0>>
 	<span class="purple">Some of them wriggle their way into your
 	<<if !$worn.over_upper.type.includes("naked")>>
 		$worn.upper.name<<if !$worn.upper.type.includes("naked")>> and<<else>>,<</if>>
@@ -389,15 +392,18 @@
 
 /* -------- Butts --------*/
 
-<<if _swarmnote.buttcovered gte 1>><<set _swarmnote.buttcovered to 0>>
+<<if _swarmnote.buttcovered gte 1>>
+	<<set _swarmnote.buttcovered to 0>>
 	You manage to keep them away from your butt.
 <</if>>
 
-<<if _swarmnote.buttmolest gte 1>><<set _swarmnote.buttmolest to 0>>
+<<if _swarmnote.buttmolest gte 1>>
+	<<set _swarmnote.buttmolest to 0>>
 	They writhe over your <<print either("butt", "thighs", "legs")>>.
 <</if>>
 
-<<if _swarmnote.buttlowerclothed gte 1>><<set _swarmnote.buttlowerclothed to 0>>
+<<if _swarmnote.buttlowerclothed gte 1>>
+	<<set _swarmnote.buttlowerclothed to 0>>
 	<<if $worn.over_lower.name is "naked" and $worn.lower.name is "naked">>
 		Some tear apart the ruined scraps of your clothing.
 	<<else>>
@@ -412,11 +418,13 @@
 	<</if>>
 <</if>>
 
-<<if _swarmnote.buttunderclothed gte 1>><<set _swarmnote.buttunderclothed to 0>>
+<<if _swarmnote.buttunderclothed gte 1>>
+	<<set _swarmnote.buttunderclothed to 0>>
 	Some of them assail your $worn.under_lower.name, tearing the fabric.
 <</if>>
 
-<<if _swarmnote.buttlowerintroclothed gte 1>><<set _swarmnote.buttlowerintroclothed to 0>>
+<<if _swarmnote.buttlowerintroclothed gte 1>>
+	<<set _swarmnote.buttlowerintroclothed to 0>>
 	<span class="purple">Some of them wriggle their way into your
 	<<if !$worn.over_lower.type.includes("naked")>>
 		$worn.over_lower.name<<if !$worn.lower.type.includes("naked")>> and<<else>>,<</if>>
@@ -427,22 +435,26 @@
 	you feel them moving toward your anus.</span>
 <</if>>
 
-<<if _swarmnote.buttunderintroclothed gte 1>><<set _swarmnote.buttunderintroclothed to 0>>
+<<if _swarmnote.buttunderintroclothed gte 1>>
+	<<set _swarmnote.buttunderintroclothed to 0>>
 	<span class="purple">Some of them wriggle their way into your $worn.under_lower.name, you feel them moving toward your anus.</span>
 <</if>>
 
-<<if _swarmnote.buttchasity gte 1>><<set _swarmnote.buttchasity to 0>>
+<<if _swarmnote.buttchasity gte 1>>
+	<<set _swarmnote.buttchasity to 0>>
 	<span class="purple">Some of them wriggle their way into your $worn.genitals.name, you feel them moving toward your <<genitals>>.</span> <span class="pink">With your $worn.genitals.name anal shield in the way, you won't be able to get them out!</span>
 	<<if $parasitedisable is "f">>
 		<<set $analchastityparasite to $swarm["type"]>>
 	<</if>>
 <</if>>
 
-<<if _swarmnote.buttintro gte 1>><<set _swarmnote.buttintro to 0>>
+<<if _swarmnote.buttintro gte 1>>
+	<<set _swarmnote.buttintro to 0>>
 	<span class="purple">They swarm around your butt, you feel them move toward your anus.</span>
 <</if>>
 
-<<if _swarmnote.buttinsideintro gte 1>><<set _swarmnote.buttinsideintro to 0>>
+<<if _swarmnote.buttinsideintro gte 1>>
+	<<set _swarmnote.buttinsideintro to 0>>
 	<span class="pink">They start squirming their way into your <<bottom>>.</span>
 <</if>>
 

@@ -2,7 +2,7 @@
 <!-- DEV NOTES NG v2.7 Beast to NPC notes. The <<beast>> widget is analogous to <<man>> (which calls <<man-combat>>) widget, otherwise combat is identical. -->
 <!-- All beasts use $pronoun = "i". This will need to be commonised to m/f like other NPCs so will require cleanup. -->
 <!-- $semenpuddle is unique to beast combat, and only works in context of train combat. Effect is captured in this widget and could be expanded to man-combat -->
-<!-- $penisexist and $vaginaexist are PC variables, should really be converted to gender / pronoun checks for PC... fix later -->
+<!-- $player.penisExist and $player.vaginaExist are PC variables, should really be converted to gender / pronoun checks for PC... fix later -->
 <!-- "Growling" should convert to widget to capture other beast types (squawking, yowling, roaring, etc.), as well as a "whimpering" Dom/Pain. "Jaws" "Claws" "Teeth"-->
 <!-- The "man" widget sets the gang combat dynamic (and handle gender surprise), then calls man-combat for each combatant. "beast" skips this step and sets up next combatant as part of attack calls during events. -->
 <!-- This could be reworked with "man" becoming "gang-combat" and new "train-combat" which can call either "man-combat" or "beast-combat" (renamed from "beast") with looping function put into "train-attack". Gender surprise can be worked into "train-attack" -->

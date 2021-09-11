@@ -36,11 +36,11 @@ DefineMacro("addfemininityofclothingarticle", addfemininityofclothingarticle);
 /** Calculate the player's gender appearance */
 function genderappearancecheck() {
 	/* Calculate bulge size */
-	T.penis_compressed = V.penisexist && V.worn.genitals.type.includes("hidden");
+	T.penis_compressed = V.player.penisExist && V.worn.genitals.type.includes("hidden");
 	if (V.worn.genitals.type.includes("cage")) {
 		T.bulge_size = Math.clamp(V.penissize, 0, Infinity);
 	} else {
-		if (!V.penisexist) {
+		if (!V.player.penisExist) {
 			T.erection_state = 0;
 		} else if (T.penis_compressed) {
 			T.erection_state = 0;
@@ -106,7 +106,7 @@ function genderappearancecheck() {
 	} else if (T.over_lower_protected || T.lower_protected) {
 		addfemininityfromfactor(-Math.clamp((T.bulge_size - 3) * 100, 0, Infinity), "Bulge visible through clothing", "noow");
 	} else if (V.worn.genitals.exposed) {
-		addfemininityfromfactor(V.vaginaexist * 100000 - V.penisexist * 100000, "Genitals exposed", "noow");
+		addfemininityfromfactor(V.player.vaginaExist * 100000 - V.player.penisExist * 100000, "Genitals exposed", "noow");
 	}
 	/* plain breasts factor */
 	addfemininityfromfactor((V.breastsize - 0.5) * 100, "Exposed breasts", "noow");
@@ -123,10 +123,10 @@ function genderappearancecheck() {
 			addfemininityofclothingarticle(V.worn.genitals);
 			if (V.worn.genitals.exposed) {
 				/* Bare genitals are visible */
-				if (V.penisexist) {
+				if (V.player.penisExist) {
 					addfemininityfromfactor(-100000, "Penis visible");
 				}
-				if (V.vaginaexist) {
+				if (V.player.vaginaExist) {
 					addfemininityfromfactor(100000, "Vagina visible");
 				}
 			}

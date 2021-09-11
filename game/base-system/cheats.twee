@@ -85,10 +85,8 @@ Infinite spray: <span id="statsinfinitespray">$infinitespray</span> |
 		<<link [[Become boy|$passage]]>>
 			<<set $vaginause to "none">>
 			<<set $vaginastate to "none">>
-			<<set $player.vaginaExist to 0>>
 			<<set $penisuse to 0>>
 			<<set $penisstate to 0>>
-			<<set $player.penisExist to 1>>
 			<<set $player.gender to "m">>
 			<<set $player.sex to "m">>
 			<<set $player.ballsExist to true>>
@@ -103,10 +101,8 @@ Infinite spray: <span id="statsinfinitespray">$infinitespray</span> |
 		<<link [[Become girl|$passage]]>>
 			<<set $vaginause to 0>>
 			<<set $vaginastate to 0>>
-			<<set $player.vaginaExist to 1>>
 			<<set $penisuse to "none">>
 			<<set $penisstate to "none">>
-			<<set $player.penisExist to 0>>
 			<<set $player.gender to "f">>
 			<<set $player.sex to "f">>
 			<<set $player.ballsExist to false>>
@@ -119,10 +115,8 @@ Infinite spray: <span id="statsinfinitespray">$infinitespray</span> |
 		<<link [[Become hermaphrodite|$passage]]>>
 			<<set $vaginause to 0>>
 			<<set $vaginastate to 0>>
-			<<set $player.vaginaExist to 1>>
 			<<set $penisuse to 0>>
 			<<set $penisstate to 0>>
-			<<set $player.penisExist to 1>>
 			<<set $player.gender to "h">>
 			<<set $player.sex to "h">>
 			<<set $player.penisExist to true>>

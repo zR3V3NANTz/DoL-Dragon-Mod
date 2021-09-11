@@ -1989,8 +1989,9 @@ You present the order slip to the <<person>> behind the counter.
 <<elseif $phase is 2>>
 	No one is around, so you approach the counter and let <<him>> slip a hand inside your <<if $worn.genitals.type.includes("chastity")>>$worn.genitals.name.<<else>><<crotch>>.<</if>>
 	<br>
-	<<if $player.penisExist>>You feel a hand wrap around your penis.
-	<br>
+	<<if $player.penisExist>>
+		You feel a hand wrap around your penis.
+		<br>
 		<<if $penissize lte 1>>
 			Suddenly <<he>> laughs.
 			<br>
@@ -2026,8 +2027,9 @@ You present the order slip to the <<person>> behind the counter.
 			<<link [[Next|Domus Errand End]]>><<set $phase to 1>><</link>>
 			<br>
 		<</if>>
-	<<else>>You feel a hand brush against your pussy.
-	<br>
+	<<else>>
+		You feel a hand brush against your pussy.
+		<br>
 		<<if $rng % 2>>
 			"A vagina," <<He>> smiles. "I thought I might find one of these."
 			<br>
