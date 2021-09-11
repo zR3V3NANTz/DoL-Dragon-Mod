@@ -552,7 +552,7 @@ You hear shouting outside.
 	<<if $farm_assault.alex is  _assault_keys[_s]>>/*Alex patrols again. */
 		<<set $farm_assault.alex to "patrol">>
 	<</if>>
-<<elseif $farm_assault.teams[_assault_keys[_s]].location is "done">>
+<<elseif $farm_assault.alex is _assault_keys[_s] and $farm_assault.teams[_assault_keys[_s]].location is "done">>
 	<<set $farm_assault.alex to "patrol">>
 <</if>>
 <</widget>>
