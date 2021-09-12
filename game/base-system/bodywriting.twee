@@ -2,8 +2,7 @@
 <<widget "bodywriting_init">>
 <<set $skin to {}>>
 <<set $bodypart_number to 12>>
-<<for _e to 0; _e lt $bodypart_number; _e++>>
-	<<activebodypart>>
+<<for _active_bodypart range setup.bodyparts>>
 	<<set $skin[_active_bodypart] to {}>>
 <</for>>
 
@@ -1395,8 +1394,7 @@ Second arg: tool */
 
 <<widget "bodywriting">>
 <<bodywriting_exposure_check>>
-<<for _e to 0; _e lt $bodypart_number; _e++>>
-	<<activebodypart>>
+<<for _active_bodypart range setup.bodyparts>>
 	<<if $skin[_active_bodypart].writing>>
 		<<if $skin[_active_bodypart].type is "text">>
 			<<if $skin[_active_bodypart].special is $loveInterest.primary or $skin[_active_bodypart].special is $loveInterest.secondary>>

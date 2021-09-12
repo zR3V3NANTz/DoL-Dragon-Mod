@@ -73,8 +73,7 @@ You are in the tattoo parlour. The artists here can turn anything drawn on you i
 :: Tattoo Bodywriting Choice
 <<effects>>
 
-<<for _e to 0; _e lt $bodypart_number; _e++>>
-	<<activebodypart>>
+<<for _active_bodypart range setup.bodyparts>>
 	<<if $skin[_active_bodypart].pen is "pen" or $skin[_active_bodypart].pen is "marker">>
 		<<if $money gte 50000>>
 		You have <<if $skin[_active_bodypart].type is "text">><span class="pink">"<<print $skin[_active_bodypart].writing>>"</span> written<<else>>a $skin[_active_bodypart].writing drawn<</if>> on your <<bodypart _active_bodypart>>.
@@ -122,9 +121,7 @@ They have a board displaying a number of tattoo designs.
 <br><br>
 
 Location:<br>
-<<for _e to 0; _e lt $bodypart_number; _e++>>
-	<<activebodypart>>
-
+<<for _active_bodypart range setup.bodyparts>>
 	<<if $skin[_active_bodypart].writing>>
 
 	<<else>><<set _bodypart_detected to 1>>
