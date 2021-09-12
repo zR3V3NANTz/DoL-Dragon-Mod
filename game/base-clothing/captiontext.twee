@@ -35,7 +35,7 @@
 
 <<widget "pushClothingCaption">>
 	<<set $_output to " ">>
-	
+	<<run console.log($args[0])>>
 	/* word 1: article, example: "a" or "an" or "a pair of" */
 	<<if $args[1] isnot undefined>>
 		<<set $_output += $args[1] + " ">>
@@ -108,10 +108,10 @@
 	<!--Both-->
 	<<if $_exposed>>
 		<<if !_underOutfit>>
-			<<set _finally to "<span class='pink'>You are wearing <<word underupper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name">>
-			<<set _finally += " and <<word underlower>> <<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.</span>">>
+			<<set _finally to "<span class='pink'>You are wearing <<word under_upper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name">>
+			<<set _finally += " and <<word under_lower>> <<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.</span>">>
 		<<else>>
-			<<set _finally to "<span class='pink'>You are wearing nothing but <<word underupper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.</span>">>
+			<<set _finally to "<span class='pink'>You are wearing nothing but <<word under_upper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.</span>">>
 		<</if>>
 	<<else>>
 		<<pushClothingCaption "under_upper">>
@@ -122,7 +122,7 @@
 <<elseif $worn.under_upper.name isnot "naked">>
 	<!--Upper only-->
 	<<if $_exposed>>
-		<<set _finally to "<span class='pink'>You are wearing nothing but <<word underupper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.</span>">>
+		<<set _finally to "<span class='pink'>You are wearing nothing but <<word under_upper>> <<underupperintegrity>> <<clothescolour 'under_upper'>> $worn.under_upper.name.</span>">>
 	<<else>>
 		<<pushClothingCaption "under_upper">>
 		<<if !_bottomless>>
@@ -135,7 +135,7 @@
 	<</if>>
 <<elseif $worn.under_lower.name isnot "naked">>
 	<!--Lower only-->
-	<<set $_pair to ($worn.under_lower.name.last() is "s" ? "a pair of" : "<<word underlower>>")>>
+	<<set $_pair to ($worn.under_lower.name.last() is "s" ? "a pair of" : "<<word under_lower>>")>>
 	<<if $_exposed>>
 		<<set _finally to "<span class='pink'>You are topless, wearing nothing but " + $_pair + " <<underlowerintegrity>> <<clothescolour 'under_lower'>> $worn.under_lower.name.</span>">>
 	<<else>>
