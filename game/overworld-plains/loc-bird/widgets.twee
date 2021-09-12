@@ -497,8 +497,7 @@
 		<span class="gold">The strong winds will make flight easy and fast.</span>
 	<<case "rain">>
 		<<set _flightTime += 1>>
-		<<for _e to 0; _e lt $clothing_number; _e++>>
-			<<activeclothes>>
+		<<for _active_clothes range Object.keys($worn)>>
 			<<if !$worn[_active_clothes].type.includes("naked") and !$worn[_active_clothes].type.includes("swim")>>
 				<<switch _active_clothes>>
 					<<case "over_upper" "over_lower">>

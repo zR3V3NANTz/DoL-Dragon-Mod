@@ -18,8 +18,7 @@ You are in the tailor shop. It has cloth of various colours hanging on racks.
 <<set _time to 0>>
 <<set _outfitTime to 0>>
 
-<<for _e to 0; _e lt $clothing_number; _e++>>
-<<activeclothes>>
+<<for _active_clothes range Object.keys($worn)>>
 	<<if _active_clothes is "lower" or _active_clothes is "under_lower">>
 		<<if $worn[_active_clothes].one_piece is 1>>
 			<<if $worn[_active_clothes].integrity lt $worn[_active_clothes].integrity_max>>

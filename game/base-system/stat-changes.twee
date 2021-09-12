@@ -354,8 +354,7 @@
 <<widget "awareness">>
 	<<if $args[0] and $statFreeze isnot true>>
 		<<set $awareness += ($args[0])>>
-		<<for _e to 0; _e lt $clothing_number; _e++>>
-		<<activeclothes>>
+		<<for _active_clothes range Object.keys($worn)>>
 			<<if $worn[_active_clothes].type.includes("dark")>>
 				<<set $awareness += ($args[0])>>
 			<</if>>
@@ -366,8 +365,7 @@
 <<widget "purity">>
 	<<if $args[0] and $statFreeze isnot true>>
 		<<set $purity += ($args[0])>>
-		<<for _e to 0; _e lt $clothing_number; _e++>>
-		<<activeclothes>>
+		<<for _active_clothes range Object.keys($worn)>>
 			<<if $worn[_active_clothes].type.includes("holy")>>
 				<<set $purity += ($args[0])>>
 			<</if>>
