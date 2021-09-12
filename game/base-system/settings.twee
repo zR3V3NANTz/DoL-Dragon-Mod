@@ -210,10 +210,12 @@
 	<<set _buttonName to "Confirm">>
 <</if>>
 <<link _buttonName>>
-	<<if ($feats.locked is true or ($cheatdisabletoggle is "t" and $rentmod gte 1)) and ($feats.soft is true or ($gamemode isnot "soft" and $alluremod gte 1))>>
+	<<if ($feats.locked is true or ($cheatdisabletoggle is "t" and $rentmod gte 1)) and ($feats.soft is true or ($gamemode isnot "soft" and $alluremod gte 1)) and $maxStates lte 5>>
 		<<settingsExitFunction>>
-	<<else>>
+	<<elseif $maxStates lte 5>><!-- confirm cheats -->
 		<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
+	<<else>><!-- confirm huge history -->
+		<<replace #settingsExit>><<settingsExitConfirmHistory>><</replace>>
 	<</if>>
 <</link>>
 <</widget>>
@@ -237,6 +239,28 @@
 <</link>>
 <br><br><br>
 <<link "Yes">>
+	<<settingsExitFunction>>
+<</link>>
+<</widget>>
+
+<<widget "settingsExitConfirmHistory">>
+<span class="red"><b>WARNING! Your history depth setting is too high!</b><br>
+Values above 5 can lead to errors when creating new saves! Make sure you know what you're doing before proceeding, or turn it down!
+</span>
+<br>
+<<link "Disable the feature">>
+	<<set $maxStates to 1>>
+	<<replace #settingsExit>><<settingsExit>><</replace>>
+	<<displaySettings>>
+<</link>>
+<br>
+<<link "Lower the values to safer levels">>
+	<<set $maxStates to 5>>
+	<<replace #settingsExit>><<settingsExit>><</replace>>
+	<<displaySettings>>
+<</link>>
+<br><br><br>
+<<link "I love shooting myself in the foot">>
 	<<settingsExitFunction>>
 <</link>>
 <</widget>>
@@ -1158,7 +1182,7 @@
 
 	<span class="gold">History depth</span><br>
 	<div class="description">Enables going back in history up to N-1 passages. Changes take effect on settings exit.<br>
-	<span class="red"><b>WARNING:</b> May cause slowdowns. Additionally, values above 5 can exceed your localStorage quota and cause <br>
+	<span class="red"><b>WARNING:</b> Will cause slowdowns. Additionally, values above 5 can exceed your localStorage quota and cause <br>
 	<b>troubles with saves</b>. Use at your own risk.</span>
 	</div>
 	<<numberslider "$maxStates" $maxStates 1 20 1>>
