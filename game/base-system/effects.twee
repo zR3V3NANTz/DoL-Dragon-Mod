@@ -716,8 +716,7 @@
 
 <<widget "temperature">>
 <<set $warmth to 0>>
-<<for _e to 0; _e lt $clothing_number; _e++>>
-	<<activeclothes>>
+<<for _active_clothes range Object.keys($worn)>>
 	<<if $inwater is 1>>
 		<<if $worn[_active_clothes].warmth isnot undefined and $worn[_active_clothes].type.includes("diving")>>
 			<<set $warmth += $worn[_active_clothes].warmth>>

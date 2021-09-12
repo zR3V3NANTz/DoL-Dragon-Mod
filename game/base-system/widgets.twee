@@ -615,8 +615,7 @@
 <<widget "crimeup">>
 <<if $statFreeze isnot true>>
 	<<set _crime_up to 1>>
-	<<for _e to 0; _e lt $clothing_number; _e++>>
-		<<activeclothes>>
+	<<for _active_clothes range Object.keys($worn)>>
 		<<if $worn[_active_clothes].type.includes("stealthy")>>
 			<<set _crime_up -= 0.05>>
 		<</if>>
@@ -2659,21 +2658,6 @@ or $args[0] is "force">>
 
 <</widget>>
 
-<<widget "activebodypart">>
-<<if _e is 0>><<set _active_bodypart to "forehead">><</if>>
-<<if _e is 1>><<set _active_bodypart to "left_cheek">><</if>>
-<<if _e is 2>><<set _active_bodypart to "right_cheek">><</if>>
-<<if _e is 3>><<set _active_bodypart to "left_shoulder">><</if>>
-<<if _e is 4>><<set _active_bodypart to "right_shoulder">><</if>>
-<<if _e is 5>><<set _active_bodypart to "breasts">><</if>>
-<<if _e is 6>><<set _active_bodypart to "back">><</if>>
-<<if _e is 7>><<set _active_bodypart to "left_bottom">><</if>>
-<<if _e is 8>><<set _active_bodypart to "right_bottom">><</if>>
-<<if _e is 9>><<set _active_bodypart to "pubic">><</if>>
-<<if _e is 10>><<set _active_bodypart to "left_thigh">><</if>>
-<<if _e is 11>><<set _active_bodypart to "right_thigh">><</if>>
-<</widget>>
-
 <<widget "arousalpass">>
 <<if _arousal is undefined>>
 	<<set _arousal to 0>>
@@ -3058,8 +3042,7 @@ or $args[0] is "force">>
 	<<removeparasite bottom>>
 	<</if>>
 
-<<for _e to 0; _e lt $bodypart_number; _e++>>
-	<<activebodypart>>
+<<for _active_bodypart range setup.bodyparts>>
 	<<if $skin[_active_bodypart].pen is "pen" or $skin[_active_bodypart].pen is "lipstick" or $skin[_active_bodypart].pen is "mud">>
 		<<bodywriting_clear _active_bodypart>>
 	<</if>>

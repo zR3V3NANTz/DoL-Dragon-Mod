@@ -1779,8 +1779,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<<combat-hand-on-mask "right" "<<his>> right hand">>
 	<</if>>
 
-	<<for _e to 0; _e lt $bodypart_number; _e++>>/*NPC draws on PC*/
-		<<activebodypart>>
+	<<for _active_bodypart range setup.bodyparts>>/*NPC draws on PC*/
 		<<if $NPCList[_n].lefthand is "pen" + "_" + _active_bodypart>>
 			<<He>> scrawls on your <<bodypart _active_bodypart>>:
 			<<bodywriting_npc _active_bodypart $NPCList[_n].lefttool>>

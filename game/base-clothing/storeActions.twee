@@ -234,8 +234,7 @@
 	<<handsundress _temp_strip>>
 <</if>>
 
-<<for _e to 0; _e lt $clothing_number; _e++>>
-<<activeclothes>>
+<<for _active_clothes range Object.keys($store)>>
 	<<for _i to 0; _i lt $store[_active_clothes].length; _i++>>
 		<<if $store[_active_clothes][_i].location is _temp_strip>>
 		<<set _temp_clothes_present to 1>>
@@ -383,20 +382,4 @@
 
 <<exposure>>
 
-<</widget>>
-
-<<widget "activeclothes">>/*For use at the start of a loop with _e as the variable. Sets _active_clothes to each category of clothing in turn to simulate the functionality of an array.*/
-<<if _e is 0>><<set _active_clothes to "over_upper">><</if>>
-<<if _e is 1>><<set _active_clothes to "over_lower">><</if>>
-<<if _e is 2>><<set _active_clothes to "upper">><</if>>
-<<if _e is 3>><<set _active_clothes to "lower">><</if>>
-<<if _e is 4>><<set _active_clothes to "under_upper">><</if>>
-<<if _e is 5>><<set _active_clothes to "under_lower">><</if>>
-<<if _e is 6>><<set _active_clothes to "head">><</if>>
-<<if _e is 7>><<set _active_clothes to "face">><</if>>
-<<if _e is 8>><<set _active_clothes to "neck">><</if>>
-<<if _e is 9>><<set _active_clothes to "hands">><</if>>
-<<if _e is 10>><<set _active_clothes to "legs">><</if>>
-<<if _e is 11>><<set _active_clothes to "feet">><</if>>
-<<if _e is 12>><<set _active_clothes to "over_head">><</if>>
 <</widget>>

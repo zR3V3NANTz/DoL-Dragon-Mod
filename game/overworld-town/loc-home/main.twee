@@ -2224,8 +2224,7 @@ After several minutes you rinse your private area with water and behold your <<g
 <br><br>
 Location:
 <br>
-<<for _e to 0; _e lt $bodypart_number; _e++>>
-	<<activebodypart>>
+<<for _active_bodypart range setup.bodyparts>>
 	<<if $skin[_active_bodypart].writing>>
 	<<else>>
 		<<set _bodypart_detected to 1>>
@@ -2269,8 +2268,7 @@ Text:
 	You hover the pen over your skin.
 <</if>>
 <br><br>
-<<for _e to 0; _e lt $bodypart_number; _e++>>
-	<<activebodypart>>
+<<for _active_bodypart range setup.bodyparts>>
 	<<if $skin[_active_bodypart].writing>>
 	<<else>>
 		<<capture _active_bodypart>><<link [[Write|Mirror Bodywriting]]>><<set $mirror_bodypart to _active_bodypart>><</link>><</capture>> on your <<bodypart _active_bodypart>>
