@@ -1149,20 +1149,14 @@ You are in the main hall of the orphanage.
 	<<if $halloween is 1 and $robinmissing isnot 1 and $hour gte 16 and $hour lt 19 and $monthday is 31 and $NPCName[$NPCNameList.indexOf("Robin")].init is 1>>
 		<<if $halloween_robin_costume is "witch">>
 			You see Robin, dressed as a witch and surrounded by excited orphans.
-			<br><br>
-			<<link [[Go trick-or-treating|Robin Trick Hall]]>><</link>>
-			<br>
 		<<elseif $halloween_robin_costume is "vampire">>
 			You see Robin, dressed as a vampire and surrounded by excited orphans.
-			<br><br>
-			<<link [[Go trick-or-treating|Robin Trick Hall]]>><</link>>
-			<br>
 		<<else>>
 			You see someone wearing a bedsheet over their head. They're surrounded by excited orphans.
-			<br><br>
-			<<link [[Go trick-or-treating|Robin Trick Hall]]>><</link>>
-			<br>
 		<</if>>
+		<br><br>
+		<<ind>><<link [[Go trick-or-treating|Robin Trick Hall]]>><</link>>
+		<br>
 	<</if>>
 	<<if $christmas is 1 and $monthday is 25 and $daystate isnot "night" and $exposed lte 0>>
 		<<link [[Celebrate Christmas (1:00)|Orphanage Christmas]]>><<pass 60>><<trauma -12>><<stress -6>><</link>><<lltrauma>><<lstress>>

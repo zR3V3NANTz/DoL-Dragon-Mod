@@ -1416,7 +1416,7 @@ You kiss the <<beasttype>> on the head.
 						<</if>>
 					<</if>>
 				<<else>>
-					<<if $templepromised is "Sydney">>
+					<<if $templePromised is "Sydney">>
 						<<if $pain lte 20>>
 							<<if $rng lte 35>>
 								<<if $awarelevel gte 1>>
