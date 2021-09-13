@@ -114,8 +114,7 @@ You are inside the hospital foyer. <<if $psych is 1>>You see a sign directing to
 			<<link [[Inquire about getting an ultrasound (0:10)|Pregnancy ultrasound]]>><<pass 10>><<set _pregnancy.ultrasoundDone to 14>><</link>>
 			<br>
 		<</if>>
-		<<for _e to 0; _e lt $bodypart_number; _e++>>
-			<<activebodypart>>
+		<<for _active_bodypart range setup.bodyparts>>
 			<<if $skin[_active_bodypart].pen is "tattoo">>
 				<<link [[Inquire about tattoo removal (0:10)|Hospital Tattoo Removal]]>><<pass 10>><</link>>
 				<br>
@@ -1161,8 +1160,7 @@ The receptionist taps something into <<his>> computer and instructs you to take 
 <br><br>
 
 <<if $money gte 300000>>
-	<<for _e to 0; _e lt $bodypart_number; _e++>>
-		<<activebodypart>>
+	<<for _active_bodypart range setup.bodyparts>>
 		<<if $skin[_active_bodypart].pen is "tattoo">>
 			You have a <<tattoo _active_bodypart>> on your <<bodypart _active_bodypart>>. <<capture _active_bodypart>><<link [[Remove|Hospital Tattoo Removal 2]]>><<pass 3 hours>><<set $money -= 300000>><<set $remove_tattoo to _active_bodypart>><</link>><</capture>>
 			<br>

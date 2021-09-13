@@ -146,11 +146,11 @@ function widgetHandler(widgetName, contents) {
 			}
 			else {
 				console.error(`Error rendering widget ${widgetName}`, errList);
-				return this.error(`error${errList.length > 1 ? 's' : ''} within widget contents (${errList.join('; ')})`);
+				return this.error(`${V.args.length > 0 ? '($args=[' + V.args.full + ']): ' : ''}error${errList.length > 1 ? 's' : ''} within widget contents (${errList.join('; ')})`);
 			}
 		}
 		catch (ex) {
-			console.error(`Error executing widget ${widgetName}`, ex); return this.error(`cannot execute widget: ${ex.message}`);
+			console.error(`Error executing widget ${widgetName} ${V.args.length > 0 ? 'with arguments "'+ V.args.full +'"' : ''}`, ex); return this.error(`cannot execute widget: ${ex.message}`);
 		}
 		finally {
 			// Custom code
