@@ -2262,7 +2262,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 			<</if>>
 
 			<<struggle_attach mouth>><<set $mouthuse to "struggle">><<set $mouthstate to "struggle">>
-		<<elseif $rng gte 61 and $vaginause is 0 and $vaginaexist is 1>>
+		<<elseif $rng gte 61 and $vaginause is 0 and $player.vaginaExist>>
 			<<if $underwater is 1>>
 				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you, <span class="blue">landing on your pelvis.</span>
 			<<elseif $struggle.enemy[_i].motion is "flying">>
@@ -2271,7 +2271,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps towards you, <span class="blue">landing on your pelvis.</span>
 			<</if>>
 			<<struggle_attach vagina>><<set $vaginause to "struggle">><<set $vaginastate to "struggle">>
-		<<elseif $rng gte 41 and $penisuse is 0 and $penisexist is 1>>
+		<<elseif $rng gte 41 and $penisuse is 0 and $player.penisExist>>
 			<<if $underwater is 1>>
 				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you, <span class="blue">landing on your tummy.</span>
 			<<elseif $struggle.enemy[_i].motion is "flying">>

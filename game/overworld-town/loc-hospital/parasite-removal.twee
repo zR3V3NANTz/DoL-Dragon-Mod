@@ -295,26 +295,26 @@ The pulses increase in intensity, it's certainly not the "tingle" that was adver
 	<<elseif $orgasmcurrent lte 1>>
 		You spasm against the bindings, which hold firm. Harper doesn't even blink at your response.
 		<<if $enemyno gte 2>>
-			<<if $penisexist is 1 and $devstate is 1 and $orgasmcount lte 23>>
+			<<if $player.penisExist and $devstate is 1 and $orgasmcount lte 23>>
 				<<person2>>The audience does however. You hear gasping and nervous laughter. Their eyes are drawn to your semen, propelled further from your body than usual by the electrolysis. A <<person>> in the front row visibly blushes, but can't look away.
 			<<else>>
 				The audience does however. Some gasp and you hear subdued laughter.
 			<</if>>
 		<<else>>
-			<<if $penisexist is 1 and $devstate is 1 and $orgasmcount lte 23>>
+			<<if $player.penisExist and $devstate is 1 and $orgasmcount lte 23>>
 			<<else>>
 			<</if>>
 		<</if>>
 	<<elseif $orgasmcurrent is 2>>
 		You spasm again against the bindings. Harper still doesn't acknowledge you.
 		<<if $enemyno gte 2>>
-			<<if $penisexist is 1 and $devstate is 1 and $orgasmcount lte 23>>
+			<<if $player.penisExist and $devstate is 1 and $orgasmcount lte 23>>
 				<<person2>>The audience gasps again, this time the laughter is more discernible. Your semen flies even further, the <<person>> gets some in <<his>> hair, but is so enraptured that <<he>> doesn't notice. Fortunately, all the electric pulses tormenting you give you no chance to fully experience the humiliation of the situation.
 			<<else>>
 				The audience gasps again, this time the laughter is more discernible. Fortunately, the relentless electric pulses give you no chance to fully experience the humiliation of the situation.
 			<</if>>
 		<<else>>
-			<<if $penisexist is 1 and $devstate is 1 and $orgasmcount lte 23>>
+			<<if $player.penisExist and $devstate is 1 and $orgasmcount lte 23>>
 			<<else>>
 			<</if>>
 		<</if>>
@@ -417,7 +417,7 @@ Perplexed at the machine's lack of response, <<he>> removes <<his>> shoe and giv
 
 The orgasms come so rapidly they blur together, forming a continuous stream. Harper works furiously at the machine, "No no no, this isn't supposed to happen!"
 
-<<if $penisexist is 1 and $devstate is 1 and $orgasmcount lte 23>>
+<<if $player.penisExist and $devstate is 1 and $orgasmcount lte 23>>
 	Tendrils of cum erupt from you, showering the front row of the audience as they fall over each other to escape your reach.
 <</if>>
 <br><br>

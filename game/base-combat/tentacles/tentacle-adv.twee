@@ -409,7 +409,7 @@ The _tentacle.desc tentacle writhes between your feet.
 		<</if>>
 		<br>
 	<<elseif $rng lte 60>>
-		<<if $vaginaexist is 1 and $vaginause is 0>>
+		<<if $player.vaginaExist and $vaginause is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<pussy>>.</span>
 			<<neutralgenitals 2>>
 			<<set $vaginause to "tentacle">><<set $vaginastate to "tentacleentrance">><<set _tentacle.head to "vaginaentrance">>
@@ -418,7 +418,7 @@ The _tentacle.desc tentacle writhes between your feet.
 		<</if>>
 		<br>
 	<<elseif $rng lte 70>>
-		<<if $penisexist is 1 and $penisuse is 0>>
+		<<if $player.penisExist and $penisuse is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<penis>>.</span>
 			<<neutralgenitals 2>>
 			<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">>
@@ -427,14 +427,14 @@ The _tentacle.desc tentacle writhes between your feet.
 		<</if>>
 		<br>
 	<<elseif $rng lte 80>>
-		<<if $penisexist is 1 and $penisuse is 0 and random(0,100) gte 50>>
+		<<if $player.penisExist and $penisuse is 0 and random(0,100) gte 50>>
 			<<if _tentacle.shaft is "thighs">>
 				<<underslither>> <span class="blue">where it <<slithers>> against your tummy and <<penis>>.</span>
 			<<else>>
 				<<underslither>> <span class="blue">where it <<slithers>> between your thighs and against your tummy and <<penis>>.</span>
 			<</if>>
 			<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<sex 3>><<thighstat>>
-		<<elseif $vaginaexist is 1 and $vaginause is 0 and random(0,100) gte 50>>
+		<<elseif $player.vaginaExist and $vaginause is 0 and random(0,100) gte 50>>
 			<<if _tentacle.shaft is "thighs">>
 				<<underslither>> <span class="blue">where it <<slithers>> against your tummy and <<pussy>>.</span>
 			<<else>>
@@ -689,7 +689,7 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<actionstentacleadvcheckbox "neutral" "Let go" "$leftaction" _action $leftactiondefault>>
 
 		<<if $deviancy gte 75>> /* Should i lock this behind consentacles? */
-			<<if ($anususe is 0 and $analdisable is "f") or ($vaginaexist is 1 and $vaginause is 0 or $penisexist is 1 and $penisuse is 0) or $mouthuse is 0>>
+			<<if ($anususe is 0 and $analdisable is "f") or ($player.vaginaExist and $vaginause is 0 or $player.penisExist and $penisuse is 0) or $mouthuse is 0>>
 				<br>--<<deviant5>>| --<br>
 
 				<<if $anususe is 0 and $analdisable is "f">>
@@ -697,7 +697,7 @@ The _tentacle.desc tentacle writhes between your feet.
 					<<actionstentacleadvcheckbox "sub" "Guide to your <<bottom>>." "$leftaction" _action $leftactiondefault>>
 				<</if>>
 
-				<<if ($vaginaexist is 1 and $vaginause is 0) or ($penisexist is 1 and $penisuse is 0)>>
+				<<if ($player.vaginaExist and $vaginause is 0) or ($player.penisExist and $penisuse is 0)>>
 					<<set _action to "showthighs"+_tentacle.id >>
 					<<actionstentacleadvcheckbox "sub" "Guide to your thighs." "$leftaction" _action $leftactiondefault>>
 				<</if>>
@@ -734,7 +734,7 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<actionstentacleadvcheckbox "neutral" "Let go" "$rightaction" _action $rightactiondefault>>
 
 		<<if $deviancy gte 75>> /* Should i lock this behind consentacles? */
-			<<if ($anususe is 0 and $analdisable is "f") or ($vaginaexist is 1 and $vaginause is 0 or $penisexist is 1 and $penisuse is 0) or $mouthuse is 0>>
+			<<if ($anususe is 0 and $analdisable is "f") or ($player.vaginaExist and $vaginause is 0 or $player.penisExist and $penisuse is 0) or $mouthuse is 0>>
 				<br>--<<deviant5>>| --<br>
 
 				<<if $anususe is 0 and $analdisable is "f">>
@@ -742,7 +742,7 @@ The _tentacle.desc tentacle writhes between your feet.
 					<<actionstentacleadvcheckbox "sub" "Guide to your <<bottom>>." "$rightaction" _action $rightactiondefault>>
 				<</if>>
 
-				<<if ($vaginaexist is 1 and $vaginause is 0) or ($penisexist is 1 and $penisuse is 0)>>
+				<<if ($player.vaginaExist and $vaginause is 0) or ($player.penisExist and $penisuse is 0)>>
 					<<set _action to "showthighs"+_tentacle.id >>
 					<<actionstentacleadvcheckbox "sub" "Guide to your thighs." "$rightaction" _action $rightactiondefault>>
 				<</if>>
@@ -784,7 +784,7 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<actionstentacleadvcheckbox "neutral" "Let go" "$feetaction" _action $feetactiondefault>>
 
 		<<if $deviancy gte 75>> /* Should i lock this behind consentacles? */
-			<<if ($anususe is 0 and $analdisable is "f") or ($vaginaexist is 1 and $vaginause is 0 or $penisexist is 1 and $penisuse is 0)>>
+			<<if ($anususe is 0 and $analdisable is "f") or ($player.vaginaExist and $vaginause is 0 or $player.penisExist and $penisuse is 0)>>
 				<br>--<<deviant5>>| --<br>
 
 				<<if $anususe is 0 and $analdisable is "f">>
@@ -792,7 +792,7 @@ The _tentacle.desc tentacle writhes between your feet.
 					<<actionstentacleadvcheckbox "sub" "Guide to your <<bottom>>." "$feetaction" _action $feetactiondefault>>
 				<</if>>
 
-				<<if ($vaginaexist is 1 and $vaginause is 0) or ($penisexist is 1 and $penisuse is 0)>>
+				<<if ($player.vaginaExist and $vaginause is 0) or ($player.penisExist and $penisuse is 0)>>
 					<<set _action to "showthighs"+_tentacle.id >>
 					<<actionstentacleadvcheckbox "sub" "Guide to your thighs." "$feetaction" _action $feetactiondefault>>
 				<</if>>
@@ -1108,9 +1108,9 @@ The _tentacle.desc tentacle writhes between your feet.
 			<</if>>
 		<</if>>
 
-		<<if $penisexist is 1 and $penisuse is 0>>
+		<<if $player.penisExist and $penisuse is 0>>
 			<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">>
-		<<elseif $vaginaexist is 1 and $vaginause is 0>>
+		<<elseif $player.vaginaExist and $vaginause is 0>>
 			<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">>
 		<</if>>
 
@@ -1128,7 +1128,7 @@ The _tentacle.desc tentacle writhes between your feet.
 			<<set $rightarm to 0>>
 			<<set $rightarmstate to 0>>
 		<</if>>
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<submission 1>>
 			<br>
 			<<combatdeviancy5>>
@@ -1172,7 +1172,7 @@ The _tentacle.desc tentacle writhes between your feet.
 			<<set $rightarm to 0>>
 			<<set $rightarmstate to 0>>
 		<</if>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<<submission 1>>
 			<br>
 			<<combatdeviancy5>>
@@ -1285,9 +1285,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<</if>>
 
 		<<if _dir is "thighs">>
-			<<if $penisexist is 1 and $penisuse is 0>>
+			<<if $player.penisExist and $penisuse is 0>>
 				<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">>
-			<<elseif $vaginaexist is 1 and $vaginause is 0>>
+			<<elseif $player.vaginaExist and $vaginause is 0>>
 				<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">>
 			<</if>>
 
@@ -1303,7 +1303,7 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<set $feetaction to 0>><<set $feetstate to 0>>
 		<<set $leftleg to 0>><<set $rightleg to 0>>
 
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<<submission 1>>
 			<br>
 			<<combatdeviancy5>>

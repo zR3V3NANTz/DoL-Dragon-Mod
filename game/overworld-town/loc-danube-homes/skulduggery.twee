@@ -583,21 +583,21 @@ The <<beasttype 0>> makes no move as you remove <<bhis 0>> collar. You leave the
 
 <<maninit>>
 
-	<<if $footdisable is "f">>
+<<if $footdisable is "f">>
 	"It's best I use my foot," <<he>> says." You might be dirty."
 	<br><br>
 
-		<<if $NPCList[0].vagina isnot "none">>
+	<<if $NPCList[0].vagina isnot "none">>
 		<<set $NPCList[0].vagina to "footjob">>
-		<<elseif $NPCList[0].penis isnot "none">>
+	<<elseif $NPCList[0].penis isnot "none">>
 		<<set $NPCList[0].penis to "footjob">>
-		<</if>>
-		<<if $penisexist is 1 and ($vaginaexist is 0 or random(1, 2) is 2)>>
-		<<set $penisuse to "feet">><<set $speechpenisfoot to 1>>
-		<<else>>
-		<<set $vaginause to "feet">><<set $speechvaginafoot to 1>>
-		<</if>>
 	<</if>>
+	<<if $player.penisExist and (!$player.vaginaExist or random(1, 2) is 2)>>
+		<<set $penisuse to "feet">><<set $speechpenisfoot to 1>>
+	<<else>>
+		<<set $vaginause to "feet">><<set $speechvaginafoot to 1>>
+	<</if>>
+<</if>>
 <</if>>
 
 <<effects>>

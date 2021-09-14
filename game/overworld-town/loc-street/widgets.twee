@@ -578,7 +578,7 @@ You hear voices up ahead, and take cover down a stairwell leading to a basement.
 	<<elseif !$worn.genitals.type.includes("chastity")>>
 		<<link [[Agree|Street Panties Photo]]>><<set $phase to 1>><</link>><<exhibitionist4>>
 		<br>
-		<<if $exhibitionism gte 75 and $vaginaexist and $street4test>>
+		<<if $exhibitionism gte 75 and $player.vaginaExist and $street4test>>
 		<<link [[Show everything|Street Panties Photo]]>><<set $phase to 4>><</link>><<exhibitionist5>>
 		<br>
 		<</if>>
@@ -1306,10 +1306,10 @@ You feel something touch your thigh. You look down to see a slimy tentacle exten
 			anus.
 			<<set _target to 'anus'>>
 		<<else>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				<<penis>>.
 				<<set _target to 'penis'>>
-			<<elseif $vaginaexist is 1>>
+			<<elseif $player.vaginaExist>>
 				<<pussy>>.
 				<<set _target to 'pussy'>>
 			<<else>>

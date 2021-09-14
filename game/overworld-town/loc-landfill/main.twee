@@ -484,7 +484,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 		You nervously hook your thumbs into your waistband before hesitating, unsure if you really want to show a bunch of strangers your privates. Realising there's no way out of this but forward, you swallow your modesty and bring your trousers <<if !$worn.under_lower.exposed>>and underwear <</if>>down to your knees. With your <<genitals>> now exposed to the other boys you shift your weight nervously, your momentary bravado gone and the embarrassment from letting 6 other boys see your bare <<undies>> setting in.
 	<</if>>
 	<br><br>
-	<<if $penisexist>>
+	<<if $player.penisExist>>
 		<<if $penissize lte 0>>
 			The boys look down at your <<EZsmall>> <<EZpenis>> and then turn to each other, before breaking out into laughter. <<Penisremarkquote>> one of the boys says. "Don't worry, maybe it's still got some growing to do" says one of the other boys, trying not to laugh as he comforts you.
 			<<incggpenisinsecurity>>
@@ -639,7 +639,7 @@ You shove the boys away from you. <<tearful>> you run to safety.
 	The boys hold your hands behind your back. "You should have kept your promise, then we wouldn't have had to do this" the <<person1>><<person>> says.
 	<br><br>
 	The boys gather around to have a good look at your naked body.
-	<<if $penisexist>>
+	<<if $player.penisExist>>
 		<<if $penissize lte 0>>
 			The boys look down at your <<EZsmall>> <<EZpenis>> and then turn to each other, before breaking out into laughter. <<Penisremarkquote>> one of the boys says. "Don't worry, maybe it's still got some growing to do" says one of the other boys, trying not to laugh as he comforts you.
 			<<incggpenisinsecurity>>

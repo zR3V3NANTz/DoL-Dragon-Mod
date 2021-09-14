@@ -432,7 +432,7 @@
 		<<if $promiscuity gte 100 and $deviancy gte 100 and $exhibitionism gte 100>>
 			<<earnFeat "No More Control">>
 		<</if>>
-		<<if ($vaginaexist is 0 or $vaginalskill gte 1000) and ($penisexist is 0 or $penileskill gte 1000) and $oralskill gte 1000
+		<<if (!$player.vaginaExist or $vaginalskill gte 1000) and (!$player.penisExist or $penileskill gte 1000) and $oralskill gte 1000
 		and ($analskill gte 1000 or $analdisable is "t") and $handskill gte 1000 and $feetskill gte 1000 and $bottomskill gte 1000
 		and $thighskill gte 1000 and $chestskill gte 1000>>
 			<<earnFeat "Sex Specialist">>
@@ -555,7 +555,7 @@
 	<</if>>
 	<<if $goooutsidecount + $semenoutsidecount gte 100
 	and (setup.bodyliquid.combined("anus") gte 5 or $analdisable is "t")
-	and (setup.bodyliquid.combined("vagina") gte 5 or $vaginaexist is 0)
+	and (setup.bodyliquid.combined("vagina") gte 5 or !$player.vaginaExist)
 	and setup.bodyliquid.combined("mouth") gte 5>>
 		<<earnFeat "Fully Covered">>
 	<</if>>

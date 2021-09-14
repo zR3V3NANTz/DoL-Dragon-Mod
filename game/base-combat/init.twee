@@ -888,7 +888,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <</if>>
 
 <<if $enemytype is "beast">>
-	<<if $NPCList[0].penis is "none" and $penisexist is 1>>
+	<<if $NPCList[0].penis is "none" and $player.penisExist>>
 	<<set $position to "missionary">>
 	<<else>>
 		<<if random(1, 100) gte 20>>

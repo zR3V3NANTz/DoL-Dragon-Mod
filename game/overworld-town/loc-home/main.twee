@@ -371,10 +371,10 @@ You are in the bathroom.
 	<<set _coveredIn to "">>
 	<<if random(0,100) gt 80>>
 		<<set _coveredIn to "slime">>
-		<<if $penisexist is 1 and $player.virginity.penile isnot true and !$worn.genitals.type.includes("chastity")>>
+		<<if $player.penisExist and $player.virginity.penile isnot true and !$worn.genitals.type.includes("chastity")>>
 			<<set $player.bodyliquid.penis.goo += random(1,3)>>
 		<</if>>
-		<<if $vaginaexist is 1 and $player.virginity.vaginal isnot true and !$worn.genitals.type.includes("chastity")>>
+		<<if $player.vaginaExist and $player.virginity.vaginal isnot true and !$worn.genitals.type.includes("chastity")>>
 			<<set $player.bodyliquid.vagina.goo += random(1,3)>>
 		<</if>>
 		<<if $player.virginity.anal isnot true and $worn.genitals.anal_shield isnot 1 and $analdisable is "f">>
@@ -398,10 +398,10 @@ You are in the bathroom.
 		<<else>>
 			<<set _coveredIn to "semen">>
 		<</if>>
-		<<if $penisexist is 1 and $player.virginity.penile isnot true and !$worn.genitals.type.includes("chastity")>>
+		<<if $player.penisExist and $player.virginity.penile isnot true and !$worn.genitals.type.includes("chastity")>>
 			<<set $player.bodyliquid.penis.semen += random(1,3)>>
 		<</if>>
-		<<if $vaginaexist is 1 and $player.virginity.vaginal isnot true and !$worn.genitals.type.includes("chastity")>>
+		<<if $player.vaginaExist and $player.virginity.vaginal isnot true and !$worn.genitals.type.includes("chastity")>>
 			<<set $player.bodyliquid.vagina.semen += random(1,3)>>
 		<</if>>
 		<<if $player.virginity.anal isnot true and $worn.genitals.anal_shield isnot 1 and $analdisable is "f">>
@@ -616,7 +616,7 @@ You scream. The trio recoil and scramble for the door handle. They flee into the
 	<br>
 <<else>>
 	They hesitate, then the <<person3>><<person>> opens the door and leaves. The others follow, though the <<person1>><<person>> lingers a moment and leers at you.
-	<<if $penisexist is 1 and ($penissize lte 1 or $penissize is 4) and random(0,9) gte 6>>
+	<<if $player.penisExist and ($penissize lte 1 or $penissize is 4) and random(0,9) gte 6>>
 		<<telltalepenissize>>
 	<</if>>
 	<br><br>
@@ -851,7 +851,7 @@ As you remove the plug to drain the water, you feel something probe your <<genit
 			You cover your <<lewdness>>. They stare at you with wide eyes. The <<person1>><<person>> grins and closes the door.
 		<</if>>
 
-		<<if $penisexist is 1 and ($penissize lte 1 or $penissize is 4) and random(0,9) gte 6>>
+		<<if $player.penisExist and ($penissize lte 1 or $penissize is 4) and random(0,9) gte 6>>
 			<<telltalepenissize>>
 			<br><br>
 		<<else>>

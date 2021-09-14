@@ -4586,13 +4586,13 @@ __Map__<br>
 	<<set $player.bodyliquid.face.goo += _i>>
 	<<set $player.bodyliquid.hair.goo += _i>>
 	<<set $player.bodyliquid.feet.goo += _i>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<if $args[2] isnot "outside">>
 			<<set $player.bodyliquid.vagina.goo += _i>>
 		<</if>>
 		<<set $player.bodyliquid.vaginaoutside.goo += _i>>
 	<</if>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $player.bodyliquid.penis.goo += _i>>
 	<</if>>
 	<<if $args[2] isnot "outside">>
@@ -4612,13 +4612,13 @@ __Map__<br>
 	<<set $player.bodyliquid.face.semen += _i>>
 	<<set $player.bodyliquid.hair.semen += _i>>
 	<<set $player.bodyliquid.feet.semen += _i>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<if $args[2] isnot "outside">>
 			<<set $player.bodyliquid.vagina.semen += _i>>
 		<</if>>
 		<<set $player.bodyliquid.vaginaoutside.semen += _i>>
 	<</if>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $player.bodyliquid.penis.semen += _i>>
 	<</if>>
 	<<if $args[2] isnot "outside">>

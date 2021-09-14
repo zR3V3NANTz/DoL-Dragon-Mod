@@ -74,7 +74,7 @@
 
 <!-- NPC using feet on PC -->
 <<if $NPCList[_i].penis is "footjob" or $NPCList[_i].vagina is "footjob">>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $penisstate to 0>>
 	<<else>>
 		<<set $vaginastate to 0>>

@@ -967,13 +967,13 @@
 			<</if>>
 		<<else>>
 			<<He>> lowers <<himself>> down to your <<genitals>>.
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				<<set $penisuse to 0>>
 			<</if>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "neutral">>
 					<<He>> looks up at you, with a hint of fear in <<his>> eyes.
-					<<if $penisexist is 1>>
+					<<if $player.penisExist>>
 						<<He>> gently takes your penis in <<his>> hand, and licks the tip.
 						<<arousal 2500>>
 						<<if $arousal gte $arousalmax>>
@@ -997,7 +997,7 @@
 					<</if>>
 				<<case "pureLust" "neutralLust">>
 					<<He>> looks up at you, and takes a deep breath. "I can... I can do this..."
-					<<if $penisexist is 1>>
+					<<if $player.penisExist>>
 						<<He>> gently takes your penis in <<his>> hand, and licks the tip.
 						<<arousal 2500>>
 						<<if $arousal gte $arousalmax>>
@@ -1024,7 +1024,7 @@
 					<</if>>		
 				<<case "corrupt" "corruptLust">>
 					<<He>> looks up at you, flashing a wicked smile at you.
-					<<if $penisexist is 1>>
+					<<if $player.penisExist>>
 						<<He>> gently takes your penis in <<his>> hand, and takes it into <<his>> mouth without warning. <<set $penisuse to "othermouth">><<set $penisstate to "othermouth">><<takeNPCVirginity "Sydney" "oral">>
 						<<arousal 5000>>
 						<<if $arousal gte $arousalmax>>

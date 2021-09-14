@@ -1053,7 +1053,7 @@
 				<<else>>
 					"Are those spasms from cumming?"
 				<</if>>
-			<<elseif $penisexist is 1>>
+			<<elseif $player.penisExist>>
 				<<if $devstate gte 1 and $orgasmcount lt 24>>
 					<<if $rng gte 67>>
 						"I got a shot of <<pher>> cum flying through the air."
@@ -1090,7 +1090,7 @@
 					"Shame I can't see what's under that device."
 				<</if>>
 			<<elseif $worn.under_lower.exposed gte 1 and $worn.lower.exposed gte 2>>
-				<<if $penisexist is 1>>
+				<<if $player.penisExist>>
 					<<if $penisuse is "cover">>
 						<<if $rng gte 67>>
 							"Move your hand, I want to see your penis."

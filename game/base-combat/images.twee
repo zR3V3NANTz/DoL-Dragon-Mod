@@ -458,7 +458,7 @@ Eyelids disabled during idle frames.
 <img class="layer-sexmouth colour-eye anim-idle-2f" @src="_img.doggyactiveeyelids" @style="'filter: '+_filters.body">
 -->
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<if $worn.genitals.name is "chastity belt" or $worn.genitals.name is "gold chastity belt">>
 		<img class="layer-sexmouth" src="img/sex/doggy/active/body/doggyactivepenischastity.png">
 	<<elseif $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1>>
@@ -890,7 +890,7 @@ Lashes held in place during idle frames, and 4-frame hair overlay that didn't an
 	<</if>>
 <</if>>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<if $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1>>
 		<<if $worn.genitals.type.includes("chastity")>>
 			<<if $worn.genitals.name is "chastity belt" or $worn.genitals.name is "gold chastity belt">>
@@ -1288,7 +1288,7 @@ and _stanceCheck isnot "top">>
 
 <<set _pbColour = ($makeup.pbcolour != 0 ? $makeup.pbcolour : $naturalhaircolour).replace(/ /g, '-')>>
 
-<<if $vaginaexist is 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
+<<if $player.vaginaExist and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
 	<div class="i64" id="closevagina">
 	<<set _vagina = _img.vagina>>
 	<<set _aroused = $vaginaWetness gte 75>>
@@ -1437,7 +1437,7 @@ and _stanceCheck isnot "top">>
 			<img @class="'pbhair-' + _pbColour + ' ' + _frames" @src="'img/sex/close/' + _position + '/vaginahirsute.png'">
 		<</if>>
 		<!-- Hermaphrodite penis -->
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			<<if $player.ballsExist is false>>
 				<img @class="_penis_frames" @src="_img.futavaginanoballs" @style="'filter: ' + _filters.body">
 			<<else>>
@@ -1567,10 +1567,10 @@ and _stanceCheck isnot "top">>
 <</if>>
 </div>
 
-<<if $penisexist is 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
+<<if $player.penisExist and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
 	<div class="i64" id="closepenis">
 
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<img @class="'anim-close-6f-'+_animspeed" @src="_img.futapenisbase" @style="'filter: '+_filters.body">
 	<<else>>
 		<img @class="'anim-close-6f-'+_animspeed" @src="_img.penisbase" @style="'filter: '+_filters.body">

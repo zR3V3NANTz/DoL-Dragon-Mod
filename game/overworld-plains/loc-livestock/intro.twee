@@ -1057,7 +1057,7 @@ You jump as <<he>> rests a cold finger against your ass cheek. <<He>> trails <<h
 <<if pregnancyBellyVisible()>>
 	"Looking at your belly, I already know you're going to be very productive. You don't need to worry about anything, I promise to keep you safe and sound."
 <<else>>
-	"But you're going to be safe and productive here. I promise.<<if $vaginaexist>> If needed, maybe we could help you in different ways.<</if>>"
+	"But you're going to be safe and productive here. I promise.<<if $player.vaginaExist>> If needed, maybe we could help you in different ways.<</if>>"
 <</if>>
 <<headbind>>
 <<if $cow is 6>>
@@ -1177,7 +1177,7 @@ You jump as Remy rests a cold finger against your ass cheek. <<He>> trails <<his
 <<if pregnancyBellyVisible()>>
 	"Looking at your belly, I already know you're going to be very productive. You don't need to worry about anything, I promise to keep you safe and sound."
 <<else>>
-	"But you're going to be safe and productive here. I promise.<<if $vaginaexist>> If needed, maybe we could help you in different ways.<</if>>"
+	"But you're going to be safe and productive here. I promise.<<if $player.vaginaExist>> If needed, maybe we could help you in different ways.<</if>>"
 <</if>>
 <br><br>
 

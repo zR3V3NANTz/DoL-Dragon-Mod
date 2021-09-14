@@ -2454,7 +2454,7 @@ You are in the barn. The <<farm_text_many cattle>> sleep sound.
 				<</link>><<deviant2>>
 				<br>
 			<</if>>
-			<<if $penisexist is 1 and $semen_amount gte 1 and !$worn.genitals.type.includes("chastity")>>
+			<<if $player.penisExist and $semen_amount gte 1 and !$worn.genitals.type.includes("chastity")>>
 				<<link [[Milk your penis (0:30)|Farm Barn Penis]]>>
 					<<if $cow gte 6>>
 						<<transform cow 1>>

@@ -22,7 +22,7 @@ You are inside the hospital pharmacy.
 <br>
 Looking at the items on the shelves, you notice a few objects of interest.
 <br>
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 <br>
 <<link [[Pack of 14 penis reduction|Pharmacy Sale]]>><<set $pharmacyItem to "penis reduction">><</link>>
 <br>

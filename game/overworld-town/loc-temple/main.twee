@@ -881,10 +881,10 @@ You remove your clothing, wishing it wasn't quite so cold in here. Jordan rubs w
 <<if ($phase is 1 or $phase is 2) and $worn.genitals.type.includes("chastity") and $worn.genitals.origin is "temple">>
 <<He>> holds a strange rod against your $worn.genitals.name, and the device clatters to the floor.
 <</if>>
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<He>> holds your penis between both forefingers, and stares at it intently, gently manipulating the length. You try to distract yourself, but you soon feel it hardening under <<his>> scrutiny.
 <</if>>
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	<<He>> places <<his>> thumbs against your pussy and gently opens your
 	<<if setup.bodyliquid.combined("vagina") gte 2>>
 		<<if setup.bodyliquid.combined("vagina") gte 6>>
@@ -1092,13 +1092,8 @@ You look down to examine it yourself. It doesn't feel as tight or uncomfortable 
 <<He>> leads you out of the main hall and into a small room. "Please undress," <<he>> says. You ignore your apprehension and remove your clothing.
 
 <<if $worn.genitals.origin is "temple">>
-	<<He>> produces a sinister bladed instrument from <<his>> robes and kneels in front of you. Seconds later, the belt lies ruined on the floor and your <<genitals 1>>
-	<<if $penisexist is 1 and $vaginaexist is 1>>
-		are
-	<<else>>
-		is
-	<</if>>
-	once again exposed and vulnerable.
+	<<He>> produces a sinister bladed instrument from <<his>> robes and kneels in front of you. 
+	Seconds later, the belt lies ruined on the floor and your <<genitals_are 1>> once again exposed and vulnerable.
 	<br><br>
 	<<He>> stands up. "All done. If you would like a replacement you know where to find me." <<He>> leaves you alone in the room.
 	<br><br>
@@ -1261,7 +1256,7 @@ You feel a warm breeze on your <<genitals 1>>, then something warm and wet touch
 
 <<location "forest">><<effects>>
 "That's it," the older <<monk>> says.
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	"Just keep working it with your tongue. Be careful not to take it into your mouth."
 <<else>>
 	"Just keep working it with your tongue. Be careful not to penetrate."
@@ -1312,7 +1307,7 @@ Jordan gets back to work, not even giving your spasms a chance to subside. "This
 "Don't be silly," the older <<monk>> responds. "We just need a little something extra. Move out the way and lift up <<pher>> legs." Jordan practically climbs on top of you. Your legs are released and lifted, then pressed against your shoulders where they are tied in place once more. You couldn't be more exposed.
 <br><br>
 "This might be a bit awkward. No not there! That's it. Now we can both reach <<phim>>. You two, you need to help too. If this doesn't remove the taint, nothing will." They recommence their licking. This time though, two tongues assault your <<genitals 1>>.
-<<if $penisexist is 1 and $player.ballsExist is true>>
+<<if $player.penisExist and $player.ballsExist is true>>
 	The second ranges further down, licking your testes. <<He>> even takes one into <<his>> mouth.
 <</if>>
 <br><br>

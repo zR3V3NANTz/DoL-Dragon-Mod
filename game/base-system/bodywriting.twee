@@ -631,7 +631,7 @@ Second arg: tool */
 		<<bodywriting_npc_normal $args[0] $args[1]>>
 	<</if>>
 <<elseif $rng gte 60>>
-	<<if $famepregnancy gte random(200, 1000) and $vaginaexist>>
+	<<if $famepregnancy gte random(200, 1000) and $player.vaginaExist>>
 		<<bodywriting_pregnancy_select $args[0]>>
 		<<bodywriting_finalisation $args[0]>>
 	<<else>>
@@ -701,7 +701,7 @@ Second arg: tool */
 		<<bodywriting_finalisation $args[0] machine>>
 	<</if>>
 <<elseif $rng gte 73>>
-	<<if $famepregnancy gte random(200, 1000) and $vaginaexist>>
+	<<if $famepregnancy gte random(200, 1000) and $player.vaginaExist>>
 		<<bodywriting_pregnancy_select $args[0]>>
 		<<bodywriting_finalisation $args[0]>>
 	<<else>>
@@ -897,11 +897,11 @@ Second arg: tool */
 		<<set $NPCList[_n].location.genitals to "genitals">>
 	<</if>>
 <<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals">>
-	<<if $vaginaexist is 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
+	<<if $player.vaginaExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
 		<<He>> follows the arrow's instruction, <span class="blue">and moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your <<bottom>>.</span>
 		<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
 		<<set $NPCList[_n].location.genitals to "genitals">>
-	<<elseif $penisexist is 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
+	<<elseif $player.penisExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
 		<<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">>
 		<<He>> follows the arrow's instruction, <span class="blue">and straddles you, <<his>> pussy hovering close to your <<penis>>.</span>
 		<<set $NPCList[_n].location.genitals to "genitals">>
@@ -1252,10 +1252,10 @@ Second arg: tool */
 			<<elseif $args[0] is "back" or $args[0] is "right_bottom" or $args[0] is "left_bottom" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1 and $NPCList[0].penis is 0 and $anususe is 0>>
 				<span class="blue">positions <<his>> penis in front of your <<bottom>></span>.
 				<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">>
-			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $vaginaexist is 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
+			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $player.vaginaExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
 				<span class="blue">moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your pussy</span>.
 				<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
-			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $penisexist is 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
+			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $player.penisExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
 				<span class="blue">straddles you, <<his>> pussy hovering close to your <<penis>></span>.
 				<<neutral 5>><<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
 			<<else>>

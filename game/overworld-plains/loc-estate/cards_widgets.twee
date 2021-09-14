@@ -426,7 +426,7 @@ Your current score: <<print $highlow.correct>>
 			<<he>> hovers <<his>> mouth close, until you feel <<his>> breath on your lips. "We kiss."
 		<<elseif $rng is 3>>
 			<<he>> grins. "I get to fondle your
-			<<if $penisexist is 1 and $vaginaexist is 1>>
+			<<if $player.penisExist and $player.vaginaExist>>
 				<<if random(1, 2) is 2>>
 					<<set $estate.cards.desire to "penis_grope">>
 					cock."
@@ -434,7 +434,7 @@ Your current score: <<print $highlow.correct>>
 					<<set $estate.cards.desire to "pussy_grope">>
 					pussy."
 				<</if>>
-			<<elseif $penisexist is 1>>
+			<<elseif $player.penisExist>>
 				<<set $estate.cards.desire to "penis_grope">>
 				penis."
 			<<else>>
@@ -452,7 +452,7 @@ Your current score: <<print $highlow.correct>>
 		<<if $estate.cards.lust gte 2>>
 			<<if $NPCList[0].penis isnot "none">>
 				"If I win," <<he>> grins.
-				<<if $vaginaexist is 1 and !$worn.genitals.type.includes("chastity")>>
+				<<if $player.vaginaExist and !$worn.genitals.type.includes("chastity")>>
 					"You sit on my lap. Don't worry. I won't touch your pussy. Yet."
 					<<set $estate.cards.desire to "vaginal">>
 				<<elseif $analdisable is "f" and $worn.genitals.anal_shield isnot 1>>
@@ -467,7 +467,7 @@ Your current score: <<print $highlow.correct>>
 				<</if>>
 			<<else>>
 				"If I win," <<he>> grins.
-				<<if $penisexist is 1 and !$worn.genitals.type.includes("chastity")>>
+				<<if $player.penisExist and !$worn.genitals.type.includes("chastity")>>
 					"I sit on your lap. Don't worry. I won't touch your cock. Yet."
 					<<set $estate.cards.desire to "penile">>
 				<<elseif !$worn.genitals.type.includes("chastity")>>

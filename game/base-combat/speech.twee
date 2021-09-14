@@ -200,7 +200,7 @@
 	<</if>>
 <<elseif $speechgenitals is 1>>
 	<<if $player.gender_appearance is $player.gender>>
-		<<if $penisexist is 1 and !$worn.genitals.type.includesAll("chastity", "hidden")>>
+		<<if $player.penisExist and !$worn.genitals.type.includesAll("chastity", "hidden")>>
 			<<if $penissize gte 4>>
 				<<if $enemyanger lte 20>>
 					<<He>> <<admires>> your newly-exposed <<genitals>>. "Your huge cock looks delicious!"
@@ -280,7 +280,7 @@
 				<<He>> <<admires>> your newly-exposed $worn.genitals.name. "I wonder what treasures are behind that lock?".
 			<<elseif $enemyanger lte 20>>
 				<<He>> <<laughs>> your newly-exposed $worn.genitals.name. "So are you hiding a pussy or a tiny penis?".
-				<<if $penisexist is 1>>
+				<<if $player.penisExist>>
 					<<if $penissize is 1>>
 						<<insecurity "penis_small" 1>><<ginsecurity "penis_small">>
 					<<elseif $penissize lt 1>>
@@ -4412,7 +4412,7 @@
 			<<set $_text_output to `<<He>> gasps. "Iloveyouiloveyouiloveyou!!!"`>>
 			<<set $kylarSeen.pushUnique("saidLove")>>
 		<<elseif $speechcrossdressaroused is 1>>
-			<<if $penisexist is 1>>
+			<<if $player.penisExist>>
 				<<set $_text_output to `<<He>> gasps. "You can make me pregnant. I'd given up on making a family, but..." <<He>> starts <<printTo>> cry. "You can make me pregnant...!"`>>
 			<<else>>
 				<<set $_text_output to `<<He>> gasps. "I can make you pregnant. I'd given up on making a family, but..." <<He>> starts <<printTo>> cry. "I can make you pregnant...!"`>>
@@ -4446,7 +4446,7 @@
 		<<elseif _silent isnot 1>>
 			<<if $kylarsexcycle is 0>>
 				<<set $kylarsexcycle += 1>>
-				<<if ($genderknown.includes("Kylar") and ($penisexist is 1 and $NPCList[_n].vagina isnot "none") or ($vaginaexist is 1 and $NPCList[_n].penis isnot "none"))
+				<<if ($genderknown.includes("Kylar") and ($player.penisExist and $NPCList[_n].vagina isnot "none") or ($player.vaginaExist and $NPCList[_n].penis isnot "none"))
 				or (($player.gender_appearance is "m" and $NPCList[_n].vagina isnot "none") or ($player.gender_appearance is "f" and $NPCList[_n].penis isnot "none"))>>
 					<<set $_text_output to `<<He>> whispers into your ear. "We're going <<printTo>> make lots of babies."`>>
 				<<else>>

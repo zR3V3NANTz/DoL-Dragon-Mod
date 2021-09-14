@@ -86,11 +86,11 @@ You are inside the hospital foyer. <<if $psych is 1>>You see a sign directing to
 			<<link [[Inquire about breast reduction (0:10)|Hospital Breast Reduction]]>><<pass 10>><</link>>
 			<br>
 		<</if>>
-		<<if $penisexist is 1 and $penissize lt $penissizemax>>
+		<<if $player.penisExist and $penissize lt $penissizemax>>
 			<<link [[Inquire about penis enlargement (0:10)|Hospital Penis Enlargement]]>><<pass 10>><</link>>
 			<br>
 		<</if>>
-		<<if $penisexist is 1 and $penissize gt $penissizemin>>
+		<<if $player.penisExist and $penissize gt $penissizemin>>
 			<<link [[Inquire about penis reduction (0:10)|Hospital Penis Reduction]]>><<pass 10>><</link>>
 			<br>
 		<</if>>

@@ -39,88 +39,88 @@
 <<if !$worn.upper.type.includes("naked") and !$worn.upper.type.includes("swim") and !$worn.upper.type.includes("stealthy")>>
 	<<if $upperwet gte 100 and $upperwetstage lt 3>>
 		<<set $upperwetstage to 3>><<set $wetintro to 2>>
-		<span class="lewd">Water soaks through your $worn.upper.name, exposing your <<breasts>>.</span>
+		<span class="lewd">Water soaks through your $worn.upper.name, exposing your <<undertop>>. </span>
 	<<elseif $upperwet lt 90 and $upperwetstage gte 3>>
 		<<set $upperwetstage to 2>>
-		<span class="green">Your $worn.upper.name <<upperhas>> dried, concealing your <<breasts>>.</span>
+		<span class="green">Your $worn.upper.name <<upperhas>> dried, concealing your <<undertop>>. </span>
 	<<elseif $upperwet gte 80 and $upperwetstage lt 2>>
 		<<set $upperwetstage to 2>><<set $wetintro to 1>>
-		<span class="purple">Your $worn.upper.name <<upperplural>> wet.</span>
+		<span class="purple">Your $worn.upper.name <<upperplural>> wet. </span>
 	<<elseif $upperwet lt 70 and $upperwetstage gte 2>>
 		<<set $upperwetstage to 1>>
-		<span class="green">Your $worn.upper.name <<upperplural>> drying out.</span>
+		<span class="green">Your $worn.upper.name <<upperplural>> drying out. </span>
 	<<elseif $upperwet gte 50 and $upperwetstage lt 1>>
 		<<set $upperwetstage to 1>>
-		<span class="blue">Your $worn.upper.name <<upperplural>> damp.</span>
+		<span class="blue">Your $worn.upper.name <<upperplural>> damp. </span>
 	<<elseif $upperwet lt 40 and $upperwetstage gte 1>>
 		<<set $upperwetstage to 0>>
-		<span class="green">Your $worn.upper.name <<upperplural>> dry.</span>
+		<span class="green">Your $worn.upper.name <<upperplural>> dry. </span>
 	<</if>>
 <</if>>
 
 <<if !$worn.lower.type.includes("naked") and !$worn.lower.type.includes("swim") and !$worn.lower.type.includes("stealthy")>>
 	<<if $lowerwet gte 100 and $lowerwetstage lt 3>>
 		<<set $lowerwetstage to 3>><<set $wetintro to 2>>
-		<span class="lewd">Water soaks through your $worn.lower.name, exposing your <<undies>>.</span>
+		<span class="lewd">Water soaks through your $worn.lower.name, exposing your <<undies>>. </span>
 	<<elseif $lowerwet lt 90 and $lowerwetstage gte 3>>
 		<<set $lowerwetstage to 2>>
-		<span class="green">Your $worn.lower.name <<lowerhas>> dried, concealing your <<undies>>.</span>
+		<span class="green">Your $worn.lower.name <<lowerhas>> dried, concealing your <<undies>>. </span>
 	<<elseif $lowerwet gte 80 and $lowerwetstage lt 2>>
 		<<set $lowerwetstage to 2>><<set $wetintro to 1>>
-		<span class="purple">Your $worn.lower.name <<lowerplural>> wet.</span>
+		<span class="purple">Your $worn.lower.name <<lowerplural>> wet. </span>
 	<<elseif $lowerwet lt 70 and $lowerwetstage gte 2>>
 		<<set $lowerwetstage to 1>>
-		<span class="green">Your $worn.lower.name <<lowerplural>> drying out.</span>
+		<span class="green">Your $worn.lower.name <<lowerplural>> drying out. </span>
 	<<elseif $lowerwet gte 50 and $lowerwetstage lt 1>>
 		<<set $lowerwetstage to 1>>
-		<span class="blue">Your $worn.lower.name <<lowerplural>> damp.</span>
+		<span class="blue">Your $worn.lower.name <<lowerplural>> damp. </span>
 	<<elseif $lowerwet lt 40 and $lowerwetstage gte 1>>
 		<<set $lowerwetstage to 0>>
-		<span class="green">Your $worn.lower.name <<lowerplural>> dry.</span>
+		<span class="green">Your $worn.lower.name <<lowerplural>> dry. </span>
 	<</if>>
 <</if>>
 
 <<if !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and !$worn.under_lower.type.includes("swim") and !$worn.under_lower.type.includes("stealthy")>>
 	<<if $underlowerwet gte 100 and $underlowerwetstage lt 3>>
 		<<set $underlowerwetstage to 3>><<set $wetintro to 2>>
-		<span class="lewd"><<if $pantiesSoaked is 1>>Your bodily fluids soak<<else>>Water soaks<</if>> through your $worn.under_lower.name, exposing your <<genitals>>.</span>
+		<span class="lewd"><<if $pantiesSoaked is 1>>Your bodily fluids soak<<else>>Water soaks<</if>> through your $worn.under_lower.name, exposing your <<genitals>>. </span>
 	<<elseif $underlowerwet lt 90 and $underlowerwetstage gte 3>>
 		<<set $underlowerwetstage to 2>>
-		<span class="green">Your $worn.under_lower.name <<underlowerhas>> dried, concealing your <<genitals>>.</span>
+		<span class="green">Your $worn.under_lower.name <<underlowerhas>> dried, concealing your <<genitals>>. </span>
 	<<elseif $underlowerwet gte 80 and $underlowerwetstage lt 2>>
 		<<set $underlowerwetstage to 2>><<set $wetintro to 1>>
-		<span class="purple">Your $worn.under_lower.name <<underlowerplural>> wet.</span>
+		<span class="purple">Your $worn.under_lower.name <<underlowerplural>> wet. </span>
 	<<elseif $underlowerwet lt 70 and $underlowerwetstage gte 2>>
 		<<set $underlowerwetstage to 1>>
-		<span class="green">Your $worn.under_lower.name <<underlowerplural>> drying out.</span>
+		<span class="green">Your $worn.under_lower.name <<underlowerplural>> drying out. </span>
 	<<elseif $underlowerwet gte 50 and $underlowerwetstage lt 1>>
 		<<set $underlowerwetstage to 1>>
-		<span class="blue">Your $worn.under_lower.name <<underlowerplural>> damp.</span>
+		<span class="blue">Your $worn.under_lower.name <<underlowerplural>> damp. </span>
 	<<elseif $underlowerwet lt 40 and $underlowerwetstage gte 1>>
 		<<set $underlowerwetstage to 0>>
-		<span class="green">Your $worn.under_lower.name <<underlowerplural>> dry.</span>
+		<span class="green">Your $worn.under_lower.name <<underlowerplural>> dry. </span>
 	<</if>>
 <</if>>
 
 <<if !$worn.under_upper.type.includes("naked") and !$worn.under_upper.type.includes("chastity") and !$worn.under_upper.type.includes("swim") and !$worn.under_upper.type.includes("stealthy")>>
 	<<if $underupperwet gte 100 and $underupperwetstage lt 3>>
 		<<set $underupperwetstage to 3>><<set $wetintro to 2>>
-		<span class="lewd">Water soaks through your $worn.under_upper.name, exposing your <<breasts>>.</span>
+		<span class="lewd">Water soaks through your $worn.under_upper.name, exposing your <<breasts>>. </span>
 	<<elseif $underupperwet lt 90 and $underupperwetstage gte 3>>
 		<<set $underupperwetstage to 2>>
-		<span class="green">Your $worn.under_upper.name <<underupperhas>> dried, concealing your <<breasts>>.</span>
+		<span class="green">Your $worn.under_upper.name <<underupperhas>> dried, concealing your <<breasts>>. </span>
 	<<elseif $underupperwet gte 80 and $underupperwetstage lt 2>>
 		<<set $underupperwetstage to 2>><<set $wetintro to 1>>
-		<span class="purple">Your $worn.under_upper.name <<underupperplural>> wet.</span>
+		<span class="purple">Your $worn.under_upper.name <<underupperplural>> wet. </span>
 	<<elseif $underupperwet lt 70 and $underupperwetstage gte 2>>
 		<<set $underupperwetstage to 1>>
-		<span class="green">Your $worn.under_upper.name <<underupperplural>> drying out.</span>
+		<span class="green">Your $worn.under_upper.name <<underupperplural>> drying out. </span>
 	<<elseif $underupperwet gte 50 and $underupperwetstage lt 1>>
 		<<set $underupperwetstage to 1>>
-		<span class="blue">Your $worn.under_upper.name <<underupperplural>> damp.</span>
+		<span class="blue">Your $worn.under_upper.name <<underupperplural>> damp. </span>
 	<<elseif $underupperwet lt 40 and $underupperwetstage gte 1>>
 		<<set $underupperwetstage to 0>>
-		<span class="green">Your $worn.under_upper.name <<underupperplural>> dry.</span>
+		<span class="green">Your $worn.under_upper.name <<underupperplural>> dry. </span>
 	<</if>>
 <</if>>
 

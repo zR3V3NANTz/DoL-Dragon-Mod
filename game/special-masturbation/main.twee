@@ -765,7 +765,7 @@ The other students are so near, they could so easily see what you're doing.
 	<<npc Winter>><<person1>>Once your orgasm has subsided Winter turns and leans close. "So you like touching yourself," <<he>> whispers. "I know just what to do with dirty <<girls>> like you. Come with me."
 	<br><br>
 
-	<<He>> stands upright. "Turn to page 117 please," <<he>> announces to the class. "I shan't be long." You follow <<him>> from the classroom, and into a storage room. It contains various antiques and props that you recognise from <<his>> lessons. <<He>> reaches into a wooden box and produces a metal chastity <<if $penisexist isnot 1>>belt<<else>>cage<</if>>.
+	<<He>> stands upright. "Turn to page 117 please," <<he>> announces to the class. "I shan't be long." You follow <<him>> from the classroom, and into a storage room. It contains various antiques and props that you recognise from <<his>> lessons. <<He>> reaches into a wooden box and produces a metal chastity <<if $player.penisExist>>cage<<else>>belt<</if>>.
 	<br><br>
 
 	"Strip," <<he>> commands. <<He>> blows dust off the device. "You clearly can't control yourself. This is for your own good."
@@ -1095,7 +1095,7 @@ You put on a brave face and tell <<him>> you're fine. "Okay. If you say so," <<h
 :: History Masturbate Strip
 
 <<set $outside to 0>><<set $location to "school">><<effects>>
-<<if $penisexist is 1 and $worn.genitals.name is "chastity cage" and $worn.genitals.origin is "Winter">>
+<<if $player.penisExist and $worn.genitals.name is "chastity cage" and $worn.genitals.origin is "Winter">>
 	<<if $worn.under_lower.type.includes("naked")>>
 		You <<nervously>> remove your $worn.lower.name while trying to keep your <<genitals>> concealed from the teacher. "I'll overlook your lack of underwear, this time," <<he>> says.
 	<<else>>
@@ -1161,7 +1161,7 @@ You put on a brave face and tell <<him>> you're fine. "Okay. If you say so," <<h
 	<</if>>
 	<<set $worn.genitals.origin to "Winter">>
 	<<set $genderknown.pushUnique("Winter")>>
-	Once naked from the waist down, <<he>> wraps the <<if $penisexist isnot 1>>belt<<else>>cage<</if>> around your waist. The lock shuts with a loud click. "There," <<he>> says. "No more temptation for you."
+	Once naked from the waist down, <<he>> wraps the <<if $player.penisExist>>cage<<else>>belt<</if>> around your waist. The lock shuts with a loud click. "There," <<he>> says. "No more temptation for you."
 	<br><br>
 	<<if $submissive gte 1150>>
 		"Will you let me out?" you ask.
@@ -1171,10 +1171,10 @@ You put on a brave face and tell <<him>> you're fine. "Okay. If you say so," <<h
 		"When will you let me out?" you ask.
 	<</if>>
 	<br><br>
-	<<if $penisexist isnot 1>>
-		<<He>> shrugs. "The key is long lost.
-	<<else>>
+	<<if $player.penisExist>>
 		<<He>> shrugs. "Maybe, not sure where the key is though.
+	<<else>>
+		<<He>> shrugs. "The key is long lost.
 	<</if>>
 	Hopefully by the time you get out you'll have developed some self control." <<He>> stands up. "Now let's get back to class."
 	<br><br>

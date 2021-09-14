@@ -320,39 +320,52 @@ The group soon leaves via the window. <<person1>> Harper closes it then turns to
 
 	<<He>> gently probes your <<genitals>> with <<his>> fingers.
 	<<if $worn.genitals.type.includes("naked") and setup.bodyliquid.combined("vagina") gte 2>>
+		Cum and other lewd fluids
 		<<if setup.bodyliquid.combined("vagina") gte 4>>
-			Cum and other lewd fluids gush out and
+			gush
 		<<else>>
-			Cum and other lewd fluids dribble out and
-		<</if>>Harper's hands snap back.
+			dribble
+		<</if>>
+		out <<if $player.penisExist>>of your pussy <</if>>and Harper's hands snap back.
 		<br><br>
 		"Sexual activity is perfectly normal, but it is crucial to look after your hygiene," Harper rebukes.
 		<br>
-		Harper grabs a glass beaker from a nearby cupboard and holds it under your butt. With the other hand <<he>> holds open your <<genitals>>
+		Harper grabs a glass beaker from a nearby cupboard and holds it under your butt. With the other hand <<he>> holds open your vagina,
 		allowing the lewd fluids to drain out into the beaker.
 		<br>
 		<<if setup.bodyliquid.combined("vagina") gte 4>>
 			"There's still more," Harper says. A moment later, a finger is pushed deep inside your vagina. A final wave of fluids run out.
 			<br>
-		<</if>><<if $player.bodyliquid.vagina.goo gte 1>><<set $player.bodyliquid.vagina.goo to 0>><</if>><<if $player.bodyliquid.vagina.semen gte 1>><<set $player.bodyliquid.vagina.semen to 0>><</if>>
-		"There," <<he>> says. "I'll take this away for... for testing. Now lets resume."
+		<</if>>
+		<<set $player.bodyliquid.vagina to {"goo": 0, "semen": 0}>>
+		"There," <<he>> says. "I'll take this away for... for testing. Now let's resume."
 		<br><br>
 		Harper resumes the exam.
 	<</if>>
-	Almost as soon as <<he>> touches you, you feel a distinct warmth spread through your groin. You try to resist, but you don't have any control over it. <<if $penisexist is 1 and $worn.genitals.type.includes("naked")>>Your penis soon stands conspicuously erect. Harper continues as if nothing is amiss.<<elseif $penisexist is 1>>Your penis soon attempts to form erection despite the lack of space. Harper continues as if nothing is amiss.<<else>>You can feel the fluid leaking from your slit. Harper lifts <<his>> hand up to <<his>> eyes, and you see the liquid drip from <<his>> fingers.<</if>>
+	Almost as soon as <<he>> touches you, you feel a distinct warmth spread through your groin. You try to resist, but you don't have any control over it. 
+	<<if $player.penisExist and $worn.genitals.type.includes("naked")>>
+		Your penis soon stands conspicuously erect. Harper continues as if nothing is amiss.
+	<<elseif $player.penisExist>>
+		Your penis soon attempts to form an erection despite the lack of space. Harper continues as if nothing is amiss.
+	<<else>>
+		You can feel the fluid leaking from your slit. Harper lifts <<his>> hand up to <<his>> eyes, and you see the liquid drip from <<his>> fingers.
+	<</if>>
 
 	<br><br>
 
-	"There's no need to be ashamed. This is a perfectly natural and normal response," <<he>> says in a dry tone. <<He>> continues <<his>> systematic investigation of your <<genitals 1>>.
+	"There's no need to be ashamed. This is a perfectly natural and normal response," <<he>> says in a dry tone. 
+	<<He>> continues <<his>> systematic investigation of your <<genitals 1>>.
 	<<arousal 2000>>
 	<br><br>
 
 	<<if $arousal gte $arousalmax>><<arousal -8000>><<set $stress -= 200>>
-		The warmth within you continues to build, but Harper shows no sign of letting up. You feel yourself pass the point of no return, and you whimper softly. "Please, no." Harper is looking at you puzzled when it hits you. The orgasm emerges and your back immediately arcs. Uncontrollable moans escape your lips and you grip the side of the bed to stop your arms flailing.
+		The warmth within you continues to build, but Harper shows no sign of letting up. You feel yourself pass the point of no return, and you whimper softly. 
+		"Please, no." Harper is looking at you puzzled when it hits you. The orgasm emerges and your back immediately arcs. 
+		Uncontrollable moans escape your lips and you grip the side of the bed to stop your arms flailing.
 		<<orgasmstat>><<set $orgasmcount += 1>>
 		<br><br>
 
-		<<if $penisexist is 1 and $orgasmcount lte 23 and $devstate is 1>>
+		<<if $player.penisExist and $orgasmcount lte 23 and $devstate is 1>>
 			<<if !$worn.genitals.type.includes("naked")>>
 				You ejaculate, generating a large wet patch and filling the inside of your $worn.genitals.name with your fluids.
 			<<elseif !$worn.under_lower.type.includes("naked")>>
@@ -373,11 +386,14 @@ The group soon leaves via the window. <<person1>> Harper closes it then turns to
 <<elseif $phase is 2>>
 	<<person1>><<He>> gently probes your <<genitals>> with <<his>> fingers.
 	<<if $worn.genitals.type.includes("naked") and setup.bodyliquid.combined("vagina") gte 2>>
+		Cum and other lewd fluids
 		<<if setup.bodyliquid.combined("vagina") gte 4>>
-			Cum and other lewd fluids gush out.
+			gush
 		<<else>>
-			Cum and other lewd fluids leak out.
-		<</if>>Harper's hands snap back and you hear the <<person2>><<person>> gasp.
+			leak
+		<</if>>
+		out <<if $player.penisExist>>of your pussy<</if>>.
+		Harper's hands snap back and you hear the <<person2>><<person>> gasp.
 		<br>
 		"Sexual activity is perfectly normal, but it is crucial to look after your hygiene," Harper rebukes. "Hey you, uhh... Student. Bring over a beaker. No, a beaker. The glass thing in that cupboard there. There! That's it."
 		<br>
@@ -401,13 +417,19 @@ The group soon leaves via the window. <<person1>> Harper closes it then turns to
 		<<else>>
 			"That's it,"
 		<</if>>
-		<<if $player.bodyliquid.vagina.goo gte 1>><<set $player.bodyliquid.vagina.goo to 0>><</if>>
-		<<if $player.bodyliquid.vagina.semen gte 1>><<set $player.bodyliquid.vagina.semen to 0>><</if>>
-		Harper says. "Put the beaker over there for later. For testing that is. Lets resume."
+		<<set $player.bodyliquid.vagina to {"goo": 0, "semen": 0}>>
+		Harper says. "Put the beaker over there for later. For testing that is. Let's resume."
 		<br><br>
 		<<person1>>Harper resumes the exam.
 	<</if>>
-	Almost as soon as <<he>> touches you, you feel a distinct warmth spread through your groin. You try to resist, but you don't have any control over it. <<if $penisexist is 1 and $worn.genitals.type.includes("naked")>>Your penis soon stands conspicuously erect. Harper continues as if nothing is amiss.<<elseif $penisexist is 1>>Your penis soon attempts to form erection despite the lack of space. Harper continues as if nothing is amiss.<<else>>You can feel the fluid leaking from your slit. Harper lifts <<his>> hand up to <<his>> eyes, and you see the liquid drip from <<his>> fingers.<</if>>
+	Almost as soon as <<he>> touches you, you feel a distinct warmth spread through your groin. You try to resist, but you don't have any control over it. 
+	<<if $player.penisExist and $worn.genitals.type.includes("naked")>>
+		Your penis soon stands conspicuously erect. Harper continues as if nothing is amiss.
+	<<elseif $player.penisExist>>
+		Your penis soon attempts to form erection despite the lack of space. Harper continues as if nothing is amiss.
+	<<else>>
+		You can feel the fluid leaking from your slit. Harper lifts <<his>> hand up to <<his>> eyes, and you see the liquid drip from <<his>> fingers.
+	<</if>>
 	<br><br>
 
 	"There's no need to be ashamed. This is a perfectly natural and normal response," <<he>> says in a dry tone. "Student, come give me a hand." <<person2>>The <<person>> arrives at your side, looking nervous but eager.<<person1>> Together, they continue the systematic investigation of your <<genitals 1>>.
@@ -419,15 +441,15 @@ The group soon leaves via the window. <<person1>> Harper closes it then turns to
 		<<orgasmstat>><<set $orgasmcount += 1>>
 		<br><br>
 
-			<<if $penisexist is 1 and $orgasmcount lte 23 and $devstate is 1>>
-				<<if !$worn.genitals.type.includes("naked")>>
-					You ejaculate, generating a large wet patch and filling the inside of your $worn.genitals.name with your fluids.
-				<<elseif !$worn.under_lower.type.includes("naked")>>
-					You ejaculate, generating a large wet patch and filling the inside of your $worn.under_lower.name with your fluids.
-				<<else>>
-					Semen spurts from the tip of your penis, rising into the air and splattering all over your thighs and torso.
-				<</if>>
+		<<if $player.penisExist and $orgasmcount lte 23 and $devstate is 1>>
+			<<if !$worn.genitals.type.includes("naked")>>
+				You ejaculate, generating a large wet patch and filling the inside of your $worn.genitals.name with your fluids.
+			<<elseif !$worn.under_lower.type.includes("naked")>>
+				You ejaculate, generating a large wet patch and filling the inside of your $worn.under_lower.name with your fluids.
+			<<else>>
+				Semen spurts from the tip of your penis, rising into the air and splattering all over your thighs and torso.
 			<</if>>
+		<</if>>
 
 		Despite it all, Harper continues as if absolutely nothing is amiss. You lie there, spent and humiliated, as <<he>> finishes <<his>> examination. Finally, <<he>> grabs some paper towels and starts cleaning up your fluids. You pretend to be elsewhere.
 		<br><br>

@@ -855,7 +855,7 @@ The <<person>> watches all the while. You lie down on the table.
 		"That's that," <<he>> says, pulling away. You push yourself onto your knees to stand, <span class="lewd">and <<he>> strikes,</span> grasping your hips and hoisting your <<bottom>> into the air. Before you can react, <<hes>> climbed onto the table and pushed <<his>> pelvis against yours. Your <<genitals>> brushes against <<his>> <<if $NPCList[0].penis isnot "none">>cock.<<else>>vagina.<</if>><<ggarousal>><<arousal 1200>>
 		<br><br>
 
-		"There are other forms of massage," <<he>> says, grasping your shoulders and humping you. <<if $NPCList[0].penis isnot "none" and ($vaginaexist is 1 or $analdisable is "f") and !$worn.genitals.type.includes("chastity")>><<He>> doesn't try to penetrate, but it would be easy from such a position.<</if>><<ggarousal>><<arousal 1200>>
+		"There are other forms of massage," <<he>> says, grasping your shoulders and humping you. <<if $NPCList[0].penis isnot "none" and ($player.vaginaExist or $analdisable is "f") and !$worn.genitals.type.includes("chastity")>><<He>> doesn't try to penetrate, but it would be easy from such a position.<</if>><<ggarousal>><<arousal 1200>>
 		<br><br>
 
 
@@ -882,7 +882,7 @@ The <<person>> watches all the while. You lie down on the table.
 
 The <<person>> rubs oil over your chest, then continues rubbing <<his>> body against yours.
 
-<<if $penisexist is 1 and $NPCList[0].penis is "none" and !$worn.genitals.type.includes("chastity")>>
+<<if $player.penisExist and $NPCList[0].penis is "none" and !$worn.genitals.type.includes("chastity")>>
 	<<He>> need only back up a little, and your <<penis>> would enter <<him>>, but <<he>> doesn't take advantage.
 <</if>>
 <br><br>
@@ -907,7 +907,7 @@ The <<person>> rubs oil over your chest, then continues rubbing <<his>> body aga
 <<if $arousal gte $arousalmax>>
 	You open your mouth to speak, just as your body betrays you.<<orgasm>>
 	<br>
-	The <<person>> laughs, rubbing oil over your chest. "Were you trying to say something?" <<he>> says as you twitch beneath <<him>>. <<if $penisexist is 1>>"You're getting my ass all slimy.<</if>>
+	The <<person>> laughs, rubbing oil over your chest. "Were you trying to say something?" <<he>> says as you twitch beneath <<him>>. <<if $player.penisExist>>"You're getting my ass all slimy.<</if>>
 	<br><br>
 
 	<<He>> climbs off. "Thanks for humouring me. Commendable service, all round." <<He>> picks up <<his>> towel and leaves the room.
@@ -2136,10 +2136,10 @@ You grasp the <<persons>> arms, and push them away. "Look," you say. "Don't touc
 	<</if>>
 	<<set $enemyarousal to ($enemyarousalmax * 0.65)>>
 	<<promiscuity5>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<body_tip penile add>><<set $tip_add to ($tip + random(100, 1000))>>
 	<</if>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<body_tip vaginal add>><<set $tip_add to ($tip + random(100, 1000))>>
 	<</if>>
 	<<prop table>>

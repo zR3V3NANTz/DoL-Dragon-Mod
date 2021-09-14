@@ -40,20 +40,19 @@ Exhibitionism (<<= $exhibitionism>>)
 <br><br>
 
 Toggle:
-<<link "Sex">>
-    <<if $player.gender is "f">>
-        <<set $player.gender to "m">><<set $penisexist to 1>><<set $vaginaexist to 0>><<set $player.penisExist to true>><<set $player.ballsExist to true>><<set $player.vaginaExist to false>>
-    <<else>>
-        <<set $player.gender to "f">><<set $penisexist to 0>><<set $vaginaexist to 1>><<set $player.penisExist to false>><<set $player.ballsExist to false>><<set $player.vaginaExist to true>>
-    <</if>>
+<<link "Gender">>
+    /* note: add ability to switch to herm gender in the future; maybe a set of (three) buttons to pick which gender instead of a toggle? */
+    <<set $player.gender to ($player.gender is "m" ? "f" : "m")>>
+    <<set $player.penisExist to ($player.gender is "m")>>
+    <<set $player.ballsExist to ($player.gender is "m")>>
+    <<set $player.vaginaExist to ($player.gender is "f")>>
     <<goto "Testing Room">>
 <</link>> |
-<<link "Gender">>
-    <<if $player.sex is "f">>
-        <<set $player.sex to "m">><<set $penisexist to 1>><<set $vaginaexist to 0>><<set $player.penisExist to true>><<set $player.ballsExist to true>><<set $player.vaginaExist to false>>
-    <<else>>
-        <<set $player.sex to "f">><<set $penisexist to 0>><<set $vaginaexist to 1>><<set $player.penisExist to false>><<set $player.ballsExist to false>><<set $player.vaginaExist to true>>
-    <</if>>
+<<link "Sex">>
+    <<set $player.sex to ($player.sex is "m" ? "f" : "m")>>
+    <<set $player.penisExist to ($player.gender is "m")>>
+    <<set $player.ballsExist to ($player.gender is "m")>>
+    <<set $player.vaginaExist to ($player.gender is "f")>>
     <<goto "Testing Room">>
 <</link>> |
 <<link "Virginity">>

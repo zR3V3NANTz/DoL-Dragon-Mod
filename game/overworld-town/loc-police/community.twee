@@ -1106,7 +1106,7 @@ The van rumbles into life. You catch a <<person2>><<person>> sitting opposite ch
 
 <<if $worn.lower.skirt is 1>>
 	You cross your legs, showing a good deal of your thigh and almost flashing your <<undies>>.
-<<elseif $penisexist is 1>>
+<<elseif $player.penisExist>>
 	You spread your legs, and emphasis the bulge beneath your $worn.lower.name.
 <<else>>
 	You spread your legs, and bite your lower lip.

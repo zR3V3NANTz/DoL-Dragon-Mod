@@ -73,7 +73,7 @@ Amused by <<his>> response, you continue your walk.
 A bit of semen drips from your <<pussy>> onto the ground as you walk.
 <</if>>
 
-	<<if $rng gte 80 and $deviancy gte 15 and $vaginaexist is 1 and $swarmdisable is "f">>
+	<<if $rng gte 80 and $deviancy gte 15 and $player.vaginaExist and $swarmdisable is "f">>
 
 	After a few minutes you find a nice glade. The soft wind feels nice. You decide to lie down.
 	<br><br>
@@ -190,11 +190,11 @@ You had enough fun for now and decide to return. You finish your walk. You feel 
 	<br><br>
 	A really lewd and crazy idea pops in your head.
 	<br>
-	You have one 'pocket' at your disposal. A natural one. Your <<if $vaginaexist is 1>>vagina<<else>>asshole<</if>>!
+	You have one 'pocket' at your disposal. A natural one. Your <<print ($player.vaginaExist ? "vagina" : "asshole")>>!
 	<br>
 	Not wasting any time you pick up one gold bar. Your heart is beating loudly.
 	<<if $arousal gte ($arousalmax / 5) * 3>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<br><br>
 			You are really aroused and your <<pussy>> is completely wet. It barely takes any effort to insert the tip of the gold bar in your vagina.
 			<br>
@@ -212,7 +212,7 @@ You had enough fun for now and decide to return. You finish your walk. You feel 
 			Within moments the whole gold bar is inside of you.
 		<</if>>
 	<<elseif $arousal gte ($arousalmax / 10) * 3>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<br><br>
 			You are aroused and your <<pussy>> is a bit wet. It takes not much of an effort to insert the tip of the gold bar in your vagina.
 			<br>
@@ -230,7 +230,7 @@ You had enough fun for now and decide to return. You finish your walk. You feel 
 			Within moments the whole gold bar is inside of you.
 		<</if>>
 	<<elseif $arousal gte $arousalmax / 10>>
-		<<if $vaginaexist is 1>>
+		<<if $player.vaginaExist>>
 			<br><br>
 			Your <<pussy>> is not really wet. It takes a lot effort to insert the tip of the gold bar in your vagina.
 			<br>
@@ -277,15 +277,15 @@ You raise your empty hands as proof, but this just makes you even more aroused.
 <<arousal 1000>>
 
 <<if $arousal gte ($arousalmax / 5) * 3>>
-<br>
-The couple has a hard time not looking at your <<if $penisexist is 1>>fully erect penis<<else>>dripping wet pussy as your juices keep leaking out of you like honey.<</if>>.
-<br>
-After a long moment they look at your hand.
-<br>
+	<br>
+	The couple has a hard time not looking at your <<if $player.penisExist>>fully erect penis<<else>>dripping wet pussy as your juices keep leaking out of you like honey<</if>>.
+	<br>
+	After a long moment they look at your hand.
+	<br>
 <<else>>
-<br>
-The couple checks out your <<genitals>>. After a moment they look at your hand.
-<br>
+	<br>
+	The couple checks out your <<genitals>>. After a moment they look at your hand.
+	<br>
 <</if>>
 <br>
 "I don't see anything in <<pher>> hands, <<pshe>> is obviously just a pervert." says the man.

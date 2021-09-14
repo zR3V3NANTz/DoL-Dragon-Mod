@@ -253,7 +253,7 @@ Previous "Always Open" mouth. activemouth can be used in all active frames still
 This image is the eyelids, commented out so the player's eyes stay open in idle frames.
 <img class="layer-sexmouth anim-idle-2f" @src="_img.activeeyelids" @style="'filter: '+_filters.body">
 -->
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<if $worn.genitals.name is "chastity belt">>
 		<img class="layer-sexmouth" src="img/sex/missionary/active/body/activepenischastity.png">
 	<<elseif $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1>>
@@ -682,7 +682,7 @@ Same as above, but with eyelashes.
 	<</if>>
 <</if>>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<if $worn.genitals.type.includes("chastity")>>
 		<img @class="'layer-sexhair anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activepenischastity.png">
 	<<elseif $penisstate is "penetrated" or $penisstate is "otheranus">>

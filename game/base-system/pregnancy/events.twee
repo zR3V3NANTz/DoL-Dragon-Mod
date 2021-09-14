@@ -559,7 +559,7 @@ Player re-equips clothes.
 The packaging said to wait 3 minutes, but it feels like an eternity passes. <<gstress>><<stress 3>>
 <br><br>
 <<set $pregnancyStats.pregnancyTestsTaken++>>
-<<if $vaginaexist is 0>>
+<<if !$player.vaginaExist>>
 	<span class="green">It's negative.</span> You wonder how it could ever be positive.
 <<else>>
 	<<set _pregnancy to $sexStats.vagina.pregnancy>>

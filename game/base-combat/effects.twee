@@ -2893,7 +2893,7 @@ You try to pull your head away from the penis threatening your mouth.
 		<<set $thighactiondefault to "othermouthrub">><<thighstat>><<sex 5>>
 		<<actionsmouththighrub>>
 	<<else>>
-		<<if $penisuse is 0 and ($vaginaexist is 0 or $vaginause isnot 0 or random(0,100) gte 50)>>
+		<<if $penisuse is 0 and (!$player.vaginaExist or $vaginause isnot 0 or random(0,100) gte 50)>>
 			<<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penisactiondefault to "thighbay">><<set $thighuse to 0>>
 			<<for _j = 0; _j lt $enemyno; _j++>>
 				<<if $NPCList[_j].mouth is "thigh">>
@@ -2934,7 +2934,7 @@ You try to pull your head away from the penis threatening your mouth.
 
 <<if $thighaction is "othermouthstop">>
 	<<set $thighaction to 0>><<set $thighactiondefault to "stop">><<set $thighuse to 0>>
-	<<if $penisuse is 0 and ($vaginaexist is 0 or $vaginause isnot 0 or random(0,100) gte 50)>>
+	<<if $penisuse is 0 and (!$player.vaginaExist or $vaginause isnot 0 or random(0,100) gte 50)>>
 		<<for _j = 0; _j lt $enemyno; _j++>>
 			<<if $NPCList[_j].mouth is "thigh">>
 				<<personselect _j>>

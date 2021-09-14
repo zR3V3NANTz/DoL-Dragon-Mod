@@ -263,7 +263,7 @@
 	<<set _menstruation.stages to [0, _stage2, _stage3, _stage3 + random(1,2) * 0.5]>>
 
 
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<set $sexStats.vagina.menstruation.running = true>>
 	<</if>>
 <</if>>
@@ -348,7 +348,7 @@
 	<<default>>
 		<<set _penisMulti to 1>>
 <</switch>>
-<<if $penisexist is 1 and _penisMulti isnot 0>>
+<<if $player.penisExist and _penisMulti isnot 0>>
 	<<set _totalReduction to ($sexStats.creampie.self.anus + $sexStats.creampie.self.mouth) * 2>>
 	<<set _totalIncrease to ($sexStats.creampie.npc.anus + $sexStats.creampie.npc.mouth + $sexStats.creampie.npc.vagina) * 2>>
 

@@ -85,10 +85,8 @@ Infinite spray: <span id="statsinfinitespray">$infinitespray</span> |
 		<<link [[Become boy|$passage]]>>
 			<<set $vaginause to "none">>
 			<<set $vaginastate to "none">>
-			<<set $vaginaexist to 0>>
 			<<set $penisuse to 0>>
 			<<set $penisstate to 0>>
-			<<set $penisexist to 1>>
 			<<set $player.gender to "m">>
 			<<set $player.sex to "m">>
 			<<set $player.ballsExist to true>>
@@ -103,10 +101,8 @@ Infinite spray: <span id="statsinfinitespray">$infinitespray</span> |
 		<<link [[Become girl|$passage]]>>
 			<<set $vaginause to 0>>
 			<<set $vaginastate to 0>>
-			<<set $vaginaexist to 1>>
 			<<set $penisuse to "none">>
 			<<set $penisstate to "none">>
-			<<set $penisexist to 0>>
 			<<set $player.gender to "f">>
 			<<set $player.sex to "f">>
 			<<set $player.ballsExist to false>>
@@ -119,10 +115,8 @@ Infinite spray: <span id="statsinfinitespray">$infinitespray</span> |
 		<<link [[Become hermaphrodite|$passage]]>>
 			<<set $vaginause to 0>>
 			<<set $vaginastate to 0>>
-			<<set $vaginaexist to 1>>
 			<<set $penisuse to 0>>
 			<<set $penisstate to 0>>
-			<<set $penisexist to 1>>
 			<<set $player.gender to "h">>
 			<<set $player.sex to "h">>
 			<<set $player.penisExist to true>>
@@ -253,7 +247,7 @@ Body size:
 	<</replace>>
 <</link>> |
 <br><br>
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	Vaginal virginity: <span id="statsvaginalvirginity"><<print ($player.virginity.vaginal is true ? "Present" : "Taken by " + ($player.virginity.vaginal is false ? "unknown" : $player.virginity.vaginal))>></span> |
 	<<link "Change">>
 		<<if $player.virginity.vaginal is true>>
@@ -266,7 +260,7 @@ Body size:
 	<br>
 <</if>>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	Penile virginity: <span id="statspenilevirginity"><<print ($player.virginity.penile is true ? "Present" : "Taken by " + ($player.virginity.penile is false ? "unknown" : $player.virginity.penile))>></span> |
 	<<link "Change">>
 		<<if $player.virginity.penile is true>>
@@ -563,7 +557,7 @@ Lactating: <span id="statslactatingspray">$lactating</span> |
 <br>
 <<link "Empty fluids">><<set $semen_amount to 0>><<set $milk_amount to 0>><</link>>
 <br>
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<<link "<<<">><<set $semen_volume -= 1000>><<clamp>><<replace "#statssemen_volume">><<print Math.trunc($semen_volume)>><</replace>> <<updatesidebarimg>><</link>> |
 	<<link "<<">><<set $semen_volume -= 100>><<clamp>><<replace "#statssemen_volume">><<print Math.trunc($semen_volume)>><</replace>> <<updatesidebarimg>><</link>> |
 	<<link "<">><<set $semen_volume -= 10>><<clamp>><<replace "#statssemen_volume">><<print Math.trunc($semen_volume)>><</replace>> <<updatesidebarimg>><</link>> |
@@ -1114,7 +1108,7 @@ Butt size: <span id="statsbottomsize"><<print Math.trunc($bottomsize)>></span>
  | <<link ">">><<set $bottomsize += 1>><<clamp>><<replace "#statsbottomsize">><<print Math.trunc($bottomsize)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 <<link "<">><<set $penissize -= 1>><<clamp>><<replace "#statspenissize">><<print Math.trunc($penissize)>><</replace>><<replace "#statsgenitals">><<genitals>><</replace>> <<updatesidebarimg>><</link>> |
 Penis size: <span id="statspenissize"><<print Math.trunc($penissize)>></span>
  | <<link ">">><<set $penissize += 1>><<clamp>><<replace "#statspenissize">><<print Math.trunc($penissize)>><</replace>><<replace "#statsgenitals">><<genitals>><</replace>> <<updatesidebarimg>><</link>>
@@ -1166,7 +1160,7 @@ Nipple parasites: <span id="statsnippleparasite"><<if $parasite.nipples.name>>$p
 <</link>>
 <br>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	Penis parasites: <span id="statspenisparasite"><<if $parasite.penis.name>>$parasite.penis.name<<else>>None<</if>></span> |
 	<<link "Change">>
 	<<if !$parasite.penis.name>>
@@ -1182,7 +1176,7 @@ Nipple parasites: <span id="statsnippleparasite"><<if $parasite.nipples.name>>$p
 	<br>
 <</if>>
 
-<<if $penisexist isnot 1>>
+<<if !$player.penisExist>>
 	Clit parasites: <span id="statsclitparasite"><<if $parasite.clit.name>>$parasite.clit.name<<else>>None<</if>></span> |
 	<<link "Change">>
 	<<if !$parasite.clit.name>>

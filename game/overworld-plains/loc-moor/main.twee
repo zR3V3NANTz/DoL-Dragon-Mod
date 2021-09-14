@@ -527,9 +527,9 @@ The journey back to shore proves safer.
 	<<flaunting>> you face the <<person>>. <<He>> ogles your <<genitals>>.
 <</if>>
 <<exhibitionism4>>
-<<if $penisexist is 1 and $vaginaexist is 1>>
+<<if $player.penisExist and $player.vaginaExist>>
 	"Both?" <<he>> asks. "It's my lucky day. Shame I don't have a camera."
-<<elseif $penisexist is 1>>
+<<elseif $player.penisExist>>
 	<<if $player.gender_appearance is "f">>
 		"Now there's a surprise," <<he>> says.
 		<<if $penissize gte 4>>
@@ -619,9 +619,9 @@ The <<person>> sighs. "Fine." <<He>> chucks it onto the earth beside you. You cr
 The <<person>> ogles your <<genitals>>.
 <<exhibitionism4>>
 
-<<if $penisexist is 1 and $vaginaexist is 1>>
+<<if $player.penisExist and $player.vaginaExist>>
 	"Both?" <<he>> asks. "It's my lucky day. Shame I don't have a camera."
-<<elseif $penisexist is 1>>
+<<elseif $player.penisExist>>
 	<<if $player.gender_appearance is "f">>
 		"Now there's a surprise," <<he>> says.
 		<<if $penissize gte 4>>

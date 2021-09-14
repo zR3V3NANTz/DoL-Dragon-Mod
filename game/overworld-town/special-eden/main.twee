@@ -937,9 +937,9 @@ You suspect <<hes>> enjoying <<himself>> more than <<he>> would ever admit.<<gar
 
 <<He>> slips off the clothes, and picks up the last item, $eden_underwear_model[2]. There's not much fabric.
 <<He>> slips it on, and poses before you. <<He>> turns on the spot, letting you view <<him>> from all sides.
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	You feel your <<penis>> react to <<his>> teasing.
-<<elseif $vaginaexist is 1>>
+<<elseif $player.vaginaExist>>
 	You feel your pulse pick up in response to <<his>> teasing.
 <</if>>
 <<garousal>><<arousal 200>>
@@ -1148,9 +1148,9 @@ into your chest.
 	<<link [[Refuse|Town Eden Shopping Clothes PC Dress Up Flaunt Refuse]]>><</link>>
 <<elseif $phase is 3>>
 	<<if $player.gender_appearance is "f">>
-		You run the thong through your fingers. It will keep your <<if $vaginaexist is 1>>pussy<<else>>genitals<</if>> covered, but only just. It will leave most of your <<bottom>> exposed as well.
+		You run the thong through your fingers. It will keep your <<print ($player.vaginaExist ? "pussy" : "genitals")>> covered, but only just. It will leave most of your <<bottom>> exposed as well.
 	<<else>>
-		You run the g-string through your fingers. There is just about enough fabric to cover your <<if $penisexist is 1>>penis<<else>>genitals<</if>>, but your <<bottom>> will be exposed.
+		You run the g-string through your fingers. There is just about enough fabric to cover your <<if $player.penisExist>>penis<<else>>genitals<</if>>, but your <<bottom>> will be exposed.
 	<</if>>
 	<br><br>
 	You turn and slip it on. You feel naked as you face Eden. There's a hungry look in <<his>> eyes. You tease <<him>>, giving your ass a little wiggle. <<He>> smacks and squeezes it.
@@ -1161,9 +1161,9 @@ into your chest.
 
 	<<if $NPCName[$NPCNameList.indexOf("Eden")].lust gte 50>>
 		<<He>> wraps <<his>> arms around your waist, and slips <<his>> fingers beneath the waistband of your underwear. <<He>> tugs them down,
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			exposing your penis.
-		<<elseif $vaginaexist is 1>>
+		<<elseif $player.vaginaExist>>
 			exposing your pussy.
 		<</if>>
 		<<undress "basket">>

@@ -621,7 +621,7 @@ You smirk, toss the branch aside, and hop off the ladder. You press your body ag
 	<br><br>
 	<<if $worn.genitals.type.includes("chastity")>>
 		<<He>> tugs at your $worn.genitals.name. "I'm not the one who has to wear chastity to stop them misbehaving," <<he>> teases. "I can satisfy you in other ways."
-	<<elseif $penisexist is 1>>
+	<<elseif $player.penisExist>>
 		<<He>> runs a finger over your <<penis>>, eliciting an involuntary moan.
 		<<if $arousal gte 6000>>
 			"You're already erect," <<he>> teases. "Did my peeping do that? I'd best fix it."

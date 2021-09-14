@@ -675,7 +675,7 @@
 
 	<<physicalAdjustments>>
 
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set _amount to $penissize - 1>>
 		<<if $semen_volume lte 24>>
 			<<set _amount++>>

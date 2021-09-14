@@ -81,7 +81,7 @@ __Breast Pills__
 <br>
 <<link [[Take every morning|PillCollection]]>><<set _pills.breast.autoTake to clone(_pillTypes[_checked])>><</link>>
 
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	<br><br>
 	__Penis Pills__
 	<br>
@@ -166,7 +166,7 @@ __Butt Pills__
 /*ToDo: Pregnancy, remove check to properly enable*/
 <<if $pregnancyTesting>>
 	<<set _pregnancy to $sexStats.vagina.pregnancy>>
-	<<if $vaginaexist is 1 and _pregnancy.awareOf isnot true>>
+	<<if $player.vaginaExist and _pregnancy.awareOf isnot true>>
 		<br><br>
 		<<set _pillNames2 to ["Fertility", "Contraceptive", "None"]>>
 		<<set _pillTypes2 to ["fertility", "contraceptive", null]>>
@@ -208,7 +208,7 @@ __Butt Pills__
 		<</if>>
 		<br>
 		<<link [[Take every morning|PillCollection]]>><<set _pills.pregnancy.autoTake to clone(_pillTypes2[_checked])>><</link>>
-	<<elseif $vaginaexist is 1 and _pregnancy.awareOf is true>>
+	<<elseif $player.vaginaExist and _pregnancy.awareOf is true>>
 		You don't dare take any of the fertility pills while your pregnant.
 	<</if>>
 <</if>>

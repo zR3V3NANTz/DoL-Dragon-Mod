@@ -271,7 +271,7 @@ You overhear two farmhands talking behind the fence.
 <<widget "milking_img">>
 <<if $images is 1>>
 	<<machine_init>>
-	<<if $penisexist is 1 and $breastfeedingdisable is "f">>
+	<<if $player.penisExist and $breastfeedingdisable is "f">>
 		<<if $args[0]>>
 			<<prop haybale milk penis_pump breast_pump $args[0]>>
 		<<else>>

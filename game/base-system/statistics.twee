@@ -3,11 +3,11 @@
 <h3>Statistics</h3>
 __Virginities__
 <br>
-<<if $vaginaexist is 1>>
+<<if $player.vaginaExist>>
 	Vaginal virginity: <<print ($player.virginity.vaginal is true ? "Present" : "Taken by " + ($player.virginity.vaginal is false ? "unknown" : $player.virginity.vaginal))>>
 	<br>
 <</if>>
-<<if $penisexist is 1>>
+<<if $player.penisExist>>
 	Penile virginity: <<print ($player.virginity.penile is true ? "Present" : "Taken by " + ($player.virginity.penile is false ? "unknown" : $player.virginity.penile))>>
 	<br>
 <</if>>
@@ -151,9 +151,9 @@ Breast milk drank: $milk_drank_stat ml
 <br>
 Breast milk produced: $milk_produced_stat ml
 <br>
-<<if $penisexist is 1>>Semen produced: <<print Math.floor($semen_produced_stat)>> ml
+<<if $player.penisExist>>Semen produced: <<print Math.floor($semen_produced_stat)>> ml
 <br><</if>>
-<<if $vaginaexist is 1>>Lewd fluid produced: $lube_produced_stat ml
+<<if $player.vaginaExist>>Lewd fluid produced: $lube_produced_stat ml
 <br><</if>>
 Fluid forcibly milked: $fluid_forced_stat ml
 <br>
@@ -253,7 +253,7 @@ __Dates__
 <<if $pregnancyTesting>>
 	__Pregnancy__
 	<br>
-	<<if $vaginaexist>>
+	<<if $player.vaginaExist>>
 		Times given birth: <<print $sexStats.vagina.pregnancy.totalBirthEvents>>
 		<br>
 		Total number of children: <<print $pregnancyStats.playerChildren>>
@@ -265,7 +265,7 @@ __Dates__
 		After Morning pills taken: <<print $pregnancyStats.afterMorningPills>>
 		<br>
 	<</if>>
-	<<if $vaginaexist or $pregnancyStats.pregnancyTestsTaken gt 0>>
+	<<if $player.vaginaExist or $pregnancyStats.pregnancyTestsTaken gt 0>>
 		Pregnancy tests taken: <<print $pregnancyStats.pregnancyTestsTaken>>
 	<</if>>
 	<br>
@@ -425,7 +425,7 @@ __Save Game Details__
 		Milk volume: <<print Math.trunc($milk_volume)>>
 		<br>
 	<</if>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		Semen amount: <<print Math.trunc($semen_amount)>>
 		<br>
 		Semen volume: <<print Math.trunc($semen_volume)>>

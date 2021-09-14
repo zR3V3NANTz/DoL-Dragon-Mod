@@ -394,7 +394,7 @@
 				<</if>>
 			<</if>>
 			<<if _equip[_i] is "under_lower">>
-				<<if $worn.under_lower.penis_img is 1 and $penisexist is 1>>
+				<<if $worn.under_lower.penis_img is 1 and $player.penisExist>>
 					<img class="layer-under_lower-top colour-under_lower anim-idle-2f" @src="'img/clothes/under_lower/' + _item.variable + '/' + 'penis.png'">
 				<</if>>
 			<</if>>

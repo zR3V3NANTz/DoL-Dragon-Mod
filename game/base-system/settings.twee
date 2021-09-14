@@ -64,7 +64,6 @@
 <<set $checkstyle to "words">>
 <<set $blackwolfmonster to 1>>
 <<set $greathawkmonster to 1>>
-<<set $player.ballsExist to false>>
 <<set $blinkingdisable to "f">>
 <<set $halfcloseddisable to "f">>
 

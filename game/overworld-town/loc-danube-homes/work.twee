@@ -299,16 +299,16 @@ You've made <<moneyGain 5>>.
 You lean toward <<his>> other breast, and suckle. <<He>> laughs, and inches <<his>> hand further up your thigh. <<He>> touches your <<groin>>.
 <br><br>
 
-<<if $player.gender_appearance is "m" and $penisexist is 0>>
+<<if $player.gender_appearance is "m" and !$player.penisExist>>
 	"Oh my," <<he>> says. "You're keeping something hidden down there. Don't worry. I can keep a secret." <<He>> explores further.
-<<elseif $player.gender_appearance is "f" and $penisexist is 1>>
+<<elseif $player.gender_appearance is "f" and $player.penisExist>>
 	"Oh my," <<he>> says. "You're keeping something hidden down there. Don't worry. I can keep a secret." <<He>> explores further.
 <<else>>
 <</if>>
 
 <<if $worn.genitals.type.includes("chastity")>>
 	"Trying to stay pure?" <<he>> questions while withdrawing <<his>> hand.
-<<elseif $penisexist is 1>>
+<<elseif $player.penisExist>>
 	<<if $penissize gte 4>>
 	"Ah!" <<He>> withdraws <<his>> hand and stares at your crotch. <<He>> looks startled. "How are you so big? Sorry, I don't mean to be rude." <<He>> returns <<his>> hand and continues to stroke as you suckle.
 	<<elseif $penissize gte 3>>
@@ -320,7 +320,7 @@ You lean toward <<his>> other breast, and suckle. <<He>> laughs, and inches <<hi
 	<<else>>
 	<<He>> laughs. "It's so tiny. Sorry, I don't mean to be rude." <<He>> strokes your length with just one finger as you suckle.
 	<</if>>
-	<<if $vaginaexist is 1>>
+	<<if $player.vaginaExist>>
 		<<He>> frowns as <<his>> fingers find your <<pussy>>. "Is that what I think it is?" <<he>> asks. "You do have a lot of secrets."
 	<</if>>
 <<else>>

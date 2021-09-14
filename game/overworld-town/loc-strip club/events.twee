@@ -151,9 +151,9 @@ You place your palms on the counter behind you, and haul your <<bottom>> on top,
 <<if !$worn.genitals.type.includes("naked")>>
 	You part your knees, giving everyone a good look at your $worn.genitals.name.
 <<else>>
-	<<if $penisexist is 1 and $vaginaexist is 1>>
+	<<if $player.penisExist and $player.vaginaExist>>
 		You part your knees, giving everyone a good look at your <<penis>>. The <<person1>><<person>> gasps when you shift your cock out of the way, revealing the <<pussy>> beneath.
-	<<elseif $penisexist is 1>>
+	<<elseif $player.penisExist>>
 		You part your knees, giving everyone a good look at your <<penis>>.
 	<<else>>
 		You part your knees, giving everyone a good look at your <<pussy>>.
@@ -280,7 +280,7 @@ You shake your head at security, leaving you at the mercy of the <<person2>><<pe
 		<<set $player.bodyliquid.bottom.semen += 1>><<ejacstat>>
 	<</if>>
 <<else>>
-	The <<person2>><<person>> thrusts against your <<genitals>>. <<if $penisexist is 1>>Each time it feels like they're about to envelope you, <<if $worn.genitals.type.includes("chastity")>>despite your $worn.genitals.name,<</if>> but <<he>> seems content to frot against you.<</if>> <<He>> keeps glancing at security. Seems both are unsure how things can be pushed.
+	The <<person2>><<person>> thrusts against your <<genitals>>. <<if $player.penisExist>>Each time it feels like they're about to envelope you, <<if $worn.genitals.type.includes("chastity")>>despite your $worn.genitals.name,<</if>> but <<he>> seems content to frot against you.<</if>> <<He>> keeps glancing at security. Seems both are unsure how things can be pushed.
 	<<if $NPCList[0].penis isnot "none">>
 		Beside you, the <<person3>><<person>> clenches <<his>> fists as the <<person1>><<person>> thrusts against <<person3>><<his>> bottom. At last, the <<person2>><<person>> <span class="pink">shudders into orgasm.</span> The <<person1>><<person>> finishes soon after.
 	<<else>>
@@ -589,7 +589,7 @@ No part of your body is safe. You stop someone groping your <<breasts>>, only to
 	<br><br>
 
 	The crowd lets out a final cheer as you cum, so loud that it drowns out the music of the club. Everyone looks over.
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		Ejaculate continues to spurt from your <<penis>>. The <<person2>><<person>> tries to catch it in <<his>> mouth.
 	<<else>>
 
@@ -668,7 +668,7 @@ You continue to ignore the <<person>>. <<He>> insults you under <<his>> breath, 
 :: Bartending VIP Patron
 <<set $outside to 0>><<set $location to "strip_club">><<effects>>
 
-You walk over to the <<person>>. <<He>> doesn't look at your face the entire time, instead staring at your <<if $penisexist is 1>><<penis>>.<<else>><<breasts>>.<</if>><<if $phase is 1>><<else>><<promiscuity2>><</if>>
+You walk over to the <<person>>. <<He>> doesn't look at your face the entire time, instead staring at your <<if $player.penisExist>><<penis>>.<<else>><<breasts>>.<</if>><<if $phase is 1>><<else>><<promiscuity2>><</if>>
 <br>
 
 <<He>> continues to stare even after you arrive.
