@@ -202,6 +202,16 @@
 	<<set $underupperwetstage to 0>>
 <</if>>
 
+<<if $overlowerwet is undefined>>
+	<<set $overlowerwet to 0>>
+	<<set $overlowerwetstage to 0>>
+<</if>>
+
+<<if $overupperwet is undefined>>
+	<<set $overupperwet to 0>>
+	<<set $overupperwetstage to 0>>
+<</if>>
+
 <<if $schoolevent is undefined>>
 	<<set $schoolevent to 0>>
 	<<set $schooleventtimer to 5>>

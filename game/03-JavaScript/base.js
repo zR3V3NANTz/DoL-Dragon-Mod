@@ -246,21 +246,24 @@ window.integrityKeyword = function(worn) {
 }
 
 /**
- * @param worn clothing argicle, State.variables.worn.XXXX
+ * @param worn clothing article, State.variables.worn.XXXX
  * @return {string} printable integrity prefix
  */
-function integrityWord(worn) {
+window.integrityWord = function(worn) {
 	const kw = integrityKeyword(worn);
 	switch (kw) {
 		case "tattered":
 		case "torn":
 		case "frayed":
-			return kw+" ";
+			T.text_output = kw+" ";
+			break;
 		case "full":
 		default:
-			return "";
+			T.text_output = "";
 	}
+	return T.text_output;
 }
+DefineMacroS("integrityWord", integrityWord);
 
 function underlowerintegrity() {
 	return integrityWord(V.worn.under_lower);
@@ -296,6 +299,49 @@ function genitalsintegrity() {
 	return integrityWord(V.worn.genitals);
 }
 DefineMacroS("genitalsintegrity", genitalsintegrity);
+
+/**
+ * @param worn clothing article, State.variables.worn.XXXX
+ * @return {string} printable clothing colour
+ */
+window.clothesColour = function(worn){
+	if (!worn.colour) return T.text_output = "";
+	if (worn.colour.startsWith("wet")){ //this might not be used anymore
+		return T.text_output = worn.colour.slice(3); 
+	}
+	if (worn.colour_sidebar){
+		if (worn.colour == "custom") return T.text_output = getCustomColourName(worn.colourCustom);
+		return T.text_output = worn.colour;
+	}
+	return T.text_output = "";
+}
+
+/**
+ * @return {void} 
+ */
+window.outfitChecks = function(){
+	T.underOutfit = ((V.worn.under_lower.outfitSecondary) && V.worn.under_lower.outfitSecondary[1] === V.worn.under_upper.name);
+	T.middleOutfit = ((V.worn.lower.outfitSecondary) && V.worn.lower.outfitSecondary[1] === V.worn.upper.name);
+	T.overOutfit = ((V.worn.over_lower.outfitSecondary) && V.worn.over_lower.outfitSecondary[1] === V.worn.over_upper.name);
+
+	T.underNaked = (V.worn.under_lower.name === "naked" && V.worn.under_upper.name === "naked");
+	T.middleNaked = (V.worn.lower.name === "naked" && V.worn.upper.name === "naked");
+	T.overNaked = (V.worn.over_lower.name === "naked" && V.worn.over_upper.name === "naked");
+	T.topless = (V.worn.over_upper.name === "naked" && V.worn.upper.name === "naked" && V.worn.under_upper.name === "naked");
+	T.bottomless = (V.worn.over_lower.name === "naked" && V.worn.lower.name === "naked" && V.worn.under_lower.name === "naked");
+	T.fullyNaked = (T.topless && T.bottomless);
+	return;
+}
+
+/**
+ * @return {boolean} whether or not any main-body clothing is out of place or wet
+ */
+ window.checkForExposedClothing = function(){
+	return ["over_upper", "upper", "under_upper", "over_lower", "lower", "under_upper"].some( clothingLayer => {
+		let wetstage = V[clothingLayer.replace("_","") + "wetstage"];
+		return (V.worn[clothingLayer].state !== V.worn[clothingLayer].state_base || wetstage >= 3);
+	})
+}
 
 function processedSvg(width, height) {
 	let svgElem = jQuery(document.createElementNS("http://www.w3.org/2000/svg", "svg"))
