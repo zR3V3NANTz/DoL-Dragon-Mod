@@ -340,7 +340,7 @@
 				<<elseif $worn.face.type.includes("cool")>>
 					<<if _sydneyStatus.includes("pure")>>
 						<<He>> looks at your $worn.face.name and frowns. "You aren't allowed to wear those at school."
-						<<if $NPCName[$NPCNameList.indexOf("Sydney")].love gte 30>>
+						<<if $NPCName[$NPCNameList.indexOf("Sydney")].love gte 40>>
 							<<He>> reaches for your face, but draws <<his>> hand back. "I'll let you off with a warning. Please don't wear those. Why are you wearing them anyway?"
 						<<else>>
 							<span class="blue"><<He>> plucks the $worn.face.name off your face.</span> "I'll send these to your locker in the locker rooms," <<he>> says, placing them in a cabinet. "You can pick them up later. Why were you wearing them anyway?"
@@ -355,7 +355,7 @@
 					<<npcincr Sydney purity -1>><<lspurity>>
 				<<else>>
 					<<if $sydney.glasses is "contacts">>
-						<<He>> swipes at <<his>> eyes. "Oh no. I think there's a bit of dirt under my contact. Ack." <<He>> removes <<his>> contact and rubs it with a tissue for a moment, before sighing and putting it back in. "Gonna have to clean these when I get home..."
+						<<He>> swipes at <<his>> eyes. "Oh no. I think there's a bit of dirt on my contact. Ack." <<He>> removes <<his>> contact and peers at it for a moment, before sighing and putting it back in. "Don't have any cleaner on me... Just gonna have to clean these when I get home."
 					<<else>>
 						<<He>> takes off <<his>> <<sydneyGlasses>> and rubs them with a cloth. "They're getting dusty, it's a bit hard to see through them."
 						<<if $sydney.glasses is "playerbroken">>
@@ -1756,7 +1756,7 @@ Leighton takes Sydney by the arm again. You spring into action.
 <br><br>
 "You misunderstand, Sydney. I won't be the one punishing you." Leighton drags you into position behind Sydney, and <<if $pronoun is "m">>pulls down <<his>> trousers<<else>>lifts <<his>> skirt<</if>>.
 <<if _sydneyStatus.includes("corrupt")>>
-	<<His>> eyebrows raise. You get an unobstructed view of <<his>> <span class="lewd">bare bottom<<if $NPCName[$NPCNameList.indexOf("Sydney")].chastity.anus.includes("shield")>>, <<his>> <<print $NPCName[$NPCNameList.indexOf("Sydney")].chastity.anus>> giving <<him>> very little concealment<<elseif $NPCName[$NPCNameList.indexOf("Sydney")].chastity.penis.includes("chastity") or $NPCName[$NPCNameList.indexOf("Sydney")].chastity.vagina.includes("chastity")>>, <<his>> chastity belt providing no concealment<<else>> and <<nnpc_genitals "Sydney">><</if>>.</span> <<set $sydneyChastityKnown to true>><<arousal 1000>><<ggarousal>>
+	<<nnpc_His "Leighton">> eyebrows raise. You get an unobstructed view of <<his>> <span class="lewd">bare bottom<<if $NPCName[$NPCNameList.indexOf("Sydney")].chastity.anus.includes("shield")>>, <<his>> <<print $NPCName[$NPCNameList.indexOf("Sydney")].chastity.anus>> giving <<him>> very little concealment<<elseif $NPCName[$NPCNameList.indexOf("Sydney")].chastity.penis.includes("chastity") or $NPCName[$NPCNameList.indexOf("Sydney")].chastity.vagina.includes("chastity")>>, <<his>> chastity belt providing no concealment<<else>> and <<nnpc_genitals "Sydney">><</if>>.</span> <<set $sydneyChastityKnown to true>><<arousal 1000>><<ggarousal>>
 	<br><br>
 	"No underwear? You know that's against the dress code, Sydney." Leighton grins, and Sydney looks back at you with a mixture of fear and arousal. <<npcincr Sydney lust 3>><<gglust>>
 <<else>>
@@ -3599,6 +3599,7 @@ You get on your knees and crawl under the counter.
 					<</if>>
 				<</if>>
 		<</switch>>
+		<br><br>
 		<<set $sydneyOral.Sound to 0>>
 	<</if>>
 <</if>>
