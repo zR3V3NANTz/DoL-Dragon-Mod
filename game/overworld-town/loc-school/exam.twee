@@ -300,7 +300,7 @@ Pass chance: <<print Math.trunc($exam_chance)>> %
 <<npc Sirris>><<person1>>
 Sirris looks at <<his>> watch now and then. "And done," <<he>> says. "I hope that wasn't too bad." Some students continue to scribble, but Sirris zips around the room in <<his>> haste to retrieve the booklets.
 <br><br>
-The class are allowed to chat while Sirris marks the papers. They make up for the period of silence with more noise than usual, though some are too nervous to talk
+The class are allowed to chat while Sirris marks the papers. They make up for the period of silence with more noise than usual, though some are too nervous to talk.
 <br><br>
 The bell rings. Sirris stands by the door, smiling as <<he>> hands the booklets back to passing students. <<He>> holds out yours,
 <<if _exam_success is true>>

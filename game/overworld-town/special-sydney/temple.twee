@@ -52,7 +52,7 @@ You sit beside Sydney. You notice a pile of neatly folded clothes sat next to <<
 
 :: Temple Masturbation Sydney
 <<effects>><<NPCStatusCheck "Sydney">>
-<span class="red">Someone walks around the pillar. It's Sydney.</span> You try to cover yourself, but it's too late.
+<span class="red">Someone walks around the pillar.</span> <span @class="$sydneyromance is 1 ?'lewd':'red'">It's Sydney.</span> You try to cover yourself, but it's too late.
 <br><br>
 <<endmasturbation>>
 <<clotheson>>
@@ -1490,11 +1490,18 @@ The <<monk>> approaches you.
 <<if $angel gte 6>>
 	<<His>> eyes slowly widen, and after a moment, <<he>> steps back and regards you with awe. "<span class="gold">This one is... radiant.</span> A true beacon of purity." <<He>> turns to Jordan. "I have faith that this one will take the vow seriously." <<set $jordanScore += 20>>
 <<elseif $fallenangel gte 2 or $demon gte 6>>
-	<<He>> slowly frowns. "<span class="red">This one is... dirty.</span> Tragic." <<set $jordanScore -= 10>>
+	<<He>> slowly frowns. "<span class="red">This one is... dirty.</span> Tragic."
+	<<if $fallenangel gte 2 and $forgiveintro is 1>>
+		<br><br>
+		Jordan smiles faintly. "<<pShe>> has already confessed to me <<pher>> soil, and seeks to improve <<pherself>>. If anything, <span class="green"><<pher>> willingness to admit <<pher>> sin and desire to improve <<pherself>> is something to admire</span>."
+		<<set $jordanScore += 5>>
+	<<else>>
+		<<set $jordanScore -= 10>>
+	<</if>>
 <<elseif $purity gte 999>>
 	<<His>> face brightens up as <<he>> examines you head to toe. "<span class="green">Your dedication to purity is impressive.</span>" <<set $jordanScore += 15>>
 <<elseif $purity gte 900>>
-	<<He>> smiles as <<he>> examines you head to toe. "<span class="lblue">Your dedication to purity is commendable." <<set $jordanScore += 10>>
+	<<He>> smiles as <<he>> examines you head to toe. "<span class="lblue">Your dedication to purity is commendable.</span>" <<set $jordanScore += 10>>
 <<elseif $purity gte 500>>
 	<<His>> expression remains stern as <<he>> examines you head to toe. "<span class="purple">Your dedication to purity is... sub-par.</span> You should strive to improve yourself."
 <<else>>
@@ -1941,9 +1948,9 @@ Jordan produces a bell from <<person2>><<his>> robes and rings it four times. Sy
 <br><br>
 <<person1>><<He>> climbs on top of you, taking your hands in <<his>> own. <<His>> face is becoming more red by the second as you both maintain eye contact, trying to ignore your mutual exposure. <<takeHandholdingVirginity "Sydney" `($sydneyromance is 1?"romantic":"consensual")`>>
 <br><br>
-Jordan moves touch something under the altar, and sets of ivory restraints emerge, binding your hands with Sydney's. "As those wish to be bound, so do we bind them." The <<person2>><<monks>> repeat Jordan's words.
+Jordan moves touch something under the altar, and sets of ivory restraints emerge, binding your hands with Sydney's. "As those wish to be bound, so do we bind them."
 <br>
-"So do we bind them."
+The <<person2>><<monks>> repeat Jordan's words. "So do we bind them."
 <br>
 "Here they lie, as two, as one."
 <br>
@@ -1957,7 +1964,7 @@ One of the <<person2>><<monks>> picks up one of the candles, holding it over Syd
 <br><br>
 You see the candle above Sydney melt at a faster rate. A drop of wax hits <<person1>><<his>> bare back. <<He>> flinches, but soon looks relieved. More wax begins to drip down, until it begins to drip from Sydney onto you. It's very hot, <span class="gold">yet you feel no pain.</span>
 <br><br>
-<<link [[Forever, as one|Sydney Temple Pure Ritual 2]]>><<set $templePromised to "Sydney">><</link>>
+<<link [[Forever, as one|Sydney Temple Pure Ritual 2]]>><<set $templePromised to "Sydney">><<set $player.virginity.temple to true>><</link>>
 <br>
 
 :: Sydney Temple Pure Ritual 2
