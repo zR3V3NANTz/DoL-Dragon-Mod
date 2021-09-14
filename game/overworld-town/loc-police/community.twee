@@ -638,8 +638,8 @@ You line with the other criminals beside the road, in front of a hill. Brown bri
 	<<if $famebestiality gte 400>>
 		"Get caught fucking a dog?"
 	<</if>>
-	<<if $NPCList[1].penis isnot "none">>
-		You can feel <<his>> <<print $NPCList[1].penisdesc>> against your <<bottom>>.
+	<<if $NPCList[2].penis isnot "none">>
+		You can feel <<his>> <<print $NPCList[2].penisdesc>> against your <<bottom>>.
 	<</if>>
 	<<gstress>><<garousal>><<stress 6>><<arousal 600>>
 	<br><br>

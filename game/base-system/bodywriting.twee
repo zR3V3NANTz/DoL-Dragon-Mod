@@ -110,7 +110,7 @@
 <<if $args[0] is "left">>
 	<<for _bwn to 0; _bwn lt $enemyno; _bwn++>>
 		<<if _n isnot _bwn and ($NPCList[_bwn].lefthand is "pen" + "_" + _bodypart or $NPCList[_bwn].righthand is "pen" + "_" + _bodypart)>>
-			<<He>> tries to scrawl on your <<bodypart _bodypart>> with <<his>> <<print $NPCList[_bwn].lefttool>>, <span class="blue">but <<his>> colleague shoves <<him>> out of the way.</span>
+			<<He>> tries to scrawl on your <<bodypart _bodypart>> with <<his>> <<print $NPCList[_n].lefttool>>, <span class="blue">but <<his>> colleague shoves <<him>> out of the way.</span>
 			<<set $NPCList[_n].lefthand to 0>>
 			<<set _bwn_stop to 1>>
 			<<break>>
@@ -119,7 +119,7 @@
 <<else>>
 	<<for _bwn to 0; _bwn lt $enemyno; _bwn++>>
 		<<if _n isnot _bwn and ($NPCList[_bwn].lefthand is "pen" + "_" + _bodypart or $NPCList[_bwn].righthand is "pen" + "_" + _bodypart)>>
-			<<He>> tries to scrawl on your <<bodypart _bodypart>> with <<his>> <<print $NPCList[_bwn].righttool>>, <span class="blue">but <<his>> colleague shoves <<him>> out of the way.</span>
+			<<He>> tries to scrawl on your <<bodypart _bodypart>> with <<his>> <<print $NPCList[_n].righttool>>, <span class="blue">but <<his>> colleague shoves <<him>> out of the way.</span>
 			<<set $NPCList[_n].righthand to 0>>
 			<<set _bwn_stop to 1>>
 			<<break>>
@@ -1468,6 +1468,7 @@ Second arg: tool */
 <<if _skin_array is undefined or $args[0] is true>>
 	<<set _skin_array to []>>
 	<<set _skin_array_special to []>>
+	<<set _bodywriting_exposed to 0>>
 	<<if $skin.forehead.writing>>
 		<<set _skin_array.push("forehead")>>
 		<<set _skin_array_special.push($skin.forehead.special)>>

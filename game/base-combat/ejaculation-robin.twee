@@ -153,7 +153,7 @@
 				<<He>> cries out and bucks on your lap as <<he>> cums, squirting ejaculate from <<his>> pussy and drenching your crotch and legs.
 				
 				<<penileejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.penis.goo += 1>>
-				<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.goo += 1>>
+				<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.goo += 1>>
 			<</switch>>
 		<<elseif ($NPCList[_nn].vagina is "penisimminent" or $NPCList[_nn].vagina is "penisentrance") and $worn.genitals.type.includes("chastity")>>
 			<<He>> gasps as <<he>> cums against your $worn.genitals.name. "Isn't that uncomfortable?" <<he>> asks. "It's really hard."
@@ -211,7 +211,7 @@
 			<<He>> groan as <<he>> cums, ejaculating a massive load that covers your thighs and tummy.
 			
 			<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
-			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+			<<tummyejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "vaginaentrance" and $worn.genitals.type.includes("chastity")>>
 		<<He>> gasps as <<he>> cums onto your $worn.genitals.name. "Isn't that uncomfortable?" <<he>> asks. "Do they make softer ones?"
@@ -229,7 +229,7 @@
 			<<He>> moans and strokes <<his>> cock as <<he>> cums, sending thick ropes of semen onto your <<pussy>> and ass.
 			
 			<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
-			<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+			<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "vaginaimminent" and $worn.genitals.type.includes("chastity")>>
 		<<He>> gasps as <<he>> cums onto your $worn.genitals.name. "Isn't that uncomfortable?" <<he>> asks. "Do they make softer ones?"
@@ -247,7 +247,7 @@
 			<<He>> moans and strokes <<his>> cock as <<he>> cums, sending thick ropes of semen onto your <<pussy>> and ass.
 			
 			<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
-			<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+			<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "vagina">>
 		<<switch random(1, 7)>>
@@ -265,7 +265,7 @@
 			<<He>> convulses and grinds down on your crotch as <<he>> cums, sending thick waves of cum into your <<pussy>>. Semen oozes from your vagina and down your legs.
 			
 			<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
-			<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+			<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "cheeks" and $worn.genitals.type.includes("chastity")>>
 		<<He>> gasps as <<he>> cums onto your $worn.genitals.name. "Isn't that uncomfortable?" <<he>> asks. "Do they make softer ones?"
@@ -333,7 +333,7 @@
 			<<He>> convulses and, with a final shove, cums in your ass. Thick waves of semen pump into you. You're surprised at the amount; cum oozes from your ass and runs down your legs.
 			
 			<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.anus.semen += 1>>
-			<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+			<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "chest">>
 		<<switch random(1, 7)>>
@@ -363,7 +363,7 @@
 			<<He>> gasps and strokes <<his>> cock while aiming straight at your mouth. Thick ropes of cum cover your face and push past your closed lips into your mouth. You're impressed by the volume and <<he>> looks oddly pleased with <<himself>>.
 			
 			<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.semen += 1>>
-			<<oralejacstat>><<ejacstat>><<set $hunger -= 200>><<set $thirst -= 200>><<set $player.bodyliquid.mouth.semen += 1>>
+			<<oralejacstat>><<set $hunger -= 200>><<set $thirst -= 200>><<set $player.bodyliquid.mouth.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "mouthimminent">>
 		<<switch random(1, 7)>>
@@ -379,7 +379,7 @@
 			<<He>> cups your head but in <<his>> excitement cums before <<he>> can enter your mouth. Thick ropes of cum cover your cheeks, chin, and into your waiting mouth.
 			
 			<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.semen += 1>>
-			<<oralejacstat>><<ejacstat>><<set $hunger -= 200>><<set $thirst -= 200>><<set $player.bodyliquid.mouth.semen += 1>>
+			<<oralejacstat>><<set $hunger -= 200>><<set $thirst -= 200>><<set $player.bodyliquid.mouth.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "mouth">>
 	<!-- this is picking up women NPCs...? -->
@@ -396,7 +396,7 @@
 			<<He>> palms your head, wildly thrusting <<his>> cock in your mouth as <<he>> cums. Semen streams down your throat, fills your mouth and covers your face as <<he>> flails. "Wow, that was fun!"
 			
 			<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.semen += 1>>
-			<<oralejacstat>><<ejacstat>><<set $hunger -= 200>><<set $thirst -= 200>><<set $player.bodyliquid.mouth.semen += 1>>
+			<<oralejacstat>><<set $hunger -= 200>><<set $thirst -= 200>><<set $player.bodyliquid.mouth.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "feet">>
 		<<switch random(1, 7)>>
@@ -412,7 +412,7 @@
 			<<He>> grunts and thrusts <<his>> cock between your feet as <<he>> cums, splattering cum on your feet and legs in the process.
 			
 			<<feetejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.feet.semen += 1>>
-			<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+			<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "leftarm" and $NPCList[_nn].penis is "rightarm">>
 		<<switch random(1, 7)>>
@@ -428,7 +428,7 @@
 			<<He>> spasms and moans, shooting thick streams of cum. You are so intent on your work you don't notice <<his>> penis is aimed at your face, which is splattered with cum in the process. <<He>> giggles and apologizes.
 			
 			<<handejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.leftarm.semen += 1>><<set $player.bodyliquid.rightarm.semen += 1>>
-			<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.semen += 1>>
+			<<faceejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "leftarm">>
 		<<switch random(1, 7)>>
@@ -444,7 +444,7 @@
 			<<He>> spasms and moans, shooting thick streams of cum and splattering your <<breasts>> in the process. You're impressed by the volume from such a small body.
 			
 			<<handejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.leftarm.semen += 1>>
-			<<chestejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.chest.semen += 1>>
+			<<chestejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.chest.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "rightarm">>
 		<<switch random(1, 7)>>

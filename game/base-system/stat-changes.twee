@@ -461,7 +461,7 @@
 		"breasts_tiny": $gender isnot "m",
 		"breasts_small": true,
 		"breasts_big": true
-	}[_insecurity]>>
+	}[$args[0]]>>
 
 	<<if _acceptance lt 1000 and _insecurity_possible>>
 		<<set _insecurity += _stat_gain>>

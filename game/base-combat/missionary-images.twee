@@ -517,7 +517,7 @@ Same as above, but with eyelashes.
 <<elseif $rightarm is "grappled" or $rightarm is "behind">>
 	<img @class="'layer-sexarmsbound anim-doggy-4f-'+_animspeed" @src="_img.activearmsbound" @style="'filter: '+_filters.body">
 <<elseif $rightarmstate is "tentacle">>
-<<elseif $enemytype is "beast" and $monster isnot 1 and _stanceCheck is "top">>
+<<elseif $enemytype is "beast" and $monster isnot 1 and _stanceCheck is "top" and $NPCList[0].type isnot "hawk">>
 	<img @class="'layer-sexaboveclothes anim-doggy-4f-'+_animspeed" @src="_img.activebaserightarmstroke" @style="'filter: '+_filters.body">
 <<else>>
 	<img @class="'layer-sexaboveclothes anim-doggy-4f-'+_animspeed" @src="_img.activebaserightarm" @style="'filter: '+_filters.body">
