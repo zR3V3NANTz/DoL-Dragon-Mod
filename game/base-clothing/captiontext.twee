@@ -6,7 +6,18 @@
 	<<set _clothingCaptionItems to []>>
 	<<set _finally to ".">>
 	<<set _text_output to "">>
-	<<clothingCpationBeginning>><<clothingCpationTextOver>><<clothingCpationTextMiddle>><<clothingCpationTextUnder>>
+
+	<<set _wearing to "You are " + (_topless ? "<span class='pink'>topless</span>, " : "") + "wearing ">>
+	
+	<<if !_overNaked>>
+		<<clothingCpationTextOver>>
+	<</if>>
+	
+	<<if !_middleNaked>>
+		<<clothingCpationTextMiddle>>
+	<</if>>
+	
+	<<clothingCpationTextUnder>>
 	
 	<<switch Math.clamp(_clothingCaptionItems.length, 0, 3)>>
 	<<case 3>>
@@ -27,7 +38,10 @@
 <<clothingCpationTextNothing>>
 <<clothingCpationTextMask>>
 <br>
-<<clothingCpationTextStrip>>
+<<if window.checkForExposedClothing()>>
+	<<clothingCpationTextStrip>>
+<</if>>
+
 <<clothingCpationTextGender>>
 <br>
 <</widget>>
@@ -56,14 +70,6 @@
 	/* push */
 	<<set _clothingCaptionItems.pushUnique($_output)>>	
 <</widget>>
-
-<<widget "clothingCpationBeginning">><<silently>>
-	<<set _wearing to "You are ">>
-	<<if _topless>>
-		<<set _wearing += "<span class='pink'>topless</span>, ">>
-	<</if>>
-	<<set _wearing += "wearing ">>
-<</silently>><</widget>>
 
 <<widget "clothingCpationTextOver">><<silently>>
 	<<if $worn.over_upper.name isnot "naked">>
@@ -126,7 +132,7 @@
 		<<pushClothingCaption "under_lower" $_pair>>
 
 		<<set _nothingBut to $_exposed>>
-		<<if !$_exposed and !_topless and $player.gender isnot "m" and $breastsize gte 4>>
+		<<if !$_exposed and !_topless and $breastsize gte 4 and ($player.gender isnot "m" and $backgroundTraits.includes("crossdresser"))>>
 			<<set _finally to ". <span class='purple'>You are not wearing a bra.</span>">>
 		<</if>>
 	<</if>>
@@ -172,13 +178,11 @@
 <<widget "clothingCpationTextStrip">>
 	<<set _captionCount to 0>>
 	<<set _clothing_levels to [0,"ankles","knees","thighs","waist","midriff","chest"]>>
-	/* <<run console.log("-------upper-------")>> */
 	<<clothingCaptionExposed "upper">>
-	/* <<run console.log("-------lower-------")>> */
 	<<clothingCaptionExposed "lower">>
 
 	<<if _captionCount gte 1>>
-		<br><br>
+		<br><br> /* insert extra newlines after the caption, if there is one, for better style */
 	<</if>>
 	<<unset _captionCount>>
 <</widget>>
@@ -186,7 +190,7 @@
 <<widget "clothingCaptionExposed">>
 	<<set $_clothes to {"naked": [], "wet": [], "up": [], "down": [], "totheside": [], "exposed": []}>>
 	<<set $_plural to {"naked": false, "wet": false, "up": false, "down": false, "totheside": false, "exposed": false}>>
-	<<set $_exposed to {"upper": false, "lower": false}>>
+	<<set $_isExposed to false>>
 	<<set $_revealColour to "purple">>
 	<<set $_highestLevelCovered to "">>
 	<<set $_clothingRevealType to {}>>
@@ -198,8 +202,6 @@
 		<<set _wetstage to $_outfitLayer + $_outfitType + "wetstage">>
 		<<set $_wornClothing to $worn[$_clothing]>>
 
-		/* <<run console.log("i: ", $_i, "clothing: ", $_clothing)>> */
-		
 		<<if $_wornClothing.type.includes("naked")>>
 			<<set $_clothingRevealType[$_clothing] to "naked">>
 			<<continue>>
@@ -226,11 +228,11 @@
 		
 		<<set $_clothes[$_revealType].pushUnique($_wornClothing.name)>>
 		<<set $_plural[$_revealType] to ($_plural[$_revealType] or ($_wornClothing.plural is 1))>>
-		<<set $_exposed[$_outfitType] to true>>
+		<<set $_isExposed to true>>
 	<</for>>
 	
-	/* Find which sensitive areas are exposed */
-	<<if $_exposed[$_outfitType]>>
+	<<if $_isExposed>>
+		/* Find which areas are exposed */
 		<<if $_highestLevelCovered is "">>
 			<<silently>>
 			<<if $_outfitType is "upper">>
@@ -244,24 +246,19 @@
 			<<set $_undertext to $_highestLevelCovered>>
 		<</if>>
 
-		/* <<run console.log("clothes: ", $_clothes)>> */
-		/* <<run console.log("plural: ", $_plural)>> */
-		/* <<run console.log($_clothingRevealType)>> */
-		
 		/* Piece together the caption */
-
 		<<set _output to "">>
 		<<for $_type range ["wet", "up", "down", "totheside", "exposed"]>>
 			<<if $_clothes[$_type].length lte 0>>
 				<<continue>>
 			<</if>>
-			<<set $_pluralVerb to ($_clothes[$_type].length gte 2 or $_plural[$_type])>>
+			<<set $_verbIsPlural to ($_clothes[$_type].length gte 2 or $_plural[$_type])>>
 			<<switch $_type>>
-				<<case "wet">> 		 <<set $_verb to ($_pluralVerb ? " are drenched, " : " is drenched, ")>>
-				<<case "exposed">> 	 <<set $_verb to ($_pluralVerb ? " have been pulled aside, " : " has been pulled aside, ")>>
-				<<case "up">> 		 <<set $_verb to ($_pluralVerb ? " have been pulled up, " : " has been pulled up, ")>>
-				<<case "down">> 	 <<set $_verb to ($_pluralVerb ? " have been pulled down, " : " has been pulled down, ")>>
-				<<case "totheside">> <<set $_verb to ($_pluralVerb ? " have been pulled to the side, " : " has been pulled to the side, ")>>
+				<<case "wet">> 		 <<set $_verb to ($_verbIsPlural ? " are drenched, " : " is drenched, ")>>
+				<<case "exposed">> 	 <<set $_verb to ($_verbIsPlural ? " have been pulled aside, " : " has been pulled aside, ")>>
+				<<case "up">> 		 <<set $_verb to ($_verbIsPlural ? " have been pulled up, " : " has been pulled up, ")>>
+				<<case "down">> 	 <<set $_verb to ($_verbIsPlural ? " have been pulled down, " : " has been pulled down, ")>>
+				<<case "totheside">> <<set $_verb to ($_verbIsPlural ? " have been pulled to the side, " : " has been pulled to the side, ")>>
 			<</switch>>
 
 			<<if _output isnot "">><<set _output += " and your ">><</if>>

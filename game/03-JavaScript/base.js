@@ -317,8 +317,7 @@ window.clothesColour = function(worn){
 }
 
 /**
- * @param worn clothing article, State.variables.worn.XXXX
- * @return {void} printable clothing colour
+ * @return {void} 
  */
 window.outfitChecks = function(){
 	T.underOutfit = ((V.worn.under_lower.outfitSecondary) && V.worn.under_lower.outfitSecondary[1] === V.worn.under_upper.name);
@@ -332,6 +331,16 @@ window.outfitChecks = function(){
 	T.bottomless = (V.worn.over_lower.name === "naked" && V.worn.lower.name === "naked" && V.worn.under_lower.name === "naked");
 	T.fullyNaked = (T.topless && T.bottomless);
 	return;
+}
+
+/**
+ * @return {boolean} whether or not any main-body clothing is out of place or wet
+ */
+ window.checkForExposedClothing = function(){
+	return ["over_upper", "upper", "under_upper", "over_lower", "lower", "under_upper"].some( clothingLayer => {
+		let wetstage = V[clothingLayer.replace("_","") + "wetstage"];
+		return (V.worn[clothingLayer].state !== V.worn[clothingLayer].state_base || wetstage >= 3);
+	})
 }
 
 function processedSvg(width, height) {

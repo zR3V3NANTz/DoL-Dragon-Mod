@@ -271,6 +271,10 @@
 <<set $underlowerwetstage to 0>>
 <<set $underupperwet to 0>>
 <<set $underupperwetstage to 0>>
+<<set $overlowerwet to 0>>
+<<set $overlowerwetstage to 0>>
+<<set $overupperwet to 0>>
+<<set $overupperwetstage to 0>>
 
 <<set $genderknown to ["Robin", "Bailey"]>>
 
