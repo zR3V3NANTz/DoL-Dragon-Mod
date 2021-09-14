@@ -406,7 +406,6 @@
 	<<for _j = $enemyno-1; _j gte _end; _j-->>
 		<<if $NPCList[_j].penis is "vaginaentrance" or $NPCList[_j].penis is "vaginaimminent">>
 			<<if $vaginaWetness + ($vaginalskill / 10) gte ($NPCList[_j].penissize * 15) + random(1, 40) or random(1, 2) is 2>>
-				<<takeVirginity $NPCList[_j].fullDescription "vaginal">><<takeNPCVirginity $NPCList[_j].fullDescription "penile">>
 				<<if $player.virginity.vaginal isnot true>>
 					<<set $NPCList[_j].penis to "vagina">>
 					<<vagina_lube_text>> <span class="pink">you <<vaginaltext>> push against <<personselect _j>><<combatpersons>> $NPCList[_j].penisdesc, taking it deep into your <<pussy>>.</span>
@@ -420,7 +419,7 @@
 					<<default>>
 						<span class="lewd"></span>
 					<</switch>>
-					<<sex 30>><<vaginalstat>><<raped>><<vaginaraped>><<set $vaginastate to "penetrated">>
+					<<sex 30>><<vaginalstat>><<raped>><<vaginaraped>><<takeVirginity $NPCList[_j].fullDescription "vaginal">><<takeNPCVirginity $NPCList[_j].fullDescription "penile">><<set $vaginastate to "penetrated">>
 					<<break>>
 				<<elseif $player.virginity.vaginal is true>>
 					<<set $NPCList[_j].penis to "vagina">>
@@ -444,7 +443,7 @@
 								<<violence 30>>
 						<</switch>>
 					<</if>>
-					<<sex 100>><<bruise vagina>><<vaginalstat>><<raped>><<vaginaraped>><<set $vaginastate to "penetrated">><<set $speechvaginavirgin to 1>>
+					<<sex 100>><<bruise vagina>><<vaginalstat>><<raped>><<vaginaraped>><<takeVirginity $NPCList[_j].fullDescription "vaginal">><<takeNPCVirginity $NPCList[_j].fullDescription "penile">><<set $vaginastate to "penetrated">><<set $speechvaginavirgin to 1>>
 					<<break>>
 				<</if>>
 			<<else>>

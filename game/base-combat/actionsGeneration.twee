@@ -819,7 +819,7 @@
 			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "penisentrance">><<His>> <<npcVagina _j>> hovers near your <<penis>>.</span>
 		<<case "imminent">>
 			<<set _penisOptions to "pussyImminent">>
-			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "penisentrance">><<His>> <<npcVagina _j>> presses against your <<penis>>.</span>
+			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "penisimminent">><<His>> <<npcVagina _j>> presses against your <<penis>>.</span>
 		<<case "penetrated">>
 			<<set _penisOptions to "pussyPenetration">>
 			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> vagina envelops your <<penis>>.</span>

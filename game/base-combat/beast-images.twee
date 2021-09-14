@@ -30,6 +30,7 @@
 			<<elseif $NPCList[_na].type is "creature">>
 				<img @class="'layer-beastback anim-doggy-4f-'+_animspeed" src="img/sex/doggy/femalebeast/creature/activecreature.png">
 				<img @class="'layer-beastforeground anim-doggy-4f-'+_animspeed" src="img/sex/doggy/femalebeast/creature/activecreaturefrontleg.png">
+			<<elseif $NPCList[_na].type is "hawk">>
 			<<else>>
 				<img @class="'layer-beastback anim-doggy-4f-'+_animspeed" src="img/sex/doggy/femalebeast/activebeast.png">
 				<img @class="'layer-beastforeground anim-doggy-4f-'+_animspeed" src="img/sex/doggy/femalebeast/activebeastfrontleg.png">
@@ -288,6 +289,7 @@
 			<<elseif $NPCList[_na].type is "wolf">>
 				<img @class="'layer-beastback anim-doggy-4f-'+_animspeed" src="img/sex/missionary/beast/wolf/wolfbase.png">
 				<img @class="'layer-beastforeground anim-doggy-4f-'+_animspeed" src="img/sex/missionary/beast/wolf/wolffrontleg.png">
+			<<elseif $NPCList[_na].type is "hawk">>
 			<<else>>
 				<img @class="'layer-beastback anim-doggy-4f-'+_animspeed" src="img/sex/missionary/beast/creature/beastbase.png">
 				<img @class="'layer-beastforeground anim-doggy-4f-'+_animspeed" src="img/sex/missionary/beast/creature/beastfrontleg.png">

@@ -1115,7 +1115,7 @@
 	<</if>>
 
 	<<if $skulduggery gte 1000 and $skulduggeryday lt 1000>>
-		<span class="gold">Your skulduggery has improved to</span> <span class="Green">S.</span>
+		<span class="gold">Your skulduggery has improved to</span> <span class="green">S.</span>
 	<<elseif $skulduggery gte 900 and $skulduggeryday lt 900>>
 		<span class="gold">Your skulduggery has improved to</span> <span class="teal">A+.</span>
 	<<elseif $skulduggery gte 800 and $skulduggeryday lt 800>>
