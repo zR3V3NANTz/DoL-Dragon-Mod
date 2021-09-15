@@ -7,6 +7,12 @@ Feel free to delete this coment at leisure.
 <<widget "eventAlert">>
 <<if $event[0] is $passage>>
 	<span class="green" style="text-align: center">Event Active</span>
+	<<if $debug is 1>>
+		<<set _eventalertmajorarea to false>>
+		<span class="rainbow"><<button "More Event Info">>
+			<<overlayReplace "eventExtraInfo">>
+		<</button>></span>
+	<</if>>
 <<elseif ["Orphanage", "Bedroom", "Barb Street", "Cliff Street", "Connudatus Street", "Danube Street", "Domus Street", "Elk Street", "Harvest Street", "High Street", "Mer Street", "Nightingale Street", "Oxford Street", "Starfish Street", "Wolf Street", "Residential alleyways", "Commercial alleyways", "Industrial alleyways", "Park", "Hallways", "Brothel", "Strip Club", "Beach", "Ocean Breeze", "Docks Work", "Residential Drain", "Commercial Drain", "Industrial Drain", "Forest", "Farmland", "Livestock Field", "Forest Wolf Cave", "Wolf Cave", "Wolf Cave Clearing", "Asylum", "Asylum Cell", "Underground Cell"].includes($passage)>>
 /* This list will need to be updated with each new "main area". Ex: prison */
 	<span class="red" style="text-align: center">Event Active</span>
@@ -33,6 +39,8 @@ Feel free to delete this coment at leisure.
 		<span class="red">Please report this!</span>
 	<</if>>
 	<<set _eventreason to true>>
+<<elseif _eventalertmajorarea is false>>
+	<span class="green">This NPC was defined in this passage, and is being tested for Debug.</span><<set _eventreason to true>>
 <<else>>
 	<<if ($passage).toString().includes("Street Stalk")>>
 		<span class="green">You are being stalked. Usually this means everything is in order.</span>
@@ -51,7 +59,7 @@ Feel free to delete this coment at leisure.
 $enemyno NPC<<if $enemyno isnot 1>>s are<<else>> is<</if>> currently active. Them being:<br><br>
 <<for $_i to 0; $_i lt $event.length; $_i++>>
 	<<print $NPCList[$eventslot[$_i]].fullDescription>><br>
-	Defined in passage <<print $event[$_i]>>.<br>
+	Defined in passage <<print $event[$_i]>>, at <<ampm `Math.floor($eventtime[$_i]/60)` `$eventtime[$_i]%60`>>.<br>
 	<<for $_j to 0; $_j lt $event.length; $_j++>>
 		<<if $event[$_j] is $event[$_i] and $_i isnot $_j>>
 			<<if _eventnumberinpassage is undefined>>

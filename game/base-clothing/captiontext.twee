@@ -132,7 +132,7 @@
 		<<pushClothingCaption "under_lower" $_pair>>
 
 		<<set _nothingBut to $_exposed>>
-		<<if !$_exposed and !_topless and $breastsize gte 4 and ($player.gender isnot "m" and $backgroundTraits.includes("crossdresser"))>>
+		<<if !$_exposed and !_topless and $breastsize gte 4 and ($player.gender isnot "m" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _finally to ". <span class='purple'>You are not wearing a bra.</span>">>
 		<</if>>
 	<</if>>

@@ -59,12 +59,14 @@
 		<<if $endeventerror is undefined>>
 			<<set $event.splice($eventslot.indexOf(_ii), 1)>>
 			<<set $eventslot.splice($eventslot.indexOf(_ii), 1)>>
+			<<set $eventtime.splice($eventslot.indexOf(_ii), 1)>>
 		<</if>>
 		<<if $enemyno is 0>>
 			<<set $pronoun to 0>>
 			<<if $endeventerror is undefined>>
 				<<unset $event>>
 				<<unset $eventslot>>
+				<<unset $eventtime>>
 			<</if>>
 		<</if>>
 		<<set $npc.splice(_leindex, 1)>>
@@ -683,6 +685,10 @@ alternative way to write that:
 	<<set $eventslot to []>>
 <</if>>
 <<set $eventslot.push(_npcno)>>
+<<if $eventtime is undefined>>
+	<<set $eventtime to []>>
+<</if>>
+<<set $eventtime.push($time)>>
 <</widget>>
 
 <<widget "npcrelationship">>
