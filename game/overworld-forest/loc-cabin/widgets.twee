@@ -78,7 +78,7 @@
 		<br>
 	<</if>>
 	<<if $eden_sew isnot 1>>
-		<<link [[Fix Eden's clothes (0:30)|Eden Fix]]>><<pass 30>><<npcincr Eden love 1>><<npcincr Eden dom 1>><<set $eden_sew to 1>><<endevent>><</link>><<glove>><<gdom "Eden">>
+		<<link [[Fix Eden's clothes (0:30)|Eden Fix]]>><<pass 30>><<npcincr Eden love 1>><<set $eden_sew to 1>><<endevent>><</link>><<glove>>
 		<br>
 	<</if>>
 	<<if $edencushions is 1>>
@@ -112,13 +112,13 @@
 	<<if $eden_supplies isnot 1>>
 		Eden's supplies are kept in a cabinet.
 		<br>
-		<<link [[Take stock of Eden's supplies (0:30)|Eden Stock]]>><<pass 30>><<npcincr Eden love 1>><<npcincr Eden dom 1>><<set $eden_supplies to 1>><</link>><<glove>><<gdom "Eden">>
+		<<link [[Take stock of Eden's supplies (0:30)|Eden Stock]]>><<pass 30>><<npcincr Eden love 1>><<set $eden_supplies to 1>><</link>><<glove>>
 		<br>
 	<</if>>
 	<<if $eden_sweep isnot 1>>
 		A broom and dustpan lie in the corner.
 		<br>
-		<<link [[Sweep the floor (0:30)|Eden Sweep]]>><<pass 30>><<npcincr Eden love 1>><<npcincr Eden dom 1>><<set $eden_sweep to 1>><</link>><<glove>><<gdom "Eden">>
+		<<link [[Sweep the floor (0:30)|Eden Sweep]]>><<pass 30>><<npcincr Eden love 1>><<set $eden_sweep to 1>><</link>><<glove>>
 		<br>
 	<</if>>
 	<<if $eden_salve isnot 1 or $eden_soap isnot 1>>
@@ -126,11 +126,11 @@
 		<br>
 	<</if>>
 	<<if $eden_salve isnot 1>>
-		<<link [[Make salves (0:30)|Eden Salve]]>><<pass 30>><<if !$salve>><<set $salve to 1>><<else>><<set $salve += 1>><</if>><<npcincr Eden love 1>><<npcincr Eden dom 1>><<set $eden_salve to 1>><</link>><<glove>><<gdom "Eden">>
+		<<link [[Make salves (0:30)|Eden Salve]]>><<pass 30>><<if !$salve>><<set $salve to 1>><<else>><<set $salve += 1>><</if>><<npcincr Eden love 1>><<set $eden_salve to 1>><</link>><<glove>>
 		<br>
 	<</if>>
 	<<if $eden_soap isnot 1>>
-		<<link [[Make soap (0:30)|Eden Soap]]>><<pass 30>><<if !$soap>><<set $soap to 1>><<else>><<set $soap += 1>><</if>><<npcincr Eden love 1>><<npcincr Eden dom 1>><<set $eden_soap to 1>><</link>><<glove>><<gdom "Eden">>
+		<<link [[Make soap (0:30)|Eden Soap]]>><<pass 30>><<if !$soap>><<set $soap to 1>><<else>><<set $soap += 1>><</if>><<npcincr Eden love 1>><<set $eden_soap to 1>><</link>><<glove>>
 		<br>
 	<</if>>
 	<br>
@@ -206,7 +206,12 @@
 	<<elseif $edenfurniture is 3 and $edenloveseat lt 7>>
 		<<link [[Work on the loveseat (3:00)|Eden Loveseat Work]]>><<pass 2 hours>><<pass 1 hour>><</link>>
 		<br>
-	<</if>>	<<if $edenwalk isnot 1>>
+	<</if>>	
+	<<if $worn.neck.collared isnot 1 and $NPCName[$NPCNameList.indexOf("Eden")].dom gte 100>>
+		<<link [[Ask Eden for a collar|Eden Collar]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
+		<br>
+	<</if>>
+	<<if $edenwalk isnot 1>>
 		<<link [[Ask Eden to accompany you to the lake|Eden Lake]]>><</link>>
 		<br>
 	<</if>>
@@ -419,11 +424,15 @@
 		<<link [[Work on the loveseat (3:00)|Eden Loveseat Work]]>><<pass 2 hours>><<pass 1 hour>><</link>>
 		<br>
 	<</if>>
+
+	<<if $worn.neck.collared isnot 1 and $NPCName[$NPCNameList.indexOf("Eden")].dom gte 100>>
+		<<link [[Ask Eden for a collar|Eden Collar]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
+		<br>
+	<</if>>
 	<<if $edenwalk isnot 1>>
 		<<link [[Ask Eden to accompany you to the lake|Eden Lake]]>><</link>>
 		<br>
 	<</if>>
-
 	<<if $eden_search is undefined or $eden_search lt ($NPCName[$NPCNameList.indexOf("Eden")].love / 40)>>
 		<<link [[Ask Eden to help search the forest (0:30)|Eden Search]]>><<if $eden_search is undefined>><<set $eden_search to 1>><<else>><<set $eden_search += 1>><</if>><</link>>
 		<br>

@@ -1603,6 +1603,15 @@ Eden love: <span id="statsedenlove"><<print Math.trunc($NPCName[$NPCNameList.ind
  | <<link ">>>">><<npcincr Eden love 100>><<clamp>><<replace "#statsedenlove">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].love)>><</replace>><</link>> (200 = full)
 <br>
 
+<<link "<<<">><<npcincr Eden dom -100>><<clamp>><<replace "#statsedendom">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].dom)>><</replace>><</link>> |
+<<link "<<">><<npcincr Eden dom -10>><<clamp>><<replace "#statsedendom">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].dom)>><</replace>><</link>> |
+<<link "<">><<npcincr Eden dom -1>><<clamp>><<replace "#statsedendom">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].dom)>><</replace>><</link>> |
+Eden dominance: <span id="statsedendom"><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].dom)>></span>
+ | <<link ">">><<npcincr Eden dom 1>><<clamp>><<replace "#statsedendom">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].dom)>><</replace>><</link>>
+ | <<link ">>">><<npcincr Eden dom 10>><<clamp>><<replace "#statsedendom">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].dom)>><</replace>><</link>>
+ | <<link ">>>">><<npcincr Eden dom 100>><<clamp>><<replace "#statsedendom">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].dom)>><</replace>><</link>> (150 = full)
+<br>
+
 <<link "<<<">><<npcincr Eden lust -100>><<clamp>><<replace "#statsedenlust">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].lust)>><</replace>><</link>> |
 <<link "<<">><<npcincr Eden lust -10>><<clamp>><<replace "#statsedenlust">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].lust)>><</replace>><</link>> |
 <<link "<">><<npcincr Eden lust -1>><<clamp>><<replace "#statsedenlust">><<print Math.trunc($NPCName[$NPCNameList.indexOf("Eden")].lust)>><</replace>><</link>> |

@@ -981,7 +981,12 @@ You are in the clearing outside Eden's cabin. The surrounding trees are so huge 
 <<elseif $hour is 16>>
 
 	<<if $NPCName[$NPCNameList.indexOf("Eden")].lust gte 26 and $edenchoplust isnot 1>><<set $edenchoplust to 1>>
-	<!-- <<npc Eden>><<person1>> -->Eden is chopping firewood. <<He>> stretches <<his>> back and spots you watching <<him>>. "I could use a break," <<he>> says. <<He>> marches towards you, covered in sweat and axe still in hand. <<He>> can't realise how menacing <<he>> looks. <<He>> drops the axe and tries to pull you close to <<him>>.
+	<!-- <<npc Eden>><<person1>> -->Eden is chopping firewood. <<He>> stretches <<his>> back and spots you watching <<him>>. "I could use a break," <<he>> says. <<He>> marches towards you, covered in sweat and axe still in hand. <<He>> can't realise how menacing <<he>> looks. 
+		<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
+			<<He>> drops the axe and pulls you into a deep kiss. <<takeKissVirginity "Eden" `($syndromeeden gte 1?"loveInterest":"romantic")`>>
+		<<else>>
+			<<He>> drops the axe and tries to pull you close to <<him>>.
+		<</if>>
 	<br><br>
 
 	<<link [[Allow it|Eden Firewood Sex]]>><<set $sexstart to 1>><<npcincr Eden love 1>><<npcincr Eden dom 1>><</link>>
@@ -2439,6 +2444,27 @@ You pass out again.
 	<<link [[Next|Eden Clearing]]>><<endevent>><</link>>
 <</if>>
 
+:: Eden Collar
+<<set $outside to 1>><<set $location to "cabin">><<effects>>
+
+<<if $submissive gte 1150>>
+	"C-Could you give me another collar?" You blush and turn your face away.
+<<elseif $submissive lte 850>>
+	"Could I have another collar?" You try to maintain eye contact while speaking, but feel a blush rising onto your cheeks all the same.
+<<else>>
+	"Could you give me another collar?" You feel your face heat up at your words.
+<</if>>
+<br><br>
+
+<<if $bus is "edenclearing">>
+	Eden's eyebrows rise at your question. "Changed your mind?" <<he>> smirks, eyeing your flushed visage. You feel your heart pick up in response. "Come here," <<he>> says, taking your hand and leading you into the cabin.
+	<br><br>
+<<else>>
+	Eden's eyebrows rise at your question. "Changed your mind?" <<he>> smirks, eyeing your flushed visage. You feel your heart pick up in response. "Come here," <<he>> says, taking your hand.
+	<br><br>
+<</if>>
+
+<<link [[Next|Eden Collar Ask 2]]>><</link>>
 
 :: Eden Collar Ask
 <<set $outside to 1>><<set $location to "cabin">><<effects>>

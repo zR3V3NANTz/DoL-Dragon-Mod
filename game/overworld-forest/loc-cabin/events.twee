@@ -1,11 +1,16 @@
 :: Eden Breakfast
 <<set $outside to 0>><<set $location to "cabin">><<effects>>
 
-<<if $NPCName[$NPCNameList.indexOf("Eden")].lust gte 26 and $edenbreakfastlust isnot 1>><<set $edenbreakfastlust to 1>>
+<<if $NPCName[$NPCNameList.indexOf("Eden")].lust gte 26 and $edenbreakfastlust isnot 1 and $phase isnot 2>><<set $edenbreakfastlust to 1>>
 
-While gathering ingredients in the kitchen, you feel a pair of hands slide up your waist. Eden brings <<his>> lips to your ear. "I've changed my mind," <<he>> says.
-"I want you instead."
-<br><br>
+	<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
+		While gathering ingredients in the kitchen, you feel a hand slide down to your <<genitals>>. Eden lays wet kisses along your neck, bringing <<his>> lips to your ear.
+		"I've changed my mind," <<he>> says. "I want you instead."
+	<<else>>
+		While gathering ingredients in the kitchen, you feel a pair of hands slide up your waist. Eden brings <<his>> lips to your ear. "I've changed my mind," <<he>> says.
+		"I want you instead."
+	<</if>>
+	<br><br>
 
 <<link [[Embrace Eden|Eden Breakfast Sex]]>><<set $sexstart to 1>><<npcincr Eden love 1>><<npcincr Eden dom 1>><</link>><<glove>><<gdom>>
 <br>
@@ -1270,13 +1275,14 @@ Eden kisses your forehead before helping you back to your feet.<<glove>><<lllust
 /* eden is already generated on passages that lead here
 <<npc Eden>><<person1>>*/
 
-<<if !$salveuse and $salve gte 1>>
+<<if !$salveuse and $salve gte 1 and $hour isnot 0>>
 	<<set $salveuse to 1>>
 	<<set $salve -= 1>>
 	You bring a jar of salve to the fireplace and rub some onto your hands.
 <</if>>
 
 <<if $edenmassage is 0>>
+	<<unset $salveuse>>
 	You focus your attention on Eden's calves. They're taut with strain, and you work firmly to release the tension there.
 <<elseif $edenmassage is 1>>
 	Eden's shoulders are scrunched with tension, you decide to focus your attention there.
@@ -2120,7 +2126,11 @@ You lie back, close your eyes, and relax.
 	You're disturbed by a whistling. You open your eyes in alarm. Eden stands at the edge of the spring. <<covered>> "I don't bother keeping this place clear any more," <<he>> says as <<he>> undresses. "It's so much work. I'm glad you feel different." <<He>> jumps in, splashing you.
 	<br><br>
 
-	<<He>> emerges behind you and wraps <<his>> arms around your waist. "There's something else you can do for me." <<He>> licks your cheek.
+	<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
+		<<He>> emerges behind you and pulls you into <<his>> chest. "There's something else you can do for me." <<He>> trails a hand downwards, toying with your <<genitals>>.
+	<<else>>
+		<<He>> emerges behind you and wraps <<his>> arms around your waist. "There's something else you can do for me." <<He>> licks your cheek.
+	<</if>>
 	<br><br>
 
 	<<link [[Push away|Clearing Spring Push]]>><<npcincr Eden love -3>><<npcincr Eden dom -1>><</link>><<lllove>><<ldom>>
@@ -2322,8 +2332,11 @@ You wash Eden's clothes in the spring, making sure to get every bit of dirt and 
 
 	/* eden is already generated on passages that lead here <<npc Eden>><<person1>>*/You feel a pair of arms wrap around you from behind. Eden buries <<his>> head in your neck and kisses your collarbone.
 	<br><br>
-
-	"You're such a good <<wife>>, doing this for me," <<he>> says. "Maybe there's a way I can return the favor." You feel <<his>> hand slide onto your thigh.
+		<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
+			"You're such a good <<wife>>, doing this for me," <<he>> says. "Let me return the favor." You feel <<his>> hand slide to your <<genitals>> as <<he>> presses <<him>>self against you.
+		<<else>>
+			"You're such a good <<wife>>, doing this for me," <<he>> says. "Maybe there's a way I can return the favor." You feel <<his>> hand slide onto your thigh.
+		<</if>>
 	<br><br>
 
 	<<link [[Push away|Wash Spring Push]]>><<npcincr Eden love -1>><<npcincr Eden dom -1>><</link>>
@@ -2870,7 +2883,11 @@ You ignore Eden's hand and stand up. <<He>> looks a bit hurt, but doesn't press 
 
 :: Eden Lake Walk
 <<set $outside to 1>><<effects>>
-You and Eden walk a few times around the lake, until <<he>> pulls you into the trees and slides <<his>> hand over your waist. "We're all alone now," <<he>> whispers, as <<he>> nips your ear.
+<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
+	You and Eden walk a few times around the lake, until <<he>> pulls you out of sight and pins you up against a tree. "We're all alone now," <<he>> whispers, grinding into you. <<His>> breath is teasingly close to your lips.
+<<else>>
+	You and Eden walk a few times around the lake, until <<he>> pulls you into the trees and slides <<his>> hand over your waist. "We're all alone now," <<he>> whispers, as <<he>> nips your ear.
+<</if>>
 <br><br>
 
 <<link [[Kiss Eden|Eden Lake Sex]]>><<set $sexstart to 1>><<npcincr Eden love 1>><<npcincr Eden dom 1>><</link>><<promiscuous1>>
