@@ -32,6 +32,23 @@ You walk up to one of the homes and knock.
 	<br>
 <<elseif $rng gte 11 and $schoolday is 0>>
 	<<generatey1>><<person1>>A <<person>> answers the door. <<He>> looks shocked, then grins. "I know you from school," <<he>> says.
+		<<if $player.gender is "h" and !$worn.genitals.type.includes("hidden")>>
+			<<if $schoolrep.herm gte 3>>
+				 "I guess the rumours about you are true. You must be really embarrassed, huh?"
+			<<else>>
+				 "I never guessed you were..." <<He>> trails off and shakes <<his>> head. "You must be really embarrassed, huh?"
+			<</if>>
+			<<schoolrep herm 1>>
+		<<elseif ($schoolrep.crossdress gte 1 or $backgroundTraits.includes("crossdresser")) and !$worn.genitals.type.includes("hidden")>>
+			<<if $schoolrep.crossdress gte 3>><!-- Crossdresser trait checked above to predict that the PC normally crossdresses at school if they have no rep -->
+				 "I guess the rumours about you are true. You must be really embarrassed, huh?"
+			<<elseif $schoolrep.crossdress gte 1>>
+				 "Someone said you were a crossdresser, but I never thought it was true. You must be really embarrassed, huh?"
+			<<else>>
+				 "I never guessed you were a crossdresser. You must be really embarrassed, huh?"
+			<</if>>
+			<<schoolrep crossdress 1>>
+		<</if>>
 	<br><br>
 	<<fameexhibitionism 1>>
 	<<link [[Ask for clothes|Domus House Beg]]>><<set $phase to 4>><</link>>
@@ -258,7 +275,7 @@ Running as fast as you can, you reach the house and hit the buzzer before turnin
 :: Widgets Spare Clothes Domus [widget]
 
 <<widget "spareclothesdomus">>
-	<<if $player.gender is "m">>
+	<<if $player.gender_appearance is "m">>
 		<<upperwear 4>><<set $worn.lower.colour to either("black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow")>><<set $worn.upper.integrity /= 2>>
 		<<lowerwear 5>><<set $worn.lower.colour to either("black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow")>><<set $worn.lower.integrity /= 2>>
 	<<else>>

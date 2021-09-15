@@ -1111,32 +1111,82 @@ Doren stops beside your desk. "You smell... odd," <<he>> says. "Almost like..."
   <br>
 
 <<elseif $rng gte 81>>
-  <<if $cool lt 40>>
-  <<set $worn.lower.integrity -= 30>>
-	<<if $worn.lower.integrity lte 0>>
-	As you stand to hand your work in, your $worn.lower.name <<if $worn.lower.plural is 0>>tears<<else>>tear<</if>> clean off of your body! You look down in horror and see the remains attached to the chair, someone put glue on your seat. You cover yourself as soon as you can, but for a moment your <<undies>> were completely exposed. Doren rushes over with a towel, while your face flushes with humiliation.
-	<<humiliation10>>
-	<br><br>
+	<<if $cool lt 40>>
+		<<set $worn.lower.integrity -= 30>>
+		<<if $worn.lower.integrity lte 0>>
+			As you stand to hand your work in, your $worn.lower.name <<print ($worn.lower.plural? "tear" : "tears")>> clean off of your body!
+			You look down in horror and see the remains attached to the chair. Someone put glue on your seat!
+			You cover your exposed <<undies>> as soon as you can, but for a moment you were completely exposed.
+			Doren rushes over with a towel, while your face flushes with humiliation.
+
+			<<if $worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("hidden")>>
+				<<stress 12>><<trauma 12>><<ggstress>><<ggtrauma>>
+				<<if $player.gender isnot $player.gender_appearance and ($schoolrep.crossdress gte 3 or $schoolrep.herm gte 3)>>
+					<br><br>
+					The other students giggle at your plight. You overhear a few whispers while Doren is busy helping you,
+					and can make out something about <<print ($player.gender is "h" ? "your genitals" : "you crossdressing")>>. They saw, and they know the rumours are true.
+				<<elseif $player.gender isnot $player.gender_appearance>>
+					<br><br>
+					The other students gasp, and the classroom fills with hushed whispers while Doren is busy helping you.
+					You can make out something about <<print ($player.gender is "h" ? "your genitals" : "you crossdressing")>>. They saw.
+				<</if>>
+
+				<<schoolrep_naked>>
+				<<set $genderknown.pushUnique("Doren")>>
+				<<if $kylarenglishstate is "active" or $kylarenglishstate is "watching">><<set $genderknown.pushUnique("Kylar")>><</if>>
+			<<else>>
+				<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
+			<</if>>
+			<<if $kylarenglishstate is "active" or $kylarenglishstate is "watching">>
+				<br><br>
+				
+				Kylar blushes and looks away, but <<nnpc_he "Kylar">> clearly saw.<<npcincr Kylar lust 1>><<glust>>
+			<</if>>
+		<<else>>
+			As you stand to hand your work in, your $worn.lower.name <<print ($worn.lower.plural? "tear" : "tears")>>. Someone put glue on your seat!
+			Fortunately, your $worn.lower.name survived, though certainly worse for wear.
+		<</if>>
+		<br><br>
 	<<else>>
-	As you stand to hand your work in, your $worn.lower.name tear. Someone put glue on your seat! Fortunately, your $worn.lower.name survived, though certainly worse for wear.
-	<br><br>
+		<<set $worn.lower.integrity -= 10>>
+		<<if $worn.lower.integrity lte 0>>
+			As you stand to hand your work in, your $worn.lower.name <<print ($worn.lower.plural? "catch" : "catches")>> on the corner of your desk
+			and <<print ($worn.lower.plural? "tear" : "tears")>> clean off of your body!
+			You look down in horror and see the remains hanging from the desk.
+			You cover your exposed <<undies>> as soon as you can, but for a moment you were completely exposed.
+			Doren rushes over with a towel, while your face flushes with humiliation.
+			<<if $worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("hidden")>>
+				<<stress 12>><<trauma 12>><<ggstress>><<ggtrauma>>
+				<<if $player.gender isnot $player.gender_appearance and ($schoolrep.crossdress gte 3 or $schoolrep.herm gte 3)>>
+					<br><br>
+					The other students look almost satisfied by your plight. You overhear a few whispers while Doren is busy helping you,
+					and can make out something about <<print ($player.gender is "h"? "your genitals" : "you crossdressing")>>. They saw, and they know the rumours are true.
+				<<elseif $player.gender isnot $player.gender_appearance>>
+					<br><br>
+					The other students gasp, and the classroom fills with hushed whispers while Doren is busy helping you.
+					You can make out something about <<print ($player.gender is "h"? "your genitals" : "you crossdressing")>>. They saw.
+				<</if>>
+
+				<<schoolrep_naked>>
+				<<set $genderknown.pushUnique("Doren")>>
+				<<if $kylarenglishstate is "active" or $kylarenglishstate is "watching">><<set $genderknown.pushUnique("Kylar")>><</if>>
+			<<else>>
+				<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
+			<</if>>
+			<<if $kylarenglishstate is "active" or $kylarenglishstate is "watching">>
+				<br><br>
+				Kylar blushes and looks away, but <<nnpc_he "Kylar">> clearly saw.<<npcincr Kylar lust 1>><<glust>>
+			<</if>>
+		<<else>>
+			As you stand to hand your work in, your $worn.lower.name <<print ($worn.lower.plural? "catch" : "catches")>> on the corner of your desk and tears.
+			Fortunately, your $worn.lower.name survived, though a bit worse for wear.
+			<br><br>
+		<</if>>
 	<</if>>
-  <<else>>
-  <<set $worn.lower.integrity -= 10>>
-	<<if $worn.lower.integrity lte 0>>
-	As you stand to hand your work in, your $worn.lower.name <<if $worn.lower.plural is 0>>catches<<else>>catch<</if>> on the corner of your desk and <<if $worn.lower.plural is 0>>tears<<else>>tear<</if>> clean off of your body! You look down in horror and see the remains hanging from the desk. You cover your exposed <<undies>> as soon as you can, but for a moment you were completely exposed. Doren rushes over with a towel, while your face flushes with humiliation.
-	<<gtrauma>><<gstress>>
-	<br><br>
-	<<humiliation10>>
-	<<else>>
-	As you stand to hand your work in, your $worn.lower.name <<if $worn.lower.plural is 0>>catches<<else>>catch<</if>> on the corner of your desk and tears. Fortunately, your $worn.lower.name survived, though a bit worse for wear.
-	<br><br>
-	<</if>>
-  <</if>>
-  <<integritycheck>>
-  <<towelup>>
-<<link [[Next|English Lesson]]>><</link>>
-<br>
+	<<integritycheck>>
+	<<link [[Next|English Lesson]]>><<towelup>><</link>>
+	<br>
+
 <<elseif $rng gte 71 and $kylarenglishstate is "active">>
 
 <<npc Kylar>><<person1>>Doren calls Kylar up to the front of the class to recite <<his>> poem. It's a love poem, about you. <<He>> looks overjoyed to be sharing it.

@@ -338,7 +338,14 @@ You've pushed yourself too much.
 	<<faceruined>>
 <</if>>
 <<if $exposed gte 1>>
-	<<if $player.gender is "m">>
+	<<if $player.gender is "m" and $backgroundTraits.includes("crossdresser")>>
+		<<set $clothingselector to "f">><!-- PCs with Crossdresser trait are only PC type with a specific known clothing preference and can presumably ask for it here -->
+	<<elseif $player.gender is "f" and $backgroundTraits.includes("crossdresser")>>
+		<<set $clothingselector to "m">>
+	<<else>>
+		<<set $clothingselector to $player.gender_appearance>>
+	<</if>>
+	<<if $clothingselector is "m">>
 		<<underlowerwear 4>>
 		<<upperwear 4>>
 		<<lowerwear 5>>

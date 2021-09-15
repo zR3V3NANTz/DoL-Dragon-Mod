@@ -1062,7 +1062,7 @@ Second arg: tool */
 		<<switch random(1, 10)>>
 		<<case 1>><<He>> speaks. "So glad I get such a handsome boy to play with."
 		<<case 2>><<He>> speaks. "You're fucking hot, that's for sure."
-		<<case 3>><<He>> speaks. "Advertising your masculinity? Like anyone would mistake you for a boy."
+		<<case 3>><<He>> speaks. "Advertising your masculinity? Like anyone would mistake you for a girl."
 		<<case 4>><<He>> speaks. "Do other boys wear marks like this?"
 		<<case 5>><<He>> speaks. "Most boys would be embarrassed to wear such at thing."
 		<<case 6>><<He>> speaks. "I think you need someone strong to protect you."

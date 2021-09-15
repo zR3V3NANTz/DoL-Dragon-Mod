@@ -914,7 +914,7 @@ __Body Writing__<br>
 	<<if $whitneyromance is 1>>
 		<<set _bodyWritingOptions["Love Interests"]["Whitney's Pet"] to "whitneys_pet">>
 		<<set _bodyWritingOptions["Love Interests"]["Property of Whitney"] to "property_of_whitney">>
-		<<set _bodyWritingOptions["Love Interests"]["Whitney's Toy"] to "whitneys_boyslut">>
+		<<set _bodyWritingOptions["Love Interests"]["Whitney's Toy"] to "whitneys_toy">>
 		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender.appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Whitney's Boyslut"] to "whitneys_boyslut">>
 		<</if>>

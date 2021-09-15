@@ -148,21 +148,38 @@
 	<<if !$worn.under_lower.type.includes("naked")>>
 		"I said everything," <<he>> states, pointing at your $worn.under_lower.name.
 		"Hurry up."
-		<br>
-		Hiding any feelings, you strip your<<if !$worn.under_upper.type.includes("naked")>> $worn.under_lower.name and $worn.under_upper.name handing <<underlowerit>> to <<him>>.<<else>> $worn.under_lower.name and hand <<underlowerit>> to <<him>>.<</if>> <<He>> examines <<underlowerit>> closely.
-		"Drugs," <<he>> says. "I smell drugs."
-		<<He>> holds your $worn.under_lower.name to <<his>> nose and inhales deeply several times. "I'm confiscating these for drug testing."
+		<br><br>
+		Hiding any feelings, you strip your<<if !$worn.under_upper.type.includes("naked")>> $worn.under_lower.name and $worn.under_upper.name handing <<underlowerit>> to <<him>>.<<else>> $worn.under_lower.name and hand <<underlowerit>> to <<him>>.<</if>>
+		<<if ($player.gender isnot $player.gender_appearance) and !$worn.genitals.type.includes ("hidden") and !$genderknown.includes("Leighton")>>
+			<<His>> eyes widen with surprise when <<he>> sees your <<genitals>>, but <<he>> quickly composes <<himself>> and continues.
+		<</if>>
+		<<He>> examines <<underlowerit>> closely. "Drugs," <<he>> says. "I smell drugs." <<He>> holds your $worn.under_lower.name to <<his>> nose and inhales deeply several times. "I'm confiscating these for drug testing."
 		<br><br>
 		<<underlowerruined>><<underupperruined>><<set $phase to 4>>
 	<<else>>
-		"No underwear?" <<he>> comments. "That's against the rules,
-		young<<if $player.gender is "m">> man.<<elseif $player.gender is "h" and $player.gender_appearance is "m">>... man?<<elseif $player.gender is "h" and $player.gender_appearance is "f">>... lady?<<else>> lady.<</if>>"
+		<<set _lady to ($player.gender_appearance is "m" ? "man" : "lady")>>
+		"No underwear?" <<he>> comments. "That's against the rules, young<<if ($player.gender isnot $player.gender_appearance) and !$worn.genitals.type.includes("hidden") and !$genderknown.includes("Leighton")>>...<</if>>
+		<<if ($player.gender isnot $player.gender_appearance) and !$worn.genitals.type.includes("hidden") and !$genderknown.includes("Leighton")>>
+			_lady?"
+		<<elseif ($player.gender isnot $player.gender_appearance) and $genderknown.includes("Leighton")>>
+			'_lady'."<!-- Leighton being a bit rude to PCs who are Different -->
+		<<else>>
+			_lady."
+		<</if>>
 		<br><br>
 	<</if>>
 	<<if $worn.genitals.type.includes("chastity")>>
-		<<He>> does a double-take. "Oh, you're wearing a $worn.genitals.name. Okay, let me see that." <<He>> crouches by you, closely examining and probing around your $worn.genitals.name with <<his>> fingers. "Doesn't feel like you're hiding anything," <<he>> says.
+		<<He>> does a double-take. "Oh, you're wearing a $worn.genitals.name. Okay, let me see that." <<He>> crouches by you, closely examining and probing around your $worn.genitals.name with <<his>> fingers. 
+		<<if ($player.gender isnot $player.gender_appearance) and $worn.genitals.type.includes("hidden") and !$genderknown.includes("Leighton")>>
+			<<He>> gasps when <<he>> discovers what's under your $worn.genitals.name, and probes more intensely for a moment until <<his>> curiosity is satisfied. 
+		<</if>><!-- assumption being made here that Leighton is successfully probing under the belt enough to feel genitalia -->
+		"Doesn't feel like you're hiding anything," <<he>> says.
+		<<if $player.penisExist and $player.gender_appearance is "f" and $worn.genitals.type.includes("hidden")>>
+			"Not drugs, anyway," <<he>> adds with a smirk.
+		<</if>>
 		<br><br>
 	<</if>>
+	<<set $genderknown.pushUnique("Leighton")>>
 	<<He>> sits back at <<his>> desk and beckons you over. When you're close, <<he>> grabs you by the arms and bends you over <<his>> knee.
 	<br><br>
 
