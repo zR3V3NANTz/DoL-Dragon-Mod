@@ -103,6 +103,10 @@
 	<<set $eventslot to []>>
 <</if>>
 <<set $eventslot.push(_n)>>
+<<if $eventtime is undefined>>
+	<<set $eventtime to []>>
+<</if>>
+<<set $eventtime.push($time)>>
 <</widget>>
 
 <<widget "generate1">>
