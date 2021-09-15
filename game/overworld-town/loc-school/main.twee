@@ -411,13 +411,15 @@ You haul yourself over the fence and drop down on the other side.
 			<br><br>
 		<</if>>
 		<<if !$worn.upper.type.includes("school") and !$worn.lower.type.includes("school") and $schoolstate isnot "fifth">>
-			<<if $player.gender is "m">>
+			<<if $player.gender_appearance is "m">>
 				<<if $rng gte 51>>
 					<<set $clothingselector to "m">>
 					<<He>> hands you a worn-looking school shirt and a pair of school shorts. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
 					<br><br>
 
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
+					<br>
+					<<link [[Refuse to wear the boys' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>><<if !$genderknown.includes("Leighton")>> &nbsp; <span class="pink">Leighton will be suspicious</span><</if>>
 					<br>
 				<<else>>
 					<<set $clothingselector to "f">>
@@ -426,16 +428,18 @@ You haul yourself over the fence and drop down on the other side.
 
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
 					<br>
-					<<link [["There's no way I can wear this!" |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
+					<<link [[Refuse to wear the girls' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
 					<br>
 				<</if>>
-			<<elseif $player.gender is "f">>
+			<<else>>
 				<<if $rng gte 51>>
 					<<set $clothingselector to "f">>
 					<<He>> hands you a worn-looking school shirt and a school skirt. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
 					<br><br>
 
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
+					<br>
+					<<link [[Refuse to wear the girls' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>><<if !$genderknown.includes("Leighton")>> &nbsp; <span class="pink">Leighton will be suspicious</span><</if>>
 					<br>
 				<<else>>
 					<<set $clothingselector to "m">>
@@ -444,33 +448,19 @@ You haul yourself over the fence and drop down on the other side.
 
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
 					<br>
-					<<link [["There's no way I can wear this!" |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
-					<br>
-				<</if>>
-			<<else>>
-				<<if $rng gte 51>>
-					<<set $clothingselector to "f">>
-					<<He>> hands you a worn-looking school shirt and a school skirt. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
-					<br><br>
-
-					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
-					<br>
-				<<else>>
-					<<set $clothingselector to "m">>
-					<<He>> hands you a worn-looking school shirt and a pair of school shorts. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
-					<br><br>
-
-					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
+					<<link [[Refuse to wear the boys' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
 					<br>
 				<</if>>
 			<</if>>
 		<<elseif !$worn.lower.type.includes("school") and $schoolstate isnot "fifth">>
-			<<if $player.gender is "m">>
+			<<if $player.gender_appearance is "m">>
 				<<if $rng gte 51>>
 					<<set $clothingselector to "m">>
 					<<He>> hands you a worn-looking pair of school shorts. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
 					<br><br>
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
+					<br>
+					<<link [[Refuse to wear the boys' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>><<if !$genderknown.includes("Leighton")>> &nbsp; <span class="pink">Leighton will be suspicious</span><</if>>
 					<br>
 				<<else>>
 					<<set $clothingselector to "f">>
@@ -479,15 +469,17 @@ You haul yourself over the fence and drop down on the other side.
 
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
 					<br>
-					<<link [["There's no way I can wear this!" |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
+					<<link [[Refuse to wear the girls' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
 					<br>
 				<</if>>
-			<<elseif $player.gender is "f">>
+			<<else>>
 				<<if $rng gte 51>>
 					<<set $clothingselector to "f">>
 					<<He>> hands you a worn-looking school skirt. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
 					<br><br>
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
+					<br>
+					<<link [[Refuse to wear the girls' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>><<if !$genderknown.includes("Leighton")>> &nbsp; <span class="pink">Leighton will be suspicious</span><</if>>
 					<br>
 				<<else>>
 					<<set $clothingselector to "m">>
@@ -496,21 +488,7 @@ You haul yourself over the fence and drop down on the other side.
 
 					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
 					<br>
-					<<link [["There's no way I can wear this!" |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
-					<br>
-				<</if>>
-			<<else>>
-				<<if $rng gte 51>>
-					<<set $clothingselector to "m">>
-					<<He>> hands you a worn-looking pair of school shorts. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
-					<br><br>
-					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
-					<br>
-				<<else>>
-					<<set $clothingselector to "f">>
-					<<He>> hands you a worn-looking school skirt. "You can get changed in the storeroom. I'll have your clothes sent to the pool for you to collect after school." <<He>> turns back to <<his>> computer and leaves you to change.
-					<br><br>
-					<<link [[Get changed and leave (0:01)|Hallways]]>><<schoolspareclothes>><<endevent>><<pass 1>><</link>>
+					<<link [[Refuse to wear the boys' uniform |Head's Office Refusal]]>><<detention 1>><</link>><<gdelinquency>>
 					<br>
 				<</if>>
 			<</if>>
@@ -541,8 +519,35 @@ You haul yourself over the fence and drop down on the other side.
 
 :: Head's Office Refusal
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
-
-<<He>> looks at you sternly. "Don't talk back. I told you to get dressed. Now, get dressed."
+<<set _offeredclothing to ($clothingselector is "m" ? "the boys' uniform" : "the girls' uniform")>>
+<<if $submissive gte 1150>>
+	"B-But this is _offeredclothing," you say.
+<<elseif $submissive lte 850>>
+	"I won't wear _offeredclothing!" you say.
+<<else>>
+	<<if $player.gender is $clothingselector and !$backgroundTraits.includes("crossdresser")>><!-- Crossdresser trait makes PC distressed by not crossdressing and so goes to "I can't" -->
+		"Are you sure you don't have a <<print ($clothingselector is "f" ? "pair of shorts" : "skirt")>>?" you ask.
+	<<else>>
+		"But I can't wear _offeredclothing!" you say.
+	<</if>>
+<</if>>
+<br><br>
+<<if ($player.gender_appearance is $clothingselector) and !$genderknown.includes("Leighton")>> <!-- Leighton didn't expect this and checks the PC's records for their sex -->
+	<<He>> looks slightly confused for a moment, before turning back to <<his>> computer to look something up. <<He>> skims briefly before 
+		<<if $player.gender is "h">><!-- implication: PC's ambiguous sex is recorded as medical information -->
+			gasping at what <<he>> finds.
+		<<elseif $backgroundTraits.includes("crossdresser")>><!-- deliberately ambiguous implication: PC has been crossdressing for long enough for it to be on file -->
+			smirking at what <<he>> finds.
+		<<else>>
+			quirking a brow at what <<he>> finds and typing something in.
+		<</if>>
+		 <<He>> looks back up and says, "I'm sorry, but this uniform is all I have. Now, get dressed."
+	<<set $genderknown.pushUnique("Leighton")>><<if $player.gender is "h">><<detention -1>><</if>> <!-- Leighton is too surprised to be angry at herm PC right now -->
+<<elseif $player.gender is $clothingselector and $genderknown.includes("Leighton")>>
+	<<He>> looks at you sternly and scoffs. "If you want to dress as a <<print ($clothingselector is "m" ? "girl" : "boy")>>, that's your prerogative, but perhaps you should come dressed like it next time. Now, get dressed."
+<<else>>
+	<<He>> looks at you sternly. "Don't talk back. I told you to get dressed. Now, get dressed."
+<</if>>
 <br><br>
 
 <<link [[Wear the clothes and leave (0:01)|Hallways]]>><<schoolspareclothes>><<pass 1>><<endevent>><</link>>

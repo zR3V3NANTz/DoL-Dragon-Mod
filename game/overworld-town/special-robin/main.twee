@@ -1046,7 +1046,13 @@ You read the note.
 "<i>I've wanted to tell you this but whenever I try it won't come out. I know you're paying Bailey for me. I feel so relieved and ashamed.
 <br><br>
 
-I've started feeling butterflies in my tummy when you talk to me, and when we hug it feels like my body is melting (In a good way). Do you want to be my <<if $player.gender is "m">>boyfriend<<elseif $player.gender is "f">>girlfriend<<elseif $player.gender_appearance is "m">>boyfriend<<else>>girlfriend<</if>>? It's okay if you don't! If you don't though, pretend you never read this note or I'll die of embarrassment.
+I've started feeling butterflies in my tummy when you talk to me, and when we hug it feels like my body is melting (In a good way). Do you want to be my
+<<if ($player.gender isnot $player.gender_appearance and $player.gender isnot "h") or $backgroundTraits.includes("crossdresser")>>
+	<<girlfriend>>? Or my <<print ($player.gender_appearance is "m" ? "girlfriend" : "boyfriend")>>? (Either one would make me really happy.)
+<<else>>
+	<<girlfriend>>?
+<</if>>
+It's okay if you don't! If you don't though, pretend you never read this note or I'll die of embarrassment.
 <br><br>
 
 Thank you for looking after me,
