@@ -20,7 +20,7 @@
 				"Eden" : {
 					important : true,
 					love : { maxValue: 200 },
-					dom : { requirements : false } /*false always hides this stat*/
+					dom : { maxValue: 150 } /*false always hides this stat*/
 				},
 				"Kylar" : {
 					important : true,

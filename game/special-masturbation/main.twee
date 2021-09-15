@@ -259,8 +259,17 @@ You listen out in case anyone snuck in while you were distracted. You don't hear
 
 	<<npc Eden>><<person1>>Out of nowhere, you feel your hands being grabbed by someone else's.
 	<br><br>
-
-	"Let me," Eden says, as <<he>> guides your arms out of the way and slides <<his>> hand up your thigh.
+	
+	<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
+		Let me," Eden says, as <<he>> guides your arms out of the way and  
+		<<if $penisexist is 1>>
+			grabs your <<penis>> in <<his>> hand.
+		<<elseif $vaginaexist is 1>>
+			rubs <<his>> fingers over your <<clit>>.
+		<</if>>
+	<<else>>
+		"Let me," Eden says, as <<he>> guides your arms out of the way and slides <<his>> hand up your thigh.
+	<</if>>
 	<br><br>
 
 	<<link [[Push away|Clearing Spring Masturbation Push]]>><<npcincr Eden love -1>><<npcincr Eden dom -1>><</link>>

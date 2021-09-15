@@ -6,9 +6,9 @@
 <<His>> gaze lingers on your <<lewdness>>. "I don't want you alone like that." 
 <br><br>
 
-<<link [[Get dressed|Eden Wardrobe]]>><<endevent>><</link>>
+<<link [[Go inside|Eden Cabin]]>><<endevent>><</link>>
 <br>
-<<link [[Don't get dressed|Eden Clearing]]>><<endevent>><<set $edenexposed to 1>><</link>>
+<<link [[Stay outside|Eden Clearing]]>><<endevent>><<set $edenexposed to 1>><</link>>
 
 <<elseif $phase is 0>>
 
@@ -23,9 +23,9 @@
 <<He>> nods, but <<his>> gaze lingers on your <<lewdness>>. "I don't want you alone like that." 
 <br><br>
 
-<<link [[Get dressed|Eden Wardrobe]]>><<endevent>><</link>>
+<<link [[Go inside|Eden Cabin]]>><<endevent>><</link>>
 <br>
-<<link [[Don't get dressed|Eden Clearing]]>><<endevent>><<set $edenexposed to 1>><</link>>
+<<link [[Stay outside|Eden Clearing]]>><<endevent>><<set $edenexposed to 1>><</link>>
 
 <<elseif $phase is 1>>
 

@@ -3849,6 +3849,7 @@ __Map__<br>
 	<<set _i to $NPCNameList.indexOf("Eden")>>
 	<<set $NPCName[_i].love = Math.clamp($NPCName[_i].love, 0, 200)>>
 	<<set $NPCName[_i].lust = Math.clamp($NPCName[_i].lust, 0, 100)>>
+	<<set $NPCName[_i].dom = Math.clamp($NPCName[_i].dom, 0, 150)>>
 	<<set _i to $NPCNameList.indexOf("Kylar")>>
 	<<set $NPCName[_i].love = Math.clamp($NPCName[_i].love, 0, 100)>>
 	<<set $NPCName[_i].lust = Math.clamp($NPCName[_i].lust, 0, 100)>>
