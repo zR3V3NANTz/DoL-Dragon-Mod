@@ -101,11 +101,18 @@ function genderappearancecheck() {
 	/* find maximum possible femininity of the last lower piece you can strip down to, and add it to the counter */
 	addfemininityfromfactor(Math.max(T.over_lower_femininity, T.lower_femininity, T.under_lower_femininity), "Lower clothes", "noow");
 	/* bulge and genitals checks for topless gender */
-	if (T.under_lower_protected) {
+	if (T.under_lower_protected && V.NudeGenderDC > 0) {
 		addfemininityfromfactor(-T.bulge_size * 100, "Bulge visible through underwear", "noow");
-	} else if (T.over_lower_protected || T.lower_protected) {
+	} else if ((T.over_lower_protected || T.lower_protected) && V.NudeGenderDC > 0) {
 		addfemininityfromfactor(-Math.clamp((T.bulge_size - 3) * 100, 0, Infinity), "Bulge visible through clothing", "noow");
-	} else if (V.worn.genitals.exposed) {
+	} else if (V.worn.genitals.exposed && V.NudeGenderDC == 1) {
+		if (V.player.penisExist) {
+			addfemininityfromfactor((-V.penissize-2.5) * 150, "Penis exposed", "noow");
+		}
+		if (V.player.vaginaExist) {
+			addfemininityfromfactor(450, "Vagina exposed", "noow");
+		}
+	} else if (V.worn.genitals.exposed && V.NudeGenderDC == 2) {
 		addfemininityfromfactor(V.player.vaginaExist * 100000 - V.player.penisExist * 100000, "Genitals exposed", "noow");
 	}
 	/* plain breasts factor */
@@ -123,24 +130,37 @@ function genderappearancecheck() {
 			addfemininityofclothingarticle(V.worn.genitals);
 			if (V.worn.genitals.exposed) {
 				/* Bare genitals are visible */
-				if (V.player.penisExist) {
-					addfemininityfromfactor(-100000, "Penis visible");
-				}
-				if (V.player.vaginaExist) {
-					addfemininityfromfactor(100000, "Vagina visible");
+				if (V.NudeGenderDC == 1) {
+					if (V.player.penisExist) {
+						addfemininityfromfactor((-V.penissize-2.5) * 150, "Penis visible");
+					}
+					if (V.player.vaginaExist) {
+						addfemininityfromfactor(450, "Vagina visible");
+					}
+				} else if (V.NudeGenderDC == 2) {
+					if (V.player.penisExist) {
+						addfemininityfromfactor(-100000, "Penis visible");
+					}
+					if (V.player.vaginaExist) {
+						addfemininityfromfactor(100000, "Vagina visible");
+					}
 				}
 			}
 		} else {
 			/* Bottom visible through underwear */
 			T.bottom_visibility *= 0.75;
 			/* Bulge visible through underwear */
-			addfemininityfromfactor(-T.bulge_size * 100, "Bulge visible through underwear");
+			if (V.NudeGenderDC > 0) {
+				addfemininityfromfactor(-T.bulge_size * 100, "Bulge visible through underwear");
+			}
 		}
 	} else {
 		/* Bottom covered by lower clothes */
 		T.bottom_visibility *= 0.75;
 		/* Bulge covered by lower clothes */
-		addfemininityfromfactor(-Math.clamp((T.bulge_size - 3) * 100, 0, Infinity), "Bulge visible through clothing");
+		if (V.NudeGenderDC > 0) {
+			addfemininityfromfactor(-Math.clamp((T.bulge_size - 3) * 100, 0, Infinity), "Bulge visible through clothing");
+		}
 	}
 	/* Upper clothing and breasts */
 	addfemininityofclothingarticle(V.worn.over_upper);
