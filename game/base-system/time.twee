@@ -1257,6 +1257,7 @@
 	<<if $pregnancyTesting>>
 		<<menstruationCycle>>
 	<</if>>
+	<<set $robinDebtAsk to 0>>
 <</if>>
 <</widget>>
 

@@ -884,25 +884,54 @@ Bailey shoves Robin into the back seat, and drives away.
 <<npc Bailey>><<person1>>
 
 <<if $hour lte 6 or $hour gte 10>>
+	You enter Bailey's office. <<Hes>> not there. <<He>> should be around between 7 and 9 in the morning.
+	<br><br>
+<<else>>
+	You enter Bailey's office and find <<him>> sitting at <<his>> desk.
 
-You enter Bailey's office. <<Hes>> not there. <<He>> should be around between 7 and 9 in the morning.
+	<<if $baileyvisit is 0>>
+		<<set _options to 1>>
+		<<if $dissociation gte 1>>
+			<<He>> looks at your eyes and grimaces. "Maybe there's someone that's into that fish-eyed stare," <<he>> mutters, shifting aside a paper <<he>> had been reading.
+		<<elseif $pain gte 40>>
+			<<He>> looks at your tear-covered face and sneers. "What, do you want me to kiss your boo-boo? There's bandages in the bathroom."
+		<<elseif $goooutsidecount + $semenoutsidecount gte 25>>
+			<<He>> looks at your body, covered in <<if $semenoutsidecount gte 1 and $goooutsidecount gte 1>>slime and semen<<elseif $semenoutsidecount gte 1>>semen<<else>>slime<</if>>, and turns away. "Get yourself cleaned up, you're a disgrace."
+		<<elseif $arousal gte ($arousalmax / 5) * 3>>
+			<<He>> looks at your flushed face. "You could<<if $beauty lte 3000>> probably<</if>> find someone to take care of that for you," <<he>> says, returning to <<his>> paperwork. "Make some money out of it too, while you're at it."
+		<<else>>
+			<<He>> looks at you. "You better not waste my time."
+		<</if>>
+	<<elseif $baileyvisit is 1>>
+		<<set _options to 1>>
+		<<if $robinDebtAsk is 1>>
+			<<He>> stares at you. "This better be about that payment you mentioned."
+		<<elseif $mason_pond is 2>>
+			<<He>> stares at you. "Is this about the spring? You better have the money."
+		<<else>>
+			<<He>> glares at you. "You again? Piss off."
+		<</if>>
+	<<elseif $baileyvisit is 2>>
+		<<set _options to 1>>
+		<<He>> glares at you. "Stop bothering me, brat."
+	<<elseif $baileyvisit is 3>>
+		<<set _options to 2>>
+		<<He>> glares at you, then storms out of <<his>> chair and marches your way. "I told you to stop bothering me," <<he>> hisses. "Couldn't leave well enough alone, could you?" <<He>> grabs you before you can react and bends you over <<his>> desk.
+		<br><br>
+		<<link [[Next|Bailey Beating]]>><<set $molestationstart to 1>><<set $phase to 0>><</link>>
+	<<elseif $baileyvisit is 100>>
+		<<He>> looks tired. "Don't you have anything better to do?"
+	<<else>>
+		<<He>> ignores you. <<if ($robinpaid isnot 1 and $robindebtknown is 1) or ($pub_hack_job is 3 and not $hacker_tasks.includes("bailey") or $mason_pond is 1 or $mason_pond is 2)>><span class="blue">You've bothered <<him>> too much today for <<him>> to listen to anything you say.</span><</if>>
+	<</if>>
+	<<set $baileyvisit++>>
+<</if>>
 <br><br>
 
-<<else>>
-
-You enter Bailey's office and find <<him>> sitting at <<his>> desk.
-
-	<<if $baileyvisit isnot 1>><<set $baileyvisit to 1>>
-	<<He>> looks at you. "You better not waste my time."
-	<br><br>
-	<<else>>
-	<<He>> glares at you. "You again? Piss off."
-	<br><br>
-	<</if>>
-
+<<if _options is 1>>
 	<<if $robinpaid isnot 1 and $robindebtknown is 1>>
-	<<link [[Take on Robin's debt|Bailey's Office Robin]]>><</link>> <span class="red">(doubles weekly payment)</span>
-	<br>
+		<<link [[Take on Robin's debt|Bailey's Office Robin]]>><</link>> | <span class="red">Doubles weekly payment</span>
+		<br>
 	<</if>>
 
 	<<if $pub_hack_job is 3 and not $hacker_tasks.includes("bailey")>>
@@ -923,8 +952,10 @@ You enter Bailey's office and find <<him>> sitting at <<his>> desk.
 	<</if>>
 <</if>>
 
-<<link [[Leave|Orphanage]]>><<endevent>><</link>>
-<br>
+<<if _options isnot 2>>
+	<<link [[Leave|Orphanage]]>><<endevent>><</link>>
+	<br>
+<</if>>
 
 :: Bailey Pond
 <<effects>>
@@ -967,7 +998,13 @@ You put the cash on the desk. Bailey snatches it, and reclines in <<his>> chair 
 :: Bailey's Office Robin
 <<set $outside to 0>><<set $location to "home">><<effects>>
 
-"You want to take on that worthless waif's debt? Why?" Bailey says. "Don't answer. I don't care." <<He>> smiles. "People pay more for your ass anyway."
+<<if $robinDebtAsk is 1>>
+	"Have you made up your mind this time?" <<he>> asks.
+<<else>>
+	<<set $robinDebtAsk to 1>>
+	"You want to take on that worthless waif's debt? Why?" Bailey says. "Don't answer. I don't care." <<He>> smiles.
+<</if>>
+"People pay more for your ass anyway."
 <br><br>
 
 <i>Taking on Robin's debt is irreversible.</i>
@@ -2875,7 +2912,7 @@ You cuddle Robin, but <<his>> hands continue to wander and grope. <<He>> pulls y
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>><<earnFeat "Bailey's Trouble Maker">>
-	Clarity returns to <<his>> eyes as <<he>> shakes <<his>> head, realising what just happened. "Worth it. Out."
+	Clarity returns to <<his>> eyes as <<he>> shakes <<his>> head, realising what just happened. <<if $phase is 1>>"Worth it. Out."<<else>>"Out. Now."<</if>>
 	<br>
 	<<tearful>> you walk from the room.
 	<br><br>
@@ -2891,9 +2928,9 @@ You cuddle Robin, but <<his>> hands continue to wander and grope. <<He>> pulls y
 	<br><br>
 <</if>>
 <<clotheson>>
-<<if $hacker_tasks.length gte 2>>
-<span class="green">You have completed the hacker's tasks. You should talk to Landry.</span>
-<br><br>
+<<if $hacker_tasks.length gte 2 and $phase is 1>>
+	<span class="green">You have completed the hacker's tasks. You should talk to Landry.</span>
+	<br><br>
 <</if>>
 <<endcombat>>
 <<link [[Next|Orphanage]]>><</link>>
