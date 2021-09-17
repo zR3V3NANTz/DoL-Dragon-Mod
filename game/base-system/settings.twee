@@ -48,6 +48,7 @@
 <<set $breastfeedingdisable to "f">>
 <<set $analpregdisable to "f">>
 <<set $asphyxiaLvl to 3>>
+<<set $NudeGenderDC to 1>>
 <<set $footdisable to "f">>
 <<set $tipdisable to "f">>
 <<set $bodywritingImages to true>>
@@ -962,14 +963,19 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<label><div class="settingsToggle">
 	<<checkbox "$bodywritingdisable" "t" "f" autocheck>> Enable body-writing and forced tattoos
 	</div></label>
+	<label><div class="settingsToggle">
+	<<checkbox "$footdisable" "t" "f" autocheck>> Enable feet
+	</div></label>
 	<div class="settingsToggle" style="display: inline-flex;">
 	Asphyxiation
 	<<numberslider "$asphyxiaLvl" $asphyxiaLvl 0 4 1>>
 	<<run settingsAsphyxiation()>>
 	</div>
-	<label><div class="settingsToggle">
-	<<checkbox "$footdisable" "t" "f" autocheck>> Enable feet
-	</div></label>
+	<div class="settingsToggle" style="display: inline-flex;">
+	Nude&nbsp;Gender&nbsp;Appearance
+	<<numberslider "$NudeGenderDC" $NudeGenderDC 0 2 1>>
+	<<run settingsNudeGenderAppearance()>>
+	</div>
 	<div style="clear:both;">/*Keep at end of toggles*/</div>
 <</widget>>
 

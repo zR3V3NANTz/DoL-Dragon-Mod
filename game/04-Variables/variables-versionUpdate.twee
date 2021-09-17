@@ -411,6 +411,10 @@
 	<<set $chokeorgasm to 0>>
 <</if>>
 
+<<if $NudeGenderDC is undefined>>
+	<<set $NudeGenderDC to 1>>
+<</if>>
+
 <<if $hallucinogen is undefined>>
 	<<set $hallucinogen to 0>>
 <</if>>

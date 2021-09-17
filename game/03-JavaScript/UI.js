@@ -348,6 +348,36 @@ window.settingsAsphyxiation = function () {
 	});
 }
 
+window.settingsNudeGenderAppearance = function () {
+	let updateText = () => {
+		let val = V.NudeGenderDC;
+		let text = null;
+		switch (val) {
+			case 0:
+				text = "NPCs will <span class='blue' style='margin-left: unset; min-width: unset;'>ignore</span> your genitals when perceiving your gender."; break;
+			case 1:
+				text = "NPCs will <span class='purple' style='margin-left: unset; min-width: unset;'>consider</span> your genitals when perceiving your gender."; break;
+			case 2:
+				text = "NPCs will <span class='red' style='margin-left: unset; min-width: unset;'>judge</span> your gender based on your genitals."; break;
+
+			default:
+				text = "Error: bad value: " + val;
+				val = 0;
+		}
+		jQuery('#numberslider-value-nudegenderdc').text('').append(text).addClass('small-description')
+												 .css('text-align', 'left')
+												 .css('margin-left', '-14em');
+	};
+	jQuery(document).ready(() => {
+		updateText();
+		jQuery('#numberslider-input-nudegenderdc').on('input change', function (e) { updateText(); })
+												 .css('width', '75%')
+												 .css('min-height', 'unset')
+												 .css('height', '0.75em')
+												 .css('margin-left', '1em');
+	});
+}
+
 window.settingsNamedNpcBreastSize = function () {
 	const breastSizes = ["nipple","budding","tiny","small","pert","modest","full","large","ample","massive","huge","gigantic","enormous"];
 
