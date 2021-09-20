@@ -174,7 +174,7 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 			<<lstress>><<stress -6>>
 		<</if>>
 	<<case 2>>
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and random(1, 2) is 2>>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and random(1, 2) is 2>>
 			Your thoughts turn to Kylar,
 				<<if _kylarStatus.includes("Rage")>>
 					and you wonder if <<nnpc_hes "Kylar">> looking for you. <<nnpc_He "Kylar">> probably is.
@@ -200,7 +200,7 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 			<<ltrauma>><<trauma -6>>
 		<</if>>
 	<<case 3>>
-		<<if $NPCName[$NPCNameList.indexOf("Whitney")].love gte 21 and random(1, 2) is 2>>
+		<<if $NPCName[$NPCNameList.indexOf("Whitney")].love gte 21 and $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and random(1, 2) is 2>>
 			Your thoughts turn to Whitney,
 				<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 14>>
 					and how <<nnpc_he "Whitney">> always tries to control you.
@@ -251,7 +251,7 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 			<<gcontrol>><<control 10>>
 		<</if>>
 	<<case 5>>
-		<<if $NPCName[$NPCNameList.indexOf("Avery")].love gte 60 and random(1, 2) is 2>>
+		<<if $NPCName[$NPCNameList.indexOf("Avery")].love gte 60 and $NPCName[$NPCNameList.indexOf("Avery")].state is "active" and random(1, 2) is 2>>
 			Your thoughts turn to Avery,
 			<<if $NPCName[$NPCNameList.indexOf("Avery")].rage gte 60 and $averyragerevealed is 1>>
 				and <<nnpc_his "Avery">> attitude when you disappoint him. You clutch your arm.
@@ -282,7 +282,7 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 				and your broken vow with the temple.
 				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
 			<<else>>
-				<<if _sydneySeen.includes("corruptroom")>>
+				<<if $sydneySeen.includes("corruptroom")>>
 					and how you've used this room in the past. Your face flushes.
 					<<garousal>><<arousal 600>>
 				<<else>>
@@ -292,16 +292,16 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 			<</if>>
 		<<elseif $fatigue gte 1600>>
 			Your body threatens to collapse at any moment. You somehow find it in you to stay awake.
-			<<ggwillpower>><<willpower 6>><<gstress>><<stress 6>><<ltired>><<tiredness -12>>
+			<<ggwillpower>><<willpower 6>><<gstress>><<stress 6>><<ltiredness>><<tiredness -12>>
 		<<elseif $fatigue gte 1200>>
 			You feel your eyelids drooping, but the smell of the incense and a quick pinch to the thigh keeps you awake.
-			<<gwillpower>><<willpower 3>><<ltired>><<tiredness -6>>
+			<<gwillpower>><<willpower 3>><<ltiredness>><<tiredness -6>>
 		<<elseif $fatigue gte 800>>
 			You zone out for a moment, before snapping back to reality.
-			<<gtired>><<tiredness 6>>
+			<<gtiredness>><<tiredness 6>>
 		<<elseif $fatigue gte 400>>
 			You take a deep breath and relax your shoulders.
-			<<lstress>><<stress -6>><<ltired>><<tiredness -6>>
+			<<lstress>><<stress -6>><<ltiredness>><<tiredness -6>>
 		<<else>>
 			The incense seeps into your muscles, soothing you. You let out a comfortable sigh.
 			<<lstress>><<stress -6>><<ltrauma>><<trauma -6>><<gtired>><<tiredness 6>>
@@ -314,7 +314,7 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 				<<lcontrol>><<control -10>><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
 			<<elseif $farm_attack_timer is 0>>
 				<<if $hour gte 21>>
-					<<if $minute gte 30>>
+					<<if $hour is 23 and $minute gte 30>>
 						Remy will attack tonight, and <span class="red">you won't be able to get to the farm in time to help</span>. Your heart sinks.
 						<<lcontrol>><<control -10>>
 					<<else>>
