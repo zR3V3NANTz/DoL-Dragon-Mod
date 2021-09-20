@@ -687,7 +687,7 @@ You shake your head, and Sydney nods in understanding. "Right. I wouldn't want s
 <<effects>><<NPCStatusCheck "Kylar Sydney">>
 You sit back in Sydney's chair, and <<he>> <<if ["early","morning","first","second"].includes($schoolstate)>>sleepily<<else>>obediently<</if>> follows you. <<He>> ends up kneeling on the floor with <<his>> head in your lap, and you run your fingers through <<his>> <<npcHairColour "Sydney">> hair. You're worried that it's uncomfortable for <<him>> to be kneeling like that, but <<he>> lets out a sigh of contentment. Before long, <<hes>> fast asleep.
 <br><br>
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and _kylarState.includes("Rage") and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and _kylarStatus.includes("Rage") and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 	<<pass 5>>
 	You and Sydney stay like that for a few minutes, before a loud bang disrupts the library. You look around, and see that Kylar has dropped a dictionary on the floor. Sydney grumbles about the noise and climbs away from you. "Sorry about that..." <<He>> returns to the counter, frowning. The other students return to what they were doing.
 	<br><br>
