@@ -2422,21 +2422,21 @@ or $args[0] is "force">>
 		<<set $exposed to 1>>
 	<</if>>
 <<else>>
-<<set $topless to 0>>
+	<<set $topless to 0>>
 <</if>>
 <<if $worn.lower.exposed gte 1 and $worn.over_lower.exposed gte 1>>
 	<<if $libertine gte 1>>
 	<<else>>
-	<<set $exposed to 1>>
+		<<set $exposed to 1>>
 	<</if>>
 <</if>>
 
 <<if $worn.lower.exposed gte 2 and $worn.over_lower.exposed gte 2>>
 	<<if $worn.under_lower.exposed gte 1>>
-	<<set $exposed to 2>>
+		<<set $exposed to 2>>
 	<<elseif $libertine gte 1>>
 	<<else>>
-	<<set $exposed to 1>>
+		<<set $exposed to 1>>
 	<</if>>
 <</if>>
 
@@ -2723,68 +2723,68 @@ or $args[0] is "force">>
 
 <<if $goooutsidecount gte 1 and $semenoutsidecount gte 1>>
 	<<if $goooutsidecount + $semenoutsidecount gte 100>>
-	<span class="red">Lewd fluid drenches you from head to toe.</span>
-	<br>
+		<span class="red">Lewd fluid drenches you from head to toe.</span>
+		<br>
 	<<elseif $goooutsidecount + $semenoutsidecount gte 25>>
-	<span class="pink">You are drenched in slime and semen.</span>
-	<br>
+		<span class="pink">You are drenched in slime and semen.</span>
+		<br>
 	<<elseif $goooutsidecount + $semenoutsidecount gte 20>>
-	<span class="purple">You are soaked with slime and semen.</span>
-	<br>
+		<span class="purple">You are soaked with slime and semen.</span>
+		<br>
 	<<elseif $goooutsidecount + $semenoutsidecount gte 15>>
-	<span class="purple">Your skin is slick with slime and semen.</span>
-	<br>
+		<span class="purple">Your skin is slick with slime and semen.</span>
+		<br>
 	<<elseif $goooutsidecount + $semenoutsidecount gte 10>>
-	<span class="purple">You are wet with slime and semen.</span>
-	<br>
+		<span class="purple">You are wet with slime and semen.</span>
+		<br>
 	<<elseif $goooutsidecount + $semenoutsidecount gte 5>>
-	<span class="purple">Your skin is moist with slime and semen.</span>
-	<br>
+		<span class="purple">Your skin is moist with slime and semen.</span>
+		<br>
 	<<else>>
-	<span class="blue">You feel slime and semen on your skin.</span>
-	<br>
+		<span class="blue">You feel slime and semen on your skin.</span>
+		<br>
 	<</if>>
 
 <<elseif $goooutsidecount gte 1>>
 	<<if $goooutsidecount gte 25>>
-	<span class="pink">You are drenched in slime.</span>
-	<br>
+		<span class="pink">You are drenched in slime.</span>
+		<br>
 	<<elseif $goooutsidecount gte 20>>
-	<span class="purple">You are soaked with slime.</span>
-	<br>
+		<span class="purple">You are soaked with slime.</span>
+		<br>
 	<<elseif $goooutsidecount gte 15>>
-	<span class="purple">Your skin is slick with slime.</span>
-	<br>
+		<span class="purple">Your skin is slick with slime.</span>
+		<br>
 	<<elseif $goooutsidecount gte 10>>
-	<span class="purple">You are wet with slime.</span>
-	<br>
+		<span class="purple">You are wet with slime.</span>
+		<br>
 	<<elseif $goooutsidecount gte 5>>
-	<span class="purple">Your skin is moist with slime.</span>
-	<br>
+		<span class="purple">Your skin is moist with slime.</span>
+		<br>
 	<<else>>
-	<span class="blue">You feel slime on your skin.</span>
-	<br>
+		<span class="blue">You feel slime on your skin.</span>
+		<br>
 	<</if>>
 
 <<elseif $semenoutsidecount gte 1>>
 	<<if $semenoutsidecount gte 25>>
-	<span class="pink">You are drenched in semen.</span>
-	<br>
+		<span class="pink">You are drenched in semen.</span>
+		<br>
 	<<elseif $semenoutsidecount gte 20>>
-	<span class="purple">You are soaked with semen.</span>
-	<br>
+		<span class="purple">You are soaked with semen.</span>
+		<br>
 	<<elseif $semenoutsidecount gte 15>>
-	<span class="purple">Your skin is slick with semen.</span>
-	<br>
+		<span class="purple">Your skin is slick with semen.</span>
+		<br>
 	<<elseif $semenoutsidecount gte 10>>
-	<span class="purple">You are wet with semen.</span>
-	<br>
+		<span class="purple">You are wet with semen.</span>
+		<br>
 	<<elseif $semenoutsidecount gte 5>>
-	<span class="purple">Your skin is moist with semen.</span>
-	<br>
+		<span class="purple">Your skin is moist with semen.</span>
+		<br>
 	<<else>>
-	<span class="blue">You feel semen on your skin.</span>
-	<br>
+		<span class="blue">You feel semen on your skin.</span>
+		<br>
 	<</if>>
 <</if>>
 
@@ -2931,44 +2931,34 @@ or $args[0] is "force">>
 
 <</widget>>
 
-<<widget "goocount">>
-<<for _bodypart range setup.bodyliquid.bodyparts>>
-	<<if $player.bodyliquid[_bodypart]["goo"] gte 5>>  <<set $player.bodyliquid[_bodypart]["goo"] to 5>><</if>>
-	<<if $player.bodyliquid[_bodypart]["semen"] gte 5>><<set $player.bodyliquid[_bodypart]["semen"] to 5>><</if>>
-<</for>>
+<<widget "clampgoo">>
+	<<for _bodypart range setup.bodyliquid.bodyparts>>
+		<<if $player.bodyliquid[_bodypart]["goo"] gte 5 or $player.bodyliquid[_bodypart]["semen"] gte 5>>
+			<<set $player.bodyliquid[_bodypart]["goo"]   to Math.clamp($player.bodyliquid[_bodypart]["goo"],   0, 5)>>
+			<<set $player.bodyliquid[_bodypart]["semen"] to Math.clamp($player.bodyliquid[_bodypart]["semen"], 0, 5)>>
+		<</if>>
+	<</for>>
+<</widget>>
 
-<<set $goocount to $player.bodyliquid.neck.goo + $player.bodyliquid.rightarm.goo + $player.bodyliquid.leftarm.goo + $player.bodyliquid.thigh.goo + $player.bodyliquid.bottom.goo + $player.bodyliquid.tummy.goo + $player.bodyliquid.chest.goo + $player.bodyliquid.face.goo + $player.bodyliquid.hair.goo + $player.bodyliquid.feet.goo + $player.bodyliquid.vaginaoutside.goo + ($player.bodyliquid.vagina.goo * 3) + ($player.bodyliquid.penis.goo * 3) + ($player.bodyliquid.anus.goo * 3) + ($player.bodyliquid.mouth.goo * 3)>>
-<<set $semencount to $player.bodyliquid.neck.semen + $player.bodyliquid.rightarm.semen + $player.bodyliquid.leftarm.semen + $player.bodyliquid.thigh.semen + $player.bodyliquid.bottom.semen + $player.bodyliquid.tummy.semen + $player.bodyliquid.chest.semen + $player.bodyliquid.face.semen + $player.bodyliquid.hair.semen + $player.bodyliquid.feet.semen + $player.bodyliquid.vaginaoutside.semen + ($player.bodyliquid.vagina.semen * 3) + ($player.bodyliquid.penis.semen * 3) + ($player.bodyliquid.anus.semen * 3) + ($player.bodyliquid.mouth.semen * 3)>>
+<<widget "goocount">>
+	<<clampgoo "goocount">>
+	<<set $goocount to $player.bodyliquid.neck.goo + $player.bodyliquid.rightarm.goo + $player.bodyliquid.leftarm.goo + $player.bodyliquid.thigh.goo + $player.bodyliquid.bottom.goo + $player.bodyliquid.tummy.goo + $player.bodyliquid.chest.goo + $player.bodyliquid.face.goo + $player.bodyliquid.hair.goo + $player.bodyliquid.feet.goo + $player.bodyliquid.vaginaoutside.goo + ($player.bodyliquid.vagina.goo * 3) + ($player.bodyliquid.penis.goo * 3) + ($player.bodyliquid.anus.goo * 3) + ($player.bodyliquid.mouth.goo * 3)>>
+	<<set $semencount to $player.bodyliquid.neck.semen + $player.bodyliquid.rightarm.semen + $player.bodyliquid.leftarm.semen + $player.bodyliquid.thigh.semen + $player.bodyliquid.bottom.semen + $player.bodyliquid.tummy.semen + $player.bodyliquid.chest.semen + $player.bodyliquid.face.semen + $player.bodyliquid.hair.semen + $player.bodyliquid.feet.semen + $player.bodyliquid.vaginaoutside.semen + ($player.bodyliquid.vagina.semen * 3) + ($player.bodyliquid.penis.semen * 3) + ($player.bodyliquid.anus.semen * 3) + ($player.bodyliquid.mouth.semen * 3)>>
+	<<set $liquidcount to $goocount + $semencount>>
 <</widget>>
 
 <<widget "goooutsidecount">>
-<<if $player.bodyliquid.neck.goo gte 5>><<set $player.bodyliquid.neck.goo to 5>><</if>>
-<<if $player.bodyliquid.rightarm.goo gte 5>><<set $player.bodyliquid.rightarm.goo to 5>><</if>>
-<<if $player.bodyliquid.leftarm.goo gte 5>><<set $player.bodyliquid.leftarm.goo to 5>><</if>>
-<<if $player.bodyliquid.thigh.goo gte 5>><<set $player.bodyliquid.thigh.goo to 5>><</if>>
-<<if $player.bodyliquid.bottom.goo gte 5>><<set $player.bodyliquid.bottom.goo to 5>><</if>>
-<<if $player.bodyliquid.tummy.goo gte 5>><<set $player.bodyliquid.tummy.goo to 5>><</if>>
-<<if $player.bodyliquid.chest.goo gte 5>><<set $player.bodyliquid.chest.goo to 5>><</if>>
-<<if $player.bodyliquid.face.goo gte 5>><<set $player.bodyliquid.face.goo to 5>><</if>>
-<<if $player.bodyliquid.hair.goo gte 5>><<set $player.bodyliquid.hair.goo to 5>><</if>>
-<<if $player.bodyliquid.feet.goo gte 5>><<set $player.bodyliquid.feet.goo to 5>><</if>>
-<<if $player.bodyliquid.vaginaoutside.goo gte 5>><<set $player.bodyliquid.vaginaoutside.goo to 5>><</if>>
-<<if $player.bodyliquid.penis.goo gte 5>><<set $player.bodyliquid.penis.goo to 5>><</if>>
-<<set $goooutsidecount to $player.bodyliquid.neck.goo + $player.bodyliquid.rightarm.goo + $player.bodyliquid.leftarm.goo + $player.bodyliquid.thigh.goo + $player.bodyliquid.bottom.goo + $player.bodyliquid.tummy.goo + $player.bodyliquid.chest.goo + $player.bodyliquid.face.goo + $player.bodyliquid.hair.goo + $player.bodyliquid.feet.goo + $player.bodyliquid.vaginaoutside.goo + ($player.bodyliquid.penis.goo * 3)>>
+	<<clampgoo "goooutsidecount">>
+	<<set $goooutsidecount to $player.bodyliquid.neck.goo + $player.bodyliquid.rightarm.goo + $player.bodyliquid.leftarm.goo + $player.bodyliquid.thigh.goo + $player.bodyliquid.bottom.goo + $player.bodyliquid.tummy.goo + $player.bodyliquid.chest.goo + $player.bodyliquid.face.goo + $player.bodyliquid.hair.goo + $player.bodyliquid.feet.goo + $player.bodyliquid.vaginaoutside.goo + ($player.bodyliquid.penis.goo * 3)>>
+	<<set $semenoutsidecount to $player.bodyliquid.neck.semen + $player.bodyliquid.rightarm.semen + $player.bodyliquid.leftarm.semen + $player.bodyliquid.thigh.semen + $player.bodyliquid.bottom.semen + $player.bodyliquid.tummy.semen + $player.bodyliquid.chest.semen + $player.bodyliquid.face.semen + $player.bodyliquid.hair.semen + $player.bodyliquid.feet.semen + $player.bodyliquid.vaginaoutside.semen + ($player.bodyliquid.penis.semen * 3)>>
+	<<set $liquidoutsidecount to $goooutsidecount + $semenoutsidecount>>
+<</widget>>
 
-<<if $player.bodyliquid.neck.semen gte 5>><<set $player.bodyliquid.neck.semen to 5>><</if>>
-<<if $player.bodyliquid.rightarm.semen gte 5>><<set $player.bodyliquid.rightarm.semen to 5>><</if>>
-<<if $player.bodyliquid.leftarm.semen gte 5>><<set $player.bodyliquid.leftarm.semen to 5>><</if>>
-<<if $player.bodyliquid.thigh.semen gte 5>><<set $player.bodyliquid.thigh.semen to 5>><</if>>
-<<if $player.bodyliquid.bottom.semen gte 5>><<set $player.bodyliquid.bottom.semen to 5>><</if>>
-<<if $player.bodyliquid.tummy.semen gte 5>><<set $player.bodyliquid.tummy.semen to 5>><</if>>
-<<if $player.bodyliquid.chest.semen gte 5>><<set $player.bodyliquid.chest.semen to 5>><</if>>
-<<if $player.bodyliquid.face.semen gte 5>><<set $player.bodyliquid.face.semen to 5>><</if>>
-<<if $player.bodyliquid.hair.semen gte 5>><<set $player.bodyliquid.hair.semen to 5>><</if>>
-<<if $player.bodyliquid.feet.semen gte 5>><<set $player.bodyliquid.feet.semen to 5>><</if>>
-<<if $player.bodyliquid.vaginaoutside.semen gte 5>><<set $player.bodyliquid.vaginaoutside.semen to 5>><</if>>
-<<if $player.bodyliquid.penis.semen gte 5>><<set $player.bodyliquid.penis.semen to 5>><</if>>
-<<set $semenoutsidecount to $player.bodyliquid.neck.semen + $player.bodyliquid.rightarm.semen + $player.bodyliquid.leftarm.semen + $player.bodyliquid.thigh.semen + $player.bodyliquid.bottom.semen + $player.bodyliquid.tummy.semen + $player.bodyliquid.chest.semen + $player.bodyliquid.face.semen + $player.bodyliquid.hair.semen + $player.bodyliquid.feet.semen + $player.bodyliquid.vaginaoutside.semen + ($player.bodyliquid.penis.semen * 3)>>
+<<widget "goobodycount">>
+	<<clampgoo "goobodycount">>
+	<<set $goobodycount to $player.bodyliquid.thigh.goo + $player.bodyliquid.bottom.goo + $player.bodyliquid.tummy.goo + $player.bodyliquid.chest.goo + $player.bodyliquid.vaginaoutside.goo + ($player.bodyliquid.vagina.goo * 3) + ($player.bodyliquid.penis.goo * 3) + ($player.bodyliquid.anus.goo * 3)>>
+	<<set $semenbodycount to $player.bodyliquid.thigh.semen + $player.bodyliquid.bottom.semen + $player.bodyliquid.tummy.semen + $player.bodyliquid.chest.semen + $player.bodyliquid.vaginaoutside.semen + ($player.bodyliquid.vagina.semen * 3) + ($player.bodyliquid.penis.semen * 3) + ($player.bodyliquid.anus.semen * 3)>>
+	<<set $liquidbodycount to $goobodycount + $semenbodycount>>
 <</widget>>
 
 <<widget "outergoo">>

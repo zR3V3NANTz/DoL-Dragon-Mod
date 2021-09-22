@@ -355,3 +355,47 @@ window.pregnancyBellyVisible = function(){
 
 	return true;
 }
+
+window.getRobinLocation = function(){
+	if (V.NPCName[V.NPCNameList.indexOf("Robin")].init !== 1){
+		return;
+
+	} else if (V.robinlocationoverride && V.robinlocationoverride.during.contains(V.hour)){
+		return T.robin_location = V.robinlocationoverride.location;
+
+	} else if (V.robinmissing === 1){
+		return T.robin_location = "missing";
+
+	} else if (!between(V.hour, 7, 20)){ //if hour is 6 or lower, or 21 or higher
+		return T.robin_location = "sleep";
+
+	} else if (V.schoolday === 1 && between(V.hour, 8, 15)){
+		return T.robin_location = "school";
+
+	} else if ((V.weekday === 7 || V.weekday === 1) && between(V.hour, 9, 16) && V.NPCName[V.NPCNameList.indexOf("Robin")].trauma < 80){
+		if (V.season === "winter"){
+			return T.robin_location = "park";
+		} else {
+			return T.robin_location = "beach";
+		}
+		
+	} else if (V.halloween === 1 && between(V.hour, 16, 18) && V.monthday === 31){
+		return T.robin_location = "halloween";
+
+	} else {
+		return T.robin_location = "orphanage";
+	}
+}
+
+window.setRobinLocationOverride = function(loc, hour){
+	let override = {
+		"location": loc,
+		"during": [],
+	};
+	if (Array.isArray(hour)) override.during = hour;
+	else override.during = [hour];
+
+	// note: overrides get reset at midnight (in the <<day>> widget)
+	V.robinlocationoverride = override;
+	return;
+}

@@ -67,8 +67,7 @@
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gt 0>>
 		<<npcincr Robin trauma -1>>
 	<</if>>
-	<<set $robinschoolmorning to 0>>
-	<<set $robinschoolafternoon to 0>>
+	<<unset $robinlocationoverride>>
 	<<set $baileyvisit to 0>>
 	<<set $robinwalk to 0>>
 	<<if $weekday is 7 and $brothelshowdata.type isnot "none" and not $brothelshowdata.done and $brothelshowdata.intro>>
