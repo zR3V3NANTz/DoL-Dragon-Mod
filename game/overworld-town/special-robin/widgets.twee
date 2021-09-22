@@ -31,7 +31,8 @@
 		<<robinPayout>>
 		<br><br>
 
-	<<elseif $halloween is 1 and !$halloween_robin>><<set $halloween_robin to 1>><<set $halloween_robin_costume to "ghost">>
+	<<elseif $halloween is 1 and !$halloween_robin>>
+		<<set $halloween_robin to 1>><<set $halloween_robin_costume to "ghost">>
 		You knock on the door. Robin throws it open and hugs you. "It's almost time," <<he>> says. "Halloween! Here's my costume." <<He>> leans over <<his>> bed and grabs the blanket, before hurling it over <<his>> head. "I'm a ghost."
 		<br><br>
 
@@ -53,7 +54,9 @@
 	<<else>>
 		<<if $robinconsoleintro isnot 1>>
 			<<set $robinconsoleintro to 1>><<set $robinconsole to 1>>
-			You knock on the door, and hear a flurry of activity on the other side. Robin throws the door open and hugs you. "You came," <<he>> says. "Look." <<He>> pulls you into the room. In the corner beneath an old television is a new games console. "I've been saving up." <<He>> says, sitting on the bed. "What are you waiting for?" <<He>> pats the bed beside <<him>>.
+			You knock on the door, and hear a flurry of activity on the other side. Robin throws the door open and hugs you.
+			"You came," <<he>> says. "Look." <<He>> pulls you into the room. In the corner beneath an old television is a new games console.
+			"I've been saving up." <<He>> says, sitting on the bed. "What are you waiting for?" <<He>> pats the bed beside <<him>>.
 			<<lstress>><<stress -12>>
 			<br><br>
 		<<elseif $robinconsole is 1 and $robinpaid isnot 1 and $robindebt gte ($robindebtlimit - 1) and $robinconsolelost isnot 1>>
@@ -74,7 +77,12 @@
 			You knock on the door. Robin throws it open and hugs you. "Come in," <<he>> says, pulling you inside. <<He>> sits on the bed and stares at the spot <<his>> console used to fill.
 			<br><br>
 		<<else>>
-			You knock on the door. Robin throws it open and hugs you. "Come in," <<he>> says, pulling you inside. <<He>> sits on the bed beside the television and picks up the controller.
+			You knock on the door. Robin throws it open and hugs you. "Come in," <<he>> says, pulling you inside.
+			<<He>> sits on the bed beside the television and picks up the controller.
+			<<if $hour is 6 and $minute lte random(1,60)>>
+				<<set _robin to $NPCName[$NPCNameList.indexOf("Robin")]>>
+				<<He>> yawns <<print (random(1,100) lte _robin.dom and _robin.trauma lte 20 ? "loudly" : "softly")>>.
+			<</if>>
 			<br><br>
 		<</if>>
 	<</if>>
@@ -88,17 +96,17 @@
 			<br><br>
 			You hug <<him>>. "Everything will be fine," you say.
 			<br><br>
-			<<link [[Walk to school (0:40)|Robin Walk School]]>><<set $robinschoolmorning to 1>><<pass 40>><</link>>
+			<<link [[Walk to school (0:40)|Robin Walk School]]>><<pass 40>><</link>>
 			<br>
 		<<else>>
 			Robin looks at the clock on the wall. "It's school soon," <<he>> says. "Would you like to walk with me?"
 			<br><br>
-			<<link [[Walk to school (0:20)|Robin Walk School]]>><<set $robinschoolmorning to 1>><<pass 20>><</link>>
+			<<link [[Walk to school (0:20)|Robin Walk School]]>><<pass 20>><</link>>
 			<br>
 		<</if>>
 		<<link [[Leave|Orphanage]]>><<endevent>><</link>>
 		<br>
-	<<elseif $hour gte 21 or $hour lte 6>>
+	<<elseif $hour gte 21 or $hour lte 5>>
 		Robin looks at the clock on the wall. "It's past my bed time," <<he>> says. <<He>> hugs you. "Goodnight."
 		<br><br>
 		<<if $robinromance is 1>>
@@ -139,20 +147,20 @@
 		<<link [[Change the subject|Robin Bailey Subject]]>><</link>>
 		<br>
 	<<elseif $halloween is 1 and $hour gte 16 and $hour lt 19 and $monthday is 31>>
-	Robin looks at the clock on the wall. "It's time," <<he>> says, jumping to <<his>> feet. "The orphans will be ready to trick-or-treat soon. I need to get dressed."
-	<br><br>
-		<<if $robinromance is 1>>
-		<<He>> hugs and pushes you towards the door. "I don't want you to see me dress," <<he>> says. "It will be more magical that way."
+		Robin looks at the clock on the wall. "It's time," <<he>> says, jumping to <<his>> feet. "The orphans will be ready to trick-or-treat soon. I need to get dressed."
 		<br><br>
+		<<if $robinromance is 1>>
+			<<He>> hugs and pushes you towards the door. "I don't want you to see me dress," <<he>> says. "It will be more magical that way."
+			<br><br>
 		<</if>>
 		<<if $worn.upper.type.includes("costume") or $worn.lower.type.includes("costume") or $worn.upper.type.includes("naked") and $worn.under_upper.type.includes("costume") or $worn.lower.type.includes("naked") and $worn.under_lower.type.includes("costume") or $physicalTransform is 1 or $specialTransform is 1>>
-		"I'll be in the main hall gathering the orphans once I'm ready."
+			"I'll be in the main hall gathering the orphans once I'm ready."
 		<<else>>
-		"I'll be in the main hall gathering the orphans if you want to join in. I can't wait to see your costume!"
+			"I'll be in the main hall gathering the orphans if you want to join in. I can't wait to see your costume!"
 		<</if>>
-	<br><br>
-	<<link [[Leave (0:01)|Bedroom]]>><<endevent>><<pass 1>><</link>>
-	<br>
+		<br><br>
+		<<link [[Leave (0:01)|Bedroom]]>><<endevent>><<pass 1>><</link>>
+		<br>
 
 	<<else>>
 		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80>>
@@ -197,10 +205,10 @@
 
 		<<if $schoolday is 1 and ($hour is 8 or $hour is 7)>>
 			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 80>>
-				<<link [[Walk to school (0:40)|Robin Walk School]]>><<set $robinschoolmorning to 1>><<pass 40>><</link>>
+				<<link [[Walk to school (0:40)|Robin Walk School]]>><<run setRobinLocationOverride("school", 7)>><<pass 40>><</link>>
 				<br>
 			<<else>>
-				<<link [[Walk to school (0:20)|Robin Walk School]]>><<set $robinschoolmorning to 1>><<pass 20>><</link>>
+				<<link [[Walk to school (0:20)|Robin Walk School]]>><<run setRobinLocationOverride("school", 7)>><<pass 20>><</link>>
 				<br>
 			<</if>>
 		<</if>>

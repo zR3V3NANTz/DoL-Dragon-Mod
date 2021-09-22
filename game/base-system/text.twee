@@ -967,7 +967,7 @@ in dev alternative to current "breasts" widget
 <</silently>><<breastsensitivity>><<print _text_output>><</widget>>
 
 <<widget "undertop">><<silently>>
-	<<if $worn.under_upper.name isnot "naked">>
+	<<if $worn.under_upper.exposed lte 0>>
 		<<set _text_output to $worn.under_upper.name>>
 	<<else>>
 		<<breasts>>

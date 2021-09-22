@@ -517,6 +517,7 @@ You are in the bathroom.
 		<<else>>
 			Robin cuddles you. "I'll leave you to get dressed," <<he>> says.
 		<</if>>
+		<<if $hour is 6>><<run setRobinLocationOverride("orphanage", 6)>><</if>>
 		<<endevent>>
 		<br><br>
 	<<elseif $kylarbed is 1>>

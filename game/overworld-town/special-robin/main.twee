@@ -1,6 +1,7 @@
 :: Robin's Room Entrance
-
 <<set $outside to 0>><<set $location to "home">><<effects>>
+<<run getRobinLocation()>>
+
 <<if $robindebt gte $robindebtlimit and $robindebtintro isnot 1 and $robinpaid isnot 1>>
 	<<set $robindebtintro to 1>><<set $robindebtevent to 7>><<set $NPCName[$NPCNameList.indexOf("Robin")].trauma to 100>><<set $robin_injured to 1>><<set $robinmissing to 1>><<set $robinconsole to 0>>
 	You go to Robin's room. You knock, but there's no response, nor is there a note on the door. You peek inside. There's no one there.
@@ -15,7 +16,7 @@
 	<<endevent>>
 	<<link [[Leave|Orphanage]]>><</link>>
 	<br>
-<<elseif $robinmissing is 1>>
+<<elseif _robin_location is "missing">>
 	You go to Robin's room. You knock, but there's no response, nor is there a note on the door. You peek inside. There's no one there.
 	<br><br>
 	<<link [[Leave|Orphanage]]>><</link>>
@@ -37,40 +38,40 @@
 	<<link [[No|Robin Unwrap No]]>><</link>>
 	<br>
 
-<<elseif $schoolday is 1 and $hour gte 8 and $hour lte 15 and $robinschoolafternoon isnot 1 or $hour lte 15 and $robinschoolmorning is 1 and $robinschoolafternoon isnot 1>>
+<<elseif _robin_location is "school">>
 	You go to Robin's room. There's a note on the door. "Gone to school!"
 	<br><br>
 	<<link [[Leave|Orphanage]]>><</link>>
 	<br>
-<<elseif $hour gte 21 or $hour lte 6>>
-You go to Robin's room. There's a note on the door. "Sleeping!"
-<br><br>
+<<elseif _robin_location is "sleep">>
+	You go to Robin's room. There's a note on the door. "Sleeping!"
+	<br><br>
 
-<<link [[Leave|Orphanage]]>><</link>>
-<br>
-<<if $debug is 1>>
-<<link [[Wait for Robin|$passage]]>>
-	<<if $time lt 420>>
-	<<set $rem to 420 - $time>>
-	<<pass $rem>>
-	<<else>>
-	<<set $rem to 1440 - $time + 360>>
-	<<pass $rem>>
-	<</if>>
-<</link>>
-<</if>>
-
-<<elseif $weekday is 7 and $hour gte 9 and $hour lte 16 or $weekday is 1 and $hour gte 9 and $hour lte 16 and $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80>>
-	<<if $season is "winter">>
-		You go to Robin's room. There's a note on the door. "Out selling hot chocolate!"
-		<br><br>
-	<<else>>
-		You go to Robin's room. There's a note on the door. "Out selling lemonade!"
-		<br><br>
-	<</if>>
 	<<link [[Leave|Orphanage]]>><</link>>
 	<br>
-<<elseif $halloween is 1 and $hour gte 16 and $hour lt 19 and $monthday is 31 and $robinmissing isnot 1>>
+	<<if $debug is 1>>
+		<<link [[Wait for Robin|$passage]]>>
+			<<if $time lt 420>>
+				<<set _rem to 420 - $time>>
+				<<pass _rem>>
+			<<else>>
+				<<set _rem to 1440 - $time + 360>>
+				<<pass _rem>>
+			<</if>>
+		<</link>>
+	<</if>>
+
+<<elseif _robin_location is "beach">>
+	You go to Robin's room. There's a note on the door. "Out selling lemonade!"
+	<br><br>
+	<<link [[Leave|Orphanage]]>><</link>>
+	<br>
+<<elseif _robin_location is "park">>
+	You go to Robin's room. There's a note on the door. "Out selling hot chocolate!"
+	<br><br>
+	<<link [[Leave|Orphanage]]>><</link>>
+	<br>
+<<elseif _robin_location is "halloween">>
 	You go to Robin's room. There's a note on the door. "Out trick-or-treating!"
 	<br><br>
 	<<link [[Leave|Orphanage]]>><</link>>
@@ -407,30 +408,31 @@ Once home, Robin gives you a surprise hug. "Thank you," <<he>> says. <<Hes>> tea
 <<elseif $robinromance is 1>>
 	You leave the orphanage with Robin and walk to school.
 
-	<<He>> rubs the back of <<his>> hand against yours. You hold it. You chat with <<him>> as you walk.
-	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>><<takeHandholdingVirginity "Robin" "romantic">>
+	<<He>> rubs the back of <<his>> hand against yours. You hold it. <<takeHandholdingVirginity "Robin" "romantic">> You chat with <<him>> as you walk.
+	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
 	<br><br>
 	<<endevent>>
 <<else>>
 	You leave the orphanage with Robin and walk to school.
 
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 80>>
-	<<Hes>> limping. You move slowly to let <<him>> keep up. <<He>> doesn't seem keen on talking, and stays close to you when other people are near.
-	<br><br>
+		<<Hes>> limping. You move slowly to let <<him>> keep up. <<He>> doesn't seem keen on talking, and stays close to you when other people are near.
+		<br><br>
 
 	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
-	You chat with <<him>> on the way, though <<he>> falls silent when there are other people near.
-	<br><br>
+		You chat with <<him>> on the way, though <<he>> falls silent when there are other people near.
+		<br><br>
 
 	<<else>>
-	You chat with <<him>> on the way.
-	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
-	<br><br>
+		You chat with <<him>> on the way.
+		<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
+		<br><br>
 	<</if>>
 	<<endevent>>
 <</if>>
 
-<<if $tutorial is 0 and $debug is 0>><<set $tutorial to 1>>
+<<if $tutorial is 0 and $debug is 0>>
+	<<set $tutorial to 1>>
 
 <<elseif $NPCName[$NPCNameList.indexOf("Avery")].love gte random(20, 100) and $NPCName[$NPCNameList.indexOf("Avery")].state is "active" and $robinaverybeat isnot 1>>
 	<<npc Avery>><<person1>>
@@ -517,39 +519,38 @@ You nod, continuing to walk to the school with Robin. The rest of the trip is un
 <<npc Robin>><<person1>>You run up to Robin.
 
 <<if $robinromance is 1>>
-<<He>> hugs you. "Can we hold hands?" <<he>> says. <<takeHandholdingVirginity "Robin" "romantic">>
-<br><br>
-
-Together you walk back to the orphanage, chatting as you go.
-<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
-<br><br>
-
-<<else>>
-
-	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 80>>
-	<<He>> smiles when <<he>> sees you. "H-hey," <<he>> says.
-	<br><br>
-
-	Together you walk back to the orphanage. <<He>> limps, and you move slowly to let <<him>> keep up. <<He>> doesn't seem keen on talking, and stays very close to you whenever other people are around.
-	<br><br>
-
-	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
-	<<He>> smiles when <<he>> sees you. "Hey," <<he>> says. "I'm glad you're here. I don't feel safe walking home alone."
-	<br><br>
-
-	Together you walk back to the orphanage. You chat a bit, but <<he>> tenses and falls silent whenever other people are around.
-	<br><br>
-
-	<<else>>
-	<<He>> smiles when <<he>> sees you. "Hey," <<he>> says. "I'm glad you're here. I don't like walking home alone."
+	<<He>> hugs you. "Can we hold hands?" <<he>> says. <<takeHandholdingVirginity "Robin" "romantic">>
 	<br><br>
 
 	Together you walk back to the orphanage, chatting as you go.
 	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
 	<br><br>
 
-	<</if>>
+<<else>>
 
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 80>>
+		<<He>> smiles when <<he>> sees you. "H-hey," <<he>> says.
+		<br><br>
+
+		Together you walk back to the orphanage. <<He>> limps, and you move slowly to let <<him>> keep up. <<He>> doesn't seem keen on talking, and stays very close to you whenever other people are around.
+		<br><br>
+
+	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+		<<He>> smiles when <<he>> sees you. "Hey," <<he>> says. "I'm glad you're here. I don't feel safe walking home alone."
+		<br><br>
+
+		Together you walk back to the orphanage. You chat a bit, but <<he>> tenses and falls silent whenever other people are around.
+		<br><br>
+
+	<<else>>
+		<<He>> smiles when <<he>> sees you. "Hey," <<he>> says. "I'm glad you're here. I don't like walking home alone."
+		<br><br>
+
+		Together you walk back to the orphanage, chatting as you go.
+		<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
+		<br><br>
+
+	<</if>>
 <</if>>
 <<npcincr Robin love 1>>
 <<endevent>>
@@ -561,8 +562,9 @@ Together you walk back to the orphanage, chatting as you go.
 
 <<npc Robin>><<person1>>You run up to Robin.
 
-<<if $robin_oxford_bare is undefined>><<set $robin_oxford_bare to 1>>
-	<<He>> drops <<his>> bag in astonishment at the sight of your bare <<breasts>>. "Why aren't you wearing a shirt?" <<he>> whispers. <<He>> rummages through <<his>> bag. "I thought I had a towel, but I can't find anything."
+<<if $robin_oxford_bare is undefined>>
+	<<set $robin_oxford_bare to 1>>
+	<<He>> drops <<his>> bag in astonishment at the sight of your exposed <<undertop>>. "Why aren't you wearing a shirt?" <<he>> whispers. <<He>> rummages through <<his>> bag. "I thought I had a towel, but I can't find anything."
 	<br><br>
 
 	<<He>> glances up and down the street, nervous. "Let's get home before anyone notices."
@@ -574,7 +576,8 @@ Together you walk back to the orphanage, chatting as you go.
 	<<endevent>>
 	<<link [[Next|Orphanage]]>><</link>>
 
-<<elseif $robin_oxford_bare lte 4>><<set $robin_oxford_bare += 1>>
+<<elseif $robin_oxford_bare lte 4>>
+	<<set $robin_oxford_bare += 1>>
 	<<He>> raises <<his>> hands to <<his>> eyes. "You forgot your shirt again!" <<he>> whispers in exasperation.
 	<br><br>
 
@@ -588,7 +591,7 @@ Together you walk back to the orphanage, chatting as you go.
 	<<link [[Next|Orphanage]]>><</link>>
 
 <<else>>
-	At the sight of your bare <<breasts>>, <<he>> reaches into <<his>> bag and produces a towel. "I knew you'd forget your shirt again," <<he>> whispers. "Here."
+	At the sight of your exposed <<undertop>>, <<he>> reaches into <<his>> bag and produces a towel. "I knew you'd forget your shirt again," <<he>> whispers. "Here."
 	<br><br>
 
 	<<link [[Wear the towel|Robin Walk Home Towel]]>><<upperwear 3>><</link>>

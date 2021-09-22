@@ -268,7 +268,7 @@ You look over your shoulder to make sure you aren't being watched, then hoist yo
 
 
 <<if $event_trigger is 1>>
-	<<robin_location>>
+	<<run getRobinLocation()>>
 	<<if $rng gte 51 and _robin_location is "orphanage" and $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80 and $robin_tending isnot 1>>
 		<<set $robin_tending to 1>>
 		<<npc Robin>><<person1>>
@@ -858,7 +858,7 @@ You call for help as the shoots tighten around you.
 	<<link [[Next|Garden Stem Rape]]>><<set $molestationstart to 1>><</link>>
 	<br>
 <<else>>
-	<<robin_location>>
+	<<run getRobinLocation()>>
 	<<if $rng gte 51 and _robin_location is "orphanage" and $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80 and $robin_tending isnot 1>>
 		<<npc Robin>><<person1>>
 		"I'm coming!" shouts a voice in response. It's Robin. <<He>> emerges from the orphanage, and gasps when <<he>> sees you. "You're all tangled. Here." <<He>> drops to <<his>> knees and loosens the entangling shoots. <<Hes>> careful not to damage any.
