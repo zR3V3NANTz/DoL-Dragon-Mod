@@ -566,12 +566,12 @@ The <<person>> tries to argue, but Winter won't hear it. <<He>> rubs <<his>> hea
 		Winter returns to the class, and sees you in your undressed state. The teacher conceals your body with a towel while freeing you from the pillory. "Who's responsible for this?"
 		<br><br>
 		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 20 or $robinhistory is "missing">>
-			Everyone looks at the <<person>>, who shrinks lower into their seat. "Stay behind after class." <<tearful>> you walk back to your desk, and ease yourself down.
+			Everyone looks at the <<person>>, who shrinks lower into <<his>> seat.
 		<<else>>
 			Robin stands and points. "It was <<him>>," <<nnpc_he Robin>> says. The other students murmur agreement as the <<person>> shrinks in <<his>> seat.
 		<</if>>
 		<br><br>
-		Winter glares at the <<person>>. "Stay behind after class." <<tearful>> you walk back to your desk. You ease yourself down.
+		Winter glares at <<him>>. "Stay behind after class." <<tearful>> you walk back to your desk and ease yourself down.
 		<br><br>
 	<<else>>
 		<<endevent>><<npc Winter>><<person1>>Winter returns to the class. "Sorry, but we won't have time for this now," <<he>> says as <<he>> releases you from the pillory. <<He>> sounds genuinely disappointed. <<tearful>> you walk back to your desk, and ease yourself down.
@@ -597,12 +597,12 @@ The <<person>> tries to argue, but Winter won't hear it. <<He>> rubs <<his>> hea
 		Winter returns to the class, and sees you in your undressed state. The teacher conceals your body with a towel while freeing you from the pillory. "Who's responsible for this?"
 		<br><br>
 		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 20 or $robinhistory is "missing">>
-			Everyone looks at the <<person>>, who shrinks lower into their seat. "Stay behind after class." <<tearful>> you walk back to your desk, and ease yourself down.
+			Everyone looks at the <<person>>, who shrinks lower into their seat.
 		<<else>>
 			Robin stands and points. "It was <<him>>," <<nnpc_he Robin>> says. The other students murmur agreement as the <<person>> shrinks in <<his>> seat.
 		<</if>>
 		<br><br>
-		Winter glares at the <<person>>. "Stay behind after class." <<tearful>> you walk back to your desk. You ease yourself down.
+		Winter glares at <<him>>. "Stay behind after class." <<tearful>> you walk back to your desk and ease yourself down.
 		<br><br>
 	<<else>>
 		Winter returns to the class. "Sorry, but we won't have time for this now," <<nnpc_he Winter>> says as <<nnpc_he Winter>> releases you from the pillory. <<nnpc_He Winter>> sounds genuinely disappointed. <<tearful>> you walk back to your desk, and ease yourself down.
@@ -627,12 +627,12 @@ The <<person>> tries to argue, but Winter won't hear it. <<He>> rubs <<his>> hea
 		Winter conceals your body with a towel while freeing you from the pillory.
 		<br><br>
 		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 20 or $robinhistory is "missing">>
-			Everyone looks at the <<person>>, who shrinks lower into their seat. "Stay behind after class." <<tearful>> you walk back to your desk, and ease yourself down.
+			Everyone looks at the <<person>>, who shrinks lower into <<his>> seat.
 		<<else>>
 			Robin stands and points. "It was <<him>>," <<nnpc_he Robin>> says. The other students murmur agreement as the <<person>> shrinks in <<his>> seat.
 		<</if>>
 		<br><br>
-		Winter glares at the <<person>>. "Stay behind after class." <<tearful>> you walk back to your desk. You ease yourself down.
+		Winter glares at <<him>>. "Stay behind after class." <<tearful>> you walk back to your desk and ease yourself down.
 		<br><br>
 	<<else>>
 		<<endevent>><<npc Winter>><<person1>>"Sorry, but we won't have time for this now." Winter says as <<he>> releases you from the pillory. <<He>> sounds genuinely disappointed. <<tearful>> you walk back to your desk, and ease yourself down.

@@ -391,9 +391,9 @@
 		<<elseif $rng lte 60>>
 			<<He>> speaks. "Don't complain now, be a good <<girl>>."
 		<<elseif $rng lte 80>>
-			<<He>> speaks. "You like it, don't you, <<girl>>?."
+			<<He>> speaks. "You like it, don't you, <<girl>>?"
 		<<else>>
-			<<He>> speaks. "Too late now, you'll speak when i'll let you."
+			<<He>> speaks. "Too late now, you'll speak when I let you."
 		<</if>>
 	<<else>>
 		<<if $rng lte 20>>
@@ -3868,7 +3868,7 @@
 		<<elseif $worn.upper.name is "nun's habit">>
 			<<if $enemyanger gte 20>>
 				<<if $rng gte 71>>
-					"Trying to look virtuous?" No one's buying it, slut."
+					"Trying to look virtuous? No one's buying it, slut."
 				<<elseif $rng gte 41>>
 					"You think that's going to protect you?"
 				<<else>>
@@ -3930,7 +3930,7 @@
 				"You can't expect me to control myself if you dress like that."
 			<</if>>
 		<<elseif $worn.upper.name is "crop top">>
-			Really shows off your nice, tight body.
+			"Really shows off your nice, tight body."
 		<<elseif $worn.upper.name is "tube top">>
 			<<if $rng gte 51>>
 				"You're barely wearing anything."

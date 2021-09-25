@@ -1573,7 +1573,7 @@ You and Sydney walk over to the changing rooms,<<if $exposed gte 1>> using the u
 	<</if>>
 <<else>>
 	One of them, a <<person>>, makes a grab for Sydney. "Hey, <<person1>><<personsimple>>, why don't you take those soaked clothes off and let us warm you up?"
-	Sydney shakes free and pulls away from <<him>>. You both break away from the crowd, but they cheer and holler after you, enjoying the view. <<stress 3>><<gstress>><<trauma 3>><<gtrauma>>
+	Sydney shakes free and pulls away from <<person2>><<him>>. You both break away from the crowd, but they cheer and holler after you, enjoying the view. <<stress 3>><<gstress>><<trauma 3>><<gtrauma>>
 <</if>>
 <br><br>
 You enter the changing rooms without further incident.

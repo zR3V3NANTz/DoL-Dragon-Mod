@@ -30,7 +30,7 @@ You don a pair of ice skates, and push yourself onto the lake.
 			<<generatey1>><<person1>>
 			The other students giggle, but are sympathetic. You're far from the only one struggling. A <<person1>><<person>> lends an arm to steady you.<<gdanceskill>>
 		<<elseif random(1, 400) gte $cool>>
-			The other students laugh at your expense.<<gtrauma>><<gstress>><<lcool>><<status -10>><<ltrauma>><<lstress>>
+			The other students laugh at your expense.<<gtrauma>><<gstress>><<lcool>><<status -10>><<trauma 6>><<stress 6>>
 		<<else>>
 			The other students giggle, but are sympathetic. You're far from the only one struggling.
 		<</if>>

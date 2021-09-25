@@ -1353,7 +1353,7 @@
 				<<elseif $worn.under_lower.anus_exposed is 1 and $worn.genitals.anus_exposed is 1>>
 					<<if $worn.lower.anus_exposed is 1 and $worn.over_lower.anus_exposed is 1>>
 						<<if $anususe is 0 and $analdisable is "f">>
-							<span class="purple"><<He>> presses <<his>> left hand against your <<bottom>>.</span>
+							<span class="purple"><<He>> presses <<his>> $args[0] hand against your <<bottom>>.</span>
 							<<set $handtarget to "anusentrance">><<set $anususe to 1>><<neutral 1>>
 						<</if>>
 					<</if>>
@@ -1368,7 +1368,7 @@
 				<<elseif $worn.under_lower.anus_exposed is 1 and $worn.genitals.anus_exposed is 1>>
 					<<if $worn.lower.anus_exposed is 1 and $worn.over_lower.anus_exposed is 1>>
 						<<if $anususe is 0 and $analdisable is "f">>
-							<span class="purple"><<He>> presses <<his>> left hand against your <<bottom>>.</span>
+							<span class="purple"><<He>> presses <<his>> $args[0] hand against your <<bottom>>.</span>
 							<<set $handtarget to "anusentrance">><<set $anususe to 1>><<neutral 1>>
 						<</if>>
 					<</if>>
@@ -3976,7 +3976,7 @@
 						You feel <<his>> breath on your <<penis>>.
 					</span>
 					<<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $NPCList[_n].mouth to "penisentrance">>
-					<<set $NPCList[_n].vagina to "othermouth">><<sex 1>><<set $NPCList[_n].location.head to "genitals">>
+					<<set $NPCList[_n].penis to "othermouth">><<sex 1>><<set $NPCList[_n].location.head to "genitals">>
 				<<elseif $penisuse is 0 and $NPCList[_n].vagina is 0 and $player.penisExist>>
 					<span class="blue">
 						<<He>> kneels beside
@@ -3989,7 +3989,7 @@
 						You feel <<his>> breath on your <<penis>>.
 					</span>
 					<<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $NPCList[_n].mouth to "penisentrance">>
-					<<set $NPCList[_n].penis to "othermouth">><<sex 1>><<set $NPCList[_n].location.head to "genitals">>
+					<<set $NPCList[_n].vagina to "othermouth">><<sex 1>><<set $NPCList[_n].location.head to "genitals">>
 				<<elseif $penisuse is 0 and $NPCList[_n].vagina is "facesit" and $player.penisExist>>
 					<span class="blue">
 						You feel <<him>> lean forward along your body, then feel <<his>> breath on your

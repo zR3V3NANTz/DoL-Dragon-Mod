@@ -285,7 +285,7 @@ Sirris asks everyone to group up into pairs.
 <<set $rng to random(1, 100)>>
 
   <<if $cool gte 80>>
-  You find a partner and together dissect a <<if $rng gte 75>>sheep's eye<<elseif $rng gte 50>>insect<<elseif $rng gte 25>>worm<<else>>frog<</if>>.
+  You find a partner and together dissect a<<if $rng gte 75>> sheep's eye<<elseif $rng gte 50>>n insect<<elseif $rng gte 25>> worm<<else>> frog<</if>>.
   <br><br>
 
   <<link [[Just focus on the dissection|Science Dissection]]>><<scienceskill>><</link>><<gscience>>

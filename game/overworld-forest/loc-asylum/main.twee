@@ -2146,7 +2146,7 @@ is an important part of your assessment so you need to be on your best behaviour
 	<br><br>
 	<<generate3>><<generate4>><<generate5>>
 	<<if $o_long_and_beautiful gte 1 and $o_long_and_beautiful lte 7>><<set $o_long_and_beautiful += 1>> /*Modifies person 4 enough */
-		<<set $NPCList[3].description to "long-haired">><<set $NPCList[3].adult to 0>><<set $NPCList[3].gender = "f">>
+		<<set $NPCList[3].description to "long-haired">><<set $NPCList[3].adult to 0>><<set $NPCList[3].gender = "f">><<set $NPCList[3].pronoun = "f">>
 	<</if>>
 
 	A moment later a <<person4>><<person>> is led in and set up similarly beside you. Finally,
