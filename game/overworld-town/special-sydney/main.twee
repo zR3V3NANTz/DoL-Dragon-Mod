@@ -214,7 +214,7 @@
 			regardless of your... behaviour."
 		<</if>>
 		<br><br>
-		<<He>> grins at Sydney. "<<pShe>> can be a handful sometimes. Am I right?"
+		<<He>> leans towards you, speaking in a mock-whisper. "<<nnpc_He "Sydney">> can be a handful sometimes." <<He>> grins at Sydney. "Am I right?"
 		<br>
 		<<if _sydneyStatus.includes("corrupt")>>
 			"Sometimes," Sydney blushes.
@@ -222,7 +222,7 @@
 			"T-that's not true!" Sydney holds <<nnpc_his "Sydney">> arms in front of you.
 		<</if>>
 		<br>
-		Sirris laughs. "In any case, <<pshe>> means well. You can take it easy now and then Sydney. A little downtime won't hurt." Sydney nods, and Sirris smiles. "I'll leave you to your own devices," <<he>> says, stepping away from the counter. <<if $schoolstate is "afternoon">>"You should pack up soon, Syd. See you after school!"<<else>>"Don't be late for your classes, you two!"<</if>>
+		Sirris laughs. "In any case, <<nnpc_he "Sydney">> means well. You can take it easy now and then Sydney. A little downtime won't hurt." Sydney nods, and Sirris smiles. "I'll leave you to your own devices," <<he>> says, stepping away from the counter. <<if $schoolstate is "afternoon">>"You should pack up soon, Syd. See you after school!"<<else>>"Don't be late for your classes, you two!"<</if>>
 	<<else>>
 		<<endevent>><<npc "Sirris">><<person1>>
 		Sirris stops by the counter. <<He>> gives Sydney a wave. "Just thought I'd pop in on my break," <<he>> says to Sydney. "Everything okay?"

@@ -1445,12 +1445,12 @@ You kiss the <<beasttype>> on the head.
 							<<elseif $rng lte 70>>
 								You <<voice "plead">>. "Sydney's the one for me, so please leave."
 							<<else>>
-								You <<voice "plead">>. "I want Sydney to hold me...
+								You <<voice "plead">>. "I want Sydney to hold me..."
 							<</if>>
 						<<elseif $pain lte 60>>
 							You <<voice "plead">>. "Sydney's the one I want to be with, so leave me alone!"
 						<<else>>
-							You <<voice "plead">>. "S-Sydney... I need a savior..."
+							You <<voice "plead">>. "S-Sydney... I need a saviour..."
 						<</if>>
 					<</if>>
 				<</if>>

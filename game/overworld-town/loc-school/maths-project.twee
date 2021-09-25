@@ -277,10 +277,10 @@ You take the stimulant, sit down, and get to work.
 		<br>
 	<</if>>
 <<elseif $mathsstimused is 3 or $mathsstimused gte 4 and $rng gte 50>>
-	You sit back and admire your work, but something is wrong. The objects in your room begin to shift and warp, becoming covered in strange patterns. You lose your sense of balance and find yourself wobbling. You almost fall over. That dose must have been contaminated with a concentrated hallucinogen. The knowledge does nothing to make the experience less real.
+	You sit back and admire your work, but something is wrong. The objects in <<if $location is "home>>your room<<else>>the library<</if>> begin to shift and warp, becoming covered in strange patterns. You lose your sense of balance and find yourself wobbling. You almost fall over. That dose must have been contaminated with a concentrated hallucinogen. The knowledge does nothing to make the experience less real.
 	<<set $hallucinogen += 500>>
 	<br><br>
-	You try to lie down, but before you can make it to your bed your surroundings become twisted and unfamiliar. Dark, threatening shapes shift around you as you stumble forward in search of something familiar to cling to. Grotesque creatures with giant eyes and countless thrashing tongues watch you from afar, gibbering in guttural sounds that echo across the landscape. The floor begins to liquefy, and you struggle to move through it as you sink to your ankles, then your knees, then your waist. Finally, it gives way all at once and you find yourself falling, tumbling end-over-end through a black void.
+	<<if $location is "home">>You try to lie down, but before you can make it to your bed<<else>>You decide to go for a walk to clear your head, but the moment you rise from your chair,<</if>> your surroundings become twisted and unfamiliar. Dark, threatening shapes shift around you as you stumble forward in search of something familiar to cling to. Grotesque creatures with giant eyes and countless thrashing tongues watch you from afar, gibbering in guttural sounds that echo across the landscape. The floor begins to liquefy, and you struggle to move through it as you sink to your ankles, then your knees, then your waist. Finally, it gives way all at once and you find yourself falling, tumbling end-over-end through a black void.
 	<br><br>
 	<<if $location is "home">>
 		<<set $bus to "residential">>

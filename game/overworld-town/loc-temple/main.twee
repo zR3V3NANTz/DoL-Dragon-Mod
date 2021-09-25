@@ -1658,7 +1658,7 @@ We have some other rules. No stealing. No violence. No sex, <span class="pink">e
 <br><br>
 <<if $NPCName[$NPCNameList.indexOf("Sydney")].init is 1 and _sydney_location is "temple" and !$sydneySeen.includes("initiate")>>
 	<<set $sydneySeen.pushUnique("initiate")>>
-	Someone hugs you from behind. It's Sydney. "Congratulations... initiate!" <<Hes>> overflowing with joy. <<npcincr Sydney love 3>><<gglove>>
+	Someone hugs you from behind. It's Sydney. "Congratulations... initiate!" <<nnpc_He "Sydney">>s overflowing with joy. <<npcincr Sydney love 3>><<gglove>>
 	<br><br>
 <</if>>
 <<clotheson>>
@@ -1775,7 +1775,7 @@ You shove the <<monk>> away from you, creating a gap in their circle. <<tearful>
 <<effects>>
 <<pass 20>>
 <<facewear 4>><<neckwear 1>>
-The <<monk>> pushes the gag into your mouth, and ties it firm behind your head. Any sound you make will be muffled and unintelligible. A <<person2>><<monk>> to <<his>> side wraps a collar around your neck. <<He>> holds the attached leash, and tugs.
+The <<person1>><<monk>> pushes the gag into your mouth, and ties it firm behind your head. Any sound you make will be muffled and unintelligible. A <<person2>><<monk>> to <<person1>><<his>> side wraps a collar around your neck. <<He>> holds the attached leash, and tugs.
 <br><br>
 <<pass 3>>
 You're led through the marked door and down a cramped passage. There are no lights bar the occasional torch on the wall.

@@ -354,7 +354,7 @@ You awaken on a bed in the temple quarters. You try to get up, but fall back dow
 <<if $sydneyromance is 1>>
 	Something stirs next to you. It's Sydney, laying on the same bed.
 <<else>>
-	A figure is sitting over you. Once your eyes focus, you realize it's Sydney.
+	A figure is sitting over you. Once your eyes focus, you realise it's Sydney.
 <</if>>
 "You're awake. You conked right out during prayer." <<He>> stands, and helps you to your feet. <<takeHandholdingVirginity "Sydney" `($sydneyromance is 1 ?'romantic':'consensual')`>>
 <br><br>
@@ -601,7 +601,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 		You begin to point out the subtle wrongs you see all around you. A few <<monks>> give you sideways glances as you do.
 		<br><br>
 		<<if _sydneyStatus.includes("corrupt")>>
-			<<He>> seems to realize something, but shakes <<his>> head and goes back to praying.
+			<<He>> seems to realise something, but shakes <<his>> head and goes back to praying.
 		<<else>>
 			<<He>> doesn't seem to understand, and looks at you with concern.
 		<</if>>
@@ -821,7 +821,7 @@ After a moment, <<he>> stands from the pew, and approaches a back door. You begi
 <br><br>
 It seems like Sydney was correct, as you find all the other <<monks>> occupied with other matters as you wander down the temple's halls. No one even gives you a second glance. <<His>> instructions prove valuable, and you soon end up in a forbidden section of the temple.
 <br><br>
-Someone grabs you, covering your mouth as they pull you into a small crevice. You struggle and attempt to free yourself, until you realize it's just Sydney. A <<monk>> passes by, oblivious to your presence.
+Someone grabs you, covering your mouth as they pull you into a small crevice. You struggle and attempt to free yourself, until you realise it's just Sydney. A <<monk>> passes by, oblivious to your presence.
 <br><br>
 Sydney releases you. "That was close. Initiates aren't supposed to wander around this section, but the midnight vigils sometimes require us to anyways." Sydney takes you by the hand, and begins leading you further into the temple. <<takeHandholdingVirginity "Sydney" `($sydneyromance is 1 ?'romantic':'consensual')`>>
 <br><br>
@@ -1156,7 +1156,7 @@ You find yourself in a small hexagonal room, the edges ringed with steps leading
 	<<set $loveDrunk to 0>>
 <</if>>
 <<if $enemyarousal gte $enemyarousalmax>>
-	<<if $loveDrunk gte 3 and ((!$player.penisExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "f") or $NPCName[$NPCNameList.indexOf("Sydney")].virginity.penile isnot true or $NPCName[$NPCNameList.indexOf("Sydney")].virginity.vaginal isnot true)>>
+	<<if $loveDrunk gte 3 and ((!$player.penisExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "f") or (!$player.vaginaExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "m" and $analdisable is "t") or $NPCName[$NPCNameList.indexOf("Sydney")].virginity.penile isnot true or $NPCName[$NPCNameList.indexOf("Sydney")].virginity.vaginal isnot true)>>
 		Sydney's moans of pleasure fill the prayer room, echoing off the nothingness. You feel as though you're being drained of something, but you don't care. You're filled with a primal heat that builds and builds, until your own moans fill the room, too. <<orgasm>>
 		<br><br>
 		<<He>> collapses on top of you, finally satisfied and spent. <<npcincr Sydney lust -20>><<llllust>>
@@ -1183,7 +1183,7 @@ You find yourself in a small hexagonal room, the edges ringed with steps leading
 		<</if>>
 	<<else>>
 		<<ejaculation>>
-		<<if (!$player.penisExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "f") or ($NPCName[$NPCNameList.indexOf("Sydney")].virginity.penile isnot true or $NPCName[$NPCNameList.indexOf("Sydney")].virginity.vaginal isnot true)>>
+		<<if (!$player.penisExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "f") or (!$player.vaginaExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "m" and $analdisable is "t") or ($NPCName[$NPCNameList.indexOf("Sydney")].virginity.penile isnot true or $NPCName[$NPCNameList.indexOf("Sydney")].virginity.vaginal isnot true)>>
 			<<switch $loveDrunk>>
 				<<case 0>>
 					Sydney doesn't get up, and refuses to let you move. A manic expression crosses <<his>> face. "Where are you going, my love? We've only just started!" <<Hes>> on you again. <span class="red">The hallucinogens have driven <<him>> mad with lust!</span>
@@ -1253,7 +1253,7 @@ Sydney wraps <<his>> arms around you, and<<if $exposed gte 1>> offers you a towe
 <<if !$sydneySeen.includes("corruptroom")>>
 	<<set $sydneySeen.pushUnique("corruptroom")>>
 	"That really was... I... I don't even know if there are words to describe it. Absolutely worth any punishment they have in store for me, 
-	<<if (!$player.penisExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "f")>>
+	<<if $NPCName[$NPCNameList.indexOf("Sydney")].virginity.penile is true and $NPCName[$NPCNameList.indexOf("Sydney")].virginity.vaginal is true>>
 		but it's not like I need to worry about my chastity exam.
 	<<else>>
 		but I think I have a few ideas on how to avoid my chastity exam.
@@ -1281,7 +1281,7 @@ Sydney wraps <<his>> arms around you, and<<if $exposed gte 1>> offers you a towe
 <<effects>>
 "I still can't believe how good it was," Sydney whispers to you, chattering as you walk through the garden. "I knew it would be good, but... why are they trying to keep that from us? Because we won't reach heaven? Bullshit! We just found heaven!"
 <br><br>
-<<He>> tackles you to the grass, kissing your neck and all over your face. <<He>> pins you down and giggles. "I wanna go again. You wanna go again? <<if $NPCList[0].vagina isnot "none" and $player.penisExist>>I want to feel you inside me<<elseif $NPCList[0].penis isnot "none">>I want to be inside you<<else>>I want to feel you<</if>> again."
+<<He>> tackles you to the grass, kissing your neck and all over your face. <<He>> pins you down and giggles. "I wanna go again. You wanna go again? <<if $NPCName[$NPCNameList.indexOf("Sydney")].virginity.vaginal isnot true>>I want to feel you inside me<<elseif $NPCName[$NPCNameList.indexOf("Sydney")].virginity.penile isnot true>>I want to be inside you<<else>>I want to feel you<</if>> again."
 <br><br>
 <<Hes>> halfway through hiking up <<his>> robes and straddling you, when you hear a voice from a pathway nearby. Sydney yelps and pushes <<himself>> off, then pulls you to your feet. A figure in a white cowl steps out of the darkness, looking around with curiosity. <<if $NPCName[$NPCNameList.indexOf("Jordan")].init is 1>><span class="red">It's Jordan.</span><</if>>
 <br><br>
@@ -1301,7 +1301,11 @@ I would say you're up late, but I'm hardly one to talk. These midnight walks thr
 :: Sydney Temple Corrupt End 4
 <<effects>>
 <<if $NPCName[$NPCNameList.indexOf("Sydney")].virginity.penile is true and $NPCName[$NPCNameList.indexOf("Sydney")].virginity.vaginal is true>>
-	<<set $examSafe to true>>
+	<<if !$player.vaginaExist and $NPCName[$NPCNameList.indexOf("Sydney")].gender is "m">>
+		<<set $examSafe to 1>>
+	<<else>>
+		<<set $examSafe to 2>>
+	<</if>>
 <</if>>
 Jordan frowns, before glancing over Sydney. <<He>> freezes, before pushing down <<his>> robe. <<He>> wasn't fast enough. "Your chastity belt," Jordan murmurs. "Did you remove it, or was it broken?"
 <br><br>
@@ -1360,7 +1364,12 @@ After a few minutes that feel too long, Jordan finishes <<nnpc_his "Jordan">> wo
 <<else>>
 	"<span class="green">You are unblemished, and may it stay that way.</span> I'm sorry I doubted you. I can have a chastity belt refitted for you, if you would like," Jordan continues. "However, it may be best to save it for later. Tomorrow, perhaps?" <<nnpc_He "Jordan">> turns back to the path. "For now, I should return to bed. Perhaps I'll actually be able to get some sleep this time," <<nnpc_he "Jordan">> adds under <<nnpc_his "Jordan">> breath.
 	<br><br>
-	Sydney lets out a long breath. "Good thing neither of us has a penis, right? I guess we never had anything to worry about." Syndey hugs you, and the two of you head back into the temple.
+	Sydney lets out a long breath.
+	<<if $examSafe is 2>>
+		"Good thing neither of us has a penis, right? I guess we never had anything to worry about." Syndey hugs you, and the two of you head back into the temple.
+	<<else>>
+		"I guess we're fine, as long as we don't go sticking our dicks where they don't belong." <<He>> gives your <<bottom>> a playful slap, then laughs as <<he>> pulls you into a hug. You head back into the temple with a smile on your face.
+	<</if>>
 	<br><br>
 	<<link [[Next|Sydney Temple Corrupt End Final]]>><</link>>
 	<br>
@@ -1954,7 +1963,7 @@ Jordan produces a bell from <<person2>><<his>> robes and rings it four times. Sy
 <br><br>
 <<person1>><<He>> climbs on top of you, taking your hands in <<his>> own. <<His>> face is becoming more red by the second as you both maintain eye contact, trying to ignore your mutual exposure. <<takeHandholdingVirginity "Sydney" `($sydneyromance is 1?"romantic":"consensual")`>>
 <br><br>
-Jordan moves touch something under the altar, and sets of ivory restraints emerge, binding your hands with Sydney's. "As those wish to be bound, so do we bind them."
+Jordan moves to touch something under the altar, and sets of ivory restraints emerge, binding your hands with Sydney's. "As those wish to be bound, so do we bind them."
 <br>
 The <<person2>><<monks>> repeat Jordan's words. "So do we bind them."
 <br>
@@ -1983,7 +1992,7 @@ As the wax continues to pour down, it quickly slides off of you and onto the alt
 <br><br>
 "You are bound. Congratulations again." You notice a pair of <<monks>> folding your clothes, before placing them on the altar. "We will give you two some... privacy, and clean up when you're done. The cushions and blankets will be burned to remove any impurities from this site. What you do now, the order will be blinded to." Jordan gives you both a gentle smile, and begins to leave with the other <<monks>>. "I hope you both find happiness in this decision."
 <br><br>
-You're left alone with Sydney, hearing the doors lock. "S...so, now we can just...?" Sydney looks to you, still attempting to keep <<person1>><<his>> eyes of your body.
+You're left alone with Sydney, hearing the doors lock. "S...so, now we can just...?" Sydney looks to you, still attempting to keep <<person1>><<his>> eyes off your body.
 <br><br>
 <<if $submissive gte 1150>>
 	"I... I think so. Are you ready?" you ask quiety.

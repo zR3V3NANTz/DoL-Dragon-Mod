@@ -4104,7 +4104,7 @@ The figure gets closer.
 				<<if $submissive gte 1150>>
 					"That's too big of a word to call someone like me," you mutter.
 				<<elseif $submissive lte 850>>
-					"Yep, tha's me," you say brashly.
+					"Yep, that's me," you say brashly.
 				<<else>>
 					"I wouldn't go as far as call myself an entrepreneur," you say.
 				<</if>>
