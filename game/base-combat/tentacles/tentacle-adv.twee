@@ -81,6 +81,12 @@ The _tentacle.desc tentacle writhes between your feet.
 	<<purity -1>><<internalejac>><<sex 5>>
 	<<set $drugged += 3>><<set $player.bodyliquid.mouth.goo += 1>>
 	<<set _tentacle.tentaclehealth -= 1>>
+	<<if _tentacle.desc.includes("pale")>>
+		<<set $hallucinogen += 5>>
+	<</if>>
+	<<if $abomination is 1>>
+		<<set $enemyarousal += 3>>
+	<</if>>
 <</if>>
 
 <<if _tentacle.head is "mouth">>
@@ -127,6 +133,12 @@ The _tentacle.desc tentacle writhes between your feet.
 	<<purity -1>><<internalejac>><<sex 5>>
 	<<set $drugged += 3>><<set $player.bodyliquid.vagina.goo += 1>><<pain $vaginalPain>>
 	<<set _tentacle.tentaclehealth -= 1>>
+	<<if _tentacle.desc.includes("pale")>>
+		<<set $hallucinogen += 5>>
+	<</if>>
+	<<if $abomination is 1>>
+		<<set $enemyarousal += 3>>
+	<</if>>
 <</if>>
 
 <<if _tentacle.head is "vagina">>
@@ -188,6 +200,9 @@ The _tentacle.desc tentacle writhes between your feet.
 <<if _tentacle.head is "penisdeep">>
 	and continues thrusting against your <<penis>>, caressing and kneading your length.
 	<<sex 5>><<set _tentacle.tentaclehealth -= 1>>
+	<<if $abomination is 1>>
+		<<set $enemyarousal += 3>>
+	<</if>>
 	<br>
 <</if>>
 
@@ -241,6 +256,12 @@ The _tentacle.desc tentacle writhes between your feet.
 	<<purity -1>><<internalejac>><<sex 5>>
 	<<set $drugged += 3>><<set $player.bodyliquid.anus.goo += 1>>
 	<<set _tentacle.tentaclehealth -= 1>><<pain $analPain>>
+	<<if _tentacle.desc.includes("pale")>>
+		<<set $hallucinogen += 5>>
+	<</if>>
+	<<if $abomination is 1>>
+		<<set $enemyarousal += 3>>
+	<</if>>
 	<br>
 <</if>>
 
@@ -598,6 +619,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<set $player.bodyliquid.feet.goo += 1>><<feetejacstat>>
 	<</if>>
 	<<neutral 1>><<set _tentacle.tentaclehealth -= 1>><<ejacstat>>
+	<<if $abomination is 1>>
+		<<set $enemyarousal += 3>>
+	<</if>>
 <</widget>>
 
 <<widget "tentacleadvdisable">>
@@ -672,10 +696,10 @@ The _tentacle.desc tentacle writhes between your feet.
 	<<set _tentacle to $args[0] >>
 
 	<<if $leftarm is 0 and _tentacle.shaft isnot "finished">>
-		<<set _action to "lefthit"+_tentacle.id >>
+		<<set _action to "lefthittentacle"+_tentacle.id >>
 		<<actionstentacleadvcheckbox "def" "Strike the _tentacle.desc tentacle" "$leftaction" _action $leftactiondefault>>
 
-		<<set _action to "leftgrab"+_tentacle.id >>
+		<<set _action to "leftgrabtentacle"+_tentacle.id >>
 		<<actionstentacleadvcheckbox "sub" "Grab the _tentacle.desc tentacle" "$leftaction" _action $leftactiondefault>>
 
 		<br>
@@ -717,10 +741,10 @@ The _tentacle.desc tentacle writhes between your feet.
 	<<set _tentacle to $args[0] >>
 
 	<<if $rightarm is 0 and _tentacle.shaft isnot "finished">>
-		<<set _action to "righthit"+_tentacle.id >>
+		<<set _action to "righthittentacle"+_tentacle.id >>
 		<<actionstentacleadvcheckbox "def" "Strike the _tentacle.desc tentacle" "$rightaction" _action $rightactiondefault>>
 
-		<<set _action to "rightgrab"+_tentacle.id >>
+		<<set _action to "rightgrabtentacle"+_tentacle.id >>
 		<<actionstentacleadvcheckbox "sub" "Grab the _tentacle.desc tentacle" "$rightaction" _action $rightactiondefault>>
 
 		<br>
@@ -938,33 +962,36 @@ The _tentacle.desc tentacle writhes between your feet.
 	<<set $rng to random(1, 100)>>
 
 	/*New Controls*/
-	<<if ($leftaction is "lefthit" and $leftactionTarget is _tentacle.id)
-	or ($rightaction is "righthit" and $rightactionTarget is _tentacle.id)>>
-		<<if $leftaction is "lefthit" and $rightaction is "righthit" and $leftactionTarget is $rightactionTarget>>
+	<<if ($leftaction is "lefthittentacle" and $leftactionTarget is _tentacle.id)
+	or ($rightaction is "righthittentacle" and $rightactionTarget is _tentacle.id)>>
+		<<if $leftaction is "lefthittentacle" and $rightaction is "righthittentacle" and $leftactionTarget is $rightactionTarget>>
 			You strike the _tentacle.desc tentacle with both hands and it reels away from you.
 			<<set _multi to 2>>
-			<<set $leftaction to 0>><<set $leftactiondefault to "lefthit">>
-			<<set $rightaction to 0>><<set $rightactiondefault to "righthit">>
-		<<elseif $leftaction is "lefthit">>
+			<<set $leftaction to 0>><<set $leftactiondefault to "lefthittentacle">>
+			<<set $rightaction to 0>><<set $rightactiondefault to "righthittentacle">>
+		<<elseif $leftaction is "lefthittentacle">>
 			You strike the _tentacle.desc tentacle with your left hand and it reels away from you.
 			<<set _multi to 1>><<set $leftaction to 0>>
-			<<set $leftactiondefault to "lefthit">>
+			<<set $leftactiondefault to "lefthittentacle">>
 		<<else>>
 			You strike the _tentacle.desc tentacle with your right hand and it reels away from you.
 			<<set _multi to 1>>
-			<<set $rightaction to 0>><<set $rightactiondefault to "righthit">>
+			<<set $rightaction to 0>><<set $rightactiondefault to "righthittentacle">>
 		<</if>>
 		<<defiance `2 * _multi`>>
 		<<set $speechhit to 1 * _multi>><<set $attackstat += 1 * _multi>>
 		<<if $rng lte ($physique / 200)>><<set _tentacle.tentaclehealth -= 1 * _multi>><</if>>
 		<<set _tentacle.tentaclehealth -= 1 * _multi>>
 		<<tentacleadvdisable _tentacle>>
+		<<if $abomination is 1>>
+			The <<person>> winces in pain.
+		<</if>>
 	<</if>>
 
-	<<if ($leftaction is "leftgrab" and $leftactionTarget is _tentacle.id)
-	or ($rightaction is "rightgrab" and $rightactionTarget is _tentacle.id)>>
+	<<if ($leftaction is "leftgrabtentacle" and $leftactionTarget is _tentacle.id)
+	or ($rightaction is "rightgrabtentacle" and $rightactionTarget is _tentacle.id)>>
 		<<tentacleadvdisable _tentacle>> /* Make sure you call this before trying to set the tentacle info */
-		<<if $leftaction is "leftgrab" and $leftactionTarget is _tentacle.id>>
+		<<if $leftaction is "leftgrabtentacle" and $leftactionTarget is _tentacle.id>>
 			<<set _hand to "left">><<set $leftaction to 0>><<set $leftactiondefault to "leftrub">>
 			<<set $leftarm to _tentacle.id>><<set _tentacle.head to "leftarm">><<set $leftarmstate to "tentacle">>
 		<<else>>
@@ -990,8 +1017,67 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $handskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip.</span>
 			<<set _tentacle.tentaclehealth -= 3>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 			<<handejacstat>><<ejacstat>>
 			<<if _hand is "left">><<set $player.bodyliquid.leftarm.goo += 1>><<else>><<set $player.bodyliquid.rightarm.goo += 1>><</if>>
+		<</if>>
+	<</if>>
+
+	<<if $leftaction is "leftstruggle" or $rightaction is "rightstruggle">>
+		<<if !_struggletext>>
+			<<if $leftaction is "leftstruggle" and $rightaction is "rightstruggle">>
+				You struggle with all your might.
+			<<else>>
+				You struggle.
+			<</if>>
+			<<set _struggletext to 1>>
+		<</if>>
+		<<if $abomination is 1 and ($NPCList[0].lefthand is "arms" or $NPCList[0].righthand is "arms")>>
+			<<if $leftaction is "leftstruggle" and $rightaction is "rightstruggle">>
+				<<if $physique gte random(1, 32000)>>
+					<span class="teal">You manage to twist your arms free.</span>
+					<<defiance 5>>
+					<<set $leftarm to 0>><<set $rightarm to 0>>
+					<<set $NPCList[0].lefthand to 0>>
+					<<set $NPCList[0].righthand to 0>>
+				<<else>>
+					<span class="purple">Your left arm remains grasped.</span>
+				<</if>>
+			<<else>>
+				<<if $physique gte random(1, 64000)>>
+					<span class="teal">You manage to twist your arms free.</span>
+					<<defiance 5>>
+					<<set $leftarm to 0>><<set $rightarm to 0>>
+					<<set $NPCList[0].lefthand to 0>>
+					<<set $NPCList[0].righthand to 0>>
+				<<else>>
+					<span class="purple">Your left arm remains grasped.</span>
+				<</if>>
+			<</if>>
+		<</if>>
+		<<if $leftaction is "leftstruggle" and _tentacle.shaft is "leftarm">>
+			<<set $leftaction to 0>><<set $leftactiondefault to "leftstruggle">>
+			<<set $speechstruggle to 1>><<defiance 1>>
+			<<if $physique gte random(1, 64000)>>
+				<span class="teal">You manage to twist your left arm free.</span>
+				<<defiance 5>><<tentacleadvdisable _tentacle>>
+				<<set $leftarm to 0>>
+			<<else>>
+				<span class="purple">Your left arm remains grasped.</span>
+			<</if>>
+		<</if>>
+		<<if $rightaction is "rightstruggle" and _tentacle.shaft is "rightarm">>
+			<<set $rightaction to 0>><<set $rightactiondefault to "rightstruggle">>
+			<<defiance 1>><<set $speechstruggle to 1>>
+			<<if $physique gte random(1, 64000)>>
+				<span class="teal">You manage to twist your right arm free.</span>
+				<<defiance 5>><<tentacleadvdisable _tentacle>>
+				<<set $rightarm to 0>>
+			<<else>>
+				<span class="purple">Your right arm remains grasped.</span>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1232,6 +1318,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $rng lte ($physique / 200)>>
 			<<set _tentacle.tentaclehealth -= 1>>
 		<</if>>
+		<<if $abomination is 1>>
+			<<defiance 3>>
+		<</if>>
 	<</if>>
 	<<if $feetaction is "feetgrab" and $feetactionTarget is _tentacle.id>>
 		<<set $feetaction to 0>><<set $feetactiondefault to "feetrub">><<submission 1>><<feetstat>>
@@ -1246,6 +1335,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $feetskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip.</span>
 			<<set $player.bodyliquid.feet.goo += 1>><<set _tentacle.tentaclehealth -= 3>><<feetejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1346,6 +1438,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $oralskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your face.</span>
 			<<set $player.bodyliquid.face.goo += 1>><<set _tentacle.tentaclehealth -= 3>><<faceejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1356,6 +1451,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $oralskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your face.</span>
 			<<set $player.bodyliquid.face.goo += 1>><<set _tentacle.tentaclehealth -= 3>><<faceejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1371,6 +1469,12 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $oralskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip and into your mouth.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $drugged += 3>><<set $player.bodyliquid.mouth.goo += 1>><<oralejacstat>><<ejacstat>>
+			<<if _tentacle.desc.includes("pale")>>
+				<<set $hallucinogen += 5>>
+			<</if>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1387,6 +1491,13 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $rng lte ($physique / 200)>>
 			<<set _tentacle.tentaclehealth -= 1>>
 		<</if>>
+		<<if $abomination is 1>>
+			The <<person>> grunts in pain. <<defiance 10>>
+			<<if $wolfgirl gte 2 or $cat gte 2>>
+				<<defiance 10>><<defiance 10>>
+				You lick your fangs clean.
+			<</if>>
+		<</if>>
 	<</if>>
 
 	<<if $vaginaaction is "vaginarub"+_tentacle.id>>
@@ -1396,6 +1507,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $vaginalskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip.</span>
 			<<set $player.bodyliquid.vaginaoutside.goo += 1>><<set _tentacle.tentaclehealth -= 3>><<vaginalentranceejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1411,6 +1525,12 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $vaginalskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, flooding your womb with its warmth.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $drugged += 3>><<set $player.bodyliquid.vagina.goo += 1>><<vaginalejacstat>><<ejacstat>>
+			<<if _tentacle.desc.includes("pale")>>
+				<<set $hallucinogen += 5>>
+			<</if>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1427,6 +1547,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $penileskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip.</span>
 			<<set $player.bodyliquid.penis.goo += 1>><<set _tentacle.tentaclehealth -= 3>><<penileejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1442,6 +1565,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $penileskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your groin.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $player.bodyliquid.penis.goo += 1>><<penileejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1458,6 +1584,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $analskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your <<bottom>>.</span>
 			<<set $player.bodyliquid.bottom.goo += 1>><<set _tentacle.tentaclehealth -= 3>><<bottomejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1473,6 +1602,12 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $analskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, flooding your bowels with its warmth.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $drugged += 3>><<set $player.bodyliquid.anus.goo += 1>><<analejacstat>><<ejacstat>>
+			<<if _tentacle.desc.includes("pale")>>
+				<<set $hallucinogen += 5>>
+			<</if>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1489,6 +1624,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $thighskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your tummy.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $player.bodyliquid.tummy.goo += 1>><<tummyejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1498,6 +1636,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $thighskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your tummy.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $player.bodyliquid.tummy.goo += 1>><<tummyejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1508,6 +1649,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $bottomskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your <<bottom>>.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $player.bodyliquid.bottom.goo += 1>><<bottomejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -1518,6 +1662,9 @@ The _tentacle.desc tentacle writhes between your feet.
 		<<if $chestskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy fluid erupts from the tip, covering your chest.</span>
 			<<set _tentacle.tentaclehealth -= 3>><<set $player.bodyliquid.chest.goo += 1>><<chestejacstat>><<ejacstat>>
+			<<if $abomination is 1>>
+				<<set $enemyarousal += 6>>
+			<</if>>
 		<</if>>
 	<</if>>
 

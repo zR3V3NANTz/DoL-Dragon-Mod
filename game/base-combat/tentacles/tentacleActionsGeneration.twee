@@ -90,9 +90,13 @@
 			<<for _i to 0; _i lt $tentacles.max; _i++>>
 				<<if $tentacles[_i].shaft is "leftarm">>
 					<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">The $tentacles[_i].desc tentacle entangles your left arm.</span>
+					<<set $_tentgrab to 1>>
 					<<break>>
 				<</if>>
 			<</for>>
+			<<if !$_tentgrab>>
+				<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is being held down.</span>
+			<</if>>
 		<<case "bound">>
 			<<set _leftOptions to "bound">>
 			<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is bound.</span>
@@ -111,12 +115,12 @@
 	<</switch>>
 	<<leftActionsTentacle>>
 	<<if Object.keys(_leftaction).length gt 0>>
-		<<if Object.values(_leftaction).includes($leftactiondefault) is false or $args[0] is true or ["rest","leftgrab"].includes($leftactiondefault)>>
+		<<if Object.values(_leftaction).includes($leftactiondefault) is false or $args[0] is true or ["rest","leftgrabtentacle"].includes($leftactiondefault)>>
 			<<set _defaultsCombatAction to "leftaction">>
 			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
-				<<if ["leftgrab"].includes(_actionsSet[_set]) and $leftactionTarget isnot undefined>>
+				<<if ["leftgrabtentacle"].includes(_actionsSet[_set]) and $leftactionTarget isnot undefined>>
 					<<for _i to 0; _i lt $tentacles.max; _i++>>
 						<<if $tentacles[_i].shaft isnot "finished">>
 							<<if $regrab and $tentacles[_i].head is 0>>
@@ -250,9 +254,9 @@
 		<</if>>
 		<<if $tentacles.active gt 0>>
 			<<if $consensual is 0>>
-				<<set _leftaction["Strike the"] to "lefthit">>
+				<<set _leftaction["Strike the"] to "lefthittentacle">>
 			<</if>>
-			<<set _leftaction["Grab the"] to "leftgrab">>
+			<<set _leftaction["Grab the"] to "leftgrabtentacle">>
 		<</if>>
 	<<case "grappled">>
 	<<case "bound">>
@@ -290,9 +294,13 @@
 			<<for _i to 0; _i lt $tentacles.max; _i++>>
 				<<if $tentacles[_i].shaft is "rightarm">>
 					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">The $tentacles[_i].desc tentacle entangles your right arm.</span>
+					<<set $_tentgrab to 1>>
 					<<break>>
 				<</if>>
 			<</for>>
+			<<if !$_tentgrab>>
+				<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is being held down.</span>
+			<</if>>
 		<<case "bound">>
 			<<set _rightOptions to "bound">>
 			<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is bound.</span>
@@ -311,12 +319,12 @@
 	<</switch>>
 	<<rightActionsTentacle>>
 	<<if Object.keys(_rightaction).length gt 0>>
-		<<if Object.values(_rightaction).includes($rightactiondefault) is false or $args[0] is true or ["rest","rightgrab"].includes($rightactiondefault)>>
+		<<if Object.values(_rightaction).includes($rightactiondefault) is false or $args[0] is true or ["rest","rightgrabtentacle"].includes($rightactiondefault)>>
 			<<set _defaultsCombatAction to "rightaction">>
 			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
-				<<if ["rightgrab"].includes(_actionsSet[_set]) and $rightactionTarget isnot undefined>>
+				<<if ["rightgrabtentacle"].includes(_actionsSet[_set]) and $rightactionTarget isnot undefined>>
 					<<for _i to 0; _i lt $tentacles.max; _i++>>
 						<<if $tentacles[_i].shaft isnot "finished">>
 							<<if $regrab and $tentacles[_i].head is 0>>
@@ -450,9 +458,9 @@
 		<</if>>
 		<<if $tentacles.active gt 0>>
 			<<if $consensual is 0>>
-				<<set _rightaction["Strike the"] to "righthit">>
+				<<set _rightaction["Strike the"] to "righthittentacle">>
 			<</if>>
-			<<set _rightaction["Grab the"] to "rightgrab">>
+			<<set _rightaction["Grab the"] to "rightgrabtentacle">>
 		<</if>>
 	<<case "grappled">>
 	<<case "bound">>

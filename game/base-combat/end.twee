@@ -265,6 +265,7 @@
 <<for _i to 1; _i lt 20; _i++>>
 	<<set _tentacles[_i] to null>>
 <</for>>
+<<set $abomination to 0>>
 
 <<set $leftaction to 0>>
 <<set $rightaction to 0>>
@@ -595,6 +596,8 @@
 <<unset $speechNPCHandholdingVirgin>>
 <<unset $sydneyComments>>
 <<unset $sydneyUniqueComments>>
+<<unset $noBodyWriting>>
+<<unset $breakIgnore>>
 
 <<unset $internalejac>>
 

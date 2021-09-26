@@ -1,0 +1,148 @@
+:: Widgets Abomination [widget]
+
+/* Turn NPC into Abomination. Only works if only one NPC generated for now. Can be used mid-combat. */
+<<widget "makeAbomination">>
+<<if $enemyno isnot 1>>
+	<span class="red">ERROR: Only one NPC may be present to turn into an Abomination.</span>
+<<else>>
+	<<set $abomination to 1>>
+	<<set _tentacleNumber to ($args[0] ? $args[0] : random(2,8))>>
+	<<set _tentacleHealth to ($args[1] ? $args[1] : 15)>>
+	<<set _tentacleType to ($args[2] ? $args[2] : undefined)>>
+	<<set _tentacleVariant to ($args[3] ? $args[3] : undefined)>>
+	<<tentaclestart _tentacleNumber _tentacleHealth _tentacleType _tentacleVariant>>
+	<<for _i to 0; _i lt $tentacles.active; _i++>>
+		<<set $enemyhealthmax += $tentacles[_i].tentaclehealth>>
+		<<set $enemyhealth += $tentacles[_i].tentaclehealth>>
+		<<set $enemyarousalmax += $tentacles[_i].tentaclehealth>>
+	<</for>>
+<</if>>
+<</widget>>
+
+<<widget "effectsabomination">>
+<<effectsman>>
+<div @class="($debugLines ? 'debugLines-effectstentacleadv' : '')">
+<<for _i to 0; _i lt $tentacles.max; _i++>>
+	<<if $tentacles[_i] isnot undefined>>
+		<<set _tentacle to $tentacles[_i]>>
+		<<effectstentacleadv _tentacle>>
+	<</if>>
+<</for>>
+</div>
+<</widget>>
+
+<<widget "abomination">>
+<<man>>
+<<for _i to 0; _i lt $tentacles.max; _i++>>
+	<<set _tentacle to $tentacles[_i]>>
+	<<if _tentacle isnot undefined>>
+		<<tentacleadv _tentacle>>
+		<<set _tentacle.tentaclehealth -= 0.2>>
+		<<set $enemyarousal += 2>>
+	<</if>>
+<</for>>
+<</widget>>
+
+<<widget "stateabomination">>
+<<stateman>><<statetentacles>>
+<</widget>>
+
+<<widget "actionsabomination">>
+<div @class="($debugLines ? 'debugLines-actionsman' : '')">
+<<exposure>>
+<<set $face to 0>>
+
+<<if $enemyno gte 2>>
+	<<set $pronoun to "n">>
+<<else>>
+	<<if $NPCList[0].pronoun is "m">>
+		<<set $pronoun to "m">>
+	<</if>>
+	<<if $NPCList[0].pronoun is "f">>
+		<<set $pronoun to "f">>
+	<</if>>
+	<<if $NPCList[0].pronoun is "i">>
+		<<set $pronoun to "i">>
+	<</if>>
+	<<if $NPCList[0].pronoun is "n">>
+		<<set $pronoun to "n">>
+	<</if>>
+	<<if $NPCList[0].pronoun is "t">>
+		<<set $pronoun to "t">>
+	<</if>>
+<</if>>
+
+<<if $images is 1>>
+	<<if $position isnot "stalk">>
+		<<timed 100ms>>
+		<<combatimg>>
+		<br>
+		<</timed>>
+	<</if>>
+<</if>>
+
+<<if $traumafocus gte 1 and $traumafocusintro isnot 1>>
+	<<set $traumafocusintro to 1>>
+	<i>As you gain focus, you become more and more likely to escape your helpless state of dissociation.</i>
+	<br><br>
+<</if>>
+
+<<if $traumafocus gt random(1, 1000) and $dissociation gte 2 and $combat is 1>>
+	<<set $traumafocus to 0>><<set $trauma -= 1000>><<set $dissociation to 1>>
+	<span class="green">Your lucidity returns.</span>
+	<<ltrauma>>
+	<br>
+	<span class="red">The weight of reality crashes down on you.</span>
+	<br><br>
+<</if>>
+
+<<oxygen 50>>
+
+<<willpowerpain>>
+<<willpowerorgasm>>
+<<actioncarry>>
+<<actioncarrydrop>>
+
+<<if $trance lte 0 and $dissociation lte 1 and $panicparalysis is 0 and ($panicviolence is 0 or $position is "stalk")
+and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+
+	<<if $images is 1 and $consensual is 1 and $position_lock isnot 1>>
+		<<if $position is "doggy">>
+			| <label>Roll over <<radiobutton "$bodyaction" "missionary">></label>
+		<<elseif $position is "missionary">>
+			| <label>Roll over <<radiobutton "$bodyaction" "doggy">></label>
+		<</if>>
+		<<if $position isnot "stalk">>
+			| <label>Rest <<radiobutton "$bodyaction" "rest" checked>></label>
+			<br>
+		<</if>>
+	<</if>>
+
+	<<if $combatControls isnot "disabled">>
+		<<generateActionsMan>>
+		<<generateActionsTentacle>>
+	<</if>>
+	<br>
+<</if>>
+
+<<combatstate>>
+<<carryblock>>
+<br><br>
+<<set $face to 0>>
+</div>
+
+/*Due to how combat is setup, this is the best location for it*/
+<<setupMidOrgasm>>
+<<if $debug is 1>>
+	__Debug__
+	<br>
+	<<for _i to 0; _i lt $enemyno; _i++>>
+		<<print _i>> $NPCList[_i].fullDescription: Head Location: $NPCList[_i].location.head --- Genitals Location: $NPCList[_i].location.genitals
+		<br>
+		Penis: $NPCList[_i].penis --- Vagina: $NPCList[_i].vagina --- Mouth: $NPCList[_i].mouth --- Anus: $NPCList[_i].anus
+		<br><br>
+	<</for>>
+<</if>>
+
+<br><br>
+<</widget>>

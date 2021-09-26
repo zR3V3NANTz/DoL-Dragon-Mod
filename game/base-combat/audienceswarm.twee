@@ -13,7 +13,7 @@
 <<set _tmppspot to "">>
 <<set _tmpproof to "t">>
 
-<<if $swarm.type is "slimes">>
+<<if $swarm.type is "slimes" or $swarm.type is "pale slimes">>
 	<<set _tmpsmoving to "slurping">>
 <<elseif $swarm.type is "worms">>
 	<<set _tmpsmoving to "wiggling">>

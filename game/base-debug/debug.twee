@@ -694,6 +694,8 @@ These still require Fertilise
 <<link [[Estate|Estate]]>><<estate_end>><<estate_init secret>><</link>>
 <br>
 <<link [[Stalk me|Street Stalk]]>><<endcombat>><<generate1>><<person1>><<set $molestationstart to 1>><</link>>
+<br>
+<<link [[Summon the Wraith|Wraith Test Start]]>><<endcombat>><<set $monthday to 31>><<set $daystate to "night">><<set $hour to 21>><<set $time to 1260>><<set $moonstate to "evening">><</link>>
 <br><br>
 Turn beast into: <<link [[Creature|$passage]]>><<set _xy to $enemyno-1>><<set $NPCList[_xy].type to "creature">><</link>>
 <br>

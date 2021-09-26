@@ -699,7 +699,7 @@ __If consensual:__
 	<<set _leftHand["Guide to your ass"] to "showbottom">>
 <</if>>
 <<if $args[0] is true>>
-	<<set _leftHand["Strike the"] to "lefthit">>
+	<<set _leftHand["Strike the"] to "lefthittentacle">>
 <</if>>
 <<set _leftHand["Milk it"] to "leftrub">>
 
@@ -713,7 +713,7 @@ __If consensual:__
 	<<set _rightHand["Guide to your ass"] to "showbottom">>
 <</if>>
 <<if $args[0] is true>>
-	<<set _rightHand["Strike the"] to "righthit">>
+	<<set _rightHand["Strike the"] to "righthittentacle">>
 <</if>>
 <<set _rightHand["Milk it"] to "rightrub">>
 

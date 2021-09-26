@@ -1962,7 +1962,7 @@ Sydney's soft voice asks. All you can do is murmur that, "Yes, Leighton is gone.
 <<He>> holds you in place. "Hold on, I've got something for the pain. I ran to the nurse's office when the <<nnpc_title "Leighton">> told me to leave."
 Sydney leaves your sight, and soon you feel something cold, wet, and soothing press to your rear.
 <<if _sydneyStatus.includes("pure")>>
-	<<He>> whimpers as <<he>> tends to your abused bottom, forced to admire the pain <<he>> inflicted on you, and <<he>> stops when <<he>> reaches your swollen <<genitals>>. "M-May I?" <<he>> asks with trepidation. You groan out your consent and shudder as <<he>> shyly begins to apply <<his>> remedy to your sensitive parts.
+	<<He>> whimpers as <<he>> tends to your abused bottom, forced to admire the pain <<he>> inflicted on you, and <<he>> stops when <<he>> reaches your swollen <<genitals 2>>. "M-May I?" <<he>> asks with trepidation. You groan out your consent and shudder as <<he>> shyly begins to apply <<his>> remedy to your sensitive parts.
 <<else>>
 	"Wow, I really did a number on you," <<he>> says as <<he>> works <<his>> way down your <<bottom>>, stopping for a moment when <<he>> reaches your <<genitals>>. "This is going to feel very cold, are you ready?" You groan out your consent and shudder as <<he>> begins to apply <<his>> remedy to your sensitive parts.
 <</if>>
