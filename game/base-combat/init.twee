@@ -739,7 +739,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<combatinit>>
 <</widget>>
 
-<<widget "abomination">>
+<<widget "abominationold">>
 
 <<set $enemyhealth to 5555>>
 <<set $enemyarousal to $allure / 50>>
@@ -804,7 +804,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<combatinit>>
 <</widget>>
 
-<<widget "abomination2">>
+<<widget "abominationold2">>
 
 <<set $enemyhealth to 5555>>
 <<set $enemyarousal to $allure / 50>>
@@ -945,37 +945,37 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 	<<if $enemyno gte 1>>
 		<br>
 		<<man-combat 1>>
-		<<if $position isnot "stalk">>
+		<<if $position isnot "stalk" and !$breakIgnore>>
 			<br><br>
 		<</if>>
 	<</if>>
 	<<if $enemyno gte 2>>
 	<<man-combat 2>>
-		<<if $position isnot "stalk">>
+		<<if $position isnot "stalk" and !$breakIgnore>>
 			<br><br>
 		<</if>>
 	<</if>>
 	<<if $enemyno gte 3>>
 		<<man-combat 3>>
-		<<if $position isnot "stalk">>
+		<<if $position isnot "stalk" and !$breakIgnore>>
 			<br><br>
 		<</if>>
 	<</if>>
 	<<if $enemyno gte 4>>
 		<<man-combat 4>>
-		<<if $position isnot "stalk">>
+		<<if $position isnot "stalk" and !$breakIgnore>>
 			<br><br>
 		<</if>>
 	<</if>>
 	<<if $enemyno gte 5>>
 		<<man-combat 5>>
-		<<if $position isnot "stalk">>
+		<<if $position isnot "stalk" and !$breakIgnore>>
 			<br><br>
 		<</if>>
 	<</if>>
 	<<if $enemyno gte 6>>
 		<<man-combat 6>>
-		<<if $position isnot "stalk">>
+		<<if $position isnot "stalk" and !$breakIgnore>>
 			<br><br>
 		<</if>>
 	<</if>>

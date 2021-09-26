@@ -1238,7 +1238,7 @@
 			<<set _stripped to true>>
 		<</if>>
 		<<combat-set-hand-target $args[0] $handtarget>>
-	<<elseif $rng lte 7 and ($consensual isnot 1 or ["Whitney", "Kylar", "Sydney"].includes($npc[$npcrow.indexOf(_n)])) and $bodywritingdisable is "f" and $enemytype isnot "beast">>
+	<<elseif $rng lte 7 and ($consensual isnot 1 or ["Whitney", "Kylar", "Sydney"].includes($npc[$npcrow.indexOf(_n)])) and $bodywritingdisable is "f" and $enemytype isnot "beast" and !$noBodyWriting>>
 		<<set _rng to random(1, 5)>>
 		<<if _rng is 5 or $npc.includes("Sydney")>>
 			<span class="purple"><<He>> pulls a <span class="pink">permanent</span> marker pen from <<his>> pocket, flicking off the lid.</span>
@@ -2010,7 +2010,7 @@
 		<<set $NPCList[0].intro to 1>>
 	<</if>>
 <<case 1 2 3 4 5>>
-	<<manspeech _n>><<set $NPCList[_n].intro to 1>>
+	<<manspeech _n>><<if !_introSkip>><<set $NPCList[_n].intro to 1>><</if>>
 <</switch>>
 
 <<if $NPCList[_n].state is "stalk">>

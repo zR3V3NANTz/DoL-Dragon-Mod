@@ -1,6 +1,8 @@
 :: Widgets Tentacles [widget]
 <<widget "tentaclestart">>
-<<set $enemyarousalmax to 10000>>
+<<if $abomination isnot 1>>
+	<<set $enemyarousalmax to 10000>>
+<</if>>
 
 <<set $tentacles to {
 	"max": $args[0],
@@ -9,11 +11,21 @@
 
 <<if $args[0]>>
 
+	<<if $args[2]>>
+		<<set _tentacleType to $args[2]>>
+	<<else>>
+		<<set _tentacleType to "tentacle">>
+	<</if>>
+
 	/* Deciding if tentacle templates should be defined somewhere else still */
+	/* Argument 0 is the number of tentacles.
+	* Argument 1 is health.
+	* Argument 2 is tentacle type, which can be replaced with "vines", "machines" etc later on. Optional, unless also using Argument 3.
+	* Argument 3 is variant, and will give different offspring as well as allowing different batches of descriptions. */
 	<<set _tentacledescs to [
 		{"desc":"slimy","baby":0,"size":2},
 		{"desc":"sticky","baby":0,"size":2},
-		{"desc":"thick","baby":"tentacle","size":3},
+		{"desc":"thick","baby":_tentacleType,"size":3},
 		{"desc":"throbbing","baby":0,"size":2},
 		{"desc":"slick","baby":0,"size":2},
 		{"desc":"moist","baby":0,"size":2},
@@ -26,12 +38,27 @@
 		{"desc":"damp","baby":0,"size":2},
 		{"desc":"bulbous","baby":0,"size":3},
 		{"desc":"gyrating","baby":0,"size":2},
-		{"desc":"large","baby":"tentacle","size":3},
+		{"desc":"large","baby":_tentacleType,"size":3},
 		{"desc":"bumpy","baby":0,"size":2},
 		{"desc":"thin","baby":0,"size":1},
 		{"desc":"narrow","baby":0,"size":1},
 		{"desc":"squishy","baby":0,"size":2},
 	]>>
+
+	<<if $args[3]>>
+		<<if $args[3] is "pale">>
+			<<set _tentacledescs.push(
+				{"desc":"ghostly","baby":_tentacleType,"size":2},
+				{"desc":"translucent","baby":0,"size":1},
+				{"desc":"twitching","baby":0,"size":2},
+				{"desc":"manic","baby":0,"size":3},
+				{"desc":"cloudy","baby":_tentacleType,"size":3},
+				{"desc":"ethereal","baby":0,"size":1},
+				{"desc":"incandescent","baby":0,"size":3},
+				{"desc":"iridescent","baby":_tentacleType,"size":2},
+			)>>
+		<</if>>
+	<</if>>
 
 	<<set _tentacledescs to _tentacledescs.shuffle()>>
 
@@ -39,13 +66,14 @@
 		<<set _tentacledata to _tentacledescs[_i]>>
 
 		<<set _tentacle to {
-			"desc": _tentacledata.desc,
-			"fullDesc": _tentacledata.desc + " tentacle",
+			"desc": ($args[3] ? $args[3] + " " : "" ) + _tentacledata.desc,
+			"fullDesc": ($args[3] ? $args[3] + " " : "" ) + _tentacledata.desc +  " " + _tentacleType,
 			"tentaclehealth": $args[1],
+			"tentaclehealthstart": $args[1],
 			"shaft": 0,
 			"head": 0,
 			"id": "tentacle"+_i,
-			"baby": _tentacledata.baby,
+			"baby": ($args[3] and _tentacledata.baby isnot 0 ? $args[3] + " " + _tentacledata.baby : _tentacledata.baby ),
 			"babychance": 400,
 			"size": _tentacledata.size
 		}>>

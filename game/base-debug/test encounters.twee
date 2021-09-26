@@ -275,7 +275,7 @@ PenActiv: <span class="gold">$NPCList[_x].penis</span> VagActiv: <span class="go
 <<residentialex2>>
 [[Next|Domus Street]]
 
-:: Abomination
+:: Abomination Old
 
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
@@ -293,24 +293,24 @@ PenActiv: <span class="gold">$NPCList[_x].penis</span> VagActiv: <span class="go
 <<actionsman>>
 <<if $alarm is 1>>
 	<<if $rescue is 1>>
-		<span id="next"><<link [[Next->Abomination]]>><</link>></span><<nexttext>>
+		<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
 	<<else>>
 		No one comes to your aid.
 		<<set $alarm to 0>>
 		<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
 		<br><br>
 		<<if $enemyarousal gte $enemyarousalmax>>
-			<span id="next"><<link [[Next->Abomination]]>><</link>></span><<nexttext>>
+			<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
 		<<else>>
-			<span id="next"><<link [[Next->Abomination]]>><</link>></span><<nexttext>>
+			<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
 		<</if>>
 	<</if>>
 <<elseif $enemyarousal gte $enemyarousalmax>>
-	<span id="next"><<link [[Next->Abomination]]>><</link>></span><<nexttext>>
+	<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
 <<elseif $enemyhealth lte 0>>
-	<span id="next"><<link [[Next->Abomination]]>><</link>></span><<nexttext>>
+	<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
 <<else>>
-	<span id="next"><<link [[Next->Abomination]]>><</link>></span><<nexttext>>
+	<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
 <</if>>
 
 :: Swarm Test

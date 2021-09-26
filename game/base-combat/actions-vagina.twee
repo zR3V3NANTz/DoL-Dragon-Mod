@@ -124,7 +124,7 @@
 		<<if $consensual is 1 and (($promiscuity lte 74 and $enemytype is "man" or $deviancy lte 74 and $enemytype isnot "man") and !$promiscuityIgnore) or $NPCList[_j].chastity.vagina.includes("chastity")>>
 		<!-- Do Nothing -->
 		<<else>>
-			<<set _vaginaaction["Push your pussy against " + $NPCList[_j].pronouns.his] to "vaginatovaginafuck">>
+			<<set _vaginaaction["Push your pussy against " + $NPCList[_j].pronouns.hers] to "vaginatovaginafuck">>
 			<<break>>
 		<</if>>
 	<</if>>

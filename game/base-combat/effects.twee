@@ -206,7 +206,7 @@
 	<</for>>
 <</if>>
 
-<<if $leftaction is "leftstruggle" and $rightaction is "rightstruggle">>
+<<if $leftaction is "leftstruggle" and $rightaction is "rightstruggle" and !$abomination>>
 	<<set $leftaction to 0>><<set $rightaction to 0>><<set $leftactiondefault to "leftstruggle">><<set $rightactiondefault to "rightstruggle">>
 	You struggle with all your might.
 	<<defiance 2>><<set $speechstruggle to 1>>
@@ -227,7 +227,7 @@
 	<</if>>
 <</if>>
 
-<<if $leftaction is "leftstruggle">>
+<<if $leftaction is "leftstruggle" and !$abomination>>
 	<<set $leftaction to 0>><<set $leftactiondefault to "leftstruggle">>
 	You struggle.
 	<<set $speechstruggle to 1>><<defiance 1>>
@@ -248,7 +248,7 @@
 	<</if>>
 <</if>>
 
-<<if $rightaction is "rightstruggle">>
+<<if $rightaction is "rightstruggle" and !$abomination>>
 	<<set $rightaction to 0>><<set $rightactiondefault to "rightstruggle">>
 	You struggle.
 	<<defiance 1>><<set $speechstruggle to 1>>

@@ -67,6 +67,8 @@ You are in your bedroom.
 		<br>
 		<<link [[Test new features for DoL (0:15)|Bedroom]]>><<pass 15>><</link>>
 		<br>
+		<<link [[Summon the Wraith (Will skip to the last day of the month!)|Wraith Test Start]]>><<endcombat>><<set $monthday to 31>><<set $daystate to "night">><<set $hour to 21>><<set $time to 1260>><<set $moonstate to "evening">><</link>>
+		<br>
 		<span class="green">Debugging end here</span>
 		<br><br>
 	<</if>>

@@ -104,6 +104,9 @@
 <<if $tentacles[$tentacleindex].head is "mouthdeep">>
 	and up into your mouth where it spurts a sweet fluid down your throat at the apex of each thrust.
 	<<purity -1>><<internalejac>><<sex 5>><<set $drugged += 3>><<set $player.bodyliquid.mouth.goo += 1>><<set $tentacles[$tentacleindex].health -= 1>>
+	<<if $tentacles[$tentacleindex].desc.includes("pale")>>
+		<<set $hallucinogen += 3>>
+	<</if>>
 <</if>>
 
 <<if $tentacles[$tentacleindex].head is "mouth">>
@@ -129,6 +132,9 @@
 <<if $tentacles[$tentacleindex].head is "vaginadeep">>
 	and <<slithers>> into your <<pussy>> where it pumps a viscous fluid at the apex of each thrust.
 	<<purity -1>><<internalejac>><<sex 5>><<set $drugged += 3>><<set $player.bodyliquid.vagina.goo += 1>><<set $tentacles[$tentacleindex].health -= 1>>
+	<<if $tentacles[$tentacleindex].desc.includes("pale")>>
+		<<set $hallucinogen += 3>>
+	<</if>>
 <</if>>
 
 <<if $tentacles[$tentacleindex].head is "vagina">>
@@ -215,6 +221,9 @@
 <<if $tentacles[$tentacleindex].head is "anusdeep">>
 	and <<slithers>> into your <<bottom>> where it pumps a viscous fluid at the apex of each thrust.
 	<<purity -1>><<internalejac>><<sex 5>><<set $drugged += 3>><<set $player.bodyliquid.anus.goo += 1>><<set $tentacles[$tentacleindex].health -= 1>>
+	<<if $tentacles[$tentacleindex].desc.includes("pale")>>
+		<<set $hallucinogen += 3>>
+	<</if>>
 <</if>>
 
 <<if $tentacles[$tentacleindex].head is "anus">>

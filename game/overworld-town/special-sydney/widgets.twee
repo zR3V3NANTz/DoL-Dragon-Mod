@@ -1095,7 +1095,7 @@ You've pushed yourself too much. You hear someone yell your name as you black ou
 <</widget>>
 
 <<widget "sydneyTortureOptions">>
-<span class="lewd">The incense fumes and vibrations make you feel warm.</span> <<set $hallucinogens += 10>><<arousal 1000>><<set $sydneyArousal += 1>><<garousal>> | <span class="red">+ Sydney's Arousal</span>
+<span class="lewd">The incense fumes and vibrations make you feel warm.</span> <<set $hallucinogen += 10>><<arousal 1000>><<set $sydneyArousal += 1>><<garousal>> | <span class="red">+ Sydney's Arousal</span>
 <br>
 <<if $sydneyPain lte 0>>
 	<<set $sydneyPain to 0>>

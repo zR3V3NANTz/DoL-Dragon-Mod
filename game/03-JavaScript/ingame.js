@@ -356,6 +356,13 @@ window.pregnancyBellyVisible = function(){
 	return true;
 }
 
+
+window.toTitleCase = function(str) {
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}
+
 window.getRobinLocation = function(){
 	if (V.NPCName[V.NPCNameList.indexOf("Robin")].init !== 1){
 		return;

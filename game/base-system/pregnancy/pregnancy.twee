@@ -9,9 +9,10 @@
 				<<if _pregnancy[_i] is null>>
 					<<switch $args[0]>>
 						<<case "slimes" "eels" "worms" "snakes" "spiders" "slugs" "maggots">>
-							<<set _creatureType to $args[0][0].toUpperCase() + $args[0].substring(1, $args[0].length - 1)>>
+							<<set _creatureType to toTitleCase($args[0])>>
+							<<set _creatureType to _creatureType.substring(0,_creatureType.length - 1)>>
 						<<default>>
-							<<set _creatureType to $args[0][0].toUpperCase() + $args[0].substring(1)>>
+							<<set _creatureType to toTitleCase($args[0])>>
 					<</switch>>
 					<<if $args[2]>>
 						<<set _egg to {
@@ -37,6 +38,9 @@
 						}>>
 						<<if _creatureType is "Tentacle">>
 							<<set _egg.stats.speed to clone(_egg.stats.speed * 0.9)>>
+						<</if>>
+						<<if _creatureType is "Pale Tentacle" or _creatureType is "Pale Slime">>
+							<<set _egg.stats.speed to clone(_egg.stats.speed * 0.6)>>
 						<</if>>
 						<<if _creatureType is "Lurker">>
 							<<run _egg.stats.growth += 14>>

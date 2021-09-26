@@ -232,8 +232,8 @@
 	<<case "n">>
 		<<set $args[0].pronouns.he = "one">>
 		<<set $args[0].pronouns.his = "the">>
-		<<set $args[0].pronouns.hers = "they">>
-		<<set $args[0].pronouns.his = "them">>
+		<<set $args[0].pronouns.hers = "its">>
+		<<set $args[0].pronouns.him = "them">>
 		<<set $args[0].pronouns.himself = "themselves">>
 		<<set $args[0].pronouns.man = "man">>
 		<<set $args[0].pronouns.boy = "k">>
@@ -1197,6 +1197,8 @@ in dev alternative to current "breasts" widget
 		<<set _text_output to $description+" man">>
 	<<elseif $pronoun is "f">>
 		<<set _text_output to $description+" woman">>
+	<<else>>
+		<<set _text_output to $description>>
 	<</if>>
 <<else>>
 	<<if $pronoun is "m">>
@@ -1221,6 +1223,8 @@ in dev alternative to current "breasts" widget
 		<<set _text_output to "the " + $description+" man">>
 	<<elseif $pronoun is "f">>
 		<<set _text_output to "the " + $description+" woman">>
+	<<else>>
+		<<set _text_output to "the " + $description>>
 	<</if>>
 <<else>>
 	<<set _text_output to "the " + $NPCList[_j].fullDescription>>

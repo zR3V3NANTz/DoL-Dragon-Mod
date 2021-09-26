@@ -84,6 +84,9 @@
 		<<if _container.creatures[_i].creature is "Slime">>
 			<<set _purityGain += 0.5>>
 		<</if>>
+		<<if _container.creatures[_i].creature is "Pale Slime">>
+			<<set _purityGain += 1.5>>
+		<</if>>
 		<<if _container.creatures[_i].creature is "Worm">>
 			<<set _purityGain -= 0.5>>
 		<</if>>
@@ -93,6 +96,13 @@
 				<<set _boosts[2] to true>>
 			<</if>>
 			<<set _tenticles += 0.5>>
+		<</if>>
+		<<if _container.creatures[_i].creature is "Pale Tentacle">>
+			<<if Math.floor(_value / 3) gt 0>>
+				<<set $tiredness -= Math.floor((_value / 3) * _tendingMulti)>>
+				<<set _boosts[2] to true>>
+			<</if>>
+			<<set _tenticles += 1.5>>
 		<</if>>
 	<</if>>
 <</for>>

@@ -508,8 +508,30 @@
 <<widget "feetactionInit">>
 	<<switch $feetuse>>
 		<<case 0>>
-			<<set _feetOptions to "free">>
-			<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')">Your feet are free.</span>
+			<<if $abomination is 1>>
+				<<if $leftleg is 0 and $rightleg is 0>>
+					<<set _feetOptions to "free">>
+					<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your legs are free.</span>
+				<<elseif $leftleg is 0>>
+					<<set _feetOptions to "free">>
+					<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your left leg is free.</span>
+				<<elseif $rightleg is 0>>
+					<<set _feetOptions to "free">>
+					<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your right leg is free.</span>
+				<<elseif $leftleg is "grappled" and $rightleg is "grappled">>
+					<<set _feetOptions to "grappled">>
+					<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your legs are entangled and forced apart, leaving you less able to protect your <<genitals>>.</span>
+				<<elseif $leftleg is "bound" and $rightleg is "bound">>
+					<<set _feetOptions to "bound">>
+					<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your legs are bound and forced apart, leaving you less able to protect your <<genitals>>.</span>
+				<<else>>
+					<<set _feetOptions to "free">>
+					<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')">Your feet are free.</span>
+				<</if>>
+			<<else>>
+				<<set _feetOptions to "free">>
+				<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')">Your feet are free.</span>
+			<</if>>
 		<<case "penis">>
 			<<set _feetOptions to "penis">>
 			<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "feet">>Your feet are <<if $NPCList[_j].chastity.penis.includes("chastity")>>pressed against<<else>>holding<</if>> <<his>> <<npcPenis _j>>.</span>
