@@ -279,7 +279,7 @@
 	<</link>>
 </div> |
 <div class="wardrobe-action">
-	<<link "Wear Random Clothes">>
+	<<link "Wear random clothes">>
 		<<set $randomWear to true>>
 		<<updatewardrobe>>
 	<</link>>
