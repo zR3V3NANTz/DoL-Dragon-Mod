@@ -256,7 +256,7 @@ You are in Eden's cabin.
 			<<link [[Get in (0:30)|Eden Bath]]>><<pass 30>><<npcincr Eden dom 1>><<npcincr Eden love 1>><<set $phase to 0>><<strip>><</link>><<gdom>><<glove>>
 		<</if>>
 		<br>
-		<<link [[Refuse|Eden Bath]]>><<npcincr Eden dom -1>><<npcincr Eden love -1>><<set $phase to 1>><</link>><<llove>><<ldom>>
+		<<link [[Refuse|Eden Bath]]>><<npcincr Eden dom -1>><<npcincr Eden love -1>><<set $phase to 1>><<set $edenjoin to 1>><</link>><<llove>><<ldom>>
 		<br>
 
 	<<else>>
