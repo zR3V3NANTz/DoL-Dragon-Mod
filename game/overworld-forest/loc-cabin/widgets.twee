@@ -207,6 +207,10 @@
 		<<link [[Work on the loveseat (3:00)|Eden Loveseat Work]]>><<pass 2 hours>><<pass 1 hour>><</link>>
 		<br>
 	<</if>>	
+	<<if $hour is 17 and $edenjoin is 1>>
+		<<link [[Ask to join Eden in the bath|Eden Bath Join]]>><<npcincr Eden love 1>><<pass 30>><</link>><<glove>>
+		<br>
+	<</if>>
 	<<if $worn.neck.collared isnot 1 and $NPCName[$NPCNameList.indexOf("Eden")].dom gte 100>>
 		<<link [[Ask Eden for a collar|Eden Collar]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
 		<br>
@@ -355,7 +359,11 @@
 		<span class="green">The spring is clean and clear.</span>
 		<br>
 
-		<<link [[Relax in the spring (0:30)|Clearing Spring]]>><<unset $edenpush>><<endevent>><<pass 30>><<stress -6>><</link>><<lstress>>
+		<<if !$edenspringintro and (($hour gte 9 and $hour lte 10) or ($hour is 15) or ($hour is 16))>> 
+			<<link [[Relax in the spring (0:30)|Eden Spring Intro]]>><</link>><<lstress>>
+		<<else>>
+			<<link [[Relax in the spring (0:30)|Clearing Spring]]>><<unset $edenpush>><<endevent>><<pass 30>><<stress -6>><</link>><<lstress>>
+		<</if>>
 		<br>
 		<<if $edenwash is undefined>>
 			<<link [[Wash Eden's clothes in the spring (0:30)|Wash Spring]]>><<pass 30>><<npcincr Eden love 1>><<npcincr Eden dom 1>><<set $edenwash to 1>><</link>>
@@ -427,6 +435,10 @@
 
 	<<if $worn.neck.collared isnot 1 and $NPCName[$NPCNameList.indexOf("Eden")].dom gte 100>>
 		<<link [[Ask Eden for a collar|Eden Collar]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
+		<br>
+	<</if>>
+	<<if $edenspringintro is 1 and $edenspringjoin isnot 1 and $edenspring is 4>>
+		<<link [[Ask Eden to join you in the spring|Eden Spring]]>><<set $edenspringjoin to 1>><<stress -6>><<npcincr Eden love 1>><</link>><<lstress>><<glove>>
 		<br>
 	<</if>>
 	<<if $edenwalk isnot 1>>

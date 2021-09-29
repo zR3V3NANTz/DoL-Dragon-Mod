@@ -945,6 +945,7 @@
 	<<unset $eden_soap>>
 	<<unset $eden_search>>
 	<<unset $edenexposed>>
+	<<unset $edenspringjoin>>
 	<<unset $salveuse>>
 	<<set $edenmassage to 0>>
 	<<set $edenhuntcaught to 0>>
