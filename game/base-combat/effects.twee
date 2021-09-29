@@ -2760,6 +2760,11 @@ You try to pull your head away from the penis threatening your mouth.
 <<effectspenisanusfuck>>
 <<set $rng to random(1, 100)>>
 <<effectspenistoanus>>
+<<set $rng to random(1, 100)>>
+<<effectspenistopenisfuck>>
+<<set $rng to random(1, 100)>>
+<<effectspenistopenis>>
+
 
 <<if $penisaction is "rest">>
 	<<set $penisaction to 0>><<set $penisactiondefault to "rest">>
@@ -2841,6 +2846,43 @@ You try to pull your head away from the penis threatening your mouth.
 			<<break>>
 		<</if>>
 	<</for>>
+<</if>>
+
+<<if $penisaction is "fencingtease">>
+	<<set $penisaction to 0>><<set $penisactiondefault to "fencingtease">><<actionsfencingtease>><<sex 10>><<penileskilluse>>
+<</if>>
+
+<<if $penisaction is "fencingcooperate">>
+	<<set $penisaction to 0>><<set $penisactiondefault to "fencingcooperate">><<actionsfencingcooperate>><<submission 20>><<penileskilluse>>
+<</if>>
+
+<<if $penisaction is "fencingtake">>
+	<<set $penisaction to 0>><<set $penisactiondefault to "fencingtake">><<actionsfencingtake>>
+<</if>>
+
+<<if $penisaction is "fencingrest">>
+	<<set $penisaction to 0>><<set $penisactiondefault to "rest">>
+<</if>>
+
+<<if $penisaction is "fencingescape">>
+	<<set $penisaction to 0>><<set $penisactiondefault to "fencingescape">><<actionsfencingescape>><<brat 10>>
+	<<if $penisstate is "otherpenis">>
+		<<set $penisstate to "otherpenisimminent">>
+	<<else>>
+		<<set $penisstate to "otherpenisentrance">>
+	<</if>>
+	<<for _j = 0; _j lt $enemyno; _j++>>
+		<<if $NPCList[_j].penis is "penis">>
+			<<set $NPCList[_j].penis to "penisimminent">>
+		<<elseif $NPCList[_j].penis is "penisimminent">>
+			<<set $NPCList[_j].penis to "penisentrance">>
+		<</if>>
+		<<break>>
+	<</for>>
+<</if>>
+
+<<if $penisaction is "otherpenisrub">>
+	<<set $penisaction to 0>><<set $penisactiondefault to "otherpenisrub">><<actionsotherpenispenisrub>><<sex 10>><<penileskilluse>>
 <</if>>
 
 <<if $vaginaaction is "thighbay">>

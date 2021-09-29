@@ -504,6 +504,21 @@
 			<<He>> sighs as <<he>> ejaculates onto <<his>> own chest.
 			
 		<</switch>>
+		
+	<<elseif $NPCList[_nn].penis is "penis" and $worn.genitals.type.includes("chastity")>>
+			<<He>> gasps as <<he>> shoots <<his>> cum over your $worn.genitals.name. <<He>> strokes your face. "You're so cute."
+
+	<<elseif $NPCList[_nn].penis is "penis">>
+			<<He>> cums as you knead your <<penises>> together, moaning with pleasure. "That was fun."
+
+	<<elseif $NPCList[_nn].penis is "penisentrance" or $NPCList[_nn].penis is "penisimminent">>
+		<<if $worn.genitals.type.includes("chastity")>>
+			<<He>> gasps as <<he>> shoots <<his>> cum over your $worn.genitals.name. <<He>> strokes your face. "You're so cute."
+
+		<<else>>
+			<<He>> cums before <<he>> can frot your <<penis>>. <<His>> Semen coats your cock and tummy. <<He>> smiles contentedly.
+
+		<</if>>
 	<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 	<<elseif $NPCList[_nn].mouth is "penis">>
 		<<switch random(1, 5)>>
