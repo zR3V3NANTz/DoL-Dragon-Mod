@@ -111,7 +111,7 @@
 						<<ShowUnderEquip "normal">>
 						<<ShowUnderEquip "over">>
 						<<set $tryOn.autoReset to true>>
-						<<crimeup $tryOn.value / 100>>
+						<<crimeup `$tryOn.value / 100`>>
 					<</link>>
 				<<else>>
 					<<link[[Leave|Shopping Centre Top]]>>
@@ -119,7 +119,7 @@
 						<<ShowUnderEquip "normal">>
 						<<ShowUnderEquip "over">>
 						<<set $tryOn.autoReset to true>>
-						<<crimeup $tryOn.value / 100>>
+						<<crimeup `$tryOn.value / 100`>>
 					<</link>>
 				<</if>>
 				<<if $tryOn.value gt 0>>

@@ -55,7 +55,7 @@
 	<<kylaroptionsleave>>
 <<else>>
 	<<if !$kylarDaily.walkKiss and $kylar_action is "walk">>
-		<<link [[Kiss|Kylar Walk In The Park End 2]]>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<npcincr Kylar rage -5>><</link>><<glove>><<glust>><<llksuspicion>><<kissvirginitywarning>>
+		<<link [[Kiss|Kylar Walk In The Park End 2]]>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<npcincr Kylar rage -5>><</link>><<glove>><<glust>><<llksuspicion>><<kissvirginitywarning>><<NPCvirginitywarning "Kylar" "kiss">>
 		<br>
 	<</if>>
 	<<link [[Chat (0:15)|Kylar Chat]]>><<pass 15>><<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<stress -2>><</link>><<lstress>><<glove>><<lksuspicion>>
@@ -1212,7 +1212,7 @@ You sit on your bed, and pat the sheet beside you. Kylar scans the room as <<he>
 <<He>> turns to face you, and bumps <<his>> forehead against yours as <<he>> leans forward for a kiss.
 <br><br>
 
-<<link [[Kiss|Kylar Orphanage Kiss]]>><<npcincr Kylar love 1>><</link>><<glove>><<kissvirginitywarning>>
+<<link [[Kiss|Kylar Orphanage Kiss]]>><<npcincr Kylar love 1>><</link>><<glove>><<kissvirginitywarning>><<NPCvirginitywarning "Kylar" "kiss">>
 <br>
 <<link [[Turn away|Kylar Orphanage Turn]]>><<npcincr Kylar love -3>><</link>><<lllove>>
 <br>
@@ -1533,9 +1533,9 @@ You decide to ignore what <<hes>> saying. <<His>> stammering slowly stops, and <
 <<effects>>
 
 <<if $phase is 1>>
-	Eventually <<he>> pulls back from you, looking disappointed. "I shouldn't stay here much longer," <<he>> says. <<if $hour gte 18 or $hour lte 7>>"They're waiting for me."<</if>>You look at him. <<His>> hair is sticking to <<his>> face<<if $makeup.lipstick isnot 0>>, and <<his>> mouth is smeared with your lipstick<</if>>. You reach forward and brush <<his>> hair away, and <<he>> smiles.
+	Eventually <<he>> pulls back from you, looking disappointed. "I shouldn't stay here much longer," <<he>> says. <<if $hour gte 18 or $hour lte 7>>"They're waiting for me."<</if>>You look at <<him>>. <<His>> hair is sticking to <<his>> face<<if $makeup.lipstick isnot 0>>, and <<his>> mouth is smeared with your lipstick<</if>>. You reach forward and brush <<his>> hair away, and <<he>> smiles.
 <br><br>
-	"I'm so happy you love me back," <<he>> says. "Well, of course I am, but I'm also relieved. That was... that was the first time I told you I loved you<<if $kylarSeen.includes("saidLove")>>, and meant it<</if>>. I was so scared that you'd... not accept me. That you'd think I was going too fast." <<He>> grabs your hand in both of <<his>>. "Thank you. For... thank you."
+	"I'm so happy you love me back," <<he>> says. "Well, of course I am, but I'm also relieved. That was... that was the first time I told you I loved you<<if $kylarSeen.includes("saidLove")>>, and meant it<</if>>. I was so scared that you'd... not accept me. That you'd think I was going too fast." <<He>> grabs your hand in both of <<hers>>. "Thank you. For... thank you."
 <<else>>
 	<<He>> stands up from the bed, looking disappointed. "I shouldn't stay here much longer," <<he>> says. <<if $hour gte 18 or $hour lte 7>>"They're waiting for me."<</if>>You look at <<him>>. <<His>> hair is sticking to <<his>> face. You reach forward and brush <<his>> hair away, and <<he>> smiles.
 <</if>>
@@ -2560,7 +2560,7 @@ You let Kylar pull you into the cupboard. The door shuts, plunging you into dark
 <<He>> jumps on you, pushing you against the wall. <<He>> covers you with clumsy kisses, trying to find your mouth in the dark.
 <br><br>
 
-<<link [[Kiss back|Kylar Cupboard Kiss]]>><<npcincr Kylar lust 1>><</link>><<glust>><<kissvirginitywarning>>
+<<link [[Kiss back|Kylar Cupboard Kiss]]>><<npcincr Kylar lust 1>><</link>><<glust>><<kissvirginitywarning>><<NPCvirginitywarning "Kylar" "kiss">>
 <br>
 <<if $promiscuity gte 15>>
 	<<link [[Use your knee|Kylar Cupboard Knee]]>><<npcincr Kylar lust 5>><</link>><<promiscuous2>><<gglust>>
@@ -2719,7 +2719,7 @@ Kylar laughs. "I-I forgot," <<he>> says. "I have somewhere I need to be." <<He>>
 		<br><br>
 
 		<<endevent>>
-		<<link [[Kiss Kylar|Kylar Canteen Kiss]]>><<npcincr Kylar love 5>><<npcincr Kylar rage -5>><<status -10>><</link>><<lcool>><<kissvirginitywarning>>
+		<<link [[Kiss Kylar|Kylar Canteen Kiss]]>><<npcincr Kylar love 5>><<npcincr Kylar rage -5>><<status -10>><</link>><<lcool>><<kissvirginitywarning>><<NPCvirginitywarning "Kylar" "kiss">>
 		<br>
 		<<link [[Kiss Robin instead|Kylar Canteen Robin]]>><<npcincr Robin love 1>><<npcincr Kylar love -5>><<npcincr Kylar rage 5>><</link>>
 		<br>
@@ -3944,7 +3944,7 @@ Kylar explains the fermentation process, and demonstrates how to prepare the che
 "I wrote a list of instructions," Kylar says once you're alone. <<He>> hands you a note. "You should stick it up somewhere." <<He>> looks at <<his>> feet, as if waiting for something.
 <br><br>
 
-<<link [[Reward with kiss|Kylar Loft Kiss]]>><</link>><<promiscuous1>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<glove>><<glust>><<kissvirginitywarning>>
+<<link [[Reward with kiss|Kylar Loft Kiss]]>><</link>><<promiscuous1>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<glove>><<glust>><<kissvirginitywarning>><<NPCvirginitywarning "Kylar" "kiss">>
 <br>
 <<if $promiscuity gte 35>>
 	<<link [[Reward with lewd|Kylar Loft Lewd]]>><</link>><<promiscuous3>><<npcincr Kylar love 3>><<npcincr Kylar lust 3>><<gglove>><<gglust>>
