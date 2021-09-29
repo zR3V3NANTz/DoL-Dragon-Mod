@@ -589,12 +589,85 @@
 			<<He>> sobs as <<he>> ejaculates onto <<his>> own chest and begins crying, "Why didn't you fuck me? Tell me what I can do to deserve your cock..."
 			
 		<</switch>>
+		
+	<<elseif $NPCList[_nn].penis is "penis" and $worn.genitals.type.includes("chastity")>>
+		<<switch random(0,1)>>
+			<<case 0>>
+				<<He>> gasps as <<he>> shoots <<his>> impressive load all over your $worn.genitals.name. "Th-there must be a skeleton key for chastity stuff," <<he>> says. "I'll work it out."
+			
+			<<case 1>>
+				<<He>> moans in ecstacy, drenching your $worn.genitals.name in ropes of hot cum. "N-no... we need to be together!" <<He>> gasps in frustration.
+		
+			<<case 2>>
+				<<He>> screams in pleasure, showering your $worn.genitals.name in streams of sticky cum. <<He>> uses the milky fluid to finger paint love hearts on your cheek. "Mine."
+		
+		<</switch>>
+	<<elseif $NPCList[_nn].penis is "penis">>
+		<<switch random(1, 7)>>
+		<<case 1>>
+			<<He>> cums as you knead your <<penises>> together, moaning with pleasure. "God I love you so much!"
+
+			<<set $kylarSeen.pushUnique("saidLove")>>
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 2>>
+			<<He>> cums as you rub your <<penises>> together, moaning with pleasure. <<He>> rubs <<his>> own cum all over your shaft. "Keep my s-smell on you."
+
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 3>>
+			<<He>> cums as you frot your <<penises>> together, shooting his impressive load over your <<penis>> and stomach. <<He>> wipes some of <<his>> cum on your lips. "Taste our love juices."
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 4>>
+			<<He>> moans as <<he>> grinds downs hard on your <<penis>> to finish, thin legs shaking as <<he>> cums. <<He>> uses the cum as lube, furiously milking out the last of <<his>> cum against your <<penis>>.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 5>>
+			<<He>> giggles as <<he>> rubs hard against your <<penis>> to finish. <<He>> uses the cum as lube, furiously milking out the last of <<his>> semen against your <<penis>>. "N-next time I want you to im-impregnate my ass," <<he>> smirks.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 6>>
+			<<He>> screams as <<he>> grinds hard against your <<penis>> to finish, thin legs shaking as <<he>> cums. "N-next time I want you to fuck me."
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 7>>
+			<<He>> screams, cupping <<his>> small hands under your shoulders as <<his>> entire body shakes; you are surprised by how strong <<he>> is. Ropes of semen drench your crotch as <<he>> cums.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<</switch>>
+
+	<<elseif $NPCList[_nn].penis is "penisentrance" or $NPCList[_nn].penis is "penisimminent">>
+		<<switch random(1, 7)>>
+		<<case 1 2>>
+			<<He>> cums before <<he>> can frot your <<penis>>, ejaculating on the outside. Semen coats your cock and tummy; <<he>> seems upset with <<himself>>.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 3 4>>
+			<<He>> ejaculates onto your <<penis>> before <<he>> can frot your <<penises>> together, sending white streams of semen running down your <<penis>>; <<he>> seems disappointed.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 5>>
+			<<He>> moans and strokes <<his>> cock as <<he>> cums, sending thick ropes of semen onto your <<penis>> and ass.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+			<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+		<<case 6>>
+			<<He>> whimpers as <<he>> ejaculates onto <<his>> own chest and begins crying. "W-why? Why didn't you fuck me? What can I do to deserve your cock?"
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 7>>
+			<<He>> cums before your <<penises>> touch, covering you in his massive load. Semen coats your tummy, and crotch. <<He>> pants in your ear, "S-sorry for the mess. I love you so much."
+			
+			<<set $kylarSeen.pushUnique("saidLove")>>
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<</switch>>
+
 	<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 	<<elseif $NPCList[_nn].mouth is "penis">>
 		<<switch random(1, 7)>>
 		<<case 1 2 3>>
 			<<He>> cums as you fuck <<his>> mouth, gasping against your cock. "God I love you so much."
 			
+			<<set $kylarSeen.pushUnique("saidLove")>>
 		<<case 4 5>>
 			<<He>> cums on the ground as you fuck <<his>> mouth. <<He>> backs away, "I'm sorry; I can't take anymore. Please forgive me."
 			
@@ -752,10 +825,12 @@
 		<<case 4 5 6>>
 			<<He>> wordlessly grabs your hair, pulling you hard onto <<his>> cock as <<he>> cums. Semen fills you as you cry out. "I know you'll come to love me as much as I love you."
 			
+			<<set $kylarSeen.pushUnique("saidLove")>>
 			<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.anus.semen += 1>>
 		<<case 7>>
 			<<He>> convulses and with a final shove, cums in your ass. Thick waves of semen pump into you. <span class="blue">You gasp as your ass overflows;</span> cum oozes from your ass and runs down your legs. "No one will ever love you as much as I do."
 			
+			<<set $kylarSeen.pushUnique("saidLove")>>
 			<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.anus.semen += 1>>
 			<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 		<</switch>>
@@ -934,6 +1009,77 @@
 		<<case 6 7>>
 			<<He>> sighs as <<he>> ejaculates onto <<his>> own chest. <<He>> seems sad rather than spent.
 			
+		<</switch>>
+		
+	<<elseif $NPCList[_nn].penis is "penis" and $worn.genitals.type.includes("chastity")>>
+		<<switch random(0,1)>>
+			<<case 0>>
+				<<He>> gasps as <<he>> shoots <<his>> impressive load all over your $worn.genitals.name. "Th-there must be a skeleton key for chastity stuff," <<he>> says. "I'll work it out."
+			
+			<<case 1>>
+				<<He>> moans in ecstacy, drenching your $worn.genitals.name in ropes of hot cum. "N-no... we need to be together!" <<He>> gasps in frustration.
+		
+			<<case 2>>
+				<<He>> screams in pleasure, showering your $worn.genitals.name in streams of sticky cum. <<He>> uses the milky fluid to finger paint love hearts on your cheek. "Mine."
+		
+		<</switch>>
+	<<elseif $NPCList[_nn].penis is "penis">>
+		<<switch random(1, 7)>>
+		<<case 1>>
+			<<He>> cums as you knead your <<penises>> together, moaning with pleasure. "God I love you so much!"
+
+			<<set $kylarSeen.pushUnique("saidLove")>>
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 2>>
+			<<He>> cums as you rub your <<penises>> together, moaning with pleasure. <<He>> rubs <<his>> own cum all over your shaft. "Keep my s-smell on you."
+
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 3>>
+			<<He>> cums as you frot your <<penises>> together, shooting his impressive load over your <<penis>> and stomach. <<He>> wipes some of <<his>> cum on your lips. "Taste our love juices."
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 4>>
+			<<He>> moans as <<he>> grinds downs hard on your <<penis>> to finish, thin legs shaking as <<he>> cums. <<He>> uses the cum as lube, furiously milking out the last of <<his>> cum against your <<penis>>.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 5>>
+			<<He>> groans as <<he>> rubs hard against your <<penis>> to finish. <<He>> uses the cum as lube, furiously milking out the last of <<his>> semen against your <<penis>>. "Next time I want you to impregnate my ass," <<he>> hisses.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 6>>
+			<<He>> screams as <<he>> grinds hard against your <<penis>> to finish, thin legs shaking as <<he>> cums. "N-next time I want you to fuck me."
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 7>>
+			<<He>> screams, cupping <<his>> small hands under your shoulders as <<his>> entire body shakes; you are surprised by how strong <<he>> is. Ropes of semen drench your crotch as <<he>> cums.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<</switch>>
+
+	<<elseif $NPCList[_nn].penis is "penisentrance" or $NPCList[_nn].penis is "penisimminent">>
+		<<switch random(1, 7)>>
+		<<case 1 2>>
+			<<He>> cums before <<he>> can frot your <<penis>>, ejaculating on the outside. Semen coats your cock and tummy; <<he>> seems upset with <<himself>>.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 3 4>>
+			<<He>> ejaculates onto your <<penis>> before <<he>> can frot your <<penises>> together, sending white streams of semen running down your <<penis>>; <<he>> seems disappointed.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 5>>
+			<<He>> moans and strokes <<his>> cock as <<he>> cums, sending thick ropes of semen onto your <<penis>> and ass.
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+			<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+		<<case 6>>
+			<<He>> whimpers as <<he>> ejaculates onto <<his>> own chest and begins crying. "W-why? Why didn't you fuck me? What can I do to deserve your cock?"
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+		<<case 7>>
+			<<He>> cums before your <<penises>> touch, covering you in his massive load. Semen coats your chest, tummy, and crotch. <<He>> licks your ear and whispers, "Look at you, covered in my cum. Mine now."
+			
+			<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+			<<chestejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.chest.semen += 1>>
 		<</switch>>
 	<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 	<<elseif $NPCList[_nn].mouth is "penis">>

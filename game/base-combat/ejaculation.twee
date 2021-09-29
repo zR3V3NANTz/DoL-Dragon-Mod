@@ -235,6 +235,16 @@
 			<</if>>
 		<</if>>
 
+		<<if $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisentrance" or $NPCList[_nn].penis is "penisimminent">>
+			<<if $gloryhole>>
+				<<He>> ejaculates into the air. It splatters on the floor.
+			<<else>>
+				<<He>> ejaculates onto your tummy.
+				<br><br>
+				<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+			<</if>>
+		<</if>>
+
 		<<if $NPCList[_nn].penis isnot "none" and !$NPCList[_nn].penisdesc.includes("strap-on") and _condomResult is "leaked">>
 			Despite wearing a condom, it was too damaged to stop the cum.
 		<</if>>
@@ -510,6 +520,15 @@
 						<<case 3>>
 							<<He>> cums without a sound, <<his>> mouth agape, as <<he>> rubs <<his>> $NPCList[_nn].penisdesc against your cheek.
 						<</switch>>
+					<<case "penis" "penisentrance" "penisimminent">>
+						<<switch random(1, 3)>>
+						<<case 1>>
+							<<He>> trembles as <<he>> cums, slapping you across the ass with <<his>> $NPCList[_nn].penisdesc.
+						<<case 2>>
+							<<He>> moans as <<he>> cums, then spanks your ass with <<his>> $NPCList[_nn].penisdesc. "Something to remember me by, whore."
+						<<case 3>>
+							<<He>> cums without a sound, and rubs <<his>> $NPCList[_nn].penisdesc along your back.
+						<</switch>>
 					<<default>>
 						<<He>> moans as <<he>> cums, rubbing <<his>> clit against the base of <<his>> $NPCList[_nn].penisdesc.
 					<</switch>>
@@ -521,6 +540,8 @@
 						<<He>> moans and grinds <<his>> $NPCList[_nn].penisdesc against <<his>> crotch as <<he>> cums.
 					<<case "mouthentrance" "mouthimminent" "chest" "lefthand" "righthand">>
 						<<His>> mouth gapes as <<he>> cums, rubbing <<his>> $NPCList[_nn].penisdesc against your cheek.
+					<<case "penis" "penisentrance" "penisimminent">>
+						<<He>> moans and grinds <<his>> $NPCList[_nn].penisdesc against <<his>> crotch as <<he>> cums.
 					<<default>>
 						<<He>> moans as <<he>> cums, rubbing <<his>> clit against the base of <<his>> $NPCList[_nn].penisdesc.
 					<</switch>>
@@ -813,6 +834,9 @@
 						<<He>> sighs and ejaculates onto <<his>> own chest. "I love having my ass toyed with."
 
 					<</switch>>
+				<<elseif $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisemtrance" or $NPCList[_nn].penis is "penisimminent">>
+					<<He>> shakes with arousal as <<he>> cums all over your <<penis>>. "That was awesome."
+					<br>
 				<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 				<!-- This is picking up female NPCs as well -->
 				<<elseif $NPCList[_nn].mouth is "penis">>
@@ -1150,6 +1174,9 @@
 						<<He>> sighs as <<he>> ejaculates onto <<his>> own chest. "Next time I'll do the fucking. Be ready."
 
 					<</switch>>
+				<<elseif $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisemtrance" or $NPCList[_nn].penis is "penisimminent">>
+					<<He>> shakes with arousal as <<he>> cums all over your <<penis>>. "That was awesome."
+					<br><br>
 				<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 				<<elseif $NPCList[_nn].mouth is "penis">>
 					<<switch random(1, 7)>>
@@ -1580,6 +1607,17 @@
 		<<bHe>> ejaculates onto your tummy.
 		<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
 	<</if>>
+<</if>>
+
+<<if $NPCList[_jj].penis is "penis" or $NPCList[_jj].penis is "penisentrance" or $NPCList[_jj].penis is "penisimminent">>
+	<<if $position is "missionary">>
+		<<bHe>> ejaculates onto your penis and stomach.
+		<<neckejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+	<<else>>
+		<<bHe>> ejaculates onto your stomach and chest.
+		<<tummyejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+	<</if>>
+	<<chestejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.chest.semen += 1>>
 <</if>>
 
 <!-- Female BEAST -->

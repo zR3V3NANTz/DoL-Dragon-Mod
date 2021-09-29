@@ -854,6 +854,15 @@
 		<<case "otheranus">>
 			<<set _penisOptions to "anusPenetration">>
 			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> ass envelops your <<penis>>.</span>
+		<<case "otherpenisentrance">>
+			<<set _penisOptions to "penisEntrance">>
+			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "otherpenisentrance">><<His>> <<npcPenisSimple>> hovers near your <<genitals>>.</span>
+		<<case "otherpenisimminent">>
+			<<set _penisOptions to "penisImminent">>
+			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "otherpenisimminent">><<His>> <<npcPenisSimple>> threatens your <<genitals>>.</span>
+		<<case "otherpenis">>
+			<<set _penisOptions to "penisPenetration">>
+			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> <<npcPenisSimple>> presses against your <<genitals>>.</span>
 		<<default>>
 			<<switch $penisuse>>
 				<<case "clit">>
@@ -914,6 +923,9 @@
 	<<case "otheranusbay">><<peniledifficulty>> <<combatpromiscuous4>>
 	<<case "clitrub" "otheranusrub">><<peniledifficulty>>
 	<<case "vaginaEdging" "otheranusEdging">><<combatpromiscuous4>>
+	<<case "penistopenis" "penistopenis">><<peniledifficulty>> <<combatpromiscuous5>>
+	<<case "penistopenisfuck">><<combatpromiscuous5>>
+
 <</switch>>
 <</widget>>
 
@@ -928,6 +940,7 @@
 			<<set _penisaction["Rest"] to "rest">>
 			<<actionspenistovaginanew>>
 			<<actionspenistoanusnew>>
+			<<actionspenistopenis>>
 		<<case "mouthEntrance">>
 			<<set _penisaction["Rest"] to "rest">>
 			<<actionspenisMouthEntrance>>
@@ -956,6 +969,16 @@
 			<<actionspenisAgainstClit>>
 		<<case "penisAgainstAss">>
 			<<actionspenisAgainstAss>>
+		<<case "penisEntrance">>
+			<<set _penisaction["Rest"] to "rest">>
+			<<actionspenistopenisfucknew>>
+			<<actionspenisPenisEntrance>>
+		<<case "penisImminent">>
+			<<set _penisaction["Rest"] to "rest">>
+			<<actionspenistopenisfucknew>>
+			<<actionspenisPenisImminent>>
+		<<case "penisPenetration">>
+			<<actionspenisPenisFencing>>
 	<</switch>>
 <</if>>
 <</widget>>

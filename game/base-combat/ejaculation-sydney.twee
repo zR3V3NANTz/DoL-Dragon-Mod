@@ -127,7 +127,7 @@
 			<<He>> moans loudly as <<he>> climaxes. "Hmph," <<he>> pouts, giving <<his>> chastity belt a useless tug.
 		<<elseif $NPCList[_nn].vagina is "vagina">>
 			<<if random (1, 2) is 1>>
-				<<He>> wraps <<his>> arms around you as <<he>> finishes, and you hold each other tightly as you continue to grind together. You only slow down once he's done shaking.
+				<<He>> wraps <<his>> arms around you as <<he>> finishes, and you hold each other tightly as you continue to grind together. You only slow down once <<he>>'s done shaking.
 			<<else>>
 				<<switch _sydneyStatus>>
 					<<case "pure" "pureLust">>
@@ -831,6 +831,43 @@
 					<br><br>
 			<</switch>>
 		<</if>>
+
+	<<elseif $NPCList[_nn].penis is "penis" and $worn.genitals.type.includes("chastity")>>
+		<<He>> gasps as <<he>> cums against your $worn.genitals.name.
+		<<if _sydneyChastity>>
+			"How can it still feel so good through two devices?" <<he>> asks.
+		<<else>>
+			"It's not fair..." <<he>> pouts, glaring at your $worn.genitals.name.
+		<</if>>
+		<br><br>
+	<<elseif $NPCList[_nn].penis.startsWith("penis") and _sydneyChastity>>
+		<<He>> moans loudly as <<he>> climaxes. "Hmph," <<he>> pouts, giving <<his>> chastity belt a useless tug.
+	<<elseif $NPCList[_nn].penis is "penis">>
+		<<if random (1, 2) is 1>>
+			<<He>> wraps <<his>> arms around you as <<he>> finishes, and you hold each other tightly as you continue to grind together. You only slow down once <<he>>'s done shaking.
+		<<else>>
+			<<switch _sydneyStatus>>
+				<<case "pure" "pureLust">>
+					<<if _sydneyChastity>>
+						<<He>> cums as you frot your <<penis>> against <<his>> chastity belt.
+					<<else>>
+						<<He>> cums as you rub your <<penises>> together, moaning with pleasure.
+					<</if>>
+				<<case "corrupt" "corruptLust">>
+					<<He>> moans as <<he>> grinds hard against your <<penis>> to finish, legs shaking as <<he>> cums.
+				<<default>>
+					<<He>> moans loudly, cupping <<his>> hands under your shoulders as <<his>> entire body shakes.
+			<</switch>>
+		<</if>>
+		<br><br>
+	<<elseif $NPCList[_nn].penis is "penisentrance" or $NPCList[_nn].penis is "penisimminent">>
+		<<if $worn.genitals.type.includes("chastity")>>
+			<<He>> gasps as <<he>> shoots <<his>> cum over your $worn.genitals.name. <<He>> strokes your face. "Together."
+
+		<<else>>
+			<<He>> cums before <<he>> can frot your <<penis>>. <<His>> semen coats your cock and tummy. <<He>> smiles contentedly.
+
+		<</if>>
 	<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 	<<elseif $NPCList[_nn].mouth is "penis">>
 		<<switch _sydneyStatus>>
@@ -1241,6 +1278,35 @@
 			<<if $bodywritingdisable is "f">>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
+	<<elseif $NPCList[_nn].penis.startsWith("penis") and $worn.genitals.type.includes("chastity")>>
+		<<He>> gasps as <<he>> cums against your $worn.genitals.name. 
+		<<if _sydneyChastity>>
+			"I'll break both of these things one day," <<he>> says.
+		<<else>>
+			"Fucking sextease." <<he>> pouts, glaring at your $worn.genitals.name.
+			<<if $bodywritingdisable is "f">>
+				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
+			<</if>>
+		<</if>>
+		<br><br>
+	<<elseif $NPCList[_nn].penis.startsWith("penis") and _sydneyChastity>>
+		<<He>> moans loudly as <<he>> climaxes. "Hmph," <<he>> pouts, giving <<his>> chastity belt a useless tug.
+	<<elseif $NPCList[_nn].penis.startsWith("penis")>>
+			<<switch random(1, 5)>>
+			<<case 1 2>>
+				<<He>> groans as <<he>> cums, dragging <<his>> cock across your ass and thighs.
+				<br><br>
+				<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+			<<case 3 4>>
+				<<He>> moans as <<he>> digs <<his>> nails into your shoulders and grinds hard against on your <<penis>>. You're surprised by <<his>> strength.
+				<br><br>
+				<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+			<<case 5>>
+				<<He>> screams, grabbing you by the hair and mashing <<his>> entire body against yours. Ejaculate streams from <<his>> penis, drenching you.
+				<br><br>
+				<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
+				<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+			<</switch>>
 	<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 	<<elseif $NPCList[_nn].mouth is "penis">>
 		<<switch random(1, 7)>>

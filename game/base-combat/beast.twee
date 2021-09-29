@@ -626,6 +626,58 @@
 	<</if>>
 <</if>>
 
+
+<<set $rng to random(1, 100)>>
+<<if $NPCList[_n].penis is "penisentrance">>
+	<<if $rng gte 51>>
+		<span class="purple"><<bHe>> caresses your <<penis>> with <<bhis>> own, hinting at what's to come.</span>
+		<<sex 10>><<set $NPCList[_n].penis to "penisimminent">><<set $vaginastate to "otherpenisimminent">>
+	<<else>>
+		<<bHe>> hovers <<bhis>> $NPCList[_n].penisdesc close to your <<penis>>.
+		<<sex 5>>
+	<</if>>
+<<elseif $NPCList[_n].penis is "penisimminent">>
+	<<bHe>> thrusts forward, <span class="pink">
+		<<if $enemyarousal gte (($enemyarousalmax / 10) * 7)>>
+			savagely fencing
+		<<elseif $enemyarousal gte (($enemyarousalmax / 10) * 4)>>
+			smashing
+		<<else>>
+			pressing
+		<</if>>
+		<<set rand random(0,1)>>
+		<<if rand is 0>>
+			<<bhis>> $NPCList[_n].penisdesc against yours.</span>
+		<<else>>
+			<<bhis>> $NPCList[_n].penisdesc against your <<penis>>.</span>
+		<</if>>
+	<<sex 10>><<set $NPCList[_n].penis to "penis">><<set $penisstate to "otherpenis">>
+<<elseif $NPCList[_n].penis is "penis">>
+	<<if $rng gte 1>>
+		<<if $enemyarousal gte $enemyarousalmax * 0.8>>
+			<<bHe>> slams <<bhis>> penis against yours with a bestial fervour as <<bhe>> approaches orgasm.
+			<<if $penisWetness gte 45>>
+				<span class="purple">Your precum mingles.</span><<purity -1>>
+			<</if>>
+		<<elseif $enemyarousal gte $enemyarousalmax * 0.6>>
+			<<bHe>> thrusts <<bhis>> penis against yours with increasing fervour.
+			<<if $penisWetness gte 45>>
+				<span class="purple">Your precum mingles.</span><<purity -1>>
+			<</if>>
+		<<elseif $enemyarousal gte $enemyarousalmax * 0.4>>
+			<<bHe>> savagely fences your <<penises>> together.
+		<<elseif $enemyarousal gte $enemyarousalmax * 0.2>>
+			<<bHe>> thrusts <<bhis>> penis against your <<penis>>.
+		<<else>>
+			<<bHe>> kneads your <<penises>> together.
+		<</if>>
+		<<sex 20>><<set $speechpenispenis to 1>>
+	<<else>>
+		<span class="lblue"><<bHe>> moves <<bhis>> penis away from yours.</span>
+		<<set $penisuse to 0>><<set $NPCList[_n].penis to 0>>
+	<</if>>
+<</if>>
+
 <<set $rng to random(1, 100)>>
 
 <<if $NPCList[_n].vagina is "frot">>

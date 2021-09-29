@@ -92,6 +92,21 @@
 				<<if _condom is "damaged">>
 					Despite wearing a condom, it's too damaged to prevent the semen from escaping.
 				<</if>>
+			<<elseif $penisuse is "otherpenis">>
+				<<for $_i = 0; $_i lt $enemyno; $_i++>>
+					<<if $NPCList[$_i].penis is "penis">>
+						<<personselect $_i>>
+						<<penileejacstat>>
+						<span class="pink">You are overcome by sensation and ejaculate over <<his>> penis.</span>
+						<<purity -1>><<internalejac>><<creampie "npc" "mouth">>
+					<<elseif $NPCList[$_i].penis is "penisimminent" or $NPCList[$_i].penis is "penisentrance">>
+						<<personselect $_i>>
+						<span class="pink">You are overcome by sensation and ejaculate over <<his>> cock and stomach.</span>
+					<</if>>
+				<</for>>
+				<<if _condom is "damaged">>
+					Despite wearing a condom, it's too damaged to prevent the semen from escaping.
+				<</if>>
 			<<elseif $penisuse is "tentacle">>
 				<<if $penisstate isnot "tentacleentrance" and $penisstate isnot "tentacleimminent">>
 					<<penileejacstat>>
