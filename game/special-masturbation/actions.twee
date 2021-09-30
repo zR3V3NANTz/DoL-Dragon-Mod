@@ -2,6 +2,8 @@
 
 <<widget "masturbationactions">>
 
+<<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
+
 /* Left Arm Actions */
 <<set $leftaction to $leftactiondefault>>
 <<if $leftarm is 0>>
@@ -13,6 +15,9 @@
 		<</if>>
 		<<if !$worn.genitals.type.includes("chastity")>>
 			| <label><<radiobutton "$leftaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
+			<<if $player.ballsExist and $_genitals_exposed and $ballssize gte -1 and ($ballssize gte 1 or $rightarm isnot "mballs")>>
+				| <label><<radiobutton "$leftaction" "mballsentrance" autocheck>> <span class="sub">Fondle your balls</span></label>
+			<</if>>
 		<<else>>
 			| <label><<radiobutton "$leftaction" "mchastity" autocheck>> <span class="sub">Try to fondle your penis</span></label>
 		<</if>>
@@ -79,6 +84,12 @@
 		| <label><<radiobutton "$leftaction" "manusprostate" autocheck>> <span class="sub">Tease your prostate</span></label>
 	<</if>>
 	| <label><<radiobutton "$leftaction" "manusstop" autocheck>> Move your hand away</label>
+<<elseif $leftarm is "mballs">>
+	You hold <<if $ballssize gte 1>>one of <</if>> your $ballsText with your left hand.
+	<br>
+	| <label><<radiobutton "$leftaction" "mballsfondle" autocheck>> <span class="sub">Fondle</span></label>
+	| <label><<radiobutton "$leftaction" "mballssqueeze" autocheck>> <span class="sub">Squeeze</span></label>
+	| <label><<radiobutton "$leftaction" "mballsstop" autocheck>> Move your hand away</label>
 <</if>>
 <<if $worn.over_upper.exposed lte 1>>
 	| <label><<radiobutton "$leftaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>
@@ -117,6 +128,9 @@
 		<</if>>
 		<<if !$worn.genitals.type.includes("chastity")>>
 			| <label><<radiobutton "$rightaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
+			<<if $player.ballsExist and $_genitals_exposed and $ballssize gte -1 and ($ballssize gte 1 or $leftarm isnot "mballs")>>
+				| <label><<radiobutton "$rightaction" "mballsentrance" autocheck>> <span class="sub">Fondle your balls</span></label>
+			<</if>>
 		<<else>>
 			| <label><<radiobutton "$rightaction" "mchastity" autocheck>> <span class="sub">Try to fondle your penis</span></label>
 		<</if>>
@@ -182,6 +196,12 @@
 		| <label><<radiobutton "$rightaction" "manusprostate" autocheck>> <span class="sub">Tease your prostate</span></label>
 	<</if>>
 	| <label><<radiobutton "$rightaction" "manusstop" autocheck>> Move your hand away</label>
+<<elseif $rightarm is "mballs">>
+	You hold <<if $ballssize gte 1>>one of <</if>> your $ballsText with your right hand.
+	<br>
+	| <label><<radiobutton "$rightaction" "mballsfondle" autocheck>> <span class="sub">Fondle</span></label>
+	| <label><<radiobutton "$rightaction" "mballssqueeze" autocheck>> <span class="sub">Squeeze</span></label>
+	| <label><<radiobutton "$rightaction" "mballsstop" autocheck>> Move your hand away</label>
 <</if>>
 <<if $worn.over_upper.exposed lte 1>>
 	| <label><<radiobutton "$rightaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>

@@ -100,6 +100,7 @@
 		<<recordVaginalSperm "pc" "pc" "human">>
 		<<unset $semenInVagina>>
 	<</if>>
+	<<unset $ballsText>>
 <</widget>>
 
 <<widget "masturbationstart">>
@@ -123,6 +124,13 @@
 	<<set $anusaction to 0>>
 	<<set $anususe to 0>>
 	<<set $masturbationorgasmsemen to 0>>
+	/* note: we're setting $ballssize here because the variable exists but isn't used anywhere else YET. when a true implementation is attempted, remove this. */
+	<<set $ballssize to $penissize>>
+	<<silently>>
+		<<ballsize>><<set $ballsText to _text_output + " ">>
+		<<testicles>><<set $ballsText += _text_output>>
+	<</silently>>
+
 	<<if !$worn.genitals.type.includes("chastity")>>
 		You fondle your <<genitals 1>>.
 		<<if $purity gte 990>>

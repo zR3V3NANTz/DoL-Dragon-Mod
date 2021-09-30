@@ -470,6 +470,164 @@
 	<span class="lblue">You move your right hand away from your <<penis>>.</span>
 <</if>>
 
+/* tiny balls are too small for both hands */
+<<if $ballssize lte 0 and (($leftarm is "mballs" and $rightarm is "mballs") or ($leftaction is "mballsentrance" and $rightaction is "mballsentrance"))>>
+	<<set $rightactiondefault to "mrest">><<set $rightaction to 0>><<set $rightarm to 0>>
+<</if>>
+
+<<silently>>
+	/* describe the balls consistently if they are referred to multiple times */
+	<<silently>>
+		<<ballsize>><<set $_balls to _text_output + " ">>
+		<<testicles>><<set $_balls += _text_output>>
+	<</silently>>
+<</silently>>
+
+<<if $leftaction is "mballsstop" and $rightaction is "mballsstop">>
+	<<set $leftactiondefault to "mrest">><<set $leftaction to 0>><<set $leftarm to 0>>
+	<<set $rightactiondefault to "mrest">><<set $rightaction to 0>><<set $rightarm to 0>>
+	<span class="lblue">You move your hands away from your balls.</span>
+<<elseif $leftaction is "mballsstop">>
+	<<set $leftactiondefault to "mrest">><<set $leftaction to 0>><<set $leftarm to 0>>
+	<span class="lblue">You move your left hand away from your balls.</span>
+<<elseif $rightaction is "mballsstop">>
+	<<set $rightactiondefault to "mrest">><<set $rightaction to 0>><<set $rightarm to 0>>
+	<span class="lblue">You move your right hand away from your balls.</span>
+<</if>>
+
+<<if $leftaction is "mballsfondle" and $rightaction is "mballsfondle">>
+	<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
+	<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
+	<<arousal 200>>
+
+	<<if $arousal gte $arousalmax * (4/5)>>
+		You grope your $_balls with both of your hands and enjoy the feeling of tightness as they clench up against the base of your penis.  
+	<<elseif $arousal gte $arousalmax * (3/5)>>
+		You fondle your $_balls with both of your hands and enjoy the tickling feeling.
+	<<elseif $arousal gte $arousalmax * (2/5)>>
+		You jiggle your $_balls around in your hands and enjoy the feeling of gravity on them.
+	<<else>>
+		You roll your $_balls around in your hands. 
+	<</if>>
+<<elseif $leftaction is "mballsfondle" or $rightaction is "mballsfondle">>
+	<<if $leftaction is "mballsfondle">>
+		<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
+		<<set $_hand to "left hand">>
+	<<else>>
+		<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
+		<<set $_hand to "right hand">>
+	<</if>>
+	<<arousal 100>>
+	/* if both hands are on their balls, say "the other" when referring to the second */
+	<<set $_oneofyourballs to ($ballssize lte 0 ? "both of your $_balls" : ($_oneofyourballs is undefined ? "one of your $_balls" : "the other"))>>
+	
+	<<if $arousal gte $arousalmax * (4/5)>>
+		You grope $_oneofyourballs with your $_hand and enjoy the feeling of tightness as your balls clench up against the base of your penis.  
+	<<elseif $arousal gte $arousalmax * (3/5)>>
+		You fondle $_oneofyourballs with your $_hand and enjoy the tickling feeling.
+	<<elseif $arousal gte $arousalmax * (2/5)>>
+		You jiggle $_oneofyourballs in your $_hand and enjoy the feeling of gravity on it.
+	<<else>>
+		You stroke $_oneofyourballs with your $_hand. 
+	<</if>>
+<</if>>
+
+<<if $leftaction is "mballssqueeze" and $rightaction is "mballssqueeze">>
+	<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
+	<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
+	<<arousal 400>>
+	<<set $_gently to ($arousal gte $arousalmax * (4/5) ? "urgently" : ($arousal gte $arousalmax * (3/5) ? "roughly" : "gently"))>>
+	
+	<<switch $ballssize>>
+		<<case -2 -1 0>> <span class="red">This text should be unreachable.</span>
+		<<case 1 2>> You press down $_gently on the $_balls in your hands.
+		<<case 3>> You press down $_gently on the $_balls in your hands.
+		<<case 4>> You press down $_gently on the $_balls filling your hands.
+	<</switch>>
+	
+	<<set _ballplayeffects to true>>
+
+<<elseif $leftaction is "mballssqueeze" or $rightaction is "mballssqueeze">>
+	<<if $leftaction is "mballssqueeze">>
+		<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
+		<<set $_hand to "left hand">>
+	<<else>>
+		<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
+		<<set $_hand to "right hand">>
+	<</if>>
+	<<arousal 200>>
+	/* if both hands are on their balls, say "the other" when referring to the second */
+	<<set $_oneofyourballs to ($ballssize lte 0 ? "your $_balls" : ($_oneofyourballs is undefined ? "one of your $_balls" : "the other"))>>
+	<<set $_gently to ($arousal gte $arousalmax * (4/5) ? "urgently" : ($arousal gte $arousalmax * (3/5) ? "roughly" : "gently"))>>
+
+	<<if random(0,1)>>
+		<<switch $ballssize>>
+			<<case -2 -1 0>> You press down $_gently on your $_balls with your $_hand.
+			<<case 1 2>> You press down $_gently on $_oneofyourballs with your $_hand.
+			<<case 3>> You press down $_gently on $_oneofyourballs with your $_hand.
+			<<case 4>> You press down $_gently on $_oneofyourballs with your $_hand.
+		<</switch>>
+	<<else>>
+		<<switch $ballssize>>
+			<<case -2 -1 0>> You cup your $_balls with your $_hand and $_gently squeeze them.
+			<<case 1 2>> You cup $_oneofyourballs with your $_hand and $_gently squeeze it.
+			<<case 3>> You cup $_oneofyourballs with your $_hand and $_gently squeeze it.
+			<<case 4>> You $_gently squeeze $_oneofyourballs with your $_hand.
+		<</switch>>
+	<</if>>	
+	
+	<<set _ballplayeffects to true>>
+
+<</if>>
+
+<<if $leftaction is "mballsentrance" and $rightaction is "mballsentrance">>
+	<<set $leftactiondefault to "mballsfondle">><<set $leftaction to 0>><<set $leftarm to "mballs">>
+	<<set $rightactiondefault to "mballsfondle">><<set $rightaction to 0>><<set $rightarm to "mballs">>
+	<<arousal 200>>
+
+	<<switch $ballssize>>
+		<<case -2 -1 0>> <span class="red">This text should be unreachable.</span>
+		<<case 1 2>> <span class="blue">You take one of your $_balls in each hand.</span>
+		<<case 3>> <span class="blue">You take one of your $_balls in each hand. They fill your palms nicely.</span>
+		<<case 4>> <span class="blue">You take one of your $_balls in each hand. You can barely get your hands around them.</span>
+	<</switch>>
+
+	<<set _ballplayeffects to true>>
+
+<<elseif $leftaction is "mballsentrance" or $rightaction is "mballsentrance">>
+	<<if $leftaction is "mballsentrance">>
+		<<set $leftactiondefault to "mballsfondle">><<set $leftaction to 0>><<set $leftarm to "mballs">>
+		<<set $_hand to "left hand">><<set $_otherHandOnBalls to $rightarm is "mballs">>
+	<<else>>
+		<<set $rightactiondefault to "mballsfondle">><<set $rightaction to 0>><<set $rightarm to "mballs">>
+		<<set $_hand to "right hand">><<set $_otherHandOnBalls to $leftarm is "mballs">>
+	<</if>>
+	<<arousal 100>>
+	/* if both hands are on their balls, say "the other" when referring to the second */
+	<<set $_oneofyourballs to ($ballssize lte 0 ? "both of your $_balls" : ($_oneofyourballs is undefined ? "one of your $_balls" : "the other"))>>
+
+	<<switch $ballssize>>
+		<<case -2 -1 0>> <span class="blue">You easily grab both of your $_balls with your $_hand.</span>
+		<<case 1 2>> <span class="blue">You take $_oneofyourballs in your $_hand.</span>
+		<<case 3>> <span class="blue">You take $_oneofyourballs in your $_hand. It fills your palm nicely.</span>
+		<<case 4>> <span class="blue">You take $_oneofyourballs in your $_hand. You can barely get your hand around it.</span>
+	<</switch>>
+
+	<<set _ballplayeffects to true>>
+<</if>>
+
+<<if _ballplayeffects>>
+	<<if $arousal gte $arousalmax * (4/5)>>
+		Your <<penis>> bucks eagerly, and precum leaps from the tip.
+	<<elseif $arousal gte $arousalmax * (3/5)>>
+		Your <<penis>> bucks eagerly, and precum beads at the tip.
+	<<elseif $arousal gte $arousalmax * (2/5)>>
+		The pressure makes your <<penis>> throb.
+	<<else>>
+		The pressure makes your <<penis>> twitch.
+	<</if>>
+<</if>>
+
 <<if $mouthaction is "mpenisentrance">>
 	<<set $mouthactiondefault to "mpenislick">><<set $mouthaction to 0>><<arousal 100>><<set $mouth to "mpenisentrance">>
 	<<if $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>

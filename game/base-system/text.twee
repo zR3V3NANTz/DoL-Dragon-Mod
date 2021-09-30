@@ -4801,8 +4801,35 @@ School finishes on the first Monday of December.
 <</if>>
 <</silently>><<print _text_output>><</widget>>
 
+<<widget "testicle">><<silently>>
+	<<if $args[0] is "clinical">>
+		<<set $_pool to ["testicle"]>>
+	<<else>>
+		<<set $_pool to ["ball", "nut", "testicle"]>>
+	<</if>>
+	<<set _text_output to $_pool.pluck()>>
+<</silently>><<print _text_output>><</widget>>
+
 <<widget "testicles">><<silently>>
-<<set _text_output to "testes">>
+	<<if $args[0] is "clinical">>
+		<<set $_pool to ["testes", "testicles"]>>
+	<<else>>
+		<<set $_pool to ["balls", "nuts", "testicles", "testes"]>>
+	<</if>>
+	<<set _text_output to $_pool.pluck()>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "ballsize">><<silently>>
+	<<switch $ballssize>>
+		<<case -2>><<set _text_output to ["invisible"].pluck()>>
+		<<case -1>><<set _text_output to ["tiny", "mediocre", "pea-sized"].pluck()>>
+		<<case 0>> <<set _text_output to ["tiny", "mediocre"].pluck()>>
+		<<case 1>> <<set _text_output to ["small"].pluck()>>
+		<<case 2>> <<set _text_output to [""].pluck()>>
+		<<case 3>> <<set _text_output to ["large", "heavy", "thick", "dense"].pluck()>>
+		<<case 4>> <<set _text_output to ["huge", "heavy", "thick", "massive", "hefty"].pluck()>>
+		<<default>><<set _text_output to "Error: $ballssize is [" + $ballssize + "]">>
+	<</switch>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "swimmingdifficultytext0">>
