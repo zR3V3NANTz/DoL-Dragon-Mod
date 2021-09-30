@@ -1,335 +1,337 @@
 :: Widgets Masturbation Actions [widget]
 
 <<widget "masturbationactions">>
+
+/* Left Arm Actions */
+<<set $leftaction to $leftactiondefault>>
 <<if $leftarm is 0>>
 	Your left hand is free.
 	<br>
 	<<if $player.penisExist>>
 		<<if $awareness gte 400 and $masturbationorgasmsemen gte 1 and $leftFingersSemen isnot 1>>
-			| <label><<print '<<radiobutton "$leftaction" "msemencover" '+($leftactiondefault is "msemencover"?"checked":"")+'>>'>> <span class="sub">Cover your fingers in semen</span></label>
+			| <label><<radiobutton "$leftaction" "msemencover" autocheck>> <span class="sub">Cover your fingers in semen</span></label>
 		<</if>>
 		<<if !$worn.genitals.type.includes("chastity")>>
-			| <label><<print '<<radiobutton "$leftaction" "mpenisentrance" '+($leftactiondefault is "mpenisentrance"?"checked":"")+'>>'>> <span class="sub">Fondle your penis</span></label>
+			| <label><<radiobutton "$leftaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
 		<<else>>
-			| <label><<print '<<radiobutton "$leftaction" "mchastity" '+($leftactiondefault is "mchastity"?"checked":"")+'>>'>> <span class="sub">Try to fondle your penis</span></label>
+			| <label><<radiobutton "$leftaction" "mchastity" autocheck>> <span class="sub">Try to fondle your penis</span></label>
 		<</if>>
 	<</if>>
 	<<if $player.vaginaExist>>
 		<<if !$worn.genitals.type.includes("chastity")>>
-			| <label><<print '<<radiobutton "$leftaction" "mvaginaentrance" '+($leftactiondefault is "mvaginaentrance"?"checked":"")+'>>'>> <span class="sub">Fondle your pussy</span></label>
+			| <label><<radiobutton "$leftaction" "mvaginaentrance" autocheck>> <span class="sub">Fondle your pussy</span></label>
 		<<else>>
-			| <label><<print '<<radiobutton "$leftaction" "mchastity" '+($leftactiondefault is "mchastity"?"checked":"")+'>>'>> <span class="sub">Try to fondle your pussy</span></label>
+			| <label><<radiobutton "$leftaction" "mchastity" autocheck>> <span class="sub">Try to fondle your pussy</span></label>
 		<</if>>
 	<</if>>
 	<<if $awareness gte 100>>
-		| <label><<print '<<radiobutton "$leftaction" "mchest" '+($leftactiondefault is "mchest"?"checked":"")+'>>'>> <span class="sub">Fondle your chest</span></label>
+		| <label><<radiobutton "$leftaction" "mchest" autocheck>> <span class="sub">Fondle your chest</span></label>
 	<</if>>
 	<<if $dev is 1>>
 		<<if $awareness gte 100 and $masochism gte 100>>
-			| <label><<print '<<radiobutton "$leftaction" "mpinch" '+($leftactiondefault is "mpinch"?"checked":"")+'>>'>> <span class="sub">Pinch your nipple</span></label>
+			| <label><<radiobutton "$leftaction" "mpinch" autocheck>> <span class="sub">Pinch your nipple</span></label>
 		<</if>>
 	<</if>>
 	<<if $awareness gte 200 and $worn.genitals.anal_shield isnot 1>>
-		| <label><<print '<<radiobutton "$leftaction" "manusentrance" '+($leftactiondefault is "manusentrance"?"checked":"")+'>>'>> <span class="sub">Stroke your anus</span></label>
+		| <label><<radiobutton "$leftaction" "manusentrance" autocheck>> <span class="sub">Stroke your anus</span></label>
 	<</if>>
 <</if>>
 
 <<if $leftarm is "mpenisentrance">>
 	You hold your <<penis>> <<if $penissize gte 0>>in your left hand.<<else>>with your left thumb and fingers.<</if>>
 	<br>
-	| <label><<print '<<radiobutton "$leftaction" "mpenisglans" '+($leftactiondefault is "mpenisglans"?"checked":"")+'>>'>> <span class="sub">Fondle the glans</span></label>
 	<<if $mouth isnot "mpenis">>
-		| <label><<print '<<radiobutton "$leftaction" "mpenisshaft" '+($leftactiondefault is "mpenisshaft"?"checked":"")+'>>'>> <span class="sub">Rub the shaft</span></label>
+		| <label><<radiobutton "$leftaction" "mpenisglans" autocheck>> <span class="sub">Fondle the glans</span></label>
 	<</if>>
-	| <label><<print '<<radiobutton "$leftaction" "mpenisstop" '+($leftactiondefault is "mpenisstop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $leftarm is "mvaginaentrance">>
+	| <label><<radiobutton "$leftaction" "mpenisshaft" autocheck>> <span class="sub">Rub the shaft</span></label>
+	| <label><<radiobutton "$leftaction" "mpenisstop" autocheck>> Move your hand away</label>
+
+<<elseif $leftarm is "mvaginaentrance">>
 	You rub your <<pussy>> with your left hand.
 	<br>
 	<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
-		| <label><<print '<<radiobutton "$leftaction" "mvagina" '+($leftactiondefault is "mvagina"?"checked":"")+'>>'>> <span class="sub">Push a finger in</span></label>
+		| <label><<radiobutton "$leftaction" "mvagina" autocheck>> <span class="sub">Push a finger in</span></label>
 	<</if>>
-	<<if !$player.penisExist>>
-		| <label><<print '<<radiobutton "$leftaction" "mvaginaclit" '+($leftactiondefault is "mvaginaclit"?"checked":"")+'>>'>> <span class="sub">Play with your clit</span></label>
-	<</if>>
-	| <label><<print '<<radiobutton "$leftaction" "mvaginarub" '+($leftactiondefault is "mvaginarub"?"checked":"")+'>>'>> <span class="sub">Tease your vagina</span></label>
-	| <label><<print '<<radiobutton "$leftaction" "mvaginastop" '+($leftactiondefault is "mvaginastop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $leftarm is "mvagina">>
+	| <label><<radiobutton "$leftaction" "mvaginaclit" autocheck>> <span class="sub">Play with your clit</span></label>
+	| <label><<radiobutton "$leftaction" "mvaginarub" autocheck>> <span class="sub">Tease your vagina</span></label>
+	| <label><<radiobutton "$leftaction" "mvaginastop" autocheck>> Move your hand away</label>
+
+<<elseif $leftarm is "mvagina">>
 	You tease your <<pussy>> with your left hand.
 	<br>
-	| <label><<print '<<radiobutton "$leftaction" "mvaginatease" '+($leftactiondefault is "mvaginatease"?"checked":"")+'>>'>> <span class="sub">Tease</span></label>
-	| <label><<print '<<radiobutton "$leftaction" "mvaginastop" '+($leftactiondefault is "mvaginastop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $leftarm is "manusentrance">>
+	| <label><<radiobutton "$leftaction" "mvaginatease" autocheck>> <span class="sub">Tease</span></label>
+	| <label><<radiobutton "$leftaction" "mvaginastop" autocheck>> Move your hand away</label>
+
+<<elseif $leftarm is "manusentrance">>
 	You tease your anus with your left hand.
 	<br>
 	<<if $worn.over_lower.anus_exposed gte 1 and $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1>>
-		| <label><<print '<<radiobutton "$leftaction" "manus" '+($leftactiondefault is "manus"?"checked":"")+'>>'>> <span class="sub">Push a finger in</span></label>
+		| <label><<radiobutton "$leftaction" "manus" autocheck>> <span class="sub">Push a finger in</span></label>
 	<</if>>
-	| <label><<print '<<radiobutton "$leftaction" "manusrub" '+($leftactiondefault is "manusrub"?"checked":"")+'>>'>> <span class="sub">Tease your anus</span></label>
-	| <label><<print '<<radiobutton "$leftaction" "manusstop" '+($leftactiondefault is "manusstop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $leftarm is "manus">>
+	| <label><<radiobutton "$leftaction" "manusrub" autocheck>> <span class="sub">Tease your anus</span></label>
+	| <label><<radiobutton "$leftaction" "manusstop" autocheck>> Move your hand away</label>
+
+<<elseif $leftarm is "manus">>
 	You tease your anus with your left hand.
 	<br>
-	| <label><<print '<<radiobutton "$leftaction" "manustease" '+($leftactiondefault is "manustease"?"checked":"")+'>>'>> <span class="sub">Tease</span></label>
+	| <label><<radiobutton "$leftaction" "manustease" autocheck>> <span class="sub">Tease</span></label>
 	<<if $player.penisExist>>
-		| <label><<print '<<radiobutton "$leftaction" "manusprostate" '+($leftactiondefault is "manusprostate"?"checked":"")+'>>'>> <span class="sub">Tease your prostate</span></label>
+		| <label><<radiobutton "$leftaction" "manusprostate" autocheck>> <span class="sub">Tease your prostate</span></label>
 	<</if>>
-	| <label><<print '<<radiobutton "$leftaction" "manusstop" '+($leftactiondefault is "manusstop"?"checked":"")+'>>'>> Move your hand away</label>
+	| <label><<radiobutton "$leftaction" "manusstop" autocheck>> Move your hand away</label>
 <</if>>
 <<if $worn.over_upper.exposed lte 1>>
-	| <label><<print '<<radiobutton "$leftaction" "moverupper" '+($leftactiondefault is "moverupper"?"checked":"")+'>>'>> Displace your $worn.over_upper.name</label>
+	| <label><<radiobutton "$leftaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>
 <</if>>
 <<if $worn.upper.exposed lte 1>>
-	| <label><<print '<<radiobutton "$leftaction" "mupper" '+($leftactiondefault is "mupper"?"checked":"")+'>>'>> Displace your $worn.upper.name</label>
+	| <label><<radiobutton "$leftaction" "mupper" autocheck>> Displace your $worn.upper.name</label>
 <</if>>
 <<if $worn.under_upper.exposed lte 0>>
-	| <label><<print '<<radiobutton "$leftaction" "munder_upper" '+($leftactiondefault is "munder_upper"?"checked":"")+'>>'>> Displace your $worn.under_upper.name</label>
+	| <label><<radiobutton "$leftaction" "munder_upper" autocheck>> Displace your $worn.under_upper.name</label>
 <</if>>
 
 <<if $worn.over_lower.exposed lte 1>>
-	| <label><<print '<<radiobutton "$leftaction" "moverlower" '+($leftactiondefault is "moverlower"?"checked":"")+'>>'>> Displace your $worn.over_lower.name</label>
+	| <label><<radiobutton "$leftaction" "moverlower" autocheck>> Displace your $worn.over_lower.name</label>
 <</if>>
 <<if $worn.lower.exposed lte 1>>
-	| <label><<print '<<radiobutton "$leftaction" "mlower" '+($leftactiondefault is "mlower"?"checked":"")+'>>'>> Displace your $worn.lower.name</label>
+	| <label><<radiobutton "$leftaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
 <</if>>
 <<if $worn.under_lower.exposed lte 0>>
-	<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1 or $worn.lower.type.includes("naked")>>
-		| <label><<print '<<radiobutton "$leftaction" "munder" '+($leftactiondefault is "munder"?"checked":"")+'>>'>> Pull down your $worn.under_lower.name</label>
+	<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1>>
+		| <label><<radiobutton "$leftaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
 	<</if>>
 <</if>>
 
-| <label><<print '<<radiobutton "$leftaction" "mrest" '+($leftactiondefault is "mrest"?"checked":"")+'>>'>> Rest</label>
+| <label><<radiobutton "$leftaction" "mrest" autocheck>> Rest</label>
 
 <br><br>
+
+/* Right Arm Actions */
+<<set $rightaction to $rightactiondefault>>
 <<if $rightarm is 0>>
 	Your right hand is free.
 	<br>
 	<<if $player.penisExist>>
 		<<if $awareness gte 400 and $masturbationorgasmsemen gte 1 and $rightFingersSemen isnot 1>>
-			| <label><<print '<<radiobutton "$rightaction" "msemencover" '+($rightactiondefault is "msemencover"?"checked":"")+'>>'>> <span class="sub">Cover your fingers in semen</span></label>
+			| <label><<radiobutton "$rightaction" "msemencover" autocheck>> <span class="sub">Cover your fingers in semen</span></label>
 		<</if>>
 		<<if !$worn.genitals.type.includes("chastity")>>
-			| <label><<print '<<radiobutton "$rightaction" "mpenisentrance" '+($rightactiondefault is "mpenisentrance"?"checked":"")+'>>'>> <span class="sub">Fondle your penis</span></label>
+			| <label><<radiobutton "$rightaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
 		<<else>>
-			| <label><<print '<<radiobutton "$rightaction" "mchastity" '+($rightactiondefault is "mchastity"?"checked":"")+'>>'>> <span class="sub">Try to fondle your penis</span></label>
+			| <label><<radiobutton "$rightaction" "mchastity" autocheck>> <span class="sub">Try to fondle your penis</span></label>
 		<</if>>
 	<</if>>
 	<<if $player.vaginaExist>>
 		<<if !$worn.genitals.type.includes("chastity")>>
-			| <label><<print '<<radiobutton "$rightaction" "mvaginaentrance" '+($rightactiondefault is "mvaginaentrance"?"checked":"")+'>>'>> <span class="sub">Fondle your pussy</span></label>
+			| <label><<radiobutton "$rightaction" "mvaginaentrance" autocheck>> <span class="sub">Fondle your pussy</span></label>
 		<<else>>
-			| <label><<print '<<radiobutton "$rightaction" "mchastity" '+($rightactiondefault is "mchastity"?"checked":"")+'>>'>> <span class="sub">Try to fondle your pussy</span></label>
+			| <label><<radiobutton "$rightaction" "mchastity" autocheck>> <span class="sub">Try to fondle your pussy</span></label>
 		<</if>>
 	<</if>>
 	<<if $awareness gte 100>>
-		| <label><<print '<<radiobutton "$rightaction" "mchest" '+($rightactiondefault is "mchest"?"checked":"")+'>>'>> <span class="sub">Fondle your chest</span></label>
+		| <label><<radiobutton "$rightaction" "mchest" autocheck>> <span class="sub">Fondle your chest</span></label>
 	<</if>>
 	<<if $dev is 1>>
 		<<if $awareness gte 100 and $masochism gte 100>>
-			| <label><<print '<<radiobutton "$rightaction" "mpinch" '+($rightactiondefault is "mpinch"?"checked":"")+'>>'>> <span class="sub">Pinch your nipple</span></label>
+			| <label><<radiobutton "$rightaction" "mpinch" autocheck>> <span class="sub">Pinch your nipple</span></label>
 		<</if>>
 	<</if>>
 	<<if $awareness gte 200 and $worn.genitals.anal_shield isnot 1>>
-		| <label><<print '<<radiobutton "$rightaction" "manusentrance" '+($rightactiondefault is "manusentrance"?"checked":"")+'>>'>> <span class="sub">Stroke your anus</span></label>
+		| <label><<radiobutton "$rightaction" "manusentrance" autocheck>> <span class="sub">Stroke your anus</span></label>
 	<</if>>
-<</if>>
 
-<<if $rightarm is "mpenisentrance">>
+<<elseif $rightarm is "mpenisentrance">>
 	You hold your <<penis>> <<if $penissize gte 0>>in your right hand.<<else>>with your right thumb and fingers.<</if>>
 	<br>
-	| <label><<print '<<radiobutton "$rightaction" "mpenisglans" '+($rightactiondefault is "mpenisglans"?"checked":"")+'>>'>> <span class="sub">Fondle the glans</span></label>
 	<<if $mouth isnot "mpenis">>
-		| <label><<print '<<radiobutton "$rightaction" "mpenisshaft" '+($rightactiondefault is "mpenisshaft"?"checked":"")+'>>'>> <span class="sub">Rub the shaft</span></label>
+		| <label><<radiobutton "$rightaction" "mpenisglans" autocheck>> <span class="sub">Fondle the glans</span></label>
 	<</if>>
-	| <label><<print '<<radiobutton "$rightaction" "mpenisstop" '+($rightactiondefault is "mpenisstop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $rightarm is "mvaginaentrance">>
+	| <label><<radiobutton "$rightaction" "mpenisshaft" autocheck>> <span class="sub">Rub the shaft</span></label>
+	| <label><<radiobutton "$rightaction" "mpenisstop" autocheck>> Move your hand away</label>
+
+<<elseif $rightarm is "mvaginaentrance">>
 	You rub your <<pussy>> with your right hand.
 	<br>
 	<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
-		| <label><<print '<<radiobutton "$rightaction" "mvagina" '+($rightactiondefault is "mvagina"?"checked":"")+'>>'>> <span class="sub">Push a finger in</span></label>
+		| <label><<radiobutton "$rightaction" "mvagina" autocheck>> <span class="sub">Push a finger in</span></label>
 	<</if>>
-	<<if !$player.penisExist>>
-		| <label><<print '<<radiobutton "$rightaction" "mvaginaclit" '+($rightactiondefault is "mvaginaclit"?"checked":"")+'>>'>> <span class="sub">Play with your clit</span></label>
-	<</if>>
-	| <label><<print '<<radiobutton "$rightaction" "mvaginarub" '+($rightactiondefault is "mvaginarub"?"checked":"")+'>>'>> <span class="sub">Tease your vagina</span></label>
-	| <label><<print '<<radiobutton "$rightaction" "mvaginastop" '+($rightactiondefault is "mvaginastop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $rightarm is "mvagina">>
+	| <label><<radiobutton "$rightaction" "mvaginaclit" autocheck>> <span class="sub">Play with your clit</span></label>
+	| <label><<radiobutton "$rightaction" "mvaginarub" autocheck>> <span class="sub">Tease your vagina</span></label>
+	| <label><<radiobutton "$rightaction" "mvaginastop" autocheck>> Move your hand away</label>
+
+<<elseif $rightarm is "mvagina">>
 	You tease your <<pussy>> with your right hand.
 	<br>
-	| <label><<print '<<radiobutton "$rightaction" "mvaginatease" '+($rightactiondefault is "mvaginatease"?"checked":"")+'>>'>> <span class="sub">Tease</span></label>
-	| <label><<print '<<radiobutton "$rightaction" "mvaginastop" '+($rightactiondefault is "mvaginastop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $rightarm is "manusentrance">>
+	| <label><<radiobutton "$rightaction" "mvaginatease" autocheck>> <span class="sub">Tease</span></label>
+	| <label><<radiobutton "$rightaction" "mvaginastop" autocheck>> Move your hand away</label>
+
+<<elseif $rightarm is "manusentrance">>
 	You tease your anus with your right hand.
 	<br>
 	<<if $worn.over_lower.anus_exposed gte 1 and $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1>>
-		| <label><<print '<<radiobutton "$rightaction" "manus" '+($rightactiondefault is "manus"?"checked":"")+'>>'>> <span class="sub">Push a finger in</span></label>
+		| <label><<radiobutton "$rightaction" "manus" autocheck>> <span class="sub">Push a finger in</span></label>
 	<</if>>
-	| <label><<print '<<radiobutton "$rightaction" "manusrub" '+($rightactiondefault is "manusrub"?"checked":"")+'>>'>> <span class="sub">Tease your anus</span></label>
-	| <label><<print '<<radiobutton "$rightaction" "manusstop" '+($rightactiondefault is "manusstop"?"checked":"")+'>>'>> Move your hand away</label>
-<</if>>
-<<if $rightarm is "manus">>
+	| <label><<radiobutton "$rightaction" "manusrub" autocheck>> <span class="sub">Tease your anus</span></label>
+	| <label><<radiobutton "$rightaction" "manusstop" autocheck>> Move your hand away</label>
+
+<<elseif $rightarm is "manus">>
 	You tease your anus with your right hand.
 	<br>
-	| <label><<print '<<radiobutton "$rightaction" "manustease" '+($rightactiondefault is "manustease"?"checked":"")+'>>'>> <span class="sub">Tease</span></label>
+	| <label><<radiobutton "$rightaction" "manustease" autocheck>> <span class="sub">Tease</span></label>
 	<<if $player.penisExist>>
-		| <label><<print '<<radiobutton "$rightaction" "manusprostate" '+($rightactiondefault is "manusprostate"?"checked":"")+'>>'>> <span class="sub">Tease your prostate</span></label>
+		| <label><<radiobutton "$rightaction" "manusprostate" autocheck>> <span class="sub">Tease your prostate</span></label>
 	<</if>>
-	| <label><<print '<<radiobutton "$rightaction" "manusstop" '+($rightactiondefault is "manusstop"?"checked":"")+'>>'>> Move your hand away</label>
+	| <label><<radiobutton "$rightaction" "manusstop" autocheck>> Move your hand away</label>
 <</if>>
 <<if $worn.over_upper.exposed lte 1>>
-	| <label><<print '<<radiobutton "$rightaction" "moverupper" '+($rightactiondefault is "moverupper"?"checked":"")+'>>'>> Displace your $worn.over_upper.name</label>
+	| <label><<radiobutton "$rightaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>
 <</if>>
 <<if $worn.upper.exposed lte 1>>
-	| <label><<print '<<radiobutton "$rightaction" "mupper" '+($rightactiondefault is "mupper"?"checked":"")+'>>'>> Displace your $worn.upper.name</label>
+	| <label><<radiobutton "$rightaction" "mupper" autocheck>> Displace your $worn.upper.name</label>
 <</if>>
 <<if $worn.under_upper.exposed lte 0>>
-	| <label><<print '<<radiobutton "$rightaction" "munder_upper" '+($rightactiondefault is "munder_upper"?"checked":"")+'>>'>> Displace your $worn.under_upper.name</label>
+	| <label><<radiobutton "$rightaction" "munder_upper" autocheck>> Displace your $worn.under_upper.name</label>
 <</if>>
 
 <<if $worn.over_lower.exposed lte 1>>
-	| <label><<print '<<radiobutton "$rightaction" "moverlower" '+($rightactiondefault is "moverlower"?"checked":"")+'>>'>> Displace your $worn.over_lower.name</label>
+	| <label><<radiobutton "$rightaction" "moverlower" autocheck>> Displace your $worn.over_lower.name</label>
 <</if>>
 <<if $worn.lower.exposed lte 1>>
-	| <label><<print '<<radiobutton "$rightaction" "mlower" '+($rightactiondefault is "mlower"?"checked":"")+'>>'>> Displace your $worn.lower.name</label>
+	| <label><<radiobutton "$rightaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
 <</if>>
 <<if $worn.under_lower.exposed lte 0>>
-	<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1 or $worn.lower.type.includes("naked")>>
-		| <label><<print '<<radiobutton "$rightaction" "munder" '+($rightactiondefault is "munder"?"checked":"")+'>>'>> Pull down your $worn.under_lower.name</label>
+	<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1>>
+		| <label><<radiobutton "$rightaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
 	<</if>>
 <</if>>
 
-| <label><<print '<<radiobutton "$rightaction" "mrest" '+($rightactiondefault is "mrest"?"checked":"")+'>>'>> Rest</label>
+| <label><<radiobutton "$rightaction" "mrest" autocheck>> Rest</label>
 
-<<if ($awareness gte 200 and ($danceskill gte 800 or $cat is 6) and !$worn.genitals.type.includes("chastity")) or $moorPhallusPlant>>
+/* Mouth Actions */
+<<if $moorPhallusPlant or $awareness gte 200>>
+	<<set $mouthaction to $mouthactiondefault>>
 	<<if $mouth is 0>>
 		<br><br>
 		Your mouth is free.
 		<br>
 		<<if $awareness gte 200 and ($danceskill gte 800 or $cat is 6) and !$worn.genitals.type.includes("chastity") and
 		$worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed is 1 and $worn.under_lower.vagina_exposed is 1>>
-			<<if $player.penisExist>>
-				| <label><<print '<<radiobutton "$mouthaction" "mpenisentrance" '+($mouthactiondefault is "mpenisentrance"?"checked":"")+'>>'>> <span class="sub">Lick your penis</span></label>
+			<<if $player.penisExist and $penisuse is 0>>
+				| <label><<radiobutton "$mouthaction" "mpenisentrance" autocheck>> <span class="sub">Lick your penis</span></label>
 			<</if>>
 			<<if $player.vaginaExist and !($leftarm is "mvaginaentrance" or $rightarm is "mvaginaentrance") and $vaginause is 0>>
-				| <label><<print '<<radiobutton "$mouthaction" "mvaginaentrance" '+($mouthactiondefault is "mvaginaentrance"?"checked":"")+'>>'>> <span class="sub">Lick your pussy</span></label>
+				| <label><<radiobutton "$mouthaction" "mvaginaentrance" autocheck>> <span class="sub">Lick your pussy</span></label>
 			<</if>>
 		<</if>>
 		<<if $moorPhallusPlant is 1>>
-			| <label><<print '<<radiobutton "$mouthaction" "mpenisflowerlick" '+($mouthactiondefault is "mpenisflowerlick"?"checked":"")+'>>'>> <span class="sub">Lick the phallus plant</span></label>
+			| <label><<radiobutton "$mouthaction" "mpenisflowerlick" autocheck>> <span class="sub">Lick the phallus plant</span></label>
 		<</if>>
-		| <label><<print '<<radiobutton "$mouthaction" "mrest" '+($mouthactiondefault is "mrest"?"checked":"")+'>>'>> Rest</label>
+		| <label><<radiobutton "$mouthaction" "mrest" autocheck>> Rest</label>
 	<</if>>
 
 	<<if $mouth is "mpenisentrance">>
 		<br><br>
 		You're licking your penis.
 		<br>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenislick" '+($mouthactiondefault is "mpenislick"?"checked":"")+'>>'>> <span class="sub">Lick around the head</span></label>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenistakein" '+($mouthactiondefault is "mpenistakein"?"checked":"")+'>>'>> <span class="sub">Take it into your mouth</span></label>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenisstop" '+($mouthactiondefault is "mpenisstop"?"checked":"")+'>>'>> Move your mouth away</label>
+		| <label><<radiobutton "$mouthaction" "mpenislick" autocheck>> <span class="sub">Lick around the head</span></label>
+		| <label><<radiobutton "$mouthaction" "mpenistakein" autocheck>> <span class="sub">Take it into your mouth</span></label>
+		| <label><<radiobutton "$mouthaction" "mpenisstop" autocheck>> Move your mouth away</label>
 	<</if>>
 
 	<<if $mouth is "mvaginaentrance">>
 		<br><br>
 		You're licking your pussy.
 		<br>
-		| <label><<print '<<radiobutton "$mouthaction" "mvaginalick" '+($mouthactiondefault is "mvaginalick"?"checked":"")+'>>'>> <span class="sub">Lick your pussy</span></label>
-		<<if !$player.penisExist>>
-			| <label><<print '<<radiobutton "$mouthaction" "mvaginaclit" '+($mouthactiondefault is "mvaginaclit"?"checked":"")+'>>'>> <span class="sub">Focus on your clit</span></label>
-		<</if>>
-		| <label><<print '<<radiobutton "$mouthaction" "mvaginastop" '+($mouthactiondefault is "mvaginastop"?"checked":"")+'>>'>> Move your mouth away</label>
+		| <label><<radiobutton "$mouthaction" "mvaginalick" autocheck>> <span class="sub">Lick your pussy</span></label>
+		| <label><<radiobutton "$mouthaction" "mvaginaclit" autocheck>> <span class="sub">Focus on your clit</span></label>
+		| <label><<radiobutton "$mouthaction" "mvaginastop" autocheck>> Move your mouth away</label>
 	<</if>>
 
 	<<if $mouth is "mpenis">>
 		<br><br>
 		You're sucking on your penis.
 		<br>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenissuck" '+($mouthactiondefault is "mpenissuck"?"checked":"")+'>>'>> <span class="sub">Suck on your penis</span></label>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenisstop" '+($mouthactiondefault is "mpenisstop"?"checked":"")+'>>'>> Move your mouth away</label>
+		| <label><<radiobutton "$mouthaction" "mpenissuck" autocheck>> <span class="sub">Suck on your penis</span></label>
+		| <label><<radiobutton "$mouthaction" "mpenisstop" autocheck>> Move your mouth away</label>
 	<</if>>
 
 	<<if $mouth is "mpenisflowerlick">>
 		<br><br>
 		You're licking the phallus plant.
 		<br>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenisflowerlick" '+($mouthactiondefault is "mpenisflowerlick"?"checked":"")+'>>'>> <span class="sub">Lick</span></label>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenisflowertakein" '+($mouthactiondefault is "mpenisflowertakein"?"checked":"")+'>>'>> <span class="sub">Take it into your mouth</span></label>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenisflowerstop" '+($mouthactiondefault is "mpenisflowerstop"?"checked":"")+'>>'>> Move your mouth away</label>
+		| <label><<radiobutton "$mouthaction" "mpenisflowerlick" autocheck>> <span class="sub">Lick</span></label>
+		| <label><<radiobutton "$mouthaction" "mpenisflowertakein" autocheck>> <span class="sub">Take it into your mouth</span></label>
+		| <label><<radiobutton "$mouthaction" "mpenisflowerstop" autocheck>> Move your mouth away</label>
 	<</if>>
 
 	<<if $mouth is "mpenisflowersuck">>
 		<br><br>
 		You're sucking on the phallus plant.
 		<br>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenisflowersuck" '+($mouthactiondefault is "mpenisflowersuck"?"checked":"")+'>>'>> <span class="sub">Lick</span></label>
-		| <label><<print '<<radiobutton "$mouthaction" "mpenisflowersuckstop" '+($mouthactiondefault is "mpenisflowersuckstop"?"checked":"")+'>>'>> Move your mouth away</label>
+		| <label><<radiobutton "$mouthaction" "mpenisflowersuck" autocheck>> <span class="sub">Lick</span></label>
+		| <label><<radiobutton "$mouthaction" "mpenisflowersuckstop" autocheck>> Move your mouth away</label>
 	<</if>>
 <</if>>
 
 <<if $moorPhallusPlant>>
+	/* Vagina Actions */
 	<<if $player.vaginaExist and $vaginause is 0 and !$worn.genitals.type.includes("chastity")>>
 		<br><br>
 		Your pussy is free.
 		<br>
 		<<if $moorPhallusPlant is 1>>
-			| <label><<print '<<radiobutton "$vaginaaction" "mpenisflowerrub" '+($vaginaactiondefault is "mpenisflowerrub"?"checked":"")+'>>'>> <span class="sub">Rub against the phallus plant</span></label>
+			| <label><<radiobutton "$vaginaaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
 		<</if>>
-		| <label><<print '<<radiobutton "$vaginaaction" "mrest" '+($vaginaactiondefault is "mrest"?"checked":"")+'>>'>> Rest</label>
+		| <label><<radiobutton "$vaginaaction" "mrest" autocheck>> Rest</label>
 	<</if>>
 
 	<<if $vaginause is "mpenisflowerrub">>
 		<br><br>
 		You're rubbing your pussy against the phallus plant.
 		<br>
-		| <label><<print '<<radiobutton "$vaginaaction" "mpenisflowerrub" '+($vaginaactiondefault is "mpenisflowerrub"?"checked":"")+'>>'>> <span class="sub">Rub against the phallus plant</span></label>
+		| <label><<radiobutton "$vaginaaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
 		<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
-			| <label><<print '<<radiobutton "$vaginaaction" "mpenisflowerpenetrate" '+($vaginaactiondefault is "mpenisflowerpenetrate"?"checked":"")+'>>'>> <span class="sub">Lower yourself onto the phallus plant</span><<vaginalvirginitywarning>></label>
+			| <label><<radiobutton "$vaginaaction" "mpenisflowerpenetrate" autocheck>> <span class="sub">Lower yourself onto the phallus plant</span><<vaginalvirginitywarning>></label>
 		<</if>>
-		| <label><<print '<<radiobutton "$vaginaaction" "mpenisflowerstop" '+($vaginaactiondefault is "mpenisflowerstop"?"checked":"")+'>>'>> Move your pussy away</label>
+		| <label><<radiobutton "$vaginaaction" "mpenisflowerstop" autocheck>> Move your pussy away</label>
 	<</if>>
 
 	<<if $vaginause is "mpenisflowerpenetrate">>
 		<br><br>
 		You're bouncing on the phallus plant with your vagina.
 		<br>
-		| <label><<print '<<radiobutton "$vaginaaction" "mpenisflowerbounce" '+($vaginaactiondefault is "mpenisflowerbounce"?"checked":"")+'>>'>> <span class="sub">Ride the phallus plant</span></label>
-		| <label><<print '<<radiobutton "$vaginaaction" "mpenisflowerpenetratestop" '+($vaginaactiondefault is "mpenisflowerpenetratestop"?"checked":"")+'>>'>> Move your pussy away</label>
+		| <label><<radiobutton "$vaginaaction" "mpenisflowerbounce" autocheck>> <span class="sub">Ride the phallus plant</span></label>
+		| <label><<radiobutton "$vaginaaction" "mpenisflowerpenetratestop" autocheck>> Move your pussy away</label>
 	<</if>>
 
-
+	/* Anus Actions */
 	<<if $anususe is 0 and $worn.genitals.anal_shield isnot 1>>
 		<br><br>
 		Your anus is free.
 		<br>
 		<<if $moorPhallusPlant is 1>>
-			| <label><<print '<<radiobutton "$anusaction" "mpenisflowerrub" '+($anusactiondefault is "mpenisflowerrub"?"checked":"")+'>>'>> <span class="sub">Rub against the phallus plant</span></label>
+			| <label><<radiobutton "$anusaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
 		<</if>>
-		| <label><<print '<<radiobutton "$anusaction" "mrest" '+($anusactiondefault is "mrest"?"checked":"")+'>>'>> Rest</label>
+		| <label><<radiobutton "$anusaction" "mrest" autocheck>> Rest</label>
 	<</if>>
 
 	<<if $anususe is "mpenisflowerrub">>
 		<br><br>
 		You're rubbing your anus against the phallus plant.
 		<br>
-		| <label><<print '<<radiobutton "$anusaction" "mpenisflowerrub" '+($anusactiondefault is "mpenisflowerrub"?"checked":"")+'>>'>> <span class="sub">Rub against the phallus plant</span></label>
+		| <label><<radiobutton "$anusaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
 		<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
-			| <label><<print '<<radiobutton "$anusaction" "mpenisflowerpenetrate" '+($anusactiondefault is "mpenisflowerpenetrate"?"checked":"")+'>>'>> <span class="sub">Lower yourself onto the phallus plant</span><<analvirginitywarning>></label>
+			| <label><<radiobutton "$anusaction" "mpenisflowerpenetrate" autocheck>> <span class="sub">Lower yourself onto the phallus plant</span><<analvirginitywarning>></label>
 		<</if>>
-		| <label><<print '<<radiobutton "$anusaction" "mpenisflowerstop" '+($anusactiondefault is "mpenisflowerstop"?"checked":"")+'>>'>> Move your anus away</label>
+		| <label><<radiobutton "$anusaction" "mpenisflowerstop" autocheck>> Move your anus away</label>
 	<</if>>
 
 	<<if $anususe is "mpenisflowerpenetrate">>
 		<br><br>
 		You're bouncing on the phallus plant with your anus.
 		<br>
-		| <label><<print '<<radiobutton "$anusaction" "mpenisflowerbounce" '+($anusactiondefault is "mpenisflowerbounce"?"checked":"")+'>>'>> <span class="sub">Ride the phallus plant</span></label>
-		| <label><<print '<<radiobutton "$anusaction" "mpenisflowerpenetratestop" '+($anusactiondefault is "mpenisflowerpenetratestop"?"checked":"")+'>>'>> Move your anus away</label>
+		| <label><<radiobutton "$anusaction" "mpenisflowerbounce" autocheck>> <span class="sub">Ride the phallus plant</span></label>
+		| <label><<radiobutton "$anusaction" "mpenisflowerpenetratestop" autocheck>> Move your anus away</label>
 	<</if>>
 <</if>>
 
