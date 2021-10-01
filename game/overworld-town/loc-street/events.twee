@@ -4049,16 +4049,23 @@ The figure gets closer.
 	<<link [[Next|Street Fame Rape]]>><<set $molestationstart to 1>><</link>>
 	<br>
 <<else>>
+	<<set _possibleFames to []>>
 	<<if $famescrap gte ($rng * 5)>>
-		<<set _fameSelected to "scrap">>
-	<<elseif $famegood gte ($rng * 5)>>
-		<<set _fameSelected to "good">>
-	<<elseif $famebusiness gte ($rng * 5)>>
-		<<set _fameSelected to "business">>
-	<<elseif $famesocial gte ($rng * 5)>>
-		<<set _fameSelected to "social">>
-	<<else>>
+		<<set _possibleFames.push("scrap")>>
+	<</if>>
+	<<if $famegood gte ($rng * 5)>>
+		<<set _possibleFames.push("good")>>
+	<</if>>
+	<<if $famebusiness gte ($rng * 5)>>
+		<<set _possibleFames.push("business")>>
+	<</if>>
+	<<if $famesocial gte ($rng * 5)>>
+		<<set _possibleFames.push("social")>>
+	<</if>>
+	<<if _possibleFames.length is 0>>
 		<<set _fameSelected to "none">>
+	<<else>>
+		<<set _fameSelected to _possibleFames.random()>>
 	<</if>>
 	<<if _fameSelected is "none">>
 		<<person1>><<He>> stares at your face a moment, then looks over your shoulder and shakes <<his>> head. "Not <<phim>>," <<he>> says. They leave together without another word.

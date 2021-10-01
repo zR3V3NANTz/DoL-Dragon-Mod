@@ -504,6 +504,7 @@
 					<<He>> convulses and grinds down on your crotch as <<he>> cums, sending thick waves of cum into your <<pussy>>. Semen oozes from your vagina and down your legs. <<He>> pats your belly. "Hah... think I just knocked you up?"
 					<br><br>
 					<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+				<<vaginalejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
 					<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 				<<default>>
 					<<He>> quiets and grabs your shoulders, pulling you onto <<his>> cock as <<he>> cums. Semen fills your <<pussy>>, leaving you breathless. <<He>> pats your belly. "Well, <<sydneymum>> did say <<nnpc_he "Sirris">> wanted grandkids..."
@@ -977,6 +978,7 @@
 			<<He>> convulses and grinds down on your cunt as <<he>> cums, sending thick waves of cum into your <<pussy>>. Semen oozes from your vagina and down your legs. <<He>> looks down at the mess <<hes>> made with satisfaction. "Such a waste."
 			<br><br>
 			<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+			<<vaginalejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
 			<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "cheeks" and $worn.genitals.type.includes("chastity")>>

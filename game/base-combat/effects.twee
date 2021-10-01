@@ -469,9 +469,9 @@
 <<if $rightaction is "rightcoverpenismeek">>
 	<<set $rightaction to 0>><<set $rightactiondefault to "rightcoverpenismeek">>
 	<<if ($worn.lower.name is "towel skirt" or $worn.lower.name is "large towel bottom") and $worn.lower.state is "waist">>
-		You cover your pussy with your right hand, tugging the towel further over it.
+		You cover your penis with your right hand, tugging the towel further over it.
 	<<else>>
-		You cover your pussy with your right hand.
+		You cover your penis with your right hand.
 	<</if>>
 	<<meek 1>><<set $rightarm to "coverpenis">><<set $penisuse to "cover">><<set $speechcoverpenis to 1>>
 <</if>>
@@ -500,9 +500,9 @@
 <<if $rightaction is "rightcoverpenis">>
 	<<set $rightaction to 0>><<set $rightactiondefault to "rightcoverpenis">>
 	<<if ($worn.lower.name is "towel skirt" or $worn.lower.name is "large towel bottom") and $worn.lower.state is "waist">>
-		You cover your pussy with your right hand, tugging the towel further over it.
+		You cover your penis with your right hand, tugging the towel further over it.
 	<<else>>
-		You cover your pussy with your right hand.
+		You cover your penis with your right hand.
 	<</if>>
 	<<brat 1>><<set $rightarm to "coverpenis">><<set $penisuse to "cover">><<set $speechcoverpenis to 1>>
 <</if>>

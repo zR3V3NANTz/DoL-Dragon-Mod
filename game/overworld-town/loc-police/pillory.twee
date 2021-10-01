@@ -788,9 +788,6 @@ You brace for the impact as the fruit comes flying towards you.
 	<<maninit>>
 	<<stuck_in_wall_oral>>
 	<<set $walltype to "pillory">>
-
-	<<set $enemyhealthmax to 5>><<set $enemyhealth to 5>>
-	<<set $enemyarousalmax to 150>>
 <</if>>
 
 <<effects>>
