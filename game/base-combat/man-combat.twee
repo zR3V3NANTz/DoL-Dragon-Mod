@@ -1291,6 +1291,7 @@
 				<<He>> <<strokes>> your pubic mound and teases your clit.
 				<<neutral 10>><<set $speechclit to 1>>
 			<</if>>
+			<<combat-set-hand-target $args[0] $handtarget>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 30>>
 		<<set $handtarget to 0>>
@@ -1430,7 +1431,7 @@
 			<<He>> caresses your tummy.
 			<<neutral 1>>
 		<</if>>
-	<<bodypart_admire_chance back>>
+		<<bodypart_admire_chance back>>
 	<<elseif $enemyanger + $rng lte 50>>
 		<<if $position is "wall" and $walltype isnot "front">>
 			<<He>> grips your thigh and pulls, but you're stuck firm.
@@ -1546,7 +1547,11 @@
 			<<combat-reset-hand $args[0]>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 95>>
-		<<if $worn.feet.cursed isnot 1 or $worn.feet.name is "naked">>
+		<<if $worn.feet.cursed isnot 1 and $worn.feet.name isnot "naked">>
+			<span class="purple"><<He>> grasps your $worn.feet.name.</span>
+			<<combat-set-hand-target $args[0] "shoes">>
+			<<neutral 3>>
+		<<else>>
 			<<if $worn.legs.name is "naked">>
 				<<He>> rubs your foot.
 				<<neutral 1>>
@@ -1555,10 +1560,6 @@
 				<<combat-set-hand-target $args[0] "socks">>
 				<<neutral 3>>
 			<</if>>
-		<<else>>
-			<span class="purple"><<He>> grasps your $worn.feet.name.</span>
-			<<combat-set-hand-target $args[0] "shoes">>
-			<<neutral 3>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 100 and $walltype isnot "front">>
 		<<if $worn.genitals.type.includes("chastity")>>

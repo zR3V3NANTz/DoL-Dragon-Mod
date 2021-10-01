@@ -2509,5 +2509,9 @@
 	<<set $kylar.play to $kylar_play>>
 	<<unset $kylar_play>>
 <</if>>
+
+<<if !(Array.isArray($event))>>
+	<<unset $event>>
+<</if>>
 <</widget>>
 

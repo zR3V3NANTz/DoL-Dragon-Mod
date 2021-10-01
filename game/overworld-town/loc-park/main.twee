@@ -12,6 +12,7 @@
 You've pushed yourself too much.
 <br><br>
 <<passout>>
+<<set $bus to "park">>
 <<set $dangerpark to 0>>
 <<set $safepark to 0>>
 <<set $danger to random(1, 10000)>>

@@ -659,9 +659,9 @@
 	<<elseif $skin.right_shoulder.pen is "pen" or $skin.right_shoulder.pen is "lipstick" or $skin.right_shoulder.pen is "mud">>
 		and <<he>> wipes away your <<tattoo right_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear right_shoulder>> Your right shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
 	<<elseif !$skin.left_shoulder.pen>>
-		and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
+		and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 	<<elseif $skin.left_shoulder.pen is "pen" or $skin.left_shoulder.pen is "lipstick" or $skin.left_shoulder.pen is "mud">>
-		and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
+		and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 	<<else>>
 		but <<he>> frowns upon seeing your <<tattoo right_shoulder>>. <<He>> tries to wipe it away, but fails. "Maybe next time."
 	<</if>>
@@ -3049,9 +3049,9 @@ Sydney's pen trails up your arm,
 <<elseif $skin.right_shoulder.pen is "pen" or $skin.right_shoulder.pen is "lipstick" or $skin.right_shoulder.pen is "mud">>
 	and <<he>> wipes away your <<tattoo right_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear right_shoulder>> Your right shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
 <<elseif !$skin.left_shoulder.pen>>
-	and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
+	and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 <<elseif $skin.left_shoulder.pen is "pen" or $skin.left_shoulder.pen is "lipstick" or $skin.left_shoulder.pen is "mud">>
-	and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
+	and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 <<else>>
 	but <<he>> frowns upon seeing your <<tattoo right_shoulder>>. <<He>> tries to wipe it away, but fails. "Maybe next time."
 <</if>>

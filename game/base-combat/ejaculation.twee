@@ -618,6 +618,7 @@
 						<<case 7>>
 							<<He>> convulses and grinds down on your crotch as <<he>> cums, sending thick waves of cum into your <<pussy>>. Semen drips down your thighs.
 							<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+							<<vaginalejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
 							<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 						<</switch>>
 					<</switch>>

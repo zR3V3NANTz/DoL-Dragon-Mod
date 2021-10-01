@@ -337,7 +337,7 @@ window.outfitChecks = function(){
  * @return {boolean} whether or not any main-body clothing is out of place or wet
  */
  window.checkForExposedClothing = function(){
-	return ["over_upper", "upper", "under_upper", "over_lower", "lower", "under_upper"].some( clothingLayer => {
+	return ["over_upper", "upper", "under_upper", "over_lower", "lower", "under_lower"].some( clothingLayer => {
 		let wetstage = V[clothingLayer.replace("_","") + "wetstage"];
 		return (V.worn[clothingLayer].state !== V.worn[clothingLayer].state_base || wetstage >= 3);
 	})

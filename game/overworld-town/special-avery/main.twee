@@ -1303,6 +1303,7 @@ You put on the pajamas.
 <<tearful>> you drift off to sleep under the blankets in Avery's arms.
 <br><br>
 
+<<clotheson>>
 <<endcombat>>
 
 <<link [[Next|Avery Hotel Morning]]>><<set $sleephour to 8>><</link>><<ltiredness>>
@@ -1337,6 +1338,7 @@ You find yourself in the commercial alleyways.
 <<tearful>> you drift off to sleep under the blankets in Avery's arms.
 <br><br>
 
+<<clotheson>>
 <<endcombat>>
 
 <<link [[Next|Avery Hotel Morning]]>><<set $sleephour to 8>><</link>><<ltiredness>>
@@ -2755,7 +2757,7 @@ You push <<him>> away and try to leave the car. <<He>> pulls you back in and loc
 <br><br>
 Holding you down to the seat by the hair, <<he>> drives to a secluded spot near the school. <span class="pink"><<He>> leaps on top of you.</span>
 <br><br>
-<<link [[Next|Avery Walk Rape]]>><</link>>
+<<link [[Next|Avery Walk Rape]]>><<set $molestationstart to 1>><</link>>
 <br>
 
 :: Avery Date Strip

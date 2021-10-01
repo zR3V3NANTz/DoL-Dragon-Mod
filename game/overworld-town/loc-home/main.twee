@@ -2189,7 +2189,7 @@ You spread your legs and start carefully trimming your pubes. After a few minute
 	<<set _choice = _ownedColours[0].colour>>
 	<<for _i, _item range _ownedColours>>
 		<label><span class="grey-shadow"><span @class="'hair-' + _item.colour.replace(/ /g, '-')"><span class="colour-hair"><span style="color:#FD6064;"><<haircolourtext _item.colour>></span></span></span></span>&nbsp;<<print '<<radiobutton "_choice" "'+_item.colour+'" ' + (_choice is _item.colour ? "checked" : "") + '>>'>></label>
-		&nbsp;?��?&nbsp;_item.count |
+		&nbsp;x&nbsp;_item.count |
 	<</for>>
 
 	<br><br>

@@ -953,7 +953,7 @@ __Body Writing__<br>
 			<<set _bodyWritingOptions["Love Interests"]["Cowboy"] to "cowboy">>
 		<</if>>
 		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender.appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
-			<<set _bodyWritingOptions["Love Interests"]["Cowgirl"] to "Cowgirl">>
+			<<set _bodyWritingOptions["Love Interests"]["Cowgirl"] to "cowgirl">>
 		<</if>>
 	<</if>>
 	<<if $sydneyromance is 1>>
