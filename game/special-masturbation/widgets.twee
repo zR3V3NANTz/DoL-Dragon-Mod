@@ -101,6 +101,8 @@
 		<<unset $semenInVagina>>
 	<</if>>
 	<<unset $ballsText>>
+	<<unset $fingersInVagina>>
+	<<unset $vaginaFingerLimit>>
 <</widget>>
 
 <<widget "masturbationstart">>
@@ -124,6 +126,13 @@
 	<<set $anusaction to 0>>
 	<<set $anususe to 0>>
 	<<set $masturbationorgasmsemen to 0>>
+
+	<<set $fingersInVagina to 0>>
+	<<set $vaginaFingerLimit to 3>>
+	<<if $player.virginity.vaginal is true and $sexStats.vagina.pregnancy.totalBirthEvents is 0>>
+		<<set $vaginaFingerLimit -= 1>>
+	<</if>>
+	
 	/* note: we're setting $ballssize here because the variable exists but isn't used anywhere else YET. when a true implementation is attempted, remove this. */
 	<<set $ballssize to $penissize>>
 	<<silently>>

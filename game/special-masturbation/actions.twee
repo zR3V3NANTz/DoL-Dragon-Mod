@@ -40,9 +40,8 @@
 	<<if $awareness gte 200 and $worn.genitals.anal_shield isnot 1>>
 		| <label><<radiobutton "$leftaction" "manusentrance" autocheck>> <span class="sub">Stroke your anus</span></label>
 	<</if>>
-<</if>>
 
-<<if $leftarm is "mpenisentrance">>
+<<elseif $leftarm is "mpenisentrance">>
 	You hold your <<penis>> <<if $penissize gte 0>>in your left hand.<<else>>with your left thumb and fingers.<</if>>
 	<br>
 	<<if $mouth isnot "mpenis">>
@@ -54,17 +53,26 @@
 <<elseif $leftarm is "mvaginaentrance">>
 	You rub your <<pussy>> with your left hand.
 	<br>
-	<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
-		| <label><<radiobutton "$leftaction" "mvagina" autocheck>> <span class="sub">Push a finger in</span></label>
+	<<if $_genitals_exposed>>
+		<<if $rightarm isnot "mvagina">>
+			| <label><<radiobutton "$leftaction" "mvagina" autocheck>> <span class="sub">Push a finger in</span></label>
+		<</if>>
+		| <label><<radiobutton "$leftaction" "mvaginaclit" autocheck>> <span class="sub">Play with your clit</span></label>
 	<</if>>
-	| <label><<radiobutton "$leftaction" "mvaginaclit" autocheck>> <span class="sub">Play with your clit</span></label>
-	| <label><<radiobutton "$leftaction" "mvaginarub" autocheck>> <span class="sub">Tease your vagina</span></label>
+	| <label><<radiobutton "$leftaction" "mvaginarub" autocheck>> <span class="sub">Rub your vagina</span></label>
 	| <label><<radiobutton "$leftaction" "mvaginastop" autocheck>> Move your hand away</label>
 
 <<elseif $leftarm is "mvagina">>
-	You tease your <<pussy>> with your left hand.
+	<<set $_fingers to ($fingersInVagina is 1 ? "finger" : "fingers")>>
+	You have <<number $fingersInVagina>> $_fingers in your <<pussy>>. <<if $fingersInVagina is $vaginaFingerLimit>>You're too tight to fit any more.<</if>>
 	<br>
-	| <label><<radiobutton "$leftaction" "mvaginatease" autocheck>> <span class="sub">Tease</span></label>
+	<<if $fingersInVagina lt $vaginaFingerLimit>>
+		| <label><<radiobutton "$leftaction" "mvaginafingeradd" autocheck>> <span class="sub">Push another finger in</span></label>
+	<</if>>
+	<<if $fingersInVagina gte 1>>
+		| <label><<radiobutton "$leftaction" "mvaginafingerremove" autocheck>> <span class="sub">Take one finger out</span></label>
+	<</if>>
+	| <label><<radiobutton "$leftaction" "mvaginatease" autocheck>> <span class="sub">Finger your vagina</span></label>
 	| <label><<radiobutton "$leftaction" "mvaginastop" autocheck>> Move your hand away</label>
 
 <<elseif $leftarm is "manusentrance">>
@@ -166,17 +174,26 @@
 <<elseif $rightarm is "mvaginaentrance">>
 	You rub your <<pussy>> with your right hand.
 	<br>
-	<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
-		| <label><<radiobutton "$rightaction" "mvagina" autocheck>> <span class="sub">Push a finger in</span></label>
+	<<if $_genitals_exposed>>
+		<<if $leftarm isnot "mvagina">>
+			| <label><<radiobutton "$rightaction" "mvagina" autocheck>> <span class="sub">Push a finger in</span></label>
+		<</if>>
+		| <label><<radiobutton "$rightaction" "mvaginaclit" autocheck>> <span class="sub">Play with your clit</span></label>
 	<</if>>
-	| <label><<radiobutton "$rightaction" "mvaginaclit" autocheck>> <span class="sub">Play with your clit</span></label>
-	| <label><<radiobutton "$rightaction" "mvaginarub" autocheck>> <span class="sub">Tease your vagina</span></label>
+	| <label><<radiobutton "$rightaction" "mvaginarub" autocheck>> <span class="sub">Rub your vagina</span></label>
 	| <label><<radiobutton "$rightaction" "mvaginastop" autocheck>> Move your hand away</label>
 
 <<elseif $rightarm is "mvagina">>
-	You tease your <<pussy>> with your right hand.
+	<<set $_fingers to ($fingersInVagina is 1 ? "finger" : "fingers")>>
+	You have <<number $fingersInVagina>> $_fingers in your <<pussy>>. <<if $fingersInVagina is $vaginaFingerLimit>>You're too tight to fit any more.<</if>>
 	<br>
-	| <label><<radiobutton "$rightaction" "mvaginatease" autocheck>> <span class="sub">Tease</span></label>
+	<<if $fingersInVagina lt $vaginaFingerLimit>>
+		| <label><<radiobutton "$rightaction" "mvaginafingeradd" autocheck>> <span class="sub">Push another finger in</span></label>
+	<</if>>
+	<<if $fingersInVagina gte 1>>
+		| <label><<radiobutton "$rightaction" "mvaginafingerremove" autocheck>> <span class="sub">Take one finger out</span></label>
+	<</if>>
+	| <label><<radiobutton "$rightaction" "mvaginatease" autocheck>> <span class="sub">Finger your vagina</span></label>
 	| <label><<radiobutton "$rightaction" "mvaginastop" autocheck>> Move your hand away</label>
 
 <<elseif $rightarm is "manusentrance">>
