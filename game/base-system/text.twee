@@ -1781,7 +1781,7 @@ in dev alternative to current "breasts" widget
 <<if $NPCName[$NPCNameList.indexOf("Sydney")].purity lte 50 and _lustincrdisplay isnot 1>>
 	<<glust>>
 <</if>>
-<<set _warnstate to 1>>
+<<set _warnstate to -1>>
 <</widget>>
 
 <<widget "llspurity">> |
@@ -1793,7 +1793,7 @@ in dev alternative to current "breasts" widget
 <<if $NPCName[$NPCNameList.indexOf("Sydney")].purity lte 50 and _lustincrdisplay isnot 1>>
 	<<glust>>
 <</if>>
-<<set _warnstate to 2>>
+<<set _warnstate to -2>>
 <</widget>>
 
 <<widget "lllspurity">> |
@@ -1805,7 +1805,7 @@ in dev alternative to current "breasts" widget
 <<if $NPCName[$NPCNameList.indexOf("Sydney")].purity lte 50 and _lustincrdisplay isnot 1>>
 	<<glust>>
 <</if>>
-<<set _warnstate to 3>>
+<<set _warnstate to -3>>
 <</widget>>
 
 <<widget "gslust">> |
@@ -1840,25 +1840,28 @@ in dev alternative to current "breasts" widget
 <<else>>
 	<<switch _warnstate>>
 		<<case 1>>
-			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 2) lt 0>>
-				| <span class="purple">This action will corrupt Sydney</span>
-			<</if>>
 			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption isnot 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 2) lt 0>>
 				| <span class="teal">This action will purify Sydney</span>
 			<</if>>
 		<<case 2>>
-			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 5) lt 0>>
-				| <span class="purple">This action will corrupt Sydney</span>
-			<</if>>
 			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption isnot 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 5) lt 0>>
 				| <span class="teal">This action will purify Sydney</span>
 			<</if>>
 		<<case 3>>
-			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 10) lt 0>>
-				| <span class="purple">This action will corrupt Sydney</span>
-			<</if>>
 			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption isnot 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 10) lt 0>>
 				| <span class="teal">This action will purify Sydney</span>
+			<</if>>
+		<<case -1>>
+			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 2) lt 0>>
+				| <span class="purple">This action will corrupt Sydney</span>
+			<</if>>
+		<<case -2>>
+			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 5) lt 0>>
+				| <span class="purple">This action will corrupt Sydney</span>
+			<</if>>
+		<<case -3>>
+			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 10) lt 0>>
+				| <span class="purple">This action will corrupt Sydney</span>
 			<</if>>
 	<</switch>>
 <</if>>

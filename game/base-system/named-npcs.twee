@@ -740,17 +740,19 @@ alternative way to write that:
 					<<set _rollover to -$NPCName[_i].corruption>>
 					<<set $NPCName[_i].purity += (_rollover + 4)>>
 					<<set $NPCName[_i].corruption = 0>>
+					<<set $purityRollover to 1>>
 				<<else>>
 					<<set $NPCName[_i].corruption = 1>>
 				<</if>>
-			<</if>>			
+			<</if>>
 		<<else>>
 			<<set $NPCName[_i].purity += _val>>
 			<<if $NPCName[_i].purity lte 0>>
 				<<if $corruptionEvent is 1>>
 					<<set _rollover to -$NPCName[_i].purity>>
-					<<set $NPCName[_i].corruption += (_rollover + 2)>>
+					<<set $NPCName[_i].corruption += (_rollover + 10)>>
 					<<set $NPCName[_i].purity = 0>>
+					<<set $corruptionRollover to 1>>
 				<<else>>
 					<<set $NPCName[_i].purity = 1>>		
 				<</if>>
