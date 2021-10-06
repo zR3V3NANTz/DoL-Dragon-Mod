@@ -620,14 +620,14 @@
 	<</if>>
 	<<if $arousal gte $arousalmax * (4/5)>>
 		Your <<penis>> bucks eagerly, and
-		<<if _genitals_exposed>>
+		<<if $_genitals_exposed>>
 			precum leaps from the tip.
 		<<else>>
 			precum seeps through your _highestclothinglower.
 		<</if>>
 	<<elseif $arousal gte $arousalmax * (3/5)>>
 		Your <<penis>> bucks eagerly, and
-		<<if _genitals_exposed>>
+		<<if $_genitals_exposed>>
 			precum beads at the tip.
 		<<else>>
 			your precum creates a dark spot on your _highestclothinglower.
@@ -846,14 +846,14 @@
 		<</if>>
 		<<if $arousal gte $arousalmax * (4/5)>>
 			Your <<penis>> bucks eagerly, and
-			<<if _genitals_exposed>>
+			<<if $_genitals_exposed>>
 				precum leaps from the tip.
 			<<else>>
 				precum seeps through your _highestclothinglower.
 			<</if>>
 		<<else>>
 			Your <<penis>> bucks eagerly, and
-			<<if _genitals_exposed>>
+			<<if $_genitals_exposed>>
 				precum beads at the tip.
 			<<else>>
 				your precum creates a dark spot on your _highestclothinglower.
@@ -1272,7 +1272,7 @@
 	<<set $leftactiondefault to "manustease">><<set $leftaction to 0>><<set $leftarm to "manus">>
 	<<set $rightactiondefault to "manustease">><<set $rightaction to 0>><<set $rightarm to "manus">>
 	<<arousal 200>>
-	<<set _lubricated to ($leftFingersSemen gte 1 or rightFingersSemen gte 1 ? "semen-lubricated" : "")>>
+	<<set _lubricated to ($leftFingersSemen gte 1 or $rightFingersSemen gte 1 ? "semen-lubricated" : "")>>
 	<span class="purple">You push two _lubricated fingers into your <<bottom>>.</span>
 <<elseif $leftaction is "manus" or $rightaction is "manus">>
 	<<if $leftaction is "manus">>
