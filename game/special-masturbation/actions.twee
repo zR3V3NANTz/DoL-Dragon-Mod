@@ -105,26 +105,31 @@
 	| <label><<radiobutton "$leftaction" "mballsfondle" autocheck>> <span class="sub">Fondle</span></label>
 	| <label><<radiobutton "$leftaction" "mballssqueeze" autocheck>> <span class="sub">Squeeze</span></label>
 	| <label><<radiobutton "$leftaction" "mballsstop" autocheck>> Move your hand away</label>
+<<elseif $leftarm is "bound">>
+	Your left arm is bound.
+	<br>
 <</if>>
-<<if $worn.over_upper.exposed lte 1>>
-	| <label><<radiobutton "$leftaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>
-<</if>>
-<<if $worn.upper.exposed lte 1>>
-	| <label><<radiobutton "$leftaction" "mupper" autocheck>> Displace your $worn.upper.name</label>
-<</if>>
-<<if $worn.under_upper.exposed lte 0>>
-	| <label><<radiobutton "$leftaction" "munder_upper" autocheck>> Displace your $worn.under_upper.name</label>
-<</if>>
+<<if $leftarm isnot "bound">>
+	<<if $worn.over_upper.exposed lte 1>>
+		| <label><<radiobutton "$leftaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>
+	<</if>>
+	<<if $worn.upper.exposed lte 1>>
+		| <label><<radiobutton "$leftaction" "mupper" autocheck>> Displace your $worn.upper.name</label>
+	<</if>>
+	<<if $worn.under_upper.exposed lte 0>>
+		| <label><<radiobutton "$leftaction" "munder_upper" autocheck>> Displace your $worn.under_upper.name</label>
+	<</if>>
 
-<<if $worn.over_lower.exposed lte 1>>
-	| <label><<radiobutton "$leftaction" "moverlower" autocheck>> Displace your $worn.over_lower.name</label>
-<</if>>
-<<if $worn.lower.exposed lte 1>>
-	| <label><<radiobutton "$leftaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
-<</if>>
-<<if $worn.under_lower.exposed lte 0>>
-	<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1>>
-		| <label><<radiobutton "$leftaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
+	<<if $worn.over_lower.exposed lte 1>>
+		| <label><<radiobutton "$leftaction" "moverlower" autocheck>> Displace your $worn.over_lower.name</label>
+	<</if>>
+	<<if $worn.lower.exposed lte 1>>
+		| <label><<radiobutton "$leftaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
+	<</if>>
+	<<if $worn.under_lower.exposed lte 0>>
+		<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1 or $worn.lower.type.includes("naked")>>
+			| <label><<radiobutton "$leftaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
+		<</if>>
 	<</if>>
 <</if>>
 
@@ -232,26 +237,31 @@
 	| <label><<radiobutton "$rightaction" "mballsfondle" autocheck>> <span class="sub">Fondle</span></label>
 	| <label><<radiobutton "$rightaction" "mballssqueeze" autocheck>> <span class="sub">Squeeze</span></label>
 	| <label><<radiobutton "$rightaction" "mballsstop" autocheck>> Move your hand away</label>
+<<elseif $rightarm is "bound">>
+	Your right arm is bound.
+	<br>
 <</if>>
-<<if $worn.over_upper.exposed lte 1>>
-	| <label><<radiobutton "$rightaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>
-<</if>>
-<<if $worn.upper.exposed lte 1>>
-	| <label><<radiobutton "$rightaction" "mupper" autocheck>> Displace your $worn.upper.name</label>
-<</if>>
-<<if $worn.under_upper.exposed lte 0>>
-	| <label><<radiobutton "$rightaction" "munder_upper" autocheck>> Displace your $worn.under_upper.name</label>
-<</if>>
+<<if $rightarm isnot "bound">>
+	<<if $worn.over_upper.exposed lte 1>>
+		| <label><<radiobutton "$rightaction" "moverupper" autocheck>> Displace your $worn.over_upper.name</label>
+	<</if>>
+	<<if $worn.upper.exposed lte 1>>
+		| <label><<radiobutton "$rightaction" "mupper" autocheck>> Displace your $worn.upper.name</label>
+	<</if>>
+	<<if $worn.under_upper.exposed lte 0>>
+		| <label><<radiobutton "$rightaction" "munder_upper" autocheck>> Displace your $worn.under_upper.name</label>
+	<</if>>
 
-<<if $worn.over_lower.exposed lte 1>>
-	| <label><<radiobutton "$rightaction" "moverlower" autocheck>> Displace your $worn.over_lower.name</label>
-<</if>>
-<<if $worn.lower.exposed lte 1>>
-	| <label><<radiobutton "$rightaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
-<</if>>
-<<if $worn.under_lower.exposed lte 0>>
-	<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1>>
-		| <label><<radiobutton "$rightaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
+	<<if $worn.over_lower.exposed lte 1>>
+		| <label><<radiobutton "$rightaction" "moverlower" autocheck>> Displace your $worn.over_lower.name</label>
+	<</if>>
+	<<if $worn.lower.exposed lte 1>>
+		| <label><<radiobutton "$rightaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
+	<</if>>
+	<<if $worn.under_lower.exposed lte 0>>
+		<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1 or $worn.lower.type.includes("naked")>>
+			| <label><<radiobutton "$rightaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
+		<</if>>
 	<</if>>
 <</if>>
 
