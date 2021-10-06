@@ -124,7 +124,11 @@
 					<<set $player.bodyliquid.face.semen += 1>>
 				<</if>>
 			<<elseif $mouth is "mpenis">>
-				<span class="pink">You are overcome by sensation and ejaculate in your mouth, forcing you to quickly drink it down.</span>
+				<<if $selfsuckDepth gte 2>>
+					<span class="pink">You are overcome by sensation. Your cum pumps up the length of your penis and flows straight down your throat.</span>
+				<<else>>
+					<span class="pink">You are overcome by sensation and ejaculate in your mouth, forcing you to quickly drink it down.</span>
+				<</if>>
 				<<set $player.bodyliquid.mouth.semen += 1>>
 			<<else>>
 				<span class="pink">You are overcome by sensation. A surge of cum erupts from your penis<<if $worn.genitals.type.includes("chastity")>> into your $worn.genitals.name<</if>>.</span>

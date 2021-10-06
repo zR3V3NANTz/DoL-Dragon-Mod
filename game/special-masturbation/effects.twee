@@ -539,13 +539,13 @@
 	<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
 	<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
 	<<arousal 400>>
-	<<set $_gently to ($arousal gte $arousalmax * (4/5) ? "urgently" : ($arousal gte $arousalmax * (3/5) ? "roughly" : "gently"))>>
+	<<set $_gently to ($arousal gte $arousalmax * (4/5) ? "urgently" : ($arousal gte $arousalmax * (3/5) ? "" : "gently"))>>
 	
 	<<switch $ballssize>>
 		<<case -2 -1 0>> <span class="red">This text should be unreachable.</span>
-		<<case 1 2>> You press down $_gently on the $_balls in your hands.
-		<<case 3>> You press down $_gently on the $_balls in your hands.
-		<<case 4>> You press down $_gently on the $_balls filling your hands.
+		<<case 1 2>> You cup your $_balls with your hands and $_gently squeeze them.
+		<<case 3>> You cup your $_balls with your hands and $_gently squeeze them.
+		<<case 4>> You $_gently squeeze your $_balls with your hands.
 	<</switch>>
 	
 	<<set _ballplayeffects to true>>
@@ -561,23 +561,14 @@
 	<<arousal 200>>
 	/* if both hands are on their balls, say "the other" when referring to the second */
 	<<set $_oneofyourballs to ($ballssize lte 0 ? "your $_balls" : ($_oneofyourballs is undefined ? "one of your $_balls" : "the other"))>>
-	<<set $_gently to ($arousal gte $arousalmax * (4/5) ? "urgently" : ($arousal gte $arousalmax * (3/5) ? "roughly" : "gently"))>>
+	<<set $_gently to ($arousal gte $arousalmax * (4/5) ? "urgently" : ($arousal gte $arousalmax * (3/5) ? "" : "gently"))>>
 
-	<<if random(0,1)>>
-		<<switch $ballssize>>
-			<<case -2 -1 0>> You press down $_gently on your $_balls with your $_hand.
-			<<case 1 2>> You press down $_gently on $_oneofyourballs with your $_hand.
-			<<case 3>> You press down $_gently on $_oneofyourballs with your $_hand.
-			<<case 4>> You press down $_gently on $_oneofyourballs with your $_hand.
-		<</switch>>
-	<<else>>
-		<<switch $ballssize>>
-			<<case -2 -1 0>> You cup your $_balls with your $_hand and $_gently squeeze them.
-			<<case 1 2>> You cup $_oneofyourballs with your $_hand and $_gently squeeze it.
-			<<case 3>> You cup $_oneofyourballs with your $_hand and $_gently squeeze it.
-			<<case 4>> You $_gently squeeze $_oneofyourballs with your $_hand.
-		<</switch>>
-	<</if>>	
+	<<switch $ballssize>>
+		<<case -2 -1 0>> You cup your $_balls with your $_hand and $_gently squeeze them.
+		<<case 1 2>> You cup $_oneofyourballs with your $_hand and $_gently squeeze it.
+		<<case 3>> You cup $_oneofyourballs with your $_hand and $_gently squeeze it.
+		<<case 4>> You $_gently squeeze $_oneofyourballs with your $_hand.
+	<</switch>>
 	
 	<<set _ballplayeffects to true>>
 
@@ -620,10 +611,27 @@
 <</if>>
 
 <<if _ballplayeffects>>
+	<<if $worn.over_lower.vagina_exposed is 0>>
+		<<set _highestclothinglower to $worn.over_lower.name>>
+	<<elseif $worn.lower.vagina_exposed is 0>>
+		<<set _highestclothinglower to $worn.lower.name>>
+	<<elseif $worn.under_lower.vagina_exposed is 0>>
+		<<set _highestclothinglower to $worn.under_lower.name>>
+	<</if>>
 	<<if $arousal gte $arousalmax * (4/5)>>
-		Your <<penis>> bucks eagerly, and precum leaps from the tip.
+		Your <<penis>> bucks eagerly, and
+		<<if _genitals_exposed>>
+			precum leaps from the tip.
+		<<else>>
+			precum seeps through your _highestclothinglower.
+		<</if>>
 	<<elseif $arousal gte $arousalmax * (3/5)>>
-		Your <<penis>> bucks eagerly, and precum beads at the tip.
+		Your <<penis>> bucks eagerly, and
+		<<if _genitals_exposed>>
+			precum beads at the tip.
+		<<else>>
+			your precum creates a dark spot on your _highestclothinglower.
+		<</if>>
 	<<elseif $arousal gte $arousalmax * (2/5)>>
 		The pressure makes your <<penis>> throb.
 	<<else>>
@@ -634,12 +642,13 @@
 <<if $mouthaction is "mpenisentrance">>
 	<<set $mouthactiondefault to "mpenislick">><<set $mouthaction to 0>><<arousal 100>><<set $mouth to "mpenisentrance">>
 	<<if $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
-		<span class="blue">You run your tongue over your <<penis>> head and shiver in anticipation.</span>
+		<span class="blue">You get close enough to your <<penis>> to reach out and lick the tip with your tongue.</span>
 		<<arousal 100>>
 	<<elseif $worn.under_lower.vagina_exposed is 1>>
-		<span class="blue">You run your tongue over your <<penis>> head, feeling the bulge beneath your $worn.lower.name.</span>
+		/* this shouldn't be reachable. i think the action is not available unless the player's penis is completely uncovered. */
+		<span class="blue">You run your tongue over your <<penis>>, feeling the bulge beneath your $worn.lower.name.</span>
 	<<elseif $worn.lower.vagina_exposed is 1>>
-		<span class="blue">You run your tongue over your <<penis>> head, feeling the bulge beneath your $worn.under_lower.name.</span>
+		<span class="blue">You run your tongue over your <<penis>>, feeling the bulge beneath your $worn.under_lower.name.</span>
 	<</if>>
 <</if>>
 
@@ -647,28 +656,140 @@
 	<<set $mouthactiondefault to "mpenislick">><<set $mouthaction to 0>><<arousal 100>>
 	<<if $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
 		<<arousal 100>>
-		You run your tongue over your <<penis>> head and shiver in anticipation.
+		<<if $arousal gte $arousalmax * (4/5)>>
+			Your <<penis>> twitches every time you lick it, but you don't stop.
+		<<elseif $arousal gte $arousalmax * (3/5)>>
+			You run your tongue over your <<penis>> head, mixing your saliva with your precum.
+		<<else>>
+			You run your tongue over your <<penis>> head, focusing on your sensitive spots.
+		<</if>>
 	<<elseif $worn.under_lower.vagina_exposed is 1>>
 		/* this shouldn't be reachable. i think the action is not available unless the player's penis is completely uncovered. */
-		You run your tongue over your <<penis>> head, feeling the bulge beneath your $worn.lower.name.
+		You run your tongue over your <<penis>>, feeling the bulge beneath your $worn.lower.name.
 	<<elseif $worn.lower.vagina_exposed is 1>>
-		You run your tongue over your <<penis>> head, feeling the bulge beneath your $worn.under_lower.name.
+		You run your tongue over your <<penis>>, feeling the bulge beneath your $worn.under_lower.name.
 	<</if>>
 <</if>>
 
 <<if $mouthaction is "mpenistakein">>
-	<<set $mouthactiondefault to "mpenissuck">><<set $mouthaction to 0>><<arousal 200>><<set $mouth to "mpenis">>
-	<span class="blue">You take your <<penis>> into your mouth and shiver in anticipation.</span>
+	<<set $selfsuckDepth to 0>>
+	<<set $_actiondefault to ($penisHeight is 0 ? "mpenissuck" : "mpenisdeepthroat")>>
+	<<set $mouthactiondefault to $_actiondefault>><<set $mouthaction to 0>><<set $mouth to "mpenis">>
+	<<arousal 200>>
+	<<if $penisHeight is 0>>
+		<span class="blue">You take your <<penis>> into your mouth, sending a lewd tingle up your spine.</span>
+	<<else>>
+		<span class="blue">You take the head of your <<penis>> into your mouth, sending a lewd tingle up your spine.</span>
+	<</if>>
+<</if>>
+
+<<if $mouthaction is "mpenisdeepthroat">>
+	<<set $selfsuckDepth += 1>>
+	<<set $_actiondefault to ($selfsuckDepth lt $selfsuckLimit ? $mouthaction : "mpenissuck")>>
+	<<set $mouthactiondefault to $_actiondefault>><<set $mouthaction to 0>>
+	<<set $_arousalGain to 200 + 50*$selfsuckDepth>>
+	<<arousal $_arousalGain>>
+
+	You push your <<penis>> deeper into your mouth.
+	/* dev note: add willpower to check if the player can get their penis down their throat? */
+	
+	<<if $selfsuckDepth is $penisHeight>>
+		<<if $leftarm is "mpenisentrance" and $rightarm is "mpenisentrance">>
+			<<set $leftarm to 0>><<set $leftactiondefault to "mrest">>
+			<<set $rightarm to 0>><<set $rightactiondefault to "mrest">>
+			<span class="lblue">You take your hands off your penis to make room.</span>
+		<<elseif $leftarm is "mpenisentrance">>
+			<<set $leftarm to 0>><<set $leftactiondefault to "mrest">>
+			<span class="lblue">You move your left hand away from your penis to make room.</span>
+		<<elseif $rightarm is "mpenisentrance">>
+			<<set $rightarm to 0>><<set $rightactiondefault to "mrest">>
+			<span class="lblue">You move your right hand away from your penis to make room.</span>
+		<</if>>
+	<</if>>
+	<<set _deepthroateffects to true>>
+<</if>>
+
+<<if $mouthaction is "mpenispullback">>
+	<<set $selfsuckDepth -= 1>>
+	<<set $_arousalGain to 200 + 50*$selfsuckDepth>>
+	<<arousal $_arousalGain>>
+
+	<<if $selfsuckDepth gte 2>>
+		<<set $mouthactiondefault to $mouthaction>><<set $mouthaction to 0>>
+		<span class="lblue">You pull back hard on your <<penis>> and extract some of it from your throat.</span>
+		<<set _deepthroateffects to true>>
+	<<elseif $selfsuckDepth is 1>>
+		<<set $mouthactiondefault to $mouthaction>><<set $mouthaction to 0>>
+		<span class="lblue">You pull back on your <<penis>> and free it from your throat.</span>
+		<<set _deepthroateffects to true>>
+	<<else>>
+		<<set $mouthactiondefault to "mpenisstop">><<set $mouthaction to 0>>
+		<span class="lblue">You pull back until only the head of your <<penis>> remains in your mouth.</span>
+	<</if>>
+<</if>>
+
+<<if _deepthroateffects>>
+	<<switch $penisHeight>>
+	<<case 0>>
+		<span class="red">Error: Impossible condition.</span>
+	<<case 1>>
+		<<switch $selfsuckDepth>>
+		<<case 1>>Your lips touch the base of your <<penis>> and the head pokes at the back of your mouth.
+		<<default>><span class="red">Error: Impossible condition.</span>
+		<</switch>>
+	<<case 2>>
+		<<switch $selfsuckDepth>>
+		<<case 1>>The head of your penis is poking at the entrance to your throat.
+		<<case 2>>Your lips touch the base of your <<penis>> as the head pushes into your throat.
+		<<default>><span class="red">Error: Impossible condition.</span>
+		<</switch>>
+	<<case 3>>
+		<<switch $selfsuckDepth>>
+		<<case 1>>The head of your penis is poking at the entrance to your throat.
+		<<case 2>>Your <<penis>> is stretching the walls of your throat.
+		<<case 3>>Your lips touch the base of your <<penis>> as the shaft fills your throat.
+		<<default>><span class="red">Error: Impossible condition.</span>
+		<</switch>>
+	<<default>>
+		<span class="red">Error: Impossible condition.</span>
+	<</switch>>
+	<<if $selfsuckDepth is $penisHeight>>
+		You've reached the bottom.
+	<<elseif $selfsuckDepth is $selfsuckLimit>>
+		You are not flexible enough to get any lower.
+	<</if>>
+<</if>>
+
+<<if $mouthaction is "mpenismouthoff">>
+	<<set $mouthactiondefault to "mrest">><<set $mouthaction to 0>><<set $mouth to "mpenisentrance">>
+	<span class="lblue">You take your mouth off of your <<penis>>.</span>
 <</if>>
 
 <<if $mouthaction is "mpenissuck">>
-	<<set $mouthactiondefault to "mpenissuck">><<set $mouthaction to 0>><<arousal 200>><<set $mouth to "mpenis">>
+	<<set $mouthactiondefault to "mpenissuck">><<set $mouthaction to 0>>
+	<<arousal 200>>
+
+	<<set $_eagerly to ($arousal gte $arousalmax * (2/5) ? "eagerly" : "slowly")>>
+
 	<<if $arousal gte ($arousalmax / 5) * 4>>
-		You shiver in anticipation as you drink down the precum while sucking and moving your head back and forward.
-	<<elseif $arousal gte ($arousalmax / 5) * 3>>
-		You suck on your <<penis>> while licking the base.
+		<<if $selfsuckDepth lte 1>>
+			You drink down precum as it flows into your mouth while you move your head back and forth on your <<penis>>.
+		<<else>>
+			Precum flows down your throat as you move your head back and forth on your <<penis>>.
+		<</if>>
 	<<else>>
-		You suck on your <<penis>> while licking around the tip.
+		<<if $penisHeight is $selfsuckDepth>>
+			/* mouth is at base of penis */
+			<<if $selfsuckDepth gte 2>>
+				You lick the base of your <<penis>> while your throat massages the shaft.
+			<<else>>
+				You $_eagerly suck on your <<penis>> while licking the base.
+			<</if>>
+		<<elseif $selfsuckDepth gte 1>>
+			You $_eagerly suck on your <<penis>> while licking along the shaft.
+		<<else>>
+			You $_eagerly suck on your <<penis>> while licking around the tip.
+		<</if>>
 	<</if>>
 <</if>>
 
@@ -715,13 +836,28 @@
 <</if>>
 
 <<if $player.penisExist>>
-	<<if $arousal gte ($arousalmax / 5) * 4 and $mouth isnot "mpenis">>
-		<<if $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
-			Precum leaks from the tip of your <<penis>>.
-		<<elseif $worn.lower.vagina_exposed is 1>>
-			Precum leaks from the tip of your <<penis>> and seeps through your $worn.under_lower.name.
-		<<elseif $worn.under_lower.vagina_exposed is 1>>
-			Precum leaks from the tip of your <<penis>> and seeps through your $worn.lower.name.
+	<<if $arousal gte $arousalmax * (3/5) and $mouth isnot "mpenis" and not _ballplayeffects>>
+		<<if $worn.over_lower.vagina_exposed is 0>>
+			<<set _highestclothinglower to $worn.over_lower.name>>
+		<<elseif $worn.lower.vagina_exposed is 0>>
+			<<set _highestclothinglower to $worn.lower.name>>
+		<<elseif $worn.under_lower.vagina_exposed is 0>>
+			<<set _highestclothinglower to $worn.under_lower.name>>
+		<</if>>
+		<<if $arousal gte $arousalmax * (4/5)>>
+			Your <<penis>> bucks eagerly, and
+			<<if _genitals_exposed>>
+				precum leaps from the tip.
+			<<else>>
+				precum seeps through your _highestclothinglower.
+			<</if>>
+		<<else>>
+			Your <<penis>> bucks eagerly, and
+			<<if _genitals_exposed>>
+				precum beads at the tip.
+			<<else>>
+				your precum creates a dark spot on your _highestclothinglower.
+			<</if>>
 		<</if>>
 	<</if>>
 <</if>>
@@ -924,7 +1060,8 @@
 		<<set $semenInVagina to ($rightFingersSemen gte 1)>>
 		<<set _lubricated to ($rightFingersSemen gte 1 ? "semen-lubricated" : "")>>
 	<</if>>
-	<<arousal (200 + 50*$fingersInVagina)>>
+	<<set $_arousalGain to 200 + 50*$fingersInVagina>>
+	<<arousal $_arousalGain>>
 	<<if $bugsinside is 1>>
 		<<if $fingersInVagina is $vaginaFingerLimit>>
 			<span class="lblue">You gasp as you fit one last _lubricated finger inside yourself. You feel insects crawling inside.</span>
@@ -961,33 +1098,34 @@
 	<<if $rightaction is "mvaginatease">>
 		<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
 	<</if>>
-	<<arousal (300 + 50*$fingersInVagina)>>
+	<<set $_arousalGain to 300 + 50*$fingersInVagina>>
+	<<arousal $_arousalGain>>
 	<<set $_fingers to ($fingersInVagina is 1 ? "finger" : "fingers")>>
 	<<if $bugsinside is 1>>
 		<<if $arousal gte ($arousalmax / 5) * 4>>
 			<<if $vaginaWetness gte 60>>
 				<<vaginaFluidActive>>
-				You pump your $_fingers in and out of your <<pussy>>, coaxing out lewd fluid, along with some bugs and insects.
+				You pump <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, coaxing out lewd fluid, along with some bugs and insects.
 			<<else>>
-				You pump your $_fingers in and out of your <<pussy>>, coaxing out some bugs and insects.
+				You pump <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, coaxing out some bugs and insects.
 			<</if>>
 		<<elseif $arousal gte ($arousalmax / 5) * 2>>
-			You push your $_fingers in and out of your <<pussy>>, feeling the insects and bugs inside of you.
+			You push <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, feeling the insects and bugs inside of you.
 		<<else>>
-			You gently fuck the entrance of your <<pussy>> with your $_fingers, pushing some of the bugs around.
+			You gently fuck the entrance of your <<pussy>> with <<number $fingersInVagina>> $_fingers, pushing some of the bugs around.
 		<</if>>
 	<<else>>
 		<<if $arousal gte ($arousalmax / 5) * 4>>
 			<<if $vaginaWetness gte 60>>
 				<<vaginaFluidActive>>
-				You pump your $_fingers in and out of your <<pussy>>, coaxing out lewd fluid.
+				You pump <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, coaxing out lewd fluid.
 			<<else>>
-				You pump your $_fingers in and out of your <<pussy>>, pushing as deep as you can reach.
+				You pump <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, pushing as deep as you can reach.
 			<</if>>
 		<<elseif $arousal gte ($arousalmax / 5) * 2>>
-			You push your $_fingers in and out of your <<pussy>>, feeling a thrill even without going too deep.
+			You push <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, feeling a thrill even without going too deep.
 		<<else>>
-			You gently fuck the entrance of your <<pussy>> with your $_fingers.
+			You gently fuck the entrance of your <<pussy>> with <<number $fingersInVagina>> $_fingers.
 		<</if>>
 	<</if>>
 <</if>>

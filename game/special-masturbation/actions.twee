@@ -3,6 +3,7 @@
 <<widget "masturbationactions">>
 
 <<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
+<<set $_balls_exposed to $_genitals_exposed and !($worn.genitals.type.includes("chastity") and $worn.genitals.type.includes("belt"))>>
 
 /* Left Arm Actions */
 <<set $leftaction to $leftactiondefault>>
@@ -14,12 +15,16 @@
 			| <label><<radiobutton "$leftaction" "msemencover" autocheck>> <span class="sub">Cover your fingers in semen</span></label>
 		<</if>>
 		<<if !$worn.genitals.type.includes("chastity")>>
-			| <label><<radiobutton "$leftaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
-			<<if $player.ballsExist and $_genitals_exposed and $ballssize gte -1 and ($ballssize gte 1 or $rightarm isnot "mballs")>>
-				| <label><<radiobutton "$leftaction" "mballsentrance" autocheck>> <span class="sub">Fondle your balls</span></label>
+			<<if !($mouth is "mpenis" and $selfsuckDepth is $penisHeight)>>
+				| <label><<radiobutton "$leftaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
 			<</if>>
 		<<else>>
 			| <label><<radiobutton "$leftaction" "mchastity" autocheck>> <span class="sub">Try to fondle your penis</span></label>
+		<</if>>
+	<</if>>
+	<<if $player.ballsExist and $_genitals_exposed and $ballssize gte -1 and ($ballssize gte 1 or $rightarm isnot "mballs")>>
+		<<if $_balls_exposed>>
+			| <label><<radiobutton "$leftaction" "mballsentrance" autocheck>> <span class="sub">Fondle your balls</span></label>
 		<</if>>
 	<</if>>
 	<<if $player.vaginaExist>>
@@ -47,7 +52,9 @@
 	<<if $mouth isnot "mpenis">>
 		| <label><<radiobutton "$leftaction" "mpenisglans" autocheck>> <span class="sub">Fondle the glans</span></label>
 	<</if>>
-	| <label><<radiobutton "$leftaction" "mpenisshaft" autocheck>> <span class="sub">Rub the shaft</span></label>
+	<<if !($mouth is "mpenis" and $selfsuckDepth is $penisHeight)>>
+		| <label><<radiobutton "$leftaction" "mpenisshaft" autocheck>> <span class="sub">Rub the shaft</span></label>
+	<</if>>
 	| <label><<radiobutton "$leftaction" "mpenisstop" autocheck>> Move your hand away</label>
 
 <<elseif $leftarm is "mvaginaentrance">>
@@ -135,12 +142,16 @@
 			| <label><<radiobutton "$rightaction" "msemencover" autocheck>> <span class="sub">Cover your fingers in semen</span></label>
 		<</if>>
 		<<if !$worn.genitals.type.includes("chastity")>>
-			| <label><<radiobutton "$rightaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
-			<<if $player.ballsExist and $_genitals_exposed and $ballssize gte -1 and ($ballssize gte 1 or $leftarm isnot "mballs")>>
-				| <label><<radiobutton "$rightaction" "mballsentrance" autocheck>> <span class="sub">Fondle your balls</span></label>
+			<<if !($mouth is "mpenis" and $selfsuckDepth is $penisHeight)>>
+				| <label><<radiobutton "$rightaction" "mpenisentrance" autocheck>> <span class="sub">Fondle your penis</span></label>
 			<</if>>
 		<<else>>
 			| <label><<radiobutton "$rightaction" "mchastity" autocheck>> <span class="sub">Try to fondle your penis</span></label>
+		<</if>>
+	<</if>>
+	<<if $player.ballsExist and $_genitals_exposed and $ballssize gte -1 and ($ballssize gte 1 or $leftarm isnot "mballs")>>
+		<<if $_balls_exposed>>
+			| <label><<radiobutton "$rightaction" "mballsentrance" autocheck>> <span class="sub">Fondle your balls</span></label>
 		<</if>>
 	<</if>>
 	<<if $player.vaginaExist>>
@@ -168,7 +179,9 @@
 	<<if $mouth isnot "mpenis">>
 		| <label><<radiobutton "$rightaction" "mpenisglans" autocheck>> <span class="sub">Fondle the glans</span></label>
 	<</if>>
-	| <label><<radiobutton "$rightaction" "mpenisshaft" autocheck>> <span class="sub">Rub the shaft</span></label>
+	<<if !($mouth is "mpenis" and $selfsuckDepth is $penisHeight)>>
+		| <label><<radiobutton "$rightaction" "mpenisshaft" autocheck>> <span class="sub">Rub the shaft</span></label>
+	<</if>>
 	| <label><<radiobutton "$rightaction" "mpenisstop" autocheck>> Move your hand away</label>
 
 <<elseif $rightarm is "mvaginaentrance">>
@@ -251,12 +264,11 @@
 		<br><br>
 		Your mouth is free.
 		<br>
-		<<if $awareness gte 200 and ($danceskill gte 800 or $cat is 6) and !$worn.genitals.type.includes("chastity") and
-		$worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed is 1 and $worn.under_lower.vagina_exposed is 1>>
-			<<if $player.penisExist and $penisuse is 0>>
+		<<if $_genitals_exposed>>
+			<<if $canSelfSuckPenis and $penisuse is 0>>
 				| <label><<radiobutton "$mouthaction" "mpenisentrance" autocheck>> <span class="sub">Lick your penis</span></label>
 			<</if>>
-			<<if $player.vaginaExist and !($leftarm is "mvaginaentrance" or $rightarm is "mvaginaentrance") and $vaginause is 0>>
+			<<if $canSelfSuckVagina and $vaginause is 0 and $fingersInVagina is 0>>
 				| <label><<radiobutton "$mouthaction" "mvaginaentrance" autocheck>> <span class="sub">Lick your pussy</span></label>
 			<</if>>
 		<</if>>
@@ -268,11 +280,12 @@
 
 	<<if $mouth is "mpenisentrance">>
 		<br><br>
-		You're licking your penis.
+		Your mouth is in front of your penis.
 		<br>
-		| <label><<radiobutton "$mouthaction" "mpenislick" autocheck>> <span class="sub">Lick around the head</span></label>
+		| <label><<radiobutton "$mouthaction" "mpenislick" autocheck>> <span class="sub">Lick your penis</span></label>
 		| <label><<radiobutton "$mouthaction" "mpenistakein" autocheck>> <span class="sub">Take it into your mouth</span></label>
 		| <label><<radiobutton "$mouthaction" "mpenisstop" autocheck>> Move your mouth away</label>
+		| <label><<radiobutton "$mouthaction" "mrest" autocheck>> Rest</label>
 	<</if>>
 
 	<<if $mouth is "mvaginaentrance">>
@@ -287,9 +300,29 @@
 	<<if $mouth is "mpenis">>
 		<br><br>
 		You're sucking on your penis.
+		<<if $selfsuckDepth is $selfsuckLimit>>
+			You have the whole thing in your mouth<<if $selfsuckDepth gte 2>> and throat<</if>>.
+		<<else>>
+			<<switch $selfsuckDepth>>
+				<<case 0>> You have the head in your mouth.
+				<<case 1>> The head reaches the back of your mouth.
+				<<case 2>> You have the head in your throat.
+				<<default>> <span class="red">Error: Impossible condition.</span> /* Max selfsuckDepth is 3 and is captured by the above condition */
+			<</switch>>
+		<</if>>
 		<br>
 		| <label><<radiobutton "$mouthaction" "mpenissuck" autocheck>> <span class="sub">Suck on your penis</span></label>
-		| <label><<radiobutton "$mouthaction" "mpenisstop" autocheck>> Move your mouth away</label>
+		<<if $selfsuckDepth lt $selfsuckLimit>>
+			| <label><<radiobutton "$mouthaction" "mpenisdeepthroat" autocheck>> <span class="sub">Take it deeper</span></label>
+		<</if>>
+		<<if $selfsuckDepth gte 1>>
+			| <label><<radiobutton "$mouthaction" "mpenispullback" autocheck>> Pull back</label>
+		<<else>>
+			| <label><<radiobutton "$mouthaction" "mpenismouthoff" autocheck>> Take your mouth off it</label>
+		<</if>>
+		<<if $selfsuckDepth lte 1>>
+			| <label><<radiobutton "$mouthaction" "mpenisstop" autocheck>> Move your mouth away</label>
+		<</if>>
 	<</if>>
 
 	<<if $mouth is "mpenisflowerlick">>
