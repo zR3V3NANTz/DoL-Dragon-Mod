@@ -265,6 +265,7 @@
 			<<He>> convulses and grinds down on your crotch as <<he>> cums, sending thick waves of cum into your <<pussy>>. Semen oozes from your vagina and down your legs.
 			
 			<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+			<<vaginalejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
 			<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "cheeks" and $worn.genitals.type.includes("chastity")>>

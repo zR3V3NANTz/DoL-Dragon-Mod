@@ -1981,7 +1981,7 @@ You're led through the tunnel and back to the temple. The others are silent the 
 <<set $masturbationstat += 1>>
 <<masturbationstart>>
 <<set $timer to random(10, 30)>>
-You search for a secluded spot. It's not easy, as the temple is so busy. You watch a pillar in the corner of the room for several minutes. No one goes behind it. You sneak over and sit.
+You search for a secluded spot. It's not easy, as the temple is so busy. You watch a pillar in the corner of the room for several minutes. No one goes behind it. You sneak over and sit. <<exhibitionism4>>
 <br><br>
 	<<if $angel gte 6>>
 	<span class="red">You feel disgusted with yourself.</span>

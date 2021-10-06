@@ -216,12 +216,11 @@ You sit beside Sydney. You notice a pile of neatly folded clothes sat next to <<
 <</if>>
 
 :: Sydney Temple Sex
-<<NPCStatusCheck "Sydney">>
+<<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<if $sexstart is 1>>
 	<<if !_sydneyStatus.includes("corrupt")>>
 		Sydney guides you into the room, and locks it behind you. You kiss <<him>> on the neck, and <<he>> melts into your embrace. <<sydneyLewd>>
 	<</if>>
-	<<set $corruptionEvent to 1>>
 	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -264,14 +263,20 @@ You sit beside Sydney. You notice a pile of neatly folded clothes sat next to <<
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			"Th-that was... incredible," <<he>> murmurs. "And sinful..."
-		<<case "corrupt" "corruptLust">>
-			"I'm glad my love for you is finally being rewarded," <<he>> smugly proclaims.		
-		<<default>>
-			"In the temple of all places..." <<he>> giggles.
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		"Th-that was incredible," <<he>> murmurs. "I want... I want to do it again. And... again." <<He>> gazes into your eyes. "<span class="lewd">I feel like a whole world just opened up.</span>"
+		<br><br>
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				"Th-that was... incredible," <<he>> murmurs. "And sinful..."
+			<<case "corrupt" "corruptLust">>
+				"I'm glad my love for you is being rewarded," <<he>> proclaims with a smug smile.		
+			<<default>> 
+				"In the temple, of all places..." <<he>> giggles.
+		<</switch>>
+	<</if>>
 	<<if _sydneyChastity and $sydneyChastityKnown>>
 		<<sydneyChastityMessage>><<npcincr Sydney lust 3>><<ggslust>>
 	<<else>>
@@ -282,36 +287,46 @@ You sit beside Sydney. You notice a pile of neatly folded clothes sat next to <<
 	<<sydneyFinish>>
 	<<tearful>> you stand up. Sydney reluctantly separates from you.
 <<elseif $enemyhealth lte 0>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				Sydney lets out a pained moan, and covers <<his>> mouth to stifle it. <<He>> looks down in shame. "I... I think I've had enough..."
-			<<else>>
-				"H-hey! Stop! Please!" Sydney separates from you. "Th-that really hurt... I mean, I still kind of liked it, but..." <<his>> face flushes, and <<he>> looks away. "M...maybe we can finish this some other time..."
-			<</if>>
-		<<case "corrupt" "corruptLust">>
-			Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."		
-		<<default>>
-			"Ouch! Okay, not so rough!" <<He>> backs away from you. "I think we need to set some guidelines on how much I can take..."
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. "Th-that was..." <<He>> gazes into your eyes. "I think I like it when you're rough with me. <span class="lewd">I feel like a whole world just opened up.</span>"
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. <<He>> looks down in shame. "I... I think I've had enough..."
+				<<else>>
+					"H-hey! Stop! Please!" Sydney quickly separates from you. "Th-that really hurt... I mean, I still kind of liked it, but..." <<his>> face flushes, and <<he>> looks away. "M...maybe we can finish this some other time..."
+				<</if>>
+			<<case "corrupt" "corruptLust">>
+				Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."
+			<<default>>
+				"Ouch! Okay, not so rough!" <<He>> quickly backs away from you. "I think we need to set some guidelines on how much I can take..."
+		<</switch>>
+	<</if>>
 	<<npcincr Sydney lust 5>><<gglust>>
 	<br><br>
 	<<tearful>> you stand up. Sydney does the same.
 <<else>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				"S...stop? But I... I'm..." <<he>> stammers off while still clinging on to you. "O-okay..."
-			<<else>>
-				Sydney looks at you nervously. "I didn't... do anything wrong, did I?"
-			<</if>>
-		<<case "corrupt">>
-			Sydney pouts, but steps away from you. "We need to finish this later," <<he>> says. "Please?"
-		<<case "corruptLust">>
-			Sydney groans and pouts. "You're so mean! Fine. We're finishing this later, though."
-		<<default>>
-			"Oh. Okay, we can stop." <<He>> looks disappointed for a brief moment, but still smiles at you.
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		"S...stop? But we..." <<he>> pouts, disappointed. "Can we... finish this later? Please? I... <span class="lewd">I feel like a whole world just opened up.</span> I want to finish this."
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					"S...stop? But I... I'm..." <<he>> stammers off while still clinging on to you. "O-okay..."
+				<<else>>
+					Sydney looks at you nervously. "I didn't... do anything wrong, did I?"
+				<</if>>
+			<<case "corrupt">>
+				Sydney pouts, but steps away from you. "We need to finish this later," <<he>> says. "Please?"
+			<<case "corruptLust">>
+				Sydney groans and pouts. "You're so mean! But fine. We're finishing this later, though."
+			<<default>>
+				"Oh. Okay, we can stop." <<He>> looks disappointed for a brief moment, but still smiles at you.
+		<</switch>>
+	<</if>>
 	<<npcincr Sydney lust 5>><<npcincr Sydney purity 2>><<gglust>><<gspurity>>
 	<br><br>
 	<<tearful>> you stand up. Sydney does the same.
@@ -376,8 +391,6 @@ The two of you walk back to the main area of the temple. It takes some time, but
 		<<else>>
 			Sydney seems happy to have a prayer partner.
 		<</if>>
-		<<npcincr Sydney purity 1>><<gspurity>>
-		<br><br>
 	<<case 3>>
 		<<set _people to random(22, 34)>>
 		You open one eye and examine the room. There are others like you and Sydney, praying in the pews. <<if $NPCName[$NPCNameList.indexOf("Jordan")].pronoun is "m">>Monks<<else>>Nuns<</if>> prowl the aisles, passing furtive messages to one another. There are many more than you'd expect. You count <<number _people>> coming and going.
@@ -392,8 +405,6 @@ The two of you walk back to the main area of the temple. It takes some time, but
 		<<else>>
 			Sydney is taking deep breaths, seemingly trying to ignore something awful.
 		<</if>>
-		<<npcincr Sydney purity 1>><<gspurity>>
-		<br><br>
 	<<case 4>>
 		Your thoughts turn to your <<penis>>, and the mocking way people regard it. The torment returns. You pray for a bigger penis.
 		<br><br>
@@ -404,6 +415,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Tiny Penis</span> trait.
 			<br><br>
 		<</if>>
+		Sydney keeps <<his>> head bowed, unaware of your <<if _acceptMessage>>relevation<<else>>thoughts<</if>>.
 	<<case 5>>
 		Your thoughts turn to your <<penis>>, and the mocking way people regard it. The torment returns. You pray for a bigger penis.
 		<br><br>
@@ -414,6 +426,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Small Penis</span> trait.
 			<br><br>
 		<</if>>
+		Sydney keeps <<his>> head bowed, unaware of your <<if _acceptMessage>>relevation<<else>>thoughts<</if>>.
 	<<case 6>>
 		Your thoughts turn to your <<penis>>, and the mocking way people regard it. The torment returns. You pray for a smaller penis.
 		<br><br>
@@ -424,6 +437,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Big Penis</span> trait.
 			<br><br>
 		<</if>>
+		Sydney keeps <<his>> head bowed, unaware of your <<if _acceptMessage>>relevation<<else>>thoughts<</if>>.
 	<<case 7>>
 		Your thoughts turn to your flat chest, and the mocking way people regard it. The torment returns. You pray for bigger breasts.
 		<br><br>
@@ -434,6 +448,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			Realisation dawns as you lean back. Your chest is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Tiny Breasts</span> trait.
 			<br><br>
 		<</if>>
+		Sydney keeps <<his>> head bowed, unaware of your <<if _acceptMessage>>relevation<<else>>thoughts<</if>>.
 	<<case 8>>
 		Your thoughts turn to your <<breasts>>, and the mocking way people regard them. The torment returns. You try to remain detached.
 		<br><br>
@@ -444,6 +459,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			Realisation dawns as you lean back. Your <<breasts>> are beautiful. Why should you care what other people say about them? You've gained the <span class="green">Acceptance: Small Breasts</span> trait.
 			<br><br>
 		<</if>>
+		Sydney keeps <<his>> head bowed, unaware of your <<if _acceptMessage>>relevation<<else>>thoughts<</if>>.
 	<<case 9>>
 		Your thoughts turn to your <<breasts>>, and the mocking way people regard them. The torment returns. You pray for smaller breasts.
 		<br><br>
@@ -454,11 +470,15 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			Realisation dawns as you lean back. Your <<breasts>> are beautiful. Why should you care what other people say about them? You've gained the <span class="green">Acceptance: Big Breasts</span> trait.
 			<br><br>
 		<</if>>
+		Sydney keeps <<his>> head bowed, unaware of your <<if _acceptMessage>>relevation<<else>>thoughts<</if>>.
 <</switch>>
+<<npcincr Sydney purity 1>><<gspurity>>
+<br><br>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if $stress gte $stressmax>>
 	<<passouttempleSydney>>
 <<elseif $phase isnot 2 and $phase isnot 3 and random(1, 2) is 1>>
+	<<set $purityEvent to 1>>
 	Sydney opens <<his>> eyes and faces you. "So, what are you praying for?"
 	<br><br>
 	<<switch $phase>>
@@ -538,11 +558,12 @@ The two of you walk back to the main area of the temple. It takes some time, but
 		<<sydneyOptions>>
 
 	<<elseif $rng gte 41>>
+		<<set $purityEvent to 1>>
 		Sydney opens <<his>> eyes and faces you. "So, what are you praying for?"
 		<br><br>
 		<<switch $phase>>
 			<<case 2>>
-				<<link [["Tell " + $NPCList[0].pronouns.him|Temple Sydney Pray Tell]]>><<npcincr Sydney love 1>><<npcincr Sydney purity 2>><</link>><<glove>><<gspurity>>
+				<<link [["Tell " + $NPCList[0].pronouns.him|Temple Sydney Pray Tell]]>><<npcincr Sydney love 1>><<npcincr Sydney purity 2>><</link>><<glove>><<gspurity>><<sydneyWarning>>
 				<br>
 			<<case 3>>
 				<<link [["Tell " + $NPCList[0].pronouns.him|Temple Sydney Pray Tell]]>><<npcincr Sydney purity -2>><</link>><<lspurity>><<sydneyWarning>>
@@ -592,7 +613,12 @@ The two of you walk back to the main area of the temple. It takes some time, but
 <<switch $phase>>
 	<<case 2>>
 		You tell Sydney that you're praying for salvation, and a better future.
-		<<if _sydneyStatus.includes("corrupt")>>
+		<<if $purityRollover is 1>>
+			<<unset $purityRollover>>
+			<<He>> gently smiles at you, before turning away. "Myself, I was... doing some thinking." <<He>> rubs <<his>> arm. "About myself. I... I had forgotten who I was. And praying here, with you... it helped me remember. I think..."
+			<br><br>
+			<<He>> smiles again, glowing. "<span class="gold">I think I found my own salvation.</span> Thank you."
+		<<elseif _sydneyStatus.includes("corrupt")>>
 			<<He>> almost looks nostalgic for a moment.
 		<<else>>
 			<<He>> happily smiles at you.
@@ -626,6 +652,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 		<<if $acceptance_penis_tiny gte 1000>>
 			Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Tiny Penis</span> trait.
 			<br><br>
+			Sydney <<if $sydneyromance is 1>>kisses you on the cheek and <</if>> smiles. "I hope I was able to help you."
 		<</if>>
 	<<case 5>>
 		You tell Sydney about your insecurity in visceral detail, recalling the faces of everyone who's mentioned your small penis.
@@ -648,6 +675,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 		<<if $acceptance_penis_small gte 1000>>
 			Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Small Penis</span> trait.
 			<br><br>
+			Sydney <<if $sydneyromance is 1>>kisses you on the cheek and <</if>> smiles. "I hope I was able to help you."
 		<</if>>
 	<<case 6>>
 		You tell Sydney about your insecurity in visceral detail, recalling the faces of everyone who's mentioned your oversized penis.
@@ -671,6 +699,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			<<set _acceptMessage to true>>
 			Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Big Penis</span> trait.
 			<br><br>
+			Sydney <<if $sydneyromance is 1>>kisses you on the cheek and <</if>> smiles. "I hope I was able to help you."
 		<</if>>
 	<<case 7>>
 		You tell Sydney about your insecurity in visceral detail, recalling the faces of everyone who's mentioned your tiny breasts.
@@ -694,6 +723,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			<<set _acceptMessage to true>>
 			Realisation dawns as you lean back. Your chest is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Tiny Breasts</span> trait.
 			<br><br>
+			Sydney <<if $sydneyromance is 1>>kisses you on the cheek and <</if>> smiles. "I hope I was able to help you."
 		<</if>>	
 	<<case 8>>
 		You tell Sydney about your insecurity in visceral detail, recalling the faces of everyone who's mentioned your small breasts.
@@ -717,6 +747,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			<<set _acceptMessage to true>>
 			Realisation dawns as you lean back. Your <<breasts>> are beautiful. Why should you care what other people say about them? You've gained the <span class="green">Acceptance: Small Breasts</span> trait.
 			<br><br>
+			Sydney <<if $sydneyromance is 1>>kisses you on the cheek and <</if>> smiles. "I hope I was able to help you."
 		<</if>>
 	<<case 9>>
 		You tell Sydney about your insecurity in visceral detail, recalling the faces of everyone who's mentioned your oversized breasts.
@@ -740,6 +771,7 @@ The two of you walk back to the main area of the temple. It takes some time, but
 			<<set _acceptMessage to true>>
 			Realisation dawns as you lean back. Your <<breasts>> are beautiful. Why should you care what other people say about them? You've gained the <span class="green">Acceptance: Big Breasts</span> trait.
 			<br><br>
+			Sydney <<if $sydneyromance is 1>>kisses you on the cheek and <</if>> smiles. "I hope I was able to help you."
 		<</if>>
 <</switch>>
 <<if $phase isnot 2 and $phase isnot 3 and !_acceptMessage>>

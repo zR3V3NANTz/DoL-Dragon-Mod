@@ -200,8 +200,8 @@ Sirris looks exasperated. "Right. I'll have to inform the head of your behaviour
 <!-- add stress every 5 minutes -->
 <<set _stress to Math.trunc(_time_to_pass / 5)>>
 <<stress _stress>>
-<!-- improve science grade with half of efficiency of a proper lesson -->
-<<set _science to _time_to_pass / 10>>
+<!-- improve science grade with same efficiency as studying in the library -->
+<<set _science to _time_to_pass / 20>>
 <<scienceskill _science>>
 
 :: Science Lesson

@@ -304,7 +304,7 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 			<<lstress>><<stress -6>><<ltiredness>><<tiredness -6>>
 		<<else>>
 			The incense seeps into your muscles, soothing you. You let out a comfortable sigh.
-			<<lstress>><<stress -6>><<ltrauma>><<trauma -6>><<gtired>><<tiredness 6>>
+			<<lstress>><<stress -6>><<ltrauma>><<trauma -6>><<gtiredness>><<tiredness 6>>
 		<</if>>
 	<<case 7>>
 		<<if $NPCName[$NPCNameList.indexOf("Alex")].love gte 60 and random(1, 2) is 2>>

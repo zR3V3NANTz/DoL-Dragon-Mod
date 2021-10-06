@@ -659,9 +659,9 @@
 	<<elseif $skin.right_shoulder.pen is "pen" or $skin.right_shoulder.pen is "lipstick" or $skin.right_shoulder.pen is "mud">>
 		and <<he>> wipes away your <<tattoo right_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear right_shoulder>> Your right shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
 	<<elseif !$skin.left_shoulder.pen>>
-		and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
+		and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 	<<elseif $skin.left_shoulder.pen is "pen" or $skin.left_shoulder.pen is "lipstick" or $skin.left_shoulder.pen is "mud">>
-		and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
+		and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 	<<else>>
 		but <<he>> frowns upon seeing your <<tattoo right_shoulder>>. <<He>> tries to wipe it away, but fails. "Maybe next time."
 	<</if>>
@@ -990,7 +990,7 @@ You push Sydney away from you.
 <</if>>
 
 :: Sydney Flirt Book Grab
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionevent to 1>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 You nod. Sydney crouches down and puts <<his>> arms out. "I think I'm strong enough, don't worry."
 <br><br>
 You vault Sydney, and <<he>> gradually stands. You're surprised by how easy <<he>> keeps <<his>> balance. You're able to reach the book like this.
@@ -1037,7 +1037,6 @@ You vault Sydney, and <<he>> gradually stands. You're surprised by how easy <<he
 		<<He>> wobbles a bit, but manages to safely let you down. "Thanks for your help!" You hand <<him>> the book, and <<he>> gets back to work.
 	<</if>>
 <</if>>
-<<unset $corruptionEvent>>
 <br><br>
 <<sydneyOptions>>
 
@@ -1503,7 +1502,11 @@ Sydney looks to you with tearful, pleading eyes.
 <<else>>
 	You keep out of sight, tuning out Leighton's yelling as you wait for <<nnpc_him "Leighton">> to leave the library. You avoid making eye contact with Sydney as best you can as Leighton leads <<nnpc_him "Sydney">> to <<nnpc_his "Leighton">> office.
 <</if>>
-	<br><br>
+<br><br>
+<<if $corruptionRollover is 1>>
+	<<unset $corruptionRollover>>
+	It might've been something in Sydney's face, or just a baseless hunch, but you feel like the next time you see Sydney, <span class="lewd"><<nnpc_he "Sydney">> won't be the same.</span>
+<</if>>
 <<link [[Next|School Library]]>><<endevent>><<set $eventskip to 1>><<set $libraryMoneyStolen to 0>><<set $sydneyPunish to 1>><</link>>
 <br>
 
@@ -1767,7 +1770,7 @@ Leighton takes Sydney by the arm again. You spring into action.
 <br><br>
 "Your punishment will be mutual. You're both to take responsibility for each other, and thus, must keep each other in line. Don't either of you dare be gentle, I'll know if you do and believe me, your punishment won't be nearly as lenient or pleasant." Leighton looks to you, and waits expectantly. "What are you waiting for? If you don't, I will."
 <br><br>
-<<link [[Reluctantly spank Sydney|Sydney Leighton Spank 2]]>><<npcincr Sydney love 1>><<npcincr Sydney purity 2>><</link>><<glove>><<gspurity>><<sydneyWarning>>
+<<link [[Reluctantly spank Sydney|Sydney Leighton Spank 2]]>><<npcincr Sydney love 1>><<npcincr Sydney purity 2>><</link>><<glove>><<gspurity>>
 <br>
 <<if $promiscuity gte 15>>
 	<<link [[Spank Sydney hard|Sydney Leighton Spank 2]]>><<set $phase to 1>><<npcincr Sydney purity -5>><</link>><<llspurity>><<sydneyWarning true>><<promiscuous2>>
@@ -1918,9 +1921,9 @@ Sydney's soft voice asks. All you can do is murmur that, "Yes, Leighton is gone.
 <br><br>
 <<link [[Reassure Sydney|Sydney Leighton Spank 4]]>><<set $phase to 1>><<npcincr Sydney love 1>><</link>><<glove>>
 <br>
-<<link [[Scold Sydney|Sydney Leighton Spank 4]]>><<set $phase to 2>><<npcincr Sydney purity 2>><</link>><<gspurity>><<sydneyWarning>>
+<<link [[Scold Sydney|Sydney Leighton Spank 4]]>><<set $phase to 2>><<npcincr Sydney purity 2>><</link>><<gspurity>>
 <br>
-<<link [[Thank Sydney|Sydney Leighton Spank 4]]>><<set $phase to 3>><<npcincr Sydney purity -2>><</link>><<lspurity>><<sydneyWarning>>
+<<link [[Thank Sydney|Sydney Leighton Spank 4]]>><<set $phase to 3>><<npcincr Sydney purity -2>><</link>><<lspurity>>
 <br>
 
 :: Sydney Leighton Spank 4
@@ -1951,8 +1954,8 @@ Sydney's soft voice asks. All you can do is murmur that, "Yes, Leighton is gone.
 	<<else>>
 		"Thanks for 'keeping me in line' and punishing me," you say suggestively.
 	<</if>>
-	<br><br>
 	<<if _sydneyStatus.includes("corrupt")>>
+		<br><br>
 		<<He>> pulls you in with one arm and laughs. "You're really something else."
 	<<else>>
 		<<His>> face turns red, and <<he>> looks away for a moment.
@@ -1969,10 +1972,22 @@ Sydney leaves your sight, and soon you feel something cold, wet, and soothing pr
 <<set $pain -= 20>><<llpain>>
 <br><br>
 <<if $sydneyGroped is 1>>
-<<unset $sydneyGroped>>
-	<<if _sydneyStatus.includes("corrupt")>>
+	<<unset $sydneyGroped>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		<<He>> spends quite a bit of time tending to you. "Back then," <<he>> says, "when you were hitting me, and you... rubbed me. It felt good." <<He>> begins to fondle your <<genitals>>, a fascinated look on <<his>> face. "Was it like this?" <<arousal 10000>><<ggarousal>>
+		<br><br>
+		<<orgasm>>
+		You arch your back, stifling a moan as <<he>> continues to gently massage you.
+		<br><br>
+		"It felt good for you too?" <<he>> asks, staring at your <<genitals>>. "I'm... glad. And also..." <<He>> trails off, biting <<his>> lip. "Things like this... I don't know a lot about them. Or... didn't know. Not until I met you."
+		<br><br>
+		<<He>> takes a breath. "You're... everything the temple told me to be afraid of. You're sinful, lustful, dangerous. But I think..." <<He>> gives you a lascivious smile. "I'd like to give it a shot, living like you. <span class="lewd">Thanks for opening my eyes.</span>"
+		<br><br>
+	<<elseif _sydneyStatus.includes("corrupt")>>
 		<<He>> spends quite a bit of time tending to you. "I guess it's only fair if I get to feel you up a little after the handiwork you just pulled on me," <<he>> coos as <<he>> begins to fondle your <<genitals>>. <<arousal 2000>><<ggarousal>>
 		<<if $arousal gte $arousalmax>>
+		<br><br>
 			<<orgasm>>
 			You arch your back, stifling a moan as <<he>> continues to gently massage you.
 			<br><br>
@@ -1981,6 +1996,18 @@ Sydney leaves your sight, and soon you feel something cold, wet, and soothing pr
 		<br><br>
 	<<elseif _sydneyStatus.includes("pure")>>
 		<<He>> looks at your <<genitals>> with curiosity. "Uhm... what did you do to me, by the way? When you were hitting me, and you..." <<he>> stammers off. After a few moments, <<he>> manages to speak coherently again. "It... it felt really good..."
+		<br><br>
+	<</if>>
+<<else>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		<<He>> spends quite a bit of time tending to you. "I'm sorry," <<he>> says, "I should stop by now. It's all applied." Despite <<his>> words, <<he>> continues to fondle your <<genitals>>, a fascinated look on <<his>> face. "Does this feel... good? I'm sorry, I shouldn't..." <<arousal 10000>><<ggarousal>>
+		<<orgasm>>
+		You arch your back, stifling a moan as <<he>> continues to gently massage you. <<He>> freezes, looking at your convulsing body in shock.
+		<br><br>
+		"It did feel good, huh?" <<he>> asks, staring at your <<genitals>>. "I'm... glad. And also..." <<He>> trails off, biting <<his>> lip. "Things like this... I don't know a lot about them. Or... didn't know. Not until I met you."
+		<br><br>
+		<<He>> takes a breath. "You're... everything the temple told me to be afraid of. You're sinful, lustful, dangerous. But I think..." <<He>> gives you a lascivious smile. "I'd like to give it a shot, living like you. <span class="lewd">Thanks for opening my eyes.</span>"
 		<br><br>
 	<</if>>
 <</if>>
@@ -2036,7 +2063,7 @@ After a moment, you can hear Sydney's cries resume. They sound much more agonize
 <br>
 
 :: Sydney Peek Confront
-<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
+<<schooleffects>><<effects>><<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>><<set $purityEvent to 1>>
 <<if $submissive gte 1150>>
 	"I... I saw you peek in on me," you say.
 <<elseif $submissive lte 850>>
@@ -2059,7 +2086,7 @@ After a moment, you can hear Sydney's cries resume. They sound much more agonize
 	<<link [[Proposition Sydney|Sydney Peek Proposition]]>><<npcincr Sydney lust 1>><<npcincr Sydney purity -2>><</link>><<gslust>><<lspurity>><<promiscuous1>><<sydneyWarning>>
 	<br>
 <</if>>
-<<link [[Scold Sydney|Sydney Peek Scold]]>><<npcincr Sydney purity 2>><</link>><<gspurity>>
+<<link [[Scold Sydney|Sydney Peek Scold]]>><<npcincr Sydney purity 2>><</link>><<gspurity>><<sydneyWarning>>
 <br>
 <<link [[Reassure Sydney|Sydney Peek Reassure]]>><<npcincr Sydney love 1>><</link>><<glove>>
 <br>
@@ -2067,8 +2094,10 @@ After a moment, you can hear Sydney's cries resume. They sound much more agonize
 :: Sydney Peek Proposition
 <<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
 You place your hands on Sydney's chest. "How about I go back in there, and you can undress me yourself? Then we can have some real fun." <<promiscuity1>>
-<br><br>
-<<if _sydneyStatus.includes("corrupt")>>
+<<if $corruptionRollover is 1>>
+	<<unset $corruptionRollover>>
+	<<His>> face turns even more red, but <<he>> smiles. "If you're offering, then maybe... I don't regret it." <<He>> darts <<his>> hand forward and grabs yours before <<he>> loses <<his>> nerve, and you lead <<him>> to the changing room. <span class="lewd"><<He>> seems like <<hes>> opened <<his>> eyes to lewdity.</span>
+<<elseif _sydneyStatus.includes("corrupt")>>
 	<<He>> smiles. "I regret nothing." <<He>> takes you by the hand, leading you to the changing room.
 <<else>>
 	<<His>> face turnes even more red. "I... you... undress... what?" Before <<he>> can ask any coherent questions, you take <<him>> by the hand and lead <<him>> to the changing room.
@@ -2090,7 +2119,11 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 	"I expect that kind of thing from others, but not you," you say.
 <</if>>
 <br><br>
-<<if _sydneyStatus.includes("corrupt")>>
+<<if $purityRollover is 1>>
+	<<His>> smile immediately fades, along with <<his>> confident demeanor. "You're right. I... I shouldn't have done that. I forgot who I was."
+	<br><br>
+	<<He>> looks away, rubbing <<his>> arm. "I don't want to make you uncomfortable. I've been acting... sinfully lately. I think... <span class="gold">I need to rethink some parts of myself.</span>" <<He>> nods at you. "I promise, I'll become better. Please find it in you to forgive me."
+<<elseif _sydneyStatus.includes("corrupt")>>
 	<<His>> smile immediately fades, along with <<his>> confident demeanor. "You're right. I'm forgetting who I am. I'm sorry."
 <<else>>
 	<<He>> looks ashamed of <<himself>>. "I know. I've committed a sin, and I will atone. Please find it in you to forgive me."
@@ -2122,9 +2155,8 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 <<sydneyOptions>>
 
 :: Sydney Peek Sex
-<<NPCStatusCheck "Sydney">>
+<<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<if $sexstart is 1>>
-	<<set $corruptionEvent to 1>>
 	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -2168,14 +2200,19 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			"Th-that was... incredible," <<he>> murmurs. "And sinful..."
-		<<case "corrupt" "corruptLust">>
-			"I'm glad my love for you is being rewarded," <<he>> proclaims with a smug smile.		
-		<<default>> 
-			"In my shop, on my time, in my changing room..." <<he>> giggles.
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		"Th-that was incredible," <<he>> murmurs. "I want... I want to do it again. And... again." <<He>> gazes into your eyes. "<span class="lewd">I feel like a whole world just opened up.</span>"
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				"Th-that was... incredible," <<he>> murmurs. "And sinful..."
+			<<case "corrupt" "corruptLust">>
+				"I'm glad my love for you is being rewarded," <<he>> proclaims with a smug smile.		
+			<<default>> 
+				"In my shop, on my time, in my changing room..." <<he>> giggles.
+		<</switch>>
+	<</if>>
 	<<if _sydneyChastity and $sydneyChastityKnown>>
 		<<sydneyChastityMessage>><<npcincr Sydney lust 3>><<ggslust>>
 	<<else>>
@@ -2186,36 +2223,46 @@ You place your hands on Sydney's chest. "How about I go back in there, and you c
 	<<sydneyFinish>>
 	<<tearful>> you stand up. Sydney separates from you despite reluctance.
 <<elseif $enemyhealth lte 0>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. <<He>> looks down in shame. "I... I think I've had enough..."
-			<<else>>
-				"H-hey! Stop! Please!" Sydney quickly separates from you. "Th-that really hurt... I mean, I still kind of liked it, but..." <<his>> face flushes, and <<he>> looks away. "M...maybe we can finish this some other time..."
-			<</if>>
-		<<case "corrupt" "corruptLust">>
-			Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."		
-		<<default>>
-			"Ouch! Okay, not so rough!" <<He>> quickly backs away from you. "I think we need to set some guidelines on how much I can take..."
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. "Th-that was..." <<He>> gazes into your eyes. "I think I like it when you're rough with me. <span class="lewd">I feel like a whole world just opened up.</span>"
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. <<He>> looks down in shame. "I... I think I've had enough..."
+				<<else>>
+					"H-hey! Stop! Please!" Sydney quickly separates from you. "Th-that really hurt... I mean, I still kind of liked it, but..." <<his>> face flushes, and <<he>> looks away. "M...maybe we can finish this some other time..."
+				<</if>>
+			<<case "corrupt" "corruptLust">>
+				Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."
+			<<default>>
+				"Ouch! Okay, not so rough!" <<He>> quickly backs away from you. "I think we need to set some guidelines on how much I can take..."
+		<</switch>>
+	<</if>>
 	<<npcincr Sydney lust 5>><<gglust>>
 	<br><br>
 	<<tearful>> you stand up. Sydney does the same.
 <<else>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				"S...stop? But I... I'm..." <<he>> stammers off while still clinging on to you. "O-okay..."
-			<<else>>
-				Sydney looks at you nervously. "I didn't... do anything wrong, did I?"
-			<</if>>
-		<<case "corrupt">>
-			Sydney pouts, but steps away from you. "We need to finish this later," <<he>> says. "Please?"
-		<<case "corruptLust">>
-			Sydney groans and pouts. "You're so mean! But fine. We're finishing this later, though."
-		<<default>>
-			"Oh. Okay, we can stop." <<He>> looks disappointed for a brief moment, but still smiles at you.
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		"S...stop? But we..." <<he>> pouts, disappointed. "Can we... finish this later? Please? I... <span class="lewd">I feel like a whole world just opened up.</span> I want to finish this."
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					"S...stop? But I... I'm..." <<he>> stammers off while still clinging on to you. "O-okay..."
+				<<else>>
+					Sydney looks at you nervously. "I didn't... do anything wrong, did I?"
+				<</if>>
+			<<case "corrupt">>
+				Sydney pouts, but steps away from you. "We need to finish this later," <<he>> says. "Please?"
+			<<case "corruptLust">>
+				Sydney groans and pouts. "You're so mean! But fine. We're finishing this later, though."
+			<<default>>
+				"Oh. Okay, we can stop." <<He>> looks disappointed for a brief moment, but still smiles at you.
+		<</switch>>
+	<</if>>
 	<<npcincr Sydney lust 5>><<npcincr Sydney purity 2>><<gglust>><<gspurity>>
 	<br><br>
 	<<tearful>> you stand up. Sydney does the same.
@@ -2556,9 +2603,8 @@ You awaken some time later. Sydney is nowhere to be seen.
 <</if>>
 
 :: Sydney Reward Sex
-<<NPCStatusCheck "Sydney">>
+<<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<if $sexstart is 1>>
-	<<set $corruptionEvent to 1>>
 	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -2601,14 +2647,19 @@ You awaken some time later. Sydney is nowhere to be seen.
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			"Th-that was... incredible," <<he>> murmurs. "And sinful..."
-		<<case "corrupt" "corruptLust">>
-			"I'm glad my love for you is finally being rewarded," <<he>> proclaims with a smug smile.		
-		<<default>>
-			"In my shop, on my time, in my changing room..." <<he>> giggles.
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		"Th-that was incredible," <<he>> murmurs. "I want... I want to do it again. And... again." <<He>> gazes into your eyes. "<span class="lewd">I feel like a whole world just opened up.</span>"
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				"Th-that was... incredible," <<he>> murmurs. "And sinful..."
+			<<case "corrupt" "corruptLust">>
+				"I'm glad my love for you is being rewarded," <<he>> proclaims with a smug smile.		
+			<<default>> 
+				"In my shop, on my time, in my changing room..." <<he>> giggles.
+		<</switch>>
+	<</if>>
 	<<if _sydneyChastity and $sydneyChastityKnown>>
 		<<sydneyChastityMessage>><<npcincr Sydney lust 3>><<ggslust>>
 	<<else>>
@@ -2619,36 +2670,46 @@ You awaken some time later. Sydney is nowhere to be seen.
 	<<sydneyFinish>>
 	<<tearful>> you stand up. Sydney reluctantly separates from you.
 <<elseif $enemyhealth lte 0>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. <<He>> looks down in shame. "I... I think I've had enough..."
-			<<else>>
-				"H-hey! Stop! Please!" Sydney quickly separates from you. "Th-that really hurt... I mean, I still kind of liked it, but..." <<his>> face flushes, and <<he>> looks away. "M...maybe we can finish this some other time..."
-			<</if>>
-		<<case "corrupt" "corruptLust">>
-			Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."		
-		<<default>>
-			"Ouch! Okay, not so rough!" <<He>> quickly backs away from you. "I think we need to set some guidelines on how much I can take..."
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. "Th-that was..." <<He>> gazes into your eyes. "I think I like it when you're rough with me. <span class="lewd">I feel like a whole world just opened up.</span>"
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					Sydney lets out a pained moan, and quickly covers <<his>> mouth to stifle it. <<He>> looks down in shame. "I... I think I've had enough..."
+				<<else>>
+					"H-hey! Stop! Please!" Sydney quickly separates from you. "Th-that really hurt... I mean, I still kind of liked it, but..." <<his>> face flushes, and <<he>> looks away. "M...maybe we can finish this some other time..."
+				<</if>>
+			<<case "corrupt" "corruptLust">>
+				Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."
+			<<default>>
+				"Ouch! Okay, not so rough!" <<He>> quickly backs away from you. "I think we need to set some guidelines on how much I can take..."
+		<</switch>>
+	<</if>>
 	<<npcincr Sydney lust 5>><<gglust>>
 	<br><br>
 	<<tearful>> you stand up. Sydney does the same.
 <<else>>
-	<<switch _sydneyStatus>>
-		<<case "pure" "pureLust">>
-			<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
-				"S...stop? But I... I'm..." <<he>> stammers off while still clinging on to you. "O-okay..."
-			<<else>>
-				Sydney gives you a nervous look. "I didn't... do anything wrong, did I?"
-			<</if>>
-		<<case "corrupt">>
-			Sydney pouts, but steps away from you. "We need to finish this later," <<he>> says. "Please?"
-		<<case "corruptLust">>
-			Sydney groans and pouts. "You're so mean! But fine. We're finishing this later, though."
-		<<default>>
-			"Oh. Okay, we can stop." <<He>> looks disappointed for a moment, but still smiles at you.
-	<</switch>>
+	<<if $corruptionRollover is 1>>
+		<<unset $corruptionRollover>>
+		"S...stop? But we..." <<he>> pouts, disappointed. "Can we... finish this later? Please? I... <span class="lewd">I feel like a whole world just opened up.</span> I want to finish this."
+	<<else>>
+		<<switch _sydneyStatus>>
+			<<case "pure" "pureLust">>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					"S...stop? But I... I'm..." <<he>> stammers off while still clinging on to you. "O-okay..."
+				<<else>>
+					Sydney looks at you nervously. "I didn't... do anything wrong, did I?"
+				<</if>>
+			<<case "corrupt">>
+				Sydney pouts, but steps away from you. "We need to finish this later," <<he>> says. "Please?"
+			<<case "corruptLust">>
+				Sydney groans and pouts. "You're so mean! But fine. We're finishing this later, though."
+			<<default>>
+				"Oh. Okay, we can stop." <<He>> looks disappointed for a brief moment, but still smiles at you.
+		<</switch>>
+	<</if>>
 	<<npcincr Sydney lust 5>><<npcincr Sydney purity 2>><<gglust>><<gspurity>>
 	<br><br>
 	<<tearful>> you stand up. Sydney does the same.
@@ -2717,7 +2778,7 @@ Sydney stretches and yawns.
 
 :: Canteen Lunch Sydney
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<NPCStatusCheck "Sydney">>
-<<npc "Sydney">><<person1>><<set $corruptionEvent to 1>>
+<<npc "Sydney">><<person1>>
 <<if $phase2 is 1>>
 	You enter the canteen with Sydney, helping <<him>> carry in <<his>> books. You take your seats in an isolated corner.
 	<br><br>
@@ -2852,6 +2913,7 @@ Sydney stretches and yawns.
 				<br>
 			<</if>>
 		<<elseif random(1, 100) gte 96 and !$sydney.glasses.includes("broken")>>
+			<<set $corruptionEvent to 1>>
 			<<generatey2>><<person1>>
 			Someone quickly approaches Sydney from behind.
 			<<if $sydney.glasses is "glasses" or $sydney.glasses is "playerbought">>
@@ -2882,7 +2944,7 @@ Sydney stretches and yawns.
 				<<else>>
 					Sydney looks to you. <<person1>><<He>> seems unsure of what to do.
 					<br><br>
-					<<link [[Encourage|Sydney Canteen Encourage]]>><<npcincr Sydney purity -5>><</link>><<llspurity>><<promiscuous1>>
+					<<link [[Encourage|Sydney Canteen Encourage]]>><<npcincr Sydney purity -5>><</link>><<llspurity>><<promiscuous1>><<sydneyWarning>>
 					<br>
 					<<link [[Intervene|Sydney Canteen Intervene]]>><<npcincr Sydney purity 2>><<npcincr Sydney love 1>><</link>><<gspurity>><<glove>>
 					<br>
@@ -3049,9 +3111,9 @@ Sydney's pen trails up your arm,
 <<elseif $skin.right_shoulder.pen is "pen" or $skin.right_shoulder.pen is "lipstick" or $skin.right_shoulder.pen is "mud">>
 	and <<he>> wipes away your <<tattoo right_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear right_shoulder>> Your right shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
 <<elseif !$skin.left_shoulder.pen>>
-	and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
+	and <<he>> scribbles something on your left shoulder. It now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 <<elseif $skin.left_shoulder.pen is "pen" or $skin.left_shoulder.pen is "lipstick" or $skin.left_shoulder.pen is "mud">>
-	and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney right_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly right_shoulder "pen">><</if>>
+	and <<he>> wipes away your <<tattoo left_shoulder>>, scribbling something of <<his>> own.<<bodywriting_clear left_shoulder>> Your left shoulder now reads: <<if $sydneyromance is 1>><<bodywriting_npc_sydney left_shoulder "pen">><<else>><<bodywriting_npc_sydney_friendly left_shoulder "pen">><</if>>
 <<else>>
 	but <<he>> frowns upon seeing your <<tattoo right_shoulder>>. <<He>> tries to wipe it away, but fails. "Maybe next time."
 <</if>>
@@ -3077,7 +3139,9 @@ Sydney's pen trails up your arm,
 <</if>>
 <br><br><<person1>>
 
-<<if _sydneyStatus.includes("corrupt")>>
+<<if $corruptionRollover is 1>>
+	Sydney frowns in thought. After a moment, <<he>> casually
+<<elseif _sydneyStatus.includes("corrupt")>>
 	Sydney shrugs, and casually
 <<else>>
 	Sydney looks at the ground. After a moment's hesitation, <<he>>
@@ -3099,14 +3163,17 @@ Sydney's pen trails up your arm,
 <<promiscuity1>>
 The <<person2>><<person>> looks surprised, but smiles. "Alright, a deal's a deal. Thanks for the peek." <<He>> picks Sydney's glasses up off the ground and hands them to <<person1>><<him>> before leaving.
 <br><br>
-<<if _sydneyStatus.includes("corrupt")>>
+<<if $corruptionRollover is 1>>
+	Sydney sits back down and continues eating. "It saved me my glasses," <<he>> muttered. "And... you said it was a good idea." <<He>> swallows <<his>> food and smiles at you. "Is that what it's like to live in sin? It's.. convenient. <span class="lewd">I feel like my eyes have been opened.</span>" <<He>> finishes <<his>> food.
+<<elseif _sydneyStatus.includes("corrupt")>>
 	Sydney sits back down and finishes eating as if nothing had happened.
 <<else>>
 	Sydney sits back down and finishes eating, trying to avoid eye contact.
 <</if>>
 <<if $sydneyromance is 1>>
-	"I'd prefer if you were the only one who could see that."
+	"<<if $corruptionRollover is 1>>Of course, I'd still<<else>>I'd<</if>> prefer if you were the only one who could see that."
 <</if>>
+<<unset $corruptionRollover>>
 <<He>> yawns. "I've got to get back to the library. Thanks for the company." <<He>> speedwalks out of the canteen<<if $sydneyromance is 1>>, blowing you a kiss on the way out<</if>>.
 <br><br>
 <<link [[Next|Canteen]]>><<endevent>><</link>>
@@ -3274,6 +3341,7 @@ You get on your knees and crawl under the counter.
 	<<promiscuity4>><<npcincr Sydney purity -2>><<lspurity>>
 
 	<<if ["early","late"].includes($schoolstate)>>
+		<!-- I'm not sure how necessary this is, since Sydney can't be in the library if $schoolstate is early or late. I'm hesitant to remove it, though. Worst case scenario, some lines can be salvaged for a different scene.-->
 		<<He>> glances around the library, noticing how empty it is, before sliding off <<his>> chair and joining you under the counter. "Wouldn't be fair if only I got off," <<he>> whispers. <<He>> clambers over you and gently pushes you into a lying position, before getting on top of you. "But if you're that eager to taste me, I can think of something."
 		<br><br>
 
@@ -3329,8 +3397,8 @@ You get on your knees and crawl under the counter.
 
 :: Sydney Crawl Sex
 <<NPCStatusCheck "Sydney">>
+<<set $corruptionEvent to 1>>
 <<if $sexstart is 1>>
-	<<set $corruptionEvent to 1>>
 	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
@@ -3385,7 +3453,7 @@ You get on your knees and crawl under the counter.
 	<<sydneyFinish>>
 	<<tearful>> you stand up. Sydney reluctantly separates from you.
 <<elseif $enemyhealth lte 0>>
-	Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."		
+	Sydney backs away from you, breathing heavily. "I love it when you're rough with me," <<he>> says, "but we should save the rest for later."
 	<<npcincr Sydney lust 5>><<gglust>>
 	<br><br>
 	<<tearful>> you stand up. Sydney does the same.
@@ -3426,9 +3494,10 @@ You get on your knees and crawl under the counter.
 <<sydneyOptions>>
 
 :: Sydney Crawl Oral
-<<NPCStatusCheck "Sydney">>
+<<NPCStatusCheck "Sydney">><<set $corruptionEvent to 1>>
 <<if $sexstart is 1>>
 	<<set $sexstart to 0>>
+	<<set $sydneyDaily.sex += 1>><<set $sydney.sexTotal += 1>>
 	<<consensual>>
 	<<set $consensual to 1>>
 	<<neutral 1>>
@@ -3628,9 +3697,9 @@ You get on your knees and crawl under the counter.
 	<</if>>
 	<<if $sydneyOral.Student is 1>>
 		<<if $sydneyOral.Book is 2>>
-			The student at the counter, a <<person2>><<personsimple>>, makes a disappointed sound. "You messed up my face," <<he>> complains. "What's wrong with you?"
+			The student at the counter makes a disappointed sound. "You messed up my face," <<he>> complains. "What's wrong with you?"
 		<<else>>
-			The student at the counter, a <<person2>><<personsimple>>, coughs. "Are you... okay? What's wrong?"
+			The student at the counter coughs. "Are you... okay? What's wrong?"
 		<</if>>
 		<br><br>
 
@@ -3653,18 +3722,27 @@ You get on your knees and crawl under the counter.
 			<br><br>
 
 			Sydney leans against you. "That was... with so many people around... So sinful..."
+			<<if $corruptionRollover is 1>>
+				<<unset $corruptionRollover>>
+				<<He>> gives you a surprisingly lascivious smile. "Can we do that again tomorrow? Please? I..." <<He>> gazes into your eyes. "<span class="lewd">I feel like you've opened a whole new world for me.</span>"
+			<</if>>
 		<</if>>
 		<<person1>>
 	<<else>>
 		<<if !["early","late"].includes($schoolstate)>>
-			<<switch _sydneyStatus>>
-				<<case "pure" "pureLust">>
-					"Th-that was... incredible," <<he>> murmurs. "And sinful... Anyone could've heard..."
-				<<case "corrupt" "corruptLust">>
-					"So many people around," <<he>> says in awe. "That makes it so much better. We need to try this in more populated places."		
-				<<default>>
-					"They'd never look at us the same way again if they knew..." <<he>> giggles.
-			<</switch>>
+			<<if $corruptionRollover is 1>>
+				<<unset $corruptionRollover>>
+				"They'd never look at us the same way again if they knew..." <<he>> giggles. "There were so many people around. So many chances to..." <<He>> shivers. "Can we do that again tomorrow? Please? I..." <<He>> gazes into your eyes. "<span class="lewd">I feel like you've opened a whole new world for me.</span>"
+			<<else>>
+				<<switch _sydneyStatus>>
+					<<case "pure" "pureLust">>
+						"Th-that was... incredible," <<he>> murmurs. "And sinful... Anyone could've heard..."
+					<<case "corrupt" "corruptLust">>
+						"So many people around," <<he>> says in awe. "That makes it so much better. We need to try this in more populated places."		
+					<<default>>
+						"They'd never look at us the same way again if they knew..." <<he>> giggles.
+				<</switch>>
+			<</if>>
 		<<else>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>

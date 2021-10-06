@@ -180,13 +180,13 @@
 		<<if $args[0] is "capitalise">>
 			<<set _output_line to _output_line[0].toUpperCase() + _output_line.substring(1)>>
 		<</if>>
-	<<elseif $penissize is -1>>
+	<<elseif $penissize lte -1>>
 		/* micro pp */
-		<<set _possibilities to _micropenis_all.concat(_micro_penis_all)>>
+		<<set _possibilities to _micropenis_all>>
 		<<set _output_line to _possibilities.pluck()>>
 	<<else>>
 		/* normal pp */
-		<<set _possibilities to _normal_penis_all.concat(_normal_penis_all)>>
+		<<set _possibilities to _normal_penis_all>>
 		<<set _output_line to _possibilities.pluck()>>
 	<</if>>
 <</widget>>
