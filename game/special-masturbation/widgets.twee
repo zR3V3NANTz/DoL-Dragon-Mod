@@ -100,19 +100,27 @@
 		<<recordVaginalSperm "pc" "pc" "human">>
 		<<unset $semenInVagina>>
 	<</if>>
+	<<unset $ballsText>>
+	<<unset $fingersInVagina>>
+	<<unset $vaginaFingerLimit>>
+	<<unset $selfsuckDepth>>
+	<<unset $selfsuckLimit>>
+	<<unset $penisHeight>>
+	<<unset $canSelfSuckPenis>>
+	<<unset $canSelfSuckVagina>>
 <</widget>>
 
 <<widget "masturbationstart">>
 	<<if $leftarm isnot "bound">>
 		<<set $leftarm to 0>>
-		<<set $leftactiondefault to "mrest">>
 		<<set $leftaction to 0>>
 	<</if>>
+	<<set $leftactiondefault to "mrest">>
 	<<if $rightarm isnot "bound">>
 		<<set $rightarm to 0>>
-		<<set $rightactiondefault to "mrest">>
 		<<set $rightaction to 0>>
 	<</if>>
+	<<set $rightactiondefault to "mrest">>
 	<<set $mouth to 0>>
 	<<set $mouthactiondefault to "mrest">>
 	<<set $mouthaction to 0>>
@@ -123,6 +131,22 @@
 	<<set $anusaction to 0>>
 	<<set $anususe to 0>>
 	<<set $masturbationorgasmsemen to 0>>
+
+	<<set $fingersInVagina to 0>>
+	<<set $vaginaFingerLimit to 3>>
+	<<if $player.virginity.vaginal is true and $sexStats.vagina.pregnancy.totalBirthEvents is 0>>
+		<<set $vaginaFingerLimit -= 1>>
+	<</if>>
+	
+	/* note: we're setting $ballssize here because the variable exists but isn't used anywhere else YET. when a true implementation is attempted, remove this. */
+	<<set $ballssize to $penissize>>
+	<<silently>>
+		<<ballsize>><<set $ballsText to _text_output + " ">>
+		<<testicles>><<set $ballsText += _text_output>>
+	<</silently>>
+
+	<<selfsuckchecks>>
+
 	<<if !$worn.genitals.type.includes("chastity")>>
 		You fondle your <<genitals 1>>.
 		<<if $purity gte 990>>
@@ -147,5 +171,29 @@
 				<img id="maparrow" @src="'img/misc/icon/masturbationbowl' + _masturbation_temp + '.png'">
 			<</if>>
 		</div>
+	<</if>>
+<</widget>>
+
+/* these checks only determine if it could be possible. they do not check for current obstructions like clothing or hands. */
+<<widget "selfsuckchecks">>
+	<<if $worn.genitals.type.includes("chastity")>>
+		<<set $canSelfSuckVagina to false>>
+		<<set $canSelfSuckPenis to false>>
+	<<else>>
+		<<set $_danceSkillLimit to Math.clamp(Math.ceil((800 - $danceskill)/200), 0, 4)>>
+		<<set $_catFlexLimit to (6 - $cat)>>
+		<<if $player.penisExist>>
+			/* <<set setup.penisHeightLevels to ["base", "waist", "midriff", "chest"]>> */
+			/* the above comment is a reminder of how high the player's penis can reach. however, it's not useful in the code at the moment. */
+
+			/* lower number means harder to reach; the player has to get their head lower down to reach it. */
+			<<set $penisHeight to [0,0,0,1,1,2,3][$penissize + 2]>>
+			<<set $canSelfSuckPenis to ($penisHeight gte $_danceSkillLimit) or ($penisHeight gte $_catFlexLimit)>>
+			<<set $selfsuckLimit to $penisHeight - ($_danceSkillLimit lt $_catFlexLimit ? $_danceSkillLimit : $_catFlexLimit)>>
+			<<set $selfsuckDepth to 0>>
+		<</if>>
+		<<if $player.vaginaExist>>
+			<<set $canSelfSuckVagina to ((0 gte $_danceSkillLimit) or (0 gte $_catFlexLimit))>>
+		<</if>>
 	<</if>>
 <</widget>>

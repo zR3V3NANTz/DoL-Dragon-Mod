@@ -124,7 +124,11 @@
 					<<set $player.bodyliquid.face.semen += 1>>
 				<</if>>
 			<<elseif $mouth is "mpenis">>
-				<span class="pink">You are overcome by sensation and ejaculate in your mouth, forcing you to quickly drink it down.</span>
+				<<if $selfsuckDepth gte 2>>
+					<span class="pink">You are overcome by sensation. Your cum pumps up the length of your penis and flows straight down your throat.</span>
+				<<else>>
+					<span class="pink">You are overcome by sensation and ejaculate in your mouth, forcing you to quickly drink it down.</span>
+				<</if>>
 				<<set $player.bodyliquid.mouth.semen += 1>>
 			<<else>>
 				<span class="pink">You are overcome by sensation. A surge of cum erupts from your penis<<if $worn.genitals.type.includes("chastity")>> into your $worn.genitals.name<</if>>.</span>
@@ -408,26 +412,24 @@
 <</widget>>
 
 <<widget "breastfeed">>
-<<set _milk_temp to random(1, 5)>>
-<<if $cow gte 6>>
-	<<set _milk_temp *= 2>>
-<</if>>
-<<if $milk_amount gte _milk_temp>>
-<<set $milk_produced_stat += Math.trunc(_milk_temp)>>
-<<else>>
-<<set $milk_produced_stat += Math.trunc($milk_amount)>>
-<</if>>
-<<milkvolume 1>>
-<<if $masturbation_bowl is 1 and $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1>>
-	<<if $milk_amount gte _milk_temp>>
-	<<set $masturbation_milk += _milk_temp>>
-	<<else>>
-	<<set $masturbation_milk += $milk_amount>>
+	<<set $_milk_released to random(1, 5)>>
+	<<if $cow gte 6>>
+		<<set $_milk_released *= 2>>
 	<</if>>
-<</if>>
 
-<<set $milk_amount -= _milk_temp>>
+	/* if the player doesn't have enough milk, set $_milk_released to whatever they have left */
+	<<if $milk_amount lt $_milk_released>>
+		<<set $_milk_released to $milk_amount>>
+	<</if>>
+	<<set $milk_produced_stat += Math.trunc($_milk_released)>>
 
+	<<milkvolume 1>>
+
+	<<if $masturbation_bowl is 1 and $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1>>
+		<<set $masturbation_milk += $_milk_released>>
+	<</if>>
+
+	<<set $milk_amount -= $_milk_released>>
 <</widget>>
 
 <<widget "orgasmhour">>
@@ -495,35 +497,36 @@
 <</widget>>
 
 <<widget "orgasmsemen">>
-	<<set _temp_semen to 30>>
-	<<set _temp_semen += parseFloat(($semen_volume / 30).toFixed(1))>>
+	<<set $_semen_released to 30>>
+	<<set $_semen_released += ($semen_volume / 30)>>
 	<<if $femaleclimax is 1>>
-		<<set _temp_semen = parseFloat((_temp_semen / 30).toFixed(1))>>
+		<<set $_semen_released /= 30>>
 	<</if>>
 	<<if $orgasmtrait gte 1>>
-		<<set _temp_semen to Math.trunc(_temp_semen * 2.5)>>
+		<<set $_semen_released *= 2.5>>
 	<</if>>
 	<<if $cow gte 6>>
-		<<set _temp_semen *= 2>>
+		<<set $_semen_released *= 2>>
 	<</if>>
+
+	/* if the player doesn't have enough semen, set $_semen_released to whatever they have left */
+	<<if $semen_amount lt $_semen_released>>
+		<<set $_semen_released to $semen_amount>>
+	<</if>>
+
+	<<set $_semen_released to parseFloat($_semen_released).toFixed(1)>>
+
 	<<if $masturbation_bowl is 1 and $semen_amount gte 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $mouth isnot "mpenis">>
-		<<if $semen_amount gte _temp_semen>>
-			<<set $masturbation_semen += _temp_semen>>
-		<<else>>
-			<<set $masturbation_semen += $semen_amount>>
-		<</if>>
-	<span class="gold">You've gathered <<print ($masturbation_semen).toFixed(1)>> ml of <<semen>>.</span>
+		<<set $masturbation_semen += $_semen_released>>
+		<span class="gold">You've gathered <<print ($masturbation_semen).toFixed(1)>> ml of <<semen>>.</span>
 	<</if>>
-	<<if $semen_amount gte _temp_semen>>
-		<<set $semen_produced_stat += _temp_semen>>
-		<<set $semen_amount -= _temp_semen>>
-	<<else>>
-		<<set $semen_produced_stat += $semen_amount>>
-		<<set $semen_amount to 0>>
-	<</if>>
+
 	<<if $femaleclimax isnot 1>>
 		<<semenvolume 1>>
 	<</if>>
+
+	<<set $semen_produced_stat += $_semen_released>>
+	<<set $semen_amount -= $_semen_released>>
 <</widget>>
 
 <<widget "wetnessCalculate">>
