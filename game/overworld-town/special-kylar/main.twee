@@ -1378,14 +1378,14 @@ You and Kylar lay there, entangled in each other's arms.
 <<if $phase is 1>>
 	You're partially surprised <<if $arousal gte 6000>>and a little disappointed <</if>>Kylar doesn't try to get handsy with you- <<his>> arms remain wrapped around your <<if $submissive gte 1150 or $kylarDaily.sleepRape is true>>shoulders<<else>>waist<</if>>.
 <</if>>
-You can feel <<his>> breath, now stabilized and calm, against your skin.
+You can feel <<his>> breath, now stabilised and calm, against your skin.
 <br><br>
 
 <<if ($kylarenglish is undefined or $kylarenglish is 0) and $kylar.timer.love lte 0>>
 	<span class="lewd">"I love you,"</span> <<he>> murmurs into your <<if $submissive gte 1150 or $kylarDaily.sleepRape is true>>hair<<else>>chest<</if>>.
 	<br><br>
 
-	It takes <<him>> a few seconds to realize what <<he>> said. When <<he>> does, <<he>> stiffens, before jolting away from you and almost falling off the bed. "I-I didn't mean that," <<he>> stammers. "I mean I d-did! But not like, you know, romantically! Well, yeah, but I didn't- I just- I didn't mean to say-" <<Hes>> panicking.
+	It takes <<him>> a few seconds to realise what <<he>> said. When <<he>> does, <<he>> stiffens, before jolting away from you and almost falling off the bed. "I-I didn't mean that," <<he>> stammers. "I mean I d-did! But not like, you know, romantically! Well, yeah, but I didn't- I just- I didn't mean to say-" <<Hes>> panicking.
 	<br><br>
 
 	<<link [[Kiss|Kylar Orphanage Cuddle Kiss]]>><<npcincr Kylar love 10>><<npcincr Kylar lust 5>><<npcincr Kylar rage -10>><</link>><<ggglove>><<gglust>><<llksuspicion>>

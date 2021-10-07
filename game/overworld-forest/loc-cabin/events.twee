@@ -698,7 +698,7 @@ With your ear pressed against <<his>> chest, you swear you can hear <<his>> hear
 :: Eden Bath Wash Intro 3
 <<effects>>
 
-As content as the both of you are to remain in the moment, the day's not over yet. Pulling away, Eden assists you in climbing out of the water, and you take a moment to stabilize yourself as your unsteady feet hit the floor.
+As content as the both of you are to remain in the moment, the day's not over yet. Pulling away, Eden assists you in climbing out of the water, and you take a moment to stabilise yourself as your unsteady feet hit the floor.
 After grabbing a towel, <<he>> helps dry you off, giving your forehead a quick peck before walking to the kitchen.
 <br><br>
 
@@ -2075,7 +2075,7 @@ You lay out new shingles over the patched roof, and in time, your work is done. 
 <<set $edenroof += 1>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure) and $NPCName[$NPCNameList.indexOf("Eden")].lust gte 26 and (($hour gt 6 and $hour lt 11) or $hour gt 14)>>
-		As you start to climb down, you feel the ladder shift slightly. Looking down, you notice Eden holding onto it, helping stabilize it. <<He>> nods to you, watching you make your descent.
+		As you start to climb down, you feel the ladder shift slightly. Looking down, you notice Eden holding onto it, helping stabilise it. <<He>> nods to you, watching you make your descent.
 		When you step off, Eden wraps <<his>> arms around your waist, pulling you into <<his>> chest. "How about taking a break?" <<he>> asks.
 		<br><br>
 
@@ -3242,7 +3242,7 @@ Placing the air pump on the raft, Eden grabs the oars and starts rowing.
 <<set $outside to 1>><<effects>>
 
 <<if $season is "autumn">>
-	As the boat floats over the lake, you take some time to appreciate the scenery. The sounds of the gently flowing water put you at ease, and you're mesmerized as the falling autumn leaves surround you.
+	As the boat floats over the lake, you take some time to appreciate the scenery. The sounds of the gently flowing water put you at ease, and you're mesmerised as the falling autumn leaves surround you.
 	Glancing around, one of the leaves fall in your hair. Giggling, you brush it off.
 <<elseif $hour gte 6 and $hour lte 8>>
 	As the boat floats over the lake, you take some time to appreciate the scenery. The sounds of the gently flowing water put you at ease, and the glow of the orange sun is mesmerizing.

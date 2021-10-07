@@ -3262,25 +3262,25 @@ A sign reads "Opening hours: <<ampm 8 00>> - <<ampm 21 00>>"
 
 <<widget "allTops">>
 	<<if $worn.over_upper.name isnot "naked">>
-		$worn.over_upper.name
+		$worn.over_upper.name\
 	<</if>>
 	<<if $worn.upper.name isnot "naked">>
 		<<if $worn.over_upper.name isnot "naked">>
 			and
 		<</if>>
-		$worn.upper.name
+		$worn.upper.name\
 	<</if>>
 <</widget>>
 
 <<widget "allBottoms">>
 	<<if $worn.over_lower.name isnot "naked">>
-		$worn.over_lower.name
+		$worn.over_lower.name\
 	<</if>>
 	<<if $worn.lower.name isnot "naked">>
 		<<if $worn.over_lower.name isnot "naked">>
 			and
 		<</if>>
-		$worn.lower.name
+		$worn.lower.name\
 	<</if>>
 <</widget>>
 

@@ -326,7 +326,7 @@
 			<<case "alley">>
 				<<addinlineevent "rain_anyalley_1">>
 					<<beastNEWinit 1 dog>>
-					A <<beasttype>> huddles by some trash cans to escape the downpour. You can sympathize. <<stress -3>><<lstress>>
+					A <<beasttype>> huddles by some trash cans to escape the downpour. You can sympathise. <<stress -3>><<lstress>>
 					<<endevent>>
 				<</addinlineevent>>
 				<<addinlineevent "rain_anyalley_2" 0.33>>
@@ -475,7 +475,7 @@
 			<</if>>
 		<</addinlineevent>>
 		<<addinlineevent "summer_anywhere_2">>
-			A cool breeze blows by and revitalizes you. <<stress -1>><<lstress>>
+			A cool breeze blows by and revitalises you. <<stress -1>><<lstress>>
 		<</addinlineevent>>
 		<<addinlineevent "summer_anywhere_3" 0.5>>
 			A brutal wave of heat washes over you. You take a moment to wipe the sweat from your head. <<stress 1>><<gstress>>
@@ -519,7 +519,7 @@
 					<</addinlineevent>>
 					<<addinlineevent "summer_anyalley_2">>
 						<<beastNEWinit 1 dog>>
-							As you pass through the alley, you see a <<beasttype>> sprawled out inside a cardboard box in an attempt to escape the heat. You can't help but sympathize. <<stress -3>><<lstress>>
+							As you pass through the alley, you see a <<beasttype>> sprawled out inside a cardboard box in an attempt to escape the heat. You can't help but sympathise. <<stress -3>><<lstress>>
 						<<endevent>>
 					<</addinlineevent>>
 				<<else>>

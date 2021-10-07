@@ -40,7 +40,7 @@ You are in Eden's cabin.
 	Throwing off the covers, <<he>> rushes over to you. "Where have you been?" <<he>> asks grabbing you by the shoulders. "I was so worried about you."
 	<br><br>
 
-	<<link [[Apologize|Eden Return Apologize]]>><<npcincr Eden love 1>><<set $phase to 0>><</link>>
+	<<link [[Apologise|Eden Return Apologize]]>><<npcincr Eden love 1>><<set $phase to 0>><</link>>
 	<br>
 	<<link [[Explain|Eden Return Apologize]]>><<set $phase to 1>><</link>>
 <<elseif $worn.neck.collared isnot 1 and $edenaskcollar isnot 1 and $hour gte 0 and $hour lte 6>>
@@ -812,7 +812,7 @@ You are in the clearing outside Eden's cabin. The surrounding trees are so huge 
 	Eden looks up as you approach the cabin. <<He>> stops what <<he>>'s doing and rushes over to you. "Where have you been?" <<he>> asks, grabbing your shoulders. "I was so worried about you."
 	<br><br>
 
-	<<link [[Apologize|Eden Return Apologize]]>><<npcincr Eden love 1>><<set $phase to 0>><</link>>
+	<<link [[Apologise|Eden Return Apologize]]>><<npcincr Eden love 1>><<set $phase to 0>><</link>>
 	<br>
 	<<link [[Explain|Eden Return Apologize]]>><<set $phase to 1>><</link>>
 <<elseif $worn.neck.collared isnot 1 and $edenaskcollar isnot 1 and $hour gte 6>>
