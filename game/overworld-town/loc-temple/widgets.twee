@@ -620,7 +620,7 @@
 			<br>
 		<<elseif _sydneyTemple and $sydney_templeWork isnot "pray">>
 			<<if $sydneyromance is 1>>
-				You don't realize that it's Sydney until <<nnpc_he "Sydney">> kisses you on the cheek as <<nnpc_he "Sydney">> runs by you. <<npcincr Sydney lust 1>><<glust>>
+				You don't realise that it's Sydney until <<nnpc_he "Sydney">> kisses you on the cheek as <<nnpc_he "Sydney">> runs by you. <<npcincr Sydney lust 1>><<glust>>
 			<<else>>
 				It's Sydney. <<nnpc_He "Sydney">> turns around to wave and smile at you, nearly tripping <<nnpc_himself "Sydney">> on a pew in the process.
 			<</if>>

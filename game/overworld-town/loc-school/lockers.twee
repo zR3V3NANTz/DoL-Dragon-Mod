@@ -106,7 +106,7 @@ The school lockers are notoriously easy to break into.
 		<<generatey1>>You are rummaging through some belongings when you hear a voice behind you. "Hey, that's my locker!" The voice belongs to a <<person1>><<person>>, who looks angry at your intrusion.
 		<br><br>
 
-		<<link [[Apologize|School Lockers Apology]]>><<status -10>><</link>><<lcool>>
+		<<link [[Apologise|School Lockers Apology]]>><<status -10>><</link>><<lcool>>
 		<br>
 		<<link [[Lie|School Lockers Lie]]>><<detention 3>><</link>><<gdelinquency>>
 		<br>

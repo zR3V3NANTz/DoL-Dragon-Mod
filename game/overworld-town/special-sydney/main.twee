@@ -572,11 +572,11 @@
 			<<case 3>>
 				You try and chat with Sydney. <<He>> nervously rubs <<his>> holy pendant.
 			<<case 4>>
-				You try to chat with Sydney. In the middle of your sentence, <<he>> loudly stamps a piece of paper. "Sorry. What did you say?"
+				You try to chat with Sydney. In the middle of your sesntence, <<he>> loudly stamps a piece of paper. "Sorry. What did you say?"
 			<<case 5>>
 				You try to make small talk with Sydney. <<He>> mostly just listens.
 			<<case 6>>
-				You talk with Sydney. <<He>> apologizes for being unable to give you <<his>> full attention at the moment.
+				You talk with Sydney. <<He>> apologises for being unable to give you <<his>> full attention at the moment.
 			<<case 7>>
 				You try and talk to Sydney, but another student, a <<generatey2>><<person2>><<person>>, approaches the counter. <<He>> returns <<print either("a science", "a maths", "an English", "a history")>> textbook.
 					<<if $rng gte 50>>
@@ -853,7 +853,7 @@ You push Sydney away from you.
 						<br><br>
 						"I... I want to do more, but..." <<npcincr Sydney lust 1>><<glust>>
 					<<else>>
-						<<His>> head turns to the side. "We... have more clothes around the corner he-" <<he>> interrupts <<himself>>, seeming to realize what you just said. "Stop that!"
+						<<His>> head turns to the side. "We... have more clothes around the corner he-" <<he>> interrupts <<himself>>, seeming to realise what you just said. "Stop that!"
 					<</if>>
 				<<case "corrupt" "corruptLust">>
 					<<if $sydneyromance is 1>>

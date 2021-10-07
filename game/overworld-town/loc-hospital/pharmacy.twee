@@ -218,7 +218,7 @@ The nurse looks at the item you're holding,
 		<<else>>
 			"Oh, who's the lucky father?
 		<</if>>
-		Take one per day, try to normalize the time."
+		Take one per day, try to normalise the time."
 		<br><br>
 		<<if $money gte 50000>>
 			<<link [[Hand over the money|Pharmacy]]>><<set $money -= 50000>><<managePill "pregnancy" "fertility" 14 false>><<boughtOnce>><</link>>
@@ -230,7 +230,7 @@ The nurse looks at the item you're holding,
 		<<if $player.gender_appearance is "m">>
 			Glad to see people playing it safe, your girl is lucky.
 		<</if>>
-		Take one per day, try to normalize the time. You still need to be careful, the only sure way to be safe is still to be abstinent."
+		Take one per day, try to normalise the time. You still need to be careful, the only sure way to be safe is still to be abstinent."
 		<br><br>
 		<<if $money gte 25000>>
 			<<link [[Hand over the money|Pharmacy]]>><<set $money -= 25000>><<managePill "pregnancy" "contraceptive" 14 false>><<boughtOnce>><</link>>

@@ -2361,13 +2361,13 @@ After a few minutes, you emerge in a small round room with no windows. Various i
 <</if>>
 <<set $sydneySeen.pushUnique("punishment")>>
 The <<monks>> strip you and Sydney bare, leaving only your gags and collars.
-You're lead to the padding and forced down onto your knees. The <<priest>> pulls out some belts and grabs ahold of your arms. Your arms are wrapped around Syndey's waist, and your wrists are bound behind <<him>>. Sydney's arms are restrained similarly. The <<priest>> acquires more belts and wraps them around you and Sydney's waists, pressing the two of your together. One more belt wraps around both of your backs, leaving little wriggle room. Finally, a pair of shackles bind your legs together.
+You're lead to the padding and forced down onto your knees. The <<priest>> pulls out some belts and grabs ahold of your arms. Your arms are wrapped around Syndey's waist, and your wrists are bound behind <<person1>><<him>>. Sydney's arms are restrained similarly. The <<person2>><<priest>> acquires more belts and wraps them around you and Sydney's waists, pressing the two of your together. One more belt wraps around both of your backs, leaving little wriggle room. Finally, a pair of shackles bind your legs together.
 <br><br>
 "<<if $templePromised is "Sydney">>You have broken your promise to one another,<<else>>The both of you have succumbed to pleasure and desire with one another,<</if>>" the <<priest>> speaks, brandishing a whip with nine chords hanging from the cudgel. "Given your special bond, you'll experience pain with one another as the first step to make amends." You can feel Sydney's heart race. You're overcome with fear yourself at what's coming<<if $masochism_level gte 1>>, along with a hint of excitement<</if>>.
 <br><br>
-The whip strikes down onto your back first without warning, stinging tremendously. Another strike causes you to thrash in pain. You let out a scream into your gag while tears fill your eyes. You can feel Sydney's panicked breathing at your pain. <<He>> lets out a garbled protest at the torment you're receiving. Another strike comes down onto your back, stinging your flesh from the heavy chords. <<violence_noncombat 40 0.3>><<gggpain>>
+The whip strikes down onto your back first without warning, stinging tremendously. Another strike causes you to thrash in pain. You let out a scream into your gag while tears fill your eyes. You can feel Sydney's panicked breathing at your pain. <<person1>><<He>> lets out a garbled protest at the torment you're receiving. Another strike comes down onto your back, stinging your flesh from the heavy chords. <<violence_noncombat 40 0.3>><<gggpain>>
 <br><br>
-The <<priest>> moves over to Sydney and, without hesitation, lashes the whip onto <<person1>><<his>> back. <<He>> squeals into <<his>> gag and then receives another strike. The whip strikes Sydney's back a third time, leaving <<him>> in tears. <<stress 12>><<ggstress>>
+The <<person2>><<priest>> moves over to Sydney and, without hesitation, lashes the whip onto <<person1>><<his>> back. <<He>> squeals into <<his>> gag and then receives another strike. The whip strikes Sydney's back a third time, leaving <<him>> in tears. <<stress 12>><<ggstress>>
 <br><br>
 <<link [[Reassure Sydney|Sydney Temple Punish Intro 4]]>><<set $phase to 1>><<npcincr Sydney love 1>><<set $sydneyPain -= 1>><</link>><<glove>> | <span class="green">- Sydney's Pain</span>
 <br>
@@ -2384,7 +2384,7 @@ The <<priest>> moves over to Sydney and, without hesitation, lashes the whip ont
 <br><br>
 You see the <<person2>><<priest>> come into view. "Your bonds must be strong. Stronger than any desire and stronger than pain itself," <<he>> says in an instructive manner. Despite Sydney's sobs, you think the words have emboldened <<person1>><<him>>. Sydney clings onto you tighter, and you do the same around <<him>>. <span class="blue">You'll only get through this together.</span>
 <br><br>
-You receive more lashings on your back and then on your <<bottom>>. Sydney receives the same amount of lashes in return. After what feels like an eternity, the <<priest>> holsters the whip. <<gpain>>
+You receive more lashings on your back and then on your <<bottom>>. Sydney receives the same amount of lashes in return. After what feels like an eternity, the <<person2>><<priest>> holsters the whip. <<gpain>>
 <br><br>
 "Your atonement has only just begun. Ready yourselves." <<person2>><<His>> voice suddenly sounds muffled. You look over to see the <<priest>> and <<monks>> all donning strange masks, as they begin to light the incense burners. You start to feel a warmth building within you, and <span class="lewd">something inside the waist belts begins to vibrate.</span>
 <br><br>

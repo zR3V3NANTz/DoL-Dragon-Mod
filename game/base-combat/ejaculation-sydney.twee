@@ -747,7 +747,7 @@
 				<br><br>
 				<<handejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.leftarm.semen += 1>><<set $player.bodyliquid.rightarm.semen += 1>>
 			<<case "corrupt" "corruptLust">>
-				<<He>> spasms and moans, shooting thick streams of cum. You are so intent on your work you don't notice <<his>> penis is aimed at your face, which is splattered with cum in the process. <<He>> giggles and apologizes.
+				<<He>> spasms and moans, shooting thick streams of cum. You are so intent on your work you don't notice <<his>> penis is aimed at your face, which is splattered with cum in the process. <<He>> giggles and apologises.
 				<br><br>
 				<<handejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.leftarm.semen += 1>><<set $player.bodyliquid.rightarm.semen += 1>>
 				<<faceejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.semen += 1>>

@@ -326,7 +326,7 @@
 		You get down on all fours and join <<childname>> and the playing pups with enthusiasm. You encourage excitement and activity in your <<childtype>> as well as the others but ensure to keep the playing friendly and safe. Exhausted the pups take a moment to rest and you kiss <<childname>> on the head before climbing to your feet again. <<lstress>><<stress -5>>
 		<<set $children[$childActivityEvent.childid].localVariables.activity to "sleeping">>
 	<<case "curiousGaze">>
-		You follow <<childname>>'s gaze until you realize it is watching your legs. You walk in a circle and <<childhis>> eyes never leave your feet. Amused, you take a quick walk around the cave and the <<childtype>> follows you as best it can, constantly transfixed on your movement. Eventually <<childname>> grows bored and tired of this and lays down to rest, <<childhis>> curiosity seemingly sated. <<llstress>><<stress -10>>
+		You follow <<childname>>'s gaze until you realise it is watching your legs. You walk in a circle and <<childhis>> eyes never leave your feet. Amused, you take a quick walk around the cave and the <<childtype>> follows you as best it can, constantly transfixed on your movement. Eventually <<childname>> grows bored and tired of this and lays down to rest, <<childhis>> curiosity seemingly sated. <<llstress>><<stress -10>>
 		<<set $children[$childActivityEvent.childid].localVariables.activity to "sleeping">>
 	<<case"longingGaze">>
 		Noticing your <<childtype>>'s longing gaze you approach and reach between <<childhis>> ears and begin to gently scratch. <<childname>>'s tongue lolls from <<childhis>> mouth and <<childhe>> pants happily as you scritch <<childhis>> ears. <<childHe>> gives you a sad look as you finish and walk away.
