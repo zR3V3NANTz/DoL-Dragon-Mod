@@ -495,9 +495,9 @@
 	<<set $sydneyUniqueComments.pushUnique("withhold")>>
 	<<switch _sydneyStatus>>
 		<<case "pure" "pureLust" "neutral" "neutralLust">>
-			<<set _sydneyText to `<<He>> smiles with glee. "We both have <<printTo>> stay pure, after all." <<npcincr Sydney Purity 2>><<gspurity>>`>>
+			<<set _sydneyText to `<<He>> smiles with glee. "We both have <<printTo>> stay pure, after all." <<npcincr Sydney purity 2>><<gspurity>>`>>
 		<<case "corrupt" "corruptLust">>
-			<<set _sydneyText to `<<He>> gives an exaggerated sigh, but smiles. "You're such a fucking sextease sometimes!" <<npcincr Sydney Purity 2>><<gspurity>>`>>
+			<<set _sydneyText to `<<He>> gives an exaggerated sigh, but smiles. "You're such a fucking sextease sometimes!" <<npcincr Sydney purity 2>><<gspurity>>`>>
 	<</switch>>
 <<elseif $speechNPCChastity is 1 and $sydneyComments.chastity is 0>>
 	<<set $sydneyComments.chastity to 3>>
@@ -530,7 +530,7 @@
 					<<set _sydneyText to `<<He>> speaks. "We're both still pure if we both have chastity devices, right?"`>>
 				<<else>>
 					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "At least we don't have <<printTo>> worry since we're both protected."`>>
-				<</if>>				
+				<</if>>
 			<<else>>
 				<<if $rng lte 35>>
 					<<set _sydneyText to `<<He>> stares at your <<printChastity>>. "You got me <<printTo>> remove mine, but now you have one?"`>>
@@ -805,11 +805,11 @@
 				<<set _sydneyText to `<<He>> looks over your body, <<printAnd>> giggles. "You look even better all exposed like this." <<npcincr Sydney lust 1>><<glust>>`>>
 			<<else>>
 				<<set _sydneyText to `<<He>> shyly looks over your exposed body. "Y-you're... you look... uhm..." <<he>> looks away for a moment. "You look good." <<npcincr Sydney lust 1>><<npcincr Sydney purity -2>><<gslust>><<lspurity>>`>>
-			<</if>>		
+			<</if>>
 		<<else>>
 			/* Say Nothing */
 			<<set _sydneyText to ``>>
-		<</if>>	
+		<</if>>
 	<<elseif $rng gte 90>>
 		<<switch _sydneyStatus>>
 			<<case "pure" "pureLust">>
@@ -863,7 +863,7 @@
 				<<set _sydneyText to `<<He>> giggles. "Looks like I'm due for some discipline. Maybe you can punish me?"`>>
 			<<default>>
 				<<set _sydneyText to `<<He>> giggles. "I've sinned... is this my punishment?"`>>
-		<</switch>>	
+		<</switch>>
 	<<elseif $rng gte 60>>
 		<<if $location is "temple">>
 			<<switch _sydneyStatus>>
@@ -882,7 +882,7 @@
 					<<set _sydneyText to `<<He>> giggles. "I sure hope one of the other students hear us."`>>
 				<<default>>
 					<<set _sydneyText to `<<He>> looks around. "I hope there's no one waiting in line..."`>>
-			<</switch>>	
+			<</switch>>
 		<<else>>
 			<<switch _sydneyStatus>>
 				<<case "pure" "pureLust">>
@@ -891,7 +891,7 @@
 					<<set _sydneyText to `<<He>> giggles. "Think anyone will find us?"`>>
 				<<default>>
 					<<set _sydneyText to `<<He>> looks around. "I think we're safe."`>>
-			<</switch>>	
+			<</switch>>
 		<</if>>
 	<<else>>
 		/* Say Nothing */
