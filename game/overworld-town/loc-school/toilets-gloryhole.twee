@@ -75,15 +75,15 @@
 <</if>>
 
 <<if _busy gte 1>>
-	<<switch random (1, 10)>>
-	<<case 1 2 3 4 5>>
+	<<switch random(3)>>
+	<<case 0>><!-- 25% chance to happen. -->
 		You hear a sudden commotion outside, then a voice, "What's going on in here?" <span class="pink">The janitor reaches in to haul you out of your spot.</span>
 		<br><br>
 		<<if $historytrait gte 2 and $schooldrainintro is 1>>
-			<<link [[Escape though the drain system! (0:02)|School Drain]]>><<pass 2>><</link>>
+			<<link [[Escape through the drain system! (0:02)|School Drain]]>><<pass 2>><</link>>
 			<br>
 		<</if>>
-		<<link [[Caught!|School Gloryhole Janitor Catch]]>><<gstress>><<stress 1>><</link>>
+		<<link [[Caught!|School Gloryhole Janitor Catch]]>><<stress 1>><</link>><<gstress>>
 	<<default>>
 		<<if _rnd lte _prob>>
 			<<generatec1>><<person1>>

@@ -159,7 +159,7 @@ You are in your bedroom.
 			<<if $exhibitionism gte 35>>
 				The thought of going out in such a lewd state of dress excites you. You'll be safe if you're careful, right?
 				<br><br>
-				<<link [[Bathroom (0:01)->Bathroom]]>><<pass 1>><</link>>
+				<<bathroomicon>><<link [[Bathroom (0:01)->Bathroom]]>><<pass 1>><</link>>
 				<br>
 				<<home_outside>>
 				<br><br>

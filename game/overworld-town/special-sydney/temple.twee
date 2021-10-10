@@ -1,7 +1,7 @@
 :: Temple Sydney
 <<set $outside to 0>><<set $location to "temple">><<sydneySchedule>><<temple_effects>><<effects>>
 <<npc "Sydney">><<person1>>
-<<if $NPCName[$NPCNameList.indexOf("Sydney")].love gte 80 and $NPCName[$NPCNameList.indexOf("Sydney")].lust gte 10 and $sydneyromance isnot 1 and !$sydneyFriendZoned>>
+<<if $NPCName[$NPCNameList.indexOf("Sydney")].love gte 100 and $NPCName[$NPCNameList.indexOf("Sydney")].lust gte 10 and $sydneyromance isnot 1 and !$sydneyFriendZoned>>
 	Sydney's eyes light up upon seeing you. <<He>> seems nervous, and looks away with a blush. <<set _sydneyRomanceConfront to true>>
 <<elseif $sydneyChastityRemoveIntro>>
 	You sit next to Sydney. <<He>> looks anxious.
@@ -2575,6 +2575,7 @@ You close your eyes and try to shut the pain out.
 <<set $worn.neck.type.push("broken")>>
 <<neckruined>>
 <<set $player.virginity.temple to true>>
+<<set $NPCName[$NPCNameList.indexOf("Sydney")].virginity.temple to true>>
 <br><br>
 <<remove_shackle>><<unbind>><<storeon "duopunish">><<unset $punishmentCounter>><<unset $punishmentTimer>><<unset $sydneyPain>><<unset $sydneyArousal>><<unset $sydneyHold>><<unset $sydneyStop>><<unset $sydneyHit>><<unset $sydneyPlead>><<unset $sydneyTouch>>
 <<clotheson>>

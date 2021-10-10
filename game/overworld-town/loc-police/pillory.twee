@@ -892,6 +892,7 @@ The <<person>> approaches you,
 <</if>>
 <br><br>
 <<set $rng to 10>>
+<<set $_hasWritten = true>>
 <<if $rng gte 10 and $worn.lower.anus_exposed gte 1 and $worn.over_lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1 and !$skin.left_bottom.pen>>
 	<<He>> circles behind, and writes on your <<bottom>>.
 	<<if random(1, 2) is 2>>
@@ -964,10 +965,11 @@ The <<person>> approaches you,
 	<</if>>
 <<else>>
 	<<He>> circles you a few times, <span class="lblue">then decides not to write on you after all.</span> <<He>> instead gives your <<bottom>> a sharp smack.<<gtrauma>><<gstress>><<gpain>><<stress 6>><<trauma 6>><<pain 4>>
+	<<set $_hasWritten = false>>
 <</if>>
 <br><br>
 
-<<He>> steps back to admire <<his>> handiwork, then returns to the growing audience.
+<<He>> steps back<<if $_hasWritten>> to admire <<his>> handiwork<</if>>, then returns to the growing audience.
 <br><br>
 
 
