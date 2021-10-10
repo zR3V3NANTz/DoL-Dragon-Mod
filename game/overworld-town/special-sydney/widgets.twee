@@ -174,7 +174,7 @@
 		Sydney squints through <<his>> broken glasses as you approach, but smiles when <<he>> realises it's you. <<sydneyGreeting>>
 		<br><br>
 		<<sydneyOptions>>
-	<<elseif $NPCName[$NPCNameList.indexOf("Sydney")].love gte 80 and $NPCName[$NPCNameList.indexOf("Sydney")].lust gte 10 and $sydneyromance isnot 1 and !$sydneyFriendZoned>>
+	<<elseif $NPCName[$NPCNameList.indexOf("Sydney")].love gte 100 and $NPCName[$NPCNameList.indexOf("Sydney")].lust gte 10 and $sydneyromance isnot 1 and !$sydneyFriendZoned>>
 		Sydney's eyes light up upon seeing you. <<He>> seems nervous about something, and looks away with a blush. <<set _sydneyRomanceConfront to true>> <<sydneyGreeting>>
 		<br><br>
 		<<sydneyOptions>>
