@@ -332,6 +332,12 @@
 	<<set $audiencearousal += 10>><<set $audienceexcitement += 10>><<set $audiencemod += 4>><<arousal 300>><<underupperruined>><<set $rightactiondefault to "undercover">><<set $dancespeech to "strip">>
 <</if>>
 
+<<if $danceaction is "robinignore">>
+	You avert your gaze and pretend not to notice Robin's presence. <<nnpc_He "Robin">> continues to call out your name, sounding increasingly desperate.
+	<br>
+	In a last ditch effort, <<nnpc_he "Robin">> tries to shove <<nnpc_his "Robin">> way through the crowd, but <<nnpc_he "Robin">> only ends up getting violently jostled about. <<nnpc_He "Robin">> gives you a dejected look before sulking away.
+<</if>>
+
 <<if $danceaction is "cool">>
 	<<set $danceaction to 0>><<set $danceactiondefault to "cool">>
 	<<stress -2>><<tiredness 1>><<dancestat>><<set $dancespeech to "dance">>

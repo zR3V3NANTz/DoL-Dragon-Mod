@@ -37,12 +37,42 @@ You are in Eden's cabin.
 	<<set $edendays to 0>>
 	<<npcincr Eden love -2>>
 	You enter to find Eden sleeping. Woken by the sound of the door opening, <<he>> quickly rises from the bed, but relaxes slightly when <<he>> sees you.
-	Throwing off the covers, <<he>> rushes over to you. "Where have you been?" <<he>> asks grabbing you by the shoulders. "I was so worried about you."
-	<br><br>
+	Throwing off the covers, <<he>> rushes over to you.
+	<<if $edenPreyEscaped>><<unset $edenPreyEscaped>>
+		"Don't think I forgot about our game. You weren't supposed to escape me," <<he>> grumbles. "You shouldn't have been gone so long, either. Where the hell have you been?"
+	<<else>>
+		"Where have you been?" <<he>> asks grabbing you by the shoulders. "I was so worried about you."
+		<br><br>
+	<</if>>
 
 	<<link [[Apologise|Eden Return Apologize]]>><<npcincr Eden love 1>><<set $phase to 0>><</link>>
 	<br>
 	<<link [[Explain|Eden Return Apologize]]>><<set $phase to 1>><</link>>
+<<elseif $edenPreyEscaped and $hour gte 0 and $hour lte 6>><<unset $edenPreyEscaped>>
+	You enter to find Eden sleeping. Woken by the sound of the door opening, <<he>> quickly rises from the bed, rubbing <<his>> eyes groggily. When <<he>> sees you, <<his>> expression turns to a glare.
+	<br><br>
+	"You weren't supposed to escape me," <<he>> says, looking you up and down. "I'll fuck you raw if I have to. Next time, you're mine."
+	<br>
+	<<if $worn.neck.collared isnot 1 and $edenaskcollar isnot 1>>
+		<<He>> yawns and starts to drift back to sleep, but <<his>> eyes pop open, as if <<he>> just realised something.
+		<br>
+		"Where's your collar?" <<he>> asks, <<his>> voice growing concerned. <<He>> throws the covers off and stomps towards you.
+		<br><br>
+		<<if $edencollarremove is 1>>
+			<<link [[Lie and ask for another one|Eden Collar Ask]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
+		<<else>>
+			<<link [[Explain and ask for another one|Eden Collar Ask]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
+		<</if>>
+		<br>
+		<<link [[Just say you removed it|Eden Collar Remove]]>><</link>>
+		<br>
+	<<else>>
+		<<He>> trails off and yawns, then rolls back onto <<his>> side. The sound of <<his>> snoring soon fills the cabin.
+		<br><br>
+		
+		<<link [[Next|Eden Cabin]]>><<endevent>><</link>>
+		<br>
+	<</if>>
 <<elseif $worn.neck.collared isnot 1 and $edenaskcollar isnot 1 and $hour gte 0 and $hour lte 6>>
 	You enter to find Eden sleeping. Woken by the sound of the door opening, <<he>> quickly rises from the bed, but relaxes slightly when <<he>> sees you.
 	<<He>> turns to lie back down, but stops as <<his>> eyes zero in on your neck.
@@ -809,12 +839,42 @@ You are in the clearing outside Eden's cabin. The surrounding trees are so huge 
 <<if ($edenfreedom is 2 and $edendays gte 8 and $hour gte 6) or ($edenfreedom is 1 and $edendays gte 2 and $hour gte 6)>>
 	<<set $edendays to 0>>
 	<<npcincr Eden love -1>>
-	Eden looks up as you approach the cabin. <<He>> stops what <<he>>'s doing and rushes over to you. "Where have you been?" <<he>> asks, grabbing your shoulders. "I was so worried about you."
+	Eden looks up as you approach the cabin. <<He>> stops what <<he>>'s doing and rushes over to you.
+	<<if $edenPreyEscaped>><<unset $edenPreyEscaped>>
+		"Don't think I forgot about our game. You weren't supposed to escape me," <<he>> grumbles. "You shouldn't have been gone so long, either. Where the hell have you been?"
+	<<else>>
+		"Where have you been?" <<he>> asks, grabbing your shoulders. "I was so worried about you."
+	<</if>>
 	<br><br>
 
 	<<link [[Apologise|Eden Return Apologize]]>><<npcincr Eden love 1>><<set $phase to 0>><</link>>
 	<br>
 	<<link [[Explain|Eden Return Apologize]]>><<set $phase to 1>><</link>>
+<<elseif $edenPreyEscaped and $hour gte 6>><<unset $edenPreyEscaped>>
+	You see Eden polishing <<his>> gun. Your arrival prompts a glare from <<him>>.
+	<br>
+	"You weren't supposed to escape me," <<he>> says, looking you up and down. "I'll fuck you raw if I have to. Next time, you're mine."
+	<br>
+	<<if $worn.neck.collared isnot 1 and $edenaskcollar isnot 1>>
+		<<He>> mutters something under <<his>> breath and starts back on <<his>> work, but <<his>> brow furrows, as if <<he>> just realised something.
+		<br>
+		"Where's your collar?" <<he>> asks, <<his>> voice growing concerned. <<He>> sets <<his>> gun down and walks towards you.
+		<br><br>
+		<<if $edencollarremove is 1>>
+			<<link [[Lie and ask for another one|Eden Collar Ask]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
+		<<else>>
+			<<link [[Explain and ask for another one|Eden Collar Ask]]>><<npcincr Eden love 5>><<npcincr Eden lust 5>><<npcincr Eden dom 5>><</link>><<gglove>><<gglust>><<ggdom>>
+		<</if>>
+		<br>
+		<<link [[Just say you removed it|Eden Collar Remove]]>><</link>>
+		<br>
+	<<else>>
+		<<He>> stares at you for a moment longer, before returning to <<his>> business. 
+		<br><br>
+		
+		<<link [[Next|Eden Clearing]]>><<endevent>><</link>>
+		<br>
+	<</if>>
 <<elseif $worn.neck.collared isnot 1 and $edenaskcollar isnot 1 and $hour gte 6>>
 	As you walk past Eden, <<he>> momentarily stops <<his>> work, turning to look at you. <<His>> eyes zero in on your neck.
 	<br><br>
@@ -902,20 +962,46 @@ You are in the clearing outside Eden's cabin. The surrounding trees are so huge 
 <<elseif $hour gte 11 and $hour lte 14>>
 
 	<<if $edenhunting isnot 1>><<set $edenhunting to 1>>
+		<<edenpreystart>>
+		<<if _edenPreyEvent>>
+			Eden approaches you.
+			<<if $edenPrey gte 1>>
+				"Come on," <<he>> says. "We're going on another 'hunting' trip." <<His>> suggestive tone tells you exactly what <<he>> has in mind.
+				<<if _virginityPresent>>
+					<br><br>
+					To drive the point home, Eden snakes <<his>> free hand down your waist, grabbing your crotch. "This time," <<he>> says in a husky whisper, "I'm going to devour you."<<arousal 100>><<garousal>>
+				<</if>>
+			<<else>>
+				<<He>> eyes you up and down<<if _virginityPresent>>, focusing on your crotch<</if>>. The silence coupled with <<his>> lecherous gaze makes you uneasy.
+				<br>
+				<<if _virginityPresent>>
+					"I think it's time we did something about that virginity of yours," <<he>> says. "I've got something special planned. How about it?"
+				<<else>>
+					"I think it's time we did some unwinding," <<he>> says. "I have a nifty idea for the two of us. How about it?"
+				<</if>>
+			<</if>>
+			<br>
+			<<He>> doesn't wait for your response as <<he>> rests a hand on the small of your back. <<He>> tries pushing you away from the cabin.
+			<br><br>
+			<<link [[Go along with it|Eden Prey Yes]]>><<set $phase to 1>><<npcincr Eden love 1>><</link>><<glove>>
+			<br>
+			<<link [[Resist|Eden Prey No]]>><<set $phase to 1>><<npcincr Eden love -1>><<npcincr Eden dom -1>><</link>><<llove>><<ldom>>
+			<br>
+		<<else>>
+			<<if $season is "winter" and $edenscarf is 1>>
+				Eden exits the cabin, scarf around <<his>> neck and gun in hand. "I'm going hunting. Stay near the cabin while I'm gone."
+			<<else>>
+				Eden exits the cabin, gun in hand. "I'm going hunting. Stay near the cabin while I'm gone."
+			<</if>>
+			<br><br>
 
-	<<if $season is "winter" and $edenscarf is 1>>
-		Eden exits the cabin, scarf around <<his>> neck and gun in hand. "I'm going hunting. Stay near the cabin while I'm gone."
-	<<else>>
-		Eden exits the cabin, gun in hand. "I'm going hunting. Stay near the cabin while I'm gone."
-	<</if>>
-	<br><br>
-
-	<<link [[Nod|Eden Hunting]]>><<set $phase to 0>><</link>>
-	<br>
-	<<link [[Tell Eden to be safe|Eden Hunting]]>><<set $phase to 1>><<npcincr Eden love 1>><<npcincr Eden dom 1>><</link>><<glove>><<gdom>>
-	<br>
-	<<link [[Ask to go along|Eden Hunting]]>><<set $phase to 2>><</link>>
-	<br>
+			<<link [[Nod|Eden Hunting]]>><<set $phase to 0>><</link>>
+			<br>
+			<<link [[Tell Eden to be safe|Eden Hunting]]>><<set $phase to 1>><<npcincr Eden love 1>><<npcincr Eden dom 1>><</link>><<glove>><<gdom>>
+			<br>
+			<<link [[Ask to go along|Eden Hunting]]>><<set $phase to 2>><</link>>
+			<br>
+		<</if>>
 	<<else>>
 
 	Eden is out hunting.
@@ -1722,7 +1808,7 @@ You climb to your knees and look up at <<him>>.
 
 :: Eden Asylum Rescue
 <<set $outside to 0>><<set $location to "cabin">><<effects>>
-<<set $edendays to 0>>
+<<set $edendays to 0>><<asylumescape>>
 <<npc Eden>><<person1>>
 After you enter the cabin, Eden shuts the door behind you and wraps you up in a big hug. Is <<he>> trembling?
 <br><br>

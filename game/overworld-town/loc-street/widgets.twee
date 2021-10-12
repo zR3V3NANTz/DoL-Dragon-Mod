@@ -1841,6 +1841,63 @@ You round a corner and walk right into a <<generate1>><<person1>><<person>>, cau
 <</if>>
 <</widget>>
 
+<<widget "streetexshow">>
+<<generate1>><<generate2>><<generate3>><<person1>>
+<<if $fameexhibitionism gte 1000>>
+	You notice some <<group>> coming towards you. One of them, a <<person>>, points at you, and says something to the other two. Your first instinct is to run, but they’re already too close. They surround you, making sure not to attract any attention.
+	<br><br>
+	
+	“Hey <<girl>>,” the <<person>> says. “You’re that slut that likes showing off, right?” <<He>> puts a hand in <<his>> pocket. You feel tense, but relax a little once <<he>> takes out a few bank notes. “How about a little private show?”
+	<br><br>
+	
+	<<if $exhibitionism gte 75>>
+		<span class="lewd">A particularly lewd idea strikes you.</span> Stripping right here, out in the open, would be even more exciting.
+		<br>
+		<<link [[Strip right here|Street Private Show Strip]]>><</link>><<exhibitionist5>>
+		<br>
+	<</if>>
+	<<if $exhibitionism gte 55>>
+		<<link [[Strip in an alley|Street Private Show Alley]]>><<set $phase to 0>><</link>><<exhibitionist4>>
+		<br>
+	<</if>>
+	<<link [[Refuse|Street Private Show Refuse]]>><</link>>
+	<br>
+<<else>>
+	A group of <<group>> crowd around a <<person>> holding a phone, laughing raucously among themselves. One of them looks up as you pass.
+	<br><br>
+	"Cute outfit," <<he>> calls out. "But I bet you'd look better without it."
+	<br><br>
+	
+	The group bursts into laughter. Your face flushes as you increase your pace, leaving them and their crude remarks behind you.<<stress 3>><<trauma 3>><<gstress>><<gtrauma>>
+	<br><br>
+	
+	<<endevent>>
+	<<destinationeventend>>
+<</if>>
+<</widget>>
+
+<<widget "streetkidnap">>
+<<generate1>><<person1>>
+You spot a hooded figure skulking under a streetlamp.
+<<if $famebestiality + $famerape + $famesex gte random(1000, 4000)>>
+	You pay them little mind as you pass, until you suddenly feel something grab your shoulder. You freeze up from fear and start taking deep breaths.
+	<br>
+	As you turn your head, an arm tightly wraps around your waist. A damp rag is roughly clamped over your mouth and nose.
+	<br><br>
+	
+	<<link [[Struggle|Street Kidnap Struggle]]>><</link>><<physiquedifficulty 2000 12000>>
+	<br>
+	<<link [[Give in|Street Kidnap Give]]>><<stress 6>><<trauma 6>><</link>><<gstress>><<gtrauma>>
+	<br>
+<<else>>
+	It turns to regard you before hastily walking in the other direction.<<stress 3>><<gstress>>
+	<br><br>
+	
+	<<endevent>>
+	<<destinationeventend>>
+<</if>>
+<</widget>>
+
 :: Widget Passout Street [widget]
 <<widget "passoutstreet">>
 /*ToDo: Pregnancy, remove $pregnancyTesting to properly enable*/
@@ -2685,7 +2742,7 @@ You find a quiet place and open the <<wallet>>.
 <</widget>>
 
 <<widget "eventsstreetday">>
-<<set $dangerevent to random(1, 172)>>
+<<set $dangerevent to random(1, 176)>>
 <<set $rng to random(1, 100)>>
 <<if $rng lte 10 and $worn.feet.type.includes("heels") and $feetskill lt $worn.feet.reveal>>
 	<<streetheeltrip>>
@@ -2732,11 +2789,13 @@ You find a quiet place and open the <<wallet>>.
 	<<destinationeventend>>
 <<elseif $dangerevent lte 172>>
 	<<streetdog>>
+<<elseif $dangerevent lte 176>>
+	<<streetexshow>>
 <</if>>
 <</widget>>
 
 <<widget "eventsstreetnight">>
-<<set $dangerevent to random(1, 141)>>
+<<set $dangerevent to random(1, 149)>>
 <<set $rng to random(1, 100)>>
 <<if $rng lte 10 and $worn.feet.type.includes("heels") and $feetskill lt $worn.feet.reveal>>
 	<<streetheeltrip>>
@@ -2776,7 +2835,11 @@ You find a quiet place and open the <<wallet>>.
 	<<streetlurker>>
 <<elseif $dangerevent lte 131>>
 	<<streetvan>>
-<<elseif $dangerevent lte 141>>
+<<elseif $dangerevent lte 136>>
+	<<streetexshow>>
+<<elseif $dangerevent lte 139>>
+	<<streetkidnap>>
+<<elseif $dangerevent lte 149>>
 	<<eventAmbient>>
 	<<destinationeventend>>
 <</if>>

@@ -315,7 +315,7 @@ You push the money across the table.
 
 <<generate1>><<person1>>
 You ask the landlord if <<he>> knows anyone in need of work. <<He>> nods at a
-<<endevent>><<generate1>><<person1>>
+<<endevent>><<generate1>><<person1>><<set $NPCList[0].skills.security to random(1, 600)>>
 <<if $NPCList[0].traits.includes("relaxed")>>
 	<<person>> sat alone, reclining near the window. <<He>> looks up as you walk over. "How can I help you?" <<he>> asks, gesturing at the seat opposite.
 	<br><br>

@@ -175,13 +175,20 @@ It isn't long before the door to the barn opens, and the lights flicker on. Remy
 <<npc Remy>><<person1>>
 
 <<if $phase is 1>>
-	Your cell door opens, and the farmhands rush in to restrain your arms. Remy walks in, handkerchief in hand with a flask upended into it. Terrified, you <<if $cow gte 6>>moo<<else>>beg<</if>> for mercy<<if $worn.face.type.includes("gag")>> through your $worn.face.name<</if>>, but your cries are silenced as the cloth is pressed against your mouth.
+	Your cell door opens, and the farmhands rush in to restrain your arms. Remy walks in, handkerchief in hand with a flask upended into it.
+	<<if $submissive gte 1150>>
+		Terrified, you <<if $cow gte 6>>moo<<else>>beg<</if>> for mercy<<if $worn.face.type.includes("gag")>> through your $worn.face.name<</if>>, but your cries are silenced as the cloth is pressed against your mouth.
+	<<elseif $submissive lte 850>>
+		You flail your arms and try to jerk your head away, but your protests are silenced as the cloth is pressed against your mouth.
+	<<else>>
+		You crane your neck away, but the farmhands hold your head still, forcing your face against the cloth.
+	<</if>>
 	<br><br>
-	Remy watches as you silently struggle, "What's gotten into you?" <<His>> green eyes pierce yours as you feel yourself become hazy. "You're usually so well-behaved."
+	Remy watches as you silently struggle. "What's gotten into you?" <<His>> green eyes pierce yours as you feel yourself become hazy. "You're usually so well-behaved."
 	<br><br>
 	Unable to take any more of the drug, you fall to your knees. Remy withdraws, satisfied.
 	<br><br>
-	"Lay it down to rest. We'll see if this behavior becomes a habit," Remy instructs. Your feet drag against the floor as you're gently laid back onto the pile of hay.
+	"Lay it down to rest. We'll see if this behaviour becomes a habit," Remy instructs. Your feet drag against the floor as you're gently laid back onto the pile of hay.
 	<br><br>
 	<<if $loveInterest.primary isnot "None">>
 		As darkness overwhelms your vision, your last thoughts turn to $loveInterest.primary. You wonder if you'll ever see <<if $loveInterest.primary is "Black Wolf">>your pack<<else>><<nnpc_him $loveInterest.primary>><</if>> again.
@@ -193,14 +200,36 @@ It isn't long before the door to the barn opens, and the lights flicker on. Remy
 	<<link [[Next|Livestock Sleep]]>><<set $phase to 1>><</link>>
 	<br>
 <<else>>
-	Your cell door opens, and the farmhands rush in to restrain your arms. Remy walks in, unfolding <<his>> whip. Terrified, you <<if $cow gte 6>>moo<<else>>beg<</if>> for mercy<<if $worn.face.type.includes("gag")>> through your $worn.face.name<</if>>, but your cries become interrupted as the whip meets your belly. You <<if $cow gte 6>>moo<<else>>gasp<</if>> in pain as Remy punishes you with all <<his>> fury. Tears stream down your eyes as you <<if $cow gte 6>>gasp<<else>>writhe<</if>> at every strike.<<gggpain>>
-	<<pain 50>>
+	Your cell door opens, and the farmhands rush in to restrain your arms. Remy walks in, unfolding <<his>> whip.
+	<<if $submissive gte 1150>>
+		Terrified, you <<if $cow gte 6>>moo<<else>>beg<</if>> for mercy<<if $worn.face.type.includes("gag")>> through your $worn.face.name<</if>>, but your cries become interrupted as the whip meets your belly.
+		You <<if $cow gte 6>>moo<<else>>gasp<</if>> in pain as Remy punishes you with all <<his>> fury. You hang your head in resignation and sob, every strike unleashing a fresh stream of tears.
+	<<elseif $submissive lte 850>>
+		You thrash wildly, but it's no use. Your struggle is interrupted as Remy's whip meets your belly. It stings, and you scream out in pain and redouble your efforts to break free, to no avail.
+		All you can do is grit your teeth and wince every time the whip connects with your bare skin, your struggles growing weaker with each lash. You try to maintain a brave face, but you can't stop the tears.
+	<<else>>
+		You hardly have time to react before Remy's whip snaps against your belly. You cry out<<if $worn.face.type.includes("gag")>> into your $worn.face.name<</if>>, but you know that's not the end of it.
+		You shut your eyes tight and brace yourself for more pain, and Remy delivers, each lash more agonising than the last. Tears stream down your eyes as you <<if $cow gte 6>>gasp<<else>>writhe<</if>> at every strike.
+	<</if>>
+	<<gggpain>><<pain 50>>
 	<br><br>
-	Unable to take anymore, you fall to the floor. The farmhands force you onto your feet, allowing for one last strike.<<gpain>>
+	Unable to take any more, you fall to the floor. The farmhands force you onto your feet, allowing for one last strike.<<gpain>>
 	<br><br>
-	Remy folds <<his>> whip and approaches you. Taking your chin in <<his>> hand, you're forced to look into <<his>> shining, green eyes. "I warned you," Remy scolds. "I don't think you'll be making any more noise, right?" You nod.
-	<br><br>
-	"Good. Put it to bed," Remy instructs the farmhands. Grunting in pain, you're soon dragged towards a pile of hay and tossed onto it. You curl up and rub your stinging tummy.
+	Remy folds <<his>> whip and approaches you. Taking your chin in <<his>> hand, you're forced to look into <<his>> shining, green eyes. "I warned you," Remy scolds. "I don't think you'll be making any more noise, right?"
+	<<if $submissive gte 1150>>
+		Lacking the strength to respond, you can only stare pleadingly into <<his>> eyes.
+		<br><br>
+		Remy seems to take your silence as submission. "Good. Put it to bed," Remy instructs the farmhands.
+	<<elseif $submissive lte 850>>
+		You wrench your chin free from Remy's grip, not giving <<him>> the satisfaction of a response.
+		<br><br>
+		Your silence is good enough for Remy. "Put it to bed," <<he>> instructs the farmhands.
+	<<else>>
+		You nod.
+		<br><br>
+		"Good. Put it to bed," Remy instructs the farmhands.
+	<</if>>
+	Grunting in pain, you're soon dragged towards a pile of hay and tossed onto it. You curl up and rub your stinging tummy.
 	<br><br>
 	<<endevent>>
 	<<link [[Next|Livestock Cell]]>><</link>>
@@ -1477,7 +1506,7 @@ You hear the thundering of hooves behind you. You glance over your shoulder, and
 <</if>>
 
 <<if $livestock_horse gte 2>>
-	<<unset $livestock_escape>>
+	<<unset $livestock_escape>><<livestockescape>>
 	<!-- Modified for Monster People -->
 	<<if ($monsterchance gte random(1, 100) and ($hallucinations gte 1 or $monsterhallucinations is "f")) or ($bestialitydisable is "t")>>
 		<<generate2>>
@@ -1513,9 +1542,9 @@ You hear the thundering of hooves behind you. You glance over your shoulder, and
 	You hear the farmhands and dogs approaching from behind.
 	<br><br>
 
-	<<link [[Apologise|Livestock Apologise]]>><<def 1>><<transform cow 1>><</link>>
+	<<link [[Apologise|Livestock Apologise]]>><<sub 1>><<transform cow 1>><</link>>
 	<br>
-	<<link [[Protest|Livestock Protest]]>><</link>>
+	<<link [[Protest|Livestock Protest]]>><<def 1>><</link>>
 	<br>
 	<<link [[Remain silent|Livestock Silent]]>><</link>>
 	<br>
@@ -1529,6 +1558,7 @@ You run with Eden across the open moor, but soon hear the thundering of hooves b
 Eden unslings <<his>> rifle, and takes aim. <<He>> fires a shot at the <<livestock_horse>>'s feet. It rears back in fear and falls to the ground, taking Remy with it.
 <br><br>
 Seizing the chance, you and Eden dash across the fields. You crest a hill. The forest lies beyond.
+<<livestockescape>>
 <br><br>
 <<link [[Next|Eden Farm Rescue]]>><</link>>
 
@@ -1646,7 +1676,7 @@ The farmhands catch up at last, and fall in beside you. The dogs follow close be
 <<effects>>
 
 <<if $submissive gte 1150>>
-	"Wh-what you're doing is wrong," you say, spured by a burst of courage. "You can't treat people like this."
+	"Wh-what you're doing is wrong," you say, spurred by a burst of courage. "You can't treat people like this."
 <<elseif $submissive lte 850>>
 	"You better fuck off back to your farm," you say. "Or you'll get yours."
 <<else>>

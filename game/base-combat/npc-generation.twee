@@ -923,7 +923,7 @@
 
 <<widget "generate_npc_skills">>
 <<set $NPCList[_n].skills to {}>>
-<<set $NPCList[_n].skills.security to random(1, 600)>>
+<<set $NPCList[_n].skills.security to random(1, 1000)>>
 <<set $NPCList[_n].skills.athletics to random(1, 1000)>>
 <</widget>>
 

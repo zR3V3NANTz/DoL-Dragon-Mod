@@ -2326,26 +2326,32 @@
 
 <<elseif $speechspank is 1>>
 	<<if $enemyanger lte 20>>
-		<<if $rng lte 35>>
-			<<He>> speaks. "Have you learned your lesson yet?"
-		<<elseif $rng lte 70>>
+		<<if $rng lte 24>>
+			<<He>> speaks. "If this doesn’t teach you to behave, I’m not sure what will."
+		<<elseif $rng lte 49>>
 			<<He>> speaks. "If you're a good <<girl>> in the future, then you won't need to be punished."
+		<<elseif $rng lte 74>>
+			<<He>> speaks. "Have you learnt your lesson yet?"
 		<<else>>
 			<<He>> speaks. "This hurts me more than it hurts you."
 		<</if>>
 	<<elseif $enemyanger lte 100>>
-		<<if $rng lte 35>>
+		<<if $rng lte 24>>
 			<<He>> speaks. "I could spank you far harder than this if I wanted."
-		<<elseif $rng lte 70>>
+		<<elseif $rng lte 49>>
 			<<He>> speaks. "If you don't want things to get worse, then stop acting like a brat."
+		<<elseif $rng lte 74>>
+			<<He>> tuts. "You’ll think twice before being so naughty in future."
 		<<else>>
 			<<He>> speaks. "You've been a bad <<girl>>. So you get punished. It's as simple as that."
 		<</if>>
 	<<else>>
-		<<if $rng lte 35>>
+		<<if $rng lte 24>>
 			<<He>> speaks. "You're going to take your punishment, and when I'm done you're going to thank me for it!"
-		<<elseif $rng lte 70>>
+		<<elseif $rng lte 49>>
 			<<He>> speaks. "You deserve far worse than this."
+		<<elseif $rng lte 74>>
+			<<He>> speaks. "Does that hurt? Good."
 		<<else>>
 			<<He>> speaks. "I'm gonna spank your butt raw, little <<girl>>."
 		<</if>>

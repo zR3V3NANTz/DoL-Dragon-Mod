@@ -368,7 +368,7 @@ The <<person1>><<person>> recoils and pain and tumbles from the stage. <<tearful
 <<endcombat>>
 
 A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-<<set $foresthunt to 1>>
+<<set $foresthunt to 1>><<dungeonescape>>
 <br><br>
 
 <<link [[Next|Forest]]>><<set $forest to 40>><</link>>
@@ -398,7 +398,7 @@ The <<beasttype>> flees in pain and fear, running amok among the audience in an 
 <<endcombat>>
 
 A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-<<set $foresthunt to 1>>
+<<set $foresthunt to 1>><<dungeonescape>>
 <br><br>
 
 <<link [[Next|Forest]]>><<set $forest to 40>><</link>>
@@ -486,7 +486,7 @@ The <<person1>><<person>> recoils and pain and tumbles from the stage. <<tearful
 <<endcombat>>
 
 A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-<<set $foresthunt to 1>>
+<<set $foresthunt to 1>><<dungeonescape>>
 <br><br>
 
 <<link [[Next|Forest]]>><<set $forest to 40>><</link>>
@@ -516,7 +516,7 @@ The <<person1>><<person>> recoils and pain and tumbles from the stage, and the o
 <<endcombat>>
 
 A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-<<set $foresthunt to 1>>
+<<set $foresthunt to 1>><<dungeonescape>>
 <br><br>
 
 <<link [[Next|Forest]]>><<set $forest to 40>><</link>>
@@ -664,6 +664,7 @@ The <<person1>><<person>> falls against one of the bed posts, breaking it. <<tea
 
 <<clotheson>>
 <<endcombat>>
+<<dungeonescape>>
 
 <<link [[Next|Forest]]>><<set $forest to 40>><</link>>
 <<elseif $timer lte 0>>
@@ -726,6 +727,7 @@ You run as fast you can. You hear the <<victimgirls>> scream as they are caught,
 <br><br>
 
 <<endevent>>
+<<dungeonescape>>
 
 <<link [[Next|Forest]]>><<set $forest to 1>><</link>>
 <br>
@@ -823,7 +825,7 @@ The <<beasttype 0>> whimpers and flees. <<tearful>> you jump to your feet and ru
 <<endcombat>>
 
 A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-<<set $foresthunt to 1>>
+<<set $foresthunt to 1>><<dungeonescape>>
 <br><br>
 
 <<link [[Next|Forest]]>><<set $forest to 40>><</link>>
@@ -884,7 +886,7 @@ A chill runs up your spine, a warning from some primal instinct. <span class="re
 	<<clotheson>>
 	<<endcombat>>
 	A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-	<<set $foresthunt to 1>>
+	<<set $foresthunt to 1>><<dungeonescape>>
 	<br><br>
 	<<link [[Next|Forest]]>><<set $forest to 40>><</link>>
 <</if>>
@@ -1044,7 +1046,7 @@ The <<person>> tugs on your leash, and you almost trip as you leave the bath. Yo
 	<<clotheson>>
 	<<endcombat>>
 	A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-	<<set $foresthunt to 1>>
+	<<set $foresthunt to 1>><<dungeonescape>>
 	<br><br>
 	<<link [[Next|Forest]]>><<set $forest to 40>><</link>>
 <<elseif $timer lte 0>>

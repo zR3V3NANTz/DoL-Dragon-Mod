@@ -517,7 +517,7 @@ Mason seems unsure, but nods. "If you're sure. Be careful." <<He>> dries <<himse
 	<</for>>
 
 	<<if _temp_clothes_present is 1>>
-		<<link [[Get Changed, then walk home with Mason (0:40)|Mason Walk]]>><<pass 40>><<storeon "lakeshore">><<set $masonDressed to true>><</link>>
+		<<link [[Get changed, then walk home with Mason (0:40)|Mason Walk]]>><<pass 40>><<storeon "lakeshore">><<set $masonDressed to true>><</link>>
 		<br>
 	<</if>>
 

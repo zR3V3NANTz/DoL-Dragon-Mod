@@ -294,3 +294,11 @@ You overhear two farmhands talking behind the fence.
 	<</if>>
 <</if>>
 <</widget>>
+
+<<widget "livestockescape">>
+<<if $whitneyromance is 1>>
+	<<set $whitneyReunionScene to "farm">>
+<</if>>
+
+<<unset $baileySold>>
+<</widget>>

@@ -566,3 +566,272 @@ They disappear between the trees as Eden emerges, marching towards you.
 <br>
 
 <</if>>
+
+:: Eden Prey Yes
+<<set $outside to 1>><<set $location to "cabin">><<effects>>
+
+<<if $edenPrey is undefined>>
+	You agree to Eden's proposal, despite the lack of details. 
+	<br><br>
+<</if>>
+
+"Good," <<he>> says before <<if $phase is 0>>pushing you out the door<<else>>guiding you along<</if>>.
+<<if $edenPrey gte 1>>
+	<<He>> leads you to the edge of the clearing.
+	<br><br>
+	"You know the drill,"
+<<else>>
+	You glance back and see Eden reaching for <<his>> gun. Dread fills your body, causing you to resist <<his>> shoving.
+	<br>
+	"Relax," Eden reassures you. "I'm not gonna hurt you." You warily allow <<him>> to lead you to the edge of the clearing.
+	<br><br>
+	"You're prey,"
+<</if>>
+
+<<he>> begins. "When I fire my gun, I want you to run like your life depends on it. If you're caught..." <<He>> pauses, chuckling. "I'll have my fun with you." You glance back at <<him>>. <<Hes>> hiding something behind his back.
+<br>
+"Turn around," <<he>> orders.
+<br><br>
+You turn around, as instructed. A loud crack erupts behind you, shattering the tranquility of the forest and signaling you to start running.
+<br><br>
+
+<<if !$edenPrey>><<set $edenPrey to 1>><</if>>
+<<link [[Run!|Eden Prey Chase]]>><<set $phase to 0>><</link>><<athleticsdifficulty 200 1200>>
+<br>
+<<link [[Get caught on purpose|Eden Prey Chase]]>><<set $phase to 1>><<control 25>><<npcincr Eden lust 1>><<npcincr Eden dom 5>><</link>><<ggcontrol>><<glust>><<ggdom>>
+<br>
+
+:: Eden Prey No
+<<set $outside to 1>><<set $location to "cabin">><<effects>>
+
+<<if $submissive gte 1150>>
+	"I-I don't know..." you mutter, looking away from Eden. "Maybe another time...?"
+<<elseif $submissive lte 850>>
+	 "No way," you tell <<him>>, crossing your arms. "I'm not a sex toy."
+<<else>>
+	"I don't want to do that right now," you say.
+<</if>>
+<br><br>
+<<if ($NPCName[$NPCNameList.indexOf("Eden")].lust + $NPCName[$NPCNameList.indexOf("Eden")].dom) gte random(70, 170)>>
+	<<set $edenPreyForced to true>>
+	Eden clenches <<his>> fist and shakes <<his>> head. "Nonsense. You'll enjoy it." You're shoved <<if $phase is 0>>out the door<<else>>away from the cabin<</if>>, with Eden's hand placed on your back, forcing you along. You glance back and see Eden reaching for <<his>> gun. Dread fills your body, and you try to pry yourself away from Eden.
+	<br>
+	Eden sighs in frustration and plants <<his>> boot against your <<bottom>>, giving you a swift kick that sends you stumbling <<if $phase is 0>>out the door<<else>>onto your knees<</if>>. "Move," <<he>> commands, the barrel of <<his>> gun pressed against your back. You do as told, coming to a stop at the edge of the clearing.
+	<br><br>
+	"<<if !$edenPrey>>You're prey<<else>>You know the drill<</if>>," <<he>> begins. "When I fire my gun, I want you to run like your life depends on it. If you're caught..." <<He>> pauses, chuckling. "I'll have my fun with you." You glance back at <<him>>. <<Hes>> hiding something behind his back.
+	<br>
+	"Turn around," <<he>> orders.
+	<br><br>
+	You turn around, as instructed. A loud crack erupts behind you, shattering the tranquility of the forest and signaling you to start running.
+	<br><br>
+
+	<<if !$edenPrey>><<set $edenPrey to 1>><</if>>
+	<<link [[Run!|Eden Prey Chase]]>><<set $phase to 0>><</link>><<athleticsdifficulty 200 1200>>
+	<br>
+	<<link [[Get caught on purpose|Eden Prey Chase]]>><<set $phase to 1>><<control 25>><<npcincr Eden lust 1>><<npcincr Eden dom 5>><</link>><<ggcontrol>><<glust>><<ggdom>>
+	<br>
+<<else>>
+	Eden clenches <<his>> fist, but relents. "Fine," <<he>> says. "I'll <<if $player.virginity.penile is true and $player.virginity.vaginal is true>>take what's mine<<else>>put you to use<</if>> one way or another. Remember who takes care of you around here."
+	<br>
+	<<He>> steps away from you, <<if $phase is 1>>stomping off into the woods with a huff<<else>>storming outside and slamming the door shut behind <<him>><</if>>.
+	<br><br>
+
+	<<if $phase is 0>>
+		<<link [[Next|Eden Cabin]]>><<endevent>><</link>>
+	<<else>>
+		<<link [[Next|Eden Clearing]]>><<endevent>><</link>>
+	<</if>>
+	<br>
+<</if>>
+
+:: Eden Prey Chase
+<<set $outside to 1>><<set $location to "forest">><<effects>>
+
+<<if $phase is 1>>
+	You sprint into the brush as Eden gives chase. Your curiosity gets the better of you, causing you to look for a plausible excuse for the hunt to end. An idea pops into your mind when you spot a root. You jam your foot into the tree and fall onto the forest floor. Eden takes advantage in an instant.
+	<br><br>
+	
+	You feel your wrists forced behind you as rope coils over them, restricting them to your back. Your eyes dart around, <span class="meek">until a shiny, red ball-gag is forced into your mouth.</span> A <<if $submissive gte 1150>>whimper<<elseif $submissive lte 850>>growl<<else>>sigh<</if>> escapes from you in response. A cloth is wrapped around your eyes and tied around your head, blinding you. You can do nothing but squirm helplessly, as Eden keeps you pinned down. 
+	<<bind>><<facewear 6>>
+	<br><br>
+	
+	"Well, well, it seems I've found myself helpless prey," Eden taunts you. "Leaving you here just won't do." <<He>> hoists you up and carries you over <<his>> shoulder.
+	<br>
+	Tied up and deprived of your senses, you can only wait and anticipate what Eden has in store for you.
+	<br><br>
+	
+	<<link [[Next|Eden Prey Caught]]>><</link>>
+	<br>
+<<else>>
+	<<if $athleticsSuccess>>
+		You sprint into the brush as Eden gives chase. The twists and turns in the forest allow you the freedom to evade <<him>>. Despite the tremendous tracking skills the <<nnpc_title "Eden">> possesses, <span class="green">your speedy feet and persistence keeps <<him>> on <<his>> toes.</span> You can feel Eden trying to reach out to you as <<he>> barely brushes against your skin with their fingers.<<stress 2>><<gstress>>
+		<br><br>
+
+		After what seems like an eternity, you've left <<him>> in the dust. Your muscles burn from your efforts.<<physique 2>><<tiredness 12>><<npcincr Eden dom -5>><<gtiredness>><<lldom>>
+		<br><br>
+
+		<<set $forest to random(50, 100)>>
+		<<set $edenPreyEscaped to true>>
+		<<unset $edenPreyForced>>
+		<<link [[Next|Forest]]>><<endevent>><</link>>
+	<<else>>
+		You sprint into the brush as Eden gives chase. The twists and turns in the forest allow you the freedom to evade <<him>>. However, <span class="red">you're unable to shake off the <<nnpc_title "Eden">>.</span> Despite your best efforts, you can hear <<his>> heavy breathing right behind you. As the last of your energy runs out, you're tackled to the ground.<<pain 1>><<tiredness 12>><<npcincr Eden dom 5>><<gpain>><<gtiredness>><<ggdom>>
+		<br><br>
+
+		You feel your wrists forced behind you as rope coils over them, restricting them to your back. Your eyes dart around, <span class="meek">until a shiny, red ball-gag is forced into your mouth.</span> A <<if $submissive gte 1150>>whimper<<elseif $submissive lte 850>>growl<<else>>sigh<</if>> escapes from you in response. A cloth is wrapped around your eyes and tied around your head, blinding you. You can do nothing but squirm helplessly, as Eden keeps you pinned down. 
+		<<bind>><<facewear 6>>
+		<br><br>
+
+		"Well, well, it seems I've found myself some helpless prey," Eden taunts you. "Leaving you here just won't do." <<He>> hoists you up and carries you over <<his>> shoulder.
+		<br>
+		Tied up and deprived of your senses, you can only wait and anticipate what Eden has in store for you.
+		<br><br>
+		<<link [[Next|Eden Prey Caught]]>><</link>>
+		<br>
+	<</if>>
+<</if>>
+
+:: Eden Prey Caught
+<<set $outside to 0>><<set $location to "cabin">><<effects>>
+<<pass 10>>
+
+You're rushed through the forest, unable to move in Eden's grasp. Soon, you hear the sound of a door opening. The cabin, you assume.
+<br>
+Without warning, you're dropped onto a bed. Strong arms pin you down, preventing movement. You feel Eden's hot breath against your cheek.
+<br><br>
+"Caught you," <<he>> whispers in a sultry tone. One hand caresses your hair as the other slides to your <<breasts>>, drumming <<his>> fingers on your chest. "Now then, what's a <<nnpc_title "Eden">> to do with <<his>> helpless quarry...?"
+<br><br>
+<<His>> hand dips lower, down to your <<genitals>>.
+<br><br>
+
+<<link [[Next|Eden Prey Sex]]>><<if $edenPreyForced>><<set $molestationstart to 1>><<else>><<set $sexstart to 1>><</if>><</link>>
+
+:: Eden Prey Sex
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+
+	<<maninit>>
+	<<set $enemytrust += 100>><<set $enemyhealth to 600>><<set $enemyhealthmax to 600>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+
+	<<maninit>><<set $enemyhealth to 600>><<set $enemyhealthmax to 600>><<set $enemyanger += 50>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Eden Prey Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Eden Prey Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Eden Prey Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Eden Prey Sex Finish
+<<set $outside to 0>><<set $location to "cabin">><<effects>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>><<npcincr Eden lust -20>>
+	
+	<<if ($player.penisExist and $player.virginity.penile is true and ($NPCList[0].vagina isnot "none" or $analdisable is "f")) and ($player.vaginaExist and $player.virginity.vaginal is true and $NPCList[0].penis isnot "none")>>
+		You feel a gentle slap across your face. 
+		<br>
+		"We're going to fuck properly next time we do this," Eden says, <<if $NPCName[$NPCNameList.indexOf("Eden")].lust gte 70>>licking<<else>>kissing<</if>> your cheek.
+		<br><br>
+	<</if>>
+
+	<<if $orgasmcurrent is 0>>
+		You pant heavily into your gag, feeling a frustrated yearning in your <<genitals>>. Eden seems to have taken pity on you, however, and you soon feel <<his>> hands slipping down towards your crotch.
+		<br><br>
+		<<if $player.gender is "h">>
+			<<He>> thoughtfully runs <<his>> fingers down the length of your <<penis>> while <<his>> thumb gently rubs your <<pussy>>. "Now, which do I play with?"
+			<<set _edenHermChoice to random(0, 1)>>
+			<br>
+		<</if>>
+		<<if _edenHermChoice is 1 or !$player.vaginaExist>>
+			<<His>> rough hand lightly grips your cock and begins stroking up and down. Your glans is teased, causing your hips to buckle. Eden pins you down as you do so.
+			<br>
+			"Hold still," <<he>> whispers. "It'll be over soon."
+			<br>
+			The incredible sensation brings you over the edge. You scream into your gag.
+			<<set $arousal to 10000>>
+			<<if $arousal gte $arousalmax>><<orgasm>><</if>>
+		<<else>>
+			<<His>> rough hand traces around your outer walls, until Eden suddenly jams <<his>> fingers inside your <<pussy>>. Your breathing gets a bit heavier. Emboldened by your signs of arousal, <<he>> begins to knead your clit. The sensation causes your legs to twitch. You can't help but begin to struggle. Eden pins you down as you do so.
+			<br>
+			"Hold still," <<he>> whispers. "It'll be over soon."
+			<br>
+			The incredible sensation brings you over the edge. You scream into your gag.
+			<<set $arousal to 10000>>
+			<<if $arousal gte $arousalmax>><<orgasm>><</if>>
+		<</if>>
+		You hear a satisfied chuckle as your orgasm subsides.
+		<br><br>
+	<</if>>
+	
+	You feel Eden's lips press against your forehead, then hear the bed creak as <<he>> rolls off, leaving you alone in your bound state.
+	<br><br>
+	
+	<<link [[Next|Eden Prey End]]>><<set $phase to 0>><</link>>
+	<br>
+<<elseif $enemyhealth lte 0>>
+	<<npcincr Eden love -1>><<npcincr Eden dom -1>>
+	Despite your vulnerable state, you kick Eden off of you. You hear <<him>> tumble from the bed.
+	<br>
+	"Piece of shit," Eden shouts. "This better not bruise."<<llove>><<ldom>>
+	<br><br>
+	In a fit of rage, <<he>> walks off. You're left alone, bound, blind and gagged.
+	<br><br>
+	
+	<<link [[Next|Eden Prey End]]>><<set $phase to 1>><</link>>
+	<br>
+<</if>>
+
+:: Eden Prey End
+<<set $outside to 0>><<set $location to "cabin">><<effects>>
+
+You feel exhausted, struggling to move. You're not left there for long. Eden sits you up and undoes your gag. A cup is pressed to your lips.
+<br>
+"It's water," Eden states. <<He>> holds it closer to your mouth. "Drink."
+<br><br>
+
+You have no qualms about drinking as you gulp down a few sips. It's refreshing. Eden allows you a moment to catch your breath before pressing the cup against your lips again. 
+<br>
+<<He>> pulls the cup away, then turns your body around. Your blindfold is removed, and your bindings follow.
+<<set $worn.face.type.push("broken")>>
+<<faceruined>>
+<<unbind>>
+<br><br>
+
+<<if $phase is 0>>
+	"You've been such a good <<girl>>," Eden says, kissing your forehead again. "Make sure to get some rest."
+<<else>>
+	"Feisty today, aren't we?" Eden chuckles. <<He>> seems to have calmed down. "Make sure to get some rest."
+<</if>>
+<br><br>
+<<He>> leaves you lying on the bed. <<tearful>> you rise to your feet,
+<<if $edenPreyForced>><<unset $edenPreyForced>>
+	feeling uneasy about what just happened.
+<<else>>
+	still feeling more than a little winded.
+<</if>>
+<br><br>
+
+<<endcombat>>
+<<clotheson>>
+
+<<link [[Next|Eden Cabin]]>><</link>>
+<br>

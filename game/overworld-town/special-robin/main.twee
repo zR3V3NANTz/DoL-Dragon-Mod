@@ -518,14 +518,52 @@ You nod, continuing to walk to the school with Robin. The rest of the trip is un
 
 <<npc Robin>><<person1>>You run up to Robin.
 
-<<if $robinromance is 1>>
+<<if $robinReunionScene is "dungeon">>
+	<<unset $robinReunionScene>><<set $robinPostMortem to true>>
+	You tap on <<his>> shoulder<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>, causing <<him>> to yelp<</if>>. <<He>> turns around to meet you and gasps, then immediately buries <<himself>> into your chest.
+	<br>
+	"I don’t believe it," Robin squeals. "I-I thought you were gone forever!"
+	<br><br>
+	
+	Eventually, Robin calms down a bit. "We need to talk about this at home," <<he>> says. "Wh-when you’re ready, of course. Come on."
+	<br><br>
+	
+	The both of you walk to the orphanage together. Robin keeps you close by.
+	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
+	<br><br>
+<<elseif $robinReunionScene is "asylum">>
+	<<unset $robinReunionScene>>
+	You tap on <<his>> shoulder<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>, causing <<him>> to yelp<</if>>. <<He>> turns around to meet you and gasps. <<He>> looks pleasantly surprised.
+	<br><br>
+
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+		"H-hi," <<he>> says quietly. "I thought the doctors took you away. I would’ve tried to get you something had I known you were c-coming back," Robin’s voice quivers.
+	<<else>>
+		"Oh, hey!" <<he>> says, beaming. "I thought you were staying at the doctor’s for a while. I would’ve prepared something had I known you were coming back," Robin explains.
+	<</if>>
+	<br><br>
+
+	You shake your head, telling <<him>> that they weren’t going to help you, so you "checked" out early. Robin seems confused, but <<he>> nods regardless. <<He>> gives you a hug.
+	<br>
+
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+		"W-Well, I’m glad I get to see you again," <<he>> mumbles, holding you tight.
+	<<else>>
+		"Well, I’m glad you’re around. I hope you're feeling better," <<he>> says.
+	<</if>>
+	"Come on. Let's go home."
+	<br><br>
+
+	Together, the two of you head to the orphanage.
+	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
+	<br><br>
+<<elseif $robinromance is 1>>
 	<<He>> hugs you. "Can we hold hands?" <<he>> says. <<takeHandholdingVirginity "Robin" "romantic">>
 	<br><br>
 
 	Together you walk back to the orphanage, chatting as you go.
 	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
 	<br><br>
-
 <<else>>
 
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 80>>
@@ -562,7 +600,67 @@ You nod, continuing to walk to the school with Robin. The rest of the trip is un
 
 <<npc Robin>><<person1>>You run up to Robin.
 
-<<if $robin_oxford_bare is undefined>>
+<<if $robinReunionScene is "dungeon">>
+	<<unset $robinReunionScene>><<set $robinPostMortem to true>>
+	You tap on <<his>> shoulder<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>, causing <<him>> to yelp<</if>>. <<He>> turns around to meet you and gasps, then immediately buries <<himself>> into your chest.
+	<br>
+	<<He>> either doesn't notice or doesn't care about your exposure.
+	<br>
+	"I don’t believe it!" Robin squeals. "I-I thought you were gone forever! I thought..."
+	<br><br>
+	
+	<<He>> trails off, suddenly realising <<his>> face is pressed against your<<if !$worn.under_upper.name.includes("naked")>> practically<</if>> bare <<breasts>>. <<He>> hurriedly backs away from you, looking flustered.<<npcincr Robin lust 3>><<gglust>>
+	<br>
+	"Where's your shirt? No, that's not important. Where have you been?" <<he>> says, <<his>> voice steadily rising in pitch.
+	<br>
+	You gently reassure <<him>> that you're alright now. Robin nods as <<he>> calms down, <<his>> breaths becoming steady. <<His>> blush doesn't fade, however.
+	<br><br>
+	
+	"I'm glad you're safe, anyway. We can talk about it at home, okay?" <<His>> eyes trail towards your <<breasts>>, then quickly dart back up. "But first, c-can you please put something on?"
+	<br><br>
+	
+	The both of you walk to the orphanage together. Despite <<his>> embarrassment, Robin clings to you tightly.
+	<<ltrauma>><<lstress>><<trauma -2>><<stress -4>>
+	<br><br>
+	<<npcincr Robin love 1>><<npcincr Robin lust 1>>
+	<<if $robin_oxford_bare is undefined>>
+		<<set $robin_oxford_bare to 1>>
+	<<elseif $robin_oxford_bare lte 4>>
+		<<set $robin_oxford_bare += 1>>
+	<</if>>
+	
+	<<link [[Next|Orphanage]]>><<endevent>><</link>>
+	<br>
+<<elseif $robinReunionScene is "asylum">>
+	<<unset $robinReunionScene>>
+	You tap on <<his>> shoulder<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>, causing <<him>> to yelp<</if>>. <<He>> turns around to meet you and gasps. <<He>> looks pleasantly surprised.
+	<br><br>
+	
+	"Oh! You're back from the... doctor's..." <<His>> voice falters as <<his>> gaze drops to your exposed <<breasts>>. <<He>> blushes, but continues as if nothing were amiss.
+	<br>
+	"I-I didn't know you were coming back so soon. I would’ve prepared something." <<He>> pauses, <<his>> eyes darting between your body and the sidewalk. "S-so, did the treatment work out...?"
+	<br><br>
+
+	You shake your head, telling <<him>> that they weren’t going to help you, so you "checked" out early. Robin doesn't seem to be paying much attention to your words, but <<he>> nods along regardless.
+	<br>
+	
+	"Well, I’m glad you’re back, anyway," <<he>> says. "L-let's get you home. Before anyone notices your..."
+	<br>
+	<<He>> trails off again and coughs awkwardly, before abruptly grabbing your arm and pulling you along.
+	<br><br>
+	
+	The two of you head back to the orphanage. Robin looks around for any sign that people are aware. This draws a lot of attention, but Robin's insistence on hurrying means you make good time.
+	<br><br>
+	<<npcincr Robin love 1>><<npcincr Robin lust 1>>
+	<<if $robin_oxford_bare is undefined>>
+		<<set $robin_oxford_bare to 1>>
+	<<elseif $robin_oxford_bare lte 4>>
+		<<set $robin_oxford_bare += 1>>
+	<</if>>
+	
+	<<link [[Next|Orphanage]]>><<endevent>><</link>>
+	<br>
+<<elseif $robin_oxford_bare is undefined>>
 	<<set $robin_oxford_bare to 1>>
 	<<He>> drops <<his>> bag in astonishment at the sight of your exposed <<undertop>>. "Why aren't you wearing a shirt?" <<he>> whispers. <<He>> rummages through <<his>> bag. "I thought I had a towel, but I can't find anything."
 	<br><br>
@@ -932,11 +1030,6 @@ Bailey shoves Robin into the back seat, and drives away.
 <br><br>
 
 <<if _options is 1>>
-	<<if $robinpaid isnot 1 and $robindebtknown is 1>>
-		<<link [[Take on Robin's debt|Bailey's Office Robin]]>><</link>> | <span class="red">Doubles weekly payment</span>
-		<br>
-	<</if>>
-
 	<<if $pub_hack_job is 3 and not $hacker_tasks.includes("bailey")>>
 		Bailey is working on something on <<his>> computer. You have the hacker's device ready.
 		<br><br>
@@ -945,6 +1038,17 @@ Bailey shoves Robin into the back seat, and drives away.
 		<<link [[Trick Bailey|Bailey's Office Hack]]>><<set $phase to 1>><</link>><<skulduggerydifficulty>>
 		<br>
 	<</if>>
+
+	<<if $robinpaid isnot 1 and $robindebtknown is 1>>
+		<<link [[Take on Robin's debt|Bailey's Office Robin]]>><</link>> | <span class="red">Doubles weekly payment</span>
+		<br>
+	<</if>>
+
+	<<if $renttime is 1 and ($promiscuity gte 35 or $uncomfortable.prostituting is false) and $baileyOfficeSeduced is undefined>>
+		<<link [[Seduce Bailey|Bailey Office Seduce]]>><<set $baileyOfficeSeduced to 1>><<trauma 6>><</link>><<gtrauma>><<promiscuous3>>
+		<br>
+	<</if>>
+
 	<<if $mason_pond is 1>>
 		<<link [[Ask about a spring|Bailey Pond]]>><<set $mason_pond to 2>><</link>>
 		<br>
@@ -997,6 +1101,121 @@ You put the cash on the desk. Bailey snatches it, and reclines in <<his>> chair 
 
 <<link [[Leave|Orphanage]]>><<endevent>><</link>>
 <br>
+
+:: Bailey Office Seduce
+<<set $outside to 0>><<set $location to "home">><<effects>>
+
+<<if $promiscuity lt 35>><<set $desperateaction to 1>><</if>>
+<<set $seductiondifficulty to 10000>>
+<<silently>><<seductioncheck>><</silently>>
+
+<br><br>
+<<if $seductionrating gte $seductionrequired>>
+	You step over to Bailey's desk and lean forward. <<He>> shoots you a glare. You stare back at <<him>> with pleading eyes. <<promiscuity3>>
+	"You know I can get your money in a day," you say softly. "That's all I need. You don't want to see me go away, do you?" Meekly, you look down and run a finger over the desk. <<His>> glare softens into a sneer. 
+	<br><br>
+	Bailey's away from <<his>> desk and on top of you in an instant. <<He>> shoves you to the floor with a
+	<<if $baileyseduced is 1>>
+		fierce look in <<his>> eyes.
+		<br>
+		"Alright, you little shit," <<he>> growls. "If it'll shut you up, I'll throw you a bone."
+	<<else>>
+		smile. "You're right. I don't."
+	<</if>>
+	<br><br>
+
+	<<link [[Next|Bailey Office Sex]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	You step over to Bailey's desk and lean forward, earning a glare from <<him>>. You put on your best pouty face. "I know something better than money," you whisper in a sly, sultry voice. <<promiscuity3>>
+	<<if $baileyseduced is 1>>
+		Bailey looks up at you, unamused. "I told you what I want from you. Have it by tomorrow. Or else." <<He>> goes back to <<his>> work. "Now piss off, I'm busy."
+	<<else>>
+		<span class="red">"Out," Bailey says, unamused. "Now."</span>
+	<</if>>
+	<br>
+	"But I-"
+	<br>
+	"Now!" Bailey barks. 
+	<br><br>
+	You step out of Bailey's office, defeated. It was worth a shot.
+	<br><br>
+
+	<<link [[Next|Orphanage]]>><<endevent>><</link>>
+	<br>
+<</if>>
+
+:: Bailey Office Sex
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+
+	<<maninit>>
+	<<set $enemyhealthmax += 200>>
+	<<set $enemyhealth += 200>>
+	<<set $enemytrust -= 200>>
+	<<set $enemyanger += 30>>
+	<<set $enemyarousalmax to 1000>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bailey Office Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bailey Office Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bailey Office Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bailey Office Sex Finish
+<<set $outside to 0>><<set $location to "home">><<effects>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>><<earnFeat "Bailey's Trouble Maker">>
+	Bailey sighs and looks over at you. <<His>> expression changes to one of horror.
+	<br>
+	"Shit," <<he>> mutters as <<he>> gets off of you. "Shit! What the fuck did I just do?"
+	<br><br>
+	
+	A look of fury spreads across the caretaker's face. <<He>> grasps you by the hair, yanking you up until you're eye level with <<him>>.
+	<br>
+	<span class="green">"You get one day,"</span> growls Bailey. <<He>> releases you and gives you a shove. "Out, now!"
+	<<set $renttime += 1>>
+	<<if $rentday is 7>>
+		<<set $rentday to 1>>
+	<<else>>
+		<<set $rentday += 1)>>
+	<</if>>
+	<br><br>
+
+	<<tearful>> you leave the office.
+	<<clotheson>>
+	<<endcombat>>
+
+	<<link [[Next|Orphanage]]>><</link>>
+	<br>
+<<elseif $enemyhealth lte 0>>
+	Bailey reels back, surprised at your ferocity. <<He>> nurses a bruise. <<tearful>> you scramble to your feet and leave the office.
+	<br><br>
+
+	You get the feeling <<he>> isn't going to reconsider your payment arrangement.
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+
+	<<link [[Next|Orphanage]]>><</link>>
+	<br>
+<</if>>
 
 :: Bailey's Office Robin
 <<set $outside to 0>><<set $location to "home">><<effects>>
@@ -1312,7 +1531,40 @@ _skin_array.includes("right_cheek") and $skin.right_cheek.pen isnot "tattoo" and
 <</if>>
 <br><br>
 
-<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and random(1, 100) gte 50>>
+<<if $robinReunionScene is "asylum">>
+	<<unset $robinReunionScene>>
+	Robin looks uneasy, as if something's on <<his>> mind. You ask if <<hes>> okay.
+	<br>
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+		"I thought the doctors took you away," Robin explains in a shaky voice. "I would’ve tried to get you something had I known you were c-coming back." <<He>> pauses again. "Th-they didn't hurt you, did they?"
+	<<else>>
+		"I thought you were staying at the doctor’s for a while," Robin explains. "I would’ve prepared something had I known you were coming back." <<He>> shakes <<his>> head and smiles. "Anyway, how was it? Did the doctors help you get better?"
+	<</if>>
+	<br><br>
+	
+	You shake your head, telling <<him>> that they weren’t going to help you, so you "checked" out early. Robin seems confused, but <<he>> nods regardless. <<He>> gives you a hug.
+	<br>
+
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+		"Well, I’m glad you’re free," <<he>> mumbles, holding you tight.
+	<<else>>
+		"Well, I’m happy to see you again. I hope you're feeling better," <<he>> says.
+	<</if>>
+	<br><br>
+	
+	You finish your lunch with Robin in silence. "I'm going to wait in the classroom," <<he>> says when you're done. "I don't like being late." <<He>> hugs you.
+	<br><br>
+
+	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
+	Kylar watches from across the canteen.
+	<<gksuspicion>><<npcincr Kylar rage 1>>
+	<br><br>
+	<</if>>
+	<<endevent>>
+
+	<<link [[Next|Canteen]]>><</link>>
+	<br>
+<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and random(1, 100) gte 50>>
 <<endevent>><<npc Kylar>><<person1>>
 You chat with Robin while eating, until you are interrupted by someone forcing themselves between you. Kylar squeezes onto the seat, looks at you and smiles. "You d-didn't see me over there," <<he>> says. "It's okay. I don't mind moving."
 <br><br>
@@ -2355,7 +2607,7 @@ You rest against <<him>> for a while as <<he>> holds you tight and pets you.
 		<<set $livestock_robin += 1>>
 		"You weren't home for a while," Robin says, a dark expression on <<his>> face. "Did Bailey take you? Did something happen?"
 		<br><br>
-		You moo at their question.
+		You moo at <<his>> question.
 		<<if $robinconsole is 0>>
 			<<He>> doesn't say anything else, but <<he>> looks tense as <<he>> stares out the window.
 		<<else>>
@@ -2973,3 +3225,546 @@ You give Robin a simple nod. <br>
 <br><br>
 <<robinoptions>> 
 
+:: Robin Trauma Visit
+<<set $outside to 0>><<set $location to "home">><<home_effects>><<effects>>
+<<set $robinTraumaVisit to true>>
+<<npc Robin>><<person1>>
+
+<<if $phase is 0>>
+	<<set $robindestination to "Bedroom">>
+<<elseif $phase is 1>>
+	<<set $robindestination to "Orphanage">>
+<<elseif $phase is 2>>
+	<<set $robindestination to "Domus Street">>
+<</if>>
+
+You walk <<if $phase is 0>>to your room<<else>>towards the main hall<</if>>, but you end up stopping outside Robin's room. There's no light coming from underneath the door, and you don't hear so much as a peep inside.
+<br><br>
+
+Robin doesn't usually go to bed this early. You feel a deep sense of dread.<<stress 2>><<gstress>>
+<br><br>
+
+Overcome with worry, you quietly turn the knob of the door and crack it open slowly. You peer inside, and you spot what appears to be a lump in the bed covers. You can hear Robin sobbing softly underneath.
+<br><br>
+
+Robin hasn’t left <<his>> room in a while, nor has <<he>> come to talk to you. <<He>> may need someone to talk to.
+<br><br>
+
+<<link [[Spend time with Robin (3:00)|Robin Trauma Visit 2]]>><<npcincr Robin love 1>><<npcincr Robin dom -1>><<npcincr Robin trauma -5>><<unset $robindestination>><</link>><<glove>><<ldom>>
+<br>
+<<link [[Close the door|Robin Trauma Visit Close]]>><<stress 6>><</link>><<gstress>>
+<br>
+
+:: Robin Trauma Visit Close
+<<set $outside to 0>><<set $location to "home">><<home_effects>><<effects>>
+
+You slowly shut the door, leaving Robin all by <<himself>> in <<his>> room.
+<br><br>
+
+<<link [[Leave|$robindestination]]>><<endevent>><<unset $robindestination>><</link>>
+
+:: Robin Trauma Visit 2
+<<set $outside to 0>><<set $location to "home">><<home_effects>><<effects>>
+
+You push open Robin’s door. It creaks open, the lights from the hallway purge the darkness coming from <<his>> room. You hear a frightened gasp upon entering the room, and Robin pulls the covers tight over <<himself>>.
+<br>
+The room fills with an eerie silence as you call out Robin's name.
+<br>
+For a few seconds, nothing happens, and the room continues to linger in uneasiness. Until you see Robin’s head emerge from beneath the covers. <<He>> stares at you for a split second, <<his>> eyes wincing from the bright light. <<He>> ducks under <<his>> bed covers once more after spotting you.
+<br><br>
+
+You close the door behind you, returning the room to a state of near pitch black darkness. You manage to navigate yourself over to Robin’s bedside and kneel beside it.
+<br><br>
+
+You call out Robin's name once again, this time more quietly. The light flickers on as you reach over to touch it, enveloping the room in a warm, orange glow. You remain by <<his>> bedside, still and calm until <<he>> reveals <<himself>>.
+<br><br>
+
+<<His>> eyes are swollen, marked red from tears. Tear trails run down <<his>> face. You can feel the anguish emanating off of <<him>>. You ask how <<hes>> feeling.
+<br>
+<<if $robin_injured gte 1>>
+	<<Hes>> silent for a moment. "I-I'm okay," <<he>> finally mumbles. <<He>> doesn't look at you when <<he>> speaks. "Honest."
+<<else>>
+	"B-better," <<he>> responds, fighting off a sniffle. "The painkillers have been helping, a-and the bruises and swelling are going away, too."
+<</if>>
+<br><br>
+
+The two of you spend the next few hours talking about whatever comes to mind, such as the latest video games to be released and school. Robin sometimes struggles to talk about <<himself>> and <<his>> condition, but <<he>> always seems to perk back up whenever you mention wanting to take <<him>> out window shopping.
+<br><br>
+
+<<link [[Next|Robin Trauma Visit 3]]>><<pass 3 hours>><</link>>
+<br>
+
+:: Robin Trauma Visit 3
+<<set $outside to 0>><<set $location to "home">><<home_effects>><<effects>>
+
+Robin looks at the clock and seems surprised. "I didn’t realise we were talking for so long," <<he>> laughs. It’s been a while since you’ve heard <<him>> do that.
+<br><br>
+
+"I know you must be busy. I don’t want to take up more of your time than I already have," <<he>> continues, but with a reluctant tone. It seems Robin has more to say.
+<br><br>
+
+Robin’s face turns a shade of red. You ask what's wrong.
+<br>
+"Nothing, it’s just..."
+<br>
+Embarrassment fills Robin’s voice, causing <<him>> to stumble over <<himself>> as <<he>> struggles to find the right words to say.
+<br><br>
+
+"If it isn’t too much to ask of you, could you stay with me? Here, tonight? I find it hard to sleep sometimes," <<he>> says. "Maybe I would feel safer with you?"
+<br><br>
+
+<<link [[Yes (8:00)|Robin Trauma Visit Yes]]>><<npcincr Robin love 1>><<npcincr Robin lust 1>><<npcincr Robin dom -1>><<npcincr Robin trauma -10>><</link>><<glove>><<glust>><<ldom>>
+<br>
+<<link [[No|Robin Trauma Visit No]]>><<npcincr Robin love -1>><</link>><<llove>>
+<br>
+
+:: Robin Trauma Visit No
+<<set $outside to 0>><<set $location to "home">><<home_effects>><<effects>>
+
+<<if $submissive gte 1150>>
+	"I'm s-sorry, Robin," you mutter, staring at your feet. "I can't."
+<<elseif $submissive lte 850>>
+	"Sorry, Robin," you say. "I have somewhere else to be. But you'll manage."
+<<else>>
+	"I’m sorry, Robin. I have something I need to do today."
+<</if>>
+<br><br>
+
+"Oh..." Robin’s voice carries a mix of disappointment and sadness. "Th-that's okay! I’m a big <<personsimple>>, see? I'll be fine!"
+<br>
+You're not convinced, but you head towards the door regardless.
+<br><br>
+
+Just as you shut the door, you hear Robin let out a depressed sigh. You return to your room, feeling a sting of guilt.<<stress 2>><<gstress>>
+<br><br>
+
+<<link [[Next|Bedroom]]>><<endevent>><</link>>
+<br>
+
+:: Robin Trauma Visit Yes
+<<set $outside to 0>><<set $location to "home">><<home_effects>><<effects>>
+
+"Of course I’ll stay," you tell <<him>>.
+<br>
+"Really? Yay, sleepover!" <<he>> squeals, throwing <<his>> arms up in excitement. 
+<br>
+"We’ll have to share my bed," <<he>> continues. "Bailey will get mad at me if <<nnpc_he "Bailey">> catches you sleeping on the floor. And I don't want you sleeping down there anyway." 
+<br><br>
+
+Robin gives you a friendly smile. The two of you continue talking for a while longer, until the sun fully settles and the stars light up the night sky. 
+<br><br>
+
+You get into bed next to <<him>>, and turn off the lamp. 
+<br>
+"Thank you," <<he>> says out of the blue. "F-for staying with me, I mean. I already feel a lot safer. "
+<br>
+<<He>> rests <<his>> head on your chest and snuggles up closer to you. It feels a bit uncomfortable, but Robin seems to be completely content with the situation. You feel the soothing warmth of <<his>> body heat emanating onto you. It's comforting. 
+<br><br>
+
+"I don’t know where I would be without you."
+<br><br>
+
+<<His>> voice trails off into a yawn. It doesn’t take long until you hear the sound of Robin’s soft breathing. You find yourself succumbing to sleep yourself, your eyes close shut as you drift away into a peaceful sleep.
+<br><br>
+
+<<link [[Sleep|Robin Trauma Visit Sleep]]>><<set $sleephour to 8>><<set $saveDetails.auto.count++>><</link>><<ltiredness>>
+<br>
+
+:: Robin Trauma Visit Sleep
+<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
+<<if _preventUpdate is undefined>>
+	<<run setSaveDetail("autosave",{"saveId":$saveId,"saveName":$saveName})>>
+<</if>>
+<<sleep>><<effects>>
+<<sleepeffects>>
+
+You wake up refreshed and ready to tackle the day. Robin, still sleeping soundly, lays beside you. A small smile has formed over <<his>> face. You do your best to get out from <<his>> bed and leave without disturbing the slumbering orphan.
+<br><br>
+
+You head back to your room.
+<br><br>
+
+<<link [[Next|Bedroom]]>><<endevent>><</link>>
+<br>
+
+:: Robin Dungeon Talk
+<<set $outside to 0>><<set $location to "home">><<effects>>
+<<unset $robinPostMortem>>
+
+Robin's expression darkens, but <<he>> nods all the same.
+<br>
+"Tell me as much as you want, okay?" <<he>> whispers, gently rubbing your arm. "You can stop if you're uncomfortable."
+<br>
+You nod and take a deep breath before beginning.
+<br><br>
+
+<<if $submissive gte 1150>>
+	You lower your head and begin describing the time you spent locked inside of a cell. You tell Robin about how the slightest disobedience would have dire consequences. Soon, you begin describing the violations you endured before your voice trails off. 
+	<br><br>
+
+	With teary eyes, you grab Robin’s hands and beg <<him>> to forgive you.
+
+	<<if $robinromance is 1>>
+		You try to explain how you didn’t have a choice about what they did to you.
+	<<else>>
+		You tell <<him>> you’re sorry for causing such a mess back at home. It couldn’t be helped.
+	<</if>>
+	<br>
+	Robin gently places <<his>> hands on your cheeks and lifts your chin up, staring you in the eyes. <<Hes>> crying.
+	<br>
+	"Stop it," <<he>> whispers in reassurance. "I’m just happy you’re home." <<He>> pulls you into a hug, pressing your face into <<his>> chest.
+<<elseif $submissive lte 850>>
+	You tell Robin what <<he>> wanted to know. You detail about an underground location where you were held. Rampant assaults and nonstop acts of depravity lined every prisoner’s life. Despite all this, you refused to let it break you. At last, when you spotted an opportunity to get out, you did so. 
+	<br><br>
+
+	Robin seems astonished by your bravery while seemingly saddened that such a place exists. "I’m sorry you went through all that," <<he>> says, sounding downtrodden.
+	<br>
+	<<He>> quickly perks up and smiles at you. "I hope I can be as brave as you one day." <<He>> pulls you into a hug, nuzzling against your shoulder.
+<<else>>
+	You describe your time spent in a dark cell in some unknown location. Per Robin’s request, you go into detail about the horrors that you were forced to endure. Rarely were you afforded a moment where you weren’t violated. You can tell Robin remains shook by this, but <<he>> listens to what you say. While you did escape, you tell <<him>> about others who weren’t so fortunate.
+	<br><br>
+
+	Robin looks at you in disbelief once you finish. "That’s horrible! You and those poor people..."
+	<br>
+	<<He>> pulls you into <<his>> chest and wraps <<his>> arms around you, stroking your hair. "I won't let that happen to you again," <<he>> whispers, <<his>> voice quivering. "Promise."
+<</if>>
+<<lstress>><<ltrauma>><<ggdom>>
+<br><br>
+
+You spend a while wrapped up in Robin's embrace. You eventually pull away. Robin keeps <<his>> hand on your shoulder.
+<br>
+"I'm so sorry you had to go through that," Robin says. "If there's anything you need from me, or if you just want to talk, you let me know. Okay?"
+<br>
+You slowly nod. Robin smiles weakly in response<<if $robinconsole is 1>>, then turns <<his>> attention back to the screen. <<He>> keeps an eye on you<</if>>.
+<br><br>
+
+<<robinoptions>>
+
+:: Robin After Class
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<npc Robin>><<person1>>
+
+<<if $robinReunionScene is "dungeon">>
+	<<unset $robinReunionScene>><<set $robinPostMortem to true>>
+	You step out into the hallway. Before you can get far, a pair of arms wraps around you from behind.
+	<br><br>
+	
+	"S-sorry," says a familiar voice. It's Robin. <<He>> turns you around to face <<him>>. <<His>> eyes are watering.
+	<br>
+	"I didn't expect to see you in class today," <<he>> says with a strained smile. "Or ever again, really. I-I thought you were..."
+	<br>
+	<<His>> voice, trails off, and <<he>> pulls you into another hug, burying <<his>> face in your chest. <<He>> stays like that for a moment, before pulling away.
+	<br><br>
+	
+	"Sorry, I'm gonna be late for class. But we need to talk after school." <<He>> gives your shoulder a squeeze. "When you're ready, of course."
+	<br><br>
+	
+	You watch <<him>> depart, waving as <<he>> disappears down the corridor.
+<<elseif $robinReunionScene is "asylum">>
+	<<unset $robinReunionScene>>
+	You step out into the hallway. Before you can get far,
+	
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+		you feel something gently tug on your arm. You turn to find Robin at your side. You didn't hear <<him>> walk up to you.
+		<br><br>
+		
+		"Hi," <<he>> says quietly as you draw close. "I didn't think I'd see you today. I thought the doctors took you away. I would’ve tried to get you something had I known you were c-coming back," Robin’s voice quivers.
+	<<else>>
+		a voice from behind calls out your name. You turn to find Robin waving at you eagerly. <<He>> trots up to your side.
+		<br><br>
+		
+		"Hey, you’re out!" <<he>> says as <<he>> draws close. "You really surprised me, showing up in class today! I thought you were staying at the doctor’s for a while. I would’ve prepared something had I known you were coming back," Robin explains.
+	<</if>>
+	<br><br>
+	
+	You shake your head, telling <<him>> that they weren’t going to help you, so you "checked" out early. Robin seems confused, but <<he>> nods regardless. You walk and talk for a bit, until Robin arrives at <<his>> next class.
+	<br><br>
+	
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+		<<Hes>> quiet as <<he>> wraps <<his>> arms around you, squeezing you tight. "I’m glad you’re free."
+	<<else>>
+		"Well, I've gotta go," <<he>> says, giving you a hug. "But I’m happy to see you again! I hope you're feeling better."
+	<</if>>
+	<br>
+	<<He>> enters the classroom, leaving you in the hallway.
+<<else>>
+	As you step in the hallway, you end up bumping into Robin. You both tumble to the floor.
+	<br><br>
+	
+	"Sorry!" <<he>> says, laughing. You help <<him>> gather <<his>> things, then bid <<him>> farewell as <<he>> rushes off to <<his>> next class.
+<</if>>
+<br><br>
+
+<<link [[Next|Hallways]]>><<endevent>><</link>>
+<br>
+
+:: Robin Brothel
+<<set $outside to 0>><<set $location to "brothel">><<effects>>
+<<generate1>><<person1>>
+
+You shove through the crowd to reach Robin. <<nnpc_He "Robin">> opens <<nnpc_his "Robin">> mouth to speak, but you can't hear <<nnpc_him "Robin">> over the music. <<nnpc_He "Robin">> instead gently grabs hold of your hand and leads you away. It's obvious <<nnpc_hes "Robin">> unsure where to go, so you point towards an empty room.
+<br><br>
+
+<<set _robinPossibleComments to []>>
+<<if $famesex gte 400>>
+	<<set _robinPossibleComments.push("sex")>>
+<</if>>
+<<if $famerape gte 400>>
+	<<set _robinPossibleComments.push("rape")>>
+<</if>>
+<<if $famebestiality gte 400>>
+	<<set _robinPossibleComments.push("beast")>>
+<</if>>
+<<if $scienceprojectwon is 1 or $mathsprojectwon is 1>>
+	<<set _robinPossibleComments.push("smart")>>
+<</if>>
+<<set _robinPossibleComments.push("generic1")>>
+<<set _robinPossibleComments.push("generic2")>>
+<<set _robinPossibleComments.push("generic3")>>
+<<set _robinPossibleComments.push("generic4")>>
+<<set _robinPossibleComments.push("generic5")>>
+
+<<set _robinComment to _robinPossibleComments.random()>>
+
+A customer passes by and watches both of you.
+
+<<switch _robinComment>>
+	<<case "sex">>
+		"You're in for a treat, sweetie," the <<person>> says to Robin.
+	<<case "rape">>
+		"Do whatever you want with that one. <<pShe>> has a hard time saying 'No,'" the <<person>> sneers.
+	<<case "beast">>
+		"Make sure to wash when you're done. <<pShe>> has interesting tastes," the <<person>> chuckles.
+	<<case "smart">>
+		"<<pShes>> a smart cookie. Even smarter in bed," the <<person>> sneers.
+	<<case "generic1">>
+		"Wouldn't mind having a taste myself," the <<person>> says with a bit of jealousy in their voice.
+	<<case "generic2">>
+		"Good slut, though <<pshes>> a haggler," the <<person>> says to Robin.
+	<<case "generic3">>
+		"Don't take too long. I want a go myself," the <<person>> tells Robin.
+	<<case "generic4">>
+		"Can never get that slut myself," the <<person>> mutters, eyeing you up.
+	<<case "generic5">>
+		"Cute," the <<person>> says.
+	<<default>>
+		No one stops or comments on your way to the room.
+<</switch>>
+<br><br>
+<<endevent>>
+<<npc Robin>><<person1>>
+
+You notice a look of disgust on Robin's face. Furrowing <<his>> eyebrows, <<he>> ignores the patron and hastens <<his>> pace. You soon find yourself alone with Robin in an empty room.
+<br><br>
+
+<<link [[Next|Robin Brothel 2]]>><</link>>
+<br>
+
+:: Robin Brothel 2
+<<set $outside to 0>><<set $location to "brothel">><<effects>>
+
+<<if $robinBrothelVisit gte 1>>
+	You take a seat at the edge of the bed and stare down in shame. Robin smiles, though you can tell there's some pain behind it. 
+	<br><br>
+
+	"It's okay. I just came to pick you up," <<he>> explains. <<He>> holds out <<his>> hand. "I'm not mad. Let's go home."
+<<elseif $dissociation gte 1>>
+	You take a seat on the edge of the bed. The empty gaze of your eyes causes Robin to squirm uncomfortably. Breaking the quiet, you attempt to negotiate a price. Robin cuts you off immediately.
+	<br>
+	"Please, I'm not here for that," <<he>> says, walking over and embracing you. You're frightened at first, but a warm feeling you've missed washes over you. Then, like a flood gate going off, you let out your troubles.
+	<br><br>
+
+	Your behaviour unnerves Robin, but <<he>> listens silently. You complain about everything that's been tormenting you. Robin attempts to comfort you through it all.
+	<br><br>
+
+	Once you've calmed a bit, Robin speaks. "I came to bring you home. It's not right for me to let you do this to yourself."
+<<elseif $uncomfortable.prostituting is false>>
+	You take a seat on the edge of the bed. The disgust on your face is obvious, and Robin notices immediately. <<He>> walks over to you and embraces you. 
+	<br><br>
+
+	"It's okay. I'm not here for that," Robin tries to comfort you. "I heard some things, and I couldn't just let this happen to you." 
+	<br><br>
+	You tightly embrace Robin and let your worries out. Robin is shocked at first but seems to understand your plight. Finally, the depravity Bailey forced you to endure for not making ends meet floods out. You detail what happened to you while you were missing from the orphanage.
+	<br>
+	"Bailey is so cruel," Robin whispers while attempting to calm you. After a moment, you quiet down. 
+	<br><br>
+
+	Robin watches you for a moment before speaking, "I want you to come home. This place, it isn't right for me to let you do this to yourself."
+<<else>>
+	You take a seat on the edge of the bed while Robin sits on a couch. There's an awkward silence, broken only by the music faintly pumping from behind the walls. <<He>> wordlessly looks at you for a short while before finally speaking.
+	<br>
+	"I looked into what kind of place this is, and I heard some things about you." You see Robin tense up. Another long silence follows. Robin slowly looks up. <<His>> eyes are locked on yours.
+	<br><br>
+
+	"Do you still love me?"
+	<br><br>
+
+	<<if $submissive gte 1150>>
+		"O-of course I love you. I have to do this for money," you stammer. "F-for Bailey."
+	<<elseif $submissive lte 850>>
+		"Why would you ask that? Of course I do. I have to do this to make ends meet," you explain.
+	<<else>>
+		"I do love you. This is the only line of work that'll meet Bailey's demands," you explain.
+	<</if>>
+	<br>
+	Robin nods in understanding, but appears conflicted about something. <<He>> rises from the couch and sits next to you. You feel Robin embrace you. You return the gesture.
+	<br><br>
+
+	"It's not right," Robin says. "I want you to come home. We can figure something out, but I can't let you do this to yourself." <<He>> releases you with tears in <<his>> eyes.
+<</if>>
+<br><br>
+
+<<if $robinBrothelVisit is undefined>><<set $robinBrothelVisit to 1>><</if>>
+
+<<link [[Go with Robin|Robin Brothel 3]]>><<set $phase to 0>><<npcincr Robin love 5>><<npcincr Robin dom 5>><</link>><<gglove>><<ggdom>>
+<br>
+<<link [[Stay here|Robin Brothel 3]]>><<set $phase to 1>><<npcincr Robin love -1>><</link>><<llove>>
+<br>
+
+:: Robin Brothel 3
+<<set $outside to 0>><<set $location to "brothel">><<effects>>
+
+<<if $phase is 0>>
+Robin smiles. "Thank you."
+<<if $exposed gte 1>>
+	<<towelup>>
+	<<He>> takes your hand and leads you out of the building to a nearby bus stop, though not before insisting that you stop by the dressing room first.
+<<else>>
+	Once more, <<he>> takes your hand, leading you out of the building and to a nearby bus stop.
+<</if>>
+	You chat with Robin while you wait. It's obvious that <<hes>> trying to ignore what you were just doing a short while ago.
+	<br><br>
+
+	<<if $daystate is "night">>
+		<<generate2>><<generate3>>
+		A bus soon pulls up, and you take a seat with Robin near the back. You glance at <<him>>. <<He>> looks tired. You feel a sting of guilt for keeping <<him>> out so late.<<stress 2>><<gstress>>
+		<br><br>
+
+		The ride is uneventful, until the <<person2>><<person>> sat in front of you turns around in <<his>> seat, grinning.
+		<br>
+		"Oh, aren't you just the cutest thing," <<he>> says in a low voice. "You should know better than to ride the bus at night."
+		<br>
+		Robin stirs and frowns. "Leave <<phim>> alone, or I'll call for help."
+		<br><br>
+
+		The <<personsimple>> smiles, amused, and glances over at the <<person3>><<person>> beside <<person2>><<him>>, who shrugs. The <<person>> looks back, feigning defeat.
+		<br>
+		"Alright, you win. Don't need two squirmers tonight, anyway."
+		<br>
+		<<endevent>>
+		<<npc Robin>><<person1>>
+		Robin's expression remains tense, and <<he>> reaches for something in <<his>> pocket. Ultimately, <<he>> decides against using it, whatever it was. Try as you might, you can't tell what it is.
+		<br><br>
+
+		The rest of the ride passes without incident.
+	<<else>>
+		The ride home is uneventful. Robin rests <<his>> head on your shoulder, <<his>> hand still intertwined with your own.<<stress -2>><<trauma -2>><<lstress>><<ltrauma>>
+	<</if>>
+	<br><br>
+
+	<<link [[Next|Robin Brothel Home]]>><</link>>
+	<br>
+<<elseif $phase is 1>>
+	<<if $submissive gte 1150>>
+		You stare at your feet. "I need to. If I don't, Bailey will..." you trail off.
+	<<elseif $submissive lte 850>>
+		You turn your back to Robin. You can't bring yourself to look <<him>> in the eyes. "It's just the way of the world."
+	<<else>>
+		You shake your head, "Bailey is gonna do this to both of us if I can't pay. I'm sorry."
+	<</if>>
+	<br><br>
+
+	Robin looks at you in disbelief. "I don't want to see you violate yourself, even if it's for our own good." <<He>> grabs your shoulders. <<His>> hands are shaking. "Just, please come home!"
+	<br><br>
+
+	You're not sure if you want to be here at all, but you realise you have to be firm if you want to keep this going.
+	<br><br>
+
+	<<link [[Go with Robin|Robin Brothel 3]]>><<set $phase to 0>><<npcincr Robin love 3>><</link>><<glove>>
+	<br>
+	<<link [[Insist on staying|Robin Brothel 3]]>><<set $phase to 2>><<npcincr Robin love -10>><<npcincr Robin dom -20>><</link>><<lllove>><<llldom>>
+	<br>
+<<elseif $phase is 2>>
+	You don't budge, despite Robin's despair at the thought of you working here. <<He>> falls silent and nods in defeat. Tears roll down <<his>> cheeks, and <<he>> looks at you to reconsider. You don't.
+	<br><br>
+
+	"Okay. I'll leave you alone. Just..." Robin stammers over <<his>> own words. "Be careful."
+	<br><br>
+
+	Robin glances at you through teary eyes one more time before leaving the room, the door shutting quietly behind <<him>>.<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
+	<br><br>
+
+	<<link [[Next|Brothel]]>><<endevent>><</link>>
+	<br>
+<</if>>
+
+:: Robin Brothel Home
+<<set $outside to 0>><<set $location to "home">><<effects>>
+
+You arrive at the orphanage and step off the bus. Robin walks you to your room.
+<br><br>
+
+<<if $robinBrothelVisit gte 1>>
+	<<He>> smiles at you. "I'm glad you're home. I'm sure we'll think of something." <<He>> holds you in <<his>> arms for a moment, stroking the back of your head gently.
+	<br>
+	"You don't need to go through this alone," <<he>> whispers. "We'll get through it. Bailey won't stop us."
+	<br>
+	<<He>> squeezes you tight before pulling away. <<Hes>> still smiling.
+<<else>>
+	Once you're inside, <<he>> speaks. "I'm sorry. I don't want to tell you your business, but I care about you, and..." <<He>> sighs, looking dejected. "I hope you're not mad." 
+	<br>
+	You put a hand on Robin's shoulder and gently reassure <<him>>. It seems to lift <<his>> spirts a little. "We'll think of something," <<he>> says, smiling weakly.
+<</if>>
+<br><br>
+
+<<if $daystate is "night">>
+	Robin glances at the clock. "It's getting late," <<he>> yawns. "Get some rest. We could both use some."
+	<br><br>
+	
+	<<link [[Nod|Robin Brothel Sleep]]>><<set $phase to 0>><</link>>
+	<br>
+	<<link [[Ask Robin to stay with you|Robin Brothel Sleep]]>><<set $phase to 1>><<stress -6>><<trauma -6>><<npcincr Robin love 1>><<npcincr Robin dom 1>><<npcincr Robin lust 1>><</link>><<lstress>><<ltrauma>><<glove>><<gdom>><<glust>>
+	<br>
+<<else>>
+	Robin stays in your room for a bit, making sure you're okay. After a few minutes, <<he>> kisses you on the cheek and stands.
+	<br>
+	"I'm going back to my room," <<he>> says. <<He>> lingers in the doorway for a moment, staring at you with concern. "Stay safe."
+	<br><br>
+	<<He>> shuffles into the hallway, leaving you alone in your room.
+	<br><br>
+	
+	<<link [[Next|Bedroom]]>><<endevent>><</link>>
+	<br>
+<</if>>
+
+:: Robin Brothel Sleep
+<<set $outside to 0>><<set $location to "home">><<effects>>
+
+<<if $phase is 0>>
+	You nod and bid Robin goodnight. <<He>> smiles and kisses you on the cheek before leaving.
+	<br>
+	"See you tomorrow," <<he>> says. <<He>> lingers in the doorway for a moment, staring at you with concern. "Stay safe."
+	<br><br>
+
+	<<He>> shuffles into the hallway, leaving you alone in your room.
+	<br><br>
+
+	<<link [[Next|Bedroom]]>><<endevent>><</link>>
+	<br>
+<<else>>
+	Robin blushes at your request, but <<he>> nods nonetheless.
+	<br>
+	"Of course," <<he>> says. "Whatever you want."
+	<br><br>
+
+	Robin flicks the light off, and you hear clothes rustling as <<he>> undresses. You do the same and hop into your bed, scooting to the side and making room for Robin. <<He>> cuddles up beside you, nuzzling into your neck.
+	<br>
+	"Goodnight," <<he>> murmurs. <<His>> arms wrap around you, and <<he>> holds you tight. "I promise, I'll do everything I can for you..."
+	<br><br>
+	
+	<<Hes>> soon out like a light, <<his>> gentle breaths tickling your skin.
+	<br><br>
+	
+	<<link [[Sleep|Bed]]>><<endevent>><<undressSleep "bed">><<set $robinbed to 1>><<trauma -6>><<stress -12>><</link>>
+	<br>
+<</if>>

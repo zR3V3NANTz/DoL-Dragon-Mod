@@ -748,7 +748,7 @@ Second arg: tool */
 
 <<widget "bodypart">>
 <<switch $args[0]>>
-	<<case "breasts">>
+	<<case "breasts" "chest">>
 		<<set _text_output to "<<breasts>>">>
 	<<case "pubic">>
 		<<set _text_output to "pubic area">>
@@ -756,6 +756,14 @@ Second arg: tool */
 		<<set _text_output to "left ass cheek">>
 	<<case "right_bottom">>
 		<<set _text_output to "right ass cheek">>
+	<<case "leftarm">>
+		<<set _text_output to "left arm">>
+	<<case "rightarm">>
+		<<set _text_output to "right arm">>
+	<<case "vaginaoutside">>
+		<<set _text_output to "labia">>
+	<<case "thigh">>
+		<<set _text_output to "thighs">>
 	<<default>>
 		<<set _text_output to $args[0].replace(/_/g," ")>>
 <</switch>>
@@ -1232,6 +1240,162 @@ Second arg: tool */
 <</if>>
 <</widget>>
 
+<<widget "bodypart_admire_cum_heavy">>
+<<famesex 2>>
+<<He>> speaks.
+
+<<if $args[0] is "anus" and $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
+	<<if random(1, 2) is 1>>
+		"Doesn’t surprise me, with a dick that small."
+	<<else>>
+		"With such a tiny cock, I guess that’s the only way you could pleasure someone."
+	<</if>>
+	
+	<<if $penissize is 1>>
+		<<insecurity "penis_small" 1>>
+	<<else>>
+		<<insecurity "penis_tiny" 1>>
+	<</if>>
+<<else>>
+	<<switch random(1, 11)>>
+		<<case 1>>"What a fucking cum rag."
+		<<case 2>>"What a filthy slut."
+		<<case 3>>"What a fucking cumdump."
+		<<case 4>>"You nasty cumdump!"
+		<<case 5>>"Does walking around covered in cum excite you?"
+		<<case 6>>"Do you ever clean yourself?"
+		<<case 7>>"Fucking sluts won’t even take a bath anymore."
+		<<case 8>>"Were you whoring yourself?"
+		<<case 9>>"Fuck, are you addicted to cum or what?"
+		<<case 10>>"Someone knows how to have fun."
+		<<case 11>>
+			<<if $args[0] is "vagina">>
+				"Are you that desperate for a baby?"
+			<<elseif $args[0] is "anus">>
+				"Looks like your ass is getting a lot of action."
+			<<else>>
+				"Someone knows how to have fun."
+			<</if>>
+	<</switch>>
+<</if>>
+<</widget>>
+
+<<widget "bodypart_admire_cum_light">>
+<<famesex 1>>
+<<He>> speaks.
+<<if $args[0] is "vagina">>
+	<<switch random(1, 9)>>
+		<<case 1>>
+			<<if $malechance gt 0>>
+				"Did you have some fun with your boyfriend?"
+			<<else>>
+				"I see someone had fun already."
+			<</if>>
+		<<case 2>>
+			<<if $malechance gt 0>>
+				"Did your boyfriend do that?"
+			<<else>>
+				"Who put that load in you?"
+			<</if>>
+		<<case 3>>
+			<<if $malechance gt 0>>
+				"I bet you made your boyfriend happy."
+			<<else>>
+				"You must've made someone very happy."
+			<</if>>
+		<<case 4>>"Don’t worry, I’ll give you some more."
+		<<case 5>>"Guess I’ll be taking sloppy seconds."
+		<<case 6>>"At least clean yourself after slutting out."
+		<<case 7>>"I see someone had fun already."
+		<<case 8>>"Do you like being creampied?"
+		<<case 9>>"Are you trying to get pregnant?"
+	<</switch>>
+<<elseif $args[0] is "anus">>
+	<<if $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
+		<<if random(1, 2) is 1>>
+			"Doesn’t surprise me, with a dick that small."
+		<<else>>
+			"With such a tiny cock, I guess that’s the only way you could pleasure someone."
+		<</if>>
+		
+		<<if $penissize is 1>>
+			<<insecurity "penis_small" 1>>
+		<<else>>
+			<<insecurity "penis_tiny" 1>>
+		<</if>>
+	<<else>>
+		<<switch random(1, 10)>>
+			<<case 1>>
+				<<if $malechance gt 0>>
+					"Did you have some fun with your boyfriend?"
+				<<else>>
+					"I see someone had fun already."
+				<</if>>
+			<<case 2>>
+				<<if $malechance gt 0>>
+					"Did your boyfriend do that?"
+				<<else>>
+					"Who put that load in you?"
+				<</if>>
+			<<case 3>>
+				<<if $malechance gt 0>>
+					"I bet you made your boyfriend happy."
+				<<else>>
+					"You must've made someone very happy."
+				<</if>>
+			<<case 4>>"Don’t worry, I’ll give you some more."
+			<<case 5>>"Guess I’ll be taking sloppy seconds."
+			<<case 6>>"At least clean yourself after slutting out."
+			<<case 7>>"I see someone had fun already."
+			<<case 8>>"Nice to know you don’t mind taking it in the ass."
+			<<case 9>>"Did you enjoy getting your ass filled?"
+			<<case 10>>"Were you trying to stay a virgin?"
+		<</switch>>
+	<</if>>
+<<else>>
+	<<switch random(1, 8)>>
+		<<case 1>>
+			<<if $malechance gt 0>>
+				"Did you have some fun with your boyfriend?"
+			<<else>>
+				"I see someone had fun with you already."
+			<</if>>
+		<<case 2>>
+			<<if $malechance gt 0>>
+				"Did your boyfriend do that?"
+			<<else>>
+				"Who dumped that load on you?"
+			<</if>>
+		<<case 3>>
+			<<if $malechance gt 0>>
+				"I bet you made your boyfriend happy."
+			<<else>>
+				"You must've made someone very happy."
+			<</if>>
+		<<case 4>>"Do you like having cum on you?"
+		<<case 5>>"Don’t worry, I’ll give you some more."
+		<<case 6>>"At least clean yourself after slutting out."
+		<<case 7>>"I see someone had fun with you already."
+		<<case 8>>"Were you trying to stay a virgin?"
+	<</switch>>
+<</if>>
+<</widget>>
+
+<<widget "bodypart_admire_parasite_comment">>
+<<famebestiality 1>>
+<<He>> speaks.
+<<switch random(1, 8)>>
+	<<case 1>>"That must feel good."
+	<<case 2>>"I bet that keeps you horny. That’s why you haven’t taken it off yet."
+	<<case 3>>"You should see a doctor about that."
+	<<case 4>>"Fuck, is that real?"
+	<<case 5>>"Did you put that on yourself?"
+	<<case 6>>"Where did you even find that?"
+	<<case 7>>"I would never suspect a <<girl>> like you to be into that."
+	<<case 8>>"Not my thing, but I guess I can’t be picky."
+<</switch>>
+<</widget>>
+
 <<widget "bodypart_admire_kylar">>
 <<set _silent to 1>>
 <<switch $skin[$args[0]].special>>
@@ -1328,67 +1492,195 @@ Second arg: tool */
 <</widget>>
 
 <<widget "bodypart_admire">>
-<<if $skin[$args[0]] is undefined>>
-<<elseif $skin[$args[0]].writing>>
-	<<if $args[0] is "forehead" or
-	($args[0] is "left_cheek" or $args[0] is "right_cheek") and !$worn.face.type.includes("mask") or
-	($args[0] is "left_shoulder" or $args[0] is "right_shoulder") and ($worn.upper.exposed gte 1 or $worn.upper.open is 1) and ($worn.under_upper.exposed gte 1 or $worn.under_open is 1) or
-	$args[0] is "breasts" and $worn.upper.exposed gte 1 and ($worn.under_upper.exposed gte 1 or $worn.under_upper.open is 1) or
-	$args[0] is "back" and ($worn.upper.exposed gte 1 or $worn.upper.state isnot "waist") and ($worn.under_upper.exposed gte 1 or $worn.under_upper.state isnot "waist") or
-	($args[0] is "left_bottom" or $args[0] is "right_bottom") and ($worn.lower.exposed gte 1 or $worn.lower.anus_exposed gte 1) and ($worn.under_lower.exposed gte 1 or !$worn.under_lower.type.includes("athletic")) or
-	$args[0] is "pubic" and $worn.lower.exposed gte 1 and ($worn.under_lower.exposed gte 1 or !$worn.under_lower.type.includes("athletic")) or
-	($args[0] is "left_thigh" or $args[0] is "right_thigh") and $worn.lower.vagina_exposed gte 1 and !$worn.under_lower.type.includes("athletic")>>/*Makes sure bodywriting isn't seen if obstructed by clothing.*/
-		<<if $skin[$args[0]].type is "text">>
-			<<He>> reads the "<<print $skin[$args[0]].writing>>" writing on your <<bodypart $args[0]>>.
-		<<else>>
-			<<He>> examines the "<<print $skin[$args[0]].writing>>" image on your <<bodypart $args[0]>>.
-		<</if>>
-		<<if $npc[$npcrow.indexOf(_n)] is "Kylar">>
-			<<bodypart_admire_kylar $args[0]>>
-		<<elseif $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
-			<<if $skin[$args[0]].arrow is 1 and
-			($args[0] is "left_cheek" or
-			$args[0] is "right_cheek" or
-			$args[0] is "back" or
-			$args[0] is "left_bottom" or
-			$args[0] is "right_bottom" or
-			$args[0] is "pubic" or
-			$args[0] is "left_thigh" or
-			$args[0] is "right_thigh")>>
-				<<bodypart_admire_arrow $args[0]>>
-			<<elseif $skin[$args[0]].special is "prostitution">>
-				<<bodypart_admire_prostitution $args[0]>>
-			<<elseif $skin[$args[0]].special is "rape">>
-				<<bodypart_admire_rape $args[0]>>
-			<<elseif $skin[$args[0]].special is "exhibitionism">>
-				<<bodypart_admire_exhibitionism $args[0]>>
-			<<elseif $skin[$args[0]].special is "bestiality" or $skin[$args[0]].special is "Black Wolf" or $skin[$args[0]].special is "Great Hawk">>
-				<<bodypart_admire_bestiality $args[0]>>
-			<<elseif $skin[$args[0]].special is "sex">>
-				<<bodypart_admire_promiscuity $args[0]>>
-			<<elseif $skin[$args[0]].special is "pregnancy">>
-				<<bodypart_admire_pregnancy $args[0]>>
-			<<elseif $skin[$args[0]].gender is "f">>
-				<<bodypart_admire_girly $args[0]>>
-			<<elseif $skin[$args[0]].gender is "m">>
-				<<bodypart_admire_boyish $args[0]>>
-			<<elseif $skin[$args[0]].special is "combat">>
-				<<bodypart_admire_combat $args[0]>>
-			<<elseif $skin[$args[0]].special is "violence">>
-				<<bodypart_admire_violence $args[0]>>
-			<<elseif $skin[$args[0]].special is "criminal">>
-				<<bodypart_admire_criminal $args[0]>>
-			<<elseif $skin[$args[0]].writing>>
-				<<bodypart_admire_lewd $args[0]>>
+<<switch $args[1]>>
+	<<case "bodywriting">>
+		<<if $skin[$args[0]] is undefined>>
+		<<elseif $skin[$args[0]].writing>>
+			<<if $args[0] is "forehead" or
+			($args[0] is "left_cheek" or $args[0] is "right_cheek") and !$worn.face.type.includes("mask") or
+			($args[0] is "left_shoulder" or $args[0] is "right_shoulder") and ($worn.upper.exposed gte 1 or $worn.upper.open is 1) and ($worn.under_upper.exposed gte 1 or $worn.under_open is 1) or
+			$args[0] is "breasts" and $worn.upper.exposed gte 1 and ($worn.under_upper.exposed gte 1 or $worn.under_upper.open is 1) or
+			$args[0] is "back" and ($worn.upper.exposed gte 1 or $worn.upper.state isnot "waist") and ($worn.under_upper.exposed gte 1 or $worn.under_upper.state isnot "waist") or
+			($args[0] is "left_bottom" or $args[0] is "right_bottom") and ($worn.lower.exposed gte 1 or $worn.lower.anus_exposed gte 1) and ($worn.under_lower.exposed gte 1 or !$worn.under_lower.type.includes("athletic")) or
+			$args[0] is "pubic" and $worn.lower.exposed gte 1 and ($worn.under_lower.exposed gte 1 or !$worn.under_lower.type.includes("athletic")) or
+			($args[0] is "left_thigh" or $args[0] is "right_thigh") and $worn.lower.vagina_exposed gte 1 and !$worn.under_lower.type.includes("athletic")>>/*Makes sure bodywriting isn't seen if obstructed by clothing.*/
+				<<if $skin[$args[0]].type is "text">>
+					<<He>> reads the "<<print $skin[$args[0]].writing>>" writing on your <<bodypart $args[0]>>.
+				<<else>>
+					<<He>> examines the "<<print $skin[$args[0]].writing>>" image on your <<bodypart $args[0]>>.
+				<</if>>
+				<<if $npc[$npcrow.indexOf(_n)] is "Kylar">>
+					<<bodypart_admire_kylar $args[0]>>
+				<<elseif $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
+					<<if $skin[$args[0]].arrow is 1 and
+					($args[0] is "left_cheek" or
+					$args[0] is "right_cheek" or
+					$args[0] is "back" or
+					$args[0] is "left_bottom" or
+					$args[0] is "right_bottom" or
+					$args[0] is "pubic" or
+					$args[0] is "left_thigh" or
+					$args[0] is "right_thigh")>>
+						<<bodypart_admire_arrow $args[0]>>
+					<<elseif $skin[$args[0]].special is "prostitution">>
+						<<bodypart_admire_prostitution $args[0]>>
+					<<elseif $skin[$args[0]].special is "rape">>
+						<<bodypart_admire_rape $args[0]>>
+					<<elseif $skin[$args[0]].special is "exhibitionism">>
+						<<bodypart_admire_exhibitionism $args[0]>>
+					<<elseif $skin[$args[0]].special is "bestiality" or $skin[$args[0]].special is "Black Wolf" or $skin[$args[0]].special is "Great Hawk">>
+						<<bodypart_admire_bestiality $args[0]>>
+					<<elseif $skin[$args[0]].special is "sex">>
+						<<bodypart_admire_promiscuity $args[0]>>
+					<<elseif $skin[$args[0]].special is "pregnancy">>
+						<<bodypart_admire_pregnancy $args[0]>>
+					<<elseif $skin[$args[0]].gender is "f">>
+						<<bodypart_admire_girly $args[0]>>
+					<<elseif $skin[$args[0]].gender is "m">>
+						<<bodypart_admire_boyish $args[0]>>
+					<<elseif $skin[$args[0]].special is "combat">>
+						<<bodypart_admire_combat $args[0]>>
+					<<elseif $skin[$args[0]].special is "violence">>
+						<<bodypart_admire_violence $args[0]>>
+					<<elseif $skin[$args[0]].special is "criminal">>
+						<<bodypart_admire_criminal $args[0]>>
+					<<elseif $skin[$args[0]].writing>>
+						<<bodypart_admire_lewd $args[0]>>
+					<</if>>
+				<</if>>
 			<</if>>
 		<</if>>
+	<<case "cum">>
+		<<bodypart_admire_cum_convert $args[0]>>
+	<<case "parasite">>
+		<<bodypart_admire_parasite_convert $args[0]>>
+<</switch>>
+<</widget>>
+
+<<widget "bodypart_admire_cum_convert">>
+<<switch $args[0]>>
+	<<case "forehead">>
+		<<bodypart_admire_cum hair>>
+	<<case "left_bottom", "right_bottom">>
+		<<if random(1, 2) is 1>>
+			<<bodypart_admire_cum bottom>>
+		<<else>>
+			<<bodypart_admire_cum anus>>
+		<</if>>
+	<<case "left_shoulder">>
+		<<bodypart_admire_cum leftarm>>
+	<<case "right_shoulder">>
+		<<bodypart_admire_cum rightarm>>
+	<<case "pubic">>
+		<<if $player.gender is "m" or ($player.gender is "h" and random(1, 2) is 1)>>
+			<<bodypart_admire_cum penis>>
+		<<else>>
+			<<if random(1, 2) is 1>>
+				<<bodypart_admire_cum vagina>>
+			<<else>>
+				<<bodypart_admire_cum vaginaoutside>>
+			<</if>>
+		<</if>>
+	<<case "back">>
+		<<bodypart_admire_cum neck>>
+	<<case "breasts">>
+		<<bodypart_admire_cum chest>>
+	<<case "left_thigh", "right_thigh">>
+		<<bodypart_admire_cum thigh>>
+	<<case "left_cheek", "right_cheek">>
+		<<if random(1, 2) is 1>>
+			<<bodypart_admire_cum face>>
+		<<else>>
+			<<bodypart_admire_cum mouth>>
+		<</if>>
+	<<default>>
+		<<set _admireNothing to true>>
+<</switch>>
+<</widget>>
+
+<<widget "bodypart_admire_parasite_convert">>
+<<switch $args[0]>>
+	<<case "left_bottom", "right_bottom">>
+		<<bodypart_admire_parasite bottom>>
+	<<case "left_shoulder">>
+		<<bodypart_admire_parasite left_arm>>
+	<<case "right_shoulder">>
+		<<bodypart_admire_parasite right_arm>>
+	<<case "pubic">>
+		<<if $player.gender is "m" or ($player.gender is "h" and random(1, 2) is 1)>>
+			<<bodypart_admire_parasite penis>>
+		<<else>>
+			<<bodypart_admire_parasite clit>>
+		<</if>>
+	<<case "breasts">>
+		<<bodypart_admire_parasite nipples>>
+	<<default>>
+		<<set _admireNothing to true>>
+<</switch>>
+<</widget>>
+
+<<widget "bodypart_admire_cum">>
+<<if _admireNothing>>
+<<elseif setup.bodyliquid.combined($args[0]) gte 4>>
+	<<if $player.bodyliquid[$args[0]].goo gte 1 and $player.bodyliquid[$args[0]].semen gte 1>>
+		<<set _bodypartLiquidText to "semen and slime">>
+	<<elseif $player.bodyliquid[$args[0]].goo gte 1>>
+		<<set _bodypartLiquidText to "slime">>
+	<<else>>
+		<<set _bodypartLiquidText to "semen">>
+	<</if>>
+
+	<<if $args[0] is "vagina" or $args[0] is "anus" or $args[0] is "mouth">>
+		<<He>> notices the <<print _bodypartLiquidText>> oozing from your <<bodypart $args[0]>>.
+	<<else>>
+		<<He>> notices the <<print _bodypartLiquidText>> coating your <<bodypart $args[0]>>.
+	<</if>>
+
+	<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
+		<<bodypart_admire_cum_heavy $args[0]>>
+	<</if>>
+<<elseif setup.bodyliquid.combined($args[0]) gte 2>>
+	<<if $player.bodyliquid[$args[0]].goo gte 1 and $player.bodyliquid.mouth.semen gte 1>>
+		<<set _bodypartLiquidText to "semen and slime">>
+	<<elseif $player.bodyliquid[$args[0]].goo gte 1>>
+		<<set _bodypartLiquidText to "slime">>
+	<<else>>
+		<<set _bodypartLiquidText to "semen">>
+	<</if>>
+
+	<<if $args[0] is "vagina" or $args[0] is "anus" or $args[0] is "mouth">>
+		<<He>> notices the <<print _bodypartLiquidText>> dripping from your <<bodypart $args[0]>>.
+	<<else>>
+		<<He>> notices the <<print _bodypartLiquidText>> on your <<bodypart $args[0]>>.
+	<</if>>
+	
+	<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
+		<<bodypart_admire_cum_light $args[0]>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "bodypart_admire_parasite">>
+<<if _admireNothing or $parasite[$args[0]].name is undefined>>
+<<else>>
+	<<He>> notices the <<print $parasite[$args[0]].name>> on your <<bodypart $args[0]>>.
+	<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
+		<<bodypart_admire_parasite_comment $args[0]>>
 	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_chance">>
-<<if random(1, 5) is 5 and $NPCList[_n].mouth is 0 and $enemytype isnot "beast">>
-	<<bodypart_admire $args[0]>>
+<<if $NPCList[_n].mouth is 0 and $enemytype isnot "beast">>
+	<<set _rng to random(1, 5)>>
+	<<if _rng gte 4>>
+	<<elseif _rng is 1>>
+		<<bodypart_admire $args[0] bodywriting>>
+	<<elseif _rng is 2>>
+		<<bodypart_admire $args[0] cum>>
+	<<elseif _rng is 3>>
+		<<bodypart_admire $args[0] parasite>>
+	<</if>>
 <</if>>
 <</widget>>
 

@@ -534,13 +534,13 @@
 					<<His>> hand trails down, reaching your plumage. <<His>> eyes widen. <<if $rng is 1>>"The plumage of Accipiter Gentilis Gigantus, the Giant Goshawk. I've seen these before. Somewhere."<<else>>"Th-these are..."<</if>> <<He>> looks as though <<hes>> remembered something, but the look fades quickly.
 					<br><br>
 				<<elseif $angel gte 4 and $transformationParts.angel.halo isnot "hidden">>
-					<<His>> eyes widen, and you see the reflection of your halo in <<his>> <<if $sydney.glasses isnot "contacts">><<sydneyGlasses>><<else>>eyes<</if>>. <<He>> blinks and rubs <<his>> face, and the reflection is no longer there. "I thought I saw..." <<he>> shakes <<his>> head, looking <<if _sydneyStatus.includes("corrupt")>>conflicted<<else>>giddy<</if>>. <<npcincr Sydney purity 2>><<gspurity>>
+					<<His>> eyes widen, and you see the reflection of your halo in <<his>> <<if $sydney.glasses isnot "contacts">><<sydneyGlasses>><<else>>eyes<</if>>. <<He>> blinks and rubs <<his>> face, and the reflection is no longer there. "I thought I saw..." <<He>> shakes <<his>> head, looking <<if _sydneyStatus.includes("corrupt")>>conflicted<<else>>giddy<</if>>. <<npcincr Sydney purity 2>><<gspurity>>
 					<br><br>
 				<<elseif $fallenangel gte 2 and $transformationParts.fallenAngel.halo isnot "hidden">>
-					<<His>> eyes widen, and you see the reflection of your broken halo in <<his>> <<if $sydney.glasses isnot "contacts">><<sydneyGlasses>><<else>>eyes<</if>>. <<He>> blinks and rubs <<his>> face, and the reflection is no longer there. "I thought I saw..." <<he>> shakes <<his>> head, looking <<if _sydneyStatus.includes("corrupt")>>guilty<<else>>saddened<</if>>. <<npcincr Sydney purity -2>><<lspurity>>
+					<<His>> eyes widen, and you see the reflection of your broken halo in <<his>> <<if $sydney.glasses isnot "contacts">><<sydneyGlasses>><<else>>eyes<</if>>. <<He>> blinks and rubs <<his>> face, and the reflection is no longer there. "I thought I saw..." <<He>> shakes <<his>> head, looking <<if _sydneyStatus.includes("corrupt")>>guilty<<else>>saddened<</if>>. <<npcincr Sydney purity -2>><<lspurity>>
 					<br><br>
 				<<elseif $demon gte 2 and $transformationParts.demon.horns isnot "hidden">>
-					<<His>> eyes widen, and you see the reflection of your horns in <<his>> <<if $sydney.glasses isnot "contacts">><<sydneyGlasses>><<else>>eyes<</if>>. <<He>> blinks and rubs <<his>> face, and the reflection is no longer there. "I thought I saw..." <<he>> shakes <<his>> head, looking <<if _sydneyStatus.includes("corrupt")>>smug<<else>>distraught<</if>>. <<npcincr Sydney purity -2>><<lspurity>>
+					<<His>> eyes widen, and you see the reflection of your horns in <<his>> <<if $sydney.glasses isnot "contacts">><<sydneyGlasses>><<else>>eyes<</if>>. <<He>> blinks and rubs <<his>> face, and the reflection is no longer there. "I thought I saw..." <<He>> shakes <<his>> head, looking <<if _sydneyStatus.includes("corrupt")>>smug<<else>>distraught<</if>>. <<npcincr Sydney purity -2>><<lspurity>>
 					<br><br>
 				<<elseif $cow gte 2 and $transformationParts.cow.horns isnot "hidden">>
 					<<He>> stops at your horns. "I saw some props like this when unpacking at <<sydneymum>>'s new shop," <<he>> says. "I wonder what purpose they serve. I'm surprised they let you wear these here."

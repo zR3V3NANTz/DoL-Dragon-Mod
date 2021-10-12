@@ -197,8 +197,13 @@ You are in your bedroom.
 				<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
 				<br>
 			<</if>>
-			<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
-			<br>
+			<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
+				<<ind>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
+				<br>
+			<<else>>
+				<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+				<br>
+			<</if>>
 			<<home_outside>>
 			<br><br>
 		<<else>>
@@ -214,8 +219,13 @@ You are in your bedroom.
 			<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
 			<br>
 		<</if>>
-		<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
-		<br>
+		<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
+			<<ind>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
+			<br>
+		<<else>>
+			<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+			<br>
+		<</if>>
 		<<home_outside>>
 		<br><br>
 	<</if>>
@@ -1075,7 +1085,38 @@ You are in the main hall of the orphanage.
 	<<else>>
 		[[Next|Bedroom]]
 	<</if>>
-
+<<elseif $baileyReunionScene is "dungeon">>
+	<<npc Bailey>><<person1>>
+	<<unset $baileyReunionScene>>
+	
+	Bailey leans against a wall. A missing person’s poster with a picture of you on it is pinned next to <<him>>.
+	<br><br>
+	
+	"You took your time getting back. I’m glad you’re alright." <<He>> smirks. "Hope you enjoyed your vacation."
+	<br><br>
+	
+	<<He>> pushes <<himself>> off the wall, tearing down the poster and crumpling it up.
+	<br><br>
+	
+	<<if $renttime lte 0>>
+		"Pay your dues next time so we won’t have to go through this again. Speaking of which..." <<He>> holds out <<his>> hand.
+		<<endevent>>
+		<<rentdue>>
+	<<else>>
+		"Pay your dues next time so we won’t have to go through this again," <<he>> says before pinching your cheek painfully.<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
+		<br><br>
+		
+		Bailey walks back into <<his>> office. You rub your cheek as you trudge to your bedroom.
+		<br>
+		<<if $robinReunionScene is "dungeon">>
+			<span class="blue"><i>Robin's probably worried sick about you. You should check on <<nnpc_him "Robin">> when you get the chance.</i></span>
+			<br>
+		<</if>>
+		<br>
+		
+		<<link [[Next|Bedroom]]>><<endevent>><</link>>
+		<br>
+	<</if>>
 <<elseif $home_gone gte 168 and $daystate isnot "night">>
 	<<generatey1>><<person1>>
 	You notice something on the wall. It's a missing person's poster with a picture of you on it. It hasn't been taken down, which means Bailey must be looking for you as well.
@@ -1169,7 +1210,10 @@ You are in the main hall of the orphanage.
 	<br><br>
 	<<ind>><<link [[Bailey's office (0:01)|Bailey's Office]]>><<pass 1>><</link>>
 	<br>
-	<<if $kylar.timer.home gte 100 and $kylar.home is undefined>>
+	<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
+		<<bedroomicon>><<link [[Bedroom (0:01)|Robin Trauma Visit]]>><<set $phase to 0>><<pass 1>><</link>>
+		<br>
+	<<elseif $kylar.timer.home gte 100 and $kylar.home is undefined>>
 		<<bedroomicon>><<link [[Bedroom (0:01)|Kylar Bedroom 1]]>><<pass 1>><<set $kylar.timer.home to 0>><<set $kylar.home to 0>><</link>>
 		<br>
 	<<elseif $kylar.timer.home gte 100 and $kylar.home is 0 and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>

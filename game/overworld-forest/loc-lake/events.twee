@@ -385,10 +385,11 @@ Others along the shore flee the area, hearing the gunshots as well, leaving you 
 
 <<if $NPCList[0].penis isnot "none">>
 	They expose their penises and play with them, just inches from your face. You struggle against the sand, but you can't budge. The <<person>> cums first. It shoots all over your forehead and dribbles around your eyes. The others follow suit, and soon you're covered from the neck up.
+	<<set $player.bodyliquid.face.semen += 5>>
 <<else>>
 	They expose their pussies and play with them, just inches from your face. You struggle against the sand, but you can't budge. The <<person>> cums first, and squirts all over your forehead. It dribbles around your eyes. The others follow suit, and you're soon covered in pussy juice from the neck up.
+	<<set $player.bodyliquid.face.goo += 5>>
 <</if>>
-<<set $player.bodyliquid.face.semen += 5>>
 <br><br>
 "Aren't we nice?" the <<person>> says. They stand and leave, but not before taking pictures. Others along the shore watch.
 <<gtrauma>><<trauma 6>><<famerape 30>><<status -30>><<llcool>>
