@@ -54,10 +54,73 @@ You could go for a swim, but make sure to dress appropriately.
 <<if $stress gte $stressmax>>
 	<<passoutbeach>>
 <<else>>
+	<<run getRobinLocation()>>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure) and $eventskip is 0>>
 		<<eventsbeach>>
-	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].init is 0 and (($weekday is 7 and $hour gte 9 and $hour lte 16) or ($weekday is 1 and $hour gte 9 and $hour lte 16)) and $exposed lte 0 and $season isnot "winter" and $daystate is "day">>
+	<<elseif $robinReunionScene isnot undefined and _robin_location is "beach" and $exposed lte 0>>
+		<<if $robinReunionScene is "dungeon">>
+			<<unset $robinReunionScene>><<set $robinPostMortem to true>>
+			You see Robin stood behind <<his>> lemonade stand. <<His>> mouth goes agape as they see you, and <<he>> sprints towards you.
+			<br><br>
+
+			"I don’t believe it!" <<he>> squeals as <<he>> buries <<himself>> in your chest. "I-I thought you were gone forever! We need to talk about this at home. When you’re ready."
+			<br><br>
+
+			You’re led back to their stand. A small picture of the two of you sits on top. Robin puts it away.
+			<br>
+			<<He>> fixes you a glass of lemonade and sends you on your way.
+			<br>
+			"Don't forget to see me later," <<he>> says with a worried expression. "I'm always here for you if you need to talk."
+			<br><br>
+
+			<<link [[Next|Beach]]>><<set $eventskip to 1>><<endevent>><</link>>
+			<br>
+		<<elseif $robinReunionScene is "asylum">>
+			<<unset $robinReunionScene>>
+			You see Robin stood behind <<his>> lemonade stand.
+
+			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+				<<He>> stares at you in disbelief.
+				<br><br>
+				
+				"Hi," <<he>> says quietly as you draw close. "I thought the doctors took you away. I would’ve tried to get you something had I known you were c-coming back," Robin’s voice quivers.
+			<<else>>
+				<<He>> excitedly beckons you over when <<he>> sees you.
+				<br><br>
+				
+				"Hey, you’re out!" <<he>> says as you draw close. "I thought you were staying at the doctor’s for a while. I would’ve prepared something had I known you were coming back," Robin explains.
+			<</if>>
+			<br><br>
+
+			You shake your head, telling <<him>> that they weren’t going to help you, so you "checked" out early. Robin seems confused, but <<he>> nods regardless. <<He>> gives you a hug.
+			<br>
+
+			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+				"Well, I’m glad you’re free," <<he>> mumbles, holding you tight.
+			<<else>>
+				"Well, I’m happy to see you again! I hope you're feeling better."
+			<</if>>
+			<br>
+			The two of you make small talk for a bit. Eventually, Robin says <<he>> needs to get back to <<his>> stand.
+			
+			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+				<<He>> slowly shuffles away, <<his>> gaze glued to the floor.
+			<<else>>
+				<<He>> smiles and waves goodbye.
+			<</if>>
+			<br><br>
+
+			<<link [[Next|Beach]]>><<set $eventskip to 1>><<endevent>><</link>>
+			<br>
+		<<else>>
+			You spot Robin at <<his>> lemonade stand. <<His>> eyes pass over you momentarily, but <<he>> doesn't stare. It's as if <<he>> doesn't even recognise you.
+			<br><br>
+			
+			<<link [[Next|Beach]]>><<set $eventskip to 1>><<endevent>><</link>>
+			<br>
+		<</if>>
+	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].init is 0 and $season isnot "winter" and ($weekday is 7 or $weekday is 1) and between($hour, 9, 16) and $exposed lte 0>>
 		<<set $robindebt to 0>><<set $robindebtlimit to 5>>
 		<<npc Robin>><<person1>>You see someone familiar working at a stand on the beach. <<He>> notices you at the same time. "Hey!" It's Robin. <<Hes>> another resident at the orphanage. <<Hes>> always looked up to you, despite being about the same age. <<He>> motions you over while cleaning a glass pitcher. <<He>> puts it down and hugs you when you approach.
 		<br><br>
@@ -95,11 +158,9 @@ You could go for a swim, but make sure to dress appropriately.
 		<<ind>><<link [[Changing room|Changing Room]]>><</link>>
 		<br>
 		<<if $exposed lte 0>>
-			<<if $NPCName[$NPCNameList.indexOf("Robin")].init is 1 and $robinmissing isnot 1 and $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80 and $season isnot "winter">>
-				<<if $weekday is 7 and $hour gte 9 and $hour lte 16 or $weekday is 1 and $hour gte 9 and $hour lte 16>>
+			<<if _robin_location is "beach">>
 				<<ind>><<link [[Robin's lemonade stand|Robin's Lemonade]]>><</link>>
 				<br>
-				<</if>>
 			<</if>>
 			<<if $worn.feet.type.includes("heels")>>
 				<<walkicon>><<link [[Take a walk in heels (0:30)|Beach Heel Walk]]>><</link>><<gtiredness>><<lstress>>

@@ -27,7 +27,7 @@ You are downstairs in Alex's cottage. It's tight, and cozy. There's a kitchen wi
 <</if>>
 
 <<if ($farm_countdown lte 0 or $farm_countdown is undefined) and ($renttime lte -2 or ($renttime lte 0 and $hour gte 4 and $hour lte 21))>>
-	<<unset $farm_countdown>>
+	<<unset $farm_countdown>><<unset $baileyReunionScene>>
 	<span class="red">You hear a knock at the door.</span>
 	<br><br>
 	<<if $hour gte 21 or $hour lte 4>>
@@ -568,10 +568,10 @@ You wait, allowing enough time for Alex to fall back to sleep, then creep to <<h
 	</span>
 <</if>>
 
-You keep going, pulling the fabric passed <<his>> knees. <<He>> stirs as you reach <<his>> ankles, so you snatch the underwear the rest of the way, removing them from <<his>> body.
+You keep going, pulling the fabric past <<his>> knees. <<He>> stirs as you reach <<his>> ankles, so you snatch the underwear the rest of the way, removing them from <<his>> body.
 <<promiscuity3>>
 
-Alex's hand shoots between <<his>> legs as <<he>> realises what you've done. "F-Fuck," <<he>> says as <<he>> cheeks flush. "Don't look." <<He>> reaches for <<his>> underwear, but you step away from the bed.
+Alex's hand shoots between <<his>> legs as <<he>> realises what you've done. "F-fuck," <<he>> says as <<his>> cheeks flush. "Don't look." <<He>> reaches for <<his>> underwear, but you step away from the bed.
 <br><br>
 
 <<He>> comes after you, tugging <<his>> shirt over <<his>>

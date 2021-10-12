@@ -7,7 +7,52 @@
 		<i>As long as Robin has to pay Bailey, <<hes>> going to keep getting hurt and ending up like this. Maybe you should speak to Bailey about it.</i>
 		<br><br>
 	<</if>>
-	<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 95>>
+	<<if $robinReunionScene is "dungeon">>
+		<<unset $robinReunionScene>><<set $robinPostMortem to true>>
+		You knock on the door. "Come in," you hear Robin let out. You promptly do so and enter <<his>> room. <<He>> hasn’t noticed you yet. You see a small picture taped to <<his>> screen of the both of you.
+		<br><br>
+
+		Robin turns to face you and <<if $robinconsole is 0>>gasps<<else>>drops <<his>> controller<</if>>. <<He>> quickly jumps up from <<his>> bed and runs to you, tackling you in a hug and nearly causing you to fall to the floor. Tears flow freely down <<his>> cheeks. 
+		<br>
+		"I-I thought I was never going to see you again! I was so scared," Robin says before pulling you to the bed. 
+		<br><br>
+
+		After a while, Robin calms down. "Everyone’s been looking for you. Bailey wasn’t any help," <<he>> rubs <<his>> eyes. "Can you tell me what happened? Y-you know, when you’re ready to? I promise you’ll feel better."
+		<br><br>
+
+	<<elseif $robinReunionScene is "asylum">>
+		<<unset $robinReunionScene>>
+		You knock on the door. Robin opens it up.
+
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+			You can see that <<his>> eyes are red from crying. <<He>> quietly pulls you inside.
+		<<else>>
+			<<Hes>> surprised to see you. "Oh! Come in," <<he>> says, pulling you inside. 
+		<</if>>
+		<br><br>
+
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+			"I thought the doctors took you away. I would’ve tried to get you something had I known you were c-coming back," Robin’s voice quivers.
+		<<else>>
+			"I thought you were staying at the doctor’s for a while. I would’ve prepared something had I known you were coming back," Robin explains.
+		<</if>>
+		<br><br>
+
+
+		You shake your head, telling <<him>> that they weren’t going to help you, so you "checked" out early. Robin seems confused, but <<he>> nods regardless. <<He>> gives you a hug.
+		<br>
+
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+			"Well, I’m glad you’re free," <<he>> mumbles, holding you tight.
+		<<else>>
+			"Well, I’m glad you’re home! Come on."
+		<</if>>
+		<br><br>
+
+		You’re taken to <<his>> bed, where <<he>><<if $robinconsole is 1>> picks up a controller and<</if>> sits beside you.
+		<br><br>
+
+	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 95>>
 		You knock on the door. There's a pause for a moment, then Robin opens it. <<He>> stares right through you, <<his>> eyes glazed.
 		<br><br>
 		<<He>> doesn't stop you entering and sitting on the bed. "Come sit with me," you say.
@@ -194,6 +239,10 @@
 				<br><br>
 			<</if>>
 		<</if>>
+		<<if $robinPostMortem>>
+			<<link [[Tell Robin about your imprisonment (0:30)|Robin Dungeon Talk]]>><<set $robinroomentered to 1>><<pass 30>><<stress -12>><<trauma -12>><<npcincr Robin dom 5>><</link>>
+			<br>
+		<</if>>
 		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 10>>
 			<<link [[Talk (0:30)|Robin Trauma Talk]]>><<set $robinroomentered to 1>><<pass 30>><<stress 3>><<npcincr Robin trauma -1>><<npcincr Robin love 1>><<npcincr Robin dom -1>><</link>><<glove>><<ldom>><<gstress>>
 			<br>
@@ -373,4 +422,12 @@ You knock on the door. Robin throws it open and hugs you. "Come in," <<he>> says
 <</if>>
 <br><br>
 <<He>> sits on the bed beside the television and picks up the controller.
+<</widget>>
+
+<<widget "robinbrothelappear">>
+	<<unset $robinBrothel>>
+	<<run getRobinLocation()>>
+	<<if $robinromance is 1 and (_robin_location is "orphanage" or _robin_location is "sleep") and $fameprostitution gte 600 and $NPCName[$NPCNameList.indexOf("Robin")].dom gte 50 and !$robinBrothelWeekly>>
+		<<set $robinBrothel to true>>
+	<</if>>
 <</widget>>

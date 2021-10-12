@@ -26,28 +26,54 @@
 
 <<widget "combat-spank">>
 	<<bruise bottom>><<hitstat>><<set $speechspank to 1>>
-	<<He>> spanks your <<bottom>>
-	<<if $worn.lower.anus_exposed is 1 and $worn.over_lower.anus_exposed is 1>>
-		<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.anus_exposed is 0>>
+	<<if $spankobject is "paddle">>
+		<<He>> whacks your <<bottom>> with the paddle
+		<<if $worn.lower.anus_exposed is 1 and $worn.over_lower.anus_exposed is 1>>
+			<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.anus_exposed is 0>>
+				through your $worn.under_lower.name,
+			<<else>>
+				reddening your exposed skin and
+			<</if>>
+		<<elseif $worn.over_lower.name isnot "naked" and $worn.over_lower.state is "waist">>
+			through your $worn.over_lower.name,
+		<<elseif $worn.lower.name isnot "naked" and $worn.lower.state is "waist">>
+			through your $worn.lower.name,
+		<<elseif $worn.under_lower.name isnot "naked" and $worn.under_lower.state is "waist">>
+			through your $worn.under_lower.name,
+		<<else>>
+			reddening your exposed skin and
+		<</if>>
+		sending waves of pain through your whole body.
+		<<if random(1, 2) is 2>>
+			<<bodypart_admire_chance left_bottom>>
+		<<else>>
+			<<bodypart_admire_chance right_bottom>>
+		<</if>>
+		<<violence 10>>
+	<<else>>
+		<<He>> spanks your <<bottom>>
+		<<if $worn.lower.anus_exposed is 1 and $worn.over_lower.anus_exposed is 1>>
+			<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.anus_exposed is 0>>
+				through your $worn.under_lower.name.
+			<<else>>
+				reddening your exposed skin.
+			<</if>>
+		<<elseif $worn.over_lower.name isnot "naked" and $worn.over_lower.state is "waist">>
+			through your $worn.over_lower.name.
+		<<elseif $worn.lower.name isnot "naked" and $worn.lower.state is "waist">>
+			through your $worn.lower.name.
+		<<elseif $worn.under_lower.name isnot "naked" and $worn.under_lower.state is "waist">>
 			through your $worn.under_lower.name.
 		<<else>>
 			reddening your exposed skin.
 		<</if>>
-	<<elseif $worn.over_lower.name isnot "naked" and $worn.over_lower.state is "waist">>
-		through your $worn.over_lower.name.
-	<<elseif $worn.lower.name isnot "naked" and $worn.lower.state is "waist">>
-		through your $worn.lower.name.
-	<<elseif $worn.under_lower.name isnot "naked" and $worn.under_lower.state is "waist">>
-		through your $worn.under_lower.name.
-	<<else>>
-		reddening your exposed skin.
+		<<if random(1, 2) is 2>>
+			<<bodypart_admire_chance left_bottom>>
+		<<else>>
+			<<bodypart_admire_chance right_bottom>>
+		<</if>>
+		<<violence 5>>
 	<</if>>
-	<<if random(1, 2) is 2>>
-		<<bodypart_admire_chance left_bottom>>
-	<<else>>
-		<<bodypart_admire_chance right_bottom>>
-	<</if>>
-	<<violence 5>>
 <</widget>>
 
 <!-- pass "left" or "right" for which NPC hand this is called for -->

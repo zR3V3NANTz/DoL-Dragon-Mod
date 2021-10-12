@@ -1562,7 +1562,31 @@ The crew make sure you're okay, then head back to their ship.
 :: School Leave Whitney
 <<set $outside to 1>><<set $location to "school">><<set $bullygate to 1>><<schooleffects>><<effects>>
 
-<<if $halloween is 1 and !$halloween_whitney>><<set $halloween_whitney to 1>>
+<<if $whitneyReunionScene isnot undefined>>
+	<<npc Whitney>><<person1>>
+	<<unset $whitneyReunionScene>>
+	As you pass through the gate, something grabs your arm. Before you can react, you're yanked backwards and find yourself face-to-face with Whitney. <<His>> goons flank you, preventing escape. "There you are, bitch," Whitney says, looking aggravated. "What? You didn’t think I’d notice when my favourite slut goes missing?" You’re unable to respond as <<he>> presses <<his>> lips against your mouth, kissing you.<<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	Whitney’s arm wraps around your waist as <<he>> holds the back of your head still. <<He>> leans forward, forcing you to bend backward. Jeers erupt from <<his>> goons as they watch in anticipation.
+	<br><br>
+
+	"Fuck <<phim>>!"
+	<br>
+	"Beat <<phim>>!"
+	<br>
+	"Take <<pher>> clothes!"
+	<br><br>
+
+	Whitney glares at you, <<his>> grip the only thing keeping you from falling. You swear you see the faintest trace of a tear in <<his>> eye. Before it goes any further, <<he>> drops you on the floor. 
+	<br><br>
+
+	Whitney’s breathing is heavier. <<He>> speaks, "Only... I get to kidnap you. Got it?" <<He>> roughly shoves you through the gate, not taking <<his>> eyes off you.<<npcincr Whitney dom 3>><<stress 6>><<gstress>><<ggdom>>
+	<br><br>
+	
+	<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+	<br>
+<<elseif $halloween is 1 and !$halloween_whitney>><<set $halloween_whitney to 1>>
 	<<npc Whitney>><<person1>>
 	An arm wraps around your neck. It's Whitney. <<He>> keeps walking, pushing you along. <<if $monthday is 31>>"Happy Halloween,"<<else>>"Halloween soon,"<</if>> <<he>> says, squeezing. <<if $monthday is 31>>"We're<<else>>"When it arrives we're<</if>> going trick-or-treating on <span class="gold">Domus Street after <<ampm 19 00>></span>. You better dress nice." <<He>> doesn't wait for a response before turning and walking back to <<his>> friends.
 	<br><br>
@@ -3159,7 +3183,26 @@ You rear back. Whitney tries to cling on, but you throw <<him>> to the ground.
 <<npc Whitney>><<person1>>
 
 You approach Whitney, and take shelter from the $weather under the tree.
-<<if $NPCName[$NPCNameList.indexOf("Whitney")].love gte 20 and $whitneyromance isnot 1 and $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $pillory_tenant.special.name isnot "Whitney">>
+<<if $whitneyReunionScene isnot undefined>>
+	<<unset $whitneyReunionScene>>
+	<<He>> doesn't notice you at first. When <<he>> does, <<his>> eyes go wide and <<he>> almost drops <<his>> cigarette.
+	<br><br>
+	
+	<<He>> grabs you and shoves you against the tree, the shock in <<his>> eyes giving way to anger. "There you are, bitch," Whitney says, looking aggravated. "What? You didn’t think I’d notice when my favourite slut goes missing?" You’re unable to respond as <<he>> presses <<his>> lips against your mouth, kissing you.<<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	<<He>> pulls you back, <<his>> arm wrapped around your waist as <<he>> holds the back of your head still. <<He>> leans forward, forcing you to bend backward.
+	<br><br>
+
+	Whitney glares at you, <<his>> grip the only thing keeping you from falling. You swear you see the faintest trace of a tear in <<his>> eye. Before it goes any further, <<he>> drops you on the floor.
+	<br><br>
+
+	Whitney’s breathing is heavier. <<He>> speaks, "Only... I get to kidnap you. Got it?" <<He>> marches out of the park, sparing you one more glance over <<his>> shoulder.<<npcincr Whitney dom 3>><<stress 6>><<gstress>><<ggdom>>
+	<br><br>
+	
+	<<endevent>>
+	<<whitneyexit>>
+<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].love gte 20 and $whitneyromance isnot 1 and $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $pillory_tenant.special.name isnot "Whitney">>
 	<<set $whitneyromance to 1>>
 	<<He>> suddenly grabs you and bends you backwards over the fountain, letting the $weather fall on your face. <<He>> looks more angry than usual.
 	<br><br>

@@ -22,8 +22,12 @@
 		<</if>>
 	<</if>>
 <<else>>
-	<<ind>><<link [[Leave orphanage (0:01)|Domus Street]]>><<pass 1>><</link>>
-	<br>
+	<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
+		<<ind>><<link [[Leave orphanage (0:01)|Robin Trauma Visit]]>><<set $phase to 2>><<pass 1>><</link>>
+	<<else>>
+		<<ind>><<link [[Leave orphanage (0:01)|Domus Street]]>><<pass 1>><</link>>
+		<br>
+	<</if>>
 <</if>>
 
 <</widget>>

@@ -134,6 +134,7 @@ You are in an underground cell. You can't see a thing but can tell that the wall
 		You fall through darkness for several seconds before splashing into cold water.<<water>>
 		<br><br>
 		<<endevent>>
+		<<dungeonescape>>
 		<<link [[Next|Underground Lake]]>><</link>>
 	<<else>>
 		The lights turn on once more, and a <<generate1>><<person1>><<person>> enters, holding a hose. Water shoots from the tip, knocking you prone and drenching you. <<He>> walks closer and continues spraying you from multiple angles, before finally turning it off. "There we go," <<he>> says. "Nice and clean." The door slams shut behind <<him>>, plunging you into darkness.
@@ -278,6 +279,7 @@ The metal door is locked tight. It uses an advanced electronic lock.
 :: Underground Cell Sneak
 
 <<set $outside to 0>><<set $location to "underground">><<effects>>
+<<dungeonescape>>
 <<if $NPCName[$NPCNameList.indexOf("Whitney")].state is "dungeon">>
 	No lock is going to stop you. You open the door and sneak out, tiptoeing across the plush carpet. You hear laughter and music up ahead. You peek round the corner and see Whitney getting brutally fucked on stage as a crowd of <<people>> watch. With the exception of the stage, the lights have been switched off, leaving the edge of the room in darkness.
 	<br><br>
@@ -295,6 +297,7 @@ The metal door is locked tight. It uses an advanced electronic lock.
 :: Underground Escape
 
 <<set $outside to 0>><<set $location to "underground">><<effects>>
+<<dungeonescape>>
 You sit on the edge with your legs hanging over the hole. You feel a slope. You carefully lower yourself down, pulling the mattress over as you do. Relying on your hands at least as much as your feet, you scramble downwards.
 <br><br>
 The stone gives way and you fall several feet into cold water.
@@ -329,3 +332,23 @@ The current sucks you underwater. After a few moments, the darkness gives way to
 <br><br>
 <<link [[Next|Sea]]>><</link>>
 <br>
+
+:: Widgets Underground [widget]
+
+<<widget "dungeonescape">>
+<<if $baileySold>>
+	<<set $baileyReunionScene to "dungeon">>
+<</if>>
+
+<<if $whitneyromance is 1>>
+	<<set $whitneyReunionScene to "dungeon">>
+<</if>>
+
+<<if $home_gone gte 4>>
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].init is 1>>
+		<<set $robinReunionScene to "dungeon">>
+	<</if>>
+<</if>>
+
+<<unset $baileySold>>
+<</widget>>

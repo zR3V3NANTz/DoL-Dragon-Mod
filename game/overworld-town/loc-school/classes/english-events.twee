@@ -212,7 +212,7 @@ You put on a brave face and tell <<him>> you're fine. "Okay. If you say so," <<h
 :: English Events Police
 
 <<set $outside to 0>><<set $location to "town">><<effects>>
-Doren drives to Barb street and pulls up outside the police station. "I know this is hard for you, but you need to tell them what you told me." You leave the car and enter the station.
+Doren drives to Barb Street and pulls up outside the police station. "I know this is hard for you, but you need to tell them what you told me." You leave the car and enter the station.
 <br><br>
 <<generate3>><<person3>>A <<person>> sits at the desk, wearing an officer's uniform. <<He>> doesn't glance up as you enter. Doren knocks on the surface, hard enough that a pencil rolls onto the floor. <<person1>>"We've got a crime to report," <<he>> says. "Maybe several."
 <br><br>

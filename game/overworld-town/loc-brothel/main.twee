@@ -53,7 +53,7 @@ You are in the brothel. Several stages dot the crowded room. The staff look flus
 
 <<if $brotheljob is 1>>
 
-<<link [[Work as a dancer|Brothel Dance]]>><<danceinit>><<set $dancing to 1>><<set $venuemod to 3>><<stress -4>><<tiredness 4>><<set $dancelocation to "brothel">><</link>><<lstress>><<gtiredness>>
+<<link [[Work as a dancer|Brothel Dance]]>><<set $dancestart to 1>><<stress -4>><<tiredness 4>><</link>><<lstress>><<gtiredness>>
 <br>
 	<<if $brothelshowdata.intro>>
 		<<link [[Go behind the stage|Brothel Stage]]>><</link>>
@@ -274,6 +274,15 @@ I'd like to offer you work looking after our guests. You saw how it works on the
 :: Brothel Dance
 <<set $outside to 0>><<set $location to "brothel">><<effects>>
 
+<<if $dancestart is 1>>
+	<<unset $dancestart>>
+	<<danceinit>>
+	<<robinbrothelappear>>
+	<<set $dancing to 1>>
+	<<set $venuemod to 3>>
+	<<set $dancelocation to "brothel">>
+<</if>>
+
 <<danceeffects>>
 <<danceaudience>>
 <<danceactions>>
@@ -308,6 +317,12 @@ I'd like to offer you work looking after our guests. You saw how it works on the
 	<<elseif $promiscuity gte 35>>
 		<<link [[Private room|Leighton Private]]>><<clotheson>><<endevent>><<unset $corruptionDancing>><</link>><<promiscuous3>>
 		<br>
+	<</if>>
+<<elseif $danceevent is "robin">>
+	<<if $corruptionDancing is 2>>
+		The slime wants you to have fun with more than an individual.
+	<<else>>
+		<<link [[Private room|Robin Brothel]]>><<clotheson>><<endevent>><<unset $corruptionDancing>><</link>>
 	<</if>>
 
 <<elseif $danceevent is 0>>

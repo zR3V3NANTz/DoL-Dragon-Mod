@@ -498,3 +498,14 @@ The room is tiny. There's just enough space to sit. You wait in total silence.
 	[[Everything fades to black...->Passout Asylum]]
 <</if>>
 <</widget>>
+
+<<widget "asylumescape">>
+<<set $asylumescaped to 1>>
+<<if $location is "tentworld">>
+	<<set $asylumtentacleescape to 1>>
+<</if>>
+
+<<if $NPCName[$NPCNameList.indexOf("Robin")].init is 1>>
+	<<set $robinReunionScene to "asylum">>
+<</if>>
+<</widget>>

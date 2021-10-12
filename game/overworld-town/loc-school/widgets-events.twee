@@ -1034,6 +1034,30 @@ Other students ignore what is happening, or watch in amusement.
 <<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
 
+<<elseif $whitneyReunionScene isnot undefined>>
+	<<npc Whitney>><<person1>>
+	<<unset $whitneyReunionScene>>
+	You’re in the hallway when Whitney steps in front of your path. <<His>> goons flank you, preventing escape. "There you are, bitch," Whitney says, looking aggravated. "What? You didn’t think I’d notice when my favourite slut goes missing?" You’re unable to respond as <<he>> presses <<his>> lips against your mouth, kissing you.<<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	Whitney’s arm wraps around your waist as <<he>> holds the back of your head still. <<He>> leans forward, forcing you to bend backward. Jeers erupt from <<his>> goons as they watch in anticipation.
+	<br><br>
+
+	"Fuck <<phim>>!"
+	<br>
+	"Beat <<phim>>!"
+	<br>
+	"Take <<pher>> clothes!"
+	<br><br>
+
+	Whitney glares at you, <<his>> grip the only thing keeping you from falling. You swear you see the faintest trace of a tear in <<his>> eye. Before it goes any further, <<he>> drops you on the floor. 
+	<br><br>
+
+	Whitney’s breathing is heavier. <<He>> speaks, "Only... I get to kidnap you. Got it?" The group leaves with Whitney glancing back at you.<<npcincr Whitney dom 3>><<stress 6>><<gstress>><<ggdom>>
+	<br><br>
+	
+	<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+	<br>
 <<elseif $bullyevent is 1>><<set $bullyevent += 1>>
 
 <<npc Whitney>><<person1>>Whitney and <<his>> friends surround you, trapping you against the lockers. "You're in my way again. I think you need a time-out," <<he>> says as <<he>> opens the locker beside you. <<He>> tries to push you in.
@@ -1600,7 +1624,31 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 
 <<widget "schoolbullyoutside">>
 
-<<if $bullyeventoutside is 0>><<set $bullyeventoutside += 1>>
+<<if $whitneyReunionScene isnot undefined>>
+	<<npc Whitney>><<person1>>
+	<<unset $whitneyReunionScene>>
+	As you step onto the playground, something grabs your arm. Before you can react, you're yanked backwards and find yourself face-to-face with Whitney. <<His>> goons flank you, preventing escape. "There you are, bitch," Whitney says, looking aggravated. "What? You didn’t think I’d notice when my favourite slut goes missing?" You’re unable to respond as <<he>> presses <<his>> lips against your mouth, kissing you.<<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	Whitney’s arm wraps around your waist as <<he>> holds the back of your head still. <<He>> leans forward, forcing you to bend backward. Jeers erupt from <<his>> goons as they watch in anticipation.
+	<br><br>
+
+	"Fuck <<phim>>!"
+	<br>
+	"Beat <<phim>>!"
+	<br>
+	"Take <<pher>> clothes!"
+	<br><br>
+
+	Whitney glares at you, <<his>> grip the only thing keeping you from falling. You swear you see the faintest trace of a tear in <<his>> eye. Before it goes any further, <<he>> drops you on the floor. 
+	<br><br>
+
+	Whitney’s breathing is heavier. <<He>> speaks, "Only... I get to kidnap you. Got it?" <<He>> roughly shoves you through the gate, not taking <<his>> eyes off you.<<npcincr Whitney dom 3>><<stress 6>><<gstress>><<ggdom>>
+	<br><br>
+	
+	<<endevent>><<set $eventskip to 1>>
+	<<playground>>
+<<elseif $bullyeventoutside is 0>><<set $bullyeventoutside += 1>>
 <<npc Whitney>><<person1>>You walk round a corner, straight into Whitney and <<his>> gang. "Look who it is," <<he>> says. <<His>> friends crowd around, penning you in. "Good timing. We're just leaving school. You should come." <<He>> grabs your arm.
 <br><br>
 
@@ -1673,7 +1721,7 @@ You see Whitney as you approach the gate. <<He>> grins and pushes past one of <<
 <<else>>
 <<set $bullyeventoutside to 0>>
 <<npc Whitney>><<person1>>
-Whitney steps looms around a corner and rests <<his>> arm on your shoulder. <<His>> friends appear a moment later, trapping you against the wall.
+Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> friends appear a moment later, trapping you against the wall.
 <br><br>
 "Just the slut I wanted to see," <<he>> says.
 	<<if $skin.forehead.special is "Whitney" and $skin.forehead.pen is "tattoo" and $bodywritingdisable is "f">>

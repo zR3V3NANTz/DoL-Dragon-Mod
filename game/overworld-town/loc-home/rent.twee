@@ -8,6 +8,11 @@
 	<br><br>
 <</if>>
 
+<<if $baileyOfficeSeduced is 1>>
+	<<unset $baileyOfficeSeduced>>
+	<<set _rentSeduceAlt to true>>
+<</if>>
+
 <br><br>
 
 <<if $money gte $rentmoney>>
@@ -18,10 +23,10 @@
 	<br>
 	<<if $baileyseduced isnot 1>>
 		<<if $promiscuity gte 15>>
-			<<link [[Seduce|Rent Seduce]]>><<trauma 3>><</link>><<promiscuous2>><<gtrauma>>
+			<<link [[Seduce|Rent Seduce]]>><<if _rentSeduceAlt>><<set $phase to 1>><</if>><<trauma 3>><</link>><<promiscuous2>><<gtrauma>>
 			<br>
 		<<elseif $uncomfortable.prostituting is false>>
-			<<link [[Seduce|Rent Seduce]]>><<trauma 12>><<set $desperateaction to 1>><</link>><<promiscuous2>><<ggtrauma>>
+			<<link [[Seduce|Rent Seduce]]>><<if _rentSeduceAlt>><<set $phase to 1>><</if>><<trauma 12>><<set $desperateaction to 1>><</link>><<promiscuous2>><<ggtrauma>>
 			<br>
 		<</if>>
 	<</if>>
@@ -72,7 +77,7 @@
 
 <<widget "rentpay">>
 <<set $money -= $rentmoney>>
-Bailey snatches the money from your hand and starts counting. "Good," <<he>> says, satisfied. "You came through.
+Bailey snatches the money from your hand and starts counting. "Good," <<nnpc_he "Bailey">> says, satisfied. "You came through.
 <<set $baileydefeatedchain to 0>>
 <<unset $bailey_encroach>>
 
@@ -163,40 +168,74 @@ Bailey snatches the money from your hand and starts counting. "Good," <<he>> say
 <<promiscuity2>>
 <br><br>
 
-"You can pay me," <<he>> sneers. "With money. <span class="pink">£<<print $rentmoney / 100>>.</span> <span class="red">That's what your body's worth.</span>"
-<br><br>
-
-<<if $baileydefeatedchain gte 1>>
-	<<person2>>"I'll take that as payment," the <<person>> beside <<nnpc_him Bailey>> says.
-	<br><br>
-
-	Bailey cows <<him>> with a glare, and <<he>> looks away.
-	<<person1>>
-	<br><br>
-<</if>>
-
-<<if $money gte $rentmoney>>
-	<<He>> holds out <<his>> hand.
-	<br><br>
-
-
-	<<link [[Pay|Rent Pay]]>><</link>>
+<<if $phase is 1>>
+	Bailey smirks. <<His>> cold hand snakes over your shoulder, around the back of your head, and <<he>> begins to stroke your hair.
 	<br>
-	<<link [[Refuse|Rent Refuse]]>><<set $submissive -= 1>><</link>>
+	Then, without warning, <<he>> grabs a fistful of your hair and yanks you close, your face inches from <<his>> own.
 	<br>
-
-<<else>>
-	"Now like I said." <<He>> brandishes the rope at you. "Hold still."
+	"Nice try," <<he>> hisses. "But that's not going to save your ass. Not this time."
 	<br><br>
 
-	<<link [[Submit|Rent Intro]]>><<endevent>><</link>>
-	<br>
-	<<if $bus is "hospital">>
-		<<link [[Fight|Rent Hospital Fight]]>><<set $fightstart to 1>><</link>>
+	<<He>> releases you and presses <<his>> hand on your chest, shoving you. You stumble backwards as Bailey takes a menacing step towards you
+	<<if $money gte $rentmoney>>
+		with <<his>> palm open expectantly. "Your payment. Now."
+		<br><br>
+
+		<<link [[Pay|Rent Pay]]>><</link>>
+		<br>
+		<<link [[Refuse|Rent Refuse]]>><<set $submissive -= 1>><</link>>
 		<br>
 	<<else>>
-		<<link [[Fight|Rent Fight]]>><<set $fightstart to 1>><</link>>
+		and begins unwinding the rope. "Don't worry," <<he>> taunts. "I'll put in a good word for you."
+		<br><br>
+
+		<<link [[Submit|Rent Intro]]>><<endevent>><</link>>
 		<br>
+		<<if $bus is "hospital">>
+			<<link [[Fight|Rent Hospital Fight]]>><<set $fightstart to 1>><</link>>
+			<br>
+		<<else>>
+			<<link [[Fight|Rent Fight]]>><<set $fightstart to 1>><</link>>
+			<br>
+		<</if>>
+	<</if>>
+<<else>>
+	"You can pay me," <<he>> sneers. "With money. <span class="pink">£<<print $rentmoney / 100>>.</span> <span class="red">That's what your body's worth.</span>"
+	<br><br>
+
+	<<if $baileydefeatedchain gte 1>>
+		<<person2>>"I'll take that as payment," the <<person>> beside <<nnpc_him Bailey>> says.
+		<br><br>
+
+		Bailey cows <<him>> with a glare, and <<he>> looks away.
+		<<person1>>
+		<br><br>
+	<</if>>
+	It's too late to negotiate with Bailey. <<He>> wants <<his>> payment.
+
+	<<if $money gte $rentmoney>>
+		<<He>> holds out <<his>> hand.
+		<br><br>
+
+
+		<<link [[Pay|Rent Pay]]>><</link>>
+		<br>
+		<<link [[Refuse|Rent Refuse]]>><<set $submissive -= 1>><</link>>
+		<br>
+
+	<<else>>
+		"Now like I said." <<He>> brandishes the rope at you. "Hold still."
+		<br><br>
+
+		<<link [[Submit|Rent Intro]]>><<endevent>><</link>>
+		<br>
+		<<if $bus is "hospital">>
+			<<link [[Fight|Rent Hospital Fight]]>><<set $fightstart to 1>><</link>>
+			<br>
+		<<else>>
+			<<link [[Fight|Rent Fight]]>><<set $fightstart to 1>><</link>>
+			<br>
+		<</if>>
 	<</if>>
 <</if>>
 
@@ -222,7 +261,7 @@ Bailey snatches the money from your hand and starts counting. "Good," <<he>> say
 	You hear a rustle of paper before being dragged further along the tunnel.
 	<br><br>
 
-	<<link [[Next|Underground Intro]]>><</link>>
+	<<link [[Next|Underground Intro]]>><<set $baileySold to true>><</link>>
 	<br>
 <<elseif $rentsale is 2>><<set $rentsale += 1>>
 	<<neckwear 1>><<generate2>><<generate3>><<person2>>
@@ -239,7 +278,7 @@ Bailey snatches the money from your hand and starts counting. "Good," <<he>> say
 	"Watch the step," says the unfamiliar voice. Whatever you've stepped onto is rumbling. "Sit." You fumble around your knees, and find what feels like a bench. You sit, then hear the slam of doors, and a few moment later you lurch as the floor moves beneath you. You're in a vehicle.
 	<br><br>
 
-	<<link [[Next|Street Van Bailey]]>><</link>>
+	<<link [[Next|Street Van Bailey]]>><<set $baileySold to true>><</link>>
 	<br>
 <<elseif $rentsale is 1>><<set $rentsale += 1>>
 	After journeying for some time you emerge outside. You hear wind rustling through leaves. Bailey lifts you and hooks your bindings on something behind you, leaving you suspended in the air. "Don't go anywhere, you'll be picked up shortly," <<he>> says. You hear <<him>> walk away, leaving you alone.

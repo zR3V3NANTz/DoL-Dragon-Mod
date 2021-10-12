@@ -426,8 +426,11 @@ You step through the mirror, and you're back in your room. The eerie light fades
 <<else>>
 	The light from your halo is blinding. You are above this place. You are above this place. You repeat the mantra out loud. The floor falls away from beneath you. You can't see the tentacles. The light from your halo encompasses all. You feel yourself rising higher and higher, the dark sky offering no resistance to your ascent. You rise and rise.
 	<br><br>
+	<<if $tentacleEntrance is "asylum">>
+		<<asylumescape>>
+	<</if>>
 	<<endevent>><<tentacleworldend>>
-	<<set $forest to random(50, 100)>><<set $asylumtentacleescape to 1>><<set $asylumescaped to 1>>
+	<<set $forest to random(50, 100)>>
 	<<link [[Next|Mirror]]>><<set $location to "home">><</link>>
 	<br>
 <</if>>
@@ -450,8 +453,11 @@ You fall forward and kick the remaining tentacles off. The door slams shut behin
 <</if>>
 <<lstress>><<ltrauma>><<stress -6>><<trauma -6>>
 <br><br>
+<<if $tentacleEntrance is "asylum">>
+	<<asylumescape>>
+<</if>>
 <<endevent>><<tentacleworldend>>
-<<set $forest to random(50, 100)>><<set $asylumtentacleescape to 1>><<set $asylumescaped to 1>>
+<<set $forest to random(50, 100)>>
 <<link [[Next (0:30)|Wolf Cave Clearing]]>><<pass 30>><</link>>
 <br>
 
@@ -680,8 +686,11 @@ As your body is completely covered by the warm, writhing masses, you take anothe
 
 You step through the door. It seals shut behind you. You're in the forest.
 <br><br>
+<<if $tentacleEntrance is "asylum">>
+	<<asylumescape>>
+<</if>>
 <<endevent>><<tentacleworldend>>
-<<set $forest to random(50, 100)>><<set $asylumtentacleescape to 1>><<set $asylumescaped to 1>>
+<<set $forest to random(50, 100)>>
 <<link [[Next|Forest]]>><</link>>
 <br>
 

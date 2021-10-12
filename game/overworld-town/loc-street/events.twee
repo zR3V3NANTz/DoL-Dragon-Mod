@@ -6475,12 +6475,12 @@ You ignore the <<persons>> request and try walk away, but <<he>> blocks your pat
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	"Thanks for that, never going to forget you or how cute you are right now." <<He>> continues, "I need to go anyway, I don't want to keep them waiting."
-	<br><br>
-<</if>>
-<<if $enemyhealth lte 0>>
+<<elseif $enemyhealth lte 0>>
 	<<He>> recoils in pain, giving you the chance to put on the clothes and run away.
-	<br><br>
+<<else>>
+	<<He>> frowns and <<he>> dusts <<himself>> off. "'Look, don't touch,' eh?" <<he>> sighs. "I need to go, anyway. Hope you like the clothes." <<He>> shuffles out of the alley, leaving you to get dressed.
 <</if>>
+<br><br>
 
 <<set _color to ["black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal"][random(0,8)]>>
 <<generalWear "upper" 48 _color>>
@@ -7785,3 +7785,773 @@ You try to speak, but can't find the words. You feel the <<person>> catch you in
 <br><br>
 <<endevent>>
 <<ambulance>>
+
+:: Street Private Show Strip
+<<set $outside to 1>><<effects>>
+
+<<if $daystate is "night">>
+	You nod in agreement and begin to remove your clothes. The darkness of the night provides all the cover you need. The group seems shocked, but they don’t stop you. <<exhibitionism5>>
+	<br>
+	
+	<<if $worn.upper.type.includes("naked") and $worn.under_upper.type.includes("naked")>>You stroke your chest and run your hands over<<else>>You start with your<<if !$worn.upper.type.includes("naked")>> $worn.upper.name<</if>><<if !$worn.upper.type.includes("naked") and !$worn.under_upper.type.includes("naked")>> and<</if>><<if !$worn.under_upper.type.includes("naked")>> $worn.under_upper.name<</if>>, exposing<</if>> your <<breasts>>. The night air caresses your nipples. The group looks eager, taking out their phones. They start to take pictures of you.
+	<<overupperstrip>><<upperstrip>><<underupperstrip>>
+	<br>
+	
+	The <<person2>><<person>> leers at your chest and runs <<his>> tongue across <<his>> lips.
+	<<if $player.perceived_breastsize lte 0>>
+		<<if $player.gender_appearance is "m">>
+			<<set $rng to random(1, 100)>>
+			<<if $rng gte 76>>
+				"Imagine that sleek chest being fondled from all angles."
+			<<elseif $rng gte 51>>
+				"I wanna lick the sweat off his chest."
+			<<elseif $rng gte 26>>
+				"He must like being exposed in front of a crowd."
+			<<else>>
+				"I bet you love having your nipples toyed with."
+			<</if>>
+		<<else>>
+			<<set $rng to random(1, 100)>>
+			<<if $rng gte 76>>
+				"Your chest is so sleek, I'd think you a boy if I didn't know better."
+				<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+			<<elseif $rng gte 51>>
+				"Small tits are delicious."
+				<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+			<<elseif $rng gte 26>>
+				"Such small boobs must make dancing easier."
+				<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+			<<else>>
+				"I bet you love having your nipples toyed with."
+			<</if>>
+		<</if>>
+	<<elseif $player.perceived_breastsize lte 5>>
+		<<set $rng to random(1, 100)>>
+		<<if $rng gte 76>>
+			"Nice tits."
+		<<elseif $rng gte 51>>
+			"Those are some nicely shaped breasts. A bit small though."
+			<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
+		<<elseif $rng gte 26>>
+			"<<pHer>> small tits really add to the show."
+			<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
+		<<else>>
+			"<<pShes>> so confident, exposing <<pher>> small breasts like that."
+			<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
+		<</if>>
+	<<elseif $player.perceived_breastsize lte 7>>
+		<<set $rng to random(1, 100)>>
+		<<if $rng gte 76>>
+			"I wonder what those breasts feel like."
+			<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+		<<elseif $rng gte 51>>
+			"I bet your tits make great pillows."
+			<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+		<<elseif $rng gte 26>>
+			"You're such a slut, showing your tits off like this."
+			<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+		<<else>>
+			"I bet your tits taste wonderful."
+			<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+		<</if>>
+	<<else>>
+		<<set $rng to random(1, 100)>>
+		<<if $rng gte 76>>
+			"Shake those udders!"
+			<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+		<<elseif $rng gte 51>>
+			"Carrying around tits that big must be difficult."
+			<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+		<<elseif $rng gte 26>>
+			"Those huge tits are mesmerising."
+			<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+		<<else>>
+			"Those breasts were made to be shown off."
+			<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+		<</if>>
+	<</if>>
+	<br><br>
+	
+	You turn your back to them,<<if !$worn.lower.type.includes("naked") or !$worn.under_lower.type.includes("naked")>> and next take off your<<if !$worn.lower.type.includes("naked")>> $worn.lower.name<</if>><<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>> and<</if>><<if !$worn.under_lower.type.includes("naked")>> $worn.under_lower.name<</if>>,<</if>> exposing your <<bottom>>. You feel a mixture of embarrassment and excitement, knowing that anyone could end up noticing your little show. The <<person2>><<person>> begins to rub the front of <<his>> <<if $pronoun is "f">>skirt<<else>>trousers<</if>>.
+	<br><br>
+	
+	You turn back to face them, your <<genitals>> shamelessly on display.
+	
+	<<if $player.gender is "h">>
+		They gawk at the sight, but they seem no less turned on.
+		<br>
+		"Both...?" the <<person>> murmurs. "Fuck it, a slut's a slut." <<He>> quickens <<his>> rubbing.
+		<br>
+		"Wait 'til I show this around," the <<person3>><<person>> snickers, taking a picture.
+	<<elseif $player.gender_appearance isnot $player.gender>>
+		Their expressions range from shock to lust.
+		<br>
+		"Oh, you're a <<if $player.gender is "m">>boy<<else>>girl<</if>>?" the <<person1>><<person>> asks, looking somewhat disappointed.
+		<br>
+		"Aye, and a hot one at that," the <<person3>><<person>> chimes in with a lecherous grin. <<He>> raises <<his>> phone and takes a picture.
+	<<else>>
+		They cheer at the sight, snapping pictures as they ogle your bare body. <<flaunting>> you make little effort to stop them, striking seductive poses and coyly twirling away when they get a bit grabby.
+	<</if>>
+	<<overlowerstrip>><<lowerstrip>><<underlowerstrip>><<fameexhibitionism 6 pic>>
+	<br><br>
+	
+	They seem pleased by your display, but you can tell by the look in their eyes that they're hungry for more.
+	<br><br>
+	
+	<<set $tipmod to 2>>
+	<<if $promiscuity gte 75>>
+		<<link [[Offer your body|Street Private Show Sex]]>><<set $phase to 1>><<set $sexstart to 1>><</link>><<promiscuous5>>
+		<br>
+	<</if>>
+	<<link [[Masturbate|Street Private Show Masturbate]]>><<set $phase to 1>><<set $masturbationstart to 1>><</link>>
+	<br>
+	<<link [[End the show|Street Private Show End]]>><<set $phase to 1>><</link>>
+	<br>
+<<else>>
+	You nod in agreement and begin to take off your clothes. <<exhibitionism5>>
+	<br>
+	
+	The <<person1>><<person>> quickly stops you, to the disappointment of <<his>> friends. “Not here,” <<he>> says, looking around. A good amount of people are still on the street. “Let’s find a more secluded place.”
+	<br><br>
+	
+	<<link [[Next|Street Private Show Alley]]>><<set $phase to 1>><</link>>
+	<br>
+<</if>>
+
+:: Street Private Show Alley
+<<set $outside to 1>><<effects>>
+<<set $tipmod to 1.5>>
+
+<<if $phase is 1>>
+	The <<person>> guides you to a nearby alley. You follow <<him>>, <<his>> friends trailing close behind you. Very close.
+	<br>
+	It doesn't take long to find a private spot. It’s dark, and far enough from the street that no one should be able to see you. You're a bit disappointed they picked somewhere so secluded, but you begin to strip regardless.
+<<else>>
+	You nod. The three of them grin, and guide you to a nearby alley. It’s dark, and far enough from the street that no one should be able to see you. Still, the fact that anyone could walk in makes you shiver with excitement. <<exhibitionism4>>
+<</if>>
+<br><br>
+
+<<if $worn.upper.type.includes("naked") and $worn.under_upper.type.includes("naked")>>You stroke your chest and run your hands over<<else>>You start with your<<if !$worn.upper.type.includes("naked")>> $worn.upper.name<</if>><<if !$worn.upper.type.includes("naked") and !$worn.under_upper.type.includes("naked")>> and<</if>><<if !$worn.under_upper.type.includes("naked")>> $worn.under_upper.name<</if>>, exposing<</if>> your <<breasts>>. The group looks eager, taking out their phones. They start to take pictures of you.
+<<overupperstrip>><<upperstrip>><<underupperstrip>>
+<br>
+	
+The <<person2>><<person>> leers at your chest and runs <<his>> tongue across <<his>> lips.
+<<if $player.perceived_breastsize lte 0>>
+	<<if $player.gender_appearance is "m">>
+		<<set $rng to random(1, 100)>>
+		<<if $rng gte 76>>
+			"Imagine that sleek chest being fondled from all angles."
+		<<elseif $rng gte 51>>
+			"I wanna lick the sweat off his chest."
+		<<elseif $rng gte 26>>
+			"He must like being exposed in front of a crowd."
+		<<else>>
+			"I bet you love having your nipples toyed with."
+		<</if>>
+	<<else>>
+		<<set $rng to random(1, 100)>>
+		<<if $rng gte 76>>
+			"Your chest is so sleek, I'd think you a boy if I didn't know better."
+			<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+		<<elseif $rng gte 51>>
+			"Small tits are delicious."
+			<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+		<<elseif $rng gte 26>>
+			"Such small boobs must make dancing easier."
+			<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+		<<else>>
+			"I bet you love having your nipples toyed with."
+		<</if>>
+	<</if>>
+<<elseif $player.perceived_breastsize lte 5>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng gte 76>>
+		"Nice tits."
+	<<elseif $rng gte 51>>
+		"Those are some nicely shaped breasts. A bit small though."
+		<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
+	<<elseif $rng gte 26>>
+		"<<pHer>> small tits really add to the show."
+		<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
+	<<else>>
+		"<<pShes>> so confident, exposing <<pher>> small breasts like that."
+		<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
+	<</if>>
+<<elseif $player.perceived_breastsize lte 7>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng gte 76>>
+		"I wonder what those breasts feel like."
+		<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+	<<elseif $rng gte 51>>
+		"I bet your tits make great pillows."
+		<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+	<<elseif $rng gte 26>>
+		"You're such a slut, showing your tits off like this."
+		<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+	<<else>>
+		"I bet your tits taste wonderful."
+		<<if $player.gender is "m">><<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">><</if>>
+	<</if>>
+<<else>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng gte 76>>
+		"Shake those udders!"
+		<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+	<<elseif $rng gte 51>>
+		"Carrying around tits that big must be difficult."
+		<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+	<<elseif $rng gte 26>>
+		"Those huge tits are mesmerising."
+		<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+	<<else>>
+		"Those breasts were made to be shown off."
+		<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+	<</if>>
+<</if>>
+<br><br>
+
+You turn your back to them,<<if !$worn.lower.type.includes("naked") or !$worn.under_lower.type.includes("naked")>> and next take off your<<if !$worn.lower.type.includes("naked")>> $worn.lower.name<</if>><<if !$worn.lower.type.includes("naked") and !$worn.under_lower.type.includes("naked")>> and<</if>><<if !$worn.under_lower.type.includes("naked")>> $worn.under_lower.name<</if>>,<</if>> exposing your <<bottom>>. You feel a mixture of embarrassment and excitement, knowing that anyone could end up noticing your little show. The <<person2>><<person>> begins to rub the front of <<his>> <<if $pronoun is "f">>skirt<<else>>trousers<</if>>.
+<br><br>
+
+You turn back to face them, your <<genitals>> shamelessly on display.
+
+<<if $player.gender is "h">>
+	They gawk at the sight, but they seem no less turned on.
+	<br>
+	"Both...?" the <<person>> murmurs. "Fuck it, a slut's a slut." <<He>> quickens <<his>> rubbing.
+	<br>
+	"Wait 'til I show this around," the <<person3>><<person>> snickers, taking a picture.
+<<elseif $player.gender_appearance isnot $player.gender>>
+	Their expressions range from shock to lust.
+	<br>
+	"Oh, you're a <<if $player.gender is "m">>boy<<else>>girl<</if>>?" the <<person1>><<person>> asks, looking somewhat disappointed.
+	<br>
+	"Aye, and a hot one at that," the <<person3>><<person>> chimes in with a lecherous grin. <<He>> raises <<his>> phone and takes a picture.
+<<else>>
+	They cheer at the sight, snapping pictures as they ogle your bare body. <<flaunting>> you make little effort to stop them, striking seductive poses and coyly twirling away when they get a bit grabby.
+<</if>>
+<<overlowerstrip>><<lowerstrip>><<underlowerstrip>><<fameexhibitionism 6 pic>>
+<br><br>
+
+They seem pleased by your display, but you can tell by the look in their eyes that they're hungry for more.
+<br><br>
+
+<<if $promiscuity gte 75>>
+	<<link [[Offer your body|Street Private Show Sex]]>><<set $phase to 0>><<set $sexstart to 1>><</link>><<promiscuous5>>
+	<br>
+<</if>>
+<<link [[Masturbate|Street Private Show Masturbate]]>><<set $phase to 0>><<set $masturbationstart to 1>><</link>>
+<br>
+<<link [[End the show|Street Private Show End]]>><<set $phase to 0>><</link>>
+<br>
+
+:: Street Private Show Sex
+<<if $sexstart is 1>>
+	<<set $tipmod += 1>>
+	You feel your body getting hotter and decide to push things a little further.
+	<<if $submissive gte 1150>>
+		“Please… I need it...”
+	<<elseif $submissive lte 850>>
+		“How about the four of us have some fun?”
+	<<else>>
+		“You know… you can do more than just look...”
+	<</if>>
+	you say, presenting yourself. It takes only a moment for them to understand what you mean. They grin, and move towards you. <<promiscuity5>>
+	
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<maninit>>
+<<elseif $molestationstart is 1>>
+	<<set $tipmod to 0.5>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<maninit>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $finish is 1>>
+	<span id="next"><<link [[Next|Street Private Show Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Street Private Show Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Street Private Show Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Street Private Show Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Street Private Show Sex Finish
+<<set $outside to 1>><<effects>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	
+	<<tipset>>
+	“Thanks, <<girl>>,” the <<person1>><<person>> says, tossing a wad of cash at your feet. “It was worth every penny.” <<He>> laughs as <<he>> leads <<his>> friends out of the alley.
+	<br><br>
+	
+	<<tearful>> you scrounge the money up off the ground. <<tipreceive>>
+<<elseif $enemyhealth lte 0>>
+	You shove the <<person1>><<person>> into the others, and they topple into a heap. <<tearful>> you run away before they have a chance to recover.
+<<else>>
+	<<set $tipmod -= 0.5>><<tipset>>
+	
+	The <<person1>><<person>> curls <<his>> lip in disgust as <<he>> backs away from you. "Fucking tease. Keep acting like a slut and someone's gonna put you in your place." <<He>> pulls a handful of bank notes from <<his>> pocket and tosses them over <<his>> shoulder, grumbling as <<he>> leads <<his>> friends out of the alley.
+	<br><br>
+	
+	<<tearful>> you scrounge the money up off the ground. <<tipreceive>>
+<</if>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+<<destinationeventend>>
+
+:: Street Private Show Masturbate
+<<set $outside to 1>><<effects>>
+
+<<if $masturbationstart is 1>>
+	<<set $masturbationstart to 0>>
+	<<set $masturbationstat += 1>>
+	<<set $tipmod += 0.5>>
+
+	You can feel their eyes on you. A heat rises in your groin. Breathing heavily, you move your hands to your <<genitals>>. They grin, waiting in anticipation.
+
+	<<masturbationstart>>
+	<<set $timer to 20>>
+<</if>>
+
+<<masturbationeffects>>
+<<masturbationactions>>
+
+<<if $orgasmdown gte 3>>
+	They erupt into cheers at your orgasmic spasms, tossing money at you with one hand and rubbing themselves with the other.
+	<<set $tipmod += 0.2>>
+<<elseif random(1, 5) is 1>>
+	You fondle yourself as the group takes pictures of your lewd display.<<garousal>><<genitalarousal 100>><<fameexhibitionism 2 pic>>
+<<else>>
+	You fondle yourself. The group watches with great interest.<<garousal>><<genitalarousal 100>>
+<</if>>
+<br>
+
+<<if $timer lte 0>>
+	<<link [[Continue|Street Private Show Masturbate Finish]]>><</link>><<nexttext>>
+	<br>
+<<else>>
+	<<link [[Continue|Street Private Show Masturbate]]>><</link>><<nexttext>>
+	<br>
+<</if>>
+<<if $corruptionMasturbation isnot true and random(0,3) gt $orgasmcurrent and $corruption_slime gt ($willpower / 10)>>
+	<<link [[Stop|$passage]]>><<set $corruptionMasturbation to true>><</link>>
+<<elseif $corruptionMasturbation isnot true>>
+	<<link [[Stop|Street Private Show Masturbate Finish]]>><<set $finish to 1>><</link>>
+<<else>>
+	The slime in your ear will not allow you to stop.
+<</if>>
+<br>
+
+:: Street Private Show Masturbate Finish
+<<set $outside to 1>><<effects>>
+
+<<if $finish is 1>>
+	<<if $masturbationorgasm is 0 and (($phase is 1 and $rng gte 81) or ($phase is 0 and $rng gte 51))>>
+		<<saveNPC 0 street_show_1>><<saveNPC 1 street_show_2>><<saveNPC 2 street_show_3>>
+
+		<<endmasturbation>>
+		<<endcombat>>
+
+		<<loadNPC 0 street_show_1>><<loadNPC 1 street_show_2>><<loadNPC 2 street_show_3>>
+		<<clearNPC street_show_1>><<clearNPC street_show_2>><<clearNPC street_show_3>>
+
+		"That was pathetic," the <<person2>><<person>> complains. "<<pShe>> didn't even cum!"
+		<br>
+		A devious smile grows on the <<person1>><<persons>> face. "Poor thing. Maybe we should lend <<pher>> a hand."
+		<br><br>
+		
+		The three of them close in around you, blocking your escape.
+		<br><br>
+		
+		<<link [[Next|Street Private Show Sex]]>><<set $finish to 0>><<set $molestationstart to 1>><</link>>
+		<br>
+	<<else>>
+		<<tipset>>
+		<<saveNPC 0 street_show_1>>
+
+		<<endmasturbation>>
+		<<endcombat>>
+
+		<<loadNPC 0 street_show_1>>
+		<<clearNPC street_show_1>>
+
+		“Thanks, <<girl>>,” the <<person1>><<person>> says. “It was worth every penny.” <<He>> pulls a handful of cash out of <<his>> pocket and drops it in front of you, laughing as <<he>> leads <<his>> friends out of the alley.
+		<br><br>
+		
+		<<tearful>> you scrounge the money up off the ground. <<tipreceive>>
+		<br><br>
+		
+		<<clotheson>>
+		<<endevent>>
+		<<destinationeventend>>
+	<</if>>
+<<else>>
+	<<endmasturbation>>
+
+	<<set $tipmod -= 1>><<tipset>>
+	<<if $phase is 1>>
+		<span class="red">Headlights flash behind you as a car turns the corner.</span>
+	<<else>>
+		<span class="red">An unfamiliar voice rings out from the far end of the alley.</span> "Oi, what's that racket? Who's there?"
+	<</if>>
+	
+	The group's enthusiastic demeanor changes in an instant, and they frantically scramble away from you. <<tearful>> you follow suit, grabbing your clothes and the money they dropped before ducking behind a bin.
+	<br><br>
+	
+	Once you're certain it's safe, you get dressed and climb out of your hiding spot. You count the money you managed to scrape up. You grabbed most of it, but you ended up leaving some of it behind in your haste. <<tipreceive>>
+	<br><br>
+	
+	<<clotheson>>
+	<<endcombat>>
+	<<destinationeventend>>
+<</if>>
+
+:: Street Private Show End
+<<set $outside to 1>><<effects>>
+
+<<if $phase is 1>>
+	<<set _rapeChance to 81>>
+<<else>>
+	<<set _rapeChance to 51>>
+<</if>>
+
+<<if $submissive gte 1150>>
+	You ask them if that’s enough.
+<<elseif $submissive lte 850>>
+	You tell them they’ve seen enough.
+<<else>>
+	You decide to stop things here.
+<</if>>
+
+<<if $rng gte _rapeChance>>
+	They seem disappointed, and don’t take it very well. The <<person1>><<person>> grabs you by the arm. “Oh no, you aren’t getting away with just that,” <<he>> says.
+	<br><br>
+	
+	<<link [[Next|Street Private Show Sex]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	<<tipset>>
+	They seem disappointed, but don’t pressure you further. You dress yourself and take your money before leaving the alley. <<tipreceive>>
+	<br><br>
+	
+	<<clotheson>>
+	<<endevent>>
+	<<destinationeventend>>
+<</if>>
+
+:: Street Private Show Refuse
+<<set $outside to 1>><<effects>>
+
+<<if $rng gte 91>>
+	<<if $submissive gte 1150>>
+		You quietly refuse their offer. The <<person2>><<person>> leans in uncomfortably close, cupping a hand to <<his>> ear.
+		<br><br>
+		
+		"What's that?" <<he>> sneers. "Speak up."
+		<br>
+		"I think <<pshe>> said we can do whatever we want with a slut like <<pher>>," the <<person3>><<person>> interjects. The <<group>> begins to close in around you.
+	<<elseif $submissive lte 850>>
+		You angrily refuse their offer. The three seem annoyed by your behaviour.
+		<br><br>
+		
+		“We gave you a fair deal," the <<person2>><<person>> spits. "Guess you need to be taught a lesson about what you exhibitionist sluts are good for."
+	<<else>>
+		You refuse their offer. The three seem disappointed.
+		<br><br>
+		
+		“We gave you a fair deal," the <<person2>><<person>> spits. "Guess you need to be taught a lesson about what you exhibitionist sluts are good for."
+	<</if>>
+	<br>
+	
+	“Sorry <<girl>>, but we’re not taking no for an answer,” the <<person1>><<person>> says.
+	<br><br>
+	
+	You try to escape, but they grab you and pull you into a nearby alley, tossing you onto the ground. The <<group>> loom over you.
+	<br><br>
+	
+	<<link [[Next|Street Private Show Sex]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	<<if $submissive gte 1150>>
+		You politely decline their offer. The three seem disappointed, but don’t pressure you further. You turn your back to them and walk away, looking over your shoulder a few times.<<stress 6>><<gstress>>
+	<<elseif $submissive lte 850>>
+		You angrily refuse their offer. The three seem annoyed by your behaviour, but don’t pressure you further. You turn your back to them and walk away.<<stress 6>><<gstress>>
+	<<else>>
+		You refuse their offer. The three seem disappointed, but don’t pressure you further. You turn your back to them, unsure how you feel about that conversation.<<stress 6>><<gstress>>
+	<</if>>
+	<br><br>
+	
+	<<endevent>>
+	<<destinationeventend>>
+<</if>>
+
+:: Street Kidnap Give
+<<set $outside to 1>><<effects>>
+
+You close your eyes and take slow, deep breaths. Soon enough, you fall unconscious.
+<br><br>
+
+<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<set $drugged += 240>><<garousal>><<arousal 1000>><</link>>
+<br>
+
+:: Street Kidnap Struggle
+<<set $outside to 1>><<effects>>
+
+<<if $physiqueSuccess>>
+	<<set $drugged += 20>>
+	<span class="green">You break loose, gulping down breaths of fresh air.</span> You try to run away, but you wind up tripping. Your body feels heavy and sluggish, but you persevere, get up and keep running.
+	<br><br>
+	
+	The perpetrator doesn’t try to get you back. Instead, <<he>> calls out, saying <<he>> can explain, but you run as fast as you can without looking back.
+	<br><br>
+	
+	<<endevent>>
+	<<destinationeventend>>
+<<else>>
+	You start hyperventilating and try to struggle free, <span class="red">but your movements start to feel sluggish.</span> Your vision begins to darken. Soon enough, you fall unconscious.
+	<br><br>
+	
+	<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<set $drugged += 240>><<garousal>><<arousal 1000>><</link>>
+	<br>
+<</if>>
+
+:: Street Kidnap Wake
+<<set $outside to 0>><<set $location to "town">><<effects>><<set $bus to "domus">>
+<<bind>><<facewear 5>>
+
+You regain consciousness. Your breathing is slow. It’s the only thing you can hear. As your senses slowly return, you feel much more sensitive than normal around your chest and groin.<<garousal>>
+<br>
+You hear a noise, and your eyes shoot open. It’s pitch black, and you start breathing more heavily. You’re blindfolded. You try to move your arms, but find them bound.
+<br><br>
+
+You hear a voice whisper in your ear. "Mmm, you’re finally awake." They give your cheek a lick. You can’t decipher if the voice is male or female. Your legs are suddenly spread wide open and held down. "Finally, I’ve been waiting to get a piece of you for a while now."
+<br><br>
+
+<<link [[Next|Street Kidnap Rape]]>><<set $molestationstart to 1>><</link>>
+<br>
+
+:: Street Kidnap Rape
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<maninit>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Street Kidnap Rape Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Street Kidnap Rape Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Street Kidnap Rape]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Street Kidnap Rape Finish
+<<set $outside to 0>><<set $location to "town">><<effects>><<set $bus to "domus">>
+<<set $worn.face.type.push("broken")>><<faceruined>><<unbind>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	
+	<<set $money += 10000>>
+	The <<person>> tackles you in a bear hug, squealing with delight.
+	<br>
+	"Yes! I knew it! I knew you were special. My fetish was finally satisfied. It has been so long since I came that hard!"
+	<br><br>
+	
+	<<He>> starts giving you big sloppy kisses. Despite the circumstances, all the affection makes you feel warm inside. The drugs might have something to do with that.
+	<br><br>
+	
+	After a few more kisses, <<he>> puts you down, pats your head, and gives you <span class="gold">£100</span>. "Please take this. You most definitely deserve it!" <<he>> says excitedly. <<He>> eventually calms down, then continues with an awkward smile.
+	<br>
+	"Sorry for the whole kidnapping thing. After seeing you have sex with so many other people, I knew you would like it! To make up for it, though, I’ll give you a ride home."
+	<br><br>
+	
+	<<link [[Accept|Street Kidnap Ride Accept]]>><<stress 2>><</link>><<gstress>>
+	<br>
+	<<link [[Refuse|Street Kidnap Ride Refuse]]>><</link>>
+	<br>
+<<elseif $enemyhealth lte 0>>
+	As you land the final blow, your blindfold falls off. You scamper off into the corner. You carefully eye <<him>>, watching <<his>> every movement. 
+	<br><br>
+
+	The <<person>> gives a sad sigh and staggers towards you. You <<if $submissive gte 1150>>curl up defensively<<elseif $submissive lte 850>>narrow your eyes in defiance<<else>>brace yourself for another assault<</if>>, but <<he>> doesn't harm you, instead undoing your binds.
+	<br>
+	"I thought you’d be the one," <<he>> mutters. <<He>> stands silently for a moment, blocking the door, before continuing.
+	<br>
+	"I just wanted someone to satisfy my fetish! I never meant any harm. I see you having sex all the time. I thought you would have been the one.
+	<br><br>
+	
+	<<He>> sighs again, slumping against the wall. "You can go. Just leave me here." <<He>> looks like <<hes>> about to burst into tears.
+	<br><br>
+
+	<<if $promiscuity gte 35>>
+		<<link [[Pity fuck|Street Kidnap Pity]]>><</link>><<promiscuous3>>
+		<br>
+	<</if>>
+	<<link [[Leave|Street Kidnap Leave]]>><</link>>
+	<br>
+<</if>>
+
+:: Street Kidnap Leave
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "domus">>
+
+You decide to make a break for it before the <<person>> changes <<his>> mind. <<tearful>> you rush outside, emerging on Domus Street.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Domus Street]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Street Kidnap Pity
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "domus">>
+
+You do feel a little bad for <<him>>. You decide to give <<him>> at least some sort of pleasure and ask <<him>> if <<he>> still wants a fuck. <<promiscuity3>>
+<br><br>
+
+<<He>> looks at you, annoyed. "Since you’re offering, just use your hand or something and leave." You grab their <<if $NPCList[0].penis isnot "none">>cock<<else>>pussy<</if>> and <<handtext>> get to work. As you go through the motions, you glance at <<his>> face. <<He>> looks happy, no matter how much <<he>> tries to hide it.
+<br><br>
+
+It doesn't take long for the <<person>> to cum. As soon as <<his>> orgasm subsides, <<he>> immediately tells you to leave and practically forces you out the door.
+<br><br>
+
+As soon as the door shuts, you hear <<him>> laugh. "Looks like the night wasn't such a waste after all! I can’t believe it was <<phim>>. Aw man, I can’t wait to tell my friends!"
+<br><br>
+
+<<tearful>> as you walk off to the street.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Domus Street]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Street Kidnap Ride Accept
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+The <<person>> leads you out of <<his>> house and to <<his>> car. Though wary, you take a seat on the passenger side.
+<br><br>
+
+<<He>> smiles at you. "Where to?"
+<br><br>
+
+<<domusicon>><<link [[Ask for a ride home|Street Kidnap Ride]]>><<set $bus to "domus">><</link>>
+<br>
+
+<<barbicon>><<link [[Ask for a ride to Barb Street|Street Kidnap Ride]]>><<set $bus to "barb">><</link>>
+<br>
+
+<<danubeicon>><<link [[Ask for a ride to Danube Street|Street Kidnap Ride]]>><<set $bus to "danube">><</link>>
+<br>
+
+<<wolficon>><<link [[Ask for a ride to Wolf Street|Street Kidnap Ride]]>><<set $bus to "wolf">><</link>>
+<br>
+
+<<highicon>><<link [[Ask for a ride to High Street|Street Kidnap Ride]]>><<set $bus to "high">><</link>>
+<br>
+
+<<connudatusicon>><<link [[Ask for a ride to Connudatus Street|Street Kidnap Ride]]>><<set $bus to "connudatus">><</link>>
+<br>
+
+<<clifficon>><<link [[Ask for a ride to Cliff Street|Street Kidnap Ride]]>><<set $bus to "cliff">><</link>>
+<br>
+
+<<nightingaleicon>><<link [[Ask for a ride to Nightingale Street|Street Kidnap Ride]]>><<set $bus to "nightingale">><</link>>
+<br>
+
+<<starfishicon>><<link [[Ask for a ride to Starfish Street|Street Kidnap Ride]]>><<set $bus to "starfish">><</link>>
+<br>
+
+<<oxfordicon>><<link [[Ask for a ride to Oxford Street|Street Kidnap Ride]]>><<set $bus to "oxford">><</link>>
+<br>
+
+<<elkicon>><<link [[Ask for a ride to Elk Street|Street Kidnap Ride]]>><<set $bus to "elk">><</link>>
+<br>
+
+<<mericon>><<link [[Ask for a ride to Mer Street|Street Kidnap Ride]]>><<set $bus to "mer">><</link>>
+<br>
+
+<<harvesticon>><<link [[Ask for a ride to Harvest Street|Street Kidnap Ride]]>><<set $bus to "harvest">><</link>>
+<br>
+
+<<if $farm_stage gte 7>>
+	<<ind>><<link [[Ask for a ride to the farmlands|Street Kidnap Ride]]>><<set $phase to 1>><</link>>
+	<br>
+<</if>>
+
+:: Street Kidnap Ride
+<<effects>>
+
+<<if $phase is 1>>
+	<<pass 30>>
+	The <<person>> raises an eyebrow. "That's a bit of a ways out, but I don't mind." <<He>> smiles again. "Anything for you."
+	<br><br>
+	
+	The car finally pulls into the countryside. The <<person>> gives you one last head pat and unlocks the doors. "Have a good night! Maybe I’ll be lucky enough to see you again."
+	<br><br>
+	
+	<<tearful>> you exit the car. The <<person>> lingers for a moment, before waving and driving away.
+	<br><br>
+	
+	<<clotheson>>
+	<<endcombat>>
+	
+	<<link [[Next|Farmland]]>><</link>>
+	<br>
+<<else>>
+	<<pass 5>>
+	After a short drive, the car arrives at the destination. The <<person>> gives you one last head pat and unlocks the doors. "Have a good night! Maybe I’ll be lucky enough to see you again."
+	<br><br>
+	
+	<<tearful>> you exit the car. The <<person>> lingers for a moment, before waving and driving away.
+	<br><br>
+	
+	<<clotheson>>
+	<<endcombat>>
+	
+	<<destination5>>
+<</if>>
+
+:: Street Kidnap Ride Refuse
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "domus">>
+
+Despite the <<persons>> sincere tone, you think better of accepting a ride from a kidnapper. <<He>> looks disappointed, but <<he>> doesn't pressure you.
+<br><br>
+
+<<tearful>> you leave the house, emerging on Domus Street.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Domus Street]]>><<set $eventskip to 1>><</link>>
+<br>
