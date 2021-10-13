@@ -179,6 +179,7 @@
 <<He>> presses <<his>> pussy against your lips.
 <br><br>
 <</if>>
+<<set $NPCList[0].location.genitals to "head">>
 <</widget>>
 
 <<widget "npchand">>

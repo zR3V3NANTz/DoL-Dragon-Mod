@@ -2509,6 +2509,9 @@
 	<<set $kylar.play to $kylar_play>>
 	<<unset $kylar_play>>
 <</if>>
+<<if typeof($semen_produced_stat) is "string">>
+	<<set $semen_produced_stat to parseFloat($semen_produced_stat)>>
+<</if>>
 
 <<if !(Array.isArray($event))>>
 	<<unset $event>>

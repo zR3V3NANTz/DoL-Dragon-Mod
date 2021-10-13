@@ -179,6 +179,8 @@ You examine the range of dog treats on display.
 	<br>
 <</if>>
 
+<br>
+<<link [[Don't buy any|Pet Shop]]>><</link>>
 
 :: Pet Shop Treats Buy
 <<effects>>
