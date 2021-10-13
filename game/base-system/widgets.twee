@@ -298,7 +298,7 @@
 		<<elseif $season is "summer">>
 			<<tanned `$pass`>>
 		<<else>>
-			<<tanned $pass / 2>>
+			<<tanned `$pass / 2`>>
 		<</if>>
 	<</if>>
 <</widget>>

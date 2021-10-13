@@ -66,6 +66,10 @@
 	<<set $blackjack.playersCards.push($blackjack.cards[2])>>
 	<<set $blackjack.dealerCards.push($blackjack.cards[3])>>
 	<<set $blackjack.cards.deleteAt(0,1,2,3)>>
+	<<blackjackScore $blackjack.dealerCards "dealer">>
+	<<if $blackjack.dealerScore is 21>>
+		<<set $blackjack.turn to "dealer">>
+	<</if>>
 <</if>>
 <<if $blackjack.playersState is "hit">>
 	<<set $blackjack.playersState to null>>

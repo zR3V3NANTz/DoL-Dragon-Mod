@@ -102,10 +102,6 @@
 	<</for>>
 	<<set _pregnancy.fertile to false>>
 	<<set _pregnancy.fertilised to true>>
-	<<if _pregnancy.motherStatus is 0 and _pregnancy.givenBirth gt 2>>
-		<<set _pregnancy.motherStatus to 1>>
-		<<set _pregnancy.maxCount to 2>>
-	<</if>>
 <</if>>
 <</widget>>
 
@@ -258,6 +254,10 @@
 				<<set _pregnancy[$args[0]] to null>>
 				<<set _pregnancy.count -= 1>>
 				<<set _pregnancy.givenBirth += 1>>
+				<<if _pregnancy.motherStatus is 0 and _pregnancy.givenBirth gte 3>>
+					<<set _pregnancy.motherStatus to 1>>
+					<<set _pregnancy.maxCount to 2>>
+				<</if>>
 			<<default>>
 				<<if $args[1] isnot null>>
 					<<set $container[$args[0]].creatures[$args[1]] to null>>

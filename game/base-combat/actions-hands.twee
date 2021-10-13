@@ -378,7 +378,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 <</widget>>
 
 <<widget "leftchoke">>
-	<<if $enemytype is "man" and $neckuse == "hand">>
+	<<if $neckuse == "hand">>
 		<<set _npcChoker = $NPCList.find(x => x.lefthand == "throat" or x.righthand == "throat")>>
 		<<if _npcChoker>>
 			<<set _his = _npcChoker.pronoun == "m" ? "his" : _npcChoker.pronoun == "f" ? "her" : "their">>
@@ -795,7 +795,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 <</widget>>
 
 <<widget "rightchoke">>
-	<<if $enemytype is "man" and $neckuse == "hand">>
+	<<if $neckuse == "hand">>
 		<<set _npcChoker = $NPCList.find(x => x.lefthand == "throat" or x.righthand == "throat")>>
 		<<if _npcChoker>>
 			<<set _his = _npcChoker.pronoun == "m" ? "his" : _npcChoker.pronoun == "f" ? "her" : "their">>

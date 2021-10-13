@@ -2331,7 +2331,7 @@
 <br>
 <<link [[Sleep for 2 hours|Farm Sleep]]>><<set $sleephour to 2>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 2>>)<<ltiredness>>
 <br>
-<<link [[Sleep for 1 hours|Farm Sleep]]>><<set $sleephour to 1>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 1>>)<<ltiredness>>
+<<link [[Sleep for 1 hour|Farm Sleep]]>><<set $sleephour to 1>><<set $saveDetails.auto.count++>><</link>> &#8194;(<<timeAfterXHours 1>>)<<ltiredness>>
 <br>
 <<link [[Just sleep|Farm Sleep]]>><<set $sleephour to -1>><<set $saveDetails.auto.count++>><</link>> (??:??)<<ltiredness>>
 <br><br>
@@ -2534,11 +2534,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 
 <<widget "farm_guard_pay">>
 <<if $farm.tower_guard_unpaid gte 1>>
-	<<if $farm.tower_guard_unpaid gte 2>>
-		<<set _owed to ($farm.tower_guard_wage * ($farm.tower_guard_unpaid - 1))>>
-	<<else>>
-		<<set _owed to $farm.tower_guard_wage>>
-	<</if>>
+	<<set _owed to ($farm.tower_guard_wage * $farm.tower_guard_unpaid)>>
 	You owe <<him>> <<printmoney _owed>> in wages.
 	<br>
 	<<if $money gte $farm.tower_guard_wage>>
@@ -2838,15 +2834,15 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 			A watchtower is being constructed at the edge of the fields.
 		<<case "tower 2">>
 			Searchlights are being affixed atop the watchtower.
-		<<case "kennel">>
+		<<case "kennel 1">>
 			A guard dog training facility is being contructed.
-		<<case "barn">>
+		<<case "barn 1">>
 			The barn is being expanded.
-		<<case "sty">>
+		<<case "woodland 1" "woodland 2" "woodland 3">>
 			A fence is being built around the nearby woodland.
 		<<case "stable 1">>
 			The stable is being expanded.
-		<<case "coop">>
+		<<case "coop 1" "coop 2">>
 			The coop is being expanded.
 		<<case "irrigation">>
 			Irrigation is being installed in a field.

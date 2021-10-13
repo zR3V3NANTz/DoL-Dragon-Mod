@@ -1700,7 +1700,7 @@ You scramble out from beneath the <<farm_text horse>>, and continue to the gate.
 		<<link [[Next|Farm Work]]>><</link>>
 		<br>
 	<<else>>
-		The horse and grasps your hair, pulling you to your knees again. This time however, it shoves you forward, leaving your rear stuck in the air.
+		The horse grasps your hair, pulling you to your knees again. This time however, it shoves you forward, leaving your rear stuck in the air.
 
 		<<if $worn.upper.set is $worn.lower.set and $worn.lower.skirt isnot 1>>
 			You feel <<farm_his horse>> tongue lap against your <<bottom>>, and hope your $worn.lower.name proves enough of a barrier.

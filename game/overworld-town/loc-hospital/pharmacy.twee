@@ -265,21 +265,25 @@ The nurse looks at the item you're holding,
 <<if $seductionskill lt 1000>><span class="gold">You feel more confident in your powers of seduction.</span><</if>><<seductionskilluse>><<promiscuity2>>
 
 <<if $seductionrating gte $seductionrequired>>
-<<He>> arches an eyebrow and blushes while glancing around to make sure you're alone. Satisfied, <<he>> takes you by the hand and leads you behind the counter.<br>
-<<He>> pushes you against the wall, drops down on <<his>> knees and hastens to remove your <<if $worn.lower.name != "naked">>$worn.lower.name<<else>>$worn.under_lower.name<</if>>.<br><br>
-<br><br>
-<<set $sexstart to 1>>
-<<link [[Next|Pharmacy Encounter Sex]]>><</link>>
+	<<He>> arches an eyebrow and blushes while glancing around to make sure you're alone. Satisfied, <<he>> takes you by the hand and leads you behind the counter.<br>
+	<<He>> pushes you against the wall, drops down on <<his>> knees and hastens to remove your <<if $worn.lower.name != "naked">>$worn.lower.name<<else>>$worn.under_lower.name<</if>>.<br><br>
+	<br><br>
+	<<set $sexstart to 1>>
+	<<link [[Next|Pharmacy Encounter Sex]]>><</link>>
 <<else>>
-After a brief pause, <<he>> bursts into a ringing laugh.<<ggstress>><<stress 23>>
-<br>
-"Nice try, <<lass>>!" <<he>> says.<br>
-"So, are you buying them or what?"<br><br>
+	After a brief pause, <<he>> bursts into a ringing laugh.<<ggstress>><<stress 23>>
+	<br>
+	"Nice try, <<lass>>!" <<he>> says.<br>
+	"So, are you buying them or what?"<br><br>
 
-A box of $choice pills lays on the table.<br><br>
+	A box of $choice pills lays on the table.<br><br>
 
-<<link [["Pay £" + $price|Pharmacy Seduction End]]>><<set $phase to "pay">><</link>><br>
-<<link [[Nevermind|Pharmacy Seduction End]]>><<set $phase to "nevermind">><</link>>
+	<<if $money gte $price * 100>>
+		<<link [["Pay £" + $price|Pharmacy Seduction End]]>><<set $phase to "pay">><</link>><br>
+	<<else>>
+		<span class="purple">You cannot afford them.</span>
+	<</if>>
+	<<link [[Nevermind|Pharmacy Seduction End]]>><<set $phase to "nevermind">><</link>>
 <</if>>
 
 :: Pharmacy Seduction End
@@ -387,18 +391,26 @@ A box of $choice pills lays on the table.<br><br>
 		"I think you've earned a discount, sweetie. You can have these pills for £<<print $price / 2>>."<br>
 		"Please come back for more," <<he>> winks.
 		<br><br><<endcombat>>
-		<<link [["Buy penis " + $choice + " pills for £" + $price / 2|Pharmacy]]>>
-			<<set $eventskip to 1>>
-			<<set $money -= $price * 50>><<managePill "penis" $choice 14 false>><<boughtOnce>>
-		<</link>>
+		<<if $money gte ($price / 2) * 100>>
+			<<link [["Buy penis " + $choice + " pills for £" + $price / 2|Pharmacy]]>>
+				<<set $eventskip to 1>>
+				<<set $money -= $price * 50>><<managePill "penis" $choice 14 false>><<boughtOnce>>
+			<</link>>
+		<<else>>
+			<span class="purple">You cannot afford them.</span>
+		<</if>>
 	<<else>>
 		"Sorry, sweetheart. I can't sell you these reduction pills after what you've done to me with your juicy cock. I just can't. I want it to stay as big as it is."<br>
 		"I can sell you growth blocker pills at a discount instead," <<he>> smiles.
 		<br><br><<endcombat>>
-		<<link [[Buy blocker pills for £100|Pharmacy]]>>
-			<<set $eventskip to 1>>
-			<<set $money -= 10000>><<managePill "penis" "blocker" 14 false>><<boughtOnce>>
-		<</link>>
+		<<if $money gte 10000>>
+			<<link [[Buy blocker pills for £100|Pharmacy]]>>
+				<<set $eventskip to 1>>
+				<<set $money -= 10000>><<managePill "penis" "blocker" 14 false>><<boughtOnce>>
+			<</link>>
+		<<else>>
+			<span class="purple">You cannot afford them.</span>
+		<</if>>
 	<</if>>
 	<br>
 	<<link [[Don't buy|Pharmacy]]>><<set $eventskip to 1>><</link>>
@@ -438,10 +450,14 @@ A box of $choice pills lays on the table.<br><br>
 		<br><br>
 		<<endcombat>>
 
-		<<link [["Pay £" + $price + " for penis " + $choice + " pills"|Pharmacy]]>>
-			<<set $eventskip to 1>>
-			<<set $money -= $price * 100>><<managePill "penis" $choice 14 false>><<boughtOnce>>
-		<</link>><br>
+		<<if $money gte $price * 100>>
+			<<link [["Pay £" + $price + " for penis " + $choice + " pills"|Pharmacy]]>>
+				<<set $eventskip to 1>>
+				<<set $money -= $price * 100>><<managePill "penis" $choice 14 false>><<boughtOnce>>
+			<</link>><br>
+		<<else>>
+			<span class="purple">You cannot afford them.</span>
+		<</if>>
 
 		<<default>>
 		The <<personsimple>> looks dejected as <<he>> gets up and fixes <<his>> clothing. <<He>> returns to the till, and picks up <<his>> book.<br>

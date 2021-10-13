@@ -1001,7 +1001,7 @@ You sit on the toilet, and wait.
 	Your cries echo against the tiles, but no one comes.
 	<br><br>
 <</if>>
-<<if $enemyarousal lt $enemyarousalmax and $enemyhealth gte 1>>
+<<if $enemyarousal lt $enemyarousalmax and $enemyhealth gt 0>>
 	<span id="next"><<link [[Next|Toilets Molestation]]>><</link>></span><<nexttext>>
 <<else>>
 	<span id="next"><<link [[Next|Toilets Molestation Finish]]>><</link>></span><<nexttext>>

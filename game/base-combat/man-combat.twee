@@ -1385,7 +1385,7 @@
 						<</if>>
 					<</if>>
 				<</if>>
-			<<elseif $worn.lower.name isnot "waist">>
+			<<elseif $worn.lower.state isnot "waist">>
 				<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 					<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 					<<set $handtarget to "underclothes">><<neutral 1>>
@@ -1428,7 +1428,7 @@
 						<</if>>
 					<</if>>
 				<</if>>
-			<<elseif $worn.lower.name isnot "waist">>
+			<<elseif $worn.lower.state isnot "waist">>
 				<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 					<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 					<<set $handtarget to "underclothes">><<neutral 1>>
@@ -1733,7 +1733,7 @@
 			<</if>>
 			<<bodypart_admire_chance back>>
 		<!-- note: the sections above and below are identical other than the bodypart_admire_chance back -->
-		<<elseif $worn.lower.name isnot "waist">>
+		<<elseif $worn.lower.state isnot "waist">>
 			<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 				<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 				<<combat-set-hand-target $args[0] "underclothes">><<neutral 1>>
@@ -1774,7 +1774,7 @@
 				<</if>>
 			<</if>>
 			<<bodypart_admire_chance pubic>>
-		<<elseif $worn.lower.name isnot "waist">>
+		<<elseif $worn.lower.state isnot "waist">>
 			<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 				<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 				<<combat-set-hand-target $args[0] "underclothes">><<neutral 1>>
@@ -2448,7 +2448,9 @@
 		<<elseif $enemyanger gte random(1, 100) and $NPCList[_n].penissize gte 2>>
 			<<if $oralskill gte random(1, 1200 + 100 * (2 - $NPCList[_n].penissize))>>
 				<<He>> shoves <<his>> $NPCList[_n].penisdesc down your throat, <span class="blue">but you manage to gasp between <<his>> thrusts.</span>
-				<<suffocatepass -1>>
+				<<if $neckuse isnot "hand">>
+					<<suffocatepass -1>>
+				<</if>>
 			<<else>>
 				<span class="pink">You gag as <<he>> thrusts <<his>> $NPCList[_n].penisdesc down your throat.</span>
 					<<oxygen -150>>
@@ -2555,20 +2557,20 @@
 		<</if>>
 	<</if>>
 	<<if $NPCList[_n].penis is "footjob">>
-		<<if $rng gte 101>>
+		<<if $rng gte 101 or ($penisuse isnot "feet" and $vaginause isnot "feet")>>
 			<span class="blue"><<He>> stops pressing <<his>> foot against your <<genitals>>.</span>
 			<<set $NPCList[_n].penis to 0>>
-			<<if $player.penisExist>>
+			<<if $player.penisExist and $penisuse is "feet">>
 				<<set $penisuse to 0>>
 			<</if>>
-			<<if $player.vaginaExist>>
+			<<if $player.vaginaExist and $vaginause is "feet">>
 				<<set $vaginause to 0>>
 			<</if>>
 		<<else>>
-			<<if $player.penisExist>>
+			<<if $penisuse is "feet">>
 				<<He>> presses your <<penis>> against your stomach with <<his>> foot and rubs your glans between <<his>> toes.
 				<<set $speechpenisfoot to 1>><<neutral 5>><<violence 1>>
-			<<else>>
+			<<elseif $vaginause is "feet">>
 				<<He>> presses and teases your <<pussy>> with <<his>> foot.
 				<<set $speechvaginafoot to 1>><<neutral 5>><<violence 1>>
 			<</if>>
@@ -3061,19 +3063,20 @@
 	<</if>>
 	<<set $rng to random(1, 100)>>
 	<<if $NPCList[_n].vagina is "footjob">>
-		<<if $rng gte 101>>
+		<<if $rng gte 101 or ($penisuse isnot "feet" and $vaginause isnot "feet")>>
 			<span class="blue"><<He>> stops pressing <<his>> foot against your <<genitals>>.</span>
 			<<set $NPCList[_n].vagina to 0>>
-			<<if $player.penisExist>>
+			<<if $player.penisExist and $penisuse is "feet">>
 				<<set $penisuse to 0>>
-			<<else>>
+			<</if>>
+			<<if $player.vaginaExist and $vaginause is "feet">>
 				<<set $vaginause to 0>>
 			<</if>>
 		<<else>>
-			<<if $player.penisExist>>
+			<<if $penisuse is "feet">>
 				<<He>> presses your penis against your stomach with <<his>> foot and rubs your glans between <<his>> toes.
 				<<set $speechpenisfoot to 1>><<neutral 5>><<violence 1>>
-			<<else>>
+			<<elseif $vaginause is "feet">>
 				<<He>> rubs <<his>> foot against your <<pussy>>.
 				<<set $speechvaginafoot to 1>><<neutral 5>><<violence 1>>
 			<</if>>
@@ -3238,6 +3241,7 @@
 				<<else>>
 					<span class="red">You are suffocating.</span>
 					<<violence 50>>
+					<<suffocatepass>>
 				<</if>>
 
 			<<elseif $oxygen lte 900>>
@@ -3246,6 +3250,9 @@
 					"<<He>> lifts off slightly, just enough to let you breathe a little.",
 					"You are able to snatch in some small amount of air from under <<him>>."
 				)>>
+				<<if $neckuse isnot "hand">>
+					<<suffocatepass -1>>
+				<</if>>
 			<</if>>
 		<</if>>
 
@@ -4478,13 +4485,13 @@
 				<<neutral 1>>
 			<</if>>
 		<</if>>
-	<<elseif $enemyanger + $rng lte 150 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $footdisable is "f" and $walltype isnot "front">>
+	<<elseif $enemyanger + $rng lte 150 and ($penisise is 0 or $vaginause is 0) and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $footdisable is "f" and $walltype isnot "front">>
 		<span class="purple"><<He>> presses <<his>> foot against your <<genitals>>.</span>
 		<<neutral 5>><<violence 1>><<set $NPCList[_n].penis to "footjob">>
-		<<if $player.penisExist>>
+		<<if $player.penisExist and $penisuse is 0>>
 			<<set $penisuse to "feet">><<set $speechpenisfoot to 1>>
 		<</if>>
-		<<if $player.vaginaExist>>
+		<<if $player.vaginaExist and $vaginause is 0>>
 			<<set $vaginause to "feet">>
 			<<if !$player.penisExist>>
 				<<set $speechvaginafoot to 1>>
@@ -4668,13 +4675,13 @@
 			<<He>> frots against your thigh while squeezing it with <<his>> own.
 			<<violence 3>>
 		<</if>>
-	<<elseif $enemyanger + $rng lte 160 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $footdisable is "f" and $walltype isnot "front">>
+	<<elseif $enemyanger + $rng lte 160 and ($penisise is 0 or $vaginause is 0) and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $footdisable is "f" and $walltype isnot "front">>
 		<span class="purple"><<He>> presses <<his>> foot against your <<genitals>>.</span>
-		<<neutral 5>><<set $NPCList[_n].vagina to "footjob">>
-		<<if $player.penisExist>>
+		<<neutral 5>><<violence 1>><<set $NPCList[_n].vagina to "footjob">>
+		<<if $player.penisExist and $penisuse is 0>>
 			<<set $penisuse to "feet">><<set $speechpenisfoot to 1>>
 		<</if>>
-		<<if $player.vaginaExist>>
+		<<if $player.vaginaExist and $vaginause is 0>>
 			<<set $vaginause to "feet">>
 			<<if !$player.penisExist>>
 				<<set $speechvaginafoot to 1>>
@@ -4946,8 +4953,10 @@
 	<!-- Didn't use $NPCList[_n].righthand instead of .find() because once i've got a weird error
 		 with $NPCList[_n] being undefined here. Perhaps, temporary _n expired? -->
 	<<set _npc = $NPCList.find(x => x.lefthand == "throat" || x.righthand == "throat")>>
-	<<set _npc.righthand to 0>>
-	<<set _npc.lefthand to 0>>
+	<<if _npc isnot undefined>>
+		<<set _npc.righthand to 0>>
+		<<set _npc.lefthand to 0>>
+	<</if>>
 	<<set $neckuse to 0>>
 	<<set $enemyanger -= 70>>
 	<<set $suffocationPhase to 2>>
@@ -4960,7 +4969,10 @@
 	<<set _turn to 0>>
 	<<repeat 1.5s>>
 		<<if _turn lt _simTurns>>
-			<div class="unconscious shimmering"><<man>><<integritycheck>></div>
+			<div class="unconscious shimmering">
+			<<if $enemytype is "man">><<man>><<else>><<beast $enemyno>><br><</if>>
+			<<integritycheck>>
+			</div>
 			<<pass10sec>>
 		<<else>>
 			<div class="fade-in">

@@ -514,7 +514,7 @@
 		<<set $_semen_released to $semen_amount>>
 	<</if>>
 
-	<<set $_semen_released to parseFloat($_semen_released).toFixed(1)>>
+	<<set $_semen_released to parseFloat($_semen_released.toFixed(1))>>
 
 	<<if $masturbation_bowl is 1 and $semen_amount gte 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $mouth isnot "mpenis">>
 		<<set $masturbation_semen += $_semen_released>>

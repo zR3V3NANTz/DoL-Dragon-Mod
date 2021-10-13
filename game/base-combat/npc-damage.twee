@@ -56,6 +56,9 @@
 <<if $NPCList[_i].vagina is "vagina" or $NPCList[_i].vagina is "vaginaimminent" or $NPCList[_i].vagina is "vaginaentrance">>
 	<<set $vaginastate to 0>><<set $vaginause to 0>>
 <</if>>
+<<if $NPCList[_i].penis is "penis" or $NPCList[_i].penis is "penisimminent" or $NPCList[_i].penis is "penisentrance">>
+	<<set $penisstate to 0>><<set $penisuse to 0>>
+<</if>>
 
 <!-- NPC Mouth other -->
 <<if $NPCList[_i].mouth is "anus" or $NPCList[_i].mouth is "anusimminent" or $NPCList[_i].mouth is "anusentrance">>
@@ -74,10 +77,10 @@
 
 <!-- NPC using feet on PC -->
 <<if $NPCList[_i].penis is "footjob" or $NPCList[_i].vagina is "footjob">>
-	<<if $player.penisExist>>
-		<<set $penisstate to 0>>
-	<<else>>
-		<<set $vaginastate to 0>>
+	<<if $player.penisExist and $penisuse is "feet">>
+		<<set $penisuse to 0>>
+	<<elseif $vaginause is "feet">>
+		<<set $vaginause to 0>>
 	<</if>>
 <</if>>
 
@@ -90,6 +93,12 @@
 <<if $NPCList[_i].lefthand is "arms" or $NPCList[_i].righthand is "arms">>
 	<<set $leftarm to 0>><<set $rightarm to 0>>
 <</if>>
+
+<!-- NPC facesitting -->
+<<if $NPCList[_i].vagina is "facesit" or $NPCList[_i].vagina is "facesitanal" or $NPCList[_i].penis is "mouthotheranus">>
+	<<set $mouthstate to 0>><<set $mouthuse to 0>>
+<</if>>
+
 <!-- Probably still some edge cases missing... -->
 
 <!-- Reset Defeated NPC appendages -->

@@ -1441,7 +1441,7 @@ You snuggle under the covers with Kylar.
 <br>
 <<link [[Sleep for 2 hours|Sleep]]>><<set $sleephour to 2>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 2>>)<<ltiredness>>
 <br>
-<<link [[Sleep for 1 hours|Sleep]]>><<set $sleephour to 1>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 1>>)<<ltiredness>>
+<<link [[Sleep for 1 hour|Sleep]]>><<set $sleephour to 1>><<set $saveDetails.auto.count++>><</link>> &#8194;(<<timeAfterXHours 1>>)<<ltiredness>>
 <br>
 <<link [[Just sleep|Sleep]]>><<set $sleephour to -1>><<set $saveDetails.auto.count++>><</link>> (??:??)<<ltiredness>>
 <br><br>

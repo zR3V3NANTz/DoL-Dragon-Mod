@@ -904,10 +904,10 @@ __Body Writing__<br>
 		<<set _bodyWritingOptions["Love Interests"]["Robin's Protector"] to "robins_protector">>
 		<<set _bodyWritingOptions["Love Interests"]["Robin & I"] to "robin_and_i">>
 		<<set _bodyWritingOptions["Love Interests"]["The Orphan Lover"] to "the_orphan_lover">>
-		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender.appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender_appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Robin's Boyfriend"] to "robins_boyfriend">>
 		<</if>>
-		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender.appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender_appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Robin's Girlfriend"] to "robins_girlfriend">>
 		<</if>>
 	<</if>>
@@ -915,10 +915,10 @@ __Body Writing__<br>
 		<<set _bodyWritingOptions["Love Interests"]["Whitney's Pet"] to "whitneys_pet">>
 		<<set _bodyWritingOptions["Love Interests"]["Property of Whitney"] to "property_of_whitney">>
 		<<set _bodyWritingOptions["Love Interests"]["Whitney's Toy"] to "whitneys_toy">>
-		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender.appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender_appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Whitney's Boyslut"] to "whitneys_boyslut">>
 		<</if>>
-		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender.appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender_appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Whitney's Slut"] to "whitneys_slut">>
 		<</if>>
 	<</if>>
@@ -937,10 +937,10 @@ __Body Writing__<br>
 	<<if $dateCount.Avery gte 3 and $NPCName[$NPCNameList.indexOf("Avery")].state isnot "dismissed">>
 		<<set _bodyWritingOptions["Love Interests"]["Avery's Trophy"] to "averys_trophy">>
 		<<set _bodyWritingOptions["Love Interests"]["Endearing"] to "endearing">>
-		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender.appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender_appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Uptown Boy"] to "uptown_boy">>
 		<</if>>
-		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender.appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender_appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Uptown Girl"] to "uptown_girl">>
 		<</if>>
 		<<set _bodyWritingOptions["Love Interests"]["Avery's Monopoly"] to "averys_monopoly">>
@@ -949,10 +949,10 @@ __Body Writing__<br>
 		<<set _bodyWritingOptions["Love Interests"]["Alex's Partner"] to "alexs_partner">>
 		<<set _bodyWritingOptions["Love Interests"]["Sunrise to Sunset"] to "sunrise_to_sunset">>
 		<<set _bodyWritingOptions["Love Interests"]["Hay Baler"] to "hay_baler">>
-		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender.appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "m" or $player.gender is "h" or $player.gender_appearance is "m" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Cowboy"] to "cowboy">>
 		<</if>>
-		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender.appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
+		<<if ($player.gender is "f" or $player.gender is "h" or $player.gender_appearance is "f" or $backgroundTraits.includes("crossdresser"))>>
 			<<set _bodyWritingOptions["Love Interests"]["Cowgirl"] to "cowgirl">>
 		<</if>>
 	<</if>>

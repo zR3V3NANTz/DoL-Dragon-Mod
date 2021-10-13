@@ -426,7 +426,7 @@ You approach the carriage. "The train is off-limits," says the <<person>> behind
 :: Estate Stone Shelf
 <<effects>>
 
-You approach the shelf. It holds a row of vials. Purple liquid swirls within. It's faint, but you smell a sweet scent. You feel lightheated, and a yearning warmth builds within. <<garousal>><<arousal 600>>
+You approach the shelf. It holds a row of vials. Purple liquid swirls within. It's faint, but you smell a sweet scent. You feel lightheaded, and a yearning warmth builds within. <<garousal>><<arousal 600>>
 <br><br>
 
 <<link [[Knock over the vials|Estate Stone Knock]]>><<arousal 600>><<farm_aggro -10>><</link>><<garousal>><<laggro>>
