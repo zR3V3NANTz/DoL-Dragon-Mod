@@ -104,6 +104,9 @@
 			<</if>>
 			<<set _tenticles += 1.5>>
 		<</if>>
+		<<if _container.creatures[_i].creature is "Vine">>
+			<<set _tenticles += 0.5>>
+		<</if>>
 	<</if>>
 <</for>>
 

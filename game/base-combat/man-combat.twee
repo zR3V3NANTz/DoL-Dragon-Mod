@@ -1173,7 +1173,9 @@
 			<span class="purple"><<He>> pushes your mouth against <<hisselect _n>> $NPCList[_n].breastdesc.</span>
 		<</if>>
 
-		<<if $NPCList[_n].lactation is 1 and $breastfeedingdisable is "f">>
+		<<if $NPCList[_n].type is "plant" and $NPCList[_n].pronoun is "f" and $breastfeedingdisable is "f">>
+			<span class="pink">Nectar leaks from <<hisselect _n>> bud.</span>
+		<<elseif $NPCList[_n].lactation is 1 and $breastfeedingdisable is "f">>
 			<span class="pink">Milk leaks from <<hisselect _n>> bud.</span>
 			<<set $speechheadsuckleclosed to 1>>
 		<<else>>
@@ -1266,13 +1268,13 @@
 		<<combat-set-hand-target $args[0] $handtarget>>
 	<<elseif $rng lte 7 and ($consensual isnot 1 or ["Whitney", "Kylar", "Sydney"].includes($npc[$npcrow.indexOf(_n)])) and $bodywritingdisable is "f" and $enemytype isnot "beast" and !$noBodyWriting>>
 		<<set _rng to random(1, 5)>>
-		<<if _rng is 5 or $npc.includes("Sydney")>>
+		<<if (_rng is 5 and $NPCList[_n].type isnot "plant") or $npc.includes("Sydney")>>
 			<span class="purple"><<He>> pulls a <span class="pink">permanent</span> marker pen from <<his>> pocket, flicking off the lid.</span>
 			<<set $tooltarget to "marker">>
-		<<elseif _rng is 4 and $NPCList[_n].pronoun is "f">>
+		<<elseif _rng is 4 and $NPCList[_n].type isnot "plant" and $NPCList[_n].pronoun is "f">>
 			<span class="purple"><<He>> pulls lipstick from <<his>> pocket, and pushes out the tip.</span>
 			<<set $tooltarget to "lipstick">>
-		<<elseif _rng is 3 and $outside is 1 and ($location is "forest" or $location is "moor" or $location is "farmlands" or $location is "farm")>>
+		<<elseif (_rng is 3 and $outside is 1 and ["forest","moor","farmlands","farm"].includes($location)) or $NPCList[_n].type is "plant">>
 			<span class="purple"><<He>> lifts a handful of mud from the ground.</span>
 			<<set $tooltarget to "mud">>
 		<<else>>
@@ -1518,7 +1520,9 @@
 		<</if>>
 	<<elseif $enemyanger + $rng lte 70 and $pronoun is "f" and $position isnot "wall" and ($head is 0 or $NPCList[_n].chest is "head") and ($mouthuse is 0 or $mouthuse is "breasts") and $NPCList[_n].chest is 0 and $NPCList[_n].location.genitals isnot "head">>
 		<<He>> cradles the back of your head in <<his>> $args[0] hand, and <span class="pink">pushes your face against <<his>> $NPCList[_n].breastsdesc.</span>
-		<<if $NPCList[_n].lactation is 1 and $breastfeedingdisable is "f">>
+		<<if $NPCList[_n].type is "plant" and $breastfeedingdisable is "f">>
+			<span class="purple">It carries a sweet scent.</span>
+		<<elseif $NPCList[_n].lactation is 1 and $breastfeedingdisable is "f">>
 			<span class="purple">It carries a scent of milk.</span>
 		<</if>>
 		<<combat-set-hand-target $args[0] "head_breasts">><<set $mouthuse to "breasts">><<set $mouthstate to "breasts">><<set $head to "breasts">>
@@ -1555,7 +1559,7 @@
 				<<bodypart_admire_chance right_bottom>>
 			<</if>>
 		<</if>>
-	<<elseif $enemyanger + $rng lte 90 and $enemytype isnot "beast">>
+	<<elseif $enemyanger + $rng lte 90 and $enemytype isnot "beast" and $NPCList[_n].type isnot "plant">>
 		<<combat-set-hand-target $args[0] "lube">>
 		<<if $NPCList[_n].penis is "vaginaentrance" and $player.bodyliquid.vaginaoutside.goo lt 5 and !$worn.genitals.type.includes("chastity")>>
 			<span class="purple"><<He>> holds a bottle of lubricant near your <<pussy>>.</span>
@@ -1912,10 +1916,12 @@
 				<span class="purple"><<He>> grasps your $worn.feet.name.</span>
 				<<combat-set-hand-target $args[0] "shoes">>
 				<<neutral 3>>
-			<<else>>
+			<<elseif $NPCList[_n].type isnot "plant">>
 				<span class="pink"><<He>> produces a pair of menacing metal shackles.</span>
 				<<combat-set-hand-target $args[0] "shackle_entrance">>
 				<<neutral 4>>
+			<<else>>
+				<<He>> looks at your feet.
 			<</if>>
 		<</if>>
 	<<elseif $enemyanger + $rng gte 196>>
@@ -2471,7 +2477,11 @@
 					<<suffocatepass>>
 				<</if>>
 			<</if>>
-		<<submission 10>><<bruise face>><<bruise neck>><<violence 1>><<set $speechmouthpenetrated to 1>>
+			<<if $NPCList[_n].type is "plant">>
+				<span class="pink">Nectar pours down your throat.</span>
+				<<nectarfed 15>>
+			<</if>>
+			<<submission 10>><<bruise face>><<bruise neck>><<violence 1>><<set $speechmouthpenetrated to 1>>
 		<<elseif $rng gte 1>>
 			<<if $npcSub>>
 				You continue to service <<him>> with your mouth.
@@ -2483,10 +2493,19 @@
 				<<case 1>>
 					It's a struggle not to gag as the $NPCList[_n].penisdesc fills you.
 				<<case 2>>
-					<span class="pink"> Saliva drools down your chin as you struggle to keep your lips wrapped around <<his>> $NPCList[_n].penisdesc.</span>
+					<span class="pink">Saliva
+					<<if $NPCList[_n].type is "plant">>
+						mixes with nectar and
+						<<set _nectar to 1>>
+					<</if>>
+					drools down your chin as you struggle to keep your lips wrapped around <<his>> $NPCList[_n].penisdesc.</span>
 					<<set $hygiene += 500>><<set $player.bodyliquid.face.goo += 1>>
 				<<default>>
 				<</switch>>
+			<</if>>
+			<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "suck" and !_nectar>>
+				<span class="pink">Sweet nectar drips into your mouth.</span>
+				<<nectarfed 10>>
 			<</if>>
 			<<submission 10>><<bruise face>><<violence 1>><<set $speechmouthpenetrated to 1>>
 		<</if>>
@@ -2503,20 +2522,43 @@
 			<<elseif $rng lte 20>>
 				<<if $player.virginity.oral isnot true>>
 					<span class="pink"><<He>> thrusts <<his>> $NPCList[_n].penisdesc into your mouth.</span>
+					<<if $NPCList[_n].type is "plant">>
+						<span class="pink">Sweet nectar drips into your mouth.</span>
+						<<nectarfed 10>>
+					<</if>>
 					<<submission 10>><<set $NPCList[_n].penis to "mouth">><<bruise face>><<oralstat>><<raped>><<set $mouthstate to "penetrated">><<set $speechmouthpenetrated to 1>>
 				<<elseif $player.virginity.oral is true>>
-					<span class="pink"><<He>> thrusts <<his>> $NPCList[_n].penisdesc into your mouth.</span><span class="red"> It tastes strange.</span>
+					<span class="pink"><<He>> thrusts <<his>> $NPCList[_n].penisdesc into your mouth.</span>
+					<<if $NPCList[_n].type is "plant">>
+						<span class="red">It tastes uncomfortably sweet.</span>
+					<<else>>
+						<span class="red">It tastes strange.</span>
+					<</if>>
 					<<submission 30>><<set $NPCList[_n].penis to "mouth">><<takeVirginity $NPCList[_n].fullDescription "oral">><<bruise face>><<oralstat>><<violence 1>><<raped>><<set $mouthstate to "penetrated">><<set $speechmouthvirgin to 1>>
 				<</if>>
 			<<elseif $rng gte 21>>
 				<<if $mouthsubmit is 1>>
 					<<He>> allows you to pleasure <<his>> $NPCList[_n].penisdesc with your mouth.
+					<<if $NPCList[_n].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
+						<span class="pink">You lap up nectar with your tongue.</span>
+						<<nectarfed 3>>
+					<</if>>
 					<<submission 5>><<set $speechmouthimminent to 1>>
 				<<elseif $player.virginity.oral isnot true>>
 					<span class="pink"> <<He>> thrusts <<his>> $NPCList[_n].penisdesc into your mouth.</span>
+					<<if $NPCList[_n].type is "plant">>
+						<span class="pink">Sweet nectar drips into your mouth.</span>
+						<<nectarfed 10>>
+					<</if>>
 					<<submission 10>><<set $NPCList[_n].penis to "mouth">><<oralstat>><<bruise face>><<violence 1>><<raped>><<set $mouthstate to "penetrated">><<set $speechmouthpenetrated to 1>>
 				<<elseif $player.virginity.oral is true>>
-					<span class="pink"> <<He>> thrusts <<his>> $NPCList[_n].penisdesc into your mouth.</span><span class="red"> It tastes strange.</span>
+					<span class="pink"> <<He>> thrusts <<his>> $NPCList[_n].penisdesc into your mouth.</span>
+					<<if $NPCList[_n].type is "plant">>
+						<span class="red">It tastes uncomfortably sweet.</span>
+						<<nectarfed 20>>
+					<<else>>
+						<span class="red">It tastes strange.</span>
+					<</if>>
 					<<submission 30>><<set $NPCList[_n].penis to "mouth">><<takeVirginity $NPCList[_n].fullDescription "oral">><<oralstat>><<bruise face>><<violence 1>><<raped>><<set $mouthstate to "penetrated">><<set $speechmouthpenetrated to 1>>
 				<</if>>
 			<</if>>
@@ -2536,6 +2578,9 @@
 				<<sex 25>><<set $speechNPCChastity to 1>>
 			<<elseif $rng gte 1 and !$npcSub>>
 				<span class="purple"><<He>> pushes <<his>> $NPCList[_n].penisdesc against your lips.</span>
+				<<if $NPCList[_n].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
+					<span class="pink">Nectar glistens on the tip.</span>
+				<</if>>
 				<<set $NPCList[_n].penis to "mouthimminent">><<submission 5>><<set $mouthstate to "imminent">><<set $speechmouthimminent to 1>>
 			<</if>>
 		<</if>>
@@ -2945,6 +2990,10 @@
 	<<if $NPCList[_n].vagina is "mouth">>
 		<<if $enemyanger gte 100>>
 			<<He>> covers your mouth with <<his>> pussy, making it difficult to breathe.
+			<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "vaginalick">>
+				<span class="pink">Sweet nectar leaks into your mouth.</span>
+				<<nectarfed 8>>
+			<</if>>
 			<<violence 3>><<bruise face>><<set $speechvaginamouth to 1>>
 		<<else>>
 			<<if $mouthsubmit is 1>>
@@ -2954,7 +3003,10 @@
 					<<else>>
 						You continue to violate <<his>> pussy with your lips.
 					<</if>>
-					<<if $enemyarousal gte (($enemyarousalmax / 5) * 3)>>
+					<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "vaginalick">>
+						<span class="pink">You can taste sweet nectar.</span>
+						<<nectarfed 8>>
+					<<elseif $enemyarousal gte (($enemyarousalmax / 5) * 3)>>
 						You can taste <<his>> juices.
 					<</if>>
 					<<sex 3>><<set $speechvaginamouth to 1>>
@@ -2969,7 +3021,10 @@
 					<<else>>
 						You continue to violate <<his>> pussy with your lips.
 					<</if>>
-					<<if $enemyarousal gte (($enemyarousalmax / 5) * 3)>>
+					<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "vaginalick">>
+						<span class="pink">You can taste sweet nectar.</span>
+						<<nectarfed 8>>
+					<<elseif $enemyarousal gte (($enemyarousalmax / 5) * 3)>>
 						You can taste <<his>> juices.
 					<</if>>
 					<<sex 3>><<set $speechvaginamouth to 1>>
@@ -3282,7 +3337,10 @@
 				<</if>>
 			<</if>>
 
-			<<if $enemyarousal gte (($enemyarousalmax / 5) * 3)>>
+			<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "vaginalick">>
+				<span class="pink">You can taste sweet nectar.</span>
+				<<nectarfed 8>>
+			<<elseif $enemyarousal gte (($enemyarousalmax / 5) * 3)>>
 				You can taste <<his>> juices.
 			<</if>>
 			<<sex 3>><<set $speechfacesit to 1>>
@@ -3308,6 +3366,9 @@
 			<</if>>
 		<<elseif $rng gte 0>>
 			<<He>> moves <<his>> ass away from your mouth, pressing <<his>> pussy down onto it as <<he>> changes <<his>> position.
+			<<if $NPCList[_n].type is "plant">>
+				<span class="pink">Nectar glistens at the entrance.</span>
+			<</if>>
 			<<set $mouthstate to "vagina">><<set $NPCList[_n].vagina to "facesit">>
 			<<set $speechfacesit to 1>>
 		<<else>>
@@ -3652,6 +3713,10 @@
 					<<He>> thrusts <<his>> tongue deep into your mouth.
 					<<violence 1>>
 				<</if>>
+				<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "kissback">>
+					<span class="pink">Sweet nectar drips from <<his>> tongue and fills your mouth.</span>
+					<<nectarfed 20>>
+				<</if>>
 			<</if>>
 		<<else>>
 			<span class="lblue"><<He>> pulls <<his>> mouth away from yours.</span>
@@ -3669,6 +3734,10 @@
 			<<elseif $rng lte 100>>
 				<<He>> pushes <<his>> tongue between your lips.
 				<<set $NPCList[_n].mouth to "kiss">><<set $mouthstate to "kiss">><<sex 2>>
+				<<if $NPCList[_n].type is "plant" and $mouthactiondefault isnot "kissback">>
+					<span class="pink">Sweet nectar fills your mouth.</span>
+					<<nectarfed 20>>
+				<</if>>
 			<<else>>
 				<<if $enemyanger lte 20>>
 					<<He>> gently probes your lips with <<his>> tongue.
@@ -3693,6 +3762,10 @@
 				<<set $NPCList[_n].location.head to 0>>
 			<<elseif $rng lte 100>>
 				<<He>> pulls you closer and presses your lips together in a kiss.
+				<<if $NPCList[_n].type is "plant" and !$player.virginity.kiss>>
+					<span class="pink">Sweet nectar drips from <<his>> tongue and fills your mouth.</span>
+					<<nectarfed 50>>
+				<</if>>
 				<<if $player.virginity.kiss is true>>
 					<<set $speechkissvirgin to 1>>
 					<<if $npcrow.includes(_n)>>
@@ -3799,8 +3872,10 @@
 	<</if>>
 	<<set $rng to random(1, 100)>>
 	<<namedNpcComments $NPCList[_n].fullDescription>>
-	<<if ($NPCList[_n].mouth is 0 or $NPCList[_n].mouth is "speech_only") and $speechdisable isnot 1 and _noNameComment>>
-		<<if $combatgoal is "strip">>
+	<<if ($NPCList[_n].mouth is 0 or $NPCList[_n].mouth is "speech_only" or ($NPCList[_n].type is "plant" and $speechkissvirgin is 1)) and $speechdisable isnot 1 and _noNameComment>>
+		<<if $NPCList[_n].type is "plant">>
+			<<plantspeech>>
+		<<elseif $combatgoal is "strip">>
 			<<set $rng to random(1, 100)>>
 			<<if $rng lte 25>>
 				<<if $enemyanger lte 60>>
@@ -4426,6 +4501,9 @@
 						<<He>> removes the condom on <<his>> penis.
 					<</if>>
 					<span class="blue"><<He>> positions <<his>> $NPCList[_n].penisdesc in front of your mouth.</span>
+					<<if $NPCList[_n].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
+					<span class="pink">Nectar glistens on the tip.</span>
+				<</if>>
 					<<neutral 5>><<set $mouthuse to "penis">><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthstate to "entrance">><<set $speechmouthentrance to 1>>
 					<<set $NPCList[_n].location.genitals = "head">>
 				<</if>>
@@ -4455,6 +4533,9 @@
 				<span class="green"><<He>> puts a condom on <<his>> penis.</span>
 			<</if>>
 			<span class="blue"><<He>> moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your <<bottom>>.</span>
+			<<if $NPCList[_n].type is "plant" and $NPCList[_n].penissize gte 4>>
+				<span class="red">Something about it scares you.</span>
+			<</if>>
 			<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
 			<<set $NPCList[_n].location.genitals = "genitals">>
 		<</if>>
@@ -4480,6 +4561,9 @@
 						<<He>> removes the condom on <<his>> penis.
 					<</if>>
 					<span class="purple"><<He>> shoves <<his>> $NPCList[_n].penisdesc against your lips.</span>
+					<<if $NPCList[_n].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
+						<span class="pink">Nectar glistens on the tip.</span>
+					<</if>>
 					<<submission 5>><<set $mouthuse to "penis">><<set $mouthstate to "imminent">><<set $NPCList[_n].penis to "mouthimminent">><<set $speechmouthimminent to 1>>
 					<<set $NPCList[_n].location.genitals = "head">>
 				<<else>>
@@ -4524,6 +4608,9 @@
 			<<elseif $worn.lower.anus_exposed is 0>>
 				<span class="blue"><<He>> presses <<his>> $NPCList[_n].penisdesc against your anus through your $worn.lower.name.</span>
 				<<sex 2>><<set $NPCList[_n].penis to "anusentrance">><<set $anususe to "penis">><<set $worn.lower.integrity -= 10>><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
+			<</if>>
+			<<if $NPCList[_n].type is "plant" and $NPCList[_n].penissize gte 4>>
+				<span class="red">Something about it scares you.</span>
 			<</if>>
 			<<set $NPCList[_n].location.genitals = "genitals">>
 		<</if>>
@@ -4571,6 +4658,9 @@
 				<<elseif $worn.lower.anus_exposed is 0>>
 					<span class="blue"><<He>> presses <<his>> $NPCList[_n].penisdesc against your anus through your $worn.lower.name.</span>
 					<<sex 2>><<set $NPCList[_n].penis to "anusentrance">><<set $anususe to "penis">><<set $worn.lower.integrity -= 10>><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
+				<</if>>
+				<<if $NPCList[_n].type is "plant" and $NPCList[_n].penissize gte 4>>
+					<span class="red">Something about it scares you.</span>
 				<</if>>
 				<<set $NPCList[_n].location.genitals = "genitals">>
 			<</if>>
@@ -4621,6 +4711,9 @@
 			<span class="purple"><<He>> takes hold of your head and gently guides it in towards <<his>> pussy as <<he>> opens <<his>> legs.</span>
 			<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[_n].vagina to "mouth">><<set $mouthstate to "othervagina">>
 			<<set $speechvaginamouth to 1>><<set $NPCList[_n].location.genitals = "head">>
+		<</if>>
+		<<if $NPCList[_n].type is "plant">>
+			<span class="pink">Nectar glistens at the entrance.</span>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 70>>
 		<<if $walltype is "front">>
@@ -4734,6 +4827,9 @@
 					<span class="purple"><<He>> wraps <<his>> legs around your head and presses <<his>> pussy against your mouth.</span>
 					<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[_n].vagina to "mouth">><<set $mouthstate to "othervagina">><<violence 3>><<bruise face>><<set $speechvaginamouth to 1>>
 					<<set $NPCList[_n].location.genitals = "head">>
+				<</if>>
+				<<if $NPCList[_n].type is "plant">>
+					<span class="pink">Nectar glistens at the entrance.</span>
 				<</if>>
 			<</if>>
 		<</if>>

@@ -571,6 +571,36 @@
 <<generateNPC 6>>
 <</widget>>
 
+<<widget "generatePlant1">>
+<<set _npcPlant to 1>><<set _strapIgnore to 1>>
+<<generateNPC 1 t>>
+<</widget>>
+
+<<widget "generatePlant2">>
+<<set _npcPlant to 1>><<set _strapIgnore to 1>>
+<<generateNPC 2 t>>
+<</widget>>
+
+<<widget "generatePlant3">>
+<<set _npcPlant to 1>><<set _strapIgnore to 1>>
+<<generateNPC 3 t>>
+<</widget>>
+
+<<widget "generatePlant4">>
+<<set _npcPlant to 1>><<set _strapIgnore to 1>>
+<<generateNPC 4 t>>
+<</widget>>
+
+<<widget "generatePlant5">>
+<<set _npcPlant to 1>><<set _strapIgnore to 1>>
+<<generateNPC 5 t>>
+<</widget>>
+
+<<widget "generatePlant6">>
+<<set _npcPlant to 1>><<set _strapIgnore to 1>>
+<<generateNPC 6 t>>
+<</widget>>
+
 <<widget "npcattribute">>
 <!-- V2.4 Widget set NPC attributes. $arg[0] calls NPC number (0 - 5) to be generated. NG-->
 <!-- For transgender, $NPCList.pronoun sets appearance, including breasts. NPCList.gender sets genitals, including pp -->
@@ -764,7 +794,7 @@
 <</if>>
 
 <<if $NPCList[_n].penis isnot "none">>
-	<<if $NPCList[_n].adult is 1>> <!-- set adult pp size -->
+	<<if $NPCList[_n].adult is 1 or $NPCList[_n].type is "plant">> <!-- set adult/plantperson pp size -->
 		<<switch _rngpp>>
 		<<case 0>>
 			<<set $NPCList[_n].penisdesc to "tiny penis">>
@@ -840,6 +870,15 @@
 <<generate_npc_traits>>
 <<generate_npc_skills>>
 
+<<if _npcPlant is 1>>
+	<<set $NPCList[_n].type to "plant">>
+	<<set $NPCList[_n].fullDescription to $NPCList[_n].description + " plant">>
+	<<if $NPCList[_n].pronoun is "m">>
+		<<set $NPCList[_n].fullDescription += "boy">>
+	<<elseif $NPCList[_n].pronoun is "f">>
+		<<set $NPCList[_n].fullDescription += "girl">>
+	<</if>>
+<</if>>
 <</widget>>
 
 <<widget "npcstrapon">>

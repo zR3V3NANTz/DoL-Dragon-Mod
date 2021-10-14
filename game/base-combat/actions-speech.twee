@@ -57,7 +57,7 @@
 		<<set _askActions["to choke you"] to "askchoke">>
 	<</if>>
 	/*ToDo: Pregnancy, remove $pregnancyTesting to properly enable*/
-	<<if $enemytype is "man" and $condomAsk is undefined and $pregnancyTesting>>
+	<<if $enemytype is "man" and $condomAsk is undefined and $pregnancyTesting and !$abomination>>
 		<<if $npcCondoms isnot undefined>>
 			<<set _askActions["to use condoms"] to "condoms">>
 		<</if>>

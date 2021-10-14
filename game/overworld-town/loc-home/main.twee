@@ -1638,7 +1638,7 @@ The warmth feels wonderful on your bare skin.
 
 	<<if $tentacledisable is "f">>
 		<<set $enemytype to "tentacles">>
-		<<tentaclestart 2 15>>
+		<<tentaclestart 2 15 "tendril">>
 	<<else>>
 		<<set $enemytype to "swarm">>
 	<</if>>

@@ -1672,13 +1672,13 @@ You hum a gentle tune.
 	<<set $enemytype to "tentacles">>
 	<<molested>>
 	<<controlloss>>
-	<<tentaclestart 4 15>>
+	<<tentaclestart 4 15 "vine" "vine" true>>
 	<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">>
 	<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">>
 	<<set $timer to 50>>
 <</if>>
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>

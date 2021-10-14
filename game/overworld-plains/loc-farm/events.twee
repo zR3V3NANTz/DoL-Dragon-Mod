@@ -2584,12 +2584,12 @@ You brace yourself as the shoots drag you into the undergrowth.
 	<<molested>>
 	<<controlloss>>
 
-	<<tentaclestart 8 15>>
+	<<tentaclestart 8 15 "shoot" "vine" true>>
 
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>

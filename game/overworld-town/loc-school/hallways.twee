@@ -649,10 +649,12 @@ You run to the window and throw it open. You don't have enough time to be sure, 
 	<br><br>
 <</if>>
 
+<<statetentacles>>
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>
-<<statetentacles>>
 <<actionstentacles>>
 
 <<if $tentacles.active lte ($tentacles.max / 2)>>

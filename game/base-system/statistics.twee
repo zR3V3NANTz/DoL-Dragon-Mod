@@ -151,6 +151,8 @@ Breast milk drank: $milk_drank_stat ml
 <br>
 Breast milk produced: $milk_produced_stat ml
 <br>
+Nectar drank: $nectar_drank_stat ml
+<br>
 <<if $player.penisExist>>Semen produced: <<print Math.floor($semen_produced_stat)>> ml
 <br><</if>>
 <<if $player.vaginaExist>>Lewd fluid produced: $lube_produced_stat ml
