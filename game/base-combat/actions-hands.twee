@@ -1121,12 +1121,12 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 			You hold the spray in both hands, and unload a full blast in the <<beasttypes>> face. It whimpers.
 		<<elseif $enemyno gte 2>>
 			You hold the spray in both hands, and unload a full blast at the <<group>>. They clutch their faces.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<<else>>
 			You hold the spray in both hands, and unload a full blast at the assailant. <<He>> clutches <<his>> face.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<</if>>
@@ -1135,12 +1135,12 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 			You spray the <<beasttype>> in the face. It whimpers.
 		<<elseif $enemyno gte 2>>
 			You spray the <<group>>. They clutch their faces.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<<else>>
 			You spray the assailant. <<He>> clutches <<his>> face.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<</if>>
@@ -1159,12 +1159,12 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 			You spray the <<beasttype>> in the face. It whimpers.
 		<<elseif $enemyno gte 2>>
 			You spray the <<group>>. They clutch their faces.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<<else>>
 			You spray the assailant. <<He>> clutches <<his>> face.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<</if>>
@@ -1183,12 +1183,12 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 			You spray the <<beasttype>> in the face. It whimpers.
 		<<elseif $enemyno gte 2>>
 			You spray the <<group>>. They clutch their faces.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<<else>>
 			You spray the assailant. <<He>> clutches <<his>> face.
-			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar")>>
+			<<if !$npc.includes("Eden") and !$npc.includes("Morgan") and !$npc.includes("Kylar") and !$abomination>>
 				<<ggcrime>><<crimeup 500>>
 			<</if>>
 		<</if>>
@@ -1265,7 +1265,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 <<if $leftaction is "penwhack">><<set $leftaction to 0>>
 	<<if $NPCList[0].lefthand is "pen">>
 		You whack the <<print $NPCList[0].lefttool>> from the <<person1>><<persons>> hand.
-		<<if $npc[0] is "Sydney" or ($npc[0] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35)>>
+		<<if $npc[0] is "Sydney" or ($npc[0] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[0].type is "plant">>
     		<<He>> pouts at you.
             <<brat 2>>
         <<else>>
@@ -1275,7 +1275,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<<brat 5>><<set $NPCList[0].lefthand to 0>><<set $NPCList[0].lefttool to 0>>
 	<<elseif $NPCList[0].righthand is "pen">>
 		You whack the <<print $NPCList[0].righttool>> from the <<person1>><<persons>> hand.
-		<<if $npc[0] is "Sydney" or ($npc[0] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35)>>
+		<<if $npc[0] is "Sydney" or ($npc[0] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[0].type is "plant">>
     		<<He>> pouts at you.
             <<brat 2>>
         <<else>>
@@ -1284,34 +1284,104 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
         <</if>>
 		<<brat 5>><<set $NPCList[0].righthand to 0>><<set $NPCList[0].righttool to 0>>
 	<<elseif $NPCList[1].lefthand is "pen">>
-		You whack the <<print $NPCList[1].lefttool>> from the <<person2>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[1].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[1] is "Sydney" or ($npc[1] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[1].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[1].lefthand to 0>><<set $NPCList[1].lefttool to 0>>
 	<<elseif $NPCList[1].righthand is "pen">>
-		You whack the <<print $NPCList[1].righttool>> from the <<person2>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[1].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[1] is "Sydney" or ($npc[1] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[1].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[1].righthand to 0>><<set $NPCList[1].righttool to 0>>
 	<<elseif $NPCList[2].lefthand is "pen">>
-		You whack the <<print $NPCList[2].lefttool>> from the <<person3>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[2].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[2] is "Sydney" or ($npc[2] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[2].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[2].lefthand to 0>><<set $NPCList[2].lefttool to 0>>
 	<<elseif $NPCList[2].righthand is "pen">>
-		You whack the <<print $NPCList[2].righttool>> from the <<person3>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[2].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[2] is "Sydney" or ($npc[2] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[2].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[2].righthand to 0>><<set $NPCList[2].righttool to 0>>
 	<<elseif $NPCList[3].lefthand is "pen">>
-		You whack the <<print $NPCList[3].lefttool>> from the <<person4>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[3].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[3] is "Sydney" or ($npc[3] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[3].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[3].lefthand to 0>><<set $NPCList[3].lefttool to 0>>
 	<<elseif $NPCList[3].righthand is "pen">>
-		You whack the <<print $NPCList[3].righttool>> from the <<person4>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[3].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[3] is "Sydney" or ($npc[3] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[3].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[3].righthand to 0>><<set $NPCList[3].righttool to 0>>
 	<<elseif $NPCList[4].lefthand is "pen">>
-		You whack the <<print $NPCList[4].lefttool>> from the <<person5>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[4].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[4] is "Sydney" or ($npc[4] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[4].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[4].lefthand to 0>><<set $NPCList[4].lefttool to 0>>
 	<<elseif $NPCList[4].righthand is "pen">>
-		You whack the <<print $NPCList[4].righttool>> from the <<person5>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[4].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[4] is "Sydney" or ($npc[4] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[4].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[4].righthand to 0>><<set $NPCList[4].righttool to 0>>
 	<<elseif $NPCList[5].lefthand is "pen">>
-		You whack the <<print $NPCList[5].lefttool>> from the <<person6>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[5].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[5] is "Sydney" or ($npc[5] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[5].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[5].lefthand to 0>><<set $NPCList[5].lefttool to 0>>
 	<<elseif $NPCList[5].righthand is "pen">>
-		You whack the <<print $NPCList[5].righttool>> from the <<person6>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[5].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[5] is "Sydney" or ($npc[5] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[5].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[5].righthand to 0>><<set $NPCList[5].righttool to 0>>
 	<</if>>
 <</if>>
@@ -1319,7 +1389,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 <<if $rightaction is "penwhack">><<set $rightaction to 0>>
 	<<if $NPCList[0].lefthand is "pen">>
 		You whack the <<print $NPCList[0].lefttool>> from the <<person1>><<persons>> hand.
-		<<if $npc.includes("Sydney") or ($npc.includes("Kylar") and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35)>>
+		<<if $npc[0] is "Sydney" or ($npc[0] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[0].type is "plant">>
     		<<He>> pouts at you.
             <<brat 2>>
         <<else>>
@@ -1329,7 +1399,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<<brat 5>><<set $NPCList[0].lefthand to 0>><<set $NPCList[0].lefttool to 0>>
 	<<elseif $NPCList[0].righthand is "pen">>
 		You whack the <<print $NPCList[0].righttool>> from the <<person1>><<persons>> hand.
-		<<if $npc[0] is "Sydney" or ($npc[0] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35)>>
+		<<if $npc[0] is "Sydney" or ($npc[0] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[0].type is "plant">>
     		<<He>> pouts at you.
             <<brat 2>>
         <<else>>
@@ -1338,34 +1408,104 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
         <</if>>
 		<<brat 5>><<set $NPCList[0].righthand to 0>><<set $NPCList[0].righttool to 0>>
 	<<elseif $NPCList[1].lefthand is "pen">>
-		You whack the <<print $NPCList[1].lefttool>> from the <<person2>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[1].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[1] is "Sydney" or ($npc[1] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[1].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[1].lefthand to 0>><<set $NPCList[1].lefttool to 0>>
 	<<elseif $NPCList[1].righthand is "pen">>
-		You whack the <<print $NPCList[1].righttool>> from the <<person2>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[1].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[1] is "Sydney" or ($npc[1] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[1].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[1].righthand to 0>><<set $NPCList[1].righttool to 0>>
 	<<elseif $NPCList[2].lefthand is "pen">>
-		You whack the <<print $NPCList[2].lefttool>> from the <<person3>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[2].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[2] is "Sydney" or ($npc[2] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[2].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[2].lefthand to 0>><<set $NPCList[2].lefttool to 0>>
 	<<elseif $NPCList[2].righthand is "pen">>
-		You whack the <<print $NPCList[2].righttool>> from the <<person3>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[2].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[2] is "Sydney" or ($npc[2] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[2].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[2].righthand to 0>><<set $NPCList[2].righttool to 0>>
 	<<elseif $NPCList[3].lefthand is "pen">>
-		You whack the <<print $NPCList[3].lefttool>> from the <<person4>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[3].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[3] is "Sydney" or ($npc[3] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[3].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[3].lefthand to 0>><<set $NPCList[3].lefttool to 0>>
 	<<elseif $NPCList[3].righthand is "pen">>
-		You whack the <<print $NPCList[3].righttool>> from the <<person4>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[3].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[3] is "Sydney" or ($npc[3] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[3].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[3].righthand to 0>><<set $NPCList[3].righttool to 0>>
 	<<elseif $NPCList[4].lefthand is "pen">>
-		You whack the <<print $NPCList[4].lefttool>> from the <<person5>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[4].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[4] is "Sydney" or ($npc[4] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[4].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[4].lefthand to 0>><<set $NPCList[4].lefttool to 0>>
 	<<elseif $NPCList[4].righthand is "pen">>
-		You whack the <<print $NPCList[4].righttool>> from the <<person5>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[4].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[4] is "Sydney" or ($npc[4] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[4].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[4].righthand to 0>><<set $NPCList[4].righttool to 0>>
 	<<elseif $NPCList[5].lefthand is "pen">>
-		You whack the <<print $NPCList[5].lefttool>> from the <<person6>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[5].lefttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[5] is "Sydney" or ($npc[5] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[5].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[5].lefthand to 0>><<set $NPCList[5].lefttool to 0>>
 	<<elseif $NPCList[5].righthand is "pen">>
-		You whack the <<print $NPCList[5].righttool>> from the <<person6>><<persons>> hand. Anger flashes across <<his>> face.
+		You whack the <<print $NPCList[5].righttool>> from the <<person1>><<persons>> hand.
+		<<if $npc[5] is "Sydney" or ($npc[5] is "Kylar" and $NPCName[$NPCNameList.indexOf("Kylar")].rage lte 35) or $NPCList[5].type is "plant">>
+    		<<He>> pouts at you.
+            <<brat 2>>
+        <<else>>
+            Anger flashes across <<his>> face.
+            <<brat 5>>
+        <</if>>
 		<<brat 5>><<set $NPCList[5].righthand to 0>><<set $NPCList[5].righttool to 0>>
 	<</if>>
 <</if>>
@@ -1467,148 +1607,161 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 			<<selectNpcWithPartInPosition "penis" "mouthotheranus">>
 		<</if>>
 
-		<<if (1000 - ($rng * 10) - (($physique / $physiquemax * 100) * _freestrength) + ($enemyanger * 0.5)) lte
-				(200 + $enemytrust)>>
-			<span class="green">
-				<<if $mouthuse is "facesit">>
-					<<print either(
-						"and manage to wrestle <<him>> off of your face.",
-						"and lift <<his>> hips enough for you to escape out from under <<him>>.",
-						"and manage to tip <<him>> off of your face."
-					)>>
-					<<set _npc.vagina to 0>><<set _npc.location.genitals to 0>>
-				<<elseif $mouthstate is "nipple">>
-					<<print either(
-						"and manage to extracate your mouth from <<his>> _npc.breastdesc.",
-						"and push <<his>> nipple out of your mouth, pushing away <<his>> _npc.breastdesc.",
-						"and manage to shove <<his>> _npc.breastdesc out of your face, freeing your mouth."
-					)>>
-					<<set _npc.chest to 0>><<set _npc.location.head to 0>>
-					<<if _npc.lefthand is "head_nipples">>
-						<<set _npc.lefthand to 0>>
-					<</if>>
-					<<if _npc.righthand is "head_nipples">>
-						<<set _npc.righthand to 0>>
-					<</if>>
-				<<elseif $mouthstate is "breasts">>
-					<<print either(
-						"and manage to free your face from <<if _npc.breastsize gte 6>>in between <</if>><<his>> _npc.breastsdesc.",
-						"and wriggle out from <<if _npc.breastsize gte 6>>in between <</if>><<his>> _npc.breastsdesc.",
-						"and <<if _npc.breastsize lt 6>>shove<<else>>heave<</if>> <<his>> _npc.breastsdesc away from your face."
-					)>>
-					<<set _npc.chest to 0>><<set _npc.location.head to 0>>
-					<<if _npc.lefthand is "head_breasts">>
-						<<set _npc.lefthand to 0>>
-					<</if>>
-					<<if _npc.righthand is "head_breasts">>
-						<<set _npc.righthand to 0>>
-					<</if>>
-				<<elseif ["lefthand", "righthand"].includes($mouthuse)>>
-					<<print either(
-						"and manage to wrench <<his>> hand off of your mouth.",
-						"and wrestle <<his>> hand away from your face.",
-						"and twist out of <<his>> grip, freeing your mouth."
-					)>>
-					<<if _npc.lefthand is "mouth">>
-						<<set _npc.lefthand to 0>>
-					<</if>>
-					<<if _npc.righthand is "mouth">>
-						<<set _npc.righthand to 0>>
-					<</if>>
-				<<elseif $mouthstate is "otheranus">>
-					<<print either(
-						"and push <<his>> ass away from your face.",
-						"and manage to shove <<his>> ass from off of your face.",
-						"and wrestle <<him>> and <<his>> ass away from your mouth."
-					)>>
-					<<set _npc.penis to 0>><<set _npc.location.genitals to 0>>
-				<</if>>
-			</span>
-			<<set $mouthuse to 0>><<set $mouthstate to 0>><<set $mouthaction to 0>><<set $head to 0>>
-			<<brat 4>><<brat 1>>
+		<<willpowerdifficulty $drugged $willpowermax "silent">>
+		<<if ($mouthuse is "facesit" or ["nipple","breasts"].includes($mouthstate)) and $NPCList[0].type is "plant" and !$willpowerSuccess>>
+			<span class="red">However, you can't tear yourself from the sweet nectar.</span>
+			<<if $mouthstate is "nipple">>
+				You desperately suck their $NPCList[0].breastdesc.
+			<<elseif $mouthstate is "breasts">>
+				You push your face back into their $NPCList[0].breastdesc.
+			<<else>>
+				You desperately lick the pussy pressing into your face.
+			<</if>>
+			<<willpower 1>>
 		<<else>>
-			<span class="red">
-				<<if $mouthuse is "facesit">>
-					<<if $rng % 4 == 0 and (_npc.lefthand is 0 or _npc.righthand is 0)>>
-						<<if _npc.lefthand is 0>>
-							<<set _npc.lefthand to "arms">>
+			<<if (1000 - ($rng * 10) - (($physique / $physiquemax * 100) * _freestrength) + ($enemyanger * 0.5)) lte
+					(200 + $enemytrust)>>
+				<span class="green">
+					<<if $mouthuse is "facesit">>
+						<<print either(
+							"and manage to wrestle <<him>> off of your face.",
+							"and lift <<his>> hips enough for you to escape out from under <<him>>.",
+							"and manage to tip <<him>> off of your face."
+						)>>
+						<<set _npc.vagina to 0>><<set _npc.location.genitals to 0>>
+					<<elseif $mouthstate is "nipple">>
+						<<print either(
+							"and manage to extracate your mouth from <<his>> _npc.breastdesc.",
+							"and push <<his>> nipple out of your mouth, pushing away <<his>> _npc.breastdesc.",
+							"and manage to shove <<his>> _npc.breastdesc out of your face, freeing your mouth."
+						)>>
+						<<set _npc.chest to 0>><<set _npc.location.head to 0>>
+						<<if _npc.lefthand is "head_nipples">>
+							<<set _npc.lefthand to 0>>
+						<</if>>
+						<<if _npc.righthand is "head_nipples">>
+							<<set _npc.righthand to 0>>
+						<</if>>
+					<<elseif $mouthstate is "breasts">>
+						<<print either(
+							"and manage to free your face from <<if _npc.breastsize gte 6>>in between <</if>><<his>> _npc.breastsdesc.",
+							"and wriggle out from <<if _npc.breastsize gte 6>>in between <</if>><<his>> _npc.breastsdesc.",
+							"and <<if _npc.breastsize lt 6>>shove<<else>>heave<</if>> <<his>> _npc.breastsdesc away from your face."
+						)>>
+						<<set _npc.chest to 0>><<set _npc.location.head to 0>>
+						<<if _npc.lefthand is "head_breasts">>
+							<<set _npc.lefthand to 0>>
+						<</if>>
+						<<if _npc.righthand is "head_breasts">>
+							<<set _npc.righthand to 0>>
+						<</if>>
+					<<elseif ["lefthand", "righthand"].includes($mouthuse)>>
+						<<print either(
+							"and manage to wrench <<his>> hand off of your mouth.",
+							"and wrestle <<his>> hand away from your face.",
+							"and twist out of <<his>> grip, freeing your mouth."
+						)>>
+						<<if _npc.lefthand is "mouth">>
+							<<set _npc.lefthand to 0>>
+						<</if>>
+						<<if _npc.righthand is "mouth">>
+							<<set _npc.righthand to 0>>
+						<</if>>
+					<<elseif $mouthstate is "otheranus">>
+						<<print either(
+							"and push <<his>> ass away from your face.",
+							"and manage to shove <<his>> ass from off of your face.",
+							"and wrestle <<him>> and <<his>> ass away from your mouth."
+						)>>
+						<<set _npc.penis to 0>><<set _npc.location.genitals to 0>>
+					<</if>>
+				</span>
+				<<set $mouthuse to 0>><<set $mouthstate to 0>><<set $mouthaction to 0>><<set $head to 0>>
+				<<brat 4>><<brat 1>>
+			<<else>>
+				<span class="red">
+					<<if $mouthuse is "facesit">>
+						<<if $rng % 4 == 0 and (_npc.lefthand is 0 or _npc.righthand is 0)>>
+							<<if _npc.lefthand is 0>>
+								<<set _npc.lefthand to "arms">>
+							<<else>>
+								<<set _npc.righthand to "arms">>
+							<</if>>
+
+							<<if $leftactiondefault is "freeface">>
+								<<set $leftarm to "grappled">>
+							<</if>>
+							<<if $rightactiondefault is "freeface">>
+								<<set $rightarm to "grappled">>
+							<</if>>
+
+							<<if _freestrength is 1>>
+								however, <<he>> seizes your arm and traps it against <<his>> thigh.
+							<<else>>
+								however, <<he>> grabs your arms and pins them against <<his>> thighs.
+							<</if>>
 						<<else>>
-							<<set _npc.righthand to "arms">>
+							<<print either(
+								"but you can't budge <<his>> weight from off of your face.",
+								"but <<he>> settles <<himself>> down more firmly on your face.",
+								"but <<he>> adjusts <<his>> position and sits down harder."
+							)>>
 						<</if>>
 
-						<<if $leftactiondefault is "freeface">>
-							<<set $leftarm to "grappled">>
-						<</if>>
-						<<if $rightactiondefault is "freeface">>
-							<<set $rightarm to "grappled">>
-						<</if>>
-
-						<<if _freestrength is 1>>
-							however, <<he>> seizes your arm and traps it against <<his>> thigh.
+					<<elseif $mouthstate is "nipple">>
+						<<if $rng % 4 == 0>>
+							however, <<he>> shoves <<his>> _npc.breastdesc forcefully into your face, forcing <<his>> nipple further into your protesting mouth.
+							<<violence 3>>
 						<<else>>
-							however, <<he>> grabs your arms and pins them against <<his>> thighs.
+							<<print either(
+								"but cannot remove <<his>> _npc.breastdesc from your mouth.",
+								"but <<his>> nipple remains firmly plugged into your mouth.",
+								"but aren't able to push <<his>> _npc.breastdesc out of your mouth."
+							)>>
 						<</if>>
-					<<else>>
-						<<print either(
-							"but you can't budge <<his>> weight from off of your face.",
-							"but <<he>> settles <<himself>> down more firmly on your face.",
-							"but <<he>> adjusts <<his>> position and sits down harder."
-						)>>
-					<</if>>
 
-				<<elseif $mouthstate is "nipple">>
-					<<if $rng % 4 == 0>>
-						however, <<he>> shoves <<his>> _npc.breastdesc forcefully into your face, forcing <<his>> nipple further into your protesting mouth.
-						<<violence 3>>
-					<<else>>
-						<<print either(
-							"but cannot remove <<his>> _npc.breastdesc from your mouth.",
-							"but <<his>> nipple remains firmly plugged into your mouth.",
-							"but aren't able to push <<his>> _npc.breastdesc out of your mouth."
-						)>>
-					<</if>>
-
-				<<elseif $mouthstate is "breasts">>
-					<<if $rng % 4 == 0>>
-						<<if _npc.breastsize gte 6>>
-							however, <<he>> more firmly squashes your face between <<his>> _npc.breastsdesc.
-							<<violence 4>><<bruise face>>
+					<<elseif $mouthstate is "breasts">>
+						<<if $rng % 4 == 0>>
+							<<if _npc.breastsize gte 6>>
+								however, <<he>> more firmly squashes your face between <<his>> _npc.breastsdesc.
+								<<violence 4>><<bruise face>>
+							<<else>>
+								however, <<he>> more firmly shoves your face against <<his>> _npc.breastsdesc
+								<<violence 1>>
+							<</if>>
 						<<else>>
-							however, <<he>> more firmly shoves your face against <<his>> _npc.breastsdesc
-							<<violence 1>>
+							<<print either(
+								"but cannot escape <<his>> _npc.breastsdesc.",
+								"but <<his>> _npc.breastsdesc continue to <<if _npc.breastsize gte 6>>ingulf<<else>>press against<</if>> your face.",
+								"but aren't able to push <<his>> _npc.breastsdesc away from your face."
+							)>>
 						<</if>>
-					<<else>>
-						<<print either(
-							"but cannot escape <<his>> _npc.breastsdesc.",
-							"but <<his>> _npc.breastsdesc continue to <<if _npc.breastsize gte 6>>ingulf<<else>>press against<</if>> your face.",
-							"but aren't able to push <<his>> _npc.breastsdesc away from your face."
-						)>>
+					<<elseif ["lefthand", "righthand"].includes($mouthuse)>>
+						<<if $rng % 4 == 0>>
+							but <<he>> more firmly clamps down on your mouth, digging <<his>> nails into your face in <<his>> effort to keep hold.
+							<<violence 3>><<bruise face>>
+						<<else>>
+							<<print either(
+								"but you can't pull <<his>> hand away.",
+								"but <<his>> hand stays firm over your mouth.",
+								"but you can't prise <<his>> hand from off of your mouth."
+							)>>
+						<</if>>
+					<<elseif $mouthstate is "otheranus">>
+						<<if $rng % 4 == 0>>
+							but <<he>> swats your hand away and cuffs you around the head.
+							<<violence 1>><<bruise face>>
+						<<else>>
+							<<print either(
+								"but you aren't able to move <<him>> away.",
+								"but <<his>> ass remains pressed against your lips.",
+								"but you can't keep <<him>> away from your face."
+							)>>
+						<</if>>
 					<</if>>
-				<<elseif ["lefthand", "righthand"].includes($mouthuse)>>
-					<<if $rng % 4 == 0>>
-						but <<he>> more firmly clamps down on your mouth, digging <<his>> nails into your face in <<his>> effort to keep hold.
-						<<violence 3>><<bruise face>>
-					<<else>>
-						<<print either(
-							"but you can't pull <<his>> hand away.",
-							"but <<his>> hand stays firm over your mouth.",
-							"but you can't prise <<his>> hand from off of your mouth."
-						)>>
-					<</if>>
-				<<elseif $mouthstate is "otheranus">>
-					<<if $rng % 4 == 0>>
-						but <<he>> swats your hand away and cuffs you around the head.
-						<<violence 1>><<bruise face>>
-					<<else>>
-						<<print either(
-							"but you aren't able to move <<him>> away.",
-							"but <<his>> ass remains pressed against your lips.",
-							"but you can't keep <<him>> away from your face."
-						)>>
-					<</if>>
-				<</if>>
-			</span>
-			<<brat 2>>
+				</span>
+				<<brat 2>>
+			<</if>>
 		<</if>>
 	<</if>>
 <</widget>>
@@ -1760,7 +1913,9 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 	<<if $NPCList[_n].lefthand is "head_nipples" or $NPCList[_n].righthand is "head_nipples">>
 		<<sex 3>>
 		<<He>> continues to push your mouth against <<hisselect _n>> $NPCList[_n].breastdesc.
-		<<if $NPCList[_n].lactation is 1 and $breastfeedingdisable is "f">>
+		<<if $NPCList[_n].type is "plant" and $NPCList[_n].pronoun is "f" and $breastfeedingdisable is "f">>
+			<span class="pink">Nectar leaks from <<hisselect _n>> bud.</span>
+		<<elseif $NPCList[_n].lactation is 1 and $breastfeedingdisable is "f">>
 			<span class="pink">Milk leaks from <<hisselect _n>> bud.</span>
 		<</if>>
 		<<bodypart_admire_chance forehead>>

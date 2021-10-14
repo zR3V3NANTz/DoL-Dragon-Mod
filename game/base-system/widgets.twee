@@ -3951,11 +3951,24 @@ __Map__<br>
 <</widget>>
 
 <<widget "breastfed">>
-	<<set $milk_drank_stat += random(1, 5)>>
-	<<if random(1, 100) gte 70>><<transform cat 1>><</if>>
+<<set $milk_drank_stat += random(1, 5)>>
+<<if random(1, 100) gte 70>><<transform cat 1>><</if>>
+<<if $milkdranktrait is 1>><<physique 1>><</if>>
+<<purity -1>>
+<<set $hunger -= 200>><<set $thirst -= 200>>
+<</widget>>
+
+<<widget "nectarfed">>
+<<set $nectar_drank_stat += (Math.ceil($args[0] / 10) + random(0,2))>>
+<<if $args[0] gte 11>>
 	<<purity -1>>
-	<<if $milkdranktrait is 1>><<physique 1>><</if>>
-	<<set $hunger -= 200>><<set $thirst -= 200>>
+<</if>>
+<<set $hunger -= ($args[0] * 5)>><<set $thirst -= ($args[0] * 5)>>
+<<set $drugged += $args[0]>><<set $arousal += $args[0]>>
+<<if $ejaculating is 1>>
+	<<set $drunk += ($args[0] * 3)>>
+	<<set $player.bodyliquid.mouth.goo += 1>>
+<</if>>
 <</widget>>
 
 <<widget "setup_pillory">>

@@ -214,6 +214,8 @@ Second arg: tool */
 	<<bodywriting_npc_kylar $args[0] $args[1]>>
 <<elseif $npc[$npcrow.indexOf(_n)] is "Sydney">>
 	<<bodywriting_npc_sydney $args[0] $args[1]>>
+<<elseif $NPCList[_n].type is "plant">>
+	<<bodywriting_npc_picture>>
 <<elseif $rng gte 51>>
 	<<bodywriting_npc_special $args[0] $args[1]>>
 <<else>>
@@ -338,6 +340,37 @@ Second arg: tool */
 <<else>>
 	<<add_bodywriting $args[0] interesting $args[1]>>
 <</if>>
+<<bodywriting_finalisation $args[0]>>
+<</widget>>
+
+<<widget "bodywriting_npc_picture">>
+<<if $NPCList[0].type is "plant">>
+	<<set $rng to random(1, 7)>>
+<<else>>
+	<<set $rng to random(1,10)>>
+<</if>>
+<<switch $rng>>
+<<case 1>>
+	<<add_bodywriting $args[0] unicorn $args[1]>>
+<<case 2>>
+	<<add_bodywriting $args[0] heart $args[1]>>
+<<case 3>>
+	<<add_bodywriting $args[0] paw_print $args[1]>>
+<<case 4>>
+	<<add_bodywriting $args[0] flower $args[1]>>
+<<case 5>>
+	<<add_bodywriting $args[0] butterfly $args[1]>>
+<<case 6>>
+	<<add_bodywriting $args[0] star $args[1]>>
+<<case 7>>
+	<<add_bodywriting $args[0] skull $args[1]>>
+<<case 8>>
+	<<add_bodywriting $args[0] cross $args[1]>>
+<<case 9>>
+	<<add_bodywriting $args[0] flame $args[1]>>
+<<case 10>>
+	<<add_bodywriting $args[0] cattle_brand $args[1]>>
+<</switch>>
 <<bodywriting_finalisation $args[0]>>
 <</widget>>
 
@@ -859,7 +892,7 @@ Second arg: tool */
 <</widget>>
 
 <<widget "bodypart_admire_arrow">>
-<<if $skin[$args[0]].special is "prostitution">>
+<<if $skin[$args[0]].special is "prostitution" and $NPCList[_n].type isnot "plant">>
 	<<bodypart_admire_prostitution $args[0]>>
 <</if>>
 <<if $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head">>
@@ -901,14 +934,16 @@ Second arg: tool */
 <<elseif $args[0] is "back" or $args[0] is "right_bottom" or $args[0] is "left_bottom" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals">>
 	<<if $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1 and $NPCList[0].penis is 0 and $anususe is 0>>
 		<<He>> follows the arrow's instruction, <span class="blue">and positions <<his>> penis in front of your <<bottom>>.</span>
+		<<if $NPCList[_n].type is "plant" and $NPCList[_n].penissize gte 4>>
+			<span class="green">Something about it scares you.</span>
+		<</if>>
 		<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
 		<<set $NPCList[_n].location.genitals to "genitals">>
 	<</if>>
 <<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals">>
 	<<if $player.vaginaExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
-		<<He>> follows the arrow's instruction, <span class="blue">and moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your <<bottom>>.</span>
-		<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
-		<<set $NPCList[_n].location.genitals to "genitals">>
+		<<He>> follows the arrow's instruction, <span class="blue">and moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your <<pussy>>.</span>
+		<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
 	<<elseif $player.penisExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
 		<<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">>
 		<<He>> follows the arrow's instruction, <span class="blue">and straddles you, <<his>> pussy hovering close to your <<penis>>.</span>
@@ -1241,77 +1276,13 @@ Second arg: tool */
 <</widget>>
 
 <<widget "bodypart_admire_cum_heavy">>
-<<famesex 2>>
-<<He>> speaks.
-
-<<if $args[0] is "anus" and $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
-	<<if random(1, 2) is 1>>
-		"Doesn’t surprise me, with a dick that small."
-	<<else>>
-		"With such a tiny cock, I guess that’s the only way you could pleasure someone."
-	<</if>>
-	
-	<<if $penissize is 1>>
-		<<insecurity "penis_small" 1>>
-	<<else>>
-		<<insecurity "penis_tiny" 1>>
-	<</if>>
+<<if $NPCList[_n].type is "plant">>
+	<<He>> licks <<his>> lips.
 <<else>>
-	<<switch random(1, 11)>>
-		<<case 1>>"What a fucking cum rag."
-		<<case 2>>"What a filthy slut."
-		<<case 3>>"What a fucking cumdump."
-		<<case 4>>"You nasty cumdump!"
-		<<case 5>>"Does walking around covered in cum excite you?"
-		<<case 6>>"Do you ever clean yourself?"
-		<<case 7>>"Fucking sluts won’t even take a bath anymore."
-		<<case 8>>"Were you whoring yourself?"
-		<<case 9>>"Fuck, are you addicted to cum or what?"
-		<<case 10>>"Someone knows how to have fun."
-		<<case 11>>
-			<<if $args[0] is "vagina">>
-				"Are you that desperate for a baby?"
-			<<elseif $args[0] is "anus">>
-				"Looks like your ass is getting a lot of action."
-			<<else>>
-				"Someone knows how to have fun."
-			<</if>>
-	<</switch>>
-<</if>>
-<</widget>>
+	<<famesex 2>>
+	<<He>> speaks.
 
-<<widget "bodypart_admire_cum_light">>
-<<famesex 1>>
-<<He>> speaks.
-<<if $args[0] is "vagina">>
-	<<switch random(1, 9)>>
-		<<case 1>>
-			<<if $malechance gt 0>>
-				"Did you have some fun with your boyfriend?"
-			<<else>>
-				"I see someone had fun already."
-			<</if>>
-		<<case 2>>
-			<<if $malechance gt 0>>
-				"Did your boyfriend do that?"
-			<<else>>
-				"Who put that load in you?"
-			<</if>>
-		<<case 3>>
-			<<if $malechance gt 0>>
-				"I bet you made your boyfriend happy."
-			<<else>>
-				"You must've made someone very happy."
-			<</if>>
-		<<case 4>>"Don’t worry, I’ll give you some more."
-		<<case 5>>"Guess I’ll be taking sloppy seconds."
-		<<case 6>>"At least clean yourself after slutting out."
-		<<case 7>>"I see someone had fun already."
-		<<case 8>>"Do you like being creampied?"
-		<<case 9>>"Are you trying to get pregnant?"
-	<</switch>>
-<<elseif $args[0] is "anus">>
-	<<if $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
+	<<if $args[0] is "anus" and $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
 		<<if random(1, 2) is 1>>
 			"Doesn’t surprise me, with a dick that small."
 		<<else>>
@@ -1324,7 +1295,38 @@ Second arg: tool */
 			<<insecurity "penis_tiny" 1>>
 		<</if>>
 	<<else>>
-		<<switch random(1, 10)>>
+		<<switch random(1, 11)>>
+			<<case 1>>"What a fucking cum rag."
+			<<case 2>>"What a filthy slut."
+			<<case 3>>"What a fucking cumdump."
+			<<case 4>>"You nasty cumdump!"
+			<<case 5>>"Does walking around covered in cum excite you?"
+			<<case 6>>"Do you ever clean yourself?"
+			<<case 7>>"Fucking sluts won’t even take a bath anymore."
+			<<case 8>>"Were you whoring yourself?"
+			<<case 9>>"Fuck, are you addicted to cum or what?"
+			<<case 10>>"Someone knows how to have fun."
+			<<case 11>>
+				<<if $args[0] is "vagina">>
+					"Are you that desperate for a baby?"
+				<<elseif $args[0] is "anus">>
+					"Looks like your ass is getting a lot of action."
+				<<else>>
+					"Someone knows how to have fun."
+				<</if>>
+		<</switch>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "bodypart_admire_cum_light">>
+<<if $NPCList[_n].type is "plant">>
+	<<He>> licks <<his>> lips.
+<<else>>
+	<<famesex 1>>
+	<<He>> speaks.
+	<<if $args[0] is "vagina">>
+		<<switch random(1, 9)>>
 			<<case 1>>
 				<<if $malechance gt 0>>
 					"Did you have some fun with your boyfriend?"
@@ -1347,53 +1349,102 @@ Second arg: tool */
 			<<case 5>>"Guess I’ll be taking sloppy seconds."
 			<<case 6>>"At least clean yourself after slutting out."
 			<<case 7>>"I see someone had fun already."
-			<<case 8>>"Nice to know you don’t mind taking it in the ass."
-			<<case 9>>"Did you enjoy getting your ass filled?"
-			<<case 10>>"Were you trying to stay a virgin?"
+			<<case 8>>"Do you like being creampied?"
+			<<case 9>>"Are you trying to get pregnant?"
+		<</switch>>
+	<<elseif $args[0] is "anus">>
+		<<if $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
+			<<if random(1, 2) is 1>>
+				"Doesn’t surprise me, with a dick that small."
+			<<else>>
+				"With such a tiny cock, I guess that’s the only way you could pleasure someone."
+			<</if>>
+			
+			<<if $penissize is 1>>
+				<<insecurity "penis_small" 1>>
+			<<else>>
+				<<insecurity "penis_tiny" 1>>
+			<</if>>
+		<<else>>
+			<<switch random(1, 10)>>
+				<<case 1>>
+					<<if $malechance gt 0>>
+						"Did you have some fun with your boyfriend?"
+					<<else>>
+						"I see someone had fun already."
+					<</if>>
+				<<case 2>>
+					<<if $malechance gt 0>>
+						"Did your boyfriend do that?"
+					<<else>>
+						"Who put that load in you?"
+					<</if>>
+				<<case 3>>
+					<<if $malechance gt 0>>
+						"I bet you made your boyfriend happy."
+					<<else>>
+						"You must've made someone very happy."
+					<</if>>
+				<<case 4>>"Don’t worry, I’ll give you some more."
+				<<case 5>>"Guess I’ll be taking sloppy seconds."
+				<<case 6>>"At least clean yourself after slutting out."
+				<<case 7>>"I see someone had fun already."
+				<<case 8>>"Nice to know you don’t mind taking it in the ass."
+				<<case 9>>"Did you enjoy getting your ass filled?"
+				<<case 10>>"Were you trying to stay a virgin?"
+			<</switch>>
+		<</if>>
+	<<else>>
+		<<switch random(1, 8)>>
+			<<case 1>>
+				<<if $malechance gt 0>>
+					"Did you have some fun with your boyfriend?"
+				<<else>>
+					"I see someone had fun with you already."
+				<</if>>
+			<<case 2>>
+				<<if $malechance gt 0>>
+					"Did your boyfriend do that?"
+				<<else>>
+					"Who dumped that load on you?"
+				<</if>>
+			<<case 3>>
+				<<if $malechance gt 0>>
+					"I bet you made your boyfriend happy."
+				<<else>>
+					"You must've made someone very happy."
+				<</if>>
+			<<case 4>>"Do you like having cum on you?"
+			<<case 5>>"Don’t worry, I’ll give you some more."
+			<<case 6>>"At least clean yourself after slutting out."
+			<<case 7>>"I see someone had fun with you already."
+			<<case 8>>"Were you trying to stay a virgin?"
 		<</switch>>
 	<</if>>
-<<else>>
-	<<switch random(1, 8)>>
-		<<case 1>>
-			<<if $malechance gt 0>>
-				"Did you have some fun with your boyfriend?"
-			<<else>>
-				"I see someone had fun with you already."
-			<</if>>
-		<<case 2>>
-			<<if $malechance gt 0>>
-				"Did your boyfriend do that?"
-			<<else>>
-				"Who dumped that load on you?"
-			<</if>>
-		<<case 3>>
-			<<if $malechance gt 0>>
-				"I bet you made your boyfriend happy."
-			<<else>>
-				"You must've made someone very happy."
-			<</if>>
-		<<case 4>>"Do you like having cum on you?"
-		<<case 5>>"Don’t worry, I’ll give you some more."
-		<<case 6>>"At least clean yourself after slutting out."
-		<<case 7>>"I see someone had fun with you already."
-		<<case 8>>"Were you trying to stay a virgin?"
-	<</switch>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_parasite_comment">>
-<<famebestiality 1>>
-<<He>> speaks.
-<<switch random(1, 8)>>
-	<<case 1>>"That must feel good."
-	<<case 2>>"I bet that keeps you horny. That’s why you haven’t taken it off yet."
-	<<case 3>>"You should see a doctor about that."
-	<<case 4>>"Fuck, is that real?"
-	<<case 5>>"Did you put that on yourself?"
-	<<case 6>>"Where did you even find that?"
-	<<case 7>>"I would never suspect a <<girl>> like you to be into that."
-	<<case 8>>"Not my thing, but I guess I can’t be picky."
-<</switch>>
+<<if $NPCList[_n].type is "plant">>
+	<<if $args[0] is penis>>
+		<<He>> pouts. "That thing better not block your cum<<if $orgasmcurrent gte 1>> again<</if>>."
+	<<else>>
+		<<He>> raises an eyebrow. "Alright. Gotta admit, that's a new one."
+	<</if>>
+<<else>>
+	<<famebestiality 1>>
+	<<He>> speaks.
+	<<switch random(1, 8)>>
+		<<case 1>>"That must feel good."
+		<<case 2>>"I bet that keeps you horny. That’s why you haven’t taken it off yet."
+		<<case 3>>"You should see a doctor about that."
+		<<case 4>>"Fuck, is that real?"
+		<<case 5>>"Did you put that on yourself?"
+		<<case 6>>"Where did you even find that?"
+		<<case 7>>"I would never suspect a <<girl>> like you to be into that."
+		<<case 8>>"Not my thing, but I guess I can’t be picky."
+	<</switch>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_kylar">>
@@ -1491,6 +1542,65 @@ Second arg: tool */
 <</switch>>
 <</widget>>
 
+<<widget "bodypart_admire_plant">>
+<<if $skin[$args[0]].type is "object">>
+	<<switch $skin[$args[0]].writing>>
+		<<case "unicorn">>
+			"Horses like that exist? Whoa."
+		<<case "heart" "cross">>
+			"Aw, how cute! ...What is it?"
+		<<case "paw_print">>
+			<<if $location is "forest">>
+				"Hey, are you with the... never mind."
+			<<else>>
+				"Exotic!"
+			<</if>>
+		<<case "flower" "butterfly">>
+			"Oh, I love it!"
+			<<set $enemytrust += 20>>
+		<<case "star">>
+			<<if $location is "forest">>
+				"I wish we could see the stars, but the trees block most of them out..."
+			<<elseif $daystate is "night">>
+				"Just like the sky!"
+			<<else>>
+				"Just like the night sky..."
+			<</if>>
+		<<case "skull">>
+			"You mean you have one of those in your body? I don't buy it."
+		<<case "flame">>
+			<<if $skin[$args[0]].pen is "brand" or $skin[$args[0]].pen is "magic">>
+				"That's not... actually burning you, is it?"
+			<<else>>
+				"You've got a taste for the dangerous."
+			<</if>>
+		<<case "cattle_brand">>
+			<<if $location is "moor">>
+				"Don't worry. I won't let Remy take you from me."
+			<<else>>
+				"Aw, how cute! ...What is it?"
+			<</if>>
+		<<case "penis">>
+			"Ooh, how lewd! ...What do you mean, unused?!"
+	<</switch>>
+<<else>>
+	<<switch $skin[$args[0]].pen>>
+		<<case "tattoo">>
+			"What is that, a birthmark?"
+		<<case "brand">>
+			"Yowch, wouldn't want that seared into me."
+		<<case "magic">>
+			"Did I have a funky mushroom, or is that actually glowing?"
+		<<case "lipstick">>
+			"Ooh, pink!"
+		<<case "mud">>
+			"Nature's canvas."
+		<<default>>
+			"It's a shame to draw on such cute skin."
+	<</switch>>
+<</if>>
+<</widget>>
+
 <<widget "bodypart_admire">>
 <<switch $args[1]>>
 	<<case "bodywriting">>
@@ -1507,7 +1617,7 @@ Second arg: tool */
 				<<if $skin[$args[0]].type is "text">>
 					<<He>> reads the "<<print $skin[$args[0]].writing>>" writing on your <<bodypart $args[0]>>.
 				<<else>>
-					<<He>> examines the "<<print $skin[$args[0]].writing>>" image on your <<bodypart $args[0]>>.
+					<<He>> examines the <<print $skin[$args[0]].writing>> image on your <<bodypart $args[0]>>.
 				<</if>>
 				<<if $npc[$npcrow.indexOf(_n)] is "Kylar">>
 					<<bodypart_admire_kylar $args[0]>>
@@ -1522,6 +1632,8 @@ Second arg: tool */
 					$args[0] is "left_thigh" or
 					$args[0] is "right_thigh")>>
 						<<bodypart_admire_arrow $args[0]>>
+					<<elseif $NPCList[_n].type is "plant">>
+						<<bodypart_admire_plant $args[0]>>
 					<<elseif $skin[$args[0]].special is "prostitution">>
 						<<bodypart_admire_prostitution $args[0]>>
 					<<elseif $skin[$args[0]].special is "rape">>
@@ -1596,6 +1708,9 @@ Second arg: tool */
 	<<default>>
 		<<set _admireNothing to true>>
 <</switch>>
+<<if $NPCList[_n].type is "plant">>
+	<<set _admireNothing to true>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_parasite_convert">>

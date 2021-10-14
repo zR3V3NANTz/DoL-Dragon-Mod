@@ -312,7 +312,7 @@
 		<<tentaclestart 2 15>>
 		<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">>
 		<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">>
-		<span class="purple">A $tentacles[0].desc tentacle and $tentacles[1].desc tentacle emerge from the creature and restrain your arms.</span>
+		<span class="purple">A $tentacles[0].fullDesc and $tentacles[1].fullDesc emerge from the creature and restrain your arms.</span>
 		<br><br>
 	<<else>>
 		<<set $enemytype to "vore">>

@@ -106,6 +106,8 @@
 		<<ejaculation-wall>>
 	<<elseif $punishmentposition is "gloryhole">>
 		<<ejaculation-gloryhole>>
+	<<elseif $NPCList[_nn].type is "plant">>
+		<<ejaculation-plant>>
 	<!-- New Named NPCs or PC unique positions should be added above, otherwise below captures reaction -->
 	<<elseif ($npcrow.includes(_nn))>>
 
@@ -734,7 +736,7 @@
 					<<default>>
 						<<switch random(1, 7)>>
 						<<case 1 2 3>>
-							<<He>> cups your chin with one hand your hair with the other, thrusting deep into your mouth as <<he>> cums. Ejaculate streams down your throat and fills your mouth.
+							<<He>> cups your chin with one hand and your hair with the other, thrusting deep into your mouth as <<he>> cums. Ejaculate streams down your throat and fills your mouth.
 						<<case 4 5 6>>
 							<<He>> grasps the base of <<his>> $NPCList[_nn].penisdesc and moans as <<he>> ejaculates into your mouth. You feel warm cum drip down your throat.
 						<<case 7>>
@@ -835,7 +837,7 @@
 						<<He>> sighs and ejaculates onto <<his>> own chest. "I love having my ass toyed with."
 
 					<</switch>>
-				<<elseif $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisemtrance" or $NPCList[_nn].penis is "penisimminent">>
+				<<elseif $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisentrance" or $NPCList[_nn].penis is "penisimminent">>
 					<<He>> shakes with arousal as <<he>> cums all over your <<penis>>. "That was awesome."
 					<br>
 				<!-- Special case male PC being orally serviced by male NPC with no other contact -->
@@ -1175,7 +1177,7 @@
 						<<He>> sighs as <<he>> ejaculates onto <<his>> own chest. "Next time I'll do the fucking. Be ready."
 
 					<</switch>>
-				<<elseif $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisemtrance" or $NPCList[_nn].penis is "penisimminent">>
+				<<elseif $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisentrance" or $NPCList[_nn].penis is "penisimminent">>
 					<<He>> shakes with arousal as <<he>> cums all over your <<penis>>. "That was awesome."
 					
 				<!-- Special case male PC being orally serviced by male NPC with no other contact -->
@@ -1276,7 +1278,7 @@
 
 
 
-			<<elseif $consensual is 0 and $enemyhealth lte ($enemyhealthmax / 10) * 7.5>>
+			<<elseif $consensual is 0 and $enemyhealth lte ($enemyhealthmax / 10) * 7.5 and $NPCList[0].type isnot "plant">>
 				<<if $enemyno is 1>>
 					<<He>> <span class="red">punches you. You double over.</span> "That's for struggling, bitch."
 					<<gstress>><<gtrauma>><<gpain>><<violence 6>>
@@ -1292,7 +1294,7 @@
 					<<gstress>><<gtrauma>><<gpain>><<violence 20>>
 					<br><br>
 				<</if>>
-			<<elseif $consensual is 0 and $enemyhealth lte ($enemyhealthmax / 10) * 8.5>>
+			<<elseif $consensual is 0 and $enemyhealth lte ($enemyhealthmax / 10) * 8.5 and $NPCList[0].type isnot "plant">>
 				<<if $enemyno is 1>>
 					<<He>> <span class="pink">slaps you back and forth across the face.</span> "That's for struggling."
 					<<gstress>><<gtrauma>><<gpain>><<violence 3>>
@@ -1309,7 +1311,7 @@
 					<<gstress>><<gtrauma>><<gpain>><<violence 10>>
 					<br><br>
 				<</if>>
-			<<elseif $consensual is 0 and $enemyhealth lt (($enemyhealthmax / 10) * 9.9) and $audience gte 10>>
+			<<elseif $consensual is 0 and $enemyhealth lt (($enemyhealthmax / 10) * 9.9) and $audience gte 10 and $NPCList[0].type isnot "plant">>
 				<<set $NPCList[0].intro to 1>>
 				<<He>> thrusts you in front of the audience, grappling your arms. "Let's show <<phim>> what happens to feisty cunts." <span class="purple">The audience takes turns spitting on your chest and face while you writhe in discomfort.</span>
 				<<faceejacstat>><<ejacstat>><<set $player.bodyliquid.face.goo += 1>>

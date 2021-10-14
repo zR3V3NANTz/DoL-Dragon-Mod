@@ -447,7 +447,7 @@ You grab hold of a low branch and begin climbing the tree. You feel more exposed
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if $danger gte (9900 - $allure) and $eventskip is 0>>
 	<<if $rng gte 51 and $hallucinations gte 2 and $tentacledisable is "f">>
-		You're making sure your legs are secure when the branches jerk to life. They bend towards you, until you're surrounded and trapped.
+		You're making sure your legs are secure when the branches jerk to life. Shoots bend towards you and entangle you, until you're surrounded and trapped.
 		<br><br>
 
 		<<link [[Next|Bask Tentacles]]>><<set $molestationstart to 1>><</link>>
@@ -496,11 +496,11 @@ The branch bends slightly as you reach your goal, but you manage to retrieve you
 	<<molested>>
 	<<controlloss>>
 
-	<<tentaclestart 6 15>>
+	<<tentaclestart 6 15 "shoot" "vine" true>>
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>
@@ -516,7 +516,7 @@ You count <<number $tentacles.active>> tentacles surrounding you.
 :: Bask Tentacles Finish
 <<effects>>
 
-The remaining branches return to their original positions and stay there. You wobble for a moment, but manage to keep yourself from falling. <<tearful>> you continue ascending the tree.
+The shoots untangle themselves from you. The remaining branches return to their original positions and stay there. You wobble for a moment, but manage to keep yourself from falling. <<tearful>> you continue ascending the tree.
 <br><br>
 
 You cling to the branch holding your clothes with your hands and knees and crawl across. The branch bends slightly as you reach your goal, but you manage to retrieve your clothing and crawl back to the trunk. You climb down safely.
@@ -993,12 +993,12 @@ You brace yourself as the shoots tighten around your limbs.
 	<<molested>>
 	<<controlloss>>
 
-	<<tentaclestart 4 15>>
+	<<tentaclestart 4 15 "shoot" "vine" true>>
 	<<set $timer to 15>>
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>

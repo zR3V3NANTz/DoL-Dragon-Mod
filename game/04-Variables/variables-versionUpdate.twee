@@ -2516,5 +2516,14 @@
 <<if !(Array.isArray($event))>>
 	<<unset $event>>
 <</if>>
+
+<<if $nectar_drank_stat is undefined>>
+	<<set $nectar_drank_stat to 0>>
+	<<set $tentacleMouth to 0>>
+	<<set $tentacleAnus to 0>>
+	<<set $tentacleAnusBaby to 0>>
+	<<set $tentacleVagina to 0>>
+	<<set $tentaclePenis to 0>>
+<</if>>
 <</widget>>
 

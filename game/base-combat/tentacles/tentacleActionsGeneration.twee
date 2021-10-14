@@ -89,7 +89,7 @@
 			<<set _leftOptions to "grappled">>
 			<<for _i to 0; _i lt $tentacles.max; _i++>>
 				<<if $tentacles[_i].shaft is "leftarm">>
-					<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">The $tentacles[_i].desc tentacle entangles your left arm.</span>
+					<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">The $tentacles[_i].fullDesc entangles your left arm.</span>
 					<<set $_tentgrab to 1>>
 					<<break>>
 				<</if>>
@@ -108,7 +108,7 @@
 				<<if $leftarm is $tentacles[_i].id>>
 					<<set _leftOptions to "tentacle">>
 					<<set _tentacleLeftOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">You hold the $tentacles[_i].desc tentacle in your left hand.</span>
+					<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">You hold the $tentacles[_i].fullDesc in your left hand.</span>
 					<<break>>
 				<</if>>
 			<</for>>
@@ -264,13 +264,13 @@
 		<<set _leftaction["Milk it"] to "leftrub"+_tentacleLeftOption>>
 		<<set _leftaction["Let go"] to "leftstop"+_tentacleLeftOption>>
 		<<if $deviancy gte 75>>
-			<<if $player.penisExist and $penisuse is 0>>
+			<<if $player.penisExist and $penisuse is 0 and $nopenile is 0>>
 				<<set _leftaction["Guide to your penis"] to "showpenis"+_tentacleLeftOption>>
 			<</if>>
-			<<if $player.vaginaExist and $vaginause is 0>>
+			<<if $player.vaginaExist and $vaginause is 0 and $novaginal is 0>>
 				<<set _leftaction["Guide to your pussy"] to "showvagina"+_tentacleLeftOption>>
 			<</if>>
-			<<if $anususe is 0 and $analdisable is "f">>
+			<<if $anususe is 0 and $analdisable is "f" and $noanal is 0>>
 				<<set _leftaction["Guide to your ass"] to "showbottom"+_tentacleLeftOption>>
 			<</if>>
 			/* Old Control
@@ -293,7 +293,7 @@
 			<<set _rightOptions to "grappled">>
 			<<for _i to 0; _i lt $tentacles.max; _i++>>
 				<<if $tentacles[_i].shaft is "rightarm">>
-					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">The $tentacles[_i].desc tentacle entangles your right arm.</span>
+					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">The $tentacles[_i].fullDesc entangles your right arm.</span>
 					<<set $_tentgrab to 1>>
 					<<break>>
 				<</if>>
@@ -312,7 +312,7 @@
 				<<if $rightarm is $tentacles[_i].id>>
 					<<set _rightOptions to "tentacle">>
 					<<set _tentaclerightOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">You hold the $tentacles[_i].desc tentacle in your right hand.</span>
+					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">You hold the $tentacles[_i].fullDesc in your right hand.</span>
 					<<break>>
 				<</if>>
 			<</for>>
@@ -509,7 +509,7 @@
 			<<if $leftleg is $tentacles[_i].id>>
 				<<set _feetOptions to "tentacle">>
 				<<set _tentacleFeetOption to $tentacles[_i].id>>
-				<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">You hold the $tentacles[_i].desc tentacle between your feet.</span>
+				<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">You hold the $tentacles[_i].fullDesc between your feet.</span>
 				<<break>>
 			<</if>>
 		<</for>>
@@ -685,28 +685,28 @@
 				<<if $tentacles[_i].head is "mouthentrance">>
 					<<set _mouthOptions to "entrance">>
 					<<set _tentacleMouthOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].desc tentacle threatens your mouth.</span>
+					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].fullDesc threatens your mouth.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacleimminent">>
 				<<if $tentacles[_i].head is "mouthimminent">>
 					<<set _mouthOptions to "imminent">>
 					<<set _tentacleMouthOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].desc tentacle presses against your mouth.</span>
+					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].fullDesc presses against your mouth.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacle">>
 				<<if $tentacles[_i].head is "mouth">>
 					<<set _mouthOptions to "penetrated">>
 					<<set _tentacleMouthOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].desc tentacle thrusts into your mouth.</span>
+					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].fullDesc thrusts into your mouth.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacledeep">>
 				<<if $tentacles[_i].head is "mouthdeep">>
 					<<set _mouthOptions to "penetrated">>
 					<<set _tentacleMouthOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].desc tentacle thrusts into your mouth, ejaculating down your throat.</span>
+					<span @class="($lastOptions.mouth isnot _mouthOptions ?'gold':'')">The $tentacles[_i].fullDesc thrusts into your mouth, ejaculating down your throat.</span>
 					<<break>>
 				<</if>>
 		<</switch>>
@@ -793,35 +793,35 @@
 				<<if $tentacles[_i].head is "penisentrance">>
 					<<set _penisOptions to "entrance">>
 					<<set _tentaclepenisOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].desc tentacle threatens your <<penis>>.</span>
+					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].fullDesc threatens your <<penis>>.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacleimminent">>
 				<<if $tentacles[_i].head is "penisimminent">>
 					<<set _penisOptions to "imminent">>
 					<<set _tentaclepenisOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].desc tentacle presses against your <<penis>>, about to engulf</span>
+					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].fullDesc presses against your <<penis>>, about to engulf.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacle">>
 				<<if $tentacles[_i].head is "penis">>
 					<<set _penisOptions to "penetrated">>
 					<<set _tentaclepenisOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].desc tentacle envelops and pounds your <<penis>>.</span>
+					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].fullDesc envelops and pounds your <<penis>>.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacledeep">>
 				<<if $tentacles[_i].head is "penisdeep">>
 					<<set _penisOptions to "penetrated">>
 					<<set _tentaclepenisOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].desc tentacle envelops and pounds your <<penis>>.</span>
+					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].fullDesc envelops and pounds your <<penis>>.</span>
 					<<break>>
 				<</if>>
 			<<case "tentaclerub">>
 				<<if $tentacles[_i].head is "penisrub">>
 					<<set _penisOptions to "penisrub">>
 					<<set _tentaclepenisOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].desc tentacle runs between your thighs, coiling around your <<penis>> and pressing against your tummy.</span>
+					<span @class="($lastOptions.penis isnot _penisOptions ?'gold':'')">The $tentacles[_i].fullDesc runs between your thighs, coiling around your <<penis>> and pressing against your tummy.</span>
 					<<break>>
 				<</if>>
 		<</switch>>
@@ -902,35 +902,35 @@
 				<<if $tentacles[_i].head is "vaginaentrance">>
 					<<set _vaginaOptions to "entrance">>
 					<<set _tentaclevaginaOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">The $tentacles[_i].desc tentacle threatens your <<pussy>>.</span>
+					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">The $tentacles[_i].fullDesc threatens your <<pussy>>.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacleimminent">>
 				<<if $tentacles[_i].head is "vaginaimminent">>
 					<<set _vaginaOptions to "imminent">>
 					<<set _tentaclevaginaOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].desc tentacle presses against your <<pussy>>, about to penetrate.</span>
+					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].fullDesc presses against your <<pussy>>, about to penetrate.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacle">>
 				<<if $tentacles[_i].head is "vagina">>
 					<<set _vaginaOptions to "penetrated">>
 					<<set _tentaclevaginaOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].desc tentacle thrusts into your <<pussy>>.</span>
+					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].fullDesc thrusts into your <<pussy>>.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacledeep">>
 				<<if $tentacles[_i].head is "vaginadeep">>
 					<<set _vaginaOptions to "penetrated">>
 					<<set _tentaclevaginaOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].desc tentacle thrusts into your <<pussy>>, ejaculating deep into your womb.</span>
+					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].fullDesc thrusts into your <<pussy>>, ejaculating deep into your womb.</span>
 					<<break>>
 				<</if>>
 			<<case "tentaclerub">>
 				<<if $tentacles[_i].head is "tentaclerub">>
 					<<set _vaginaOptions to "vaginarub">>
 					<<set _tentaclevaginaOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].desc tentacle runs between your thighs, pressing against your labia and continuing to your tummy.</span>
+					<span @class="($lastOptions.vagina isnot _vaginaOptions ?'gold':'')">The $tentacles[_i].fullDesc runs between your thighs, pressing against your labia and continuing to your tummy.</span>
 					<<break>>
 				<</if>>
 		<</switch>>
@@ -1011,35 +1011,35 @@
 				<<if $tentacles[_i].head is "anusentrance">>
 					<<set _anusOptions to "entrance">>
 					<<set _tentacleanusOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].desc tentacle threatens your <<bottom>>.</span>
+					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].fullDesc threatens your <<bottom>>.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacleimminent">>
 				<<if $tentacles[_i].head is "anusimminent">>
 					<<set _anusOptions to "imminent">>
 					<<set _tentacleanusOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].desc tentacle presses against your <<bottom>>, about to penetrate.</span>
+					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].fullDesc presses against your <<bottom>>, about to penetrate.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacle">>
 				<<if $tentacles[_i].head is "anus">>
 					<<set _anusOptions to "penetrated">>
 					<<set _tentacleanusOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].desc tentacle thrusts into your <<bottom>>.</span>
+					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].fullDesc thrusts into your <<bottom>>.</span>
 					<<break>>
 				<</if>>
 			<<case "tentacledeep">>
 				<<if $tentacles[_i].head is "anusdeep">>
 					<<set _anusOptions to "penetrated">>
 					<<set _tentacleanusOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].desc tentacle thrusts into your <<bottom>>, ejaculating deep into your bowels.</span>
+					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].fullDesc thrusts into your <<bottom>>, ejaculating deep into your bowels.</span>
 					<<break>>
 				<</if>>
 			<<case "tentaclerub">>
 				<<if $tentacles[_i].head is "anusrub">>
 					<<set _anusOptions to "anusrub">>
 					<<set _tentacleanusOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].desc tentacle rubs itself between your butt cheeks.</span>
+					<span @class="($lastOptions.anus isnot _anusOptions ?'gold':'')">The $tentacles[_i].fullDesc rubs itself between your butt cheeks.</span>
 					<<break>>
 				<</if>>
 		<</switch>>
@@ -1120,7 +1120,7 @@
 				<<if $tentacles[_i].head is "chestrub">>
 					<<set _chestOptions to "entrance">>
 					<<set _tentaclechestOption to $tentacles[_i].id>>
-					<span @class="($lastOptions.chest isnot _chestOptions ?'gold':'')">The $tentacles[_i].desc tentacle rubs itself between your chest.</span>
+					<span @class="($lastOptions.chest isnot _chestOptions ?'gold':'')">The $tentacles[_i].fullDesc rubs itself between your chest.</span>
 					<<break>>
 				<</if>>
 		<</switch>>

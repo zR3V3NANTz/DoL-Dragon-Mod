@@ -1183,28 +1183,38 @@ in dev alternative to current "breasts" widget
 <</widget>>
 
 <<widget "personsimple">><<silently>>
-<<if $npcadult is 1>>
-	<<set _text_output to ($pronoun is "m" ? "man" : "woman")>>
+<<if $fullDescription.includes("plant")>>
+	<<set _text_output to "plant">>
 <<else>>
-	<<set _text_output to ($pronoun is "m" ? "boy" : "girl")>>
+	<<set _text_output to "">>
+<</if>>
+<<if $npcadult is 1>>
+	<<set _text_output += ($pronoun is "m" ? "man" : "woman")>>
+<<else>>
+	<<set _text_output += ($pronoun is "m" ? "boy" : "girl")>>
 <</if>><</silently>><<print _text_output>><</widget>>
 
 <<widget "person">><<silently>>
+<<if $fullDescription.includes("plant")>>
+	<<set _text_output to $description+" plant">>
+<<else>>
+	<<set _text_output to $description+" ">>
+<</if>>
 <<if $npc_named is 1>>
 	<<set _text_output to $description>>
 <<elseif $npcadult is 1>>
 	<<if $pronoun is "m">>
-		<<set _text_output to $description+" man">>
+		<<set _text_output to _text_output+="man">>
 	<<elseif $pronoun is "f">>
-		<<set _text_output to $description+" woman">>
+		<<set _text_output to _text_output+="woman">>
 	<<else>>
-		<<set _text_output to $description>>
+		<<set _text_output to _text_output>>
 	<</if>>
 <<else>>
 	<<if $pronoun is "m">>
-		<<set _text_output to $description+" boy">>
+		<<set _text_output to _text_output+="boy">>
 	<<elseif $pronoun is "f">>
-		<<set _text_output to $description+" girl">>
+		<<set _text_output to _text_output+="girl">>
 	<</if>>
 <</if>><</silently>><<print _text_output>><</widget>>
 
@@ -1248,9 +1258,11 @@ in dev alternative to current "breasts" widget
 <<set $pronoun to $NPCList[_n].pronoun>>
 <<if $npcrow.includes(_n)>>
 	<<set $description to $NPCName[$npcnum[$npcrow.indexOf(_n)]].title>>
+	<<set $fullDescription to $NPCName[$npcnum[$npcrow.indexOf(_n)]].fullDescription>>
 	<<set $npc_named to 1>>
 <<else>>
 	<<set $description to $NPCList[_n].description>>
+	<<set $fullDescription to $NPCList[_n].fullDescription>>
 	<<set $npc_named to 0>>
 <</if>>
 <</widget>>
@@ -4626,6 +4638,51 @@ School finishes on the first Monday of December.
 		meanders
 	<<elseif $rng gte 0>>
 		slips
+	<</if>>
+<</widget>>
+
+<<widget "slithering">>
+	<<set $rng to random(1, 100)>>
+	<<if $rng gte 95>>
+		slithering
+	<<elseif $rng gte 90>>
+		writhing
+	<<elseif $rng gte 85>>
+		wriggling
+	<<elseif $rng gte 80>>
+		wiggling
+	<<elseif $rng gte 75>>
+		crawling
+	<<elseif $rng gte 70>>
+		sliding
+	<<elseif $rng gte 65>>
+		slinking
+	<<elseif $rng gte 60>>
+		gliding
+	<<elseif $rng gte 55>>
+		slipping
+	<<elseif $rng gte 50>>
+		squirming
+	<<elseif $rng gte 45>>
+		worming
+	<<elseif $rng gte 40>>
+		twisting
+	<<elseif $rng gte 35>>
+		twitching
+	<<elseif $rng gte 30>>
+		shivering
+	<<elseif $rng gte 25>>
+		trembling
+	<<elseif $rng gte 20>>
+		jerking
+	<<elseif $rng gte 15>>
+		crawling
+	<<elseif $rng gte 10>>
+		fluttering
+	<<elseif $rng gte 5>>
+		meandering
+	<<elseif $rng gte 0>>
+		slipping
 	<</if>>
 <</widget>>
 

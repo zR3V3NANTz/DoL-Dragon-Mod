@@ -10,7 +10,8 @@
 	<<set _tentacleHealth to ($args[1] ? $args[1] : 15)>>
 	<<set _tentacleType to ($args[2] ? $args[2] : undefined)>>
 	<<set _tentacleVariant to ($args[3] ? $args[3] : undefined)>>
-	<<tentaclestart _tentacleNumber _tentacleHealth _tentacleType _tentacleVariant>>
+	<<set _tentacleVarDesc to ($args[4] ? $args[4] : undefined)>>
+	<<tentaclestart _tentacleNumber _tentacleHealth _tentacleType _tentacleVariant _tentacleVarDesc>>
 	<<for _i to 0; _i lt $tentacles.active; _i++>>
 		<<set $enemyhealthmax += $tentacles[_i].tentaclehealth>>
 		<<set $enemyhealth += $tentacles[_i].tentaclehealth>>

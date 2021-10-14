@@ -1232,7 +1232,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 	<<set $enemytype to "tentacles">>
 	<<molested>>
 	<<controlloss>>
-	<<tentaclestart 10 15>>
+	<<tentaclestart 10 15 "root" "vine" true>>
 <<elseif $molestationstart is 2>><<set $molestationstart to 0>>
 	<<set $combat to 1>>
 	<<set $enemytype to "tentacles">>
@@ -1243,10 +1243,10 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 	<<deviancy5>>
 
 	<<set _randomtentacles to 6+random(1, 10)>>
-	<<tentaclestart _randomtentacles 15>>
+	<<tentaclestart _randomtentacles 15 "root" "vine" true>>
 <</if>>
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>

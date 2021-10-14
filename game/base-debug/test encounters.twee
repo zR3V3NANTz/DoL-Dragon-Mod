@@ -677,3 +677,79 @@ Add the NPCs you want.<br>
 <br><br>
 <<link [[Select NPCs|Named NPC Gangbang Select]]>><<endcombat>><</link>><br>
 <<link [[Back Home|Bedroom]]>><<endcombat>><</link>>
+
+:: Plantperson Test
+<<link [[Consensual sex|Plantperson Test Sex]]>><<set $sexstart to 1>><</link>><br>
+<<link [[Nonconsensual sex|Plantperson Test Sex]]>><<set $molestationstart to 1>><</link>><br>
+<<link [[Back home|Bedroom]]>><<endevent>><</link>>
+
+:: Plantperson Test Sex
+<<if $sexstart is 1 or $molestationstart is 1>>
+	<<if $sexstart is 1>>
+		<<set $sexstart to 0>>
+		<<consensual>><<set $consensual to 1>>
+		<<neutral 1>>
+	<<elseif $molestationstart is 1>>
+		<<set $molestationstart to 0>>
+		<<controlloss>>
+		<<violence 1>>
+		<<neutral 1>>
+		<<molested>>
+	<</if>>
+	<<generatePlant1>><<person1>>
+	<<maninit>><<npcexpose>>
+	<<set $enemytype to "plant">>
+	<<set $rescue to 1>>
+	<<set $enemyarousalmax to 800>>
+	<<set _randomtentacles to random(6, 10)>>
+	<<makeAbomination _randomtentacles 10 "vine" "vine" true>>
+	"Hi there!" A <<person>> pops up in front of you, flowers and leaves strewn through <<his>> hair. "You're cute! I'm gonna fuck you with my vines!"
+	<br>
+	A bunch of vines pop out of the ground.
+<</if>>
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+<br>
+<<effects>>
+<<effectsabomination>><<abomination>>
+<<stateabomination>>
+<br><br>
+<<actionsabomination>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[HEALTH|Plantperson Test Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[ORGASM|Plantperson Test Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[RESCUE|Plantperson Test Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Plantperson Test Sex]]>><</link>></span><<nexttext>>
+<</if>>
+<br>
+<<link [[Emergency exit|Plantperson Test Finish]]>><<set $finish to 1>><</link>>
+<br><br><br><br>
+
+:: Plantperson Test Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	<<if _orgasm>>
+		"That was great!" the <<person>> cheers. "And thanks for cumming in me! Later!"
+	<<else>>
+		"That was fun!" the <<person>> chirps. "Later!"
+	<</if>>
+	<<He>> digs back into the ground, and <<his>> vines follow. One of the vines waves at you.
+<<elseif $enemyhealth lte 0>>
+	"Ow!" the <<person>> whines. "You're no fun!" <<He>> digs back into the ground, and <<his>> vines follow. One of the vines flips you off, somehow.
+<<elseif $alarm is 1 and $rescue is 1>>
+	You hear a gun fire close by, and a bullet lands at the <<persons>> feet. "Fuck," <<he>> hisses. "It's the <<nnpc_title "Eden">>. Fuck. Fuck shit fuck. Um." <<He>> grabs your face and gives you a syrupy kiss on each cheek, before pulling away from you. "See ya! I'm out!"
+	<<set $player.bodyliquid.face.goo += 1>>
+	<br><br>
+
+	The <<person>> retracts <<his>> vines and retreats into the forest right as Eden emerges. <<nnpc_He "Eden">> helps you collect yourself. "Damn hikers," <<nnpc_he "Eden">> mutters. "Are you okay?"
+<<else>>
+	"Emergency exit? Bummer," the <<person>> says. <<He>> shrugs. "Oh well. Fuck your holes until you're a gibbering mess hopelessly addicted to my nectar later!" <<He>> digs back into the ground, and <<his>> vines follow. One of the vines checks <<his>> notifications on <<his>> phone.
+<</if>>
+<<endcombat>>
+<<clotheson>>
+<<link [[Do it again|Plantperson Test]]>><</link>><br>
+<<link [[Back home|Bedroom]]>><</link>>

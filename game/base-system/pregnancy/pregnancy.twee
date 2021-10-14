@@ -36,7 +36,7 @@
 								"speed": random(60,360)
 							}
 						}>>
-						<<if _creatureType is "Tentacle">>
+						<<if _creatureType is "Tentacle" or _creatureType is "Vine">>
 							<<set _egg.stats.speed to clone(_egg.stats.speed * 0.9)>>
 						<</if>>
 						<<if _creatureType is "Pale Tentacle" or _creatureType is "Pale Slime">>

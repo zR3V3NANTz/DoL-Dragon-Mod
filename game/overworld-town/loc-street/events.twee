@@ -3873,12 +3873,15 @@ Your fall is broken by something slimy and soft. It flees before your eyes adjus
 	<<if _tentacle.size is 3>>
 		<<set _tentacle.desc to "thick">>
 		<<set _tentacle.fullDesc to "thick tentacle">>
+		<<set _tentacle.type to "tentacle">>
 	<<elseif _tentacle.size is 1>>
 		<<set _tentacle.desc to "thin">>
 		<<set _tentacle.fullDesc to "thin tentacle">>
+		<<set _tentacle.type to "tentacle">>
 	<<else>>
 		<<set _tentacle.desc to "slimy">>
 		<<set _tentacle.fullDesc to "slimy tentacle">>
+		<<set _tentacle.type to "tentacle">>
 	<</if>>
 
 	<!-- Make tentacle start at the target body part -->
@@ -3905,7 +3908,7 @@ Your fall is broken by something slimy and soft. It flees before your eyes adjus
 		You hope nobody will notice that beneath your <<allBottoms>> you're being fucked by a tentacle.
 	<<else>>
 		You're in the middle of the street, trying to act normal.
-		You hope nobody notices what the $tentacles[0].desc tentacle is doing beneath your <<allBottoms>>.
+		You hope nobody notices what the $tentacles[0].fullDesc is doing beneath your <<allBottoms>>.
 	<</if>>
 	<br><br>
 
@@ -6324,7 +6327,7 @@ You thrust your $worn.neck.name in no direction in particular. It seems to glow,
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>

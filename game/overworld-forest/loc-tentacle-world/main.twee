@@ -658,7 +658,7 @@ Your semen is sucked away, and the tentacle releases you. Another one takes its 
 	<<set $tentacles[0].shaft to "waist">>
 <</if>>
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>
@@ -718,7 +718,7 @@ You go through the door back to the asylum. It seals shut behind you.
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>
