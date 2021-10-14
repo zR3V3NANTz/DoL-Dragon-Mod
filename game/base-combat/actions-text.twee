@@ -104,13 +104,13 @@
 <<widget "penises">>
 	<!-- possible alternatives:  ...-->
 	<<if $arousal gte ($arousalmax / 5) * 4>>
-		glans
+		shafts
 	<<elseif $arousal gte ($arousalmax / 5) * 3>>
 		boners
 	<<elseif $arousal gte ($arousalmax / 5) * 2>>
 		dicks
 	<<elseif $arousal gte $arousalmax / 5>>
-		shafts
+		glans
 	<<else>>
 		penises
 	<</if>>

@@ -2055,7 +2055,7 @@
 	<<if $NPCList[_n].penis is "clothed" and $npcSub isnot 1>>
 		<<if $pronoun is "m">>
 			<<if $enemyarousal gte 40>>
-				<<He>> unzips <<his>> fly, <span class="blue">revealing <<his>> $NPCList[_n].penisdesc, <<if $NPCList[_n].chastity.penis.includes("chastity")>>inside of a $NPCList[_n].chastity.penis<<else>>fully erect<</if>>.</span>
+				<<He>> unzips <<his>> fly, <span class="blue">revealing <<his>> $NPCList[_n].penisdesc<<if $NPCList[_n].chastity.penis.includes("chastity")>>, inside of a $NPCList[_n].chastity.penis<<elseif $NPCList[_n].penisdesc.includes("strap-on")>><<else>>, fully erect<</if>>.</span>
 				<<switch $NPCList[_n].penissize>>
 				<<case 4>>
 					<span class="red"> _ppbigreaction[_pprng]</span>
@@ -2067,7 +2067,7 @@
 			<</if>>
 		<<else>>
 			<<if $enemyarousal gte 40>>
-				<<He>> pulls up <<his>> skirt, <span class="blue">revealing <<his>> $NPCList[_n].penisdesc, <<if $NPCList[_n].chastity.penis.includes("chastity")>>inside of a $NPCList[_n].chastity.penis<<else>>fully erect<</if>>.</span>
+				<<He>> pulls up <<his>> skirt, <span class="blue">revealing <<his>> $NPCList[_n].penisdesc<<if $NPCList[_n].chastity.penis.includes("chastity")>>, inside of a $NPCList[_n].chastity.penis<<elseif $NPCList[_n].penisdesc.includes("strap-on")>><<else>>, fully erect<</if>>.</span>
 				<<switch $NPCList[_n].penissize>>
 				<<case 4>>
 					<span class="red"> You gasp at its massive girth.</span>
@@ -2723,46 +2723,52 @@
 	<<set $rng to random(1, 100)>>
 	<<if $NPCList[_n].penis is "penisentrance" and !$npcSub>>
 		<<if $rng gte 51>>
-			<<He>> caresses your <<genitals>> with <<his>> own, <span class="purple">teasing what's to come.</span>
+			<<He>> caresses your <<penis>> with <<his>> <<npcPenisSimple _n>>, <span class="purple">teasing what's to come.</span>
 			<<set $penisstate to "otherpenisimminent">><<set $NPCList[_n].penis to "penisimminent">><<sex 10>>
 		<<else>>
-			<<He>> hovers <<his>> penis closer to yours.
+			<<He>> hovers <<his>> <<npcPenisSimple _n>> closer to your <<penis>>.
 			<<neutral 1>>
 		<</if>>
 		<<set $speechfencingentrance to 1>>
 	<<elseif $NPCList[_n].penis is "penisimminent" and !$npcSub>>
 		<<He>> thrusts forward, <span class="pink">
 		<<if $enemyarousal gte (($enemyarousalmax / 10) * 7)>>
-			squelching
+			fencing
 		<<elseif $enemyarousal gte (($enemyarousalmax / 10) * 4)>>
 			smashing
 		<<else>>
 			pressing
 		<</if>>
-		<<his>> penis against yours.</span>
+		<<his>> <<npcPenisSimple _n>> against your <<penis>>.</span>
 		<<set $penisstate to "otherpenis">><<set $NPCList[_n].penis to "penis">><<sex 20>><<set $speechpenispenis to 1>>
+		<<if $worn.genitals.type.includes("chastity")>>
+			<<set $worn.genitals.integrity -= 10>><<set $speechchastity to 1>>
+		<</if>>
 	<<elseif $NPCList[_n].penis is "penis">>
 		<<if $rng gte 1>>
 			<<if $enemyarousal gte $enemyarousalmax * 0.8>>
-				<<He>> thrusts <<his>> hips, <<if $npcSub>>instinctively<</if>> pounding your <<genitals>> against <<his>> cock with a violent intensity.
+				<<He>> thrusts <<his>> hips, <<if $npcSub>>instinctively<</if>> pounding your <<penis>> against <<his>> cock with a violent intensity.
 				<<if $penisWetness gte 45>>
 					<span class="purple">Your precum mingles.</span><<purity -1>>
 				<</if>>
 			<<elseif $enemyarousal gte $enemyarousalmax * 0.6>>
-				<<He>> thrusts <<his>> hips, <<if $npcSub>>instinctively<</if>> smashing <<his>> $NPCList[_n].penisdesc against your <<genitals>>.
+				<<He>> thrusts <<his>> hips, <<if $npcSub>>instinctively<</if>> smashing <<his>> <<npcPenisSimple _n>> against your <<penis>>.
 				<<if $penisWetness gte 45>>
 					<span class="purple">Your precum mingles.</span><<purity -1>>
 				<</if>>
 			<<elseif $enemyarousal gte $enemyarousalmax * 0.4>>
-				<<He>> thrusts <<his>> hips, rubbing and kneading your penis with <<his>> own.
+				<<He>> thrusts <<his>> hips, rubbing and kneading your <<penises>> together.
 			<<elseif $enemyarousal gte $enemyarousalmax * 0.2>>
 				<<He>> rubs and kneads your <<penises>> together.
 			<<else>>
-				<<He>> kneads and caresses your <<genitals>> with <<his>> own.
+				<<He>> kneads and caresses your <<penises>> together.
 			<</if>>
 			<<sex 20>><<set $speechpenispenis to 1>>
+			<<if $worn.genitals.type.includes("chastity")>>
+				<<set $worn.genitals.integrity -= 10>><<set $speechchastity to 1>>
+			<</if>>
 		<<else>>
-			<span class="lblue"><<He>> moves <<his>> penis away from yours.</span>
+			<span class="lblue"><<He>> moves <<his>> <<npcPenisSimple _n>> away from yours.</span>
 			<<set $penisuse to 0>><<set $NPCList[_n].penis to 0>>
 		<</if>>
 	<</if>>
@@ -4421,9 +4427,9 @@
 	<<elseif $enemyanger + $rng lte 90 and $penisuse is 0 and $player.penisExist and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $worn.over_lower.vagina_exposed is 1 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $walltype isnot "front">>
 		<<set $penisuse to "otherpenis">><<set $penisstate to "otherpenisentrance">><<set $NPCList[_n].penis to "penisentrance">><<sex 5>>
 		<<if $NPCList[_n].chastity.penis.includes("chastity")>>
-			<span class="blue"><<He>> moves <<his>> caged $NPCList[_n].penisdesc close to yours.</span>
+			<span class="blue"><<He>> moves <<his>> caged $NPCList[_n].penisdesc close to your penis.</span>
 		<<else>>
-			<span class="blue"><<He>> moves <<his>> $NPCList[_n].penisdesc close to yours.</span>
+			<span class="blue"><<He>> moves <<his>> $NPCList[_n].penisdesc close to your penis.</span>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 100 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $walltype isnot "front">>
 		<<if $player.vaginaExist and $vaginause is 0 and ($anususe isnot 0 or random(0,100) gte 50)>>
