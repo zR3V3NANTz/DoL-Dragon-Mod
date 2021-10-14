@@ -856,13 +856,13 @@
 			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> ass envelops your <<penis>>.</span>
 		<<case "otherpenisentrance">>
 			<<set _penisOptions to "penisEntrance">>
-			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "otherpenisentrance">><<His>> <<npcPenisSimple>> hovers near your <<genitals>>.</span>
+			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penisentrance">><<His>> <<npcPenisSimple>> hovers near your <<penis>>.</span>
 		<<case "otherpenisimminent">>
 			<<set _penisOptions to "penisImminent">>
-			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "otherpenisimminent">><<His>> <<npcPenisSimple>> threatens your <<genitals>>.</span>
+			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penisimminent">><<His>> <<npcPenisSimple>> threatens your <<penis>>.</span>
 		<<case "otherpenis">>
 			<<set _penisOptions to "penisPenetration">>
-			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> <<npcPenisSimple>> presses against your <<genitals>>.</span>
+			<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penis">><<His>> <<npcPenisSimple>> presses against your <<penis>>.</span>
 		<<default>>
 			<<switch $penisuse>>
 				<<case "clit">>

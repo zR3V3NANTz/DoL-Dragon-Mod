@@ -652,6 +652,9 @@
 			<<bhis>> $NPCList[_n].penisdesc against your <<penis>>.</span>
 		<</if>>
 	<<sex 10>><<set $NPCList[_n].penis to "penis">><<set $penisstate to "otherpenis">>
+	<<if $worn.genitals.type.includes("chastity")>>
+		<<set $worn.genitals.integrity -= 10>><<set $speechchastity to 1>>
+	<</if>>
 <<elseif $NPCList[_n].penis is "penis">>
 	<<if $rng gte 1>>
 		<<if $enemyarousal gte $enemyarousalmax * 0.8>>
@@ -672,6 +675,9 @@
 			<<bHe>> kneads your <<penises>> together.
 		<</if>>
 		<<sex 20>><<set $speechpenispenis to 1>>
+		<<if $worn.genitals.type.includes("chastity")>>
+			<<set $worn.genitals.integrity -= 10>><<set $speechchastity to 1>>
+		<</if>>
 	<<else>>
 		<span class="lblue"><<bHe>> moves <<bhis>> penis away from yours.</span>
 		<<set $penisuse to 0>><<set $NPCList[_n].penis to 0>>

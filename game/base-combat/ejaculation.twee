@@ -1177,7 +1177,7 @@
 					<</switch>>
 				<<elseif $NPCList[_nn].penis is "penis" or $NPCList[_nn].penis is "penisemtrance" or $NPCList[_nn].penis is "penisimminent">>
 					<<He>> shakes with arousal as <<he>> cums all over your <<penis>>. "That was awesome."
-					<br><br>
+					
 				<!-- Special case male PC being orally serviced by male NPC with no other contact -->
 				<<elseif $NPCList[_nn].mouth is "penis">>
 					<<switch random(1, 7)>>
