@@ -18,6 +18,8 @@
 	<</if>>
 	<<if ["root","shoot"].includes(_tentacleType)>>
 		<<set _babyType to "vine">>
+	<<elseif _tentacleType is "tendril">>
+		<<set _babyType to "tentacle">>
 	<<else>>
 		<<set _babyType to _tentacleType>>
 	<</if>>
