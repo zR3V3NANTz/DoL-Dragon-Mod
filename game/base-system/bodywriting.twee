@@ -1786,16 +1786,10 @@ Second arg: tool */
 <</widget>>
 
 <<widget "bodypart_admire_chance">>
-<<if $NPCList[_n].mouth is 0 and $enemytype isnot "beast">>
-	<<set _rng to random(1, 5)>>
-	<<if _rng gte 4>>
-	<<elseif _rng is 1>>
-		<<bodypart_admire $args[0] bodywriting>>
-	<<elseif _rng is 2>>
-		<<bodypart_admire $args[0] cum>>
-	<<elseif _rng is 3>>
-		<<bodypart_admire $args[0] parasite>>
-	<</if>>
+<<if $enemytype isnot "beast" and ($NPCList[_n].mouth is 0 or $NPCList[_n].mouth is "speech_only" or ($NPCList[_n].type is "plant" and $speechkissvirgin is 1)) and $speechdisable isnot 1>>
+    <<if random(1, 5) is 5>>
+        <<bodypart_admire $args[0] bodywriting>>
+    <</if>>
 <</if>>
 <</widget>>
 

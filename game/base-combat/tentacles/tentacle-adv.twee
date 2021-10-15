@@ -13,6 +13,7 @@
 	<<if (_tentacle.head is "anus" or _tentacle.head is "anusdeep") and _tentacle.baby isnot 0>>
 		<<impregnate _tentacle.baby _tentacle.babychance>>
 		<<fertilise>>
+		<<set _tentacleAnus to $tentacleAnus>>
 	<</if>>
 	<<if _tentacle.shaft isnot "finished" and _tentacle.head isnot "finished">>
 		<<if _the isnot 1>><<set _the to 1>>The<</if>>
@@ -25,8 +26,8 @@
 			<<else>>
 				and <<print _tentacle.fullDesc>>s all retract
 			<</if>>
-			<<if $tentacleAnusBaby>>
-				away from you,<<if _retract isnot 1>> the $tentacleAnus<</if>> <span class="red">pumping something into your anus</span> before leaving.
+			<<if _tentacleAnus>>
+				away from you,<<if _retract isnot 1>> the _tentacleAnus<</if>> <span class="red">pumping something into your anus</span> before leaving.
 			<<else>>
 				away from you.
 			<</if>>
@@ -38,10 +39,7 @@
 			<<set _retract to 3>>
 			_tentacle.desc,
 		<</if>>
-		<<if (_tentacle.head is "penis" or _tentacle.head is "penisdeep") and $orgasmcurrent is 0 and $NPCList[0].type is "plant">>
-		<<else>>
-			<<tentacleadvdisable _tentacle>>
-		<</if>>
+		<<tentacleadvdisable _tentacle>>
 		<<set _tentacle.shaft to "finished">><<set _tentacle.head to "finished">>
 	<</if>>
 <</if>>
