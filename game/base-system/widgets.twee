@@ -4745,12 +4745,14 @@ __Map__<br>
 <</widget>>
 
 <<widget "wetness_init">>
-<<if $objectVersion.vaginaWetness lt 2 or $objectVersion.vaginaWetness is undefined>>
+<<if $objectVersion.vaginaWetness lt 3 or $objectVersion.vaginaWetness is undefined>>
 	<<set $vaginaWetness to 0>>
 	<<set $trackedArousal to [0]>>
 	<<set $masturbation_vaginaFluid to 0>>
+	<<set $vaginaArousalWetness to 0>>
+	<<set $timeSinceArousal to 0>>
 
-	<<set $objectVersion.vaginaWetness to 2>>
+	<<set $objectVersion.vaginaWetness to 3>>
 <</if>>
 <</widget>>
 

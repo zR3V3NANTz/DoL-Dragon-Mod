@@ -2517,10 +2517,6 @@
 	<<unset $event>>
 <</if>>
 
-<<if $vaginaArousalWetness is undefined>>
-	<<set $vaginaArousalWetness to 0>>
-	<<set $timeSinceArousal to 0>>
-<</if>>
 
 <</widget>>
 
