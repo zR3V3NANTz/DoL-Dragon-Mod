@@ -3,7 +3,10 @@
 <<widget "masturbationeffects">>
 
 <<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
-<<set $_hymenIntact to $player.virginity.vaginal is true and $sexStats.vagina.pregnancy.totalBirthEvents is 0>>
+<<if $player.vaginaExist>>
+	<<set $_hymenIntact to $player.virginity.vaginal is true and $sexStats.vagina.pregnancy.totalBirthEvents is 0>>
+	<<vaginaWetnessCalculate>>
+<</if>>
 
 <<if $corruptionMasturbation is true>>
 	<<if $leftarm is "bound" and $rightarm is "bound">>
@@ -992,12 +995,19 @@
 	<<arousal 400>>
 	<<if $_genitals_exposed and $bugsinside is 1>>
 		<span class="blue">You run your fingers over your exposed <<pussy>>, and feel some bugs running around.</span>
+		<<addVaginalWetness 2>>
 	<<elseif $_genitals_exposed>>
 		<span class="blue">You run your fingers over your exposed <<pussy>> and shiver in anticipation.</span>
+		<<addVaginalWetness 2>>
 	<<elseif $worn.under_lower.vagina_exposed is 1>>
 		<span class="blue">You run your fingers over your <<pussy>>, feeling its shape beneath your $worn.lower.name.</span>
+		<<addVaginalWetness 1>>
 	<<elseif $worn.lower.vagina_exposed is 1>>
 		<span class="blue">You run your fingers over your <<pussy>>, feeling its shape beneath your $worn.under_lower.name.</span>
+		<<addVaginalWetness 1>>
+	<<else>>
+		<span class="blue">You run your fingers over your <<pussy>>, feeling its shape beneath your clothing.</span>
+		<<addVaginalWetness 0>>
 	<</if>>
 <<elseif $leftaction is "mvaginaentrance" or $rightaction is "mvaginaentrance">>
 	<<set $_actiondefault to ($player.penisExist ? "mvaginarub" : "mvaginaclit")>>
@@ -1010,12 +1020,19 @@
 	<<arousal 200>>
 	<<if $_genitals_exposed and $bugsinside is 1>>
 		<span class="blue">You run your fingers over your exposed <<pussy>>, and feel some bugs running around.</span>
+		<<addVaginalWetness 2>>
 	<<elseif $_genitals_exposed>>
 		<span class="blue">You run your fingers over your exposed <<pussy>> and shiver in anticipation.</span>
-	<<elseif $worn.under_lower.vagina_exposed is 1>>
+		<<addVaginalWetness 2>>
+	<<elseif $worn.lower.vagina_exposed is 0>>
 		<span class="blue">You run your fingers over your <<pussy>>, feeling its shape beneath your $worn.lower.name.</span>
-	<<elseif $worn.lower.vagina_exposed is 1>>
+		<<addVaginalWetness 0>>
+	<<elseif $worn.under_lower.vagina_exposed is 0>>
 		<span class="blue">You run your fingers over your <<pussy>>, feeling its shape beneath your $worn.under_lower.name.</span>
+		<<addVaginalWetness 1>>
+	<<else>>
+		<span class="blue">You run your fingers over your <<pussy>>, feeling its shape beneath your clothing.</span>
+		<<addVaginalWetness 0>>
 	<</if>>
 <</if>>
 
@@ -1045,6 +1062,7 @@
 		<span class="purple">You push a _lubricated finger into your <<pussy>> which parts to allow the intrusion.</span>
 	<</if>>
 
+	<<addVaginalWetness 1>>
 	<<set _fingeringEffects to true>>
 <</if>>
 
@@ -1076,6 +1094,7 @@
 		<</if>>
 	<</if>>
 
+	<<addVaginalWetness $fingersInVagina>>
 	<<set _fingeringEffects to true>>
 <</if>>
 
@@ -1128,6 +1147,7 @@
 			You gently fuck the entrance of your <<pussy>> with <<number $fingersInVagina>> $_fingers.
 		<</if>>
 	<</if>>
+	<<addVaginalWetness $fingersInVagina>>
 <</if>>
 
 <<if $leftaction is "mvaginaclit" and $rightaction is "mvaginaclit">>
@@ -1142,6 +1162,7 @@
 	<<else>>
 		You rub your clit with your fingers, developing a lewd feeling.
 	<</if>>
+	<<addVaginalWetness 3>>
 <<elseif $leftaction is "mvaginaclit" or $rightaction is "mvaginaclit">>
 	<<if $leftaction is "mvaginaclit">>
 		<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
@@ -1157,6 +1178,7 @@
 	<<else>>
 		You rub your clit with your fingers, developing a lewd feeling.
 	<</if>>
+	<<addVaginalWetness 2>>
 <</if>>
 
 <<if $leftaction is "mvaginarub" and $rightaction is "mvaginarub">>
@@ -1165,12 +1187,19 @@
 	<<arousal 400>>
 	<<if $_genitals_exposed and $bugsinside is 1>>
 		You run your fingers over your exposed <<pussy>>, and feel some bugs running around.
+		<<addVaginalWetness 2>>
 	<<elseif $_genitals_exposed>>
 		You run your fingers over your exposed <<pussy>> and shiver in anticipation.
+		<<addVaginalWetness 2>>
 	<<elseif $worn.under_lower.vagina_exposed is 1>>
 		You run your fingers over your <<pussy>>, feeling its shape beneath your $worn.lower.name.
+		<<addVaginalWetness 1>>
 	<<elseif $worn.lower.vagina_exposed is 1>>
 		You run your fingers over your <<pussy>>, feeling its shape beneath your $worn.under_lower.name.
+		<<addVaginalWetness 2>>
+	<<else>>
+		You run your fingers over your <<pussy>>, feeling its shape beneath your clothing.
+		<<addVaginalWetness 0>>
 	<</if>>
 <<elseif $leftaction is "mvaginarub" or $rightaction is "mvaginarub">>
 	<<if $leftaction is "mvaginarub">>
@@ -1182,12 +1211,19 @@
 	<<arousal 200>>
 	<<if $_genitals_exposed and $bugsinside is 1>>
 		You run your finger over your exposed <<pussy>>, and feel some bugs running around.
+		<<addVaginalWetness 2>>
 	<<elseif $_genitals_exposed>>
 		You run your finger over your exposed <<pussy>> and shiver in anticipation.
+		<<addVaginalWetness 2>>
 	<<elseif $worn.under_lower.vagina_exposed is 1>>
 		You run your finger over your <<pussy>>, feeling its shape beneath your $worn.lower.name.
+		<<addVaginalWetness 0>>
 	<<elseif $worn.lower.vagina_exposed is 1>>
 		You run your finger over your <<pussy>>, feeling its shape beneath your $worn.under_lower.name.
+		<<addVaginalWetness 1>>
+	<<else>>
+		You run your finger over your <<pussy>>, feeling its shape beneath your clothing.
+		<<addVaginalWetness 0>>
 	<</if>>
 <</if>>
 
@@ -1226,16 +1262,16 @@
 <</if>>
 
 <<if $player.vaginaExist>>
-	<<if $vaginaWetness gte 60>>
+	<<if $vaginaArousalWetness gte 60>>
 		<<if $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
-			Juices leak from your <<pussy>>.
+			<span class="pink">Juices leak from your <<pussy>>.</span>
 			<<vaginaFluidPassive>>
-		<<elseif $worn.lower.vagina_exposed is 1>>
-			Juices leak from your <<pussy>> and seep through your $worn.under_lower.name.
-			<<set $underlowerwet += 30>>
-			<<set $pantiesSoaked = $underlowerwet >= 100 ? 1 : 0>>
-		<<elseif $worn.under_lower.vagina_exposed is 1>>
-			Juices leak from your <<pussy>> and seep through your $worn.lower.name.
+		<<elseif $worn.under_lower.vagina_exposed is 0 and $underlowerwetstage lt 3>>
+			<span class="pink">Juices leak from your <<pussy>> and dampen your $worn.under_lower.name.</span>
+		<<elseif $worn.lower.vagina_exposed is 0>>
+			<span class="pink">Juices leak from your <<pussy>><<if $underlowerwet gte 60>>, soak through your $worn.under_lower.name,<</if>> and dampen your $worn.lower.name.</span>
+		<<else>>
+			<span class="pink">Juices leak from your <<pussy>> and dampen your clothing.</span>
 		<</if>>
 	<</if>>
 <</if>>

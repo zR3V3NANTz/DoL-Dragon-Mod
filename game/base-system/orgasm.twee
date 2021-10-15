@@ -170,8 +170,12 @@
 		<<set $masochism += 5>>
 	<</if>>
 
-	<<orgasmsemen>>/*Makes changes to semen values*/
-	<<vaginaFluidOrgasm>>
+	<<if $player.penisExist>>
+		<<semenOrgasm>>/*Makes changes to semen values*/
+	<</if>>
+	<<if $player.vaginaExist>>
+		<<vaginaFluidOrgasm>>
+	<</if>>
 
 	<<if $parasite.left_ear.name is "slime" and $parasite.right_ear.name is "slime">>
 		<span class="blue">A soothing warmth fills you.</span>
@@ -455,7 +459,7 @@
 	<<set $milk_amount += Math.floor(($milk_volume / 24))>>
 <</widget>>
 
-<<widget "orgasmsemen">>
+<<widget "semenOrgasm">>
 	<<set $_semen_released to 30>>
 	<<set $_semen_released += ($semen_volume / 30)>>
 	<<if $femaleclimax is 1>>
@@ -489,90 +493,112 @@
 <</widget>>
 
 <<widget "wetnessCalculate">>
+	<<if $player.vaginaExist>>
+		<<vaginaWetnessCalculate>>
+	<</if>>
+	<<if $player.penisExist>>
+		<<set $penisWetness to setup.bodyliquid.combined("penis") * 12>>
+		<<set $penisWetness to Math.clamp($penisWetness, 0, 120)>>
+	<</if>>
+	<<set $anusWetness to (setup.bodyliquid.combined("anus") + setup.bodyliquid.combined("bottom")) * 6>>
+	<<set $anusWetness to Math.clamp($anusWetness, 0, 120)>>
+	<<if $combat is 1>>
+		<<penetrationPainCalculate>>
+	<</if>>
+<</widget>>
+
+<<widget "vaginaWetnessCalculate">>
 <<set _totalArousal = 0>>
 <<set _length to $trackedArousal.length>>
 <<for _ia to 0; _ia lt _length; _ia++>>
 	<<set _totalArousal += $trackedArousal[_ia] / ((_length - _ia) * 1.5)>>
 <</for>>
 <<if $combat is 1>>
+	<!-- combatWetBoost can be from 0 to 5, because max promiscuity/deviancy is 100. -->
 	<<if $enemytype is "man">>
 		<<set $combatWetBoost to Math.floor($promiscuity /20)>>
-	<</if>>
-	<<if $enemytype is "tentacles" or $enemytype is "beast">>
+	<<elseif $enemytype is "tentacles" or $enemytype is "beast">>
 		<<set $combatWetBoost to Math.floor($deviancy /20)>>
+	<<else>>
+		<<set $combatWetBoost to 0>>
 	<</if>>
+	<!-- combatArousalWetness has been replaced by vaginaArousalWetness but I don't want to remove it completely so it's commented out for now. -->
+	/* <<set $_combatArousalWetness to 75 - Math.floor(Math.pow(0.99985,_totalArousal) * 75)>> */
+	/* <<set $combatWetBoost += $_combatArousalWetness>> */
 <<else>>
 	<<set $combatWetBoost to 0>>
 <</if>>
 
-<<set _exponential to Math.pow(0.99985,_totalArousal)>>
-<<if $player.vaginaExist>>
-	<<set $vaginaWetness to Math.clamp((75 - Math.floor(_exponential * 75)) + ($player.bodyliquid.vagina.goo * 6) + ($player.bodyliquid.vagina.semen * 6) + ($player.bodyliquid.vaginaoutside.goo * 6) + ($player.bodyliquid.vaginaoutside.semen * 6) + $combatWetBoost, 0, 120)>>
-<</if>>
-<<if $player.penisExist>>
-	<<set $penisWetness to Math.clamp(($player.bodyliquid.penis.goo * 12) + ($player.bodyliquid.penis.semen * 12), 0, 120)>>
-<</if>>
-<<set $anusWetness to Math.clamp(($player.bodyliquid.anus.goo * 6) + ($player.bodyliquid.anus.semen * 6) + ($player.bodyliquid.bottom.goo * 6) + ($player.bodyliquid.bottom.semen * 6), 0, 120)>>
-<<if $combat is 1>>
-	<<combatWetnessCalculate>>
-<</if>>
+<<set $vaginaWetness to $vaginaArousalWetness + $combatWetBoost + (setup.bodyliquid.combined("vagina") + setup.bodyliquid.combined("vaginaoutside")) * 6>>
+<<set $vaginaWetness to Math.clamp($vaginaWetness, 0, 120)>>
 <</widget>>
 
-<<widget "combatWetnessCalculate">>
+<<widget "penetrationPainCalculate">>
 <<set $vaginalPain to 0>>
 <<set $analPain to 0>>
 <<set $penisPain to 0>>
 <<if $demon lt 6 and $gamemode isnot "soft">>
-	<<if $gamemode is "hard">>
-		<<set _diff to 2>>
-	<<else>>
-		<<set _diff to 1>>
-	<</if>>
 	<<if $player.vaginaExist>>
 		<<if $consensual is 1>>
-			<<set _base to Math.floor(3 * Math.pow(0.4,$vaginaWetness/8))>>
+			<<set $vaginalPain to Math.floor(3 * Math.pow(0.4,$vaginaWetness/8))>>
 		<<else>>
-			<<set _base to Math.floor(6 * Math.pow(0.5,$vaginaWetness/25))>>
+			<<set $vaginalPain to Math.floor(6 * Math.pow(0.5,$vaginaWetness/25))>>
 		<</if>>
-		<<set $vaginalPain to _base * _diff>>
 	<</if>>
 	<<if $player.penisExist>>
 		<<if $consensual is 1>>
-			<<set _base to Math.floor(3 * Math.pow(0.4,$penisWetness/8))>>
+			<<set $penisPain to Math.floor(3 * Math.pow(0.4,$penisWetness/8))>>
 		<<else>>
-			<<set _base to Math.floor(6 * Math.pow(0.5,$penisWetness/25))>>
+			<<set $penisPain to Math.floor(6 * Math.pow(0.5,$penisWetness/25))>>
 		<</if>>
-		<<set $penisPain to _base * _diff>>
 	<</if>>
 	<<if $consensual is 1>>
-		<<set _base to Math.floor(3 * Math.pow(0.4,$anusWetness/8))>>
+		<<set $analPain to Math.floor(3 * Math.pow(0.4,$anusWetness/8))>>
 	<<else>>
-		<<set _base to Math.floor(6 * Math.pow(0.5,$anusWetness/25))>>
+		<<set $analPain to Math.floor(6 * Math.pow(0.5,$anusWetness/25))>>
 	<</if>>
-	<<set $analPain to _base * _diff>>
+	<<if $gamemode is "hard">>
+		<<set $vaginalPain *= 2>>
+		<<set $penisPain *= 2>>
+		<<set $analPain *= 2>>
+	<</if>>
 <</if>>
 <</widget>>
 
+<!-- Lube is only released when vaginaWetness is over 60 -->
+<!-- "passive" means the lube is dripping out, while "active" means it is being pushed out  -->
 <<widget "vaginaFluidPassive">>
-	<<set _temp_lube to Math.floor(Math.clamp($vaginaWetness - 60 - random(10,40), 0, 40)/4)>>
+	<<set $_lube_released to $vaginaArousalWetness - random(60,90) - 10>>
+	<<set $_lube_released to Math.floor($_lube_released / 4)>>
+	<<set $_lube_released to Math.clamp($_lube_released, 0, 10)>>
+	
 	<<if $masturbation_bowl is 1>>
-		<<set $masturbation_vaginaFluid += _temp_lube>>
+		<<set $masturbation_vaginaFluid += $_lube_released>>
 	<</if>>
-	<<set $lube_produced_stat += _temp_lube>>
+	<<set $lube_produced_stat += $_lube_released>>
+	<<set $vaginaArousalWetness -= $_lube_released>>
 <</widget>>
 
 <<widget "vaginaFluidActive">>
-	<<set _temp_lube to Math.floor(Math.clamp($vaginaWetness - 60 - random(0,30), 0, 40)/4)>>
+	<<set $_lube_released to $vaginaArousalWetness - random(60,90)>>
+	<<set $_lube_released to Math.floor($_lube_released / 4)>>
+	<<set $_lube_released to Math.clamp($_lube_released, 0, 10)>>
+	
 	<<if $masturbation_bowl is 1>>
-		<<set $masturbation_vaginaFluid += _temp_lube>>
+		<<set $masturbation_vaginaFluid += $_lube_released>>
 	<</if>>
-	<<set $lube_produced_stat += _temp_lube>>
+	<<set $lube_produced_stat += $_lube_released>>
+	<<set $vaginaArousalWetness -= $_lube_released>>
 <</widget>>
 
 <<widget "vaginaFluidOrgasm">>
-	<<set _temp_lube to Math.floor(Math.clamp($vaginaWetness, 0, 40)/2)>>
+	<<set $_lube_released to Math.floor($vaginaArousalWetness / 2)>>
+	<<set $_lube_released to Math.clamp($_lube_released, 0, 20)>>
+
 	<<if $masturbation_bowl is 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
-		<<set $masturbation_vaginaFluid += _temp_lube>>
+		<<set $masturbation_vaginaFluid += $_lube_released>>
 	<</if>>
-	<<set $lube_produced_stat += _temp_lube>>
+	<<set $lube_produced_stat += $_lube_released>>
+
+	<<addVaginalWetness 10>>
 <</widget>>

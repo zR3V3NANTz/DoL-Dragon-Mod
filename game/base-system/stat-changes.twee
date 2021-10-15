@@ -220,6 +220,9 @@
 				<<run $trackedArousal.push(0)>>
 			<</if>>
 			<<set $trackedArousal[$trackedArousal.length - 1] += $args[0]>>
+			<<if $args[0] gt 0>>
+				<<set $timeSinceArousal to 0>>
+			<</if>>
 		<</if>>
 	<<else>>
 		<<if $arousalError is undefined>>

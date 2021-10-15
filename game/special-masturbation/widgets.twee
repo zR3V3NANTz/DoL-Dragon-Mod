@@ -197,3 +197,22 @@
 		<</if>>
 	<</if>>
 <</widget>>
+
+<<widget "addVaginalWetness">>
+	<<if $args[0] and $args[0] gt 0 and $player.vaginaExist>>
+		<<set $_change to Math.pow(($arousal+6000)/10000, 2)>>
+
+		<!-- $args[0] is just an arbitrary value to scale wetness gain by, to make certain actions more impactful. -->
+		<<if $args[0]>>
+			<<set $_change *= $args[0]>>
+		<</if>>
+
+		<!-- Make it harder to build up wetness the closer you are to max wetness. -->
+		<<set $_change *= Math.clamp((1 - ($vaginaArousalWetness / 100)), 0, 1)>>
+		
+		<<set $_change to Math.floor($_change)>>
+
+		<<set $vaginaArousalWetness += $_change>>
+		<<set $vaginaArousalWetness to Math.clamp($vaginaArousalWetness, 0, 100)>>
+	<</if>>
+<</widget>>
