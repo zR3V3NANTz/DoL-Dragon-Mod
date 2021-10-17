@@ -333,12 +333,12 @@ Several metal tendrils slither from beneath, wrapping around your arms and legs.
 <<molested>>
 <<controlloss>>
 
-<<tentaclestart 8 15>>
+<<tentaclestart 8 15 "tendril" "metal">>
 
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>

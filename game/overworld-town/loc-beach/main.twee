@@ -231,9 +231,9 @@ The teenagers are happy to have a sixth player, particularly the <<person1>><<pe
 		<<else>>
 			You are so focused on the opposing team you do not notice one of your own sneak up on you. A pair of hands grasp the rim of your $worn.lower.name.
 		<</if>>
-		<<if $worn.lower.skirt is 0 and $worn.lower.set isnot $worn.upper.set>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 0 and $worn.lower.set isnot $worn.upper.set>>
 			Before you can react, the <<person1>><<person>> has pulled them all the way to your knees,
-		<<elseif $worn.lower.skirt is 0 and $worn.lower.set is $worn.upper.set>>
+		<<elseif setup.clothes.lower[$worn.lower.index].skirt is 0 and $worn.lower.set is $worn.upper.set>>
 			Before you can react, the <<person1>><<person>> has pulled it aside,
 		<<else>>
 			Before you can react, the <<person1>><<person>> has lifted it,

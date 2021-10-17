@@ -656,7 +656,7 @@
 <<widget "clothesactive">>
 <<imgOpacity>>
 <div class="i256">
-<<if $worn.upper.set is $worn.lower.set and $worn.lower.skirt is 1>>
+<<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.upper.state is "waist">>
 		<<if $worn.lower.skirt_down is 1>>
 			<img @class="'layer-sexlower colour-upper anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/dress/doggyactive_dress_thighs.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
@@ -681,17 +681,17 @@
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/gymbloomers/doggyactive_shorts_ankles.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 	<</if>>
 <<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set>>
-	<<if $worn.lower.skirt is 1 and $worn.lower.skirt_down is 0 and $worn.lower.state is "waist">>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.skirt_down is 0 and $worn.lower.state is "waist">>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/skirt/doggyactive_skirt_waist.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.vagina_exposed is 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.vagina_exposed is 1>>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/skirt/doggyactive_skirt_waist.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "waist">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "waist">>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/skirt/doggyactive_skirt_hips.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "thighs">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "thighs">>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/skirt/doggyactive_skirt_thighs.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "knees">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "knees">>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/skirt/doggyactive_skirt_knees.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "ankles">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "ankles">>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/skirt/doggyactive_skirt_ankles.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 	<<elseif $worn.lower.state is "waist">>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/shorts/doggyactive_shorts_hips.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -796,7 +796,7 @@
 <</if>>
 
 
-<<if $worn.upper.sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
+<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
 	<<if $leftarm is "bound" or $leftarm is "grappled" or $leftarm is "behind">>
 		<img @class="'layer-sexsleeve colour-upper anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/sleeves/left_sleeve_bound.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
 	<<elseif $leftarm is "penis" or $leftarmstate is "tentacle">>
@@ -956,7 +956,7 @@
 	<<else>>
 		<<set _feetjob to "rest">>
 	<</if>>
-	<<if $worn.legs.state is $worn.legs.state_base>>
+	<<if $worn.legs.state is setup.clothes.legs[$worn.legs.index].state_base>>
 		<<set _feetposition to "full">>
 	<<else>>
 		<<set _feetposition to "knees">>
@@ -968,10 +968,10 @@
 		<<set _legAccColour to $worn.legs.accessory_colourCustom>>
 	<</if>>
 
-	<<if $worn.legs.state_base is "waist">>
+	<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 		<img @class="'layer-sexlegs colour-legs anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/legs/'
 	+ $worn.legs.variable + '/' + _feetposition + _feetjob + '.png'" @style="_legColour">
-	<<elseif $worn.legs.state_base is "ankles">>
+	<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 		<img @class="'layer-sexlegs colour-legs anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/legs/'
 	+ $worn.legs.variable + '/' + _feetjob + '.png'" @style="_legColour">
 	<<else>>
@@ -981,10 +981,10 @@
 	+ $worn.legs.variable + '/' + _feetposition + _feetjob + 'right' + '.png'" @style="_legColour">
 	<</if>>
 	<<if $worn.legs.accessory>>
-		<<if $worn.legs.state_base is "waist">>
+		<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 			<img @class="'layer-sexlegsacc colour-legs_acc anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/legs/'
 			+ $worn.legs.variable + '/' + _feetposition + _feetjob + 'acc.png'" @style="_legAccColour">
-		<<elseif $worn.legs.state_base is "ankles">>
+		<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 			<img @class="'layer-sexlegsacc colour-legs_acc anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/legs/'
 			+ $worn.legs.variable + '/' + _feetjob + 'acc.png'" @style="_legAccColour">
 		<<else>>
@@ -1005,7 +1005,7 @@
 <<widget "clothesidle">>
 <<imgOpacity>>
 <div class="i256">
-<<if $worn.upper.set is $worn.lower.set and $worn.lower.skirt is 1>>
+<<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.upper.state is "waist">>
 		<<if $worn.lower.skirt_down is 1>>
 			<img class="layer-sexlower colour-upper anim-idle-2f" src="img/sex/doggy/active/dress/doggyactive_dress_thighs.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
@@ -1020,7 +1020,7 @@
 <</if>>
 
 <<if $worn.lower.name is "towel skirt">>
-	<<if $worn.lower.skirt is 1 and $worn.lower.skirt_down is 0 and $worn.lower.state is "waist">>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.skirt_down is 0 and $worn.lower.state is "waist">>
 		<img class="layer-sexlower colour-lower anim-idle-2f"
 		@src="'img/sex/doggy/active/lowertowel/doggyactive_towel_skirtup.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 	<<else>>
@@ -1059,17 +1059,17 @@
 			@style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 	<</switch>>
 <<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set>>
-	<<if $worn.lower.skirt is 1 and $worn.lower.skirt_down is 0 and $worn.lower.state is "waist">>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.skirt_down is 0 and $worn.lower.state is "waist">>
 		<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/doggy/active/skirt/doggyactive_skirt_waist.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.vagina_exposed is 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.vagina_exposed is 1>>
 		<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/doggy/active/skirt/doggyactive_skirt_waist.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "waist">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "waist">>
 		<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/doggy/active/skirt/doggyactive_skirt_hips.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "thighs">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "thighs">>
 		<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/doggy/active/skirt/doggyactive_skirt_thighs.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "knees">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "knees">>
 		<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/doggy/active/skirt/doggyactive_skirt_knees.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
-	<<elseif $worn.lower.skirt is 1 and $worn.lower.state is "ankles">>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.state is "ankles">>
 		<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/doggy/active/skirt/doggyactive_skirt_ankles.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 	<<elseif $worn.lower.state is "waist">>
 		<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/doggy/active/shorts/doggyactive_shorts_hips.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -1192,7 +1192,7 @@
 	<</if>>
 <</if>>
 
-<<if $worn.upper.sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
+<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
 	<<if $leftarm is "bound" or $leftarm is "grappled" or $leftarm is "behind">>
 		<img @class="'layer-sexsleeve colour-upper anim-doggy-2f-'+_animspeed" src="img/sex/doggy/active/sleeves/left_sleeve_bound.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
 	<<elseif $leftarm is "penis" or $leftarmstate is "tentacle">>
@@ -1341,7 +1341,7 @@
 	<<else>>
 		<<set _feetjob to "rest">>
 	<</if>>
-	<<if $worn.legs.state is $worn.legs.state_base>>
+	<<if $worn.legs.state is setup.clothes.legs[$worn.legs.index].state_base>>
 		<<set _feetposition to "full">>
 	<<else>>
 		<<set _feetposition to "knees">>
@@ -1353,10 +1353,10 @@
 		<<set _legAccColour to $worn.legs.accessory_colourCustom>>
 	<</if>>
 
-	<<if $worn.legs.state_base is "waist">>
+	<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 		<img class="layer-sexlegs colour-legs anim-doggy-2f" @src="'img/sex/doggy/active/legs/'
 	+ $worn.legs.variable + '/' + _feetposition + _feetjob + '.png'" @style="_legColour">
-	<<elseif $worn.legs.state_base is "ankles">>
+	<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 		<img class="layer-sexlegs colour-legs anim-doggy-2f" @src="'img/sex/doggy/active/legs/'
 	+ $worn.legs.variable + '/' + _feetjob + '.png'" @style="_legColour">
 	<<else>>
@@ -1366,10 +1366,10 @@
 	+ $worn.legs.variable + '/' + _feetposition + _feetjob + 'right' + '.png'" @style="_legColour">
 	<</if>>
 	<<if $worn.legs.accessory>>
-		<<if $worn.legs.state_base is "waist">>
+		<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 			<img class="layer-sexlegsacc colour-legs_acc anim-doggy-2f" @src="'img/sex/doggy/active/legs/'
 			+ $worn.legs.variable + '/' + _feetposition + _feetjob + 'acc.png'" @style="_legAccColour">
-		<<elseif $worn.legs.state_base is "ankles">>
+		<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 			<img class="layer-sexlegsacc colour-legs_acc anim-doggy-2f" @src="'img/sex/doggy/active/legs/'
 			+ $worn.legs.variable + '/' + _feetjob + 'acc.png'" @style="_legAccColour">
 		<<else>>
@@ -1406,7 +1406,7 @@
 	<</if>>
 <</if>>
 
-<<if !$worn.under_upper.type.includes("naked") and $worn.under_upper.state_top is $worn.under_upper.state_top_base and $worn.under_upper.name isnot "chest wrap" and $worn.under_upper.name isnot "mesh shirt">>
+<<if !$worn.under_upper.type.includes("naked") and $worn.under_upper.state_top is setup.clothes.under_upper[$worn.under_upper.index].state_top_base and $worn.under_upper.name isnot "chest wrap" and $worn.under_upper.name isnot "mesh shirt">>
 	<<if $player.perceived_breastsize is 0>>
 		<img class="layer-sexunder colour-under_upper anim-idle-2f" src="img/sex/missionary/idle/breastcover/none.png" @style="($worn.under_upper.colour is 'custom'? $worn.under_upper.colourCustom + _underUpperOpacity : '')">
 	<<elseif $player.perceived_breastsize lte 2>>
@@ -1420,7 +1420,7 @@
 	<</if>>
 <</if>>
 
-<<if $worn.upper.set is $worn.lower.set and $worn.lower.skirt is 1>>
+<<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.upper.state is "waist">>
 		<<if $worn.lower.skirt_down is 1>>
 			<<if $anususe is "penis" or _leg_position is "up">>
@@ -1529,7 +1529,7 @@
 	<</if>>
 <</if>>
 
-<<if $worn.upper.sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
+<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
 	<<if ($leftarm is "bound" or $leftarm is "grappled" or $leftarm is "behind") and ($rightarm is "bound" or $rightarm is "grappled" or $rightarm is "behind")>>
 		<img @class="'layer-sexsleeve colour-upper anim-doggy-2f-'+_animspeed" src="img/sex/missionary/active/sleeves/both_sleeves_bound.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
 	<<else>>
@@ -1585,7 +1585,7 @@
 			<img class="layer-sexlower colour-lower anim-idle-2f" src="img/sex/missionary/active/gymbloomers/ankledown.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<</if>>
 	<</if>>
-<<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set and $worn.lower.skirt is 1>>
+<<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.lower.state is "waist">>
 		<<if $worn.lower.skirt_down is 1>>
 			<<if $anususe is "penis" or _leg_position is "up">>
@@ -1769,7 +1769,7 @@
 	<<else>>
 		<<set _feetjob to "down">>
 	<</if>>
-	<<if $worn.legs.state is $worn.legs.state_base>>
+	<<if $worn.legs.state is setup.clothes.legs[$worn.legs.index].state_base>>
 		<<set _feetposition to "full">>
 	<<else>>
 		<<set _feetposition to "knees">>
@@ -1781,10 +1781,10 @@
 		<<set _legAccColour to $worn.legs.accessory_colourCustom>>
 	<</if>>
 
-	<<if $worn.legs.state_base is "waist">>
+	<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 		<img class="layer-sexlegs colour-legs anim-missionary-2f" @src="'img/sex/missionary/active/legs/'
 	+ $worn.legs.variable + '/' + _feetposition + _feetjob + '.png'" @style="_legColour">
-	<<elseif $worn.legs.state_base is "ankles">>
+	<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 		<<if _feetjob is "feetjob">>
 			<img class="layer-sexlegs colour-legs anim-missionary-2f" @src="'img/sex/missionary/active/legs/'
 	+ $worn.legs.variable + '/' + _feetjob + 'left' + '.png'" @style="_legColour">
@@ -1806,10 +1806,10 @@
 		<</if>>
 	<</if>>
 	<<if $worn.legs.accessory>>
-		<<if $worn.legs.state_base is "waist">>
+		<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 			<img class="layer-sexlegsbackacc colour-legs_acc anim-missionary-2f" @src="'img/sex/missionary/active/legs/'
 			+ $worn.legs.variable + '/' + _feetposition + _feetjob + 'acc.png'" @style="_legAccColour">
-		<<elseif $worn.legs.state_base is "ankles">>
+		<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 			<img class="layer-sexlegsacc colour-legs_acc anim-missionary-2f" @src="'img/sex/missionary/active/legs/'
 			+ $worn.legs.variable + '/' + _feetjob + 'acc.png'" @style="_legAccColour">
 		<<else>>
@@ -1844,7 +1844,7 @@
 	<</if>>
 <</if>>
 
-<<if !$worn.under_upper.type.includes("naked") and $worn.under_upper.state_top is $worn.under_upper.state_top_base and $worn.under_upper.name isnot "chest wrap" and $worn.under_upper.name isnot "mesh shirt">>
+<<if !$worn.under_upper.type.includes("naked") and $worn.under_upper.state_top is setup.clothes.under_upper[$worn.under_upper.index].state_top_base and $worn.under_upper.name isnot "chest wrap" and $worn.under_upper.name isnot "mesh shirt">>
 	<<if $player.perceived_breastsize is 0>>
 	<img @class="'layer-sexunder colour-under_upper anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/breastcover/none.png" @style="($worn.under_upper.colour is 'custom'? $worn.under_upper.colourCustom + _underUpperOpacity : '')">
 	<<elseif $player.perceived_breastsize lte 2>>
@@ -1858,7 +1858,7 @@
 	<</if>>
 <</if>>
 
-<<if $worn.upper.set is $worn.lower.set and $worn.lower.skirt is 1>>
+<<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.upper.state is "waist">>
 		<<if $worn.lower.skirt_down is 1>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/skirt/waist.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -1942,7 +1942,7 @@
 <</if>>
 
 
-<<if $worn.upper.sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
+<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1 and $worn.upper.name isnot "t-shirt">>
 	<<if ($leftarm is "bound" or $leftarm is "grappled" or $leftarm is "behind") and ($rightarm is "bound" or $rightarm is "grappled" or $rightarm is "behind")>>
 		<img @class="'layer-sexsleeve colour-upper anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/sleeves/both_sleeves_bound.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
 	<<else>>
@@ -1994,7 +1994,7 @@
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/gymbloomers/ankle.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<</if>>
 	<</if>>
-<<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set and $worn.lower.skirt is 1>>
+<<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.lower.state is "waist">>
 		<<if $worn.lower.skirt_down is 1>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/skirt/waist.png" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -2176,7 +2176,7 @@
 		<<set _legl to 'down'>>
 		<<set _legr to 'down'>>
 	<</if>>
-	<<if $worn.legs.state is $worn.legs.state_base>>
+	<<if $worn.legs.state is setup.clothes.legs[$worn.legs.index].state_base>>
 		<<set _feetposition to "full">>
 	<<else>>
 		<<set _feetposition to "knees">>
@@ -2188,10 +2188,10 @@
 		<<set _legAccColour to $worn.legs.accessory_colourCustom>>
 	<</if>>
 
-	<<if $worn.legs.state_base is "waist">>
+	<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 		<img @class="'layer-sexlegs colour-legs anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/active/legs/'
 	+ $worn.legs.variable + '/' + _feetposition + _legr + '.png'" @style="_legColour">
-	<<elseif $worn.legs.state_base is "ankles">>
+	<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 		<<if _legr is "feetjob">>
 			<img @class="'layer-sexlegs colour-legs anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/active/legs/'
 		+ $worn.legs.variable + '/' + _legr + '.png'" @style="_legColour">
@@ -2215,10 +2215,10 @@
 		<</if>>
 	<</if>>
 	<<if $worn.legs.accessory>>
-		<<if $worn.legs.state_base is "waist">>
+		<<if setup.clothes.legs[$worn.legs.index].state_base is "waist">>
 			<img @class="'layer-sexlegsacc colour-legs_acc anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/active/legs/'
 			+ $worn.legs.variable + '/' + _feetposition + _legr + 'acc.png'" @style="_legAccColour">
-		<<elseif $worn.legs.state_base is "ankles">>
+		<<elseif setup.clothes.legs[$worn.legs.index].state_base is "ankles">>
 			<<if _legr is "feetjob">>
 				<img @class="'layer-sexlegsbackacc colour-legs_acc anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/active/legs/'
 				+ $worn.legs.variable + '/' + _legr + 'acc.png'" @style="_legAccColour">
@@ -2339,11 +2339,11 @@
 		<<default>><<set _underUpperWetness to "">>
 	<</switch>>
 
-	<<if $worn.under_upper.integrity lte ($worn.under_upper.integrity_max / 10) * 2>>
+	<<if $worn.under_upper.integrity lte clothingData('under_upper',$worn.under_upper,'integrity_max') / 10) * 2>>
 		<<set _imgName to "tattered">>
-	<<elseif $worn.under_upper.integrity lte ($worn.under_upper.integrity_max / 10) * 5>>
+	<<elseif $worn.under_upper.integrity lte (clothingData('under_upper',$worn.under_upper,'integrity_max') / 10) * 5>>
 		<<set _imgName to "torn">>
-	<<elseif $worn.under_upper.integrity lte ($worn.under_upper.integrity_max / 10) * 9>>
+	<<elseif $worn.under_upper.integrity lte (clothingData('under_upper',$worn.under_upper,'integrity_max') / 10) * 9>>
 		<<set _imgName to "frayed">>
 	<<else>>
 		<<set _imgName to "full">>
@@ -2352,7 +2352,7 @@
 		<<if $worn.under_upper.mainImage isnot 0>>
 			<img @class="_class" @src="'img/clothes/under_upper/' + $worn.under_upper.variable + '/' + _imgName + '.png'" @style="_style">
 		<</if>>
-		<<if $worn.under_upper.breast_img is 1>>
+		<<if setup.clothes.under_upper[$worn.under_upper.index].breast_img is 1>>
 			<img @class="_class" @src="'img/clothes/under_upper/' + $worn.under_upper.variable + '/' + (Math.min(_breastSize, 5)) + '.png'" @style="_style">
 		<</if>>
 		<<if $worn.under_upper.accessory is 1>>
@@ -2400,11 +2400,11 @@
 		<<default>><<set _underlowerWetness to "">>
 	<</switch>>
 
-	<<if $worn.under_lower.integrity lte ($worn.under_lower.integrity_max / 10) * 2>>
+	<<if $worn.under_lower.integrity lte (clothingData('under_lower',$worn.under_lower,'integrity_max') / 10) * 2>>
 		<<set _imgName to "tattered">>
-	<<elseif $worn.under_lower.integrity lte ($worn.under_lower.integrity_max / 10) * 5>>
+	<<elseif $worn.under_lower.integrity lte (clothingData('under_lower',$worn.under_lower,'integrity_max') / 10) * 5>>
 		<<set _imgName to "torn">>
-	<<elseif $worn.under_lower.integrity lte ($worn.under_lower.integrity_max / 10) * 9>>
+	<<elseif $worn.under_lower.integrity lte (clothingData('under_lower',$worn.under_lower,'integrity_max') / 10) * 9>>
 		<<set _imgName to "frayed">>
 	<<else>>
 		<<set _imgName to "full">>
@@ -2443,11 +2443,11 @@
 		<<default>><<set _lowerWetness to "">>
 	<</switch>>
 
-	<<if $worn.lower.integrity lte ($worn.lower.integrity_max / 10) * 2>>
+	<<if $worn.lower.integrity lte (clothingData('lower',$worn.lower,'integrity_max') / 10) * 2>>
 		<<set _imgName to "tattered">>
-	<<elseif $worn.lower.integrity lte ($worn.lower.integrity_max / 10) * 5>>
+	<<elseif $worn.lower.integrity lte (clothingData('lower',$worn.lower,'integrity_max') / 10) * 5>>
 		<<set _imgName to "torn">>
-	<<elseif $worn.lower.integrity lte ($worn.lower.integrity_max / 10) * 9>>
+	<<elseif $worn.lower.integrity lte (clothingData('lower',$worn.lower,'integrity_max') / 10) * 9>>
 		<<set _imgName to "frayed">>
 	<<else>>
 		<<set _imgName to "full">>
@@ -2477,11 +2477,11 @@
 <<widget "overlowerimg">>
 <<if $worn.over_lower.name isnot "naked">>
 	<<baseClothingStrings "over_lower">>
-	<<if $worn.over_lower.integrity lte ($worn.over_lower.integrity_max / 10) * 2>>
+	<<if $worn.over_lower.integrity lte (clothingData('over_lower',$worn.over_lower,'integrity_max') / 10) * 2>>
 		<<set _imgName to "tattered">>
-	<<elseif $worn.over_lower.integrity lte ($worn.over_lower.integrity_max / 10) * 5>>
+	<<elseif $worn.over_lower.integrity lte (clothingData('over_lower',$worn.over_lower,'integrity_max') / 10) * 5>>
 		<<set _imgName to "torn">>
-	<<elseif $worn.over_lower.integrity lte ($worn.over_lower.integrity_max / 10) * 9>>
+	<<elseif $worn.over_lower.integrity lte (clothingData('over_lower',$worn.over_lower,'integrity_max') / 10) * 9>>
 		<<set _imgName to "frayed">>
 	<<else>>
 		<<set _imgName to "full">>
@@ -2509,31 +2509,31 @@
 	<div class="layer-genitals">
 		<<if $worn.genitals.mainImage isnot 0 and !$worn.genitals.hideUnderLower.includes($worn.under_lower.name)>>
 			<<if $worn.genitals.name is "chastity cage" and $parasite.penis.name is "urchin">>
-				<<if $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 2>>
+				<<if $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 2>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'tattered_urchin.png'" @style="$worn.genitals.colourCustom">
-				<<elseif $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 5>>
+				<<elseif $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 5>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'torn_urchin.png'" @style="$worn.genitals.colourCustom">
-				<<elseif $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 9>>
+				<<elseif $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 9>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'frayed_urchin.png'" @style="$worn.genitals.colourCustom">
 				<<else>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'full_urchin.png'" @style="$worn.genitals.colourCustom">
 				<</if>>
 			<<elseif $worn.genitals.name is "chastity cage" and $parasite.penis.name is "slime">>
-				<<if $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 2>>
+				<<if $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 2>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'tattered_slime.png'" @style="$worn.genitals.colourCustom">
-				<<elseif $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 5>>
+				<<elseif $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 5>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'torn_slime.png'" @style="$worn.genitals.colourCustom">
-				<<elseif $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 9>>
+				<<elseif $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 9>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'frayed_slime.png'" @style="$worn.genitals.colourCustom">
 				<<else>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'full_slime.png'" @style="$worn.genitals.colourCustom">
 				<</if>>
 			<<else>>
-				<<if $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 2>>
+				<<if $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 2>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'tattered.png'" @style="$worn.genitals.colourCustom">
-				<<elseif $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 5>>
+				<<elseif $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 5>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'torn.png'" @style="$worn.genitals.colourCustom">
-				<<elseif $worn.genitals.integrity lte ($worn.genitals.integrity_max / 10) * 9>>
+				<<elseif $worn.genitals.integrity lte (clothingData('genitals',$worn.genitals,'integrity_max') / 10) * 9>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'frayed.png'" @style="$worn.genitals.colourCustom">
 				<<else>>
 					<img @class="'anim-idle-2f' + _genitalsColour" @src="'img/clothes/genitals/' + $worn.genitals.variable + '/' + 'full.png'" @style="$worn.genitals.colourCustom">
@@ -2554,21 +2554,21 @@
 		<<case 3>><<set _upperWetness to " clothes-drenshed">>
 		<<default>><<set _upperWetness to "">>
 	<</switch>>
-	<<set _tucked = $upperTucked and !$worn.upper.notuck and $worn.upper.outfitPrimary is undefined ? " tucked" : "">>
+	<<set _tucked = $upperTucked and !setup.clothes.upper[$worn.upper.index].notuck and $worn.upper.outfitPrimary is undefined ? " tucked" : "">>
 	<div @class="'clothes-div layer-upper' + _tucked + _upperWetness">
 		<<if $worn.upper.mainImage isnot 0>>
-			<<if $worn.upper.integrity lte ($worn.upper.integrity_max / 10) * 2>>
+			<<if $worn.upper.integrity lte (clothingData('upper',$worn.upper,'integrity_max') / 10) * 2>>
 				<<set _imgName to "tattered">>
-			<<elseif $worn.upper.integrity lte ($worn.upper.integrity_max / 10) * 5>>
+			<<elseif $worn.upper.integrity lte (clothingData('upper',$worn.upper,'integrity_max') / 10) * 5>>
 				<<set _imgName to "torn">>
-			<<elseif $worn.upper.integrity lte ($worn.upper.integrity_max / 10) * 9>>
+			<<elseif $worn.upper.integrity lte (clothingData('upper',$worn.upper,'integrity_max') / 10) * 9>>
 				<<set _imgName to "frayed">>
 			<<else>>
 				<<set _imgName to "full">>
 			<</if>>
 			<img @class="_class" @src="'img/clothes/upper/' + $worn.upper.variable + '/' + _imgName + '.png'" @style="_style">
 		<</if>>
-		<<if $worn.upper.breast_img is 1>>
+		<<if setup.clothes.upper[$worn.upper.index].breast_img is 1>>
 			<img @class="_class" @src="'img/clothes/upper/' + $worn.upper.variable + '/' + (Math.min(_breastSize, 5)) + '.png'" @style="_style">
 		<</if>>
 		<<if $worn.upper.accessory is 1>>
@@ -2584,7 +2584,7 @@
 		"no": "",
 		"secondary": _classAcc
 	}[$worn.upper.sleeve_colour||""]>>
-	<<if _coverRight isnot undefined and $worn.upper.sleeve_img is 1>>
+	<<if _coverRight isnot undefined and setup.clothes.upper[$worn.upper.index].sleeve_img is 1>>
 		<div @class="'clothes-div layer-rightarmclothes' + _upperWetness">
 			<<if _coverRight is true>>
 				<img @class="_sleeveClass" @src="'img/clothes/upper/' + $worn.upper.variable + '/' + 'right_cover.png'" @style="_style">
@@ -2593,7 +2593,7 @@
 			<</if>>
 		</div>
 	<</if>>
-	<<if _coverLeft isnot undefined and $worn.upper.sleeve_img is 1>>
+	<<if _coverLeft isnot undefined and setup.clothes.upper[$worn.upper.index].sleeve_img is 1>>
 		<div @class="'clothes-div layer-leftarmclothes' + _upperWetness">
 			<<if _coverLeft is true>>
 				<img @class="_sleeveClass" @src="'img/clothes/upper/' + $worn.upper.variable + '/' + 'left_cover.png'" @style="_style">
@@ -2608,11 +2608,11 @@
 <<widget "overupperimg">>
 <<if $worn.over_upper.name isnot "naked">>
 	<<baseClothingStrings "over_upper">>
-	<<if $worn.over_upper.integrity lte ($worn.over_upper.integrity_max / 10) * 2>>
+	<<if $worn.over_upper.integrity lte (clothingData('over_upper',$worn.over_upper,'integrity_max') / 10) * 2>>
 		<<set _imgName to "tattered">>
-	<<elseif $worn.over_upper.integrity lte ($worn.over_upper.integrity_max / 10) * 5>>
+	<<elseif $worn.over_upper.integrity lte (clothingData('over_upper',$worn.over_upper,'integrity_max') / 10) * 5>>
 		<<set _imgName to "torn">>
-	<<elseif $worn.over_upper.integrity lte ($worn.over_upper.integrity_max / 10) * 9>>
+	<<elseif $worn.over_upper.integrity lte (clothingData('over_upper',$worn.over_upper,'integrity_max') / 10) * 9>>
 		<<set _imgName to "frayed">>
 	<<else>>
 		<<set _imgName to "full">>
@@ -2621,7 +2621,7 @@
 		<<if $worn.over_upper.mainImage isnot 0>>
 			<img @class="_class" @src="'img/clothes/over_upper/' + $worn.over_upper.variable + '/' + _imgName + '.png'" @style="_style">
 		<</if>>
-		<<if $worn.over_upper.breast_img is 1>>
+		<<if setup.clothes.over_upper[$worn.over_upper.index].breast_img is 1>>
 			<img @class="_class" @src="'img/clothes/over_upper/' + $worn.over_upper.variable + '/' + (Math.min(_breastSize, 5)) + '.png'" @style="_style">
 		<</if>>
 		<<if $worn.over_upper.accessory is 1>>
@@ -2634,7 +2634,7 @@
 		"no": "",
 		"secondary": _classAcc
 	}[$worn.over_upper.sleeve_colour||""]>>
-	<<if _coverRight isnot undefined and $worn.over_upper.sleeve_img is 1>>
+	<<if _coverRight isnot undefined and setup.clothes.over_upper[$worn.over_upper.index].sleeve_img is 1>>
 		<div class="layer-rightarmoverclothes">
 			<<if _coverRight is true>>
 				<img @class="_sleeveClass" @src="'img/clothes/over_upper/' + $worn.over_upper.variable + '/' + 'right_cover.png'" @style="_style">
@@ -2643,7 +2643,7 @@
 			<</if>>
 		</div>
 	<</if>>
-	<<if _coverLeft isnot undefined and $worn.over_upper.sleeve_img is 1>>
+	<<if _coverLeft isnot undefined and setup.clothes.over_upper[$worn.over_upper.index].sleeve_img is 1>>
 		<div class="layer-leftarmoverclothes">
 			<<if _coverLeft is true>>
 				<img @class="_sleeveClass" @src="'img/clothes/over_upper/' + $worn.over_upper.variable + '/' + 'left_cover.png'" @style="_style">

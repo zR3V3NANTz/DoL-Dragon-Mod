@@ -15,7 +15,7 @@
 <<farm_trust dogs>>
 <</if>>
 
-<<if $worn.upper.sleeve_img isnot 1 and ($leftarm is "bound" or $rightarm is "bound") and $phase is 1>>
+<<if setup.clothes.upper[$worn.upper.index].sleeve_img isnot 1 and ($leftarm is "bound" or $rightarm is "bound") and $phase is 1>>
 	The chickens tear the ruined remains of your sleeves away from you, <span class="lblue">freeing your arms.</span>
 	<<unbind>>
 	<br><br>
@@ -51,7 +51,7 @@
 
 	<<beastejaculation>>
 
-	<<if $worn.upper.sleeve_img is 1>>
+	<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1>>
 		Satisfied, the <<farm_text dog>> leaves the coop as the chickens step away from the fence, freeing your arms.
 		<<unbind>>
 	<<else>>
@@ -71,7 +71,7 @@
 
 <<elseif $enemyhealth lte 0>>
 
-	<<if $worn.upper.sleeve_img is 1>>
+	<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1>>
 		The <<farm_text dog>> turns and runs. The chickens follow, releasing your arms.
 		<<unbind>>
 	<<else>>
@@ -93,7 +93,7 @@
 	"I'm coming!" It's Alex. The <<farm_text dog>> backs away at the sound of <<his>> voice.
 
 
-	<<if $worn.upper.sleeve_img is 1>>
+	<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1>>
 		The chickens follow suit.
 		<<unbind>>
 	<<else>>
@@ -1666,10 +1666,10 @@ You scramble out from beneath the <<farm_text horse>>, and continue to the gate.
 		<br><br>
 
 		"Time for a lesson."
-		<<if $worn.upper.set is $worn.lower.set and $worn.lower.skirt isnot 1>>
+		<<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 			You feel <<farm_his horse>> fingers tap against your <<bottom>>
 		<<elseif !$worn.lower.type.includes("naked")>>
-			<<if $worn.lower.skirt is 1>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				<<if !$worn.under_lower.type.includes("naked") and $worn.under_upper.set isnot $worn.under_lower.set>>
 					<<farm_He horse>> flips up your $worn.lower.name, and pulls down your $worn.under_lower.name, baring your <<bottom>>.
 				<<else>>
@@ -1702,10 +1702,10 @@ You scramble out from beneath the <<farm_text horse>>, and continue to the gate.
 	<<else>>
 		The horse grasps your hair, pulling you to your knees again. This time however, it shoves you forward, leaving your rear stuck in the air.
 
-		<<if $worn.upper.set is $worn.lower.set and $worn.lower.skirt isnot 1>>
+		<<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 			You feel <<farm_his horse>> tongue lap against your <<bottom>>, and hope your $worn.lower.name proves enough of a barrier.
 		<<elseif !$worn.lower.type.includes("naked")>>
-			<<if $worn.lower.skirt is 1>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				<<if !$worn.under_lower.type.includes("naked") and $worn.under_upper.set isnot $worn.under_lower.set>>
 					<<farm_He horse>> flips up your $worn.lower.name with its teeth, and pulls down your $worn.under_lower.name, baring your <<bottom>> to its probing tongue.
 				<<else>>
@@ -2584,12 +2584,12 @@ You brace yourself as the shoots drag you into the undergrowth.
 	<<molested>>
 	<<controlloss>>
 
-	<<tentaclestart 8 15>>
+	<<tentaclestart 8 15 "shoot" "vine" true>>
 
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>

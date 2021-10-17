@@ -16,16 +16,24 @@
 	<<else>>
 		<<set _tentacleType to "tentacle">>
 	<</if>>
+	<<if ["root","shoot"].includes(_tentacleType)>>
+		<<set _babyType to "vine">>
+	<<elseif _tentacleType is "tendril">>
+		<<set _babyType to "tentacle">>
+	<<else>>
+		<<set _babyType to _tentacleType>>
+	<</if>>
 
 	/* Deciding if tentacle templates should be defined somewhere else still */
 	/* Argument 0 is the number of tentacles.
 	* Argument 1 is health.
 	* Argument 2 is tentacle type, which can be replaced with "vines", "machines" etc later on. Optional, unless also using Argument 3.
-	* Argument 3 is variant, and will give different offspring as well as allowing different batches of descriptions. */
+	* Argument 3 is variant, and will give different offspring as well as allowing different batches of descriptions.
+	* Argument 4 is whether or not the variant impacts the full description. If Argument 4 is used, Argument 3 will only impact which description batches are part of _tentacledescs.*/
 	<<set _tentacledescs to [
 		{"desc":"slimy","baby":0,"size":2},
 		{"desc":"sticky","baby":0,"size":2},
-		{"desc":"thick","baby":_tentacleType,"size":3},
+		{"desc":"thick","baby":_babyType,"size":3},
 		{"desc":"throbbing","baby":0,"size":2},
 		{"desc":"slick","baby":0,"size":2},
 		{"desc":"moist","baby":0,"size":2},
@@ -38,7 +46,7 @@
 		{"desc":"damp","baby":0,"size":2},
 		{"desc":"bulbous","baby":0,"size":3},
 		{"desc":"gyrating","baby":0,"size":2},
-		{"desc":"large","baby":_tentacleType,"size":3},
+		{"desc":"large","baby":_babyType,"size":3},
 		{"desc":"bumpy","baby":0,"size":2},
 		{"desc":"thin","baby":0,"size":1},
 		{"desc":"narrow","baby":0,"size":1},
@@ -48,14 +56,40 @@
 	<<if $args[3]>>
 		<<if $args[3] is "pale">>
 			<<set _tentacledescs.push(
-				{"desc":"ghostly","baby":_tentacleType,"size":2},
+				{"desc":"ghostly","baby":_babyType,"size":2},
 				{"desc":"translucent","baby":0,"size":1},
 				{"desc":"twitching","baby":0,"size":2},
 				{"desc":"manic","baby":0,"size":3},
-				{"desc":"cloudy","baby":_tentacleType,"size":3},
+				{"desc":"cloudy","baby":_babyType,"size":3},
 				{"desc":"ethereal","baby":0,"size":1},
 				{"desc":"incandescent","baby":0,"size":3},
-				{"desc":"iridescent","baby":_tentacleType,"size":2},
+				{"desc":"iridescent","baby":_babyType,"size":2},
+			)>>
+		<<elseif $args[3] is "vine">>
+			<<set _tentacledescs.push(
+				{"desc":"flowering","baby":_babyType,"size":3},
+				{"desc":"blossoming","baby":0,"size":3},
+				{"desc":"wooden","baby":0,"size":2},
+				{"desc":"blooming","baby":_babyType,"size":2},
+				{"desc":"climbing","baby":0,"size":2},
+				{"desc":"mossy","baby":0,"size":2},
+				{"desc":"grassy","baby":0,"size":2},
+				{"desc":"pistil","baby":_babyType,"size":1},
+				{"desc":"leafy","baby":0,"size":1},
+				{"desc":"sprouting","baby":0,"size":1},
+				{"desc":"sapling","baby":0,"size":1},
+			)>>
+		<<elseif $args[3] is "metal">>
+			<<set _tentacledescs.push(
+				{"desc":"jerking","baby":0,"size":3},
+				{"desc":"plated","baby":0,"size":3},
+				{"desc":"sparking","baby":0,"size":2},
+				{"desc":"shiny","baby":0,"size":2},
+				{"desc":"labelled","baby":_babyType,"size":2},
+				{"desc":"jolting","baby":0,"size":2},
+				{"desc":"rusted","baby":0,"size":2},
+				{"desc":"wired","baby":0,"size":1},
+				{"desc":"stainless","baby":0,"size":1},
 			)>>
 		<</if>>
 	<</if>>
@@ -66,14 +100,15 @@
 		<<set _tentacledata to _tentacledescs[_i]>>
 
 		<<set _tentacle to {
-			"desc": ($args[3] ? $args[3] + " " : "" ) + _tentacledata.desc,
-			"fullDesc": ($args[3] ? $args[3] + " " : "" ) + _tentacledata.desc +  " " + _tentacleType,
+			"desc": ($args[3] and !$args[4] ? $args[3] + " " : "" ) + _tentacledata.desc,
+			"fullDesc": ($args[3] and !$args[4] ? $args[3] + " " : "" ) + _tentacledata.desc +  " " + _tentacleType,
+			"type": _tentacleType,
 			"tentaclehealth": $args[1],
 			"tentaclehealthstart": $args[1],
 			"shaft": 0,
 			"head": 0,
 			"id": "tentacle"+_i,
-			"baby": ($args[3] and _tentacledata.baby isnot 0 ? $args[3] + " " + _tentacledata.baby : _tentacledata.baby ),
+			"baby": ($args[3] and !$args[4] and _tentacledata.baby isnot 0 ? $args[3] + " " + _tentacledata.baby : _tentacledata.baby ),
 			"babychance": 400,
 			"size": _tentacledata.size
 		}>>

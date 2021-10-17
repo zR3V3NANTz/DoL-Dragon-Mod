@@ -214,6 +214,8 @@ Second arg: tool */
 	<<bodywriting_npc_kylar $args[0] $args[1]>>
 <<elseif $npc[$npcrow.indexOf(_n)] is "Sydney">>
 	<<bodywriting_npc_sydney $args[0] $args[1]>>
+<<elseif $NPCList[_n].type is "plant">>
+	<<bodywriting_npc_picture>>
 <<elseif $rng gte 51>>
 	<<bodywriting_npc_special $args[0] $args[1]>>
 <<else>>
@@ -338,6 +340,37 @@ Second arg: tool */
 <<else>>
 	<<add_bodywriting $args[0] interesting $args[1]>>
 <</if>>
+<<bodywriting_finalisation $args[0]>>
+<</widget>>
+
+<<widget "bodywriting_npc_picture">>
+<<if $NPCList[0].type is "plant">>
+	<<set $rng to random(1, 7)>>
+<<else>>
+	<<set $rng to random(1,10)>>
+<</if>>
+<<switch $rng>>
+<<case 1>>
+	<<add_bodywriting $args[0] unicorn $args[1]>>
+<<case 2>>
+	<<add_bodywriting $args[0] heart $args[1]>>
+<<case 3>>
+	<<add_bodywriting $args[0] paw_print $args[1]>>
+<<case 4>>
+	<<add_bodywriting $args[0] flower $args[1]>>
+<<case 5>>
+	<<add_bodywriting $args[0] butterfly $args[1]>>
+<<case 6>>
+	<<add_bodywriting $args[0] star $args[1]>>
+<<case 7>>
+	<<add_bodywriting $args[0] skull $args[1]>>
+<<case 8>>
+	<<add_bodywriting $args[0] cross $args[1]>>
+<<case 9>>
+	<<add_bodywriting $args[0] flame $args[1]>>
+<<case 10>>
+	<<add_bodywriting $args[0] cattle_brand $args[1]>>
+<</switch>>
 <<bodywriting_finalisation $args[0]>>
 <</widget>>
 
@@ -805,61 +838,71 @@ Second arg: tool */
 <<elseif $skin[$args[0]].degree lte 0>>
 	<<if (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * ($seductionskill / 200)) gte 1000)>>
 		<<set $enemyanger += 10>><<set $enemytrust -= 100>><<fameprostitution 1>>
-		<<switch random(1, 5)>>
-			<<case 1>><<He>> speaks. "Expensive. Fine."
-			<<case 2>><<He>> speaks. "I'll pay, but you better be worth it."
-			<<case 3>><<He>> speaks. "I'll pay this time, slut."
-			<<case 4>><<He>> speaks. "I've seen worse deals."
-			<<case 5>><<He>> speaks. "I should pay you. I doubt you're good for anything else."
-		<</switch>>
+		<<if !$speechadmired>><<set $speechadmired to 1>>
+			<<switch random(1, 5)>>
+				<<case 1>><<He>> speaks. "Expensive. Fine."
+				<<case 2>><<He>> speaks. "I'll pay, but you better be worth it."
+				<<case 3>><<He>> speaks. "I'll pay this time, slut."
+				<<case 4>><<He>> speaks. "I've seen worse deals."
+				<<case 5>><<He>> speaks. "I should pay you. I doubt you're good for anything else."
+			<</switch>>
+		<</if>>
 		<<He>> drops a <span class="gold">£10</span> note atop you.
 		<<set $money += 1000>><<earnFeat "Billboard">>
 	<<elseif (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * ($seductionskill / 200)) gte 500)>>
 		<<set $enemyanger += 10>><<set $enemytrust -= 100>><<fameprostitution 1>>
-		<<switch random(1, 5)>>
-			<<case 1>><<He>> speaks. "You're lucky I'm giving you a thing."
-			<<case 2>><<He>> speaks. "If only money could buy you dignity."
-			<<case 3>><<He>> speaks. "I've bought drinks more expensive than you."
-			<<case 4>><<He>> speaks. "Where should I insert it?"
-			<<case 5>><<He>> speaks. "Cheap and dirty whores are the best."
-		<</switch>>
+		<<if !$speechadmired>><<set $speechadmired to 1>>
+			<<switch random(1, 5)>>
+				<<case 1>><<He>> speaks. "You're lucky I'm giving you a thing."
+				<<case 2>><<He>> speaks. "If only money could buy you dignity."
+				<<case 3>><<He>> speaks. "I've bought drinks more expensive than you."
+				<<case 4>><<He>> speaks. "Where should I insert it?"
+				<<case 5>><<He>> speaks. "Cheap and dirty whores are the best."
+			<</switch>>
+		<</if>>
 		<<He>> drops a <span class="gold">£5</span> note atop you.
 		<<set $money += 500>><<earnFeat "Billboard">>
 	<<else>><<set $enemytrust -= 20>>
 		<<fameprostitution 1>>
-		<<switch random(1, 5)>>
-			<<case 1>><<He>> speaks. "Pay you? Don't make me laugh."
-			<<case 2>><<He>> speaks. "Getting to fuck me is payment enough."
-			<<case 3>><<He>> speaks. "Don't think you're worth anything."
-			<<case 4>><<He>> speaks. "I hope you're not expecting cash."
-			<<case 5>><<He>> speaks. "Whores like you don't deserve anything."
-		<</switch>>
+		<<if !$speechadmired>><<set $speechadmired to 1>>
+			<<switch random(1, 5)>>
+				<<case 1>><<He>> speaks. "Pay you? Don't make me laugh."
+				<<case 2>><<He>> speaks. "Getting to fuck me is payment enough."
+				<<case 3>><<He>> speaks. "Don't think you're worth anything."
+				<<case 4>><<He>> speaks. "I hope you're not expecting cash."
+				<<case 5>><<He>> speaks. "Whores like you don't deserve anything."
+			<</switch>>
+		<</if>>
 	<</if>>
 <<elseif $skin[$args[0]].degree lte ($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * ($seductionskill / 200))>>
 	<<set $enemyanger += 10>><<set $enemytrust -= $skin[$args[0]].degree>><<fameprostitution 1>>
-	<<switch random(1, 5)>>
-		<<case 1>><<He>> speaks. "I'm paying, but you better be worth it."
-		<<case 2>><<He>> speaks. "You whores are so full of yourself."
-		<<case 3>><<He>> speaks. "Fine, but I'm getting my money's worth."
-		<<case 4>><<He>> speaks. "I'm gonna make you earn every penny."
-		<<case 5>><<He>> speaks. "Fine, I'll pay. This time."
-	<</switch>>
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<switch random(1, 5)>>
+			<<case 1>><<He>> speaks. "I'm paying, but you better be worth it."
+			<<case 2>><<He>> speaks. "You whores are so full of yourself."
+			<<case 3>><<He>> speaks. "Fine, but I'm getting my money's worth."
+			<<case 4>><<He>> speaks. "I'm gonna make you earn every penny."
+			<<case 5>><<He>> speaks. "Fine, I'll pay. This time."
+		<</switch>>
+	<</if>>
 	<<He>> drops <span class="gold">£<<print Math.floor($skin[$args[0]].degree / 100)>></span> atop you.
 	<<set $money += $skin[$args[0]].degree>><<earnFeat "Billboard">>
 <<else>>
 	<<set $enemytrust -= 20>><<fameprostitution 1>>
-	<<switch random(1, 5)>>
-		<<case 1>><<He>> speaks. "You're fucking kidding me."
-		<<case 2>><<He>> speaks. "You're not getting a penny, slut."
-		<<case 3>><<He>> speaks. "You're not worth a penny."
-		<<case 4>><<He>> speaks. "I work hard for my cash. I'm not about to give it to some slut."
-		<<case 5>><<He>> speaks. "Fucking me is the only reward you need."
-	<</switch>>
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<switch random(1, 5)>>
+			<<case 1>><<He>> speaks. "You're fucking kidding me."
+			<<case 2>><<He>> speaks. "You're not getting a penny, slut."
+			<<case 3>><<He>> speaks. "You're not worth a penny."
+			<<case 4>><<He>> speaks. "I work hard for my cash. I'm not about to give it to some slut."
+			<<case 5>><<He>> speaks. "Fucking me is the only reward you need."
+		<</switch>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_arrow">>
-<<if $skin[$args[0]].special is "prostitution">>
+<<if $skin[$args[0]].special is "prostitution" and $NPCList[_n].type isnot "plant">>
 	<<bodypart_admire_prostitution $args[0]>>
 <</if>>
 <<if $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head">>
@@ -901,14 +944,16 @@ Second arg: tool */
 <<elseif $args[0] is "back" or $args[0] is "right_bottom" or $args[0] is "left_bottom" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals">>
 	<<if $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1 and $NPCList[0].penis is 0 and $anususe is 0>>
 		<<He>> follows the arrow's instruction, <span class="blue">and positions <<his>> penis in front of your <<bottom>>.</span>
+		<<if $NPCList[_n].type is "plant" and $NPCList[_n].penissize gte 4>>
+			<span class="green">Something about it scares you.</span>
+		<</if>>
 		<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
 		<<set $NPCList[_n].location.genitals to "genitals">>
 	<</if>>
 <<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals">>
 	<<if $player.vaginaExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
-		<<He>> follows the arrow's instruction, <span class="blue">and moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your <<bottom>>.</span>
-		<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
-		<<set $NPCList[_n].location.genitals to "genitals">>
+		<<He>> follows the arrow's instruction, <span class="blue">and moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your <<pussy>>.</span>
+		<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
 	<<elseif $player.penisExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
 		<<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">>
 		<<He>> follows the arrow's instruction, <span class="blue">and straddles you, <<his>> pussy hovering close to your <<penis>>.</span>
@@ -919,481 +964,529 @@ Second arg: tool */
 
 <<widget "bodypart_admire_rape">>
 <<set $enemytrust -= 20>><<famerape 1>>
-<<if $consensual is 1>>
-	<<switch random(1, 9)>>
-		<<case 1>><<He>> speaks. "Do you get off on being treated like filth?"
-		<<case 2>><<He>> speaks. "I didn't know you were that kind of <<girl>>."
-		<<case 3>><<He>> speaks. "You'd like it to be rougher, aye?"
-		<<case 4>><<He>> speaks. "You're a dirty one."
-		<<case 5>><<He>> speaks. "Do you get taken often?"
-		<<case 6>><<He>> speaks. "I'll treat you like you want, don't worry."
-		<<case 7>><<He>> speaks. "So you like being a victim?"
-		<<case 8>><<He>> speaks. "I bet you put that on yourself, slut."
-		<<case 9>><<He>> speaks. "You're just asking for it."
-	<</switch>>
-<<else>>
-	<<switch random(1, 9)>>
-		<<case 1>><<He>> speaks. "Hah! I knew you were a rape addict."
-		<<case 2>><<He>> speaks. "I'm just giving you what you want, after all."
-		<<case 3>><<He>> speaks. "Don't worry, you'll be treated how you deserve."
-		<<case 4>><<He>> speaks. "My my, what a slut."
-		<<case 5>><<He>> speaks. "Good to see you know your place."
-		<<case 6>><<He>> speaks. "You're just asking for it."
-		<<case 7>><<He>> speaks. "I knew you were a fucktoy."
-		<<case 8>><<He>> speaks. "I knew this was all you're good for."
-		<<case 9>><<He>> speaks. "I'm giving you what you deserve."
-	<</switch>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<if $consensual is 1>>
+		<<switch random(1, 9)>>
+			<<case 1>><<He>> speaks. "Do you get off on being treated like filth?"
+			<<case 2>><<He>> speaks. "I didn't know you were that kind of <<girl>>."
+			<<case 3>><<He>> speaks. "You'd like it to be rougher, aye?"
+			<<case 4>><<He>> speaks. "You're a dirty one."
+			<<case 5>><<He>> speaks. "Do you get taken often?"
+			<<case 6>><<He>> speaks. "I'll treat you like you want, don't worry."
+			<<case 7>><<He>> speaks. "So you like being a victim?"
+			<<case 8>><<He>> speaks. "I bet you put that on yourself, slut."
+			<<case 9>><<He>> speaks. "You're just asking for it."
+		<</switch>>
+	<<else>>
+		<<switch random(1, 9)>>
+			<<case 1>><<He>> speaks. "Hah! I knew you were a rape addict."
+			<<case 2>><<He>> speaks. "I'm just giving you what you want, after all."
+			<<case 3>><<He>> speaks. "Don't worry, you'll be treated how you deserve."
+			<<case 4>><<He>> speaks. "My my, what a slut."
+			<<case 5>><<He>> speaks. "Good to see you know your place."
+			<<case 6>><<He>> speaks. "You're just asking for it."
+			<<case 7>><<He>> speaks. "I knew you were a fucktoy."
+			<<case 8>><<He>> speaks. "I knew this was all you're good for."
+			<<case 9>><<He>> speaks. "I'm giving you what you deserve."
+		<</switch>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_exhibitionism">>
 <<fameexhibitionism 1>>
-<<switch random(1, 10)>>
-	<<case 1>><<He>> speaks. "Don't worry. I'm getting a good look."
-	<<case 2>><<He>> speaks. "Maybe I'll take some pictures."
-	<<case 3>><<He>> speaks. "You're certainly a feast for the eyes."
-	<<case 4>><<He>> speaks. "You're hot alright."
-	<<case 5>><<He>> speaks. "You like being ogled at, slut?"
-	<<case 6>><<He>> speaks. "Being leered at is all you're good for."
-	<<case 7>><<He>> speaks. "You'd look great in a cage."
-	<<case 8>><<He>> speaks. "Cuties like you shouldn't wear clothes."
-	<<case 9>><<He>> speaks. "You're such an attention whore."
-	<<case 10>><<He>> speaks. "I bet half the town's seen that ass of yours."
-<</switch>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<switch random(1, 10)>>
+		<<case 1>><<He>> speaks. "Don't worry. I'm getting a good look."
+		<<case 2>><<He>> speaks. "Maybe I'll take some pictures."
+		<<case 3>><<He>> speaks. "You're certainly a feast for the eyes."
+		<<case 4>><<He>> speaks. "You're hot alright."
+		<<case 5>><<He>> speaks. "You like being ogled at, slut?"
+		<<case 6>><<He>> speaks. "Being leered at is all you're good for."
+		<<case 7>><<He>> speaks. "You'd look great in a cage."
+		<<case 8>><<He>> speaks. "Cuties like you shouldn't wear clothes."
+		<<case 9>><<He>> speaks. "You're such an attention whore."
+		<<case 10>><<He>> speaks. "I bet half the town's seen that ass of yours."
+	<</switch>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_bestiality">>
 <<famebestiality 1>>
-<<switch random(1, 10)>>
-	<<case 1>><<He>> speaks. "You're disgusting."
-	<<case 2>><<He>> speaks. "So you like fucking animals? Doesn't surprise me."
-	<<case 3>><<He>> speaks. "Maybe I'm not hairy enough for you."
-	<<case 4>><<He>> speaks. "You belong in a kennel."
-	<<case 5>><<He>> speaks. "Filthy bitch."
-	<<case 6>>
-		<<if $player.gender_appearance is "f">>
-			<<He>> speaks. "You must be in heat."
-		<<else>>
-			<<He>> speaks. "You must be rutting."
-		<</if>>
-	<<case 7>><<He>> speaks. "You're such a dirty <<girl>>."
-	<<case 8>>
-		<<if $player.gender_appearance is "m">>
-			<<He>> speaks. "Good dog."
-		<<else>>
-			<<He>> speaks. "Good bitch."
-		<</if>>
-	<<case 9>><<He>> speaks. "Someone should tie you up in the park, let the neighbourhood dogs take out their stress."
-	<<case 10>><<He>> speaks. "I knew you were a dog-fucker."
-<</switch>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<switch random(1, 10)>>
+		<<case 1>><<He>> speaks. "You're disgusting."
+		<<case 2>><<He>> speaks. "So you like fucking animals? Doesn't surprise me."
+		<<case 3>><<He>> speaks. "Maybe I'm not hairy enough for you."
+		<<case 4>><<He>> speaks. "You belong in a kennel."
+		<<case 5>><<He>> speaks. "Filthy bitch."
+		<<case 6>>
+			<<if $player.gender_appearance is "f">>
+				<<He>> speaks. "You must be in heat."
+			<<else>>
+				<<He>> speaks. "You must be rutting."
+			<</if>>
+		<<case 7>><<He>> speaks. "You're such a dirty <<girl>>."
+		<<case 8>>
+			<<if $player.gender_appearance is "m">>
+				<<He>> speaks. "Good dog."
+			<<else>>
+				<<He>> speaks. "Good bitch."
+			<</if>>
+		<<case 9>><<He>> speaks. "Someone should tie you up in the park, let the neighbourhood dogs take out their stress."
+		<<case 10>><<He>> speaks. "I knew you were a dog-fucker."
+	<</switch>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_promiscuity">>
 <<famesex 1>>
-<<switch random(1, 10)>>
-	<<case 1>><<He>> speaks. "You're such a slut."
-	<<case 2>><<He>> speaks. "I bet you'd fuck anyone."
-	<<case 3>><<He>> speaks. "I'll let my friends know who to see if they need a fucktoy."
-	<<case 4>><<He>> speaks. "Have you no shame?"
-	<<case 5>><<He>> speaks. "Self-respect must be an alien concept to you."
-	<<case 6>><<He>> speaks. "Don't worry, I know how to satisfy a <<girl>>."
-	<<case 7>><<He>> speaks. "I'm glad I could find such a slut."
-	<<case 8>><<He>> speaks. "Fucking must be like breathing to you."
-	<<case 9>><<He>> speaks. "I bet you can't go a single day without a good fuck."
-	<<case 10>><<He>> speaks. "Seems I'm giving you what you want."
-<</switch>>
-<</widget>>
-
-<<widget "bodypart_admire_pregnancy">>
-<<if pregnancyBellyVisible()>>
-	<<famepregnancy 1>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
 	<<switch random(1, 10)>>
-		<<case 1>><<He>> speaks. "Doesn't look like it's something I can help with right now."
-		<<case 2>><<He>> speaks. "So how many kids have you given birth to?"
-		<<case 3>><<He>> speaks. "I'll let my friends know who to see if they want a kid in a couple of months."
-		<<case 4>><<He>> speaks. "How far along are you?"
-		<<case 5>><<He>> speaks. "Not being pregnant must be an alien concept to you."
-		<<case 6>><<He>> speaks. "Don't worry, you're already pregnant."
-		<<case 7>><<He>> speaks. "At least I don't need to worry about condoms."
-		<<case 8>><<He>> speaks. "Breeding must be like breathing to you."
-		<<case 9>><<He>> speaks. "I bet you love the feeling of giving birth."
-		<<case 10>><<He>> speaks. "Seems like you already have what you're after."
-	<</switch>>
-<<else>>
-	<<switch random(1, 10)>>
-		<<case 1>><<He>> speaks. "You want a kid that much, slut?"
-		<<case 2>><<He>> speaks. "So how many kids have you given birth to?"
-		<<case 3>><<He>> speaks. "I'll let my friends know who to see if they want a kid."
-		<<case 4>><<He>> speaks. "Are you ovulating right now?"
-		<<case 5>><<He>> speaks. "Not being pregnant must be an alien concept to you."
-		<<case 6>><<He>> speaks. "Don't worry, I know how to get you pregnant."
-		<<case 7>><<He>> speaks. "I'm glad I don't need to worry about condoms."
-		<<case 8>><<He>> speaks. "Breeding must be like breathing to you."
-		<<case 9>><<He>> speaks. "I bet you love the feeling of giving birth."
+		<<case 1>><<He>> speaks. "You're such a slut."
+		<<case 2>><<He>> speaks. "I bet you'd fuck anyone."
+		<<case 3>><<He>> speaks. "I'll let my friends know who to see if they need a fucktoy."
+		<<case 4>><<He>> speaks. "Have you no shame?"
+		<<case 5>><<He>> speaks. "Self-respect must be an alien concept to you."
+		<<case 6>><<He>> speaks. "Don't worry, I know how to satisfy a <<girl>>."
+		<<case 7>><<He>> speaks. "I'm glad I could find such a slut."
+		<<case 8>><<He>> speaks. "Fucking must be like breathing to you."
+		<<case 9>><<He>> speaks. "I bet you can't go a single day without a good fuck."
 		<<case 10>><<He>> speaks. "Seems I'm giving you what you want."
 	<</switch>>
 <</if>>
 <</widget>>
 
-<<widget "bodypart_admire_girly">>
-<<if $player.gender_appearance is "m">>
-	<<switch random(1, 10)>>
-		<<case 1>><<He>> speaks. "You want to be treated like a girl? Fine by me."
-		<<case 2>><<He>> speaks. "That's an odd thing for a boy to wear."
-		<<case 3>><<He>> speaks. "So girly."
-		<<case 4>><<He>> speaks. "Makes you look like a girl."
-		<<case 5>><<He>> speaks. "Don't worry, I'll treat you like a girl."
-		<<case 6>><<He>> speaks. "Aren't you embarrassed to be covered in such a girly thing?"
-		<<case 7>><<He>> speaks. "Cute."
-		<<case 8>><<He>> speaks. "I bet you like dressing up as a girl, slut."
-		<<case 9>><<He>> speaks. "I bet your friends make fun of you."
-		<<case 10>><<He>> speaks. "Why would you wear such a thing?"
-	<</switch>>
+<<widget "bodypart_admire_pregnancy">>
+<<if pregnancyBellyVisible()>>
+	<<famepregnancy 1>>
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<switch random(1, 10)>>
+			<<case 1>><<He>> speaks. "Doesn't look like it's something I can help with right now."
+			<<case 2>><<He>> speaks. "So how many kids have you given birth to?"
+			<<case 3>><<He>> speaks. "I'll let my friends know who to see if they want a kid in a couple of months."
+			<<case 4>><<He>> speaks. "How far along are you?"
+			<<case 5>><<He>> speaks. "Not being pregnant must be an alien concept to you."
+			<<case 6>><<He>> speaks. "Don't worry, you're already pregnant."
+			<<case 7>><<He>> speaks. "At least I don't need to worry about condoms."
+			<<case 8>><<He>> speaks. "Breeding must be like breathing to you."
+			<<case 9>><<He>> speaks. "I bet you love the feeling of giving birth."
+			<<case 10>><<He>> speaks. "Seems like you already have what you're after."
+		<</switch>>
+	<</if>>
 <<else>>
-	<<switch random(1, 10)>>
-		<<case 1>><<He>> speaks. "Cute."
-		<<case 2>><<He>> speaks. "I bet you wanna be treated like a princess, but you're just a slut."
-		<<case 3>><<He>> speaks. "I'll treat you like a kidnapped princess."
-		<<case 4>><<He>> speaks. "So cute and feminine."
-		<<case 5>><<He>> speaks. "I think you need someone strong to protect you."
-		<<case 6>><<He>> speaks. "Most girls would be embarrassed to wear such a thing."
-		<<case 7>><<He>> speaks. "Do other girls wear marks like this?"
-		<<case 8>><<He>> speaks. "Advertising your femininity? Like anyone would mistake you for a boy."
-		<<case 9>><<He>> speaks. "You're fucking hot, that's for sure."
-		<<case 10>><<He>> speaks. "So glad I get such a pretty girl to play with."
-	<</switch>>
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<switch random(1, 10)>>
+			<<case 1>><<He>> speaks. "You want a kid that much, slut?"
+			<<case 2>><<He>> speaks. "So how many kids have you given birth to?"
+			<<case 3>><<He>> speaks. "I'll let my friends know who to see if they want a kid."
+			<<case 4>><<He>> speaks. "Are you ovulating right now?"
+			<<case 5>><<He>> speaks. "Not being pregnant must be an alien concept to you."
+			<<case 6>><<He>> speaks. "Don't worry, I know how to get you pregnant."
+			<<case 7>><<He>> speaks. "I'm glad I don't need to worry about condoms."
+			<<case 8>><<He>> speaks. "Breeding must be like breathing to you."
+			<<case 9>><<He>> speaks. "I bet you love the feeling of giving birth."
+			<<case 10>><<He>> speaks. "Seems I'm giving you what you want."
+		<</switch>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "bodypart_admire_girly">>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<if $player.gender_appearance is "m">>
+		<<switch random(1, 10)>>
+			<<case 1>><<He>> speaks. "You want to be treated like a girl? Fine by me."
+			<<case 2>><<He>> speaks. "That's an odd thing for a boy to wear."
+			<<case 3>><<He>> speaks. "So girly."
+			<<case 4>><<He>> speaks. "Makes you look like a girl."
+			<<case 5>><<He>> speaks. "Don't worry, I'll treat you like a girl."
+			<<case 6>><<He>> speaks. "Aren't you embarrassed to be covered in such a girly thing?"
+			<<case 7>><<He>> speaks. "Cute."
+			<<case 8>><<He>> speaks. "I bet you like dressing up as a girl, slut."
+			<<case 9>><<He>> speaks. "I bet your friends make fun of you."
+			<<case 10>><<He>> speaks. "Why would you wear such a thing?"
+		<</switch>>
+	<<else>>
+		<<switch random(1, 10)>>
+			<<case 1>><<He>> speaks. "Cute."
+			<<case 2>><<He>> speaks. "I bet you wanna be treated like a princess, but you're just a slut."
+			<<case 3>><<He>> speaks. "I'll treat you like a kidnapped princess."
+			<<case 4>><<He>> speaks. "So cute and feminine."
+			<<case 5>><<He>> speaks. "I think you need someone strong to protect you."
+			<<case 6>><<He>> speaks. "Most girls would be embarrassed to wear such a thing."
+			<<case 7>><<He>> speaks. "Do other girls wear marks like this?"
+			<<case 8>><<He>> speaks. "Advertising your femininity? Like anyone would mistake you for a boy."
+			<<case 9>><<He>> speaks. "You're fucking hot, that's for sure."
+			<<case 10>><<He>> speaks. "So glad I get such a pretty girl to play with."
+		<</switch>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_boyish">>
-<<if $player.gender_appearance is "m">>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<if $player.gender_appearance is "m">>
+			<<switch random(1, 10)>>
+			<<case 1>><<He>> speaks. "So glad I get such a handsome boy to play with."
+			<<case 2>><<He>> speaks. "You're fucking hot, that's for sure."
+			<<case 3>><<He>> speaks. "Advertising your masculinity? Like anyone would mistake you for a girl."
+			<<case 4>><<He>> speaks. "Do other boys wear marks like this?"
+			<<case 5>><<He>> speaks. "Most boys would be embarrassed to wear such at thing."
+			<<case 6>><<He>> speaks. "I think you need someone strong to protect you."
+			<<case 7>><<He>> speaks. "So strong and masculine."
+			<<case 8>><<He>> speaks. "I'll treat you like a kidnapped prince."
+			<<case 9>><<He>> speaks. "You're a hot fucktoy alright."
+			<<case 10>><<He>> speaks. "It's not wrong."
+		<</switch>>
+	<<else>>
 		<<switch random(1, 10)>>
-		<<case 1>><<He>> speaks. "So glad I get such a handsome boy to play with."
-		<<case 2>><<He>> speaks. "You're fucking hot, that's for sure."
-		<<case 3>><<He>> speaks. "Advertising your masculinity? Like anyone would mistake you for a girl."
-		<<case 4>><<He>> speaks. "Do other boys wear marks like this?"
-		<<case 5>><<He>> speaks. "Most boys would be embarrassed to wear such at thing."
-		<<case 6>><<He>> speaks. "I think you need someone strong to protect you."
-		<<case 7>><<He>> speaks. "So strong and masculine."
-		<<case 8>><<He>> speaks. "I'll treat you like a kidnapped prince."
-		<<case 9>><<He>> speaks. "You're a hot fucktoy alright."
-		<<case 10>><<He>> speaks. "It's not wrong."
-	<</switch>>
-<<else>>
-	<<switch random(1, 10)>>
-		<<case 1>><<He>> speaks. "Why would you wear such a thing?"
-		<<case 2>><<He>> speaks. "I bet your friends make fun of you."
-		<<case 3>><<He>> speaks. "I bet you like dressing up as a boy, but you're just a slut."
-		<<case 4>><<He>> speaks. "Hot."
-		<<case 5>><<He>> speaks. "Aren't you embarrassed to be covered in such a boyish thing?"
-		<<case 6>><<He>> speaks. "Don't worry, I'll treat you like a boy."
-		<<case 7>><<He>> speaks. "Makes you look like a boy."
-		<<case 8>><<He>> speaks. "So boyish."
-		<<case 9>><<He>> speaks. "That's an odd thing for a girl to wear."
-		<<case 10>><<He>> speaks. "You want to be treated like a boy? Fine by me."
-	<</switch>>
+			<<case 1>><<He>> speaks. "Why would you wear such a thing?"
+			<<case 2>><<He>> speaks. "I bet your friends make fun of you."
+			<<case 3>><<He>> speaks. "I bet you like dressing up as a boy, but you're just a slut."
+			<<case 4>><<He>> speaks. "Hot."
+			<<case 5>><<He>> speaks. "Aren't you embarrassed to be covered in such a boyish thing?"
+			<<case 6>><<He>> speaks. "Don't worry, I'll treat you like a boy."
+			<<case 7>><<He>> speaks. "Makes you look like a boy."
+			<<case 8>><<He>> speaks. "So boyish."
+			<<case 9>><<He>> speaks. "That's an odd thing for a girl to wear."
+			<<case 10>><<He>> speaks. "You want to be treated like a boy? Fine by me."
+		<</switch>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_combat">>
 <<famescrap 1>><<set $enemytrust -= 5>>
-<<switch random(1, 10)>>
-	<<case 1>><<He>> speaks. "I need to watch myself around you."
-	<<case 2>><<He>> speaks. "I bet you like being treated badly really."
-	<<case 3>><<He>> speaks. "Your brattiness is a front. I can see through it."
-	<<case 4>>
-		<<if $NPCList[_n].pronoun is "f">>
-			<<He>> speaks. "Do I need to watch my purse?"
-		<<else>>
-			<<He>> speaks. "Do I need to watch my wallet?"
-		<</if>>
-	<<case 5>><<He>> speaks. "Try anything funny and you'll get beat."
-	<<case 6>><<He>> speaks. "Like you could take me."
-	<<case 7>><<He>> speaks. "You must have a high opinion of yourself."
-	<<case 8>><<He>> speaks. "The people you've beaten must be real wimps."
-	<<case 9>><<He>> speaks. "You don't look so tough."
-	<<case 10>><<He>> speaks. "Bratty little <<bitch>>."
-<</switch>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<switch random(1, 10)>>
+		<<case 1>><<He>> speaks. "I need to watch myself around you."
+		<<case 2>><<He>> speaks. "I bet you like being treated badly really."
+		<<case 3>><<He>> speaks. "Your brattiness is a front. I can see through it."
+		<<case 4>>
+			<<if $NPCList[_n].pronoun is "f">>
+				<<He>> speaks. "Do I need to watch my purse?"
+			<<else>>
+				<<He>> speaks. "Do I need to watch my wallet?"
+			<</if>>
+		<<case 5>><<He>> speaks. "Try anything funny and you'll get beat."
+		<<case 6>><<He>> speaks. "Like you could take me."
+		<<case 7>><<He>> speaks. "You must have a high opinion of yourself."
+		<<case 8>><<He>> speaks. "The people you've beaten must be real wimps."
+		<<case 9>><<He>> speaks. "You don't look so tough."
+		<<case 10>><<He>> speaks. "Bratty little <<bitch>>."
+	<</switch>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_violence">>
 <<set $enemyanger += 20>>
-<<switch random(1, 10)>>
-	<<case 1>><<He>> speaks. "So you like it rough."
-	<<case 2>><<He>> speaks. "I'm just giving you what you want."
-	<<case 3>><<He>> speaks. "I bet you're addicted to pain."
-	<<case 4>><<He>> speaks. "Sluts like you do deserve beatings."
-	<<case 5>><<He>> speaks. "I'll hurt you all you want, and then some."
-	<<case 6>><<He>> speaks. "Like I need to be asked."
-	<<case 7>><<He>> speaks. "It's a dream come true."
-	<<case 8>><<He>> speaks. "I can be rougher."
-	<<case 9>><<He>> speaks. "So that's how you like it."
-	<<case 10>><<He>> speaks. "Will you cum if I hit you hard enough?"
-<</switch>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<switch random(1, 10)>>
+		<<case 1>><<He>> speaks. "So you like it rough."
+		<<case 2>><<He>> speaks. "I'm just giving you what you want."
+		<<case 3>><<He>> speaks. "I bet you're addicted to pain."
+		<<case 4>><<He>> speaks. "Sluts like you do deserve beatings."
+		<<case 5>><<He>> speaks. "I'll hurt you all you want, and then some."
+		<<case 6>><<He>> speaks. "Like I need to be asked."
+		<<case 7>><<He>> speaks. "It's a dream come true."
+		<<case 8>><<He>> speaks. "I can be rougher."
+		<<case 9>><<He>> speaks. "So that's how you like it."
+		<<case 10>><<He>> speaks. "Will you cum if I hit you hard enough?"
+	<</switch>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_lewd">>
-<<if $skin[$args[0]].type is "text">>
-	<<switch random(1, 10)>>
-		<<case 1>>
-			<<if $skin[$args[0]].pen is "tattoo">>
-				<<He>> speaks. "Such a lewd tattoo."
-			<<elseif $skin[$args[0]].pen is "brand">>
-				<<He>> speaks. "Such a lewd brand."
-			<<else>>
-				<<He>> speaks. "Such lewd writing."
-			<</if>>
-		<<case 2>>
-			<<if $skin[$args[0]].pen is "tattoo">>
-				<<He>> speaks. "Why would you have yourself tattooed so?"
-			<<elseif $skin[$args[0]].pen is "brand">>
-				<<He>> speaks. "Why would you burn that into your skin?"
-			<<else>>
-				<<He>> speaks. "Did you write this?"
-			<</if>>
-		<<case 3>><<He>> speaks. "Suits you."
-		<<case 4>><<He>> speaks. "I like my sluts signposted."
-		<<case 5>><<He>> speaks. "You're a perfect canvas."
-		<<case 6>><<He>> speaks. "I see others have marked their territory."
-		<<case 7>><<He>> speaks. "Short and to the point."
-		<<case 8>><<He>> speaks. "Good to see sluts come with instructions now."
-		<<case 9>><<He>> speaks. "Maybe I'll add my mark."
-		<<case 10>><<He>> speaks. "I can think of worse things to write on you."
-	<</switch>>
-<<else>>
-	<<switch random(1, 10)>>
-		<<case 1>>
-			<<if $skin[$args[0]].pen is "tattoo">>
-				<<He>> speaks. "Such a lewd tattoo."
-			<<elseif $skin[$args[0]].pen is "brand">>
-				<<He>> speaks. "Such a lewd brand."
-			<<else>>
-				<<He>> speaks. "Such a lewd drawing."
-			<</if>>
-		<<case 2>>
-			<<if $skin[$args[0]].pen is "tattoo">>
-				<<He>> speaks. "Why would you have yourself tattooed so?"
-			<<elseif $skin[$args[0]].pen is "brand">>
-				<<He>> speaks. "Why would you burn that into your skin?"
-			<<else>>
-				<<He>> speaks. "Did you draw this?"
-			<</if>>
-		<<case 3>><<He>> speaks. "Suits you."
-		<<case 4>>
-			<<if $skin[$args[0]].pen is "tattoo">>
-				<<He>> speaks. "I love tattooed sluts."
-			<<elseif $skin[$args[0]].pen is "brand">>
-				<<He>> speaks. "Burned into you. Lovin' it."
-			<<else>>
-				<<He>> speaks. "You should get that as a tattoo."
-			<</if>>
-		<<case 5>><<He>> speaks. "You're a perfect canvas."
-		<<case 6>><<He>> speaks. "I see others have marked their territory."
-		<<case 7>><<He>> speaks. "Someone's an artist."
-		<<case 8>>
-			<<if $skin[$args[0]].pen is "tattoo">>
-				<<He>> speaks. "You should get more lewd tattoos."
-			<<elseif $skin[$args[0]].pen is "brand">>
-				<<He>> speaks. "You should get more lewd brands."
-			<<else>>
-				<<He>> speaks. "I might leave my own mark."
-			<</if>>
-		<<case 9>>
-			<<if $skin[$args[0]].pen is "tattoo">>
-				<<He>> speaks. "Good use of ink."
-			<<elseif $skin[$args[0]].pen is "brand">>
-				<<He>> speaks. "I can think of worse things to brand you with."
-			<<else>>
-				<<He>> speaks. "I can think of worse things to draw on you."
-			<</if>>
-		<<case 10>><<He>> speaks. "I've seen lewder."
-	<</switch>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<if $skin[$args[0]].type is "text">>
+		<<switch random(1, 10)>>
+			<<case 1>>
+				<<if $skin[$args[0]].pen is "tattoo">>
+					<<He>> speaks. "Such a lewd tattoo."
+				<<elseif $skin[$args[0]].pen is "brand">>
+					<<He>> speaks. "Such a lewd brand."
+				<<else>>
+					<<He>> speaks. "Such lewd writing."
+				<</if>>
+			<<case 2>>
+				<<if $skin[$args[0]].pen is "tattoo">>
+					<<He>> speaks. "Why would you have yourself tattooed so?"
+				<<elseif $skin[$args[0]].pen is "brand">>
+					<<He>> speaks. "Why would you burn that into your skin?"
+				<<else>>
+					<<He>> speaks. "Did you write this?"
+				<</if>>
+			<<case 3>><<He>> speaks. "Suits you."
+			<<case 4>><<He>> speaks. "I like my sluts signposted."
+			<<case 5>><<He>> speaks. "You're a perfect canvas."
+			<<case 6>><<He>> speaks. "I see others have marked their territory."
+			<<case 7>><<He>> speaks. "Short and to the point."
+			<<case 8>><<He>> speaks. "Good to see sluts come with instructions now."
+			<<case 9>><<He>> speaks. "Maybe I'll add my mark."
+			<<case 10>><<He>> speaks. "I can think of worse things to write on you."
+		<</switch>>
+	<<else>>
+		<<switch random(1, 10)>>
+			<<case 1>>
+				<<if $skin[$args[0]].pen is "tattoo">>
+					<<He>> speaks. "Such a lewd tattoo."
+				<<elseif $skin[$args[0]].pen is "brand">>
+					<<He>> speaks. "Such a lewd brand."
+				<<else>>
+					<<He>> speaks. "Such a lewd drawing."
+				<</if>>
+			<<case 2>>
+				<<if $skin[$args[0]].pen is "tattoo">>
+					<<He>> speaks. "Why would you have yourself tattooed so?"
+				<<elseif $skin[$args[0]].pen is "brand">>
+					<<He>> speaks. "Why would you burn that into your skin?"
+				<<else>>
+					<<He>> speaks. "Did you draw this?"
+				<</if>>
+			<<case 3>><<He>> speaks. "Suits you."
+			<<case 4>>
+				<<if $skin[$args[0]].pen is "tattoo">>
+					<<He>> speaks. "I love tattooed sluts."
+				<<elseif $skin[$args[0]].pen is "brand">>
+					<<He>> speaks. "Burned into you. Lovin' it."
+				<<else>>
+					<<He>> speaks. "You should get that as a tattoo."
+				<</if>>
+			<<case 5>><<He>> speaks. "You're a perfect canvas."
+			<<case 6>><<He>> speaks. "I see others have marked their territory."
+			<<case 7>><<He>> speaks. "Someone's an artist."
+			<<case 8>>
+				<<if $skin[$args[0]].pen is "tattoo">>
+					<<He>> speaks. "You should get more lewd tattoos."
+				<<elseif $skin[$args[0]].pen is "brand">>
+					<<He>> speaks. "You should get more lewd brands."
+				<<else>>
+					<<He>> speaks. "I might leave my own mark."
+				<</if>>
+			<<case 9>>
+				<<if $skin[$args[0]].pen is "tattoo">>
+					<<He>> speaks. "Good use of ink."
+				<<elseif $skin[$args[0]].pen is "brand">>
+					<<He>> speaks. "I can think of worse things to brand you with."
+				<<else>>
+					<<He>> speaks. "I can think of worse things to draw on you."
+				<</if>>
+			<<case 10>><<He>> speaks. "I've seen lewder."
+		<</switch>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_criminal">>
 <<set $enemytrust -= 35>>
-<<if $consensual is 1>>
-	<<switch random(1, 9)>>
-		<<case 1>><<He>> speaks. "I should watch my money."
-		<<case 2>><<He>> speaks. "I'm keeping an eye on you."
-		<<case 3>><<He>> speaks. "Maybe I should punish you."
-		<<case 4>><<He>> speaks. "Don't try to steal anything."
-		<<case 5>><<He>> speaks. "Don't think about robbing me."
-		<<case 6>><<He>> speaks. "Should I be worried?"
-		<<case 7>><<He>> speaks. "Who'd you steal from?"
-		<<case 8>><<He>> speaks. "I didn't know being a slut was illegal."
-		<<case 9>><<He>> speaks. "I bet you tried whoring yourself."
-	<</switch>>
-<<else>>
-	<<switch random(1, 9)>>
-		<<case 1>><<He>> speaks. "You deserve to be treated like this."
-		<<case 2>><<He>> speaks. "I'm doing my part for the community."
-		<<case 3>><<He>> speaks. "Punishing whores is fun."
-		<<case 4>><<He>> speaks. "Be good, or I'll tell the police you robbed me."
-		<<case 5>><<He>> speaks. "Steal from me and I'll fuck you up."
-		<<case 6>><<He>> speaks. "Don't try anything. I've counted every penny."
-		<<case 7>><<He>> speaks. "I bet you tried to whore yourself, you dumb slut."
-		<<case 8>><<He>> speaks. "I knew this was all you're good for."
-		<<case 9>><<He>> speaks. "I'm giving you what you deserve."
-	<</switch>>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<if $consensual is 1>>
+		<<switch random(1, 9)>>
+			<<case 1>><<He>> speaks. "I should watch my money."
+			<<case 2>><<He>> speaks. "I'm keeping an eye on you."
+			<<case 3>><<He>> speaks. "Maybe I should punish you."
+			<<case 4>><<He>> speaks. "Don't try to steal anything."
+			<<case 5>><<He>> speaks. "Don't think about robbing me."
+			<<case 6>><<He>> speaks. "Should I be worried?"
+			<<case 7>><<He>> speaks. "Who'd you steal from?"
+			<<case 8>><<He>> speaks. "I didn't know being a slut was illegal."
+			<<case 9>><<He>> speaks. "I bet you tried whoring yourself."
+		<</switch>>
+	<<else>>
+		<<switch random(1, 9)>>
+			<<case 1>><<He>> speaks. "You deserve to be treated like this."
+			<<case 2>><<He>> speaks. "I'm doing my part for the community."
+			<<case 3>><<He>> speaks. "Punishing whores is fun."
+			<<case 4>><<He>> speaks. "Be good, or I'll tell the police you robbed me."
+			<<case 5>><<He>> speaks. "Steal from me and I'll fuck you up."
+			<<case 6>><<He>> speaks. "Don't try anything. I've counted every penny."
+			<<case 7>><<He>> speaks. "I bet you tried to whore yourself, you dumb slut."
+			<<case 8>><<He>> speaks. "I knew this was all you're good for."
+			<<case 9>><<He>> speaks. "I'm giving you what you deserve."
+		<</switch>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_cum_heavy">>
-<<famesex 2>>
-<<He>> speaks.
-
-<<if $args[0] is "anus" and $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
-	<<if random(1, 2) is 1>>
-		"Doesn’t surprise me, with a dick that small."
-	<<else>>
-		"With such a tiny cock, I guess that’s the only way you could pleasure someone."
-	<</if>>
-	
-	<<if $penissize is 1>>
-		<<insecurity "penis_small" 1>>
-	<<else>>
-		<<insecurity "penis_tiny" 1>>
-	<</if>>
+<<if $NPCList[_n].type is "plant">>
+	<<He>> licks <<his>> lips.
 <<else>>
-	<<switch random(1, 11)>>
-		<<case 1>>"What a fucking cum rag."
-		<<case 2>>"What a filthy slut."
-		<<case 3>>"What a fucking cumdump."
-		<<case 4>>"You nasty cumdump!"
-		<<case 5>>"Does walking around covered in cum excite you?"
-		<<case 6>>"Do you ever clean yourself?"
-		<<case 7>>"Fucking sluts won’t even take a bath anymore."
-		<<case 8>>"Were you whoring yourself?"
-		<<case 9>>"Fuck, are you addicted to cum or what?"
-		<<case 10>>"Someone knows how to have fun."
-		<<case 11>>
-			<<if $args[0] is "vagina">>
-				"Are you that desperate for a baby?"
-			<<elseif $args[0] is "anus">>
-				"Looks like your ass is getting a lot of action."
+	<<famesex 2>>
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<He>> speaks.
+
+		<<if $args[0] is "anus" and $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
+			<<if random(1, 2) is 1>>
+				"Doesn’t surprise me, with a dick that small."
 			<<else>>
-				"Someone knows how to have fun."
+				"With such a tiny cock, I guess that’s the only way you could pleasure someone."
 			<</if>>
-	<</switch>>
+
+			<<if $penissize is 1>>
+				<<insecurity "penis_small" 1>>
+			<<else>>
+				<<insecurity "penis_tiny" 1>>
+			<</if>>
+		<<else>>
+			<<switch random(1, 11)>>
+				<<case 1>>"What a fucking cum rag."
+				<<case 2>>"What a filthy slut."
+				<<case 3>>"What a fucking cumdump."
+				<<case 4>>"You nasty cumdump!"
+				<<case 5>>"Does walking around covered in cum excite you?"
+				<<case 6>>"Do you ever clean yourself?"
+				<<case 7>>"Fucking sluts won’t even take a bath anymore."
+				<<case 8>>"Were you whoring yourself?"
+				<<case 9>>"Fuck, are you addicted to cum or what?"
+				<<case 10>>"Someone knows how to have fun."
+				<<case 11>>
+					<<if $args[0] is "vagina">>
+						"Are you that desperate for a baby?"
+					<<elseif $args[0] is "anus">>
+						"Looks like your ass is getting a lot of action."
+					<<else>>
+						"Someone knows how to have fun."
+					<</if>>
+			<</switch>>
+		<</if>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_cum_light">>
-<<famesex 1>>
-<<He>> speaks.
-<<if $args[0] is "vagina">>
-	<<switch random(1, 9)>>
-		<<case 1>>
-			<<if $malechance gt 0>>
-				"Did you have some fun with your boyfriend?"
-			<<else>>
-				"I see someone had fun already."
-			<</if>>
-		<<case 2>>
-			<<if $malechance gt 0>>
-				"Did your boyfriend do that?"
-			<<else>>
-				"Who put that load in you?"
-			<</if>>
-		<<case 3>>
-			<<if $malechance gt 0>>
-				"I bet you made your boyfriend happy."
-			<<else>>
-				"You must've made someone very happy."
-			<</if>>
-		<<case 4>>"Don’t worry, I’ll give you some more."
-		<<case 5>>"Guess I’ll be taking sloppy seconds."
-		<<case 6>>"At least clean yourself after slutting out."
-		<<case 7>>"I see someone had fun already."
-		<<case 8>>"Do you like being creampied?"
-		<<case 9>>"Are you trying to get pregnant?"
-	<</switch>>
-<<elseif $args[0] is "anus">>
-	<<if $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
-		<<if random(1, 2) is 1>>
-			"Doesn’t surprise me, with a dick that small."
-		<<else>>
-			"With such a tiny cock, I guess that’s the only way you could pleasure someone."
-		<</if>>
-		
-		<<if $penissize is 1>>
-			<<insecurity "penis_small" 1>>
-		<<else>>
-			<<insecurity "penis_tiny" 1>>
-		<</if>>
-	<<else>>
-		<<switch random(1, 10)>>
-			<<case 1>>
-				<<if $malechance gt 0>>
-					"Did you have some fun with your boyfriend?"
-				<<else>>
-					"I see someone had fun already."
-				<</if>>
-			<<case 2>>
-				<<if $malechance gt 0>>
-					"Did your boyfriend do that?"
-				<<else>>
-					"Who put that load in you?"
-				<</if>>
-			<<case 3>>
-				<<if $malechance gt 0>>
-					"I bet you made your boyfriend happy."
-				<<else>>
-					"You must've made someone very happy."
-				<</if>>
-			<<case 4>>"Don’t worry, I’ll give you some more."
-			<<case 5>>"Guess I’ll be taking sloppy seconds."
-			<<case 6>>"At least clean yourself after slutting out."
-			<<case 7>>"I see someone had fun already."
-			<<case 8>>"Nice to know you don’t mind taking it in the ass."
-			<<case 9>>"Did you enjoy getting your ass filled?"
-			<<case 10>>"Were you trying to stay a virgin?"
-		<</switch>>
-	<</if>>
+<<if $NPCList[_n].type is "plant">>
+	<<He>> licks <<his>> lips.
 <<else>>
-	<<switch random(1, 8)>>
-		<<case 1>>
-			<<if $malechance gt 0>>
-				"Did you have some fun with your boyfriend?"
+	<<famesex 1>>
+	<<He>> speaks.
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<if $args[0] is "vagina">>
+			<<switch random(1, 9)>>
+				<<case 1>>
+					<<if $malechance gt 0>>
+						"Did you have some fun with your boyfriend?"
+					<<else>>
+						"I see someone had fun already."
+					<</if>>
+				<<case 2>>
+					<<if $malechance gt 0>>
+						"Did your boyfriend do that?"
+					<<else>>
+						"Who put that load in you?"
+					<</if>>
+				<<case 3>>
+					<<if $malechance gt 0>>
+						"I bet you made your boyfriend happy."
+					<<else>>
+						"You must've made someone very happy."
+					<</if>>
+				<<case 4>>"Don’t worry, I’ll give you some more."
+				<<case 5>>"Guess I’ll be taking sloppy seconds."
+				<<case 6>>"At least clean yourself after slutting out."
+				<<case 7>>"I see someone had fun already."
+				<<case 8>>"Do you like being creampied?"
+				<<case 9>>"Are you trying to get pregnant?"
+			<</switch>>
+		<<elseif $args[0] is "anus">>
+			<<if $player.gender is "m" and $penissize lte 1 and random(1, 5) is 1>>
+				<<if random(1, 2) is 1>>
+					"Doesn’t surprise me, with a dick that small."
+				<<else>>
+					"With such a tiny cock, I guess that’s the only way you could pleasure someone."
+				<</if>>
+				
+				<<if $penissize is 1>>
+					<<insecurity "penis_small" 1>>
+				<<else>>
+					<<insecurity "penis_tiny" 1>>
+				<</if>>
 			<<else>>
-				"I see someone had fun with you already."
+				<<switch random(1, 10)>>
+					<<case 1>>
+						<<if $malechance gt 0>>
+							"Did you have some fun with your boyfriend?"
+						<<else>>
+							"I see someone had fun already."
+						<</if>>
+					<<case 2>>
+						<<if $malechance gt 0>>
+							"Did your boyfriend do that?"
+						<<else>>
+							"Who put that load in you?"
+						<</if>>
+					<<case 3>>
+						<<if $malechance gt 0>>
+							"I bet you made your boyfriend happy."
+						<<else>>
+							"You must've made someone very happy."
+						<</if>>
+					<<case 4>>"Don’t worry, I’ll give you some more."
+					<<case 5>>"Guess I’ll be taking sloppy seconds."
+					<<case 6>>"At least clean yourself after slutting out."
+					<<case 7>>"I see someone had fun already."
+					<<case 8>>"Nice to know you don’t mind taking it in the ass."
+					<<case 9>>"Did you enjoy getting your ass filled?"
+					<<case 10>>"Were you trying to stay a virgin?"
+				<</switch>>
 			<</if>>
-		<<case 2>>
-			<<if $malechance gt 0>>
-				"Did your boyfriend do that?"
-			<<else>>
-				"Who dumped that load on you?"
-			<</if>>
-		<<case 3>>
-			<<if $malechance gt 0>>
-				"I bet you made your boyfriend happy."
-			<<else>>
-				"You must've made someone very happy."
-			<</if>>
-		<<case 4>>"Do you like having cum on you?"
-		<<case 5>>"Don’t worry, I’ll give you some more."
-		<<case 6>>"At least clean yourself after slutting out."
-		<<case 7>>"I see someone had fun with you already."
-		<<case 8>>"Were you trying to stay a virgin?"
-	<</switch>>
+		<<else>>
+			<<switch random(1, 8)>>
+				<<case 1>>
+					<<if $malechance gt 0>>
+						"Did you have some fun with your boyfriend?"
+					<<else>>
+						"I see someone had fun with you already."
+					<</if>>
+				<<case 2>>
+					<<if $malechance gt 0>>
+						"Did your boyfriend do that?"
+					<<else>>
+						"Who dumped that load on you?"
+					<</if>>
+				<<case 3>>
+					<<if $malechance gt 0>>
+						"I bet you made your boyfriend happy."
+					<<else>>
+						"You must've made someone very happy."
+					<</if>>
+				<<case 4>>"Do you like having cum on you?"
+				<<case 5>>"Don’t worry, I’ll give you some more."
+				<<case 6>>"At least clean yourself after slutting out."
+				<<case 7>>"I see someone had fun with you already."
+				<<case 8>>"Were you trying to stay a virgin?"
+			<</switch>>
+		<</if>>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "bodypart_admire_parasite_comment">>
-<<famebestiality 1>>
-<<He>> speaks.
-<<switch random(1, 8)>>
-	<<case 1>>"That must feel good."
-	<<case 2>>"I bet that keeps you horny. That’s why you haven’t taken it off yet."
-	<<case 3>>"You should see a doctor about that."
-	<<case 4>>"Fuck, is that real?"
-	<<case 5>>"Did you put that on yourself?"
-	<<case 6>>"Where did you even find that?"
-	<<case 7>>"I would never suspect a <<girl>> like you to be into that."
-	<<case 8>>"Not my thing, but I guess I can’t be picky."
-<</switch>>
+<<if $NPCList[_n].type is "plant">>
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<if $args[0] is penis>>
+			<<He>> pouts. "That thing better not block your cum<<if $orgasmcurrent gte 1>> again<</if>>."
+		<<else>>
+			<<He>> raises an eyebrow. "Alright. Gotta admit, that's a new one."
+		<</if>>
+	<</if>>
+<<else>>
+	<<famebestiality 1>>
+	<<if !$speechadmired>><<set $speechadmired to 1>>
+		<<He>> speaks.
+		<<switch random(1, 8)>>
+			<<case 1>>"That must feel good."
+			<<case 2>>"I bet that keeps you horny. That’s why you haven’t taken it off yet."
+			<<case 3>>"You should see a doctor about that."
+			<<case 4>>"Fuck, is that real?"
+			<<case 5>>"Did you put that on yourself?"
+			<<case 6>>"Where did you even find that?"
+			<<case 7>>"I would never suspect a <<girl>> like you to be into that."
+			<<case 8>>"Not my thing, but I guess I can’t be picky."
+		<</switch>>
+	<</if>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_kylar">>
@@ -1491,6 +1584,67 @@ Second arg: tool */
 <</switch>>
 <</widget>>
 
+<<widget "bodypart_admire_plant">>
+<<if !$speechadmired>><<set $speechadmired to 1>>
+	<<if $skin[$args[0]].type is "object">>
+		<<switch $skin[$args[0]].writing>>
+			<<case "unicorn">>
+				"Horses like that exist? Whoa."
+			<<case "heart" "cross">>
+				"Aw, how cute! ...What is it?"
+			<<case "paw_print">>
+				<<if $location is "forest">>
+					"Hey, are you with the... never mind."
+				<<else>>
+					"Exotic!"
+				<</if>>
+			<<case "flower" "butterfly">>
+				"Oh, I love it!"
+				<<set $enemytrust += 20>>
+			<<case "star">>
+				<<if $location is "forest">>
+					"I wish we could see the stars, but the trees block most of them out..."
+				<<elseif $daystate is "night">>
+					"Just like the sky!"
+				<<else>>
+					"Just like the night sky..."
+				<</if>>
+			<<case "skull">>
+				"You mean you have one of those in your body? I don't buy it."
+			<<case "flame">>
+				<<if $skin[$args[0]].pen is "brand" or $skin[$args[0]].pen is "magic">>
+					"That's not... actually burning you, is it?"
+				<<else>>
+					"You've got a taste for the dangerous."
+				<</if>>
+			<<case "cattle_brand">>
+				<<if $location is "moor">>
+					"Don't worry. I won't let Remy take you from me."
+				<<else>>
+					"Aw, how cute! ...What is it?"
+				<</if>>
+			<<case "penis">>
+				"Ooh, how lewd! ...What do you mean, unused?!"
+		<</switch>>
+	<<else>>
+		<<switch $skin[$args[0]].pen>>
+			<<case "tattoo">>
+				"What is that, a birthmark?"
+			<<case "brand">>
+				"Yowch, wouldn't want that seared into me."
+			<<case "magic">>
+				"Did I have a funky mushroom, or is that actually glowing?"
+			<<case "lipstick">>
+				"Ooh, pink!"
+			<<case "mud">>
+				"Nature's canvas."
+			<<default>>
+				"It's a shame to draw on such cute skin."
+		<</switch>>
+	<</if>>
+<</if>>
+<</widget>>
+
 <<widget "bodypart_admire">>
 <<switch $args[1]>>
 	<<case "bodywriting">>
@@ -1507,7 +1661,7 @@ Second arg: tool */
 				<<if $skin[$args[0]].type is "text">>
 					<<He>> reads the "<<print $skin[$args[0]].writing>>" writing on your <<bodypart $args[0]>>.
 				<<else>>
-					<<He>> examines the "<<print $skin[$args[0]].writing>>" image on your <<bodypart $args[0]>>.
+					<<He>> examines the <<print $skin[$args[0]].writing>> image on your <<bodypart $args[0]>>.
 				<</if>>
 				<<if $npc[$npcrow.indexOf(_n)] is "Kylar">>
 					<<bodypart_admire_kylar $args[0]>>
@@ -1522,6 +1676,8 @@ Second arg: tool */
 					$args[0] is "left_thigh" or
 					$args[0] is "right_thigh")>>
 						<<bodypart_admire_arrow $args[0]>>
+					<<elseif $NPCList[_n].type is "plant">>
+						<<bodypart_admire_plant $args[0]>>
 					<<elseif $skin[$args[0]].special is "prostitution">>
 						<<bodypart_admire_prostitution $args[0]>>
 					<<elseif $skin[$args[0]].special is "rape">>
@@ -1596,6 +1752,9 @@ Second arg: tool */
 	<<default>>
 		<<set _admireNothing to true>>
 <</switch>>
+<<if $NPCList[_n].type is "plant">>
+	<<set _admireNothing to true>>
+<</if>>
 <</widget>>
 
 <<widget "bodypart_admire_parasite_convert">>
@@ -1631,9 +1790,9 @@ Second arg: tool */
 	<</if>>
 
 	<<if $args[0] is "vagina" or $args[0] is "anus" or $args[0] is "mouth">>
-		<<He>> notices the <<print _bodypartLiquidText>> oozing from your <<bodypart $args[0]>>.
+		<<He>> <<print either("sees a large amount of", "spots the", "notices the", "eyes up the", "stares at the")>> <<print _bodypartLiquidText>> <<print either("oozing from", "pouring out of", "running from")>> from your <<bodypart $args[0]>>.
 	<<else>>
-		<<He>> notices the <<print _bodypartLiquidText>> coating your <<bodypart $args[0]>>.
+		<<He>> <<print either("sees a large amount of", "spots the", "notices the", "eyes up the", "stares at the")>> <<print _bodypartLiquidText>> <<print either("coating", "soaking", "running down", "cascading off")>> your <<bodypart $args[0]>>.
 	<</if>>
 
 	<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
@@ -1649,9 +1808,9 @@ Second arg: tool */
 	<</if>>
 
 	<<if $args[0] is "vagina" or $args[0] is "anus" or $args[0] is "mouth">>
-		<<He>> notices the <<print _bodypartLiquidText>> dripping from your <<bodypart $args[0]>>.
+		<<He>> <<print either("sees a small amount of", "spots some", "notices some", "eyes up the")>> <<print _bodypartLiquidText>> <<print either("dripping from", "leaking from", "running from", "dribbling out of")>> your <<bodypart $args[0]>>.
 	<<else>>
-		<<He>> notices the <<print _bodypartLiquidText>> on your <<bodypart $args[0]>>.
+		<<He>> <<print either("sees a small amount of", "spots some", "notices some", "eyes up the")>> <<print _bodypartLiquidText>> on your <<bodypart $args[0]>>.
 	<</if>>
 	
 	<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
@@ -1663,7 +1822,7 @@ Second arg: tool */
 <<widget "bodypart_admire_parasite">>
 <<if _admireNothing or $parasite[$args[0]].name is undefined>>
 <<else>>
-	<<He>> notices the <<print $parasite[$args[0]].name>> on your <<bodypart $args[0]>>.
+	<<He>> <<print either("notices", "stares at", "glances at", "eyes up", "sees")>> the <<print $parasite[$args[0]].name>> on your <<bodypart $args[0]>>.
 	<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
 		<<bodypart_admire_parasite_comment $args[0]>>
 	<</if>>
@@ -1671,16 +1830,17 @@ Second arg: tool */
 <</widget>>
 
 <<widget "bodypart_admire_chance">>
-<<if $NPCList[_n].mouth is 0 and $enemytype isnot "beast">>
-	<<set _rng to random(1, 5)>>
-	<<if _rng gte 4>>
-	<<elseif _rng is 1>>
-		<<bodypart_admire $args[0] bodywriting>>
-	<<elseif _rng is 2>>
-		<<bodypart_admire $args[0] cum>>
-	<<elseif _rng is 3>>
-		<<bodypart_admire $args[0] parasite>>
-	<</if>>
+<<if $enemytype isnot "beast" and ($NPCList[_n].mouth is 0 or $NPCList[_n].mouth is "speech_only" or ($NPCList[_n].type is "plant" and $speechkissvirgin is 1)) and $speechdisable isnot 1>>
+    <<switch random(1, 5)>>
+		<<case 5>>
+			<<bodypart_admire $args[0] bodywriting>>
+		<<case 4>>
+			<<bodypart_admire $args[0] cum>>
+		<<case 3>>
+			<<bodypart_admire $args[0] parasite>>
+		<<default>>
+			/*Do nothing*/
+	<</switch>>
 <</if>>
 <</widget>>
 
@@ -1868,7 +2028,7 @@ Second arg: tool */
 <<if $tattoo_bodypart is "left_bottom" or $tattoo_bodypart is "right_bottom">>
 "Alright," <<he>> says, pulling the curtain shut. "Lets see your bottom."
 	<<if $worn.lower.name isnot "naked">>
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			<<if $worn.under_lower.name isnot "naked">>
 				You <<nervously>> flip up your skirt, baring your $worn.under_lower.name. "Those need to go," <<he>> says. "Or they'll get in the way."
 					<<if $worn.under_lower.set is $worn.under_upper.set>>
@@ -1927,11 +2087,11 @@ Second arg: tool */
 "Alright," <<he>> says, pulling the curtain shut.
 	<<if $worn.lower.name is "naked">>
 
-	<<elseif $worn.upper.set is $worn.lower.set and $worn.lower.skirt isnot 1>>
+	<<elseif $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 		"You'll have to strip right down. Don't want fabric getting in the way."
 
 		You <<nervously>> remove your $worn.upper.name, baring your <<undertop>> and <<undies>>.
-	<<elseif $worn.lower.skirt isnot 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 		"You'll have to take your bottoms off. Don't want the fabric getting in the way."
 
 		You <<nervously>> pull down your $worn.lower.name, baring your <<undies>>.

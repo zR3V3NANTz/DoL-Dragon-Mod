@@ -800,10 +800,10 @@ You put up with it. You continue picking fruit off the tree, now with the <<monk
 	<<set $enemytype to "tentacles">>
 	<<molested>>
 	<<controlloss>>
-	<<tentaclestart 7 15>>
+	<<tentaclestart 4 15 "vine" "vine" true>>
 <</if>>
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>

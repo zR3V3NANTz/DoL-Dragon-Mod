@@ -996,7 +996,7 @@ You nod. Sydney crouches down and puts <<his>> arms out. "I think I'm strong eno
 You vault Sydney, and <<he>> gradually stands. You're surprised by how easy <<he>> keeps <<his>> balance. You're able to reach the book like this.
 <br><br>
 <<if _sydneyStatus.includes("corrupt") and $sydneyromance is 1>>
-	<<if $worn.lower.skirt is 1 and $worn.under_lower.exposed_base is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and setup.clothes.under_lower[$worn.under_lower.index].exposed_base is 1>>
 		<span class="lewd">You feel something touch your <<genitals>>.</span> "Oopsie. Someone forgot proper underwear," Sydney whispers. <<npcincr Sydney purity -2>><<lspurity>>
 		<br><br>
 		You're helpless to get down like this. Sydney continues to fondle you from below. <<arousal 2500>><<ggarousal>>
@@ -1007,7 +1007,7 @@ You vault Sydney, and <<he>> gradually stands. You're surprised by how easy <<he
 		<</if>>
 		<br><br>
 		Sydney takes <<his>> seat. <<He>> doesn't even ask you for the book you just retrieved for <<him>>.
-	<<elseif $worn.lower.skirt is 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		"Nice $worn.under_lower.name." You remember that you're wearing a skirt, and Sydney has an unrestricted view. <<npcincr Sydney lust 1>><<npcincr Sydney purity -2>><<gslust>><<lspurity>>
 		<br><br>
 		You feel <<him>> grope your <<bottom>>, before letting you down. "Thanks for that." <<He>> takes <<his>> seat without even taking the book from your hands.
@@ -1015,13 +1015,13 @@ You vault Sydney, and <<he>> gradually stands. You're surprised by how easy <<he
 		You feel Sydney grope your <<bottom>>, before letting you down. "Thanks for that." <<He>> takes <<his>> seat without even taking the book from your hands.
 	<</if>>
 <<else>>
-	<<if $worn.lower.skirt is 1 and $worn.under_lower.exposed_base is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and setup.clothes.under_lower[$worn.under_lower.index].exposed_base is 1>>
 		<span class="lewd">You hear a gasp, and Sydney trembles under you.</span> "S-sorry, I didn't mean to look!" Sydney whispers. You just remembered what you're wearing. Sydney might have got a faceful of your <<genitals>>. <<npcincr Sydney lust 3>><<npcincr Sydney purity -5>><<ggslust>><<llspurity>>
 		<br><br>
 		You're helpless to get down like this. Sydney lets you down, making sure to avoid your entire lower half when possible. <<His>> face is the brightest red you've ever seen. <<arousal 1000>><<garousal>>
 		<br><br>
 		<<He>> takes <<his>> seat, refusing to make eye contact. "Th-thanks for getting the book down for me."
-	<<elseif $worn.lower.skirt is 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You hear a gasp. "S-sorry, I didn't mean to look!" Sydney whispers. You suddenly remember that you're wearing a skirt. <<He>> likely just got an easy view of your underwear. <<npcincr Sydney lust 1>><<npcincr Sydney purity -2>><<gslust>><<lspurity>>
 		<br><br>
 		Sydney very carefully lets you down. <<His>> face is bright red. <<arousal 500>><<garousal>>

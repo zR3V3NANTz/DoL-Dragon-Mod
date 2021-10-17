@@ -743,6 +743,23 @@ and $worn.upper.type.includesAny("swim", "naked")and $worn.lower.type.includesAn
 			<span class="red">Impossible <<if $checkstyle is "percentage">><<print _difficulty>>%<</if>></span>
 		<</if>>
 	<</if>>
+<<elseif $args[2] is "combat">>
+	<<if $checkstyle is "skillname">>
+	<<elseif _difficulty gte 100>>
+		<span class="green">(Very Easy)</span>
+	<<elseif _difficulty gte 80>>
+		<span class="teal">(Easy)</span>
+	<<elseif _difficulty gte 60>>
+		<span class="lblue">(Medium)</span>
+	<<elseif _difficulty gte 40>>
+		<span class="blue">(Challenging)</span>
+	<<elseif _difficulty gte 20>>
+		<span class="purple">(Hard)</span>
+	<<elseif _difficulty gte 1>>
+		<span class="pink">(Very Hard)</span>
+	<<else>>
+		<span class="red">(Impossible)</span>
+	<</if>>
 <</if>>
 <<if _willpower gte random(_willpowerdifficultymin, _willpowerdifficultymax)>>
 	<<set $willpowerSuccess to 1>>

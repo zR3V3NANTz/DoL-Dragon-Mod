@@ -123,7 +123,7 @@ You help Alex remove dead wood, and trim the branches of the wildest trees.
 		"The ground's uneven. You climb with the saw, and I'll steady you. Shouldn't take long."
 		<br><br>
 
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			You climb the ladder. It wobbles a little, and you hesitate.
 			<br><br>
 

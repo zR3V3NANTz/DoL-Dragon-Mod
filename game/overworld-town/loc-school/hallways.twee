@@ -649,10 +649,12 @@ You run to the window and throw it open. You don't have enough time to be sure, 
 	<br><br>
 <</if>>
 
+<<statetentacles>>
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>
-<<statetentacles>>
 <<actionstentacles>>
 
 <<if $tentacles.active lte ($tentacles.max / 2)>>
@@ -892,7 +894,7 @@ The <<person>> becomes more forceful.
 :: Hallways Catcall Flirt
 <<effects>>
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	You lift the hem of your $worn.lower.name, just short of showing off your <<undies>>.
 	<<if $submissive gte 1150>>
 		"You think I'm cute?" you ask.

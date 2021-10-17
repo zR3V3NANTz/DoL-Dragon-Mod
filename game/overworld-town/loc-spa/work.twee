@@ -740,7 +740,7 @@ You negotiate a fee of <<printmoney $tip>>,
 <<He>> grasps your $worn.under_lower.name with <<his>> other hand,
 <<if $worn.under_lower.open is 1 or _broken or $worn.under_lower.integrity lte 20>>
 	<<fameexhibitionism 1>>
-	<<if $worn.under_lower.skirt is 1>>
+	<<if setup.clothes.under_lower[$worn.under_lower.index].skirt is 1>>
 		and flips it up,
 	<<elseif $worn.under_lower.integrity gt 20>>
 		and tugs it down,

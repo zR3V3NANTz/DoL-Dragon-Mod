@@ -2,7 +2,7 @@
 <<widget "updateClothes">>
 
 <<set _equip to setup.clothes_all_slots>>
-<<set _skip to ["integrity","integrity_max","colour","accessory_colour", "exposed", "vagina_exposed", "anus_exposed", "anal_shield", "one_piece", "skirt_down", "state", "state_top"]>>
+<<set _skip to ["integrity","integrity_max","colour","accessory_colour", "exposed", "vagina_exposed", "anus_exposed", "anal_shield", "one_piece", "skirt_down", "state", "state_top","name_cap","iconFile","accIcon","notuck","skirt","description","colour_options","accessory_colour_options","fabric_strength","integrity_max","bustresize","sleeve_img","breast_img","exposed_base","vagina_exposed_base","anus_exposed_base","state_top_base","state_base",,"word","femininity","strap","cost","shop"]>>
 <<set _remap_colours to {"light-pink":"light pink", "blue-steel":"blue steel"}>>
 
 <<for _i to 0; _i lt _equip.length; _i++>>
@@ -147,5 +147,138 @@
 		<<set $outfit[_i].upper to "crop top">>
 	<</if>>
 <</for>>
+
+<!--
+ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x and allow the update function to run
+<<run clothesDataTrimmerLoop()>>
+-->
+<</widget>>
+
+<<widget "wardrobesUpdate">>
+<<set _default to {
+	face:[],
+	feet:[],
+	hands:[],
+	head:[],
+	legs:[],
+	lower:[],
+	neck:[],
+	over_head:[],
+	over_lower:[],
+	over_upper:[],
+	under_lower:[],
+	under_upper:[],
+	upper:[],
+	unlocked: false,
+	shopSend: false,
+	transfer: true,
+	isolated: false,
+	locationRequirement:[],
+	space:5
+}>>
+<<set _defaultExtended to {
+	face:[],
+	feet:[],
+	hands:[],
+	head:[],
+	legs:[],
+	lower:[],
+	neck:[],
+	over_head:[],
+	over_lower:[],
+	over_upper:[],
+	under_lower:[],
+	under_upper:[],
+	upper:[],
+	unlocked: false,
+	shopSend: true,
+	transfer: true,
+	isolated: false,
+	locationRequirement:[],
+	space:40
+}>>
+<<if $wardrobes is undefined>>
+	<<set $wardrobes to {
+		shopReturn:"wardrobe",
+		wardrobe:{
+			NOTE:"DO NOT USE THIS OBJECT TO STORE CLOTHES",
+			unlocked: true,
+			shopSend: true,
+			name: "Orphanage"
+		},
+		changingRoom:clone(_default),
+		edensCabin:clone(_default),
+		asylum:clone(_default),
+		alexFarm:clone(_defaultExtended),
+		stripClub:clone(_default),
+		brothel:clone(_default),
+		schoolBoys:clone(_default),
+		schoolGirls:clone(_default),
+		prison: clone(_default)
+	}>>
+
+	<<set $wardrobes.changingRoom.name to "Beach changing room">>
+	<<set $wardrobes.changingRoom.unlocked to true>>
+
+	<<set $wardrobes.edensCabin.name to "Eden's Cabin">>
+	<<set $wardrobes.edensCabin.space to 10>>
+	<<if $syndromeeden>>
+		<<set $wardrobes.edensCabin.unlocked to true>>
+	<</if>>
+
+	<<set $wardrobes.asylum.locationRequirement.push("asylum")>>
+	<<set $wardrobes.asylum.name to "Asylum">>
+	<<set $wardrobes.asylum.transfer to false>>
+	<<set $wardrobes.asylum.isolated to true>>
+
+	<<set $wardrobes.alexFarm.name to "Alex's Farm">>
+	<<if $farm_stage gte 7>>
+		<<set $wardrobes.alexFarm.unlocked to true>>
+	<</if>>
+
+	<<set $wardrobes.stripClub.name to "Strip Club">>
+	<<set $wardrobes.stripClub.space to 10>>
+	<<if $stripclubdancingintro>>
+		<<set $wardrobes.stripClub.unlocked to true>>
+	<</if>>
+
+	<<set $wardrobes.brothel.name to "Brothel">>
+	<<set $wardrobes.brothel.space to 10>>
+	<<if $brotheljob>>
+		<<set $wardrobes.brothel.unlocked to true>>
+	<</if>>
+	
+	<<set $wardrobes.schoolBoys.name to "Schools boy's locker">>
+	<<set $wardrobes.schoolBoys.unlocked to true>>
+	<<set $wardrobes.schoolBoys.under_lower.push(setup.clothes.under_lower[7])>>
+	<<set $wardrobes.schoolBoys.under_lower.last().colour to "blue">>
+
+	<<set $wardrobes.schoolGirls.name to "Schools girl's locker">>
+	<<set $wardrobes.schoolGirls.unlocked to true>>
+	<<set $wardrobes.schoolGirls.under_lower.push(setup.clothes.under_lower[6])>>
+	<<set $wardrobes.schoolGirls.under_lower.last().colour to "blue">>
+	<<set $wardrobes.schoolGirls.under_upper.push(setup.clothes.under_upper[2])>>
+	<<set $wardrobes.schoolGirls.under_upper.last().colour to "blue">>
+
+	<<set $wardrobes.prison.name to "Prison Locker">>
+	<<set $wardrobes.prison.transfer to false>>
+	<<set $wardrobes.prison.isolated to true>>
+
+	<<for _label, _value range $worn>>
+		<<set $worn[_label].lastTaken to "wardrobe">>
+	<</for>>
+	<<if $carried isnot undefined>>
+		<<for _label, _value range $carried>>
+			<<set $worn[_label].lastTaken to "wardrobe">>
+		<</for>>
+	<</if>>
+	<<if $store isnot undefined>>
+		<<for _label, _value range $store>>
+			<<set $store[_label].forEach(item => {
+				item.lastTaken = "wardrobe"
+			})>>
+		<</for>>
+	<</if>>
+<</if>>
 
 <</widget>>

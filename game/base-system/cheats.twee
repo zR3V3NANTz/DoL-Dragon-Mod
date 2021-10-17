@@ -586,7 +586,7 @@ Milk volume: <span id="statsmilk_volume"><<print Math.trunc($milk_volume)>></spa
 	Over Top integrity: <span id="statsoverupperintegrity"><<print Math.trunc($worn.over_upper.integrity)>></span>
 	| <<link ">">><<set $worn.over_upper.integrity += 1>><<clamp>><<replace "#statsoverupperintegrity">><<print Math.trunc($worn.over_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>>
 	| <<link ">>">><<set $worn.over_upper.integrity += 10>><<clamp>><<replace "#statsoverupperintegrity">><<print Math.trunc($worn.over_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $worn.over_upper.integrity += 100>><<clamp>><<replace "#statsoverupperintegrity">><<print Math.trunc($worn.over_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>> ($worn.over_upper.integrity_max is default maximum)
+	| <<link ">>>">><<set $worn.over_upper.integrity += 100>><<clamp>><<replace "#statsoverupperintegrity">><<print Math.trunc($worn.over_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>> (<<print clothingData('over_upper',$worn.over_upper,'integrity_max')>> is default maximum)
 	<br>
 <<else>>
 	<i>You are not wearing anything on your over top half.</i>
@@ -599,7 +599,7 @@ Milk volume: <span id="statsmilk_volume"><<print Math.trunc($milk_volume)>></spa
 	Over bottom integrity: <span id="statsoverlowerintegrity"><<print Math.trunc($worn.over_lower.integrity)>></span>
 	| <<link ">">><<set $worn.over_lower.integrity += 1>><<clamp>><<replace "#statsoverlowerintegrity">><<print Math.trunc($worn.over_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>>
 	| <<link ">>">><<set $worn.over_lower.integrity += 10>><<clamp>><<replace "#statsoverlowerintegrity">><<print Math.trunc($worn.over_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $worn.over_lower.integrity += 100>><<clamp>><<replace "#statsoverlowerintegrity">><<print Math.trunc($worn.over_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>> ($worn.over_lower.integrity_max is default maximum)
+	| <<link ">>>">><<set $worn.over_lower.integrity += 100>><<clamp>><<replace "#statsoverlowerintegrity">><<print Math.trunc($worn.over_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>> (<<print clothingData('over_lower',$worn.over_lower,'integrity_max')>> is default maximum)
 	<br>
 <<else>>
 	<i>You are not wearing anything on your over lower half.</i>
@@ -621,7 +621,7 @@ Milk volume: <span id="statsmilk_volume"><<print Math.trunc($milk_volume)>></spa
 	Top integrity: <span id="statsupperintegrity"><<print Math.trunc($worn.upper.integrity)>></span>
 	| <<link ">">><<set $worn.upper.integrity += 1>><<clamp>><<replace "#statsupperintegrity">><<print Math.trunc($worn.upper.integrity)>><</replace>> <<updatesidebarimg>><</link>>
 	| <<link ">>">><<set $worn.upper.integrity += 10>><<clamp>><<replace "#statsupperintegrity">><<print Math.trunc($worn.upper.integrity)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $worn.upper.integrity += 100>><<clamp>><<replace "#statsupperintegrity">><<print Math.trunc($worn.upper.integrity)>><</replace>> <<updatesidebarimg>><</link>> ($worn.upper.integrity_max is default maximum)
+	| <<link ">>>">><<set $worn.upper.integrity += 100>><<clamp>><<replace "#statsupperintegrity">><<print Math.trunc($worn.upper.integrity)>><</replace>> <<updatesidebarimg>><</link>> (<<print clothingData('upper',$worn.upper,'integrity_max')>> is default maximum)
 	<br>
 <<else>>
 	<i>You are not wearing anything on your top half.</i>
@@ -644,7 +644,7 @@ Milk volume: <span id="statsmilk_volume"><<print Math.trunc($milk_volume)>></spa
 	Bottom integrity: <span id="statslowerintegrity"><<print Math.trunc($worn.lower.integrity)>></span>
 	| <<link ">">><<set $worn.lower.integrity += 1>><<clamp>><<replace "#statslowerintegrity">><<print Math.trunc($worn.lower.integrity)>><</replace>> <<updatesidebarimg>><</link>>
 	| <<link ">>">><<set $worn.lower.integrity += 10>><<clamp>><<replace "#statslowerintegrity">><<print Math.trunc($worn.lower.integrity)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $worn.lower.integrity += 100>><<clamp>><<replace "#statslowerintegrity">><<print Math.trunc($worn.lower.integrity)>><</replace>> <<updatesidebarimg>><</link>> ($worn.lower.integrity_max is default maximum)
+	| <<link ">>>">><<set $worn.lower.integrity += 100>><<clamp>><<replace "#statslowerintegrity">><<print Math.trunc($worn.lower.integrity)>><</replace>> <<updatesidebarimg>><</link>> (<<print clothingData('lower',$worn.lower,'integrity_max')>> is default maximum)
 	<br>
 <<else>>
 	<i>You are not wearing anything on your bottom half.</i>
@@ -667,7 +667,7 @@ Milk volume: <span id="statsmilk_volume"><<print Math.trunc($milk_volume)>></spa
 	Under bottom integrity: <span id="statsunderlowerintegrity"><<print Math.trunc($worn.under_lower.integrity)>></span>
 	| <<link ">">><<set $worn.under_lower.integrity += 1>><<clamp>><<replace "#statsunderlowerintegrity">><<print Math.trunc($worn.under_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>>
 	| <<link ">>">><<set $worn.under_lower.integrity += 10>><<clamp>><<replace "#statsunderlowerintegrity">><<print Math.trunc($worn.under_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $worn.under_lower.integrity += 100>><<clamp>><<replace "#statsunderlowerintegrity">><<print Math.trunc($worn.under_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>> ($worn.under_lower.integrity_max is default maximum)
+	| <<link ">>>">><<set $worn.under_lower.integrity += 100>><<clamp>><<replace "#statsunderlowerintegrity">><<print Math.trunc($worn.under_lower.integrity)>><</replace>> <<updatesidebarimg>><</link>> (<<print clothingData('under_lower',$worn.under_lower,'integrity_max')>> is default maximum)
 	<br>
 <<else>>
 	<i>You are not wearing any under bottoms.</i>
@@ -690,7 +690,7 @@ Milk volume: <span id="statsmilk_volume"><<print Math.trunc($milk_volume)>></spa
 	Under top integrity: <span id="statsunderupperintegrity"><<print Math.trunc($worn.under_upper.integrity)>></span>
 	| <<link ">">><<set $worn.under_upper.integrity += 1>><<clamp>><<replace "#statsunderupperintegrity">><<print Math.trunc($worn.under_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>>
 	| <<link ">>">><<set $worn.under_upper.integrity += 10>><<clamp>><<replace "#statsunderupperintegrity">><<print Math.trunc($worn.under_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $worn.under_upper.integrity += 100>><<clamp>><<replace "#statsunderupperintegrity">><<print Math.trunc($worn.under_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>> ($worn.under_upper.integrity_max is default maximum)
+	| <<link ">>>">><<set $worn.under_upper.integrity += 100>><<clamp>><<replace "#statsunderupperintegrity">><<print Math.trunc($worn.under_upper.integrity)>><</replace>> <<updatesidebarimg>><</link>> (<<print clothingData('under_upper',$worn.under_upper,'integrity_max')>> is default maximum)
 	<br>
 <<else>>
 	<i>You are not wearing an under top.</i>
@@ -704,7 +704,7 @@ Milk volume: <span id="statsmilk_volume"><<print Math.trunc($milk_volume)>></spa
 	Chastity integrity: <span id="statsgenitalsintegrity"><<print Math.trunc($worn.genitals.integrity)>></span>
 	| <<link ">">><<set $worn.genitals.integrity += 1>><<clamp>><<replace "#statsgenitalsintegrity">><<print Math.trunc($worn.genitals.integrity)>><</replace>> <<updatesidebarimg>><</link>>
 	| <<link ">>">><<set $worn.genitals.integrity += 10>><<clamp>><<replace "#statsgenitalsintegrity">><<print Math.trunc($worn.genitals.integrity)>><</replace>> <<updatesidebarimg>><</link>>
-	| <<link ">>>">><<set $worn.genitals.integrity += 100>><<clamp>><<replace "#statsgenitalsintegrity">><<print Math.trunc($worn.genitals.integrity)>><</replace>> <<updatesidebarimg>><</link>> ($worn.genitals.integrity_max is default maximum)
+	| <<link ">>>">><<set $worn.genitals.integrity += 100>><<clamp>><<replace "#statsgenitalsintegrity">><<print Math.trunc($worn.genitals.integrity)>><</replace>> <<updatesidebarimg>><</link>> (<<print clothingData('genitals',$worn.genitals,'integrity_max')>> is default maximum)
 	<br>
 <<else>>
 	<i>You are not wearing a chastity belt.</i>
@@ -2113,6 +2113,7 @@ Sets: <span id="statsDefaultSets"><<print $maxDefaultActionSets>></span>
 	<<link "lurker">><<impregnate "lurker" 1000>><<cheatsImpreg>><</link>> |
 	<<link "wasp">><<impregnate "wasp" 1000>><<cheatsImpreg>><</link>> |
 	<<link "squid">><<impregnate "squid" 1000>><<cheatsImpreg>><</link>> |
+	<<link "vine">><<impregnate "vine" 1000>><<cheatsImpreg>><</link>> |
 	<br>
 	<<if _pregnancy.motherStatus lt 2>>
 		Get Pregnant with a Hermaphrodite |
@@ -2125,6 +2126,7 @@ Sets: <span id="statsDefaultSets"><<print $maxDefaultActionSets>></span>
 		<<link "lurker">><<cheatsImpregPre>><<impregnate "lurker" 1000>><<cheatsImpreg true>><</link>> |
 		<<link "wasp">><<cheatsImpregPre>><<impregnate "wasp" 1000>><<cheatsImpreg true>><</link>> |
 		<<link "squid">><<cheatsImpregPre>><<impregnate "squid" 1000>><<cheatsImpreg true>><</link>> |
+		<<link "vine">><<cheatsImpregPre>><<impregnate "vine" 1000>><<cheatsImpreg true>><</link>> |
 	<<else>>
 		Can only have one Hermaphrodite at a time.
 	<</if>>

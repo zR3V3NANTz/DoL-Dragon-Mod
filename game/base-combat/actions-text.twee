@@ -3692,10 +3692,18 @@ You kiss the <<beasttype>> on the head.
 
 <<widget "actionspeniskiss">>
 You <<oraltext>> kiss the tip of <<their>> penis.
+<<if $NPCList[0].type is "plant">>
+	<span class="pink">You lap up sweet nectar with your tongue.</span>
+	<<nectarfed 8>>
+<</if>>
 <</widget>>
 
 <<widget "actionspenislick">>
 You <<oraltext>> lick <<their>> penis.
+<<if $NPCList[0].type is "plant">>
+	<span class="pink">You lap up sweet nectar with your tongue.</span>
+	<<nectarfed 8>>
+<</if>>
 <</widget>>
 
 <<widget "actionspenissuck">>
@@ -3716,6 +3724,10 @@ You <<oraltext>> lick <<their>> penis.
 		You <<oraltext>> suck the penis penetrating your mouth.
 	<</if>>
 <</if>>
+<<if $NPCList[0].type is "plant">>
+	<span class="pink">Sweet nectar drips into your mouth.</span>
+	<<nectarfed 12>>
+<</if>>
 <</widget>>
 
 <<widget "actionspussylick">>
@@ -3725,6 +3737,10 @@ You <<oraltext>> lick <<their>> penis.
 	You <<oraltext>> lick the pussy pressing against your mouth as <<theowner>> grinds against you.
 <<else>>
 	You <<oraltext>> lick the pussy pressing against your mouth.
+<</if>>
+<<if $NPCList[0].type is "plant">>
+	<span class="pink">You lap up sweet nectar with your tongue.</span>
+	<<nectarfed 8>>
 <</if>>
 <</widget>>
 
@@ -3754,6 +3770,9 @@ You <<oraltext>> lick <<their>> penis.
 <<widget "actionskissback">>
 <<if $mouthstate is "kissentrance">>
 	You gently brush your lips against theirs.
+	<<if $player.virginity.kiss is true>>
+		<<set $speechkissvirgin to 1>>
+	<</if>>
 	<<for _j = 0; _j lt $enemyno; _j++>>
 		<<if $NPCList[_j].mouth is "kissentrance">>
 			<<if $npcrow.includes(_j)>>
@@ -3771,8 +3790,16 @@ You <<oraltext>> lick <<their>> penis.
 	<<else>>
 		You kiss them back, parting their lips with your tongue.
 	<</if>>
+	<<if $NPCList[0].type is "plant">>
+		<span class="pink">Sweet nectar drips from <<his>> tongue and fills your mouth.</span>
+		<<nectarfed 20>>
+	<</if>>
 <<elseif $mouthstate is "kiss">>
 	You kiss them back, caressing their tongue with your own.
+	<<if $NPCList[0].type is "plant">>
+		<span class="pink">Sweet nectar drips from <<his>> tongue and fills your mouth.</span>
+		<<nectarfed 20>>
+	<</if>>
 <</if>>
 <</widget>>
 

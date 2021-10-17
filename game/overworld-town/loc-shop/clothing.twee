@@ -138,6 +138,7 @@
 				<</link>>
 				<br>
 				<<if $tryOn.value lt $money>>
+					<<sendItemsToDropdown>>
 					<<link "Buy clothes">><<buyTryOnClothes "wear">><<updateclothingshop>><</link>>
 					<br>
 					<<link "Buy clothes and send to wardrobe">>

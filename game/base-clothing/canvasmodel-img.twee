@@ -421,7 +421,7 @@ Set model options & filters for player clothes
 	<<set _modeloptions.hair_fringe_length to "short">>
 <</if>>
 
-<<set _modeloptions.upper_tucked to $upperTucked and !$worn.upper.notuck and $worn.upper.outfitPrimary is undefined>>
+<<set _modeloptions.upper_tucked to $upperTucked and !setup.clothes.upper[$worn.upper.index].notuck and $worn.upper.outfitPrimary is undefined>>
 
 <<twinescript>>
 	let slots = [
@@ -450,7 +450,7 @@ Set model options & filters for player clothes
 			default: _modeloptions['worn_'+slot+'_alpha'] = 1.0; break;
 		}
 		_modeloptions['worn_'+slot] = worn.index;
-		_modeloptions['worn_'+slot+'_integrity'] = integrityKeyword(worn);
+		_modeloptions['worn_'+slot+'_integrity'] = integrityKeyword(worn,slot);
 		_modeloptions['worn_'+slot+'_colour'] = worn.colour;
 		if (worn.colour === 'custom') {
 			/* TODO @aimozg We recalculate custom colour RGB here; in future versions, we should store custom colours in canvasfilter-friendly way */

@@ -113,7 +113,7 @@
 		<<set $rightaction to 0>><<set $rightactiondefault to "mrest">>
 	<</if>>
 	<<set $worn.over_lower.anus_exposed to 1>><<set $worn.over_lower.vagina_exposed to 1>><<set $worn.over_lower.exposed to 2>>
-	<<if $worn.over_lower.skirt is 1>>
+	<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>>
 		<<set $worn.over_lower.skirt_down to 0>>
 		You lift up your $worn.over_lower.name, <span class="lewd">exposing your <<exposedlower>>.</span>
 	<<else>>
@@ -131,7 +131,7 @@
 	<</if>>
 	<<set $worn.lower.anus_exposed to 1>><<set $worn.lower.vagina_exposed to 1>><<set $worn.lower.exposed to 2>>
 	/* needs work; what if layer above is not exposed? */
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<<set $worn.lower.skirt_down to 0>>
 		You lift up your $worn.lower.name, <span class="lewd">exposing your <<undies>>.</span>
 	<<else>>

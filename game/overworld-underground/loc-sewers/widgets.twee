@@ -507,7 +507,7 @@
 		You slip on something slimy, and land on your <<bottom>>.
 		<br><br>
 		<<if !$worn.lower.type.includes("naked")>>
-			<<if $worn.lower.skirt is 1>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				<<if !$parasite.bottom.name>>
 					You try to stand up, but your butt is stuck firm. Your $worn.lower.name flared as you fell, leaving your bare skin exposed to the sticky substance. You keep tugging, until you manage to pull yourself to your feet.
 					<br><br>

@@ -207,6 +207,9 @@
 					<<set $rightarm to 0>>
 				<</if>>
 				<span class="lblue">You straddle <<personselect _j>><<combatperson>> and press <<his1>> <<npcPenis _j>> with your <<bottom>>.</span>
+				<<if $NPCList[_n].type is "plant" and $NPCList[_n].penissize gte 4>>
+					<span class="red">Something about it scares you.</span>
+				<</if>>
 				<<if $condomUse is false>>
 				<<elseif ($condomUse is true or (random(0,100) lt $condomautochance and $npcCondoms isnot undefined)) and $NPCList[_j].condom is false>>
 					<<equipCondom _j>>

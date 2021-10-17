@@ -292,7 +292,8 @@ You rush outside, and find Alex stood in the yard.
 <<set $phase to 0>>
 You hear shouting outside.
 <br><br>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "alexFarm">>
+<<wardrobeSelection>>
 <<wardrobewear>>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 <<wardrobe>>

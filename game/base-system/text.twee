@@ -1183,28 +1183,38 @@ in dev alternative to current "breasts" widget
 <</widget>>
 
 <<widget "personsimple">><<silently>>
-<<if $npcadult is 1>>
-	<<set _text_output to ($pronoun is "m" ? "man" : "woman")>>
+<<if $NPCList[0].type is "plant">>
+	<<set _text_output to "plant">>
 <<else>>
-	<<set _text_output to ($pronoun is "m" ? "boy" : "girl")>>
+	<<set _text_output to "">>
+<</if>>
+<<if $npcadult is 1>>
+	<<set _text_output += ($pronoun is "m" ? "man" : "woman")>>
+<<else>>
+	<<set _text_output += ($pronoun is "m" ? "boy" : "girl")>>
 <</if>><</silently>><<print _text_output>><</widget>>
 
 <<widget "person">><<silently>>
+<<if $NPCList[0].type is "plant">>
+	<<set _text_output to $description+" plant">>
+<<else>>
+	<<set _text_output to $description+" ">>
+<</if>>
 <<if $npc_named is 1>>
 	<<set _text_output to $description>>
 <<elseif $npcadult is 1>>
 	<<if $pronoun is "m">>
-		<<set _text_output to $description+" man">>
+		<<set _text_output to _text_output+="man">>
 	<<elseif $pronoun is "f">>
-		<<set _text_output to $description+" woman">>
+		<<set _text_output to _text_output+="woman">>
 	<<else>>
-		<<set _text_output to $description>>
+		<<set _text_output to _text_output>>
 	<</if>>
 <<else>>
 	<<if $pronoun is "m">>
-		<<set _text_output to $description+" boy">>
+		<<set _text_output to _text_output+="boy">>
 	<<elseif $pronoun is "f">>
-		<<set _text_output to $description+" girl">>
+		<<set _text_output to _text_output+="girl">>
 	<</if>>
 <</if>><</silently>><<print _text_output>><</widget>>
 
@@ -3219,7 +3229,7 @@ A sign reads "Opening hours: <<ampm 8 00>> - <<ampm 21 00>>"
 
 <<widget "groin">><<silently>>
 <<genitals>>
-<<if !$worn.lower.type.includes("naked") and $worn.lower.skirt isnot 1>>
+<<if !$worn.lower.type.includes("naked") and setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 <<set _text_output to _text_output + " through your " + $worn.lower.name>>
 <<elseif !$worn.under_lower.type.includes("naked")>>
 <<set _text_output to _text_output + " through your " + $worn.under_lower.name>>
@@ -4629,6 +4639,51 @@ School finishes on the first Monday of December.
 	<</if>>
 <</widget>>
 
+<<widget "slithering">>
+	<<set $rng to random(1, 100)>>
+	<<if $rng gte 95>>
+		slithering
+	<<elseif $rng gte 90>>
+		writhing
+	<<elseif $rng gte 85>>
+		wriggling
+	<<elseif $rng gte 80>>
+		wiggling
+	<<elseif $rng gte 75>>
+		crawling
+	<<elseif $rng gte 70>>
+		sliding
+	<<elseif $rng gte 65>>
+		slinking
+	<<elseif $rng gte 60>>
+		gliding
+	<<elseif $rng gte 55>>
+		slipping
+	<<elseif $rng gte 50>>
+		squirming
+	<<elseif $rng gte 45>>
+		worming
+	<<elseif $rng gte 40>>
+		twisting
+	<<elseif $rng gte 35>>
+		twitching
+	<<elseif $rng gte 30>>
+		shivering
+	<<elseif $rng gte 25>>
+		trembling
+	<<elseif $rng gte 20>>
+		jerking
+	<<elseif $rng gte 15>>
+		crawling
+	<<elseif $rng gte 10>>
+		fluttering
+	<<elseif $rng gte 5>>
+		meandering
+	<<elseif $rng gte 0>>
+		slipping
+	<</if>>
+<</widget>>
+
 <<widget "wallet">><<silently>>
 	<<set _text_output to ($pronoun is "m" ? "wallet" : "purse")>>
 <</silently>><<print _text_output>><</widget>>
@@ -4665,8 +4720,8 @@ School finishes on the first Monday of December.
 
 <<widget "pulldownall">>
 <<outfitChecks>>
-<<if $worn.lower.skirt is 1>>
-	<<if $worn.under_lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
+	<<if setup.clothes.under_lower[$worn.under_lower.index].skirt is 1>>
 		You lift the hem of your $worn.lower.name and $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
 	<<elseif _underOutfit>>
 		You lift the hem of your $worn.lower.name and pull aside your $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
@@ -4676,7 +4731,7 @@ School finishes on the first Monday of December.
 		You lift the hem of your $worn.lower.name, <span class="lewd">baring your <<genitals>>.</span>
 	<</if>>
 <<elseif _middleOutfit>>
-	<<if $worn.under_lower.skirt is 1>>
+	<<if setup.clothes.under_lower[$worn.under_lower.index].skirt is 1>>
 		You pull aside your $worn.lower.name and lift the hem of your $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
 	<<elseif _underOutfit>>
 		You pull aside your $worn.lower.name and $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
@@ -4686,7 +4741,7 @@ School finishes on the first Monday of December.
 		You pull aside your $worn.lower.name, <span class="lewd">baring your <<genitals>>.</span>
 	<</if>>
 <<elseif !$worn.lower.type.includes("naked")>>
-	<<if $worn.under_lower.skirt is 1>>
+	<<if setup.clothes.under_lower[$worn.under_lower.index].skirt is 1>>
 		You tug down your $worn.lower.name and lift the hem of your $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
 	<<elseif _middleOutfit>>
 		You tug down your $worn.lower.name and pull aside your $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
@@ -4696,7 +4751,7 @@ School finishes on the first Monday of December.
 		You tug down your $worn.lower.name, <span class="lewd">baring your <<genitals>>.</span>
 	<</if>>
 <<else>>
-	<<if $worn.under_lower.skirt is 1>>
+	<<if setup.clothes.under_lower[$worn.under_lower.index].skirt is 1>>
 		You lift the hem of your $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
 	<<elseif _underOutfit>>
 		You pull aside your $worn.under_lower.name, <span class="lewd">baring your <<genitals>>.</span>
@@ -4721,7 +4776,7 @@ School finishes on the first Monday of December.
 
 <<widget "pulldown">>
 <<outfitChecks>>
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	lift up
 <<elseif _middleOutfit is false>>
 	pull down
@@ -4743,7 +4798,7 @@ School finishes on the first Monday of December.
 
 <<widget "pullsdown">>
 <<outfitChecks>>
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	lifts up
 <<elseif _middleOutfit is false>>
 	pulls down
@@ -4765,7 +4820,7 @@ School finishes on the first Monday of December.
 
 <<widget "overpulldown">>
 <<outfitChecks>>
-<<if $worn.over_lower.skirt is 1>>
+<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>>
 	lift up
 <<elseif _overOutfit is false>>
 	pull down
@@ -4787,7 +4842,7 @@ School finishes on the first Monday of December.
 
 <<widget "overpullsdown">>
 <<outfitChecks>>
-<<if $worn.over_lower.skirt is 1>>
+<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>>
 	lifts up
 <<elseif _overOutfit is false>>
 	pulls down
@@ -5840,7 +5895,7 @@ $worn.genitals.name
 
 <<widget "dress">>
 <<if $worn.upper.set is $worn.lower.set>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<<set _text_output to "dress">>
 	<<else>>
 		<<set _text_output to "clothes">>
@@ -5853,13 +5908,13 @@ $worn.genitals.name
 
 <<widget "skirt">>
 <<if $worn.upper.set is $worn.lower.set>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<<set _text_output to "dress">>
 	<<else>>
 		<<set _text_output to "clothes">>
 	<</if>>
 <<else>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<<set _text_output to "skirt">>
 	<<else>>
 		<<set _text_output to "bottoms">>
@@ -5872,7 +5927,7 @@ $worn.genitals.name
 <<if $worn.under_upper.set is $worn.under_lower.set>>
 	<<set _text_output to "underclothes">>
 <<else>>
-	<<if $worn.under_lower.skirt is 1>>
+	<<if setup.clothes.under_lower[$worn.under_lower.index].skirt is 1>>
 		<<set _text_output to "skirt">>
 	<<else>>
 		<<if $worn.under_lower.gender is "f">>
@@ -5893,7 +5948,7 @@ $worn.genitals.name
 <<if $worn.under_upper.set is $worn.under_lower.set>>
 	<<set _text_output to "underclothes">>
 <<else>>
-	<<if $worn.under_upper.gender is "f" and $worn.under_upper.state_base is "midriff">>
+	<<if $worn.under_upper.gender is "f" and setup.clothes.under_upper[$worn.under_upper.index].state_base is "midriff">>
 		<<set _text_output to "bra">>
 	<<else>>
 		<<set _text_output to "top">>

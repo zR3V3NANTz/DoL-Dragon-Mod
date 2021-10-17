@@ -821,6 +821,17 @@
 	}
 }
 
+#sendItemsTo .returnOptions {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 1em 0;
+}
+
+#sendItemsTo .returnOptions div {
+	width: 10em;
+}
+
 /* Buy & Try on buttons */
 
 .buy-buttons,

@@ -575,7 +575,7 @@ Other students ignore what is happening, or watch in amusement.
 		<br><br>
 		<</if>>
 
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			<<if $worn.under_lower.type.includes("naked")>>
 				<<if $exhibitionism gte 55>>
 			<<link [[Flash|Hallways Lewd Flash]]>><</link>><<exhibitionist4>>
@@ -794,7 +794,7 @@ Other students ignore what is happening, or watch in amusement.
 			<<endevent>>
 
 			<<playground>>
-			<<elseif $worn.under_upper.strap is 1>>
+			<<elseif setup.clothes.under_upper[$worn.under_upper.index].strap is 1>>
 			Your $worn.under_upper.name comes loose in your $worn.upper.name. They undid the strap.
 			<br><br>
 
@@ -1545,7 +1545,7 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 
 <<widget "eventwhitneyparasiteexposelower">>
 	"Get <<phim>> ready guys," Whitney commands. <<He>> steps forward with the <<eventwhitneyparasiteadjective>> thing, your mind races, wondering what they're going to do with you. With your arms restrained and your body utterly helpless you can do nothing to stop them as they
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		raise your skirt high above your waist
 		<<if not $worn.under_lower.exposed>>
 			<<set $rng to random(0, 3)>>
@@ -1573,7 +1573,7 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 <</widget>>
 <<widget "eventwhitneyparasiteexposebutt">>
 	"Get <<phim>> ready <<nnpc_gendery "Whitney">>s," Whitney commands to <<his>> friends. As <<he>> steps forward with the <<eventwhitneyparasiteadjective>> thing, your mind races, wondering what they're going to do with you. With your arms restrained and your body utterly helpless you can do nothing to stop them as they
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		twist you around and bend you over, grab and pull the hem of your skirt up and over your back, completely exposing your vulnerable hole to Whitney, the cool air, and everyone passing by.
 	<<else>>
 		twist you around and bend you over, grab and yank your waistband down to your knees, completely exposing your vulnerable hole to Whitney, the cool air, and everyone passing by.
@@ -1994,7 +1994,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 
 A gust of wind blows over you.
 
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<<if $schoolstate is "lunch" or $schoolstate is "morning" or $schoolstate is "afternoon">>
 		The breeze lifts your $worn.lower.name and exposes your <<undies>> until you push the fabric back down between your thighs. You don't think anyone saw.
 		<<gstress>><<garousal>><<stress 1>><<arousal 600>>

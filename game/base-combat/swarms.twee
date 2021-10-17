@@ -169,7 +169,7 @@
 							<<neutral 4>>
 							<<set _swarmamounts.butt[0] += 1>><<set _swarmamounts.active[4] -= 1>>
 							<<if $worn.under_lower.type.includes("naked") and !($worn.genitals.type.includes("hidden") and $worn.genitals.anal_shield is 1)>>
-								<<if (!$worn.over_lower.type.includes("naked") and $worn.over_lower.skirt is 0) or (!$worn.lower.type.includes("naked") and $worn.lower.skirt is 0)>>
+								<<if (!$worn.over_lower.type.includes("naked") and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0) or (!$worn.lower.type.includes("naked") and setup.clothes.lower[$worn.lower.index].skirt is 0)>>
 									<<set _swarmnote.buttlowerintroclothed += 1>>
 								<<else>>
 									<<set _swarmnote.buttintro += 1>>
@@ -180,7 +180,7 @@
 								<<set _swarmnote.buttunderintroclothed += 1>>
 							<</if>>
 					<<else>>
-						<<if (!$worn.over_lower.type.includes("naked") and $worn.over_lower.skirt is 0) or (!$worn.lower.type.includes("naked") and $worn.lower.skirt is 0)>>
+						<<if (!$worn.over_lower.type.includes("naked") and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0) or (!$worn.lower.type.includes("naked") and setup.clothes.lower[$worn.lower.index].skirt is 0)>>
 							<<set _swarmnote.buttlowerclothed += 1>>
 							<<if !$worn.over_lower.type.includes("naked")>>
 								<<set $worn.over_lower.integrity -= 2>>
@@ -224,7 +224,7 @@
 						<<set _swarmamounts.genital[0] += 1>><<set _swarmamounts.active[4] -= 1>>
 						<<neutral 4>>
 						<<if $worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("hidden")>>
-							<<if (!$worn.over_lower.type.includes("naked") and $worn.over_lower.skirt is 0) or (!$worn.lower.type.includes("naked") and $worn.lower.skirt is 0)>>
+							<<if (!$worn.over_lower.type.includes("naked") and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0) or (!$worn.lower.type.includes("naked") and setup.clothes.lower[$worn.lower.index].skirt is 0)>>
 								<<set _swarmnote.genitallowerintroclothed += 1>>
 							<<else>>
 								<<set _swarmnote.genitalintro += 1>>
@@ -235,7 +235,7 @@
 							<<set _swarmnote.genitalunderintroclothed += 1>>
 						<</if>>
 					<<else>>
-						<<if (!$worn.over_lower.type.includes("naked") and $worn.over_lower.skirt is 0) or (!$worn.lower.type.includes("naked") and $worn.lower.skirt is 0)>>
+						<<if (!$worn.over_lower.type.includes("naked") and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0) or (!$worn.lower.type.includes("naked") and setup.clothes.lower[$worn.lower.index].skirt is 0)>>
 							<<set _swarmnote.genitallowerclothed+= 1>>
 							<<if !$worn.over_lower.type.includes("naked")>>
 								<<set $worn.over_lower.integrity -= 2>>
@@ -475,7 +475,7 @@
 
 <<if _swarmnote.genitalmolest gte 1>>
 	<<set _swarmnote.genitalmolest to 0>>
-		You feel them writhing over your <<if !$worn.lower.type.includes("naked") and $worn.lower.skirt isnot 1>><<genitals>> through your
+		You feel them writhing over your <<if !$worn.lower.type.includes("naked") and setup.clothes.lower[$worn.lower.index].skirt isnot 1>><<genitals>> through your
 		<<if !$worn.over_lower.type.includes("naked")>>
 			$worn.over_lower.name<<if !$worn.lower.type.includes("naked")>> and<<else>>.<</if>>
 		<</if>>

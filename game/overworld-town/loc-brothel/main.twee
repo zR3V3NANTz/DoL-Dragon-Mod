@@ -229,7 +229,7 @@ I'd like to offer you work looking after our guests. You saw how it works on the
 "We take a 40% cut of anything you earn, and don't you dare think you can cheat us either. You'll have access to a dressing room, naturally. I think I've covered everything. So, interested?"
 <br><br>
 
-<<link [[Yes|Brothel Intro2]]>><<set $phase to 1>><<set $brotheljob to 1>><</link>>
+<<link [[Yes|Brothel Intro2]]>><<set $phase to 1>><<set $brotheljob to 1>><<set $wardrobes.brothel.unlocked to true>><</link>>
 <br>
 <<link [[No|Brothel Intro2]]>><<set $phase to 2>><</link>>
 <br>
@@ -264,7 +264,7 @@ I'd like to offer you work looking after our guests. You saw how it works on the
 	<<He>> blinks, then laughs. "Don't be coy. You've seen what's going on downstairs, darling. I'm sure you can work out the rest on your own."
 	<br><br>
 
-<<link [[I'm interested|Brothel Intro2]]>><<set $phase to 1>><<set $brotheljob to 1>><</link>>
+<<link [[I'm interested|Brothel Intro2]]>><<set $phase to 1>><<set $brotheljob to 1>><<set $wardrobes.brothel.unlocked to true>><</link>>
 <br>
 <<link [[I'm not interested|Brothel Intro2]]>><<set $phase to 2>><</link>>
 <br>
@@ -362,7 +362,7 @@ I'd like to offer you work looking after our guests. You saw how it works on the
 	Briar sprawls on the sofa, holding a glass of wine. <<He>> looks up as you enter. "Have you reconsidered my offer?"
 	<br><br>
 
-	<<link [[Yes|Briar's Office]]>><<endevent>><<set $brotheljob to 1>><<set $phase to 1>><</link>>
+	<<link [[Yes|Briar's Office]]>><<endevent>><<set $brotheljob to 1>><<set $phase to 1>><<set $wardrobes.brothel.unlocked to true>><</link>>
 	<br>
 	<<if $id is 0>>
 		<<link [[Inquire about ID card|Briar's Office ID]]>><</link>>

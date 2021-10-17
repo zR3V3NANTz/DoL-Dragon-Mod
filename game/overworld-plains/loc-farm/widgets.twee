@@ -1406,7 +1406,7 @@
 			<br>
 		<<default>>
 			<<generate1>><<person1>>
-			<<if $worn.over_lower.name is "naked" and $worn.lower.skirt is 1>>
+			<<if $worn.over_lower.name is "naked" and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				One of the builders, a <<person>>, flicks up your skirt as you pass.<<gstress>><<stress 6>>
 				<br><br>
 
@@ -2340,12 +2340,13 @@
 		<<storeon "farm alex bed" "check">>
 		<<if _store_check is 1>>
 			<<storeon "farm alex bed">>
-			<<set $wardrobe_location to "wardrobe">>
+			<<set $wardrobe_location to "alexFarm">>
+			<<wardrobeSelection true>>
 		<</if>>
 	<</link>>
 	<br>
 <<else>>
-	<<link [[Climb out of bed|Farm Bedroom]]>><<storeon "farm bed">><<set $wardrobe_location to "wardrobe">><</link>>
+	<<link [[Climb out of bed|Farm Bedroom]]>><<storeon "Farm Bed">><<set $wardrobe_location to "alexFarm">><<wardrobeSelection>><</link>>
 <</if>>
 <br><br>
 <</widget>>

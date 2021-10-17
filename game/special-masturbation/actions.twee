@@ -127,7 +127,7 @@
 		| <label><<radiobutton "$leftaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
 	<</if>>
 	<<if $worn.under_lower.exposed lte 0>>
-		<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1 or $worn.lower.type.includes("naked")>>
+		<<if $worn.lower.state isnot setup.clothes.lower[$worn.lower.index].state_base or setup.clothes.lower[$worn.lower.index].skirt is 1 or $worn.lower.type.includes("naked")>>
 			| <label><<radiobutton "$leftaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
 		<</if>>
 	<</if>>
@@ -259,7 +259,7 @@
 		| <label><<radiobutton "$rightaction" "mlower" autocheck>> Displace your $worn.lower.name</label>
 	<</if>>
 	<<if $worn.under_lower.exposed lte 0>>
-		<<if $worn.lower.state isnot $worn.lower.state_base or $worn.lower.skirt is 1 or $worn.lower.type.includes("naked")>>
+		<<if $worn.lower.state isnot setup.clothes.lower[$worn.lower.index].state_base or setup.clothes.lower[$worn.lower.index].skirt is 1 or $worn.lower.type.includes("naked")>>
 			| <label><<radiobutton "$rightaction" "munder" autocheck>> Pull down your $worn.under_lower.name</label>
 		<</if>>
 	<</if>>

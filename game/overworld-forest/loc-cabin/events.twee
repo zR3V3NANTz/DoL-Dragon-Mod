@@ -1672,13 +1672,13 @@ You hum a gentle tune.
 	<<set $enemytype to "tentacles">>
 	<<molested>>
 	<<controlloss>>
-	<<tentaclestart 4 15>>
+	<<tentaclestart 4 15 "vine" "vine" true>>
 	<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">>
 	<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">>
 	<<set $timer to 50>>
 <</if>>
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>
@@ -1710,7 +1710,7 @@ You step back and look at the result. The plot is in a much better state, at lea
 <<set $outside to 1>><<set $location to "cabin">><<effects>>
 
 <<if !$worn.lower.type.includes("naked")>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<<if $worn.genitals.type.includes("chastity")>>
 		<<He>> reaches beneath your $worn.lower.name and starts probing your $worn.genitals.name. "You're such a little slut I bet I can make you cum even with this thing on."
 		<<else>>

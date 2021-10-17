@@ -221,7 +221,7 @@ You ask if <<he>> has any work for you. <<His>> smile broadens. "As a matter of 
 <<if $rng gte 81 and $weather isnot "rain" and $weather isnot "snow">>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure)>>
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		As you're serving tables outside the cafe, a strong breeze blows in from the ocean, lifting your skirt and exposing your <<undies>> for anyone who looks.
 		<<undiestrauma>>
 		<br><br>
@@ -308,7 +308,7 @@ You ask if <<he>> has any work for you. <<His>> smile broadens. "As a matter of 
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure)>>
 	<<generate1>><<generate2>>You serve a young pair, a <<person1>><<person>> and a <<person2>><<person>>.
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			<<if $worn.under_lower.type.includes("naked")>>
 			As you turn to leave, the <<person1>><<person>> lifts the hem of your $worn.lower.name, revealing your bare <<bottom>> to the cafe. "No underwear?" <<He>> says with incredulity. "You're a little slut, aren't you?"
 			<<fameexhibitionism 10>><<stress 6>><<arousal 600>><<gstress>><<garousal>>
@@ -1069,7 +1069,7 @@ You sit. The <<person>> passes you a spoon, then looks down. "I've left my shoes
 You press the spoon into the bun, but are interrupted by the <<person>> appearing between your knees. "Now that I'm down here," <<he>> whispers. "I've a different craving." You glance around. No one else has noticed.
 <br><br>
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 <<He>> tries to lift your $worn.lower.name.
 <<else>>
 <<He>> tries pull down your $worn.lower.name.
@@ -1203,7 +1203,7 @@ The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 <<set _coffee to ["mocha", "latte", "caramel latte", "white chocolate mocha", "flat white", "caramel iced latte"].pluck()>>
 You take a seat at one of the elevated seats at the window and order a <<print _coffee>> from the menu. It arrives promptly; Wafting the delicious smell of fresh coffee up your nose.
 
-<<if $worn.lower.skirt is 1 and $exhibitionism gte 55>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $exhibitionism gte 55>>
 	A wicked thought occurs to you as you take a sip of your coffee. The seat has your legs elevated to almost eye level from the perspective of passers-by, and you're wearing a skirt.
 	<<if $exhibitionism gte 75 and $worn.under_lower.exposed>>
 		You're also not wearing any underwear. <<arousal 500>><<garousal>>
@@ -1536,7 +1536,7 @@ You drink the last of your coffee and place the mug back down on the table, befo
 <</if>>
 
 <<set $rng to random(0, 10)>>
-<<if $worn.lower.skirt is 1 and $rng gte 6>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $rng gte 6>>
 	<<endevent>>
 	You notice a <<generate1>><<person1>><<person>> staring at you from across the cafe. Suddenly you realise you've let your legs drift apart slightly, and the <<person>> is trying to look up your skirt.
 	<<if $worn.under_lower.exposed>>

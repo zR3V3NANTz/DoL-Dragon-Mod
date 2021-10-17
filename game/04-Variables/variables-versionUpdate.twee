@@ -1286,6 +1286,10 @@
 	<!--If you have added any `colour_combat` or `accessory_colour_combat` to clothes that need their `colour` or `accessory_colour`, this will clear them.
 	Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
 <</if>>
+<<if $objectVersion.wardrobes lt 1 or $objectVersion.wardrobes is undefined>>
+	<<wardrobesUpdate>>
+	<<set $objectVersion.wardrobes to 1>>
+<</if>>
 
 <<if $mathsprojectwon is 1>>
 	<<earnFeat "Maths Competition Winner">>
@@ -2517,6 +2521,21 @@
 	<<unset $event>>
 <</if>>
 
+<<if $multipleWardrobes is undefined>>
+	<<set $multipleWardrobes to "isolated">>
+<</if>>
 
+<<if $nectar_drank_stat is undefined>>
+	<<set $nectar_drank_stat to 0>>
+	<<set $tentacleMouth to 0>>
+	<<set $tentacleAnus to 0>>
+	<<set $tentacleAnusBaby to 0>>
+	<<set $tentacleVagina to 0>>
+	<<set $tentaclePenis to 0>>
+<</if>>
+
+<<if $fullDescription isnot undefined>>
+	<<unset $fullDescription>>
+<</if>>
 <</widget>>
 

@@ -56,8 +56,8 @@ function debugColourContainerClasses(color) {
 }
 window.debugColourContainerClasses = debugColourContainerClasses; // export function
 
-window.getClothingCost = function (item) {
-	let cost = item.cost * V.clothesPrice;
+window.getClothingCost = function (item, slot) {
+	let cost = setup.clothes[slot][item.index].cost * V.clothesPrice;
 
 	if (setup.clothes.under_lower.findIndex(x => x.name == item.name) >= 0 || setup.clothes.under_upper.findIndex(x => x.name == item.name) >= 0)
 		cost *= V.clothesPriceUnderwear;

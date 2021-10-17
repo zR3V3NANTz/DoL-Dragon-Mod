@@ -154,6 +154,7 @@ Harper stares unblinking at your <<bottom>> as the pulsing increases in intensit
 <<set $checkboxResult to {}>>
 <<set $checkboxReplace to {}>>
 <<set $parasiteSelectionCount to 0>>
+<<set _vine to 0>><<set _metal to 0>>
 
 Following the directions from Doctor Harper, you get into position and attempt to deliver <<if _pregnancy.namesChildren is true>>your baby<<else>>the parasites<</if>>. <<if _stressMulti gt 0>><<gstress>><</if>><<set $stress += 250 * _stressMulti>>
 <br><br>
@@ -185,8 +186,24 @@ Following the directions from Doctor Harper, you get into position and attempt t
 	<ul>
 		<<for _i to 0; _i lt $pregResult.length; _i++>>
 			<li><label><<print '<<checkbox "$checkboxResult[' + clone($pregResult[_i]) + ']" false true checked>>'>> - <<print _pregnancy[$pregResult[_i]].creature>> - <<creatureActivity _pregnancy[$pregResult[_i]].stats.speed>></label></li>
+			<<if _pregnancy[$pregResult[_i]].creature is "Vine">>
+				<<set _vine++>>
+			<</if>>
+			<<if _pregnancy[$pregResult[_i]].creature.includes("Metal")>>
+				<<set _metal++>>
+			<</if>>
 		<</for>>
 	</ul>
+	<<if _vine gte 1 and !$containerVine and $location is "home">>
+		<<set $containerVine to true>>
+		You worry that the vine<<if _vine gte 2>>s<</if>> won't be able to survive without being planted in a better environment, but <<if _vine is 1>>it seems<<else>>they seem<</if>> to be fine in your <<print $container[$location].name>>, writhing around. You suspect <<if _vine is 1>>it's<<else>>they're<</if>> not strictly plant life.
+		<br><br>
+	<</if>>
+	<<if _metal gte 1 and !$containerMetal and $location is "home">>
+		<<set $containerMetal to true>>
+		Upon closer inspection, the metal tentacle isn't truly metal. It has a metallic colour and pattern, but it bends and writhes in ways that steel wouldn't be able to. You hope it doesn't need anything in particular to eat.
+		<br><br>
+	<</if>>
 	<<if $pregResult.length gt (_container.maxCount - _container.count)>>
 		Please select any required to replace, it will replace from top to bottom:
 		<br>
@@ -252,7 +269,7 @@ Following the directions from Doctor Harper, you get into position and attempt t
 		<</if>>
 	<</if>>
 <<elseif $parasiteSelectionCount gt 0>>
-	Not enough storage for selected amount. Please replace <<number $parasiteSelectionCount - _availableStorage>> <<if _pregnancy.namesChildren is true>><<print $parasiteSelectionCount - _availableStorage gt 1 ? 'babies' : 'baby'>><<else>><<print $parasiteSelectionCount - _availableStorage gt 1 ? 'parasites' : 'parasite'>><</if>>.
+	Not enough storage for selected amount. Please replace <<number $parasiteSelectionCount-_availableStorage>> <<if _pregnancy.namesChildren is true>><<print $parasiteSelectionCount - _availableStorage gt 1 ? 'babies' : 'baby'>><<else>><<print $parasiteSelectionCount - _availableStorage gt 1 ? 'parasites' : 'parasite'>><</if>>.
 	<br>
 	<<if ($parasiteSelectionCount - $parasiteReplaceArray.length) is _availableStorage>>
 		<<if _pregnancy.namesChildren is true>>

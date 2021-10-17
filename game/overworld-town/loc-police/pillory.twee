@@ -335,7 +335,7 @@ A <<generate1>><<person1>><<person>> in a police uniform arrives. <<He>> removes
 				<br>
 				<<link [[Stay still|Pillory Skirt]]>><<trauma 6>><<stress 6>><</link>><<gtrauma>><<gstress>>
 				<br>
-			<<elseif $worn.lower.exposed lte 1 and $worn.lower.set isnot "upperset" and $worn.lower.skirt isnot 1>>
+			<<elseif $worn.lower.exposed lte 1 and $worn.lower.set isnot "upperset" and setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 				A <<generate1>><<person1>><<person>> walks behind you and grabs the hem of your $worn.lower.name.
 				<br><br>
 				<<link [[Kick them|Pillory Kick]]>><<stress -12>><<trauma -6>><<attackstat>><<set $pilloryaudience += 1>><</link>><<ltrauma>><<llstress>> | <span class="pink">Attracts attention</span>
@@ -604,7 +604,7 @@ You kick the <<person>> in the shin. "Ow!" <<he>> says. "Fucking bitch." <<He>> 
 <<set $outside to 1>><<set $location to "town">><<effects>>
 
 <<if $rng gte 51>>
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<He>> flips the hem of your skirt up, laying bare your <<undies>> for all to see. "Yes," <<he>> says. "I think this suits you better." <<He>> returns to the crowd, leaving you exposed.
 <<else>>
 	<<He>> unbuttons the front of your trousers, laying bare your <<undies>> for all to see. "Yes," <<he>> says. "I think this suits you better." <<He>> returns to the crowd, leaving you exposed.
@@ -618,14 +618,14 @@ You kick the <<person>> in the shin. "Ow!" <<he>> says. "Fucking bitch." <<He>> 
 
 <<else>>
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<He>> lifts the hem of your skirt slightly and peeks under.
 <<else>>
 	<<He>> pulls your waistband out slightly and peeks inside.
 <</if>>
 
 	<<if $worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity")>>
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			"<<pShe>> isn't wearing anything under <<pher>> skirt!" the <<person>> announces loudly.
 		<<else>>
 			"<<pShe>> isn't wearing anything under <<pher>> there!" the <<person>> announces loudly.
@@ -907,14 +907,14 @@ The <<person>> approaches you,
 	<<else>>
 		<<bodywriting_npc_normal "right_bottom" _pen>>
 	<</if>>
-<<elseif $rng gte 8 and ($worn.lower.type.includes("naked") or $worn.lower.skirt is 1) and ($worn.over_lower.type.includes("naked") or $worn.over_lower.skirt is 1) and !$skin.left_thigh.pen>>
+<<elseif $rng gte 8 and ($worn.lower.type.includes("naked") or setup.clothes.lower[$worn.lower.index].skirt is 1) and ($worn.over_lower.type.includes("naked") or setup.clothes.over_lower[$worn.over_lower.index].skirt is 1) and !$skin.left_thigh.pen>>
 	<<He>> circles behind, and writes on your left thigh.
 	<<if random(1, 2) is 2>>
 		<<bodywriting_criminal "left_thigh" _pen>>
 	<<else>>
 		<<bodywriting_npc_normal "left_thigh" _pen>>
 	<</if>>
-<<elseif $rng gte 7 and ($worn.lower.type.includes("naked") or $worn.lower.skirt is 1) and ($worn.over_lower.type.includes("naked") or $worn.over_lower.skirt is 1) and !$skin.right_thigh.pen>>
+<<elseif $rng gte 7 and ($worn.lower.type.includes("naked") or setup.clothes.lower[$worn.lower.index].skirt is 1) and ($worn.over_lower.type.includes("naked") or setup.clothes.over_lower[$worn.over_lower.index].skirt is 1) and !$skin.right_thigh.pen>>
 	<<He>> circles behind, and writes on your right thigh.
 	<<if random(1, 2) is 2>>
 		<<bodywriting_criminal "right_thigh" _pen>>

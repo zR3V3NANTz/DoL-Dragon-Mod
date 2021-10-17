@@ -99,6 +99,7 @@
 <<unset $machine_tattoo_success>>
 <<unset $dodging>>
 <<unset $feet_planted>>
+<<unset $speechspraycycleplant>>
 
 <<switch $player.gender>>
 <<case "f">>
@@ -266,6 +267,11 @@
 	<<set _tentacles[_i] to null>>
 <</for>>
 <<set $abomination to 0>>
+<<set $tentacleMouth to 0>>
+<<set $tentacleAnus to 0>>
+<<set $tentacleAnusBaby to 0>>
+<<set $tentacleVagina to 0>>
+<<set $tentaclePenis to 0>>
 
 <<set $leftaction to 0>>
 <<set $rightaction to 0>>
@@ -705,6 +711,7 @@
 <<unset $speechanusescape>>
 <<unset $speechsteal>>
 <<unset $speechnamedrop>>
+<<unset $speechadmired>>
 
 <<unset $speechNPCPenisVirgin>>
 <<unset $speechNPCVaginaVirgin>>

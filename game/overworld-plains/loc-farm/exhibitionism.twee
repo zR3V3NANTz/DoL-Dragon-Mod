@@ -525,7 +525,7 @@ The branches tear as you push inside. They close behind you, sealing you from vi
 <br><br>
 
 <<if $hallucinations gte 2 and random(1, 2) is 2>>
-	You wait a few moments, then push towards the road. <span class="red">You feel a clamp around your ankle.</span> Then the other. The branches close around you.
+	You wait a few moments, then push towards the road. <span class="red">You feel a clamp around your ankle.</span> Then the other. From within the hedge, shoots close in around you.
 	<br><br>
 
 	<<link [[Soothe|Farmland Exposed Soothe]]>><</link>><<tendingdifficulty 1 1000>>
@@ -544,7 +544,7 @@ The branches tear as you push inside. They close behind you, sealing you from vi
 <<effects>>
 
 <<if $tendingSuccess>>
-	You sing to the corrupted life around you, hoping to help it find solace. <span class="green">The branches loosen.</span> You lull it back to slumber.
+	You sing to the corrupted life around you, hoping to help it find solace. <span class="green">The shoots loosen.</span> You lull it back to slumber.
 	<br><br>
 
 	You extract yourself from the hedge, and continue your journey.
@@ -571,12 +571,12 @@ The branches tear as you push inside. They close behind you, sealing you from vi
 	<<molested>>
 	<<controlloss>>
 
-	<<tentaclestart 8 15>>
+	<<tentaclestart _randomtentacles 10 "shoot" "vine" true>>
 
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>
@@ -592,7 +592,7 @@ You count <<number $tentacles.active>> tentacles surrounding you.
 :: Farmland Exposed Tentacles Finish
 <<effects>>
 
-The branches loosen, and you're able to extract yourself from the hedge.
+The shoots loosen, and you're able to extract yourself from the hedge.
 <br><br>
 
 <<tearful>> you continue your journey.

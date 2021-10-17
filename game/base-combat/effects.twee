@@ -814,9 +814,9 @@
 			<<elseif $worn.under_lower.state is "thighs">>
 				<<if $vaginause is 0 and $anususe is 0>>
 					You pull your $worn.under_lower.name up to your waist.
-					<<set $worn.under_lower.state to "waist">><<set $worn.under_lower.exposed to $worn.under_lower.exposed_base>>
-					<<set $worn.under_lower.vagina_exposed to $worn.under_lower.vagina_exposed_base>>
-					<<set $worn.under_lower.anus_exposed to $worn.under_lower.anus_exposed_base>>
+					<<set $worn.under_lower.state to "waist">><<set $worn.under_lower.exposed to setup.clothes.under_lower[$worn.under_lower.index].exposed_base>>
+					<<set $worn.under_lower.vagina_exposed to setup.clothes.under_lower[$worn.under_lower.index].vagina_exposed_base>>
+					<<set $worn.under_lower.anus_exposed to setup.clothes.under_lower[$worn.under_lower.index].anus_exposed_base>>
 				<<else>>
 					You try to pull up your $worn.under_lower.name, but something is in the way.
 				<</if>>
@@ -840,9 +840,9 @@
 			<<elseif $worn.under_lower.state is "thighs">>
 				<<if $vaginause is 0 and $anususe is 0>>
 					You pull your $worn.under_lower.name up to your waist.
-					<<set $worn.under_lower.state to "waist">><<set $worn.under_lower.exposed to $worn.under_lower.exposed_base>>
-					<<set $worn.under_lower.vagina_exposed to $worn.under_lower.vagina_exposed_base>>
-					<<set $worn.under_lower.anus_exposed to $worn.under_lower.anus_exposed_base>>
+					<<set $worn.under_lower.state to "waist">><<set $worn.under_lower.exposed to setup.clothes.under_lower[$worn.under_lower.index].exposed_base>>
+					<<set $worn.under_lower.vagina_exposed to setup.clothes.under_lower[$worn.under_lower.index].vagina_exposed_base>>
+					<<set $worn.under_lower.anus_exposed to setup.clothes.under_lower[$worn.under_lower.index].anus_exposed_base>>
 				<<else>>
 					You try to pull up your $worn.under_lower.name, but something is in the way.
 				<</if>>
@@ -869,9 +869,9 @@
 			<<elseif $worn.under_lower.state is "thighs">>
 				<<if $vaginause is 0 and $anususe is 0>>
 					You pull your $worn.under_lower.name up to your waist.
-					<<set $worn.under_lower.state to "waist">><<set $worn.under_lower.exposed to $worn.under_lower.exposed_base>>
-					<<set $worn.under_lower.vagina_exposed to $worn.under_lower.vagina_exposed_base>>
-					<<set $worn.under_lower.anus_exposed to $worn.under_lower.anus_exposed_base>>
+					<<set $worn.under_lower.state to "waist">><<set $worn.under_lower.exposed to setup.clothes.under_lower[$worn.under_lower.index].exposed_base>>
+					<<set $worn.under_lower.vagina_exposed to setup.clothes.under_lower[$worn.under_lower.index].vagina_exposed_base>>
+					<<set $worn.under_lower.anus_exposed to setup.clothes.under_lower[$worn.under_lower.index].anus_exposed_base>>
 				<<else>>
 					You try to pull up your $worn.under_lower.name, but one hand won't be enough.
 				<</if>>
@@ -889,8 +889,8 @@
 		You clutch the tattered remains of your clothing.
 	<<else>>
 		You pull your $worn.lower.name down with both hands, covering your crotch.
-		<<set $worn.lower.skirt_down to 1>><<set $worn.lower.vagina_exposed to $worn.lower.vagina_exposed_base>>
-		<<set $worn.lower.anus_exposed to $worn.lower.anus_exposed_base>><<set $worn.lower.exposed to $worn.lower.exposed_base>>
+		<<set $worn.lower.skirt_down to 1>><<set $worn.lower.vagina_exposed to setup.clothes.lower[$worn.lower.index].vagina_exposed_base>>
+		<<set $worn.lower.anus_exposed to setup.clothes.lower[$worn.lower.index].anus_exposed_base>><<set $worn.lower.exposed to setup.clothes.lower[$worn.lower.index].exposed_base>>
 	<</if>>
 <</if>>
 
@@ -900,8 +900,8 @@
 		You clutch the tattered remains of your clothing.
 	<<else>>
 		You pull your $worn.lower.name back down, covering your crotch.
-		<<set $worn.lower.skirt_down to 1>><<set $worn.lower.vagina_exposed to $worn.lower.vagina_exposed_base>>
-		<<set $worn.lower.anus_exposed to $worn.lower.anus_exposed_base>><<set $worn.lower.exposed to $worn.lower.exposed_base>>
+		<<set $worn.lower.skirt_down to 1>><<set $worn.lower.vagina_exposed to setup.clothes.lower[$worn.lower.index].vagina_exposed_base>>
+		<<set $worn.lower.anus_exposed to setup.clothes.lower[$worn.lower.index].anus_exposed_base>><<set $worn.lower.exposed to setup.clothes.lower[$worn.lower.index].exposed_base>>
 	<</if>>
 <</if>>
 
@@ -911,8 +911,8 @@
 		You clutch the tattered remains of your clothing.
 	<<else>>
 		You pull your $worn.lower.name back down, covering your crotch.
-		<<set $worn.lower.skirt_down to 1>><<set $worn.lower.vagina_exposed to $worn.lower.vagina_exposed_base>>
-		<<set $worn.lower.anus_exposed to $worn.lower.anus_exposed_base>><<set $worn.lower.exposed to $worn.lower.exposed_base>>
+		<<set $worn.lower.skirt_down to 1>><<set $worn.lower.vagina_exposed to setup.clothes.lower[$worn.lower.index].vagina_exposed_base>>
+		<<set $worn.lower.anus_exposed to setup.clothes.lower[$worn.lower.index].anus_exposed_base>><<set $worn.lower.exposed to setup.clothes.lower[$worn.lower.index].exposed_base>>
 	<</if>>
 <</if>>
 
@@ -962,10 +962,10 @@
 					<<else>>
 						$worn.lower.name.
 					<</if>>
-					<<brat 5>><<set $worn.lower.state to $worn.lower.state_base>>
-					<<if $worn.lower.skirt is 1>><<set $worn.lower.skirt_down to 1>><</if>>
-					<<set $worn.lower.vagina_exposed to $worn.lower.vagina_exposed_base>>
-					<<set $worn.lower.anus_exposed to $worn.lower.anus_exposed_base>><<set $worn.lower.exposed to $worn.lower.exposed_base>>
+					<<brat 5>><<set $worn.lower.state to setup.clothes.lower[$worn.lower.index].state_base>>
+					<<if setup.clothes.lower[$worn.lower.index].skirt is 1>><<set $worn.lower.skirt_down to 1>><</if>>
+					<<set $worn.lower.vagina_exposed to setup.clothes.lower[$worn.lower.index].vagina_exposed_base>>
+					<<set $worn.lower.anus_exposed to setup.clothes.lower[$worn.lower.index].anus_exposed_base>><<set $worn.lower.exposed to setup.clothes.lower[$worn.lower.index].exposed_base>>
 				<</if>>
 			<</if>>
 		<</if>>
@@ -1018,10 +1018,10 @@
 					<<else>>
 						$worn.over_lower.name.
 					<</if>>
-					<<brat 5>><<set $worn.over_lower.state to $worn.over_lower.state_base>>
-					<<if $worn.over_lower.skirt is 1>><<set $worn.over_lower.skirt_down to 1>><</if>>
-					<<set $worn.over_lower.vagina_exposed to $worn.over_lower.vagina_exposed_base>>
-					<<set $worn.over_lower.anus_exposed to $worn.over_lower.anus_exposed_base>><<set $worn.over_lower.exposed to $worn.over_lower.exposed_base>>
+					<<brat 5>><<set $worn.over_lower.state to setup.clothes.over_lower[$worn.over_lower.index].state_base>>
+					<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>><<set $worn.over_lower.skirt_down to 1>><</if>>
+					<<set $worn.over_lower.vagina_exposed to setup.clothes.over_lower[$worn.over_lower.index].vagina_exposed_base>>
+					<<set $worn.over_lower.anus_exposed to setup.clothes.over_lower[$worn.over_lower.index].anus_exposed_base>><<set $worn.over_lower.exposed to setup.clothes.over_lower[$worn.over_lower.index].exposed_base>>
 				<</if>>
 			<</if>>
 		<</if>>
@@ -1073,14 +1073,14 @@
 				<<else>>
 					$worn.upper.name.
 				<</if>>
-				<<brat 5>><<set $worn.upper.state to $worn.upper.state_base>><<set $worn.upper.state_top to $worn.upper.state_top_base>>
-				<<set $worn.upper.exposed to $worn.upper.exposed_base>><<set $worn.lower.state to $worn.lower.state_base>>
-				<<if $worn.lower.skirt is 1>><<set $worn.lower.skirt_down to 1>><</if>><<set $worn.lower.vagina_exposed to $worn.lower.vagina_exposed_base>>
-				<<set $worn.lower.anus_exposed to $worn.lower.anus_exposed_base>><<set $worn.lower.exposed to $worn.lower.exposed_base>>
+				<<brat 5>><<set $worn.upper.state to setup.clothes.upper[$worn.upper.index].state_base>><<set $worn.upper.state_top to setup.clothes.upper[$worn.upper.index].state_top_base>>
+				<<set $worn.upper.exposed to setup.clothes.upper[$worn.upper.index].exposed_base>><<set $worn.lower.state to setup.clothes.lower[$worn.lower.index].state_base>>
+				<<if setup.clothes.lower[$worn.lower.index].skirt is 1>><<set $worn.lower.skirt_down to 1>><</if>><<set $worn.lower.vagina_exposed to setup.clothes.lower[$worn.lower.index].vagina_exposed_base>>
+				<<set $worn.lower.anus_exposed to setup.clothes.lower[$worn.lower.index].anus_exposed_base>><<set $worn.lower.exposed to setup.clothes.lower[$worn.lower.index].exposed_base>>
 			<<else>>
 				You fix your $worn.upper.name, concealing your <<breasts>>.
-				<<brat 5>><<set $worn.upper.state to $worn.upper.state_base>>
-				<<set $worn.upper.state_top to $worn.upper.state_top_base>><<set $worn.upper.exposed to $worn.upper.exposed_base>>
+				<<brat 5>><<set $worn.upper.state to setup.clothes.upper[$worn.upper.index].state_base>>
+				<<set $worn.upper.state_top to setup.clothes.upper[$worn.upper.index].state_top_base>><<set $worn.upper.exposed to setup.clothes.upper[$worn.upper.index].exposed_base>>
 			<</if>>
 		<</if>>
 	<</if>>
@@ -1131,14 +1131,14 @@
 				<<else>>
 					$worn.over_upper.name.
 				<</if>>
-				<<brat 5>><<set $worn.over_upper.state to $worn.over_upper.state_base>><<set $worn.over_upper.state_top to $worn.over_upper.state_top_base>>
-				<<set $worn.over_upper.exposed to $worn.over_upper.exposed_base>><<set $worn.over_lower.state to $worn.over_lower.state_base>>
-				<<if $worn.over_lower.skirt is 1>><<set $worn.over_lower.skirt_down to 1>><</if>><<set $worn.over_lower.vagina_exposed to $worn.over_lower.vagina_exposed_base>>
-				<<set $worn.over_lower.anus_exposed to $worn.over_lower.anus_exposed_base>><<set $worn.over_lower.exposed to $worn.over_lower.exposed_base>>
+				<<brat 5>><<set $worn.over_upper.state to setup.clothes.over_upper[$worn.over_upper.index].state_base>><<set $worn.over_upper.state_top to setup.clothes.over_upper[$worn.over_upper.index].state_top_base>>
+				<<set $worn.over_upper.exposed to setup.clothes.over_upper[$worn.over_upper.index].exposed_base>><<set $worn.over_lower.state to setup.clothes.over_lower[$worn.over_lower.index].state_base>>
+				<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>><<set $worn.over_lower.skirt_down to 1>><</if>><<set $worn.over_lower.vagina_exposed to setup.clothes.over_lower[$worn.over_lower.index].vagina_exposed_base>>
+				<<set $worn.over_lower.anus_exposed to setup.clothes.over_lower[$worn.over_lower.index].anus_exposed_base>><<set $worn.over_lower.exposed to setup.clothes.over_lower[$worn.over_lower.index].exposed_base>>
 			<<else>>
 				You fix your $worn.over_upper.name<<if $worn.upper.exposed gt 0>>, concealing your <<breasts>><</if>>.
-				<<brat 5>><<set $worn.over_upper.state to $worn.over_upper.state_base>>
-				<<set $worn.over_upper.state_top to $worn.over_upper.state_top_base>><<set $worn.over_upper.exposed to $worn.over_upper.exposed_base>>
+				<<brat 5>><<set $worn.over_upper.state to setup.clothes.over_upper[$worn.over_upper.index].state_base>>
+				<<set $worn.over_upper.state_top to setup.clothes.over_upper[$worn.over_upper.index].state_top_base>><<set $worn.over_upper.exposed to setup.clothes.over_upper[$worn.over_upper.index].exposed_base>>
 			<</if>>
 		<</if>>
 	<</if>>
@@ -1921,9 +1921,16 @@
 				<span class="pink"> You struggle to keep your mouth on something so small.</span>
 			<</switch>>
 			<<if $player.virginity.oral isnot true>>
+				<<if $NPCList[_j].type is "plant">>
+					<span class="pink"> It tastes sweet.</span>
+				<</if>>
 				<<submission 10>><<bruise face>><<oralstat>><<raped>><<set $mouthstate to "penetrated">><<set $speechmouthpenetrated to 1>>
 			<<elseif $player.virginity.oral is true>>
-				<span class="pink"></span><span class="red"> It tastes strange.</span>
+				<<if $NPCList[_j].type is "plant">>
+					<span class="red">It tastes uncomfortably sweet.</span>
+				<<else>>
+					<span class="red">It tastes strange.</span>
+				<</if>>
 				<<submission 30>>
 				<<takeVirginity $NPCList[_j].fullDescription "oral">><<bruise face>><<oralstat>><<violence 1>><<raped>>
 				<<set $mouthstate to "penetrated">><<set $speechmouthvirgin to 1>>
@@ -1959,33 +1966,44 @@
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "breastpull">>
 	You try to pull your head away from the chest pressing against your face.
 	<<oralskilluse>><<brat 1>>
-	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<set $mouthstate to 0>><<set $mouthuse to 0>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].chest is "mouth" or $NPCList[_j].chest is "mouthentrance">>
-				<<set $NPCList[_j].chest to 0>>
-				<<set $NPCList[_j].location.head to 0>>
-				<span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<break>>
-			<</if>>
-		<</for>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].lefthand is "head_breasts" or $NPCList[_j].lefthand is "head_nipples">>
-				<<set $NPCList[_j].lefthand to 0>>
-			<</if>>
-			<<if $NPCList[_j].righthand is "head_breasts" or $NPCList[_j].righthand is "head_nipples">>
-				<<set $NPCList[_j].righthand to 0>>
-			<</if>>
-		<</for>>
-	<<else>>
-		<<if $consensual is 1>>
-			<<set $consensual to 0>><<molested>><<controlloss>>
+	<<willpowerdifficulty $drugged $willpowermax "silent">>
+	<<if $NPCList[0].type is "plant" and !$willpowerSuccess>>
+		<span class="red">However, you can't tear yourself from the sweet nectar.</span>
+		<<if $mouthstate is "nipple">>
+			You desperately suck their $NPCList[0].breastdesc.
+		<<else>>
+			You push your face back into their $NPCList[0].breastdesc.
 		<</if>>
-		<<violence 1>>
-		<<if $mouthstate is "breasts">>
-			<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing your head back against their chest.
-		<<elseif $mouthstate is "nipple">>
-			<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing your head back against their chest.
+		<<gwillpower>><<willpower 1>>
+	<<else>>
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<set $mouthstate to 0>><<set $mouthuse to 0>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].chest is "mouth" or $NPCList[_j].chest is "mouthentrance">>
+					<<set $NPCList[_j].chest to 0>>
+					<<set $NPCList[_j].location.head to 0>>
+					<span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<break>>
+				<</if>>
+			<</for>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].lefthand is "head_breasts" or $NPCList[_j].lefthand is "head_nipples">>
+					<<set $NPCList[_j].lefthand to 0>>
+				<</if>>
+				<<if $NPCList[_j].righthand is "head_breasts" or $NPCList[_j].righthand is "head_nipples">>
+					<<set $NPCList[_j].righthand to 0>>
+				<</if>>
+			<</for>>
+		<<else>>
+			<<if $consensual is 1>>
+				<<set $consensual to 0>><<molested>><<controlloss>>
+			<</if>>
+			<<violence 1>>
+			<<if $mouthstate is "breasts">>
+				<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing your head back against their chest.
+			<<elseif $mouthstate is "nipple">>
+				<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing your head back against their chest.
+			<</if>>
 		<</if>>
 	<</if>>
 <</if>>
@@ -2000,6 +2018,11 @@
 		<<for _j = 0; _j lt $enemyno; _j++>>
 			<<if $NPCList[_j].chest is 0 and $NPCList[_j].location.genitals isnot "head" and $NPCList[_j].location.head isnot "head" and $NPCList[_j].location.head isnot "genitals">>
 				<span class="lblue">You <<oraltext>> move your mouth to <<hisselect _j>> $NPCList[_j].breastsdesc.</span>
+				<<if $NPCList[_j].type is "plant" and $NPCList[_j].pronoun is "f" and $breastfeedingdisable is "f">>
+					<span class="purple">It carries a sweet scent.</span>
+				<<elseif $NPCList[_j].lactation is 1 and $breastfeedingdisable is "f">>
+					<span class="purple">It carries a scent of milk.</span>
+				<</if>>
 				<<set $NPCList[_j].chest to "mouthentrance">><<set $mouthstate to "breasts">><<set $mouthuse to "breasts">><<set $head to "breasts">><<oralskilluse>>
 				<<set $NPCList[_j].location.head to "head">>
 				<<break>>
@@ -2058,8 +2081,10 @@
 	You keep your mouth closed.
 	<<for _j = 0; _j lt $enemyno; _j++>>
 		<<if $NPCList[_j].chest is "mouth">>
-			<<if $NPCList[_j].lactation is 1>>
-				<span class="blue">Milk leaks from <<hisselect _j>> $NPCList[_j].breastdesc.</span>
+			<<if $NPCList[_j].type is "plant" and $NPCList[_j].pronoun is "f" and $breastfeedingdisable is "f">>
+				<span class="pink">Nectar leaks from <<hisselect _j>> $NPCList[_j].breastdesc.</span>
+			<<elseif $NPCList[_j].lactation is 1 and $breastfeedingdisable is "f">>
+				<span class="pink">Milk leaks from <<hisselect _j>> $NPCList[_j].breastdesc.</span>
 			<</if>>
 			<<break>>
 		<</if>>
@@ -2075,7 +2100,10 @@
 			You <<oraltext>> suck <<hisselect _j>> $NPCList[_j].breastdesc.
 			<<if $NPCList[_j].lefthand is "head_breasts">><<set $NPCList[_j].lefthand to "head_nipples">><</if>>
 			<<if $NPCList[_j].righthand is "head_breasts">><<set $NPCList[_j].righthand to "head_nipples">><</if>>
-			<<if $breastfeedingdisable is "f" and $NPCList[_j].lactation is 1>>
+			<<if $breastfeedingdisable is "f" and $NPCList[_j].type is "plant" and $NPCList[_j].pronoun is "f">>
+				<span class="purple">Sweet nectar fills your mouth.</span>
+				<<nectarfed 15>><<set $speechheadsuckle to 1>><<submission 2>>
+			<<elseif $breastfeedingdisable is "f" and $NPCList[_j].lactation is 1>>
 				<span class="purple">Sweet, creamy milk fills your mouth.</span>
 				<<breastfed>><<set $speechheadsuckle to 1>><<submission 2>>
 			<<else>>
@@ -2180,35 +2208,42 @@
 <</if>>
 
 <<if $mouthaction is "pullaway">>
-<<set $mouthaction to 0>><<set $mouthactiondefault to "pullaway">>
-You try to pull your head away from the penis threatening your mouth.
-<<oralskilluse>><<brat 1>>
-	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<set $pullaway to 1>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].penis is "mouth">>
-				<<set $NPCList[_j].penis to "mouthimminent">><<set $mouthstate to "imminent">><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<break>>
-			<<elseif $NPCList[_j].penis is "mouthimminent">>
-				<<set $NPCList[_j].penis to "mouthentrance">><<set $mouthstate to "entrance">><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<break>>
-			<<elseif $NPCList[_j].penis is "mouthentrance">>
-				<<set $NPCList[_j].penis to 0>><<set $mouthstate to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>><<set $NPCList[_j].location.genitals to 0>>
-				<span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<break>>
-			<</if>>
-		<</for>>
+	<<set $mouthaction to 0>><<set $mouthactiondefault to "pullaway">>
+	You try to pull your head away from the penis threatening your mouth.
+	<<oralskilluse>><<brat 1>>
+	<<willpowerdifficulty $drugged $willpowermax "silent">>
+	<<if $NPCList[0].type is "plant" and $mouthstate is "penetrated" and !$willpowerSuccess>>
+		<span class="red">However, you can't tear yourself from the sweet nectar.</span>
+		You desperately suck on the penis invading your mouth.
+		<<willpower 1>>
 	<<else>>
-		<<if $consensual is 1>>
-			<<set $consensual to 0>><<molested>><<controlloss>>
-		<</if>>
-		<<violence 1>>
-		<<if $mouthstate is "penetrated">>
-			<span class="red">However, <<theowner>> refuses to allow it,</span> forcing the phallus back into your mouth.
-		<<elseif $mouthstate is "imminent">>
-			<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing the penis against your lips.
-		<<elseif $mouthstate is "entrance">>
-			<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing the penis against your lips.
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<set $pullaway to 1>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].penis is "mouth">>
+					<<set $NPCList[_j].penis to "mouthimminent">><<set $mouthstate to "imminent">><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<break>>
+				<<elseif $NPCList[_j].penis is "mouthimminent">>
+					<<set $NPCList[_j].penis to "mouthentrance">><<set $mouthstate to "entrance">><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<break>>
+				<<elseif $NPCList[_j].penis is "mouthentrance">>
+					<<set $NPCList[_j].penis to 0>><<set $mouthstate to 0>><<set $mouthuse to 0>><<set $mouthstate to 0>><<set $NPCList[_j].location.genitals to 0>>
+					<span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<break>>
+				<</if>>
+			<</for>>
+		<<else>>
+			<<if $consensual is 1>>
+				<<set $consensual to 0>><<molested>><<controlloss>>
+			<</if>>
+			<<violence 1>>
+			<<if $mouthstate is "penetrated">>
+				<span class="red">However, <<theowner>> refuses to allow it,</span> forcing the phallus back into your mouth.
+			<<elseif $mouthstate is "imminent">>
+				<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing the penis against your lips.
+			<<elseif $mouthstate is "entrance">>
+				<span class="red">However, <<theowner>> refuses to allow it,</span> instead pushing the penis against your lips.
+			<</if>>
 		<</if>>
 	<</if>>
 <</if>>
@@ -2222,35 +2257,42 @@ You try to pull your head away from the penis threatening your mouth.
 		You try to pull your head away from the pussy threatening your mouth.
 		<<oralskilluse>><<brat 1>>
 	<</if>>
-	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<set $mouthuse to 0>><<set $mouthstate to 0>><<set $pullaway to 1>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].vagina is "mouth">>
-				<<set $NPCList[_j].vagina to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<set $NPCList[_j].location.genitals to 0>>
-				<<break>>
-			<</if>>
-		<</for>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].vagina is "mouthimminent">>
-				<<set $NPCList[_j].vagina to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<set $NPCList[_j].location.genitals to 0>>
-				<<break>>
-			<</if>>
-		<</for>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].vagina is "mouthentrance">>
-				<<set $NPCList[_j].vagina to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<set $NPCList[_j].location.genitals to 0>>
-				<<break>>
-			<</if>>
-		<</for>>
+	<<oralskilluse>><<brat 1>>
+	<<willpowerdifficulty $drugged $willpowermax "silent">>
+	<<if $NPCList[0].type is "plant" and !$willpowerSuccess>>
+		<span class="red">However, you can't tear yourself from the sweet nectar.</span> You desperately lick the pussy pressing against your mouth.
+		<<willpower 1>>
 	<<else>>
-		<<if $consensual is 1>>
-			<<set $consensual to 0>><<molested>><<controlloss>>
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<set $mouthuse to 0>><<set $mouthstate to 0>><<set $pullaway to 1>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].vagina is "mouth">>
+					<<set $NPCList[_j].vagina to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<set $NPCList[_j].location.genitals to 0>>
+					<<break>>
+				<</if>>
+			<</for>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].vagina is "mouthimminent">>
+					<<set $NPCList[_j].vagina to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<set $NPCList[_j].location.genitals to 0>>
+					<<break>>
+				<</if>>
+			<</for>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].vagina is "mouthentrance">>
+					<<set $NPCList[_j].vagina to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<set $NPCList[_j].location.genitals to 0>>
+					<<break>>
+				<</if>>
+			<</for>>
+		<<else>>
+			<<if $consensual is 1>>
+				<<set $consensual to 0>><<molested>><<controlloss>>
+			<</if>>
+			<span class="red">However, <<theowner>> refuses to allow it,</span> forcing it against your face.
+			<<violence 1>>
 		<</if>>
-		<span class="red">However, <<theowner>> refuses to allow it,</span> forcing it against your face.
-		<<violence 1>>
 	<</if>>
 <</if>>
 
@@ -2278,39 +2320,50 @@ You try to pull your head away from the penis threatening your mouth.
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "pullawaykiss">>
 	You try to pull your head away from their lips.
 	<<oralskilluse>><<brat 1>>
-	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<set $mouthuse to 0>><<set $mouthstate to 0>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].mouth is "kissentrance">>
-				<<set $NPCList[_j].mouth to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<set $NPCList[_j].location.head to 0>>
-				<<break>>
-			<</if>>
-		<</for>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].mouth is "kissimminent">>
-				<<set $NPCList[_j].mouth to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<set $NPCList[_j].location.head to 0>>
-				<<break>>
-			<</if>>
-		<</for>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
-			<<if $NPCList[_j].mouth is "kiss">>
-				<<set $NPCList[_j].mouth to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
-				<<set $NPCList[_j].location.head to 0>>
-				<<break>>
-			<</if>>
-		<</for>>
+	<<willpowerdifficulty $drugged $willpowermax "silent">>
+	<<if $NPCList[0].type is "plant" and $mouthstate isnot "kissentrance" and !$willpowerSuccess>>
+		<span class="red">However, you can't tear yourself from the sweet nectar.</span>
+		<<if $mouthstate is "kissimminent">>
+			You kiss them back, parting their lips with your tongue.
+		<<elseif $mouthstate is "kiss">>
+			You kiss them back, caressing their tongue with your own.
+		<</if>>
+		<<willpower 1>>
 	<<else>>
-		<<if $consensual is 1>>
-			<<set $consensual to 0>><<molested>><<controlloss>>
-		<</if>>
-		<<if $mouthstate is "kissentrance">>
-			<span class="red">However, <<theowner>> refuses to allow it,</span> preventing you from moving away from their face.
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<set $mouthuse to 0>><<set $mouthstate to 0>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].mouth is "kissentrance">>
+					<<set $NPCList[_j].mouth to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<set $NPCList[_j].location.head to 0>>
+					<<break>>
+				<</if>>
+			<</for>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].mouth is "kissimminent">>
+					<<set $NPCList[_j].mouth to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<set $NPCList[_j].location.head to 0>>
+					<<break>>
+				<</if>>
+			<</for>>
+			<<for _j = 0; _j lt $enemyno; _j++>>
+				<<if $NPCList[_j].mouth is "kiss">>
+					<<set $NPCList[_j].mouth to 0>><span class="green"><<He `_j + 1`>> doesn't stop you.</span>
+					<<set $NPCList[_j].location.head to 0>>
+					<<break>>
+				<</if>>
+			<</for>>
 		<<else>>
-			<span class="red">However, <<theowner>> refuses to allow it,</span> kissing you more firmly.
+			<<if $consensual is 1>>
+				<<set $consensual to 0>><<molested>><<controlloss>>
+			<</if>>
+			<<if $mouthstate is "kissentrance">>
+				<span class="red">However, <<theowner>> refuses to allow it,</span> preventing you from moving away from their face.
+			<<else>>
+				<span class="red">However, <<theowner>> refuses to allow it,</span> kissing you more firmly.
+			<</if>>
+			<<violence 1>>
 		<</if>>
-		<<violence 1>>
 	<</if>>
 <</if>>
 
@@ -2523,6 +2576,9 @@ You try to pull your head away from the penis threatening your mouth.
 			<<if $NPCList[_j].penis is "vaginaentrance">>
 				<<personselect _j>>
 				<span class="blue">You give your <<bottom>> a little wiggle, <<combatperson>> responds to the provocation and moves <<his>> penis in front of your butt.</span>
+				<<if $NPCList[_j].type is "plant" and $NPCList[_j].penissize gte 4>>
+					<span class="red">Something about it scares you.</span>
+				<</if>>
 				<<submission 2>><<set $anususe to "penis">><<set $NPCList[_j].penis to "anusentrance">><<set $vaginause to 0>><<set $anusstate to "entrance">><<set $vaginastate to 0>>
 				<<break>>
 			<</if>>
@@ -3350,7 +3406,7 @@ You try to pull your head away from the penis threatening your mouth.
 	<<else>>
 		<<set $mouthactiondefault to "rest">><<brat 10>>
 		You tell <<him>> you've had enough and want to stop.
-		<<if !$loveDrunk and ((1000 - ($rng * 10) - ($enemytrust * 10) - $seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100) or $gamemode is "soft" or $gloryhole)>>
+		<<if !$loveDrunk and $NPCList[0].type isnot "plant" and ((1000 - ($rng * 10) - ($enemytrust * 10) - $seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100) or $gamemode is "soft" or $gloryhole)>>
 			<<set $finish to 1>>
 			<<if $trueconsensual isnot 1 and $gamemode is "soft">>
 				<<set $enemyhealth to -100>>
@@ -3366,7 +3422,11 @@ You try to pull your head away from the penis threatening your mouth.
 		<<else>>
 			<<set $consensual to 0>>
 			<<if $enemytype is "man">>
-				<span class="red"><<if $enemyno gte 2>>They refuse!<<else>><<He>> refuses!<</if>></span>
+				<<if $NPCList[0].type is "plant">>
+					<span class="red"><<He>> shakes <<his>> head happily.</span>
+				<<else>>
+					<span class="red"><<if $enemyno gte 2>>They refuse!<<else>><<He>> refuses!<</if>></span>
+				<</if>>
 			<<else>>
 				Eager to breed, <span class="red"><<bhe>> ignores your desire.</span>
 			<</if>>
@@ -3399,7 +3459,11 @@ You try to pull your head away from the penis threatening your mouth.
 			<</if>>
 		<<else>>
 			<<set $consensual to 0>>
-			They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<<if $NPCList[0].type is "plant">>
+				<<He>> scoffs. <span class="red">"Are you kidding? That's the fun part!"</span>
+			<<else>>
+				They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<</if>>
 			<<molested>><<controlloss>>
 		<</if>>
 	<</if>>
@@ -3429,7 +3493,11 @@ You try to pull your head away from the penis threatening your mouth.
 			<</if>>
 		<<else>>
 			<<set $consensual to 0>>
-			They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<<if $NPCList[0].type is "plant">>
+				<<He>> scoffs. <span class="red">"Are you kidding? That's the fun part!"</span>
+			<<else>>
+				They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<</if>>
 			<<molested>><<controlloss>>
 		<</if>>
 	<</if>>
@@ -3477,7 +3545,11 @@ You try to pull your head away from the penis threatening your mouth.
 			<</if>>
 		<<else>>
 			<<set $consensual to 0>>
-			They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<<if $NPCList[0].type is "plant">>
+				<<He>> scoffs. <span class="red">"Are you kidding? That's the fun part!"</span>
+			<<else>>
+				They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<</if>>
 			<<molested>><<controlloss>>
 		<</if>>
 	<</if>>
@@ -3493,7 +3565,7 @@ You try to pull your head away from the penis threatening your mouth.
 		You tell <<him>> to leave your top on.
 
 		<<if $combatgoal is "strip">>
-			<span class="pink">"No," they laugh. You'll look better without it."</span>
+			<span class="pink">"No," they laugh. "You'll look better without it."</span>
 		<<elseif (1000 - ($rng * 10) - ($enemytrust * 10) - $seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100) or $gamemode is "soft" or $gloryhole>>
 			<<set $noupper to 1>><span class="green">They nod in acknowledgement.</span>
 			<<for _j = 0; _j lt $enemyno; _j++>>
@@ -3520,7 +3592,11 @@ You try to pull your head away from the penis threatening your mouth.
 			<</for>>
 		<<else>>
 			<<set $consensual to 0>>
-			They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<<if $NPCList[0].type is "plant">>
+				<<He>> scoffs. <span class="red">"Are you kidding? That's the fun part!"</span>
+			<<else>>
+				They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<</if>>
 			<<molested>><<controlloss>>
 		<</if>>
 	<</if>>
@@ -3548,7 +3624,16 @@ You try to pull your head away from the penis threatening your mouth.
 			<</if>>
 		<<else>>
 			<<set $consensual to 0>>
-			They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<<if $NPCList[0].type is "plant">>
+				<<He>> scoffs.
+				<<if $NPCList[0].lefthand is 0 or $NPCList[0].righthand is 0>>
+					<span class="red">Are you kidding? That's the fun part! Here, look!"</span>
+				<<else>>
+					<span class="red">Are you kidding? That's the fun part!"</span>
+				<</if>>
+			<<else>>
+				They pause a moment before responding, <span class="red">"Stupid slut, you think you can tell me what to do?"</span>
+			<</if>>
 			<<molested>><<controlloss>>
 			<<for _j = 0; _j lt $enemyno; _j++>>
 				<<if $NPCList[_j].lefthand is 0>>

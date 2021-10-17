@@ -1047,16 +1047,16 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 			<<else>>
 				<<He>> eyes your <<genitals>> with great curiosity. "B...both? I didn't know that was possible!"
 			<</if>><<npcincr Sydney purity -2>><<lspurity>>
-		<<elseif $rng gte 96 and !$npc.includes("Kylar")>>
+		<<elseif $rng gte 96 and !$npc.includes("Kylar") and $NPCList[0].type isnot "plant">>
 			<span class="red"><<He>> recoils in horror and disgust at the sight of your <<genitals>>!</span>
 			<<set $enemyanger += 200>><<set $enemytrust -= 100>><<set $speechhermangry to 2>>
-		<<elseif $rng gte 85 or $npc.includes("Kylar")>>
+		<<elseif $rng gte 85 and $NPCList[0].type isnot "plant" or $npc.includes("Kylar")>>
 			<span class="purple"><<His>> hands shake and <<his>> breath quickens at the sight of your <<genitals>>.</span>
 			<<set $enemyarousal += (50 * $enemyno)>><<set $speechhermaroused to 2>>
-		<<elseif $rng gte 50>>
+		<<elseif $rng gte 50 and $NPCList[0].type isnot "plant">>
 			<span class="blue"><<He>> recoils in shock at the sight of your <<genitals>>.</span>
 			<<set $enemyanger -= 50>><<set $enemytrust -= 50>><<set $speechhermshock to 2>>
-		<<elseif $rng gte 30>>
+		<<elseif $rng gte 30 and $NPCList[0].type isnot "plant">>
 			<<Hes>> taken aback by your <<genitals>>. <<He>> doesn't seem angry, at least.
 			<<set $enemyarousal -= 100>><<set $enemytrust -= 50>><<set $speechhermdisappointed to 2>>
 		<<else>>
@@ -1107,16 +1107,16 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 			<<else>>
 				<<He>> stares at your <<genitals>> with confusion. "You're... a <<gender>>? Th-that's okay! I don't think of you any differently!"
 			<</if>><<npcincr Sydney purity -2>><<lspurity>>
-		<<elseif $rng gte 96 and !$npc.includes("Kylar")>>
+		<<elseif $rng gte 96 and !$npc.includes("Kylar") and $NPCList[0].type isnot "plant">>
 			<span class="red"><<He>> recoils in horror upon seeing your <<genitals>>. The deception has driven <<him>> mad with rage!</span>
 			<<set $enemyanger += 200>><<set $enemytrust -= 100>><<set $speechcrossdressangry to 2>>
-		<<elseif $rng gte 86 or ($npc.includes("Kylar") and $NPCList[0].gender isnot $player.gender)>>
+		<<elseif $rng gte 86 and $NPCList[0].type isnot "plant" or ($npc.includes("Kylar") and $NPCList[0].gender isnot $player.gender)>>
 			Your <<genitals 1>> was clearly not what <<he>> was expecting, but <<he>> doesn't seem to mind. <span class="purple">In fact, if <<his>> shaking hands are anything to go by <<he>> is quite pleased.</span>
 			<<set $enemyarousal += 50>><<set $speechcrossdressaroused to 2>>
-		<<elseif $rng gte 50 and !$npc.includes("Kylar")>>
+		<<elseif $rng gte 50 and !$npc.includes("Kylar") and $NPCList[0].type isnot "plant">>
 			<<His>> eyes widen in shock when <<he>> sees your <<genitals>>. <<He>> seems unsure what to do.
 			<<set $enemyanger -= 50>><<set $enemytrust -= 50>><<set $speechcrossdressshock to 2>>
-		<<elseif $rng gte 30 or ($npc.includes("Kylar") and $NPCList[0].gender is $player.gender)>>
+		<<elseif $rng gte 30 and $NPCList[0].type isnot "plant" or ($npc.includes("Kylar") and $NPCList[0].gender is $player.gender)>>
 			<<He>> looks disappointed by your <<genitals>>. It wasn't what <<he>> was expecting.
 			<<set $enemyarousal -= 100>><<set $enemytrust -= 50>><<set $speechcrossdressdisappointed to 2>>
 		<<else>>
