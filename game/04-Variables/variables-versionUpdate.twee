@@ -2526,8 +2526,8 @@
 	<<set $tentaclePenis to 0>>
 <</if>>
 
-<<if $fullDescription is undefined>>
-	<<set $fullDescription to $NPCList[0].fullDescription>>
+<<if $fullDescription isnot undefined>>
+	<<unset $fullDescription>>
 <</if>>
 <</widget>>
 

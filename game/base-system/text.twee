@@ -1183,7 +1183,7 @@ in dev alternative to current "breasts" widget
 <</widget>>
 
 <<widget "personsimple">><<silently>>
-<<if $fullDescription.includes("plant")>>
+<<if $NPCList[0].type is "plant">>
 	<<set _text_output to "plant">>
 <<else>>
 	<<set _text_output to "">>
@@ -1195,7 +1195,7 @@ in dev alternative to current "breasts" widget
 <</if>><</silently>><<print _text_output>><</widget>>
 
 <<widget "person">><<silently>>
-<<if $fullDescription.includes("plant")>>
+<<if $NPCList[0].type is "plant">>
 	<<set _text_output to $description+" plant">>
 <<else>>
 	<<set _text_output to $description+" ">>
@@ -1258,11 +1258,9 @@ in dev alternative to current "breasts" widget
 <<set $pronoun to $NPCList[_n].pronoun>>
 <<if $npcrow.includes(_n)>>
 	<<set $description to $NPCName[$npcnum[$npcrow.indexOf(_n)]].title>>
-	<<set $fullDescription to $NPCName[$npcnum[$npcrow.indexOf(_n)]].fullDescription>>
 	<<set $npc_named to 1>>
 <<else>>
 	<<set $description to $NPCList[_n].description>>
-	<<set $fullDescription to $NPCList[_n].fullDescription>>
 	<<set $npc_named to 0>>
 <</if>>
 <</widget>>
