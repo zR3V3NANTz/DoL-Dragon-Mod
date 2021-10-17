@@ -256,9 +256,9 @@
 
 <!-- set up the checks -->
 <<set _over_upper_protected to $worn.over_upper.exposed lt 2 or $player.gender_appearance_without_overwear isnot "f";
-	_over_lower_protected to $worn.over_lower.exposed lt 2 and !$worn.over_lower.skirt;
+	_over_lower_protected to $worn.over_lower.exposed lt 2 and !setup.clothes.over_lower[$worn.over_lower.index].skirt;
 	_upper_protected to $worn.upper.exposed lt 2 or $player.gender_appearance_without_overwear isnot "f";
-	_lower_protected to $worn.lower.exposed lt 2 and !$worn.lower.skirt;
+	_lower_protected to $worn.lower.exposed lt 2 and !setup.clothes.lower[$worn.lower.index].skirt;
 	_under_upper_protected to !$worn.under_upper.exposed or $player.gender_appearance_without_overwear isnot "f";
 	_under_lower_protected to !$worn.under_lower.exposed;
 >>

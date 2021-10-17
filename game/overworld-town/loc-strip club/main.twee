@@ -320,7 +320,7 @@ Darryl looks up from <<his>> desk as you enter, <<his>> fringe and glasses obscu
 <br><br>
 <</if>>
 
-<<if $phase is 1>><<set $stripclubdancingintro to 1>>
+<<if $phase is 1>><<set $stripclubdancingintro to 1>><<set $wardrobes.stripClub.unlocked to true>>
 "You want to dance? Good! You probably saw some stages were empty. You can dress how you want, but you should dress appropriately if you want decent tips. We operate a strict no-touching policy in the main room. If anyone gives you trouble, don't hesitate to call security. We take the safety of our staff very seriously."
 <br><br>
 

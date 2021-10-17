@@ -1258,7 +1258,7 @@ You turn away from the pervert and shut your eyes. "You're no fun," <<he>> says.
 :: School Stump Flash
 <<set $outside to 1>><<set $location to "school">><<schooleffects>><<effects>>
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 You lift your $worn.lower.name, exposing your <<undies>>. <<He>> whistles at you and leans into the fence for a closer look.
 <<else>>
 You pull down your $worn.lower.name, exposing your <<undies>>. <<He>> whistles at you and leans into the fence for a closer look.
@@ -1279,7 +1279,7 @@ You wink at <<him>> and cover up before anyone else can see. <<He>> leaves with 
 :: School Stump Genital Flash
 
 <<set $outside to 1>><<set $location to "school">><<schooleffects>><<effects>>
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 You lift your $worn.lower.name, exposing your <<undies>>. <<He>> whistles at you and leans into the fence for a closer look.
 <<else>>
 You pull down your $worn.lower.name, exposing your <<undies>>. <<He>> whistles at you and leans into the fence for a closer look.
@@ -1838,7 +1838,7 @@ The <<person2>><<person>> tries to grab you again, but you bat <<his>> arm away.
 		<br><br>
 		At last satisfied, the three swagger away.
 	<<else>>
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			<<if $worn.under_lower.type.includes("naked")>>
 				The <<person1>><<person>> crouches beside you, grasps the hem of your skirt, and lifts it. <span class="pink">Your <<genitals 1>> are revealed.</span>
 			<<else>>
@@ -1927,7 +1927,7 @@ The bullies share a worried glance, but do as they're told.
 <<effects>>
 <<fameexhibitionism 3>>
 Blushing with shame,
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.under_lower.type.includes("naked")>>
 		you lift your skirt, <span class="pink">revealing your <<genitals 1>></span>.
 	<<else>>
@@ -1973,7 +1973,7 @@ You cover yourself and leave before they get any ideas. They don't stop you.
 <<effects>>
 <<fameexhibitionism 3>>
 <<flaunting>>
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.under_lower.type.includes("naked")>>
 		you lift your skirt, <span class="pink">revealing your <<genitals 1>></span>.
 	<<else>>

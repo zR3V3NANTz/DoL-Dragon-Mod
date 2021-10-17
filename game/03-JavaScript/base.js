@@ -230,10 +230,11 @@ function DefineMacroS(macroName, macroFunction, tags, skipArgs, maintainContext)
 
 /**
  * @param worn clothing article, State.variables.worn.XXXX
+ * @param slot clothing article slot used
  * @return {string} condition key word ("tattered"|"torn|"frayed"|"full")
  */
-window.integrityKeyword = function(worn) {
-	const i = worn.integrity/worn.integrity_max;
+window.integrityKeyword = function(worn, slot) {
+	const i = worn.integrity/clothingData(slot,worn,'integrity_max');
 	if (i <= 0.2) {
 		return "tattered"
 	} else if (i <= 0.5) {
@@ -247,10 +248,11 @@ window.integrityKeyword = function(worn) {
 
 /**
  * @param worn clothing article, State.variables.worn.XXXX
+ * @param slot clothing article, State.variables.worn.XXXX
  * @return {string} printable integrity prefix
  */
-window.integrityWord = function(worn) {
-	const kw = integrityKeyword(worn);
+window.integrityWord = function(worn, slot) {
+	const kw = integrityKeyword(worn, slot);
 	switch (kw) {
 		case "tattered":
 		case "torn":
@@ -266,37 +268,37 @@ window.integrityWord = function(worn) {
 DefineMacroS("integrityWord", integrityWord);
 
 function underlowerintegrity() {
-	return integrityWord(V.worn.under_lower);
+	return integrityWord(V.worn.under_lower,'under_lower');
 }
 DefineMacroS("underlowerintegrity", underlowerintegrity);
 
 function underupperintegrity() {
-	return integrityWord(V.worn.under_upper);
+	return integrityWord(V.worn.under_upper,'under_upper');
 }
 DefineMacroS("underupperintegrity", underupperintegrity);
 
 function overlowerintegrity() {
-	return integrityWord(V.worn.over_lower);
+	return integrityWord(V.worn.over_lower,'over_lower');
 }
 DefineMacroS("overlowerintegrity", overlowerintegrity);
 
 function lowerintegrity() {
-	return integrityWord(V.worn.lower);
+	return integrityWord(V.worn.lower,'lower');
 }
 DefineMacroS("lowerintegrity", lowerintegrity);
 
 function overupperintegrity() {
-	return integrityWord(V.worn.over_upper);
+	return integrityWord(V.worn.over_upper,'over_upper');
 }
 DefineMacroS("overupperintegrity", overupperintegrity);
 
 function upperintegrity() {
-	return integrityWord(V.worn.upper);
+	return integrityWord(V.worn.upper,'upper');
 }
 DefineMacroS("upperintegrity", upperintegrity);
 
 function genitalsintegrity() {
-	return integrityWord(V.worn.genitals);
+	return integrityWord(V.worn.genitals,'genitals');
 }
 DefineMacroS("genitalsintegrity", genitalsintegrity);
 
@@ -339,7 +341,7 @@ window.outfitChecks = function(){
  window.checkForExposedClothing = function(){
 	return ["over_upper", "upper", "under_upper", "over_lower", "lower", "under_lower"].some( clothingLayer => {
 		let wetstage = V[clothingLayer.replace("_","") + "wetstage"];
-		return (V.worn[clothingLayer].state !== V.worn[clothingLayer].state_base || wetstage >= 3);
+		return (V.worn[clothingLayer].state !== setup.clothes[clothingLayer][V.worn[clothingLayer].index].state_base || wetstage >= 3);
 	})
 }
 

@@ -210,21 +210,21 @@
 	<<if $worn.over_lower.integrity gt 0>>
 		<<set $worn.over_lower.integrity -= 5>>
 	<</if>>
-	<<if ($worn.over_lower.name is "naked" or $worn.over_lower.integrity lte $worn.over_lower.integrity_max / 5) and $worn.lower.integrity gt 0>>
+	<<if ($worn.over_lower.name is "naked" or $worn.over_lower.integrity lte clothingData('over_lower',$worn.over_lower,'integrity_max') / 5) and $worn.lower.integrity gt 0>>
 		<<set $worn.upper.integrity -= 5>>
 	<</if>>
-	<<if ($worn.over_lower.name is "naked" or $worn.over_lower.integrity lte $worn.over_lower.integrity_max / 5)
-		and ($worn.lower.name is "naked" or $worn.lower.integrity lte $worn.lower.integrity_max / 5) and $worn.under_lower.integrity gt 0>>
+	<<if ($worn.over_lower.name is "naked" or $worn.over_lower.integrity lte clothingData('over_lower',$worn.over_lower,'integrity_max') / 5)
+		and ($worn.lower.name is "naked" or $worn.lower.integrity lte clothingData('lower',$worn.lower,'integrity_max') / 5) and $worn.under_lower.integrity gt 0>>
 		<<set $worn.under_lower.integrity -= 5>>
 	<</if>>
 	<<if $worn.over_upper.integrity gt 0>>
 		<<set $worn.over_upper.integrity -= 5>>
 	<</if>>
-	<<if ($worn.over_upper.name is "naked" or $worn.over_upper.integrity lte $worn.over_upper.integrity_max / 5) and $worn.upper.integrity gt 0>>
+	<<if ($worn.over_upper.name is "naked" or $worn.over_upper.integrity lte clothingData('over_upper',$worn.over_upper,'integrity_max') / 5) and $worn.upper.integrity gt 0>>
 		<<set $worn.upper.integrity -= 5>>
 	<</if>>
-	<<if ($worn.over_upper.name is "naked" or $worn.over_upper.integrity lte $worn.over_upper.integrity_max / 5) and
-		($worn.upper.name is "naked" or $worn.upper.integrity lte $worn.upper.integrity_max / 5) and $worn.under_upper.integrity gt 0>>
+	<<if ($worn.over_upper.name is "naked" or $worn.over_upper.integrity lte clothingData('over_upper',$worn.over_upper,'integrity_max') / 5) and
+		($worn.upper.name is "naked" or $worn.upper.integrity lte clothingData('upper',$worn.upper,'integrity_max') / 5) and $worn.under_upper.integrity gt 0>>
 		<<set $worn.under_upper.integrity -= 5>>
 	<</if>>
 <</if>>

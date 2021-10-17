@@ -32,6 +32,7 @@
 <<set $clothes to {}>>
 <<set $worn to {}>>
 <<set $wardrobe to {}>>
+<<wardrobesUpdate>>
 <<set $store to {}>>
 <<set $outfit to []>>
 <<set $carried to {}>>

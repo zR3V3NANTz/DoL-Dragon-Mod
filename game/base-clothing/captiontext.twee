@@ -59,7 +59,7 @@
 	<</if>>
 	
 	/* word 2: damage, example "frayed" */
-	<<run $_output += window.integrityWord($_wornItem)>>
+	<<run $_output += window.integrityWord($_wornItem,$args[0])>>
 
 	/* word 3: colour, example: "red" */
 	<<run $_output += window.clothesColour($_wornItem) + " ">>
@@ -171,7 +171,7 @@
 	/* One argument, a clothing article whose state you want to compare against its original state. Must be the ENTIRE variable, not .name! */
 	/* Returns the difference between the current and base states. Negative means it's pulled down, positive means it's pulled up.  */
 	/* If the clothing was pulled to the side, this returns 0. It would also return 0 if the current state is the base state. */
-	<<set _compare_result to _clothing_levels.indexOf($worn[$args[0]].state) - _clothing_levels.indexOf($worn[$args[0]].state_base)>>
+	<<set _compare_result to _clothing_levels.indexOf($worn[$args[0]].state) - _clothing_levels.indexOf(setup.clothes[$args[0]][$worn[$args[0]].index].state_base)>>
 	<<if $worn[$args[0]].state is "totheside">><<set _compare_result to 0>><</if>>
 <</widget>>
 
@@ -205,7 +205,7 @@
 		<<if $_wornClothing.type.includes("naked")>>
 			<<set $_clothingRevealType[$_clothing] to "naked">>
 			<<continue>>
-		<<elseif $_wornClothing.state isnot $_wornClothing.state_base>>
+		<<elseif $_wornClothing.state isnot setup.clothes[$_clothing][$_wornClothing.index].state_base>>
 			<<clothingstatecompare $_clothing>>
 			<<if _compare_result gte 1>>
 				<<set $_clothingRevealType[$_clothing] to "up">>

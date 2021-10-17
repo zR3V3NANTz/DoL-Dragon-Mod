@@ -190,7 +190,7 @@ A <<person>> enters,
 
 		<<if $worn.under_lower.type.includes("naked")>>
 			<<fameexhibitionism 1>>
-			<<if $worn.lower.skirt is 1>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				<<He>> flips it up,
 			<<elseif $worn.lower.integrity gt 20>>
 				<<He>> tugs it down,
@@ -207,7 +207,7 @@ A <<person>> enters,
 			<br><br>
 			<<spa_end>>
 		<<else>>
-			<<if $worn.lower.skirt is 1>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				<<He>> flips it up,
 			<<elseif $worn.lower.integrity gt 20>>
 				<<He>> tugs it down,

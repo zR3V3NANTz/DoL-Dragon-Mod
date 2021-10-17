@@ -117,7 +117,7 @@
 
 <<if $forestleashed isnot 1>>
 
-	<<if $syndromeeden is undefined>><<set $syndromeeden to 1>><<set $NPCName[$NPCNameList.indexOf("Eden")].lust to 0>><<set $edenshrooms to 0>><<set $edengarden to 0>><<set $edenspring to 0>>
+	<<if $syndromeeden is undefined>><<set $syndromeeden to 1>><<set $NPCName[$NPCNameList.indexOf("Eden")].lust to 0>><<set $edenshrooms to 0>><<set $edengarden to 0>><<set $edenspring to 0>><<set $wardrobes.edensCabin.unlocked to true>>
 	<br><br>
 	<span class="red"><i>Eden isn't so bad, <<hes>> just lonely. It must be hard living here in the woods on your own.</i>
 	<br>
@@ -349,7 +349,7 @@ A while later you hear Eden stir. <<He>> rolls over and kisses you on the cheek.
 <<if $NPCName[$NPCNameList.indexOf("Eden")].trust gte 100>>
 "I don't think keeping you tied is necessary any more. Just don't run off on me. Stick to the cabin and the clearing just outside, where it's safe."
 
-	<<if $syndromeeden is undefined>><<set $syndromeeden to 1>><<set $NPCName[$NPCNameList.indexOf("Eden")].lust to 0>><<set $edenshrooms to 0>><<set $edengarden to 0>><<set $edenspring to 0>>
+	<<if $syndromeeden is undefined>><<set $syndromeeden to 1>><<set $NPCName[$NPCNameList.indexOf("Eden")].lust to 0>><<set $edenshrooms to 0>><<set $edengarden to 0>><<set $edenspring to 0>><<set $wardrobes.edensCabin.unlocked to true>>
 	<br><br>
 	<span class="red"><i>Eden isn't so bad, <<hes>> just lonely. It must be hard living here in the woods on your own.</i>
 	<br>

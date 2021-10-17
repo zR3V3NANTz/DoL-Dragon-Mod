@@ -1,6 +1,6 @@
 :: Bedroom
 
-<<bedclotheson>>
+<<bedclotheson "bed">>
 <<set $outside to 0>><<set $location to "home">><<home_effects>><<effects>>
 You are in your bedroom.
 <br><br>
@@ -992,7 +992,6 @@ You've pushed yourself too much.
 
 :: Bed
 
-<<set $wardrobe_location to "bed">>
 <<effects>>
 <<wearoutfit>>
 <<if $robinbed is 1>>
@@ -1798,7 +1797,7 @@ Attitudes
 <br>
 
 :: Bedroom Bailey
-<<bedclotheson>>
+<<bedclotheson "bed">>
 
 <<effects>>
 
@@ -2580,7 +2579,7 @@ The <<person2>><<person>> grows bored of molesting you this way, and sends you t
 <<effects>>
 You lie on the table as instructed. The <<person2>><<person>> sits behind your head, and wraps an arm around your neck.
 <<if $worn.upper.set is $worn.lower.set>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		The <<person1>><<person>> flips up your skirt, exposing your <<undies>>. You try to cover yourself with your legs, but there's little you can do. <<He>> pulls your skirt up high, over your abdomen, and even your <<undertop>>. <<He>> holds the tub above your chest.
 	<<else>>
 		The <<person1>><<person>> pulls down your top, exposing your <<undertop>>. <<He>> holds the tub above your chest.

@@ -213,7 +213,7 @@ You decide to ignore the strange hole, and continue gathering clothes. Basket fu
 <<set $outside to 0>><<set $location to "temple">><<temple_effects>><<effects>>
 <<set $temple_harassed += 1>>
 You put up with it. The <<monkapo>> antics grow in aggressiveness.
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.under_lower.type.includes("naked")>>
 		After whipping <<his>> head around to make sure no one is looking too closely, <<he>> flips up your $worn.lower.name. <<He>> gropes your <<genitals>> directly.
 		<br><br>

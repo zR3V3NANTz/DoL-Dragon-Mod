@@ -521,18 +521,19 @@ Swimming sets:
 <</widget>>
 
 <<widget "schoolpoolclothes">>
-
+<<set $wardrobe_location to $args[0]>>
+<<wardrobeSelection true>>
 <<wearoutfit>>
 <br>
 Swimming sets:
 <br>
-<<listswimoutfits "school pool">>
-<<storeon "school pool" "check">>
-<<if _store_check is 1>>
-Your clothes lie on a bench.
-<</if>>
+<<listswimoutfits $wardrobe_location>>
+<br>
+Normal sets:
+<br>
+<<listoutfitsPassage $wardrobe_location>>
+<br>
 
-<<storeactions "school pool">>
 <<temperature>>
 <</widget>>
 

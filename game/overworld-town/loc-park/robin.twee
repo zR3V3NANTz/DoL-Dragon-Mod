@@ -85,7 +85,7 @@
 		<<if $danger gte (9900 - $allure)>>
 			<br><br>
 			A <<person>> creeps up behind you,
-			<<if $worn.lower.skirt is 1>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				<span class="purple">and grasps the hem of your skirt.</span>
 			<<elseif $worn.lower.set isnot $worn.upper.set>>
 				<span class="purple">and grasps the hem of your $worn.lower.name.</span>
@@ -302,7 +302,7 @@ The other customers are less creepy.
 :: Robin Chocolate Endure
 <<effects>>
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.under_lower.type.includes("naked")>>
 		<<if $worn.genitals.type.includes("chastity")>>
 			The <<person>> lifts your $worn.lower.name, <span class="lewd">exposing your $worn.genitals.name in the middle of the park.</span>

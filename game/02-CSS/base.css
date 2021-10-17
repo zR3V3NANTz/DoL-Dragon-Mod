@@ -747,6 +747,19 @@ body.no-images #ui-bar-body {
 	margin-left: 0px;
 }
 
+#outfitEditorList {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#outfitEditorList > div {
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin: 5px;
+	max-width: 500px;
+	flex-direction: column;
+}
+
 #customColor div {
 	height: 30px;
 	width: 200px;

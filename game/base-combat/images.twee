@@ -366,7 +366,7 @@ Mouth is closed in idle frames here. activeclosedmouth can be used in active, th
 
 	<<if $leftarm isnot "bound" and $leftarm isnot "grappled" and $leftarm isnot "behind">>
 		<img class="layer-sexbasefront anim-idle-2f" @src="_img.doggyactivebaseleftarm" @style="'filter: '+_filters.body">
-	<<elseif $worn.upper.set is $worn.lower.set and $worn.lower.skirt is 1>>
+	<<elseif $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<img class="layer-sexaboveclothes anim-idle-2f" @src="_img.doggyactiveleftarmbound" @style="'filter: '+_filters.body">
 	<<else>>
 		<img class="layer-sexbase anim-idle-2f" @src="_img.doggyactiveleftarmbound" @style="'filter: '+_filters.body">

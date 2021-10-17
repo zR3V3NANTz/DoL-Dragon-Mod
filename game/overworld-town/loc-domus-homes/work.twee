@@ -373,7 +373,7 @@ You climb a ladder to reach the rooftop, and get to work clearing moss.
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if $danger gte (9900 - $allure)>>
 
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	About an hour into your task you notice the <<person>> stood beneath you, pointing <<his>> camera phone up at you. You're perplexed for a moment, then realise <<he>> can see straight up your skirt. You put a hand between your thighs to cover yourself. "Don't be shy," <<he>> says, smiling.
 		<<if $worn.under_lower.type.includes("naked")>>
 		"You're a lewd thing to be clambering around with no underwear."

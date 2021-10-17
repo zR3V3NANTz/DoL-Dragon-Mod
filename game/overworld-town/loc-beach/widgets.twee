@@ -58,7 +58,7 @@ You feel something yanking at your <<print $worn[_slot].name>>. Looking over you
 A gust of wind blows in from the ocean, pleasantly caressing your skin.
 <<lstress>><<stress -2>>
 <br><br>
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	/* variables */
 	<<set _helpless to 0>>
 	<<if $leftarm is "bound" and $rightarm is "bound">>

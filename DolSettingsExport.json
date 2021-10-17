@@ -84,6 +84,8 @@ DolSettingsExport = {
 		"reducedLineHeight":false,
 		"neverNudeMenus":false,
 		"skipStatisticsConfirmation":false,
+		"multipleWardrobes":"isolated",
+		"outfitEditorPerPage":10,
 		"map":{
 			"movement":true,
 			"top":false,

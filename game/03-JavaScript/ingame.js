@@ -408,3 +408,85 @@ window.setRobinLocationOverride = function(loc, hour){
 	V.robinlocationoverride = override;
 	return;
 }
+
+window.transferClothing = function(slot, index, newWardrobe){
+	let oldWardrobeObject;
+	if(V.wardrobe_location === "wardrobe"){
+		oldWardrobeObject = V.wardrobe;
+	} else {
+		oldWardrobeObject = V.wardrobes[V.wardrobe_location];
+	}
+	let newWardrobeObject;
+	if(newWardrobe === "wardrobe"){
+		newWardrobeObject = V.wardrobe;
+	} else {
+		newWardrobeObject = V.wardrobes[newWardrobe];
+	}
+	if(oldWardrobeObject && newWardrobeObject){
+		newWardrobeObject[slot].push(oldWardrobeObject[slot][index]);
+		oldWardrobeObject[slot].deleteAt(index);
+	}
+	return;
+}
+
+window.clothingData = function(slot, item, data){
+	if(item[data] !== undefined) return item[data];
+	return setup.clothes[slot][item.index][data];
+}
+
+window.clothesDataTrimmerLoop = function(){
+	const wardrobeKeys = Object.keys(V.wardrobes);
+	setup.clothes_all_slots.forEach(slot => {
+		clothesDataTrimmer(V.worn[slot]);
+		clothesDataTrimmer(V.carried[slot]);
+		if(Array.isArray(V.wardrobe[slot])){
+			V.wardrobe[slot].forEach(item => {
+				clothesDataTrimmer(item);
+			})
+		}
+		if(Array.isArray(V.store[slot])){
+			V.store[slot].forEach(item => {
+				clothesDataTrimmer(item);
+			})
+		}
+
+		for (let i = 0, l = wardrobeKeys.length; i < l; i++){
+			if(Array.isArray(V.wardrobes[wardrobeKeys[i]][slot])){
+				V.wardrobes[wardrobeKeys[i]][slot].forEach(item => {
+					clothesDataTrimmer(item);
+				})
+			}
+		}
+		if(V.tryOn !== undefined){
+			if(V.tryOn.ownedStored !== undefined){
+				if(V.tryOn.ownedStored[slot] !== undefined && V.tryOn.ownedStored[slot] !== null){
+					clothesDataTrimmer(V.tryOn.ownedStored[slot]);
+				}
+			}
+			if(V.tryOn.tryingOn !== undefined){
+				if(V.tryOn.tryingOn[slot] !== undefined && V.tryOn.tryingOn[slot] !== null){
+					clothesDataTrimmer(V.tryOn.tryingOn[slot]);
+				}
+			}
+		}
+	});
+}
+
+window.clothesDataTrimmer = function(item){
+	const toDelete = ["name_cap","iconFile","accIcon","notuck","skirt","description","colour_options","accessory_colour_options","fabric_strength","integrity_max","bustresize","sleeve_img","breast_img","exposed_base","vagina_exposed_base","anus_exposed_base","state_top_base","state_base",,"word","femininity","strap","cost","shop"];
+	//To prevent it from running on variables multiple times, when updating toDelete, the last of the new additions should be added here
+	const trimmerVersion = ["shop"];
+	let version = 0;
+	let indexToUpdateVersion = toDelete.indexOf(trimmerVersion[version]);
+	toDelete.forEach((v, index) => {
+		if(indexToUpdateVersion === -1) {
+			//Do Nothing
+		} else if(item[v] !== undefined && item[trimmerVersion[version]] !== undefined) {
+			delete item[v];
+		}
+		if(indexToUpdateVersion === index) {
+			version++;
+			indexToUpdateVersion = toDelete.indexOf(trimmerVersion[version])
+		}
+	});
+}

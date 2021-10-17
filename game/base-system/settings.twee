@@ -90,6 +90,7 @@
 <<set $rentmod to 1>>
 <<set $condomchance to 50>>
 <<set $condomautochance to 50>>
+<<set $multipleWardrobes to "isolated">>
 
 <<set $notifyUpdate = true>>
 
@@ -643,6 +644,21 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<span class="red">Setting this below 1 will permanently prevent you from earning some feats, and prevent you from earning others until it is increased to at least 1.</span>
 	<br>
 	<<numberslider "$alluremod" $alluremod 0.2 2 0.1>>
+	<br><br>
+
+	<span class="gold">Multiple Wardrobes</span>
+	<br>
+	<span class="red">This is an experimental feature, and will be changed or removed in the future.</span> While you may change this during gameplay, it's not recommended as disabling will remove access to clothing and enabling it may leave you stuck with your only option wearing a towel.
+	<br>
+	<label><<radiobutton "$multipleWardrobes" false autocheck>> Single shared wardrobe only</label>
+	<br>
+	<label><<radiobutton "$multipleWardrobes" "isolated" autocheck>> Isolated areas will have their own wardrobe</label>
+	<br>
+	<<if $debug is 1>>
+		<!--This setting will not be ready on initial release-->
+		<label><<radiobutton "$multipleWardrobes" "all" autocheck>> Enable for all wardrobes</label>
+		<br>
+	<</if>>
 	<br><br>
 
 	<div class="gold widerButton">

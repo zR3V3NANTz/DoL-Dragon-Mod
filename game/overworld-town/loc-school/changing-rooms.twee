@@ -29,7 +29,7 @@ You are in the boys' changing room.
 			<<link [[Leave|School Pool Entrance]]>><</link>>
 			<br>
 		<</if>>
-			<<schoolpoolclothes>>
+			<<schoolpoolclothes "schoolBoys">>
 			<<link [[Locker|School Boy Wardrobe]]>><</link>>
 			<br>
 		<<if $exposed gte 2 and $exhibitionism gte 75>>
@@ -115,7 +115,7 @@ You are in the boys' changing room.
 			<<link [[Leave|School Pool Entrance]]>><</link>>
 			<br>
 		<</if>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolBoys">>
 		<<link [[Locker|School Boy Wardrobe]]>><</link>>
 		<br>
 		<<if $exposed gte 2 and $exhibitionism gte 75>>
@@ -190,7 +190,7 @@ You are in the boys' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolBoys">>
 		<<link [[Locker|School Boy Wardrobe]]>><</link>>
 		<br>
 		<<boy_lockers>>
@@ -230,7 +230,7 @@ You are in the boys' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolBoys">>
 		<<link [[Locker|School Boy Wardrobe]]>><</link>>
 		<br>
 		<<boy_lockers>>
@@ -260,7 +260,7 @@ You are in the boys' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolBoys">>
 		<<link [[Locker|School Boy Wardrobe]]>><</link>>
 		<br>
 		<<boy_lockers>>
@@ -290,7 +290,7 @@ You are in the boys' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolBoys">>
 		<<link [[Locker|School Boy Wardrobe]]>><</link>>
 		<br>
 		<<boy_lockers>>
@@ -313,7 +313,7 @@ You are in the boys' changing room.
 		<br><br>
 		<<link [[Leave|School Pool Entrance]]>><</link>>
 		<br>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolBoys">>
 		<<link [[Locker|School Boy Wardrobe]]>><</link>>
 		<br>
 	<<else>>
@@ -323,7 +323,7 @@ You are in the boys' changing room.
 		<br><br>
 		<<link [[Leave|School Pool Entrance]]>><</link>>
 		<br>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolBoys">>
 		<<link [[Locker|School Boy Wardrobe]]>><</link>>
 		<br>
 	<</if>>
@@ -408,7 +408,7 @@ You are in the girls' changing room.
 			<<link [[Leave|School Pool Entrance]]>><</link>>
 			<br>
 		<</if>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 		<<if $exposed gte 2 and $exhibitionism gte 75>>
@@ -496,7 +496,7 @@ You are in the girls' changing room.
 			<<link [[Leave|School Pool Entrance]]>><</link>>
 			<br>
 		<</if>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 		<<if $exposed gte 2 and $exhibitionism gte 75>>
@@ -528,7 +528,7 @@ You are in the girls' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 		<<girl_lockers>>
@@ -555,7 +555,7 @@ You are in the girls' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 		<<girl_lockers>>
@@ -598,7 +598,7 @@ You are in the girls' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 		<<girl_lockers>>
@@ -625,7 +625,7 @@ You are in the girls' changing room.
 			<br>
 		<</if>>
 		<<school_pool_swap>>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 		<<girl_lockers>>
@@ -648,7 +648,7 @@ You are in the girls' changing room.
 		<br><br>
 		<<link [[Leave|School Pool Entrance]]>><</link>>
 		<br>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 	<<else>>
@@ -658,7 +658,7 @@ You are in the girls' changing room.
 		<br><br>
 		<<link [[Leave|School Pool Entrance]]>><</link>>
 		<br>
-		<<schoolpoolclothes>>
+		<<schoolpoolclothes "schoolGirls">>
 		<<link [[Locker|School Girl Wardrobe]]>><</link>>
 		<br>
 	<</if>>

@@ -659,7 +659,8 @@ You shove <<him>> away from you.
 
 You look through Eden's wardrobe.
 <br><br>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "edensCabin">>
+<<wardrobeSelection>>
 <<wardrobewear>>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 <<wardrobe>>

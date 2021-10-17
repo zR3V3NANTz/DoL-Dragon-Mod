@@ -219,7 +219,7 @@ You are on Alex's farm. A rustic farmhouse overlooks a yard and chicken coop. Ot
 	"Neighbour might have let a bonfire get out of control," <<he>> says, scanning the horizon for smoke. "Best be safe. Could you check the sheds? I'll skirt the farm."
 	<br><br>
 
-	<<link [[Next|Farm Stage 7]]>><<set $farm_countdown to 7>><<set $farm_stage to 7>><<set $alex_countdown to 3>><</link>>
+	<<link [[Next|Farm Stage 7]]>><<set $farm_countdown to 7>><<set $farm_stage to 7>><<set $alex_countdown to 3>><<set $wardrobes.alexFarm.unlocked to true>><</link>>
 <<elseif $farm_stage gte 7 and $NPCName[$NPCNameList.indexOf("Alex")].love gte 50 and $alex_countdown lte 0>>
 	<<npc Alex>><<person1>>
 	You return to the courtyard in front of the farmhouse. You hear footsteps fast approaching. You turn just in time to see Alex. With a laugh, <<he>> grapples and drags you off your feet.
@@ -985,7 +985,7 @@ You release the chickens from their coop, then enter to clean up. It's large eno
 		<</if>>
 		You hear movement behind you. Before you can turn to investigate, something leaps on you from behind. You drop to your knees, clutching the wire fence for support.
 		<br><br>
-		<<if $worn.upper.sleeve_img is 1>>
+		<<if setup.clothes.upper[$worn.upper.index].sleeve_img is 1>>
 			You feel a tugging at your wrists. Several chickens have poked their beaks through the gaps in the wire and are grasping your sleeves. Your arms are held in place.
 			<br><br>
 			<<bind>>

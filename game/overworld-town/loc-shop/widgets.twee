@@ -112,7 +112,7 @@ Forth argument - item index*/
 	<<elseif _temp_choice.gender is "f">>
 		<span class="pink">For girls.</span>
 	<</if>>
-	<<print _temp_choice.description>> Costs <<printmoney `getClothingCost(_temp_choice)`>>.
+	<<print _temp_choice.description>> Costs <<printmoney `getClothingCost(_temp_choice,$clothingShopSlot)`>>.
 	<br>
 	<<warmth _temp_choice.warmth>>
 	<br><br>
@@ -168,7 +168,7 @@ Forth argument - item index*/
 			<div id="shopFullImage" @class="($shopDefaults.invertImagesHidden is true? '' : ' hidden')"><<shopFullImage $clothingShopSlot $clothes_choice>></div>
 			<br>
 		<</if>>
-		<<set _cost to clone(getClothingCost(_temp_choice))>>
+		<<set _cost to clone(getClothingCost(_temp_choice,$clothingShopSlot))>>
 		<<unset _cursedPrevent>>
 		<<set _outfitPrimaryShop to _temp_choice.outfitPrimary>>
 		<<set _preventSlots to []>>
@@ -299,6 +299,7 @@ Forth argument - item index*/
 	<<set _listCount to 0>><<set _trueListCount to 0>>
 	<<for _i to 0; _i lt setup.clothes[$clothingShopSlot].length; _i++>>
 		<<set _item to clone(setup.clothes[$clothingShopSlot][_i])>>
+		<<set _itemData = setup.clothes[$clothingShopSlot][_item.index]>>
 		<<if !_item.shop.includes(_shopLocation) or _item.outfitSecondary isnot undefined>>
 			<<continue>>
 		<</if>>
@@ -350,19 +351,19 @@ Forth argument - item index*/
 		<<if _listCount - $shopListStartCount <= 0>>
 			<<continue>>
 		<</if>>
-		<<clothingicon _item>>
+		<<clothingicon _item $clothingShopSlot>>
 		<<if $specialClothes[_item.name.replace(/ /g,"")] is "locked">>
-			<span class="lblue">_item.name_cap</span>
+			<span class="lblue">_itemData.name_cap</span>
 		<<else>>
-			<<capture _item _i>>
-				<<link [[_item.name_cap|$passage]]>>
+			<<capture _item _itemData _i>>
+				<<link [[_itemData.name_cap|$passage]]>>
 					<<set $clothes_choice to _i>>
 					<<set $clothes_choice_reveal to clone(_item.reveal)>>
-					<<set $clothes_choice_integrity to (_item.integrity_max)>>
+					<<set $clothes_choice_integrity to (_itemData.integrity_max)>>
 				<</link>>
 			<</capture>>
 		<</if>>
-		| <span class="teal"><<printmoney `getClothingCost(_item)` true>></span> |
+		| <span class="teal"><<printmoney `getClothingCost(_item,$clothingShopSlot)` true>></span> |
 		<<if _item.gender is "m">>
 			<span class="blue">♂</span>
 		<<elseif _item.gender is "f">>
@@ -800,17 +801,22 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 /*Args: slots used in an array*/
 <<widget "shopBuyItemStatus">>
 <<if $args[0]>>
+	<<if $wardrobes.shopReturn is "wardrobe" or $wardrobes[$wardrobes.shopReturn] is undefined>>
+		<<set _returnWardrobe to $wardrobe>>
+	<<else>>
+		<<set _returnWardrobe to $wardrobes[$wardrobes.shopReturn]>>
+	<</if>>
 	<<set _undamagedCount to 0>>
 	<<set _damagedCount to 0>>
-	<<set _space to $wardrobe.space>>
+	<<set _space to _returnWardrobe.space>>
 	<<set _spaceLeft to clone(_space)>>
 	<<for _i to 0; _i lt $args[0].length; _i++>>
 		<<if _i is 0>>
-			<<for _j to 0; _j lt $wardrobe[$args[0][0]].length; _j++>>
-				<<if $wardrobe[$args[0][0]][_j].name is _temp_choice.name>>
+			<<for _j to 0; _j lt _returnWardrobe[$args[0][0]].length; _j++>>
+				<<if _returnWardrobe[$args[0][0]][_j].name is _temp_choice.name>>
 					<<set _undamagedCount++>>
-					<<if $wardrobe[$args[0][0]][_j].outfitPrimary isnot undefined>>
-						<<for _valueShop range $wardrobe[$args[0][0]][_j].outfitPrimary>>
+					<<if _returnWardrobe[$args[0][0]][_j].outfitPrimary isnot undefined>>
+						<<for _valueShop range _returnWardrobe[$args[0][0]][_j].outfitPrimary>>
 							<<if _valueShop is "broken">>
 								<<set _damagedCount++>>
 								<<set _undamagedCount-->>
@@ -823,10 +829,10 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 				<</if>>
 			<</for>>
 		<</if>>
-		<<if _space - $wardrobe[$args[0][_i]].length lt _spaceLeft>>
-			<<set _spaceLeft to _space - $wardrobe[$args[0][_i]].length>>
+		<<if _space - _returnWardrobe[$args[0][_i]].length lt _spaceLeft>>
+			<<set _spaceLeft to _space - _returnWardrobe[$args[0][_i]].length>>
 		<</if>>
-		Wardrobe <<print ($args[0][_i]).replace("_"," ")>> slots used: <<print $wardrobe[$args[0][_i]].length>> / _space.
+		Wardrobe <<print ($args[0][_i]).replace("_"," ")>> slots used: <<print _returnWardrobe[$args[0][_i]].length>> / _space.
 		<br>
 	<</for>>
 	<<if _undamagedCount gt 0>>
