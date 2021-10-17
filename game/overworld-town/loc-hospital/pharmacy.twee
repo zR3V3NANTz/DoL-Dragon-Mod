@@ -9,7 +9,6 @@ A "Closed" sign hangs on the door. You tug the door but it's locked.<br><br>
 <<generateNPC 1 t $pharmNurseGender $pharmNurseGender $pharmNurseLvl>>
 <<set $pronoun = $NPCList[0].pronoun>>
 <<set $description = $NPCList[0].description>>
-<<set $fullDescription = $NPCList[0].fullDescription>>
 
 You are inside the hospital pharmacy.
 <<if $pharmTriedSeduction != true>>
