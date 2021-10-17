@@ -600,7 +600,7 @@ These still require Fertilise
 <br>
 <<link [[Work as a dancer|Brothel Dance]]>><<endcombat>><<danceinit>><<set $dancing to 1>><<set $venuemod to 3>><<stress -4>><<tiredness 4>><<set $dancelocation to "brothel">><</link>>
 <br>
-<<link [[Eden Start|Eden Cabin]]>><<endcombat>><<set $syndromeeden to 1>><<set $NPCName[$NPCNameList.indexOf("Eden")].lust to 0>><<set $edenshrooms to 0>><<set $edengarden to 0>><<set $edenspring to 0>><</link>>
+<<link [[Eden Start|Eden Cabin]]>><<endcombat>><<set $syndromeeden to 1>><<set $NPCName[$NPCNameList.indexOf("Eden")].lust to 0>><<set $edenshrooms to 0>><<set $edengarden to 0>><<set $edenspring to 0>><<set $wardrobes.edensCabin.unlocked to true>><</link>>
 <br>
 <<link [[Kylar Basement Rape|Kylar Basement Rape]]>><<endcombat>><<set $molestationstart to 1>><<npc Kylar>><<person1>><</link>>
 <br>
@@ -679,7 +679,7 @@ These still require Fertilise
 <br>
 <<link [[Temple Initiate|Temple]]>><<inittemple>><</link>>
 <br>
-<<link [[Strip Club|Strip Club]]>><<set $id to 1>><</link>>
+<<link [[Strip Club|Strip Club]]>><<set $id to 1><<set $wardrobes.stripClub.unlocked to true>>><</link>>
 <br>
 <<link [[Asylum|Hospital Bed]]>><<set $trauma to 4900>><</link>>
 <br>

@@ -279,7 +279,7 @@
 		<<He>> releases <<his>> hand from your $worn.over_lower.name.
 		<<combat-reset-hand $args[0]>>
 	<<elseif $rng lte 100>>
-		<<if $worn.over_lower.skirt is 1>>
+		<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>>
 			<<if $worn.over_lower.skirt_down is 1>>
 				<<He>> lifts up your skirt, exposing your
 				<<if $worn.lower.state is "waist">>
@@ -470,7 +470,7 @@
 		<span class="blue"><<He>> releases <<his>> hand from your $worn.under_lower.name.</span>
 		<<combat-reset-hand $args[0]>>
 	<<elseif $rng lte 100>>
-		<<if (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked")))>>
+		<<if ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.type.includes("naked")) or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.type.includes("naked")))>>
 			<<if $worn.under_lower.state is "waist">>
 				<<if $combatgoal is "strip" or $rng gt 20 or $worn.under_lower.no_aside>>
 					<<He>> pulls your $worn.under_lower.name down your thighs, <span class="lewd">revealing your <<genitals>>.</span>
@@ -533,7 +533,7 @@
 		<span class="lblue"><<He>> releases <<his>> hand from your $worn.lower.name.</span>
 		<<combat-reset-hand $args[0]>>
 	<<elseif $rng lte 100>>
-		<<if (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked")))>>
+		<<if ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.type.includes("naked")) or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.type.includes("naked")))>>
 			<<if $worn.lower.skirt_down is 1>>
 				<<He>> lifts up your skirt, exposing your
 				<<if $worn.under_lower.state is "waist">>
@@ -743,7 +743,7 @@
 			<</if>>
 		<<elseif _overOutfit>>
 			<<if $worn.over_upper.open is 1>>
-				<<if $worn.over_lower.state is $worn.over_upper.state_top and $worn.over_lower.state is $worn.over_upper.state and $worn.over_lower.skirt is 1>>
+				<<if $worn.over_lower.state is $worn.over_upper.state_top and $worn.over_lower.state is $worn.over_upper.state and setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>>
 					<<if $position is "wall" and $walltype isnot "front">>
 						<<He>> tugs at your $worn.over_upper.name, tearing <<overupperit>> before <span class="blue">letting go.</span>
 						<<combat-reset-hand $args[0]>><<set $worn.over_upper.integrity -= 10>><<neutral 1>>
@@ -892,7 +892,7 @@
 			<</if>>
 		<<elseif _middleOutfit>>
 			<<if $worn.upper.open is 1>>
-				<<if $worn.lower.state is $worn.upper.state_top and $worn.lower.state is $worn.upper.state and $worn.lower.skirt is 1>>
+				<<if $worn.lower.state is $worn.upper.state_top and $worn.lower.state is $worn.upper.state and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 					<<if $position is "wall" and $walltype isnot "front">>
 						<<He>> tugs at your $worn.upper.name, tearing <<upperit>> before <span class="blue">letting go.</span>
 						<<combat-reset-hand $args[0]>><<set $worn.upper.integrity -= 10>><<neutral 1>>
@@ -1028,7 +1028,7 @@
 			<</if>>
 		<<elseif _underOutfit>>
 			<<if $worn.under_upper.open is 1>>
-				<<if $worn.under_lower.state is $worn.under_upper.state_top and $worn.under_lower.state is $worn.under_upper.state and $worn.under_lower.skirt is 1>>
+				<<if $worn.under_lower.state is $worn.under_upper.state_top and $worn.under_lower.state is $worn.under_upper.state and setup.clothes.under_lower[$worn.under_lower.index].skirt is 1>>
 					<<if $position is "wall" and $walltype isnot "front">>
 						<<He>> tugs at your $worn.under_upper.name, tearing <<underupperit>> before <span class="blue">letting go.</span>
 						<<combat-reset-hand $args[0]>><<set $worn.under_upper.integrity -= 10>><<neutral 1>>
@@ -1372,7 +1372,7 @@
 			<<neutral 2>>
 		<<else>>
 			<<set $handtarget to 0>>
-			<<if (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked")))>>
+			<<if ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.type.includes("naked")) or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.type.includes("naked")))>>
 				<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 					<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 					<<set $handtarget to "underclothes">><<neutral 1>>
@@ -1412,7 +1412,7 @@
 			<<neutral 2>>
 		<<else>>
 			<<set $handtarget to 0>>
-			<<if (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked")))>>
+			<<if ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.type.includes("naked")) or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.type.includes("naked")))>>
 				<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 					<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 					<<set $handtarget to "underclothes">><<neutral 1>>
@@ -1535,15 +1535,15 @@
 			<<neutral 2>>
 		<<else>>
 			<<set $speechbottom to 1>>
-			<<if $worn.over_lower.state is "waist" and $worn.over_lower.skirt is 0>>
-				<<if $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<if $worn.over_lower.state is "waist" and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0>>
+				<<if $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 					<<He>> tries to grope your <<bottom>> through your $worn.over_lower.name, but you're wearing too much to really feel it.
 					<<neutral 1>>
 				<<else>>
 					<<He>> gropes your <<bottom>> through your $worn.over_lower.name.
 					<<neutral 5>>
 				<</if>>
-			<<elseif $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<elseif $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 				<<He>> gropes your <<bottom>> through your $worn.lower.name.
 				<<neutral 2>>
 			<<elseif $worn.under_lower.state is "waist">>
@@ -1593,15 +1593,15 @@
 		<</if>>
 	<<elseif $enemyanger + $rng lte 100 and $walltype isnot "front">>
 		<<if $worn.genitals.type.includes("chastity")>>
-			<<if $worn.over_lower.state is "waist" and $worn.over_lower.skirt is 0>>
-				<<if $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<if $worn.over_lower.state is "waist" and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0>>
+				<<if $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 					<<He>> tries to fondle you around your $worn.genitals.name through your $worn.over_lower.name, but you're wearing too much to really feel it.
 					<<neutral 1>>
 				<<else>>
 					<<He>> fondles and <<strokes>> you around your $worn.genitals.name through your $worn.over_lower.name.
 					<<neutral 5>>
 				<</if>>
-			<<elseif $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<elseif $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 				<<He>> fondles and <<strokes>> around your $worn.genitals.name through your $worn.lower.name.
 				<<neutral 5>>
 			<<elseif $worn.under_lower.state is "waist">>
@@ -1620,15 +1620,15 @@
 				<<bodypart_admire_chance right_thigh>>
 			<</if>>
 		<<elseif $player.penisExist and (!$player.vaginaExist or random(0,100) gte 50)>>
-			<<if $worn.over_lower.state is "waist" and $worn.over_lower.skirt is 0>>
-				<<if $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<if $worn.over_lower.state is "waist" and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0>>
+				<<if $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 					<<He>> tries to grope your <<penis>> through your $worn.over_lower.name, but you're wearing too much to really feel it.
 					<<neutral 1>>
 				<<else>>
 					<<He>> gropes and <<strokes>> your <<penis>> through your $worn.over_lower.name.
 					<<neutral 5>>
 				<</if>>
-			<<elseif $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<elseif $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 				<<He>> gropes and <<strokes>> your <<penis>> through your $worn.lower.name.
 				<<neutral 5>>
 			<<elseif $worn.under_lower.state is "waist">>
@@ -1646,15 +1646,15 @@
 			<</if>>
 			<<bodypart_admire_chance pubic>>
 		<<elseif $player.vaginaExist>>
-			<<if $worn.over_lower.state is "waist" and $worn.over_lower.skirt is 0>>
-				<<if $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<if $worn.over_lower.state is "waist" and setup.clothes.over_lower[$worn.over_lower.index].skirt is 0>>
+				<<if $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 					<<He>> tries to grope your labia through your $worn.over_lower.name, but you're wearing too much to really feel it.
 					<<neutral 1>>
 				<<else>>
 					<<He>> gropes and <<strokes>> your labia through your $worn.over_lower.name.
 					<<neutral 5>>
 				<</if>>
-			<<elseif $worn.lower.state is "waist" and $worn.lower.skirt is 0>>
+			<<elseif $worn.lower.state is "waist" and setup.clothes.lower[$worn.lower.index].skirt is 0>>
 				<<He>> gropes and <<strokes>> your labia through your $worn.lower.name.
 				<<neutral 5>>
 			<<elseif $worn.under_lower.state is "waist">>
@@ -1720,7 +1720,7 @@
 			<</if>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 125 and $walltype isnot "front">>
-		<<if (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked")))>>
+		<<if ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.type.includes("naked")) or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.type.includes("naked")))>>
 			<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 				<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 				<<combat-set-hand-target $args[0] "underclothes">><<neutral 1>>
@@ -1759,7 +1759,7 @@
 			<<bodypart_admire_chance right_bottom>>
 		<</if>>
 	<<elseif $enemyanger + $rng lte 130 and $walltype isnot "front">>
-		<<if (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked")))>>
+		<<if ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.type.includes("naked")) or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.type.includes("naked")))>>
 			<<if $worn.under_lower.name isnot "naked" and $worn.under_lower.state isnot "totheside">>
 				<span class="purple"><<He>> grasps your $worn.under_lower.name with <<his>> $args[0] hand.</span>
 				<<combat-set-hand-target $args[0] "underclothes">><<neutral 1>>

@@ -21,14 +21,14 @@ You are in the tailor shop. It has cloth of various colours hanging on racks.
 <<for _active_clothes range Object.keys($worn)>>
 	<<if _active_clothes is "lower" or _active_clothes is "under_lower">>
 		<<if $worn[_active_clothes].one_piece is 1>>
-			<<if $worn[_active_clothes].integrity lt $worn[_active_clothes].integrity_max>>
+			<<if $worn[_active_clothes].integrity lt clothingData(_active_clothes,$worn[_active_clothes],'integrity_max')>>
 				<<set _outfitTime += 5>>
 			<</if>>
 			<<continue>>
 		<</if>>
 	<</if>>
-	<<if $worn[_active_clothes].integrity lt $worn[_active_clothes].integrity_max and $worn[_active_clothes].integrity gt 0 and $worn[_active_clothes].integrity_max gt 0>>
-		<<set $tailor_cost += Math.trunc(getClothingCost($worn[_active_clothes]) * (1 - $worn[_active_clothes].integrity / $worn[_active_clothes].integrity_max))>>
+	<<if $worn[_active_clothes].integrity lt clothingData(_active_clothes,$worn[_active_clothes],'integrity_max') and $worn[_active_clothes].integrity gt 0 and clothingData(_active_clothes,$worn[_active_clothes],'integrity_max') gt 0>>
+		<<set $tailor_cost += Math.trunc(getClothingCost($worn[_active_clothes],_active_clothes) * (1 - $worn[_active_clothes].integrity / clothingData(_active_clothes,$worn[_active_clothes],'integrity_max')))>>
 		<<set _time += 5>>
 	<</if>>
 <</for>>
@@ -76,7 +76,7 @@ You are in the tailor shop. It has cloth of various colours hanging on racks.
 				<<set _options to true>>
 			<</if>>
 
-			<<if ($worn.upper.set is $worn.lower.set and $worn.lower.integrity lt $worn.lower.integrity_max) or ($worn.under_upper.set is $worn.under_lower.set and $worn.under_lower.integrity lt $worn.under_lower.integrity_max)>>
+			<<if ($worn.upper.set is $worn.lower.set and $worn.lower.integrity lt clothingData('lower',$worn.lower,'integrity_max')) or ($worn.under_upper.set is $worn.under_lower.set and $worn.under_lower.integrity lt clothingData('under_lower',$worn.under_lower,'integrity_max'))>>
 				The tailor will repair the lower halves of outfits for free.
 				<br>
 				<<print '<<link [[Fix clothes (0:'+(_outfitTime lt 10 ? "0":"")+_outfitTime+')|Fix Lower]]>><<pass _outfitTime>><</link>>'>>
@@ -119,15 +119,10 @@ You are in the tailor shop. It has cloth of various colours hanging on racks.
 
 Your clothes have been fixed.
 <br><br>
-<<set $worn.upper.integrity = $worn.upper.integrity_max>>
-<<set $worn.lower.integrity = $worn.lower.integrity_max>>
-<<set $worn.under_upper.integrity = $worn.under_upper.integrity_max>>
-<<set $worn.under_lower.integrity = $worn.under_lower.integrity_max>>
-<<set $worn.head.integrity = $worn.head.integrity_max>>
-<<set $worn.face.integrity = $worn.face.integrity_max>>
-<<set $worn.neck.integrity = $worn.neck.integrity_max>>
-<<set $worn.legs.integrity = $worn.legs.integrity_max>>
-<<set $worn.feet.integrity = $worn.feet.integrity_max>>
+<<set _equip to ["over_upper","over_lower","upper", "lower", "under_upper", "under_lower","over_head","head", "face", "neck", "hands", "legs", "feet"]>>
+<<for _i to 0; _i lt _equip.length; _i++>>
+	<<set $worn[_equip[_i]].integrity = clothingData(_equip[_i],$worn[_equip[_i]],'integrity_max')>>
+<</for>>
 
 <<link [[Back|Tailor Shop]]>><<endevent>><</link>>
 
@@ -136,11 +131,11 @@ Your clothes have been fixed.
 Your lower clothes have been fixed.
 <br><br>
 <<if $worn.upper.set is $worn.lower.set>>
-<<set $worn.lower.integrity = $worn.lower.integrity_max>>
+	<<set $worn.lower.integrity = clothingData('lower',$worn.lower,'integrity_max')>>
 <</if>>
 
 <<if $worn.under_upper.set is $worn.under_lower.set>>
-<<set $worn.under_lower.integrity = $worn.under_lower.integrity_max>>
+	<<set $worn.under_lower.integrity = clothingData('under_lower',$worn.under_lower,'integrity_max')>>
 <</if>>
 
 <<link [[Back|Tailor Shop]]>><<endevent>><</link>>
@@ -192,15 +187,15 @@ Your lower clothes have been fixed.
 <br><br>
 
 <<set _value to 0>>
-<<for _items range $wardrobe>>
+<<for _label, _items range $wardrobe>>
 	<<for _i to 0; _i lt _items.length; _i++>>
-		<<if _items[_i].shop.length is 0>>
+		<<if setup.clothes[_label][_items[_i].index].shop.length is 0>>
 			<<continue>>
 		<</if>>
 		<<if _items[_i].outfitSecondary isnot undefined>>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost(_items[_i]) * (_items[_i].integrity / _items[_i].integrity_max) / 3)>>
+		<<set _value += Math.floor(getClothingCost(_items[_i]) * (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max')) / 3,_label)>>
 	<</for>>
 <</for>>
 You think it will earn you <<printmoney `_value + 5000`>> currently after getting the deposit back.
@@ -224,12 +219,12 @@ Please make sure you don't buy too many new clothes once you send them to us, or
 <br><br>
 
 <<set _value to 0>>
-<<for _items range $wardrobe>>
+<<for _label, _items range $wardrobe>>
 	<<for _i to 0; _i lt _items.length; _i++>>
 		<<if _items[_i].outfitSecondary isnot undefined>>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost(_items[_i]) * (1 - (_items[_i].integrity / _items[_i].integrity_max)) * 1.25)>>
+		<<set _value += Math.floor(getClothingCost(_items[_i]) * (1 - (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max'))) * 1.25,_label)>>
 	<</for>>
 <</for>>
 You think it will cost you

@@ -26,9 +26,9 @@ function addfemininityfromfactor(femininity_boost, factor_description, no_overwe
 }
 DefineMacro("addfemininityfromfactor", addfemininityfromfactor);
 
-function addfemininityofclothingarticle(clothing_article, no_overwear_check) {
-	if (clothing_article.femininity) {
-		addfemininityfromfactor(clothing_article.femininity, clothing_article.name_cap, no_overwear_check);
+function addfemininityofclothingarticle(slot, clothing_article, no_overwear_check) {
+	if (setup.clothes[slot][clothing_article.index].femininity) {
+		addfemininityfromfactor(setup.clothes[slot][clothing_article.index].femininity, setup.clothes[slot][clothing_article.index].name_cap, no_overwear_check);
 	}
 }
 DefineMacro("addfemininityofclothingarticle", addfemininityofclothingarticle);
@@ -54,8 +54,8 @@ function genderappearancecheck() {
 		T.bulge_size = Math.clamp(V.penissize * T.erection_state, 0, Infinity);
 	}
 	/* Determine how visible the player's bottom is */
-	if ((V.worn.lower.skirt === 1 && V.worn.lower.skirt_down === 1 && V.worn.lower.state === "waist") ||
-		(V.worn.over_lower.skirt === 1 && V.worn.over_lower.skirt_down === 1 && V.worn.over_lower.state === "waist")) {
+	if ((setup.clothes.lower[V.worn.lower.index].skirt === 1 && V.worn.lower.skirt_down === 1 && V.worn.lower.state === "waist") ||
+		(setup.clothes.over_lower[V.worn.over_lower.index].skirt === 1 && V.worn.over_lower.skirt_down === 1 && V.worn.over_lower.state === "waist")) {
 		T.bottom_visibility = 0;
 	} else {
 		T.bottom_visibility = 1;
@@ -65,13 +65,13 @@ function genderappearancecheck() {
 	T.apparent_femininity = 0;
 	T.breast_indicator = 0;
 	/* Head clothing */
-	addfemininityofclothingarticle(V.worn.over_head);
-	addfemininityofclothingarticle(V.worn.head);
+	addfemininityofclothingarticle('over_head',V.worn.over_head);
+	addfemininityofclothingarticle('head',V.worn.head);
 	/* Always visible clothing */
-	addfemininityofclothingarticle(V.worn.face);
-	addfemininityofclothingarticle(V.worn.neck);
-	addfemininityofclothingarticle(V.worn.legs);
-	addfemininityofclothingarticle(V.worn.feet);
+	addfemininityofclothingarticle('face',V.worn.face);
+	addfemininityofclothingarticle('neck',V.worn.neck);
+	addfemininityofclothingarticle('legs',V.worn.legs);
+	addfemininityofclothingarticle('feet',V.worn.feet);
 	/* Hair length */
 	if ((V.worn.over_head.hood !== 1 && V.worn.head.hood !== 1) || V.hoodDown == 1) {
 		addfemininityfromfactor(Math.trunc((V.hairlength - 200) / 2), "Hair length");
@@ -95,9 +95,9 @@ function genderappearancecheck() {
 	T.under_lower_protected = !V.worn.under_lower.exposed;
 	T.apparent_femininity_noow = T.apparent_femininity;
 	T.gender_appearance_factors_noow = clone(T.gender_appearance_factors);
-	T.over_lower_femininity = (V.worn.over_lower.femininity ? V.worn.over_lower.femininity : 0);
-	T.lower_femininity = (V.worn.lower.femininity ? V.worn.lower.femininity : 0);
-	T.under_lower_femininity = (V.worn.under_lower.femininity ? V.worn.under_lower.femininity : 0);;
+	T.over_lower_femininity = (setup.clothes.over_lower[V.worn.over_lower.index].femininity ? setup.clothes.over_lower[V.worn.over_lower.index].femininity : 0);
+	T.lower_femininity = (setup.clothes.lower[V.worn.lower.index].femininity ? setup.clothes.lower[V.worn.lower.index].femininity : 0);
+	T.under_lower_femininity = (setup.clothes.under_lower[V.worn.under_lower.index].femininity ? setup.clothes.under_lower[V.worn.under_lower.index].femininity : 0);;
 	/* find maximum possible femininity of the last lower piece you can strip down to, and add it to the counter */
 	addfemininityfromfactor(Math.max(T.over_lower_femininity, T.lower_femininity, T.under_lower_femininity), "Lower clothes", "noow");
 	/* bulge and genitals checks for topless gender */
@@ -118,16 +118,16 @@ function genderappearancecheck() {
 	/* plain breasts factor */
 	addfemininityfromfactor((V.breastsize - 0.5) * 100, "Exposed breasts", "noow");
 	/* Lower clothing, bulge, and genitals */
-	addfemininityofclothingarticle(V.worn.over_lower);
+	addfemininityofclothingarticle('over_lower',V.worn.over_lower);
 	if (!T.over_lower_protected) {
-		addfemininityofclothingarticle(V.worn.lower);
+		addfemininityofclothingarticle('lower',V.worn.lower);
 	}
 	if (!T.over_lower_protected && !T.lower_protected) {
 		/* Lower underwear is visible */
-		addfemininityofclothingarticle(V.worn.under_lower);
+		addfemininityofclothingarticle('under_lower',V.worn.under_lower);
 		if (!T.under_lower_protected) {
 			/* Genitals slot is visible */
-			addfemininityofclothingarticle(V.worn.genitals);
+			addfemininityofclothingarticle('genitals',V.worn.genitals);
 			if (V.worn.genitals.exposed) {
 				/* Bare genitals are visible */
 				if (V.NudeGenderDC == 1) {
@@ -163,13 +163,13 @@ function genderappearancecheck() {
 		}
 	}
 	/* Upper clothing and breasts */
-	addfemininityofclothingarticle(V.worn.over_upper);
+	addfemininityofclothingarticle('over_upper',V.worn.over_upper);
 	if (V.worn.over_upper.exposed >= 2) {
-		addfemininityofclothingarticle(V.worn.upper);
+		addfemininityofclothingarticle('upper',V.worn.upper);
 	}
 	if (V.worn.over_upper.exposed >= 2 && V.worn.upper.exposed >= 2) {
 		/* Upper underwear is visible */
-		addfemininityofclothingarticle(V.worn.under_upper);
+		addfemininityofclothingarticle('under_upper',V.worn.under_upper);
 		if (V.worn.under_upper.exposed >= 1) {
 			/* Exposed breasts */
 			T.breast_indicator = 1;
@@ -251,9 +251,9 @@ function genderappearancecheck() {
 
 function apparentbreastsizecheck(){
 	T.tempbreast = V.breastsize;
-	if ( V.worn.upper.bustresize != undefined ){ T.tempbreast += V.worn.upper.bustresize };
-	if ( V.worn.under_upper.bustresize != undefined ){ T.tempbreast += V.worn.under_upper.bustresize };
-	if ( V.worn.over_upper.bustresize != undefined){ T.tempbreast += V.worn.over_upper.bustresize };
+	if ( clothingData('upper',V.worn.upper,'bustresize') != undefined ){ T.tempbreast += clothingData('upper',V.worn.upper,'bustresize') };
+	if ( clothingData('under_upper',V.worn.under_upper,'bustresize') != undefined ){ T.tempbreast += clothingData('under_upper',V.worn.under_upper,'bustresize') };
+	if ( clothingData('over_upper',V.worn.over_upper,'bustresize') != undefined){ T.tempbreast += clothingData('over_upper',V.worn.over_upper,'bustresize')  };
 	V.player.perceived_breastsize = Math.clamp( V.breastsizemin, T.tempbreast, V.breastsizemax );
 }
 

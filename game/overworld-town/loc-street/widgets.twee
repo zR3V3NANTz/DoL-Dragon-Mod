@@ -77,7 +77,7 @@ You pass a <<person>>.
 <</widget>>
 
 <<widget "streetfootbridge">>
-<<if $worn.lower.skirt is 1 and $worn.under_lower.type.includes("naked")>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.under_lower.type.includes("naked")>>
 
 	You come to a footbridge that crosses a busy road. You climb the steps, but stop at the top. The floor is made from a metal mesh. You can see the traffic beneath. Anyone beneath would be able to see right up your skirt, <span class="lewd">and you're not wearing underwear.</span>
 	<br><br>
@@ -526,7 +526,7 @@ You hear voices up ahead, and take cover down a stairwell leading to a basement.
 		<<link [[Ignore|Catcall Ignore]]>><</link>><<gstress>><<gtrauma>>
 		<br>
 	<</if>>
-	<<if ($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.name is "naked") or ($worn.lower.skirt is 1 and $worn.over_lower.name is "naked")>>
+	<<if (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.name is "naked") or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.name is "naked")>>
 		<<if $exhibitionism gte 75 and $worn.under_lower.type.includes("naked")>>
 			<<link [[Give them a show|Catcall Skirt]]>><</link>><<exhibitionist5>><<lstress>><<garousal>>
 			<br><br>
@@ -659,7 +659,7 @@ You hear voices up ahead, and take cover down a stairwell leading to a basement.
 
 <<widget "street6">>
 
-<<if $worn.over_lower.skirt is 1>>
+<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1>>
 	Your $worn.over_lower.name snags on a passing car, <<set $worn.over_lower.integrity -= 10>>
 	<<if $worn.over_lower.integrity lte 0>>
 		<<overlowerruined>><<clothesruinstat>><<if $worn.lower.exposed gte 1>><<set $loweroff to 0>><</if>>
@@ -679,7 +679,7 @@ You hear voices up ahead, and take cover down a stairwell leading to a basement.
 	<</if>>
 	<br><br>
 	<<destinationeventend>>
-<<elseif $worn.lower.skirt is 1>>
+<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	Your $worn.lower.name snags on a passing car, <<set $worn.lower.integrity -= 10>>
 	<<if $worn.lower.integrity lte 0>>
 		<<lowerruined>><<clothesruinstat>><<set $loweroff to 0>>
@@ -1295,7 +1295,7 @@ You take cover in a bus shelter, just as a bus rounds the corner. It slows down 
 
 You feel something touch your thigh. You look down to see a slimy tentacle extending from an open manhole. It worms around your leg and
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if !$worn.genitals.type.includes("chastity") and !$worn.under_lower.type.includes("naked")>>
 		up your $worn.lower.name. It tangles in your $worn.under_lower.name.
 	<<elseif $worn.under_lower.type.includes("naked")>>
@@ -1662,7 +1662,7 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 		<<link [[Flaunt|Street Exhibitionism Fame Flaunt]]>><<set $flaunt_type to 'words'>><<set $flaunt_part to 'none'>><</link>><<lstress>>
 		<br>
 	<</if>>
-	<<if (($worn.over_lower.skirt is 1 and $worn.lower.skirt is 1) or ($worn.over_lower.skirt is 1 and $worn.lower.type.includes("naked")) or ($worn.lower.skirt is 1 and $worn.over_lower.type.includes("naked")))>>
+	<<if ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and setup.clothes.lower[$worn.lower.index].skirt is 1) or (setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.lower.type.includes("naked")) or (setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.over_lower.type.includes("naked")))>>
 		<<if $exhibitionism gte 75 and $worn.under_lower.type.includes("naked") and $uncomfortable.nude is false>>
 			<<link [[Flash your skirt|Street Exhibitionism Fame Flaunt]]>><<set $flaunt_type to 'skirt'>> <<set $flaunt_part to 'genitals'>><</link>><<exhibitionist5>><<lstress>><<garousal>>
 			<br>

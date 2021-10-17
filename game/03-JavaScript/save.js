@@ -591,6 +591,8 @@ window.settingsObjects = function (type) {
 				reducedLineHeight: { bool: true },
 				neverNudeMenus: { bool: true },
 				skipStatisticsConfirmation: { bool: true},
+				multipleWardrobes: { strings: [false, "isolated"] }, //, "all"
+				outfitEditorPerPage: { min: 5, max: 20, decimals: 0 }, //, "all"
 				map: {
 					movement: { bool: true },
 					top: { bool: true },

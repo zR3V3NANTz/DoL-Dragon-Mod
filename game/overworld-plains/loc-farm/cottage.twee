@@ -165,7 +165,7 @@ You are in your room at Alex's cottage. It's cramped, but larger than your room 
 		<<link [[Undo your bindings (0:10)|Farm Bedroom]]>><<set $unbind to 1>><<pass 10>><<unbind>><</link>>
 		<br><br>
 	<</if>>
-	<<bedicon>><<link [[Strip and get in bed|Farm Bed]]>><<undressSleep "farm bed">><</link>>
+	<<bedicon>><<link [[Strip and get in bed|Farm Bed]]>><<undressSleep "Farm Bed">><</link>>
 	<br>
 	<<listsleepoutfits "Farm Bed">>
 	<<roomoptions>>
@@ -202,7 +202,6 @@ You are in your room at Alex's cottage. It's cramped, but larger than your room 
 <br><br>
 
 :: Farm Bed
-<<set $wardrobe_location to "farm bed">>
 <<effects>>
 <<wearoutfit>>
 
@@ -258,11 +257,12 @@ You snuggle under the covers.
 
 	<<farm_assault_intro>>
 	<br><br>
-	<<set _bedroom to ($bus is "farm_alex_room" ? "farm alex bed" : "farm bed")>>
+	<<set _bedroom to ($bus is "farm_alex_room" ? "farm alex bed" : "Farm Bed")>>
+	<<set $wardrobe_location to "alexFarm">>
+	<<wardrobeSelection true>>
 	<<storeon _bedroom "check">>
 	<<if _store_check is 1>>
 		<<storeon _bedroom>>
-		<<set $wardrobe_location to "wardrobe">>
 	<</if>>
 	<<link [[Prepare|Farm Assault Wardrobe]]>><<endevent>><<set $phase to 1>><<unset $remywake>><</link>>
 	<br>
@@ -327,17 +327,18 @@ You snuggle under the covers.
 	<br><br>
 	<<if $bus is "farm_alex_room">>
 		<<link [[Get up|Farm Alex Bedroom]]>>
+			<<set $wardrobe_location to "alexFarm">>
+			<<wardrobeSelection true>>
 			<<storeon "farm alex bed" "check">>
 			<<if _store_check is 1>>
 				<<storeon "farm alex bed">>
-				<<set $wardrobe_location to "wardrobe">>
 			<</if>>
 		<</link>>
 		<br>
 	<<else>>
 		<<radiooutfits>>
 		<br><br>
-		<<link [[Get up|Farm Bedroom]]>><<bedclotheson "farm bed">><</link>>
+		<<link [[Get up|Farm Bedroom]]>><<bedclotheson "Farm Bed">><</link>>
 	<</if>>
 	<br>
 <</if>>
@@ -358,7 +359,7 @@ You shuffle away from Alex.
 <<else>>
 	<<He>> doesn't stop you climbing from the bed. "Suit yourself," <<he>> says. <<He>> rolls over.
 	<br><br>
-	<<link [[Next|Farm Alex Bedroom]]>><<endevent>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "wardrobe">><</if>><</link>>
+	<<link [[Next|Farm Alex Bedroom]]>><<endevent>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "alexFarm">><<wardrobeSelection>><</if>><</link>>
 	<br>
 <</if>>
 
@@ -369,7 +370,7 @@ You whack Alex's hand, and struggle from the bed. "Suit yourself," <<he>> says. 
 <br><br>
 <<set $alex_bed_spurned to 1>>
 
-<<link [[Next|Farm Alex Bedroom]]>><<endevent>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "wardrobe">><</if>><</link>>
+<<link [[Next|Farm Alex Bedroom]]>><<endevent>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "alexFarm">><<wardrobeSelection>><</if>><</link>>
 <br>
 
 
@@ -481,7 +482,7 @@ You wrap your arms around Alex. Encouraged, <<he>> becomes more bold.
 		<<clotheson>>
 		<<endcombat>>
 
-		<<link [[Next|Farm Bedroom]]>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "wardrobe">><</if>><</link>>
+		<<link [[Next|Farm Bedroom]]>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "alexFarm">><<wardrobeSelection>><</if>><</link>>
 		<br>
 	<<else>>
 		You shove Alex off the bed. "Didn't know you wanted it that rough," <<he>> says. It's too dark to see <<his>> expression. <<He>> returns to <<his>> room.<<llove>><<npcincr Alex love -1>>
@@ -498,7 +499,7 @@ You wrap your arms around Alex. Encouraged, <<he>> becomes more bold.
 
 		<<clotheson>>
 		<<endcombat>>
-		<<link [[Next|Farm Bedroom]]>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "wardrobe">><</if>><</link>>
+		<<link [[Next|Farm Bedroom]]>><<storeon "farm alex bed" "check">><<if _store_check is 1>><<storeon "farm alex bed">><<set $wardrobe_location to "alexFarm">><<wardrobeSelection>><</if>><</link>>
 	<<else>>
 		Alex climbs from the bed. "Suit yourself," <<he>> says. "You know where I am when you want me to finish you."
 		<br><br>

@@ -915,7 +915,7 @@ You unfurl the paper, and see a brief, scrawled message.
 <<effects>>
 
 <<if $worn.under_lower.type.includes("naked")>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You lift your skirt at the thigh, high enough to show your waistline, confirming that you're not wearing underwear beneath. You cover yourself quickly.<<exhibitionism1>>
 
 		"Nice," Whitney says, prompting River to turn and glare.
@@ -929,7 +929,7 @@ You unfurl the paper, and see a brief, scrawled message.
 		<<unset $whitneypantiesmaths>>
 	<</if>>
 <<elseif $whitneypantiescheck is 1>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You lift your skirt at the thigh, high enough to show your waistline, showing your $worn.under_lower.name beneath. You cover yourself quickly.<<exhibitionism1>>
 
 		Whitney glares at you, but doesn't say anything. This won't be the end of it.
@@ -945,7 +945,7 @@ You unfurl the paper, and see a brief, scrawled message.
 		<<set $whitneypantiesmaths to "seen">>
 	<</if>>
 <<else>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You lift your skirt at the thigh, high enough to show your $worn.under_lower.name. You cover yourself quickly.<<exhibitionism1>>
 
 		"Nice," Whitney says, prompting River to turn and glare.
@@ -967,7 +967,7 @@ You unfurl the paper, and see a brief, scrawled message.
 :: Maths Whitney Undies Trick
 <<effects>>
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	You lift your skirt to your waistline, and try to hoist up your $worn.under_lower.name, hoping to give the impression that you're wearing nothing beneath.
 <<else>>
 	You pull your $worn.lower.name and $worn.under_lower.name down a little, hoping to give the impression that you're wearing nothing beneath.

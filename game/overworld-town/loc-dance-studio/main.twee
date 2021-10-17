@@ -260,7 +260,7 @@ Your heart beats faster as you walk away from the dance studio, and away from re
 			Held aloft, you are able to fully demonstrate your grace and skill.
 		<</if>>
 		<br><br>
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			You realise it may have been a mistake to wear a skirt. Performing airborne exercises without displaying your <<undies>> for the whole class to see proves to be virtually impossible.
 					<<if $uncomfortable.nude is false>>
 					<span class="lewd">You don't mind people looking.</span>

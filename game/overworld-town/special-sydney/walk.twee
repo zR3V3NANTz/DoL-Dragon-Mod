@@ -1640,7 +1640,8 @@ The wind begins to pick up as the weather worsens. You both decide that it's tim
 
 :: Sydney Beach Changing Room
 <<location "changingroom">><<effects>>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "changingRoom">>
+<<wardrobeSelection>>
 You are in a small wooden changing room. You can hear Sydney in the adjacent room. If you plan on swimming or tanning, you should be sure to dress appropriately.
 <br><br>
 <div id="wardrobewear"><<wardrobewear>></div>
@@ -2047,9 +2048,9 @@ The teenagers are happy to have two more players, particularly the <<person2>><<
 				Sydney seems to be taken aback at being called a <<sydneyBeachGender>>, but shakes it off.
 			<</if>>
 		<<else>>
-			<<if $worn.lower.skirt is 0 and $worn.lower.set isnot $worn.upper.set>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 0 and $worn.lower.set isnot $worn.upper.set>>
 				Before you can react, the <<person2>><<person>> has pulled them all the way to your knees,
-			<<elseif $worn.lower.skirt is 0 and $worn.lower.set is $worn.upper.set>>
+			<<elseif setup.clothes.lower[$worn.lower.index].skirt is 0 and $worn.lower.set is $worn.upper.set>>
 				Before you can react, the <<person2>><<person>> has pulled it aside,
 			<<else>>
 				Before you can react, the <<person2>><<person>> has lifted it,
@@ -2124,7 +2125,8 @@ The teenagers are happy to have two more players, particularly the <<person2>><<
 
 :: Sydney Beach Changing Room Leave
 <<location "changingroom">><<effects>>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "changingRoom">>
+<<wardrobeSelection>>
 You are in a small wooden changing room. You can hear Sydney in the adjacent room. If you plan on swimming or tanning, you should be sure to dress appropriately.
 <br><br>
 <div id="wardrobewear"><<wardrobewear>></div>

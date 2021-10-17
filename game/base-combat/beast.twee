@@ -1345,10 +1345,10 @@
 			<<beastlick>>
 		<<elseif $enemyanger + $rng lte 160>>
 			<<if $worn.over_lower.name isnot "naked" or $worn.lower.name isnot "naked">>
-				<<if $worn.over_lower.skirt is 1 and $worn.over_lower.skirt_down is 1>>
+				<<if setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 and $worn.over_lower.skirt_down is 1>>
 					<span class="blue"><<bHe>> lifts up your $worn.over_lower.name with <<bhis>> <<beast_teeth_text>>.</span>
 					<<set $worn.lower.skirt_down to 0>><<set $worn.over_lower.vagina_exposed to 1>><<set $worn.over_lower.anus_exposed to 1>><<set $worn.over_lower.exposed to 2>><<set $worn.over_lower.integrity -= 10>>
-				<<elseif $worn.lower.skirt is 1 and $worn.lower.skirt_down is 1>>
+				<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1 and $worn.lower.skirt_down is 1>>
 					<span class="blue"><<bHe>> lifts up your $worn.lower.name with <<bhis>> <<beast_teeth_text>>.</span>
 					<<set $worn.lower.skirt_down to 0>><<set $worn.lower.vagina_exposed to 1>><<set $worn.lower.anus_exposed to 1>><<set $worn.lower.exposed to 2>><<set $worn.lower.integrity -= 10>>
 				<<elseif $worn.over_lower.exposed isnot 2>>
@@ -2063,7 +2063,7 @@
 		<span class="blue"><<bHe>> releases your $worn.under_lower.name from <<bhis>> mouth.</span>
 		<<set $NPCList[_n].mouth to 0>>
 	<<elseif $rng lte 90>>
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			<<if $worn.under_lower.state is "waist">>
 				<<bHe>> pulls your $worn.under_lower.name down your thighs, <span class="lewd">revealing your <<genitals>>.</span>
 				<<set $worn.under_lower.state to "thighs">><<neutral 5>><<set $worn.under_lower.vagina_exposed to 1>><<set $worn.under_lower.anus_exposed to 1>><<set $worn.under_lower.exposed to 1>><<set $speechgenitals to 1>>

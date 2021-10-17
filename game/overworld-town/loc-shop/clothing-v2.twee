@@ -238,6 +238,7 @@
 	<div @class="'clothing-shop-page page-' + _page + _hidden">
 		<<for _itemTemp range _itemsOnPage>>
 			<<set _item = clone(_itemTemp)>>
+			<<set _itemData = setup.clothes[$clothingShopSlot][_item.index]>>
 			<<set _locked = $specialClothes[_item.name.replace(/ /g,"")] is "locked">>
 			<<set _unlocked = $specialClothes[_item.name.replace(/ /g,"")] is "unlocked">>
 			<div class="clothing-item div-link">
@@ -266,7 +267,7 @@
 								<</if>>
 							<</if>>
 						<</if>>
-						<<clothingicon _item>>
+						<<clothingicon _item $clothingShopSlot>>
 						<!-- Gender icon -->
 						<<if _item.gender isnot "n">>
 							<span class="clothing-gender">
@@ -302,14 +303,14 @@
 					<</if>>
 					<span class="clothing-name">
 						<<if _locked>>
-							<span class="lblue">_item.name_cap</span><span class="black">&nbsp;| Locked</span>
+							<span class="lblue">_itemData.name_cap</span><span class="black">&nbsp;| Locked</span>
 						<<else>>
 							<<set _csslot = $clothingShopSlot>>
-							<<capture _item _shopLocation _csslot _outfits>>
-								<<link _item.name_cap>>
+							<<capture _item _itemData _shopLocation _csslot _outfits>>
+								<<link _itemData.name_cap>>
 									<<set $clothes_choice = _item.index>>
 									<<set $clothes_choice_reveal = _item.reveal>>
-									<<set $clothes_choice_integrity = _item.integrity_max>>
+									<<set $clothes_choice_integrity = _itemData.integrity_max>>
 									<<unset $colouraction>>
 									<<unset $accessorycolouraction>>
 									<<run window.scrollTo(0, 0)>>
@@ -329,7 +330,7 @@
 						</div>
 					<<else>>
 						<!-- Price tag -->
-						<span class="clothing-price"><<printmoney `getClothingCost(_item)` true>></span>
+						<span class="clothing-price"><<printmoney `getClothingCost(_item,$clothingShopSlot)` true>></span>
 						<!-- Integrity, Reveal and Warmth indicators -->
 						<<if !$shopDefaults.compactMode>>
 							<div class="clothing-integrity">
@@ -434,7 +435,7 @@
 		<<elseif _temp_choice.gender is "f">>
 			<span class="pink">For girls.</span>
 		<</if>>
-		<<print _temp_choice.description>> Costs <<printmoney `getClothingCost(_temp_choice)`>>.
+		<<print _temp_choice.description>> Costs <<printmoney `getClothingCost(_temp_choice,$clothingShopSlot)`>>.
 		<br>
 		<<set _truewarmth = getTrueWarmth(_temp_choice)>>
 		<<warmth _truewarmth>>
@@ -492,7 +493,15 @@
 			<div id="warmth-description">
 				<<warmth_description>>
 			</div>
-			<br><br>
+			<br>
+			<<if $multipleWardrobes is "all">>
+				<span>Send items to:</span>
+				<div id="sendItemsTo">
+					<<sendItemsTo>>
+				</div>
+			<<else>>
+				<<set $wardrobes.shopReturn to "wardrobe">>
+			<</if>>
 			<<shopBuyItemStatus _wardrobeSlots>>
 			<<if _spaceLeft < 1>>
 				<span class="blue">Your wardrobe is full.</span>
@@ -503,7 +512,7 @@
 						<<printcursed>>
 					<<else>>
 						<<link "Steal and wear">>
-							<<shopbuyv2 $clothingShopSlot "steal" "wear" $clothes_choice>><<crimeup `getClothingCost(_temp_choice) / 100`>>
+							<<shopbuyv2 $clothingShopSlot "steal" "wear" $clothes_choice>><<crimeup `getClothingCost(_temp_choice,$clothingShopSlot) / 100`>>
 							<<set $clothingShop.stolenClothes++>>
 							<<set $clothingShop.totalStolenClothes++>>
 							<<if $shopDefaults.disableReturn is false>>
@@ -523,7 +532,7 @@
 						<br>
 					<</if>>
 					<<link "Steal and take home">>
-						<<shopbuyv2 $clothingShopSlot "steal" "send" $clothes_choice>><<crimeup `getClothingCost(_temp_choice) / 100`>>
+						<<shopbuyv2 $clothingShopSlot "steal" "send" $clothes_choice>><<crimeup `getClothingCost(_temp_choice,$clothingShopSlot) / 100`>>
 						<<set $clothingShop.stolenClothes++>>
 						<<set $clothingShop.totalStolenClothes++>>
 						<<if $shopDefaults.disableReturn is false>>
@@ -538,7 +547,7 @@
 					<span class="red">You can't carry any more clothes with you.</span> You should take them to your wardrobe.
 					<br>
 				<</if>>
-			<<elseif $money >= getClothingCost(_temp_choice)>>
+			<<elseif $money >= getClothingCost(_temp_choice,$clothingShopSlot)>>
 				<<if _cursedPrevent>>
 					<<printcursed>>
 				<</if>>
@@ -553,7 +562,7 @@
 								<<link "Buy and wear">>
 									<<clothingReset $clothingShopSlot>>
 									<<shopbuyv2 $clothingShopSlot "buy" "wear" $clothes_choice>>
-									<<set $money -= getClothingCost(_temp_choice)>>
+									<<set $money -= getClothingCost(_temp_choice,$clothingShopSlot)>>
 									<<if $shopDefaults.disableReturn is "false">>
 										<<unset $clothes_choice>>
 									<</if>>
@@ -569,7 +578,7 @@
 									<</if>>
 									<<run updateMoment()>>
 								<</link>>
-								(<<printmoney `getClothingCost(_temp_choice)`>>)
+								(<<printmoney `getClothingCost(_temp_choice,$clothingShopSlot)`>>)
 							<</if>>
 						</div>
 					</div>
@@ -625,14 +634,14 @@
 <</widget>>
 
 <<widget "printbuysendhome">>
-	<<set _canAfford = ($money >= getClothingCost(_temp_choice) * $buyMultiple and _spaceLeft >= $buyMultiple) ? "" : "disabled">>
+	<<set _canAfford = ($money >= getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple and _spaceLeft >= $buyMultiple) ? "" : "disabled">>
 	<div class="buy-button">
 		<div @class="'buy-button-inner buy-multiple div-link ' + _canAfford">
 				<<link `'Buy and send home × ' + $buyMultiple`>>
-					<<if $money >= getClothingCost(_temp_choice) * $buyMultiple and _spaceLeft >= $buyMultiple>>
+					<<if $money >= getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple and _spaceLeft >= $buyMultiple>>
 						<<clothingReset $clothingShopSlot>>
 						<<shopbuyv2 $clothingShopSlot "buy" "send" $clothes_choice $buyMultiple>>
-						<<set $money -= getClothingCost(_temp_choice) * $buyMultiple>>
+						<<set $money -= getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple>>
 						<<if $shopDefaults.disableReturn is false>>
 							<<unset $clothes_choice>>
 						<</if>>
@@ -642,7 +651,7 @@
 						<<run updateMoment()>>
 					<</if>>
 				<</link>>
-				<span>(<span class="gold"><<print getClothingCost(_temp_choice) * $buyMultiple / 100>></span>)</span>
+				<span>(<span class="gold"><<print getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple / 100>></span>)</span>
 		</div>
 
 		<div id="buy-multiple-slider" class="buy-multiple-slider">
@@ -657,8 +666,8 @@
 				text.push($buyMultiple);
 				el.text(text.join(' '));
 
-				$('#buy-send-home > .buy-button > .buy-button-inner > span > span').text('£' + getClothingCost(_temp_choice) * $buyMultiple / 100);
-				$('#buy-send-home > .buy-button > .buy-button-inner').toggleClass('disabled', $money < getClothingCost(_temp_choice) * $buyMultiple or _spaceLeft < $buyMultiple);
+				$('#buy-send-home > .buy-button > .buy-button-inner > span > span').text('£' + getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple / 100);
+				$('#buy-send-home > .buy-button > .buy-button-inner').toggleClass('disabled', $money < getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple or _spaceLeft < $buyMultiple);
 			});
 		})>>
 	</div>
@@ -850,7 +859,7 @@
 	<<elseif _subaction is "send">>
 		<<set _loop to _amount or 1>>
 		<<for _s = 0; _s lt _loop; _s++>>
-			<<generalSend "wardrobe" _slot _choice_index $colouraction2 $accessorycolouraction2>>
+			<<generalSend $wardrobes.shopReturn _slot _choice_index $colouraction2 $accessorycolouraction2>>
 		<</for>>
 	<</if>>
 
@@ -1026,14 +1035,14 @@
 								<img @src="'img/clothes/' + _slot + '/' + _item.variable + '/full.png'">
 							<</if>>
 
-							<<if _item.sleeve_img or _item.leftImage>>
+							<<if setup.clothes[_slot][_item.index].sleeve_img or _item.leftImage>>
 								<img @src="'img/clothes/' + _slot + '/' + _item.variable + '/left.png'">
 							<</if>>
-							<<if _item.sleeve_img or _item.rightImage>>
+							<<if setup.clothes[_slot][_item.index].sleeve_img or _item.rightImage>>
 								<img @src="'img/clothes/' + _slot + '/' + _item.variable + '/right.png'">
 							<</if>>
 
-							<<if _item.breast_img>>
+							<<if setup.clothes[_slot][_item.index].breast_img>>
 								<img @src="'img/clothes/' + _slot + '/' + _item.variable + '/' + _breastImg + '.png'">
 							<</if>>
 
@@ -1419,4 +1428,50 @@
 	<<if $clothes_choice or $args[0]>>
 		<img src="img/misc/icon/small_uarrow.png" class="warmth-indicator" @style="'left: ' + _warmthData.playerNew">
 	<</if>>
+<</widget>>
+
+<<widget "sendItemsTo">>
+<div class="returnOptions no-numberify">
+	<<for _label, _value range $wardrobes>>
+		<<if _value.unlocked and _value.shopSend>>
+			<<if $wardrobes.shopReturn is _label>>
+				<div class="try-button div-link">
+					<span class="gold"><<print _value.name>></span>
+				</div>
+			<<else>>
+				<div class="try-button div-link">
+					<<capture _label>>
+						<<link _value.name>>
+							<<set $wardrobes.shopReturn to _label>>
+							<<updateclotheslist>>
+							<<updatesidebardescription>>
+							<<updatewarmthscale>>
+							<<updatewarmthdescription>>
+							<<run updateMoment()>>
+						<</link>>
+					<</capture>>
+				</div>
+			<</if>>
+		<</if>>
+	<</for>>
+</div>
+<</widget>>
+
+<<widget "sendItemsToDropdown">>
+<<if $multipleWardrobes is "all">>
+	<label>Send to:
+	<<set _options to {}>>
+	<<for _label, _value range $wardrobes>>
+		<<if _value.unlocked and !$wardrobes[_label].isolated>>
+			<<set _options[_value.name] to _label>>
+		<</if>>
+	<</for>>
+	<<listbox '$wardrobes.shopReturn' autoselect>>
+		<<optionsfrom _options>>
+	<</listbox>>
+	</label>
+	<br>
+<<else>>
+	<<set $wardrobes.shopReturn to "wardrobe">>
+<</if>>
 <</widget>>

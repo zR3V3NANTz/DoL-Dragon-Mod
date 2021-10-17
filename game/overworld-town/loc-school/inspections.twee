@@ -952,13 +952,13 @@ You grit your teeth in annoyance. Leighton forcing you to come up was bad enough
 Acting on impulse, 
 
 <<if !$worn.under_lower.type.includes("naked")>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		you grab the hem of your skirt in one hand and your $worn.under_lower.name in the other, swiftly pulling both aside and flashing your <<pussy>>.
 	<<else>>
 		you hook your thumbs around the waist of your $worn.lower.name and $worn.under_lower.name, pulling them both down, low enough to you bare your <<pussy>>.
 	<</if>>
 <<else>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		you grab the hem of your skirt and swiftly yank it up, flashing your <<pussy>>.
 	<<else>>
 		you hook your thumbs around the waist of your $worn.lower.name and pull them down, low enough to bare your <<pussy>>.
@@ -1200,7 +1200,7 @@ aren't speaking much, and shift their legs uncomfortably.
 :: Pussy Inspection Flaunt No Pussy
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 <<fameexhibitionism 50 pic>>
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.under_lower.type.includes("naked")>>
 		Wasting no time, you climb atop the desk and lift your skirt to your chin.
 		You cock your head. "I'm not wearing panties," you say, trying to sound apologetic.
@@ -1268,13 +1268,13 @@ The class erupts into whispering when they see your <<penis>>.
 
 	"Not wearing any?" Leighton announces. You hear someone giggle. "I'll overlook it. Get on the desk."
 
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You climb atop the desk and lift your skirt just above your <<genitals>>.
 	<<else>>
 		You climb atop the desk and pull down your $worn.lower.name. 
 	<</if>>
 <<else>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You lift your skirt and pull down your $worn.under_lower.name, then hand them to Leighton.<<underlowerruined>> You climb atop the desk and lift your skirt just above your <<genitals>>.
 	<<else>>
 		You climb atop the desk and pull down your $worn.lower.name. Your $worn.under_lower.name come next. You slip them off your legs, and hand them to Leighton.<<underlowerruined>>
@@ -1352,7 +1352,7 @@ You look away as Leighton takes a picture.
 <<fameexhibitionism 50 pic>>
 
 <<if $worn.under_lower.type.includes("naked")>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You grip the hem of your skirt and flash Leighton. "No panties," you say, sounding apologetic.
 	<<else>>
 		You tug down the hem of your $worn.lower.name and flash Leighton. "No panties," you say, sounding apologetic.
@@ -1424,13 +1424,13 @@ Leighton pauses, then smiles as <<he>> takes a picture.
 <<fameexhibitionism 30 pic>>
 
 <<if $worn.under_lower.type.includes("naked")>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You climb atop the desk and lift your skirt just above your <<genitals>>.
 	<<else>>
 		You climb atop the desk and pull down your $worn.lower.name. 
 	<</if>>
 <<else>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You lift your skirt and pull down your $worn.under_lower.name down to your ankles. You climb atop the desk and lift your skirt just above your <<genitals>>.
 	<<else>>
 		You climb atop the desk and pull down your $worn.lower.name. Your $worn.under_lower.name come next. You slip them down to your ankles.
@@ -1463,9 +1463,9 @@ You silently fume as you stare at the camera in Leighton's hand. You're not even
 <br><br>
 
 Overcome with emotion, you
-<<if $worn.lower.skirt is 1 and !$worn.under_lower.type.includes("naked")>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and !$worn.under_lower.type.includes("naked")>>
 	grasp the hem of your skirt in one hand, your $worn.under_lower.name in the other. You yank them aside in a blur, exposing your <<penis>>.
-<<elseif $worn.lower.skirt is 1>>
+<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	grasp the hem of your skirt with both hands, yanking it up and exposing your <<penis>>.
 <<elseif !$worn.under_lower.type.includes("naked")>>
 	hook your fingers around the waistband of your $worn.lower.name and $worn.under_lower.name, tugging them both down in one daring motion.

@@ -531,7 +531,7 @@ You gracefully remove your $worn.under_lower.name, exposing your <<genitals 1>>.
 			<</if>>
 		<</if>>
 	<</if>>
-	<<if !$worn.lower.type.includes("naked") and ($worn.over_lower.type.includes("naked") or $worn.over_lower.skirt is 1)>>
+	<<if !$worn.lower.type.includes("naked") and ($worn.over_lower.type.includes("naked") or setup.clothes.over_lower[$worn.over_lower.index].skirt is 1)>>
 		<<if $worn.over_lower.name isnot "naked">>
 			<<set _danceExhibition.lower to clone(_exhibitionObject[3])>>
 		<<elseif !$worn.under_lower.type.includes("naked")>>
@@ -556,7 +556,7 @@ You gracefully remove your $worn.under_lower.name, exposing your <<genitals 1>>.
 			<<set _danceExhibition.under_upper to clone(_exhibitionObject[1])>>
 		<</if>>
 	<</if>>
-	<<if $worn.under_lower.name isnot "naked" and (($worn.over_lower.skirt is 1 or $worn.over_lower.type.includes("naked")) and ($worn.lower.skirt is 1 or $worn.lower.type.includes("naked")))>>
+	<<if $worn.under_lower.name isnot "naked" and ((setup.clothes.over_lower[$worn.over_lower.index].skirt is 1 or $worn.over_lower.type.includes("naked")) and (setup.clothes.lower[$worn.lower.index].skirt is 1 or $worn.lower.type.includes("naked")))>>
 		<<if $worn.under_lower.type.includes("naked")>>
 			<<set _danceExhibition.under_lower to clone(_exhibitionObject[3])>>
 		<<elseif !$worn.lower.type.includes("naked") or !$worn.over_lower.type.includes("naked")>>
@@ -733,7 +733,7 @@ You gracefully remove your $worn.under_lower.name, exposing your <<genitals 1>>.
 
 	<<if _underOutfit>>
 		<<if !$worn.lower.type.includes("naked") and !$worn.upper.type.includes("naked")>>
-			<<if $worn.lower.skirt is 1>>
+			<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 				<<if $exhibitionism gte 35>>
 					<label><span class="meek">Strip $worn.under_upper.name</span> <<combatexhibitionist3>> <<radiobutton "$danceaction" "underoutfitstripskirt">></label> |
 				<</if>>
@@ -780,7 +780,7 @@ You gracefully remove your $worn.under_lower.name, exposing your <<genitals 1>>.
 	<</if>>
 
 	<<if !$worn.under_lower.type.includes("naked") and _underOutfit is false>>
-		<<if !$worn.lower.type.includes("naked") and $worn.lower.skirt is 1>>
+		<<if !$worn.lower.type.includes("naked") and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			<<if $exhibitionism gte 35>>
 			<label><span class="meek">Strip $worn.under_lower.name</span> <<combatexhibitionist3>> <<radiobutton "$danceaction" "understripskirt">></label> |
 			<</if>>

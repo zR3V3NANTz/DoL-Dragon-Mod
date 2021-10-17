@@ -609,7 +609,7 @@ River gives the class some equations to solve while <<he>> manages paperwork.
 <<npc River>><<generates2>><<person2>>
 River has you come to the front of the class to solve an equation on the whiteboard.
 
-  <<if $worn.lower.skirt is 1>>
+  <<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
   As you write on the board, a <<person>> reaches over with a ruler and lifts up your skirt!
 	<<if $worn.under_lower.type.includes("naked")>>
 		<<if $panicattacks gte 1 and random(1, 2) is 2 and $controlled is 0>>
@@ -1287,7 +1287,7 @@ Kylar sits back down and smiles, oblivious to the embarrassment <<he>> caused.
   <</if>>
 <<elseif $rng gte 21>>
 Doren asks you to demonstrate your grammar on the whiteboard. As you walk to the front of the classroom, a foot protrudes into your path and trips you up.
-  <<if $worn.lower.skirt is 1>>
+  <<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.under_lower.name is "naked" or $worn.under_lower.anus_exposed is 1>>
 	Your skirt flares up as you fall to your knees, revealing your bare butt to the whole class. You struggle to your feet, face turning red, as the class whistles and jeers.
 	<<stress 3>><<trauma 3>><<gstress>><<gtrauma>>
@@ -1561,10 +1561,10 @@ Doren asks you to demonstrate your grammar on the whiteboard. As you walk to the
 <<elseif $rng gte 76>>
 	<<generates1>><<person1>>You catch a normally shy <<person>> checking you out from across the room.
 	<br><br>
-	<<if $exhibitionism gte 35 and $worn.lower.skirt is 1 and !$worn.under_lower.type.includes("naked")>>
+	<<if $exhibitionism gte 35 and setup.clothes.lower[$worn.lower.index].skirt is 1 and !$worn.under_lower.type.includes("naked")>>
 		<<link [[Flash|History Flash]]>><</link>><<exhibitionist2>>
 		<br>
-	<<elseif $exhibitionism gte 55 and $worn.lower.skirt is 1>>
+	<<elseif $exhibitionism gte 55 and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		<<link [[Flash|History Flash]]>><</link>><<exhibitionist4>>
 		<br>
 	<<else>>

@@ -981,33 +981,33 @@
 
 <<widget "clothingicon">>
 	<<if $images is 1>>
-		<<if $args[0].iconFile>>
-			<<if typeof($args[0].iconFile) === 'string'>>
-				<<set $clothesiconFile = "img/misc/icon/clothes/" + $args[0].iconFile>>
+		<<set $_item to setup.clothes[$args[1]][$args[0].index]>>
+		<<if $_item.iconFile>>
+			<<if typeof($_item.iconFile) === 'string'>>
+				<<set $clothesiconFile = "img/misc/icon/clothes/" + $_item.iconFile>>
 			<<else>>
-				<<set $clothesiconFile = "img/misc/icon/clothes/" + $args[0].name_cap + ".png">>
+				<<set $clothesiconFile = "img/misc/icon/clothes/" + $_item.name_cap + ".png">>
 			<</if>>
-			<<if $args[0].colour is 0 or $args[0].colour_options.length lt 2>>
+			<<if $args[0].colour is 0 or $_item.colour_options.length lt 2>>
 				<img id="icon" alt="" @src="$clothesiconFile">
 			<<else>>
 				<img id="icon" alt="" @class="'icon-'+ $args[0].colour.replace(/ /g, '-')" @src="$clothesiconFile" @style="($args[0].colour is 'custom'? $args[0].colourCustom : '')">
 			<</if>>
 		<</if>>
-		<<if $args[0].accIcon isnot 0 and $args[0].accessory isnot 0>>
-			<<if typeof($args[0].accIcon) === 'string'>>
-				<<set $clothesiconFile = "img/misc/icon/clothes/" + $args[0].accIcon>>
+		<<if $_item.accIcon isnot 0 and $_item.accessory isnot 0>>
+			<<if typeof($_item.accIcon) === 'string'>>
+				<<set $clothesiconFile = "img/misc/icon/clothes/" + $_item.accIcon>>
 			<<else>>
-				<<set $clothesiconFile = "img/misc/icon/clothes/" + $args[0].name_cap + "_acc.png">>
+				<<set $clothesiconFile = "img/misc/icon/clothes/" + $_item.name_cap + "_acc.png">>
 			<</if>>
 			<span id = "spanIcon">
-			<<if $args[0].accessory_colour is 0 or $args[0].accessory_colour_options.length lt 2>>
+			<<if $args[0].accessory_colour is 0 or $_item.accessory_colour_options.length lt 2>>
 				<img id="accIcon" alt="" @src="$clothesiconFile">
 			<<else>>
 				<img id="accIcon" @class="'icon-'+ $args[0].accessory_colour.replace(/ /g, '-')" alt="" @src="$clothesiconFile" @style="($args[0].accessory_colour is 'custom'? $args[0].accessory_colourCustom : '')">
 			<</if>>
 			</span>
 		<</if>>
-
 	<</if>>
 <</widget>>
 

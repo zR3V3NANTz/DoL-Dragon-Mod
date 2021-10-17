@@ -80,7 +80,7 @@
 					<<set _custom_style = _tryon[1].colour == "custom" ? "color:" + _customRGB : "">>
 					<span style="display:inline-flex">(<span @class="_tryon[1].colour.replace(/ /g, '-')" @style="_custom_style"><<print _colour>></span>)</span>
 				<</if>>
-				<<print _tryon[1].name_cap>> with a price tag of <<printmoney `getClothingCost(_tryon[1])`>>
+				<<print setup.clothes[_tryon[0]][_tryon[1].index].name_cap>> with a price tag of <<printmoney `getClothingCost(_tryon[1],_tryon[0])`>>
 				<<capture _tryon[0]>>
 					| <<link "Remove">><<clothingReset _tryon[0]>>
 						<<updatesidebarimg>>
@@ -116,7 +116,7 @@
 			<<for _i to 0; _i lt _equip.length; _i++>>
 				<<if $tryOn.ownedStored[_equip[_i]] isnot null and $tryOn.tryingOn[_equip[_i]] isnot null and $tryOn.ownedStored[_equip[_i]].name isnot "naked" and !_towels.includes($tryOn.ownedStored[_equip[_i]].name)>>
 					/*Send previously equipped clothes to wardrobe*/
-						<<wardrobeSend _equip[_i] $tryOn.ownedStored[_equip[_i]]>>
+					<<wardrobeSend _equip[_i] $tryOn.ownedStored[_equip[_i]]>>
 				<</if>>
 			<</for>>
 		<<case "wardrobe">>
@@ -296,7 +296,12 @@
 	<<for _labelTO, _valueTO range _items>>
 		<<set $worn[_labelTO] to clone(_valueTO)>>
 		<<set $tryOn.tryingOn[_labelTO] to clone(_valueTO)>>
-		<<set $tryOn.value += getClothingCost($tryOn.tryingOn[_labelTO])>>
+		<<set $tryOn.value += getClothingCost($tryOn.tryingOn[_labelTO],_labelTO)>>
+		<!--
+			ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x
+			<<run clothesDataTrimmer($worn[_labelTO])>>
+			<<run clothesDataTrimmer($tryOn.tryingOn[_labelTO])>>
+		-->
 	<</for>>
 
 	/*re-equip original clothes where needed*/
@@ -359,15 +364,20 @@
 
 <<widget "removeTryingOn">>
 <<if $tryOn.tryingOn[$args[0]] isnot null>>
-	<<set $tryOn.value -= getClothingCost($tryOn.tryingOn[$args[0]])>>
+	<<set $tryOn.value -= getClothingCost($tryOn.tryingOn[$args[0]],$args[0])>>
 	<<set $tryOn.tryingOn[$args[0]] to null>>
 <</if>>
 <</widget>>
 
 <<widget "wardrobeSend">>
 <<if $args[0] and $args[1]>>
+	<<if $wardrobes.shopReturn is "wardrobe" or $wardrobes[$wardrobes.shopReturn] is undefined>>
+		<<set $_selectedWardrobe to $wardrobe>>
+	<<else>>
+		<<set $_selectedWardrobe to $wardrobes[$wardrobes.shopReturn]>>
+	<</if>>
 	<<if $args[1].name isnot "naked">>
-		<<set $wardrobe[$args[0]].push(clone($args[1]))>>
+		<<set $_selectedWardrobe[$args[0]].push(clone($args[1]))>>
 	<</if>>
 <</if>>
 <</widget>>

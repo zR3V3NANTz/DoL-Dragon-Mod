@@ -36,7 +36,7 @@ You approach the statue in the middle of the park. It's covered in white lichen.
 	<<gstress>><<gpain>><<stress 3>><<pain 6>>
 	<br><br>
 	<<npc Avery>><<initnpc Avery>><<person1>>You hear a <<nnpc_gender "Avery">>'s laughter. Before you can recover a pair of arms picks you up by your shoulders. Not stopping there, <<he>> holds you by the hips and helps lift you with surprising strength. It's enough for you to clamber up.
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		You feel your face flush as you realise <<he>> could have seen up your $worn.lower.name. If <<he>> did <<he>> gives no sign.
 	<</if>>
 	<<He>> smiles at you. "Why'd you want to go up there anyway?"
@@ -51,7 +51,7 @@ You approach the statue in the middle of the park. It's covered in white lichen.
 
 <<set $outside to 1>><<set $location to "park">><<effects>><<set $bus to "park">>
 You look around for someone who might help. You see a <<npc Avery>><<initnpc Avery>><<person1>><<nnpc_gender "Avery">> already watching you. <<He>> laughs and approaches you. <<He>> says nothing, but grabs you by the hips and helps lift you with surprising strength. It's enough for you to clamber up.
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	You feel your face flush as you realise <<he>> could have seen up your $worn.lower.name. If <<he>> did <<he>> gives no sign.
 <</if>>
 <<He>> smiles at you. "Why'd you want to go up there anyway?"

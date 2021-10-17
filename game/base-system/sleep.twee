@@ -162,20 +162,28 @@
 <</widget>>
 
 <<widget "bedclotheson">>
-	<<if $args[0] is undefined>>
-		<<set _store to "bed">>
-	<<else>>
-		<<set _store to $args[0]>>
-	<</if>>
-	<<set $wardrobe_location to "wardrobe">>
+	<<switch $args[0]>>
+		<<case "bed" "Bed">>
+			<<set $_storeLocation to "bed">>
+			<<set $wardrobe_location to "wardrobe">>
+		<<case "Farm Bed">>
+			<<set $_storeLocation to "Farm Bed">>
+			<<set $wardrobe_location to "alexFarm">>
+		<<default>>
+			Something went wrong with the "bedclotheson" widget, please report
+	<</switch>>
+	<<wardrobeSelection true>>
+	<<updateWornClothingLocation $wardrobe_location>>
 	<<if $wear_outfit is "clotheson">>
-		<<undress "wardrobe">>
-		<<storeon _store>>
+		/*Was causing some wierdness when getting out of bed*/
+		/*<<undress $wardrobe_location>>*/
+		<<storeon $_storeLocation>>
 	<<elseif $wear_outfit isnot "none">>
-		<<storeon _store>>
-		<<undress "wardrobe">>
+		<<storeon $_storeLocation>>
+		<<undress $wardrobe_location>>
 		<<wearoutfit>>
 	<</if>>
+	<<updateWornClothingLocation $wardrobe_location>>
 	<<set $wear_outfit to "none">>
 <</widget>>
 

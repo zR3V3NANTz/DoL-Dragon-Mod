@@ -584,7 +584,7 @@ The van rumbles to a halt, and the doors open.
 <<effects>>
 
 You ignore the <<persons>> creeping hand.
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<He>> lifts the hem of your skirt, and for a moment you're afraid <<he>> means to expose you to the whole van, but <<he>> instead squeezes your thigh.
 <<else>>
 	For a moment you're afraid <<he>> means to grope your <<genitals>>, but <<he>> instead squeezes your thigh.
@@ -1104,7 +1104,7 @@ The van rumbles into life. You catch a <<person2>><<person>> sitting opposite ch
 :: Police Community Clean Tease
 <<effects>>
 
-<<if $worn.lower.skirt is 1>>
+<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	You cross your legs, showing a good deal of your thigh and almost flashing your <<undies>>.
 <<elseif $player.penisExist>>
 	You spread your legs, and emphasis the bulge beneath your $worn.lower.name.
@@ -1198,7 +1198,7 @@ You take a litter stick and get to work.
 	You and the other criminals move along the street while the <<person>> observes.
 	You're reaching into a drain when you feel a light tug on your $worn.lower.name.
 	<<person2>>
-	<<if $worn.lower.skirt is 1>>
+	<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 		A moment later, <span class="lewd">someone flips up the hem, revealing your
 		<<if $worn.under_lower.type.includes("naked")>>
 			<<bottom>>.<<fameexhibitionism 5>> Someone whistles.

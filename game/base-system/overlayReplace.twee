@@ -65,6 +65,9 @@
 			<<case "eventExtraInfo">>
 				<<replace #customOverlayTitle>><<OverlayTitle>><</replace>>
 				<<replace #customOverlayContent>><<eventExtraInfo>><</replace>>
+			<<case "outfitEditor">>
+				<<replace #customOverlayTitle>><<OverlayTitle>><</replace>>
+				<<replace #customOverlayContent>><<outfitEditor>><</replace>>
 			<</switch>>
 			<<removeclass "#customOverlay" "hidden">>
 			<<run document.getElementById("customOverlay").scrollTop = 0>>

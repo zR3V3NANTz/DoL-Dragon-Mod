@@ -2028,7 +2028,7 @@ Second arg: tool */
 <<if $tattoo_bodypart is "left_bottom" or $tattoo_bodypart is "right_bottom">>
 "Alright," <<he>> says, pulling the curtain shut. "Lets see your bottom."
 	<<if $worn.lower.name isnot "naked">>
-		<<if $worn.lower.skirt is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
 			<<if $worn.under_lower.name isnot "naked">>
 				You <<nervously>> flip up your skirt, baring your $worn.under_lower.name. "Those need to go," <<he>> says. "Or they'll get in the way."
 					<<if $worn.under_lower.set is $worn.under_upper.set>>
@@ -2087,11 +2087,11 @@ Second arg: tool */
 "Alright," <<he>> says, pulling the curtain shut.
 	<<if $worn.lower.name is "naked">>
 
-	<<elseif $worn.upper.set is $worn.lower.set and $worn.lower.skirt isnot 1>>
+	<<elseif $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 		"You'll have to strip right down. Don't want fabric getting in the way."
 
 		You <<nervously>> remove your $worn.upper.name, baring your <<undertop>> and <<undies>>.
-	<<elseif $worn.lower.skirt isnot 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt isnot 1>>
 		"You'll have to take your bottoms off. Don't want the fabric getting in the way."
 
 		You <<nervously>> pull down your $worn.lower.name, baring your <<undies>>.

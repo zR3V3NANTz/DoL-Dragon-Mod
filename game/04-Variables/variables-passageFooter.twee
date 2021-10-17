@@ -20,3 +20,7 @@
 		<<run delete $replayScene.startPassage>>
 	<</if>>
 <</if>>
+<div id="customOverlay" class="customOverlay hidden">
+	<div id="customOverlayTitle" class="fixedClose"></div>
+	<div id="customOverlayContent"></div>
+</div>

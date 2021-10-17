@@ -1,6 +1,12 @@
 :: Widgets Wardrobe [widget]
 
 <<widget "wardrobewear">>
+<<if $wardrobe_location is "wardrobe" or $wardrobes[$wardrobe_location] is undefined>>
+	<<set _selectedWardrobe to $wardrobe>>
+<<else>>
+	<<set _selectedWardrobe to $wardrobes[$wardrobe_location]>>
+<</if>>
+
 <<if $runWardrobeSanityChecker is true>>
 	<<wardrobeSanityCheck>>
 	<<set $runWardrobeSanityChecker to false>>
@@ -122,7 +128,7 @@
 	<</if>>
 	/*Find the item to equip*/
 	<<if _wearId gte 0>>
-		<<set _item to $wardrobe[_equip[_ie]][_wearId]>>
+		<<set _item to _selectedWardrobe[_equip[_ie]][_wearId]>>
 	<</if>>
 	/*Prevent equip when the ear slime doesn't allow it*/
 	<<if _wearId gte 0 and _slimePrevent.includes(_equip[_ie]) and $corruption_slime gte 80 and $wardrobeOption is "wear">>
@@ -138,23 +144,23 @@
 		<<set _outfitPieceIds to {}>>
 		<<for _labelWW, _valueWW range _outfitPrimary>>
 			<<if _valueWW isnot "broken">>
-				<<for _j to 0; _j lt $wardrobe[_labelWW].length; _j++>>
-					<<if $wardrobe[_labelWW][_j].name is _valueWW and _item.colour is $wardrobe[_labelWW][_j].colour and _item.accessory_colour is $wardrobe[_labelWW][_j].accessory_colour>>
-						<<if $wardrobe[_labelWW][_j].outfitSecondary[1] isnot _item.name>>
+				<<for _j to 0; _j lt _selectedWardrobe[_labelWW].length; _j++>>
+					<<if _selectedWardrobe[_labelWW][_j].name is _valueWW and _item.colour is _selectedWardrobe[_labelWW][_j].colour and _item.accessory_colour is _selectedWardrobe[_labelWW][_j].accessory_colour>>
+						<<if _selectedWardrobe[_labelWW][_j].outfitSecondary[1] isnot _item.name>>
 							<<continue>>
 						<</if>>
 						<<set _matched to 0>>
-						<<if $wardrobe[_labelWW][_j].colour isnot "custom">>
+						<<if _selectedWardrobe[_labelWW][_j].colour isnot "custom">>
 							<<set _matched++>>
-						<<elseif _item.colourCustom isnot undefined and $wardrobe[_labelWW][_j].colourCustom isnot undefined>>
-							<<if _item.colourCustom is $wardrobe[_labelWW][_j].colourCustom>>
+						<<elseif _item.colourCustom isnot undefined and _selectedWardrobe[_labelWW][_j].colourCustom isnot undefined>>
+							<<if _item.colourCustom is _selectedWardrobe[_labelWW][_j].colourCustom>>
 								<<set _matched++>>
 							<</if>>
 						<</if>>
-						<<if $wardrobe[_labelWW][_j].accessory_colour isnot "custom">>
+						<<if _selectedWardrobe[_labelWW][_j].accessory_colour isnot "custom">>
 							<<set _matched++>>
-						<<elseif _item.accessory_colourCustom isnot undefined and $wardrobe[_labelWW][_j].accessory_colourCustom isnot undefined>>
-							<<if _item.accessory_colourCustom is $wardrobe[_labelWW][_j].accessory_colourCustom>>
+						<<elseif _item.accessory_colourCustom isnot undefined and _selectedWardrobe[_labelWW][_j].accessory_colourCustom isnot undefined>>
+							<<if _item.accessory_colourCustom is _selectedWardrobe[_labelWW][_j].accessory_colourCustom>>
 								<<set _matched++>>
 							<</if>>
 						<</if>>
@@ -176,11 +182,11 @@
 		/*Delete the relating items*/
 		<<if _outfitPieceIds isnot undefined>>
 			<<for _labelWW, _valueWW range _outfitPieceIds>>
-				<<set $wardrobe[_labelWW].deleteAt(_valueWW)>>
+				<<set _selectedWardrobe[_labelWW].deleteAt(_valueWW)>>
 			<</for>>
 		<</if>>
-		You discard the <<print $wardrobe[_equip[_ie]][_wearId].name>>.
-		<<set $wardrobe[_equip[_ie]].deleteAt(_wearId)>>
+		You discard the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>>.
+		<<set _selectedWardrobe[_equip[_ie]].deleteAt(_wearId)>>
 		<br>
 		<<continue>>
 	<</if>>
@@ -188,29 +194,62 @@
 		/*Repair the relating items*/
 		<<if _outfitPieceIds isnot undefined>>
 			<<for _labelWW, _valueWW range _outfitPieceIds>>
-				<<set $wardrobe[_labelWW][_valueWW].integrity = $wardrobe[_labelWW][_valueWW].integrity_max>>
+				<<set _selectedWardrobe[_labelWW][_valueWW].integrity = clothingData(_labelWW,_selectedWardrobe[_labelWW][_valueWW],'integrity_max')>>
 				<<pass 15>>
 			<</for>>
 		<</if>>
-		<<set $wardrobe[_equip[_ie]][_wearId].integrity = $wardrobe[_equip[_ie]][_wearId].integrity_max>>
+		<<set _selectedWardrobe[_equip[_ie]][_wearId].integrity = clothingData(_equip[_ie],_selectedWardrobe[_equip[_ie]][_wearId],'integrity_max')>>
 		<<pass 1>>
-		You repair the <<print $wardrobe[_equip[_ie]][_wearId].name>>.
+		You repair the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>>.
 		<br>
 		<<continue>>
 	<</if>>
 	<<if $wardrobeOption is "seperateOutfits" and _wearId gte 0>>
 		<<if _outfitPieceIds isnot undefined>>
 			<<for _labelWW, _valueWW range _outfitPieceIds>>
-				<<set $wardrobe[_labelWW][_valueWW].outfitSecondary[1] to "broken">>
-				<<set $wardrobe[_labelWW][_valueWW].one_piece to "broken">>
+				<<set _selectedWardrobe[_labelWW][_valueWW].outfitSecondary[1] to "broken">>
+				<<set _selectedWardrobe[_labelWW][_valueWW].one_piece to "broken">>
 			<</for>>
-			<<set $wardrobe[_equip[_ie]][_wearId].outfitPrimary[_labelWW] to "broken">>
-			<<set $wardrobe[_equip[_ie]][_wearId].one_piece to "broken">>
-			You cut up the <<print $wardrobe[_equip[_ie]][_wearId].name>>.
+			<<set _selectedWardrobe[_equip[_ie]][_wearId].outfitPrimary[_labelWW] to "broken">>
+			<<set _selectedWardrobe[_equip[_ie]][_wearId].one_piece to "broken">>
+			You cut up the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>>.
 			<<pass 10>>
 			<br>
 		<</if>>
 		<<continue>>
+	<</if>>
+	<<if $wardrobeOption is "transfer" and _wearId gte 0 and _wardrobeTransfer isnot $wardrobe_location and _wardrobeTransfer isnot undefined>>
+		<<unset _slotsFull>>
+		/*Set the target wardrobe*/
+		<<if _wardrobeTransfer is "wardrobe" or $wardrobes[_wardrobeTransfer] is undefined>>
+			<<set _wardrobeTransferObject to $wardrobe>>
+		<<else>>
+			<<set _wardrobeTransferObject to $wardrobes[_wardrobeTransfer]>>
+		<</if>>
+		/*Make sure there is enough space*/
+		<<if _wardrobeTransferObject[_equip[_ie]].length gt _wardrobeTransferObject.space>>
+			<<set _slotsFull to true>>
+		<</if>>
+		<<if _outfitPieceIds isnot undefined>>
+			<<for _labelWW, _valueWW range _outfitPieceIds>>
+				<<if _wardrobeTransferObject[_labelWW].length gt _wardrobeTransferObject.space>>
+					<<set _slotsFull to true>>
+				<</if>>
+			<</for>>
+		<</if>>
+
+		<<if !_slotsFull>>
+			You transfered the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>> to the <<print $wardrobes[_wardrobeTransfer].name>> storage.
+			/*Transfer everything*/
+			<<run transferClothing(_equip[_ie],_wearId,_wardrobeTransfer)>>
+			<<if _outfitPieceIds isnot undefined>>
+				<<for _labelWW, _valueWW range _outfitPieceIds>>
+					<<run transferClothing(_labelWW,_valueWW,_wardrobeTransfer)>>
+				<</for>>
+			<</if>>
+		<<else>>
+			You were unable to transfer the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>> to the <<print $wardrobes[_wardrobeTransfer].name>> wardrobe due to lack of space there.
+		<</if>>
 	<</if>>
 	<<if $wardrobeOption is "wear" and _wearId gte 0>>
 		/*Equip the relating items*/
@@ -218,13 +257,15 @@
 		<<if _outfitPieceIds isnot undefined>>
 			<<for _labelWW, _valueWW range _outfitPieceIds>>
 				<<generalUndress $wardrobe_location `clone(_labelWW)`>>
-				<<set $worn[clone(_labelWW)] to clone($wardrobe[clone(_labelWW)][clone(_valueWW)])>>
-				<<set $wardrobe[_labelWW].deleteAt(_valueWW)>>
+				<<set $worn[clone(_labelWW)] to clone(_selectedWardrobe[clone(_labelWW)][clone(_valueWW)])>>
+				<<set $worn[clone(_labelWW)].lastTaken to clone($wardrobe_location)>>
+				<<set _selectedWardrobe[_labelWW].deleteAt(_valueWW)>>
 			<</for>>
 		<</if>>
-		<<set $worn[_equip[_ie]] to clone($wardrobe[_equip[_ie]][_wearId])>>
-		You put on the <<print $wardrobe[_equip[_ie]][_wearId].name>>.
-		<<set $wardrobe[_equip[_ie]].deleteAt(_wearId)>>
+		<<set $worn[_equip[_ie]] to clone(_selectedWardrobe[_equip[_ie]][_wearId])>>
+		<<set $worn[_equip[_ie]].lastTaken to clone($wardrobe_location)>>
+		You put on the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>>.
+		<<set _selectedWardrobe[_equip[_ie]].deleteAt(_wearId)>>
 		<br><br>
 	<</if>>
 <</for>>
@@ -412,13 +453,28 @@ __Clothing__
 <br>
 <<if $wardrobeOption is undefined or $wardrobeOption is 0>><<set $wardrobeOption to "wear">><</if>>
 <<if $wardrobeRepeat isnot true or ($wardrobeOption is "repair" and $location isnot "home")>><<set $wardrobeOption to "wear">><</if>>
-<label> Wear <<print '<<radiobutton "$wardrobeOption" "wear" '+($wardrobeOption is "wear" or $wardrobeRepeat is false ? "checked" : "")+'>>'>></label> |
-<label> Discard <<print '<<radiobutton "$wardrobeOption" "delete" '+($wardrobeOption is "delete" and $wardrobeRepeat is true ? "checked" : "")+'>>'>></label> |
+
+<label><<radiobutton "$wardrobeOption" "wear" autocheck>> Wear</label> |
+<label><<radiobutton "$wardrobeOption" "delete" autocheck>> Discard</label> |
 <<if $sewingKit is 1 and $location is "home">>
-	<label> Repair <<print '<<radiobutton "$wardrobeOption" "repair" '+($wardrobeOption is "repair" and $wardrobeRepeat is true ? "checked" : "")+'>>'>></label> |
+	<label><<radiobutton "$wardrobeOption" "repair" autocheck>> Repair</label> |
 <</if>>
-<label> Separate Outfits <<print '<<radiobutton "$wardrobeOption" "seperateOutfits" '+($wardrobeOption is "seperateOutfits" and $wardrobeRepeat is true ? "checked" : "")+'>>'>></label> |
-<label> Repeat Actions <<print '<<checkbox "$wardrobeRepeat" false true '+($wardrobeRepeat ? "checked" : "")+'>>'>></label>
+<label><<radiobutton "$wardrobeOption" "seperateOutfits" autocheck>> Separate Outfits</label> |
+<<if $multipleWardrobes is "all" and !$wardrobes[$wardrobe_location].isolated>>
+	<label><<radiobutton "$wardrobeOption" "transfer" autocheck>> Transfer:</label>
+	<<set _options to {}>>
+	<<for _label, _value range $wardrobes>>
+		<<if _value.unlocked and _label isnot $wardrobe_location and !$wardrobes[_label].isolated>>
+			<<set _options[_value.name] to _label>>
+		<</if>>
+	<</for>>
+	<<listbox '_wardrobeTransfer' autoselect>>
+		<<optionsfrom _options>>
+	<</listbox>>
+	|
+<</if>>
+
+<label><<checkbox "$wardrobeRepeat" false true autocheck>> Repeat Actions</label>
 
 <<if $wardrobeOption is "delete" and $wardrobeRepeat is true>>
 	<h2 class="red">Discard On Repeat</h2>
@@ -437,9 +493,16 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 <br>
 <label>
 	Save Clothes Colours in Set
-	<<print '<<checkbox "$saveColor" false true '+($saveColor is true ? "checked" : "")+'>>'>>
+	<<checkbox "_saveColor" false true autocheck>>
 </label>
 <br>
+<<if $multipleWardrobes>>
+	<label>
+		Make clothes set unique to this wardrobe
+		<<checkbox "_saveLocation" false true autocheck>>
+	</label>
+	<br>
+<</if>>
 <div class="wardrobe-action">
 	<<link "Add current clothes as new set">>
 		<<script>>
@@ -471,7 +534,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 			<<set $outfit.last().type.push($outfit_type)>>
 		<</if>>
 
-		<<if $saveColor is true>>
+		<<if _saveColor>>
 			<<set _equip to ["over_upper", "over_lower", "upper", "lower", "under_upper", "under_lower", "over_head", "head", "face", "neck", "hands", "legs", "feet"]>>
 			<<set _colors to {}>>
 			<<for _ie to 0; _ie lt _equip.length; _ie++>>
@@ -484,7 +547,9 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 		<<else>>
 			<<set $outfit.last().colors to false>>
 		<</if>>
-
+		<<if _saveLocation>>
+			<<set $outfit.last().location to $wardrobe_location>>
+		<</if>>
 		<<updatewardrobe "outfits">>
 	<</link>>
 </div>
@@ -492,10 +557,10 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 
 <<widget "wardrobeintegrity">>
 <<set _war_int to $args[0]>>
-<<if $wardrobe[_war_int][_i].integrity gt (($wardrobe[_war_int][_i].integrity_max / 10) * 9)>>
-<<elseif $wardrobe[_war_int][_i].integrity gt (($wardrobe[_war_int][_i].integrity_max / 10) * 5)>>
+<<if _selectedWardrobe[_war_int][_i].integrity gt ((clothingData(_war_int,_selectedWardrobe[_war_int][_i],'integrity_max') / 10) * 9)>>
+<<elseif _selectedWardrobe[_war_int][_i].integrity gt ((clothingData(_war_int,_selectedWardrobe[_war_int][_i],'integrity_max') / 10) * 5)>>
 (frayed)
-<<elseif $wardrobe[_war_int][_i].integrity gt (($wardrobe[_war_int][_i].integrity_max / 10) * 2)>>
+<<elseif _selectedWardrobe[_war_int][_i].integrity gt ((clothingData(_war_int,_selectedWardrobe[_war_int][_i],'integrity_max') / 10) * 2)>>
 (torn)
 <<else>>
 (tattered)
@@ -525,7 +590,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 <<set _outfitTypes to ["upper","lower","under_upper","under_lower"]>>
 <<set _loweroutfitCheck to ["lower","under_lower"]>>
 <<if _errorPrevent isnot true>>
-	__<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1)>>__ <i>$wardrobe[_wardrobe_list].length / $wardrobe.space</i>
+	__<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1)>>__ <i>_selectedWardrobe[_wardrobe_list].length / _selectedWardrobe.space</i>
 	<<if _wardrobe_list is "upper">>(Outfits will also take a lower slot)<</if>>
 	<<if _wardrobe_list is "under_upper">>(Outfits will also take an under lower slot)<</if>>
 	<br>
@@ -552,8 +617,9 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 	Currently equipped:
 	<<if $worn[_wardrobe_list].name isnot "naked">>
 		<<set _wornItem to $worn[_wardrobe_list]>>
-		<<clothingicon _wornItem>>
-		<<print _wornItem.name_cap>>
+		<<set _wornItemData to setup.clothes[_wardrobe_list][_wornItem.index]>>
+		<<clothingicon _wornItem _wardrobe_list>>
+		<<print _wornItemData.name_cap>>
 		<<if _wornItem.colour isnot 0>>
 			<span @class="_wornItem.colour">(_wornItem.colour)</span>
 		<</if>>
@@ -580,10 +646,10 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 				<span class="gold">(Outfit)</span>
 			<</if>>
 		<</if>>
-		<<if _wornItem.integrity gt ((_wornItem.integrity_max / 10) * 9)>>
-		<<elseif _wornItem.integrity gt ((_wornItem.integrity_max / 10) * 5)>>
+		<<if _wornItem.integrity gt ((clothingData(_wardrobe_list,_wornItem,'integrity_max') / 10) * 9)>>
+		<<elseif _wornItem.integrity gt ((clothingData(_wardrobe_list,_wornItem,'integrity_max') / 10) * 5)>>
 			(frayed)
-		<<elseif _wornItem.integrity gt ((_wornItem.integrity_max / 10) * 2)>>
+		<<elseif _wornItem.integrity gt ((clothingData(_wardrobe_list,_wornItem,'integrity_max') / 10) * 2)>>
 			(torn)
 		<<else>>
 			(tattered)
@@ -591,11 +657,11 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 		<a onclick="document.getElementById('wardrobeItemDetails').classList.toggle('hidden')">Extra Info</a>
 		<br>
 		<div id="wardrobeItemDetails" class="hidden">
-			<<if _wornItem.plural is 1>><<integrity _wornItem.integrity_max "cap">><<else>>A <<integrity _wornItem.integrity_max>><</if>>
+			<<if _wornItem.plural is 1>><<integrity clothingData(_wardrobe_list,_wornItem,'integrity_max') "cap">><<else>>A <<integrity clothingData(_wardrobe_list,_wornItem,'integrity_max')>><</if>>
 			and <<reveal _wornItem.reveal>> <<print _wornItem.name>>.
 
 			<<if _wornItem.gender is "m">><span class="lblue">For boys ♂.</span><<elseif _wornItem.gender is "f">><span class="pink">For girls ♀.</span><</if>>
-			<<print _wornItem.description>>
+			<<print _wornItemData.description>>
 			<br>
 			<<warmth _wornItem.warmth>>
 			<br><br>
@@ -603,7 +669,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 			<<shoptraits>>
 		</div>
 
-		<<if _wardrobe_list is "upper" and $worn.lower.name isnot "naked" and _wornItem.outfitPrimary is undefined and !_wornItem.notuck>>
+		<<if _wardrobe_list is "upper" and $worn.lower.name isnot "naked" and _wornItem.outfitPrimary is undefined and !_wornItemData.notuck>>
 			<<if $upperTucked>>
 				<<link "Untuck">>
 					<<set $upperTucked = 0>>
@@ -647,15 +713,16 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 		<div class="wardrobeItem wardrobe-action no-numberify"><<wearlink_norefresh "Towel" 'towel'>></div>
 	<</if>>
 
-	<<for _i to 0; _i lt $wardrobe[_wardrobe_list].length; _i++>>
-		<<set _item to $wardrobe[_wardrobe_list][_i]>>
+	<<for _i to 0; _i lt _selectedWardrobe[_wardrobe_list].length; _i++>>
+		<<set _item to _selectedWardrobe[_wardrobe_list][_i]>>
+		<<set _itemData to setup.clothes[_wardrobe_list][_item.index]>>
 		<<if _item.outfitSecondary isnot undefined>>
 			<<if _item.outfitSecondary[1] isnot "broken">>
 				<<continue>>
 			<</if>>
 		<</if>>
 		<div class="wardrobeItem wardrobe-action no-numberify">
-		<<clothingicon _item>><<wearlink_norefresh _item.name_cap _i>>
+		<<clothingicon _item _wardrobe_list>><<wearlink_norefresh _itemData.name_cap _i>>
 		<<if _item.gender is "m">>
 			| <span class="blue">♂</span> |
 		<<elseif _item.gender is "f">>
@@ -664,7 +731,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 			|
 		<</if>>
 		<<if _item.colour isnot 0>>
-			<span @class="$wardrobe[_wardrobe_list][_i].colour">(_item.colour)</span>
+			<span @class="_selectedWardrobe[_wardrobe_list][_i].colour">(_item.colour)</span>
 		<</if>>
 		<<if _item.outfitPrimary isnot undefined>>
 			<<set _keys to Object.keys(_item.outfitPrimary)>>
@@ -763,8 +830,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 
 <<widget "oldWardrobeListDisplay">>
 <<wardrobeClothingOptions>>
-
-<<if $worn.lower.name isnot "naked" and $worn.upper.outfitPrimary is undefined and !$worn.upper.notuck>>
+<<if $worn.lower.name isnot "naked" and $worn.upper.outfitPrimary is undefined and !setup.clothes.upper[$worn.upper.index].notuck>>
 	<<if $upperTucked>>
 		<<link [["Untuck " + $worn.upper.name|$passage]]>><<set $upperTucked = 0>><</link>>
 	<<else>>
@@ -834,7 +900,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 <</switch>>
 
 <div class="clothingBox">
-__<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_showType is "outfits" ? " Outfits" : "")>>__ <i>$wardrobe[_wardrobe_list].length / $wardrobe.space</i>
+__<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_showType is "outfits" ? " Outfits" : "")>>__ <i>_selectedWardrobe[_wardrobe_list].length / _selectedWardrobe.space</i>
 <br><br>
 <div>
 <ul>
@@ -847,8 +913,8 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 <<if (_wardrobe_list is "upper" or _wardrobe_list is "lower") and _showType isnot "outfits">>
 	<li class="no-numberify"><<wearlink_norefresh "Towel" 'towel' _wear>></li>
 <</if>>
-<<for _i to 0; _i lt $wardrobe[_wardrobe_list].length; _i++>>
-	<<set _item to $wardrobe[_wardrobe_list][_i]>>
+<<for _i to 0; _i lt _selectedWardrobe[_wardrobe_list].length; _i++>>
+	<<set _item to _selectedWardrobe[_wardrobe_list][_i]>>
 	<<if _item.outfitSecondary isnot undefined>>
 		<<if _item.outfitSecondary[1] isnot "broken">>
 			<<continue>>
@@ -857,9 +923,9 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 	<<if (_item.outfitPrimary isnot undefined and _showType is "non-outfits") or (_item.outfitPrimary is undefined and _showType is "outfits")>>
 		<<continue>>
 	<</if>>
-	<li class="no-numberify">/*<<clothingicon _item>>*/<<wearlink_norefresh _item.name_cap _i _wear>>
-	<<if $wardrobe[_wardrobe_list][_i].colour isnot 0>>
-		<span @class="$wardrobe[_wardrobe_list][_i].colour">(_item.colour)</span>
+	<li class="no-numberify">/*<<clothingicon _item>>*/<<wearlink_norefresh setup.clothes[_wardrobe_list][_item.index].name_cap _i _wear>>
+	<<if _selectedWardrobe[_wardrobe_list][_i].colour isnot 0>>
+		<span @class="_selectedWardrobe[_wardrobe_list][_i].colour">(_item.colour)</span>
 	<</if>>
 	<<wardrobeintegrity _wardrobe_list>>
 	</li>
@@ -875,7 +941,7 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 	<<set _orderType to $args[1]>>
 	<<set _descending to $args[2]>>
 
-	<<set _wardrobeItems to clone($wardrobe[_slot])>>
+	<<set _wardrobeItems to clone(_selectedWardrobe[_slot])>>
 	<<set _newWardrobeItems to []>>
 	<<switch _orderType>>
 	<<case "name">>
@@ -925,7 +991,7 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 	<<case "integrity">>
 		<<set _itemIntegrity to []>>
 		<<for _i to 0; _i lt _wardrobeItems.length; _i++>>
-			<<run _itemIntegrity.pushUnique((_wardrobeItems[_i].integrity / _wardrobeItems[_i].integrity_max))>>
+			<<run _itemIntegrity.pushUnique((_wardrobeItems[_i].integrity / clothingData(_slot,_wardrobeItems[_i],'integrity_max')))>>
 		<</for>>
 		<<if _descending>>
 			<<set _sortedItemIntegrity to _itemIntegrity.sort()>>
@@ -935,7 +1001,7 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 
 		<<for _i to 0; _i lt _sortedItemIntegrity.length; _i++>>
 			<<for _j to 0; _j lt _wardrobeItems.length; _j++>>
-				<<if (_wardrobeItems[_j].integrity / _wardrobeItems[_j].integrity_max) is _sortedItemIntegrity[_i]>>
+				<<if (_wardrobeItems[_j].integrity / clothingData(_slot,_wardrobeItems[_j],'integrity_max')) is _sortedItemIntegrity[_i]>>
 					<<run _newWardrobeItems.push(clone(_wardrobeItems[_j]))>>
 				<</if>>
 			<</for>>
@@ -973,7 +1039,7 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 	<</switch>>
 
 	<<if _newWardrobeItems isnot []>>
-		<<set $wardrobe[_slot] to clone(_newWardrobeItems)>>
+		<<set _selectedWardrobe[_slot] to clone(_newWardrobeItems)>>
 	<</if>>
 	<<run Dynamic.render()>>
 <</if>>
@@ -986,38 +1052,38 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 <<set _equip to ["lower", "under_lower", "head"]>>
 <<for _slot range _equip>>
 	<<set $_itemIndex to {}>>
-	<<for $_i to 0; $_i lt $wardrobe[_slot].length; $_i++>>
-		<<if $wardrobe[_slot][$_i].outfitSecondary is undefined>>
+	<<for $_i to 0; $_i lt _selectedWardrobe[_slot].length; $_i++>>
+		<<if _selectedWardrobe[_slot][$_i].outfitSecondary is undefined>>
 			<<continue>>
 		<</if>>
-		<<if $wardrobe[_slot][$_i].outfitSecondary[1] is "broken">>
+		<<if _selectedWardrobe[_slot][$_i].outfitSecondary[1] is "broken">>
 			<<continue>>
 		<</if>>
 
 		/*Prep*/
 		<<set $_markBroken to true>>
 		<<set $_found to false>>
-		<<set $_item to $wardrobe[_slot][$_i]>>
-		<<set $_outfitSecondary to $wardrobe[_slot][$_i].outfitSecondary>>
+		<<set $_item to _selectedWardrobe[_slot][$_i]>>
+		<<set $_outfitSecondary to _selectedWardrobe[_slot][$_i].outfitSecondary>>
 		<<if $_itemIndex[$_outfitSecondary[0]] is undefined>>
 			<<set $_itemIndex[$_outfitSecondary[0]] to []>>
 		<</if>>
 
 		/*Look for a primary piece that matches*/
-		<<for $_j to 0; $_j lt $wardrobe[$_outfitSecondary[0]].length; $_j++>>
-			<<if $wardrobe[$_outfitSecondary[0]][$_j].name isnot $_outfitSecondary[1]>>
+		<<for $_j to 0; $_j lt _selectedWardrobe[$_outfitSecondary[0]].length; $_j++>>
+			<<if _selectedWardrobe[$_outfitSecondary[0]][$_j].name isnot $_outfitSecondary[1]>>
 				<<continue>>
 			<</if>>
 			<<if $_itemIndex[$_outfitSecondary[0]].includes($_j)>>
 				<<continue>>
 			<</if>>
 
-			<<if $wardrobe[$_outfitSecondary[0]][$_j].colour is $_item.colour and $wardrobe[$_outfitSecondary[0]][$_j].accessory_colour is $_item.accessory_colour>>
+			<<if _selectedWardrobe[$_outfitSecondary[0]][$_j].colour is $_item.colour and _selectedWardrobe[$_outfitSecondary[0]][$_j].accessory_colour is $_item.accessory_colour>>
 				<<if $_item.colour isnot "custom" and $_item.accessory_colour isnot "custom">>
 					<<set $_markBroken to false>>
 					<<run $_itemIndex[$_outfitSecondary[0]].push(clone($_j))>>
 					<<break>>
-				<<elseif $_item.colourCustom is $wardrobe[$_outfitSecondary[0]][$_j].colourCustom and $_item.accessory_colourCustom is $wardrobe[$_outfitSecondary[0]][$_j].accessory_colourCustom>>
+				<<elseif $_item.colourCustom is _selectedWardrobe[$_outfitSecondary[0]][$_j].colourCustom and $_item.accessory_colourCustom is _selectedWardrobe[$_outfitSecondary[0]][$_j].accessory_colourCustom>>
 					<<set $_markBroken to false>>
 					<<run $_itemIndex[$_outfitSecondary[0]].push(clone($_j))>>
 					<<break>>
@@ -1026,10 +1092,10 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 		<</for>>
 		<<if $_markBroken is true>>
 			/*Mark as broken*/
-			<<set $wardrobe[_slot][$_i].outfitSecondary[1] to "broken">>
-			<<set $wardrobe[_slot][$_i].one_piece to "broken">>
-			<<set $wardrobe[_slot][$_i].set to clone(_slot)>>
-			<<set $wardrobe[_slot][$_i].sanityCheck to true>>
+			<<set _selectedWardrobe[_slot][$_i].outfitSecondary[1] to "broken">>
+			<<set _selectedWardrobe[_slot][$_i].one_piece to "broken">>
+			<<set _selectedWardrobe[_slot][$_i].set to clone(_slot)>>
+			<<set _selectedWardrobe[_slot][$_i].sanityCheck to true>>
 		<</if>>
 	<</for>>
 <</for>>
@@ -1043,29 +1109,29 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 		<<continue>>
 	<</if>>
 	<<for $_j to 0; $_j lt $wardrobeRepair[_equip[$_i]].length; $_j++>>
-		<<if $wardrobe[_equip[$_i]].length gte $wardrobe.space>>
+		<<if _selectedWardrobe[_equip[$_i]].length gte _selectedWardrobe.space>>
 			<<set _takenAway++>>
 			<<continue>>
 		<</if>>
 		<<generalSend "wardrobe" _equip[$_i] `$wardrobeRepair[_equip[$_i]][$_j][0]` `$wardrobeRepair[_equip[$_i]][$_j][1]` `$wardrobeRepair[_equip[$_i]][$_j][3]`>>
 		<<if $wardrobeRepair[_equip[$_i]][$_j][2] isnot undefined and $wardrobeRepair[_equip[$_i]][$_j][2] isnot null>>
 			/*colourCustom*/
-			<<set $wardrobe[_equip[$_i]].last().colourCustom to $wardrobeRepair[_equip[$_i]][$_j][2]>>
-			<<if $wardrobe[_equip[$_i]].last().outfitPrimary isnot undefined>>
-				<<for $_label, $_value range $wardrobe[_equip[$_i]].last().outfitPrimary>>
-					<<if $wardrobe[$_label].last().name is $_value>>
-						<<set $wardrobe[$_label].last().colourCustom to $wardrobeRepair[_equip[$_i]][$_j][2]>>
+			<<set _selectedWardrobe[_equip[$_i]].last().colourCustom to $wardrobeRepair[_equip[$_i]][$_j][2]>>
+			<<if _selectedWardrobe[_equip[$_i]].last().outfitPrimary isnot undefined>>
+				<<for $_label, $_value range _selectedWardrobe[_equip[$_i]].last().outfitPrimary>>
+					<<if _selectedWardrobe[$_label].last().name is $_value>>
+						<<set _selectedWardrobe[$_label].last().colourCustom to $wardrobeRepair[_equip[$_i]][$_j][2]>>
 					<</if>>
 				<</for>>
 			<</if>>
 		<</if>>
 		<<if $wardrobeRepair[_equip[$_i]][$_j][4] isnot undefined and $wardrobeRepair[_equip[$_i]][$_j][4] isnot null>>
 			/*accessory_colourCustom*/
-			<<set $wardrobe[_equip[$_i]].last().accessory_colourCustom to $wardrobeRepair[_equip[$_i]][$_j][4]>>
-			<<if $wardrobe[_equip[$_i]].last().outfitPrimary isnot undefined>>
-				<<for $_label, $_value range $wardrobe[_equip[$_i]].last().outfitPrimary>>
-					<<if $wardrobe[$_label].last().name is $_value>>
-						<<set $wardrobe[$_label].last().colourCustom to $wardrobeRepair[_equip[$_i]][$_j][2]>>
+			<<set _selectedWardrobe[_equip[$_i]].last().accessory_colourCustom to $wardrobeRepair[_equip[$_i]][$_j][4]>>
+			<<if _selectedWardrobe[_equip[$_i]].last().outfitPrimary isnot undefined>>
+				<<for $_label, $_value range _selectedWardrobe[_equip[$_i]].last().outfitPrimary>>
+					<<if _selectedWardrobe[$_label].last().name is $_value>>
+						<<set _selectedWardrobe[$_label].last().colourCustom to $wardrobeRepair[_equip[$_i]][$_j][2]>>
 					<</if>>
 				<</for>>
 			<</if>>
@@ -1085,17 +1151,17 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 <<set _equipped to []>>
 <<for $_label, $_value range $randomEquipConfigure>>
 	<<if $_value>>
-		<<generalUndress "wardrobe" $_label>>
+		<<generalUndress $wardrobe_location $_label>>
 		<<run $_equip.push($_label)>>
 	<</if>>
 <</for>>
 <<for _i to 0; _i lt $_equip.length;_i++>>
-	<<if !_equipped.includes($_equip[_i]) and $worn[$_equip[_i]].name is "naked" and $wardrobe[$_equip[_i]].length gt 0>>
+	<<if !_equipped.includes($_equip[_i]) and $worn[$_equip[_i]].name is "naked" and _selectedWardrobe[$_equip[_i]].length gt 0>>
 		<<set _ids to []>>
 
-		<<for _j to 0; _j lt $wardrobe[$_equip[_i]].length; _j++>>
-			<<if $wardrobe[$_equip[_i]][_j].outfitSecondary is undefined>>
-			<<elseif $wardrobe[$_equip[_i]][_j].outfitSecondary[1] isnot "broken">>
+		<<for _j to 0; _j lt _selectedWardrobe[$_equip[_i]].length; _j++>>
+			<<if _selectedWardrobe[$_equip[_i]][_j].outfitSecondary is undefined>>
+			<<elseif _selectedWardrobe[$_equip[_i]][_j].outfitSecondary[1] isnot "broken">>
 				<<continue>>
 			<</if>>
 			<<run _ids.push(_j)>>
@@ -1103,8 +1169,8 @@ __<<print _wardrobe_list[0].toUpperCase() + _wardrobe_list.substring(1) + (_show
 		<<set _id to _ids.pluck()>>
 		<<if _id>>
 			<<run _equipped.pushUnique($_equip[_i])>>
-			<<if $wardrobe[$_equip[_i]][_id].outfitPrimary isnot undefined>>
-				<<for $_label, $_value range $wardrobe[$_equip[_i]][_id].outfitPrimary>>
+			<<if _selectedWardrobe[$_equip[_i]][_id].outfitPrimary isnot undefined>>
+				<<for $_label, $_value range _selectedWardrobe[$_equip[_i]][_id].outfitPrimary>>
 					<<if $_value isnot "broken">>
 						<<run _equipped.pushUnique($_label)>>
 					<</if>>
@@ -1137,13 +1203,38 @@ $warmth warmth versus $chill chill
 Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 1.3) + 69)>>
 <</widget>>
 
+<<widget "wardrobeSelection">>
+<<if !$multipleWardrobes or !$wardrobes[$wardrobe_location]>>
+	<<set $wardrobe_location to "wardrobe">>
+<<elseif $forceWardrobeLocation>>
+	<<set $wardrobe_location to $forceWardrobeLocation>>
+<<elseif $multipleWardrobes is "isolated" and !$wardrobes[$wardrobe_location].isolated>>
+	<<set $wardrobe_location to "wardrobe">>
+<</if>>
+<<if $debug and $multipleWardrobes and !$args[0]>>
+	<div class="no-numberify">Debug:
+		<<for _label, _value range $wardrobes>>
+			<<if _value.unlocked is undefined>>
+			<<elseif $wardrobe_location is _label>>
+				<span class="gold"><<print _value.name>></span> |
+			<<else>>
+				<<capture _label>>
+					<<link [[_value.name|$passage]]>><<set $forceWardrobeLocation to _label>><</link>> |
+				<</capture>>
+			<</if>>
+		<</for>>
+	</div>
+	<br>
+<</if>>
+<</widget>>
+
 <<widget "wardrobeExits">>
 	<<switch $passage>>
 		<<case "Wardrobe">>
-			<<link [[Close wardrobe|Bedroom]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+			<<link [[Close wardrobe|Bedroom]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 		<<case "Changing Room">>
 			<<if $exposed lte 1>>
-				<<link[[Leave|Beach]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link[[Leave|Beach]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				You can't go out like this!
@@ -1151,7 +1242,7 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 			<</if>>
 		<<case "Sydney Beach Changing Room">>
 			<<if $exposed lte 1>>
-				<<link[[Leave|Sydney Beach Swimsuit]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link[[Leave|Sydney Beach Swimsuit]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				You can't go out like this!
@@ -1159,7 +1250,7 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 			<</if>>
 		<<case "Sydney Beach Changing Room Leave">>
 			<<if $exposed lte 1>>
-				<<link[[Leave|Sydney Beach Leave]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link[[Leave|Sydney Beach Leave]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				You can't go out like this!
@@ -1167,10 +1258,10 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 			<</if>>
 		<<case "Eden Wardrobe">>
 			<<if $exhibitionism gte 75 or $loveInterest.primary is "Eden" or $loveInterest.secondary is "Eden">>
-				<<link [[Done|Eden Cabin]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Eden Cabin]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 			<<elseif $exhibitionism gte 55>>
 				<<if $exposed lte 1>>
-				<<link [[Done|Eden Cabin]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Eden Cabin]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 				<<else>>
 				You can't remain undressed like this!
@@ -1178,7 +1269,7 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 				<</if>>
 			<<else>>
 				<<if $exposed lte 0>>
-				<<link [[Done|Eden Cabin]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Eden Cabin]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 				<<else>>
 				You can't remain undressed like this!
@@ -1187,10 +1278,10 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 			<</if>>
 		<<case "Eden Night Wardrobe">>
 			<<if $exhibitionism gte 75 or $loveInterest.primary is "Eden" or $loveInterest.secondary is "Eden">>
-				<<link [[Done|Eden Cabin Bed]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Eden Cabin Bed]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 			<<elseif $exhibitionism gte 55>>
 				<<if $exposed lte 1>>
-				<<link [[Done|Eden Cabin Bed]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Eden Cabin Bed]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 				<<else>>
 				You can't remain undressed like this!
@@ -1198,7 +1289,7 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 				<</if>>
 			<<else>>
 				<<if $exposed lte 0>>
-				<<link [[Done|Eden Cabin Bed]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Eden Cabin Bed]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 				<<else>>
 				You can't remain undressed like this!
@@ -1208,18 +1299,18 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 		<<case "Asylum Wardrobe">>
 			<<if $exhibitionism lte 54>>
 				<<if $exposed lte 0>>
-					<<link [[Done|Asylum Cell]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Done|Asylum Cell]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't remain undressed like this!
 					<br><br>
 				<</if>>
 			<<elseif $exhibitionism gte 75>>
-				<<link [[Done|Asylum Cell]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Asylum Cell]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				<<if $exposed lte 1>>
-					<<link [[Done|Asylum Cell]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Done|Asylum Cell]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't remain undressed like this!
@@ -1229,18 +1320,18 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 		<<case "Farm Wardrobe">>
 			<<if $exhibitionism lte 54>>
 				<<if $exposed lte 0>>
-					<<link [[Done|Farm Bedroom]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Done|Farm Bedroom]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't remain undressed like this!
 					<br><br>
 				<</if>>
 			<<elseif $exhibitionism gte 75>>
-				<<link [[Done|Farm Bedroom]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Farm Bedroom]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				<<if $exposed lte 1>>
-					<<link [[Done|Farm Bedroom]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Done|Farm Bedroom]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't remain undressed like this!
@@ -1250,18 +1341,18 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 		<<case "Strip Club Wardrobe">>
 			<<if $exhibitionism lte 14>>
 				<<if $exposed lte 0>>
-					<<link [[Step away|Strip Club Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Step away|Strip Club Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't go out like this!
 					<br><br>
 				<</if>>
 			<<elseif $exhibitionism gte 55>>
-				<<link [[Step away|Strip Club Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Step away|Strip Club Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				<<if $exposed lte 1>>
-					<<link [[Step away|Strip Club Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Step away|Strip Club Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't go out like this!
@@ -1271,18 +1362,18 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 		<<case "Brothel Wardrobe">>
 			<<if $exhibitionism lte 14>>
 				<<if $exposed lte 0>>
-					<<link [[Step away|Brothel Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Step away|Brothel Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't go out like this!
 					<br><br>
 				<</if>>
 			<<elseif $exhibitionism gte 55>>
-				<<link [[Step away|Brothel Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Step away|Brothel Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				<<if $exposed lte 1>>
-					<<link [[Step away|Brothel Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Step away|Brothel Dressing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't go out like this!
@@ -1294,7 +1385,7 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 				You can't go out like this!
 				<br><br>
 			<<else>>
-				<<link [[Leave|School Boy Changing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Leave|School Boy Changing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<</if>>
 		<<case "School Girl Wardrobe">>
@@ -1302,24 +1393,24 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 				You can't go out like this!
 				<br><br>
 			<<else>>
-				<<link [[Leave|School Girl Changing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Leave|School Girl Changing Room]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<</if>>
 		<<case "Farm Assault Wardrobe">>
 			<<if $exhibitionism lte 54>>
 				<<if $exposed lte 0>>
-					<<link [[Done|Farm Assault Intro]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Done|Farm Assault Intro]]>><<pass 1>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't remain undressed like this!
 					<br><br>
 				<</if>>
 			<<elseif $exhibitionism gte 75>>
-				<<link [[Done|Farm Assault Intro]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+				<<link [[Done|Farm Assault Intro]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 				<br><br>
 			<<else>>
 				<<if $exposed lte 1>>
-					<<link [[Done|Farm Assault Intro]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><</link>>
+					<<link [[Done|Farm Assault Intro]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 					<br><br>
 				<<else>>
 					You can't remain undressed like this!
@@ -1332,6 +1423,7 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 :: Wardrobe
 <<effects>>
 <<set $wardrobe_location to "wardrobe">>
+<<wardrobeSelection>>
 You look in your wardrobe.
 <br><br>
 <div id="wardrobewear"><<wardrobewear>></div>
@@ -1341,7 +1433,8 @@ You look in your wardrobe.
 
 :: Changing Room
 <<effects>><<location "changingroom">>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "changingRoom">>
+<<wardrobeSelection>>
 You are in a small wooden changing room.
 <br><br>
 <div id="wardrobewear"><<wardrobewear>></div>
@@ -1352,7 +1445,8 @@ You are in a small wooden changing room.
 <<effects>>
 You look through the cupboard containing your clothes. There's an old dressing screen for privacy.
 <br><br>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "edensCabin">>
+<<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 <<wardrobe>>
@@ -1362,7 +1456,8 @@ You look through the cupboard containing your clothes. There's an old dressing s
 <<effects>>
 You look through the cupboard containing your clothes.
 <br><br>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "asylum">>
+<<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 
@@ -1372,7 +1467,8 @@ You look through the cupboard containing your clothes.
 <<effects>>
 You look through the rustic wardrobe.
 <br><br>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "alexFarm">>
+<<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 
@@ -1381,7 +1477,8 @@ You look through the rustic wardrobe.
 
 :: Strip Club Wardrobe
 <<effects>>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "stripClub">>
+<<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 
@@ -1389,7 +1486,8 @@ You look through the rustic wardrobe.
 
 :: Brothel Wardrobe
 <<effects>>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "brothel">>
+<<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 
@@ -1399,7 +1497,8 @@ You look through the rustic wardrobe.
 :: School Boy Wardrobe
 
 <<effects>><<set $outside to 0>><<set $location to "pool">>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "schoolBoys">>
+<<wardrobeSelection>>
 You stand in front of your open locker.
 <br><br>
 <div id="wardrobewear"><<wardrobewear>></div>
@@ -1410,7 +1509,8 @@ You stand in front of your open locker.
 :: School Girl Wardrobe
 
 <<effects>><<set $outside to 0>><<set $location to "pool">>
-<<set $wardrobe_location to "wardrobe">>
+<<set $wardrobe_location to "schoolGirls">>
+<<wardrobeSelection>>
 You stand in front of your open locker.
 <br><br>
 <div id="wardrobewear"><<wardrobewear>></div>
@@ -1429,9 +1529,9 @@ Are you prepared to add all your
 to the crate and send them to be sold? Might be best to go shopping shortly after.
 <br><br>
 <<set _value to 0>>
-<<for _items range $wardrobe>>
+<<for _label, _items range $wardrobe>>
 	<<for _i to 0; _i lt _items.length; _i++>>
-		<<if _items[_i].shop.length is 0>>
+		<<if setup.clothes[_label][_items[_i].index].shop.length is 0>>
 			<<continue>>
 		<</if>>
 		<<if _items[_i].outfitSecondary isnot undefined>>
@@ -1440,7 +1540,7 @@ to the crate and send them to be sold? Might be best to go shopping shortly afte
 		<<if _items[_i].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost(_items[_i]) * (_items[_i].integrity / _items[_i].integrity_max) / 3)>>
+		<<set _value += Math.floor(getClothingCost(_items[_i]) * (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max')) / 3, _label)>>
 	<</for>>
 <</for>>
 It will earn you <<printmoney `_value + 5000`>>.
@@ -1460,7 +1560,7 @@ It will earn you <<printmoney `_value + 5000`>>.
 <<for $_i to 0; $_i lt _equip.length; $_i++>>
 	<<set _toDelete to []>>
 	<<for $_j to 0; $_j lt $wardrobe[_equip[$_i]].length; $_j++>>
-		<<if $wardrobe[_equip[$_i]][$_j].shop.length is 0>>
+		<<if setup.clothes[_equip[$_i]][$wardrobe[_equip[$_i]][$_j].index].shop.length is 0>>
 			<<continue>>
 		<</if>>
 		<<if $wardrobe[_equip[$_i]][$_j].outfitSecondary isnot undefined>>
@@ -1470,7 +1570,7 @@ It will earn you <<printmoney `_value + 5000`>>.
 		<<if $wardrobe[_equip[$_i]][$_j].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j]) * ($wardrobe[_equip[$_i]][$_j].integrity / $wardrobe[_equip[$_i]][$_j].integrity_max) / 3)>>
+		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j]) * ($wardrobe[_equip[$_i]][$_j].integrity / clothingData(_equip[$_i],$wardrobe[_equip[$_i]][$_j],'integrity_max')) / 3,_equip[$_i])>>
 		<<run _toDelete.push(clone($_j))>>
 	<</for>>
 	<<for $_j to $wardrobe[_equip[$_i]].length; $_j gte 0; $_j-->>
@@ -1498,7 +1598,7 @@ Are you prepared to add all your
 to the crate and send them to be repaired? Might be best to go shopping shortly after.
 <br><br>
 <<set _value to 0>>
-<<for _items range $wardrobe>>
+<<for _label, _items range $wardrobe>>
 	<<for _i to 0; _i lt _items.length; _i++>>
 		<<if _items[_i].outfitSecondary isnot undefined>>
 			<<continue>>
@@ -1506,7 +1606,7 @@ to the crate and send them to be repaired? Might be best to go shopping shortly 
 		<<if _items[_i].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost(_items[_i]) * (1 - (_items[_i].integrity / _items[_i].integrity_max)) * 1.25)>>
+		<<set _value += Math.floor(getClothingCost(_items[_i]) * (1 - (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max'))) * 1.25,_label)>>
 	<</for>>
 <</for>>
 It will cost you
@@ -1543,7 +1643,7 @@ It will cost you
 		<<if $wardrobe[_equip[$_i]][$_j].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j]) * (1 - ($wardrobe[_equip[$_i]][$_j].integrity / $wardrobe[_equip[$_i]][$_j].integrity_max)) * 1.25)>>
+		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j]) * (1 - ($wardrobe[_equip[$_i]][$_j].integrity / clothingData(_equip[$_i],$wardrobe[_equip[$_i]][$_j],'integrity_max'))) * 1.25,_equip[$_i])>>
 
 		<<if $wardrobeRepair[_equip[$_i]] is undefined>>
 			<<set $wardrobeRepair[_equip[$_i]] to []>>
