@@ -68,7 +68,7 @@
 	<<if Object.keys(_askActions).length gt 0>>
 		<<set _mouthaction["Ask "+_pron+""] to "ask">>
 		<<set _defaultsCombatAction to "askActions">>
-		<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+		<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 		<<set _pass to false>>
 		<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 			<<if Object.values(_askActions).includes(_actionsSet[_set])>>

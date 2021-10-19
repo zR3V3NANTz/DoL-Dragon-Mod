@@ -107,8 +107,9 @@ What makes you feel uncomfortable?
 		<<set _titles to ["Left Hand","Right Hand","Feet","Mouth","Penis","Vagina","Anus"]>>
 		<<set _dataName to ["leftaction","rightaction","feetaction","mouthaction","penisaction","vaginaaction","anusaction"]>>
 		<<set _data to ["_leftHand","_rightHand","_feet","_mouth","_penis","_vagina","_anus"]>>
+		<<set _defaultActions = DefaultActions.load(DefaultActions.create())>>
 
-		<<listbox "_defaultActions" autoselect>>
+		<<listbox "_defaultoption" autoselect>>
 			<<optionsfrom _options>>
 		<</listbox>>
 		<<combatDefaults>>
@@ -125,7 +126,7 @@ What makes you feel uncomfortable?
 
 <<widget "othersFeelings">>
 <<set _currentOptions to $args[0]>>
-<<set _stringDefault to "$actionDefaults."+_options[_currentOptions]>>
+<<set _stringDefault to "_defaultActions.consensual."+_options[_currentOptions]>>
 
 <<switch _options[_currentOptions]>>
 	<<case "Everyone">><span class="red">"Everyone" will only apply defaults when the "Override related settings" link is used. This will override defaults for everyone.</span>
@@ -173,21 +174,24 @@ __If consensual:__
 	<<if (_titles[_i] is "Penis" and !$player.penisExist) or (_titles[_i] is "Vagina" and !$player.vaginaExist)>>
 		<<continue>>
 	<</if>>
+	<!-- This creates the consensual list of items. -->
 	<span class="listMargin">
 		<<print _titles[_i]>>:
-		<<print '<<listbox "'+_stringDefault+".consensual."+_dataName[_i]+'['+_currentActionSet+']" autoselect>><<optionsfrom '+_data[_i]+'>><</listbox>>'>>
+		<<print '<<listbox "'+_stringDefault+'.'+_dataName[_i]+'['+_currentActionSet+']" autoselect>><<optionsfrom '+_data[_i]+'>><</listbox>>'>>
 	</span>
 	<br>
 <</for>>
 <<if _options[_currentOptions] is "Tentacles">>
-	<label>Auto Select different tentacle for grab actions when the current tentacle is occupied <<print '<<checkbox "$actionDefaults.Tentacles.consensual.regrab" false true ' + ($actionDefaults.Tentacles.consensual.regrab is true ? "checked" : "") + '>>'>></label>
+	<label>Auto Select different tentacle for grab actions when the current tentacle is occupied <<print '<<checkbox "_defaultActions.consensual.Tentacles.regrab[0]" false true ' + (_defaultActions.consensual.Tentacles.regrab[0] is true ? "checked" : "") + '>>'>></label>
 	<br>
 <</if>>
-<<if $actionDefaults[_options[_currentOptions]].consensual.askActions isnot undefined>>
+<<if _defaultActions.consensual[_options[_currentOptions]].askActions isnot undefined>>
 	<label>Mouth "Ask them" default option
-	<<print '<<listbox "'+_stringDefault+'.consensual.askActions['+_currentActionSet+']" autoselect>><<optionsfrom _askActions>><</listbox>>'>></label>
+	<<print '<<listbox "'+_stringDefault+'.askActions['+_currentActionSet+']" autoselect>><<optionsfrom _askActions>><</listbox>>'>></label>
 	<br>
 <</if>>
+
+<<set _stringDefault to "_defaultActions.rape."+_options[_currentOptions]>>
 
 <<if _options[_currentOptions] isnot "Robin">>
 	<<if _options[_currentOptions] is "Tentacles">>
@@ -205,17 +209,17 @@ __If consensual:__
 		<</if>>
 		<span class="listMargin">
 			<<print _titles[_i]>>:
-			<<print '<<listbox "'+_stringDefault+".rape."+_dataName[_i]+'['+_currentActionSet+']" autoselect>><<optionsfrom '+_data[_i]+'>><</listbox>>'>>
+			<<print '<<listbox "'+_stringDefault+"."+_dataName[_i]+'['+_currentActionSet+']" autoselect>><<optionsfrom '+_data[_i]+'>><</listbox>>'>>
 		</span>
 		<br>
 	<</for>>
 	<<if _options[_currentOptions] is "Tentacles">>
-		<label>Auto Select different tentacle for grab actions when the current tentacle is occupied <<print '<<checkbox "$actionDefaults.Tentacles.rape.regrab" false true ' + ($actionDefaults.Tentacles.rape.regrab is true ? "checked" : "") + '>>'>></label>
+		<label>Auto Select different tentacle for grab actions when the current tentacle is occupied <<print '<<checkbox "_defaultActions.rape.Tentacles.regrab[0]" false true ' + (_defaultActions.rape.Tentacles.regrab[0] is true ? "checked" : "") + '>>'>></label>
 		<br>
 	<</if>>
-	<<if $actionDefaults[_options[_currentOptions]].rape.askActions isnot undefined>>
+	<<if _defaultActions.rape[_options[_currentOptions]].askActions isnot undefined>>
 		<label>Mouth "Ask them" default option
-		<<print '<<listbox "'+_stringDefault+'.rape.askActions['+_currentActionSet+']" autoselect>><<optionsfrom _askActions>><</listbox>>'>></label>
+		<<print '<<listbox "'+_stringDefault+'.askActions['+_currentActionSet+']" autoselect>><<optionsfrom _askActions>><</listbox>>'>></label>
 		<br>
 	<</if>>
 <</if>>
@@ -256,149 +260,11 @@ __If consensual:__
 <</widget>>
 
 <<widget "setupDefaults">>
-<<set _defaultItem to ["rest","rest","rest","rest","rest","rest","rest","rest","rest","rest","rest","rest","rest","rest","rest"]>>
-<<set _defaultObject to {
-	rape:{
-		leftaction:clone(_defaultItem),
-		rightaction:clone(_defaultItem),
-		feetaction:clone(_defaultItem),
-		mouthaction:clone(_defaultItem),
-		penisaction:clone(_defaultItem),
-		vaginaaction:clone(_defaultItem),
-		anusaction:clone(_defaultItem)
-	},
-	consensual:{
-		leftaction:clone(_defaultItem),
-		rightaction:clone(_defaultItem),
-		feetaction:clone(_defaultItem),
-		mouthaction:clone(_defaultItem),
-		penisaction:clone(_defaultItem),
-		vaginaaction:clone(_defaultItem),
-		anusaction:clone(_defaultItem)
-	}
-}>>
-<<if $actionDefaults is undefined>>
-	<<set $actionDefaults to {
-		"Everyone":clone(_defaultObject),
-		"Strangers":clone(_defaultObject),
-		"Acquaintances":clone(_defaultObject),
-		"Animals":clone(_defaultObject),
-		"Robin":clone(_defaultObject),
-		"Bailey":clone(_defaultObject),
-		"Whitney":clone(_defaultObject),
-		"Kylar":clone(_defaultObject),
-		"Eden":clone(_defaultObject),
-		"Avery":clone(_defaultObject),
-		"Leighton":clone(_defaultObject)
-	}>>
-<</if>>
-<<if $maxDefaultActionSets is undefined>>
-	<<set $maxDefaultActionSets to 2>>
-<</if>>
-<<if $actionDefaults.Alternative is undefined>>
-	<<set $actionDefaults.Alternative to clone(_defaultObject)>>
-<</if>>
-<<if $actionDefaults.Submissive is undefined>>
-	<<set $actionDefaults.Submissive to clone(_defaultObject)>>
-
-	<<set $actionDefaults.Submissive.rape.leftaction[0] to "leftchest">>
-	<<set $actionDefaults.Submissive.rape.rightaction[0] to "rightchest">>
-	<<set $actionDefaults.Submissive.rape.mouthaction[0] to "plead">>
-	<<set $actionDefaults.Submissive.rape.mouthaction[1] to "suck">>
-	<<set $actionDefaults.Submissive.rape.mouthaction[2] to "kiss">>
-	<<set $actionDefaults.Submissive.rape.mouthaction[3] to "breastsuck">>
-	<<set $actionDefaults.Submissive.rape.penisaction[0] to "tease">>
-	<<set $actionDefaults.Submissive.rape.penisaction[1] to "cooperate">>
-	<<set $actionDefaults.Submissive.rape.vaginaaction[0] to "penistease">>
-	<<set $actionDefaults.Submissive.rape.vaginaaction[1] to "cooperate">>
-	<<set $actionDefaults.Submissive.rape.anusaction[0] to "penistease">>
-	<<set $actionDefaults.Submissive.rape.anusaction[1] to "cooperate">>
-	<<set $actionDefaults.Submissive.rape.feetaction[0] to "grabrub">>
-	<<set $actionDefaults.Submissive.rape.feetaction[1] to "vaginagrabrub">>
-
-	<<set $actionDefaults.Submissive.consensual.leftaction[0] to "leftchest">>
-	<<set $actionDefaults.Submissive.consensual.rightaction[0] to "rightchest">>
-	<<set $actionDefaults.Submissive.consensual.mouthaction[0] to "kiss">>
-	<<set $actionDefaults.Submissive.consensual.mouthaction[1] to "suck">>
-	<<set $actionDefaults.Submissive.consensual.mouthaction[2] to "breastsuck">>
-	<<set $actionDefaults.Submissive.consensual.mouthaction[3] to "breastlick">>
-	<<set $actionDefaults.Submissive.consensual.penisaction[0] to "tease">>
-	<<set $actionDefaults.Submissive.consensual.penisaction[1] to "cooperate">>
-	<<set $actionDefaults.Submissive.consensual.vaginaaction[0] to "penistease">>
-	<<set $actionDefaults.Submissive.consensual.vaginaaction[1] to "cooperate">>
-	<<set $actionDefaults.Submissive.consensual.anusaction[0] to "penistease">>
-	<<set $actionDefaults.Submissive.consensual.anusaction[1] to "cooperate">>
-<</if>>
-
-<<if $actionDefaults.Defiant is undefined>>
-	<<set $actionDefaults.Defiant to clone(_defaultObject)>>
-
-	<<set $actionDefaults.Defiant.rape.leftaction[0] to "lefthit">>
-	<<set $actionDefaults.Defiant.rape.leftaction[1] to "leftstruggle">>
-	<<set $actionDefaults.Defiant.rape.rightaction[0] to "penwhack">>
-	<<set $actionDefaults.Defiant.rape.rightaction[1] to "righthit">>
-	<<set $actionDefaults.Defiant.rape.rightaction[2] to "rightstruggle">>
-	<<set $actionDefaults.Defiant.rape.feetaction[0] to "kick">>
-	<<set $actionDefaults.Defiant.rape.mouthaction[0] to "pullaway">>
-	<<set $actionDefaults.Defiant.rape.mouthaction[1] to "bite">>
-	<<set $actionDefaults.Defiant.rape.mouthaction[2] to "breastbite">>
-	<<set $actionDefaults.Defiant.rape.mouthaction[3] to "headbutt">>
-	<<set $actionDefaults.Defiant.rape.penisaction[0] to "escape">>
-	<<set $actionDefaults.Defiant.rape.penisaction[1] to "otheranusescape">>
-	<<set $actionDefaults.Defiant.rape.penisaction[2] to "othermouthescape">>
-	<<set $actionDefaults.Defiant.rape.vaginaaction[0] to "escape">>
-	<<set $actionDefaults.Defiant.rape.vaginaaction[1] to "othermouthescape">>
-	<<set $actionDefaults.Defiant.rape.anusaction[0] to "escape">>
-	<<set $actionDefaults.Defiant.rape.anusaction[1] to "othermouthescape">>
-
-	<<set $actionDefaults.Defiant.consensual.rightaction[0] to "penwhack">>
-	<<set $actionDefaults.Defiant.consensual.mouthaction[0] to "breastpull">>
-	<<set $actionDefaults.Defiant.consensual.mouthaction[1] to "breastclosed">>
-	<<set $actionDefaults.Defiant.consensual.penisaction[0] to "escape">>
-	<<set $actionDefaults.Defiant.consensual.penisaction[1] to "otheranusescape">>
-	<<set $actionDefaults.Defiant.consensual.penisaction[2] to "othermouthescape">>
-	<<set $actionDefaults.Defiant.consensual.vaginaaction[0] to "escape">>
-	<<set $actionDefaults.Defiant.consensual.vaginaaction[1] to "othermouthescape">>
-	<<set $actionDefaults.Defiant.consensual.anusaction[0] to "escape">>
-	<<set $actionDefaults.Defiant.consensual.anusaction[1] to "othermouthescape">>
-<</if>>
-<<if $actionDefaults.Tentacles is undefined>>
-	<<set $actionDefaults.Tentacles to clone(_defaultObject)>>
-	<<set $actionDefaults.Tentacles.rape.regrab to false>>
-	<<set $actionDefaults.Tentacles.consensual.regrab to false>>
-<</if>>
-<<if $actionDefaults.Everyone.consensual.askActions is undefined>>
-	<<set $actionDefaults.Everyone.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Everyone.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Strangers.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Strangers.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Acquaintances.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Acquaintances.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Animals.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Animals.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Robin.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Robin.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Bailey.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Bailey.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Whitney.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Whitney.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Kylar.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Kylar.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Eden.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Eden.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Avery.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Avery.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Leighton.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Leighton.consensual.askActions to clone(_defaultItem)>>
-<</if>>
-<<if $actionDefaults.Defiant.consensual.askActions is undefined>>
-	<<set $actionDefaults.Submissive.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Submissive.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Defiant.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Defiant.consensual.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Alternative.rape.askActions to clone(_defaultItem)>>
-	<<set $actionDefaults.Alternative.consensual.askActions to clone(_defaultItem)>>
-<</if>>
+	<!-- Use default action sets to create array for each default action. -->
+	<<if $maxDefaultActionSets === undefined>>
+		<<set $maxDefaultActionSets = 2>>
+	<</if>>
+	<<set $actionDefaults = DefaultActions.check(DefaultActions.setup())>>
 <</widget>>
 
 <<widget "sexDefaults">>
