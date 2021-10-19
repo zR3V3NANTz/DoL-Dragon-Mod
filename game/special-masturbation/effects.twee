@@ -216,7 +216,7 @@
 				<<if $leftaction is "mchest" and $rightaction is "mchest">><<breastfeed>><</if>>
 
 				<<if $masturbation_bowl is 1>>
-					<span class="gold">You've gathered $masturbation_milk ml of your breast milk.</span>
+					<span class="gold">You've gathered $masturbation_milk mL of your breast milk.</span>
 				<</if>>
 			<<else>>
 				No milk leaks from your buds. You must be dry.

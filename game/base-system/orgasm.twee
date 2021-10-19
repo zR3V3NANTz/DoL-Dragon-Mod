@@ -174,6 +174,7 @@
 		<<set $masochism += 5>>
 	<</if>>
 
+	<<if $masturbation_bowl is 1>><<set _liquid_collection_text to []>><</if>>
 	<<if $player.penisExist>>
 		<<semenOrgasm>>/*Makes changes to semen values*/
 	<</if>>
@@ -341,6 +342,18 @@
 
 	<<set $orgasmcurrent += 1>>
 	<<wetnessCalculate>>
+
+	<<if $masturbation_bowl is 1>>
+		<<if $masturbation_milk gt 0>>
+			<<set _liquid_collection_text.push("<<print ($masturbation_milk).toFixed(1)>> mL of milk")>>
+		<</if>>
+		<<if _liquid_collection_text.length gte 3>>
+			<span class="gold">You've gathered _liquid_collection_text[0], _liquid_collection_text[1], and _liquid_collection_text[2].</span>
+		<<else>>
+			<span class="gold">You've gathered <<print _liquid_collection_text.join(" and ")>>.</span>
+		<</if>>
+		<br>
+	<</if>>
 <</widget>>
 
 <<widget "orgasmstreet">>
@@ -485,7 +498,7 @@
 
 	<<if $masturbation_bowl is 1 and $semen_amount gte 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $mouth isnot "mpenis">>
 		<<set $masturbation_semen += $_semen_released>>
-		<span class="gold">You've gathered <<print ($masturbation_semen).toFixed(1)>> ml of <<semen>>.</span>
+		<<set _liquid_collection_text.push("<<print ($masturbation_semen).toFixed(1)>> mL of <<semen>>")>>
 	<</if>>
 
 	<<if $femaleclimax isnot 1>>
