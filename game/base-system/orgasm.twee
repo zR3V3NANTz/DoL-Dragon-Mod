@@ -180,6 +180,11 @@
 	<</if>>
 	<<if $player.vaginaExist>>
 		<<vaginaFluidOrgasm>>
+		<<if _lube_released gt 10>>
+			<span class="pink">Fluids gush from your <<pussy>>.</span>
+		<<elseif _lube_released gt 0>>
+			<span class="pink">Fluids leak from your <<pussy>>.</span>
+		<</if>>
 	<</if>>
 
 	<<if $parasite.left_ear.name is "slime" and $parasite.right_ear.name is "slime">>
@@ -345,7 +350,7 @@
 
 	<<if $masturbation_bowl is 1>>
 		<<if $masturbation_milk gt 0>>
-			<<set _liquid_collection_text.push("<<print ($masturbation_milk).toFixed(1)>> mL of milk")>>
+			<<set _liquid_collection_text.push($masturbation_milk.toFixed(1) + " mL of milk")>>
 		<</if>>
 		<<if _liquid_collection_text.length gte 3>>
 			<span class="gold">You've gathered _liquid_collection_text[0], _liquid_collection_text[1], and _liquid_collection_text[2].</span>
@@ -413,10 +418,12 @@
 <</widget>>
 
 <<widget "breastfeed">>
-	<<set $_milk_released to random(1, 5)>>
+	<<set $_milk_released to random(10, 50)>>
 	<<if $cow gte 6>>
 		<<set $_milk_released *= 2>>
 	<</if>>
+	<<set $_milk_released /= 10>>
+	<<set $_milk_released to parseFloat($_milk_released.toFixed(1))>>
 
 	/* if the player doesn't have enough milk, set $_milk_released to whatever they have left */
 	<<if $milk_amount lt $_milk_released>>
@@ -428,6 +435,12 @@
 
 	<<if $masturbation_bowl is 1 and $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1>>
 		<<set $masturbation_milk += $_milk_released>>
+		<!-- If the player is using both hands, only print this text the second time, and report the total milk released this turn -->
+		<<set _milk_this_turn to (_milk_this_turn is undefined ? $_milk_released : _milk_this_turn + $_milk_released)>>
+		<!-- $args[0] is how many times this widget has been called this turn -->
+		<<if $args[0] and $args[0] is _handsOnBreasts>>
+			<span class="gold">You gather <<print (_milk_this_turn).toFixed(1)>> mL of your breast milk.</span>
+		<</if>>
 	<</if>>
 
 	<<set $milk_amount -= $_milk_released>>
@@ -498,7 +511,7 @@
 
 	<<if $masturbation_bowl is 1 and $semen_amount gte 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $mouth isnot "mpenis">>
 		<<set $masturbation_semen += $_semen_released>>
-		<<set _liquid_collection_text.push("<<print ($masturbation_semen).toFixed(1)>> mL of <<semen>>")>>
+		<<set _liquid_collection_text.push($masturbation_semen.toFixed(1) + " mL of <<semen>>")>>
 	<</if>>
 
 	<<if $femaleclimax isnot 1>>
@@ -540,8 +553,8 @@
 		<<set $combatWetBoost to 0>>
 	<</if>>
 	<!-- combatArousalWetness has been replaced by vaginaArousalWetness but I don't want to remove it completely so it's commented out for now. -->
-	/* <<set $_combatArousalWetness to 75 - Math.floor(Math.pow(0.99985,_totalArousal) * 75)>> */
-	/* <<set $combatWetBoost += $_combatArousalWetness>> */
+	/* <<set $_combatArousalWetness to 75 - Math.floor(Math.pow(0.99985,_totalArousal) * 75)>> 
+	<<set $combatWetBoost += $_combatArousalWetness>> */
 <<else>>
 	<<set $combatWetBoost to 0>>
 <</if>>
@@ -582,40 +595,47 @@
 <</if>>
 <</widget>>
 
-<!-- Lube is only released when vaginaWetness is over 60 -->
+<!-- Lube is only released when vaginaArousalWetness is over 60 (also, its max value is 100)-->
 <!-- "passive" means the lube is dripping out, while "active" means it is being pushed out  -->
 <<widget "vaginaFluidPassive">>
-	<<set $_lube_released to $vaginaArousalWetness - random(60,90) - 10>>
-	<<set $_lube_released to Math.floor($_lube_released / 4)>>
-	<<set $_lube_released to Math.clamp($_lube_released, 0, 10)>>
-	
+	<<set $_lube_max to Math.round(30*Math.log10($vaginaArousalWetness - 59))>>
+	<<set _lube_released to random(0, $_lube_max)/20>>
+	<!-- Expected value is between 0 and 2.5, much more likely to be on the lower end due to wetness having a softcap -->
+	<<set _lube_released to parseFloat(_lube_released.toFixed(1))>>
+
 	<<if $masturbation_bowl is 1>>
-		<<set $masturbation_vaginaFluid += $_lube_released>>
+		<<set $masturbation_vaginaFluid += _lube_released>>
 	<</if>>
-	<<set $lube_produced_stat += $_lube_released>>
-	<<set $vaginaArousalWetness -= $_lube_released>>
+	<<set $lube_produced_stat += _lube_released>>
 <</widget>>
 
 <<widget "vaginaFluidActive">>
-	<<set $_lube_released to $vaginaArousalWetness - random(60,90)>>
-	<<set $_lube_released to Math.floor($_lube_released / 4)>>
-	<<set $_lube_released to Math.clamp($_lube_released, 0, 10)>>
-	
+	<<set $_lube_max to Math.ceil(30*Math.log10($vaginaArousalWetness - 59))>>
+	<<set _lube_released to random(10, $_lube_max)/10>>
+	<!-- Expected value is between 1 and 5, much more likely to be on the lower end due to wetness having a softcap  -->
+	<<set _lube_released to parseFloat(_lube_released.toFixed(1))>>
+
 	<<if $masturbation_bowl is 1>>
-		<<set $masturbation_vaginaFluid += $_lube_released>>
+		<<set $masturbation_vaginaFluid += _lube_released>>
 	<</if>>
-	<<set $lube_produced_stat += $_lube_released>>
-	<<set $vaginaArousalWetness -= $_lube_released>>
+	<<set $lube_produced_stat += _lube_released>>
 <</widget>>
 
 <<widget "vaginaFluidOrgasm">>
-	<<set $_lube_released to Math.floor($vaginaArousalWetness / 2)>>
-	<<set $_lube_released to Math.clamp($_lube_released, 0, 20)>>
+	<<addVaginalWetness 10>>
+	<<if $vaginaArousalWetness gte 60>>
+		<<set _lube_released to (2*Math.log10($vaginaArousalWetness - 59)) + 11>>
+	<<elseif $vaginaArousalWetness gte 30>>
+		<<set _lube_released to ($vaginaArousalWetness / 10) + 5>>
+	<<else>>
+		<<set _lube_released to 0>>
+	<</if>>
+	<!-- Expected value is either 0, or between 5 and 15 -->
+	<<set _lube_released to parseFloat(_lube_released.toFixed(1))>>
 
 	<<if $masturbation_bowl is 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
-		<<set $masturbation_vaginaFluid += $_lube_released>>
+		<<set $masturbation_vaginaFluid += _lube_released>>
+		<<set _liquid_collection_text.push($masturbation_vaginaFluid.toFixed(1) + " mL of vaginal fluid")>>
 	<</if>>
-	<<set $lube_produced_stat += $_lube_released>>
-
-	<<addVaginalWetness 10>>
+	<<set $lube_produced_stat += _lube_released>>
 <</widget>>

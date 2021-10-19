@@ -2,7 +2,6 @@
 
 <<widget "masturbationeffects">>
 
-<<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
 <<if $player.vaginaExist>>
 	<<set $_hymenIntact to $player.virginity.vaginal is true and $sexStats.vagina.pregnancy.totalBirthEvents is 0>>
 	<<vaginaWetnessCalculate>>
@@ -153,6 +152,8 @@
 	You pull down your $worn.under_lower.name, <span class="lewd">exposing your <<genitals>>.</span>
 <</if>>
 
+<<set $_genitals_exposed to $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
+
 <<if $leftaction is "msemencover" and $rightaction is "msemencover">>
 	<<set $leftactiondefault to "mrest">><<set $leftaction to 0>><<set $leftFingersSemen to 1>>
 	<<set $rightactiondefault to "mrest">><<set $rightaction to 0>><<set $rightFingersSemen to 1>>
@@ -169,19 +170,21 @@
 <</if>>
 
 <<if $leftaction is "mchest" or $rightaction is "mchest">>
+	<<set _handsOnBreasts to 0>>
 	<<if $leftaction is "mchest">>
+		<<set _handsOnBreasts += 1>>
 		<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
 		<<arousal 100>><<playWithBreasts 1>><<milkvolume 1>>
 	<</if>>
 	<<if $rightaction is "mchest">>
+		<<set _handsOnBreasts += 1>>
 		<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
 		<<arousal 100>><<playWithBreasts 1>><<milkvolume 1>>
 	<</if>>
 
 	/* the text output currently does not care which hand is used or if both hands are used */
 	<<if $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1>>
-		<<arousal 100>>
-		<<if $leftaction is "mchest" and $rightaction is "mchest">><<arousal 100>><</if>>
+		<<arousal 100 * _handsOnBreasts>>
 		<<if $breastsize lte 2>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				You tease your sensitive nipples as much as you can stand, each brush of your fingers sending jolts of excitement through you.
@@ -212,12 +215,9 @@
 			<<if $milk_amount gte 1>>
 				<span class="lewd">Milk leaks from your buds.</span>
 				
-				<<breastfeed>>/*Sets milk_temp. Runs once for each hand.*/
-				<<if $leftaction is "mchest" and $rightaction is "mchest">><<breastfeed>><</if>>
-
-				<<if $masturbation_bowl is 1>>
-					<span class="gold">You've gathered $masturbation_milk mL of your breast milk.</span>
-				<</if>>
+				<!-- Run twice if both hands are on the player's breasts -->
+				<<breastfeed 1>>
+				<<if _handsOnBreasts is 2>><<breastfeed 2>><</if>>
 			<<else>>
 				No milk leaks from your buds. You must be dry.
 			<</if>>
@@ -259,7 +259,7 @@
 					<i>You should remove your top if you want to gather any.</i>
 				<</if>>
 				<<breastfeed>>
-				<<if $leftaction is "mchest" and $rightaction is "mchest">><<breastfeed>><</if>>
+				<<if _handsOnBreasts is 2>><<breastfeed>><</if>>
 			<<else>>
 				No milk leaks from your buds. You must be dry.
 			<</if>>
@@ -620,6 +620,8 @@
 		<<set _highestclothinglower to $worn.lower.name>>
 	<<elseif $worn.under_lower.vagina_exposed is 0>>
 		<<set _highestclothinglower to $worn.under_lower.name>>
+	<<else>>
+		<<set $_genitals_exposed to true>>
 	<</if>>
 	<<if $arousal gte $arousalmax * (4/5)>>
 		Your <<penis>> bucks eagerly, and
@@ -846,6 +848,8 @@
 			<<set _highestclothinglower to $worn.lower.name>>
 		<<elseif $worn.under_lower.vagina_exposed is 0>>
 			<<set _highestclothinglower to $worn.under_lower.name>>
+		<<else>>
+			<<set $_genitals_exposed to true>>
 		<</if>>
 		<<if $arousal gte $arousalmax * (4/5)>>
 			Your <<penis>> bucks eagerly, and
@@ -1120,9 +1124,10 @@
 	<<set $_arousalGain to 300 + 50*$fingersInVagina>>
 	<<arousal $_arousalGain>>
 	<<set $_fingers to ($fingersInVagina is 1 ? "finger" : "fingers")>>
+	<<addVaginalWetness $fingersInVagina>>
 	<<if $bugsinside is 1>>
 		<<if $arousal gte ($arousalmax / 5) * 4>>
-			<<if $vaginaWetness gte 60>>
+			<<if $vaginaArousalWetness gte 60>>
 				<<vaginaFluidActive>>
 				You pump <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, coaxing out lewd fluid, along with some bugs and insects.
 			<<else>>
@@ -1135,7 +1140,7 @@
 		<</if>>
 	<<else>>
 		<<if $arousal gte ($arousalmax / 5) * 4>>
-			<<if $vaginaWetness gte 60>>
+			<<if $vaginaArousalWetness gte 60>>
 				<<vaginaFluidActive>>
 				You pump <<number $fingersInVagina>> $_fingers in and out of your <<pussy>>, coaxing out lewd fluid.
 			<<else>>
@@ -1147,7 +1152,6 @@
 			You gently fuck the entrance of your <<pussy>> with <<number $fingersInVagina>> $_fingers.
 		<</if>>
 	<</if>>
-	<<addVaginalWetness $fingersInVagina>>
 <</if>>
 
 <<if $leftaction is "mvaginaclit" and $rightaction is "mvaginaclit">>
@@ -1264,8 +1268,10 @@
 <<if $player.vaginaExist>>
 	<<if $vaginaArousalWetness gte 60>>
 		<<if $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
-			<span class="pink">Juices leak from your <<pussy>>.</span>
 			<<vaginaFluidPassive>>
+			<<if _lube_released gt 0>>
+				<span class="pink">Juices leak from your <<pussy>>.</span>
+			<</if>>
 		<<elseif $worn.under_lower.vagina_exposed is 0 and $underlowerwetstage lt 3>>
 			<span class="pink">Juices leak from your <<pussy>> and dampen your $worn.under_lower.name.</span>
 		<<elseif $worn.lower.vagina_exposed is 0>>
