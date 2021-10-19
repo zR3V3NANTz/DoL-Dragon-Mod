@@ -1446,5 +1446,6 @@ Breast size
 <br><br>
 <<link [[Confirm|$attitudesExitPassage]]>>
 	<<unset $attitudesExitPassage>>
+	<<run DefaultActions.save(T.defaultActions)>>
 <</link>>
 <br>

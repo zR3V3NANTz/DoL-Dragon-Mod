@@ -105,6 +105,11 @@
 
 /*Generates the required values for defaults to be setup based on the situation*/
 <<widget "getCombatDefaultsType">>
+<<if $consensual == 1>>
+	<<set $defaultsCombatType = "consensual">>
+<<else>>
+	<<set $defaultsCombatType = "rape">>
+<</if>>
 <<switch $enemytype>>
 	<<case "man">>
 		<<if $NPCNameList.includes($NPCList[0].fullDescription)>>
@@ -119,15 +124,9 @@
 	<<case "beast">><<set $defaultsType to "Animals">>
 	<<case "tentacles" "vore">>
 		<<set $defaultsType to "Tentacles">>
-		<<set $regrab to $actionDefaults.Tentacles[($consensual is 1?"consensual":"rape")].regrab>>
+		<<set $regrab = DefaultActions.get($defaultsCombatType, 'Tentacles', 'regrab')[0] ?? 0>>
 	<<default>><<set $defaultsType to "Everyone">>
 <</switch>>
-
-<<if $consensual is 1>>
-	<<set $defaultsCombatType = "consensual">>
-<<else>>
-	<<set $defaultsCombatType = "rape">>
-<</if>>
 <</widget>>
 
 <<widget "getCombatDefaultsTypeClear">>
@@ -160,19 +159,22 @@
 <<widget "replaceAction">>
 <<switch $args[0]>>
 	<<case "Alternative">>
-		<<if $actionDefaults.Alternative is undefined>>
+		<<if $actionDefaults?.rape?.Alternative === undefined
+			|| $actionDefaults?.consensual?.Alternative === undefined>>
 			<<setupDefaults>>
 		<</if>>
 		<<set $defaultsType to "Alternative">>
 		<<set $replaceAction to "Alternative">>
 	<<case "Submissive">>
-		<<if $actionDefaults.Submissive is undefined>>
+		<<if $actionDefaults?.rape?.Submissive === undefined
+			|| $actionDefaults?.consensual?.Submissive === undefined>>
 			<<setupDefaults>>
 		<</if>>
 		<<set $defaultsType to "Submissive">>
 		<<set $replaceAction to "Submissive">>
 	<<case "Defiant">>
-		<<if $actionDefaults.Defiant is undefined>>
+		<<if $actionDefaults?.rape?.Defiant === undefined
+			|| $actionDefaults?.consensual?.Defiant === undefined>>
 			<<setupDefaults>>
 		<</if>>
 		<<set $defaultsType to "Defiant">>
@@ -257,7 +259,7 @@
 	<<if Object.keys(_leftaction).length gt 0>>
 		<<if Object.values(_leftaction).includes($leftactiondefault) is false or $args[0] is true or $leftactiondefault is "rest">>
 			<<set _defaultsCombatAction to "leftaction">>
-			<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if Object.values(_leftaction).includes(_actionsSet[_set])>>
@@ -400,7 +402,7 @@
 	<<if Object.keys(_rightaction).length gt 0>>
 		<<if Object.values(_rightaction).includes($rightactiondefault) is false or $args[0] is true or $rightactiondefault is "rest">>
 			<<set _defaultsCombatAction to "rightaction">>
-			<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if Object.values(_rightaction).includes(_actionsSet[_set])>>
@@ -559,7 +561,7 @@
 	<<if Object.keys(_feetaction).length gt 0>>
 		<<if Object.values(_feetaction).includes($feetactiondefault) is false or $args[0] is true or $feetactiondefault is "rest">>
 			<<set _defaultsCombatAction to "feetaction">>
-			<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if Object.values(_feetaction).includes(_actionsSet[_set])>>
@@ -697,7 +699,7 @@
 	<<if Object.keys(_mouthaction).length gt 0>>
 		<<if Object.values(_mouthaction).includes($mouthactiondefault) is false or $args[0] is true or $mouthactiondefault is "rest">>
 			<<set _defaultsCombatAction to "mouthaction">>
-			<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if Object.values(_mouthaction).includes(_actionsSet[_set])>>
@@ -895,7 +897,7 @@
 	<<if Object.keys(_penisaction).length gt 0>>
 		<<if Object.values(_penisaction).includes($penisactiondefault) is false or $args[0] is true or $penisactiondefault is "rest">>
 			<<set _defaultsCombatAction to "penisaction">>
-			<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if Object.values(_penisaction).includes(_actionsSet[_set])>>
@@ -1038,7 +1040,7 @@
 	<<if Object.keys(_vaginaaction).length gt 0>>
 		<<if Object.values(_vaginaaction).includes($vaginaactiondefault) is false or $args[0] is true or $vaginaactiondefault is "rest">>
 			<<set _defaultsCombatAction to "vaginaaction">>
-			<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if Object.values(_vaginaaction).includes(_actionsSet[_set])>>
@@ -1165,7 +1167,7 @@
 	<<if Object.keys(_anusaction).length gt 0>>
 		<<if Object.values(_anusaction).includes($anusactiondefault) is false or $args[0] is true or $anusactiondefault is "rest">>
 			<<set _defaultsCombatAction to "anusaction">>
-			<<set _actionsSet to $actionDefaults[$defaultsType][$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if Object.values(_anusaction).includes(_actionsSet[_set])>>

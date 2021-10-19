@@ -117,7 +117,7 @@
 	<<if Object.keys(_leftaction).length gt 0>>
 		<<if Object.values(_leftaction).includes($leftactiondefault) is false or $args[0] is true or ["rest","leftgrabtentacle"].includes($leftactiondefault)>>
 			<<set _defaultsCombatAction to "leftaction">>
-			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, "Tentacles", _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if ["leftgrabtentacle"].includes(_actionsSet[_set]) and $leftactionTarget isnot undefined>>
@@ -321,7 +321,7 @@
 	<<if Object.keys(_rightaction).length gt 0>>
 		<<if Object.values(_rightaction).includes($rightactiondefault) is false or $args[0] is true or ["rest","rightgrabtentacle"].includes($rightactiondefault)>>
 			<<set _defaultsCombatAction to "rightaction">>
-			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, "Tentacles", _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if ["rightgrabtentacle"].includes(_actionsSet[_set]) and $rightactionTarget isnot undefined>>
@@ -518,7 +518,7 @@
 	<<if Object.keys(_feetaction).length gt 0>>
 		<<if Object.values(_feetaction).includes($feetactiondefault) is false or $args[0] is true or ["rest","feetgrab"].includes($feetactiondefault)>>
 			<<set _defaultsCombatAction to "feetaction">>
-			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, "Tentacles", _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if ["feetgrab"].includes(_actionsSet[_set]) and $feetactionTarget isnot undefined>>
@@ -715,7 +715,7 @@
 	<<if Object.keys(_mouthaction).length gt 0>>
 		<<if Object.values(_mouthaction).includes($mouthactiondefault) is false or $args[0] is true or $mouthactiondefault is "rest">>
 			<<set _defaultsCombatAction to "mouthaction">>
-			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, "Tentacles", _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if ["mouthlick","mouthpullaway","mouthkiss","mouthcooperate","mouthbite"].includes(_actionsSet[_set]) and _tentacleMouthOption isnot undefined>>
@@ -830,7 +830,7 @@
 	<<if Object.keys(_penisaction).length gt 0>>
 		<<if Object.values(_penisaction).includes($penisactiondefault) is false or $args[0] is true or $penisactiondefault is "rest">>
 			<<set _defaultsCombatAction to "penisaction">>
-			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, "Tentacles", _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if ["penisrub","penispullaway","peniscooperate"].includes(_actionsSet[_set]) and _tentaclepenisOption isnot undefined>>
@@ -939,7 +939,7 @@
 	<<if Object.keys(_vaginaaction).length gt 0>>
 		<<if Object.values(_vaginaaction).includes($vaginaactiondefault) is false or $args[0] is true or $vaginaactiondefault is "rest">>
 			<<set _defaultsCombatAction to "vaginaaction">>
-			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, "Tentacles", _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if ["vaginarub","vaginapullaway","vaginacooperate"].includes(_actionsSet[_set]) and _tentaclevaginaOption isnot undefined>>
@@ -1048,7 +1048,7 @@
 	<<if Object.keys(_anusaction).length gt 0>>
 		<<if Object.values(_anusaction).includes($anusactiondefault) is false or $args[0] is true or $anusactiondefault is "rest">>
 			<<set _defaultsCombatAction to "anusaction">>
-			<<set _actionsSet to $actionDefaults.Tentacles[$defaultsCombatType][_defaultsCombatAction]>>
+			<<set _actionsSet = DefaultActions.get($defaultsCombatType, "Tentacles", _defaultsCombatAction)>>
 			<<set _pass to false>>
 			<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
 				<<if ["anusrub","anuspullaway","anuscooperate"].includes(_actionsSet[_set]) and _tentacleanusOption isnot undefined>>

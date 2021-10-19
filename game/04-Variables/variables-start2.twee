@@ -220,4 +220,6 @@
 	<<set $fertiliser to {current:0,used:0}>>
 <</if>>
 
+<<set $actionDefaults = DefaultActions.setDefaults()>>
+
 <</widget>>

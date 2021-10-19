@@ -462,4 +462,15 @@ and are required for processing for loops, default objects, etc.*/
 
 <<set setup.bodyparts to ["forehead", "left_cheek", "right_cheek", "left_shoulder", "right_shoulder", "breasts", "back", "left_bottom", "right_bottom", "pubic", "left_thigh", "right_thigh"]>>
 
+<<set setup.actionsTypes = {
+	'personTypes': [
+		'Everyone', 'Strangers', 'Acquaintances', 'Alternative', 'Defiant', 'Submissive', 'Animals', 'Tentacles', 'Bailey', 'Robin', 'Whitney', 'Kylar', 'Sydney', 'Eden', 'Avery', 'Leighton'
+	],
+	'combatTypes': [
+		'rape', 'consensual'
+	],
+	'actionTypes': [
+		'leftaction', 'rightaction', 'feetaction', 'mouthaction', 'penisaction', 'vaginaaction', 'anusaction', 'askActions', 'regrab'
+	]
+}>>
 <</widget>>

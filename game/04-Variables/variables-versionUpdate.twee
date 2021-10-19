@@ -2537,5 +2537,5 @@
 <<if $fullDescription isnot undefined>>
 	<<unset $fullDescription>>
 <</if>>
-<</widget>>
 
+<</widget>>
