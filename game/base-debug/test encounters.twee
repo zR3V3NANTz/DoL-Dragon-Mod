@@ -679,8 +679,10 @@ Add the NPCs you want.<br>
 <<link [[Back Home|Bedroom]]>><<endcombat>><</link>>
 
 :: Plantperson Test
-<<link [[Consensual sex|Plantperson Test Sex]]>><<set $sexstart to 1>><</link>><br>
-<<link [[Nonconsensual sex|Plantperson Test Sex]]>><<set $molestationstart to 1>><</link>><br>
+<<link [[Consensual sex in the forest|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "forest">><</link>><br>
+<<link [[Nonconsensual sex in the forest|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "forest">><</link>><br>
+<<link [[Consensual sex in the moor|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "moor">><</link>><br>
+<<link [[Nonconsensual sex in the moor|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "moor">><</link>><br>
 <<link [[Back home|Bedroom]]>><<endevent>><</link>>
 
 :: Plantperson Test Sex
@@ -703,7 +705,7 @@ Add the NPCs you want.<br>
 	<<set $enemyarousalmax to 800>>
 	<<set _randomtentacles to random(6, 10)>>
 	<<makeAbomination _randomtentacles 10 "vine" "vine" true>>
-	"Hi there!" A <<person>> pops up in front of you, flowers and leaves strewn through <<his>> hair. "You're cute! I'm gonna fuck you with my vines!"
+	"Hi there!" A <<person>> pops up in front of you, <<plant_details>> strewn through <<his>> hair because you're in the $location and it's $season. "You're cute! I'm gonna fuck you with my vines!"
 	<br>
 	A bunch of vines pop out of the ground.
 <</if>>

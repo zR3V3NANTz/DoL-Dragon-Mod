@@ -649,7 +649,7 @@
 <<tentacles>>
 
 <!-- Finishing moves for if the player didn't cum. Plantpeople don't really care about making their partners cum, they only care about the semen. -->
-<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity") and ($consensual is 1 or $pain gte 100)>>
+<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity") and ($consensual is 1 or $pain gte 100) and !_noCum>>
 	"Hey," <<he>> says. "You didn't cum. That's not fair, is it?"
 	<<if $penisuse is "tentacle">>
 		<<if $player.condom isnot false>>

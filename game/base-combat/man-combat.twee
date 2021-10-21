@@ -2539,7 +2539,7 @@
 			<<elseif $rng gte 21>>
 				<<if $mouthsubmit is 1>>
 					<<He>> allows you to pleasure <<his>> $NPCList[_n].penisdesc with your mouth.
-					<<if $NPCList[_n].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
+					<<if $NPCList[_n].type is "plant" and !["peniskiss","lick"].includes($mouthactiondefault)>>
 						<span class="pink">You lap up nectar with your tongue.</span>
 						<<nectarfed 3>>
 					<</if>>

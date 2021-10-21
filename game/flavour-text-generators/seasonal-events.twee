@@ -125,6 +125,13 @@
 					<<addinlineevent "winter_forest_3">>
 						You find a well-built snowman leaning against a tree. The pose work is impressive. Someone spent a lot of time on this. <<stress -3>><<lstress>>
 					<</addinlineevent>>
+					<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+						<<addinlineevent "winter_forest_4" 0.5>>
+							<<generatePlant1>>
+							You see a <<personsimple>> walking through the snow. <<He>> turns and waves at you, before bumping into a tree <<he>> didn't notice. <<Plant_details>> get dislodged from <<his>> hair, and <<he>> pouts. <<stress -3>><<lstress>>
+							<<endevent>>
+						<</addinlineevent>>
+					<</if>>
 				<<case "moor">>
 					<<addinlineevent "winter_moor_1" 0.33>>
 						You find a hideous snowman standing in a circle of pillars made of ice. <<if $hallucinations gte 2>>You turn away, only to hear a loud snap behind you. You look back, and it's gone. <<stress 24>><<gggstress>><<else>><<stress 6>><<gstress>><</if>>
@@ -379,6 +386,13 @@
 				<<addinlineevent "rain_moor_3">>
 					You freeze as you hear a noise in the nearby grass. You sigh in relief as a wet rabbit hops from the brush, seeking better shelter from the rain. <<stress -3>><<lstress>>
 				<</addinlineevent>>
+				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+					<<addinlineevent "rain_moor_4" 0.5>>
+						<<generatePlant1>>
+						You see a <<personsimple>> spinning in the rain, holding <<his>> arms out. <<He>> almost slips and loses <<his>> balance a few times, but <<he>> doesn't stop smiling. <<stress -3>><<lstress>>
+						<<endevent>>
+					<</addinlineevent>>
+				<</if>>
 			<<default>>
 		<</switch>>
 	<<case "autumnclear" "autumnovercast">>
@@ -454,6 +468,13 @@
 				<<addinlineevent "autumn_forest_3" 0.33>>
 					You stop in your tracks as you hear a feral growl. Looking down, you see a badger at the foot of a nearby tree. It's surrounded by scattered dirt. You seem have interrupted it digging its winter den. You back away slowly until it returns to its digging. <<stress 3>><<gstress>>
 				<</addinlineevent>>
+				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+					<<addinlineevent "autumn_forest_4" 0.5>>
+						<<generatePlant1>>
+						A <<personsimple>> runs <<his>> fingers through his hair. <<He>> picks dead leaves out, crunching them in <<his>> hands before dropping them.
+						<<endevent>>
+					<</addinlineevent>>
+				<</if>>
 			<<case "moor">>
 				<<addinlineevent "autumn_moor_1">>
 					The scent of decaying plant life fills the moor with an acrid stench. <<stress 3>><<gstress>>
@@ -538,6 +559,13 @@
 				<<addinlineevent "summer_park_3">>
 					As you walk through the park, you're narrowly missed by several water balloons. Hearing laughter, you turn to see several delinquents running away. <<stress 3>><<gstress>>
 				<</addinlineevent>>
+				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+					<<addinlineevent "summer_park_4" 0.5>>
+						<<generatePlant1>>
+						A <<personsimple "normal">> with <<plant_details "forest">> in <<his>> hair peeks out of a bush. <<He>> looks nervous. When <<he>> spots you, <<he>> dives back into the bush.
+						<<endevent>>
+					<</addinlineevent>>
+				<</if>>
 			<<case "forest">>
 				<<addinlineevent "summer_forest_1">>
 					The heat of the forest is sweltering, the breeze blocked by the trees. <<stress 3>><<gstress>>
@@ -548,6 +576,13 @@
 				<<if $hour lt 6 or $hour gte 21>>
 					<<addinlineevent "summer_forest_3">>
 						You begin to hear crickets chirping nearby, and soon enough a whole orchestra of insects fill the night air around you. <<stress -3>><<lstress>>
+					<</addinlineevent>>
+				<</if>>
+				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+					<<addinlineevent "summer_forest_4" 0.5>>
+						<<generatePlant1>>
+						A <<personsimple>> stands completely still, holding branches. <<Hes>> pretending to be a tree, but <<he>> can't keep <<his>> balance enough to fool anyone.
+						<<endevent>>
 					<</addinlineevent>>
 				<</if>>
 			<<case "moor">>
@@ -649,6 +684,18 @@
 				<<addinlineevent "spring_moor_3">>
 					You come to a strangely clear patch of ground that contains a circle of stone and a scorch mark in its centre. You suddenly feel watched, and leave without hesitation. <<stress 12>><<ggstress>>
 				<</addinlineevent>>
+				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+					<<addinlineevent "spring_moor_4" 0.5>>
+						<<generatePlant1>>
+						A <<personsimple>> holds a vine still for a hummingbird to land on.
+						<<if $rng gte 51>>
+							It flits onto the vine and lands, sitting down. The <<personsimple>> lets out a happy gasp. <<stress -3>><<lstress>>
+						<<else>>
+							It hovers near the vine for a second, before zipping away. The <<personsimple>> sighs.
+						<</if>>
+						<<endevent>>
+					<</addinlineevent>>
+				<</if>>
 			<<default>>
 		<</switch>>
 	<<default>>

@@ -1,7 +1,7 @@
 :: Widgets Tips [widget]
 
 <<widget "tips">>
-<<set _maxTipCount = 139>>
+<<set _maxTipCount = 140>>
 <<if $args[0] is undefined>>
 	<<tipsList `random(0,_maxTipCount)`>>
 	<<unset _maxTipCount>>
@@ -293,7 +293,6 @@
 	The book store in the school library offers school appropriate clothing at a hefty markup.
 <<case 140>>
 	There are rumours of people in the forest and moor who are as much plant as they are person. Supposedly, their nectar is a potent aphrodisiac.
-	/* Unused. Change _maxTipCount when scenes involving plantpeople are properly added. */
 <</switch>>
 <</widget>>
 
