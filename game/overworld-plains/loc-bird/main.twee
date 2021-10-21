@@ -2199,7 +2199,7 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 	<</if>>
 	<<if $harpy gte 2 or $cat gte 2>>
 		Thanks to your superior eyesight, you see it too.
-		<<switch random(1,5)>>
+		<<switch random(1,6)>>
 			<<case 1>>
 				<<endevent>><<beastNEWinit 3 fox>>
 				A trio of <<beastsplural>> tumble over and wrestle with each other on top of a hillock.
@@ -2254,6 +2254,25 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 					The <<beasttype>> shrieks,
 				<</if>>
 				but resumes <<bhis>> song anyways.
+			<<case 6>>
+				You see a person in the distance, completely naked.
+				<<if $hallucinations gte 2 and $tentacledisable is "f" and $monsterchance gte 1>>
+					<<Plant_details>> are scattered throughout their hair, and writhing vines surround them. At first, you think they're being attacked, but they seem to be in control of them.
+					<br><br>
+					<<if $monster is 1>>
+						"Odd creatures," the <<beasttype>> says. "As much moor as they are wingless. Perhaps more."
+					<<else>>
+						The <<beasttype>> shakes <<bhis>> head quizzically.
+					<</if>>
+				<<else>>
+					They don't seem bothered by their exposure<<if $weather is "rain" or $weather is "snow">>, nor the $weather<</if>>.
+					<<if $monster is 1>>
+						"Odd wingless," the <<beasttype>> says. "Most prefer garments."
+					<<else>>
+						The <<beasttype>> shakes <<bhis>> head quizzically.
+					<</if>>
+				<</if>>
+				<<bHe>> resumes <<his>> song after a few seconds.
 			<<default>>
 		<</switch>>
 	<<else>>

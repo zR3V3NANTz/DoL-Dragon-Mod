@@ -738,21 +738,7 @@
 	<<case "movetochest">><<oraldifficulty>> <<combatpromiscuous3>>
 	<<case "swallow">><<oralvirginitywarning>> <<combatpromiscuous5>>
 	<<case "grasp">><<chestdifficulty>> <<combatpromiscuous3>>
-	<<case "pullaway" "pullawaykiss">>
-		<<if $NPCList[0].type is "plant" and $mouthstate isnot "kissentrance">>
-			<<willpowerdifficulty $drugged $willpowermax "silent">>
-			<<if (($enemytrust * 10) - $oralskill + $enemyanger) / (($enemyarousalmax / ($enemyarousal + 1)) * 100) lt _difficulty>>
-				<<willpowerdifficulty $drugged $willpowermax "combat">>
-			<<else>>
-				<<oraldifficulty>>
-			<</if>>
-		<<else>>
-			<<oraldifficulty>>
-		<</if>>
-	<<case "pullawayvagina">>
-		<<if $NPCList[0].type is "plant" and $mouthstate isnot "kissentrance">>
-			<<willpowerdifficulty $drugged $willpowermax "combat">>
-		<</if>>
+	<<case "pullaway" "pullawaykiss">><<oraldifficulty>>
 	<<case "finish">><<if !$gloryhole and $gamemode isnot "soft">><<seductiondifficulty>><</if>>
 	<<case "novaginal">><<if !$gloryhole and $gamemode isnot "soft">><<seductiondifficulty>><</if>>
 	<<case "nopenile">><<if !$gloryhole and $gamemode isnot "soft">><<seductiondifficulty>><</if>>

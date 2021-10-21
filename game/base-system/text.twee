@@ -1183,43 +1183,30 @@ in dev alternative to current "breasts" widget
 <</widget>>
 
 <<widget "personsimple">><<silently>>
-<<if $NPCList[0].type is "plant">>
-	<<set _text_output to "plant">>
-<<else>>
-	<<set _text_output to "">>
-<</if>>
-<<if $npcadult is 1>>
-	<<set _text_output += ($pronoun is "m" ? "man" : "woman")>>
-<<else>>
-	<<set _text_output += ($pronoun is "m" ? "boy" : "girl")>>
-<</if>><</silently>><<print _text_output>><</widget>>
+	<<set _text_output to (!$NPCList[$index].type or $NPCList[$index].type is "human" or $args[0] is "normal" ? "" : $NPCList[$index].type)>>
+	<<if $npcadult is 1>>
+		<<set _text_output += ($pronoun is "m" ? "man" : "woman")>>
+	<<else>>
+		<<set _text_output += ($pronoun is "m" ? "boy" : "girl")>>
+	<</if>>
+<</silently>><<print _text_output>><</widget>>
 
 <<widget "person">><<silently>>
-<<if $NPCList[0].type is "plant">>
-	<<set _text_output to $description+" plant">>
-<<else>>
-	<<set _text_output to $description+" ">>
-<</if>>
-<<if $npc_named is 1>>
-	<<set _text_output to $description>>
-<<elseif $npcadult is 1>>
-	<<if $pronoun is "m">>
-		<<set _text_output to _text_output+="man">>
-	<<elseif $pronoun is "f">>
-		<<set _text_output to _text_output+="woman">>
-	<<else>>
-		<<set _text_output to _text_output>>
+	<<set _text_output to $description + " ">>
+	<<if ($NPCList[$index].type and $NPCList[$index].type isnot "human") and $args[0] isnot "normal">>
+		<<set _text_output += $NPCList[$index].type>>
 	<</if>>
-<<else>>
-	<<if $pronoun is "m">>
-		<<set _text_output to _text_output+="boy">>
+	<<if $npc_named is 1>>
+		<<set _text_output to $description>>
+	<<elseif $pronoun is "m">>
+		<<set _text_output += ($npcadult is 1 ? "man" : "boy")>>
 	<<elseif $pronoun is "f">>
-		<<set _text_output to _text_output+="girl">>
+		<<set _text_output += ($npcadult is 1 ? "woman" : "girl")>>
 	<</if>>
-<</if>><</silently>><<print _text_output>><</widget>>
+<</silently>><<print _text_output>><</widget>>
 
 <<widget "persons">><<silently>>
-	<<person>>
+	<<person $args[0]>>
 	<<set _text_output to _text_output + "'s">>
 <</silently>><<print _text_output>><</widget>>
 
@@ -1253,6 +1240,7 @@ in dev alternative to current "breasts" widget
 <!-- This replaces calls person1 person2 etc. Used for NPC object calls -->
 <!-- Note calls are 0-5 corresponding to NPCs 1-6 -->
 <<set _n to $args[0]>>
+<<set $index to _n>>
 
 <<set $npcadult to $NPCList[_n].adult>>
 <<set $pronoun to $NPCList[_n].pronoun>>
@@ -6181,3 +6169,33 @@ $worn.genitals.name
 	<span class="purple"><<He>> casts aside the fabric.</span>
 <</if>>
 <</widget>>
+
+<<widget "plant_details">><<silently>>
+<<if ($location is "moor" and $args[0] isnot "forest") or $args[0] is "moor">>
+	<<switch $season>>
+		<<case "spring">>
+			<<set _text_output to "yellow willow leaves">>
+		<<case "summer">>
+			<<set _text_output to "small purple flowers">>
+		<<case "autumn">>
+			<<set _text_output to "large amber flowers">>
+		<<case "winter">>
+			<<set _text_output to "straw-coloured reeds">>
+	<</switch>>
+<<else>>
+	<<switch $season>>
+		<<case "spring">>
+			<<set _text_output to "pink blossoms">>
+		<<case "summer">>
+			<<set _text_output to "leaves and flowers">>
+		<<case "autumn">>
+			<<set _text_output to "orange and red leaves">>
+		<<case "winter">>
+			<<set _text_output to "small red berries">>
+	<</switch>>
+<</if>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "Plant_details">><<silently>>
+<<plant_details $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<</silently>><<print _text_output>><</widget>>
