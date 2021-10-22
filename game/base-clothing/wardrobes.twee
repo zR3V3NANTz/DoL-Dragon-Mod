@@ -1540,7 +1540,7 @@ to the crate and send them to be sold? Might be best to go shopping shortly afte
 		<<if _items[_i].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost(_items[_i]) * (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max')) / 3, _label)>>
+		<<set _value += Math.floor(getClothingCost(_items[_i], _label) * (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max')) / 3)>>
 	<</for>>
 <</for>>
 It will earn you <<printmoney `_value + 5000`>>.
@@ -1570,7 +1570,7 @@ It will earn you <<printmoney `_value + 5000`>>.
 		<<if $wardrobe[_equip[$_i]][$_j].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j]) * ($wardrobe[_equip[$_i]][$_j].integrity / clothingData(_equip[$_i],$wardrobe[_equip[$_i]][$_j],'integrity_max')) / 3,_equip[$_i])>>
+		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j],_equip[$_i]) * ($wardrobe[_equip[$_i]][$_j].integrity / clothingData(_equip[$_i],$wardrobe[_equip[$_i]][$_j],'integrity_max')) / 3)>>
 		<<run _toDelete.push(clone($_j))>>
 	<</for>>
 	<<for $_j to $wardrobe[_equip[$_i]].length; $_j gte 0; $_j-->>
@@ -1606,7 +1606,7 @@ to the crate and send them to be repaired? Might be best to go shopping shortly 
 		<<if _items[_i].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost(_items[_i]) * (1 - (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max'))) * 1.25,_label)>>
+		<<set _value += Math.floor(getClothingCost(_items[_i],_label) * (1 - (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max'))) * 1.25)>>
 	<</for>>
 <</for>>
 It will cost you
@@ -1643,7 +1643,7 @@ It will cost you
 		<<if $wardrobe[_equip[$_i]][$_j].outfitPrimary is undefined and $crateContents is "outfits">>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j]) * (1 - ($wardrobe[_equip[$_i]][$_j].integrity / clothingData(_equip[$_i],$wardrobe[_equip[$_i]][$_j],'integrity_max'))) * 1.25,_equip[$_i])>>
+		<<set _value += Math.floor(getClothingCost($wardrobe[_equip[$_i]][$_j],_equip[$_i]) * (1 - ($wardrobe[_equip[$_i]][$_j].integrity / clothingData(_equip[$_i],$wardrobe[_equip[$_i]][$_j],'integrity_max'))) * 1.25)>>
 
 		<<if $wardrobeRepair[_equip[$_i]] is undefined>>
 			<<set $wardrobeRepair[_equip[$_i]] to []>>
