@@ -140,6 +140,11 @@
 <<set $drunk to Math.clamp($drunk, 0, 1000)>>
 <<set $drugged to Math.clamp($drugged, 0, 1000)>>
 
+<<set $upperwet to Math.clamp($upperwet, 0, 200)>>
+<<set $lowerwet to Math.clamp($lowerwet, 0, 200)>>
+<<set $underlowerwet to Math.clamp($underlowerwet, 0, 200)>>
+<<set $underupperwet to Math.clamp($underupperwet, 0, 200)>>
+
 <</widget>>
 
 <<widget "fameclamp">>

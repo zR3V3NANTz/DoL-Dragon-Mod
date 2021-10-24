@@ -230,32 +230,45 @@
 <<widget "passArousalWetness">>
 	<<if $player.vaginaExist>>
 		<<set $_wetnessChange to 0>>
-		<<set $_arousalPercent to $arousal / $arousalmax>>
+		<<set $_arousalPercent to Math.clamp($arousal / $arousalmax, 0, 1)>>
 		
 		<!-- Vaginal lube is produced at a fairly linear rate, between 1-3 per minute based on arousal. -->
 		<<if $arousal gte $arousalmax * (2/5)>>
 			<<set $_wetnessChange to 1 + ($_arousalPercent * 2)>>
+			<!-- It also gets harder to build up the closer you get to full wetness -->
+			<<set $_wetnessPercent to Math.clamp($vaginaArousalWetness / 100, 0, 1)>>
+			<<set $_wetnessChange to Math.floor($_wetnessChange * 2 * (1 - $_wetnessPercent))>>
 		<</if>>
 
 		<!-- It dries up at a gradually increasing rate, starting at 0.1 per minute, but increasing the longer it's been since last arousal. -->
 		<!-- It also dries slower at high arousal, in an inverse relationship. -->
 		<<set $_wetnessChange -= 0.1 * $timeSinceArousal * (1-$_arousalPercent)>>
 
+		<!-- If wetnessChange would go negative, and arousal is high enough, wetness instead does not change. -->
+		<<if $arousal gte $arousalmax * (3/5) and $_wetnessChange lt 0>>
+			<<set $_wetnessChange to 0>>
+		<</if>>
+
 		<<set $vaginaArousalWetness += Math.round($_wetnessChange * $pass)>>
 
 		<!-- Arbitrarily, we'll say that the player's vagina holds up to 60 units of lube, and it begins to leak out above 60. -->
 		<<if $vaginaArousalWetness gte 60>>
-			<<set $_excess to $vaginaArousalWetness - 60>>
+			<<set $vaginaArousalWetness to Math.floor(120 - (3600/$vaginaArousalWetness))>>
+
+			<!-- Clothing dries at a rate of -1 * $pass. To offset that, it needs to be wet by at least 1 * $pass. -->
+			<!-- Expected rate: between 1 and 2.61, usually around 1.8 -->
+			<<set $_change to 1 + Math.log10($vaginaArousalWetness - 59)>>
+			<<set $_change to Math.clamp($_change, 1, 3)>>
+
 			<<if !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("swim")>>
-				<<set $underlowerwet += Math.round($_excess * Math.pow(0.99, $pass))>>
+				<<set $underlowerwet += Math.round($_change * $pass)>>
+				<<set $underlowerwet to Math.clamp($underlowerwet, 0, 100 + $pass)>>
 				<<set $pantiesSoaked to ($underlowerwet gte 100)>>
 			<</if>>
 			<!-- Commented out for now because the wetness messages aren't updated to account for it -->
-			/* <<if $underlowerwet gte 100 and !$worn.lower.type.includes("naked") and !$worn.lower.type.includes("swim")>>
-				<<set $lowerwet += Math.round($_excess * Math.pow(0.99, $pass))>>	
+			/* <<if ($underlowerwet gte 100 or $worn.under_lower.type.includes("naked")) and !$worn.lower.type.includes("naked") and !$worn.lower.type.includes("swim")>>
+				<<set $lowerwet += Math.round($_change * $pass)>>
 			<</if>> */
-			<<set $vaginaArousalWetness to 60 + Math.round($_excess * Math.pow(0.90, $pass))>>
-			/* <<set $vaginaArousalWetness to Math.floor(120 - 3600/$vaginaArousalWetness)>> */
 		<</if>>
 		
 		<<set $vaginaArousalWetness to Math.clamp($vaginaArousalWetness, 0, 100)>>
@@ -325,7 +338,11 @@
 	<<else>>
 		<<arousal `$pass * -10`>><<arousalpass>>
 	<</if>>
-	<<set $timeSinceArousal += $pass>>
+	<<if $arousal lt ($arousalmax / 4)>>
+		<<set $timeSinceArousal += $pass>>
+	<<else>>
+		<<set $timeSinceArousal to 1>>
+	<</if>>
 	<<if $player.vaginaExist>>
 		<<passArousalWetness>>
 	<</if>>

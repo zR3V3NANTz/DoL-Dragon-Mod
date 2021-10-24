@@ -1274,6 +1274,7 @@
 			<</if>>
 		<<elseif $worn.under_lower.vagina_exposed is 0 and $underlowerwetstage lt 3>>
 			<span class="pink">Juices leak from your <<pussy>> and dampen your $worn.under_lower.name.</span>
+			<<set $underlowerwet += 1>>
 		<<elseif $worn.lower.vagina_exposed is 0>>
 			<span class="pink">Juices leak from your <<pussy>><<if $underlowerwet gte 60>>, soak through your $worn.under_lower.name,<</if>> and dampen your $worn.lower.name.</span>
 		<<else>>

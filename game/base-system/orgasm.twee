@@ -636,6 +636,8 @@
 	<<if $masturbation_bowl is 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
 		<<set $masturbation_vaginaFluid += _lube_released>>
 		<<set _liquid_collection_text.push($masturbation_vaginaFluid.toFixed(1) + " mL of vaginal fluid")>>
+	<<elseif $worn.under_lower.vagina_exposed is 0>>
+		<<set $underlowerwet += Math.round(30 * Math.clamp((1 - $underlowerwet/100), 0, 1))>>
 	<</if>>
 	<<set $lube_produced_stat += _lube_released>>
 <</widget>>

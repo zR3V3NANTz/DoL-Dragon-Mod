@@ -81,9 +81,12 @@
 <</if>>
 
 <<if !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and !$worn.under_lower.type.includes("swim") and !$worn.under_lower.type.includes("stealthy")>>
-	<<if $underlowerwet gte 100 and $underlowerwetstage lt 3>>
+	<<if $underlowerwet gte 100 and $underlowerwetstage lt 3 and $pantiesSoaked>>
+		<<set $underlowerwetstage to 3>>
+		<<effectsarousalsoak>>
+	<<elseif $underlowerwet gte 100 and $underlowerwetstage lt 3>>
 		<<set $underlowerwetstage to 3>><<set $wetintro to 2>>
-		<span class="lewd"><<if $pantiesSoaked>>Your bodily fluids soak<<else>>Water soaks<</if>> through your $worn.under_lower.name, exposing your <<genitals>>. </span>
+		<span class="lewd">Water soaks through your $worn.under_lower.name, exposing your <<genitals>>. </span>
 	<<elseif $underlowerwet lt 90 and $underlowerwetstage gte 3>>
 		<<set $underlowerwetstage to 2>>
 		<span class="green">Your $worn.under_lower.name <<underlowerhas>> dried, concealing your <<genitals>>. </span>
@@ -127,21 +130,57 @@
 <<if $wetintro gte 2>>
 	<<exposure>>
 	<<if $exhibitionism gte 55>>
-		You feel a lewd thrill as <<if !$worn.face.type.includes("blindfold")>>you look down and see<</if>> your clothes cling tight to your body, completely transparent.
+		<<if !$worn.face.type.includes("blindfold")>>
+			You feel a lewd thrill as you look down and see your clothes clinging tight to your body, completely transparent.
+		<<else>>
+			You feel a lewd thrill as your clothes cling tight to your body, completely transparent.
+		<</if>>
 	<<else>>
-		<<if !$worn.face.type.includes("blindfold")>>You look down in horror at<<else>>Horror takes over you as you feel<</if>> your clothes, which cling tight to your body and are completely transparent.
+		<<if !$worn.face.type.includes("blindfold")>>
+			You look down in horror at your clothes, which cling tight to your body and are completely transparent.
+		<<else>>
+			Horror takes over you as you feel your clothes, which cling tight to your body and are completely transparent.
+		<</if>>
 	<</if>>
 	<<covered>>
 	<br><br>
 <<elseif $wetintro gte 1>>
 	<<if $exhibitionism gte 35>>
-		You feel a lewd thrill as <<if !$worn.face.type.includes("blindfold")>>you look down and see<</if>> your clothes cling tight to your body, giving a hint of transparency.
+		<<if !$worn.face.type.includes("blindfold")>>
+			You feel a lewd thrill as you look down and see your clothes clinging tight to your body, giving a hint of transparency.
+		<<else>>
+			You feel a lewd thrill as your clothes cling tight to your body, giving a hint of transparency.
+		<</if>>
 	<<else>>
-		<<if !$worn.face.type.includes("blindfold")>>You look down anxiously at<<else>>You feel<</if>> your clothes, now clinging tightly to your body and giving a hint of transparency.
+		<<if !$worn.face.type.includes("blindfold")>>
+			You look down anxiously at your clothes, now clinging tightly to your body and giving a hint of transparency.
+		<<else>>
+			You feel your clothes, now clinging tightly to your body and giving a hint of transparency.
+		<</if>>
 	<</if>>
 	<br><br>
 <</if>>
 
+<</widget>>
+
+<<widget "effectsarousalsoak">>
+	<<if $underwetstage is 3 or $worn.lower.type.includes("naked")>>
+		<!-- If clothing above underwear is also wet, or missing -->
+		<<set $wetintro to 2>>
+		<span class="lewd">Your bodily fluids soak through your $worn.under_lower.name, exposing your <<genitals>>. </span>
+	<<elseif setup.clothes.lower[$worn.lower.index].skirt is 1>>
+		<span class="lewd">Your bodily fluids soak through your $worn.under_lower.name, exposing your <<genitals>> to the air under your $worn.lower.name. </span>
+	<<else>>
+		<span class="lewd">Your bodily fluids soak through your $worn.under_lower.name. </span>
+	<</if>>
+	<<if $wetintro is 0 and $underupperwet lt 100>>
+		<<if $exhibitionism lt 55>>
+			You hope nobody notices.
+		<<else>>
+			You hope somebody notices.
+		<</if>>
+	<</if>>
+	<br><br>
 <</widget>>
 
 <<widget "effectsmakeup">>
