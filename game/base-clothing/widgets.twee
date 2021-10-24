@@ -17,29 +17,10 @@
 		<</for>>
 	<</if>>
 
-	/*Places that force specific return rules*/
-	<<if !$multipleWardrobes>>
-		<<set $_lastTakenOverride to "wardrobe">>
-	<<else>>
-		<<switch $location>>
-			<<case "prison">><<set $_lastTakenOverride to "prison">>
-			<<case "asylum">><<set $_lastTakenOverride to "asylum">>
-		<</switch>>
-	<</if>>
-
 	<<if _cursedPrevent isnot true>>
 		/*Primary Piece*/
 		<<if $worn[$args[0]] isnot "naked">>
-			<<if $_lastTakenOverride>>
-				<<set $_lastTaken to $_lastTakenOverride>>
-			<</if>>
-			<<if $multipleWardrobes is "all">>
-				<<if !$_lastTaken and $worn[$args[0]].lastTaken is undefined>>
-				<<elseif !$_lastTaken and ($wardrobes[$worn[$args[0]].lastTaken].locationRequirement.length is 0 or $wardrobes[$worn[$args[0]].lastTaken].locationRequirement.includes($location))>>
-					<<set $_lastTaken to $worn[$args[0]].lastTaken>>
-				<</if>>
-			<</if>>
-			<<generalUndress `($_lastTaken ? $_lastTaken : "wardrobe")` $args[0]>>
+			<<generalUndress `clothesReturnLocation($worn[$args[0]])` $args[0]>>
 			<<unset $_lastTaken>>
 		<</if>>
 		<<equipClothesItemFromDefault $args[0] $args[1] $args[2] $args[3]>>
@@ -49,15 +30,7 @@
 			<<set _accessory_colour to $worn[$args[0]].accessory_colour>>
 			<<for _labelWear, _valueWear range _outfitPrimaryWear>>
 				<<if $worn[_labelWear] isnot "naked">>
-					<<if $_lastTakenOverride>>
-						<<set $_lastTaken to $_lastTakenOverride>>
-					<</if>>
-					<<if !$_lastTaken and $worn[_labelWear].lastTaken is undefined>>
-					<<elseif !$_lastTaken and ($wardrobes[$worn[_labelWear].lastTaken].locationRequirement.length is 0 or $wardrobes[$worn[_labelWear].lastTaken].locationRequirement.includes($location))>>
-						<<set $_lastTaken to $worn[_labelWear].lastTaken>>
-					<</if>>
-					<<generalUndress `($_lastTaken ? $_lastTaken : "wardrobe")` _labelWear>>
-					<<unset $_lastTaken>>
+					<<generalUndress `clothesReturnLocation($worn[_labelWear])` _labelWear>>
 				<</if>>
 				<<unset _pieceId>>
 				<<for _iWear to 0; _iWear lt setup.clothes[_labelWear].length; _iWear++>>
@@ -527,26 +500,19 @@
 			<<if $carried[$args[0]].name isnot "naked" and $clothingrebuy is 1 and $carried[$args[0]].one_piece isnot "broken" and setup.clothes[$args[0]][$carried[$args[0]].index].shop.length gt 0>>
 				<<if $carried[$args[0]].colourCustom isnot undefined>><<set _colourCustom to $carried[$args[0]].colourCustom>><</if>>
 				<<if $carried[$args[0]].accessory_colourCustom isnot undefined>><<set _accessory_colourCustom to $carried[$args[0]].accessory_colourCustom>><</if>>
-				<<if $multipleWardrobes isnot "all">>
-					<<set _lastTaken to "wardrobe">>
-				<<else>>
-					<<set _lastTaken to ($carried[_outfitSecondaryRebuy[0]].lastTaken ? $carried[_outfitSecondaryRebuy[0]].lastTaken : "wardrobe")>>
-					<<if ["asylum","prison"].includes(_lastTaken)>>
-						<<set _lastTaken to "wardrobe">>
-					<</if>>
-				<</if>>
 				<<if $carried[$args[0]].outfitSecondary isnot undefined>>
 					<<set _outfitSecondaryRebuy to $carried[$args[0]].outfitSecondary>>
 					<<if $money gte Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
-						<<generalSend _lastTaken _outfitSecondaryRebuy[0] $carried[_outfitSecondaryRebuy[0]].index $carried[_outfitSecondaryRebuy[0]].colour $carried[_outfitSecondaryRebuy[0]].accessory_colour>>
+						<<set $_return to clothesReturnLocation($carried[$args[0]],"rebuy")>>
+						<<generalSend $_return _outfitSecondaryRebuy[0] $carried[_outfitSecondaryRebuy[0]].index $carried[_outfitSecondaryRebuy[0]].colour $carried[_outfitSecondaryRebuy[0]].accessory_colour>>
 						<<set $money -= Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
-						<<set $effectsmessage to 1>><<run $rebuy_success.push(clone($carried[_outfitSecondaryRebuy[0]].name))>>
+						<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($carried[_outfitSecondaryRebuy[0]].name),$_return])>>
 					<<else>>
 						<<set $effectsmessage to 1>><<run $rebuy_failure.push(clone($carried[_outfitSecondaryRebuy[0]].name))>>
 					<</if>>
 					<<unset _outfitSecondaryRebuy>>
 				<<elseif $money gte Math.trunc(getClothingCost($carried[$args[0]],$args[0]) * 1.5)>>
-					<<generalSend _lastTaken $args[0] $carried[$args[0]].index $carried[$args[0]].colour $carried[$args[0]].accessory_colour>>
+					<<generalSend `clothesReturnLocation($carried[$args[0]],"rebuy")` $args[0] $carried[$args[0]].index $carried[$args[0]].colour $carried[$args[0]].accessory_colour>>
 					<<set $money -= Math.trunc(getClothingCost($carried[$args[0]],$args[0]) * 1.5)>>
 					<<set $effectsmessage to 1>><<run $rebuy_success.push(clone($carried[$args[0]].name))>>
 				<<else>>
@@ -555,28 +521,22 @@
 			<<elseif $clothingrebuy is 1 and $worn[$args[0]].one_piece isnot "broken" and setup.clothes[$args[0]][$worn[$args[0]].index].shop.length gt 0>>
 				<<if $worn[$args[0]].colourCustom isnot undefined>><<set _colourCustom to $worn[$args[0]].colourCustom>><</if>>
 				<<if $worn[$args[0]].accessory_colourCustom isnot undefined>><<set _accessory_colourCustom to $worn[$args[0]].accessory_colourCustom>><</if>>
-				<<if $multipleWardrobes isnot "all">>
-					<<set _lastTaken to "wardrobe">>
-				<<else>>
-					<<set _lastTaken to ($worn[_outfitSecondaryRebuy[0]].lastTaken ? $worn[_outfitSecondaryRebuy[0]].lastTaken : "wardrobe")>>
-					<<if ["asylum","prison"].includes(_lastTaken)>>
-						<<set _lastTaken to "wardrobe">>
-					<</if>>
-				<</if>>
 				<<if $worn[$args[0]].outfitSecondary isnot undefined>>
 					<<set _outfitSecondaryRebuy to $worn[$args[0]].outfitSecondary>>
 					<<if $money gte Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
-						<<generalSend _lastTaken _outfitSecondaryRebuy[0] $worn[_outfitSecondaryRebuy[0]].index $worn[_outfitSecondaryRebuy[0]].colour $worn[_outfitSecondaryRebuy[0]].accessory_colour>>
+						<<set $_return to clothesReturnLocation($worn[_outfitSecondaryRebuy[0]],$args[0]],"rebuy")>>
+						<<generalSend $_return _outfitSecondaryRebuy[0] $worn[_outfitSecondaryRebuy[0]].index $worn[_outfitSecondaryRebuy[0]].colour $worn[_outfitSecondaryRebuy[0]].accessory_colour>>
 						<<set $money -= Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
-						<<set $effectsmessage to 1>><<run $rebuy_success.push(clone($worn[_outfitSecondaryRebuy[0]].name))>>
+						<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($worn[_outfitSecondaryRebuy[0]].name),$_return])>>
 					<<else>>
 						<<set $effectsmessage to 1>><<run $rebuy_failure.push(clone($worn[_outfitSecondaryRebuy[0]].name))>>
 					<</if>>
 					<<unset _outfitSecondaryRebuy>>
 				<<elseif $money gte Math.trunc(getClothingCost($worn[$args[0]],$args[0]) * 1.5)>>
-					<<generalSend _lastTaken $args[0] $worn[$args[0]].index $worn[$args[0]].colour $worn[$args[0]].accessory_colour>>
+					<<set $_return to clothesReturnLocation($worn[$args[0]],"rebuy")>>
+					<<generalSend $_return $args[0] $worn[$args[0]].index $worn[$args[0]].colour $worn[$args[0]].accessory_colour>>
 					<<set $money -= Math.trunc(getClothingCost($worn[$args[0]],$args[0]) * 1.5)>>
-					<<set $effectsmessage to 1>><<run $rebuy_success.push(clone($worn[$args[0]].name))>>
+					<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($worn[$args[0]].name),$_return])>>
 				<<else>>
 					<<set $effectsmessage to 1>><<run $rebuy_failure.push(clone($worn[$args[0]].name))>>
 				<</if>>
@@ -1373,21 +1333,11 @@
 		<<for _u to 0; _u lt $store[$args[1]].length; _u++>>
 			<<if $args[0] is $store[$args[1]][_u].location>>
 				<<if $args[2] is "wardrobe" or $wardrobes[$args[2]] isnot undefined>>
-					<<if !$multipleWardrobes>>
-						<<set _lastTaken to "wardrobe">>
-					<<elseif $location is "asylum">>
-						<<set _lastTaken to "asylum">>
-					<<elseif $location is "prison">>
-						<<set _lastTaken to "prison">>
-					<<elseif $multipleWardrobes isnot "all">>
-						<<set _lastTaken to "wardrobe" or $worn[$args[1]].lastTaken is undefined>>
-					<<else>>
-						<<set _lastTaken to $worn[$args[1]].lastTaken>>
-					<</if>>
-					<<if _lastTaken is "wardrobe">>
+					<<set $_location to clothesReturnLocation($worn[$args[1]])>>
+					<<if $_location is "wardrobe">>
 						<<set $_selectedWardrobe to $wardrobe>>
 					<<else>>
-						<<set $_selectedWardrobe to $wardrobes[_lastTaken]>>
+						<<set $_selectedWardrobe to $wardrobes[$_location]>>
 					<</if>>
 					<<set $_selectedWardrobe[$args[1]].push(clone($store[$args[1]][_u]))>>
 					<<set $store[$args[1]].deleteAt(_u)>>
@@ -1396,18 +1346,7 @@
 				<<elseif $args[2] is "check">>
 					<<set _store_check to 1>>
 				<<else>>
-					<<if !$multipleWardrobes>>
-						<<set _lastTaken to "wardrobe">>
-					<<elseif $location is "asylum">>
-						<<set _lastTaken to "asylum">>
-					<<elseif $location is "prison">>
-						<<set _lastTaken to "prison">>
-					<<elseif $multipleWardrobes isnot "all" or $worn[$args[1]].lastTaken is undefined>>
-						<<set _lastTaken to "wardrobe">>
-					<<else>>
-						<<set _lastTaken to $worn[$args[1]].lastTaken>>
-					<</if>>
-					<<generalUndress _lastTaken $args[1]>>
+					<<generalUndress `clothesReturnLocation($worn[$args[1]])` $args[1]>>
 					<<if $store[$args[1]][_u].name is "naked">>
 					<<elseif $store[$args[1]][_u].temp is undefined>>
 						<<set $worn[$args[1]] to clone($store[$args[1]][_u])>>

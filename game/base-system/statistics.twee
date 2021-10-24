@@ -461,6 +461,10 @@ __Save Game Details__
 		Under Lower integrity: <<print Math.trunc($worn.under_lower.integrity)>>
 		<br>
 	<</if>>
+	<<if $worn.genitals.name isnot "naked">>
+		<<print setup.clothes.genitals[$worn.genitals.index].name_cap>> integrity: <<print Math.trunc($worn.genitals.integrity)>>
+		<br>
+	<</if>>
 	<br>
 
 	__Social__
@@ -502,27 +506,27 @@ __Save Game Details__
 
 	__Transformations__
 	<br>
-	Wolfiness: <<print Math.trunc($wolfbuild)>>
+	Wolfiness: <<print Math.trunc($wolfbuild)>> (30+ for full transformation)
 	<br>
 	Wolf manifestation: <<print Math.trunc($wolfgirl)>>
 	<br>
-	Cattiness: <<print Math.trunc($catbuild)>>
+	Cattiness: <<print Math.trunc($catbuild)>> (50+ for full transformation)
 	<br>
 	Cat manifestation: <<print Math.trunc($cat)>>
 	<br>
-	<<if $hallucinations gte 2 or $bestialitydisable is "t">>Harpyness<<else>>Birdieness<</if>>: <<print Math.trunc($birdbuild)>>
+	<<if $hallucinations gte 2 or $bestialitydisable is "t">>Harpyness<<else>>Birdieness<</if>>: <<print Math.trunc($birdbuild)>> (30+ for full transformation)
 	<br>
 	<<if $hallucinations gte 2 or $bestialitydisable is "t">>Harpy<<else>>Bird<</if>> manifestation: <<print Math.trunc($harpy)>>
 	<br>
-	Bovinity: <<print Math.trunc($cowbuild)>>
+	Bovinity: <<print Math.trunc($cowbuild)>> (30+ for full transformation)
 	<br>
 	Cow manifestation: <<print Math.trunc($cow)>>
 	<br>
-	Angelicness: <<print Math.trunc($angelbuild)>>
+	Angelicness: <<print Math.trunc($angelbuild)>> (50+ for full transformation)
 	<br>
 	Angel manifestation: <<print Math.trunc($angel)>>
 	<br>
-	Demonicness: <<print Math.trunc($demonbuild)>>
+	Demonicness: <<print Math.trunc($demonbuild)>> (30+ for full transformation)
 	<br>
 	Demonic manifestation: <<print Math.trunc($demon)>>
 	<br>

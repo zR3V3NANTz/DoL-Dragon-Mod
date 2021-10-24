@@ -154,6 +154,7 @@ ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x and allow 
 -->
 <</widget>>
 
+<!--New isolated wardrobes also need updates to the `clothesReturnLocation` function in ingame.js-->
 <<widget "wardrobesUpdate">>
 <<set _default to {
 	face:[],

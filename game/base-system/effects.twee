@@ -435,14 +435,29 @@
 		<<exhibitionism1>>
 	<</if>>
 	<<if $rebuy_success.length gt 0>>
-		<span class="lblue">Your
-		<<for _i to 0; _i lt $rebuy_success.length; _i++>>
-			<<print $rebuy_success[_i]>><<if $rebuy_success.length gt 2 and _i lt $rebuy_success.length - 2>>,
-			<<elseif $rebuy_success.length gte 2 and _i is $rebuy_success.length - 2>>
-				and
-			<</if>>
-		<</for>>
-		signals for a replacement.</span>
+		<<set _rebuyMessage to {}>>
+		<<run $rebuy_success.forEach(item => {
+			if(T.rebuyMessage[item[1]] === undefined){
+				T.rebuyMessage[item[1]] = [];
+			}
+			T.rebuyMessage[item[1]].push(item[0]);
+		})>>
+		<span class="lblue">
+			<<for $_label, $_value range _rebuyMessage>>
+				Your
+				<<for $_i to 0; $_i lt $_value.length; $_i++>>
+					<<print $_value[$_i]>><<if $_value.length gt 2 and $_i lt $_value.length - 2>>,
+					<<elseif $_value.length gte 2 and $_i is $_value.length - 2>>
+						and
+					<</if>>
+				<</for>>
+				<<if $wardrobes[$_label]>>
+					signals for a replacement to the <<print $wardrobes[$_label].name>>.
+				<<else>>
+					signals for a replacement. (Likely One-off update error, no need to report unless seen multiple times in the same save) <<if Array.isArray($rebuy_success)>><<print JSON.stringify($rebuy_success)>><</if>>
+				<</if>>
+			<</for>>
+		</span>
 		<<set $rebuy_success to []>>
 	<</if>>
 	<<if $rebuy_failure.length gt 0>>
