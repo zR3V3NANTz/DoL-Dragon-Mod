@@ -345,6 +345,9 @@ Go towards town
 		<</if>>
 	<</addinlineevent>>
 <</if>>
+<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+	<<addevent "forestplantkiss">>
+<</if>>
 <<addevent "forestrock">>
 <<if $bestialitydisable is "f" and $waspdisable is "f">>
 	<<addevent "forestwasps">>
@@ -617,6 +620,29 @@ You hear a buzzing in the surrounding trees.
 <</widget>>
 
 
+<<widget "forestplantkiss">>
+<<generatePlant1>><<person1>>
+"Hi there!" You hear a voice beside you. A <<person "normal">> stands by a bush of tangled vines, waving at you cheerfully. <<He>> has <<plant_details>> scattered throughout <<his>> hair, and <<hes>> completely naked.
+<<arousal 600>><<garousal>>
+<br><br>
+
+"Cuties like you don't usually come this far into the forest," <<he>> says. "It's dangerous this deep.
+<<if $goooutsidecount + $semenoutsidecount gte 25>>
+	I'd ask if you made it through alright, but..." <<He>> eyes up the <<if $goooutsidecount gte 1 and $sememoutsidecount gte 1>>semen and slime<<elseif $goooutsidecount gte 1>>slime<<else>>semen<</if>> covering your body. "Yeah, you've had some fun."
+<<else>>
+	Hope you didn't run into any trouble. That'd be awful."
+<</if>>
+<br><br>
+
+The <<person "normal">> thinks for a moment, before smiling. "Hey, before you go, how about a kiss? Y'know, for good luck." <<He>> closes <<his>> eyes and leans forward, tapping <<his>> finger to <<his>> lips.
+<br><br>
+
+<<link [["Kiss " + $NPCList[0].pronouns.him|Forest Plant Kiss]]>><</link>><<promiscuous1>><<kissvirginitywarning>>
+<br>
+<<link [[Refuse|Forest Plant Kiss Refuse]]>><</link>>
+<</widget>>
+
+
 <<widget "forestdagger">>
 You tread on something hard. You kneel and pull it from the forest detritus. It's an ancient dagger, worn beyond use. A collector might pay for this.
 <br><br>
@@ -841,8 +867,10 @@ The Black Wolf walks up to you and <<if $monster is 1>>kneels<<else>>turns<</if>
 	<<set $danger to random(1, 10000)>>
 	<<if $danger gte (9900 - $allure)>>
 
-		<<if $rng gte 1>>
-		<<foresthunt>>
+		<<if $rng gte 71 and $forest gte 21 and $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+			<<link [[Everything fades to black...|Forest Plant Passout]]>><</link>>
+		<<else>>
+			<<foresthunt>>
 		<</if>>
 
 	<<else>>

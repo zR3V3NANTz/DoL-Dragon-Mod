@@ -211,11 +211,11 @@
 	<</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<elseif $danger gte (9900 - ($allure * $forestmod))>>
-	<<set $rng to random(1, 7)>>
+	<<set $rng to random(1, 8)>>
 	<<switch $rng>>
 	<<case 1>>
 		<<beastNEWinit 1 cat>>
-		The hair stands on the back of your neck. Your turn and face a pair of yellow eyes as a <<if $monster isnot 1>>large <</if>><<beasttype>> sprints towards you.
+		The hair stands on the back of your neck. You turn and face a pair of yellow eyes as a <<if $monster isnot 1>>large <</if>><<beasttype>> sprints towards you.
 		<br><br>
 
 		<<link [[Next|Moor Cat]]>><<set $molestationstart to 1>><</link>>
@@ -290,6 +290,35 @@
 		<<link [[Continue|Moor Cats Continue]]>><</link>>
 		<br>
 	<<case 7>>
+		You see a patch of tall grass rustle. A multi-limbed creature scuttles out from the grass, followed by another behind a bush. The first creature leaps at you.
+		<br><br>
+
+		<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+			<<generatePlant1>><<person1>>
+			You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A vine wraps around it in midair, holding it in place. The second creature is restrained in the same way.
+			<br><br>
+			
+			"Yoo-hoo!" A <<person "normal">> steps from behind the bush, waving at you. <<Plant_details>> are weaved into <<his>> hair, and <<hes>> completely naked. <<He>> gestures with <<his>> hand, and <span class="purple">the vines tighten</span>.
+			<br><br>
+
+			"Good thing I was in the area," the <<person>> says. "Wouldn't want you falling victim to these little things. So..." <<He>> leans forward, licking <<his>> lips. "Don't I deserve a reward for saving you?"
+			<br><br>
+
+			<<if $deviancy gte 35>>
+				<<link [[Reward|Moor Plant Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
+			<<else>>
+				<span class="blue">You are not deviant enough to "reward" <<him>>.
+			<</if>>
+			<br>
+			<<link [[Refuse|Moor Plant Refuse]]>><<set $phase to 1>><</link>>
+		<<else>>
+			You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A sudden rockfall from above knocks it out of the air. It scurries away, as does the second creature.
+			<<stress 6>><<gstress>>
+			<br><br>
+
+			<<link [[Next|Moor]]>><<set $eventskip to 1>><</link>>
+		<</if>>
+	<<case 8>>
 		<<moor_hunt_start>>
 	<</switch>>
 <<else>>

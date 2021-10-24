@@ -120,7 +120,7 @@
 					<span class="pink">You are overcome by sensation. The $tentaclePenis milks you of your semen.</span>
 					<<purity -1>><<internalejac>><<creampie "npc" "tentacle">>
 				<<else>>
-					<span class="pink">You are overcome by sensation and ejaculate on the tentacle.</span>
+					<span class="pink">You are overcome by sensation and ejaculate on the $tentaclePenis.</span>
 				<</if>>
 			<<elseif $mouth is "mpenisentrance">>
 				<span class="pink">

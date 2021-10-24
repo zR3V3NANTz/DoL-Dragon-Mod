@@ -689,6 +689,7 @@ alternative way to write that:
 	<<set $eventtime to []>>
 <</if>>
 <<set $eventtime.push($time)>>
+<<set $index to _npcno>>
 <</widget>>
 
 <<widget "npcrelationship">>

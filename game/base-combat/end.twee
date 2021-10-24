@@ -631,6 +631,8 @@
 <<unset $childSelected>>
 <<unset $childrenPassage>>
 
+<<unset $index>>
+
 <</widget>>
 
 :: Widgets End Speech [widget]

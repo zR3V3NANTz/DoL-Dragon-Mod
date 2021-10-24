@@ -207,7 +207,7 @@ function combatButtonAdjustments(name, extra) {
 DefineMacroS("combatButtonAdjustments", combatButtonAdjustments);
 
 function combatDefaults() {
-	jQuery(document).on('change', '#listbox--defaultactions', function (e) {
+	jQuery(document).on('change', '#listbox--defaultoption', function (e) {
 		new Wikifier(null, '<<replace #othersFeelings>><<othersFeelings ' + this.value + '>><</replace>>');
 	});
 	return "";
@@ -407,6 +407,193 @@ window.setRobinLocationOverride = function(loc, hour){
 	// note: overrides get reset at midnight (in the <<day>> widget)
 	V.robinlocationoverride = override;
 	return;
+}
+
+window.DefaultActions = {
+	create:  function (isMinimal = false, preload = false) {
+		let storage = {};
+		setup.actionsTypes.combatTypes.forEach(type => {
+			storage[type] = {};
+			// Decides whether you create all permutations of the structure.
+			// Usually set isMinimal if saving to file for reduced memory.
+			if (!isMinimal) {
+				setup.actionsTypes.personTypes.forEach(person => {
+					storage[type][person] = {};
+					setup.actionsTypes.actionTypes.forEach(part => {
+						if (person === 'Tentacles' && part === 'askActions') {
+							// Do not add askActions to tentacle enemies.
+							return;
+						} else if (person !== 'Tentacles' && part === 'regrab') {
+							// Do not add regrab to non-tentacle enemies.
+							return;
+						}
+						storage[type][person][part] = [];
+					});
+				});
+			}
+		});
+		if (preload) {
+			// Load old actions into new structure.
+			storage = this.loadOld(V.actionDefaults, storage);
+		}
+		return storage;
+	},
+	check: function (storage) {
+		if (storage === undefined) {
+			return;
+		}
+		if (storage['consensual'] === undefined || storage['rape'] === undefined) {
+			storage = this.create(true, true);
+		}
+		return storage;
+	},
+	setup: function (recreate = false) {
+		if (recreate || V.actionDefaults === undefined) {
+			return this.create(true);
+		}
+		return V.actionDefaults;
+	},
+	load: function (from = {}) {
+		Object.keys(from).forEach(type => {
+			Object.keys(from[type]).forEach(person => {
+				Object.keys(from[type][person]).forEach(part => {
+					let actions = this.get(type, person, part);
+					if (Array.isArray(actions)) {
+						actions.forEach(action => {
+							from[type][person][part].pushUnique(action);
+						});
+					} else {
+						if (part === 'regrab') {
+							let action = actions ? 1 : 0;
+							from[type][person][part].pushUnique(action);
+						}
+					}
+				})
+			});
+		});
+		return from;
+	},
+	loadOld: function (from, to) {
+		setup.actionsTypes.personTypes.forEach(person => {
+			setup.actionsTypes.combatTypes.forEach(type => {
+				setup.actionsTypes.actionTypes.forEach(part => {
+					let actions = this.get(person, type, part, from);
+					if (Array.isArray(actions)) {
+						actions.forEach(action => {
+							this.add(type, person, part, action, { value: to });
+						});
+					} else {
+						if (part === 'regrab') {
+							let action = actions ? 1 : 0;
+							this.add(type, person, part, action, { value: to });
+						}
+					}
+				})
+			});
+		});
+		return to;
+	},
+	save: function (from, callback = this.add) {
+		if (from === undefined) {
+			return;
+		}
+		V.actionDefaults = this.setup(true);
+		// Assume the structure is valid.
+		let defaultTypes = Object.keys(from);
+		defaultTypes.forEach(type => {
+			let defaultPeople = Object.keys(from[type]);
+			defaultPeople.forEach(person => {
+				let defaultParts = Object.keys(from[type][person]);
+				defaultParts.forEach(part => {
+					let actionSets = from[type][person][part];
+					if (actionSets !== undefined) {
+						actionSets.forEach(action => {
+							if (part === 'regrab') {
+								action = action ? 1 : 0;
+							}
+							callback(type, person, part, action, { value: V.actionDefaults });
+						});
+					}
+				});
+			});
+		});
+	},
+	add: function (type, person, part, action, to = { value: V.actionDefaults }) {
+		if (action === 'rest') {
+			return;
+		}
+		if (to.value[type][person] === undefined) {
+			to.value[type][person] = {};
+		}
+		if (to.value[type][person][part] === undefined) {
+			to.value[type][person][part] = [];
+		}
+		to.value[type][person][part].pushUnique(action);
+	},
+	addMany: function (type, person, part, actions, to = { value: V.actionDefaults }) {
+		let filteredActions = actions.map(action => {
+			if (part === 'regrab') {
+				return action ? 1 : 0;
+			}
+			if (action !== 'rest') {
+				return action;
+			}
+		});
+		if (filteredActions.length <= 0) {
+			return;
+		}
+		if (to.value[type][person] === undefined) {
+			to.value[type][person] = {};
+		}
+		if (to.value[type][person][part] === undefined) {
+			to.value[type][person][part] = [];
+		}
+		filteredActions.forEach(action => {
+			to.value[type][person][part].pushUnique(action);
+		});
+	},
+	get: function (type, person, part, from = V.actionDefaults) {
+		if (from[type] === undefined
+			|| from[type][person] === undefined
+			|| from[type][person][part] === undefined) {
+			return [];
+		}
+		return from[type][person][part];
+	},
+	setDefaults: function () {
+		V.actionDefaults = this.create(true);
+		let type = 'rape';
+		this.addMany(type, 'Submissive', 'leftaction', ['leftchest']);
+		this.addMany(type, 'Submissive', 'rightaction', ['rightchest']);
+		this.addMany(type, 'Submissive', 'mouthaction', ['plead', 'suck', 'kiss', 'breastsuck']);
+		this.addMany(type, 'Submissive', 'penisaction', ['tease', 'cooperate']);
+		this.addMany(type, 'Submissive', 'vaginaaction', ['penistease', 'cooperate']);
+		this.addMany(type, 'Submissive', 'anusaction', ['penistease', 'cooperate']);
+		this.addMany(type, 'Submissive', 'feetaction', ['grabrub', 'grabrub', 'vaginagrabrub']);
+		this.addMany(type, 'Defiant', 'leftaction', ['lefthit', 'leftstruggle']);
+		this.addMany(type, 'Defiant', 'rightaction', ['penwhack', 'righthit', 'rightstruggle']);
+		this.addMany(type, 'Defiant', 'mouthaction', ['pullaway', 'bite', 'breastbite', 'headbutt']);
+		this.addMany(type, 'Defiant', 'penisaction', ['escape', 'otheranusescape', 'othermouthescape']);
+		this.addMany(type, 'Defiant', 'vaginaaction', ['escape', 'othermouthescape']);
+		this.addMany(type, 'Defiant', 'anusaction', ['escape', 'othermouthescape']);
+		this.addMany(type, 'Defiant', 'feetaction', ['kick']);
+		this.addMany(type, 'Tentacles', 'regrab', [0]);
+		type = 'consensual';
+		this.addMany(type, 'Submissive', 'leftaction', ['leftchest']);
+		this.addMany(type, 'Submissive', 'rightaction', ['rightchest']);
+		this.addMany(type, 'Submissive', 'mouthaction', ['kiss', 'suck', 'breastsuck', 'breastlick']);
+		this.addMany(type, 'Submissive', 'penisaction', ['tease', 'cooperate']);
+		this.addMany(type, 'Submissive', 'vaginaaction', ['penistease', 'cooperate']);
+		this.addMany(type, 'Submissive', 'anusaction', ['penistease', 'cooperate']);
+		this.addMany(type, 'Defiant', 'leftaction', [0]);
+		this.addMany(type, 'Defiant', 'rightaction', ['penwhack']);
+		this.addMany(type, 'Defiant', 'mouthaction', ['breastpull', 'breastclosed']);
+		this.addMany(type, 'Defiant', 'penisaction', ['escape', 'otheranusescape', 'othermouthescape']);
+		this.addMany(type, 'Defiant', 'vaginaaction', ['escape', 'othermouthescape']);
+		this.addMany(type, 'Defiant', 'anusaction', ['escape', 'othermouthescape']);
+		this.addMany(type, 'Tentacles', 'regrab', [0]);
+		return V.actionDefaults;
+	}
 }
 
 window.transferClothing = function(slot, index, newWardrobe){

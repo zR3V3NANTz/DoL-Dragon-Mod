@@ -2537,5 +2537,13 @@
 <<if $fullDescription isnot undefined>>
 	<<unset $fullDescription>>
 <</if>>
-<</widget>>
 
+<<if $index is undefined and $enemyno gte 1>>
+	<<for _n to 0; _n lt $NPCList.length; _n++>>
+		<<if $NPCList[_n].desc is $description>>
+			<<set $index to _n>>
+			<<break>>
+		<</if>>
+	<</for>>
+<</if>>
+<</widget>>
