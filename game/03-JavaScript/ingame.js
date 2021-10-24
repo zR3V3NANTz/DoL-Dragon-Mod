@@ -677,3 +677,46 @@ window.clothesDataTrimmer = function(item){
 		}
 	});
 }
+
+window.clothesReturnLocation = function(item, type){
+	if(!V.multipleWardrobes) return "wardrobe";
+	let isolated = ["asylum","prison"];
+	let lastTaken = item.lastTaken;
+	if (!lastTaken) {lastTaken = "wardrobe"};
+	if ((V.multipleWardrobes !== "all" && !isolated.includes(lastTaken)) || V.multipleWardrobes[lastTaken].unlocked) {lastTaken = "wardrobe"};
+	switch(type){
+		case "rebuy":
+			switch(V.location){
+				case "asylum":
+					if(item.type.includes("asylum")){
+						return "asylum";
+					}
+					if(!isolated.includes(lastTaken)){
+						return lastTaken;
+					}
+				case "prison":
+					if(item.type.includes("prison")){
+						return "prison";
+					}
+					if(!isolated.includes(lastTaken)){
+						return lastTaken;
+					}
+				default:
+					if(!isolated.includes(lastTaken)){
+						return lastTaken;
+					}
+			}
+		default:
+			switch(V.location){
+				case "asylum":
+					return "asylum";
+				case "prison":
+					return "prison";
+				default:
+					if(!isolated.includes(lastTaken)){
+						return lastTaken;
+					}
+			}
+	}
+	return "wardrobe";
+}

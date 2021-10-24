@@ -469,6 +469,10 @@ Forth argument - item index*/
 		Eerie - <<if $transformdisable is "f">>Protects a specific transformation. Transformations progress and decay at midnight.<<else>>There's something peculiar about this object.<</if>>
 	<<case "shade">>
 		Shade - Blocks the sun and prevents ambient tanning.
+	<<case "asylum">>
+		Asylum - Clothes from the local asylum.
+	<<case "prison">>
+		Prison - Clothes from the local prison.
 	<<default>>
 		<<set $noTraitDescription = 1>>
 <</switch>>
