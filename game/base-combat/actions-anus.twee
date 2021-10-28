@@ -104,6 +104,33 @@
 
 <</widget>>
 
+<<widget "actionsanuspenisdoublefuck">>
+	<<if $worn.genitals.anal_shield is 1>>
+		<!-- Do Nothing -->
+	<<elseif $worn.under_lower.anus_exposed is 1 and $worn.lower.anus_exposed is 1>>
+		<<if $combattype is "train">>
+			<<set _end to $enemyno-1>>
+		<<else>>
+			<<set _end to 0>>
+		<</if>>
+		<<for _j = $enemyno-1; _j gte _end; _j-->>
+			<<if $NPCList[_j].penis is "anusdoubleentrance" or $NPCList[_j].penis is "anusdoubleimminent">>
+				<<if $consensual is 1 and (($promiscuity lte 74 and $enemytype is "man" or $deviancy lte 74 and $enemytype isnot "man" and $awareness lt 300) and !$promiscuityIgnore) or $NPCList[_j].chastity.penis.includes("chastity")>>
+					<!-- Do Nothing -->
+				<<else>>
+					<<if  $awareness gt 300 and ($NPCList[$npcDAP[0]].penis isnot "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble") or ($NPCList[$npcDAP[1]].penis isnot "anusdouble" and $NPCList[$npcDAP[0]].penis is "anusdouble")>>
+						<<set _anusaction["Envelop " + "second penis"] to "anuspenisdoublefuck">>
+						<<break>>
+					<<else>>
+						<<set _anusaction["Envelop " + "their penises"] to "anuspenisdoublefuck">>
+						<<break>>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</for>>
+	<</if>>
+<</widget>>
+
 <<widget "actionsanusMouthEntrance">>
 <<if $combattype is "train">>
 	<<set _end to $enemyno-1>>
@@ -174,6 +201,39 @@
 <<if ($consensual is 0 or ($promiscuity gte 55 and $enemytype is "man") or ($deviancy gte 55 and $enemytype isnot "man")) and $analskill gte 800>>
 	<<set _anusaction["Edging"] to "penisEdging">>
 <</if>>
+<</widget>>
+
+<<widget "actionsanusPenisDoubleEntrance">>
+	<<if $consensual is 1 and ($promiscuity lte 74 and $enemytype is "man" or $deviancy lte 74 and $enemytype isnot "man") and !$promiscuityIgnore>>
+	<</if>>
+	/*<<if $vaginause is 0 and !$worn.genitals.type.includes("chastity")>>
+		<<set _anusaction["Offer your pussy instead"] to "penispussy">>
+	<</if>>*/
+	<<set _anusaction["Tease"] to "penisdoubletease">>
+<</widget>>
+
+<<widget "actionsanusPenisDoubleImminent">>
+	<<set _anusaction["Rub"] to "rub">>
+	<<if ($consensual is 0 or ($promiscuity gte 75 and $enemytype is "man") or ($deviancy gte 75 and $enemytype isnot "man")) and $analskill gte 800>>
+		<<set _anusaction["Edging"] to "penisDoubleEdging">>
+	<</if>>
+	<<set _anusaction["Pull away"] to "escape">>
+<</widget>>
+
+<<widget "actionsanusPenisDoublePenetration">>
+	<<set _anusaction["Take it"] to "doubletake">>
+	<<if $consensual is 0 or ($promiscuity lte 74 and $enemytype is "man" and !$promiscuityIgnore) or ($deviancy lte 74 and $enemytype isnot "man" and !$promiscuityIgnore)>>
+		<<set _anusaction["Cooperate"] to "doublecooperate">>
+	<<else>>
+		<<set _anusaction["Fuck"] to "doublecooperate">>
+		<<if ($NPCList[$npcDAP[0]].penis isnot "anusdouble" or $NPCList[$npcDAP[1]].penis isnot "anusdouble") or ($NPCList[$npcDAP[1]].penis isnot "anusdouble" and $NPCList[$npcDAP[0]].penis is "anusdouble")>>
+
+			<<set _anusaction["Envelop " + "second penis"] to "anuspenisdoublefuck">>
+		<</if>>
+	<</if>>
+	<<if ($consensual is 0 or ($promiscuity gte 75 and $enemytype is "man") or ($deviancy gte 55 and $enemytype isnot "man")) and $analskill gte 800>>
+		<<set _anusaction["Edging"] to "penisDoubleEdging">>
+	<</if>>
 <</widget>>
 
 <<widget "actionsanusFaceAgainstAnus">>
@@ -279,5 +339,114 @@
 		<</if>>
 	<</for>>
 <</if>>
+
+<</widget>>
+
+<<widget "effectsanustopenisdouble">>
+
+	<<if $combattype is "train">>
+		<<set _end to $enemyno-1>>
+	<<else>>
+		<<set _end to 0>>
+	<</if>>
+
+	<<if $anusaction is "anustopenisdouble">><<set $anusaction to 0>><<submission 10>><<analskilluse>><<set $anusactiondefault to "anustopenisdouble">><<combatpromiscuity6>>
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<for _j = $enemyno-1; _j gte _end; _j-->>
+				<<if $NPCList[_j].penis is 0 and ($enemytype isnot "man" or ($NPCList[_j].location.genitals is 0 and $NPCList[_j].location.head isnot "genitals"))>>
+					<<submission 2>><<set $anususe to "penisdouble">><<set $NPCList[_j].penis to "anusdoubleentrance">><<set $anusstate to "doubleentrance">>
+					<<if $leftarm is "anus">>
+						<<set $leftarm to 0>>
+					<</if>>
+					<<if $rightarm is "anus">>
+						<<set $rightarm to 0>>
+					<</if>>
+					<span class="lblue">You straddle <<personselect _j>><<combatperson>> and press <<his1>> <<npcPenis _j>> with your <<bottom>>.</span>
+					<<if $condomUse is false>>
+					<<elseif ($condomUse is true or (random(0,100) lt $condomautochance and $npcCondoms isnot undefined)) and $NPCList[_j].condom is false>>
+						<<equipCondom _j>>
+						<span class="green"><<He>> puts a condom on <<his>> penis.</span>
+					<</if>>
+					<<if $enemytype is "beast">><<set $NPCList[_j].stance to "top">><</if>>
+					<<set $NPCList[_j].location.genitals to "genitals">>
+					<<break>>
+				<</if>>
+			<</for>>
+		<<else>>
+			<<for _j = $enemyno-1; _j gte _end; _j-->>
+				<<if $NPCList[_j].penis is 0>>
+					<span class="blue">You try to straddle <<personselect _j>><<combatperson>> but <<ohe>> pushes you off.</span>
+					<<break>>
+				<</if>>
+			<</for>>
+		<</if>>
+	<</if>>
+
+<</widget>>
+
+<<widget "effectsanuspenisdoublefuck">>
+
+	<<if $combattype is "train">>
+		<<set _end to $enemyno-1>>
+	<<else>>
+		<<set _end to 0>>
+	<</if>>
+
+	<<if $anusaction is "anuspenisdoublefuck">>
+		<<set $anusaction to 0>><<submission 20>><<analskilluse>><<set $anusactiondefault to "anuspenisdoublefuck">><<combatpromiscuity5>>
+		<<for _j = $enemyno-1; _j gte _end; _j-->>
+			<<if $NPCList[_j].penis is "anusdoubleentrance" or $NPCList[_j].penis is "anusdoubleimminent">>
+				<<set _doublepenissize to $NPCList[_j].penissize>>
+				
+				<<set _npcA to parseInt($npcDAP[0])>> /* Sometimes twine doesn't like returning array data within an array, so define them as variables */
+				<<set _npcB to parseInt($npcDAP[1])>>
+				<<set _npcdicksizeA to $NPCList[_npcA].penissize>>
+				<<set _npcdicksizeB to $NPCList[_npcB].penissize>>
+				<<if _npcdicksizeA gte _npcdicksizeB>>
+					<<set _doublepenissize to (_npcdicksizeA+1)>>
+				<<else>>
+					<<set _doublepenissize to (_npcdicksizeB+1)>>
+				<</if>>
+				<<if _doublepenissize gt 5>> /* Ensure combined they're not larger than the largest possible phallus */
+					<<set _doublepenissize to 5>>
+				<</if>>
+				<<if $anusWetness + ($analskill / 10) gte (_doublepenissize * 15) + random(1, 40) or random(1, 3) is 2>>
+					<<if $player.virginity.anal isnot true>>
+						<<set $NPCList[$npcDAP[0]].penis to "anusdouble">>
+						<<set $NPCList[$npcDAP[1]].penis to "anusdouble">>
+
+						<<anus_lube_text>> <span class="pink">you <<analtext>> push against the $NPCList[_npcA].fullDescription's $NPCList[_npcA].penisdesc and the $NPCList[_npcB].fullDescription's $NPCList[_npcB].penisdesc, taking them deep into your <<bottom>>.</span>
+						<<switch _doublepenissize>>
+						<<case 5>>
+							<span class="lewd">You'd moan, but the sheer size of both cocks drives all breath from your body.</span>
+						<<case 4>>
+							<span class="lewd">You shiver as your ass stretches to accommodate both cocks.</span>
+						<<default>>
+							<span class="lewd">You shiver as the phalluses invade your body.</span>
+						<</switch>>
+						<<sex 30>><<takeNPCVirginity $NPCList[_j].fullDescription "penile">><<analstat>><<raped>><<anusraped>><<set $anusstate to "doublepenetrated">>
+						<<break>>
+					<<elseif $player.virginity.anal is true>>
+						<<set $NPCList[$npcDAP[0]].penis to "anusdouble">>
+						<<set $NPCList[$npcDAP[1]].penis to "anusdouble">>
+
+						<<anus_lube_text>> <span class="pink">you <<analtext>> push against the $NPCList[_npcA].fullDescription's $NPCList[_npcA].penisdesc and the $NPCList[_npcB].fullDescription's $NPCList[_npcB].penisdesc, taking them deep into</span> <span class="red">your virgin <<bottom>>.</span>
+						<<switch _doublepenissize>>
+							<<case 5>><span class="red">You'd scream, but the sheer size of the invading phalluses drive out all thought and breath.</span>
+							<<case 4>><span class="red">You scream as your ass struggles to accommodate both cocks.</span>
+							<<default>><span class="red">You gasp as your <<bottom>> is violated for the first time.</span> <span class="pink">Your nipples harden while your body shivers from taking two cocks.</span>
+						<</switch>>
+						<<set _mydesc to ($NPCList[$npcDAP[0]].fullDescription + " and " + $NPCList[$npcDAP[1]].fullDescription)>>
+						<<sex 100>><<takeVirginity _mydesc "anal">><<takeNPCVirginity $NPCList[_j].fullDescription "penile">><<bruise anus>><<analstat>><<violence 30>><<raped>><<anusraped>><<set $anusstate to "doublepenetrated">><<set $speechanusvirgin to 1>>
+						<<break>>
+					<</if>>
+				<<else>>
+					You <<analtext>> press your <<bottom>> against their cocks, <span class="blue">but fail to envelop.</span> Their penises angle away and rubs between your cheeks.
+					<<sex 20>><<analstat>>
+					<<break>>
+				<</if>>
+			<</if>>
+		<</for>>
+	<</if>>
 
 <</widget>>

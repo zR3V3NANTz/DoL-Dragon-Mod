@@ -170,7 +170,14 @@
 <</if>>
 
 :: Brothel Show Gangbang Sex Finish
-
+	/* Check variables before combat is reset */
+	<<set _extremeshow to "f">>
+	<<if $anusstate is "doublepenetrated" and $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+		<<set _extremeshow to "d">>
+	<<elseif $anusstate is "doublepenetration" and $vaginastate is "penetrated" and $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>>>
+		<<set _extremeshow to "t">>
+	<</if>>
+	/*  */
 <<effects>>
 <<if $finish is 1>>
 	The <<person1>><<person>> steadies you while the others give you space. <<endevent>><<npc Briar>><<person1>>"Why are you stopping?" Briar storms onto the stage. <<He>> glares at you, then seems to remember where <<he>> is. <<He>> smiles at the audience. "Apologies my friends, but that will be all for today." <<He>> ushers you and the others off the stage.
@@ -196,8 +203,21 @@
 	<<else>>
 		"I almost believed your performance myself."
 	<</if>>
-	<<He>> hands you the <<moneyGain 1000>> <<he>> promised.<<glove>>
-	<<npcincr Briar love 1>>
+	/* Double anal/vaginal/oral */
+	<<if _extremeshow is "d">>
+		<br>
+		<<He>> pauses, licking <<his>> lips thoughtfully. "Double anal, now that's real talent. The audience loved it. Keep up the great work; your elastic ass will make us both a lot of money."
+		<<He>> hands you the <<moneyGain 1000>> <<he>> promised, along with a bonus <<moneyGain 200>>.<<gglove>>
+		<<npcincr Briar love 2>>
+	<<elseif _extremeshow is "t">>
+		<br>
+		<<He>> beams. "Triple penetration, that's super starlet material. You had the crowd begging for more. Keep up the great work; your elastic fuck holes will make us both a lot of money."
+		<<He>> hands you the <<moneyGain 1000>> <<he>> promised, along with a bonus <<moneyGain 300>>.<<gglove>>
+		<<npcincr Briar love 2>>
+	<<else>>
+		<<He>> hands you the <<moneyGain 1000>> <<he>> promised.<<glove>>
+		<<npcincr Briar love 1>>
+	<</if>>
 	<br><br>
 <<elseif $enemyhealth lte 0>>
 	You knock the actors away from you and escape from the stage.

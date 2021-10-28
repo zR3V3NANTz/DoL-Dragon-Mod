@@ -40,6 +40,7 @@
 <<set $voredisable to "f">>
 <<set $tentacledisable to "f">>
 <<set $analdisable to "f">>
+<<set $analdoubledisable to "t">>
 <<set $analingusdisablegiving to "f">>
 <<set $analingusdisablereceiving to "f">>
 <<set $transformdisable to "f">>
@@ -947,9 +948,16 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 
 	<span class="gold">Togglable Features</span>
 	<br>
-	<label><div class="settingsToggle">
+	/*<label><div class="settingsToggle">
 	<<checkbox "$analdisable" "t" "f" autocheck>> Enable anal
-	</div></label>
+	</div></label>*/
+	<div class="settingsToggle" role="group" aria-labelledby="settingsAnalandDAPHead">
+	<label>
+	<<checkbox "$analdisable" "t" "f" autocheck>> Enable anal |
+	</label>
+	<label>
+	<<checkbox "$analdoubledisable" "t" "f" autocheck>> Enable double anal
+	</label></div>
 	<div class="settingsToggle" role="group" aria-labelledby="settingsAnalingusHead">
 	<span id="settingsAnalingusHead">Analingus:</span>
 	<label>

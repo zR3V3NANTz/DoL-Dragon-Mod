@@ -5963,21 +5963,21 @@ $worn.genitals.name
 <</widget>>
 
 <<widget "npcPenisSimple">>
-<<if !$args[0]>>
-	<<set _npcGen to 0>>
-<<else>>
-	<<set _npcGen to $args[0]>>
-<</if>>
-<<if $NPCList[_npcGen].chastity.penis is "chastity cage">>
-	<<set _text_output to "caged penis">>
-<<elseif $NPCList[_npcGen].chastity.penis.includes("chastity")>>
-	<<set _text_output to $NPCList[_npcGen].chastity.penis>>
-<<elseif $NPCList[_npcGen].penisdesc.includes("strap-on")>>
-	<<set _text_output to "strap-on cock">>
-<<else>>
-	<<set _text_output to "penis">>
-<</if>>
-<<print _text_output>>
+	<<if !$args[0]>>
+		<<set _npcGen to 0>>
+	<<else>>
+		<<set _npcGen to $args[0]>>
+	<</if>>
+	<<if $NPCList[_npcGen].chastity.penis is "chastity cage">>
+		<<set _text_output to "caged penis">>
+	<<elseif $NPCList[_npcGen].chastity.penis.includes("chastity")>>
+		<<set _text_output to $NPCList[_npcGen].chastity.penis>>
+	<<elseif $NPCList[_npcGen].penisdesc.includes("strap-on")>>
+		<<set _text_output to "strap-on cock">>
+	<<else>>
+		<<set _text_output to either("penis","cock","shaft")>>
+	<</if>>
+	<<print _text_output>>
 <</widget>>
 
 <<widget "npcVagina">>

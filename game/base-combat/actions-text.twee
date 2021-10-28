@@ -4606,6 +4606,297 @@ You <<peniletext>> tease <<their>> anus with your <<penis>>.
 <</if>>
 <</widget>>
 
+<<widget "actionsanusdoublethrust">>
+	/* This DAP code is horrendous. It needs to be reworked */
+		<<set _dap to 0>>
+		<<set _npcdapA to parseInt($npcDAP[0])>>
+		<<set _npcdapB to parseInt($npcDAP[1])>>
+		
+		/* State 1 is out of sync, state 2 in in sync */
+		<<if $NPCList[_npcdapA].penis isnot "anusdouble" or $NPCList[_npcdapB].penis isnot "anusdouble">>
+			<<set _dap to 1>>
+		<<else>>
+			<<set _dap to 2>>
+		<</if>>
+	<<if $enemytype is "beast">>
+		/* Beasts are only encountered individually. This is futureproofing */
+		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				The <<beasttype>> savagely hammers in and out of your anus. Driven by instinct, you <<analtext>> push back as you approach your peak.
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				The <<beasttype>> savagely hammers in and out of your anus. You <<analtext>> push back against its movements.
+			<<else>>
+				The <<beasttype>> savagely hammers in and out of your anus. You <<analtext>> move with it, trying to reduce your discomfort.
+			<</if>>
+		<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				The <<beasttype>> relentlessly pounds your anus. Driven by instinct, you <<analtext>> push back as you approach your peak.
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				The <<beasttype>> relentlessly pounds your anus. You <<analtext>> push back against its movements.
+			<<else>>
+				The <<beasttype>> relentlessly pounds your anus. You <<analtext>> move with it, trying to reduce your discomfort.
+			<</if>>
+		<<else>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				The <<beasttype>> rhythmically fucks your anus. Driven by instinct, you <<analtext>> push back as you approach your peak.
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				The <<beasttype>> rhythmically fucks your anus. You <<analtext>> push back against its movements.
+			<<else>>
+				The <<beasttype>> rhythmically fucks your anus. You <<analtext>> move with it, trying to reduce your discomfort.
+			<</if>>
+		<</if>>
+
+	<<else>>
+		<<if _dap is 2>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is ruthlessly fucked by both cocks. Driven by instinct, you <<analtext>> push back as you approach your peak.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is ruthlessly fucked by both cocks. You <<analtext>> push back against the movements.
+				<<else>>
+					Your anus is ruthlessly fucked by both cocks. You <<analtext>> push back, trying to reduce your discomfort.
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is relentlessly pounded by both cocks. Driven by instinct, you <<analtext>> push back as you approach your peak.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is relentlessly pounded by both cocks. You <<analtext>> push back against the movements.
+				<<else>>
+					Your anus is relentlessly pounded by both cocks. You <<analtext>> push back, trying to reduce your discomfort.
+				<</if>>
+			<<else>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus yields to the repeated insertions by both cocks. Driven by instinct, you <<analtext>> push back as you approach your peak.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus yields to the repeated insertions by both cocks. You <<analtext>> push back against the movements.
+				<<else>>
+					Your anus yields to the repeated insertions by both cocks. You <<analtext>> push back, trying to reduce your discomfort.
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is ruthlessly fucked. Driven by instinct, you <<analtext>> push back as you approach your peak.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is ruthlessly fucked. You <<analtext>> push back against the movements.
+				<<else>>
+					Your anus is ruthlessly fucked. You <<analtext>> push back, trying to reduce your discomfort.
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is relentlessly pounded. Driven by instinct, you <<analtext>> push back as you approach your peak.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is relentlessly pounded. You <<analtext>> push back against the movements.
+				<<else>>
+					Your anus is relentlessly pounded. You <<analtext>> push back, trying to reduce your discomfort.
+				<</if>>
+			<<else>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus yields to the repeated insertions. Driven by instinct, you <<analtext>> push back as you approach your peak.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus yields to the repeated insertions. You <<analtext>> push back against the movements.
+				<<else>>
+					Your anus yields to the repeated insertions. You <<analtext>> push back, trying to reduce your discomfort.
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "actionsanusdoubleedging">>
+	<<set _dap to 0>>
+	<<set _npcdapA to $npcDAP[0]>>
+	<<set _npcdapB to $npcDAP[1]>>
+		
+	/* State 1 is out of sync, state 2 in in sync */
+	<<if $NPCList[_npcdapA].penis isnot "anusdouble" or $NPCList[_npcdapB].penis isnot "anusdouble">>
+		<<set _dap to 1>>
+	<<else>>
+		<<set _dap to 2>>
+	<</if>>
+	<<if $anusaction is "doubleimminent">>
+		<<if $arousal gte ($arousalmax / 5) * 4>>
+			Driven partly by instinct, you <<analtext>> rub against their penises to control their arousal as you approach your peak.
+		<<elseif $arousal gte ($arousalmax / 5) * 2>>
+			You <<analtext>> rub against their penises to control their arousal.
+		<<else>>
+			You <<analtext>> rub against their penises to control their arousal, trying to reduce your discomfort.
+		<</if>>
+	<<else>>
+		<<if _dap is 2>>
+			<<if $enemytype is "beast">>
+				/* Beasts are only encountered individually. This is futureproofing */
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<<else>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<</if>>
+			<<else>>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+					Your anus is ruthlessly fucked by both cocks.
+				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					Your anus is relentlessly pounded by both cocks.
+				<<else>>
+					Your anus yields to the repeated insertions by both cocks.
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $enemytype is "beast">>
+				/* Beasts are only encountered individually. This is futureproofing */
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<<else>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<</if>>
+			<<else>>
+				<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+					Your anus is ruthlessly fucked.
+				<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+					Your anus is relentlessly pounded.
+				<<else>>
+					Your anus yields to the repeated insertions.
+				<</if>>
+			<</if>>
+		<</if>>
+		<<if $arousal gte ($arousalmax / 5) * 4>>
+			Driven partly by instinct, you <<analtext>> move to control their arousal as you approach your peak.
+		<<elseif $arousal gte ($arousalmax / 5) * 2>>
+			You <<analtext>> move to control their arousal of both cocks.
+		<<else>>
+			You <<analtext>> move to control their arousal of both cocks, trying to reduce your discomfort.
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "actionsanusdoubletake">>
+		<<set _dap to 0>>
+		<<set _npcdapA to parseInt($npcDAP[0])>>
+		<<set _npcdapB to parseInt($npcDAP[1])>>
+		
+		/* State 1 is out of sync, state 2 is in sync */
+		<<if $NPCList[_npcdapA].penis isnot "anusdouble" or $NPCList[_npcdapB].penis isnot "anusdouble">>
+			<<set _dap to 1>>
+		<<else>>
+			<<set _dap to 2>>
+		<</if>>
+	
+	<<if _dap is 2>>
+		/* Beasts are only encountered individually. This is futureproofing */
+		<<if $enemytype is "beast">>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<<else>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<<else>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<</if>>
+			<<else>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<<else>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is ruthlessly destroyed by both cocks.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is ruthlessly fucked by both cocks.
+				<<else>>
+					Your anus is ruthlessly fucked by both cocks.
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is relentlessly slammed by both cocks.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is relentlessly pounded by both cocks.
+				<<else>>
+					Your anus is relentlessly pounded by both cocks.
+				<</if>>
+			<<else>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus yields to the repeated insertions by both cocks.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus yields to the repeated insertions by both cocks.
+				<<else>>
+					Your anus yields to the repeated insertions by both cocks.
+				<</if>>
+			<</if>>
+		<</if>>
+	<<else>>
+		<<if $enemytype is "beast">>
+			/* Beasts are only encountered individually. This is futureproofing */
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<<else>>
+					The <<beasttype>> savagely hammers in and out of your anus.
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<<else>>
+					The <<beasttype>> relentlessly pounds your anus.
+				<</if>>
+			<<else>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<<else>>
+					The <<beasttype>> rhythmically fucks your anus.
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is ruthlessly fucked.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is ruthlessly fucked.
+				<<else>>
+					Your anus is ruthlessly fucked.
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus is relentlessly slammed.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus is relentlessly pounded.
+				<<else>>
+					Your anus is relentlessly pounded.
+				<</if>>
+			<<else>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your anus yields to the repeated insertions.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your anus yields to the repeated insertions.
+				<<else>>
+					Your anus yields to the repeated insertions.
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+<</widget>>
+
 <<widget "actionsshaftrub">>
 <<if $enemytype is "beast">>
 	<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>

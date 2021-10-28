@@ -1132,6 +1132,16 @@ and _stanceCheck isnot "top">>
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayanal.png">
 		</div>
 	<</if>>
+<<elseif $anusstate is "doublepenetrated">>
+	<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+		<div @class="_anusClass" @id="_anusID">
+			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xraydoubleanal.png">
+		</div>
+	<<else>>
+		<div @class="_anusClass" @id="_anusID">
+			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayanal.png">
+		</div>
+	<</if>>
 <<elseif $anusstate is "tentacle">>
 	<div @class="_anusClass" @id="_anusID">
 		<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayanaltentacle.png">
@@ -1230,6 +1240,20 @@ and _stanceCheck isnot "top">>
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayanalcum.png">
 		</div>
 	<</if>>
+	<<if $anusstate is "doublepenetrated">>
+		<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+			<<set _tempspeed to _animspeed>>
+			<<set _animspeed to 'mid'>>
+			<div class="i256" @id="_anusID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xraydoubleanalcum.png">
+			</div>
+			<<set _animspeed to _tempspeed>>
+		<<else>>
+			<div class="i256" @id="_anusID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayanalcum.png">
+			</div>
+		<</if>>
+	<</if>>
 <<else>>
 	<<if $condomVaginalImg and $vaginastate is "penetrated">>
 		<div class="i256" @id="_vagID">
@@ -1248,6 +1272,20 @@ and _stanceCheck isnot "top">>
 		<div class="i256" @id="_anusID">
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayanalcum.png">
 		</div>
+	<</if>>
+	<<if $anusstate is "doublepenetrated">>
+		<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+			<<set _tempspeed to _animspeed>>
+			<<set _animspeed to 'mid'>>
+			<div class="i256" @id="_anusID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xraydoubleanalcum.png">
+			</div>
+			<<set _animspeed to _tempspeed>>
+		<<else>>
+			<div class="i256" @id="_anusID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayanalcum.png">
+			</div>
+		<</if>>
 	<</if>>
 <</if>>
 
