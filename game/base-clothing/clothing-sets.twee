@@ -58,8 +58,13 @@
 		<</if>>
 	<</for>>
 <<else>>
-	<span class="red">The slime is not allowing you to sleep with anything on.</span>
-	<br>
+	<<if $possessed>>
+		<span class="red">The slime in your head is silent.</span>
+		<br>
+	<<else>>
+		<span class="red">The slime is not allowing you to sleep with anything on.</span>
+		<br>
+	<</if>>
 <</if>>
 <</widget>>
 

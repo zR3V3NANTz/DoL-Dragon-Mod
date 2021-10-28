@@ -1,6 +1,6 @@
 :: Commercial alleyways
 
-<<set $outside to 1>><<set $location to "alley">><<effects>><<set $bus to "commercial">>
+<<set $outside to 1>><<set $location to "alley">><<effects>><<set $bus to "commercial">><<getTarget true>>
 You are in an alleyway in the commercial district.
 <<if $daystate is "day">>
 	You can hear the commotion of the high street.
@@ -22,11 +22,11 @@ There's a ladder to your left, you think it will take you to the rooftops.
 <<if $arousal gte $arousalmax>>
 	<<orgasmstreet>>
 <</if>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutalley>>
 <<else>>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-	<<if $danger gte (9900 - $allure) and $eventskip is 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 		<<eventsstreet>>
 	<<else>>
 		<<if $map.top is true>>

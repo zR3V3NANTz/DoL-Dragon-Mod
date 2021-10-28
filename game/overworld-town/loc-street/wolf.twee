@@ -1,6 +1,6 @@
 :: Wolf Street
 
-<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "wolf">>
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "wolf">><<getTarget true>>
 You are on Wolf Street. The nearby forest bleeds into the town here, particularly where the temple sits.
 <<if $daystate is "day">>
 	<<if $weather is "rain">>
@@ -25,11 +25,11 @@ You are on Wolf Street. The nearby forest bleeds into the town here, particularl
 <<if $arousal gte $arousalmax>>
 	<<orgasmstreet>>
 <</if>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutstreet>>
 <<else>>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-	<<if $danger gte (9900 - $allure) and $eventskip is 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 		<<eventsstreet>>
 	<<else>>
 		<<if $map.top is true>>

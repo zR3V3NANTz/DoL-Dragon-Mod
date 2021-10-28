@@ -1,0 +1,654 @@
+:: Lake Ruin Prison Intro
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<set $wraith.exit to "lake_ruin">><<underwater>><<effects>>
+
+You place your hand against the rune. You trace a symbol around it with your other hand, and it flashes to life with a red glow.
+<br><br>
+The walls rumble. Plumes of purple steam hiss as seams appear between the stone. Masses of lichen crumble and float away.
+The wall around the rune begins to retract backwards, before falling into the floor. You swim into the breach.
+<br><br>
+Before you is a staircase leading up into darkness. Small patches of lichen illuminate sections of the wall. At the top, you can see a faint glow. You clumsily pull yourself along the walls leading up.
+<br><br>
+<span class="nextLink"><<link [[Up.|Lake Ruin Prison Intro 2]]>><<pass 2>><</link>></span>
+<br>
+
+:: Lake Ruin Prison Intro 2
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<set $wraith.exit to "lake_ruin">><<effects>>
+
+You hear the scraping of stone behind you as you climb. After some time, you fall forwards, landing on your hands. <span class="blue">You've left the water.</span> There's a large air pocket here, and the air is filled with a purple mist. You crawl up the last of the stairs.
+<br><br>
+<<if $wraithPrison>>
+	You're back in the underwater prison.
+<<else>>
+	As you reach the top, you see the source of the glow. You're in a massive stone room lit by a colossal colony of glowing purple lichen. It snakes along the walls, occasionally following the pattern of intricate carvings.
+	All around you are sets of large cages, many of which have rusted away. You spot a set of shackles in one of them. Another one of the cages seems to be the epicentre of the lichen colony, with much of it completely covered.
+	<br><br>
+<</if>>
+You double over in pain. A pale, translucent limb emerges from your chest, followed by another. You're forcefully pushed into leaning backwards as it leaves you. <<pain 10>><<ggpain>>
+<br><br>
+<<endWraith>>
+<<generateWraith 1 true>>
+You collapse on the cold stone floor, with your senses slowly returning to you. You retch, coughing up water. You sharply inhale, and taste a sickening sweetness in the air. <<set $hallucinogen += 40>><<gghallucinogens>>
+<br><br>
+<<if !$wraithIntro>>
+	<<set $wraithIntro to true>>
+	Before you floats a beautiful pale figure.
+	<<if $wraith.state is "haunt">>
+		It regards you with angry red eyes, clutching at its own neck.
+		<br><br>
+		"<span class="wraith">Sealed away forever. As a thief should.</span>"
+		<br><br>
+		It grabs you by the neck and effortlessly pushes you to the ground. It floats down, coming to rest as it straddles you, and begins to put pressure on your neck. <span class="red">You can't breathe!</span>
+	<<else>>
+		It's naked, save for a necklace of ivory around its neck, set with large blue gemstones. It regards you with curious blue eyes, lifting your chin with its hand. It feels cold.
+		<br><br>
+		"<span class="wraith">Bask in immaculance. We will be beautiful.</span>"
+		<br><br>
+		It gently puts its hands on your neck, and pushes you down on your back. It floats down, coming to rest as it straddles you.
+	<</if>>
+<<else>>
+	The pale figure floats before you.
+	<<if $wraith.state is "haunt">>
+		It scratches its neck, before pushing you over effortlessly. It floats down, and comes to rest as it straddles you. It grabs you by the neck. <span class="red">You can't breathe!</span>
+		<br><br>
+		"<span class="wraith">If you wish to steal from the dead, you will join them.</span>"
+	<<else>>
+		It thumbs its necklace, before gently pushing you on your back. It floats down, and comes to rest as it straddles you.
+		<br><br>
+		"<span class="wraith">Welcome home.</span>"
+	<</if>>
+<</if>>
+Its gaze bores into you, keeping your body weak and unresponsive.
+<<if !$wraithPrison>>
+	<br><br>
+	<<link [[Beg|Lake Prison Intro 3]]>><<set $phase to 1>><<sub 1>><</link>>
+	<br>
+	<<link [[Struggle|Lake Prison Intro 3]]>><<set $phase to 2>><<def 1>><</link>>
+	<br>
+<<else>>
+	<<if $parasitedisable is "f" and ($parasite.left_ear.name is undefined or $parasite.right_ear.name is undefined) and $slimedisable is "f">>
+		<br><br>
+		<<link [[Next|Lake Prison Slime]]>><</link>>
+	<<else>>
+		<<initWraith "abomination">>
+		<<startWraith>>
+		<br><br>
+		<<link [[Next|Lake Prison Intro Fight]]>><</link>>
+	<</if>>	
+<</if>>
+<br>
+<<set $wraithPrison to {timer: 0, timePassed: 0, search: 0, state: "present", possession: false}>>
+
+:: Lake Prison Intro 3
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<set $wraith.exit to "lake_ruin">><<effects>>
+<<if $phase is 1>>
+	<<if $submissive gte 1150>>
+		"P-please, don't hurt me..." you beg.
+	<<elseif $submissive lte 850>>
+		"Whatever you are, please leave me alone!" you yell.
+	<<else>>
+		"Please, I'm sorry! Don't hurt me!" you beg.
+	<</if>>
+	<br><br>
+	<<if $wraith.state is "haunt">>
+		"<span class="wraith">A thief is not one to beg.</span>" It grabs your neck more violently, cutting off your pleas. <<pain 8>><<gpain>>
+	<<else>>
+		"<span class="wraith">I promise endless pleasure. Is this not enough?</span>" It giggles, before grabbing you by the neck. <<pain 4>><<gpain>>
+	<</if>>
+<<else>>
+	You try to pry its hands off of you, to no end. It smiles at you.
+	<<if $wraith.state is "haunt">>
+		"<span class="wraith">Struggle. It will only drown you faster.</span>"
+	<<else>>
+		"<span class="wraith">Save your energy. You will need it.</span>"
+	<</if>>	
+<</if>>
+<br><br>
+<<if $parasitedisable is "f" and ($parasite.left_ear.name is undefined or $parasite.right_ear.name is undefined) and $slimedisable is "f">>
+	<<link [[Next|Lake Prison Slime]]>><</link>>
+<<else>>
+	<<initWraith "abomination">>
+	<<startWraith>>
+	<br><br>
+	<<link [[Next|Lake Prison Intro Fight]]>><</link>>
+<</if>>
+<br>
+
+:: Lake Prison Slime
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<set $wraith.exit to "lake_ruin">><<effects>>
+It raises a hand to the side, and a swirling purple disc appears in the air. It reaches in, and pulls out a writhing red mass. A living slime.
+<br><br>
+It brings it down to your
+<<if $parasite.left_ear.name is undefined>>
+	left ear, <span class="lewd">where it squirms in.</span>
+	<<parasite left_ear slime>>
+<<elseif $parasite.right_ear.name is undefined>>
+	right ear, <span class="lewd">where it squirms in.</span>
+	<<parasite right_ear slime>>
+<</if>>
+<br><br>
+You shake in the figure's grasp. You feel unnaturally aroused, especially with it straddling you like this. It's a small feeling at first. Then it grows, until <span class="lewd">an overwhelming desire for lewdity overtakes you.</span>
+<br><br>
+<i>A corruption bar has appeared in the Characteristics tab.</i>
+<br><br>
+Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<</if>>. You hear whispers all around you. <span class="lewd">Something inside pressures you to give yourself to the pale figure.</span> Somehow, you know going along with the urges will feel good, and disobeying will be painful.
+<<initWraith "abomination">>
+<<startWraith>>
+<br><br>
+<<if $promiscuity gte 55 and $submissive gte 1900>>
+	<<link [[Submit|Lake Prison Intro Fight]]>><<set $sexstart to 1>><<corruption 3>><<pain -8>><<stress -12>><<trauma -24>><<set $submissive += 2>><</link>><<promiscuous4>><<ggcorruption>><<llpain>><<llltrauma>><<llstress>>
+	<br>
+<</if>>
+<<link [[Obey|Lake Prison Intro Fight]]>><<corruption 1>><<pain -4>><<stress -6>><<trauma -12>><<set $submissive += 1>><</link>><<gcorruption>><<lpain>><<lltrauma>><<lstress>>
+<br>
+<<link [[Defy|Lake Prison Intro Fight]]>><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><<set $submissive -= 1>><</link>><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>>
+<br>
+
+:: Lake Prison Intro Fight
+<<effects>>
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<set $enemytype to $wraith.type>>
+<<elseif $struggle_start is 1>>
+	<<set $combat to 1>>
+	<<controlloss>>
+	<<violence 1>>
+	<<molested>>
+	<<if $penisexist is 1>>
+		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
+	<<else>>
+		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>
+	<</if>>
+	<<unset $struggle_start>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<set $enemytype to $wraith.type>>
+<</if>>
+
+<<effectsWraith>>
+
+<<switch $wraith.type>>
+	<<case "man">>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next|Lake Prison Intro Fight Finish]]>><</link>></span><<nexttext>>
+		<<elseif $enemyhealth lte 0>>
+			<span id="next"><<link [[Next|Lake Prison Intro Fight Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Lake Prison Intro Fight]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "tentacles">>
+		<<if $tentacles.active lte ($tentacles.max / 2)>>
+			<span id="next"><<link [[Next|Lake Prison Intro Fight Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Lake Prison Intro Fight]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "slime">>
+		<<if $struggle.done gte $struggle.number>>
+			<span id="next"><<link [[Next|Lake Prison Intro Fight Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Lake Prison Intro Fight]]>><</link>></span><<nexttext>>
+		<</if>>
+<</switch>>
+<br>
+
+:: Lake Prison Intro Fight Finish
+<<effects>>
+<<if !$wraithCount>>
+	<<set $wraithCount to 0>>
+	<<set $wraithMax to 3>>
+	<<if $wraith.offspring is "dead">>
+		<<set $wraithMax ++>>
+	<</if>>
+	<<if $tentacledisable is "t">>
+		<<set $wraithMax -->>
+	<</if>>
+<</if>>
+<<if $wraith.type is "man" and $enemyhealth lte 0>>
+	The <<person>> looks down at you in shock as <<he>> staggers backwards.
+	<<if $wraith.gen is "abomination">>
+		The tentacles drop lifelessly to the ground, and sublimate into a pink mist.
+	<<elseif $wraith.gen is "arms">>
+		<<His>> extra arms fold back in.
+	<</if>> 
+	A terrible shriek pierces the air, forcing you to your knees. It grabs you by the neck, and lifts you.
+	<br><br>
+	You're dragged and thrust into the cage next to the center of the lichen colony. There's no door. The figure becomes more translucent, and begins fading. "<span class="wraith">I must recover. You will wait.</span>" It vanishes in a bright flash.
+	<br><br>
+	<<tearful>> you look around, trying to make sure its really gone.
+	<<set $wraith.defeated ++>>
+	<<set $wraithPrison.timer to 120>>
+	<<set $wraithPrison.state to "recovering">>
+	<<clotheson>>
+	<<endcombat>>
+	<<exitWraith>>
+<<elseif $enemyarousal gte $enemyarousalmax or ($wraith.type is "tentacles" and $tentacles.active lte ($tentacles.max / 2)) or ($wraith.type is "slime" and $struggle.done gte $struggle.number)>>
+	<<set $wraithCount ++>>
+	<<ejacW>>
+	<<if $wraithCount gte $wraithMax>>
+		<<kissWraith>>
+		<br><br>
+		It suddenly lifts you, and begins to carry you. You're helpless to resist.
+		<br><br>
+		You're placed in a decrepit cage, right next to the center of the lichen colony. There's no door.
+		<<if $wraith.state is "haunt">>
+			"<span class="wraith">I will break open your mind, and then I will show you. And then you will. Give. It. Back.</span>"
+		<</if>>
+		It floats away from the cell, out of sight. <<tearful>> you look around, trying to think of a way out. The figure is nowhere to be seen.
+		<<set $wraithPrison.timer to 60>>
+		<<set $wraithPrison.state to "recovering">>
+		<<clotheson>>
+		<<endcombat>>
+		<<exitWraith>>
+	<<else>>
+		<<continueWraith>>
+		<br><br>
+		<<link [[Next|Lake Prison Intro Fight]]>><</link>>
+		<br>
+	<</if>>
+<</if>>
+
+:: Lake Ruin Prison
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<effects>>
+
+You are in a submerged prison. Pink mist swirls in the air. <<ghallucinogens>>
+<br><br>
+<<if $wraithPrison.state is "present">>
+	<<set _wraithEvent to true>>
+<</if>>
+
+<<if $moonstate is "morning" and $hour gte 6 and $wraithPrison.timePassed gte 120 and $wraithPrison.state isnot "gone">>
+	You see the figure near the staircase leading down. It's flickering.
+	<br><br>
+	<<if $wraith.state is "haunt">>
+		It stares at you with pure anger and hatred. It screams, and begins floating in circles, clawing at its own bare neck and wailing.
+		<br><br>
+		It flickers out, only to flicker back right in front of you. It grabs you by the neck, its hand long and clawed. It swiftly drags you to the stairs, and plunges your head under the water. <<stress 24>><<pain 10>><<gpain>><<gstress>>
+		<br><br>
+		You struggle against it. It screams. "<span class="wraith">I will show you exactly what you've done. I will find you again, thief. You have not suffered enough. You were not ready.</span>"
+		<br><br>
+		It suddenly vanishes. You bring your head back up above the water, and cough. <<tearful>> you stand. The rune at the bottom of the stairs glows again.
+		<br><br>
+	<<else>>
+		"<span class="wraith">My time comes to an end. You will return, next moon.</span>"
+	<</if>>
+	<<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">>
+		It giggles, and you feel the slime in your head wriggle. "<span class="wraith">This is the only place you can free yourself from the parasite, after all.</span>"
+	<</if>>
+	<br><br>
+	A torrent of water shoots up from the stairs, and when it passes, the figure is gone. <span class="blue"><i>You're safe until the next blood moon.</i></span>
+	<br><br>
+	<<set $wraithPrison.state to "gone">>
+	<<unset _wraithEvent>>
+	<<endWraith>>
+	<<clearWraith>>
+<</if>>
+<<if _wraithEvent is true>>
+	<<if $wraith.state is "haunt" and $trauma gte ($traumamax / 10) * 5 and $wraithPrison.timePassed gte 180>>
+		The pale figure emerges from the ground. You feel your energy being sapped away already. You're pushed into one of the cells and onto a bed of lichen by an unseen force.
+		<br><br>
+		It looks you over with a cold gaze, and grabs your cheeks with a clawed hand. "<span class="wraith">You wanted to know, so you stole from the dead. I'll show you what it's like to drown with the corpse of this temple. May your curiosity be sated as the waves chew your bones.</span>"
+		<br><br>
+		It grabs a handful of lichen from the center of the large colony, and tilts your head back. It begins to drop the crushed lichen into your mouth. You try to spit it out, but your body isn't obeying you. Once your mouth is full of the flowering lichen, it kisses you.
+		You tense up, but soon enough, you feel an odd sense of relief. <<takeKissVirginity "Ivory Wraith" "rape">>
+		<<stress -200>><<lllstress>><<trauma 36>><<gggtrauma>><<purity -50>><<lllpurity>><<physique_loss 16>><<llphysique>><<pain -15>><<llpain>>
+		<br><br>
+		Everything spins out around you, leaving only you and a pale face in a swirling sea of nothing. Your mind screams for release as your thoughts burn away. <<ggghallucinogens>>
+		<br><br>
+		Your vision turns and warps in ways you didn't know were possible. Your skin ripples, like wax melting off a candle. You see yourself from above, backlit by the glowing lichen. You look down at your arms, and find them to be unnaturally pale.
+		<br><br>
+		<span class="nextLink"><<link [[Wake up.|Schism]]>><</link>></span>
+		<br>
+	<<else>>
+		<<generateWraith 1>>
+		The pale figure emerges from the ground. You're pulled towards it by an unseen force. It looks you over.
+		<br><br>
+		<<if $wraith.state is "haunt">>
+			"<span class="wraith"><<print either(
+				"Open your eyes.",
+				"You must sleep before you can awaken.",
+				"You must open your mind, only then can you face penance.",
+				"You aren't ready to see yet, thief. I will make you ready.",
+				"I will take everything from you. Only then will you understand."
+			)>></span>"
+		<<else>>
+			"<span class="wraith"><<print either(
+				"Do not resist.",
+				"Won't you give in?",
+				"Drown with me, forever.",
+				"I am already inside you.",
+				"This is everything you have."
+			)>></span>"			
+		<</if>>
+		<br><br>
+		<<if $rng gte 90>>
+			It grabs a handful of the pink lichen, and grabs your face with its other hand, forcing your mouth open. It crumbles the lichen, and flakes begin to fall into your mouth.
+			<br><br>
+			<<set $skulduggerydifficulty to 600>>
+			<<link [[Accept it|Lake Ruin Lichen Eat]]>><<trauma 100>><<stress -50>><<set $phaseWraith to 1>><<set $hallucinogen += 220>><</link>><<gggtrauma>><<lllstress>><<gghallucinogens>>
+			<br>
+			<<link [[Pretend to eat|Lake Ruin Lichen Eat]]>><<set $phaseWraith to 2>><</link>><<skulduggerydifficulty>>
+			<br>
+			<<link [[Spit it out|Lake Ruin Lichen Eat]]>><<set $phaseWraith to 3>><</link>>
+			<br>
+		<<elseif $rng gte 70 and $tentacledisable is "f" and $wraithPrison.possession is false and $wraith.state is "haunt">>
+			<<if !$wraith.will>>
+				<<set $wraith.will to random(1300, 1700)>>
+			<</if>>
+			<<set _wraithWill to Math.floor(1 + $wraith.will)>>
+			You feel it try to enter your body.
+			<br><br>
+			<<link [[Give in|Lake Ruin Prison Possession]]>><<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">><<corruption 1>><<pain -4>><<stress -6>><<trauma -12>><</if>><<set $submissive += 1>><</link>><<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">><<gcorruption>><<lpain>><<lltrauma>><<lstress>><</if>>
+			<br>
+			<<link [[Resist|Lake Ruin Prison Possession Resist]]>><<set $phase to 1>><<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><</if>><<set $submissive -= 1>><</link>><<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>><</if>><<willpowerdifficulty 1 _wraithWill>>
+			<br>
+		<<else>>
+			<<initWraith>>
+			<<startWraith>>
+			<br><br>
+			<<link [[Next|Lake Ruin Prison Rape]]>><</link>>
+			<br>
+		<</if>>
+	<</if>>
+<<elseif $wraithPrison.state is "gone">>
+	<<link [[Enter the water|Lake Ruin Prison Leave]]>><<wraith_pass 2>><</link>>
+	<br>	
+<<elseif !$wraithPrison.search>>
+	<<link [[Search for a way out (0:30)|Lake Ruin Prison Search]]>><<wraith_pass 30>><</link>>
+	<br>
+<<else>>
+	<<if $wraithPrison.search is 1>>
+		<<link [[Examine the cages (0:15)|Lake Ruin Prison Search]]>><<wraith_pass 15>><</link>>
+		<br>	
+	<<elseif $wraithPrison.search is 2>>
+		<<link [[Keep searching (0:30)|Lake Ruin Prison Search]]>><<wraith_pass 30>><</link>>
+		<br>
+	<<elseif $wraithPrison.search is 3>>
+		<<link [[Swim down the stairs|Lake Ruin Prison Search]]>><<wraith_pass 2>><</link>>
+		<br>
+	<</if>>
+	<<if $wraithPrison.search gte 2>>
+		<<link [[Rest (1:00)|Lake Ruin Prison Rest]]>><<wraith_pass 60>><<set $tiredness -= 500>><<trauma 50>><</link>><<ltiredness>><<ggtrauma>>
+	<</if>>
+<</if>>
+
+:: Lake Ruin Prison Search
+<<effects>>
+<<if !$wraithPrison.search>>
+	<<set $wraithPrison.search to 1>>
+	You look around the large chamber. The colony of glowing lichen is unlike anything you've ever seen before, and you wonder how it's survived. As you ponder, you realise this room should be flooded like the rest of the ruin.
+	<br><br>
+	You see discoloured marks on the walls, and the remains of rusted shackles below them. The cages are incapable of holding anything anymore, but you notice that each one has a large patch of lichen in the same corner.
+<<elseif $wraithPrison.search is 1>>
+	<<set $wraithPrison.search to 2>>
+	You examine the cages. The glowing lichen has completely covered the bars in some places. You run your hand against it, and some of the bars crumble entirely away.
+	<br><br>
+	You become uneasy as you think about why the lichen starts in the back right corner of each cell. You take a closer look, and start to clear some of it away.
+	<br><br>
+	You find a large scrap of cloth underneath, torn in countless places by the lichen growing through. <<if $historytrait gte 4>>It looks like the remains of an ancient bedroll.<</if>>
+<<elseif $wraithPrison.search is 2>>
+	<<set $wraithPrison.search to 3>>
+	You find the smashed remains of a small statue at the far end of the room. It's damaged beyond any value, but you think you can make out the shape of arms and wings.
+	<br><br>
+	You approach the stairs leading downwards. Dark water extends into nothingness. You spot a faint glow at the end.
+<<elseif $wraithPrison.search is 3>>
+	<<set $wraithPrison.search to 4>>
+	You take a deep breath, and swim down. It's a long distance. <<loxygen>>
+	<br><br>
+	<<water>><<effectswater>>
+	When you finally reach the end, you see the same glowing rune. You place your hand against it, but nothing happens.
+	You try pushing, but it's hopeless. You swim back up.
+	<br><br>
+	<span class="red">There's no way out.</span>
+<</if>>
+<br><br>
+<<link [[Next|Lake Ruin Prison]]>><</link>>
+<br>
+
+:: Lake Ruin Prison Rest
+<<effects>>
+You clear away some of the lichen in one of the cells, and lie on the tattered cloth. You close your eyes, but feel like you can still see the entire room.
+<br><br>
+You don't know how much time passes. Your body feels refreshed, but your mind feels exhausted.
+<br><br>
+<<link [[Next|Lake Ruin Prison]]>><</link>>
+<br>
+
+:: Lake Ruin Prison Rape
+<<effects>>
+<<if $struggle_start is 1>>
+	<<set $combat to 1>>
+	<<controlloss>>
+	<<violence 1>>
+	<<molested>>
+	<<if $penisexist is 1>>
+		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
+	<<else>>
+		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>
+	<</if>>
+	<<unset $struggle_start>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<set $enemytype to $wraith.type>>
+<</if>>
+
+<<effectsWraith>>
+
+<<switch $wraith.type>>
+	<<case "man">>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next|Lake Ruin Prison Rape Finish]]>><</link>></span><<nexttext>>
+		<<elseif $enemyhealth lte 0>>
+			<span id="next"><<link [[Next|Lake Ruin Prison Rape Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Lake Ruin Prison Rape]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "tentacles">>
+		<<if $tentacles.active lte ($tentacles.max / 2)>>
+			<span id="next"><<link [[Next|Lake Ruin Prison Rape Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Lake Ruin Prison Rape]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "slime">>
+		<<if $struggle.done gte $struggle.number>>
+			<span id="next"><<link [[Next|Lake Ruin Prison Rape Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Lake Ruin Prison Rape]]>><</link>></span><<nexttext>>
+		<</if>>
+<</switch>>
+<br>
+
+:: Lake Ruin Prison Rape Finish
+<<effects>>
+<<if !$wraithCount and $debug is 1>>
+	<<set $wraithCount to 0>>
+	<<set $wraithMax to 3>>
+	<<if $wraith.offspring is "dead">>
+		<<set $wraithMax ++>>
+	<</if>>
+	<<if $tentacledisable is "t">>
+		<<set $wraithMax -->>
+	<</if>>
+<</if>>
+<<if $wraith.type is "man" and $enemyhealth lte 0>>
+	The <<person>> looks down at you in shock as <<he>> staggers backwards.
+	<<if $wraith.gen is "abomination">>
+		The tentacles drop lifelessly to the ground, and sublimate into a pink mist.
+	<<elseif $wraith.gen is "arms">>
+		<<His>> extra arms fold back in.
+	<</if>> 
+	<<His>> head snaps back, and <<he>> dissipates into nothingness with a brief shriek that echoes in your mind. Your ears ring, and you hear its voice all around you "<span class="wraith">Good. Keep struggling.</span>"
+	<br><br>
+	<<tearful>> you look around, trying to make sure <<hes>> really gone.
+	<<set $wraith.defeated ++>>
+	<<set $wraithPrison.timer to 120>>
+	<<set $wraithPrison.state to "recovering">>
+	<<clotheson>>
+	<<endcombat>>
+	<<exitWraith>>
+<<elseif $enemyarousal gte $enemyarousalmax or ($wraith.type is "tentacles" and $tentacles.active lte ($tentacles.max / 2)) or ($wraith.type is "slime" and $struggle.done gte $struggle.number)>>
+	<<set $wraithCount ++>>
+	<<ejacW>>
+	<<if $wraithCount gte $wraithMax>>
+		<<kissWraith>>
+		<br><br>
+		<<He>> breaks off, and sinks back into the floor. <<His>> laughs echo all around you.
+		<br><br>
+		<<tearful>> you look around, wondering when the next attack will come.
+		<<set $wraithPrison.timer to 60>>
+		<<set $wraithPrison.state to "recovering">>
+		<<clotheson>>
+		<<endcombat>>
+		<<exitWraith>>
+	<<else>>
+		<<continueWraith>>
+		<br><br>
+		<<link [[Next|Lake Ruin Prison Rape]]>><</link>>
+		<br>
+	<</if>>
+<</if>>
+
+:: Lake Ruin Prison Possession Resist
+<<effects>>
+You push back as much as you can, clashing against its will.
+<br><br>
+<<if $willpowerSuccess>>
+	It's pushed back, <span class="green">rejected by your body.</span> It growls, and grabs you by the neck.
+	<br><br>
+	"<span class="wraith">Very well. We do it the hard way, then.</span>"
+	<br><br>
+	<<initWraith>>
+	<<startWraith>>
+	<br><br>
+	<<link [[Next|Lake Ruin Prison Rape]]>><</link>>
+	<br>
+<<else>>
+	<<set $possessed to true>>
+	It slows for a moment, <span class="red">but still enters your body.</span> Your limbs twitch, and you feel your consciousness get pushed back and overwritten.
+	<br><br>
+	<<link [[Next|Lake Ruin Prison Possession]]>><</link>>
+	<br>
+<</if>>
+
+:: Lake Ruin Prison Possession
+<<effects>><<set $possessed to true>><<set $wraithPrison.possession to true>>
+<<if $phase is 1>>
+	It begins to dissipate into a white mist. You don't resist at all, letting it take you entirely. All feeling and sense fades. Your limbs twitch, and you feel your consciousness get pushed back and overwritten.
+	<br>
+<</if>>
+It stands up in your body, steadying itself against the bars of the cage. It clenches your hands, and cracks your neck. It smiles.
+<br><br>
+"You're mine," it says with your voice.
+<br><br>
+It sits down against the wall, and spreads your legs. Many pale tentacles enter your vision.
+<<if $worn.lower.type isnot "naked">>
+	Your $worn.lower.name <<lowerplural>> torn to shreds in an instant.<<lowerruined>>
+<</if>>
+They near your groin, and cover your <<genitals>> in a thick slime. Sensation suddenly comes flooding back to you in every spot the slime touches. <<garousal>><<gpain>><<pain 6>>
+<<set $player.bodyliquid.thigh.goo += 3>><<if $player.penisExist>><<set $player.bodyliquid.penis.goo += 2>><</if>>
+<br><br>
+A gasp escapes your lips. You aren't sure if you caused it or not. Your mind is clouded by an inferno of arousal. You feel like you're right on the edge of a climax, but can't quite reach it. <<ggarousal>><<set $arousal to $arousalmax - 1>>
+<br><br>
+The tentacles trace up your body, leaving lines of pleasure in their wake. You feel like you're trapped in a cage of flesh, trying to push out. It's a twisted combination of pain, lust, and emptiness. <<gggarousal>>
+<br><br>
+<<set $player.bodyliquid.chest.goo += 2>><<set $player.bodyliquid.rightarm.goo += 2>><<set $player.bodyliquid.leftarm.goo += 2>>
+Relief never comes, and you sit, trapped in your own body, for what feels like an eternity. It laughs in your voice, clearly enjoying the suffering its inflicting on you. The minuscule light of the room begins to fade, and you black out.
+<br><br>
+<<link [[Next|Lake Ruin Prison Possession 2]]>><</link>>
+<br>
+
+:: Lake Ruin Prison Possession 2
+<<effects>>
+An instant later, it forces you awake. It has a hold of your very consciousness, and won't allow you any amount of relief. It begins to laugh hysterically in your voice. It shakily stands, and clenches your hands again.
+<br><br>
+<span class="red">It punches you in the gut with a force much greater than what your body is normally capable of.</span> At the exact same moment, you regain feeling in your entire body. You crumble, and it leaves you. You gasp for air, nearly retching. <<gggpain>><<pain 18>>
+<br><br>
+Its foot comes crashing down on your back. A jolt of pain shoots through your whole body, and you go fully prone. The minuscule sensation of your <<genitals 2>> hitting the stone is enough to finally push you over the edge into an incredibly painful orgasm. <<orgasm>>
+It keeps laughing as it digs its foot into your back, causing you to cry out in agony. It seems the slime covering you amplifies pain as well.
+<br><br>
+You barely manage to look up. It kneels down in front of you, smiling innocently. It almost looks human for a moment, but you know better than to think there's anything human about this. Its smile is quickly replaced with a sneer as it lifts your battered body, and begins to choke you.
+<br><br>
+<<initWraith "man">><<set $NPCList[0].lefthand to "throat">><<set $NPCList[0].righthand to "throat">><<set $neckuse to "hand">>
+<<link [[Next|Lake Ruin Prison Rape]]>><<unset $possessed>><</link>>
+<br>
+
+:: Lake Ruin Lichen Eat
+<<effects>>
+<<if $phaseWraith is 1>>
+	You close your eyes, and let it happen. It tastes strange. You immediately feel a pressure building in your mind.
+	<br><br>
+	The figure floats closer to you. Shapes begin to spin in its <<wraithEyes>> eyes. You feel your body start to relax.
+	<br><br>
+	After some time, it pulls away. It nods, and sinks back into the floor.
+	<<endevent>>
+	<<set $wraithPrison.timer to 30>>
+	<br><br>
+	<<link [[Next|Lake Ruin Prison]]>><</link>>
+	<br>
+<<elseif $phaseWraith is 2>>
+	You pull away and close your mouth, and do your best to fake a swallow. It tastes strange, and you make sure not to actually swallow any.
+	<br><br>
+	The figure floats closer to you. Shapes begin to spin in its <<wraithEyes>> eyes.
+	<<skulduggerycheck>>
+	<<if $skulduggerysuccess is 1>>
+		<span class="green">You realise what it's trying to do.</span> You let your arms fall limp, and force yourself to stare. It isn't hard. In fact, it's hard to look away.
+		<br><br>
+		After some time, it pulls away. It nods, and sinks back into the floor. You wait a moment, and spit the lichen out.
+		<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+		<<else>>
+		<span class="blue">That was too easy. You didn't learn anything.</span>
+		<br><br>
+		<</if>>
+		<<endevent>>
+		<<set $wraithPrison.timer to 30>>
+		<br><br>
+		<<link [[Next|Lake Ruin Prison]]>><</link>>
+		<br>
+	<<else>>
+		You back away, and keep your eyes closed.
+		<br><br>
+		<span class="red">You're kicked right in the stomach.</span> You immediately spit the lichen out, and begin coughing. <<pain 10>><<trauma 12>><<gtrauma>><<ggpain>>
+		<br><br>
+		You feel it grab you by the throat.
+		<br><br>
+		<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+		<<else>>
+		<span class="blue">You didn't learn anything.</span>
+		<br><br>
+		<<initWraith "man">><<set $NPCList[0].lefthand to "throat">><<set $NPCList[0].righthand to "throat">><<set $neckuse to "hand">>
+		<<link [[Next|Lake Ruin Prison Rape]]>><</link>>
+		<br>
+		<</if>>
+	<</if>>
+<<else>>
+	You spit it out as soon as it lets go of you. You're immediately grabbed by the throat.
+	<br><br>
+	<<initWraith "abomination">><<set $NPCList[0].lefthand to "throat">><<set $NPCList[0].righthand to "throat">><<set $neckuse to "hand">>
+	<<link [[Next|Lake Ruin Prison Rape]]>><</link>>
+	<br>	
+<</if>>
+
+:: Lake Ruin Prison Leave
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<underwater>><<effects>><<set $oxygen -= 260>>
+You swim down. It's a long way, and it takes considerable effort. You make it. <<loxygen>>
+<br><br>
+You find the glowing rune at the bottom of the stairs. It flashes a bright red as you approach, and the scraping of stone fills the water as the door lowers.
+<br><br>
+You swiftly exit, not looking back.
+<<if $wraith.state is "haunt" and !$wraithPrison.vision>>
+<span class="blue">You wonder what it would have showed you, had you been "ready". You feel relieved that your mind wasn't more vulnerable.</span>
+<</if>>
+<br><br>
+<<link [[Next|Lake Ruin]]>><</link>>
+<br>

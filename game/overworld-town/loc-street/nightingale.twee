@@ -1,6 +1,6 @@
 :: Nightingale Street
 
-<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "nightingale">>
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "nightingale">><<getTarget true>>
 You are on Nightingale Street. It is dominated by the civic hospital but there are also several office buildings.
 <<if $daystate is "day">>
 	<<if $weather is "rain">>
@@ -23,11 +23,11 @@ You are on Nightingale Street. It is dominated by the civic hospital but there a
 <<if $arousal gte $arousalmax>>
 	<<orgasmstreet>>
 <</if>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutstreet>>
 <<else>>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-	<<if $danger gte (9900 - $allure) and $eventskip is 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 		<<eventsstreet>>
 	<<else>>
 		<<if $map.top is true>>
@@ -42,7 +42,11 @@ You are on Nightingale Street. It is dominated by the civic hospital but there a
 			<<link [[Photography studio (3:00)|Photography Chef]]>><</link>>
 			<br>
 		<</if>>
-		<<foresticon>><<link [[Forest (0:10)|Forest]]>><<set $eventskip to 1>><<pass 10>><<set $forest to 0>><</link>>
+		<<if $nextPassageCheck is "Forest">>
+			<span class="nextLink"><<foresticon>><<link [[Forest.|Forest]]>><</link>></span>
+		<<else>>
+			<<foresticon>><<link [[Forest (0:10)|Forest]]>><<set $eventskip to 1>><<pass 10>><<set $forest to 0>><</link>>
+		<</if>>
 		<br><br>
 		<<if $exposed gte 1 and $daystate isnot "night">>
 		<<else>>

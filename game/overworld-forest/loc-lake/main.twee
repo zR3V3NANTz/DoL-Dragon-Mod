@@ -49,7 +49,7 @@ You keep low and stay among the trees to keep your <<lewdness>> hidden.
 <</if>>
 
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 <<passoutlake>>
 <<elseif $foresthunt gte 10>>
 <<foresthunt>>
@@ -69,13 +69,21 @@ There's a rocky alcove where you could store your clothes.
 		<br>
 	<</if>>
 	<<if $season is "winter">>
-		<<ind>><<link [[Walk onto the ice (0:02)|Lake Shallows Ice]]>><<pass 2>><</link>>
+		<<if $nextPassageCheck is "Lake Shallows Ice">>
+			<span class="nextLink"><<ind>><<link [[Walk.|Lake Shallows Ice]]>><<pass 2>><</link>></span>
+		<<else>>
+			<<ind>><<link [[Walk onto the ice (0:02)|Lake Shallows Ice]]>><<pass 2>><</link>>
+		<</if>>
 		<br>
 	<<else>>
-		<<swimicon>><<link [[Swim (0:02)|Lake Shallows]]>><<pass 2>><</link>>
+		<<if $nextPassageCheck is "Lake Shallows">>
+			<span class="nextLink"><<swimicon>><<link [[Swim.|Lake Shallows]]>><<pass 2>><</link>></span>
+		<<else>>
+			<<swimicon>><<link [[Swim (0:02)|Lake Shallows]]>><<pass 2>><</link>>
+		<</if>>
 		<br>
 	<</if>>
-	<<if $season isnot "winter">>
+	<<if $season isnot "winter" and !($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>>
 		<<if $exposed gte 2>>
 			<<if $exhibitionism gte 75 and $laketeenspresent is 1>>
 				<<ind>><<link [[Take a stroll (1:00)|Lake Stroll]]>><<pass 60>><<stress -6>><<arousal 1000>><<set $rng to random(1, 100)>><<set $phase to 2>><</link>><<exhibitionist5>><<garousal>><<lstress>>
@@ -94,7 +102,11 @@ There's a rocky alcove where you could store your clothes.
 		<<ind>><<link [[North to firepit (0:10)|Lake Firepit]]>><<pass 10>><</link>>
 		<br>
 	<</if>>
-<<ind>><<link [[South to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
+<<if $nextPassageCheck is "Lake Waterfall">>
+	<span class="nextLink"><<ind>><<link [[South to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>></span>
+<<else>>
+	<<ind>><<link [[South to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
+<</if>>
 <br><br>
 <<foresticon>><<link [[Forest (0:10)|Forest]]>><<pass 10>><</link>>
 <br>
@@ -140,7 +152,7 @@ There's a rocky alcove where you could store your clothes.
 	<br><br>
 <</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
 <<elseif $foresthunt gte 10>>
 	<<foresthunt>>
@@ -151,14 +163,22 @@ There's a rocky alcove where you could store your clothes.
 	<<lakereturnjourney>>
 	<<if $sexStats.anus.pregnancy.seenDoctor gte 2>>
 		<<set $container.lastLocation to $location>>
-		<<print '<<link [[Check ' + $container[$location].name + ' (0:05)|Containers]]>><<pass 5>><</link>>'>>
+		<<if $nextPassageCheck is "Containers">>
+			<<print '<span class="nextLink"><<link [[Check ' + $container[$location].name + ' (0:05)|Containers]]>><<pass 5>><</link>></span>'>>
+		<<else>>
+			<<print '<<link [[Check ' + $container[$location].name + ' (0:05)|Containers]]>><<pass 5>><</link>>'>>
+		<</if>>
 		<br>
 	<</if>>
 	<<if $mason_count gte 2 and $season isnot "winter">>
 		<<link [[Mason's pond (0:05)|Mason Pond]]>><<pass 5>><</link>>
 		<br>
 	<</if>>
-	<<link [[North to shore (0:10)|Lake Shore]]>><<pass 10>><</link>>
+	<<if $nextPassageCheck is "Lake Shore">>
+		<span class="nextLink"><<link [[The lake.|Lake Shore]]>><<pass 10>><</link>></span>
+	<<else>>
+		<<link [[North to shore (0:10)|Lake Shore]]>><<pass 10>><</link>>
+	<</if>>
 	<br>
 	<<link [[South to fishing rock (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
 	<br>
@@ -213,7 +233,7 @@ There's a rocky alcove where you could store your clothes.
 	<br><br>
 <</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
 <<elseif $foresthunt gte 10>>
 	<<foresthunt>>
@@ -224,7 +244,11 @@ There's a rocky alcove where you could store your clothes.
 	<<lakereturnjourney>>
 	<<link [[Meditate|Lake Meditate]]>><<set $phase to 1>><</link>>
 	<br>
-	<<link [[North to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
+	<<if $nextPassageCheck is "Lake Waterfall">>
+		<span class="nextLink"><<link [[The lake.|Lake Waterfall]]>><<pass 10>><</link>></span>
+	<<else>>
+		<<link [[North to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
+	<</if>>
 	<br>
 	<<link [[South to campsite (0:20)|Lake Campsite]]>><<pass 20>><</link>>
 	<br><br>
@@ -286,7 +310,7 @@ There's a rocky alcove where you could store your clothes.
 	<br><br>
 <</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
 <<elseif $foresthunt gte 10>>
 	<<foresthunt>>
@@ -346,7 +370,7 @@ There's a rocky alcove where you could store your clothes.
 	<br><br>
 <</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
 <<elseif $foresthunt gte 10>>
 	<<foresthunt>>
@@ -359,7 +383,11 @@ There's a rocky alcove where you could store your clothes.
 		<<link [[Approach the couple|Lake Couple]]>><</link>>
 		<br>
 	<</if>>
-	<<link [[North to fishing rock (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
+	<<if $nextPassageCheck is "Lake Fishing Rock">>
+		<span class="nextLink"><<link [[The lake.|Lake Fishing Rock]]>><</link>></span>
+	<<else>>
+		<<link [[North to fishing rock (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
+	<</if>>
 	<br><br>
 	<<foresticon>><<link [[Forest (0:10)|Forest]]>><<pass 10>><</link>>
 	<br>
@@ -452,8 +480,10 @@ There's a rocky alcove where you could store your clothes.
 	<</if>>
 <</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
 <<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
 	<<eventlakewater>>
 <<else>>
@@ -483,7 +513,11 @@ There's a rocky alcove where you could store your clothes.
 		<<link [[Swim to dock (0:10)|Lake Dock]]>><<pass 10>><</link>>
 		<br>
 	<</if>>
-	<<link [[Swim further out (0:12)|Lake Depths]]>><<pass 12>><</link>>
+	<<if $nextPassageCheck is "Lake Depths">>
+		<span class="nextLink"><<link [[Further.|Lake Depths]]>><<pass 12>><</link>></span>
+	<<else>>
+		<<link [[Swim further out (0:12)|Lake Depths]]>><<pass 12>><</link>>
+	<</if>>
 	<br>
 	<<if $exposed gte 1 and $laketeenspresent is 1>>
 		<<if $exposed gte 2 and $exhibitionism gte 75>>
@@ -550,8 +584,10 @@ There's a rocky alcove where you could store your clothes.
 <</if>>
 
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
 <<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
 	<<eventlakeice>>
 <<else>>
@@ -565,7 +601,11 @@ There's a rocky alcove where you could store your clothes.
 		<<link [[Search for seeds (0:30)|Lake Lotus Ice]]>><<set $plants_known.push("lotus")>><<pass 30>><<tending 6>><</link>><<gtending>>
 		<br>
 	<</if>>
-	<<link [[Walk further out (0:12)|Lake Depths Ice]]>><<pass 12>><</link>>
+	<<if $nextPassageCheck is "Lake Depths Ice">>
+		<span class="nextLink"><<link [[Further.|Lake Depths Ice]]>><<pass 12>><</link>></span>
+	<<else>>
+		<<link [[Walk further out (0:12)|Lake Depths Ice]]>><<pass 12>><</link>>
+	<</if>>
 	<br>
 	<<link [[Shore (0:02)|Lake Shore]]>><<pass 2>><</link>>
 	<br>
@@ -674,8 +714,10 @@ You free the lotus flowers from the ice, gathering the seeds. <span class="gold"
 	<</if>>
 <</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
 <<elseif $danger gte (9900 - ($allure + 1000)) and $eventskip is 0 and $lakesurface is 1>>
 	<span class="purple">Something followed you from the depths.</span> <<eventlakewater>>
 <<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
@@ -683,7 +725,7 @@ You free the lotus flowers from the ice, gathering the seeds. <span class="gold"
 <<else>>
 	<<link [[Practise swimming (0:30)|Lake Depths]]>><<pass 30>><<stress -6>><<tiredness 6>><<set $lakeswim to 1>><<slimeEventEnd>><</link>><<gswimming>><<lstress>><<gtiredness>>
 	<br>
-	<<if $schoolday isnot 1 and $weather is "rain" and $daystate is "day" and $mason_spoken isnot 1>>
+	<<if $schoolday isnot 1 and $weather is "rain" and $daystate is "day" and $mason_spoken isnot 1 and !$possessed>>
 		<<if $mason_count gte 1>>
 			<<link [[Swim out to Mason (0:05)|Lake Mason]]>><<pass 5>><<set $mason_spoken to 1>><</link>>
 			<br>
@@ -706,7 +748,11 @@ You free the lotus flowers from the ice, gathering the seeds. <span class="gold"
 		<<link [[Make a skirt out of plants (0:20)|Lake Depths]]>><<pass 20>><<set $phase to 2>><</link>>
 		<br>
 	<</if>>
-	<<link [[Dive (0:01)|Lake Underwater]]>><<pass 1>><</link>>
+	<<if $nextPassageCheck is "Lake Underwater">>
+		<span class="nextLink"><<link [[Down.|Lake Underwater]]>><<pass 1>><</link>></span>
+	<<else>>
+		<<link [[Dive (0:01)|Lake Underwater]]>><<pass 1>><</link>>
+	<</if>>
 	<br>
 	<<link [[Swim towards shore (0:12)|Lake Shallows]]>><<pass 12>><</link>>
 	<br><br>
@@ -752,8 +798,10 @@ You free the lotus flowers from the ice, gathering the seeds. <span class="gold"
 	<</if>>
 
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
 <<elseif $danger gte (9900 - ($allure + 1000)) and $eventskip is 0 and $lakesurface is 1>>
 	<span class="purple">Something followed you from the depths.</span> <<eventlakewater>>
 <<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
@@ -762,7 +810,10 @@ You free the lotus flowers from the ice, gathering the seeds. <span class="gold"
 	<<if $schoolday isnot 1 and $weather is "snow" and $daystate is "day">>
 		<<set $lake_ice_broken to 1>>
 	<</if>>
-	<<if $lake_ice_broken is undefined>>
+	<<if $nextPassageCheck is "Lake Depths Ice Break">>
+		<span class="nextLink"><<link [[Down.|Lake Depths Ice Break]]>><<pass 12>><</link>></span>
+		<br>
+	<<elseif $lake_ice_broken is undefined>>
 		<<link [[Break the ice (0:30)|Lake Ice Break]]>><<pass 30>><<set $lake_ice_broken to 2>><<tiredness 3>><</link>><<gtiredness>>
 		<br>
 	<<else>>
@@ -923,8 +974,10 @@ You lift the shovel, and thrust it into the ice. It's hard work, but you manage 
 	<</if>>
 <</if>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
 <<else>>
 	<<meditateoptions>>
 <</if>>

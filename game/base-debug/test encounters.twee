@@ -678,6 +678,177 @@ Add the NPCs you want.<br>
 <<link [[Select NPCs|Named NPC Gangbang Select]]>><<endcombat>><</link>><br>
 <<link [[Back Home|Bedroom]]>><<endcombat>><</link>>
 
+:: Wraith Test Start
+<<set $outside to 0>><<set $location to "home">><<effects>>
+<!-- Generate Ivory Wraith -->
+<<generateWraith 1 true>><<person1>><<rainWraith>>
+You find yourself standing before your mirror. You trace a holy symbol on it, and a baleful red glow begins to emanate from it. A beautiful pale figure stares back. It presses a hand against the mirror.
+<br><br>
+"<span class="wraith">I can feel your heartbeat. I am already inside you. Won't you give in?</span>"
+<br><br>
+How do you respond?
+<br><br>
+<<link [[As One.|Wraith Test]]>><<set $wraith.select to "man">><</link>>
+<br>
+<<link [[The Writhing Ensues.|Wraith Test]]>><<set $wraith.select to "tentacles">><</link>>
+<br>
+<<link [[Enveloped by Nothing.|Wraith Test]]>><<set $wraith.select to "slimetentacles">><</link>>
+<br>
+<<link [[Dissolve.|Wraith Test]]>><<set $wraith.select to "slime">><</link>>
+<br>
+<<link [[Immaculate Vanity.|Wraith Test]]>><<set $wraith.select to "arms">><</link>>
+<br>
+<<link [[The Power of Lust.|Wraith Test]]>><<set $wraith.select to "abomination">><</link>>
+<br>
+<<link [[Surprise Me.|Wraith Test]]>><<set $wraith.select to "random">><</link>>
+<br>
+<<link [[I'm going to jump out my window now, bye.|Domus Street]]>><<endWraith>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Wraith Test
+<<effects>>
+<<if $wraith.select is "random">>
+	<<switch random(1, 6)>>
+		<<case 1>>
+			<<set $wraith.select to "man">>
+		<<case 2>>
+			<<set $wraith.select to "tentacles">>
+		<<case 3>>
+			<<set $wraith.select to "slimetentacles">>
+		<<case 4>>
+			<<set $wraith.select to "slime">>
+		<<case 5>>
+			<<set $wraith.select to "arms">>
+		<<case 6>>
+			<<set $wraith.select to "abomination">>
+	<</switch>>
+<</if>>
+<<if ($wraith.select.includes("slime") and $slimedisable is "t") or (($wraith.select.includes("tentacle") or $wraith.select is "abomination") and $tentacledisable is "t")>>
+	The image in the mirror freezes, and the figure's face becomes blank. A message appears on the surface:
+	<br><br>
+	<span class="red">ERROR: You have chosen or randomly rolled an option disabled by your current settings. Please enable both slimes and tentacles. If both are already enabled, please tell PurityGuy that he's an idiot.</span>
+	<br><br>
+	The figure unfreezes, and shakes its head. It then looks at you. "<span class="wraith">Get fucked.</span>" Your mirror shatters, and signals for replacement. When you blink, it's been fixed.
+	<br><br>
+	<<link [[Next...?|Bedroom]]>><<endWraith>><</link>>
+	<br>
+<<else>>
+	<<initWraith $wraith.select>>
+	<<switch $wraith.gen>>
+		<<case "man">>
+			A pale arm reaches out from the mirror and lifts your chin. "<span class="wraith">Forever,</span> <span class="tentacle">As One.</span>" It steps from the mirror.
+		<<case "tentacles">>
+			The space behind the figure begins to distort. A mass of pale tentacles shoot out from the mirror, violently pinning you to the wall and destroying your clothes.
+			<<clothesruined>><<legsruined>><<feetruined>>
+			<br><br>
+			"<span class="wraith">The writhing ensues.</span>" The figure steps out of the mirror.
+		<<case "slimetentacles">>
+			The space behind the figure begins to distort. A mass of pale tentacles shoot out from the mirror, violently pinning you to the wall and destroying your clothes.
+			<br><br>
+			It raises its hand, and a swirling portal appears above you. Slimes begin to pour out and cover you.
+			<br><br>
+			"<span class="wraith">Be enveloped by nothing.</span>"
+			<<clothesruined>><<legsruined>><<feetruined>>
+		<<case "slime">>
+			The figure raises a hand as it steps from the mirror. From behind it, a group of pale slimes leap at you! "<span class="wraith">Dissolve the shell to have your way with the flesh.</span>"
+		<<case "arms">>
+			The figure steps out from the mirror. As it emerges before you, several extra pairs of arms spring out from its back. "<span class="wraith">Kneel before my immaculate form.</span>"
+		<<case "abomination">>
+			The space behind the figure begins to distort. A mass of pale tentacles shoot out from the mirror as it steps out. "<span class="wraith">Embrace the power of lust.</span>"
+	<</switch>>
+	<br><br>
+	<<link [[Next|Wraith Test Sex]]>><</link>>
+<</if>>
+
+:: Wraith Test Sex
+<<effects>>
+<<if $struggle_start is 1>>
+	<<set $combat to 1>>
+	<<controlloss>>
+	<<violence 1>>
+	<<molested>>
+	<<if $penisexist is 1>>
+		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
+	<<else>>
+		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>
+	<</if>>
+	<<unset $struggle_start>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<set $enemytype to $wraith.type>>
+<</if>>
+<<set $rescue to 0>>
+
+<<effectsWraith>>
+
+<<switch $wraith.type>>
+	<<case "man">>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<elseif $enemyhealth lte 0>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Wraith Test Sex]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "tentacles">>
+		<<if $tentacles.active lte ($tentacles.max / 2)>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Wraith Test Sex]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "slime">>
+		<<if $struggle.done gte $struggle.number>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Wraith Test Sex]]>><</link>></span><<nexttext>>
+		<</if>>
+<</switch>>
+<br>
+<<link [[Back to the bedroom|Bedroom]]>><<endcombat>><<endWraith>><<clotheson>><</link>>
+<br><br><br><br>
+
+:: Wraith Test Sex Finish
+<<effects>>
+
+<<switch $wraith.type>>
+	<<case "man">>
+		<<if $enemyhealth lte 0>>
+			The figure looks down at you in shock as it staggers backwards.
+			<<if $wraith.gen is "abomination">>
+				The tentacles drop lifelessly to the ground, and sublimate into a pink mist.
+			<<elseif $wraith.gen is "arms">>
+				Its extra arms fold back in.
+			<</if>> 
+			Its head snaps back, and it dissipates into nothingness with a brief shriek that echoes in your mind. Your ears ring, and you think you hear laughter. "<span class="wraith">Worry not, we'll meet again soon.</span>"
+			<br><br>
+			<<tearful>> you sit against you bed, wondering if what just happened was real.
+			<<set $wraith.defeated ++>>
+		<<else>>
+			<<ejaculation>>
+			With a bright flash, it vanishes. You feel lewd energy linger in the air, and its laughs echo between your ears. "<span class="wraith">Worry not, we'll meet again soon.</span>"
+			<br><br>
+			<<tearful>> you sit against you bed, wondering if what just happened was real.
+		<</if>>
+	<<case "tentacles">>
+		The tentacles retreat from you, back to the pale figure's side.<<if $wraith.gen is "slimetentacles">> The slimes quickly follow.<</if>> It gives you a regal bow, before stepping back into your mirror, which promptly shatters behind it.
+		<br><br>
+		You blink, and your mirror looks normal again. <<tearful>> you sit against you bed, wondering if what just happened was real.
+	<<case "slime">>
+		The slimes disengage, retreating back to the figure. It picks one up, and begins to pet it as it walks back though your mirror.
+		<br><br>
+		<<tearful>> you sit against you bed, wondering if what just happened was real.
+<</switch>>
+
+<<clotheson>>
+<<endcombat>>
+<<endWraith>>
+
+<<link [[Next|Bedroom]]>><<set $eventskip to 1>><</link>>
+<br>
 :: Plantperson Test
 <<link [[Consensual sex in the forest|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "forest">><</link>><br>
 <<link [[Nonconsensual sex in the forest|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "forest">><</link>><br>

@@ -23,6 +23,9 @@
 	<<else>>
 		<<set _babyType to _tentacleType>>
 	<</if>>
+	<<if ["root","shoot","vine","metal"].includes(_tentacleType)>>
+		<<set $banishDisable to true>>
+	<</if>>
 
 	/* Deciding if tentacle templates should be defined somewhere else still */
 	/* Argument 0 is the number of tentacles.
@@ -127,6 +130,25 @@
 <<wetnessCalculate>>
 <<resetLastOptions>>
 <<getCombatDefaultsType>>
+
+<<if !$tentacleColour>>
+	<<if $tentacles[0].fullDesc.includes("pale")>>
+		<<set $tentacleColour to "tentacles-wraith">>
+	<<elseif $tentacles[0].fullDesc.includes("metal")>>
+		<<set $tentacleColour to "tentacles-red">>
+	<<elseif $tentacles[0].type>>
+		<<switch $tentacles[0].type>>
+			<<case "vine" "shoot">>
+				<<set $tentacleColour to "tentacles-vines">>
+			<<case "root">>
+				<<set $tentacleColour to "tentacles-roots">>
+			<<default>>
+				<<set $tentacleColour to "tentacles-purple">>
+		<</switch>>
+	<<else>>
+		<<set $tentacleColour to "tentacles-purple">>
+	<</if>>
+<</if>>
 <</widget>>
 
 

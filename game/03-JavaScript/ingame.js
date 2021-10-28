@@ -143,6 +143,7 @@ window.combatListColor = function (name, value, type) {
 			/*leftaction or rightaction*/
 			case "lefthittentacle": case "righthittentacle":
 			case "lefthit": case "righthit":
+			case "leftbanish": case "rightbanish":
 			/*feetaction*/
 			case "feethit":
 			/*mouthaction*/

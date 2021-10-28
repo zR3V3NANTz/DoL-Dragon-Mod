@@ -1,7 +1,11 @@
 :: Widgets Industrial Drain [widget]
 
 <<widget "industrialdrain">>
-	<<link [[Industrial drain system (0:05)|Industrial Drain]]>><<pass 5>><</link>>
+	<<if $nextPassageCheck is "Industrial Drain">>
+		<span class="nextLink"><<link [[Industrial drain system (0:05)|Industrial Drain]]>><<pass 5>><</link>></span>
+	<<else>>
+		<<link [[Industrial drain system (0:05)|Industrial Drain]]>><<pass 5>><</link>>
+	<</if>>
 <</widget>>
 
 <<widget "industrialdrainquick">>
@@ -15,7 +19,11 @@
 :: Widgets Commercial Drain [widget]
 
 <<widget "commercialdrain">>
-	<<link [[Commercial drain system (0:05)|Commercial Drain]]>><<pass 5>><</link>>
+	<<if $nextPassageCheck is "Commercial Drain">>
+		<span class="nextLink"><<link [[Commercial drain system (0:05)|Commercial Drain]]>><<pass 5>><</link>></span>
+	<<else>>
+		<<link [[Commercial drain system (0:05)|Commercial Drain]]>><<pass 5>><</link>>
+	<</if>>
 <</widget>>
 
 <<widget "commercialdrainquick">>
@@ -29,7 +37,11 @@
 :: Widgets Residential Drain [widget]
 
 <<widget "residentialdrain">>
-	<<link [[Residential drain system (0:05)|Residential Drain]]>><<pass 5>><</link>>
+	<<if $nextPassageCheck is "Residential Drain">>
+		<span class="nextLink"><<link [[Residential drain system (0:05)|Residential Drain]]>><<pass 5>><</link>></span>
+	<<else>>
+		<<link [[Residential drain system (0:05)|Residential Drain]]>><<pass 5>><</link>>
+	<</if>>
 <</widget>>
 
 <<widget "residentialdrainquick">>
@@ -75,7 +87,28 @@
 
 <<widget "eventsdrain">>
 	<<set $rng to random(1, 100)>>
-	<<if $rng gte 80 and $hallucinations gte 2 and $tentacledisable is "f">>
+	<<if $wraith and $wraith.hunt gte 10 and $wraithIntro is true and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>>
+		The water congeals and warps, forming translucent tendrils that burst from the water. One collides with you, sending you sprawling. <<pain 4>><<gpain>>
+		<br><br>
+		A pale figure rises from the water, creating no disturbance on the surface. It gives you a mad smile.
+		<br><br>
+		"<span class="wraith">You will never get away.</span>" <<rainWraith>>
+		<br><br>
+		<<generateWraith 1 true>><<initwraith>><<set $wraith.exit to "town">>
+		<<switch $wraith.gen>>
+			<<case "man">>
+				<<He>> raises <<his>> hand to the air, and an unseen force pushes you to the ground.
+			<<case "tentacles" "abomination" "slimetentacles">>
+				The tendrils become a solid white, and shoot towards you!
+			<<case "slime">>
+				<<He>> raises <<his>> hands to the air, and a swarm of pale slimes jump onto the walkway from the water.
+			<<case "arms">>
+				Several additional pairs of arms spring from <<his>> back, each one gesturing in strange patterns.
+		<</switch>>
+		<br><br>
+		<<link [[Next|Wraith Caught]]>><</link>>
+		<br>
+	<<elseif $rng gte 80 and $hallucinations gte 2 and $tentacledisable is "f">>
 		Several tentacles rise from the water, blocking your path and trapping you on the walkway.
 		<br><br>
 		<<link [[Next|Drain Tentacles]]>><<set $molestationstart to 1>><</link>>
@@ -119,6 +152,9 @@
 			<<link [[Next|Sewers Intro]]>><</link>>
 			<br>
 		<</if>>
+	<</if>>
+	<<if $eventforced>>
+		<<unset $eventforced>>
 	<</if>>
 <</widget>>
 

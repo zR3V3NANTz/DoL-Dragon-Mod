@@ -28,6 +28,8 @@
 	<<set $laketeensfire to 0>>
 <</if>>
 
+<<wPersist "forest">><<getTarget true>>
+
 <</widget>>
 
 <<widget "destinationlake">>
@@ -123,7 +125,7 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 
 <<widget "eventlakesafe">>
 
-<<if random(1, 20) is 1>>
+<<if random(1, 20) is 1 and !$possessed>>
 	<<eventAmbient>>
 <</if>>
 
@@ -159,11 +161,15 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 	<<link [[Next|Lake Vore]]>><<set $molestationstart to 1>><</link>>
 	<br>
 	<<elseif $rng gte 81 and $swarmdisable is "f">>
-	The water is agitated. Swarms of small fish encircle you.
-	<br><br>
+		<<if $slimedisable is "f" and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>>
+			The water is agitated. Swarms of pale slimes encircle you.
+		<<else>>
+			The water is agitated. Swarms of small fish encircle you.
+		<</if>>
+		<br><br>
 
-	<<link [[Next|Lake Depths Swarm]]>><<set $molestationstart to 1>><</link>>
-	<br>
+		<<link [[Next|Lake Depths Swarm]]>><<set $molestationstart to 1>><</link>>
+		<br>
 	<<else>>
 		<<if $daystate is "night" and $weather is "rain">>
 		Something brushes your leg and startles you. You look beneath the dark and violent water, but can't see anything. You feel strange.
@@ -227,7 +233,7 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 		<</if>>
 	<<elseif $weather is "clear">>
 		<<if $daystate is "night">>
-			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 				The red moon reflects off the ice. Dread stabs at you.<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
 				<br><br>
 			<<else>>
@@ -270,8 +276,10 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 <</widget>>
 
 <<widget "eventlake">>
+<<if $foresthunt lte 0 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and ($wraith.hunt or $wraith.timer gte random(0, 10))>>
+	<<wHunt "lake">>
+<<elseif $rng gte 81>>
 <!-- Modified for Monster People -->
-<<if $rng gte 81>>
 <<beastNEWinit 1 boar>>
 You see a <<beasttype>> rifling through litter at the base of a tree. It spots you.
 <br><br>
@@ -281,9 +289,14 @@ You see a <<beasttype>> rifling through litter at the base of a tree. It spots y
 <<link [[Run|Lake Boar Run]]>><</link>><<athleticsdifficulty>>
 <br>
 <<elseif $rng gte 51>>
-You thought you heard someone call your name, but there's no one there.
-<<gtrauma>><<trauma 1>>
-<br><br>
+	<<if $wraith and $wraith.state isnot "" or $hallucinations gte 1>>
+	You thought you heard someone call your name, but there's no one there.
+	<<gtrauma>><<trauma 3>>
+	<br><br>
+	<<else>>
+	The wind makes a low howl as it passes through the trees. <<if $awarelevel gte 1>>For a moment, it looks as though the trees are all blowing away from the lake.<</if>>
+	<<gstress>><<stress 1>>
+	<</if>>
 <<set $eventskip to 1>>
 <<destinationlake>>
 <<else>>
@@ -508,16 +521,33 @@ A pair of eyes stares at you from between the trees, then vanishes.
 <</widget>>
 
 <<widget "lakeclothes">>
+<<if !$possessed>>
+	<<wearoutfit>>
+	<br>
+	Swimming sets:
+	<br>
+	<<listswimoutfits "lakeshore">>
+	<br>
 
-<<wearoutfit>>
-<br>
-Swimming sets:
-<br>
-<<listswimoutfits "lakeshore">>
-<br>
+	<<storeactions "lakeshore">>
+	<<temperature>>
+<</if>>
+<</widget>>
 
-<<storeactions "lakeshore">>
-<<temperature>>
+<<widget "destinationlakeruin">>
+<<switch $bus>>
+	<<case "lakeunderwater">>
+		<<link [[Next|Lake Underwater]]>><<endevent>><<set $eventskip to 1>><</link>>
+	<<case "lake_ruin">>
+		<<link [[Next|Lake Ruin]]>><<endevent>><<set $eventskip to 1>><</link>>
+	<<case "lake_ruin_deep">>
+		<<link [[Next|Lake Ruin Deep]]>><<endevent>><<set $eventskip to 1>><</link>>
+	<<case "lake_ruin_prison">>
+		<<link [[Next|Lake Ruin Prison]]>><<endevent>><<set $eventskip to 1>><</link>>
+	<<default>>
+		<<link [[Next|Lake Ruin Deep]]>><<endevent>><<set $eventskip to 1>><</link>>
+<</switch>>
+<br>
 <</widget>>
 
 <<widget "schoolpoolclothes">>

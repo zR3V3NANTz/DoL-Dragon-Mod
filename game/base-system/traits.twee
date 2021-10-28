@@ -79,6 +79,12 @@
 	<br>
 <</if>>
 
+<<if $possessed>>
+	<br>
+	<span class="wraith">Possessed</span> - Your body is not your own.
+	<br><br>
+<</if>>
+
 <<if $wolfgirl gte 2 or $cat gte 2>>
 	<span class="def">Fangs</span> - Biting is three times as effective.
 	<br>
@@ -102,7 +108,7 @@
 
 <<if $cat gte 6>>
 	<span class="orange">Cat <<girl>></span> - You have an urge to lap up cream. Unlocks the "groom" action while dancing with lewd fluid on your person. Your ears and tail make you more conspicuous.
-<br>
+	<br>
 <</if>>
 
 <<if $cow gte 6>>
@@ -153,7 +159,11 @@
 
 <<if $angel gte 6>>
 	<span class="gold">Angel</span> - You radiate purity. Unlocks the "forgive" action once per encounter, removing any trauma gained so far. Beware, losing your virginity will remove this trait and leave you broken.
-<br>
+	<br>
+<</if>>
+<<if $angel gte 4>>
+	<span class="gold">Radiant</span> - You are pure. Unlocks the "banish" action a number of times per day based on your angelicness, dealing heavy damage to a tentacle. Its strength is greatly increased while at maximum purity. Uses remaining today: ($angelBanish / $angelBanishMax)
+	<br>
 <</if>>
 
 <<if $demon gte 6>>

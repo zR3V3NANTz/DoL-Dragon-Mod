@@ -566,7 +566,7 @@
 			<<set $sydney_templeWork to "quarters">>
 		<<case 21 22>>
 			 <<set $sydney_templeWork to "pray">>
-		<<case 23 24>>
+		<<case 23 0>>
 			<<set $sydney_templeWork to ($weekday is 7? "sleep" : "pray")>>
 		<<default>>
 			<<set $sydney_templeWork to "pray">>

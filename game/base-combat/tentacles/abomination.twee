@@ -45,7 +45,9 @@
 <</widget>>
 
 <<widget "stateabomination">>
-<<stateman>><<statetentacles>>
+<<statetentacles>>
+You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+<<stateman>>
 <</widget>>
 
 <<widget "actionsabomination">>

@@ -163,7 +163,7 @@ You drop to your knees, and search beneath the decaying roots.
 	<<if $monster is 1>>
 		"You. With me," <<bhe>> barks. You're not sure if you have any choice. With a display of force, <<bhe>> hauls you over one shoulder.
 	<<else>>
-			<<bHe>> grabs you by the scruff of your neck.
+		<<bHe>> grabs you by the scruff of your neck.
 	<</if>>
 	<<bHe>> wants to take you somewhere.
 	<br><br>
@@ -1026,35 +1026,65 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 		Despite this, you <span class="green">successfully</span> swim across.
 		<br><br>
 		<<set $rng to random(1, 100)>>
-		<<if $rng gte 71 and $parasitedisable is "f" and !$parasite.bottom.name>>
-			<<if $worn.lower.type.includes("naked") or setup.clothes.lower[$worn.lower.index].skirt is 1>>
-				As you climb up the bank you feel a pinching sensation on your <<bottom>>. You feel behind you, and find a strange, soft creature stuck there. It sucks on your skin, making it feel warm.
-				<<garousal>><<arousal 600>>
+		<<if $wraith and $wraith.hunt and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) and $danger gte (7900 - ($allure * $forestmod))>>
+			As you climb up the bank you feel your foot catch on something.
+			<<if $slimedisable is "f">>
+				You look down to see a pale white slime stuck to you, and many more emerging from the river. <<rainWraith true>>
 				<br><br>
-
-				You tug, but it won't budge. You'll need help to remove it.
-				<<parasite bottom urchin>>
+				Far down the river, you see a pale robed figure walking closer. It raises its hand, and the slimes leap at you!
 				<br><br>
+				<<link [[Next|Forest Pale Slime Struggle]]>><<set $struggle_start to 1>><<set $phase to 1>><</link>>
+			<<else>>
+				It violently tugs on your leg, attempting to pull you back into the river! You barely manage to pull away. You look back to see a pale figure dissappear behind a tree. <<trauma 12>><<pain 6>><<stress 12>><<gtrauma>><<gpain>><<gstress>>
+				<br><br>
+				<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 			<</if>>
+		<<else>>
+			<<if $rng gte 71 and $parasitedisable is "f" and !$parasite.bottom.name>>
+				<<if $worn.lower.type.includes("naked") or setup.clothes.lower[$worn.lower.index].skirt is 1>>
+					As you climb up the bank you feel a pinching sensation on your <<bottom>>. You feel behind you, and find a strange, soft creature stuck there. It sucks on your skin, making it feel warm.
+					<<garousal>><<arousal 600>>
+					<br><br>
+					You tug, but it won't budge. You'll need help to remove it.
+					<<parasite bottom urchin>>
+					<br><br>
+				<</if>>
+			<</if>>
+			<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 		<</if>>
-		<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
+		<br>
 	<<else>>
 		The rushing water tears at you.
 		<<set $stripintegrity to 20>><<set $stripobject to "jutting rock">><<stripobject>>
 		The water is too violent, and you <span class="red">fail</span> to swim across the river, instead being swept downstream and deeper into the forest.
 		<br><br>
 		<<set $rng to random(1, 100)>>
-		<<if $rng gte 71 and $parasitedisable is "f" and !$parasite.bottom.name>>
-			<<if $worn.lower.type.includes("naked") or setup.clothes.lower[$worn.lower.index].skirt is 1>>
-				As you climb up the bank you feel a pinching sensation on your <<bottom>>. You feel behind you, and find a strange, soft creature stuck there. It sucks on your skin, making it feel warm.
-				<<garousal>><<arousal 600>>
+		<<if $wraith and $wraith.hunt and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>>
+			As you climb up the bank you feel your foot catch on something.
+			<<if $slimedisable is "f">>
+				You look down to see a pale white slime stuck to you, and many more emerging from the river. <<rainWraith true>>
 				<br><br>
-				You tug, but it won't budge. You'll need help to remove it.
-				<<parasite bottom urchin>>
+				Far down the river, you see a pale robed figure walking closer. It raises its hand, and the slimes leap at you!
 				<br><br>
+				<<link [[Next|Forest Pale Slime Struggle]]>><<set $forest += 20>><<set $struggle_start to 1>><<set $phase to 2>><</link>>
+			<<else>>
+				It violently tugs on your leg, attempting to pull you back into the river! You barely manage to pull away. You look back to see a pale figure dissappear behind a tree. <<trauma 12>><<pain 6>><<stress 12>><<gtrauma>><<gpain>><<gstress>>
+				<br><br>
+				<<link [[Next|Forest]]>><<set $forest += 20>><</link>>
 			<</if>>
+		<<else>>
+			<<if $rng gte 71 and $parasitedisable is "f" and !$parasite.bottom.name>>
+				<<if $worn.lower.type.includes("naked") or setup.clothes.lower[$worn.lower.index].skirt is 1>>
+					As you climb up the bank you feel a pinching sensation on your <<bottom>>. You feel behind you, and find a strange, soft creature stuck there. It sucks on your skin, making it feel warm.
+					<<garousal>><<arousal 600>>
+					<br><br>
+					You tug, but it won't budge. You'll need help to remove it.
+					<<parasite bottom urchin>>
+					<br><br>
+				<</if>>
+			<</if>>
+			<<link [[Next|Forest]]>><<set $forest += 20>><</link>>
 		<</if>>
-		<<link [[Next|Forest]]>><<set $forest += 20>><</link>>
 		<br>
 	<</if>>
 <</if>>
@@ -3487,6 +3517,57 @@ You escape into the forest.
 	<<link [[Say goodbye|Forest]]>><<endevent>><</link>>
 <</if>>
 
+:: Forest Pale Slime Struggle
+<<effects>>
+
+<<if $struggle_start is 1>>
+	<<struggle_init>>
+	<<set $struggle.creature to "pale slime">>
+	<<if $wraith.state is "haunt">>
+		<<struggle_creatures 3 2>>
+	<<else>>
+		<<struggle_creatures 2 1>>
+	<</if>>
+	<<set $combat to 1>>
+	<<controlloss>>
+	<<violence 1>>
+	<<molested>>
+	<<unset $struggle_start>>
+<</if>>
+
+<<struggle>>
+
+<<if $struggle.done gte $struggle.number>>
+	<<link [[Next|Forest Pale Slime Struggle End]]>><</link>>
+	<br>
+<<else>>
+	<<link [[Next|Forest Pale Slime Struggle]]>><</link>>
+	<br>
+<</if>>
+
+:: Forest Pale Slime Struggle End
+<<effects>>
+
+The slimes disappear into the river. <<tearful>> you look around frantically.
+<<if $phase is 1>>
+	The pale figure is nowhere to be found. You breathe a sigh of relief, but waste no time getting back on the move. <<endRainWraith true>>
+	<<set $wraith.hunt -= 3>>
+	<<if $wraith.hunt lte 0>>
+		You think you've lost it, but you stay on your guard.
+		<<set $wraith.hunt to 0>><<set $wraith.timer += 5>>
+	<<else>>
+		It's likely still coming for you, but you've put valuable distance between you and it.
+	<</if>>
+<<else>>
+	The pale figure is nowhere to be found. You're about to breathe a sigh of relief, but hear a laugh from the treeline. You break out into a run. <<endRainWraith>>
+<</if>>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
+<br>
+
 :: Forest Plant Sex
 <<if $sexstart is 1 or $molestationstart is 1>>
 	<<if $sexstart is 1>>
@@ -3719,3 +3800,4 @@ You try to sit up again, but the vines pull you back down. "Ah bup bup," the <<p
 <br><br>
 
 <<link [[Next|Forest Plant Sex]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
+

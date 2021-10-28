@@ -6504,6 +6504,18 @@ You ignore the <<persons>> request and try walk away, but <<he>> blocks your pat
 
 	You hasten your steps.<<gstress>><<gtrauma>><<stress 6>><<trauma 6>>
 	<br><br>
+<<elseif $wraith and $wraith.state isnot "" and $hallucinations gte 1 and ($rng gte 75 or ($wraith.state is "haunt" and $rng gte 50) or ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6))>>
+	You smile and greet the <<person>> as you walk by.<<if $wraith.state isnot "haunt">> You steal a glance at the ornate necklace around <<his>> neck.<</if>> <<His>> smile becomes wider, and you suddenly grow very anxious. <<He>> looks like <<hes>> getting more pale by the second. You quicken your pace, and you hear footsteps running after you. <<stress 6>><<gstress>>
+	<br><br>
+
+	You briefly look back, and see <<him>> standing completely still. <<His>> eyes flash <<wraithEyes>> as <<he>> regards you with a mad grin.
+	<<if $wraith.seen gte 3>>
+		You break out into a sprint instinctively, knowing what's in store for you if it catches you.
+	<<else>>
+		You begin to run. This isn't natural.
+	<</if>>
+	You crouch behind a street corner, but when you look back, it's gone without a trace. <<stress 6>><<trauma 12>><<gstress>><<gtrauma>>
+	<br><br>
 <<else>>
 	You smile and greet the <<person>> as you walk by.
 	<br><br>

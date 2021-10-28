@@ -243,7 +243,7 @@ Previous "Always Open" mouth. activemouth can be used in all active frames still
 	<img class="layer-sexsclera" src="img/sex/missionary/active/activesclerabloodshot.png">
 <</if>>
 
-<<if $trauma gte ($traumamax * 0.9)>>
+<<if $trauma gte ($traumamax * 0.9) or $possessed>>
 	<img class="layer-sexeyes colour-eye" src="img/sex/missionary/active/activeeyesempty.png">
 <<else>>
 	<img class="layer-sexeyes colour-eye anim-idle-2f" src="img/sex/missionary/active/activeeyes.png">

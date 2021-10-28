@@ -1604,6 +1604,14 @@
 			hint: "Hint: Blind and in ruin.",
 			softLockable: true,
 		},
+		"Schism":{
+			title: "Schism",
+			desc: "Witnessed a drowned history.",
+			difficulty: 3,
+			series: "",
+			hint: "Hint: Witness a history washed away.",
+			filter: ["All", "Discoveries"],
+		},
 		"Catch the Wind":{
 			title: "Catch the Wind",
 			desc: "Learned how to fly.",

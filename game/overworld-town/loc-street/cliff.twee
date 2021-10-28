@@ -1,6 +1,6 @@
 :: Cliff Street
 
-<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "cliff">>
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "cliff">><<getTarget true>>
 You are on Cliff Street. Several civic buildings are located here, including the town hall. The Ocean Breeze cafe looks out over the sea.
 <<if $chef_state is 9>>
 	A queue has formed outside its extravagant doors.
@@ -59,9 +59,9 @@ There's a path leading down to the beach.
 <<if $arousal gte $arousalmax>>
 	<<orgasmstreet>>
 <</if>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutstreet>>
-<<elseif $chef_event gte random(1, 100) and $exposed lte 0>>
+<<elseif $chef_event gte random(1, 100) and $exposed lte 0 and !$possessed>>
 	<<set $rng to random(1, 100)>>
 	<<if $chef_sus gte 100>>
 		<<set $chef_sus to 30>>
@@ -94,8 +94,8 @@ There's a path leading down to the beach.
 		<br>
 	<</if>>
 <<else>>
-<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-	<<if $danger gte (9900 - $allure) and $eventskip is 0>>
+	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 		<<eventsstreet>>
 	<<else>>
 		<<if $map.top is true>>

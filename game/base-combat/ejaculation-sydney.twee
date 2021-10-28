@@ -30,7 +30,7 @@
 	<<if $consensual is 1>>
 		<<if $NPCList[_nn].vagina is "mouthentrance" or $NPCList[_nn].vagina is "mouth" or $NPCList[_nn].vagina is "mouthimminent">>
 			<<if random (1, 2) is 1>>
-				<<He>> lets out a gasp as <<he>> finishes, <<his>> legs instictively wrapping around your head and neck for a moment.
+				<<He>> lets out a gasp as <<he>> finishes, <<his>> legs instinctively wrapping around your head and neck for a moment.
 			<<else>>
 				<<switch _sydneyStatus>>
 					<<case "pure" "pureLust">>

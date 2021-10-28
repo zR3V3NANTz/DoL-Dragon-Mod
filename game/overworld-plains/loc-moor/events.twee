@@ -1052,7 +1052,20 @@ Faced with an impenetrable darkness, you turn and swim back to the glowing shore
 You examine the ring. A black gemstone sits surrounded by engravings of what appear to be grapes. The ring itself is made of gold. It would be valuable to a collector.
 <br><br>
 
-<<link [[Next|Moor]]>><<set $eventskip to 1>><</link>>
+<<if $wraith and $wraith.state isnot "" and (($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) or $hallucinations gte 2 and $rng gte 50)>>
+	<<generateWraith 1>><<initWraith>><<rainWraith>>
+	"<span class="wraith">Graverobber.</span>"
+	<br><br>
+	You snap around to face the voice, and see a beautiful pale figure floating just above the water. <<Hes>> naked,<<if $wraith.state is "haunt">> and scratches at <<his>> own neck.<<else>> save for an ornate white necklace with blue gemstons around <<his>> neck.<</if>> <<if $wraith.seen gte 3>>You immediately try to scramble away.<<else>>You slowly back away.<</if>> A translucent tendril wraps around your leg, lifting you and dropping you flat on your back.
+	<br><br>
+	You have the wind knocked out of you. <<pain 4>><<gpain>>
+	<br><br>
+	<<startWraith>>
+	<br><br>
+	<<link [[Next|Wraith Moor Ring]]>><</link>>
+<<else>>
+	<<link [[Next|Moor]]>><<set $eventskip to 1>><</link>>
+<</if>>
 <br>
 
 :: Moor Passage Walk

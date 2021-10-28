@@ -8,22 +8,36 @@
 		Eden slumbers between the sheets.
 	<</if>>
 	<br>
-	<<bedicon>><<link [[Sleep|Eden Cabin Bed]]>><<endevent>><</link>>
+	<<if $nextPassageCheck is "Eden Cabin Bed">>
+		<span class="nextLink"><<bedicon>><<link [[Eden.|Eden Cabin Bed]]>><<endevent>><</link>></span>
+	<<else>>
+		<<bedicon>><<link [[Sleep|Eden Cabin Bed]]>><<endevent>><</link>>
+	<</if>>
 	<br>
 	<<pregnancyTest "Eden Cabin">>
 	Your clothes are kept in the corner.
 	<br>
 	<<wardrobeicon>><<link [[Wardrobe|Eden Wardrobe]]>><<endevent>><</link>>
 	<br>
-	<<mirroricon>><<link [[Mirror|Eden Mirror]]>><<endevent>><</link>>
+	<<if $nextPassageCheck is "Eden Mirror">>
+		<span class="nextLink"><<mirroricon>><<link [[Mirror|Eden Mirror]]>><<endevent>><</link>></span>
+	<<else>>
+		<<mirroricon>><<link [[Mirror|Eden Mirror]]>><<endevent>><</link>>
+	<</if>>
 	<br><br>
-	<<link [[Go back|Eden Cabin]]>><<endevent>><</link>>
+	<<if $nextPassageCheck is "Eden Cabin">>
+		<span class="nextLink"><<link [[Go back|Eden Cabin]]>><<endevent>><</link>></span>
+	<<else>>
+		<<link [[Go back|Eden Cabin]]>><<endevent>><</link>>
+	<</if>>
 	<br><br>
 <</widget>>
 
 <<widget "cabinothers">>
 
-	<<if ($exposed gte 1 and !$edenexposed and $hour is 7) or ($exposed gte 1 and !$edenexposed and $hour is 8)>>
+	<<if $nextPassageCheck is "Eden Clearing">>
+		<span class="nextLink"><<link [[Go outside|Eden Clearing]]>><</link>></span>
+	<<elseif ($exposed gte 1 and !$edenexposed and $hour is 7) or ($exposed gte 1 and !$edenexposed and $hour is 8)>>
 		<<link [[Go outside|Eden Exposed]]>><<endevent>><</link>>
 	<<elseif $exposed gte 1 and !$edenexposed and $hour gte 17>>
 		<<link [[Go outside|Eden Exposed]]>><<endevent>><</link>>

@@ -1,6 +1,6 @@
 :: Domus Street
 
-<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "domus">>
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "domus">><<getTarget true>>
 You are on Domus Street. The orphanage is here. The street is dominated by small homes similar in appearance.
 <<if $daystate is "day">>
 	<<if $weather is "rain">>
@@ -36,11 +36,11 @@ You are on Domus Street. The orphanage is here. The street is dominated by small
 	<br><br>
 	<<link [[Next|Tutorial]]>><<set $molestationstart to 1>><<set $tutorialExit to "Domus Street">><</link>>
 <<else>>
-	<<if $stress gte $stressmax>>
+	<<if $stress gte $stressmax and !$possessed>>
 		<<passoutstreet>>
 	<<else>>
 		<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-		<<if $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $NPCName[$NPCNameList.indexOf("Whitney")].init is 1 and $halloween is 1 and $monthday is 31 and $hour gte 19 and $halloween_whitney_proposed isnot 1>><<set $halloween_whitney_proposed to 1>>
+		<<if $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $NPCName[$NPCNameList.indexOf("Whitney")].init is 1 and $halloween is 1 and $monthday is 31 and $hour gte 19 and $halloween_whitney_proposed isnot 1 and !$possessed>><<set $halloween_whitney_proposed to 1>>
 			<<halloweenwhitney>>
 		<<elseif $averyDismissalScene and $averyDismissalSceneWait isnot 1 and $weekday is 7 and $hour is 20>>
 			<<loadNPC 0 avery_sidepiece>><<person1>>
@@ -70,7 +70,7 @@ You are on Domus Street. The orphanage is here. The street is dominated by small
 			<br><br>
 			<<endevent>>
 			<<destinationeventend>>
-		<<elseif $danger gte (9900 - $allure) and $eventskip is 0>>
+		<<elseif ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 			<<eventsstreet>>
 		<<else>>
 			<<if $map.top is true>>

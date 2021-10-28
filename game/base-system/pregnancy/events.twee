@@ -154,7 +154,7 @@ Harper stares unblinking at your <<bottom>> as the pulsing increases in intensit
 <<set $checkboxResult to {}>>
 <<set $checkboxReplace to {}>>
 <<set $parasiteSelectionCount to 0>>
-<<set _vine to 0>><<set _metal to 0>>
+<<set _vine to 0>><<set _metal to 0>><<set _pale to 0>>
 
 Following the directions from Doctor Harper, you get into position and attempt to deliver <<if _pregnancy.namesChildren is true>>your baby<<else>>the parasites<</if>>. <<if _stressMulti gt 0>><<gstress>><</if>><<set $stress += 250 * _stressMulti>>
 <br><br>
@@ -192,6 +192,9 @@ Following the directions from Doctor Harper, you get into position and attempt t
 			<<if _pregnancy[$pregResult[_i]].creature.includes("Metal")>>
 				<<set _metal++>>
 			<</if>>
+			<<if _pregnancy[$pregResult[_i]].creature.includes("Pale")>>
+				<<set _pale++>>
+			<</if>>
 		<</for>>
 	</ul>
 	<<if _vine gte 1 and !$containerVine and $location is "home">>
@@ -202,6 +205,12 @@ Following the directions from Doctor Harper, you get into position and attempt t
 	<<if _metal gte 1 and !$containerMetal and $location is "home">>
 		<<set $containerMetal to true>>
 		Upon closer inspection, the metal tentacle isn't truly metal. It has a metallic colour and pattern, but it bends and writhes in ways that steel wouldn't be able to. You hope it doesn't need anything in particular to eat.
+		<br><br>
+	<</if>>
+	<<if _pale gte 1 and !$containerPale and $location is "home">>
+		<<set $containerPale to true>>
+		Your hands seem to move on their own, and you find yourself holding the pale creature<<if _pale gte 2>>s<</if>>. <<if _pale gte 2>>They're<<else>>It's<</if>> so pale that <<if _pale gte 2>>they're<<else>>it's<</if>> almost translucent. You feel a twinge of dread, but it's quickly replaced by an odd contentment.
+		<span class="blue">You should be careful deciding whether to keep <<if _pale gte 2>>them<<else>>it<</if>>.</span>
 		<br><br>
 	<</if>>
 	<<if $pregResult.length gt (_container.maxCount - _container.count)>>
@@ -333,7 +342,7 @@ Following the directions from Doctor Harper, you get into position and attempt t
 			<<moveCreature $pregResult[_i] "portable">>
 		<</if>>
 	<</for>>
-	You decide to keep <<number $parasiteSelectionCount>> of <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>> and so place them in your <<print $container[$location].name>> in place of <<number $parasiteReplaceArray.length>> <<if $parasiteReplaceArray.length gt 1>>others<<else>>other<</if>>, while preparing the rest for Doctor Harper.
+	You decide to keep <<number $parasiteSelectionCount>> of <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>> and so place <<if $parasiteSelectionCount isnot 1>>them<<else>>it<</if>> in your <<print $container[$location].name>> in place of <<number $parasiteReplaceArray.length>> <<if $parasiteReplaceArray.length gt 1>>others<<else>>other<</if>>, while preparing the rest for Doctor Harper.
 	<br><br>
 <<case "KeepSelected">>
 	<<for _i to 0; _i lt $pregResult.length;_i++>>
@@ -343,19 +352,19 @@ Following the directions from Doctor Harper, you get into position and attempt t
 			<<moveCreature $pregResult[_i] "portable">>
 		<</if>>
 	<</for>>
-	You decide to keep <<number $parasiteSelectionCount>> of <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>> and so place them in your <<print $container[$location].name>> while preparing the rest for Doctor Harper.
+	You decide to keep <<number $parasiteSelectionCount>> of <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>>, and place <<if $parasiteSelectionCount isnot 1>>them<<else>>it<</if>> in your <<print $container[$location].name>> while preparing the rest for Doctor Harper.
 	<br><br>
 <<case "keepAll">>
 	<<for _i to 0; _i lt $pregResult.length;_i++>>
 		<<moveCreature $pregResult[_i] "container">>
 	<</for>>
-	You decide to keep all of <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>> and so place them in your <<print $container[$location].name>>.
+	You decide to keep all of <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>>, and place them in your <<print $container[$location].name>>.
 	<br><br>
 <<case "sellAll">>
 	<<for _i to 0; _i lt $pregResult.length;_i++>>
 		<<moveCreature $pregResult[_i] "portable">>
 	<</for>>
-	You decide to sell all <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>> and so prepare to take them to Doctor Harper.
+	You decide to sell all <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>>, and prepare to take them to Doctor Harper.
 	<br><br>
 <</switch>>
 

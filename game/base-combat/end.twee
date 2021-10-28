@@ -206,6 +206,7 @@
 <</if>>
 <<set $walltype to "wall">>
 <<set $angelforgive to 0>>
+<<unset $banishDisable>>
 <<unset $penisfucked>>
 <<unset $vaginafucked>>
 <<unset $anusfucked>>
@@ -263,10 +264,11 @@
 <<set $tentacles.max to 0>>
 <<set $tentacles.active to 0>>
 <<set _tentacles to $tentacles>>
-<<for _i to 1; _i lt 20; _i++>>
+<<for _i to 0; _i lt 20; _i++>>
 	<<set _tentacles[_i] to null>>
 <</for>>
 <<set $abomination to 0>>
+<<unset $tentacleColour>>
 <<set $tentacleMouth to 0>>
 <<set $tentacleAnus to 0>>
 <<set $tentacleAnusBaby to 0>>
@@ -604,6 +606,7 @@
 <<unset $sydneyUniqueComments>>
 <<unset $noBodyWriting>>
 <<unset $breakIgnore>>
+<<unset $eventforced>>
 
 <<unset $internalejac>>
 

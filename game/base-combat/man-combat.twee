@@ -1559,7 +1559,7 @@
 				<<bodypart_admire_chance right_bottom>>
 			<</if>>
 		<</if>>
-	<<elseif $enemyanger + $rng lte 90 and $enemytype isnot "beast" and $NPCList[_n].type isnot "plant">>
+	<<elseif $enemyanger + $rng lte 90 and $enemytype isnot "beast" and $NPCList[_n].type isnot "plant" and $NPCList[_n].fullDescription isnot "Ivory Wraith" and !$abomination>>
 		<<combat-set-hand-target $args[0] "lube">>
 		<<if $NPCList[_n].penis is "vaginaentrance" and $player.bodyliquid.vaginaoutside.goo lt 5 and !$worn.genitals.type.includes("chastity")>>
 			<span class="purple"><<He>> holds a bottle of lubricant near your <<pussy>>.</span>
@@ -1916,7 +1916,7 @@
 				<span class="purple"><<He>> grasps your $worn.feet.name.</span>
 				<<combat-set-hand-target $args[0] "shoes">>
 				<<neutral 3>>
-			<<elseif $NPCList[_n].type isnot "plant">>
+			<<elseif $enemytype is "man" and $NPCList[_n].fullDescription isnot "Ivory Wraith" and !$abomination>>
 				<span class="pink"><<He>> produces a pair of menacing metal shackles.</span>
 				<<combat-set-hand-target $args[0] "shackle_entrance">>
 				<<neutral 4>>

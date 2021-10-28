@@ -749,6 +749,13 @@
 		<</if>>
 	<</if>>
 
+	<<if $angel gte 4>>
+		<<set $angelBanishMax to Math.floor($angelbuild / 10)>>
+		<<set $angelBanish to $angelBanishMax>>
+	<<else>>
+		<<set $angelBanish to 0>>
+	<</if>>
+
 	<<set $angelbuild -= 1>>
 
 	<<if $fallenangel gte 2>>
@@ -1114,6 +1121,17 @@
 		<</if>>
 	<</if>>
 
+	<<if $wraith>>
+		<<if $wraithAnger>>
+			<<if $wraithAnger gt 0>>
+				<<set $wraithAnger -->>
+			<<else>>
+				<<set $wraith.offspring to "">>
+				<<unset $wraithAnger>>
+			<</if>>
+		<</if>>
+	<</if>>
+
 	<<if $skulduggery gte 1000 and $skulduggeryday lt 1000>>
 		<span class="gold">Your skulduggery has improved to</span> <span class="green">S.</span>
 	<<elseif $skulduggery gte 900 and $skulduggeryday lt 900>>
@@ -1299,7 +1317,7 @@
 <</widget>>
 
 <<widget "hour">>
-<<if $statFreeze isnot true>>
+<<if $statFreeze isnot true or $schism>>
 	<<for $minute gte 60>>
 		<<set $minute -= 60>><<orgasmhour>>
 		<<if $innocencestate is 1 and $control lte 0>>
@@ -1565,11 +1583,14 @@
 <<if $monthday is _lastDay>>
 	<<set $moonstate to "evening">>
 	<<set $moonEvent to true>>
+	<<checkWraith true>>
 <<elseif $monthday is 1>>
 	<<set $moonstate to "morning">>
+	<<checkWraith true>>
 <<else>>
 	<<set $moonstate to 0>>
 	<<unset $moonEvent>>
+	<<clearWraith>>
 <</if>>
 
 <</widget>>

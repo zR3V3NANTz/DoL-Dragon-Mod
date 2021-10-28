@@ -3871,14 +3871,14 @@ Nothing seems to be amiss, until you check in on <<print (_pregnancy.namesChildr
 You see a small note near to the <<print _container.name>> with the letter "K" on it.
 
 <<if _container.deadCreatures is 0>>
-	It seems someone has been making sure that they are being properly looked after.
+	It seems someone has been making sure that they're being properly looked after.
 	<br><br>
 	You should be careful. You might not get the help next time.
 	<<set _container.kylarDelay to 7>>
 	<<set _container.kylarFed to false>>
 	<<set _container.daysSinceFed to 0>>
 <<else>>
-	It seems someone was looking after them for you. It wasn't enough. They are all dead in the tank.
+	It seems someone was looking after them for you. It wasn't enough. They're all dead in the tank.
 	<br><br>
 	You bury them.
 	<<ggtrauma>>
@@ -3888,6 +3888,15 @@ You see a small note near to the <<print _container.name>> with the letter "K" o
 		<<set _traumaMulti to 1>>
 	<</if>>
 	<<trauma `30 * _traumaMulti * _container.deadCreatures`>>
+	<<if $wraith and $wraith.state isnot "" and $wraithShow>>
+		<<unset $wraithShow>>
+		You feel something gingerly grab your neck from behind.
+		<br><br>
+		"<span class="wraith">Unforgivable. You'll join <<if _container.count isnot 1>>them<<else>>it<</if>> soon.</span>" <<stress 12>><<trauma 12>><<ggstress>><<ggtrauma>>
+		<br><br>
+		You turn around, but nothing's there.
+		<br><br>
+	<</if>>
 <</if>>
 <br><br>
 <<endevent>>

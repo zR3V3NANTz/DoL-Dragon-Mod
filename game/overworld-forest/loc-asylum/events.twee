@@ -539,16 +539,41 @@ They tease your <<genitals>> without mercy.
 <<pass 5>>
 This continues for a few minutes. Puffs of pink mist continue to emerge, along with more tendrils. Your breathing becomes deeper and your pulse quickens.
 <br><br>
-<<arousal 10000>>
-<<orgasm>>
-You hear applause from outside the machine. Did you make that much noise? "Very good," Harper says.
-"That should do it. This should be the right button." The tendrils withdraw and the holes close. The compartment opens and several pairs of arms help you to your feet. "You've done well today," The doctor says. "I hope you found it relaxing. Be well."
-<br><br>
-You leave the room, still shaking.
-<br><br>
-<<endevent>>
-<<link [[Next|Asylum]]>><</link>>
-<br>
+<<if $wraith and $wraith.state is "haunt" and $hallucinations gte 1>>
+	<<arousal 5000>>
+	<<endevent>>
+	<<generateWraith 1 true>><<rainWraith>>
+	Suddenly, the lights go out with a snapping sound, leaving you in pitch black darkness. You hear murmurs from outside the machine, followed by frantic footsteps. It feels like something is pushing down on you. The sound becomes more and more intense, until it almost sounds like rain hitting the machine.
+	<br><br>
+	A faint red light begins to shine around you, <span class="red">revealing a<<if $wraith.seen gte 3>> familiar<</if>> pale face right above yours.</span> You try to scream, but something is already blocking your mouth.
+	<<if $wraith.seen gte 1>>
+		The <<person>> smiles. "<span class="wraith">We meet again, thief.</span>"
+	<<else>>
+		The <<person>> "<span class="wraith">Thief. Give it back.</span>"
+	<</if>>
+	<br><br>
+	<<initWraith "abomination">>
+	<<if $wraith.gen is "abomination">>
+		Pale tendrils swarm around you, holding you down.
+	<<else>>
+		Several disembodied arms emerge from the walls, holding you down.
+	<</if>>
+	Harper's voice is just barely audible. "Something's wrong with the machine! Get <<pher>> out of there!"
+	<br><br>
+	<<link [[Next|Asylum Machine Wraith]]>><<set $molestationstart to 1>><</link>>
+	<br>	
+<<else>>
+	<<arousal 10000>>
+	<<orgasm>>
+	You hear applause from outside the machine. Did you make that much noise? "Very good," Harper says.
+	"That should do it. This should be the right button." The tendrils withdraw and the holes close. The compartment opens and several pairs of arms help you to your feet. "You've done well today," The doctor says. "I hope you found it relaxing. Be well."
+	<br><br>
+	You leave the room, still shaking.
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Asylum]]>><</link>>
+	<br>
+<</if>>
 
 :: Asylum Machine Refuse
 
@@ -666,7 +691,48 @@ You pet the <<beasttype>> on the way out.
 Harper affixes a mask around <<his>> head. The others follow <<his>> example while <<he>> opens a safe. <<He>> pulls out a canister, then holds it at arms reach in front of you, and opens it. Purple fumes rise from within. It smells sweet.
 <br><br>
 <<pass 5>>
-You sit for a few minutes. The doctors watch you, as if expecting something to happen. "Well?" the <<person2>><<person>> says. "Do you see anything strange?" You shake your head.
+<<if $wraith and $wraith.state isnot "" and $rng gte 50>>
+	You sit for a few minutes. The light above you flickers briefly, but no one else seems to notice.
+	<<if $weather isnot "rain" and $weather isnot "snow">>
+		You think you hear raindrops hitting the window, but when you look, the windows are all dry.
+	<<else>>
+		You hear a faint rumble of thunder in the distance, and your eyes flit to the windows reflexively.
+	<</if>>
+	The doctors watch you, taking note of where your gaze lands.
+	<br><br>
+	<<if $wraith.state is "haunt">>
+		When you look back, <<if $wraith.seen gte 1>>your blood runs cold. A familiar pale figure stares at you from the corner of the room, smiling at you behind glowing <<wraithEyes>> eyes. <<stress 24>><<gggstress>><<trauma 6>><<gtrauma>><<else>>your breath catches in your throat. You see a pale figure flickering in the corner of the room, staring directly at you with bright <<wraithEyes>> eyes. <<stress 12>><<ggstress>><</if>>
+	<<else>>
+		When you look back, another light flickers in the corner of the room, and something disappears. Your ears begin ringing. You definitely saw something... someone... there. It looked tall and pale, wearing an ivory necklace set with dark blue gemstones. You think it was waving at you, or maybe motioning for you to get closer. <<stress 12>><<ggstress>>
+	<</if>>
+	<br><br>
+	Harper notices your discomfort. "What's wrong? Did you see something strange?" Everything snaps back to normal as <<he>> speaks.
+	<br><br>
+	<<link [[Tell|Asylum Pill Tell]]>><<awareness -5>><<stress -3>><</link>><<lawareness>><<lstress>>
+	<br>
+	<<link [[Stay quiet|Asylum Pill Quiet]]>><<suspicion 1>><<awareness 5>><<stress 3>><</link>><<gsuspicion>><<gawareness>><<stress 3>>
+	<br>
+<<else>>
+	You sit for a few minutes. The doctors watch you, as if expecting something to happen. "Well?" the <<person2>><<person>> says. "Do you see anything strange?" You shake your head.
+	<br><br>
+	"We'll keep an eye on <<phim>>," Harper says. "I'll send for the next patient." <<He>> undoes the straps on the chair. "Thank you for cooperating. Be well."
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Asylum]]>><</link>>
+	<br>
+<</if>>
+
+:: Asylum Pill Tell
+You tell them about what you saw, but find yourself unable to recall the finer details already. <<He>> undoes the straps on the chair as the other doctors murmur something.
+<br><br>
+"Fascinating. Thank you for cooperating. You can go," <<he>> says. "Be well."
+<<endevent>>
+<br><br>
+<<link [[Next|Asylum]]>><</link>>
+<br>
+
+:: Asylum Pill Quiet
+You shake your head. They all look skeptical, but Harper gives you a patient smile.
 <br><br>
 "We'll keep an eye on <<phim>>," Harper says. "I'll send for the next patient." <<He>> undoes the straps on the chair. "Thank you for cooperating. Be well."
 <br><br>

@@ -546,7 +546,7 @@
 	<</if>>
 
 	<!-- Eyes -->
-	<<if $trauma gte ($traumamax * 0.9) and _diagram is 0>>
+	<<if ($trauma gte ($traumamax * 0.9) and _diagram is 0) or $possessed>>
 		<<set _iris = "irisempty">>
 		<<set _trauma = "-trauma">>
 	<<else>>
@@ -563,14 +563,19 @@
 	<<else>>
 		<<set _sclera = "sclera">>
 	<</if>>
-	<<if $halfcloseddisable isnot "t" and ($arousal gte ($arousalmax / 5) * 4 or $orgasmdown gte 1) and _trauma is "" and $pain lt 60 and _diagram is 0 and $eyelidTEST is true>>
+	<<if $halfcloseddisable isnot "t" and ($arousal gte ($arousalmax / 5) * 4 or $orgasmdown gte 1) and _trauma is "" and $pain lt 60 and _diagram is 0 and $eyelidTEST is true or $possessed>>
 		<<set _half = "_halfclosed">>
 	<<else>>
 		<<set _half = "">>
 	<</if>>
+	<<if $possessed>>
+		<<set _colourEye to ($wraith.state is "haunt" and !$schism ? "eye-redPossessed" : "eye-bluePossessed")>>		
+	<<else>>
+		<<set _colourEye to "colour-eye">>
+	<</if>>
 	<img class="layer-eyes" @src="'img/face/' + $facestyle + _red + '/eyes.png'" @style="'filter: '+_filters.body">
 	<img class="layer-sclera" @src="'img/face/' + $facestyle + '/' + _sclera + '.png'">
-	<img @class="'layer-iris colour-eye ' + _animIdle" @src="'img/face/' + $facestyle + '/' + _iris + _half + '.png'">
+	<img @class="'layer-iris '+_colourEye+' ' + _animIdle" @src="'img/face/' + $facestyle + '/' + _iris + _half + '.png'">
 	<img @class="'layer-eyelids ' + _blink" @src="'img/face/' + $facestyle + _red + '/eyelids' + _half + '.png'" @style="'filter: '+_filters.body">
 	<img @class="'layer-lashes ' + _blink" @src="'img/face/' + $facestyle + '/lashes' + _half + '.png'">
 
@@ -584,7 +589,7 @@
 	<</if>>
 
 	<!-- Brows -->
-	<<if $trauma gte $traumamax or _diagram is 1>>
+	<<if $trauma gte $traumamax or $possessed or _diagram is 1>>
 		<<set _brows = "top">>
 	<<elseif $pain gte 60>>
 		<<set _brows = "low">>
@@ -609,7 +614,7 @@
 	<!-- Mouth -->
 	<<if $trauma gte $traumamax or _diagram is 1>>
 		<<set _mouth = "neutral">>
-	<<elseif $pain gte 60 or $orgasmdown gte 1>>
+	<<elseif $pain gte 60 or $orgasmdown gte 1 or ($possessed and !$schism)>>
 		<<set _mouth = "cry">>
 	<<elseif $exposed is 2 and $uncomfortable.nude is true and $dontHide is false or $pain gte 20>>
 		<<set _mouth = "frown">>

@@ -1,6 +1,6 @@
 :: Residential alleyways
 
-<<set $outside to 1>><<set $location to "alley">><<effects>><<set $bus to "residential">>
+<<set $outside to 1>><<set $location to "alley">><<effects>><<set $bus to "residential">><<getTarget true>>
 You are in an alleyway in the residential district.
 <<if $daystate is "day">>
 	There are a lot of people around.
@@ -20,11 +20,11 @@ Your home is nearby.
 <<if $arousal gte $arousalmax>>
 	<<orgasmstreet>>
 <</if>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutalley>>
 <<else>>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-	<<if $danger gte (9900 - $allure) and $eventskip is 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 		<<eventsstreet>>
 	<<else>>
 		<<if $map.top is true>>

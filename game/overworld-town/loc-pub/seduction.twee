@@ -844,7 +844,7 @@ You knock <<him>> into the stall door, which <<he>> crashes through. <<tearful>>
 <<location "forest">><<effects>><<set $forest to 0>>
 
 <<if $drunk is 1>>
-	<<if $rng gte 51>><<set $location to "town">>
+	<<if $rng gte 51 and !($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>><<set $location to "town">>
 
 	You walk with <<him>>. <<He>> has to grab your shoulders to steady you more than once, but you manage to climb onto the back seat of <<his>> car. The journey doesn't take long. "This is your home right?" <<he>> asks. "It's not my place to say but you should be more careful in the future. There are creeps who prey on cute <<girls>> like you." <<He>> helps you to the front door, only going back to <<his>> car once you're safe inside.
 	<br><br>
@@ -853,7 +853,15 @@ You knock <<him>> into the stall door, which <<he>> crashes through. <<tearful>>
 	<br>
 
 	<<else>>
-		<<if $cow isnot 6 or random(1, 2) is 2>>
+		<<if $wraith and $wraith.state is "haunt" and (($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) or $rng is 50)>>
+			You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
+			<br><br>
+
+			<<link [[Eat the pill|Pub Wraith Mimic Hallucinogen]]>><<set $hallucinogen += 240>><<set $drugged += 180>><</link>>
+			<br>
+			<<link [[Refuse|Pub Wraith Mimic Refuse]]>><</link>>
+			<br>		
+		<<elseif $cow isnot 6 or random(1, 2) is 2>>
 			You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
 			<br><br>
 
@@ -872,8 +880,15 @@ You knock <<him>> into the stall door, which <<he>> crashes through. <<tearful>>
 		<</if>>
 	<</if>>
 <<else>>
+	<<if $wraith and $wraith.state is "haunt" and (($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) or $rng lte 2)>>
+		You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
+		<br><br>
 
-	<<if $cow isnot 6 or random(1, 2) is 2>>
+		<<link [[Eat the pill|Pub Wraith Mimic Hallucinogen]]>><<set $drugged += 180>><<set $hallucinogen += 240>><</link>>
+		<br>
+		<<link [[Refuse|Pub Wraith Mimic Refuse]]>><</link>>
+		<br>
+	<<elseif $cow isnot 6 or random(1, 2) is 2>>
 		You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
 		<br><br>
 
