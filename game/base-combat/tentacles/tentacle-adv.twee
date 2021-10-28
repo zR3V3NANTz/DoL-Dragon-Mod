@@ -814,6 +814,11 @@ The _tentacle.fullDesc writhes between your feet.
 		<<set _action to "leftgrabtentacle"+_tentacle.id >>
 		<<actionstentacleadvcheckbox "sub" "Grab the _tentacle.fullDesc" "$leftaction" _action $leftactiondefault>>
 
+		<<if $angel gte 4 and $angelBanish gte 1>>
+			<<set _action to "leftbanish"+_tentacle.id >>
+			<<actionstentacleadvcheckbox "def" "Banish the _tentacle.fullDesc" "$leftaction" _action $leftactiondefault>>		
+		<</if>>
+
 		<br>
 	<<elseif $leftarm is _tentacle.id>>
 		You hold the _tentacle.fullDesc in your left hand.
@@ -858,6 +863,11 @@ The _tentacle.fullDesc writhes between your feet.
 
 		<<set _action to "rightgrabtentacle"+_tentacle.id >>
 		<<actionstentacleadvcheckbox "sub" "Grab the _tentacle.fullDesc" "$rightaction" _action $rightactiondefault>>
+
+		<<if $angel gte 4 and $angelBanish gte 1>>
+			<<set _action to "rightbanish"+_tentacle.id >>
+			<<actionstentacleadvcheckbox "def" "Banish the _tentacle.fullDesc" "$rightaction" _action $rightactiondefault>>		
+		<</if>>
 
 		<br>
 	<<elseif $rightarm is _tentacle.id>>
@@ -1105,6 +1115,38 @@ The _tentacle.fullDesc writhes between your feet.
 		<</if>>
 	<</if>>
 
+	<<if ($leftaction is "leftbanish" and $leftactionTarget is _tentacle.id)
+	or ($rightaction is "rightbanish" and $rightactionTarget is _tentacle.id)>>
+		<<if $leftaction is "leftbanish" and $rightaction is "rightbanish" and $leftactionTarget is $rightactionTarget and $angelBanish gte 2>>
+			<<set $angelBanish -= 2>>
+			You clasp your hands together in prayer. The _tentacle.fullDesc shimmers brightly, and is blasted away from you.
+			<<set _multi to 2>>
+			<<set $leftaction to 0>><<set $leftactiondefault to "leftbanish">>
+			<<set $rightaction to 0>><<set $rightactiondefault to "rightbanish">>
+		<<elseif $leftaction is "leftbanish">>
+			<<set $angelBanish -->>
+			You make an intricate gesture with your left hand. The _tentacle.fullDesc shimmers and recoils violently.
+			<<set _multi to 1>><<set $leftaction to 0>>
+			<<set $leftactiondefault to "leftbanish">>
+		<<else>>
+			<<set $angelBanish -->>
+			You make an intricate gesture with your right hand. The _tentacle.fullDesc shimmers and recoils violently.
+			<<set _multi to 1>><<set $rightaction to 0>>
+			<<set $rightactiondefault to "rightbanish">>
+		<</if>>
+		<<if $purity gte 1000>>
+			<<set _multi ++>>
+		<</if>>
+		<<defiance `($purity / 100) * _multi`>>
+		<<set $speechhit to 1 * _multi>><<set $attackstat += 1 * _multi>>
+		<<if $rng lte ($purity / 20)>><<set _tentacle.tentaclehealth -= 10 * _multi>><</if>>
+		<<set _tentacle.tentaclehealth -= 10 * _multi>>
+		<<tentacleadvdisable _tentacle>>
+		<<if $abomination is 1>>
+			The <<person>> recoils from the light.
+		<</if>>
+	<</if>>
+
 	<<if ($leftaction is "leftgrabtentacle" and $leftactionTarget is _tentacle.id)
 	or ($rightaction is "rightgrabtentacle" and $rightactionTarget is _tentacle.id)>>
 		<<tentacleadvdisable _tentacle>> /* Make sure you call this before trying to set the tentacle info */
@@ -1153,6 +1195,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<</if>>
 		<<if $abomination is 1 and ($NPCList[0].lefthand is "arms" or $NPCList[0].righthand is "arms")>>
 			<<if $leftaction is "leftstruggle" and $rightaction is "rightstruggle">>
+				<<set $leftaction to 0>><<set $rightaction to 0>><<set $leftactiondefault to "leftstruggle">><<set $rightactiondefault to "rightstruggle">>
 				<<if $physique gte random(1, 32000)>>
 					<span class="teal">You manage to twist your arms free.</span>
 					<<defiance 5>>
@@ -1160,7 +1203,7 @@ The _tentacle.fullDesc writhes between your feet.
 					<<set $NPCList[0].lefthand to 0>>
 					<<set $NPCList[0].righthand to 0>>
 				<<else>>
-					<span class="purple">Your left arm remains grasped.</span>
+					<span class="purple">Your arms remain grasped.</span>
 				<</if>>
 			<<else>>
 				<<if $physique gte random(1, 64000)>>
@@ -1170,7 +1213,7 @@ The _tentacle.fullDesc writhes between your feet.
 					<<set $NPCList[0].lefthand to 0>>
 					<<set $NPCList[0].righthand to 0>>
 				<<else>>
-					<span class="purple">Your left arm remains grasped.</span>
+					<span class="purple">Your arms remain grasped.</span>
 				<</if>>
 			<</if>>
 		<</if>>

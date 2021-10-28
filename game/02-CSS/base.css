@@ -119,6 +119,7 @@ mouse.tooltip:hover span {
 	overflow-y: scroll;
 	z-index: 1000;
 	max-width: 1000px;
+	line-height: 1.32em;
 }
 .customOverlay[data-overlay="canvasLayers"],
 .customOverlay[data-overlay="canvasColours"],
@@ -2673,6 +2674,15 @@ label {
 	filter: hue-rotate(0deg) brightness(140%) saturate(0%) contrast(100%);
 }
 
+.eye-redPossessed {
+	-webkit-filter: hue-rotate(335deg) saturate(200%) brightness(90%) contrast(140%);
+	filter: hue-rotate(335deg) saturate(200%) brightness(90%) contrast(140%);
+}
+.eye-bluePossessed {
+	-webkit-filter: hue-rotate(180deg) brightness(100%) saturate(100%) contrast(140%);
+	filter: hue-rotate(180deg) brightness(100%) saturate(100%) contrast(140%);
+}
+
 /* Clothing specific classes */
 /* Clothing opacity classes need to be applied to a div with the images inside */
 .clothes-div img {
@@ -4455,4 +4465,56 @@ img, canvas {
 	background-clip: text;
 	-webkit-background-clip: text;
 	color: transparent ;
+}
+
+.wraith {
+	background: #f1f1db;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+.nextLink a {
+	background: #5888dd;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;	
+}
+
+.tentacles-blue {
+	-webkit-filter: hue-rotate(-120deg) saturate(100%) brightness(100%) contrast(100%);
+	filter: hue-rotate(-120deg) saturate(100%) brightness(100%) contrast(100%);
+}
+
+.tentacles-vines {
+	-webkit-filter: hue-rotate(180deg) saturate(60%) brightness(200%) contrast(100%);
+	filter: hue-rotate(180deg) saturate(60%) brightness(200%) contrast(100%);
+}
+
+.tentacles-roots {
+	-webkit-filter: hue-rotate(120deg) saturate(70%) brightness(140%) contrast(100%);
+	filter: hue-rotate(120deg) saturate(70%) brightness(140%) contrast(100%);
+}
+
+.tentacles-red {
+	-webkit-filter: hue-rotate(40deg) saturate(100%) brightness(100%) contrast(100%);
+	filter: hue-rotate(40deg) saturate(100%) brightness(100%) contrast(100%);
+}
+
+.tentacles-purple {
+	-webkit-filter: hue-rotate(0deg) saturate(100%) brightness(100%) contrast(100%);
+	filter: hue-rotate(0deg) saturate(100%) brightness(100%) contrast(100%);
+}
+
+.tentacles-peach {
+	-webkit-filter: hue-rotate(90deg) saturate(20%) brightness(260%) contrast(100%);
+	filter: hue-rotate(90deg) saturate(20%) brightness(260%) contrast(100%);
+}
+
+.tentacles-wraith {
+	-webkit-filter: hue-rotate(0deg) saturate(0%) brightness(500%) contrast(160%);
+	filter: hue-rotate(0deg) saturate(0%) brightness(500%) contrast(160%);
+	opacity: 0.50;
 }

@@ -172,6 +172,15 @@
 	<<set $angelbuild to 0>>
 <</if>>
 
+<<if $angelBanish is undefined>>
+	<<set $angelBanishMax to 0>>
+	<<set $angelBanish to 0>>
+	<<if $angel gte 4>>
+		<<set $angelBanishMax to Math.floor($angelbuild / 10)>>
+		<<set $angelBanish to $angelBanishMax>>
+	<</if>>
+<</if>>
+
 <<if $demon is undefined>>
 	<<set $demon to 0>>
 <</if>>
@@ -2519,6 +2528,11 @@
 
 <<if !(Array.isArray($event))>>
 	<<unset $event>>
+<</if>>
+
+<<if $wraith and !$wraith.state>>
+	<<unset $wraith>>
+	<<checkWraith>>
 <</if>>
 
 <<if $multipleWardrobes is undefined>>

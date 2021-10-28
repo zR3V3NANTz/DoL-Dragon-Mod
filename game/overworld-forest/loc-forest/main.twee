@@ -1,6 +1,6 @@
 :: Forest
 
-<<location "forest">><<effects>>
+<<location "forest">><<effects>><<wPersist "forest">><<getTarget true>>
 <<if $foresthunt gte 1 and $edenforesthunt is 1>>
 	<<set $rng to random(1, 60)>>
 	<<if $rng lte 20>>
@@ -25,6 +25,23 @@
 	<span class="red">You are being hunted. You hear a growl in the distance.</span>
 	<br><br>
 	<</if>>
+<<elseif $foresthunt gte 1 and $wraith and $wraith.hunt>>
+	<<if $moonstate is "morning" and $hour gte 6>>
+		With the rising of the sun, you feel a sense of relief. The dread passes. <span class="blue"><i>You're safe until the next blood moon.</i></span>
+		<<clearWraith>>
+	<<else>>
+		<<set $rng to random(1, 60)>>
+		<<if $rng lte 20>>
+		<span class="red">You are being hunted. Red moonlight casts dire shadows all around you.</span> <<stress 6>><<gstress>>
+		<br><br>
+		<<elseif $rng lte 40>>
+		<span class="red">You are being hunted. You hear distant laughter.</span> <<trauma 6>><<gtrauma>>
+		<br><br>
+		<<else>>
+		<span class="red">You are being hunted. It's becoming harder to breathe.</span> <<stress 6>><<gstress>><<trauma 6>><<gtrauma>>
+		<br><br>
+		<</if>>	
+	<</if>>
 <</if>>
 <<if $arousal gte $arousalmax>>
 	<<orgasmforest>>
@@ -33,7 +50,7 @@
 	<<set $forest to 0>>
 	<<forestmove>>
 	<br><br>
-	<<if $stress gte $stressmax>>
+	<<if $stress gte $stressmax and !$possessed>>
 		<<passoutforest>>
 	<<elseif $foresthunt gte 10>>
 		<<foresthunt>>
@@ -86,7 +103,7 @@
 <<elseif $forest lte 20>>
 	<<forestmove>>
 	<br><br>
-	<<if $stress gte $stressmax>>
+	<<if $stress gte $stressmax and !$possessed>>
 		<<passoutforest>>
 	<<elseif $foresthunt gte 10>>
 		<<foresthunt>>
@@ -124,7 +141,7 @@
 <<elseif $forest lte 50>>
 	<<forestmove>>
 	<br><br>
-	<<if $stress gte $stressmax>>
+	<<if $stress gte $stressmax and !$possessed>>
 		<<passoutforest>>
 	<<elseif $foresthunt gte 10>>
 		<<foresthunt>>
@@ -143,13 +160,21 @@
 			You are in the forest, surrounded by nature.
 			<br><br>
 			<<if $forest lte 30>>
-				<<lakeicon>><<link [[Lake (0:10)|Lake Shore]]>><<pass 10>><</link>>
+				<<if $nextPassageCheck is "Lake Shore">>
+					<span class="nextLink"><<lakeicon>><<link [[The lake.|Lake Shore]]>><<pass 10>><</link>></span>
+				<<else>>
+					<<lakeicon>><<link [[Lake (0:10)|Lake Shore]]>><<pass 10>><</link>>
+				<</if>>
 				<br>
 			<<elseif $forest lte 40>>
 				<<lakeicon>><<link [[Lake (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
 				<br>
 			<<else>>
-				<<lakeicon>><<link [[Lake (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
+				<<if $nextPassageCheck is "Lake Fishing Rock">>
+					<span class="nextLink"><<lakeicon>><<link [[The lake.|Lake Fishing Rock]]>><<pass 10>><</link>></span>
+				<<else>>
+					<<lakeicon>><<link [[Lake (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
+				<</if>>
 				<br>
 			<</if>>
 			<br>
@@ -168,7 +193,7 @@
 <<elseif $forest lte 99>>
 	<<forestmove>>
 	<br><br>
-	<<if $stress gte $stressmax>>
+	<<if $stress gte $stressmax and !$possessed>>
 		<<passoutforest>>
 	<<elseif $foresthunt gte 10>>
 		<<foresthunt>>
@@ -230,7 +255,7 @@
 <<forestmove>>
 <br><br>
 
-	<<if $stress gte $stressmax>>
+	<<if $stress gte $stressmax and !$possessed>>
 	<<passoutforest>>
 	<<elseif $foresthunt gte 10>>
 	<<foresthunt>>

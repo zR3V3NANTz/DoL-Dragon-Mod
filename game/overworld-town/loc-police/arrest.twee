@@ -288,7 +288,7 @@ After an hour, a <<generate1>><<person1>><<person>> in a police uniform arrives 
 	<br>
 <<else>>
 	<<if $community_service gte 1>>
-		Once seated, the <<person2>><<person>> continues. "You were given the chance to give back to the community, but couldn't keep your nose clean, could you? Public humiliation will teach bettter. Take <<phim>> to the pillory."
+		Once seated, the <<person2>><<person>> continues. "You were given the chance to give back to the community, but couldn't keep your nose clean, could you? Public humiliation will teach you better. Take <<phim>> to the pillory."
 		<br><br>
 		<<link [[Next|Police Pillory Start]]>><</link>>
 		<br>

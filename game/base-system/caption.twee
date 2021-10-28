@@ -403,7 +403,7 @@
 	<<if $dev is 1>>
 		<<set $allure -= ($famepimp / 2)>>
 	<</if>>
-	<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+	<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 		<<set $allure += 2000>>
 	<</if>>
 	<<set $allure *= $alluremod>>

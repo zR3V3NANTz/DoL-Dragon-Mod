@@ -448,7 +448,7 @@ Mouth is closed in idle frames here. activeclosedmouth can be used in active, th
 	<img class="layer-sexsclera" src="img/sex/doggy/active/doggyactivesclerabloodshot.png">
 <</if>>
 
-<<if $trauma gte ($traumamax * 0.9)>>
+<<if $trauma gte ($traumamax * 0.9) or $possessed>>
 	<img class="layer-sexeyes colour-eye" src="img/sex/doggy/active/doggyactiveeyesempty.png">
 <<else>>
 	<img class="layer-sexeyes colour-eye anim-idle-2f" src="img/sex/doggy/active/doggyactiveeyes.png">

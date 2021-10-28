@@ -1,6 +1,8 @@
 :: Widgets Forest [widget]
 <<widget "forestmove">>
-<<if $forestmove is "quickly">>
+<<if $possessed>>
+	You shamble through the forest. You know where you're going.
+<<elseif $forestmove is "quickly">>
 	You move as quick as the rough and wooded terrain will allow. Twigs and fallen branches snap loudly beneath your feet.
 <<elseif $forestmove is "normally">>
 	You walk through the trees. The gentle sounds and scents make for a pleasant journey.
@@ -26,14 +28,18 @@
 <<widget "forestdeeper">>
 Go deeper into the forest
 <br>
-<<if $worn.feet.type.includes("heels")>>
+<<if $worn.feet.type.includes("heels") and !$possessed>>
 	<<link [[Hobble in heels (0:30)|Forest]]>><<set $forestmod to 3>><<set $forest += 5>><<pass 30>><<set $forestmove to "hobble">><<if $foresthunt gte 1>><<set $foresthunt += 2>><</if>><</link>><<gharass>>
 <<else>>
 	<<if !$worn.feet.type.includes("shackle")>>
 		<<runicon>><<link [[Quickly (0:05)|Forest]]>><<set $forestmod to 3>><<set $forest += 5>><<pass 5>><<set $forestmove to "quickly">><<if $foresthunt gte 1>><<set $foresthunt += 0.5>><</if>><</link>><<gharass>>
 		<br>
 	<</if>>
-	<<walkicon>><<link [[Normally (0:10)|Forest]]>><<set $forestmod to 1.5>><<set $forest += 5>><<set $forestmove to "normally">><<pass 10>><<if $foresthunt gte 1>><<set $foresthunt += 1>><</if>><</link>>
+	<<if $nextPassageCheck is "Forest Blood Deeper">>
+		<span class="nextLink"><<walkicon>><<link [[The lake.|Forest Blood Deeper]]>><<set $forestmod to 1.5>><<set $forest += 5>><<set $forestmove to "normally">><</link>></span>
+	<<else>>
+		<<walkicon>><<link [[Normally (0:10)|Forest]]>><<set $forestmod to 1.5>><<set $forest += 5>><<set $forestmove to "normally">><<pass 10>><<if $foresthunt gte 1>><<set $foresthunt += 1>><</if>><</link>>
+	<</if>>
 	<br>
 	<<sneakicon>><<link [[Carefully (0:30)|Forest]]>><<set $forestmod to 1>><<set $forest += 5>><<pass 30>><<set $forestmove to "carefully">><<if $foresthunt gte 1>><<set $foresthunt += 2>><</if>><</link>><<lharass>>
 <</if>>
@@ -56,14 +62,18 @@ Search this area <<gtreasure>>
 <<widget "forestlessdeep">>
 Go towards town
 <br>
-<<if $worn.feet.type.includes("heels")>>
+<<if $worn.feet.type.includes("heels") and !$possessed>>
 	<<link [[Hobble in heels (0:30)|Forest]]>><<set $forestmod to 3>><<set $forest -= 5>><<pass 30>><<set $forestmove to "hobble">><<if $foresthunt gte 1>><<set $foresthunt += 2>><</if>><</link>><<gharass>>
 <<else>>
 	<<if !$worn.feet.type.includes("shackle")>>
 		<<runicon>><<link [[Quickly (0:05)|Forest]]>><<set $forestmod to 3>><<set $forest -= 5>><<pass 5>><<set $forestmove to "quickly">><<if $foresthunt gte 1>><<set $foresthunt += 0.5>><</if>><</link>><<gharass>>
 		<br>
 	<</if>>
-	<<walkicon>><<link [[Normally (0:10)|Forest]]>><<set $forestmod to 1.5>><<set $forest -= 5>><<set $forestmove to "normally">><<pass 10>><<if $foresthunt gte 1>><<set $foresthunt += 1>><</if>><</link>>
+	<<if $nextPassageCheck is "Forest Blood Less Deep">>
+		<span class="nextLink"><<walkicon>><<link [[The lake.|Forest Blood Less Deep]]>><<set $forestmod to 1.5>><<set $forest -= 5>><<set $forestmove to "normally">><</link>></span>
+	<<else>>
+		<<walkicon>><<link [[Normally (0:10)|Forest]]>><<set $forestmod to 1.5>><<set $forest -= 5>><<set $forestmove to "normally">><<pass 10>><<if $foresthunt gte 1>><<set $foresthunt += 1>><</if>><</link>>
+	<</if>>
 	<br>
 	<<sneakicon>><<link [[Carefully (0:30)|Forest]]>><<set $forestmod to 1>><<set $forest -= 5>><<pass 30>><<set $forestmove to "carefully">><<if $foresthunt gte 1>><<set $foresthunt += 2>><</if>><</link>><<lharass>>
 <</if>>
@@ -216,135 +226,150 @@ Go towards town
 
 
 <<widget "eventforest">>
+<<if $foresthunt lte 0 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and ($wraith.hunt or $wraith.timer gte random(0, 40))>>
+	<<wHunt "forest">>
+<<else>>
+	<<cleareventpool>>
+	<<if $foresthunt lte 0>>
+		<<addinlineevent "forest_hunted" 0.5>>
+			A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
+			<<set $rng2 to random(1, 2)>>
+			<<if $rng2 is 1>>
+				<<set $edenforesthunt to 1>>
+				<<set $blackwolfhunt to 0>>
+			<<elseif $rng2 is 2>>
+				<<set $edenforesthunt to 0>>
+				<<set $blackwolfhunt to 1>>
+			<</if>>
+			<<set $foresthunt to 1>>
+			<br><br>
 
-<<cleareventpool>>
-
-<<if $foresthunt lte 0>>
-	<<addinlineevent "forest_hunted" 0.5>>
-		A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-		<<set $rng2 to random(1, 2)>>
-		<<if $rng2 is 1>>
-			<<set $edenforesthunt to 1>>
-			<<set $blackwolfhunt to 0>>
-		<<elseif $rng2 is 2>>
-			<<set $edenforesthunt to 0>>
-			<<set $blackwolfhunt to 1>>
+			<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
+		<</addinlineevent>>
+	<</if>>
+	<<addevent "forestwolfspy" 0.25>>
+	<<addinlineevent "forest_wolf" 0.33>>
+		<<beastNEWinit 1 wolf>>
+		<!-- Modified for monster people -->
+		A lone <<beasttype>> emerges from between the trees, teeth bared.
+		<<if $monster is 1>>
+			"Prey. No struggle."
 		<</if>>
-		<<set $foresthunt to 1>>
+		<br><br>
+		<<link [[Next|Forest Wolf]]>><<set $molestationstart to 1>><</link>>
+
+			<!-- It chases you through the woods. You run until you can no longer hear it behind you. You're not sure if you outran it or it grew bored. -->
+			<!-- <<beastescape>><<gtiredness>><<tiredness 4>><<gathletics>><<athletics 2>><<physique 2>> -->
+			<!-- <br><br> -->
+
+			<!-- <<link [[Next (0:20)|Forest]]>><<pass 20>><<set $eventskip to 1>><</link>> -->
+	<</addinlineevent>>
+	<<addevent "forestbear" 0.15>>
+	<<addevent "forestrock" 0.25>>
+	<<addinlineevent "forest_clothingdamage">>
+		You squeeze through a thicket.
+		<<set $stripintegrity to 10>><<set $stripobject to "tree branch">><<stripobject>>
 		<br><br>
 
 		<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 	<</addinlineevent>>
+	<<addevent "forestcutter" 0.15>>
+	<<runeventpool>>
 <</if>>
-<<addevent "forestwolfspy" 0.25>>
-<<addinlineevent "forest_wolf" 0.33>>
-	<<beastNEWinit 1 wolf>>
-	<!-- Modified for monster people -->
-	A lone <<beasttype>> emerges from between the trees, teeth bared.
-	<<if $monster is 1>>
-		"Prey. No struggle."
-	<</if>>
-	<br><br>
-	<<link [[Next|Forest Wolf]]>><<set $molestationstart to 1>><</link>>
-
-		<!-- It chases you through the woods. You run until you can no longer hear it behind you. You're not sure if you outran it or it grew bored. -->
-		<!-- <<beastescape>><<gtiredness>><<tiredness 4>><<gathletics>><<athletics 2>><<physique 2>> -->
-		<!-- <br><br> -->
-
-		<!-- <<link [[Next (0:20)|Forest]]>><<pass 20>><<set $eventskip to 1>><</link>> -->
-<</addinlineevent>>
-<<addevent "forestbear" 0.15>>
-<<addevent "forestrock" 0.25>>
-<<addinlineevent "forest_clothingdamage">>
-	You squeeze through a thicket.
-	<<set $stripintegrity to 10>><<set $stripobject to "tree branch">><<stripobject>>
-	<br><br>
-
-	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
-<</addinlineevent>>
-<<addevent "forestcutter" 0.15>>
-<<runeventpool>>
 
 <</widget>>
 
 
 <<widget "eventforestdeep">>
+<<if $foresthunt lte 0 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and ($wraith.hunt or $wraith.timer gte random(0, 20))>>
+	<<wHunt "forest">>
+<<else>>
+	<<cleareventpool>>
+	<<if $foresthunt lte 0>>
+		<<addinlineevent "deepforest_hunted">>
+			A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
+			<<set $rng2 to random(1, 2)>>
+			<<if $rng2 is 1>>
+				<<set $edenforesthunt to 1>>
+				<<set $blackwolfhunt to 0>>
+			<<elseif $rng2 is 2>>
+				<<set $edenforesthunt to 0>>
+				<<set $blackwolfhunt to 1>>
+			<</if>>
+			<<set $foresthunt to 1>>
+			<br><br>
 
-<<cleareventpool>>
-<<if $foresthunt lte 0>>
-	<<addinlineevent "deepforest_hunted">>
-		A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-		<<set $rng2 to random(1, 2)>>
-		<<if $rng2 is 1>>
-			<<set $edenforesthunt to 1>>
-			<<set $blackwolfhunt to 0>>
-		<<elseif $rng2 is 2>>
-			<<set $edenforesthunt to 0>>
-			<<set $blackwolfhunt to 1>>
+			<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
+		<</addinlineevent>>
+	<</if>>
+	<<addevent "forestwolfspy2">>
+	<<addinlineevent "deepforest_wolf2">>
+		<<beastNEWinit 2 wolf>>
+		A pair of
+		<<if ($monster isnot 1) or ($NPCList[0].pronoun is "m" and $NPCList[1].pronoun is "m") or ($NPCList[0].pronoun is "f" and $NPCList[1].pronoun is "f")>>
+			<<beastsplural>>
+		<<else>>
+			wolf people - one male, and one female -
 		<</if>>
-		<<set $foresthunt to 1>>
+		emerge from between the trees, teeth bared.
+		<<if $monster is 1>>
+			"Found you," one barks. "Outnumbered. You're ours now."
+		<</if>>
+		<br><br>
+		<!-- Modified for monster people -->
+		<<link [[Next|Forest Wolf2]]>><<set $molestationstart to 1>><</link>>
+
+			<!-- They chase you through the woods. You run until you can no longer hear them behind you. You're not sure if you outran them or they grew bored. -->
+			<!-- <<beastescape>><<gtiredness>><<tiredness 8>><<gathletics>><<athletics 4>><<physique 4>> -->
+			<!-- <br><br> -->
+
+			<!-- <<link [[Next (0:40)|Forest]]>><<pass 40>><<set $eventskip to 1>><</link>> -->
+	<</addinlineevent>>
+	<<if $voredisable is "f" and $bestialitydisable is "f">>
+		<<addevent "forestsnake" 0.33>>
+	<</if>>
+	<<addevent "forestbear">>
+	<<if $hallucinations gte 2 and $tentacledisable is "f" and $voredisable is "f">>
+		<<addinlineevent "deepforest_slimecontrol">>
+			You walk through a dense thicket. The air is thick with pollen, but you don't see any flowers. You begin to feel lightheaded, and steady yourself against a trunk. A white haze lingers in the air.
+			<br><br>
+			<<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">>
+				<span class="lewd">You feel the slime in your head command you to continue moving in a specific direction.</span> It promises rewards if you comply, and threatens consequences if you do not.
+				<br><br>
+				<<link [[Obey|Forest Pitcher Slime Obey]]>><<corruption 1>><<pain -4>><<stress -6>><<trauma -12>><<set $submissive += 1>><<set $slimeObey to true>><</link>><<gcorruption>><<lpain>><<lltrauma>><<lstress>>
+				<br>
+				<<link [[Defy|Forest Pitcher Slime Defy]]>><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><<set $submissive -= 1>><</link>><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>>
+				<br>
+			<<else>>
+				<<link [[Steady yourself until the feeling subsides (0:30)|Forest Pitcher Wait]]>><<pass 30>><<arousal 1200>><<set $drugged += 30>><</link>><<ggarousal>>
+				<br>
+				<<link [[Continue|Forest Pitcher Ignore]]>><</link>><<willpowerdifficulty 1 $willpowermax>>
+				<br>
+			<</if>>
+		<</addinlineevent>>
+	<</if>>
+	<<if $hallucinations gte 2 and $tentacledisable is "f">>
+		<<addinlineevent>>
+			Something grabs your ankle, causing you to trip and fall. You look back, and see a tree root coiling round you. Several others snake through the undergrowth.
+			<br><br>
+			<<link [[Struggle|Forest Tentacles]]>><<set $molestationstart to 1>><</link>>
+			<br>
+			<<if $deviancy gte 75>>
+				<<link [[Allow them to surround you|Forest Tentacles]]>><<set $molestationstart to 2>><</link>><<deviant5>>
+			<</if>>
+		<</addinlineevent>>
+	<</if>>
+	<<addevent "forestrock">>
+	<<if $bestialitydisable is "f" and $waspdisable is "f">>
+		<<addevent "forestwasps">>
+	<</if>>
+	<<addinlineevent "deepforest_clothingdamage">>
+		You squeeze through a thicket.
+		<<set $stripintegrity to 10>><<set $stripobject to "tree branch">><<stripobject>>
 		<br><br>
 
 		<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 	<</addinlineevent>>
-<</if>>
-<<addevent "forestwolfspy2">>
-<<addinlineevent "deepforest_wolf2">>
-	<<beastNEWinit 2 wolf>>
-	A pair of
-	<<if ($monster isnot 1) or ($NPCList[0].pronoun is "m" and $NPCList[1].pronoun is "m") or ($NPCList[0].pronoun is "f" and $NPCList[1].pronoun is "f")>>
-		<<beastsplural>>
-	<<else>>
-		wolf people - one male, and one female -
-	<</if>>
-	emerge from between the trees, teeth bared.
-	<<if $monster is 1>>
-		"Found you," one barks. "Outnumbered. You're ours now."
-	<</if>>
-	<br><br>
-	<!-- Modified for monster people -->
-	<<link [[Next|Forest Wolf2]]>><<set $molestationstart to 1>><</link>>
-
-		<!-- They chase you through the woods. You run until you can no longer hear them behind you. You're not sure if you outran them or they grew bored. -->
-		<!-- <<beastescape>><<gtiredness>><<tiredness 8>><<gathletics>><<athletics 4>><<physique 4>> -->
-		<!-- <br><br> -->
-
-		<!-- <<link [[Next (0:40)|Forest]]>><<pass 40>><<set $eventskip to 1>><</link>> -->
-<</addinlineevent>>
-<<if $voredisable is "f" and $bestialitydisable is "f">>
-	<<addevent "forestsnake" 0.33>>
-<</if>>
-<<addevent "forestbear">>
-<<if $hallucinations gte 2 and $tentacledisable is "f" and $voredisable is "f">>
-	<<addinlineevent "deepforest_slimecontrol">>
-		You walk through a dense thicket. The air is thick with pollen, but you don't see any flowers. You begin to feel lightheaded, and steady yourself against a trunk. A white haze lingers in the air.
-		<br><br>
-		<<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">>
-			<span class="lewd">You feel the slime in your head command you to continue moving in a specific direction.</span> It promises rewards if you comply, and threatens consequences if you do not.
-			<br><br>
-			<<link [[Obey|Forest Pitcher Slime Obey]]>><<corruption 1>><<pain -4>><<stress -6>><<trauma -12>><<set $submissive += 1>><<set $slimeObey to true>><</link>><<gcorruption>><<lpain>><<lltrauma>><<lstress>>
-			<br>
-			<<link [[Defy|Forest Pitcher Slime Defy]]>><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><<set $submissive -= 1>><</link>><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>>
-			<br>
-		<<else>>
-			<<link [[Steady yourself until the feeling subsides (0:30)|Forest Pitcher Wait]]>><<pass 30>><<arousal 1200>><<set $drugged += 30>><</link>><<ggarousal>>
-			<br>
-			<<link [[Continue|Forest Pitcher Ignore]]>><</link>><<willpowerdifficulty 1 $willpowermax>>
-			<br>
-		<</if>>
-	<</addinlineevent>>
-<</if>>
-<<if $hallucinations gte 2 and $tentacledisable is "f">>
-	<<addinlineevent>>
-		Something grabs your ankle, causing you to trip and fall. You look back, and see a tree root coiling round you. Several others snake through the undergrowth.
-		<br><br>
-		<<link [[Struggle|Forest Tentacles]]>><<set $molestationstart to 1>><</link>>
-		<br>
-		<<if $deviancy gte 75>>
-			<<link [[Allow them to surround you|Forest Tentacles]]>><<set $molestationstart to 2>><</link>><<deviant5>>
-		<</if>>
-	<</addinlineevent>>
-<</if>>
 <<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
 	<<addevent "forestplantkiss">>
 <</if>>
@@ -359,8 +384,8 @@ Go towards town
 
 	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 <</addinlineevent>>
-<<runeventpool>>
-
+	<<runeventpool>>
+<</if>>
 <</widget>>
 
 
@@ -709,8 +734,26 @@ You spot a decaying metal shard amongst the fallen bark at your feet. It's an ar
 
 	<<link [[Next|Forest Wolf Molestation]]>><<set $molestationstart to 1>><</link>>
 	<</if>>
+<<elseif $wraith and $wraith.hunt>>
+	<<set $wraith.hunt to 0>>
+	<<if $location is "forest">>
+		<<set $wraith.exit to "forest">>
+	<<elseif $location is "lake_ruin">>
+		<<set $wraith.exit to "lake_ruin">>
+	<<else>>
+		<<set $wraith.exit to "lake">>
+	<</if>>
+	<<wraithCaught>>
 <<else>>
-	<<if $edenfreedom gte 2 and $edendays gte 8>>
+	<<if $wraith and ($wraith.state is "haunt" or $wraith.offspring is "dead") and $syndromeeden is 1 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6 or $hallucinations gte 2 and $rng gte 90)>>
+		
+		<<set $wraith.mimic to "Eden">><<npc Eden>><<person1>>Something whizzes past and hits a tree in front of you. You shield your face with your arms and stagger backwards. Something presses against your back, and you hear a <<personsimple>>'s voice. "I've got you now. Don't resist."
+		<br><br>
+
+		<<link [[Next|Wraith Mimic Fight]]>><<set $molestationstart to 1>><</link>>
+		<br>
+		
+	<<elseif $edenfreedom gte 2 and $edendays gte 8>>
 
 	<<npc Eden>><<person1>>An arm wraps around your neck from behind, while a hand presses against the back of your head. You hear a <<personsimple>>'s voice. "I've been looking for you all over." It's Eden. "Come on, let's go home."
 	<br><br>
@@ -964,7 +1007,7 @@ You come to a clearing. A gentle breeze blows against your face, and small, soft
 	<<if _forest_item is 1>>
 		You spot orchids near the edge, at the base of ancient trees.
 	<<else>>
-		<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+		<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 			<span class="red">Red-veined</span> lemons grow from a cluster of small trees.
 		<<else>>
 			Lemons grow from a cluster of small trees.
@@ -1058,7 +1101,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 		<</if>>
 	<<else>>
 		<<if $tending gte 200>>
-			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 				<<link [[Pick lemons (0:20)|Forest Blood Lemon Pick]]>><<pass 20>><</link>><<tendingdifficulty 200 500>>
 				<br>
 			<<else>>

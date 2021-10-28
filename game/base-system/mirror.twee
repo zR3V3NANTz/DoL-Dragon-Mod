@@ -448,7 +448,7 @@ Increasing your allure:
 		Drenched in cum
 		<br>
 	<</if>>
-	<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+	<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 		Full moon
 		<br>
 	<</if>>

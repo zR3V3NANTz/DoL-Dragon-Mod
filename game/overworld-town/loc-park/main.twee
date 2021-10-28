@@ -202,9 +202,12 @@ The <<beasttype>> whimpers and flees into a bush. <<tearful>> you gather yoursel
 
 :: Widgets Park [widget]
 <<widget "park">>
-
-<<add_link "<<parkicon>><<link [[Park (0:05)|Park]]>><<pass 5>><</link>><br>">><<hideDisplay true>>
-
+<<if $nextPassageCheck is "Park">>
+	<<add_link "<span class='nextLink'><<parkicon>><<link [[Park (0:05)|Park]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<parkicon>><<link [[Park (0:05)|Park]]>><<pass 5>><</link>><br>">>
+<</if>>
+<<hideDisplay true>>
 <</widget>>
 
 <<widget "parkquick">>

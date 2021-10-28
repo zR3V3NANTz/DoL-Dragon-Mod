@@ -91,6 +91,9 @@
 				<<if $tentacles[_i].shaft is "leftarm">>
 					<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">The $tentacles[_i].fullDesc entangles your left arm.</span>
 					<<set $_tentgrab to 1>>
+					<<if $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+						<<set _banishTarget to $tentacles[_i]>>
+					<</if>>
 					<<break>>
 				<</if>>
 			<</for>>
@@ -164,6 +167,8 @@
 			<<generateCombatActionTentacle _leftaction "leftaction" _textColor $leftaction _reducedWidths>>
 			<<if _leftOptions is "free" and $tentacles.active gt 0>>
 				<<leftactionSetupTentacle>>
+			<<elseif _leftOptions is "grappled" and $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+				<<leftactionBoundBanish>>
 			<</if>>
 		</div>
 		<<if $combatControls.includes("ists")>>
@@ -210,7 +215,7 @@
 		<<for _i to 0; _i lt $tentacles.max; _i++>>
 			<<if $tentacles[_i] isnot undefined>>
 				<<if $tentacles[_i].shaft isnot "finished">>
-					<<set _availableTargets[$tentacles[_i].desc+" tentacle"] to $tentacles[_i].id>>
+					<<set _availableTargets[$tentacles[_i].fullDesc] to $tentacles[_i].id>>
 					<<set _tentacle_targets_available to true>>
 				<</if>>
 			<</if>>
@@ -223,6 +228,24 @@
 			<</listbox>>
 		</span>
 	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "leftactionBoundBanish">>
+<<if $combatControls is "radio">>
+	<br>
+	<label>
+		<<print '<<radiobutton "$leftactionTarget" "'+_banishTarget.id+'">>'>>
+		$tentacles[_i].fullDesc
+	</label> |
+<<else>>
+	<<set _availableTargets to {}>>
+	<<set _availableTargets[_banishTarget.fullDesc] to _banishTarget.id>>
+	<span @class="'whiteList ' + (_reducedWidths is true? 'reducedWidth':'')">
+		<<listbox "$leftactionTarget" autoselect>>
+			<<optionsfrom _availableTargets>>
+		<</listbox>>
+	</span>
 <</if>>
 <</widget>>
 
@@ -255,10 +278,21 @@
 		<<if $tentacles.active gt 0>>
 			<<if $consensual is 0>>
 				<<set _leftaction["Strike the"] to "lefthittentacle">>
+				<<if $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+					<<set _leftaction["($angelBanish / $angelBanishMax) Banish the"] to "leftbanish">>
+				<</if>>
 			<</if>>
 			<<set _leftaction["Grab the"] to "leftgrabtentacle">>
 		<</if>>
 	<<case "grappled">>
+		<<if $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+			<<for _i to 0; _i lt $tentacles.max; _i++>>
+				<<if $tentacles[_i].shaft is "leftarm">>
+					<<set _leftaction["($angelBanish / $angelBanishMax) Banish the"] to "leftbanish">>
+					<<break>>
+				<</if>>
+			<</for>>
+		<</if>>
 	<<case "bound">>
 	<<case "tentacle">>
 		<<set _leftaction["Milk it"] to "leftrub"+_tentacleLeftOption>>
@@ -295,6 +329,9 @@
 				<<if $tentacles[_i].shaft is "rightarm">>
 					<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">The $tentacles[_i].fullDesc entangles your right arm.</span>
 					<<set $_tentgrab to 1>>
+					<<if $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+						<<set _banishTarget to $tentacles[_i]>>
+					<</if>>
 					<<break>>
 				<</if>>
 			<</for>>
@@ -368,6 +405,8 @@
 			<<generateCombatActionTentacle _rightaction "rightaction" _textColor $rightaction _reducedWidths>>
 			<<if _rightOptions is "free" and $tentacles.active gt 0>>
 				<<rightactionSetupTentacle>>
+			<<elseif _rightOptions is "grappled" and $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+				<<rightactionBoundBanish>>
 			<</if>>
 		</div>
 		<<if $combatControls.includes("ists")>>
@@ -414,7 +453,7 @@
 		<<for _i to 0; _i lt $tentacles.max; _i++>>
 			<<if $tentacles[_i] isnot undefined>>
 				<<if $tentacles[_i].shaft isnot "finished">>
-					<<set _availableTargets[$tentacles[_i].desc+" tentacle"] to $tentacles[_i].id>>
+					<<set _availableTargets[$tentacles[_i].fullDesc] to $tentacles[_i].id>>
 					<<set _tentacle_targets_available to true>>
 				<</if>>
 			<</if>>
@@ -427,6 +466,24 @@
 			<</listbox>>
 		</span>
 	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "rightactionBoundBanish">>
+<<if $combatControls is "radio">>
+	<br>
+	<label>
+		<<print '<<radiobutton "$rightactionTarget" "'+_banishTarget.id+'">>'>>
+		$tentacles[_i].fullDesc
+	</label> |
+<<else>>
+	<<set _availableTargets to {}>>
+	<<set _availableTargets[_banishTarget.fullDesc] to _banishTarget.id>>
+	<span @class="'whiteList ' + (_reducedWidths is true? 'reducedWidth':'')">
+		<<listbox "$rightactionTarget" autoselect>>
+			<<optionsfrom _availableTargets>>
+		<</listbox>>
+	</span>
 <</if>>
 <</widget>>
 
@@ -459,10 +516,21 @@
 		<<if $tentacles.active gt 0>>
 			<<if $consensual is 0>>
 				<<set _rightaction["Strike the"] to "righthittentacle">>
+				<<if $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+					<<set _rightaction["($angelBanish / $angelBanishMax) Banish the"] to "rightbanish">>
+				<</if>>
 			<</if>>
 			<<set _rightaction["Grab the"] to "rightgrabtentacle">>
 		<</if>>
 	<<case "grappled">>
+		<<if $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+			<<for _i to 0; _i lt $tentacles.max; _i++>>
+				<<if $tentacles[_i].shaft is "rightarm">>
+					<<set _rightaction["($angelBanish / $angelBanishMax) Banish the"] to "rightbanish">>
+					<<break>>
+				<</if>>
+			<</for>>
+		<</if>>
 	<<case "bound">>
 	<<case "tentacle">>
 		<<set _rightaction["Milk it"] to "rightrub"+_tentaclerightOption>>
@@ -612,7 +680,7 @@
 		<<for _i to 0; _i lt $tentacles.max; _i++>>
 			<<if $tentacles[_i] isnot undefined>>
 				<<if $tentacles[_i].shaft isnot "finished">>
-					<<set _availableTargets[$tentacles[_i].desc+" tentacle"] to $tentacles[_i].id>>
+					<<set _availableTargets[$tentacles[_i].fullDesc] to $tentacles[_i].id>>
 					<<set _tentacle_targets_available to true>>
 				<</if>>
 			<</if>>

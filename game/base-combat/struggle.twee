@@ -2026,7 +2026,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 			<</if>>
 		<</if>>
 		<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-			<span class="pink">You feel milk leak from your buds</span>
+			<span class="pink">You feel milk leak from your buds.</span>
 			<<breastfeed>>
 			<<milkvolume 1>>
 		<<else>>

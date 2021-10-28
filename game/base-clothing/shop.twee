@@ -37,6 +37,11 @@
 				<<set $gwylan_aborted to 0>>
 				<br><br>
 				<<He>> rubs the back of <<his>> neck. "By the way, sorry for not saving you before, but I'm not messing with the alpha. I don't want the entire pack breaking my door down."
+			
+			<<elseif $gwylan_aborted is 3>>
+				<<set $gwylan_aborted to 0>>
+				<br><br>
+				<<He>> looks you over with concern. "Are you feeling okay? You look a little pale, and I thought I heard you screaming the other night..."
 			<</if>>
 
 		<<else>>
@@ -70,6 +75,12 @@
 		<<elseif $gwylan_aborted is 2>>
 			<<set $gwylan_aborted to 0>>
 			"Hey," Gwylan says as you walk in. "Sorry for not saving you before, but I'm not messing with the alpha. I don't want the entire pack breaking my door down."
+		
+		<<elseif $gwylan_aborted is 3>>
+			<<set $gwylan_aborted to 0>>
+			<br><br>
+			"Hey," Gwylan says as you walk in. <<He>> looks concerned. "Are you feeling okay? You look a little pale, and I thought I heard you screaming the other night..."	
+		
 		<<else>>
 			You hear Gwylan shuffling somewhere in the gloom.
 		<</if>>

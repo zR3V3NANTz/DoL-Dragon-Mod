@@ -267,7 +267,7 @@ You snuggle under the covers.
 	You slept soundly, but now feel a little rough. <<stress 5>><<gstress>>
 	<br><br>
 <<elseif $nightmares gte 1 and $controlled is 0>>
-	You dream you are being hunted by something dark and terrible.
+	You dream you are being hunted by something <<if $wraith and $wraith.state is "haunt" and $rng lte 25>>pale<<else>>dark<</if>> and terrible.
 <<else>>
 	<<if $specialClothesEffects.bimboTotal gte random(100,1000) or $arousal gte ($arousalmax / 10) * 9>>
 		Your sleep is plagued by dirty dreams.

@@ -124,7 +124,7 @@
 	<</if>>
 <</if>>
 
-<<if $wetintro gte 2>>
+<<if $wetintro gte 2 and !$possessed>>
 	<<exposure>>
 	<<if $exhibitionism gte 55>>
 		You feel a lewd thrill as <<if !$worn.face.type.includes("blindfold")>>you look down and see<</if>> your clothes cling tight to your body, completely transparent.
@@ -133,7 +133,7 @@
 	<</if>>
 	<<covered>>
 	<br><br>
-<<elseif $wetintro gte 1>>
+<<elseif $wetintro gte 1 and !$possessed>>
 	<<if $exhibitionism gte 35>>
 		You feel a lewd thrill as <<if !$worn.face.type.includes("blindfold")>>you look down and see<</if>> your clothes cling tight to your body, giving a hint of transparency.
 	<<else>>

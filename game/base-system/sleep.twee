@@ -37,6 +37,30 @@
 				<<set $schoolwake to 1>>
 				<<set $robindebtwake to 1>>
 			<</if>>
+		<<elseif $wraith and $wraith.nightmare is 1 and ($moonstate is "evening" and $hour gte 22 or $moonstate is "morning" and $hour lt 5)>>		
+			<<if $location is "home" or $location is "cabin" or $location is "wolf_cave" or ($location is "tower" and $bird and $bird.mirror is 1) or $location is "alex_cottage">>
+				<<set $schoolwake to 1>>
+				<<set $wraith.nightmare to 2>>
+				<<set $sleepHoursTotal to 1>>
+				<<if $sleeptrouble is 1 and $controlled is 0>>
+					<<set $tiredness -= 200>>
+				<<else>>
+					<<set $tiredness -= 250>>
+				<</if>>
+				<<if _sleepTraitEffect>>
+					<<set $tiredness -= _sleepTraitEffect>>
+				<</if>>
+				<<if $location isnot "tower">>
+					<<pass 1 hour>>
+				<<else>>
+					<<bird_pass 60>>
+				<</if>>
+				<<if ($sleephour lte -1 and $tiredness lte 0) or $sleephour lte (-1 - 10)>>
+					<<set $sleephour to 0>>
+				<</if>>
+				<<set $wraith.hunt to 0>>
+				<<set $foresthunt to 0>>
+			<</if>>
 		<<elseif $baileydefeatedchain gte 1 and $location is "home" and ($rng * 100) gte (9900 - ($allure / 5))>>
 			<<set $schoolwake to 1>>
 			<<set $baileyrapewake to 1>>

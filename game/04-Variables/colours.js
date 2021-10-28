@@ -602,6 +602,28 @@ setup.colours.eyes = [{
 	canvasfilter: {
 		blend: "#a9a9a9"
 	}
+}, {
+	variable: "red possessed",
+	name: "red possessed",
+	name_cap: "Red Possessed",
+	csstext: "redPossessed",
+	natural: false,
+	lens: false,
+	canvasfilter: {
+		blend: "#f40101",
+		brightness: +0.2,
+		}
+}, {
+	variable: "blue possessed",
+	name: "blue possessed",
+	name_cap: "Blue Possessed",
+	csstext: "bluePossessed",
+	natural: false,
+	lens: false,
+	canvasfilter: {
+		blend: "#0F52BA",
+		brightness: +0.4,
+		}
 }];
 
 /**

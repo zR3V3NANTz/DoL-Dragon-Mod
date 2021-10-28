@@ -1466,10 +1466,16 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 
 	<<npc Kylar>><<person1>>Something tugs your arm. It's Kylar. "H-hi," <<he>> gulps. <<He>> tries to pull you toward a dark alley. "We need privacy. I need you to do things to me."
 	<br><br>
-
-	<<link [[Go with Kylar|Street Kylar Sex]]>><<set $sexstart to 1>><<npcincr Kylar love 5>><<npcincr Kylar rage -10>><</link>><<promiscuous1>><<gglove>><<llksuspicion>>
-	<br>
-	<<link [[Refuse|Street Kylar Refuse]]>><<npcincr Kylar love -5>><<npcincr Kylar rage 20>><</link>><<lllove>><<gggksuspicion>>
+	<<if $wraith and ($wraith.state is "haunt") and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6 or $hallucinations gte 2 and $rng gte 90)>>
+		<<set $wraith.mimic to "Kylar">><<set $wraith.exit to "town">>
+		<<link [[Go with Kylar|Wraith Mimic Fight]]>><<set $sexstart to 1>><</link>><<promiscuous1>><<gglove>><<llksuspicion>>
+		<br>
+		<<link [[Refuse|Wraith Mimic Kylar]]>><</link>><<lllove>><<gggksuspicion>>
+	<<else>>
+		<<link [[Go with Kylar|Street Kylar Sex]]>><<set $sexstart to 1>><<npcincr Kylar love 5>><<npcincr Kylar rage -10>><</link>><<promiscuous1>><<gglove>><<llksuspicion>>
+		<br>
+		<<link [[Refuse|Street Kylar Refuse]]>><<npcincr Kylar love -5>><<npcincr Kylar rage 20>><</link>><<lllove>><<gggksuspicion>>
+	<</if>>
 	<br><br>
 
 <<else>>
@@ -1910,8 +1916,11 @@ You spot a hooded figure skulking under a streetlamp.
 
 :: Widgets Nightingale [widget]
 <<widget "nightingale">>
-
-<<add_link "<<nightingaleicon>><<link [[Nightingale Street (0:05) (Hospital)|Nightingale Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Nightingale Street">>
+	<<add_link "<span class='nextLink'><<nightingaleicon>><<link [[Nightingale Street (0:05) (Hospital)|Nightingale Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<nightingaleicon>><<link [[Nightingale Street (0:05) (Hospital)|Nightingale Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -1929,8 +1938,11 @@ You spot a hooded figure skulking under a streetlamp.
 
 :: Widgets Domus [widget]
 <<widget "domus">>
-
-<<add_link "<<domusicon>><<link [[Domus Street (0:05) (Home)|Domus Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Domus Street">>
+	<<add_link "<span class='nextLink'><<domusicon>><<link [[Domus Street (0:05) (Home)|Domus Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<domusicon>><<link [[Domus Street (0:05) (Home)|Domus Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -1948,8 +1960,11 @@ You spot a hooded figure skulking under a streetlamp.
 
 :: Widgets Danube [widget]
 <<widget "danube">>
-
-<<add_link "<<danubeicon>><<link [[Danube Street (0:05) (Mansions)|Danube Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Danube Street">>
+	<<add_link "<span class='nextLink'><<danubeicon>><<link [[Danube Street (0:05) (Mansions)|Danube Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<danubeicon>><<link [[Danube Street (0:05) (Mansions)|Danube Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -1967,8 +1982,11 @@ You spot a hooded figure skulking under a streetlamp.
 
 :: Widgets Wolf [widget]
 <<widget "wolf">>
-
-<<add_link "<<wolficon>><<link [[Wolf Street (0:05) (Temple)|Wolf Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Wolf Street">>
+	<<add_link "<span class='nextLink'><<wolficon>><<link [[Wolf Street (0:05) (Temple)|Wolf Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<wolficon>><<link [[Wolf Street (0:05) (Temple)|Wolf Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -1986,8 +2004,11 @@ You spot a hooded figure skulking under a streetlamp.
 
 :: Widgets Elk [widget]
 <<widget "elk">>
-
-<<add_link "<<elkicon>><<link [[Elk Street (0:05)|Elk Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Elk Street">>
+	<<add_link "<span class='nextLink'><<elkicon>><<link [[Elk Street (0:05)|Elk Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<elkicon>><<link [[Elk Street (0:05)|Elk Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2136,8 +2157,11 @@ You can't find a way to open the door and the <<person>> isn't forthcoming with 
 
 :: Widgets Harvest [widget]
 <<widget "harvest">>
-
-<<add_link "<<harvesticon>><<link [[Harvest Street (0:05) (Pub)|Harvest Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Harvest Street">>
+	<<add_link "<span class='nextLink'><<harvesticon>><<link [[Harvest Street (0:05) (Pub)|Harvest Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<harvesticon>><<link [[Harvest Street (0:05) (Pub)|Harvest Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2155,8 +2179,11 @@ You can't find a way to open the door and the <<person>> isn't forthcoming with 
 
 :: Widgets Mer [widget]
 <<widget "mer">>
-
-<<add_link "<<mericon>><<link [[Mer Street (0:05) (Docks)|Mer Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Mer Street">>
+	<<add_link "<span class='nextLink'><<mericon>><<link [[Mer Street (0:05) (Docks)|Mer Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<mericon>><<link [[Mer Street (0:05) (Docks)|Mer Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2174,8 +2201,11 @@ You can't find a way to open the door and the <<person>> isn't forthcoming with 
 
 :: Widgets Starfish [widget]
 <<widget "starfish">>
-
-<<add_link "<<starfishicon>><<link [[Starfish Street (0:05) (Beach)|Starfish Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Starfish Street">>
+	<<add_link "<span class='nextLink'><<starfishicon>><<link [[Starfish Street (0:05) (Beach)|Starfish Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<starfishicon>><<link [[Starfish Street (0:05) (Beach)|Starfish Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2193,8 +2223,11 @@ You can't find a way to open the door and the <<person>> isn't forthcoming with 
 
 :: Widgets Cliff [widget]
 <<widget "cliff">>
-
-<<add_link "<<clifficon>><<link [[Cliff Street (0:05) (Cafe)|Cliff Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Cliff Street">>
+	<<add_link "<span class='nextLink'><<clifficon>><<link [[Cliff Street (0:05) (Cafe)|Cliff Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<clifficon>><<link [[Cliff Street (0:05) (Cafe)|Cliff Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2212,8 +2245,11 @@ You can't find a way to open the door and the <<person>> isn't forthcoming with 
 
 :: Widgets Barb [widget]
 <<widget "barb">>
-
-<<add_link "<<barbicon>><<link [[Barb Street (0:05) (Studio)|Barb Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Barb Street">>
+	<<add_link "<span class='nextLink'><<barbicon>><<link [[Barb Street (0:05) (Studio)|Barb Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<barbicon>><<link [[Barb Street (0:05) (Studio)|Barb Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2231,8 +2267,11 @@ You can't find a way to open the door and the <<person>> isn't forthcoming with 
 
 :: Widgets Connudatus [widget]
 <<widget "connudatus">>
-
-<<add_link "<<connudatusicon>><<link [[Connudatus Street (0:05) (Clubs)|Connudatus Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Connudatus Street">>
+	<<add_link "<span class='nextLink'><<connudatusicon>><<link [[Connudatus Street (0:05) (Clubs)|Connudatus Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<connudatusicon>><<link [[Connudatus Street (0:05) (Clubs)|Connudatus Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2359,8 +2398,11 @@ You find a quiet place and open the <<wallet>>.
 
 :: Widgets High [widget]
 <<widget "high">>
-
-<<add_link "<<highicon>><<link [[High Street (0:05) (Shopping Centre)|High Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "High Street">>
+	<<add_link "<span class='nextLink'><<highicon>><<link [[High Street (0:05) (Shopping Centre)|High Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<highicon>><<link [[High Street (0:05) (Shopping Centre)|High Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2378,8 +2420,11 @@ You find a quiet place and open the <<wallet>>.
 
 :: Widgets Oxford [widget]
 <<widget "oxford">>
-
-<<add_link "<<oxfordicon>><<link [[Oxford Street (0:05) (School)|Oxford Street]]>><<pass 5>><</link>><br>">>
+<<if $nextPassageCheck is "Oxford Street">>
+	<<add_link "<span class='nextLink'><<oxfordicon>><<link [[Oxford Street (0:05) (School)|Oxford Street]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<oxfordicon>><<link [[Oxford Street (0:05) (School)|Oxford Street]]>><<pass 5>><</link>><br>">>
+<</if>>
 <<hideDisplay true>>
 <</widget>>
 
@@ -2400,7 +2445,9 @@ You find a quiet place and open the <<wallet>>.
 
 <<set $dangerevent to random(1, 100)>>
 <<set $rng to random(1, 100)>>
-<<if $kylarwatched is 1>>
+<<if $wraith and $eventforced and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) and !_wraithEventSkipped>>
+	<<wraithEventStreet>>
+<<elseif $kylarwatched is 1>>
 	<<kylarwatched>>
 <<elseif $daystate is "night">>
 	<<if $exposed gte 1>>
@@ -2738,7 +2785,9 @@ You find a quiet place and open the <<wallet>>.
 		<<eventsstreetday>>
 	<</if>>
 <</if>>
-
+<<if $eventforced>>
+	<<unset $eventforced>>
+<</if>>
 <</widget>>
 
 <<widget "eventsstreetday">>
@@ -2846,7 +2895,12 @@ You find a quiet place and open the <<wallet>>.
 <</widget>>
 
 <<widget "streeteffects">>
-	<<if $kylar and $kylar.timer.street gte ($rng + 65) and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $kylarwatched isnot 1 and $exposed lte 0>>
+<<if !$possessed>>
+	<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte (random(0, 60))>>
+		<<wHunt "town">>
+	<<elseif $wraith and $wraith.hunt isnot 0>>
+		<<wHunt "town">>
+	<<elseif $kylar and $kylar.timer.street gte ($rng + 65) and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and $kylarwatched isnot 1 and $exposed lte 0>>
 		<<set $kylar.timer.street to 0>><<set $kylarwatchedtimer to 2>>
 		You shiver, a warning from some primal instinct. <span class="blue">Something is watching you.</span>
 		<<set $kylarwatched to 1>><<set $eventskip to 1>>
@@ -2857,6 +2911,8 @@ You find a quiet place and open the <<wallet>>.
 			<span class="blue">Something is watching you.</span>
 		<</if>>
 	<</if>>
+	<<wTimerProgress>>
+<</if>>
 <</widget>>
 
 <<widget "loiter">>

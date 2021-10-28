@@ -492,7 +492,7 @@
 <<elseif $pronoun is "f">>
 	<<set _text_output to "she's">>
 <<elseif $pronoun is "i">>
-	<<set _text_output to "its">>
+	<<set _text_output to "it's">>
 <<elseif $pronoun is "n">>
 	<<set _text_output to "one is">>
 <<elseif $pronoun is "t">>
@@ -1196,7 +1196,7 @@ in dev alternative to current "breasts" widget
 	<<if ($NPCList[$index].type and $NPCList[$index].type isnot "human") and $args[0] isnot "normal">>
 		<<set _text_output += $NPCList[$index].type>>
 	<</if>>
-	<<if $npc_named is 1>>
+	<<if $npc_named is 1 or $description is "pale figure">>
 		<<set _text_output to $description>>
 	<<elseif $pronoun is "m">>
 		<<set _text_output += ($npcadult is 1 ? "man" : "boy")>>
@@ -2655,6 +2655,18 @@ in dev alternative to current "breasts" widget
 <span class="purple">+ + + Bodywriting</span>
 <</widget>>
 
+<<widget "ghallucinogens">> | 
+<span class="lewd">+ Hallucinogens</span>
+<</widget>>
+
+<<widget "gghallucinogens">> | 
+<span class="lewd">+ + + Hallucinogens</span>
+<</widget>>
+
+<<widget "ggghallucinogens">> | 
+<span class="lewd">+ + + Hallucinogens</span>
+<</widget>>
+
 <<widget "flight_text">> |
 <<if $harpy gte 6 and $birdFly gte 1>>
 	<span class="gold">Strong wings</span>
@@ -2923,6 +2935,18 @@ in dev alternative to current "breasts" widget
 
 <<widget "gggphysique">> |
 <span class="green">+ + + Physique</span>
+<</widget>>
+
+<<widget "lphysique">>|
+<span class="red">- Physique</span>
+<</widget>>
+
+<<widget "llphysique">> |
+<span class="red">- - Physique</span>
+<</widget>>
+
+<<widget "lllphysique">> |
+<span class="red">- - - Physique</span>
 <</widget>>
 
 <!-- Exhibitionism -->

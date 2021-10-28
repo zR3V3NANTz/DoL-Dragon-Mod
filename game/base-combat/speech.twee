@@ -4525,7 +4525,7 @@
 	<<He>> flinches at your words. "Oh shit, you know the <<nnpc_title "Eden">>? This is... dangerous."
 	<<set $enemytrust -= 20>>
 <<elseif $speechnamedrop is 1 and _loveInterest is "Black Wolf" and $location is "forest">>
-	<<He>> grins. "The alpha won't even recognize you when I'm done with you!"
+	<<He>> grins. "The alpha won't even recognise you when I'm done with you!"
 <<elseif $speechnamedrop is 1 and _loveInterest is "Alex" and $location is "moor">>
 	<<He>> grins. "A farmer, huh? Maybe I'll cultivate you, cow<<girl>>."
 <<elseif $speechnamedrop is 1 and _loveInterest is "Great Hawk" and $location is "moor">>
@@ -4968,6 +4968,11 @@
 		<<speech-sydney>>
 		<<if _sydneyText and $speechdisable isnot 1>>
 			<<set $_text_output to _sydneyText>>
+		<</if>>
+	<<case "Ivory Wraith">>
+		<<if !_speechWraith>>
+			<<speechWraith>>
+			<<set $_text_output to _speechWraith>>
 		<</if>>
 <</switch>>
 <</silently>><<if $_text_output or _silent>>$_text_output<<else>><<set _noNameComment to true>><</if>>

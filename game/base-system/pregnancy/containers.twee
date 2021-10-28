@@ -48,6 +48,13 @@
 	<<set _container.daysSinceFed += 1>>
 	<<if _container.daysSinceFed gt _container.maxDaysWithoutFood>>
 		<<set _container.deadCreatures to _container.count>>
+		<<for _i to 0; _i lt _container.count; _i++>>
+			<<if _container.creatures[_i].creature.includes("Pale") and $wraith and $wraith.state isnot "">>
+				<<set $wraith.offspring to "dead">>
+				<<set $wraithAnger to 30>>
+				<<set $wraithShow to true>>
+			<</if>>
+		<</for>>
 		<<set _container.count to 0>>
 		<<set _container.creatures to {}>>
 	<</if>>
@@ -60,9 +67,9 @@
 <<set _container.visited to true>>
 <<set _container.daysSinceFed to 0>>
 
-/*stress, trauma, fatigue, purity, impurity*/
-<<set _boosts to [false,false,false,false,false]>>
-<<set _purityGain to 0>><<set _tenticles to 0>>
+/*stress, trauma, fatigue, purity, impurity, hallucinogens*/
+<<set _boosts to [false,false,false,false,false,false]>>
+<<set _purityGain to 0>><<set _tenticles to 0>><<set _paleChance to 0>>
 <<for _i to 0; _i lt _container.maxCount; _i++>>
 	<<if _container.creatures[_i] is undefined>>
 		<<continue>>
@@ -86,6 +93,9 @@
 		<</if>>
 		<<if _container.creatures[_i].creature is "Pale Slime">>
 			<<set _purityGain += 1.5>>
+			<<set $hallucinogen += 20>>
+			<<set _boosts[5] to true>>
+			<<set _paleChance ++>>
 		<</if>>
 		<<if _container.creatures[_i].creature is "Worm">>
 			<<set _purityGain -= 0.5>>
@@ -101,6 +111,9 @@
 			<<if Math.floor(_value / 3) gt 0>>
 				<<set $tiredness -= Math.floor((_value / 3) * _tendingMulti)>>
 				<<set _boosts[2] to true>>
+				<<set $hallucinogen += 30>>
+				<<set _boosts[5] to true>>
+				<<set _paleChance ++>>
 			<</if>>
 			<<set _tenticles += 1.5>>
 		<</if>>
@@ -129,6 +142,16 @@
 <<if _boosts[2]>> <<ltiredness>><</if>>
 <<if _boosts[3]>> <<gpurity>><</if>>
 <<if _boosts[4]>> <<lpurity>><</if>>
+<<if _boosts[5]>> <<ghallucinogens>><</if>>
+
+<<if $wraith and $wraith.state isnot "" and _paleChance gte random(1, 10) and !$possessed>>
+	<br><br>
+	You catch a glimpse of a pale figure standing right next to you. You jump back in shock. It slowly turns to you.
+	<br><br>
+	"<span class="wraith">Beautiful. Keep <<if _container.count isnot 1>>them<<else>>it<</if>> safe.</span>" It disappears with a bright flash. <<stress 6>><<gstress>>
+	<<set $wraith.offspring to "alive">>
+<</if>>
+
 <</widget>>
 
 :: Containers
@@ -151,19 +174,28 @@
 			<<set _traumaMulti to 1>>
 		<</if>>
 		<<trauma `30 * _traumaMulti * _container.deadCreatures`>>
+		<<if $wraith and $wraith.state isnot "" and $wraithShow>>
+			<<unset $wraithShow>>
+			You feel something gingerly grab your neck from behind.
+			<br><br>
+			"<span class="wraith">Unforgivable. You'll join <<if _container.count isnot 1>>them<<else>>it<</if>> soon.</span>" <<stress 12>><<trauma 12>><<ggstress>><<ggtrauma>>
+			<br><br>
+			You turn around, but nothing's there.
+			<br><br>
+		<</if>>
 
 		<<link [[Next (1:00)|$passage]]>><<set _container.deadCreatures to 0>><<pass 60>><</link>>
 	<</if>>
 <<else>>
 	<<if _container.visited is false>>
-		You check on <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>>, and make sure they have everything they need inside <<print _container.name>>.
+		You check on <<if _pregnancy.namesChildren is true>>your child<<if _container.count isnot 1>>ren<</if>><<else>>the parasite<<if _container.count isnot 1>>s<</if>><</if>>, and make sure <<if _container.count isnot 1>>they have<<else>>it has<</if>> everything <<if _container.count isnot 1>>they need<<else>>it needs<</if>> inside your <<print _container.name>>.
 		<br>
 		<<creatureVisit>>
 	<<else>>
-	You watch your <<if _pregnancy.namesChildren is true>>children<<else>>parasites<</if>> inside <<print _container.name>>.
+		You watch your <<if _pregnancy.namesChildren is true>>child<<if _container.count isnot 1>>ren<</if>><<else>>parasite<<if _container.count isnot 1>>s<</if>><</if>> inside your <<print _container.name>>.
 	<</if>>
 	<br><br>
-	It has a max capacity of <<number _container.maxCount>> and <<if _pregnancy.namesChildren is true>>your children<<else>>the parasites<</if>> can survive <<number _container.maxDaysWithoutFood>> days without your attention<<if _container.feederName>>, thanks to your <<print _container.feederName>><</if>>. <<if _container.decorations>>You have <<print _container.decorations>> setup within the tank.<</if>>
+	It has a max capacity of <<number _container.maxCount>> and <<if _pregnancy.namesChildren is true>>your child<<if _container.count isnot 1>>ren<</if>><<else>>the parasite<<if _container.count isnot 1>>s<</if>><</if>> can survive <<number _container.maxDaysWithoutFood>> days without your attention<<if _container.feederName>>, thanks to your <<print _container.feederName>><</if>>. <<if _container.decorations>>You have <<print _container.decorations>> setup within the tank.<</if>>
 <</if>>
 
 <<if _container.count gt 0>>

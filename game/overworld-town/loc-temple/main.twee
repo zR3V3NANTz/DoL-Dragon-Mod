@@ -680,6 +680,10 @@ You look away from the <<monk>>, and <<he>> continues down the aisle.
 <<link [[Inquire about ear slime|Temple Slime]]>><</link>>
 <br>
 <</if>>
+<<if $wraith and $wraith.seen gte 10>>
+<<link [[Inquire about the pale figure|Temple Pale Story]]>><</link>>
+<br>
+<</if>>
 <<link [[Inquire about chastity belts|Temple Chastity]]>><</link>>
 <br>
 <<if $vaginalchastityparasite is 0 and $analchastityparasite is 0 and $penilechastityparasite is 0>>
@@ -1380,7 +1384,50 @@ You describe the problems you've had, and how they started when a slime entered 
 <<Hes>> silent for a moment. "There are stories," <<he>> begins. "Of old creatures like you describe. One of our artifacts details how to remove them. There was an altar at the old temple. <i>The afflicted would lie on it during a blood moon.</i>"
 <br><br>
 
-"It doesn't matter though," <<he>> adds. "The old temple <i>sank beneath the lake</i> centuries ago. Students sometimes go out there after school. Entering the forest alone is a bad idea."
+"It doesn't matter though," <<he>> adds. "The old temple <i>sank beneath the lake</i> centuries ago. Students sometimes go out there after school. Entering the forest alone is a bad idea, and the ruin is... tainted."
+<br><br>
+
+<<endevent>>
+
+<<link [[Next|Temple]]>><</link>>
+<br>
+
+:: Temple Pale Story
+<<set $outside to 0>><<set $location to "temple">><<temple_effects>><<effects>>
+
+You tell Jordan about the ghostly figure <<if $wraith.state is "haunt">>that's been tormenting you<<else>>that you've encountered<</if>>. You describe what you've seen it do, and where you've seen it. Jordan winces at a few of the details.
+<br><br>
+
+<<He>> stays silent for a long time. <<He>> slowly turns to you, and gives a deep sigh. "It's not a pleasant story. It predates the founding of our order, but was instrumental in it." Jordan gestures for you to walk with <<him>>. You follow as <<he>> continues.
+<br><br>
+
+"Centuries ago, there was a monastic schism. A disagreement between beliefs. One group eventually went on to found the temple we stand in now. The other dissolved." Jordan stares at the angels lining the walls. "We know nothing of their names, and precious little about what really happened. There are only stories." <<He>> continues walking.
+<br><br>
+
+"There was another temple in the forest, not too far from here. It was supposedly the site for a terrible, heretical ritual that was countered by my predescesors. What the intent was, we may never know. Whatever happened, it had dire consequences. Some say it was this, and not the ravages of time, that sunk the old temple into the lake." Jordan keeps walking, brushing <<his>> hands against an angelic statue. The angel has six arms, and many wings. You feel oddly calm.
+<br><br>
+
+<<link [[Next|Temple Pale 2]]>><</link>>
+<br>
+
+:: Temple Pale Story 2
+<<set $outside to 0>><<set $location to "temple">><<temple_effects>><<effects>>
+
+"What we do know, is that a high-ranking member of the order disappeared around this time. Some say they defected, others say they were kidnapped and sacrificed for that ritual. Oddly, they appear very rarely in any records. Once again, we know very little." You catch a hint of sadness in <<his>> voice.
+<br><br>
+
+"There's one constant through all their appearances. They always wore a precious piece of jewelry, believed to have divine significance. It was a necklace,
+<<if $wraith.state is "haunt">>
+	<span class="red">carved from ivory, and set with large sapphires.</span>"
+<<else>>
+	carved from ivory, and set with large sapphires."
+<</if>>
+<br><br>
+
+"Throughout history, there are accounts of sightings. A beautiful, pale man or woman under the harvest moon, clutching that necklace. It's something of a legend now, I suppose. Some say it's a shared hallucination of some kind." Jordan turns to you, looking very serious.
+<br><br>
+
+"If you choose to investigate, please be careful. Hallucinations are real enough to those that see them." Jordan turns away, and leaves.
 <br><br>
 
 <<endevent>>

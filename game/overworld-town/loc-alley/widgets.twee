@@ -179,7 +179,12 @@ There's nothing to hide behind for a long stretch up ahead. You glance over your
 <</widget>>
 
 <<widget "residential">>
-	<<add_link "<<alleyicon>><<link [[Residential alleyways (0:05)|Residential alleyways]]>><<pass 5>><</link>><br>">><<hideDisplay true>>
+	<<if $nextPassageCheck is "Residential alleyways">>
+		<<add_link "<span class='nextLink'><<alleyicon>><<link [[Residential alleyways (0:05)|Residential alleyways]]>><<pass 5>><</link>></span><br>">>
+	<<else>>
+		<<add_link "<<alleyicon>><<link [[Residential alleyways (0:05)|Residential alleyways]]>><<pass 5>><</link>><br>">>
+	<</if>>
+	<<hideDisplay true>>
 <</widget>>
 
 <<widget "residentialquick">>
@@ -193,7 +198,12 @@ There's nothing to hide behind for a long stretch up ahead. You glance over your
 :: Widgets Industrial [widget]
 
 <<widget "industrial">>
-	<<add_link "<<alleyicon>><<link [[Industrial alleyways (0:05)|Industrial alleyways]]>><<pass 5>><</link>><br>">><<hideDisplay true>>
+	<<if $nextPassageCheck is "Industrial alleyways">>
+		<<add_link "<span class='nextLink'><<alleyicon>><<link [[Industrial alleyways (0:05)|Industrial alleyways]]>><<pass 5>><</link>></span><br>">>
+	<<else>>
+		<<add_link "<<alleyicon>><<link [[Industrial alleyways (0:05)|Industrial alleyways]]>><<pass 5>><</link>><br>">>
+	<</if>>
+	<<hideDisplay true>>
 <</widget>>
 
 <<widget "industrialquick">>
@@ -207,7 +217,12 @@ There's nothing to hide behind for a long stretch up ahead. You glance over your
 :: Widgets Commercial [widget]
 
 <<widget "commercial">>
-	<<add_link "<<alleyicon>><<link [[Commercial alleyways (0:05)|Commercial alleyways]]>><<pass 5>><</link>><br>">><<hideDisplay true>>
+	<<if $nextPassageCheck is "Commercial alleyways">>
+		<<add_link "<span class='nextLink'><<alleyicon>><<link [[Commercial alleyways (0:05)|Commercial alleyways]]>><<pass 5>><</link>></span><br>">>
+	<<else>>
+		<<add_link "<<alleyicon>><<link [[Commercial alleyways (0:05)|Commercial alleyways]]>><<pass 5>><</link>><br>">>
+	<</if>>
+		<<hideDisplay true>>
 <</widget>>
 
 <<widget "commercialquick">>

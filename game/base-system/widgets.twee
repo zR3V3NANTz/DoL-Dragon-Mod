@@ -1236,20 +1236,38 @@
 	<div @class="($showCaptionText is true ? '' : 'rightMeterText')">
 		Control:
 		<<if $showCaptionText is true>>
-			<<if $control gte $controlmax>>
-				<span class="green">You are confident.</span>
-			<<elseif $control gte ($controlmax / 5) * 4>>
-				<span class="teal">You are insecure.</span>
-			<<elseif $control gte ($controlmax / 5) * 3>>
-				<span class="lblue">You are worried.</span>
-			<<elseif $control gte ($controlmax / 5) * 2>>
-				<span class="blue">You are anxious.</span>
-			<<elseif $control gte ($controlmax / 5) * 1>>
-				<span class="purple">You are scared.</span>
-			<<elseif $control gte 1>>
-				<span class="pink">You are frightened.</span>
+			<<if $possessed>>
+				<<if $control gte $controlmax>>
+					<span class="green">You are in control.</span>
+				<<elseif $control gte ($controlmax / 5) * 4>>
+					<span class="teal">You are nearly in control.</span>
+				<<elseif $control gte ($controlmax / 5) * 3>>
+					<span class="lblue">You are struggling.</span>
+				<<elseif $control gte ($controlmax / 5) * 2>>
+					<span class="blue">Your body feels hollow.</span>
+				<<elseif $control gte ($controlmax / 5) * 1>>
+					<span class="purple">Your mind is numb.</span>
+				<<elseif $control gte 1>>
+					<span class="pink">You're being puppeteered.</span>
+				<<else>>
+					<span class="red">You're helpless.</span>
+				<</if>>				
 			<<else>>
-				<span class="red">You are terrified.</span>
+				<<if $control gte $controlmax>>
+					<span class="green">You are confident.</span>
+				<<elseif $control gte ($controlmax / 5) * 4>>
+					<span class="teal">You are insecure.</span>
+				<<elseif $control gte ($controlmax / 5) * 3>>
+					<span class="lblue">You are worried.</span>
+				<<elseif $control gte ($controlmax / 5) * 2>>
+					<span class="blue">You are anxious.</span>
+				<<elseif $control gte ($controlmax / 5) * 1>>
+					<span class="purple">You are scared.</span>
+				<<elseif $control gte 1>>
+					<span class="pink">You are frightened.</span>
+				<<else>>
+					<span class="red">You are terrified.</span>
+				<</if>>
 			<</if>>
 		<</if>>
 	</div>
@@ -1802,7 +1820,7 @@
 	<<elseif $daystate is "night">>
 		<<if $location is "tentworld">>
 		<img id="daystate" src="img/misc/tentskynight.png">
-		<<elseif $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+		<<elseif $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 		<img id="daystate" src="img/misc/fullnight.png">
 		<<else>>
 		<img id="daystate" src="img/misc/night.png">
@@ -1832,13 +1850,13 @@
 		<<case pub>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/pubnight.png'">
 		<<case forest>>
-			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 				<img id="location" @src="'img/misc/' + _weather_display + '/forestbloodmoon.gif'">
 			<<else>>
 				<img id="location" @src="'img/misc/' + _weather_display + '/forestnight.png'">
 			<</if>>
 		<<case lake>>
-			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 				<img id="location" @src="'img/misc/' + _weather_display + '/lakebloodmoon.gif'">
 			<<else>>
 				<img id="location" @src="'img/misc/' + _weather_display + '/lakenight.gif'">
@@ -1916,7 +1934,7 @@
 		<<case forest_shop>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/forest_shop_night.png'">
 		<<case lake_ruin>>
-			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 				<img id="location" @src="'img/misc/' + _weather_display + '/ruins_blood_moon.gif'">
 			<<else>>
 				<img id="location" @src="'img/misc/' + _weather_display + '/ruins_night.gif'">
@@ -1929,19 +1947,19 @@
 		<img id="location" @src="'img/misc/' + _weather_display + '/night_monster_lair_night.gif'">
 		<<case alley>>
 			<<if $bus is "industrial">>
-				<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+				<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 					<img id="location" @src="'img/misc/' + _weather_display + '/indust_alley_blood.gif'">
 				<<else>>
 					<img id="location" @src="'img/misc/' + _weather_display + '/indust_alley_night.gif'">
 				<</if>>
 			<<elseif $bus is "residential">>
-				<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+				<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 					<img id="location" @src="'img/misc/' + _weather_display + '/resi_alley_blood.gif'">
 				<<else>>
 					<img id="location" @src="'img/misc/' + _weather_display + '/resi_alley_night.gif'">
 				<</if>>
 			<<else>>
-				<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+				<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 					<img id="location" @src="'img/misc/' + _weather_display + '/alley_blood.gif'">
 				<<else>>
 					<img id="location" @src="'img/misc/' + _weather_display + '/alley_night.gif'">
@@ -2410,13 +2428,14 @@ or $args[0] is "force">>
 <<set $exposed to 0>>
 <<if $worn.upper.exposed gte 1 and $worn.over_upper.exposed gte 1>>
 	<<if $player.gender_appearance is "m">>
-	<<elseif $libertine gte 1>>
+	<<elseif $libertine gte 1 or $possessed>>
 	<<else>>
 		<<set $exposed to 1>>
 	<</if>>
 <</if>>
 <<if $worn.upper.exposed gte 2 and $worn.over_upper.exposed gte 2 and $player.gender_appearance isnot "m">>
-	<<if $libertine is 1>>
+	<<if $possessed>>
+	<<elseif $libertine is 1>>
 		<<set $topless to 1>>
 	<<else>>
 		<<set $exposed to 1>>
@@ -2425,14 +2444,15 @@ or $args[0] is "force">>
 	<<set $topless to 0>>
 <</if>>
 <<if $worn.lower.exposed gte 1 and $worn.over_lower.exposed gte 1>>
-	<<if $libertine gte 1>>
+	<<if $libertine gte 1 or $possessed>>
 	<<else>>
 		<<set $exposed to 1>>
 	<</if>>
 <</if>>
 
 <<if $worn.lower.exposed gte 2 and $worn.over_lower.exposed gte 2>>
-	<<if $worn.under_lower.exposed gte 1>>
+	<<if $possessed>>
+	<<elseif $worn.under_lower.exposed gte 1>>
 		<<set $exposed to 2>>
 	<<elseif $libertine gte 1>>
 	<<else>>
@@ -3226,7 +3246,7 @@ $mouthstate is "tentacledeep">>
 
 <<widget "textmap">>
 
-<<if $map.movement is true>>
+<<if $map.movement is true ad !$possessed>>
 __Map__<br>
 |.....<a class="no-numberify mapmove" onclick="mapMove('Barb Street')" title="Barb Street">Ba</a> &#9866; <a class="no&#9866;numberify mapmove" onclick="mapMove('Cliff Street')" title="Cliff Street">Cl</a> &#9866; <a class="no&#9866;numberify mapmove" onclick="mapMove('Starfish Street')" title="Starfish Street">St</a> &#9866; <a class="no&#9866;numberify mapmove" onclick="mapMove('Mer Street')" title="Mer Street">Me</a><br>
 |..╱ ╲ ╱ ╲ ╱ ╲ ╱ ╲<br>
@@ -3246,7 +3266,7 @@ __Map__<br>
 
 <<widget map>>
 	<<set $map.location to $args[0]>>
-	<<if $images is 1 and $map.movement is true and $map.legacy isnot true>>
+	<<if $images is 1 and $map.movement is true and $map.legacy isnot true and !$possessed>>
 		<<set _boxLocations to [
 			{ x: 1,		y: 46}, /*Domus				*/
 			{ x: 38,	y: 9},	/*Barb				*/
@@ -3297,7 +3317,7 @@ __Map__<br>
 			<image x="2" @xlink:href="'img/misc/maparrow'+$map.location+'.png'"/>
 		</svg>
 	<<elseif $images is 1>>
-		<<if $images is 1 and $map.movement is true>>
+		<<if $images is 1 and $map.movement is true and !$possessed>>
 			<!-- Image Map Generated by http://www.image-map.net/ -->
 			<map id="town-image-map" name="town-image-map">
 				<area class="no-numberify" alt="Barb Street" title="Barb Street" coords="62,20,39,42" shape="rect" onclick="mapMove('Barb Street')">

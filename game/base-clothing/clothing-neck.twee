@@ -593,6 +593,35 @@
 	location: 0,
 	iconFile: "Holy stole.png",
 	accIcon: 0
+},
+
+	{index: 20,
+	name: "ivory necklace",
+	name_cap: "Ivory necklace",
+	variable: "ivorynecklace",
+	integrity: 100,
+	integrity_max: 100,
+	fabric_strength: 100,
+	reveal: 1,
+	word: "a",
+	plural: 0,
+	colour: 0,
+	colour_options: [],
+	type: ["holy", "dark", "eerie"],
+	gender: "n",
+	femininity: 0,
+	warmth: 0,
+	cost: 200000,
+	description: "A sacred relic, once worn by a high-ranking member of an ancient order. You can see your reflection in the gemstones. You look pale.",
+	shop: [],
+	collared: 0,
+	accessory: 0,
+	accessory_colour: 0,
+	accessory_colour_options: [],
+	cursed: 0,
+	location: 0,
+	iconFile: "",
+	accIcon: 0
 }
 
 ]>>

@@ -1,6 +1,6 @@
 :: Barb Street
 
-<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "barb">>
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "barb">><<getTarget true>>
 You are on Barb Street. Silver blocks of flats tower all around you. You can hear the sea. The police station is located here. There's also a dance studio.
 <<if $daystate is "day">>
 	<<if $weather is "rain">>
@@ -38,11 +38,11 @@ You are on Barb Street. Silver blocks of flats tower all around you. You can hea
 <<if $exposed gte 1>>
 	<<exhibitionism "street">>
 <</if>>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutstreet>>
 <<else>>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
-	<<if $danger gte (9900 - $allure) and $eventskip is 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 		<<eventsstreet>>
 	<<else>>
 		<<if $map.top is true>>
