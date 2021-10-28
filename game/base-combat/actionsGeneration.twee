@@ -1068,6 +1068,7 @@
 	<<case "thighbay">><<thighdifficulty>> <<combatpromiscuous1>>
 	<<case "penisthighs">><<thighdifficulty>> <<combatpromiscuous4>>
 	<<case "penisanus">><<analdifficulty>>
+	<<case "penisanusdouble">><<analdifficulty>><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
 	<<case "penisEdging">><<combatpromiscuous4>>
 <</switch>>
 <</widget>>
@@ -1143,6 +1144,37 @@
 			<<case "penetrated">>
 				<<set _anusOptions to "penisPenetration">>
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anus">><<His>> penis penetrates your anus.</span>
+			<<case "doubleentrance">>
+				<<set _anusOptions to "penisDoubleEntrance">>
+					<<if $NPCList[$npcDAP[0]].penis is "anusdoubleentrance" and $NPCList[$npcDAP[1]].penis is "anusdoubleentrance">>
+						<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks hover near your <<bottom>>.</span>
+					<<elseif ($NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdoubleentrance") or ($NPCList[$npcDAP[0]].penis is "anusdoubleentrance" and $NPCList[$npcDAP[1]].penis is "anusdouble")>>
+						<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">
+						<<selectNpcWithPartInPosition "penis" "anus">><<His>> penis penetrates your anus while the other penis hovers nearby.
+						</span>
+					<<else>>
+						<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks hover near your <<bottom>>.</span>
+					<</if>>
+
+			<<case "doubleimminent">>
+				<<set _anusOptions to "penisDoubleImminent">>
+					<<if $NPCList[$npcDAP[0]].penis is "anusdoubleimminent" and $NPCList[$npcDAP[1]].penis is "anusdoubleimminent">>
+						<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks press against your anus.</span>
+					<<elseif ($NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdoubleimminent") or ($NPCList[$npcDAP[0]].penis is "anusdoubleimminent" and $NPCList[$npcDAP[1]].penis is "anusdouble")>>
+						<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">
+						<<selectNpcWithPartInPosition "penis" "anus">><<His>> penis penetrates your anus while the other penis presses against the entrance.
+						</span>
+					<<else>>
+						<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks press against your anus.</span>
+					<</if>>
+			<<case "doublepenetrated">>
+				<<set _anusOptions to "penisDoublePenetration">>
+				
+				<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+					<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks penetrate your anus.</span>
+				<<else>>
+					<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anus">><<His>> cock penetrates your anus while the other hovers nearby.</span>
+				<</if>>
 		<</switch>>
 	<</if>>
 	<<if $lastOptions.anus isnot _anusOptions>>
@@ -1194,6 +1226,9 @@
 	<<case "anuspenisfuck">><<combatpromiscuous5>> <<analvirginitywarning>><<NPCvirginitywarning $NPCList[_n].fullDescription "penile">>
 	<<case "otherAnusRub" "otherMouthAnusRub">> <<analdifficulty>>
 	<<case "penisEdging">><<combatpromiscuous4>>
+	<<case "penisDoubleEdging">><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
+	<<case "anustopenisdouble">><<analdifficulty>> <<combatpromiscuous5>>
+	<<case "anuspenisdoublefuck">><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span> <<analvirginitywarning>><<NPCvirginitywarning $NPCList[_n].fullDescription "penile">>
 <</switch>>
 <</widget>>
 
@@ -1229,6 +1264,16 @@
 			<<actionsanusFaceAgainstAnus>>
 		<<case "penisAgainstAnus">>
 			<<actionsanusPenisAgainstAnus>>
+		<<case "penisDoubleEntrance">>
+			<<set _anusaction["Rest"] to "rest">>
+			<<actionsanuspenisdoublefuck>>
+			<<actionsanusPenisDoubleEntrance>>
+		<<case "penisDoubleImminent">>
+			<<set _anusaction["Rest"] to "rest">>
+			<<actionsanuspenisdoublefuck>>
+			<<actionsanusPenisDoubleImminent>>
+		<<case "penisDoublePenetration">>
+			<<actionsanusPenisDoublePenetration>>
 	<</switch>>
 <</if>>
 <</widget>>

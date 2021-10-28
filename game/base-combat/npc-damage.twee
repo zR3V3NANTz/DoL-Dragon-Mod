@@ -37,6 +37,29 @@
 <<if $NPCList[_i].penis is "mouth" or $NPCList[_i].penis is "mouthimminent" or $NPCList[_i].penis is "mouthentrance">>
 	<<set $mouthstate to 0>><<set $mouthuse to 0>>
 <</if>>
+<<if $NPCList[_i].penis is "anusdouble" or $NPCList[_i].penis is "anusdoubleimminent" or $NPCList[_i].penis is "anusdoubleentrance">>
+	<<set _otherNPCindex to "f">>
+	<<if _i is $npcDAP[0]>>
+		<<set _otherNPCindex to $npcDAP[1]>>
+	<<else>>
+		<<set _otherNPCindex to $npcDAP[0]>>
+	<</if>>
+	<<if _otherNPCindex isnot "f" and $NPCList[_otherNPCindex].penis isnot 0 and $NPCList[_otherNPCindex].penis.includes("double")>>
+		<<switch $NPCList[_otherNPCindex].penis>>
+			<<case "anusdouble">>
+				<<set $NPCList[_otherNPCindex].penis to "anus">>
+				<<set $anusstate to "penetrated">><<set $anususe to "penis">>
+			<<case "anusdoubleentrance">>
+				<<set $NPCList[_otherNPCindex].penis to "anusentrance">>
+				<<set $anusstate to "entrance">><<set $anususe to "penis">>
+			<<case "anusdoubleimminent">>
+				<<set $NPCList[_otherNPCindex].penis to "anusimminent">>
+				<<set $anusstate to "imminent">><<set $anususe to "penis">>
+		<</switch>>
+	<<else>>
+		<<set $anusstate to 0>><<set $anususe to 0>>
+	<</if>>
+<</if>>
 
 <!-- PC penis in NPC -->
 <<if $NPCList[_i].vagina is "penis" or $NPCList[_i].vagina is "penisimminent" or $NPCList[_i].vagina is "penisentrance">>

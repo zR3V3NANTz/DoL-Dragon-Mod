@@ -2590,6 +2590,44 @@
 <</if>>
 
 <<set $rng to random(1, 100)>>
+<<if $vaginaaction is "penisanusdouble">>
+	<<set $vaginaaction to 0>><<meek 5>><<analskilluse>><<set $vaginaactiondefault to "penisanusdouble">>
+	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+		<<for _j = 0; _j lt $enemyno; _j++>>
+			<<if $NPCList[_j].penis is "vaginaentrance">>
+				<<personselect _j>>
+				<span class="blue">You give your <<bottom>> a little wiggle, <<combatperson>> responds to the provocation and moves <<his>> penis to join the phallus in front of your butt.</span>
+				<<submission 2>><<set $anususe to "penisdouble">><<set $NPCList[_j].penis to "anusdoubleentrance">><<set $vaginause to 0>><<set $anusstate to "doubleentrance">><<set $vaginastate to 0>>
+				
+				<<set $npcDAP to []>>
+				<<set $npcDAP[0] to _n>>
+				<<set $npcDAP[1] to "f">>
+				<<for _k = 0; _k lt $enemyno; _k++>>
+					<<if $NPCList[_k].penis is "anus">>
+						<<set $NPCList[_k].penis to "anusdouble">>
+						<<set $npcDAP[1] to _k>>
+						<<break>>
+					<<elseif $NPCList[_k].penis is "anusimminent">>
+						<<set $NPCList[_k].penis to "anusdoubleimminent">>
+						<<set $npcDAP[1] to _k>>
+						<<break>>
+					<<elseif $NPCList[_k].penis is "anusentrance">>
+						<<set $NPCList[_k].penis to "anusdoubleentrance">>
+						<<set $npcDAP[1] to _k>>
+						<<break>>
+					<</if>>
+				<</for>>
+
+				<<break>>
+			<</if>>
+		<</for>>
+	<<else>>
+		You give your <<bottom>> a little wiggle, but you just receive a slap.
+		<<violence 2>><<hitstat>><<bruise bottom>>
+	<</if>>
+<</if>>
+
+<<set $rng to random(1, 100)>>
 
 <<if $anusaction is "rest">>
 	<<set $anusaction to 0>><<set $anusactiondefault to "rest">>
@@ -2634,6 +2672,10 @@
 <<effectsanustopenis>>
 <<set $rng to random(1, 100)>>
 <<effectsanuspenisfuck>>
+<<set $rng to random(1, 100)>>
+<<effectsanustopenisdouble>>
+<<set $rng to random(1, 100)>>
+<<effectsanuspenisdoublefuck>>
 
 <<if $cheekaction is "rub" or $anusaction is "otherAnusRub">>
 	<<if $cheekaction is "rub">>
@@ -3313,10 +3355,35 @@
 	<<set $anusaction to 0>><<set $anusactiondefault to "take">><<actionsanustake>>
 <</if>>
 
+<<if $anusaction is "doubletake">>
+	<<set $anusaction to 0>><<set $anusactiondefault to "take">><<actionsanusdoubletake>>
+<</if>>
+
 <<if $anusaction is "escape">><<set $anusaction to 0>><<set $anusactiondefault to "escape">><<actionsanusescape>><<brat 10>><<set $anususe to "penis">><<set $anusstate to "entrance">>
 	<<for _j = 0; _j lt $enemyno; _j++>>
 		<<if $NPCList[_j].penis is "anusimminent">>
 			<<set $NPCList[_j].penis to "anusentrance">><<set $NPCList[_j].speechanusescape to 1>>
+			<<break>>
+		<</if>>
+	<</for>>
+<</if>>
+
+<<if $anusaction is "doublecooperate">>
+	<<set $anusaction to 0>><<set $anusactiondefault to "doublecooperate">><<actionsanusdoublethrust>><<submission 15>><<analskilluse>>
+<</if>>
+
+<<if $anusaction is "penisDoubleEdging">>
+	<<set $anusaction to 0>><<set $anusactiondefault to "penisDoubleEdging">><<actionsanusdoubleedging>><<submission 5>><<sexControl 5 $analskill>><<analskilluse>><<combatpromiscuity5>>
+<</if>>
+
+<<if $anusaction is "doubletake">>
+	<<set $anusaction to 0>><<set $anusactiondefault to "doubletake">><<actionsanusdoubletake>>
+<</if>>
+
+<<if $anusaction is "doubleescape">><<set $anusaction to 0>><<set $anusactiondefault to "doubleescape">><<actionsanusescape>><<brat 10>><<set $anususe to "penisdouble">><<set $anusstate to "doubleentrance">>
+	<<for _j = 0; _j lt $enemyno; _j++>>
+		<<if $NPCList[_j].penis is "anusdoubleimminent">>
+			<<set $NPCList[_j].penis to "anusdoubleentrance">><<set $NPCList[_j].speechanusescape to 1>>
 			<<break>>
 		<</if>>
 	<</for>>
