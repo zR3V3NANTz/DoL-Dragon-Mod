@@ -11,25 +11,28 @@
 		<<set $speechcum to 1>><<set $speechorgasmcount += 1>>
 	<</if>>
 	<<if $player.penisExist and $femaleclimax is -1 and $penissize lt 0>>
-		<<set _calculation to 0>>
+		<<set $_femaleclimaxchance to 50>>
 		<<if $anusstate is "penetrated" or $anusstate is "tentacle" or $anusstate is "tentacledeep">>
-			<<set _calculation += 40>>
+			<<set $_femaleclimaxchance += 40>>
 		<</if>>
 		<<if $mouthstate is "penetrated" or $mouthstate is "tentacle" or $mouthstate is "tentacledeep">>
-			<<set _calculation += 20>>
+			<<set $_femaleclimaxchance += 20>>
 		<</if>>
 		<<if $penisstate is "penetrated" or $penisstate is "otheranus" or $penisstate is "tentacledeep" or $penisstate is "tentacle">>
-			<<set _calculation -= 40>>
+			<<set $_femaleclimaxchance -= 40>>
 		<</if>>
-		<<if random(1, 100) lte (50 + _calculation)>>
+		<<if random(1, 100) lte $_femaleclimaxchance>>
 			<<set $femaleclimax to 1>>
 		<<else>>
 			<<set $femaleclimax to 0>>
 		<</if>>
 	<</if>>
-	<<if $player.penisExist and $devstate is 1 and $femaleclimax isnot 1>>
-		<<if $semen_volume is 0 or $semen_amount is 0>>
+	<<if $player.penisExist>>
+		<<if $femaleclimax is 1>>
 			<span class="pink">You are overcome by sensation and climax like a girl.</span>
+			<<semenvolume -1>>
+		<<elseif $semen_volume is 0 or $semen_amount is 0>>
+			<span class="pink">You are overcome by sensation and climax, but nothing comes out.</span>
 			<<set $femaleclimax to 1>>
 			<<semenvolume -1>>
 		<<else>>
@@ -129,35 +132,38 @@
 				<</if>>
 			<<elseif $mouth is "mpenis">>
 				<<if $selfsuckDepth gte 2>>
-					<span class="pink">You are overcome by sensation. Your cum pumps up the length of your penis and flows straight down your throat.</span>
+					<span class="pink">You are overcome by sensation. A surge of cum pumps up the length of your penis and flows straight down your throat.</span>
 				<<else>>
 					<span class="pink">You are overcome by sensation and ejaculate in your mouth, forcing you to quickly drink it down.</span>
 				<</if>>
 				<<set $player.bodyliquid.mouth.semen += 1>>
-			<<else>>
-				<span class="pink">You are overcome by sensation. A surge of cum erupts from your penis<<if $worn.genitals.type.includes("chastity")>> into your $worn.genitals.name<</if>>.</span>
-				<<if $leftaction is "mpenisshaft" and !$worn.genitals.type.includes("chastity") and $semen_amount / 10 gte random(50,150)>>
+			<<elseif $worn.genitals.type.includes("chastity")>>
+				<span class="pink">You are overcome by sensation. A surge of cum erupts from your penis into your $worn.genitals.name.</span>
+			<<elseif $leftarm is "mpenisentrance" or $rightarm is "mpenisentrance">>
+				<<if $leftarm is "mpenisentrance" and $semen_amount gte random(500,1500)>>
 					<<set $leftFingersSemen to 1>>
+					<<set $_hand to "left hand">>
 				<</if>>
-				<<if $rightaction is "mpenisshaft" and !$worn.genitals.type.includes("chastity") and $semen_amount / 10 gte random(50,150)>>
+				<<if $rightarm is "mpenisentrance" and $semen_amount gte random(500,1500)>>
 					<<set $rightFingersSemen to 1>>
+					<<set $_hand to ($_hand is undefined ? "right hand" : "hands")>>
 				<</if>>
+				<span class="pink">You are overcome by sensation. A surge of cum erupts from your penis<<if $_hand>>, and some of it gets on your $_hand<</if>>.</span>
+			<<else>>
+				<span class="pink">You are overcome by sensation. A surge of cum erupts from your penis.</span>
 			<</if>>
-			<<if $semen_amount lte (($semen_volume / 24) * 6)>>
+			<<if $semen_amount lte ($semen_volume * (6 / 24))>>
 				<span class="pink">Exhausted, your body only manages to produce a few droplets of watery cum.</span>
 				<<semenvolume -2>>
-			<<elseif $semen_amount lte (($semen_volume / 24) * 12)>>
+			<<elseif $semen_amount lte ($semen_volume * (12 / 24))>>
 				<span class="pink">Tired from overuse, your cum is thin and watery.</span>
 				<<semenvolume -1>>
-			<<elseif $semen_amount lte (($semen_volume / 24) * 18)>>
+			<<elseif $semen_amount lte ($semen_volume * (18 / 24))>>
 				<span class="pink">The repeated orgasms are taking their toll, reducing the amount of cum your body manages to produce.</span>
 				<<semenvolume -1>>
 			<</if>>
 
 		<</if>>
-	<<elseif $player.penisExist and $penissize lt 0>>
-		<span class="pink">You are overcome by sensation and climax like a girl.</span>
-		<<semenvolume -1>>
 	<<else>>
 		<span class="pink">You are overcome by sensation and climax.</span>
 	<</if>>
@@ -168,56 +174,40 @@
 		<<set $masochism += 5>>
 	<</if>>
 
-	<<orgasmsemen>>/*Makes changes to semen values*/
-	<<vaginaFluidOrgasm>>
+	<<if $masturbation_bowl is 1>><<set _liquid_collection_text to []>><</if>>
+	<<if $player.penisExist>>
+		<<semenOrgasm>>/*Makes changes to semen values*/
+	<</if>>
+	<<if $player.vaginaExist>>
+		<<vaginaFluidOrgasm>>
+		<<if _lube_released gt 10>>
+			<span class="pink">Fluids gush from your <<pussy>>.</span>
+		<<elseif _lube_released gt 0>>
+			<span class="pink">Fluids leak from your <<pussy>>.</span>
+		<</if>>
+	<</if>>
 
 	<<if $parasite.left_ear.name is "slime" and $parasite.right_ear.name is "slime">>
-		<span class="blue">A soothing warmth fills you.</span> You almost forget the strife of the world. You can tell it's the slimes in your ears, rewarding you for having an orgasm.
+		<span class="blue">A soothing warmth fills you.</span>
+		You almost forget the strife of the world. You can tell it's the slimes in your ears, rewarding you for having an orgasm.
 		<<gcorruption>><<ltrauma>><<lstress>><<trauma -12>><<stress -12>><<set $corruption_slime += 2>>
 		<br>
 	<<elseif $parasite.left_ear.name is "slime">>
-		<span class="blue">A soothing warmth fills you.</span> You almost forget the strife of the world. You can tell it's the slime in your left ear, rewarding you for having an orgasm.
+		<span class="blue">A soothing warmth fills you.</span>
+		You almost forget the strife of the world. You can tell it's the slime in your left ear, rewarding you for having an orgasm.
 		<<gcorruption>><<ltrauma>><<lstress>><<trauma -6>><<stress -6>><<set $corruption_slime += 1>>
 		<br>
 	<<elseif $parasite.right_ear.name is "slime">>
-		<span class="blue">A soothing warmth fills you.</span> You almost forget the strife of the world. You can tell it's the slime in your right ear, rewarding you for having an orgasm.
+		<span class="blue">A soothing warmth fills you.</span>
+		You almost forget the strife of the world. You can tell it's the slime in your right ear, rewarding you for having an orgasm.
 		<<gcorruption>><<ltrauma>><<lstress>><<trauma -6>><<stress -6>><<set $corruption_slime += 1>>
 		<br>
 	<</if>>
 
+	<!-- This code is orphaned, the $swarmchestgrab variable is not referenced or set in any other file -->
 	<<if $swarmchestgrab gte 1>>
 		<span class="pink">Your convulsions launch the _swarmcreature away from your chest.</span>
 		<<set $swarmchestgrab to 0>>
-	<</if>>
-	<<if $swarm1 is "chest">>
-		<<set $swarm1 to "active">>
-	<</if>>
-	<<if $swarm2 is "chest">>
-		<<set $swarm2 to "active">>
-	<</if>>
-	<<if $swarm3 is "chest">>
-		<<set $swarm3 to "active">>
-	<</if>>
-	<<if $swarm4 is "chest">>
-		<<set $swarm4 to "active">>
-	<</if>>
-	<<if $swarm5 is "chest">>
-		<<set $swarm5 to "active">>
-	<</if>>
-	<<if $swarm6 is "chest">>
-		<<set $swarm6 to "active">>
-	<</if>>
-	<<if $swarm7 is "chest">>
-		<<set $swarm7 to "active">>
-	<</if>>
-	<<if $swarm8 is "chest">>
-		<<set $swarm8 to "active">>
-	<</if>>
-	<<if $swarm9 is "chest">>
-		<<set $swarm9 to "active">>
-	<</if>>
-	<<if $swarm10 is "chest">>
-		<<set $swarm10 to "active">>
 	<</if>>
 
 	<<if $orgasmcount lte 1>>
@@ -357,6 +347,18 @@
 
 	<<set $orgasmcurrent += 1>>
 	<<wetnessCalculate>>
+
+	<<if $masturbation_bowl is 1>>
+		<<if $masturbation_milk gt 0>>
+			<<set _liquid_collection_text.push($masturbation_milk.toFixed(1) + " mL of milk")>>
+		<</if>>
+		<<if _liquid_collection_text.length gte 3>>
+			<span class="gold">You've gathered _liquid_collection_text[0], _liquid_collection_text[1], and _liquid_collection_text[2].</span>
+		<<else>>
+			<span class="gold">You've gathered <<print _liquid_collection_text.join(" and ")>>.</span>
+		<</if>>
+		<br>
+	<</if>>
 <</widget>>
 
 <<widget "orgasmstreet">>
@@ -416,10 +418,12 @@
 <</widget>>
 
 <<widget "breastfeed">>
-	<<set $_milk_released to random(1, 5)>>
+	<<set $_milk_released to random(10, 50)>>
 	<<if $cow gte 6>>
 		<<set $_milk_released *= 2>>
 	<</if>>
+	<<set $_milk_released /= 10>>
+	<<set $_milk_released to parseFloat($_milk_released.toFixed(1))>>
 
 	/* if the player doesn't have enough milk, set $_milk_released to whatever they have left */
 	<<if $milk_amount lt $_milk_released>>
@@ -431,76 +435,61 @@
 
 	<<if $masturbation_bowl is 1 and $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1>>
 		<<set $masturbation_milk += $_milk_released>>
+		<!-- If the player is using both hands, only print this text the second time, and report the total milk released this turn -->
+		<<set _milk_this_turn to (_milk_this_turn is undefined ? $_milk_released : _milk_this_turn + $_milk_released)>>
+		<!-- $args[0] is how many times this widget has been called this turn -->
+		<<if $args[0] and $args[0] is _handsOnBreasts>>
+			<span class="gold">You gather <<print (_milk_this_turn).toFixed(1)>> mL of your breast milk.</span>
+		<</if>>
 	<</if>>
 
 	<<set $milk_amount -= $_milk_released>>
 <</widget>>
 
-<<widget "orgasmhour">>
+<<widget "orgasmHourlyRecovery">>
 	<<if $purity gte 990>>
 		<<set $orgasmcount -= 1>>
-	<<elseif $purity gte 900>>
-		<<set $orgasmcount -= 2>>
-	<<elseif $purity gte 800>>
-		<<set $orgasmcount -= 3>>
-	<<elseif $purity gte 700>>
-		<<set $orgasmcount -= 4>>
-	<<elseif $purity gte 600>>
-		<<set $orgasmcount -= 5>>
-	<<elseif $purity gte 500>>
-		<<set $orgasmcount -= 6>>
-	<<elseif $purity gte 400>>
-		<<set $orgasmcount -= 7>>
-	<<elseif $purity gte 300>>
-		<<set $orgasmcount -= 8>>
-	<<elseif $purity gte 200>>
-		<<set $orgasmcount -= 9>>
-	<<elseif $purity gte 100>>
-		<<set $orgasmcount -= 10>>
 	<<else>>
-		<<set $orgasmcount -= 11>>
+		<<set _orgmod to Math.floor((1100-$purity)/100)>>
+		<<set _orgmod to Math.clamp(_orgmod, 2, 11)>>
+		<<set $orgasmcount -= _orgmod>>
 	<</if>>
 	<<if $cow gte 6>>
 		<<semenvolume 1>>
 		<<milkvolume 1>>
 	<</if>>
 	<<if $player.penisExist>>
-		<<if $arousal gte ($arousalmax / 5) * 4>>
-			<<set $semen_amount += Math.floor(($semen_volume / 24) * 3)>>
-			<<if $cow gte 6>>
-				<<set $semen_amount += Math.floor(($semen_volume / 24) * 3)>>
-			<</if>>
-			<<if $semen_amount gt $semen_volume>>
-				<<semenvolume 2>>
-				<<set $semen_amount to $semen_volume>>
-			<</if>>
-		<<elseif $arousal gte ($arousalmax / 5) * 3>>
-			<<set $semen_amount += Math.floor(($semen_volume / 24) * 2)>>
-			<<if $cow gte 6>>
-				<<set $semen_amount += Math.floor(($semen_volume / 24) * 2)>>
-			<</if>>
-			<<if $semen_amount gt $semen_volume>>
-				<<semenvolume 1>>
-				<<set $semen_amount to $semen_volume>>
-			<</if>>
+		<<if $arousal gte $arousalmax * (4/5)>>
+			<<set $_semen_gain to Math.floor($semen_volume * (3/24))>>
+		<<elseif $arousal gte $arousalmax * (3/5)>>
+			<<set $_semen_gain to Math.floor($semen_volume * (2/24))>>
 		<<else>>
-			<<set $semen_amount += Math.floor(($semen_volume / 24))>>
-			<<if $cow gte 6>>
-				<<set $semen_amount += Math.floor(($semen_volume / 24))>>
-			<</if>>
+			<<set $_semen_gain to Math.floor($semen_volume * (1/24))>>
+		<</if>>
+		<<if $cow gte 6>>
+			<<set $_semen_gain *= 2>>
 		<</if>>
 		<<if $drugged gte 1>>
-			<<set $semen_amount += Math.floor(($semen_volume / 24))>>
-			<<if $semen_amount gt $semen_volume>>
+			<<set $_semen_gain += Math.floor($semen_volume * (1/24))>>
+		<</if>>
+		<<set $semen_amount += $_semen_gain>>
+		
+		<<if $semen_amount gt $semen_volume>>
+			<<if $arousal gte $arousalmax * (4/5)>>
+				<<semenvolume 2>>
+			<<elseif $arousal gte $arousalmax * (3/5)>>
 				<<semenvolume 1>>
-				<<set $semen_amount to $semen_volume>>
 			<</if>>
+			<<if $drugged gte 1>>
+				<<semenvolume 1>>
+			<</if>>
+			<<set $semen_amount to $semen_volume>>
 		<</if>>
 	<</if>>
 	<<set $milk_amount += Math.floor(($milk_volume / 24))>>
 <</widget>>
 
-<<widget "orgasmsemen">>
+<<widget "semenOrgasm">>
 	<<set $_semen_released to 30>>
 	<<set $_semen_released += ($semen_volume / 30)>>
 	<<if $femaleclimax is 1>>
@@ -522,7 +511,7 @@
 
 	<<if $masturbation_bowl is 1 and $semen_amount gte 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $mouth isnot "mpenis">>
 		<<set $masturbation_semen += $_semen_released>>
-		<span class="gold">You've gathered <<print ($masturbation_semen).toFixed(1)>> ml of <<semen>>.</span>
+		<<set _liquid_collection_text.push($masturbation_semen.toFixed(1) + " mL of <<semen>>")>>
 	<</if>>
 
 	<<if $femaleclimax isnot 1>>
@@ -534,90 +523,121 @@
 <</widget>>
 
 <<widget "wetnessCalculate">>
+	<<if $player.vaginaExist>>
+		<<vaginaWetnessCalculate>>
+	<</if>>
+	<<if $player.penisExist>>
+		<<set $penisWetness to setup.bodyliquid.combined("penis") * 12>>
+		<<set $penisWetness to Math.clamp($penisWetness, 0, 120)>>
+	<</if>>
+	<<set $anusWetness to (setup.bodyliquid.combined("anus") + setup.bodyliquid.combined("bottom")) * 6>>
+	<<set $anusWetness to Math.clamp($anusWetness, 0, 120)>>
+	<<if $combat is 1>>
+		<<penetrationPainCalculate>>
+	<</if>>
+<</widget>>
+
+<<widget "vaginaWetnessCalculate">>
 <<set _totalArousal = 0>>
 <<set _length to $trackedArousal.length>>
 <<for _ia to 0; _ia lt _length; _ia++>>
 	<<set _totalArousal += $trackedArousal[_ia] / ((_length - _ia) * 1.5)>>
 <</for>>
 <<if $combat is 1>>
+	<!-- combatWetBoost can be from 0 to 5, because max promiscuity/deviancy is 100. -->
 	<<if $enemytype is "man">>
 		<<set $combatWetBoost to Math.floor($promiscuity /20)>>
-	<</if>>
-	<<if $enemytype is "tentacles" or $enemytype is "beast">>
+	<<elseif $enemytype is "tentacles" or $enemytype is "beast">>
 		<<set $combatWetBoost to Math.floor($deviancy /20)>>
+	<<else>>
+		<<set $combatWetBoost to 0>>
 	<</if>>
+	<!-- combatArousalWetness has been replaced by vaginaArousalWetness but I don't want to remove it completely so it's commented out for now. -->
+	/* <<set $_combatArousalWetness to 75 - Math.floor(Math.pow(0.99985,_totalArousal) * 75)>> 
+	<<set $combatWetBoost += $_combatArousalWetness>> */
 <<else>>
 	<<set $combatWetBoost to 0>>
 <</if>>
 
-<<set _exponential to Math.pow(0.99985,_totalArousal)>>
-<<if $player.vaginaExist>>
-	<<set $vaginaWetness to Math.clamp((75 - Math.floor(_exponential * 75)) + ($player.bodyliquid.vagina.goo * 6) + ($player.bodyliquid.vagina.semen * 6) + ($player.bodyliquid.vaginaoutside.goo * 6) + ($player.bodyliquid.vaginaoutside.semen * 6) + $combatWetBoost, 0, 120)>>
-<</if>>
-<<if $player.penisExist>>
-	<<set $penisWetness to Math.clamp(($player.bodyliquid.penis.goo * 12) + ($player.bodyliquid.penis.semen * 12), 0, 120)>>
-<</if>>
-<<set $anusWetness to Math.clamp(($player.bodyliquid.anus.goo * 6) + ($player.bodyliquid.anus.semen * 6) + ($player.bodyliquid.bottom.goo * 6) + ($player.bodyliquid.bottom.semen * 6), 0, 120)>>
-<<if $combat is 1>>
-	<<combatWetnessCalculate>>
-<</if>>
+<<set $vaginaWetness to $vaginaArousalWetness + $combatWetBoost + (setup.bodyliquid.combined("vagina") + setup.bodyliquid.combined("vaginaoutside")) * 6>>
+<<set $vaginaWetness to Math.clamp($vaginaWetness, 0, 120)>>
 <</widget>>
 
-<<widget "combatWetnessCalculate">>
+<<widget "penetrationPainCalculate">>
 <<set $vaginalPain to 0>>
 <<set $analPain to 0>>
 <<set $penisPain to 0>>
 <<if $demon lt 6 and $gamemode isnot "soft">>
-	<<if $gamemode is "hard">>
-		<<set _diff to 2>>
-	<<else>>
-		<<set _diff to 1>>
-	<</if>>
 	<<if $player.vaginaExist>>
 		<<if $consensual is 1>>
-			<<set _base to Math.floor(3 * Math.pow(0.4,$vaginaWetness/8))>>
+			<<set $vaginalPain to Math.floor(3 * Math.pow(0.4,$vaginaWetness/8))>>
 		<<else>>
-			<<set _base to Math.floor(6 * Math.pow(0.5,$vaginaWetness/25))>>
+			<<set $vaginalPain to Math.floor(6 * Math.pow(0.5,$vaginaWetness/25))>>
 		<</if>>
-		<<set $vaginalPain to _base * _diff>>
 	<</if>>
 	<<if $player.penisExist>>
 		<<if $consensual is 1>>
-			<<set _base to Math.floor(3 * Math.pow(0.4,$penisWetness/8))>>
+			<<set $penisPain to Math.floor(3 * Math.pow(0.4,$penisWetness/8))>>
 		<<else>>
-			<<set _base to Math.floor(6 * Math.pow(0.5,$penisWetness/25))>>
+			<<set $penisPain to Math.floor(6 * Math.pow(0.5,$penisWetness/25))>>
 		<</if>>
-		<<set $penisPain to _base * _diff>>
 	<</if>>
 	<<if $consensual is 1>>
-		<<set _base to Math.floor(3 * Math.pow(0.4,$anusWetness/8))>>
+		<<set $analPain to Math.floor(3 * Math.pow(0.4,$anusWetness/8))>>
 	<<else>>
-		<<set _base to Math.floor(6 * Math.pow(0.5,$anusWetness/25))>>
+		<<set $analPain to Math.floor(6 * Math.pow(0.5,$anusWetness/25))>>
 	<</if>>
-	<<set $analPain to _base * _diff>>
+	<<if $gamemode is "hard">>
+		<<set $vaginalPain *= 2>>
+		<<set $penisPain *= 2>>
+		<<set $analPain *= 2>>
+	<</if>>
 <</if>>
 <</widget>>
 
+<!-- Lube is only released when vaginaArousalWetness is over 60 (also, its max value is 100)-->
+<!-- "passive" means the lube is dripping out, while "active" means it is being pushed out  -->
 <<widget "vaginaFluidPassive">>
-	<<set _temp_lube to Math.floor(Math.clamp($vaginaWetness - 60 - random(10,40), 0, 40)/4)>>
+	<<set $_lube_max to Math.round(30*Math.log10($vaginaArousalWetness - 59))>>
+	<<set _lube_released to random(0, $_lube_max)/20>>
+	<!-- Expected value is between 0 and 2.5, much more likely to be on the lower end due to wetness having a softcap -->
+	<<set _lube_released to parseFloat(_lube_released.toFixed(1))>>
+
 	<<if $masturbation_bowl is 1>>
-		<<set $masturbation_vaginaFluid += _temp_lube>>
+		<<set $masturbation_vaginaFluid += _lube_released>>
 	<</if>>
-	<<set $lube_produced_stat += _temp_lube>>
+	<<set $lube_produced_stat += _lube_released>>
 <</widget>>
 
 <<widget "vaginaFluidActive">>
-	<<set _temp_lube to Math.floor(Math.clamp($vaginaWetness - 60 - random(0,30), 0, 40)/4)>>
+	<<set $_lube_max to Math.ceil(30*Math.log10($vaginaArousalWetness - 59))>>
+	<<set _lube_released to random(10, $_lube_max)/10>>
+	<!-- Expected value is between 1 and 5, much more likely to be on the lower end due to wetness having a softcap  -->
+	<<set _lube_released to parseFloat(_lube_released.toFixed(1))>>
+
 	<<if $masturbation_bowl is 1>>
-		<<set $masturbation_vaginaFluid += _temp_lube>>
+		<<set $masturbation_vaginaFluid += _lube_released>>
 	<</if>>
-	<<set $lube_produced_stat += _temp_lube>>
+	<<set $lube_produced_stat += _lube_released>>
 <</widget>>
 
 <<widget "vaginaFluidOrgasm">>
-	<<set _temp_lube to Math.floor(Math.clamp($vaginaWetness, 0, 40)/2)>>
-	<<if $masturbation_bowl is 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
-		<<set $masturbation_vaginaFluid += _temp_lube>>
+	<<addVaginalWetness 10>>
+	<<if $vaginaArousalWetness gte 60>>
+		<<set _lube_released to (2*Math.log10($vaginaArousalWetness - 59)) + 11>>
+	<<elseif $vaginaArousalWetness gte 30>>
+		<<set _lube_released to ($vaginaArousalWetness / 10) + 5>>
+	<<else>>
+		<<set _lube_released to 0>>
 	<</if>>
-	<<set $lube_produced_stat += _temp_lube>>
+	<!-- Expected value is either 0, or between 5 and 15 -->
+	<<set _lube_released to parseFloat(_lube_released.toFixed(1))>>
+
+	<<if $masturbation_bowl is 1 and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
+		<<set $masturbation_vaginaFluid += _lube_released>>
+		<<set _liquid_collection_text.push($masturbation_vaginaFluid.toFixed(1) + " mL of vaginal fluid")>>
+	<<elseif $worn.under_lower.vagina_exposed is 0>>
+		<<set $underlowerwet += Math.round(30 * Math.clamp((1 - $underlowerwet/100), 0, 1))>>
+	<</if>>
+	<<set $lube_produced_stat += _lube_released>>
 <</widget>>

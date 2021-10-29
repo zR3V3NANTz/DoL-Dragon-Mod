@@ -1319,7 +1319,7 @@
 <<widget "hour">>
 <<if $statFreeze isnot true or $schism>>
 	<<for $minute gte 60>>
-		<<set $minute -= 60>><<orgasmhour>>
+		<<set $minute -= 60>><<orgasmHourlyRecovery>>
 		<<if $innocencestate is 1 and $control lte 0>>
 			<<awareness 1>>
 		<</if>>

@@ -66,12 +66,7 @@ You whip up another bun, stuffed with extra cream. Sam arrives to collect and de
 <<masturbationeffects>>
 <<masturbationactions>>
 
-<<set $masturbation_fluid to ($masturbation_semen + $masturbation_milk + $masturbation_vaginaFluid)>>
-<<if $masturbation_fluid gt $creamstat>>
-	<<set $creamstat to $masturbation_fluid>>
-<</if>>
-<<masturbationbowlimage>>
-You've gathered <<print ($masturbation_fluid).toFixed(1)>> ml of fluid.
+<<masturbationbowl>>
 <br><br>
 
 <<if $timer lte 1>>
@@ -409,12 +404,7 @@ You make sure you're alone in the kitchen, and place a bowl in front of you.
 <span class="pink">You hear Sam right outside the door!</span>
 <</if>>
 <br>
-<<set $masturbation_fluid to ($masturbation_semen + $masturbation_milk + $masturbation_vaginaFluid)>>
-<<if $masturbation_fluid gt $creamstat>>
-	<<set $creamstat to $masturbation_fluid>>
-<</if>>
-<<masturbationbowlimage>>
-You've gathered <<print ($masturbation_fluid).toFixed(1)>> ml of fluid.
+<<masturbationbowl>>
 <br><br>
 
 <<if $timer lte 10>>

@@ -136,28 +136,35 @@
 <</widget>>
 
 <<widget "semenvolume">>
-	<<if $args[0] and $player.penisExist>>
-		<<set $semen_volume += ($args[0] * 3)>>
+	<<if isNaN($args[0])>>
+		<<run throw new Error("The semenvolume widget was passed a non-numeric argument (or none at all)!")>>
+	<<elseif $player.penisExist>>
+		<<set $_volume_increase to $args[0] * 3>>
 		<<if $cow gte 6>>
-			<<set $semen_volume += ($args[0] * 3)>>
+			<<set $_volume_increase *= 2>>
 		<</if>>
-		<<set $semen_volume = Math.clamp($semen_volume, 0, $semen_max)>>
+		<<set $semen_volume += $_volume_increase>>
+		<<set $semen_volume to Math.clamp($semen_volume, 0, $semen_max)>>
 	<</if>>
 <</widget>>
 
 <<widget "milkvolume">>
-	<<if $args[0]>>
+	<<if isNaN($args[0])>>
+		<<run throw new Error("The milkvolume widget was passed a non-numeric argument (or none at all)!")>>
+	<<else>>
 		<<if $args[0] gt 0>>
-			<<set $lactation_pressure += 1>>
 			<<if $cow gte 6>>
+				<<set $lactation_pressure += 2>>
+			<<else>>
 				<<set $lactation_pressure += 1>>
 			<</if>>
 		<</if>>
-		<<if $lactating is 1>>
-			<<set $milk_volume += ($args[0] * 2)>>
+		<<if $lactating is 1 and $args[0] isnot 0>>
+			<<set $_volume_increase to ($args[0] * 2)>>
 			<<if $cow gte 6>>
-				<<set $milk_volume += ($args[0] * 2)>>
+				<<set $_volume_increase *= 2>>
 			<</if>>
+			<<set $milk_volume += $_volume_increase>>
 			<<set $milk_volume = Math.clamp($milk_volume, 24, $milk_max)>>
 		<</if>>
 	<</if>>
@@ -213,6 +220,9 @@
 				<<run $trackedArousal.push(0)>>
 			<</if>>
 			<<set $trackedArousal[$trackedArousal.length - 1] += $args[0]>>
+			<<if $args[0] gt 0>>
+				<<set $timeSinceArousal to 0>>
+			<</if>>
 		<</if>>
 	<<else>>
 		<<if $arousalError is undefined>>

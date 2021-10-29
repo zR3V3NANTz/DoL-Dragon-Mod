@@ -216,16 +216,63 @@
 			<<set $underupperwet -= $pass>>
 		<</if>>
 	<</if>>
+	/* Commented out, new system is the "passArousalWetness" widget
 	<!-- Soak underwear if vagina is wet enough -->
 	<<if $vaginaWetness gte 60 and !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("swim")>>
 		<<set $underlowerwet += Math.log10($vaginaWetness - 59) * 2 * $pass>><!-- 59 is to have at minimum log10(1) and not log10(0), which is NaN -->
-		<<if $underlowerwet gte 100>>
-			<<set $pantiesSoaked to 1>>
-		<<else>>
-			<<set $pantiesSoaked to 0>>
-		<</if>>
+		<<set $pantiesSoaked to ($underlowerwet gte 100)>>
 		<!-- Wetness accumulates at vaginaWetness >= 63 (or at >= 70 in direct sunlight), otherwise it dries out faster than it soaks.
 			At maximum wetness (90, drenched) panties become damp in 25 minutes and soaked in 50 min, at 65 wetness - damp in 1.5 hours and soaked in 3h-->
+	<</if>>
+	*/
+<</widget>>
+
+<<widget "passArousalWetness">>
+	<<if $player.vaginaExist>>
+		<<set $_wetnessChange to 0>>
+		<<set $_arousalPercent to Math.clamp($arousal / $arousalmax, 0, 1)>>
+		
+		<!-- Vaginal lube is produced at a fairly linear rate, between 1-3 per minute based on arousal. -->
+		<<if $arousal gte $arousalmax * (2/5)>>
+			<<set $_wetnessChange to 1 + ($_arousalPercent * 2)>>
+			<!-- It also gets harder to build up the closer you get to full wetness -->
+			<<set $_wetnessPercent to Math.clamp($vaginaArousalWetness / 100, 0, 1)>>
+			<<set $_wetnessChange to Math.floor($_wetnessChange * 2 * (1 - $_wetnessPercent))>>
+		<</if>>
+
+		<!-- It dries up at a gradually increasing rate, starting at 0.1 per minute, but increasing the longer it's been since last arousal. -->
+		<!-- It also dries slower at high arousal, in an inverse relationship. -->
+		<<set $_wetnessChange -= 0.1 * $timeSinceArousal * (1-$_arousalPercent)>>
+
+		<!-- If wetnessChange would go negative, and arousal is high enough, wetness instead does not change. -->
+		<<if $arousal gte $arousalmax * (3/5) and $_wetnessChange lt 0>>
+			<<set $_wetnessChange to 0>>
+		<</if>>
+
+		<<set $vaginaArousalWetness += Math.round($_wetnessChange * $pass)>>
+
+		<!-- Arbitrarily, we'll say that the player's vagina holds up to 60 units of lube, and it begins to leak out above 60. -->
+		<<if $vaginaArousalWetness gte 60>>
+			<<set $vaginaArousalWetness to Math.floor(120 - (3600/$vaginaArousalWetness))>>
+
+			<!-- Clothing dries at a rate of -1 * $pass. To offset that, it needs to be wet by at least 1 * $pass. -->
+			<!-- Expected rate: between 1 and 2.61, usually around 1.8 -->
+			<<set $_change to 1 + Math.log10($vaginaArousalWetness - 59)>>
+			<<set $_change to Math.clamp($_change, 1, 3)>>
+
+			<<if !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("swim")>>
+				<<set $underlowerwet += Math.round($_change * $pass)>>
+				<<set $underlowerwet to Math.clamp($underlowerwet, 0, 100 + $pass)>>
+				<<set $pantiesSoaked to ($underlowerwet gte 100)>>
+			<</if>>
+			<!-- Commented out for now because the wetness messages aren't updated to account for it -->
+			/* <<if ($underlowerwet gte 100 or $worn.under_lower.type.includes("naked")) and !$worn.lower.type.includes("naked") and !$worn.lower.type.includes("swim")>>
+				<<set $lowerwet += Math.round($_change * $pass)>>
+			<</if>> */
+		<</if>>
+		
+		<<set $vaginaArousalWetness to Math.clamp($vaginaArousalWetness, 0, 100)>>
+		<<vaginaWetnessCalculate>>
 	<</if>>
 <</widget>>
 
@@ -241,7 +288,6 @@
 	<<else>>
 		<<set $pass to 0>>
 	<</if>>
-	<<passwater>>
 	<<pregProgressTime $pass>>
 	<<if $controlled is 0 and $anxiety gte 2>>
 		<<set $stress += $pass>>
@@ -292,6 +338,15 @@
 	<<else>>
 		<<arousal `$pass * -10`>><<arousalpass>>
 	<</if>>
+	<<if $arousal lt ($arousalmax / 4)>>
+		<<set $timeSinceArousal += $pass>>
+	<<else>>
+		<<set $timeSinceArousal to 1>>
+	<</if>>
+	<<if $player.vaginaExist>>
+		<<passArousalWetness>>
+	<</if>>
+	<<passwater>>
 	<<if $daystate is "day" and $weather is "clear" and $outside is 1 and $location isnot "forest" and !$worn.head.type.includes("shade")>>
 		<<if $season is "winter">>
 			<<tanned `$pass / 4`>>
@@ -4740,13 +4795,14 @@ __Map__<br>
 <</widget>>
 
 <<widget "wetness_init">>
-<<if $objectVersion.vaginaWetness lt 2 or $objectVersion.vaginaWetness is undefined>>
+<<if $objectVersion.vaginaWetness lt 3 or $objectVersion.vaginaWetness is undefined>>
 	<<set $vaginaWetness to 0>>
-	<<set $combatWetBoost to 0>>
 	<<set $trackedArousal to [0]>>
 	<<set $masturbation_vaginaFluid to 0>>
+	<<set $vaginaArousalWetness to 0>>
+	<<set $timeSinceArousal to 0>>
 
-	<<set $objectVersion.vaginaWetness to 2>>
+	<<set $objectVersion.vaginaWetness to 3>>
 <</if>>
 <</widget>>
 
