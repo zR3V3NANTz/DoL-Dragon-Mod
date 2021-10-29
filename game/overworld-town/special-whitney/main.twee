@@ -3273,14 +3273,14 @@ You approach Whitney, and take shelter from the $weather under the tree.
 			"Might hit up the pub later," <<he>> says. "You'd better not follow me."
 		<</if>>
 	<<elseif $rng gte 61>>
-	"You're getting way too comfortable around me," <<he>> says behind a smile.
+		"You're getting way too comfortable around me," <<he>> says behind a smile.
 	<<elseif $rng gte 41>>
-	"Do you ever stop talking?" <<he>> asks. A few moments of silence pass. "It was a question, not a request, idiot!"
-	<<gstress>><<stress 1>>
+		"Do you ever stop talking?" <<he>> asks. A few moments of silence pass. "It was a question, not a request, idiot!"
+		<<gstress>><<stress 1>>
 	<<elseif $rng gte 21>>
-	"Keep bothering me and I'll dunk you in the fountain," <<he>> says in between drags. "Sure would like to see your clothes go see-through."
+		"Keep bothering me and I'll dunk you in the fountain," <<he>> says in between drags. "Sure would like to see your clothes go see-through."
 	<<else>>
-	<<He>> stays silent, but seems to be listening.
+		<<He>> stays silent, but seems to be listening.
 	<</if>>
 <br><br>
 <<whitneyoptions>>

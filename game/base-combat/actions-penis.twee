@@ -405,7 +405,7 @@
 				<<if $condomUse is false>>
 				<<elseif $condomUse is true and $player.condom is false and $parasite.penis.name is undefined>>
 					<<equipCondom>>
-					<span class="green"><<He>> puts a condom on your <<penis>>.</span>
+					<span class="green"><<He>> slips a condom on your <<penis>>.</span>
 				<</if>>
 				<<if $enemytype is "beast">><<set $NPCList[_j].stance to "top">><</if>>
 				<<set $NPCList[_j].location.genitals = "genitals">>
@@ -467,7 +467,7 @@
 				<<if $condomUse is false>>
 				<<elseif $condomUse is true and $player.condom is false and $parasite.penis.name is undefined>>
 					<<equipCondom>>
-					<span class="green"><<He>> puts a condom on your <<penis>>.</span>
+					<span class="green"><<He>> slips a condom on your <<penis>>.</span>
 				<</if>>
 				<<break>>
 			<</if>>

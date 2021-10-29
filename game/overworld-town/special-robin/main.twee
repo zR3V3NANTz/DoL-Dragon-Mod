@@ -993,9 +993,9 @@ Bailey shoves Robin into the back seat, and drives away.
 	<<if $baileyvisit is 0>>
 		<<set _options to 1>>
 		<<if $dissociation gte 1>>
-			<<He>> looks at your eyes and grimaces. "Maybe there's someone that's into that fish-eyed stare," <<he>> mutters, shifting aside a paper <<he>> had been reading.
+			<<He>> looks at your eyes and grimaces. "I'm sure someone's into it," <<he>> mutters, shifting aside a paper <<he>> had been reading.
 		<<elseif $pain gte 40>>
-			<<He>> looks at your tear-covered face and sneers. "What, do you want me to kiss your boo-boo? There's bandages in the bathroom."
+			<<He>> looks at your tear-covered face and sneers. "There are bandages in the bathroom."
 		<<elseif $goooutsidecount + $semenoutsidecount gte 25>>
 			<<He>> looks at your body, covered in <<if $semenoutsidecount gte 1 and $goooutsidecount gte 1>>slime and semen<<elseif $semenoutsidecount gte 1>>semen<<else>>slime<</if>>, and turns away. "Get yourself cleaned up, you're a disgrace."
 		<<elseif $arousal gte ($arousalmax / 5) * 3>>
@@ -1138,7 +1138,7 @@ You put the cash on the desk. Bailey snatches it, and reclines in <<his>> chair 
 	<br>
 	"Now!" Bailey barks. 
 	<br><br>
-	You step out of Bailey's office, defeated. It was worth a shot.
+	You step out of Bailey's office. It was worth a shot.
 	<br><br>
 
 	<<link [[Next|Orphanage]]>><<endevent>><</link>>
@@ -1307,7 +1307,7 @@ You read the note.
 
 I've started feeling butterflies in my tummy when you talk to me, and when we hug it feels like my body is melting (In a good way). Do you want to be my
 <<if ($player.gender isnot $player.gender_appearance and $player.gender isnot "h") or $backgroundTraits.includes("crossdresser")>>
-	<<girlfriend>>? Or my <<print ($player.gender_appearance is "m" ? "girlfriend" : "boyfriend")>>? (Either one would make me really happy.)
+	<<girlfriend>>? Or my <<print ($player.gender_appearance is "m" ? "girlfriend" : "boyfriend")>>? (Either would make me happy.)
 <<else>>
 	<<girlfriend>>?
 <</if>>

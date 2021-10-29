@@ -69,6 +69,9 @@
 		<<elseif $location is "asylum" and $suspicion gte 80 and random(1, 10) gte 10>>
 			<<set $schoolwake to 1>>
 			<<set $rapewake to 1>>
+		<<elseif $location is "prison" and $hour is 6>>
+			<<set $schoolwake to 1>>
+			<<set $prisonwake to 1>>
 		<<elseif $location is "alex_cottage" and ($hour gte 21 or $hour lte 5) and $NPCName[$NPCNameList.indexOf("Alex")].lust gte 10 and $alexwake isnot 1>>
 			<<set $alexwake to 1>>
 			<<set $schoolwake to 1>>

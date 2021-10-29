@@ -122,6 +122,14 @@
 <<generalWear "neck" $args[0] $args[1] $args[2]>>
 <</widget>>
 
+<<widget "leash">>/*Always replaces neckwear, even if cursed. */
+<<if $worn.neck.cursed is 1>>
+	<<set $worn.neck.type.push("broken")>>
+	<<neckruined>>
+<</if>>
+<<generalWear "neck" $args[0] $args[1] $args[2]>>
+<</widget>>
+
 <<widget "handswear">>
 <<generalWear "hands" $args[0] $args[1] $args[2]>>
 <</widget>>

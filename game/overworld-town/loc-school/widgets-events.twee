@@ -1250,7 +1250,7 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 		<</if>>
 		<<link [[Fight|Bully Fight]]>><<set $fightstart to 1>><<set $submissive -= 1>><<npcincr Whitney dom -1>><</link>><<ldom>>
 		<br>
-	<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 20 and $whitneyromance is 1 and $worn.neck.collared is 0>><<neckwear 1>>
+	<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 20 and $whitneyromance is 1 and $worn.neck.collared is 0>><<neckwear 21>>
 
 <<npc Whitney>><<person1>>Whitney and <<his>> friends surround you. <<He>> shoves you into one of <<his>> cronies, who shoves you into another. This repeats, and in the confusion you feel something clamp around your neck. "How do you like my present?" <<he>> asks, breathing against your ear. "I think you suit it." <<He>> and <<his>> friends saunter off.
 <<npcincr Whitney lust 5>><<glust>><<garousal>><<arousal 600>>
@@ -1675,10 +1675,10 @@ For better or worse, whatever they're doing apparently doesn't involve you... Ye
 	<<npc Whitney>><<person1>>Whitney marches towards you. <<He>> pushes you against a wall. <<His>> friends flank <<him>>. "Hey <<girl>>," <<he>> says. "Time for your duties." <<He>> grabs your arm.
 	<br><br>
 
-<<link [[Let it happen (0:20)|Bully Romance]]>><<set $submissive += 1>><<npcincr Whitney dom 1>><<trauma 6>><<stress 6>><</link>><<gtrauma>><<gstress>><<gdom>>
-<br>
-<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
-<br>
+	<<link [[Let it happen (0:20)|Bully Romance]]>><<set $submissive += 1>><<npcincr Whitney dom 1>><<trauma 6>><<stress 6>><</link>><<gtrauma>><<gstress>><<gdom>>
+	<br>
+	<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
+	<br>
 
 	<<else>>
 	<<npc Whitney>><<person1>>You hear running footsteps approach. Whitney slams into you, knocking you to the ground. <<He>> sits on your back and rests <<his>> shoes on your head. "This is comfy," <<he>> says. "Shame we can't stay." <<He>> stands up. "Later slut."

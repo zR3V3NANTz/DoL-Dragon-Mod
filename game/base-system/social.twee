@@ -124,7 +124,7 @@
 					{ requiredValue: -40,	color: 'pink',	description: 'crestfallen.'},
 					{ requiredValue: -10,	color: 'pink',	description: 'unhappy.'},
 					{ requiredValue: 10,	color: 'pink',	description: 'spiteful.'},
-					{ requiredValue: 40,	color: 'def',	description: 'vengful.'},
+					{ requiredValue: 40,	color: 'def',	description: 'vengeful.'},
 				]},
 				{ requiredValue: -40, secondaryStates : [
 					{ requiredValue: -100,	color: 'purple',	description: 'morose.'},
@@ -202,8 +202,69 @@
 				]}>>
 				<<set _hermBoxConfig = { name : "Genitalia", description : '<<relation-text _hermRepConfig>>'}>>
 			<</if>>
-		<</silently>>
 
+			/* Prison */
+			<<if $prison>>
+				<<set _prisonMoodConfig = { currentValue: $prison.hope, secondaryValue: $prison.reb, preText: 'The atmosphere in the prison is ', states : [
+					{ requiredValue: 0, secondaryStates : [
+						{ requiredValue: 0,	color: 'pink',	description: 'hopeless.'},
+						{ requiredValue: 20,	color: 'pink',	description: 'crestfallen.'},
+						{ requiredValue: 40,	color: 'pink',	description: 'unhappy.'},
+						{ requiredValue: 60,	color: 'pink',	description: 'spiteful.'},
+						{ requiredValue: 80,	color: 'def',	description: 'vengeful.'},
+					]},
+					{ requiredValue: 20, secondaryStates : [
+						{ requiredValue: 0,	color: 'purple',	description: 'morose.'},
+						{ requiredValue: 20,	color: 'purple',	description: 'dispirited.'},
+						{ requiredValue: 40,	color: 'purple',	description: 'resigned.'},
+						{ requiredValue: 60,	color: 'purple',	description: 'disobedient.'},
+						{ requiredValue: 80,	color: 'def',		description: 'unruly.'},
+					]},
+					{ requiredValue: 40, secondaryStates : [
+						{ requiredValue: 0,	color: 'blue',	description: 'obedient.'},
+						{ requiredValue: 20,	color: 'blue',	description: 'compliant.'},
+						{ requiredValue: 40,	color: 'blue',	description: 'calm.'},
+						{ requiredValue: 60,	color: 'blue',	description: 'subversive.'},
+						{ requiredValue: 80,	color: 'def',	description: 'defiant.'},
+					]},
+					{ requiredValue: 60, secondaryStates : [
+						{ requiredValue: 0,	color: 'teal',	description: 'enduring.'},
+						{ requiredValue: 20,	color: 'teal',	description: 'unresistant.'},
+						{ requiredValue: 40,	color: 'teal',	description: 'optimistic.'},
+						{ requiredValue: 60,	color: 'teal',	description: 'rebellious.'},
+						{ requiredValue: 80,	color: 'def',	description: 'mutinous.'},
+					]},
+					{ requiredValue: 80, secondaryStates : [
+						{ requiredValue: 0,	color: 'green',	description: 'tolerant.'},
+						{ requiredValue: 20,	color: 'green',	description: 'patient.'},
+						{ requiredValue: 40,	color: 'green',	description: 'hopeful.'},
+						{ requiredValue: 60,	color: 'green',	description: 'idealistic.'},
+						{ requiredValue: 80,	color: 'def',	description: 'revolutionary.'},
+					]},
+				]}>>
+				<<set _guardRepConfig = { currentValue: $prison.guards, preText: 'The guards ', states : [
+					{ requiredValue: 0,		color: 'green',		description: 'forget you are here.'},
+					{ requiredValue: 15,	color: 'teal',		description: 'overlook you.'},
+					{ requiredValue: 30,	color: 'lblue',		description: 'expect no trouble from you.'},
+					{ requiredValue: 45,	color: 'blue',		description: 'are keeping an eye on you.'},
+					{ requiredValue: 60,	color: 'purple',	description: 'watch you.'},
+					{ requiredValue: 80,	color: 'pink',		description: 'consider you a problem.'},
+					{ requiredValue: 100,	color: 'red',		description: 'have you under constant surveillance.'}
+				]}>>
+				<<set _inmateRepConfig = { currentValue: $prison.inmates, preText: 'Most fellow inmates ', states : [
+					{ requiredValue: 0,		color: 'red',		description: 'see you as meat.'},
+					{ requiredValue: 15,	color: 'pink',		description: 'think you\'re a fucktoy.'},
+					{ requiredValue: 30,	color: 'purple',	description: 'consider you a bitch.'},
+					{ requiredValue: 45,	color: 'blue',		description: 'see you as one of them.'},
+					{ requiredValue: 60,	color: 'lblue',		description: 'have a good opinion of you.'},
+					{ requiredValue: 80,	color: 'teal',		description: 'respect you.'},
+					{ requiredValue: 100,	color: 'green',		description: 'think you\'re the boss.'}
+				]}>>
+				<<set _prisonBoxConfig = { name : "Prison atmosphere", icon : "img/misc/icon/police.png", description: "<<relation-text _prisonMoodConfig>>"}>>
+				<<set _guardBoxConfig = { name : "Prison guards", icon : "img/misc/icon/police.png", description: "<<relation-text _guardRepConfig>>"}>>
+				<<set _inmateBoxConfig = { name : "Prison inmates", icon : "img/misc/icon/police.png", description: "<<relation-text _inmateRepConfig>>"}>>
+			<</if>>
+		<</silently>>
 		<<relation-box-simple _policeBoxConfig>>
 		<<relation-box-simple _orphanageBoxConfig>>
 		<<relation-box-simple _teacherBoxConfig>>
@@ -213,6 +274,11 @@
 		<</if>>
 		<<if $schoolrep.herm neq 0>>
 			<<relation-box-simple _hermBoxConfig>>
+		<</if>>
+		<<if $prison>>
+			<<relation-box-simple _guardBoxConfig>>
+			<<relation-box-simple _inmateBoxConfig>>
+			<<relation-box-simple _prisonBoxConfig>>
 		<</if>>
 	</div>
 	<<if $farm_stage gte 2>>

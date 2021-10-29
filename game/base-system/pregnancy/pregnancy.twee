@@ -1032,6 +1032,7 @@
 	<<case "compound">>
 	<<case "temple">>
 	<<case "cave">>
+	<<case "prison">>
 	<<case "edencabin">>
 		<<if $sexStats.vagina.pregnancy.potentialFathers.includes("Eden")>>
 			/*Eden thinks it's his child?*/

@@ -965,6 +965,30 @@ span.number, span.suit {
 	color: #8B3626;
 }
 
+.relaxed {
+	color:#63719C
+}
+
+.anxious {
+	color:#973253
+}
+
+.veteran {
+	color:#956BB4
+}
+
+.methodical {
+	color:#CE7993
+}
+
+.scarred {
+	color:#D8621F
+}
+
+.tattooed {
+	color:#266568
+}
+
 /* background colours */
 .bg-red {
 	background-color: #EC3535;
@@ -1349,6 +1373,13 @@ span.number, span.suit {
 #spray6 {
 	position: fixed;
 	left: 68px;
+	top: 192px;
+	z-index: 10;
+}
+
+#spray7 {
+	position: fixed;
+	left: 80px;
 	top: 192px;
 	z-index: 10;
 }
@@ -1937,6 +1968,9 @@ removed unused:
 }
 .layer-sexskinback {
 	z-index: 11;
+}
+.layer-sexlegsback {
+	z-index: 12;
 }
 .layer-sexlegsbackacc {
 	z-index: 13;
@@ -4517,4 +4551,8 @@ img, canvas {
 	-webkit-filter: hue-rotate(0deg) saturate(0%) brightness(500%) contrast(160%);
 	filter: hue-rotate(0deg) saturate(0%) brightness(500%) contrast(160%);
 	opacity: 0.50;
+}
+
+#die_text {
+	font-size: 200%;
 }

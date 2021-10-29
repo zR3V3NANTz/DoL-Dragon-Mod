@@ -11,10 +11,11 @@ You are forced through the door and to your knees before a <<generate1>><<person
 <br><br>
 <<endevent>>
 <<if $worn.neck.collared isnot 1>>
-	<<neckwear 1>>
+	<<neckwear 21>>
 	Your neck is freed only briefly. Someone closes something hard and cold around it before you are yanked to your feet and pulled away.
 <<else>>
-	Someone else yanks you to your feet and pulls you away.
+	<<attach_leash>>
+	Someone attaches a leash to your collar, yanks you to your feet, and pulls you away.
 <</if>>
 <<if !$worn.feet.type.includes("shackle")>>
 	You feel cold metal clamp around your ankles.

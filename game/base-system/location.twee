@@ -183,6 +183,7 @@
 		setup.addlocation( "seacliffs"                ).parent("sea").bus().build();
 		setup.addlocation( "seapirates"               ).parent("sea").inside().build();
 		setup.addlocation( "coastpath"                ).parent("sea").build();
+		setup.addlocation( "prison"               	  ).parent("sea").location().inside().build();
 
 		setup.addlocation("tentworld"                 ).parent("world").area().location().tanning(0).inside().build(); /* TODO: remove inside() when consuming code has been adapted */
 

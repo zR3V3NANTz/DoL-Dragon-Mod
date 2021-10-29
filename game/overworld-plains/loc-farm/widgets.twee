@@ -1321,7 +1321,7 @@
 <</widget>>
 
 <<widget "eventsfarm">>
-<<if $farm.build isnot undefined and $farm.build isnot 0 and $hour gte 6 and random(1, 2) is 2>>
+<<if $farm.build isnot undefined and $farm.build isnot 0 and $hour gte 6 and random(1, 3) gte 2>>
 	<<if $exposed gte 2 and $uncomfortable.nude is true or $exposed is 1 and $uncomfortable.underwear is true>>
 		You peek around a shed. The yard beyond looks clear. You take a deep breath, and run into the open.
 		<br><br>
@@ -1799,7 +1799,7 @@
 	"This is our stable." It's Alex. The <<farm_text dog>>'s ears spring up and it lurches forward, <span class="red"><<farm_his dog>> knot still inside you.</span>
 	<br><br>
 
-	You're pulled across the field, backwards and on all fours. You try to wiggle free, but the knot has yet to deflate at all. It's in too tight.
+	You're pulled across the field, backwards and on all fours. You try to wiggle free, but the knot has yet to shrink at all. It's in too tight.
 	<br><br>
 
 	"I'm impressed," says an unknown <<person2>><<personsimple>>'s voice.

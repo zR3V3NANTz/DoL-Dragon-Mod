@@ -879,7 +879,7 @@ You call for help as the shoots tighten around you.
 		With the <<persons>> help, you manage to struggle free. You thank <<him>>, and <<he>> returns to the orphanage proper.
 		<br><br>
 
-		<<link [[Next|Garden Flowers]]>><</link>>
+		<<link [[Next|Garden Flowers]]>><<endevent>><</link>>
 		<br>
 	<</if>>
 <</if>>

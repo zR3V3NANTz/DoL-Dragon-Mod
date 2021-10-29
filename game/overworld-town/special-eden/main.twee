@@ -18,9 +18,14 @@ You pass out again.
 You cross the road. Eden spots you. "You think this is funny?" <<He>> shouts, marching towards you. "I've been worried half to death!" <<He>> grasps your arm. "I'm taking you home, and never letting you leave again. I'll keep you in a cage if I have to."
 <br><br>
 
-<<if $worn.neck.collared isnot 1>><<neckwear 1>>
-<<He>> fastens a collar around your neck.
-<br><br>
+<<if $worn.neck.collared isnot 1>>
+	<<neckwear 21>>
+	<<He>> fastens a collar around your neck.
+	<br><br>
+<<else>>
+	<<attach_leash>>
+	<<He>> attaches a leash to your collar.
+	<br><br>
 <</if>>
 <<He>> grabs hold of your leash and pulls. "Come on. I'll punish you when we get home."
 <br><br>
@@ -57,9 +62,14 @@ Eden calms down a bit once you're in the forest.
 	"You think this is funny?" <<He>> shouts. "I've been worried half to death!" <<His>> grip is tight. "I'm taking you home, and never letting you leave again. I'll keep you in a cage if I have to."
 	<br><br>
 
-	<<if $worn.neck.collared isnot 1>><<neckwear 1>>
-	<<He>> fastens a collar around your neck.
-	<br><br>
+	<<if $worn.neck.collared isnot 1>>
+		<<neckwear 21>>
+		<<He>> fastens a collar around your neck.
+		<br><br>
+	<<else>>
+		<<attach_leash>>
+		<<He>> attaches a leash to your collar.
+		<br><br>
 	<</if>>
 	<<He>> grabs hold of your leash and pulls. "Come on. I'll punish you when we get home."
 	<br><br>

@@ -241,13 +241,13 @@ You gasp for air. "Be careful of those," <<he>> says. "They crawl in from the mo
 	<br><br>
 	<<set $lurkers_held += 1>>
 	<<set $stat_lurkers_captured += 1>>
-	<<prof net 1>>
 	<<link [[Next|Farm Work]]>><</link>>
 	<br>
 <<else>>
-	You try to hurl the net, <span class="red">but it's on you too fast,</span> latching onto your face. You can't see. You try to pull the creature off, but you struggle to get a grip on its slimy skin. You keep your lips sealed as something presses against your mouth.
+	You try to hurl the net, <span class="red">but it's on you too fast,</span> latching onto your face. You can't see. You try to pull the creature off, but you struggle to get a grip on its slimy skin. You keep your lips sealed as something presses against your mouth.<<gnet>>
+	<<prof net 1>>
 	<br><br>
-
+	
 	<<link [[Next|Farm Yard Struggle]]>><<set $struggle_start to 1>><</link>>
 	<br>
 <</if>>
@@ -2444,10 +2444,10 @@ You scream, but the creature lands on your face, cutting it short. You can't see
 	<br><br>
 	<<set $lurkers_held += 1>>
 	<<set $stat_lurkers_captured += 1>>
-	<<prof net 1>>
 	<<destination_farm>>
 <<else>>
-	You try to hurl the net, <span class="red">but it's on you too fast,</span> latching onto your face. You can't see. You try to pull the creature off, but you struggle to get a grip on its slimy skin. You keep your lips sealed as something presses against your mouth.
+	You try to hurl the net, <span class="red">but it's on you too fast,</span> latching onto your face. You can't see. You try to pull the creature off, but you struggle to get a grip on its slimy skin. You keep your lips sealed as something presses against your mouth.<<gnet>>
+	<<prof net 1>>
 	<br><br>
 
 	<<link [[Next|Farm Tending Struggle]]>><<set $struggle_start to 1>><</link>>
@@ -5271,7 +5271,7 @@ You struggle to stand upright as the
 	<<pass 5>>
 	<br><br>
 
-	Alex continues discussing with the <<personsimple>> not so far away, so you keep low in the grass while waiting for the knot to deflate. At last, you manage to wiggle free.
+	Alex continues discussing with the <<personsimple>> not so far away, so you keep low in the grass while waiting for the knot to shrink. At last, you manage to wiggle free.
 	<br><br>
 
 	<<clotheson>>
@@ -5303,7 +5303,7 @@ Alex breaks free from <<person1>><<his>> stupour, and looks away. "W-We aren't-"
 <br>
 "You've got my business," the <<person2>><<person>> interrupts as you and the <<farm_text dog>> arrive. <<He>> crouches beside you, and moves the camera close to the knot. "I've a few friends who'd love to hear about this."
 <br><br>
-The <<person2>><<person>> insists on filming until the knot deflates. Stuck on all fours, there's nothing you can do but endure.<<if $phase is 5>>
+The <<person2>><<person>> insists on filming until the knot shrinks. Stuck on all fours, there's nothing you can do but endure.<<if $phase is 5>>
 	<<ggtrauma>><<ggstress>><<lllove>><<gggdom>><<gglust>><<gggfarm>>
 <</if>>
 <br><br>
@@ -5316,7 +5316,7 @@ The <<person2>><<person>> insists on filming until the knot deflates. Stuck on a
 <<effects>>
 
 
-The knot deflates, and the <<farm_text dog>> wiggles free. The <<person2>><<person>> walks away while examining the footage.
+The knot shrinks, and the <<farm_text dog>> wiggles free. The <<person2>><<person>> walks away while examining the footage.
 <<clotheson>>
 <<person1>>
 <<if $exposed gte 1 and $farm_naked isnot 1>>
@@ -5356,7 +5356,7 @@ Alex breaks free from <<person1>><<his>> stupour, and looks away. "W-We aren't-"
 <</if>>
 as you and the <<farm_text dog>> arrive. "We're willing to go all the way."
 <<deviancy5>>
-"I can see that," the <<person2>><<person>> says, crouching and moving <<his>> camera right up to the knot. "You've got my business, and then some. I've friends who'll love to hear about this. Can I film until the knot deflates?"
+"I can see that," the <<person2>><<person>> says, crouching and moving <<his>> camera right up to the knot. "You've got my business, and then some. I've friends who'll love to hear about this. Can I film until the knot shrinks?"
 <br><br>
 
 <<link [[Next|Farm Knotted Seen 2]]>><</link>>

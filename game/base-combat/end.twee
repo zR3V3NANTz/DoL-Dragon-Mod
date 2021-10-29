@@ -453,6 +453,7 @@
 	<<set $NPCList[_i].legs to 0>>
 	<<set $NPCList[_i].size to 0>>
 	<<set $NPCList[_i].chastity to {penis:"", vagina:"", anus:""}>>
+	<<set $NPCList[_i].name_known to 0>>
 	<<clearPronouns $NPCList[_i]>>
 	<<if _i < 1>>
 		<<set $NPCList[_i].breastsize to 3>>
@@ -524,6 +525,7 @@
 <<set $NPCList[_i].maxOrgasms to 1>>
 <<set $NPCList[_i].orgasms to 0>>
 <<set $NPCList[_i].paid to 0>>
+<<set $NPCList[_i].name_known to 0>>
 <<if _i < 1>>
 	<<set $NPCList[_i].breastsize to 3>>
 	<<set $NPCList[_i].breastsdesc to "breasts">>

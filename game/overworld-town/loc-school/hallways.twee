@@ -687,7 +687,7 @@ The tentacles withdraw from you, leaving you hanging there. Without their suppor
 "Fuck me." you say.
 <br>
 
-The <<person>> gawks, as if not believing <<his>> eyes. <<He>> glances around, then reaches out and cups your <<breasts>> in both hands. <<if !$worn.under_upper.name.includes("naked")>><<He>> feels you up through the fabric of your $worn.under_upper.name.<<else>><<He>> feels up your bare flesh.<</if>>
+The <<person>> gawks, as if not believing <<his>> eyes. <<He>> glances around, then reaches out and cups your <<breasts>> in both hands. <<if !$worn.under_upper.type.includes("naked")>><<He>> feels you up through the fabric of your $worn.under_upper.name.<<else>><<He>> feels up your bare flesh.<</if>>
 <br><br>
 
 <<He>> becomes more aggressive.
@@ -706,7 +706,7 @@ The <<person>> gawks, as if not believing <<his>> eyes. <<He>> glances around, t
 <</if>>
 <br><br>
 
-The <<person>> gawks, as if not believing <<his>> eyes. <<He>> glances around, then reaches out and cups your <<breasts>> in both hands. <<if !$worn.under_upper.name.includes("naked")>><<He>> feels you up through the fabric of your $worn.under_upper.name.<<else>><<He>> feels up your bare flesh.<</if>>
+The <<person>> gawks, as if not believing <<his>> eyes. <<He>> glances around, then reaches out and cups your <<breasts>> in both hands. <<if !$worn.under_upper.type.includes("naked")>><<He>> feels you up through the fabric of your $worn.under_upper.name.<<else>><<He>> feels up your bare flesh.<</if>>
 <br><br>
 
 <<He>> becomes more forceful.

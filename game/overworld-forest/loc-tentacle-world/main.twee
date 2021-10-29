@@ -518,7 +518,7 @@ You drop to all fours, and they begin slithering up your arms.
 	<</if>>
 	displace your $worn.upper.name<<if $worn.under_upper.name isnot "naked">> and $worn.under_upper.name<<underupperstrip>><</if>>.<<upperstrip>>
 <<else>>
-	<<if $worn.under_upper.name isnot "naked">>
+	<<if !$worn.under_upper.type.includes("naked")>>
 		<<if $leftarm is "bound" or $rightarm is "bound">>
 			A pair of tentacles
 		<<else>>

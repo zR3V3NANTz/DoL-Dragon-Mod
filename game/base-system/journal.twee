@@ -516,4 +516,13 @@
 	<<farm_upgrades_current>>
 <</if>>
 
+<<if $location is "prison">>
+	You have <span class="gold"><<print $prison.teeth>></span> shark's teeth.
+	<br>
+	<<if $prison_wren_intro isnot 1>>
+		You can find Wren in the yard on fridays after lunch.
+		<br>
+	<</if>>
+	
+<</if>>
 <</widget>>

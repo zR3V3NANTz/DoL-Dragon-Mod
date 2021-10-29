@@ -667,7 +667,7 @@ Ultrasound occurs, Dr Harper lets them know what going on.
 	<<case "human">>
 		<<if _pregnancy.timer gte _pregnancy.timerStart * 0.9>>
 			<<if _multiple>>
-				Babies are tiny, the ultrasound can only just pick it up. Their tiny hearts are beating about once every second.
+				The babies are small, the ultrasound can only just pick it up. Their tiny hearts are beating about once every second.
 				<<if _pregnancy.currentCount gt 1>>
 					You know you are carring <<if _pregnancy.currentCount is 3>>triplets<<else>>twins<</if>>.
 				<</if>>
@@ -676,7 +676,7 @@ Ultrasound occurs, Dr Harper lets them know what going on.
 			<</if>>
 		<<elseif _pregnancy.timer gte _pregnancy.timerStart * 0.8>>
 			<<if _multiple>>
-				Babies are still tiny but you can see more details. You can see the ears and eyes starting to form, tiny buds are starting to form where the arms/legs should be. Their heads are much larger than the rest of the body.
+				The babies are small but you can see more details. You can see the ears and eyes starting to form, tiny buds are starting to form where the arms/legs should be. Their heads are much larger than the rest of the body.
 			<<else>>
 				Your baby is still tiny but you can see more details. You can see the ears and eyes starting to form, tiny buds are starting to form where the arms/legs should be. The head is much larger than the rest of the body.
 			<</if>>

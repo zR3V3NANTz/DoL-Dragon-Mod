@@ -566,7 +566,7 @@ It's all you need. But no one else can be down here. This is yours. No one can t
 
 :: Schism Ghost
 <<effects>><<set $season to "autumn">><<set $weather to "clear">><<set $schism to true>>
-<<neckwear 20>>
+<<neckwear 23>>
 You watch the moon. You watch the things around you crumble, while you stay eternally beautiful. As long as you have it.
 <br><br>
 You watch people you think you knew in life rebuild. They make a beautiful chapel, and practice their faith. They don't remember you, but that's okay. As long as you have it.
@@ -823,7 +823,7 @@ The feeling of dread rapidly fades. <span class="blue"><i>You're safe until the 
 <<genitalswear 3>>
 <<headwear 1>>
 
-<<neckwear 20>>
+<<neckwear 23>>
 
 <<freezePlayerStats>>
 

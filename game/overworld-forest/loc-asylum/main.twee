@@ -2108,8 +2108,8 @@ is an important part of your assessment so you need to be on your best behaviour
 	The <<person>> pushes you back against the wall, while the <<person2>><<person>> clips the back of your straightjacket to the links on the wall
 	- once at the waist and once at the neck - locking you standing in place. The <<person>> unfastens something at the side of your straightjacket,
 	and the <<person1>><<person>> pulls at the front. A section comes away, leaving your arms bound but your
-	<<if $worn.under_upper.name isnot "naked">>
-		<<undertop>> exposed. The <<person>> grabs your $worn.under_upper.name and pulls it up fully exposing your <<breasts>>.
+	<<if !$worn.under_upper.type.includes("naked")>>
+		<<undertop>> exposed. The <<person>> grabs your $worn.under_upper.name and pulls it up, fully exposing your <<breasts>>.
 	<<else>>
 		<<breasts>> fully exposed.
 	<</if>>

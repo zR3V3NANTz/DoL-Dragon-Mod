@@ -313,6 +313,8 @@ Sentenced with community service: $stat_police.community
 <br>
 Sentenced with the pillory:	$stat_police.pillory
 <br>
+Days in prison: $stat_police.prison
+<br>
 
 <br><br>
 __Save Game Details__
@@ -476,6 +478,8 @@ __Save Game Details__
 	School status: <<print Math.trunc($cool)>>
 	<br>
 	Delinquency: <<print Math.trunc($delinquency)>>
+	<br>
+	Detention: <<print Math.trunc($detention)>>
 	<br>
 	Crime: <<print Math.trunc($crime)>>
 	<br>

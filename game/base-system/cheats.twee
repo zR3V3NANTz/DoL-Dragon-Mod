@@ -45,8 +45,18 @@ Money: <span id="statsmoney"><<print Math.trunc($money)>></span>
  | <<link ">">><<set $money += 1000>><<clamp>><<replace "#statsmoney">><<print Math.trunc($money)>><</replace>><</link>>
  | <<link ">>">><<set $money += 10000>><<clamp>><<replace "#statsmoney">><<print Math.trunc($money)>><</replace>><</link>>
  | <<link ">>>">><<set $money += 100000>><<clamp>><<replace "#statsmoney">><<print Math.trunc($money)>><</replace>><</link>>
-
 <br>
+
+<<if $location is "prison">>
+	<<link "<<<">><<set $prison.teeth -= 100>><<set $prison.teeth = Math.clamp($prison.teeth, 0, 1000000)>><<replace "#statsteeth">><<print Math.trunc($prison.teeth)>><</replace>><</link>> |
+	<<link "<<">><<set $prison.teeth -= 10>><<set $prison.teeth = Math.clamp($prison.teeth, 0, 1000000)>><<replace "#statsteeth">><<print Math.trunc($prison.teeth)>><</replace>><</link>> |
+	<<link "<">><<set $prison.teeth -= 1>><<set $prison.teeth = Math.clamp($prison.teeth, 0, 1000000)>><<replace "#statsteeth">><<print Math.trunc($prison.teeth)>><</replace>><</link>> |
+	Teeth: <span id="statsteeth"><<print Math.trunc($prison.teeth)>></span>
+	| <<link ">">><<set $prison.teeth += 1>><<set $prison.teeth = Math.clamp($prison.teeth, 0, 1000000)>><<replace "#statsteeth">><<print Math.trunc($prison.teeth)>><</replace>><</link>>
+	| <<link ">>">><<set $prison.teeth += 10>><<set $prison.teeth = Math.clamp($prison.teeth, 0, 1000000)>><<replace "#statsteeth">><<print Math.trunc($prison.teeth)>><</replace>><</link>>
+	| <<link ">>>">><<set $prison.teeth += 100>><<set $prison.teeth = Math.clamp($prison.teeth, 0, 1000000)>><<replace "#statsteeth">><<print Math.trunc($prison.teeth)>><</replace>><</link>>
+	<br>
+<</if>>
 
 Infinite spray: <span id="statsinfinitespray">$infinitespray</span> |
 <<link "Change">>

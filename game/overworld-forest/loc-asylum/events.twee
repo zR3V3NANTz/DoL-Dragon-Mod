@@ -549,7 +549,7 @@ This continues for a few minutes. Puffs of pink mist continue to emerge, along w
 	<<if $wraith.seen gte 1>>
 		The <<person>> smiles. "<span class="wraith">We meet again, thief.</span>"
 	<<else>>
-		The <<person>> "<span class="wraith">Thief. Give it back.</span>"
+		<span class="wraith">Thief. Give it back.</span>"
 	<</if>>
 	<br><br>
 	<<initWraith "abomination">>

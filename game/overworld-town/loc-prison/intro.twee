@@ -1,0 +1,1301 @@
+:: Police Prison Intro
+<<location "town">><<effects>>
+
+<<pass 5>>The <<person1>><<person>> holds you by your cuffs and pushes you outside. Two more officers await. <<He>> hands you over to one officer, a
+
+<<endevent>>
+<<npc Bailey>><<generate2>>
+<<if $prison_intro_officer>>
+    <<loadNPC 2 "prison_intro_officer">>
+<<else>>
+    <<generate3>>
+<</if>>
+
+<<generate4>><<person2>>
+
+<<person>>, who pushes you into a waiting car.
+<br><br>
+
+You're driven along the clifftop, past the town hall, and down towards the docks. 
+
+<<if $prison_intro_officer>>
+    You recognise the second officer, a <<person3>><<person>>. <<Hes>> accompanied you to the docks before. <<He>> grins at you through the rearview mirror.
+<<else>>
+    The second officer, a <<person3>><<person>> watches you through the rearview mirror.
+<</if>>
+<br><br>
+
+<<link [[Be silent|Police Prison Intro Silent]]>><</link>>
+<br>
+<<if $angel gte 6>>
+    <<link [[Pray|Police Prison Intro Pray]]>><<stress -12>><<trauma -6>><</link>><<angel>><<llstress>><<ltrauma>>
+    <br>
+<</if>>
+<<if $wolfgirl gte 6>>
+    <<link [[Growl|Police Prison Intro Growl]]>><<trauma -12>><</link>><<wolfgirl>><<lltrauma>>
+    <br>
+<</if>>
+<<if $cat gte 6>>
+    <<link [[Hiss|Police Prison Intro Hiss]]>><<trauma -12>><</link>><<cat>><<lltrauma>>
+    <br>
+<</if>>
+<<if $promiscuity gte 15>>
+    <<link [[Seduce|Police Prison Intro Seduce]]>><</link>>
+    <br>
+<</if>>
+
+
+:: Police Prison Intro Silent
+<<effects>>
+
+You remain silent. The <<person>> keeps <<his>> eyes fixed on throughout the journey.
+<br><br>
+The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+<br><br>
+
+<<link [[Next|Police Prison Intro Docks]]>><</link>>
+<br>
+
+:: Police Prison Intro Pray
+<<effects>>
+
+You close your eyes and mutter a quick prayer. You hear the <<person>> scoff, but you pay <<him>> no mind.
+<br><br>
+The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+<br><br>
+
+<<link [[Next|Police Prison Intro Docks]]>><</link>>
+<br>
+
+
+:: Police Prison Intro Growl
+<<effects>>
+
+You bare your fangs and growl at the <<person>>. <<He>> averts <<his>> eyes at once, and coughs.
+<br><br>
+The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+<br><br>
+
+<<link [[Next|Police Prison Intro Docks]]>><</link>>
+<br>
+
+:: Police Prison Intro Hiss
+<<effects>>
+
+You bare your fangs and hiss at the <<person>>. <<He>> averts <<his>> eyes at once, and coughs.
+<br><br>
+The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+<br><br>
+
+<<link [[Next|Police Prison Intro Docks]]>><</link>>
+<br>
+
+:: Police Prison Intro Seduce
+<<effects>>
+
+<<if $submissive gte 1150>>
+    <<gagged_speech "I-if you let me go" ,>> you coo. <<gagged_speech "I'll l-let you do anything you want to me" .>>
+<<elseif $submissive lte 850>>
+    <<gagged_speech "I know what you really want" ,>> you say. <<gagged_speech "Let me go, and you can have it" .>>
+<<else>>
+    <<gagged_speech "There must be something I can offer you in exchange for letting me go" ,>> you say.
+<</if>>
+<<promiscuity2>>
+
+
+<<set $seductiondifficulty to 10000>>
+<<seductioncheck>>
+<br><br>
+<<if $seductionskill lt 1000>>
+	<span class="gold">You feel more confident in your powers of seduction.</span>
+	<br><br>
+<</if>>
+<<seductionskilluse>>
+
+<<if $seductionrating gte $seductionrequired>>
+
+	<span class="green">Lust glimmers in the <<persons>> eyes.</span> "We wouldn't get away with 'losing' you," <<he>> laughs. "But I'll look for you during my next visit."
+	<br><br>
+    <<set $prison_intro_officer to 1>>
+    <<saveNPC 1 "prison_intro_officer">>
+
+<<else>>
+
+	<span class="red">"Nice try,"</span> the <<person>> laughs. "But we're not gonna get away with pretending we lost you somewhere between the station and the water."
+	<br><br>
+
+<</if>>
+
+
+
+<<if $prison_intro is undefined>>
+    The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+    <br><br>
+
+    <<link [[Next|Police Prison Intro Bailey]]>><</link>>
+    <br>
+<<else>>
+    The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by familiar guards.
+    <br><br>
+    <<link [[Next|Police Prison Intro Docks]]>><</link>>
+    <br>
+<</if>>
+
+
+
+:: Police Prison Intro Bailey
+<<effects>>
+
+The <<person2>><<person>> shoves you aboard the boat, where you fall into a heap just as you hear the rev of an engine. You struggle to your knees, and see a familiar car approaching. It's Bailey.
+<br><br>
+
+"Shit," the <<person>> mutters, putting <<himself>> between the boat and approaching car as the crew rush to untie the mooring rope.
+<br><br>
+
+Bailey's car screeches to a halt, almost colliding with the <<person2>><<person>>. Bailey's eyes flicker over the police officers as <<person1>><<he>> emerges, then over the uniformed crew, before resting on you. <<He>> slams the car door.
+<br><br>
+
+<<link [[Next|Police Prison Intro Bailey 2]]>><</link>>
+<br>
+
+
+:: Police Prison Intro Bailey 2
+<<effects>>
+
+"This is police business <<person1>><<sir>>," the <<person2>><<person>> says. "Don't interfere."
+<br><br>
+"We had an agreement," Bailey spits. The mooring comes loose, and the boat begins to pull away.
+<br>
+"And we our orders," the <<person2>><<person>> responds, reaching for the baton at <<his>> side. The <<person3>><<person>> does likewise. "Please step away sir."
+<br>
+Bailey takes a step closer, and the officers tense up. "There'll be blood to pay," <<person1>><<he>> says. Then <<he>> laughs. The officers share a worried glance. "I'll make this work." <<He>> still watches you. "Be on your best behaviour."
+<br><br>
+Bailey drives away as the boat leaves the harbour. Even at this distance, you can see the officers relax their posture.
+<br><br>
+
+<<link [[Next|Prison Intro Boat]]>><<endevent>><</link>>
+<br>
+
+:: Police Prison Intro Docks
+<<effects>>
+
+The officers shove you into the boat. You struggle to your knees as the crew untie the mooring rope, and the boat sails from the harbour.
+<br><br>
+
+<<if $prison_intro is undefined>>
+    <<link [[Next|Prison Intro Boat]]>><<endevent>><</link>>
+    <br>
+<<else>>
+    <<link [[Next|Prison Intro Repeat]]>><<endevent>><</link>>
+    <br>
+<</if>>
+
+:: Prison Intro Repeat
+<<location "sea">><<effects>>
+
+<<prison_init>>
+
+<<generate_relaxed_guard 0>>
+<<generate_anxious_guard 1>>
+<<generate_veteran_guard 2>>
+<<generate_methodical_guard 3>>
+
+<<if $weather is "rain">>
+    They seat you on a bench towards the front, sheltered from the rain by a small canopy, though the wind often lashes water against your face.
+<<elseif $weather is "clear">>
+    They seat you on a bench towards the front.
+<<else>>
+    They seat you on a bench towards the front. 
+<</if>>
+<br><br>
+
+"Knew you'd be back," <<person1>><<relaxed_guard 0>> says.
+<<if $prison.relaxed gte 80>>
+    <<He>> sounds sad.
+<<else>>
+    <<He>> doesn't look up from <<his>> phone.
+<</if>>
+<br>
+<<if $prison.anxious gte 80>>
+    "Couldn't keep your nose clean?" the <<person2>><<anxious_guard 1>> asks with a grin. "Or did you just miss us?"
+<<else>>
+    "Couldn't keep your ass clean?" the <<person2>><<anxious_guard 1>> asks.
+<</if>>
+<br>
+<<if $prison.veteran gte 80>>
+    "Career criminals are like that," the <<person3>><<veteran_guard 2>> replies.
+<<else>>
+    "Once a thief..." the <<person3>><<veteran_guard 2>> replies while drying the deck.
+<</if>>
+<br><br>
+
+<<link [[Next|Prison Intro Repeat 2]]>><<pass 60>><</link>>
+<br>
+
+:: Prison Intro Repeat 2
+<<location "prison">><<effects>>
+
+The boat sails into the mist, through the maze of stone spires, and emerges from before the prison.
+<br><br>
+
+<<person4>><<methodical_guard 3 cap>> greets you at the end of the tunnel. "Right on time," <<he>> says, taking a seat behind <<his>> desk. "You know the drill."
+<br><br>
+
+The other guards stand around you, watching.
+<br><br>
+
+<<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
+<br>
+<<if $exhibitionism gte 75>>
+    <<link [[Flaunt|Prison Intro Flaunt]]>><<prison_guards 3>><</link>><<exhibitionist4>><<llsuspicion>>
+    <br>
+<</if>>
+<<link [[Refuse|Prison Intro Refuse]]>><<pain 4>><<prison_guards 1>><</link>><<gpain>><<gsuspicion>>
+<br>
+
+
+:: Prison Intro Boat
+<<location "sea">><<effects>>
+
+<<prison_init>>
+
+<<generate_relaxed_guard 0>>
+<<generate_anxious_guard 1>>
+<<generate_veteran_guard 2>>
+<<generate_methodical_guard 3>>
+
+<<if $weather is "rain">>
+    They seat you on a bench towards the front, sheltered from the rain by a small canopy, though the wind often lashes water against your face.
+<<elseif $weather is "clear">>
+    They seat you on a bench towards the front.
+<<else>>
+    They seat you on a bench towards the front. 
+<</if>>
+<br><br>
+
+One of your captors, a <<person1>><<personsimple>> with a relaxed posture, holds the helm with one hand while staring at <<his>> phone with the other. Beside <<him>> stands a <<person2>><<personsimple>> with a nervous expression.
+<br><br>
+
+"How long do you think <<pshe>>'ll last?" <<he>> says.
+<br>
+The <<person1>><<personsimple>> at the helm glances at you.
+
+<<if $beauty gte ($beautymax * 0.9)>>
+    "Hard to say with a beaut like <<pher>>," <<he>> says. "<<pShe>>'ll be alright if <<pshe>>'s smart, and becomes some strong fucker's bitch. If not," <<he>> pauses. "At least <<pshe>>'ll be too busy getting railed to do anything really stupid."
+<<elseif $beauty gte ($beautymax * 0.4)>>
+    "A pretty one like <<phim>> might do better than most," <<he>> says. "If <<pshe>> isn't a fool."
+<<else>>
+    "<<pShe>>'s cute," <<he>> says. "But <<pshe>> might be fine if <<pshe>> keeps <<pher>> head down."
+<</if>>
+<br><br>
+<<if $physiquesize gte 16000>>
+    <<if $physique gte 15000>>
+        "<<pShes>> a big fucker <<phimself>>," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Strong too. Might be trouble for us."
+    <<else>>
+        "<<pShes>> a big fucker <<phimself>>," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Might end up calling the shots."
+    <</if>>
+<br>
+"If <<pshe>> were older maybe," the <<person2>><<person>> replies.
+<<elseif $physique gte ($physiquesize * 0.9)>>
+    "<<pShe>> looks like a scrappy one," interjects a <<person3>><<person>>. <<He>> looks older than the others. "Might do better than you expect."
+    <br>
+    "Until <<pshe>> scraps with the wrong person," replies <<person2>><<anxious_guard 1>>.
+<<else>>
+    "Don't fancy <<pher>> chances myeslf," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Maybe a week."
+<</if>>
+<br><br>
+
+They continue arguing in front of you as if you weren't there.
+<br><br>
+
+<<link [[Complain|Prison Intro Boat Complain]]>><<pain 4>><<def 1>><<prison_guards 1>><</link>><<gpain>><<gsuspicion>>
+<br>
+<<link [[Remain silent|Prison Intro Boat 2]]>><<stress 6>><<sub 1>><<set $phase to 1>><</link>><<gstress>>
+<br>
+
+:: Prison Intro Boat Complain
+<<effects>>
+
+<<if $submissive gte 1150>>
+    <<gagged_speech "I-I'm sorry to interrupt" ->>
+<<elseif $submissive lte 850>>
+    <<gagged_speech "Don't talk about me like" ->>
+<<else>>
+    <<gagged_speech "Please don't talk about me like" ->>
+<</if>>
+<<person2>><<anxious_guard 1 cap>> smacks you across the face with the back of <<his>> hand.
+<br><br>
+"No speaking unless spoken to, <<bitch>>."
+<br>
+"Forget what I said," <<person3>><<veteran_guard 2>> laughs. "<<pShe>> won't last a day."
+<br><br>
+
+<<link [[Next|Prison Intro]]>><</link>>
+<br>
+
+
+:: Prison Intro Boat 2
+<<effects>>
+<<pass 60>>
+<<if $phase is 1>>
+You remain silent, and try to ignore the crew's discussion.
+<</if>>
+<<if $daystate is "night">>
+    <<if $cat gte 2 or $harpy gte 2>>
+        A mist rises around the boat, concealing the land behind you. You sail through the murk, until a spire of stone looms ahead. <<person1>><<relaxed_guard 0 cap>> steers the ship away, but it takes a moment for <<person2>><<anxious_guard 1>> to react, as if <<he>> only just saw it. <<He>> cries out in fright.<<sharp_eyes>>
+    <<else>>
+        A mist rises around the boat, thickening until even the crew are hidden from view. You sail through the murk, until <<person2>><<anxious_guard 1>> cries out in fright.<<gstress>><<stress 6>>
+    <</if>>
+<<else>>
+    A mist rises around the boat, concealing the land behind you. The crew don't seem disturbed. You sail through the murk, until a spire of stone looms ahead. <<person2>><<anxious_guard 1 cap>> cries out in fright.
+<</if>>
+<br><br>
+"You're gonna sink us!" <<he>> says.
+<br>
+"Don't piss yourself," <<person1>><<relaxed_guard 0>> replies. "I've made this trip a hundred times."
+<br><br>
+
+<<if $daystate is "night">>
+    <<if $cat gte 2 or $harpy gte 2>>
+        More spires loom ahead. The boat tilts as <<person1>><<relaxed_guard 0>> steers around them. <<person2>><<anxious_guard 1 cap>> clutches the side of the boat, <<his>> knuckles white.
+    <<else>>
+        You can't see through the gloom, but the boat tilts as <<person1>><<relaxed_guard 0>> steers this way and that.
+    <</if>>
+<<else>>
+    More spires loom ahead. The boat tilts as <<person1>><<relaxed_guard 0>> steers around them. <<person2>><<anxious_guard 1 cap>> clutches the side of the boat, <<his>> knuckles white.
+<</if>>
+<br><br>
+
+<<link [[Next|Prison Intro]]>><</link>>
+<br>
+
+:: Prison Intro
+<<location "prison">><<effects>>
+
+<<person2>><<anxious_guard 1 cap>> sighs in relief as the mist clears. There's an island ahead, towering above any of the spires. A stone fortress sits on top, half carved from the rock itself.
+<br><br>
+
+<<if $player.gender_appearance is "m">>
+    <<if $malechance lte 0>>
+        "Why they sending <<phim>> to a women's prison anyway?" asks <<anxious_guard 1>>.
+        <br>
+        "Don't know," replies <<veteran_guard 2>>. "I'm not complaining."
+        <br><br>
+    <</if>>
+<<elseif $player.gender_appearance is "f">>
+    <<if $malechance gte 100>>
+        "Why they sending <<phim>> to a men's prison anyway?" asks <<anxious_guard 1>>.
+        <br>
+        "Don't know," replies <<veteran_guard 2>>. "I'm not complaining."
+        <br><br>
+    <</if>>
+<</if>>
+
+They sail you towards the foot of the island, to a dock at the base of a sheer cliff. <<person3>><<veteran_guard 2 cap>> jumps ashore with a rope while <<person2>><<anxious_guard 1>> hauls you to your feet.
+<br><br>
+They push you ashore, and towards a cave lit by a trail of thin white lights.
+<br><br>
+
+<<link [[Next|Prison Intro 2]]>><</link>>
+<br>
+
+:: Prison Intro 2
+<<effects>>
+
+You come to an artificial stone wall with a metal door. <<person1>><<relaxed_guard 0 cap>> taps it. You hear a rattle before it opens, revealing a <<person4>><<person>>. <<He>> wears a uniform similar to the others, but a pair of glasses sits on <<his>> nose.
+<br><br>
+
+You're pushed through the door, into a small room. There's a desk, but the room is otherwise empty, save for an exit across from you.
+<br><br>
+<<if $prison_intro isnot 1>>
+    "You're early," <<methodical_guard 3>> says.
+    <br>
+    "Left in a hurry," <<person1>><<relaxed_guard 0 cap>> responds. "There's no problem."
+    <br>
+    <<person4>><<methodical_guard 3 cap>> nods.
+    <br><br>
+<</if>>
+The crew push you to the middle of the room, and stand around you, leaving a little space. <<person4>><<methodical_guard 3 cap>> sits behind the desk, and looks at a document in front of <<him>>.
+<br><br>
+
+"Name?" <<he>> asks without looking at you.
+<br><br>
+
+<<link [[Give name|Prison Intro Name]]>><<sub 1>><</link>>
+<br>
+<<link [[Spit|Prison Intro Spit]]>><<def 2>><<prison_guards 1>><</link>><<dancedifficulty 1 1000>><<gsuspicion>>
+<br>
+<<link [[Remain silent|Prison Intro Silent]]>><<def 1>><<pain 4>><</link>>
+<br>
+
+
+:: Prison Intro Name
+<<effects>>
+
+You tell <<person4>><<methodical_guard 3 cap>> your name. <<He>> scribbles something down. "Take off your clothes." <<person2>><<anxious_guard 1 cap>> licks <<his>> lips. "Everything."<<gstress>><<stress 6>>
+<br><br>
+
+<<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
+<br>
+<<if $exhibitionism gte 75>>
+    <<link [[Flaunt|Prison Intro Flaunt]]>><<prison_guards 3>><</link>><<exhibitionist4>><<llsuspicion>>
+    <br>
+<</if>>
+<<link [[Refuse|Prison Intro Refuse]]>><<pain 4>><<prison_guards 1>><</link>><<gpain>><<gsuspicion>>
+<br>
+
+
+:: Prison Intro Spit
+<<effects>>
+
+You spit on the floor. <<person3>><<veteran_guard 2 cap>> takes a step closer, and
+
+<<if $danceSuccess>>
+    tries to smack you across the face. <span class="green">You duck beneath <<his>> blow.</span><<ltrauma>><<trauma -6>>
+    <br><br>
+<<else>>
+    <span class="red">smacks you across the face.</span><<gpain>><<pain 4>>
+    <br><br>
+<</if>>
+
+<<person4>><<methodical_guard 3 cap>> waves a hand. "It doesn't matter," <<he>> says as <<he>> scribbles something down. <<person2>><<anxious_guard 1 cap>> licks <<his>> lips. "Everything."<<gstress>><<stress 6>>
+<br><br>
+
+<<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
+<br>
+<<if $exhibitionism gte 75>>
+    <<link [[Flaunt|Prison Intro Flaunt]]>><<prison_guards 3>><</link>><<exhibitionist4>><<llsuspicion>>
+    <br>
+<</if>>
+<<link [[Refuse|Prison Intro Refuse]]>><<pain 4>><<prison_guards 1>><</link>><<gpain>><<gsuspicion>>
+<br>
+
+
+
+:: Prison Intro Silent
+<<effects>>
+
+You remain silent.
+<br><br>
+"Answer the question," <<person3>><<veteran_guard 2>> says. "If you don't want a smack."
+<br><br>
+<<person4>><<methodical_guard 3 cap>> waves <<his>> hand. "It doesn't matter," <<he>> says as <<he>> scribbles something down. "Take off your clothes." <<person2>><<anxious_guard 1 cap>> licks <<his>> lips. "Everything."<<gstress>><<stress 6>>
+<br><br>
+
+<<link [[Strip (0:01)|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
+<br>
+<<if $exhibitionism gte 75>>
+    <<link [[Flaunt (0:03)|Prison Intro Flaunt]]>><<prison_guards 3>><<pass 3>><</link>><<exhibitionist4>><<llsuspicion>>
+    <br>
+<</if>>
+<<link [[Refuse (0:01)|Prison Intro Refuse]]>><<pass 1>><<pain 4>><<prison_guards 1>><</link>><<gpain>><<gsuspicion>>
+<br>
+
+
+:: Prison Intro Strip
+<<effects>>
+<<undress "prison intro">>
+You remove your clothing, piece by piece. You feel their eyes as you revealed your body. You're left naked in the middle of the room.<<covered>>
+<br><br>
+
+<<link [[Next|Prison Intro Strip 2]]>><</link>>
+<br>
+
+
+:: Prison Intro Flaunt
+<<effects>>
+<<undress "prison intro">>
+You remove your clothing, piece by piece, turning as you do. You draw it out, but the guards don't seem to mind. Even <<person4>><<methodical_guard 3>> looks up from the desk.
+<br><br>
+
+You're left naked in the middle of the room.<<covered>>
+<br><br>
+
+<<link [[Next|Prison Intro Strip 2]]>><</link>>
+<br>
+
+:: Prison Intro Refuse
+<<effects>>
+
+
+<<if $submissive gte 1150>>
+    <<gagged_speech "Pl-please don't make me" ->> you manage, before the crew around you pounce.
+<<elseif $submissive lte 850>>
+    <<gagged_speech "I'm not stripping in front" ->> you manage, before the crew around you pounce.
+<<else>>
+    <<gagged_speech "I don't want to" ->> you manage, before the crew around you pounce.
+<</if>>
+<br><br>
+
+<<link [[Next|Prison Intro Strip Molestation]]>><<set $molestationstart to 1>><</link>>
+<br>
+
+:: Prison Intro Strip Molestation
+
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+
+	<<maninit>>
+	<<npcstrip>>
+    <<person4>><<methodical_guard 3 cap>> calmly rises from the desk to help.<<person1>>
+    <br><br>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+
+<<if $worn.upper.name is "naked" and $worn.lower.name is "naked" and $worn.under_lower.name is "naked" and $worn.under_upper.name is "naked">>
+   <span id="next"><<link [[Next|Prison Intro Strip Molestation Finish]]>><<clotheson>><<undress "prison intro">><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Prison Intro Strip Molestation Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Prison Intro Strip Molestation Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Prison Intro Strip Molestation]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Prison Intro Strip Molestation Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	The guards fall away from you. <<tearful>> you steady yourself. You could make a break for it, but you don't know where you'd go. Maybe they'll let you keep your clothes if you agree to cooperate after humiliating them so.
+	<br><br>
+	<<clotheson>>
+
+    <<link [[Run|Prison Intro Strip Run]]>><<prison_guards 3>><</link>><<ggsuspicion>>
+    <br>
+    <<link [[Bargain|Prison Intro Strip Bargain]]>><<prison_guards -1>><</link>><<lsuspicion>>
+    <br>
+
+<<elseif $enemyhealth lte 0>>
+	The guards back away from you, shocked by your aggression. They don't think to stand between you and the entrance. <<tearful>> you steady yourself. You could make a break for it, but you don't know where you'd go. Maybe they'll let you keep your clothes if you agree to cooperate after humiliating them so.
+	<br><br>
+	<<clotheson>>
+
+    <<link [[Run|Prison Intro Strip Run]]>><<prison_guards 3>><</link>><<ggsuspicion>>
+    <br>
+    <<link [[Bargain|Prison Intro Strip Bargain]]>><<prison_guards -1>><</link>><<lsuspicion>>
+    <br>
+
+<<else>>
+    <<steal strip>>
+	They snatch the last of your clothing, leaving you naked in the middle of the room. <<covered>>
+	<br><br>
+    
+	<<link [[Next|Prison Intro Strip 2]]>><</link>>
+    <br>
+
+<</if>>
+
+:: Prison Intro Strip Run
+<<effects>>
+
+You run back through the metal door, dodging <<person1>><<relaxed_guard 0 apo>> weak attempt to stop you. You follow the lights back to the dock, and find the boat waiting for you.
+<br><br>
+You hear an alarm sound from behind.
+<br><br>
+
+<<link [[Take the boat|Prison Intro Strip Boat]]>><</link>>
+<br>
+<<link [[Swim|Prison Intro Strip Swim]]>><</link>>
+<br>
+
+:: Prison Intro Strip Boat
+<<effects>>
+
+You unravel the mooring rope, and manage to cast off before the guards arrive. <<person2>><<anxious_guard 1 cap>> tries to jump the gap, only to fall into the sea.
+<br><br>
+
+<<if $daystate is "night">>
+    You sail into the dark. A searchlight blooms to life far above, and scans the water.
+    <br><br>
+    Mist rises around you, hiding the sky, and even the searchlight.
+    <<if $cat gte 2 or $harpy gte 2>>
+        A spire of rock looms from the murk. You narrowly pass. <span class="red">Then another looms right in front of you.</span> You turn the helm as far as it'll go, but it's no use. The boat crunches at it comes to a halt, the force throwing you overboard.
+    <<else>>
+        You sail in silence for a few moments, barely able to see the front of the boat. <span class="red">You make out a dark shape ahead a moment before the boat collides with it.</span> The force throws you overboard.
+    <</if>>
+<<else>>
+    You sail towards the mist, until it engulfs you. A spire of rock looms from the murk. You narrowly pass. <span class="red">Then another looms right in front of you.</span> You turn the helm as far as it'll go, but it's no use. The boat cruches as it comes to a halt, the force throwing you overboard.
+<</if>>
+<br><br>
+<<water>>
+You try to struggle to the surface, but a force pulls you deeper. Your consciousness fades.
+<br><br>
+
+<<link [[Next|Prison Intro Strip Wake]]>><<pass 60>><<passout>><<steal strip>><</link>>
+<br>
+
+
+:: Prison Intro Strip Swim
+<<effects>>
+
+You dive into the water, and swim away from the island.
+<br><br>
+<<water>>
+<<if $daystate is "night">>
+    A light blooms to life far above. It scans the water, searching for you. You dive to avoid its gaze, but it's no use. It lights you up despite the water. You've no choice but to swim as hard as you can as the light tracks you.
+    <br><br>
+    <span class="red">A shadow passes,</span> snuffing the light for a moment. Then you hear a terrible screech.<<gstress>>
+    <br><br>
+    <<beastNEWinit 1 hawk>>
+    A buffet of air is all the warning you get, before a pair of claws grasp your shoulders, and lift you from the water. A <<if $monster isnot 1>>giant<</if>> <<beasttype>> carries you. You hear other wings in the dark.
+<<else>>
+    You swim as hard as you can towards the encircling mist. <span class="red">A shadow passes overhead.</span> You glance up, and see shapes circling overhead. One swoops towards you, a <<if $monster isnot 1>>giant<</if>> <<beasttype>>, talons outstretched.
+    <br><br>
+    You dive, but it's no use. <<bHe>> clutches your shoulders and snatches you from the water.
+<</if>>
+<br><br>
+
+<<if $monster is 1>>
+    Rather than return you to the prison, the <<beasttype>> circles higher, a mischievous glint in <<bhis>> eyes. <<bHe>> releases you. 
+<<else>>
+    Rather than return you to the prison, the <<beasttype>> circles higher, and releases you.
+<</if>>
+You plunge into the depths, deep enough that a current seizes you, and pulls you deeper. Your consciousness fades.
+<br><br>
+
+<<link [[Next|Prison Intro Strip Wake]]>><<pass 60>><<passout>><<steal strip>><</link>>
+<br>
+
+
+:: Prison Intro Strip Bargain
+<<effects>>
+
+<<if $submissive gte 1150>>
+    <<gagged_speech "I-I didn't want to do that" ,>> you say. <<gagged_speech "I'll go quietly. J-just let me keep my clothes" .>>
+<<elseif $submissive lte 850>>
+    <<gagged_speech "I'm feeling generous" ,>> you say. <<gagged_speech "Don't want you to get in trouble for failing to do your jobs. I'll play along. If you let me keep my clothes" .>>
+<<else>>
+    <<gagged_speech "Let's make a deal" ,>> you say. <<gagged_speech "I'll cooperate, and you let me keep my clothes" .>>
+<</if>>
+<br><br>
+
+They look to <<person4>><<methodical_guard 3>>, who steadies <<himself>> against the desk as <<he>> rises to <<his>> feet. "Fine," <<he>> says. "We'll make an exception. But don't push your luck."
+<br><br>
+
+<<link [[Next|Prison Intro Strip 2]]>><</link>>
+<br>
+
+
+:: Prison Intro Strip Wake
+<<effects>>
+
+
+You awaken on a hard mattress, and stare at the grey ceiling above. You feel a chill.
+<br><br>
+
+"Look who's awake," says a familiar voice. <<covered>> It's <<person2>><<anxious_guard 1>>. <<person4>><<methodical_guard 3 cap>> stands next to <<him>>. You're in a long room. There other other beds, occupied by bandaged figures.
+<br><br>
+"There's no escaping this island," <<person4>><<methodical_guard 3>> says. "Not until you've served your sentence. Get <<him>> up."
+<br><br>
+<<person2>><<anxious_guard 1 cap>> pulls you to your feet while <<person4>><<methodical_guard 3>> opens a cupboard next to the bed. <<He>> pulls out a bundle of fabric. "Your uniform." The clothes are thrust into your arms. They don't give you time to dress before shunting you to a walk.
+<br><br>
+
+<<link [[Next|Prison Intro Walk]]>><</link>>
+<br>
+
+:: Prison Intro Strip 2
+<<effects>>
+
+<<person1>><<relaxed_guard 0 cap>> opens the door on the far side of the room. A chill wind blasts you as you're led through. You shiver, and almost trip as your feet find a gentle slope. The room would be similar to the last, if not for the gaping hole at the foot of the ramp, opening onto a cavernous abyss.<<gstress>><<stress 6>>
+<br><br>
+"Can we get this over with?" <<person2>><<anxious_guard 1>> says. "The rut freaks me out." The others laugh.
+<br>
+<<if $control gte 80>>
+    "You're more scared than the prisoner," <<person3>><<veteran_guard 2>> says. "Have some backbone."
+<<else>>
+    "Just hide in the corner then. Let us grown-ups do the work."
+<</if>>
+<br>
+"Fuck off."
+<br>
+"Prisoner," <<person4>><<methodical_guard 3 apo>> voice cuts through the others'. "Stand between us and the far wall."
+<br><br>
+
+
+<<link [[Do as instructed|Prison Intro Wall]]>><</link>><<willpowerdifficulty 1 600>>
+<br>
+<<link [[Refuse|Prison Intro Wall Refuse]]>><<stress 6>><<trauma 6>><</link>><<gstress>><<gtrauma>>
+<br>
+
+:: Prison Intro Wall
+<<effects>>
+
+You take a step toward the hole, careful to keep your footing. Then another. You hear one of the guards keeping pace. The light closest buzzes and fails, and the dark seems to grasp at you.
+<br><br>
+<<if $willpowerSuccess>>
+    <span class="green">You ignore the surge of anxiety,</span> and keep walking. "That's far enough," <<person4>><<methodical_guard 3>> says. You turn. <<person3>><<veteran_guard 2 cap>> is stood at arm's reach. <<person1>><<relaxed_guard 0 cap>> and <<person2>><<anxious_guard 1>> remain on the other side, carrying a hose between them.
+    <br><br>
+
+    <<link [[Next|Prison Intro Hose Speech]]>><<water>><</link>>
+    <br>
+<<else>>
+    <span class="red">Your body freezes.</span> You can't do it.<<ggwillpower>><<willpower 3>><<lcontrol>><<control -10>><<gstress>><<stress 6>>
+    <br><br>
+    You hear footsteps behind. A pair of hands grasp each of your shoulders, and force you towards the hole. You're too frightened to struggle, to risk falling.
+    <br><br>
+
+    <<if $prison_intro is undefined>>
+        Right at the edge, <<person3>><<veteran_guard 2>> grasps your hair and holes your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good girl, and do as you're told."
+        <br><br>
+    <</if>>
+
+    <<link [[Next|Prison Intro Hose]]>><<water>><</link>>
+    <br>
+<</if>>
+
+
+:: Prison Intro Wall Refuse
+<<effects>>
+
+<<if $submissive gte 1150>>
+    <<gagged_speech "I-I can't" ,>> you say. <<gagged_speech "It's too scary" .>>
+<<elseif $submissive lte 850>>
+    <<gagged_speech "You must think I'm insane" ,>> you say. <<gagged_speech "Fuck off" .>>
+<<else>>
+    <<gagged_speech "Please don't make me" ,>> you say
+<</if>>
+<br><br>
+
+<<person1>><<relaxed_guard 0 cap>> and <<person3>><<veteran_guard 2>> march towards you, and grasp your shoulders. You struggle to keep your footing as they shove you towards the hole. The light closest buzzes and fails, and the dark seems to grasp at you.
+<br><br>
+
+<<if $prison_intro is undefined>>
+    Right at the edge, <<person3>><<veteran_guard 2>> grasps your hair and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good girl, and do as you're told."
+    <br><br>
+<</if>>
+
+<<link [[Next|Prison Intro Hose]]>><<water>><</link>>
+<br>
+
+:: Prison Intro Hose Speech
+<<effects>>
+
+They blast you with icy water. The shock knocks you to your knees, but they keep blasting, <span class="red">until you tumble towards the hole.</span><<ggstress>><<stress 6>><<wash>>
+<<upperruined>>
+<<lowerruined>>
+<<underupperruined>>
+<<underlowerruined>>
+<br><br>
+<<if $prison_intro is undefined>>
+    Firm hands grasp you at the last moment. <<person3>><<veteran_guard 2 cap>> grips the back of your hair, and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good girl, and do as you're told."
+    <br><br>
+<</if>>
+
+<<link [[Next|Prison Intro Hose 2]]>><</link>>
+<br>
+
+
+:: Prison Intro Hose
+<<effects>>
+
+<<He>> releases you, and you turn away from the edge to find <<person1>><<relaxed_guard 0>> and <<person2>><<anxious_guard 1>> carrying a hose between them. They blast you with with icy water. You'd fall, if not for <<person3>><<veteran_guard 2>> steadying you with one hand.<<wash>>
+<<upperruined>>
+<<lowerruined>>
+<<underupperruined>>
+<<underlowerruined>>
+<br><br>
+
+<<link [[Next|Prison Intro Hose 2]]>><</link>>
+<br>
+
+
+:: Prison Intro Hose 2
+<<effects>>
+
+"You are prisoner 144," <<person4>><<methodical_guard 3>> says, thrusting a bundle of clothes into your arms.
+<<if $worn.upper.name isnot "naked" or $worn.lower.name isnot "naked" or $worn.under_upper.name isnot "naked" or $worn.under_lower.name isnot "naked">>
+    "Cell block A. You will get your name back when your sentence is served."
+    <br><br>
+    They don't give you a chance to dry before shunting you through another metal door.
+<<else>>
+    "Cell block A. You will get your things back when your sentence is served."
+    <br><br>
+    They don't give you a chance to dress before shunting you through another metal door.
+<</if>>
+<br><br>
+
+<<link [[Next|Prison Intro Walk]]>><</link>>
+<br>
+
+
+
+:: Prison Intro Walk
+<<effects_prison>><<effects>>
+
+
+<<generate_scarred_inmate 4>>
+<<generate_tattooed_inmate 5>>
+You emerge on a walkway above a long hall, stretching in both directions. Three stories of cells line each side. <<person1>><<relaxed_guard 0 cap>> slams the metal door behind you, and the sound echoes through the hall.
+<br><br>
+<<if $prison_intro isnot 1>>
+    <<if $prison.schedule is "lockdown">>
+        "Move it," <<relaxed_guard 0>> says, giving your back a jab with <<his>> baton. Hands and faces appear, ratting the bars. They taunt you, though only the closest can be heard above the din.
+    <<else>>
+        "Move it," <<relaxed_guard 0>> says, giving your back a jab with <<his>> baton. Several <<people>> in prisoner's garb shuffle below. They look up, and taunt.
+    <</if>>
+    <br><br>
+    "Fresh meat," one <<person5>><<personsimple>> says.
+    <br>
+    "Can't wait to break this one in," says another.
+    <br>
+    <<if $NPCList[0].penis isnot "none">>
+        "A new cumsock? Fantastic."
+    <<else>>
+        "A new dildo? Fantastic."
+    <</if>>
+    <br>
+    <<if $beauty gte ($beautymax * 0.8)>>
+        "Holy shit. This one's mine."
+        <br>
+        "Fuck off, I saw <<phim>> first."
+        <br>
+    <<elseif $beauty gte ($beautymax * 0.4)>>
+        "What a cutie."
+        <br>
+    <</if>>
+    <br>
+    <br><br>
+    <<if $worn.upper.name isnot "naked" or $worn.lower.name isnot "naked" or $worn.under_upper.name isnot "naked" or $worn.under_lower.name isnot "naked">>
+        <<person1>><<relaxed_guard 0 cap>> pushes you along the upper walkway as you clutch the bundle of fabric over your wet clothes.
+    <<else>>
+        <<person1>><<relaxed_guard 0 cap>> pushes you along the upper walkway as you clutch the bundle of clothes over your <<lewdness>>.
+    <</if>>
+    <<if $prison.schedule is "lockdown">>
+        A <<person6>><<person>> reaches for you with a tattooed arm, but <<person1>><<relaxed_guard 0>> cracks <<person6>><<his>> knuckles with a swing of <<person1>><<his>> baton.
+    <<else>>
+        One of the cells is occupied. A <<person6>><<person>> reaches for you with a tattooed arm, but <<person1>><<relaxed_guard 0>> cracks <<person6>><<his>> knuckles with a swing of <<person1>><<his>> baton.
+    <</if>>
+    <br><br>
+
+    <<link [[Next|Prison Intro Cell]]>><</link>>
+    <br>
+<<else>>
+    <<if $prison.schedule is "lockdown">>
+        "Move it," <<relaxed_guard 0>> says, giving your back a jab with <<his>> baton. Hands and faces appear, ratting the bars.
+    <<else>>
+        "Move it," <<relaxed_guard 0>> says, giving your back a jab with <<his>> baton. Several <<people>> in prisoner's garb shuffle below. They look up, and taunt.
+    <</if>>
+    <<if $prison.inmates gte 80>>
+        They greet you, though only the closest can be heard above the din.
+        <br><br>
+        "Welcome home," one <<person5>><<personsimple>> says.
+        <br>
+        "I missed that ass."
+        <br>
+        "It is wrong if I hoped I'd see you again?"
+        <br>
+        "Let's pick up where we left off."
+    <<elseif $prison.inmates gte 40>>
+        They taunt you, though only the closest can be heard above the din.
+        <br><br>
+        "Nice. I'll make you my <<bitch>> this time," one <<person5>><<personsimple>> says.
+        <br>
+        "I missed that ass."
+        <br>
+        "Couldn't get enough of us, slut?"
+    <<else>>
+        They taunt you, though only the closest can be heard above the din.
+        <br><br>
+        "It's that used up whore," one <<person5>><<personsimple>> says.
+        <br>
+        "I'm gonna make you squeal."
+        <br>
+        "Back where you belong, <<bitch>>."
+    <</if>>
+    <br><br>
+    <<if $worn.upper.name isnot "naked" or $worn.lower.name isnot "naked" or $worn.under_upper.name isnot "naked" or $worn.under_lower.name isnot "naked">>
+        <<person1>><<relaxed_guard 0 cap>> pushes you along the upper walkway as you clutch the bundle of fabric over your wet clothes.
+    <<else>>
+        <<person1>><<relaxed_guard 0 cap>> pushes you along the upper walkway as you clutch the bundle of clothes over your <<lewdness>>.
+    <</if>>
+    <<if $prison.schedule is "lockdown">>
+        <<person6>><<tattooed_inmate 5 cap>> gropes for you, but <<person1>><<relaxed_guard 0>> cracks <<person6>><<his>> knuckles with a swing of <<person1>><<his>> baton.
+    <<else>>
+        One of the cells is occupied. <<person6>><<tattooed_inmate 5 cap>> gropes for you, but <<person1>><<relaxed_guard 0>> cracks <<person6>><<his>> knuckles with a swing of <<person1>><<his>> baton.
+    <</if>>
+    <br><br>
+
+    <<link [[Next|Prison Intro Cell]]>><</link>>
+    <br>
+<</if>>
+
+
+:: Prison Intro Cell
+<<effects_prison>><<effects>>
+
+<<if $prison.schedule is "lockdown">>
+    The cell door rattles shut.
+    <<if $prison_intro is undefined>>
+        "Welcome to your new home,"
+    <<else>>
+        "Welcome back,"
+    <</if>>
+    <<person1>><<relaxed_guard 0>> says. "Lights on at <<ampm 6 00>>. There's a schedule on the wall. You can read, right?"
+    <br><br>
+    <<if $prison_intro isnot 1>>
+        "Quiet down!" <<he>> shouts at <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face stares at you from <<his>> cell. <<He>> licks one of the bars.
+    <<else>>
+        "Quiet down!" <<he>> shouts at <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> stares at you from <<his>> cell. <<He>> licks one of the bars.
+    <</if>>
+    <br><br>
+
+    The cell is almost as small as your room in the orphanage. There's a jagged crack in the wall. A bare mattress sits in one corner. There's a cupboard in another, with a sign above it. "God is watching" is emblazoned across the top. Beneath it is the schudule, but the lights die before you can read it.
+    <br><br>
+<<else>>
+    The cell door rattles shut.
+    <<if $prison_intro is undefined>>
+        "Welcome to your new home,"
+    <<else>>
+        "Welcome back,"
+    <</if>> <<person1>><<relaxed_guard 0>> says. "Lights on at <<ampm 6 00>>. There's a schedule on the wall. You can read, right?"
+    <br><br>
+    <<if $prison_intro isnot 1>>
+        "Quiet down!" <<he>> shouts at <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
+    <<else>>
+        "Quiet down!" <<he>> shouts at <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
+    <</if>>
+    <br><br>
+
+    The cell is almost as small as your room in the orphanage. There's a jagged crack in the wall. A bare mattress sits in one corner. There's a cupboard in another, with a sign above it. "God is watching" is emblazoned in red across the top. Beneath it is the schudule.
+    <br><br>
+<</if>>
+
+<<endcombat>>
+
+<<link [[Next|Prison Cell]]>>
+    <<set $prison.time to Math.trunc($crime / 250)>>
+    <<set $crime to 0>>
+    <<set $prison_intro to 1>>
+<</link>>
+<br>
+
+
+:: Prison End
+<<effects>>
+
+<<endevent>>
+<<generate_relaxed_guard 0>>
+<<generate_anxious_guard 1>>
+<<generate_veteran_guard 2>>
+<<generate_methodical_guard 3>>
+<<generate_scarred_inmate 4>>
+<<generate_tattooed_inmate 5>>
+
+
+<<if $prison.inmates gte 80>>
+    The other inmates pat your back as you pass.
+<<elseif $prison.inmates gte 40>>
+    The other inmates go about their business, unconcerned with you.
+<<else>>
+    The other inmates glare at you as you pass, but they won't try anything right under a guard's nose.
+<</if>>
+
+
+
+<<if $prison.scarred gte 80>>
+    <<if $prison.tattooed gte 80>>
+        <<scarred_inmate 4 cap>><<person5>> grasps your arm, and pulls you into <<him>>. "I'll miss that ass," <<he>> says, giving you a light spank. "Don't go slutting around too much."
+        <br><br>
+        "Hands off my <<girl>>," shouts <<tattooed_inmate 5>><<person6>>, marching down the walkway. <<He>> grasps your other arm, and tries to wrest you away.
+        <br><br>
+        A whistle pierces the hall. <<methodical_guard 3 capo>> eyes flick between the pair, and the release you.
+        <br><br>
+        "I'll be lonely without you," <<tattooed_inmate 5>><<person6>> whispers. <<He>> sniffs your hair. "Have fun outside."
+    <<else>>
+        <<scarred_inmate 4 cap>><<person5>> grasps your arm, and pulls you into <<him>>. "I'll miss that ass," <<he>> says, giving you a light spank. "Don't go slutting around too much."
+        <br><br>
+        <<tattooed_inmate 5 cap>><<person6>> watches you from the opposite walkway. <<He>> licks <<his>> teeth.
+    <</if>>
+<<else>>
+    <<if $prison.tattooed gte 80>>
+        <<scarred_inmate 4 cap>> grasps your arm, but releases you when <<person5>><<he>> sees <<tattooed_inmate 5>> walking this way. They stare each other down. <<scarred_inmate 4 cap>> bites the air, then returns to <<his>> cell.
+        <br><br>
+        "I'll be lonely without you," <<tattooed_inmate 5>><<person6>> says. <<He>> sniffs your hair. "Have fun outside."
+    <<else>>
+        <<scarred_inmate 4 cap>> grasps your arm, but releases you when <<methodical_guard 3>> whacks the railing with <<person4>><<his>> baton. <<tattooed_inmate 5 cap>> watches you from the other side of the block. "You'll be back," <<person6>><<he>> mouths. "I'll be waiting."
+    <</if>>
+<</if>>
+<br><br>
+
+
+
+
+<<link [[Next|Prison End 2]]>><</link>>
+<br>
+
+
+:: Prison End 2
+<<effects>>
+
+<<if $leftarm is "bound" and $rightarm is "bound">>
+    <<methodical_guard 3 cap>> leads you into the central tower.
+<<else>>
+    <<methodical_guard 3 cap>> cuffs you, and leads you into the central tower.
+<</if>>
+<<relaxed_guard 0 cap>>, <<anxious_guard 0>>, and <<veteran_guard 0>> await.
+<br><br>
+
+<<if $prison.guards gte 80>>
+    "If only all inmates were like you," <<relaxed_guard 0>> says.
+<<elseif $prison.guards gte 40>>
+    "Keep out of trouble this time," <<relaxed_guard 0>> says.
+<<else>>
+    "Suspect you'll be our problem against soon enough," <<relaxed_guard 0>> says.
+<</if>>
+<br><br>
+
+<<methodical_guard 3 cap>><<person4>> sits behind the desk, and rifles through the attached cupboard. "You are a free member of society once again," <<he>> says.
+
+<<if $prison.methodical_guard gte 80>>
+    "It was... a pleasure."
+<<elseif $prison.methodical_guard gte 40>>
+    "Thank you for cooperating."
+<<else>>
+    <<He>> stamps a sheet of paper without another word.
+<</if>>
+<br><br>
+
+<<storeon "prison intro" check>>
+<<if _store_check is 1>>
+    "Here are your things," <<relaxed_guard 0>> says, handing you the clothes you arrived with.
+    <<storeon "prison intro">>
+    <<exposure>>
+    <<if $exposed gte 1>>
+        They don't give you anything else to cover with before pushing you through the next door.
+    <<else>>
+        They watch you dress, then push you through the next door.
+    <</if>>
+<<else>>
+    <<if $exposed gte 1>>
+        <<relaxed_guard 0 cap>> shoves you through the next door without giving you anything to cover with.
+    <<else>>
+        <<relaxed_guard 0 cap>> shoves you through the next door.
+    <</if>>
+<</if>>
+<br><br>
+
+<<link [[Next|Prison End 3]]>><</link>>
+<br>
+
+:: Prison End 3
+<<effects>>
+
+You walk through the cave, and emerge at the pier. The boat awaits. You sit beneath the canopy as <<anxious_guard 1>> and <<veteran_guard 2>> untie the moorings.
+<br><br>
+
+"We're off," <<relaxed_guard 0 cap>> says from the helm.
+<br><br>
+
+<<link [[Next|Prison End 4]]>><</link>>
+<br>
+
+
+:: Prison End 4
+<<set $location to "sea">><<effects>>
+
+<<relaxed_guard 0 cap>> steers through the mist without difficulty.
+
+<<if $daystate is "night">>
+    <<if $weather is "clear" or $harpy gte 2 or $cat gte 2>>
+        You see the light of town on the horizon ahead.
+    <<else>>
+        Though you can see little better.
+    <</if>>
+<<else>>
+    You see the town on the horizon ahead.
+<</if>>
+<br><br>
+
+<<if $prison.relaxed gte 80>>
+    <<if $prison.anxious gte 80>>
+        <<if $prison.veteran gte 80>>
+            "I'll miss this one," <<relaxed_guard 0>> says. "Didn't bother me much."
+            <br>
+            "Aye," replies <<veteran_guard 2>>. "Hardier than I thought, too."
+            <br>
+            "A shame to lose <<phim>>," adds <<anxious_guard 1>>.
+            <br><br>
+        <<else>>
+            "I'll miss this one," <<relaxed_guard 0>> says. "Didn't bother me much."
+            <br>
+            "Hardier than I thought," <<veteran_guard 2>> admits.
+            <br>
+            "I'm glad of that," <<anxious_guard 1>> says. "Wouldn't have been so much help otherwise."
+            <br><br>
+        <</if>>
+    <<else>>
+        <<if $prison.veteran gte 80>>
+            "I'll miss this one," <<relaxed_guard 0>> says. "Didn't bother me much."
+            <br>
+            "Aye," replies <<veteran_guard 2>>. "Hardier than I thought, too."
+            <br>
+            "Could you two be quiet?" <<anxious_guard 1>> asks. "I'm listening for merfolk." The other two laugh, and spend the rest of the journey mocking <<person2>><<him>>.
+            <br><br>
+        <<else>>
+            "I'll miss this one," <<relaxed_guard 0>> says. "Didn't bother me much."
+            <br>
+            "Hardier than I thought," <<veteran_guard 2>> admits.
+            <br>
+            "Could you two be quiet?" <<anxious_guard 1>> asks. "I'm listening for merfolk." The other two laugh, and spend the rest of the journey mocking <<person2>><<him>>.
+            <br><br>
+        <</if>>
+    <</if>>
+<<else>>
+    <<if $prison.anxious gte 80>>
+        <<if $prison.veteran gte 80>>
+            "Ever miss your family?" <<relaxed_guard 0>> asks.
+            <br>
+            <<veteran_guard 2 cap>><<person3>> shakes <<his>> head. "With you kids around?" <<he>> replies. "Nah. Even the odd inmate is good company. Like this one."
+            <br>
+            "Gonna miss <<phis>> help," <<anxious_guard 0>> adds.
+            <br><br>
+        <<else>>
+            "Ever miss your family?" <<relaxed_guard 0>> asks.
+            <br>
+            <<veteran_guard 2 cap>><<person3>> shakes <<his>> head. "With you kids around?" <<he>> replies. "Nah."
+            <br>
+            "This one kept me company," <<anxious_guard 1>> says, gesturing at you. "Almost a shame to see <<phim>> go."
+            <br><br>
+        <</if>>
+    <<else>>
+        <<if $prison.veteran gte 80>>
+            "Ever miss your family?" <<relaxed_guard 0>> asks.
+            <br>
+            <<veteran_guard 2 cap>><<person3>> shakes <<his>> head. "With you kids around?" <<he>> replies. "Nah. Even the odd inmate is good company. Like this one."
+            <br>
+            "Could you two be quiet?" <<anxious_guard 1>> asks. "I'm listening for merfolk." The other two laugh, and spend the rest of the journey mocking <<person2>><<him>>.
+            <br><br>
+        <<else>>
+            "Ever miss your family?" <<relaxed_guard 0>> asks.
+            <br>
+            <<veteran_guard 2 cap>><<person3>> shakes <<his>> head. "With you kids around?" <<he>> replies. "Nah."
+            <br>
+            "Could you two be quiet?" <<anxious_guard 1>> asks. "I'm listening for merfolk." The other two laugh, and spend the rest of the journey mocking <<person2>><<him>>.
+            <br><br>
+        <</if>>
+    <</if>>
+<</if>>
+
+<<link [[Next|Prison End 5]]>><</link>>
+<br>
+
+:: Prison End 5
+<<set $location to "docks">><<effects>>
+<<earnFeat "Institutionalised">>
+<<pass 60>>
+<<relaxed_guard 0 cap>> steers the boat into port while <<veteran_guard 0>> removes your cuffs. A figure waits, leaning against a car. It's Bailey.
+<<prison_bondage_removal>>
+<br><br>
+
+"Be good," <<veteran_guard 0>> says, shoving you onto the dock. "Or we'll see each other again."
+<br><br>
+
+<<link [[Next|Prison End 6]]>><<endevent>><<prison_end>><</link>>
+<br>
+
+
+:: Prison End 6
+<<effects>>
+
+<<npc Bailey>><<person1>>
+Bailey opens the passenger door as <<he>> watches the guard depart. "Get in."
+<br><br>
+
+<<link [[Get in|Prison End Car]]>><</link>>
+<br>
+<<link [[Refuse|Prison End Refuse]]>><</link>>
+<br>
+
+
+:: Prison End Car
+<<set $location to "town">><<effects>>
+<<pass 5>>
+You climb into the car. Bailey slams the door behind you.
+<br><br>
+
+Bailey pulls onto the main road before speaking. "Try not to be caught in the future," <<he>> says. "I was reimbursed, but it was a headache."
+<br><br>
+
+<<link [[Remain Silent|Prison End Car Silent]]>><</link>>
+<br>
+<<link [[Thank|Prison End Car Thank]]>><</link>>
+<br>
+<<link [[Get angry|Prison End Car Angry]]>><</link>>
+<br>
+
+
+:: Prison End Car Silent
+<<effects>>
+
+You remain silent, and so does Bailey.
+<br><br>
+
+<<He>> stops the car outside the orphanage, and holds your arm as <<he>> pulls you inside.
+<br><br>
+
+<<link [[Next|Orphanage]]>><<endevent>><</link>>
+<br>
+
+
+:: Prison End Car Thank
+<<effects>>
+
+<<if $submissive gte 1150>>
+    <<gagged_speech "Thank you for picking me up" ,>> you say.
+<<elseif $submissive lte 850>>
+    <<gagged_speech "Thanks for the lift" ,>> you say.
+<<else>>
+    <<gagged_speech "Thanks for picking me up" ,>> you say.
+<</if>>
+Bailey ignores you.
+<br><br>
+
+<<He>> stops the car outside the orphanage, and holds your arm as <<he>> pulls you inside.
+<br><br>
+
+
+<<link [[Next|Orphanage]]>><<endevent>><</link>>
+<br>
+
+:: Prison End Car Angry
+<<effects>>
+
+<<if $submissive gte 1150>>
+    <<gagged_speech "I-it was horrible in there" ,>> you say. <<gagged_speech "Weren't you worried about me" ?>>
+<<elseif $submissive lte 850>>
+    <<gagged_speech "Thanks for thinking about me while I was locked in hell" ,>> you say.
+<<else>>
+    <<gagged_speech "Did you worry about me at all" ?>> you ask. <<gagged_speech "Or did you just worry about money" ?>>
+<</if>>
+<br><br>
+
+"Watch your tone," Bailey says in a low voice. "There are worse places than that island."
+<br><br>
+
+Bailey stops the car outside the orphanage. <<He>> holds your arm, and walks you inside.
+<br><br>
+
+<<link [[Next|Orphanage]]>><<endevent>><</link>>
+<br>
+
+
+:: Prison End Refuse
+<<effects>>
+
+You turn and walk in the other direction. You hear the car door slam. You tense in anticipation of approaching footsteps, but hear another door open instead. Bailey drives away.
+<br><br>
+
+<<link [[Next|Docks]]>><<endevent>><</link>>
+<br>

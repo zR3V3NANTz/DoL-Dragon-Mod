@@ -270,11 +270,11 @@ You sit on the dingy bed and wait.
 After an hour, a <<generate1>><<person1>><<person>> in a police uniform arrives beside the cell. "Come on, let's get you processed," <<he>> says, unlocking the cell door. "Turn around."
 <br><br>
 <<if $worn.neck.collared isnot 1>>
-	<<neckwear 1>>
+	<<neckwear 21>>
 	You comply, and hear <<him>> remove something from <<his>> belt. <<He>> fastens it around your neck, and you hear it click shut. "This collar has a shock function, just to ensure your continued cooperation. We'll remove it once you've served your sentence."
 	<br><br>
 <<else>>
-	You comply. "Oh," <<he>> says. "You're already collared." <<He>> walks right up behind you and examines the collar more closely. "And the shock function appears to work. Everything is in order then. We'll remove it once you've served your sentence."
+	You comply. "Oh," <<he>> says. "You're already collared." <<He>> walks right up behind you and examines the collar more closely. "And the shock function appears to work." <<He>> attaches a leahs. "Everything is in order. We'll remove it once you've served your sentence."
 	<br><br>
 <</if>>
 <<set $worn.neck.collaredpolice to 1>>
@@ -282,15 +282,23 @@ After an hour, a <<generate1>><<person1>><<person>> in a police uniform arrives 
 <br><br>
 
 <<if $crime gte 5000>>
-	Once seated, the <<person2>><<person>> continues. "You didn't think you'd get away with it did you? You've been leaving traces of yourself all over. These are only petty crimes however, so public humiliation is an appropriate punishment. Take <<phim>> to the pillory."
-	<br><br>
-	<<link [[Next|Police Pillory Start]]>><</link>>
-	<br>
+	<<if $stat_police.pillory gte 1>>
+		Once seated, the <<person2>><<person>> continues. "You've been a naughty <<girl>>. A repeat offender. <span class="red">Perhaps a stint in prison will set you straight.</span> I sentence you to <span class="red"><<print Math.trunc($crime / 250)>></span> days." <<He>> stamps a document in front of <<him>>. "Get this wretch out of my sight."
+		<br><br>
+
+		<<link [[Next|Police Prison Intro]]>><</link>>
+		<br> 
+	<<else>>
+		Once seated, the <<person2>><<person>> continues. "You didn't think you'd get away with it did you? You've been leaving traces of yourself all over. These are only petty crimes however, so public humiliation is an appropriate punishment. Take <<phim>> to the pillory."
+		<br><br>
+		<<link [[Next|Police Pillory Start]]>><<set $stat_police.pillory += 1>><</link>>
+		<br>
+	<</if>>
 <<else>>
 	<<if $community_service gte 1>>
 		Once seated, the <<person2>><<person>> continues. "You were given the chance to give back to the community, but couldn't keep your nose clean, could you? Public humiliation will teach you better. Take <<phim>> to the pillory."
 		<br><br>
-		<<link [[Next|Police Pillory Start]]>><</link>>
+		<<link [[Next|Police Pillory Start]]>><<set $stat_police.pillory += 1>><</link>>
 		<br>
 	<<else>>
 		Once seated, the <<person2>><<person>> continues. "These are only petty crimes. You'll be given the chance to make amends, and give back to the community. <span class="pink">You are to report to the police station every day.</span> There you will be assigned a service. It'll take about an hour. You can arrive any time during daylight hours."

@@ -335,7 +335,7 @@
 
 <<if $leftaction is "lefthit" and $rightaction is "righthit">>
 	<<set $leftaction to 0>><<set $rightaction to 0>><<set $leftactiondefault to "lefthit">>
-	<<set $rightactiondefault to "righthit">><<defiance 5>><<actionshit>><<set $speechhit to 1>><<set $attackstat += 2>>
+	<<set $rightactiondefault to "righthit">><<defiance 5>><<actionshit both>><<set $speechhit to 1>><<set $attackstat += 2>>
 <</if>>
 
 <<if $leftaction is "lefthit">>
@@ -1429,7 +1429,7 @@
 		/*Npc tries to prevent you from putting the condom on*/
 	<<else>>
 		<<if $player.condom is false and $parasite.penis.name is undefined>>
-			You are not prevented from putting the condom over your penis.
+			You are not stopped from putting the condom over your penis.
 			<<equipCondom>>
 		<</if>>
 	<</if>>
@@ -3736,7 +3736,7 @@
 				<<set _response to [
 					"Sure thing, slut.",
 					"Yeah, you probably have something contagious.",
-					"Last thing I want is an unclaimed brat with my name on it.",
+					"Last thing I want is aa brat with my name on it.",
 					"Fine, but I expect you to cooperate.",
 					"Good idea, I don't want any evidence traced back to me."
 				]>>
@@ -3751,7 +3751,7 @@
 				<<if _npcReject>>
 					<<set $condomUse to false>>
 					<<switch $npc>>
-						<<case "Kylar">><span class="lewd"><<He>> says, "There is no need, we're going to have many amazing children."</span>
+						<<case "Kylar">><span class="lewd"><<He>> says, "B-but why? We're going to have many children. We should start now."</span>
 						<<default>><span class="lewd"><<He>> says, "It's a safe day for me, don't worry about it."</span>
 					<</switch>>
 				<<else>>
@@ -3765,7 +3765,7 @@
 					<<for _j = 0; _j lt $enemyno; _j++>>
 						<<if ($NPCList[_j].vagina is "penis" or $NPCList[_j].penis is "otheranus") and $player.condom is false and $parasite.penis.name is undefined>>
 							<<personselect _j>>
-							<span class="green">The <<person>> puts a condom onto your penis.</span>
+							<span class="green">The <<person>> slips a condom onto your penis.</span>
 							<<equipCondom>>
 						<</if>>
 					<</for>>
@@ -3774,7 +3774,7 @@
 					<<for _j = 0; _j lt $enemyno; _j++>>
 						<<if $NPCList[_j].vagina is "penis" and $player.condom is false and $parasite.penis.name is undefined>>
 							<<personselect _j>>
-							<span class="green">The <<person>> briefly frees your penis from <<his>> vagina, puts a condom on it before sticking it back in.</span>
+							<span class="green">The <<person>> briefly frees your penis from <<his>> vagina, slips a condom on, and slides it back in.</span>
 							<<equipCondom>>
 						<</if>>
 					<</for>>
@@ -3783,7 +3783,7 @@
 					<<for _j = 0; _j lt $enemyno; _j++>>
 						<<if $NPCList[_j].penis is "otheranus" and $player.condom is false and $parasite.penis.name is undefined>>
 							<<personselect _j>>
-							<span class="green">The <<person>> briefly frees your penis from <<his>> anus, puts a condom on it before sticking it back in.</span>
+							<span class="green">The <<person>> briefly frees your penis from <<his>> anus, slips a condom on, and slides it back in.</span>
 							<<equipCondom>>
 						<</if>>
 					<</for>>
@@ -3793,7 +3793,7 @@
 					<<for _j = 0; _j lt $enemyno; _j++>>
 						<<if ($NPCList[_j].penis is "vaginaentrance" or $NPCList[_j].penis is "vaginaimminent") and $NPCList[_j].condom is false>>
 							<<personselect _j>>
-							<span class="green">The <<person>> puts a condom onto <<his>> penis.</span>
+							<span class="green">The <<person>> slips a condom onto <<his>> penis.</span>
 							<<equipCondom _j>>
 						<</if>>
 					<</for>>
@@ -3802,7 +3802,7 @@
 					<<for _j = 0; _j lt $enemyno; _j++>>
 						<<if $NPCList[_j].penis is "vagina" and $NPCList[_j].condom is false>>
 							<<personselect _j>>
-							<span class="green">The <<person>> briefly withdraws <<his>> penis from your vagina, puts a condom on it before sticking it back in.</span>
+							<span class="green">The <<person>> briefly withdraws <<his>> penis from your vagina, slips a condom on, and slides it back in.</span>
 							<<equipCondom _j>>
 						<</if>>
 					<</for>>
@@ -3811,7 +3811,7 @@
 					<<for _j = 0; _j lt $enemyno; _j++>>
 						<<if ($NPCList[_j].penis is "anusentrance" or $NPCList[_j].penis is "anusimminent") and $NPCList[_j].condom is false>>
 							<<personselect _j>>
-							<span class="green">The <<person>> puts a condom onto <<his>> penis.</span>
+							<span class="green">The <<person>> slips a condom onto <<his>> penis.</span>
 							<<equipCondom _j>>
 						<</if>>
 					<</for>>
@@ -3820,7 +3820,7 @@
 					<<for _j = 0; _j lt $enemyno; _j++>>
 						<<if $NPCList[_j].penis is "anus" and $NPCList[_j].condom is false>>
 							<<personselect _j>>
-							<span class="green">The <<person>> briefly withdraws <<his>> penis from your anus, puts a condom on it before sticking it back in.</span>
+							<span class="green">The <<person>> briefly withdraws <<his>> penis from your anus, slips a condom on, and slides it back in.</span>
 							<<equipCondom _j>>
 						<</if>>
 					<</for>>
@@ -3879,7 +3879,7 @@
 						<<for _j = 0; _j lt $enemyno; _j++>>
 							<<if ($NPCList[_j].vagina is "penis" or $NPCList[_j].penis is "otheranus") and $player.condom is false and $parasite.penis.name is undefined>>
 								<<personselect _j>>
-								<span class="green">The <<person>> puts a condom onto your penis.</span>
+								<span class="green">The <<person>> slips a condom onto your penis.</span>
 								<<equipCondom>>
 							<</if>>
 						<</for>>
@@ -3888,7 +3888,7 @@
 						<<for _j = 0; _j lt $enemyno; _j++>>
 							<<if $NPCList[_j].vagina is "penis" and $player.condom is false and $parasite.penis.name is undefined>>
 								<<personselect _j>>
-								<span class="green">The <<person>> briefly frees your penis from <<his>> vagina, puts a condom on it before sticking it back in.</span>
+								<span class="green">The <<person>> briefly frees your penis from <<his>> vagina, slips a condom on, and slides it back in.</span>
 								<<equipCondom>>
 							<</if>>
 						<</for>>
@@ -3897,7 +3897,7 @@
 						<<for _j = 0; _j lt $enemyno; _j++>>
 							<<if $NPCList[_j].penis is "otheranus" and $player.condom is false and $parasite.penis.name is undefined>>
 								<<personselect _j>>
-								<span class="green">The <<person>> briefly frees your penis from <<his>> anus, puts a condom on it before sticking it back in.</span>
+								<span class="green">The <<person>> briefly frees your penis from <<his>> anus, slips a condom on, and slides it back in.</span>
 								<<equipCondom>>
 							<</if>>
 						<</for>>
@@ -3907,7 +3907,7 @@
 						<<for _j = 0; _j lt $enemyno; _j++>>
 							<<if ($NPCList[_j].penis is "vaginaentrance" or $NPCList[_j].penis is "vaginaimminent") and $NPCList[_j].condom is false>>
 								<<personselect _j>>
-								<span class="green">The <<person>> puts a condom onto <<his>> penis.</span>
+								<span class="green">The <<person>> slips a condom onto <<his>> penis.</span>
 								<<equipCondom _j>>
 							<</if>>
 						<</for>>
@@ -3916,7 +3916,7 @@
 						<<for _j = 0; _j lt $enemyno; _j++>>
 							<<if $NPCList[_j].penis is "vagina" and $NPCList[_j].condom is false>>
 								<<personselect _j>>
-								<span class="green">The <<person>> briefly withdraws <<his>> penis from your vagina, puts a condom on it before sticking it back in.</span>
+								<span class="green">The <<person>> briefly withdraws <<his>> penis from your vagina, slips a condom on, and slides it back in.</span>
 								<<equipCondom _j>>
 							<</if>>
 						<</for>>
@@ -3925,7 +3925,7 @@
 						<<for _j = 0; _j lt $enemyno; _j++>>
 							<<if ($NPCList[_j].penis is "anusentrance" or $NPCList[_j].penis is "anusimminent") and $NPCList[_j].condom is false>>
 								<<personselect _j>>
-								<span class="green">The <<person>> puts a condom onto <<his>> penis.</span>
+								<span class="green">The <<person>> slips a condom onto <<his>> penis.</span>
 								<<equipCondom _j>>
 							<</if>>
 						<</for>>
@@ -3934,7 +3934,7 @@
 						<<for _j = 0; _j lt $enemyno; _j++>>
 							<<if $NPCList[_j].penis is "anus" and $NPCList[_j].condom is false>>
 								<<personselect _j>>
-								<span class="green">The <<person>> briefly withdraws <<his>> penis from your anus, puts a condom on it before sticking it back in.</span>
+								<span class="green">The <<person>> briefly withdraws <<his>> penis from your anus, slips a condom on, and slides it back in.</span>
 								<<equipCondom _j>>
 							<</if>>
 						<</for>>

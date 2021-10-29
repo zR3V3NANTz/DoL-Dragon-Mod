@@ -6,6 +6,12 @@
 	<<set _temp1 to $args[1]>>
 	<<set _temp0 to $args[0]>>
 	<<set $per_npc[_temp1] to clone($NPCList[_temp0])>>
+	/*Clears name from name pool */
+	<<if $NPCList[$args[0]].pronoun is "f">>
+		<<set $NPC_names_f.delete($NPCList[$args[0]].name)>>
+	<<else>>
+		<<set $NPC_names_m.delete($NPCList[$args[0]].name)>>
+	<</if>>
 <</if>>
 <</widget>>
 
@@ -23,6 +29,26 @@
 /*Clears persistent NPC data for a single NPC. Argument is the string the NPC was saved under.*/
 <<if $args[0]>>
 	<<set _temp0 to $args[0]>>
+	/*Adds name back into name pool */
+	<<if $per_npc[_temp0].pronoun is "f">>
+		<<set $NPC_names_f.push($per_npc[_temp0].name)>>
+	<<else>>
+		<<set $NPC_names_m.push($per_npc[_temp0].name)>>
+	<</if>>
 	<<set $per_npc[_temp0] to undefined>>
 <</if>>
+<</widget>>
+
+<<widget "updateNPCsFirst">>/*Adds new variables to saved NPCs.*/
+<<set _per_keys to Object.keys($per_npc)>>
+<<for _i to 0; _i lt _per_keys.length; _i++>>
+	<<set $per_npc[_per_keys[_i]][$args[0]] to $args[1]>>
+<</for>>
+<</widget>>
+
+<<widget "updateNPCsSecond">>
+<<set _per_keys to Object.keys($per_npc)>>
+<<for _i to 0; _i lt $per_npc.length; _i++>>
+	<<set $per_npc[_per_keys[_i]][$args[0]][$args[1]] to $args[2]>>
+<</for>>
 <</widget>>

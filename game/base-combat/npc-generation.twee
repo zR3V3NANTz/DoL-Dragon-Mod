@@ -50,7 +50,6 @@
 	<</if>>
 <</if>>
 
-
 <<set $NPCList[_n].lefthand to 0>>
 <<set $NPCList[_n].righthand to 0>>
 <<set $NPCList[_n].mouth to 0>>
@@ -58,6 +57,11 @@
 <<set $NPCList[_n].location.head to 0>>
 <<set $NPCList[_n].location.genitals to 0>>
 <<set $NPCList[_n].bold to 0>>
+<<if $NPCList[_n].pronoun is "f">>
+	<<set $NPCList[_n].name to $NPC_names_f.random()>>
+<<else>>
+	<<set $NPCList[_n].name to $NPC_names_m.random()>>
+<</if>>
 
 <<set $NPCList[_n].chastity to {penis:"", vagina:"", anus:""}>>
 <<generatePronouns $NPCList[_n]>>
@@ -756,6 +760,9 @@
 	<<set $NPCList[_n].fullDescription += "woman">>
 <</if>>
 
+<<set $NPCList[_n].role to "normal">>
+
+
 /*Sets up multiple orgasms, code needs work*/
 /*<<set $NPCList[_n].maxOrgasms to 1>>
 <<set $NPCList[_n].orgasms to 0>>
@@ -848,11 +855,6 @@
 }>>
 
 
-<<if $NPCList[_n].pronoun is "f">>
-	<<set $NPCList[_n].name to either("Olivia","Amelia","Isla","Ava","Mia","Grace","Freya","Lily","Sophia","Ivy","Jessica","Ashley","Emily","Sarah","Samantha","Amanda","Brittany","Elizabeth","Taylor","Megan","Laura","Gemma","Emma","Rebecca","Claire","Victoria","Rachel","Amy","Jennifer","Nicola","Katie","Lisa","Julie","Melissa","Michelle","Kim","Angela","Heather","Stephanie","Nicole","Christina","Susan","Karen","Jacqueline","Deborah","Tracey","Jane","Helen","Diane","Sharon")>>
-<<else>>
-	<<set $NPCList[_n].name to either("Oliver","Noah","George","Arthur","Freddie","Leo","Theo","Oscar","Charlie","Harry","Michael","Christopher","Matthew","Joshua","Jacob","Nicholas","Andrew","Daniel","Tyler","Joseph","James","David","Robert","Jack","Richard","Paul","Mark","Thomas","Adam","Jason","Connor","Jake","John","Brian","William","Ben","Kevin","Eric","Jeffrey","Jamie","Louis","Ryan","Mark","Joe","Stephen","Ian","Austin","Kyle","Zach","Patrick")>>
-<</if>>
 
 <<set $NPCList[_n].trust to 0>>
 

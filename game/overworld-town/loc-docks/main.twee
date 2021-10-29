@@ -44,6 +44,11 @@ You are on the docks.
 	<<link [[Get dressed|Docks]]>><<storeon "docks">><</link>>
 	<br>
 <</if>>
+
+<br>A sneaky hotdog stand has set up along the pier.<br>
+<<link [[Take sneaky free sample|Docks Sneaky]]>><</link>> | <span class="gold"><i>Prison test</i></span><br>
+
+<br>
 <<link [[Leave|Mer Street]]>><</link>>
 <br>
 
@@ -53,6 +58,51 @@ You are on the docks.
 	<<link [[Min dock status|Docks]]>><<set $dockstatus to 0>><</link>>
 	<br>
 <</if>>
+
+:: Docks Sneaky
+<<effects>>
+
+You receive a free sample from the hotdog stand. It smells good. Just as you try to bite, a seagull swoops and tries to snatch the meat from the bun. You recoil in time, but the hotdog slips from your grip, and rolls across the floor.
+<br><br>
+
+"Hey!" says a voice from behind. "What do you think you're doing?" A man with blonde hair and crimson eyes marches towards you. He's wearing an ill-fitting police uniform. "Littering! This is a respectable town. We cannot have this."
+<br><br>
+
+<<link [[Next|Docks Sneaky 2]]>><</link>>
+<br>
+
+
+:: Docks Sneaky 2
+<<effects>>
+
+
+<<npc Bailey>><<generate2>>
+<<if $prison_intro_officer>>
+    <<loadNPC 2 "prison_intro_officer">>
+<<else>>
+    <<generate3>>
+<</if>>
+
+<<generate4>><<person2>>
+
+He grasps your arm before you can explain yourself, and hauls you into a waiting police car. A girl with long brown hair smiles at you from the front seat. The other officer hesitates before climbing in. He's fiddling with his belt buckle.
+<br><br>
+
+"What's wrong?" says the girl.
+<br>
+"I can't get this new uniform to fit right," he replies. "I need another leg for my cock."
+<br>
+The girl laughs. "You'll have to fix it later. We need to escort this young offender."
+<br>
+He keeps pulling his trouser legs, until he almost falls over. He gives up, and climbs inside.
+<br><br>
+They drive you to Mer Street, to the docks, where you're handed over to a <<person>>
+<br><br>
+
+
+<<link [[Next|Police Prison Intro Bailey]]>><<neckwear 1>>><<set $crime += 5000>><</link>>
+<br>
+
 
 :: Docks Raise
 

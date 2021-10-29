@@ -313,6 +313,7 @@ You rub the leash against the headboard, hoping to wear it through. You think yo
 
 <<if $forestleashedwear gte 3>>
 Sunlight caresses your face when the leash snaps, freeing you. Eden still slumbers, there's nothing preventing your escape.
+<<detach_leash>>
 <<set $forestleashed to 0>><<set $forestleashedwear to 0>>
 <br><br>
 

@@ -586,8 +586,12 @@
 	<<else>>
 		<<if $enemytype is "beast">>
 			<<beasttype>><<set _person to _text_output>><<set _text_output to "The " + _person>>
-		<<else>>
+		<<elseif $NPCList[0].name_known is 1>>
+			<<set _text_output to $NPCList[0].name>>
+		<<elseif $NPCList[0].role is "normal">>
 			<<person1>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<<else>>
+			<<person1>><<person>><<set _person to _text_output>><<set _text_output to "The " + $NPCList[0].description + " " + "$NPCList[0].role">>
 		<</if>>
 	<</if>>
 <<elseif $NPCList[1].intro is 1>>
@@ -595,35 +599,55 @@
 	<<if $npcrow.includes(1)>>
 		<<set _text_output to $npc[$npcrow.indexOf(1)]>>
 	<<else>>
-		<<person2>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<<if $NPCList[1].name_known is 1>>
+			<<set _text_output to $NPCList[1].name>>
+		<<else>>
+			<<person2>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<</if>>
 	<</if>>
 <<elseif $NPCList[2].intro is 1>>
 	<<set $NPCList[2].intro to 0>>
 	<<if $npcrow.includes(2)>>
 		<<set _text_output to $npc[$npcrow.indexOf(2)]>>
 	<<else>>
-		<<person3>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<<if $NPCList[2].name_known is 1>>
+			<<set _text_output to $NPCList[2].name>>
+		<<else>>
+			<<person3>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<</if>>
 	<</if>>
 <<elseif $NPCList[3].intro is 1>>
 	<<set $NPCList[3].intro to 0>>
 	<<if $npcrow.includes(3)>>
 		<<set _text_output to $npc[$npcrow.indexOf(3)]>>
 	<<else>>
-		<<person4>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<<if $NPCList[3].name_known is 1>>
+			<<set _text_output to $NPCList[3].name>>
+		<<else>>
+			<<person4>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<</if>>
 	<</if>>
 <<elseif $NPCList[4].intro is 1>>
 	<<set $NPCList[4].intro to 0>>
 	<<if $npcrow.includes(4)>>
 		<<set _text_output to $npc[$npcrow.indexOf(4)]>>
 	<<else>>
-		<<person5>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<<if $NPCList[4].name_known is 1>>
+			<<set _text_output to $NPCList[4].name>>
+		<<else>>
+			<<person5>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<</if>>
 	<</if>>
 <<elseif $NPCList[5].intro is 1>>
 	<<set $NPCList[5].intro to 0>>
 	<<if $npcrow.includes(5)>>
 		<<set _text_output to $npc[$npcrow.indexOf(5)]>>
 	<<else>>
-		<<person6>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<<if $NPCList[5].name_known is 1>>
+			<<set _text_output to $NPCList[5].name>>
+		<<else>>
+			<<person6>><<person>><<set _person to _text_output>><<set _text_output to "The " + _person>>
+		<</if>>
 	<</if>>
 <<else>>
 	<<if $pronoun is "m">>
@@ -1198,6 +1222,8 @@ in dev alternative to current "breasts" widget
 	<</if>>
 	<<if $npc_named is 1 or $description is "pale figure">>
 		<<set _text_output to $description>>
+	<<elseif $role isnot "normal">>
+		<<set _text_output to $description + " " + $role>>
 	<<elseif $pronoun is "m">>
 		<<set _text_output += ($npcadult is 1 ? "man" : "boy")>>
 	<<elseif $pronoun is "f">>
@@ -1215,6 +1241,8 @@ in dev alternative to current "breasts" widget
 	<<set _text_output to $NPCList[_j].fullDescription>>
 <<elseif $enemytype is "beast">>
 	<<set _text_output to "the " + $NPCList[_j].type>>
+<<elseif $role isnot "normal">>
+	<<set _text_output to $description + " " + $role>>
 <<elseif $npcadult is 1>>
 	<<if $pronoun is "m">>
 		<<set _text_output to "the " + $description+" man">>
@@ -1249,6 +1277,7 @@ in dev alternative to current "breasts" widget
 	<<set $npc_named to 1>>
 <<else>>
 	<<set $description to $NPCList[_n].description>>
+	<<set $role to $NPCList[_n].role>>
 	<<set $npc_named to 0>>
 <</if>>
 <</widget>>
@@ -1583,6 +1612,50 @@ in dev alternative to current "breasts" widget
 
 <<widget "glewdity">> |
 <span class="lewd">+ Lewdity</span>
+<</widget>>
+
+<<widget "gglewdity">> |
+<span class="lewd">+ + Lewdity</span>
+<</widget>>
+
+<<widget "ggglewdity">> |
+<span class="lewd">+ + + Lewdity</span>
+<</widget>>
+
+<<widget "llewdity">> |
+<span class="lewd">- Lewdity</span>
+<</widget>>
+
+<<widget "lllewdity">> |
+<span class="lewd">- - Lewdity</span>
+<</widget>>
+
+<<widget "llllewdity">> |
+<span class="lewd">- - - Lewdity</span>
+<</widget>>
+
+<<widget "gattention">> |
+<span class="lewd">+ Attention</span>
+<</widget>>
+
+<<widget "ggattention">> |
+<span class="lewd">+ + Attention</span>
+<</widget>>
+
+<<widget "gggattention">> |
+<span class="lewd">+ + + Attention</span>
+<</widget>>
+
+<<widget "lattention">> |
+<span class="lewd">- Attention</span>
+<</widget>>
+
+<<widget "llattention">> |
+<span class="lewd">- - Attention</span>
+<</widget>>
+
+<<widget "lllattention">> |
+<span class="lewd">- - - Attention</span>
 <</widget>>
 
 <<widget "lcontrol">> |
@@ -5038,6 +5111,10 @@ School finishes on the first Monday of December.
  | <span class="red">Demon</span>
 <</widget>>
 
+<<widget "sharp_eyes">>
+ | <span class="gold">Sharp eyes</span>
+<</widget>>
+
 <<widget "laughs">>
 <<set $rng to random(1, 100)>>
 <<if $npcadult isnot 1>>
@@ -5140,12 +5217,19 @@ a teacher
 <<widget "beasttypes">> <<beasttype>>'s<</widget>>
 
 <<widget "beastsplural">><<silently>>
-<<if $NPCList[0].type is "wolf" and $monster isnot 1>>
+<<if typeof $args[0] is "number">>
+	<<set _na to $args[0]>>
+<<else>>
+	<<set _na to 0>>
+<</if>>
+<<if $NPCList[_na].type is "wolf" and $monster isnot 1>>
 	<<set _text_output to "wolves">>
-<<elseif $NPCList[0].type is "fox" and $monster isnot 1>>
+<<elseif $NPCList[_na].type is "fox" and $monster isnot 1>>
 	<<set _text_output to "foxes">>
-<<elseif $monster isnot 1 or $NPCList[0].type is "centaur">>
+<<elseif $monster isnot 1 or $NPCList[_na].type is "centaur">>
 	<<set _text_output to "<<beasttype>>s">>
+<<elseif $NPCList[_na].type is "harpy">>
+	<<set _text_output to "harpies">>
 <<else>>
 	<<for _i = 0; _i < $NPCList.length; _i++>>
 		<<if $NPCList[_i].pronoun is "m">>
@@ -5160,7 +5244,7 @@ a teacher
 	<<elseif $NPCList[2].pronoun is 0>>
 		<<set _text_output to "$NPCList[0].type and $NPCList[1].type">>
 	<<else>>
-		<<switch $NPCList[0].type>>
+		<<switch $NPCList[_na].type>>
 			<<case "lizardgirl" "lizardboy">><<set _text_output to "lizardgirls and lizardboys">>
 			<<case "wolfgirl" "wolfboy">><<set _text_output to "wolfgirls and wolfboys">>
 			<<case "doggirl" "dogboy">><<set _text_output to "doggirls and dogboys">>

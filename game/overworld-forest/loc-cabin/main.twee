@@ -572,7 +572,7 @@ You are in Eden's cabin.
 
 	<<sleepeffects>>
 	<<if _dryheaving is true>>
-		"Hope you're not coming down with something. You should stay in bed," Eden says, watching worriedly. "I'll handle breakfast." <<set $edenbreakfast to 1>>
+		"Hope you're not coming down with something. You should stay in bed," Eden says, watching with a worried expression. "I'll handle breakfast." <<set $edenbreakfast to 1>>
 		<br><br>
 		<<link [[Get out of bed|Eden Cabin]]>><</link>>
 	<<elseif $schoolwake is 1>><<set $schoolwake to 0>>
@@ -2653,7 +2653,7 @@ You pass out again.
 <<link [[Next|Eden Collar Ask 2]]>><</link>>
 
 :: Eden Collar Ask 2
-<<neckwear 1>>
+<<leash 21>>
 <<set $outside to 1>><<set $location to "cabin">><<effects>>
 
 <<He>> guides you to a nearby drawer. Pulling it open, <<he>> reaches for a collar. A long metal chain dangles, gleaming in the light.

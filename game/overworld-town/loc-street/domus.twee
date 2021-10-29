@@ -89,14 +89,14 @@ You are on Domus Street. The orphanage is here. The street is dominated by small
 			<<homeicon>><<link [[Go home (0:01)->Orphanage]]>><<pass 1>><</link>>
 			<br>
 			<<if $daystate is "night">>
-				<<ind>><<link [[Approach one of the houses (0:02)|Domus House Lock]]>><<pass 2>><</link>>
+				<<domushouseicon>><<link [[Approach one of the houses (0:02)|Domus House Lock]]>><<pass 2>><</link>>
 				<br>
 			<<elseif $exposed lte 0>>
-				<<ind>><<link [[Knock on one of the houses (0:02)|Domus House Knock]]>><<pass 2>><</link>>
+				<<domushouseicon>><<link [[Knock on one of the houses (0:02)|Domus House Knock]]>><<pass 2>><</link>>
 				<br>
 			<</if>>
 			<<if $exposed gte 2 and $daystate isnot "night" and $exhibitionism gte 75>>
-				<<ind>><<link [[Beg for clothing (0:02)|Domus House Nude]]>><<pass 2>><</link>><<exhibitionist5>>
+				<<domushouseicon>><<link [[Beg for clothing (0:02)|Domus House Nude]]>><<pass 2>><</link>><<exhibitionist5>>
 				<br>
 			<</if>>
 			<<if $exposed gte 1 and $daystate isnot "night">>

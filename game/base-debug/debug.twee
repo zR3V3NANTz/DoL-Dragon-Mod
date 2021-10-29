@@ -379,7 +379,7 @@ These still require Fertilise
 <br>
 <<link [[Chastity Cage|$passage]]>><<genitalswear 2>><</link>>
 <br>
-<<link [[Collar|$passage]]>><<neckwear 1>><</link>>
+<<link [[Collar|$passage]]>><<leash 21>><</link>>
 <br>
 <<link [[Bind|$passage]]>><<set $leftarm to "bound">><<set $rightarm to "bound">><</link>>
 <br>
@@ -655,7 +655,7 @@ These still require Fertilise
 <br>
 <<link [[Street Police Extreme|Street Police Extreme]]>><<pass 1 week>><<pass 1 week>><<npc Leighton>><<person1>><</link>>
 <br>
-<<link [[Brothel Show Swarm|Brothel Show Swarm]]>><<neckwear 1>><<set $leftarm to "bound">><<set $rightarm to "bound">><<set $feetuse to "bound">><<set $sexstart to 1>><<set $rng to random(1,100)>><<npc Briar>><<person1>><</link>>
+<<link [[Brothel Show Swarm|Brothel Show Swarm]]>><<leash 1>><<set $leftarm to "bound">><<set $rightarm to "bound">><<set $feetuse to "bound">><<set $sexstart to 1>><<set $rng to random(1,100)>><<npc Briar>><<person1>><</link>>
 <br>
 <<link [[Pussy Inspection|Pussy Inspection]]>><<pass 1 week>><<pass 1 week>><<npc Leighton>><<person1>><</link>>
 <br>

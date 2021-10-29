@@ -943,6 +943,18 @@
 	<</if>>
 <</widget>>
 
+<<widget "homemirroricon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/mirrorhome.png">
+	<</if>>
+<</widget>>
+
+<<widget "bloodmirroricon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/mirrorblood.png">
+	<</if>>
+<</widget>>
+
 <<widget "cowicon">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/cow.png">
@@ -970,6 +982,24 @@
 <<widget "chickenicon">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/chicken.png">
+	<</if>>
+<</widget>>
+
+<<widget "domushouseicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/domus_house.png">
+	<</if>>
+<</widget>>
+
+<<widget "danubehouseicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/danube_house.png">
+	<</if>>
+<</widget>>
+
+<<widget "cellicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/cell.png">
 	<</if>>
 <</widget>>
 

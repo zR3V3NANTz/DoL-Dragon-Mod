@@ -546,21 +546,26 @@ You timidly stroke <<someones>> skin.
 <</widget>>
 
 <<widget "actionshit">>
+<<if $args[0] is "both">>
+	<<set _hand to "hands">>
+<<else>>
+	<<set _hand to "hand">>
+<</if>>
 <<if $enemytype is "beast">>
 	<<if $pain lte 20>>
-	You smack the <<beasttype>> with your hand.
+		You smack the <<beasttype>> with your _hand.
 	<<elseif $pain lte 60>>
-	You fight through pain and smack the <<beasttype>> with your hand.
+		You fight through pain and smack the <<beasttype>> with your _hand.
 	<<else>>
-	Pained and terrified, you flail at the <<beasttype>>.
+		Pained and terrified, you flail at the <<beasttype>>.
 	<</if>>
 <<else>>
 	<<if $pain lte 20>>
-You strike <<him>> with your hand.
+		You strike <<him>> with your _hand.
 	<<elseif $pain lte 60>>
-You fight through the pain and strike at <<someone>> with your hand.
+		You fight through the pain and strike at <<someone>> with your _hand.
 	<<else>>
-Pained and terrified, you flail in self-defence.
+		Pained and terrified, you flail in self-defence.
 	<</if>>
 <</if>>
 <</widget>>
@@ -5080,7 +5085,7 @@ You <<peniletext>> tease <<their>> anus with your <<penis>>.
         <<case 3>>
 			"Always after my milk," you tut. "But you haven't earned it."
     <</switch>>
-<<elseif $bird gte 6 and random(1, 2) is 2>>
+<<elseif $harpy gte 6 and random(1, 2) is 2>>
     <<set _rng to random(1, 3)>>
     <<switch _rng>>
         <<case 1>>

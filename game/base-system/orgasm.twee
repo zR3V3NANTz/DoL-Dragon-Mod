@@ -67,7 +67,7 @@
 					<</if>>
 				<</for>>
 				<<if _condom is "damaged">>
-					Despite wearing a condom, it's too damaged to prevent the semen from escaping.
+					<span class="red">The condom is too damaged, and semen bursts through.</span>
 				<</if>>
 			<<elseif $penisuse is "otheranus">>
 				<<for $_i = 0; $_i lt $enemyno; $_i++>>
@@ -82,7 +82,7 @@
 					<</if>>
 				<</for>>
 				<<if _condom is "damaged">>
-					Despite wearing a condom, it's too damaged to prevent the semen from escaping.
+					<span class="red">The condom is too damaged, and semen bursts through.</span>
 				<</if>>
 			<<elseif $penisuse is "othermouth">>
 				<<for $_i = 0; $_i lt $enemyno; $_i++>>
@@ -97,7 +97,7 @@
 					<</if>>
 				<</for>>
 				<<if _condom is "damaged">>
-					Despite wearing a condom, it's too damaged to prevent the semen from escaping.
+					<span class="red">The condom is too damaged, and semen bursts through.</span>
 				<</if>>
 			<<elseif $penisuse is "otherpenis">>
 				<<for $_i = 0; $_i lt $enemyno; $_i++>>

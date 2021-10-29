@@ -2327,7 +2327,7 @@ You're already surrounded by enough <<monks>> to restrain both of you. They make
 
 :: Sydney Temple Punish Intro 2
 <<effects>>
-<<pass 20>><<facewear 4>><<neckwear 1>>
+<<pass 20>><<facewear 4>><<leash 21>>
 <<if $phase is 1>>
 	You hold on to Sydney, not daring to let go. You hold on for dear life. Whatever's coming, you know you'll be able to handle it together. <<nnpc_He "Sydney">> smiles through <<his>> panic.
 	<br><br>

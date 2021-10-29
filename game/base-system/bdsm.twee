@@ -1,0 +1,24 @@
+:: Widgets BDSM [widget]
+<<widget "attach_leash">>
+<<if $worn.neck.name is "collar">>
+    <<set $worn.neck.type.push("broken")>>
+    <<neckruined>>
+    <<neckwear 21>>
+<<elseif $worn.neck.name is "free use collar">>
+    <<set $worn.neck.type.push("broken")>>
+    <<neckruined>>
+    <<neckwear 22>>
+<</if>>
+<</widget>>
+
+<<widget "detach_leash">>
+<<if $worn.neck.name is "collar with leash">>
+    <<set $worn.neck.type.push("broken")>>
+    <<neckruined>>
+    <<neckwear 1>>
+<<elseif $worn.neck.name is "free use collar with leash">>
+    <<set $worn.neck.type.push("broken")>>
+    <<neckruined>>
+    <<neckwear 20>>
+<</if>>
+<</widget>>

@@ -13,6 +13,15 @@
 		<br><br>
 		<i><span class="blue">An idea strikes you.</span> They don't seem hostile. For now. You could twist the situation to your advantage, but be careful.</i>
 		<br><br>
+	<<elseif $wren_seen is "prison">>
+		"Sneaking where we don't belong?" says a young <<if $pronoun is "m">>man with short<<else>>woman with shoulder-length<</if>> hair. <span class="gold">It's Wren.</span> "Hope you stay out of prison this time."
+		<br>
+		"Maybe <<pshe>> wants to play?" a <<person2>><<person>> suggests, eyeing up your body. "<<pShe>> has a few assets I'd see <<phim>> lose."
+		<br>
+		"How about it <<girl>>?" Wren asks. "Fancy some blackjack?"
+		<br><br>
+		<i><span class="blue">An idea strikes you.</span> They don't seem hostile. For now. You could twist the situation to your advantage, but be careful.</i>
+		<br><br>		
 	<<else>>
 		"Sneaking where we don't belong?" says a young <<if $pronoun is "m">>man with short<<else>>woman with shoulder-length<</if>> hair. "Naughty."
 		<br>

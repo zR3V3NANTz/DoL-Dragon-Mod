@@ -219,6 +219,7 @@
 	<<unset $greatHawkMonsterRoll>>
 	<<unset $estate_bluffed>>
 	<<unset $estate_chaos>>
+	<<prison_day>>
 	<<if $stall_rejected gte 1>>
 		<<set $stall_rejected -= 1>>
 		<<set $stall_rejected = Math.clamp($stall_rejected, 0, 100)>>
@@ -563,7 +564,7 @@
 
 	<<moonstate>>
 
-	<<if $schoolday is 1>>
+	<<if $schoolday is 1 and $location isnot "prison">>
 		<<if $scienceattended isnot 1>>
 			<<set $sciencemissed += 1>><<set $lessonmissedtext += 1>><<set $lessonmissed += 1>><<set _lessonmissed to true>>
 		<<else>>
@@ -1437,7 +1438,7 @@
 <</widget>>
 
 <<widget "advancetohour">>
-<<set _min to $time - ($hour * 60)>>
+<<set _min to 60 - ($time - ($hour * 60))>>
 <<pass _min>>
 <</widget>>
 

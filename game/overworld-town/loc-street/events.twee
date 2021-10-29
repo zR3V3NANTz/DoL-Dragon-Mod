@@ -5455,7 +5455,7 @@ They back away from you, shocked by your aggression. You seize your chance, and 
 
 You're powerless to stop them. They fix a collar and chain around your neck, pull you to your feet, and force you to walk behind them.
 <br><br>
-<<neckwear 1>>
+<<leash 21>>
 <<endcombat>>
 <<link [[Next|Livestock Intro]]>><</link>>
 
@@ -5485,7 +5485,7 @@ You hear their footsteps stop, unwilling to follow into the wilds.
 
 :: Street Van Submit
 <<effects>>
-<<neckwear 1>>
+<<leash 21>>
 You submit to the collar placed around your neck. <<He>> tugs on the attached chain, forcing you along.
 <br><br>
 

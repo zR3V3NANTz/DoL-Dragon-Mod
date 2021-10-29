@@ -286,7 +286,7 @@ Despite <<his>> strength, you manage to send the hunter reeling, giving you the 
 <</if>>
 
 :: Forest Hunter Intro
-<<neckwear 1>><<set $forestleashed to 1>>
+<<leash 21>><<set $forestleashed to 1>>
 
 <<location "cabin">><<effects>>
 

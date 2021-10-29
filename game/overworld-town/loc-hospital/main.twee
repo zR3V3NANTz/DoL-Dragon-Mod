@@ -490,10 +490,9 @@ You've pushed yourself too much.
 	You slowly inch the bed forward. Slow enough, you hope, that no one will even notice. Peeking from beneath the bed, you see the towels drawing closer.
 	<br><br>
 	<<if random(1, 5) is 5>>
-You're almost there when the bed lurches into movement. You cling to the underside as you are pushed further and further away from the towels, through a set of doors, then another, and then down a ramp.
-<br><br>
+		You're almost there when the bed lurches into movement. You cling to the underside as you are pushed further and further away from the towels, through a set of doors, then another, and then down a ramp.
+		<br><br>
 
-You hear a metallic creaking, then you and the bed are shoved down a steep ramp. A short distance later you plunge into rushing water.
 		You hear a metallic creaking, then you and the bed are shoved down a steep ramp. A short distance later you plunge into rushing water.
 		<br><br>
 

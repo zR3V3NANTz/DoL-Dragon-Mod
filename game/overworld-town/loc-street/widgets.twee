@@ -554,7 +554,7 @@ You hear voices up ahead, and take cover down a stairwell leading to a basement.
 <</widget>>
 
 <<widget "street2">>
-<<generate1>><<person1>>You hear foosteps behind you. <span class="blue">You feel followed.</span>
+<<generate1>><<person1>>You hear footsteps behind you. <span class="blue">You feel followed.</span>
 <br><br>
 
 <<link [[Next|Street Stalk]]>><<set $molestationstart to 1>><</link>>

@@ -394,8 +394,8 @@ Your eyes were so drawn by the water that it takes you a moment to notice the <<
 	<</if>>
 
 
-	<<if $submissive lte 500 and $promiscuity gte 55>>
-		<<link [[Punish|Meadow Cave Punish]]>><<def 1>><<trauma -6>><<stress -6>><</link>><<promiscuous4>><<defianttext>><<ltrauma>><<lstress>>
+	<<if $submissive lte 500 and $deviancy gte 55>>
+		<<link [[Punish|Meadow Cave Punish]]>><<def 1>><<trauma -6>><<stress -6>><</link>><<deviant4>><<defianttext>><<ltrauma>><<lstress>>
 		<br>
 	<</if>>
 <<else>>
@@ -514,7 +514,7 @@ You turn away from the water, and walk back down the tunnel.
 <br><br>
 
 You walk back to the tunnel, leaving the <<fox_text>> panting on the ground.
-<br><br>
+<<deviancy4>>
 
 <<link [[Next|Meadow Cave Exit]]>><<unset $fox>><</link>>
 <br>
@@ -561,8 +561,8 @@ You keep low as you move, though you see no one else around.
 			<</if>>
 
 
-			<<if $submissive lte 500 and $promiscuity gte 55>>
-				<<link [[Punish|Meadow Chase Hill Punish]]>><<def 1>><<trauma -6>><<stress -6>><</link>><<promiscuous4>><<defianttext>><<ltrauma>><<lstress>>
+			<<if $submissive lte 500 and $deviancy gte 55>>
+				<<link [[Punish|Meadow Chase Hill Punish]]>><<def 1>><<trauma -6>><<stress -6>><</link>><<deviant4>><<defianttext>><<ltrauma>><<lstress>>
 				<br>
 			<</if>>
 		<<else>>
@@ -974,7 +974,7 @@ You release the <<fox_text>>.
 <</if>>
 
 You walk back to the meadow.
-<br><br>
+<<deviancy4>>
 
 <<link [[Next|Meadow]]>><<unset $fox>><</link>>
 <br>

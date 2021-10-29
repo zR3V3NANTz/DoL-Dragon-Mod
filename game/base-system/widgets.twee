@@ -1871,6 +1871,8 @@
 		<img id="location" @src="'img/misc/' + _weather_display + '/deepunderground.png'">
 		<<case spa>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/spa_day.gif'">
+		<<case prison>>
+		<img id="location" @src="'img/misc/' + _weather_display + '/prison_day.gif'">
 		<</switch>>
 	<<elseif $daystate is "night">>
 		<<if $location is "tentworld">>
@@ -2024,6 +2026,12 @@
 		<img id="location" @src="'img/misc/' + _weather_display + '/deepunderground.png'">
 		<<case spa>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/spa_night.gif'">
+		<<case prison>>
+			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lte 6>>
+				<img id="location" @src="'img/misc/' + _weather_display + '/prison_blood_moon.gif'">
+			<<else>>
+				<img id="location" @src="'img/misc/' + _weather_display + '/prison_night.gif'">
+			<</if>>
 		<</switch>>
 	<<elseif $daystate is "dawn">>
 		<<if $location is "tentworld">>
@@ -2151,6 +2159,8 @@
 		<img id="location" @src="'img/misc/' + _weather_display + '/deepunderground.png'">
 		<<case spa>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/spa_dawn.gif'">
+		<<case prison>>
+		<img id="location" @src="'img/misc/' + _weather_display + '/prison_dawn.gif'">
 		<</switch>>
 	<<elseif $daystate is "dusk">>
 		<<if $location is "tentworld">>
@@ -2278,6 +2288,8 @@
 		<img id="location" @src="'img/misc/' + _weather_display + '/deepunderground.png'">
 		<<case spa>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/spa_dusk.gif'">
+		<<case prison>>
+		<img id="location" @src="'img/misc/' + _weather_display + '/prison_dusk.gif'">
 		<</switch>>
 	<</if>>
 

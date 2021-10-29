@@ -120,10 +120,10 @@ You are in your bedroom.
 		<br>
 		<span class="purple">An eerie light spills from your mirror.</span>
 		<br>
-		<<mirroricon>><<link [[Mirror|Eerie Mirror]]>><<set $mirrortentacles to 1>><<set $phase to 0>><</link>>
+		<<bloodmirroricon>><<link [[Mirror|Eerie Mirror]]>><<set $mirrortentacles to 1>><<set $phase to 0>><</link>>
 		<br>
 	<<else>>
-		<<mirroricon>>[[Mirror]]
+		<<homemirroricon>>[[Mirror]]
 		<br>
 	<</if>>
 

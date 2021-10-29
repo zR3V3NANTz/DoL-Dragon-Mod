@@ -420,8 +420,8 @@
 	<<set $chokeorgasm to 0>>
 <</if>>
 
-<<if $NudeGenderDC is undefined>>
-	<<set $NudeGenderDC to 1>>
+<<if $NudeGenderDC is undefined or $NudeGenderDC lt 2>>
+	<<set $NudeGenderDC to 2>>
 <</if>>
 
 <<if $hallucinogen is undefined>>
@@ -1293,9 +1293,9 @@
 	<<set $wear_hands to "none">>
 <</if>>
 
-<<if $objectVersion.updateClothes lt 27 or $objectVersion.updateClothes is undefined>>
+<<if $objectVersion.updateClothes lt 28 or $objectVersion.updateClothes is undefined>>
 	<<updateClothes>>
-	<<set $objectVersion.updateClothes to 27>>
+	<<set $objectVersion.updateClothes to 28>>
 	<!--If you have added any `colour_combat` or `accessory_colour_combat` to clothes that need their `colour` or `accessory_colour`, this will clear them.
 	Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
 <</if>>
@@ -1426,10 +1426,10 @@
 	<<set $closinghour to 21>>
 <</if>>
 
-<<if $objectVersion.specialClothes lt 4 or $objectVersion.specialClothes is undefined>>
+<<if $objectVersion.specialClothes lt 5 or $objectVersion.specialClothes is undefined>>
 	<<specialClothesSetup>>
 	<<specialClothesUpdate>>
-	<<set $objectVersion.specialClothes to 4>>
+	<<set $objectVersion.specialClothes to 5>>
 <</if>>
 
 <<if $objectVersion.uncomfortable lt 2 or $objectVersion.uncomfortable is undefined>>
@@ -2563,5 +2563,15 @@
 			<<break>>
 		<</if>>
 	<</for>>
+<</if>>
+
+<<if !$NPC_names_m>>
+	<<init_names>>	
+<</if>>
+
+<<if $per_npc_update isnot 1>>
+	<<set $per_npc_update to 1>>
+	<<updateNPCsFirst condom false>>
+	<<updateNPCsFirst name_known 0>>
 <</if>>
 <</widget>>

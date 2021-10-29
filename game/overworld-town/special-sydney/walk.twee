@@ -32,7 +32,7 @@
 		<<if $weather is "rain" or $weather is "snow">>
 			<<He>> grabs an umbrella on the way out.
 		<</if>>
-		You reach High Street quickly. It's a short walk.
+		You reach the High Street quickly. It's a short walk.
 	<</if>>
 	<<set $location to "town">>
 	<<He>> gently holds your arm.
@@ -221,12 +221,18 @@
 		<<set $exit to "library">><<set $location to "town">>
 		Sydney packs up <<his>> things and tells the librarian that <<hes>> leaving early. <<He>> smiles at you, and<<if $sydneyromance is 1>> takes your arm as<</if>> the two of you leave.
 		<br><br>
-		<<He>> stops by <<his>> locker on the way out to grab a large umbrella. You cut through the park and reach Starfish Street.
+		<<if $weather is "rain" or $weather is "snow">>
+			<<He>> stops by <<his>> locker on the way out to grab a large umbrella.
+		<</if>>
+		You cut through the park and reach Starfish Street.
 	<<elseif $location is "temple">>
 		<<set $exit to "temple">><<set $location to "town">>
 		Sydney waves off a group of <<monks>>, and<<if $sydneyromance is 1>> takes your arm as<</if>> the two of you leave.
 		<br><br>
-		<<He>> grabs a large umbrella on the way out. The walk to Starfish Street doesn't take long.
+		<<if $weather is "rain" or $weather is "snow">>
+			<<He>> grabs a large umbrella on the way out.
+		<</if>>
+		The walk to Starfish Street doesn't take long.
 	<</if>>
 	<br><br>
 	<<link [[Next|Sydney Beach Start]]>><<set $sydneyDaily.walk to true>><<pass 25>><</link>>

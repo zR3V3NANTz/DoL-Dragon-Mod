@@ -384,7 +384,7 @@ As you get up, you check the time to find that<<if $timePassed gt 240>> many <<e
 		<<link [[Next (0:15)|PillCollection]]>><<pass 15>><</link>>
 	<</addinlineevent>>
 	<<addinlineevent "advanced fertility overdose" 2>>
-		You start feeling an odd warmth and itch around your vagina, however, it doesn't seem to stop until at one point you feel like it's burning you. The heat seems to start expanding to other areas of your body till it reaches your head, forcing you into the fetal position. It takes some time, but your able to recover from the overdose. <<garousal>><<arousal 1000>><<ggpain>><<pain 100>>
+		You feel an odd warmth around your vagina. It intensifies, until it almost burns. The head expands, covering your body until it reaches your head, forcing you into the fetal position. You remain that way until you recover from the overdose. <<garousal>><<arousal 1000>><<ggpain>><<pain 100>>
 		<<if _pills.pregnancy.doseTaken lt 4>>
 			<<set _pills.pregnancy.doseTaken to 4>>
 		<</if>>
@@ -402,7 +402,7 @@ As you get up, you check the time to find that<<if $timePassed gt 240>> many <<e
 		<<link [[Next (1:00)|PillCollection]]>><<pass 60>><</link>>
 	<</addinlineevent>>
 	<<addinlineevent "advanced fertility overdose 2" 2>>
-		You start feeling an odd warmth and itch around your vagina, however, it doesn't seem to stop until at one point you feel like it's burning you. The heat seems to start expanding to other areas of your body till it reaches your head, forcing you into the fetal position. The pain forces you to pass out. <<garousal>><<arousal 1000>><<ggpain>><<pain 100>>
+		You feel an odd warmth around your vagina. It intensifies, until it almost burns. The head expands, covering your body until it reaches your head, forcing you into the fetal position. The pain forces you to pass out. <<garousal>><<arousal 1000>><<ggpain>><<pain 100>>
 		<<if _pills.pregnancy.doseTaken lt 4>>
 			<<set _pills.pregnancy.doseTaken to 4>>
 		<</if>>

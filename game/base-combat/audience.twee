@@ -1918,7 +1918,7 @@
 <</if>>
 
 <<set $rng to random(1, 100)>>
-<<if $rng gte 91 and $audiencecamera6 is 0>>
+<<if $rng gte 91 and $audiencecamera6>>
 	<span class="pink">A $audiencemember pulls out a phone and points the camera at you.</span>
 	<<if $audiencecamera1 is 0>>
 		<<set $audiencecamera1 to $audiencemember>>
@@ -2372,51 +2372,53 @@
 	<br>
 <</if>>
 
-<<if $audiencecamera1 isnot 0>>
-	<<set $audienceselector to 1>>
-	<<audiencecamera>>
-	<br>
-<</if>>
+<<if $location isnot "prison">>
+	<<if $audiencecamera1 isnot 0>>
+		<<set $audienceselector to 1>>
+		<<audiencecamera>>
+		<br>
+	<</if>>
 
-<<if $audiencecamera2 isnot 0>>
-	<<set $audienceselector to 2>>
-	<<audiencecamera>>
-	<br>
-<</if>>
+	<<if $audiencecamera2 isnot 0>>
+		<<set $audienceselector to 2>>
+		<<audiencecamera>>
+		<br>
+	<</if>>
 
-<<if $audiencecamera3 isnot 0>>
-	<<set $audienceselector to 3>>
-	<<audiencecamera>>
-	<br>
-<</if>>
+	<<if $audiencecamera3 isnot 0>>
+		<<set $audienceselector to 3>>
+		<<audiencecamera>>
+		<br>
+	<</if>>
 
-<<if $audiencecamera4 isnot 0>>
-	<<set $audienceselector to 4>>
-	<<audiencecamera>>
-	<br>
-<</if>>
+	<<if $audiencecamera4 isnot 0>>
+		<<set $audienceselector to 4>>
+		<<audiencecamera>>
+		<br>
+	<</if>>
 
-<<if $audiencecamera5 isnot 0>>
-	<<set $audienceselector to 5>>
-	<<audiencecamera>>
-	<br>
-<</if>>
+	<<if $audiencecamera5 isnot 0>>
+		<<set $audienceselector to 5>>
+		<<audiencecamera>>
+		<br>
+	<</if>>
 
-<<if $audiencecamera6 isnot 0>>
-	<<set $audienceselector to 6>>
-	<<audiencecamera>>
-	<br>
-<</if>>
+	<<if $audiencecamera6 isnot 0>>
+		<<set $audienceselector to 6>>
+		<<audiencecamera>>
+		<br>
+	<</if>>
 
-<<set $facepic to 0>>
-<<set $breastpic to 0>>
-<<set $bottompic to 0>>
-<<set $genitalpic to 0>>
-<<set $bodypic to 0>>
+	<<set $facepic to 0>>
+	<<set $breastpic to 0>>
+	<<set $bottompic to 0>>
+	<<set $genitalpic to 0>>
+	<<set $bodypic to 0>>
 
-<<if $audiencecamera1 isnot 0 and $face is "covered">>
-	<span class="teal">At least your face is hidden.</span>
-	<br>
+	<<if $audiencecamera1 isnot 0 and $face is "covered">>
+		<span class="teal">At least your face is hidden.</span>
+		<br>
+	<</if>>
 <</if>>
 
 <<audiencespeech>>

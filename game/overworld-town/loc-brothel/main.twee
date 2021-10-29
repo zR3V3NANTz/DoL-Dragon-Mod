@@ -24,7 +24,7 @@ You are in the brothel. Several stages dot the crowded room. The staff look flus
 	<<npc Leighton>><<person1>>
 	"You look like one of my students," says an amused voice from your right. It's Leighton. 
 	<<if pregnancyBellyVisible()>>
-		"I was wondering how you got that baby bump," <<he>> continues, "I was never sure if it was from someone close to you or from you working at a place like this."
+		"I was wondering how you got that baby bump," <<he>> continues, "Should have known it was from you working at a place like this."
 	<</if>>
 	<<He>> sits alone on a sofa, with <<his>> arms outstretched and resting on the back.
 	<br><br>
