@@ -486,7 +486,7 @@ You are within the storm drain system, being pulled along by the rushing water.
 	<<controlloss>>
 	<<set $combat to 1>>
 	<<set $enemytype to "swarm">>
-	<<swarminit "eels" "swarms" "moving towards you" "encircle you" "fend off" 1 9>>
+	<<swarminit "eels" "swarm" "moving towards you" "encircle you" "fend off" 1 9>>
 	<<if $bus is "residentialdrain">>
 		<<set $timer to 40>>
 	<<elseif $bus is "commercialdrain">>
@@ -708,7 +708,7 @@ The water pulls you further along the tunnel.
 	<<controlloss>>
 	<<set $combat to 1>>
 	<<set $enemytype to "swarm">>
-	<<swarminit "slimes" "slime masses" "moving towards you" "encircle you" "fend off" 1 10>>
+	<<swarminit "slimes" "slime mass" "moving towards you" "encircle you" "fend off" 1 10>>
 	<<if $bus is "residentialdrain">>
 		<<set $timer to 40>>
 	<<elseif $bus is "commercialdrain">>

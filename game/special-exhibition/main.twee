@@ -183,7 +183,7 @@ Without warning, the crate lurches into movement.
 	<<controlloss>>
 	<<set $combat to 1>>
 	<<set $enemytype to "swarm">>
-	<<swarminit "worms" "containers" "shaking" "shatter" "steady" 1 9>>
+	<<swarminit "worms" "container" "shaking" "shatter" "steady" 1 9>>
 	<<set $timer to 30>>
 <</if>>
 <<if $timer gte 25>>

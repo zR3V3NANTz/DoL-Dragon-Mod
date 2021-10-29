@@ -340,7 +340,7 @@ You float into the middle of the pool, and open your legs. The fish are cautious
 	<<neutral 1>>
 	<<set $combat to 1>>
 	<<set $enemytype to "swarm">>
-	<<swarminit "fish" "swarms" "moving towards you" "encircle you" "fend off" 6 6>>
+	<<swarminit "fish" "swarm" "moving towards you" "encircle you" "fend off" 6 6>>
 	<<set $water to 1>>
 	<<set $timer to 17>>
 <</if>>

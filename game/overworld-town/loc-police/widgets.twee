@@ -23,7 +23,6 @@
 	<br><br>
 
 	<<if $crime gte 6000>>
-		<<set $rng to random(5,35)>>
 		Options:
 		<br>
 		<span class="teal">Installing a Wiper worm</span> will destroy lots of police records on everyone, including you.
@@ -31,7 +30,7 @@
 		<span class="teal">Framing someone</span> will attach all evidence on you to someone else. This should mislead the police.
 		However, you can only attach it to those who already have a record in the system.
 		<br><br>
-		<<link [[Install Wiper (0:10)|Police Computer]]>><<pass 10>><<set $phase to 11>><<set $crime /= 2>><<set $crime *= ($rng/100)>><</link>>
+		<<link [[Install Wiper (0:10)|Police Computer]]>><<pass 10>><<set $phase to 11>><<set $crime /= 2>><<set $crime *= (random(5,35)/100)>><</link>>
 		<br>
 		<<if $NPCName[$NPCNameList.indexOf("Whitney")].init is 1 and $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $framed is 0>>
 			<<link [[Frame Whitney (0:10)|Police Computer]]>><<pass 10>><<set $phase to 12>><<set $crime to 0>><</link>>

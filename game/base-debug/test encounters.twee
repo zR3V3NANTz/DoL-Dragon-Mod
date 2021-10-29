@@ -354,7 +354,7 @@ PenActiv: <span class="gold">$NPCList[_x].penis</span> VagActiv: <span class="go
 		<<set $voretentacles to 0>>
 	<</if>>
 
-	<<swarminit "fish" "swarms" "moving towards you" "encircle you" "fend off" 1 9>>
+	<<swarminit "fish" "swarm" "moving towards you" "encircle you" "fend off" 1 9>>
 
 	<<set $swimdistance to 20>>
 	<<set $water to 1>>

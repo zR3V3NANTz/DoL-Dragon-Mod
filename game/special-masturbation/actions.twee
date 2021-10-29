@@ -431,6 +431,6 @@
 <<if $seconds gte 60>>
 	<<set $seconds to 0>>
 	<<pass 1>>
-	<<set $masturbationtimestat to 1>>
+	<<set $masturbationtimestat += 1>>
 <</if>>
 <</widget>>

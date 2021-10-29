@@ -1,7 +1,7 @@
 :: Widgets Swarm [widget]
 <<widget "swarminit">>
 
-	/* Example call	<<swarminit "fish" "containers" "shaking" "shatter" "steady" 4 6>> */
+	/* Example call	<<swarminit "fish" "container" "shaking" "shatter" "steady" 4 6>> */
 	/* <<swarminit type name move spill steady amountactive amountstored>> */
 
 	/*
@@ -298,13 +298,14 @@
 
 /* --------- Text Notifications ---------*/
 
-<<if _swarmamounts.active[2] gte 1>>
-	There <<if _swarmamounts.active[1] + _swarmamounts.active[2]>>are<<else>>is<</if>> <<number _swarmamounts.active[1]+_swarmamounts.active[2]>> $swarm.name and <span class="blue"><<if _swarmamounts.active[1] + _swarmamounts.active[2] is 1>>it's<<else>><<number _swarmamounts.active[2]>> of them<</if>> <<if _swarmamounts.active[2] gte 2>>are<<else>>is<</if>> $swarm.move.</span>
-<</if>>
-
 <<if _swarmnote.activate gte 1>>
 	<<set _swarmnote.activate to 0>>
-	The $swarm.name $swarm.spill, surrounding you with more $swarm.type.
+	The <<swarmName>> $swarm.spill, surrounding you with more $swarm.type.
+<</if>>
+
+<<if _swarmamounts.active[2] gte 1>>
+	<<set $_remainingSwarms to _swarmamounts.active[1] + _swarmamounts.active[2]>>
+	There <<if $_remainingSwarms gt 1>>are<<else>>is<</if>> <<number $_remainingSwarms>> <<swarmName $_remainingSwarms>> and <span class="blue"><<if _swarmamounts.active[1] + _swarmamounts.active[2] is 1>>it<<else>><<number _swarmamounts.active[2]>> of them<</if>> <<if _swarmamounts.active[2] gte 2>>are<<else>>is<</if>> $swarm.move.</span>
 <</if>>
 
 <<if _swarmactive lte 0>>
@@ -586,4 +587,16 @@
 	<</if>>
 <</if>>
 </div>
+<</widget>>
+
+<<widget "swarmName">>
+	<<if $args[0] is undefined or $args[0] gt 1>>
+		<<if $swarm.name.endsWith(" mass")>>
+			<<print ($swarm.name + "es")>>
+		<<else>>
+			<<print ($swarm.name + "s")>>
+		<</if>>
+	<<else>>
+		$swarm.name
+	<</if>>
 <</widget>>

@@ -1186,6 +1186,10 @@
 	<<bodywriting_init>>
 <</if>>
 
+<<if $newlyWritten is undefined and $combat is 1>>
+	<<set $newlyWritten to []>>
+<</if>>
+
 <!-- This doesn't seem to declare the pbhair
 <<if $objectVersion.pbhair lt 1 or $objectVersion.pbhair is undefined>>
 	<<set $objectVersion.pbhair>>

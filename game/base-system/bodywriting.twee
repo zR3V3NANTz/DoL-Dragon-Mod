@@ -905,7 +905,7 @@ Second arg: tool */
 <<if $skin[$args[0]].special is "prostitution" and $NPCList[_n].type isnot "plant">>
 	<<bodypart_admire_prostitution $args[0]>>
 <</if>>
-<<if $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head">>
+<<if $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and ($position isnot "wall" or $walltype is "front")>>
 	<<if $NPCList[_n].penis is 0 and $mouthuse is 0>>
 		<<He>> follows the arrow's instruction, <span class="blue">and positions <<his>> $NPCList[_n].penisdesc in front of your mouth.</span>
 		<<neutral 5>><<set $mouthuse to "penis">><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthstate to "entrance">><<set $speechmouthentrance to 1>>
@@ -1648,7 +1648,7 @@ Second arg: tool */
 <<widget "bodypart_admire">>
 <<switch $args[1]>>
 	<<case "bodywriting">>
-		<<if $skin[$args[0]] is undefined>>
+		<<if $skin[$args[0]] is undefined or $newlyWritten.includes($args[0])>>
 		<<elseif $skin[$args[0]].writing>>
 			<<if $args[0] is "forehead" or
 			($args[0] is "left_cheek" or $args[0] is "right_cheek") and !$worn.face.type.includes("mask") or

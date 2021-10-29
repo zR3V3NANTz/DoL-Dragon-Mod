@@ -3861,7 +3861,7 @@ Your fall is broken by something slimy and soft. It flees before your eyes adjus
 	<!-- overwrite the random tentacle -->
 	<<set $position to "doggy">>
 	<<set _tentacle to $tentacles[0]>>
-	<<set _tentacle.size to random(1, 3)>>
+	<<set _tentacle.size to random(1, 2)>>
 	<<set $rng to random(1, 100)>>
 	<<if $rng gte 95>>
 		<!-- 5% chance of impregnating tentacle -->

@@ -437,7 +437,7 @@ The <<beasttype>> whimpers, and runs away.
 <<controlloss>>
 <<set $combat to 1>>
 <<set $enemytype to "swarm">>
-<<swarminit "maggots" "swarms" "crawling" "crawl" "keep back" 2 6>>
+<<swarminit "maggots" "swarm" "crawling" "crawl" "keep back" 2 6>>
 
 <<set $timer to 10>>
 <</if>>

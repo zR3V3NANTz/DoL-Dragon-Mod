@@ -40,7 +40,7 @@ You feel something yanking at your <<print $worn[_slot].name>>. Looking over you
 	You manage to wrestle your clothes free from <<bhis>> maw, though the ordeal has left them a little worse for wear.
 <</if>>
 <br><br>
-<<link [[Next|Beach]]>><<set $eventskip to 1>><</link>>
+<<link [[Next|Beach]]>><<set $eventskip to 1>><<endevent>><</link>>
 
 <</widget>>
 

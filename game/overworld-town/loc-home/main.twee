@@ -1685,7 +1685,7 @@ The warmth feels wonderful on your bare skin.
 	<</if>>
 
 
-	<<swarminit "slimes" "slime masses" "moving towards you" "encircle you" "fend off" 8 0>>
+	<<swarminit "slimes" "slime mass" "moving towards you" "encircle you" "fend off" 8 0>>
 	<<set $timer to 20>>
 <</if>>
 
