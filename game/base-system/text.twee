@@ -840,7 +840,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "gendercheck">>
-	<<if !["m", "f"].contains($player.gender_appearance)>><<set _text_output to "<span class=\"red\">ERROR: Unexpected $$player.gender_appearance: [$player.gender_appearance]</span>">><</if>>
+	<<if !["m", "f"].includes($player.gender_appearance)>><<set _text_output to "<span class=\"red\">ERROR: Unexpected $$player.gender_appearance: [$player.gender_appearance]</span>">><</if>>
 <</widget>>
 
 <<widget "pshe">><<silently>>

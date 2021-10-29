@@ -650,7 +650,7 @@
 
 <<widget "kissWraith">>
 	<<if $wraith.type is "tentacles" or $wraith.gen is "abomination">>
-		<<He>> approaches you, pushing some tentacles aside.<<if $tentaclemouth>> <<He>> <span class="lblue">yanks the $tentacleMouth <<if $mouthstate is "tentacle" or $mouthstate is "tentacledeep">>out of<<else>>away from<</if>> your mouth.</span><</if>>
+		<<He>> approaches you, pushing some tentacles aside.<<if $tentacleMouth>> <<He>> <span class="lblue">yanks the $tentacleMouth <<if $mouthstate is "tentacle" or $mouthstate is "tentacledeep">>out of<<else>>away from<</if>> your mouth.</span><</if>>
 	<</if>>
 	<<He>> kisses you, and your ears immediately begin to ring. Your fingers and toes go cold, and your face becomes fiery hot. Until it, too, grows cold. You feel as though some part of you was drained away.
 	<<takeKissVirginity "Ivory Wraith" "rape">>

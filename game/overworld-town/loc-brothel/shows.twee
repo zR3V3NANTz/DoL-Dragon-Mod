@@ -174,7 +174,7 @@
 	<<set _extremeshow to "f">>
 	<<if $anusstate is "doublepenetrated" and $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
 		<<set _extremeshow to "d">>
-	<<elseif $anusstate is "doublepenetration" and $vaginastate is "penetrated" and $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>>>
+	<<elseif $anusstate is "doublepenetration" and $vaginastate is "penetrated" and $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
 		<<set _extremeshow to "t">>
 	<</if>>
 	/*  */
