@@ -63,7 +63,7 @@
 						<<set _randomslimes to random(4, 6)>>
 						<<set _randomtentacles to 4 + random(4, 8)>>
 					<</if>>
-					<<swarminit "slimes" "slime masses" "moving towards you" "encircle you" "fend off" _randomslimes 0>>
+					<<swarminit "slimes" "slime mass" "moving towards you" "encircle you" "fend off" _randomslimes 0>>
 					<<tentaclestart _randomtentacles 18 "tentacle" "pale">>
 				<<else>>
 					<<initWraith "tentacles">>

@@ -262,7 +262,7 @@ You brace yourself. You stagger as the slug collides with your chest. You manage
 	<<controlloss>>
 	<<set $combat to 1>>
 	<<set $enemytype to "swarm">>
-	<<swarminit "eels" "swarms" "moving towards you" "encircle you" "fend off" 1 6>>
+	<<swarminit "eels" "swarm" "moving towards you" "encircle you" "fend off" 1 6>>
 
 	<<set $swimdistance to 10>>
 	<<set $water to 1>>

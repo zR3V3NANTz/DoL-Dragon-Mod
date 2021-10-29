@@ -220,14 +220,13 @@
 
 	<<if $leftaction is "frontpurgeleft">><<set $leftaction to 0>>
 		<<set _swarmamounts.genital[1] -= 1>><<set _swarmamounts.active[4] += 1>>
-		/* note: swarm content IS NOT updated to account for herm player characters */
-		<span class="teal">You remove some of the $swarm["type"] that are <<print ($player.vaginaExist ? "penetrating" : "wrapped around")>> your <<genitals>>.</span>
+		<span class="teal">You remove some of the $swarm["type"] that are <<print ($player.vaginaExist ? "penetrating" : "wrapped around")>> your <<if $player.vaginaExist and $player.penisExist>><<pussy>><<else>><<genitals>><</if>>.</span>
 		<<if _swarmamounts.genital[1] gte 1>>However, there are still some violating you.<<else>>You think you got them all, for now.<</if>>
 	<</if>>
 
 	<<if $leftaction is "frontclearleft">><<set $leftaction to 0>>
 		<<set _swarmamounts.genital[0] -= 1>><<set _swarmamounts.active[4] += 1>>
-		<span class="lblue">You prevent the encroaching $swarm["type"] from <<print ($player.vaginaExist ? "entering" : "enveloping")>> your <<genitals>>.</span>
+		<span class="lblue">You prevent the encroaching $swarm["type"] from <<print ($player.vaginaExist ? "entering" : "enveloping")>> your <<if $player.vaginaExist and $player.penisExist>><<pussy>><<else>><<genitals>><</if>>.</span>
 		<<if _swarmamounts.genital[0] gte 1>><span class="purple">There are so many however, that some make it through your guard.</span><</if>>
 	<</if>>
 
@@ -292,14 +291,13 @@
 
 	<<if $rightaction is "frontpurgeright">><<set $rightaction to 0>>
 		<<set _swarmamounts.genital[1] -= 1>><<set _swarmamounts.active[4] += 1>>
-		/* note: swarm content IS NOT updated to account for herm player characters */
-		<span class="teal">You remove some of the $swarm["type"] that are <<print ($player.vaginaExist ? "penetrating" : "wrapped around")>> your <<genitals>>.</span>
+		<span class="teal">You remove some of the $swarm["type"] that are <<print ($player.vaginaExist ? "penetrating" : "wrapped around")>> your <<if $player.vaginaExist and $player.penisExist>><<pussy>><<else>><<genitals>><</if>>.</span>
 		<<if _swarmamounts.genital[1] gte 1>>However, there are still some violating you.<<else>>You think you got them all, for now.<</if>>
 	<</if>>
 
 	<<if $rightaction is "frontclearright">><<set $rightaction to 0>>
 		<<set _swarmamounts.genital[0] -= 1>><<set _swarmamounts.active[4] += 1>>
-		<span class="lblue">You prevent the encroaching $swarm["type"] from <<print ($player.vaginaExist ? "entering" : "enveloping")>> your <<genitals>>.</span>
+		<span class="lblue">You prevent the encroaching $swarm["type"] from <<print ($player.vaginaExist ? "entering" : "enveloping")>> your <<if $player.vaginaExist and $player.penisExist>><<pussy>><<else>><<genitals>><</if>>.</span>
 		<<if _swarmamounts.genital[0] gte 1>><span class="purple">There are so many however, that some make it through your guard.</span><</if>>
 	<</if>>
 

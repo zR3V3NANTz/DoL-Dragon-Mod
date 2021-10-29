@@ -174,17 +174,17 @@
 	<<if $leftaction is "mchest">>
 		<<set _handsOnBreasts += 1>>
 		<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
-		<<arousal 100>><<playWithBreasts 1>><<milkvolume 1>>
+		<<arousal 100>><<playWithBreasts 1>><<milkvolume 1>><<set _handsCount++>>
 	<</if>>
 	<<if $rightaction is "mchest">>
 		<<set _handsOnBreasts += 1>>
 		<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
-		<<arousal 100>><<playWithBreasts 1>><<milkvolume 1>>
+		<<arousal 100>><<playWithBreasts 1>><<milkvolume 1>><<set _handsCount++>>
 	<</if>>
 
 	/* the text output currently does not care which hand is used or if both hands are used */
 	<<if $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1>>
-		<<arousal 100 * _handsOnBreasts>>
+		<<arousal 100*_handsOnBreasts>>
 		<<if $breastsize lte 2>>
 			<<if $arousal gte ($arousalmax / 5) * 4>>
 				You tease your sensitive nipples as much as you can stand, each brush of your fingers sending jolts of excitement through you.

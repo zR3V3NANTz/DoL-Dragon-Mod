@@ -117,6 +117,11 @@
 	<<set $leftarm to 0>><<set $rightarm to 0>>
 <</if>>
 
+<!-- PC choking release -->
+<<if $NPCList[_i].lefthand is "throat" or $NPCList[_i].righthand is "throat">>
+	<<set $neckuse to 0>>
+<</if>>
+
 <!-- NPC facesitting -->
 <<if $NPCList[_i].vagina is "facesit" or $NPCList[_i].vagina is "facesitanal" or $NPCList[_i].penis is "mouthotheranus">>
 	<<set $mouthstate to 0>><<set $mouthuse to 0>>

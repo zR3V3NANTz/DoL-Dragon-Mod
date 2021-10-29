@@ -102,7 +102,7 @@
 	<<controlloss>>
 	<<set $combat to 1>>
 	<<set $enemytype to "swarm">>
-	<<swarminit "eels" "swarms" "moving towards you" "encircle you" "fend off" 1 9>>
+	<<swarminit "eels" "swarm" "moving towards you" "encircle you" "fend off" 1 9>>
 
 	<<set $swimdistance to 15>>
 	<<set $water to 1>>

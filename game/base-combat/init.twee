@@ -883,6 +883,8 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
   <</for>>
 <</if>>
 
+<<set $newlyWritten to []>>
+
 <<if _genderknownbeforehand or _genderexposed>>
   <<set $crossdressing to 0>>
 <<else>>

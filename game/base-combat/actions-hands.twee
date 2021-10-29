@@ -1940,11 +1940,13 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<<if $NPCList[_n].lefthand is "pen" + "_" + _active_bodypart>>
 			<<He>> scrawls on your <<bodypart _active_bodypart>>:
 			<<bodywriting_npc _active_bodypart $NPCList[_n].lefttool>>
+			<<set $newlyWritten.pushUnique(_active_bodypart)>>
 			<<set $NPCList[_n].lefthand to 0>><<set $NPCList[_n].lefttool to 0>>
 		<</if>>
 		<<if $NPCList[_n].righthand is "pen" + "_" + _active_bodypart>>
 			<<He>> scrawls on your <<bodypart _active_bodypart>>:
 			<<bodywriting_npc _active_bodypart $NPCList[_n].righttool>>
+			<<set $newlyWritten.pushUnique(_active_bodypart)>>
 			<<set $NPCList[_n].righthand to 0>><<set $NPCList[_n].righttool to 0>>
 		<</if>>
 	<</for>>

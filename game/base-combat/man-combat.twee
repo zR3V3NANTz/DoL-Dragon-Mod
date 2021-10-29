@@ -1195,15 +1195,19 @@
 
 <!-- pass "left", "right" or "both" as the first argument, and "<<his> left/right hand" or "both hands" for the second argument -->
 <<widget "combat-hand-on-mask">>
-	<<if $face is "covered">>
-		<<He>> tries to pull your $worn.face.name off your face with $args[1], <span class="lblue">but you grip it tight.</span>
-		<<if random(1, 3) is 3>>
-			<span class="lblue"><<He>> releases it with a frustrated sigh.</span>
-			<<combat-reset-hand $args[0]>>
+	<<if $worn.face.type.includes("mask")>>
+		<<if $face is "covered">>
+			<<He>> tries to pull your $worn.face.name off your face with $args[1], <span class="lblue">but you grip it tight.</span>
+			<<if random(1, 3) is 3>>
+				<span class="lblue"><<He>> releases it with a frustrated sigh.</span>
+				<<combat-reset-hand $args[0]>>
+			<</if>>
+		<<else>>
+			<<He>> pulls your $worn.face.name off your face with $args[1], <span class="pink">revealing your identity.</span>
+			<<facestrip>><<clothesstripstat>><<combat-reset-hand $args[0]>>
 		<</if>>
 	<<else>>
-		<<He>> pulls your $worn.face.name off your face with $args[1], <span class="pink">revealing your identity.</span>
-		<<facestrip>><<clothesstripstat>><<combat-reset-hand $args[0]>>
+		<<combat-reset-hand $args[0]>>
 	<</if>>
 <</widget>>
 
@@ -4122,25 +4126,25 @@
 					"I want you nude!")>>"
 				<</if>>
 			<</if>>
-		<<elseif $speechvaginavirgin is 1>>
+		<<elseif $speechvaginavirgin is 1 and $NPCList[_n].penis is "vagina">>
 			<<if $enemyanger lte 60>>
 				<<He>> speaks. "You were a virgin! I can't believe my luck!"
 			<<else>>
 				<<He>> speaks. "I felt your hymen tear bitch. Something to remember me by."
 			<</if>>
-		<<elseif $speechpenisvirgin is 1>>
+		<<elseif $speechpenisvirgin is 1 and ($NPCList[_n].vagina is "penis" or $NPCList[_n].vagina is "otheranus" or $NPCList[_n].penis is "otheranus")>>
 			<<if $enemyanger lte 60>>
 				<<He>> speaks. "AHH! This was your first time wasn't it? It feels so good!"
 			<<else>>
 				<<He>> speaks. "How's it feel to have your virgin dick broken in? Feels amazing for me."
 			<</if>>
-		<<elseif $speechanusvirgin is 1>>
+		<<elseif $speechanusvirgin is 1 and $NPCList[_n].penis is "anus">>
 			<<if $enemyanger lte 60>>
 				<<He>> speaks. "It's so tight! This must be the first time your ass has been used like this."
 			<<else>>
 				<<He>> speaks. "It's so tight! This must be the first time your ass has been used like this. I've got plenty more work to do before you're properly broken in."
 			<</if>>
-		<<elseif $speechmouthvirgin is 1>>
+		<<elseif $speechmouthvirgin is 1 and $NPCList[_n].penis is "mouth">>
 			<<if $enemyanger lte 60>>
 				<<He>> speaks. "Is this the first time you've tasted dick?"
 			<<else>>
@@ -4951,7 +4955,7 @@
 		<span class="blue"><<He>> straddles you, rubbing <<his>> ass against your <<penis>>.</span>
 		<<neutral 5>><<set $penisuse to "otheranus">><<set $NPCList[_n].vagina to "otheranusentrance">><<set $penisstate to "otheranusentrance">><<set $speechotheranusentrance to 1>>
 		<<set $NPCList[_n].location.genitals = "genitals">>
-	<<elseif $enemyanger + $rng lte 60 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and $mouthuse is 0>>
+	<<elseif $enemyanger + $rng lte 60 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and $mouthuse is 0 and ($position isnot "wall" or $walltype is "front")>>
 		<<if $rng % 5 is 0>>
 			<<if $position is "doggy">>
 				<<He>> gently rolls you onto your back.

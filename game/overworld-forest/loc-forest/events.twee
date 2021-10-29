@@ -1368,7 +1368,7 @@ The roots lose interest in you, and disappear into the soil. <<tearful>> you unt
 	<<controlloss>>
 	<<set $combat to 1>>
 	<<set $enemytype to "swarm">>
-	<<swarminit "snakes" "swarms" "slithering" "slither" "keep back" 10 0>>
+	<<swarminit "snakes" "swarm" "slithering" "slither" "keep back" 10 0>>
 	<<set $timer to 20>>
 <</if>>
 <<swarmeffects>>

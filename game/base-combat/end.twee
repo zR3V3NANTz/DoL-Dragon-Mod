@@ -100,6 +100,7 @@
 <<unset $dodging>>
 <<unset $feet_planted>>
 <<unset $speechspraycycleplant>>
+<<unset $newlyWritten>>
 
 <<switch $player.gender>>
 <<case "f">>
@@ -706,11 +707,6 @@
 <<unset $speechchestrub>>
 <<unset $speechbreastrub>>
 <<unset $speechvaginaflaunt>>
-<<unset $speechvaginavirgin>>
-<<unset $speechanusvirgin>>
-<<unset $speechmouthvirgin>>
-<<unset $speechpenisvirgin>>
-<<unset $speechkissvirgin>>
 <<unset $speechpenisbig>>
 <<unset $speechpenisescape>>
 <<unset $speechvaginaescape>>
@@ -751,6 +747,11 @@
 <<unset $speechapologiseno>>
 <<unset $speechforgive>>
 <<unset $speechspray>>
+<<unset $speechvaginavirgin>>
+<<unset $speechanusvirgin>>
+<<unset $speechmouthvirgin>>
+<<unset $speechpenisvirgin>>
+<<unset $speechkissvirgin>>
 
 
 

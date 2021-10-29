@@ -626,7 +626,7 @@ You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding
 	<<set $combat to 1>>
 
 	<<set $enemytype to "swarm">>
-	<<swarminit "fish" "containers" "shaking" "shatter" "steady" 4 6>>
+	<<swarminit "fish" "container" "shaking" "shatter" "steady" 4 6>>
 	<<set $swimdistance to 8>>
 	<<set $water to 1>>
 <</if>>
@@ -912,9 +912,9 @@ The creature recoils from you and disappears into darkness. <<tearful>> you turn
 
 	<<set $enemytype to "swarm">>
 	<<if $slimedisable is "f" and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>>
-		<<swarminit "pale slimes" "slime masses" "moving towards you" "encircle you" "fend off" 8 0>>
+		<<swarminit "pale slimes" "slime mass" "moving towards you" "encircle you" "fend off" 8 0>>
 	<<else>>
-		<<swarminit "fish" "swarms" "moving towards you" "encircle you" "fend off" 1 7>>
+		<<swarminit "fish" "swarm" "moving towards you" "encircle you" "fend off" 1 7>>
 	<</if>>
 	<<set $swimdistance to 12>>
 	<<set $water to 1>>

@@ -5,10 +5,11 @@
 <!-- Example: <<generateBEAST 2 wolf f>> would generate NPC 2 as female wolf -->
 
 <!-- Checks if endevent was properly used after the last event -->
-/*<<if $enemyno gte 1>>
-<<set $endeventerror to $lastgenerated>>
+<<if $enemyno gte 1 and $args[0] is 1>>
+	<<set $endeventerror to $lastgenerated>>
+	<<endevent phaseless>>
 <</if>>
-<<set $lastgenerated to $passage>>*/
+<<set $lastgenerated to $passage>>
 
 <<set _n to $args[0]-1>>
 <<set _type to $args[1]>>

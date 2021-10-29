@@ -176,7 +176,9 @@ You feel a terrible sense of unease.
 		<br><br>
 
 		<<if $promiscuity gte 35>>
-			<<link [[Accept|Street Bodywriting Accept]]>><<set $phase to clone($skin[_bodypart].degree)>><</link>><<promiscuous3>>
+			<<capture _bodypart>>
+				<<link [[Accept|Street Bodywriting Accept]]>><<set $phase to clone($skin[_bodypart].degree)>><</link>><<promiscuous3>>
+			<</capture>>
 			<br>
 		<</if>>
 		<<link [[Apologise|Street Bodywriting Apologise]]>><<sub 1>><<stress 6>><</link>><<gstress>>
@@ -200,7 +202,9 @@ You feel a terrible sense of unease.
 	<br><br>
 
 	<<if $promiscuity gte 35>>
-		<<link [[Accept|Street Bodywriting Accept]]>><<set $phase to clone($skin[_bodypart].degree)>><</link>><<promiscuous3>>
+		<<capture _bodypart>>
+			<<link [[Accept|Street Bodywriting Accept]]>><<set $phase to clone($skin[_bodypart].degree)>><</link>><<promiscuous3>>
+		<</capture>>
 		<br>
 	<</if>>
 	<<link [[Apologise|Street Bodywriting Apologise]]>><<sub 1>><<stress 6>><</link>><<gstress>>
