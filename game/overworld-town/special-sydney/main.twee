@@ -438,7 +438,7 @@
 								<</if>>
 								<<He>> rubs <<his>> own pendant. <<npcincr Sydney love 1>><<glove>>
 							<<case "stone pendant">>
-								<<He>> looks at the the stone pendant around your neck, and <<he>> looks interested. "That isn't the standard pendant, but... I think I've seen that around somewhere." <<npcincr Sydney love 1>><<glove>>
+								<<He>> looks at the stone pendant around your neck, and <<he>> looks interested. "That isn't the standard pendant, but... I think I've seen that around somewhere." <<npcincr Sydney love 1>><<glove>>
 							<<case "dark pendant">>
 								<<He>> remains silent for an unusually long time. You look over to <<him>>, and see <<his>> eyes glazed over, staring at your dark pendant. You snap your fingers, and <<he>> gasps before placing <<his>> hands over <<his>> mouth, suddenly looking nervous. "Sorry. Must be more tired than I thought." <<npcincr Sydney purity -2>><<lspurity>>
 							<<case "cat bell collar" "cow bell">>

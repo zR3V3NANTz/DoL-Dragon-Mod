@@ -91,7 +91,7 @@ You take a seat and look out the window.
 		<br><br>
 		The bus arrives at your destination, and you scramble from your seat. <<stress 12>><<ggstress>>
 		<br><br>
-		<<$wraith.hunt ++>>
+		<<set $wraith.hunt++>>
 		<<destination5>>
 		<<elseif $dangerbus is 1>>
 			<<generate1>>A <<person1>><<person>> sits down next to you and rests a hand on your leg.

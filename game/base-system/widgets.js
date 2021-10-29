@@ -224,9 +224,9 @@ function genderappearancecheck() {
 	} else if (T.apparent_femininity < 0) {
 		T.gender_appearance = "m";
 	} else if (V.player.gender == "h") { // if herm pc and perfect 0 apparent_femininity
-		if (["m", "f"].contains(V.player.gender_body)) // use natural features as a tie breaker if not androgynous
+		if (["m", "f"].includes(V.player.gender_body)) // use natural features as a tie breaker if not androgynous
 			T.gender_appearance = V.player.gender_body;
-		else if (["m", "f"].contains(V.player.gender_posture)) // use gender posture as a tie breaker if not acting naturally
+		else if (["m", "f"].includes(V.player.gender_posture)) // use gender posture as a tie breaker if not acting naturally
 			T.gender_appearance = V.player.gender_posture;
 		else
 			T.gender_appearance = "f"; // you've done it. you've broken me. default to "f".
@@ -238,9 +238,9 @@ function genderappearancecheck() {
 	} else if (T.apparent_femininity_noow < 0) {
 		T.gender_appearance_noow = "m";
 	} else if (V.player.gender == "h") {
-		if (["m", "f"].contains(V.player.gender_body))
+		if (["m", "f"].includes(V.player.gender_body))
 			T.gender_appearance_noow = V.player.gender_body;
-		else if (["m", "f"].contains(V.player.gender_posture))
+		else if (["m", "f"].includes(V.player.gender_posture))
 			T.gender_appearance_noow = V.player.gender_posture;
 		else
 			T.gender_appearance_noow = "f";

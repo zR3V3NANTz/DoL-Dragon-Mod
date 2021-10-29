@@ -499,7 +499,7 @@
 		args[1]: amount to increase by
 	*/
 	<<if $args[0] and $args[1] and $statFreeze isnot true>>
-		<<if ["penis_tiny", "penis_small", "penis_big", "breasts_tiny", "breasts_small", "breasts_big"].contains($args[0])>>
+		<<if ["penis_tiny", "penis_small", "penis_big", "breasts_tiny", "breasts_small", "breasts_big"].includes($args[0])>>
 			<<insecurity_gain $args[0] $args[1]>>
 		<<else>>
 			<span class="red">INVALID INSECURITY TYPE SPECIFIED: <<print "insecurity_"+$args[0]>></span>
@@ -514,7 +514,7 @@
 	*/
 	<<if $args[0] and $args[1] and $statFreeze isnot true>>
 		/* note: this does not check if a player is capable of gaining acceptance, so dont use this widget without checking.  */
-		<<if ["penis_tiny", "penis_small", "penis_big", "breasts_tiny", "breasts_small", "breasts_big"].contains($args[0])>>
+		<<if ["penis_tiny", "penis_small", "penis_big", "breasts_tiny", "breasts_small", "breasts_big"].includes($args[0])>>
 			<<set V["acceptance_"+$args[0]] += ($args[1] * 6)>>
 			<<set V["acceptance_"+$args[0]] = Math.clamp(V["acceptance_"+$args[0]], 0, 1000)>>
 		<<else>>

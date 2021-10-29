@@ -679,7 +679,7 @@ These still require Fertilise
 <br>
 <<link [[Temple Initiate|Temple]]>><<inittemple>><</link>>
 <br>
-<<link [[Strip Club|Strip Club]]>><<set $id to 1><<set $wardrobes.stripClub.unlocked to true>>><</link>>
+<<link [[Strip Club|Strip Club]]>><<set $id to 1>><<set $wardrobes.stripClub.unlocked to true>><</link>>
 <br>
 <<link [[Asylum|Hospital Bed]]>><<set $trauma to 4900>><</link>>
 <br>

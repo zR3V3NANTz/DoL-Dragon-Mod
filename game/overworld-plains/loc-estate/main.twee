@@ -5,7 +5,7 @@
 <br>
 
 You are in the Remy estate, near the front gate.
-<<if $chaos gte 100>>
+<<if $estate.chaos gte 100>>
 	You hear shouting.
 <</if>>
 <<if $estate.cards.cattle is 1>>
