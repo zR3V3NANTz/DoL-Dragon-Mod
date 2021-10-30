@@ -429,7 +429,7 @@
 	<<run Object.keys($carried).forEach(slot => {
 		if (!_skip.includes($carried[slot].name)) {
 			let locationSpecific = $wardrobes[$carried[slot].lastTaken].locationRequirement.includes($location);
-			if($location === "asylum")){
+			if($location === "asylum"){
 				$wardrobes.asylum[slot].push(clone($carried[slot]));
 			} else if($location === "prison") {
 				$wardrobes.prison[slot].push(clone($carried[slot]));

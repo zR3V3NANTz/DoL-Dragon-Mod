@@ -700,10 +700,10 @@
 <</if>>
 <br><br>
 <<if $phase is 3>>
-    <<link [["Let " + $NPCList[0].pronouns.him " remove the leash"|Prison Remove Leash]]>><</link>>
+    <<link [["Let " + $NPCList[0].pronouns.him + " remove the leash"|Prison Remove Leash]]>><</link>>
     <br>
 <<elseif $phase is 2>>
-    <<link [["Let " + $NPCList[0].pronouns.him " remove the ankle cuffs"|Prison Remove Cuffs]]>><</link>>
+    <<link [["Let " + $NPCList[0].pronouns.him + " remove the ankle cuffs"|Prison Remove Cuffs]]>><</link>>
     <br>
 <<elseif $phase is 1>>
     <<prison_repunishment_options>>
@@ -998,6 +998,7 @@
                     <br><br>
                 <<else>>
                     <<gattention>><<prison_attention 1>><<gstress>><<stress 6>><<garousal>><<arousal 600>>
+                    <br><br>
                 <</if>>
             <<else>>
                 <<generate1>><<person1>>

@@ -371,7 +371,7 @@ You snuggle under the covers.
 
 <<else>>
 	<br><br>
-		<<link [[Get up|Prison Cell]]>><<bedclotheson "farm bed">><</link>>
+		<<link [[Get up|Prison Cell]]>><<bedclotheson "prison bed">><</link>>
 <</if>>
 
 :: Prison Wardrobe

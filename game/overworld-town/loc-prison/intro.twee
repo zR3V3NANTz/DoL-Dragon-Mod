@@ -290,9 +290,9 @@ The <<person1>><<personsimple>> at the helm glances at you.
 <br><br>
 <<if $physiquesize gte 16000>>
     <<if $physique gte 15000>>
-        "<<pShes>> a big fucker <<phimself>>," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Strong too. Might be trouble for us."
+        "<<pShes>> a big fucker <<pherself>>," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Strong too. Might be trouble for us."
     <<else>>
-        "<<pShes>> a big fucker <<phimself>>," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Might end up calling the shots."
+        "<<pShes>> a big fucker <<pherself>>," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Might end up calling the shots."
     <</if>>
 <br>
 "If <<pshe>> were older maybe," the <<person2>><<person>> replies.

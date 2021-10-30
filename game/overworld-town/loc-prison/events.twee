@@ -884,7 +884,7 @@ You nod. <<veteran_guard 0>> shoves you through another door.
 <<elseif $enemyarousal gte $enemyarousalmax>>
 	<span id="next"><<link [[Next|Prison Pimp Rape Finish]]>><</link>></span><<nexttext>>
 <<else>>
-	<span id="next"><<link [[Next|Prison Pimp WaRapell]]>><</link>></span><<nexttext>>
+	<span id="next"><<link [[Next|Prison Pimp Rape]]>><</link>></span><<nexttext>>
 <</if>>
 
 :: Prison Pimp Rape Finish
