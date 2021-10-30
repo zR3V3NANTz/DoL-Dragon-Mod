@@ -276,7 +276,7 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 <</widget>>
 
 <<widget "eventlake">>
-<<if $foresthunt lte 0 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and ($wraith.hunt or $wraith.timer gte random(0, 10))>>
+<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and ($wraith.hunt or $wraith.timer gte random(0, 10))>>
 	<<wHunt "lake">>
 <<elseif $rng gte 81>>
 <!-- Modified for Monster People -->
