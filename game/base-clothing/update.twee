@@ -281,5 +281,8 @@ ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x and allow 
 		<</for>>
 	<</if>>
 <</if>>
+<<if $wardrobes.prison.name is "Prison Locker">>
+	<<set $wardrobes.prison.name to "Prison locker">>
+<</if>>
 
 <</widget>>

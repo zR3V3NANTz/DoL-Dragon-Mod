@@ -120,11 +120,13 @@ Wren smiles at you. "If you've got teeth," <<he>> says. "I have some goodies fro
 
 
 :: Prison Wren Clothes
+<<set $wardrobe_location to "prison">>
+<<wardrobeSelection true>>
 
 Panties: 5 teeth
 <br>
 <<if $prison.teeth gte 5>>
-    <<link [[Buy|Prison Wren Panties]]>><<prison_teeth -5>><<underlowersend 1 "prison">><</link>>
+    <<link [[Buy|Prison Wren Panties]]>><<prison_teeth -5>><<underlowersend 1 $wardrobe_location>><</link>>
 <<else>>
     <span class="blue">You need more teeth.</span>
 <</if>>
@@ -132,7 +134,7 @@ Panties: 5 teeth
 Briefs: 5 teeth
 <br>
 <<if $prison.teeth gte 5>>
-    <<link [[Buy|Prison Wren Briefs]]>><<prison_teeth -5>><<underlowersend 4 "prison">><</link>>
+    <<link [[Buy|Prison Wren Briefs]]>><<prison_teeth -5>><<underlowersend 4 $wardrobe_location>><</link>>
 <<else>>
     <span class="blue">You need more teeth.</span>
 <</if>>
@@ -140,7 +142,7 @@ Briefs: 5 teeth
 Bra: 5 teeth
 <br>
 <<if $prison.teeth gte 5>>
-    <<link [[Buy|Prison Wren Bra]]>><<prison_teeth -5>><<underuppersend 12 "prison">><</link>>
+    <<link [[Buy|Prison Wren Bra]]>><<prison_teeth -5>><<underuppersend 12 $wardrobe_location>><</link>>
 <<else>>
     <span class="blue">You need more teeth.</span>
 <</if>>
@@ -148,7 +150,7 @@ Bra: 5 teeth
 Vest: 5 teeth
 <br>
 <<if $prison.teeth gte 5>>
-    <<link [[Buy|Prison Wren Vest]]>><<prison_teeth -5>><<underuppersend 22 "prison">><</link>>
+    <<link [[Buy|Prison Wren Vest]]>><<prison_teeth -5>><<underuppersend 22 $wardrobe_location>><</link>>
 <<else>>
     <span class="blue">You need more teeth.</span>
 <</if>>
@@ -156,7 +158,7 @@ Vest: 5 teeth
 Shirt: 10 teeth
 <br>
 <<if $prison.teeth gte 10>>
-    <<link [[Buy|Prison Wren Shirt]]>><<prison_teeth -10>><<uppersend 85 "prison">><</link>>
+    <<link [[Buy|Prison Wren Shirt]]>><<prison_teeth -10>><<uppersend 85 $wardrobe_location>><</link>>
 <<else>>
     <span class="blue">You need more teeth.</span>
 <</if>>
@@ -164,7 +166,7 @@ Shirt: 10 teeth
 Trousers: 10 teeth
 <br>
 <<if $prison.teeth gte 10>>
-    <<link [[Buy|Prison Wren Trousers]]>><<prison_teeth -10>><<lowersend 77 "prison">><</link>>
+    <<link [[Buy|Prison Wren Trousers]]>><<prison_teeth -10>><<lowersend 77 $wardrobe_location>><</link>>
 <<else>>
     <span class="blue">You need more teeth.</span>
 <</if>>
@@ -172,7 +174,7 @@ Trousers: 10 teeth
 Jumpsuit: 15 teeth
 <br>
 <<if $prison.teeth gte 15>>
-    <<link [[Buy|Prison Wren Jumpsuit]]>><<prison_teeth -15>><<uppersend 86 "prison">><</link>>
+    <<link [[Buy|Prison Wren Jumpsuit]]>><<prison_teeth -15>><<uppersend 86 $wardrobe_location>><</link>>
 <<else>>
     <span class="blue">You need more teeth.</span>
 <</if>>

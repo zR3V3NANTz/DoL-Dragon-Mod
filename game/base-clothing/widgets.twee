@@ -428,15 +428,11 @@
 	<</if>>
 	<<run Object.keys($carried).forEach(slot => {
 		if (!_skip.includes($carried[slot].name)) {
-			let locationSpecific = $wardrobes[$carried[slot].lastTaken].locationRequirement.includes($location);
-			if($location === "asylum"){
-				$wardrobes.asylum[slot].push(clone($carried[slot]));
-			} else if($location === "prison") {
-				$wardrobes.prison[slot].push(clone($carried[slot]));
-			} else if($carried[slot].lastTaken !== undefined && $carried[slot].lastTaken === "wardrobe" && !locationSpecific){
-				$wardrobes[$carried[slot].lastTaken][slot].push(clone($carried[slot]));
-			} else {
+			let location = clothesReturnLocation($carried[slot]);
+			if(location === "wardrobe" || !$wardrobes[location].unlocked){
 				$wardrobe[slot].push(clone($carried[slot]));
+			} else {
+				$wardrobes[location][slot].push(clone($carried[slot]));
 			}
 		}
 		$carried[slot] = clone(setup.clothes[slot][0]);
@@ -532,7 +528,7 @@
 				<<if $worn[$args[0]].outfitSecondary isnot undefined>>
 					<<set _outfitSecondaryRebuy to $worn[$args[0]].outfitSecondary>>
 					<<if $money gte Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
-						<<set $_return to clothesReturnLocation($worn[_outfitSecondaryRebuy[0]],$args[0]],"rebuy")>>
+						<<set $_return to clothesReturnLocation($worn[_outfitSecondaryRebuy[0]],"rebuy")>>
 						<<generalSend $_return _outfitSecondaryRebuy[0] $worn[_outfitSecondaryRebuy[0]].index $worn[_outfitSecondaryRebuy[0]].colour $worn[_outfitSecondaryRebuy[0]].accessory_colour>>
 						<<set $money -= Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
 						<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($worn[_outfitSecondaryRebuy[0]].name),$_return])>>

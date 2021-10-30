@@ -39,17 +39,16 @@
 		<<set _passage to $args[0]>>
 		<<set $wardrobe_location to "alexFarm">>
 		<<set $storeLocation to "Farm Bed">>
+	<<case "prison bed">>
+		<<set _passage to 'Prison Bed'>>
+		<<set $wardrobe_location to "prison">>
+		<<set $storeLocation to "prison bed">>
 	<<default>>
 		<<set _passage to "Bed">>
 		<<set $wardrobe_location to "wardrobe">>
 		<<set $storeLocation to "bed">>
 <</switch>>
 <<wardrobeSelection true>>
-<<if $args[0] is undefined>>
-	<<set _passage to "Bed">>
-<<else>>
-	<<set _passage to $args[0]>>
-<</if>>
 <<if $alwaysSleepNaked isnot true>>
 	<<for _i to 0; _i lt $outfit.length; _i++>>
 		<<if $outfit[_i].type.includes("sleep")>>
@@ -335,13 +334,14 @@
 	<<set _keys to Object.keys(_notEquipped)>>
 	<<if _keys.length gt 0>>
 		<<set _resultStrings to {}>>
+		<<set _wardrobeName to _selectedWardrobe.name + (!_selectedWardrobe.name.includes("locker") ? " wardrobe" : "")>>
 		<<for _i to 0; _i lt _keys.length; _i++>>
 			<<switch _notEquipped[_keys[_i]].reason>>
 				<<case "not found">>
 					<<if _resultStrings.notFound is undefined>>
 						<<set _resultStrings.notFound to {
 							"start": "You were unable to find any ",
-							"end": " in your wardrobe.",
+							"end": " in your " + _wardrobeName + ".",
 							"count": 0,
 							"color": "purple"
 						}>>
@@ -352,7 +352,7 @@
 					<<if _resultStrings.notFoundReplacement is undefined>>
 						<<set _resultStrings.notFoundReplacement to {
 							"start": "You were unable to find any ",
-							"end": " in your wardrobe to replace what you're already wearing.",
+							"end": " in your " + _wardrobeName + " to replace what you're already wearing.",
 							"count": 0,
 							"color": "lewd"
 						}>>

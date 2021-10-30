@@ -57,6 +57,7 @@ You are in your cell. There's a bed in one corner, and a cupboard in another. A 
         <span class="blue">It's too noisy to sleep.</span>
         <br>
     <<else>>
+		<<listsleepoutfits "prison bed">>
         <<bedicon>><<link [[Strip and get in bed|Prison Bed]]>><<undressSleep "prison bed">><</link>>
         <br>
     <</if>>
@@ -322,7 +323,6 @@ You could only dig during lockdown. Too risky otherwise.
 <br>
 
 :: Prison Bed
-<<set $wardrobe_location to "prison bed">>
 <<effects>>
 <<wearoutfit>>
 
@@ -380,14 +380,11 @@ You snuggle under the covers.
 You open the cupboard.
 <br><br>
 <<set $wardrobe_location to "prison">>
+<<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>
 
 <<wardrobe>>
-
-
-<<link [[Close|Prison Cell]]>><</link>>
-<br>
 
 
 :: Prison Settings

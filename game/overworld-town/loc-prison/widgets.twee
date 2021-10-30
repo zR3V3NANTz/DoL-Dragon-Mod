@@ -40,22 +40,24 @@
 
     <<set $prison_wren_intro to 1>>
     <<set $prison_wren_boat_intro to 1>>
-    <<uppersend 86 "prison">>
+	<<set $wardrobe_location to "prison">>
+	<<wardrobeSelection true>>
+    <<uppersend 86 $wardrobe_location>>
     <<if $malechance gte 100>>
-        <<underuppersend 22 "prison">>
-        <<underuppersend 22 "prison">>
-        <<underlowersend 4 "prison">>
-        <<underlowersend 4 "prison">>
+        <<underuppersend 22 $wardrobe_location>>
+        <<underuppersend 22 $wardrobe_location>>
+        <<underlowersend 4 $wardrobe_location>>
+        <<underlowersend 4 $wardrobe_location>>
     <<elseif $malechance lte 0>>
-        <<underuppersend 12 "prison">>
-        <<underuppersend 12 "prison">>
-        <<underlowersend 1 "prison">>
-        <<underlowersend 1 "prison">>
+        <<underuppersend 12 $wardrobe_location>>
+        <<underuppersend 12 $wardrobe_location>>
+        <<underlowersend 1 $wardrobe_location>>
+        <<underlowersend 1 $wardrobe_location>>
     <<else>>
-        <<underuppersend 22 "prison">>
-        <<underuppersend 12 "prison">>
-        <<underlowersend 4 "prison">>
-        <<underlowersend 1 "prison">>
+        <<underuppersend 22 $wardrobe_location>>
+        <<underuppersend 12 $wardrobe_location>>
+        <<underlowersend 4 $wardrobe_location>>
+        <<underlowersend 1 $wardrobe_location>>
     <</if>>
 
 <</if>>
@@ -477,7 +479,7 @@
 <<link [[Just sleep|Prison Sleep]]>><<set $sleephour to -1>><<set $saveDetails.auto.count++>><</link>> (??:??)<<ltiredness>>
 <br><br>
 
-<<link [[Climb out of bed|Prison Cell]]>><<storeon "prison bed">><<set $wardrobe_location to "prison_wardrobe">><</link>>
+<<link [[Climb out of bed|Prison Cell]]>><<storeon "prison bed">><<set $wardrobe_location to "prison">><<wardrobeSelection>><</link>>
 
 <br><br>
 <</widget>>
