@@ -132,8 +132,6 @@ You take the teeth into your possession.
 		<br><br>
 	<</if>>
 
-	<<prison_laundry_options>>
-
 <<else>>
 
 	<span class="red"><<generate_relaxed_guard 0>><<relaxed_guard 0 cap>><<person1>> slams the dice onto the table,</span> marches over, and relieves you of your find. "Eyes like a hawk," <<he>> says before returning to <<his>> stool.<<lsuspicion>><<prison_guards -1>>
@@ -199,8 +197,6 @@ You wait until the <<person>> bends over to lift a box, then slip your hand into
 		<span class="blue">That was too easy. You didn't learn anything.</span>
 		<br><br>
 	<</if>>
-
-	<<prison_laundry_options>>
 
 <<else>>
 

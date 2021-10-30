@@ -420,7 +420,7 @@
 	<<set $chokeorgasm to 0>>
 <</if>>
 
-<<if $NudeGenderDC is undefined or $NudeGenderDC lt 2>>
+<<if $NudeGenderDC is undefined or $NudeGenderDC gt 2>>
 	<<set $NudeGenderDC to 2>>
 <</if>>
 
