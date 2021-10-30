@@ -167,7 +167,7 @@
 			<<generateCombatActionTentacle _leftaction "leftaction" _textColor $leftaction _reducedWidths>>
 			<<if _leftOptions is "free" and $tentacles.active gt 0>>
 				<<leftactionSetupTentacle>>
-			<<elseif _leftOptions is "grappled" and $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+			<<elseif _leftOptions is "grappled" and $angel gte 4 and $angelBanish gte 1 and !$banishDisable and _banishTarget>>
 				<<leftactionBoundBanish>>
 			<</if>>
 		</div>
@@ -405,7 +405,7 @@
 			<<generateCombatActionTentacle _rightaction "rightaction" _textColor $rightaction _reducedWidths>>
 			<<if _rightOptions is "free" and $tentacles.active gt 0>>
 				<<rightactionSetupTentacle>>
-			<<elseif _rightOptions is "grappled" and $angel gte 4 and $angelBanish gte 1 and !$banishDisable>>
+			<<elseif _rightOptions is "grappled" and $angel gte 4 and $angelBanish gte 1 and !$banishDisable and _banishTarget>>
 				<<rightactionBoundBanish>>
 			<</if>>
 		</div>

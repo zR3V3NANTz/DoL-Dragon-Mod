@@ -2231,23 +2231,19 @@
 	<<set $templePromised to "">>
 <</if>>
 
-<<if $perChastityFix is undefined>>
-    <<set $perChastityFix to 1>>
-    <<set _keys to Object.keys($per_npc)>>
-    <<for _npc range _keys>>
-        <<if $per_npc[_npc].chastity is undefined>>
-            <<set $per_npc[_npc].chastity to {penis:"", vagina:"", anus:""}>>
-        <</if>>
-    <</for>>
-<</if>>
-
-<<if $perPronounFix is undefined or $perPronounFix is 1>>
-    <<set $perPronounFix to 2>>
+<<if $perNPCFix is undefined>>
+	<<set $perNPCFix to 1>><<unset $perPronounFix>><<unset $perChastityFix>>
     <<set _keys to Object.keys($per_npc)>>
     <<for _npc range _keys>>
         <<if $per_npc[_npc].pronouns is undefined or $per_npc[_npc].pronouns.he is 0>>
 			<<generatePronouns $per_npc[_npc]>>
         <</if>>
+        <<if $per_npc[_npc].chastity is undefined>>
+            <<set $per_npc[_npc].chastity to {penis:"", vagina:"", anus:""}>>
+        <</if>>
+		<<if $per_npc[_npc].role is undefined>>
+			<<set $per_npc[_npc].role to "normal">>
+		<</if>>
     <</for>>
 <</if>>
 

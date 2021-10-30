@@ -951,7 +951,7 @@
 
 <<widget "bloodmirroricon">>
 	<<if $images is 1>>
-		<img id="icon" src="img/misc/icon/mirrorblood.png">
+		<img id="icon" src="img/misc/icon/mirrorblood.gif">
 	<</if>>
 <</widget>>
 

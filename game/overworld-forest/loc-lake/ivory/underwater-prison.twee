@@ -647,8 +647,11 @@ You find the glowing rune at the bottom of the stairs. It flashes a bright red a
 <br><br>
 You swiftly exit, not looking back.
 <<if $wraith.state is "haunt" and !$wraithPrison.vision>>
-<span class="blue">You wonder what it would have showed you, had you been "ready". You feel relieved that your mind wasn't more vulnerable.</span>
-<</if>>
+	<<if $wraithPrison.timePassed lt 180>>
+		<span class="blue">You wonder what it would have showed you, had you been "ready". You feel relieved that it didn't have more time to torture you.</span>
+	<<else>>
+		<span class="blue">You wonder what it would have showed you, had you been "ready". You feel relieved that your mind wasn't more vulnerable.</span>
+	<</if>>
 <br><br>
 <<link [[Next|Lake Ruin]]>><</link>>
 <br>
