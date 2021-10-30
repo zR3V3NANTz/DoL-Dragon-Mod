@@ -119,7 +119,7 @@ You jump after the soap, and manage to catch it,
 <<else>>
     <span class="red">but skid as you land.</span> You end up on your hands and knees.<<gpain>><<pain 4>>
     <br><br>
-    You slip again as you struggle to your feet, attracting more attention.<<gstress>><<stress 6>><<lrespect>><<prison_inmates -1>><<glewdity>><<prison_lewdity 1>>
+    You slip again as you struggle to your feet, attracting more attention.<<gstress>><<stress 6>><<lrespect>><<prison_inmates -1>><<glewdity>><!--<<prison_lewdity 1>>-->
 <</if>>
 <br><br>
 
@@ -682,7 +682,7 @@ You await them with hands on hips, and mentally prepare for a scrap.
 :: Prison Attention 2
 <<effects>>
 
-<<veteran_guard 0 cap>> leads you through a thin door, and down a flight of steps. <<He>> pulls a torch from <<his>> pocket to light the way. The steps snake this way and that, before opening onto stone hall. You hear the rush of water, but can't tell the direction.
+<<veteran_guard 0 cap>> leads you through a thin door, and down a flight of steps. <<He>> pulls a torch from <<his>> pocket to light the way. The steps snake this way and that, before opening onto a stone hall. You hear the rush of water, but can't tell the direction.
 <br><br>
 
 <<if $prison_dungeon_intro isnot 1>>
@@ -741,55 +741,38 @@ You nod. <<veteran_guard 0>> shoves you through another door.
     The room is small and bare. There's nothing inside, except a hole in the wall. <<veteran_guard 0 cap>> bends you over, and pushes you inside. The other side is pitch black. <<He>> clamps your wrists in place, holding you still.
     <br><br>
     <<endevent>>
+    <<generate1>><<generate2>><<generate3>><<person1>>
+    You hear a few unfamiliar voices in the room behind, muffled through the wall. Someone spanks your <<bottom>>.
+    <br><br>
     <<if $prison.attention_level is 1>>
         <<set $prison_pimp to 1>>
-        <<generate1>><<generate2>><<generate3>><<person1>>
-        You hear few unfamiliar voices in the room behind, muffled through the wall. Someone spanks your <<bottom>>.
-        <br><br>
         <<link [[Next|Prison Pimp Wall]]>><<set $prison.attention_level to 2>><<set $molestationstart to 1>><</link>>
-        <br>
     <<elseif $prison.attention_level is 2>>
         <<set $prison_pimp to 2>>
-        <<generate1>><<generate2>><<generate3>><<person1>>
-        You hear few unfamiliar voices in the room behind, muffled through the wall. Someone spanks your <<bottom>>.
-        <br><br>
         <<link [[Next|Prison Pimp Wall]]>><<set $prison.attention_level to 3>><<set $molestationstart to 1>><</link>>
-        <br>
     <<else>>
         <<set $prison_pimp to 3>>
-        <<generate1>><<generate2>><<generate3>><<person1>>
-        You hear few unfamiliar voices in the room behind, muffled through the wall. Someone spanks your <<bottom>>.
-        <br><br>
         <<link [[Next|Prison Pimp Wall]]>><<set $molestationstart to 1>><</link>>
-        <br>
     <</if>>
 <<else>>
     The room is small and bare. There's nothing inside, except two iron manacles on the wall. <<veteran_guard 0 cap>> shoves your back between them, and clamps your wrists.
     <br><br>
     <<endevent>>
+    <<generate1>><<generate2>><<generate3>><<person1>>
+    A <<person1>><<person>>, <<person2>><<person>>, and <<person3>><<person>> enter, lust in their eyes. They're not dressed like inmates.
+    <br><br>
     <<if $prison.attention_level is 1>>
         <<set $prison_pimp to 1>>
-        <<generate1>><<generate2>><<generate3>><<person1>>
-        A <<person1>><<person>>, <<person2>><<person>>, and <<person3>><<person>> enter, lust in their eyes. They're not dressed like inmates.
-        <br><br>
         <<link [[Next|Prison Pimp Rape]]>><<set $prison.attention_level to 2>><<set $molestationstart to 1>><</link>>
-        <br>
     <<elseif $prison.attention_level is 2>>
         <<set $prison_pimp to 2>>
-        <<generate1>><<generate2>><<generate3>><<person1>>
-        A <<person1>><<person>>, <<person2>><<person>>, and <<person3>><<person>> enter, lust in their eyes. They're not dressed like inmates.
-        <br><br>
         <<link [[Next|Prison Pimp Rape]]>><<set $prison.attention_level to 3>><<set $molestationstart to 1>><</link>>
-        <br>
     <<else>>
         <<set $prison_pimp to 3>>
-        <<generate1>><<generate2>><<generate3>><<person1>>
-        A <<person1>><<person>>, <<person2>><<person>>, and <<person3>><<person>> enter, lust in their eyes. They're not dressed like inmates.
-        <br><br>
         <<link [[Next|Prison Pimp Rape]]>><<set $molestationstart to 1>><</link>>
-        <br>
-    <</if>>    
+    <</if>>
 <</if>>
+<br>
 
 :: Prison Pimp Wall
 <<if $molestationstart is 1>>

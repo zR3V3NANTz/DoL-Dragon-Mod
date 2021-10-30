@@ -421,9 +421,9 @@
     <<set _text_output to  $NPCList[$args[0]].name>>
 <<else>>
     <<if $args[1] is "cap" or $args[1] is "capo">>
-        <<set _text_output to "the tattoed inmate".toUpperFirst()>>
+        <<set _text_output to "the tattooed inmate".toUpperFirst()>>
     <<else>>
-        <<set _text_output to "the tattoed inmate">>
+        <<set _text_output to "the tattooed inmate">>
     <</if>>
 <</if>>
 <<if $args[1] is "apo" or $args[1] is "capo">>
@@ -914,8 +914,8 @@
         <<case 3>>
             Eyes are drawn to your nudity. <<covered>><<ggattention>><<prison_attention 2>><<gstress>><<stress 6>>
             <br><br>
-        <<case 4>> 
-            <<generate1>><<person1>>
+        <<case 4>>
+            <<generate1>><<generate2>><<person1>>
             You hide around a corner for a <<person>> and <<person2>><<person>> to pass, <span class="purple">but they turn your way instead.</span> <<covered>> You endure their leers.<<gattention>><<prison_attention 1>><<gstress>><<stress 6>>
             <<endevent>>
             <br><br>
@@ -1053,7 +1053,7 @@
     <<generate_scarred_inmate 0>>
     <<generate_tattooed_inmate 1>>
     <<generate3>><<generate4>><<generate5>><<generate6>>
-    "I see <<phim>> boss," says a <<personsimple>>'s voice. You turn. The <<tattooed_inmate 0>> walks towards you, flanked by a <<person3>><<person>> and <<person4>><<person>>
+    "I see <<phim>> boss," says a <<person2>><<personsimple>>'s voice. You turn. The <<tattooed_inmate 0>> walks towards you, flanked by a <<person3>><<person>> and <<person4>><<person>>
     <br><br>
     <<person2>><<He>> stops several feet away, and examines you from head to toe. "I need a new <<bitch>>," <<he>> says. There's not an inch of space free of the ink covering <<his>> visible body. "The old's all used up."
     <br><br>

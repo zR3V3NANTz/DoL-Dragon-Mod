@@ -1000,7 +1000,7 @@ You are on the metal walkway outside your cell, at the top of the cell block. Th
 :: Prison Block
 <<set $outside to 0>><<effects>><<effects_prison>><<set $bus to "cell_block">>
 
-You are at the bottom of the cell block. There's a stairs leading to a walkway above, and halls leading to other parts of the prison.
+You are at the bottom of the cell block. There are stairs leading to a walkway above, and halls leading to other parts of the prison.
 <br><br>
 
 <<if $hour is 20>>
@@ -1326,7 +1326,7 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
         <br>
     <<else>>
         <<npc "Wren">><<person1>>
-        "Newcomer?" asks a says a young <<if $pronoun is "m">>man with short<<else>>woman with shoulder-length<</if>> hair. "Just my type." <<He>> wears a prison uniform, but seems apart from the other inmates, freer.
+        "Newcomer?" asks a young <<if $pronoun is "m">>man with short<<else>>woman with shoulder-length<</if>> hair. "Just my type." <<He>> wears a prison uniform, but seems apart from the other inmates, freer.
         <br><br>
 
         <<link [[Next|Prison Wren Intro]]>><<unset $prison_wren_intro>><<set $wren_seen to "prison">><</link>>

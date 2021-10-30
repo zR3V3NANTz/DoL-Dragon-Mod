@@ -1193,7 +1193,7 @@ You put the cash on the desk. Bailey snatches it, and reclines in <<his>> chair 
 	<<if $rentday is 7>>
 		<<set $rentday to 1>>
 	<<else>>
-		<<set $rentday += 1)>>
+		<<set $rentday += 1>>
 	<</if>>
 	<br><br>
 

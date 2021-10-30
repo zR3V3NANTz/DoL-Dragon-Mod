@@ -97,7 +97,7 @@ You focus on sorting and folding laundry, loading and unloading the machines.
         <<link [[Ignore|Prison Laundry Work Ignore]]>><</link>>
         <br>
     <<default>>
-        One pair of trousers is heavier than usual. You find four shark's teeth in a pocket.
+        One pair of trousers is heavier than usual. You find two shark's teeth in a pocket.
         <br><br>
         <<link [[Inform the guard|Prison Laundry Work Inform 2]]>><<prison_guards 1>><</link>><<lsuspicion>>
         <br>
