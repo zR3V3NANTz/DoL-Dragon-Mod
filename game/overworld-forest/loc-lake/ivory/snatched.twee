@@ -545,7 +545,7 @@ You find yourself sinking through the ice, submerging without causing a break.
 				<<set $forest to 0>>
 				<<set $wraith.exit to "forest">>
 			<<case "Forest">>
-				<<pass 10>>
+				<<pass 8>>
 				<<if $forest lte 20>>
 					<<set $nextPassageCheck to "Forest Blood Deeper">>
 					<<set $nextPassage to "Forest">>
@@ -572,12 +572,12 @@ You find yourself sinking through the ice, submerging without causing a break.
 					<<set $wraith.exit to "lake">>	
 				<</if>>
 			<<case "Lake Campsite">>
-				<<pass 10>>
+				<<pass 5>>
 				<<set $nextPassageCheck to "Lake Fishing Rock">>
 				<<set $nextPassage to "Lake Fishing Rock">>
 				<<set $wraith.exit to "lake">>
 			<<case "Lake Fishing Rock">>
-				<<pass 10>>
+				<<pass 5>>
 				<<set $nextPassageCheck to "Lake Waterfall">>
 				<<set $nextPassage to "Lake Waterfall">>
 				<<set $wraith.exit to "lake">>
@@ -587,7 +587,7 @@ You find yourself sinking through the ice, submerging without causing a break.
 				<<set $nextPassage to "Lake Shore">>
 				<<set $wraith.exit to "lake">>
 			<<case "Lake Waterfall">>
-				<<pass 10>>
+				<<pass 5>>
 				<<if $phaseWraith lt 1 and $container and $container.lake and !$wraithPaleVisit>>
 					<<for _i to 0; _i lt $container.lake.count; _i++>>
 						<<if $container.lake.creatures[_i].creature.includes("Pale")>>
@@ -606,7 +606,7 @@ You find yourself sinking through the ice, submerging without causing a break.
 					<<set $wraith.exit to "lake">>
 				<</if>>
 			<<case "Lake Shore">>
-				<<pass 10>>
+				<<pass 5>>
 				<<if $phaseWraith lt 1 and $container and $container.lake and !$wraithPaleVisit>>
 					<<for _i to 0; _i lt $container.lake.count; _i++>>
 						<<if $container.lake.creatures[_i].creature.includes("Pale")>>
@@ -629,25 +629,27 @@ You find yourself sinking through the ice, submerging without causing a break.
 					<</if>>
 				<</if>>
 			<<case "Lake Shallows">>
-				<<pass 10>>
+				<<pass 5>>
 				<<set $nextPassageCheck to "Lake Depths">>
 				<<set $nextPassage to "Lake Depths">>
 			<<case "Lake Shallows Ice">>
-				<<pass 10>>
+				<<pass 5>>
 				<<set $nextPassageCheck to "Lake Depths Ice">>
 				<<set $nextPassage to "Lake Depths Ice">>
 			<<case "Lake Depths">>
-				<<pass 10>>
+				<<pass 5>>
 				<<set $nextPassageCheck to "Lake Underwater">>
 				<<set $nextPassage to "Lake Underwater">>
 			<<case "Lake Depths Ice">>
-				<<pass 10>>
+				<<pass 5>>
 				<<set $nextPassageCheck to "Lake Depths Ice Break">>
 				<<set $nextPassage to "Lake Depths Ice Break">>				
 			<<case "Lake Underwater" "Lake Ruin Deep">>
+				<<pass 5>>
 				<<set $nextPassageCheck to "Lake Ruin">>
 				<<set $nextPassage to "Lake Ruin">>	
 			<<case "Lake Ruin">>
+				<<pass 2>>
 				<<set $nextPassageCheck to "Lake Ruin Prison Intro">>
 				<<set $nextPassage to "Lake Ruin Prison Intro">>
 		<</switch>>
@@ -682,7 +684,7 @@ You find yourself sinking through the ice, submerging without causing a break.
 				<<controlcaption>>
 				<br>
 				<span class="red">Your body does not obey.</span>
-				<<stress 6>><<trauma 6>><<willpower 3>><<set $submissive -= 1>><<gtrauma>><<gstress>><<gwillpower>><<set $wraith.will -= Math.floor($willpower / 10)>>
+				<<stress 6>><<trauma 6>><<willpower 1>><<set $submissive -= 1>><<gtrauma>><<gstress>><<gwillpower>><<set $wraith.will -= Math.floor($willpower / 10)>>
 				<br><br>
 			<</if>>
 		<</if>>
