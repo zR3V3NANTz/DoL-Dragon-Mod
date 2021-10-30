@@ -500,7 +500,7 @@ The branch bends slightly as you reach your goal, but you manage to retrieve you
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 
 <<effects>>
 <<effectstentacles>>
@@ -998,7 +998,7 @@ You brace yourself as the shoots tighten around your limbs.
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 
 <<effects>>
 <<effectstentacles>>

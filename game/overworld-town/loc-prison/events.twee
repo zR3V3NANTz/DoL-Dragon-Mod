@@ -6,7 +6,7 @@ You walk closer. <<person2>><<tattooed_inmate 0 cap>> grabs your arm and pulls y
 
 <<if $player.penisExist is 1>>
     <<if $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1>>
-        "Your cock feels even better than it looks," <<he>> says. "I'll have fun wtih this."
+        "Your cock feels even better than it looks," <<he>> says. "I'll have fun with this."
     <<else>>
         <<if $player.gender_appearance is "f">>
             "This <<bitch>> has a secret," <<he>> says.
@@ -54,7 +54,7 @@ You walk closer. <<person2>><<tattooed_inmate 0 cap>> grabs your arm and pulls y
 :: Prison Attention Refuse
 <<effects>>
 
-You turn away. "Are you deaf <<bitch>>?" <<tattooed_inmate 1 cap>> snarls. "You're coming with us."
+You turn away. "Are you deaf <<bitch>>?" <<tattooed_inmate 1>> snarls. "You're coming with us."
 <br><br>
 
 "No <<he>> ain't," says an unfamiliar voice from the side. <<tattooed_inmate 1 cap>> and <<his>> goons spin in alarm. <<scarred_inmate 0 cap>> walks closer, a <<person5>><<person>> and <<person6>><<person>> on either side.
@@ -66,7 +66,7 @@ You turn away. "Are you deaf <<bitch>>?" <<tattooed_inmate 1 cap>> snarls. "You'
 :: Prison Attention Gangs
 <<effects>>
 
-"I've had my eye on this one," <<scarred_inmate 1 cap>> says. <<He>> pulls a length of cord from <<his>> trousers, and stretches it taut. "<<pShe>>'s mine."
+"I've had my eye on this one," <<scarred_inmate 1>> says. <<He>> pulls a length of cord from <<his>> trousers, and stretches it taut. "<<pShe>>'s mine."
 <br><br>
 "Fuck you," <<tattooed_inmate 1>> says. "I'll push your shit out your mouth."
 <br><br>
@@ -78,7 +78,7 @@ They trade threats while their goons stare each other down, until they're interr
 
 <<tattooed_inmate 1 cap>> and <<scarred_inmate 0>> look away. "Visit my cell during free time," <<scarred_inmate 0>> snarls. "You're gonna need protection. I can give it."
 <br><br>
-"I said back to your cells." <<methodical_guard 2 cap>> says. The inmates disperse. <<methodical_guard 2 cap>> nods in satisfaction and continues on <<person3>><<his>> way, seeming unconcerned with you.
+"I said back to your cells" <<methodical_guard 2>> says. The inmates disperse. <<methodical_guard 2 cap>> nods in satisfaction and continues on <<person3>><<his>> way, seeming unconcerned with you.
 <br><br>
 
 <i>Presenting yourself to <<scarred_inmate 1>> during free time will put you under their protection, shielding you from the next attention event.</i>
@@ -114,7 +114,7 @@ You step into the shower proper. There's no privacy. Dozens of bodies are packed
 
 You jump after the soap, and manage to catch it,
 <<if $danceSuccess>>
-    <span class="green">before making a graceful landing.</span> Crises averted.
+    <span class="green">before making a graceful landing.</span> Crisis averted.
     <br><br>
 <<else>>
     <span class="red">but skid as you land.</span> You end up on your hands and knees.<<gpain>><<pain 4>>
@@ -424,7 +424,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 	<<endcombat>>
 	
     <<generate_veteran_guard 0>><<person1>>
-    "You're disturbing the peace and tranquility of this institution," the <<veteran_guard 0>> says. <<He>> rests a hand on your shoulder. "You're coming with me."
+    "You're disturbing the peace and tranquility of this institution," <<veteran_guard 0>> says. <<He>> rests a hand on your shoulder. "You're coming with me."
     <br><br>
     <<link [[Go quietly|Prison Punishment]]>><<endevent>><</link>>
     <br>
@@ -499,7 +499,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
     <br><br>
     <<destination_prison>>
 <<else>>
-    <span class="red">The <<person1>><<person>> presses against you from behind.
+    <span class="red">The <<person1>><<person>> presses against you from behind.</span>
     <br><br>
 
     <<link [[Next|Prison Rape]]>><<set $molestationstart to 1>><</link>>
@@ -580,7 +580,7 @@ You await them with hands on hips, and mentally prepare for a scrap.
 <</if>>
 <br><br>
 <<if $prison.shock is 1>>
-    The <<veteran_guard 0>> reaches into <<his>> shirt pocket. <span class="red">A terrible jolt runs through you,</span> emanating from your neck. It only lasts a moment, but it's enough to make you fall to the ground and twitch.<<gtrauma>><<ggstress>><<gggpain>><<trauma 4>><<stress 4>><<pain 4>>
+    <<veteran_guard 0 cap>> reaches into <<his>> shirt pocket. <span class="red">A terrible jolt runs through you,</span> emanating from your neck. It only lasts a moment, but it's enough to make you fall to the ground and twitch.<<gtrauma>><<ggstress>><<gggpain>><<trauma 4>><<stress 4>><<pain 4>>
     <br><br>
     You're too hurt to resist as <<methodical_guard 0>> cuffs you, and drags you behind <<him>>.
     <<bind>>
@@ -589,7 +589,7 @@ You await them with hands on hips, and mentally prepare for a scrap.
     <<link [[Next|Prison Attention 2]]>><</link>>
     <br>
 <<else>>
-    The <<veteran_guard 0>> reaches into <<his>> shirt pocket, then frowns. The frown becomes a sneer, and <<he>> rushes at you.
+    <<veteran_guard 0 cap>> reaches into <<his>> shirt pocket, then frowns. The frown becomes a sneer, and <<he>> rushes at you.
     <br><br>    
 
     <<link [[Next|Prison Attention Fight]]>><<set $fightstart to 1>><</link>>
@@ -638,7 +638,7 @@ You await them with hands on hips, and mentally prepare for a scrap.
 	<<prison_revolt_options>>
 
 <<elseif $enemyhealth lte 0>>
-	<<He>> turns and runs, almost dropping <<his>> baton> The inmates cheer.<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>><<greb>><<prison_reb 1>>
+	<<He>> turns and runs, almost dropping <<his>> baton. The inmates cheer.<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>><<greb>><<prison_reb 1>>
 	<br><br>
 	<<clotheson>>
 	<<endcombat>>
@@ -666,9 +666,9 @@ You await them with hands on hips, and mentally prepare for a scrap.
 <<effects>>
 
 <<if $leftarm is "bound" and $rightarm is "bound">>
-    You lean against the wall as instructed. <<veteran_guard 0>> pushes the baton between your thighs, and against your <<genitals>>.
+    You lean against the wall as instructed. <<veteran_guard 0 cap>> pushes the baton between your thighs, and against your <<genitals>>.
 <<else>>
-    You put your arms against the wall as instructed. <<veteran_guard 0>> runs the baton against your <<bottom>>. <<He>> produces a pair of cuffs, and binds your wrists.
+    You put your arms against the wall as instructed. <<veteran_guard 0 cap>> runs the baton against your <<bottom>>. <<He>> produces a pair of cuffs, and binds your wrists.
     <<bind>>
 <</if>>
 <br><br>
@@ -728,7 +728,7 @@ You await them with hands on hips, and mentally prepare for a scrap.
 :: Prison Attention Nod
 <<effects>>
 
-You nod. <<veteran_guard 0>> shoves you through another door.
+You nod. <<veteran_guard 0 cap>> shoves you through another door.
 <br><br>
 
 <<link [[Next|Prison Pimp Start]]>><</link>>
@@ -916,7 +916,7 @@ You nod. <<veteran_guard 0>> shoves you through another door.
 
 <<if $prison_pimp_serviced gte 2>>
     <<set $prison.time -= $prison_pimp_serviced>>
-    <<He>> counts a wad of cash. "Good work," <<he>> says. "I'll take $prison_pimp_serviced days off your sentence. Now get moving."<<glove>><<prison_rep veteran $prison_pimp_serviced>>
+    <<He>> counts a wad of cash. "Good work," <<he>> says. "I'll take <<number $prison_pimp_serviced>> days off your sentence. Now get moving."<<glove>><<prison_rep veteran 100>>
 <<elseif $prison_pimp_serviced is 1>>
     <<set $prison.time -= 1>>
     <<He>> counts a wad of cash. "Good work," <<he>> says. "I'll take a day off your sentence. Now get moving."<<glove>><<prison_rep veteran 1>>
@@ -992,7 +992,7 @@ At last, the earth is at peace. You awaken amidst terrible panic.
 <<effects>>
 
 <<generate_methodical_guard 0>><<generate_veteran_guard 1>><<person2>>
-You're in the medical room. <<methodical_guard 0 cap>> and <<veteran_guard 0>> stand over you.
+You're in the medical room. <<methodical_guard 0 cap>> and <<veteran_guard 1>> stand over you.
 <br><br>
 "A right mess you made," the latter says. "Get up." Every bed is occupied. <<veteran_guard 0 cap>> pushes you forwards. You're too dazed to resist.
 <br><br>

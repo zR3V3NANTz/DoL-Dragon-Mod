@@ -316,6 +316,8 @@
 		<</if>>
 	<</for>>
 <<sexcheck>>
+You count <<number $tentacles.active>> <<print $tentacles[0].type>><<if $tentacles.active isnot 1>>s<</if>> surrounding you.
+<br>
 <</widget>>
 
 <<widget "leftarmtentacledisable">>

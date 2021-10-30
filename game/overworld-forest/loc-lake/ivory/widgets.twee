@@ -536,7 +536,7 @@
 		<<chastityBreakWraith>>
 		<<effectstentacles>><<speechWraith>><<tentacles>>
 		<<statetentacles>>
-		You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+		
 		<br><br>
 		<<actionstentacles>>
 	<<case "slimetentacles">>
@@ -544,7 +544,7 @@
 		<<swarmeffects>><<effectstentacles>><<speechWraith>>
 		<<swarm>><<tentacles>>
 		<<statetentacles>>
-		You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+		
 		<br><br>
 		<<swarmactions>><<actionstentacles>>
 	<<case "slime">>

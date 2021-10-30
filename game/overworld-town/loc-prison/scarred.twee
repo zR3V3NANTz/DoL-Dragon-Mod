@@ -82,7 +82,7 @@ You turn and grasp the bars of the cell. <<His>> hands are a blur as <<he>> ties
 
 <<willpowerdifficulty 1 100 no_text>>
 <<if $willpowerSuccess>>
-    <span class="green">"Thank you for disciplining me, <<if $pronoun is "m">>daddy<<else>>mummy<</if>>.</span> You manage, despite repeated blows to your backside.
+    <span class="green">"Thank you for disciplining me, <<if $pronoun is "m">>daddy<<else>>mummy<</if>>,"</span> you manage, despite repeated blows to your backside.
     <br><br>
 
     "Good <<girl>>," <<he>> says, ruffling your hair. <<He>> unties the cord with the same deftness <<he>> used to bind them, and you're soon freed.
@@ -222,7 +222,7 @@ The <<person2>><<person>> hesitates, until <<scarred_inmate 0>> presses the shiv
 <br><br>
 At last, <<scarred_inmate 0>> pulls the <<person2>><<person>> away from you. "Get the fuck out."
 <br><br>
-"You too." <<scarred_inmate 0>> slices through <<his>> cord with the shiv. "Go."
+"You too." <<scarred_inmate 0 cap>> slices through <<his>> cord with the shiv. "Go."
 <br><br>
 <span class="green">You've gained <<scarred_inmate 0 apo>> protection.</span><<set $prison.protection to "scarred">>
 <br><br>
@@ -251,7 +251,7 @@ At last, <<scarred_inmate 0>> pulls the <<person2>><<person>> away from you. "Ge
 :: Prison Scarred Pair Help
 <<effects>>
 
-The <<person>><<person>> is still conscious, and medical isn't far away. Still, <<he>> can't stand under <<his>> own weight. Your muscles are aching when you arrive.
+The <<person2>><<person>> is still conscious, and medical isn't far away. Still, <<he>> can't stand under <<his>> own weight. Your muscles are aching when you arrive.
 <br><br>
 
 <<generate_methodical_guard 2 cap>><<person3>>
@@ -289,7 +289,7 @@ You turn and grasp the bars of the cell. <<His>> hands are a blur as <<he>> ties
     <<set $worn.genitals.integrity -= 100>>
     <br><br>
     <<if $worn.genitals.integrity lte 0>>
-        <<He>> retrieves a variety of tools from behind a loose stone. A screwdriver. A hammer. Pliers. <<He>> isn't gentle, <span class="red">and manages to bite through the metal with the pliars.</span>
+        <<He>> retrieves a variety of tools from behind a loose stone. A screwdriver. A hammer. Pliers. <<He>> isn't gentle, <span class="red">and manages to bite through the metal with the pliers.</span>
         <br><br>
         <<set $worn.genitals.type.push("broken")>>
         <<genitalsruined>>
@@ -526,7 +526,7 @@ You refuse to budge.
 <<scarred_inmate 0 cap>> bashes the railing with <<his>> fist as <<he>> pulls you along the walkway, drawing attention. An amused group of inmates gathers at the base of the stairs.
 <br><br>
 
-"Who wants to see me ride my <<bitch>>?" asks the <<person>>. There's a murmur of assent. "You heard em, slut. Bend over." <<He>> yanks the leash, pulling you to your knees.
+"Who wants to see me ride my <<bitch>>?" asks <<scarred_inmate 0>>. There's a murmur of assent. "You heard em, slut. Bend over." <<He>> yanks the leash, pulling you to your knees.
 <br><br>
 
 <<Hes>> on your back at once, forcing your body down. "Go on then," <<he>> says. "Giddy up."
@@ -563,10 +563,10 @@ You refuse to budge.
 <<scarred_inmate 0 cap>> rides you down the length of the prison block, giving your <<bottom>> periodic smacks. The other inmates follow behind as <<he>> directs you outside.
 <br><br>
 
-<<He>> drives you to a centre of the yard, then pulls back on your leash. Yet more inmates walk over, and a circle forms around you. <<scarred_inmate 0 cap>> climbs off your back, but keeps your leash tight. <<He>> sits on the grass, pulls you over <<his>> lap, and delivers a sharp spank.<<gpain>><<pain 4>>
+<<He>> drives you to the centre of the yard, then pulls back on your leash. Yet more inmates walk over, and a circle forms around you. <<scarred_inmate 0 cap>> climbs off your back, but keeps your leash tight. <<He>> sits on the grass, pulls you over <<his>> lap, and delivers a sharp spank.<<gpain>><<pain 4>>
 <br><br>
 
-The other inmates watch with increasing lechery. They look between you, the <<scarred_inmate 0>>, and each other, weighing their chances. <<He>> doesn't seem to notice. <span class="purple">If you cum, you'll excite the whole crowd.</span>
+The other inmates watch with increasing lechery. They look between you, <<scarred_inmate 0>>, and each other, weighing their chances. <<He>> doesn't seem to notice. <span class="purple">If you cum, you'll excite the whole crowd.</span>
 <br><br>
 
 <<if $worn.face.type.includes("gag")>>
@@ -576,7 +576,7 @@ The other inmates watch with increasing lechery. They look between you, the <<sc
     <<link [[Warn|Prison Scarred Yard Warn]]>><</link>>
     <br>
 <</if>>
-<<link [[Remain Silent|Prison Scarred Yard Rape]]>><<set $molestationstart to 1>><</link>>
+<<link [[Remain silent|Prison Scarred Yard Rape]]>><<set $molestationstart to 1>><</link>>
 <br>
 
 :: Prison Scarred Yard Warn
@@ -730,7 +730,7 @@ The other inmates watch with increasing lechery. They look between you, the <<sc
 	<<endcombat>>
 	
     <<generate_veteran_guard 0>><<person1>>
-    "You're disturbing the peace and tranquility of this institution," the <<veteran_guard 0>> says. <<He>> rests a hand on your shoulder. "You're coming with me."
+    "You're disturbing the peace and tranquility of this institution," <<veteran_guard 0>> says. <<He>> rests a hand on your shoulder. "You're coming with me."
     <br><br>
     <<link [[Go quietly|Prison Punishment]]>><<endevent>><</link>>
     <br>

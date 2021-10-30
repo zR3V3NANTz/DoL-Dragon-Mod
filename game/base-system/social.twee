@@ -243,13 +243,13 @@
 					]},
 				]}>>
 				<<set _guardRepConfig = { currentValue: $prison.guards, preText: 'The guards ', states : [
-					{ requiredValue: 0,		color: 'green',		description: 'forget you are here.'},
-					{ requiredValue: 15,	color: 'teal',		description: 'overlook you.'},
-					{ requiredValue: 30,	color: 'lblue',		description: 'expect no trouble from you.'},
+					{ requiredValue: 0,		color: 'red',		description: 'have you under constant surveillance.'},
+					{ requiredValue: 15,	color: 'pink',		description: 'consider you a problem.'},
+					{ requiredValue: 30,	color: 'purple',	description: 'watch you.'},
 					{ requiredValue: 45,	color: 'blue',		description: 'are keeping an eye on you.'},
-					{ requiredValue: 60,	color: 'purple',	description: 'watch you.'},
-					{ requiredValue: 80,	color: 'pink',		description: 'consider you a problem.'},
-					{ requiredValue: 100,	color: 'red',		description: 'have you under constant surveillance.'}
+					{ requiredValue: 60,	color: 'lblue',		description: 'expect no trouble from you.'},
+					{ requiredValue: 80,	color: 'teal',		description: 'overlook you.'},
+					{ requiredValue: 100,	color: 'green',		description: 'forget you are here.'}
 				]}>>
 				<<set _inmateRepConfig = { currentValue: $prison.inmates, preText: 'Most fellow inmates ', states : [
 					{ requiredValue: 0,		color: 'red',		description: 'see you as meat.'},

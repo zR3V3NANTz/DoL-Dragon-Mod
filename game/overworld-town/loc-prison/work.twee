@@ -65,7 +65,7 @@ You add more weights to the barbell, and lift.
 :: Prison Laundry Work
 <<effects>>
 
-You line up in front the massive pile of clothes. <<generate_relaxed_guard 0>><<person1>><<relaxed_guard 0>> remains seated, playing with <<his>> dice and seeming oblivious to the inmates.
+You line up in front of the massive pile of clothes. <<generate_relaxed_guard 0>><<person1>><<relaxed_guard 0 cap>> remains seated, playing with <<his>> dice and seeming oblivious to the inmates.
 <br><br>
 <<endevent>>
 
@@ -109,7 +109,7 @@ You focus on sorting and folding laundry, loading and unloading the machines.
 :: Prison Laundry Work Inform 2
 <<effects>>
 
-You approach <<generate_relaxed_guard 0>><<relaxed_guard 0>> and drop the teeth onto the table in front of <<him>>. <<He>> nods, but deosn't look up.
+You approach <<generate_relaxed_guard 0>><<relaxed_guard 0>> and drop the teeth onto the table in front of <<person1>><<him>>. <<relaxed_guard 0 cap>> nods, but doesn't look up.
 <br><br>
 
 <<prison_laundry_options>>
@@ -122,7 +122,7 @@ You take the teeth into your possession.
 <<skulduggerycheck>>
 <<if $skulduggerysuccess is 1>>
 
-	<span class="green">No one notices</span><<prison_teeth_text 2>><<prison_teeth 2>>
+	<span class="green">No one notices.</span><<prison_teeth_text 2>><<prison_teeth 2>>
 	<br><br>
 
 	<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
@@ -454,7 +454,7 @@ You step away from the <<person>>. <<He>> takes the hint, though gives your <<bo
         <<link [[Ask to work in medical|Prison Laundry Work Medical]]>><</link>>
         <br>
     <<else>>
-        <span class="blue">You aren't trusted enough to work in medical</span>
+        <span class="blue">You aren't trusted enough to work in medical.</span>
         <br>
     <</if>>
     <<if $prison.guards gte 80>>
@@ -844,7 +844,7 @@ You run at the creature, grasping a dislodged cupboard drawer as you do.
 <<if $athleticsSuccess>>
     <span class="green">You manage to trap the creature beneath it.</span>
     <br><br>
-    "Thank you," <<methodical_guard 0 cap>> says. <<He>> looks at the paper strewn across the floor, and sighs. "I need your assistance cleaning this up."<<prison_rep methodical 5>><<glove>>
+    "Thank you," <<methodical_guard 0>> says. <<He>> looks at the paper strewn across the floor, and sighs. "I need your assistance cleaning this up."<<prison_rep methodical 5>><<glove>>
     <br><br>
 <<else>>
     You almost catch it, <span class="red">but bump your knee on a bed,</span> and fall to the ground clutching your leg.<<gpain>><<pain 4>>
@@ -904,7 +904,7 @@ You're sorting through the last of the paper, when you find another interesting 
     "Painkillers are suitable for this one," <<he>> says. <<He>> pulls a bottle from <<his>> pocket, but has trouble opening it. "Would you mind? Just the one, actually." The jar pops open. There are shark's teeth inside.
     <<generate2>><<person2>>
     <br><br>
-    The patient, a <<person>>, tugs your sleeve. "Hurts it does. Could you slip me something extra? <<person1>><<He>> won't notice."
+    The patient, a <<person>>, tugs your <<if $exposed gte 2>>arm<<else>>sleeve<</if>>. "Hurts it does. Could you slip me something extra? <<person1>><<He>> won't notice."
     <br><br>
 
     <<set $skulduggerydifficulty to 300>>
@@ -932,7 +932,7 @@ You're sorting through the last of the paper, when you find another interesting 
 
     <<link [[Get angry|Prison Medical Work Angry]]>><<prison_inmates 1>><<prison_guards -1>><</link>><<gsuspicion>><<grespect>>
     <br>
-    <<link [[Ignore|Prison Medical Work Angry Ignore]]>><<prison_guards 1>><<trauma 6>><<stress 6>><<pain 1>><</link>><<gpain>><<gtrauma>><<gstress>><<grespect>>
+    <<link [[Ignore|Prison Medical Work Angry Ignore]]>><<prison_guards 1>><<trauma 6>><<stress 6>><<pain 1>><</link>><<gpain>><<gtrauma>><<gstress>><<lsuspicion>>
     <br>
     
 <<case 4>>
@@ -961,6 +961,7 @@ You're sorting through the last of the paper, when you find another interesting 
 <<else>>
     <<gagged_speech "Keep your mitts off" ,>> you say.
 <</if>>
+<br><br>
 The <<person2>><<person>> grins. "Can't blame a <<personsimple>> for wanting a feel."
 <br><br>
 <<methodical_guard 0 cap>><<person1>> smacks <<his>> clipboard against the bedframe. "No drama," <<he>> says. "Thank you."
@@ -1171,7 +1172,7 @@ You administer a single tooth as instructed. The <<person2>><<person>> sighs, bu
         <br>
     <<case 4>>
         <<beastNEWinit 2 "hawk">><<person1>>
-        The <<beastsplural>> journey between the tower and ocean, searching for pieces of driftwood and bringing them to the top of the beacon. This wood is sometimes disgarded at once, thrown to splinter against the platform floor.
+        The <<beastsplural>> journey between the tower and ocean, searching for pieces of driftwood and bringing them to the top of the beacon. This wood is sometimes discarded at once, thrown to splinter against the platform floor.
         <br><br>
         You clean up after them. They're too busy to pay you any attention.
         <br><br>
@@ -1194,13 +1195,13 @@ You administer a single tooth as instructed. The <<person2>><<person>> sighs, bu
 
 <<if $prison.birds gte random(1, 30) and random(1, 5) isnot 5>>
     You approach the <<beasttype>>. <<bHe>> observes you. Then <<bhe>> takes to the air, <span class="green">leaving the $hawk_loot behind.</span>
-        <br><br>
-        <<endevent>>
-        <<generate_anxious_guard 0>>
-        You return the $hawk_loot to <<anxious_guard 0>>. "That wasn't so bad," <<he>> says.<<glove>><<lsuspicion>><<prison_rep anxious 1>><<prison_guards 1>>
-        <br><br>
-        <<unset $hawk_loot>>
-        <<prison_spire_options>>
+    <br><br>
+    <<endevent>>
+    <<generate_anxious_guard 0>>
+    You return the $hawk_loot to <<anxious_guard 0>>. "That wasn't so bad," <<person1>><<he>> says.<<glove>><<lsuspicion>><<prison_rep anxious 1>><<prison_guards 1>>
+    <br><br>
+    <<unset $hawk_loot>>
+    <<prison_spire_options>>
 <<else>>
     You approach the <<beasttype>>. <<bHe>> observes you, and curls <<bhis>> wings around the $hawk_loot.
     <<if $monster is 1>>
@@ -1527,7 +1528,7 @@ You run around the beacon, scooping the teeth without stopping.
 :: Prison Spire Work Chat
 <<set $outside to 0>><<effects>>
 
-<<generate_methodical_guard 0>><<person1>><<methodical_guard 0 cap>> keeps <<his>> eyes fixed on the creatures outside. "What is it?"
+<<generate_anxious_guard 0>><<person1>><<anxious_guard 0 cap>> keeps <<his>> eyes fixed on the creatures outside. "What is it?"
 <br><br>
 
 
@@ -1538,7 +1539,7 @@ You run around the beacon, scooping the teeth without stopping.
         <<link [[Ask to work in medical|Prison Spire Work Medical]]>><</link>>
         <br>
     <<else>>
-        <span class="blue">You aren't trusted enough to be allowed in medical.</span>
+        <span class="blue">You aren't trusted enough to work in medical.</span>
         <br>
     <</if>>
 <</if>>
@@ -1548,7 +1549,7 @@ You run around the beacon, scooping the teeth without stopping.
 :: Prison Spire Work Laundry
 <<effects>>
 
-"Safer sorting laundry," <<methodical_guard 0>> says. <span class="gold">"You start work there tomorrow."</span>
+"Safer sorting laundry," <<anxious_guard 0>> says. <span class="gold">"You start work there tomorrow."</span>
 <<set $prison_job_change to "laundry">>
 <br><br>
 <<prison_spire_options>>
@@ -1556,7 +1557,7 @@ You run around the beacon, scooping the teeth without stopping.
 :: Prison Spire Work Medical
 <<effects>>
 
-"Safer if you don't catch something," <<methodical_guard 0>> says. <span class="gold">"You start work in medical tomorrow."</span>
+"Safer if you don't catch something," <<anxious_guard 0>> says. <span class="gold">"You start work in medical tomorrow."</span>
 <<set $prison_job_change to "medical">>
 <br><br>
 

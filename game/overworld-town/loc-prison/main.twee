@@ -49,10 +49,6 @@ You are in your cell. There's a bed in one corner, and a cupboard in another. A 
         <<ind>><<link [[Dig tunnel|Prison Tunnel]]>><</link>>
         <br>
     <</if>>
-    <<if $prison.mirror is 1>>
-        <<mirroricon>><<link [[Mirror|Prison Mirror]]>><</link>>
-        <br>
-    <</if>>
     <<if $prison.schedule is "revolt">>
         <span class="blue">It's too noisy to sleep.</span>
         <br>
@@ -227,7 +223,7 @@ You could only dig during lockdown. Too risky otherwise.
     <<case 1>>
         The soft rock breaks apart with ease.<<lstress>><<stress -6>>
     <<case 2>>
-        You graze your arm against the course rock.<<gpain>><<pain 4>>
+        You graze your arm against the coarse rock.<<gpain>><<pain 4>>
     <<case 3>>
         The rock is uniform in consistency.
     <</switch>>
@@ -247,7 +243,7 @@ You could only dig during lockdown. Too risky otherwise.
     <<set _rng to random(1, 3)>>
     <<switch random(1, 3)>>
     <<case 1>>
-        One of the bricks is already lose, which is nice.<<lstress>><<stress -6>>
+        One of the bricks is already loose, which is nice.<<lstress>><<stress -6>>
     <<case 2>>
         The stonework is ancient. Some of the bricks have warped together.
     <<case 3>>
@@ -260,7 +256,7 @@ You could only dig during lockdown. Too risky otherwise.
     <<case 1>>
         The poster flaps in a sudden breeze. You pause a moment before continuing.
     <<case 2>>
-        It's too dark to see, but you find yourself glance at the cell door to make sure no one's watching.
+        It's too dark to see, but you find yourself glancing at the cell door to make sure no one's watching.
     <<case 3>>
         The next layer of stone is firmer than the last, and darker in colour.
     <</switch>>
@@ -317,7 +313,7 @@ You could only dig during lockdown. Too risky otherwise.
 <</if>>
 <br><br>
 
-<<link [[Crawl to Cell|Prison Cell]]>><</link>>
+<<link [[Crawl to cell|Prison Cell]]>><</link>>
 <br>
 <<link [[Climb to beach (0:05)|Prison Beach]]>><<pass 5>><</link>>
 <br>
@@ -338,7 +334,7 @@ You snuggle under the covers.
 <</if>>
 <<sleep>><<effects>>
 <<if $nightmares gte 1 and $controlled is 0>>
-	You dream you are being hunted by something dark and terrible.
+	You dream you are being hunted by something <<if $wraith and $wraith.state is "haunt" and $rng lte 25>>pale<<else>>dark<</if>> and terrible.
 <<else>>
 	<<if $specialClothesEffects.bimboTotal gte random(100,1000) or $arousal gte 9000>>
 		Your sleep is plagued by dirty dreams.
@@ -527,7 +523,6 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
     <<link [[Next|Prison End]]>><<set $prison.hours_worked to 0>><</link>>
     <br>
 <<elseif $prison.hours_worked lt 9>>
-    <br><br>
     There's a pause. <span class="red">"You didn't meet your work quota,"</span> <<he>> says. <<He>> snaps the ledger shut. "Come with me."
     <br><br>
     
@@ -597,7 +592,7 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
             <br>
         <<case "leash">>
             <<set $prison.active_punishments.delete("leash")>>
-            <<He>> pulls a pair of pliars from <<his>> pocket as <<he>> walks towards you.
+            <<He>> pulls a pair of pliers from <<his>> pocket as <<he>> walks towards you.
             <br><br>
             <<link [[Next|Prison Remove Leash]]>><</link>>
             <br>
@@ -693,36 +688,36 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
 <<else>>
     <<if $prison.cell_trouble gte 5>>
         <<generate_veteran_guard 1>><<generate_anxious_guard 2>><<generate_relaxed_guard 3>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
         <br><br>
 
-        <<He>> arrives at your cell, with the <<veteran_guard 1>>, <<anxious_guard 2>>, and <<relaxed_guard 3>> close behind. They unstrap their batons.
+        <<He>> arrives at your cell, with <<veteran_guard 1>>, <<anxious_guard 2>>, and <<relaxed_guard 3>> close behind. They unstrap their batons.
         <br><br>
 
         <<link [[Next|Prison Cell Fight]]>><<set $fightstart to 1>><</link>>
         <br>
     <<elseif $prison.cell_trouble gte 4>>
         <<generate_veteran_guard 1>><<generate_anxious_guard 2>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
         <br><br>
 
-        <<He>> arrives at your cell, with the <<veteran_guard 1>> and <<anxious_guard 2>> close behind. They unstrap their batons.
+        <<He>> arrives at your cell, with <<veteran_guard 1>> and <<anxious_guard 2>> close behind. They unstrap their batons.
         <br><br>
 
         <<link [[Next|Prison Cell Fight]]>><<set $fightstart to 1>><</link>>
         <br>
     <<elseif $prison.cell_trouble gte 3>>
         <<generate_veteran_guard 1>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
         <br><br>
 
-        <<He>> arrives at your cell, with the <<veteran_guard 1>> close behind. They unstrap their batons.
+        <<He>> arrives at your cell, with <<veteran_guard 1>> close behind. They unstrap their batons.
         <br><br>
 
         <<link [[Next|Prison Cell Fight]]>><<set $fightstart to 1>><</link>>
         <br>
     <<elseif $prison.cell_trouble gte 2>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. "You'd better be sick in there," <<he>> says. "Or you'll be sorry."
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. "You'd better be sick in there," <<he>> says. "Or you'll be sorry."
         <br><br>
 
         <<He>> finds you lazing on your bed, and unstraps the baton from <<his>> side.
@@ -754,36 +749,36 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
 <<else>>
     <<if $prison.cell_trouble gte 5>>
         <<generate_veteran_guard 1>><<generate_anxious_guard 2>><<generate_relaxed_guard 3>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
         <br><br>
 
-        <<He>> arrives at your cell, with the <<veteran_guard 1>>, <<anxious_guard 2>>, and <<relaxed_guard 3>> close behind. They unstrap their batons.
+        <<He>> arrives at your cell, with <<veteran_guard 1>>, <<anxious_guard 2>>, and <<relaxed_guard 3>> close behind. They unstrap their batons.
         <br><br>
 
         <<link [[Next|Prison Cell Fight]]>><<set $fightstart to 1>><</link>>
         <br>
     <<elseif $prison.cell_trouble gte 4>>
         <<generate_veteran_guard 1>><<generate_anxious_guard 2>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
         <br><br>
 
-        <<He>> arrives at your cell, with the <<veteran_guard 1>> and <<anxious_guard 2>> close behind. They unstrap their batons.
+        <<He>> arrives at your cell, with <<veteran_guard 1>> and <<anxious_guard 2>> close behind. They unstrap their batons.
         <br><br>
 
         <<link [[Next|Prison Cell Fight]]>><<set $fightstart to 1>><</link>>
         <br>
     <<elseif $prison.cell_trouble gte 3>>
         <<generate_veteran_guard 1>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. <<Hes>> not alone. "Must we make an example of you?" <<he>> says. "Because we will."
         <br><br>
 
-        <<He>> arrives at your cell, with the <<veteran_guard 1>> close behind. They unstrap their batons.
+        <<He>> arrives at your cell, with <<veteran_guard 1>> close behind. They unstrap their batons.
         <br><br>
 
         <<link [[Next|Prison Cell Fight]]>><<set $fightstart to 1>><</link>>
         <br>
     <<else>>
-        The walkway rattles beneath the <<methodical_guard 0 apo>> feet. "You're holding up the whole system." <<He>> unstraps the baton from <<his>> side before <<he>> arrives at the cell.
+        The walkway rattles beneath <<methodical_guard 0 apo>> feet. "You're holding up the whole system." <<He>> unstraps the baton from <<his>> side before <<he>> arrives at the cell.
         <br><br>
         
         <<link [[Next|Prison Cell Fight]]>><<set $fightstart to 1>><</link>>
@@ -829,7 +824,7 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
     <<if $enemyno gte 2>>
         The inmates cheer as the guards stagger from your cell. <<veteran_guard 1>> eyes you cautiously, but <<methodical_guard 0>> shakes <<person1>><<his>> head. "No time for this," <<he>> says, groping for <<his>> glasses. "We'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
     <<else>>
-	    The inmates cheers as <<methodical_guard 0>> staggers from your cell, and would fall from the walkway if not for the railing. "No time for this," <<he>> says, groping for <<his>> glasses. "I'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
+	    The inmates cheer as <<methodical_guard 0>> staggers from your cell, and would fall from the walkway if not for the railing. "No time for this," <<he>> says, groping for <<his>> glasses. "I'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
     <</if>>
 	<br><br>
 	<<clotheson>>
@@ -841,7 +836,7 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
     <<if $enemyno gte 2>>
         The inmates cheer as the guards stagger from your cell. <<veteran_guard 1>> eyes you cautiously, but <<methodical_guard 0>> shakes <<person1>><<his>> head. "No time for this," <<he>> says, groping for <<his>> glasses. "We'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
     <<else>>
-	    The inmates cheers as <<methodical_guard 0>> staggers from your cell, and would fall from the walkway if not for the railing. "No time for this," <<he>> says, groping for <<his>> glasses. "I'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>><<greb>><<prison_reb 1>>
+	    The inmates cheer as <<methodical_guard 0>> staggers from your cell, and would fall from the walkway if not for the railing. "No time for this," <<he>> says, groping for <<his>> glasses. "I'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
     <</if>>
     <<switch $enemyno>>
         <<case 1>>
@@ -1193,7 +1188,7 @@ This machine doesn't look or sound stable. You could probably inflict irreparabl
 You lift the largest hammer, one with a wooden handle, and get to work. You smash pipes, shatter glass, and dent plates.
 
 <<if $physique gte 10000>>
-    With your strength, you're able to inflict considerable damage before the guards arrive.<<ggrespect>><<prison_respect 10>>
+    With your strength, you're able to inflict considerable damage before the guards arrive.<<ggrespect>><<prison_inmates 10>>
 <<else>>
     Even with your limited strength, you're able to inflict a lot of damage before the guards arrive.
 <</if>>
@@ -1397,7 +1392,7 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                             <<link [[Use rope|Prison Spire Rope]]>><<set $prison.rope to 2>><</link>>
                             <br>
                         <<else>>
-                            <<link [[Descend the Spire (0:05)|Prison Spire Descend]]>><<tiredness 6>><<pass 5>><</link>><<gtiredness>>
+                            <<link [[Descend the spire (0:05)|Prison Spire Descend]]>><<tiredness 6>><<pass 5>><</link>><<gtiredness>>
                             <br>
                         <</if>>
                     <</if>>
@@ -1443,7 +1438,7 @@ You climb down the spire, into the darkness beneath the prison.
     Your feet almost slip on the slick rock at the bottom. This is the cavern where you found the egg. You feel uneasy, and don't want to explore again without reason, so you climb back to the surface.
     <br><br>
 <<else>>
-    Your feet almost slip on the slick rock at the bottom. There's something down here, hidden in the shadows. If you continue however, it might be hard to find your way back.
+    Your feet almost slip on the slick rock at the bottom. There's something down here, hidden in the shadows. If you continue, however, it might be hard to find your way back.
     <br><br>
 
     <<link [[Explore the rut|Prison Rut]]>><<set $rut to 0>><<set $rut_entry to "rope">><</link>>
@@ -1519,7 +1514,7 @@ You close the door behind you, and walk towards the light, emerging on a beach.
     <<generatep3>>
     You find <<veteran_guard 0>> examining something in <<his>> palm. <<He>> closes <<his>> fist around it when <<he>> sees you approach. <<He>> was so absorbed <<he>> didn't notice you at first. Nor does <<he>> notice the <<person2>><<person>> backing into <<him>>.
     <br><br>
-    The collision is accidental, but <<veteran_guard 0>><<person1>> reaches for <<his>> baton, and delivers a punishing blow to the <<person2>><<persons>> stomach. The object slips from <<his>> hand, landing in the grass
+    The collision is accidental, but <<veteran_guard 0>><<person1>> reaches for <<his>> baton, and delivers a punishing blow to the <<person2>><<persons>> stomach. The object slips from <<his>> hand, landing in the grass.
     <br><br>
 
     <<link [[Pick it up|Prison Yard Locket]]>><</link>>
@@ -1569,7 +1564,7 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
     The metal door clangs as you knock. A camera perched atop swivels to face you. You hear a mechanical whir, then a click. The door opens, and a rush of air blows by.
     <br><br>
 
-    There's nothing inside except a staircase, spiraling up, and down, though the downward steps soon open onto a gaping pit. You decide to climb up.
+    There's nothing inside except a staircase, spiralling up, and down, though the downward steps soon open onto a gaping pit. You decide to climb up.
     <br><br>
 
     <<link [[Next|Prison Spire Intro]]>><<set $prison.spire_intro to 1>><<set $prison.birds to 0>><</link>>
@@ -1578,7 +1573,7 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
     <<generate_anxious_guard 0>><<person1>><<beastNEWinit 5 "hawk">>
     You are in the small cabin atop the spire.
     <<if $prison.schedule is "work">>
-        <<anxious_guard 0 cap>> sits in front of several security monitors, but <<his>> eyes follow the <<person2>><<beastsplural 1>> outside.
+        <<anxious_guard 0 cap>> sits in front of several security monitors, but <<person1>><<his>> eyes follow the <<person2>><<beastsplural 1>> outside.
     <<else>>
         You watch the <<person2>><<beastsplural 1>> through a window.
     <</if>>
@@ -1648,7 +1643,7 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
 <<effects>>
 
 <<beastNEWinit 2 hawk>><<person1>>
-You run, and jump, letting the wind catch your wings. You soar.
+You run and jump, letting the wind catch your wings. You soar.
 
 
 <<if $prison.schedule is "revolt">>
@@ -1783,7 +1778,7 @@ Another <<beasttype>> grasps your shoulders, and carries you back to the platfor
 :: Prison Spire Intro
 <<set $outside to 1>><<effects>>
     
-The climb takes your breath. You pass through another metal door, and onto a wide open platform. There's another, smaller, tower some distance away. Atop it perches a light, now dim. It's the beacon.
+The climb takes your breath. You pass through another metal door, and onto a wide-open platform. There's another, smaller tower some distance away. Atop it perches a light, now dim. It's the beacon.
 <br><br>
 
 A great wind howls. You're far above the prison block.
@@ -1849,7 +1844,7 @@ Only <<his>> fingers can be seen, grasping the ledge in desperation.
 :: Prison Spire Precipice Help
 <<effects>>
 
-You rush over to the edge, and grasp <<anxious_guard 0 apo>> hand. Together, you're able to pull <<him>> up and over the top.
+You rush over to the edge and grasp <<anxious_guard 0 apo>> hand. Together, you're able to pull <<him>> up and over the top.
 <br><br>
 
 <<He>> staggers towards the cabin, but collapses to <<his>> shaking knees after a couple of steps. You help <<him>> up again, and hold <<his>> until you make it to safety.
@@ -1865,7 +1860,7 @@ You rush over to the edge, and grasp <<anxious_guard 0 apo>> hand. Together, you
 :: Prison Spire Precipice Demand
 <<effects>>
 
-"I-I don't have anything," <<anxious_guard 0 cap>> says. "Please, just... Wait. I have a key! The key to the beach. I'll give it to you if you save me, and I won't tell anyone you have it."
+"I-I don't have anything," <<anxious_guard 0>> says. "Please, just... Wait. I have a key! The key to the beach. I'll give it to you if you save me, and I won't tell anyone you have it."
 <br><br>
 
 <<if $skulduggery gte 1000>>

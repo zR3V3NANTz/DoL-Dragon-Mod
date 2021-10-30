@@ -1223,7 +1223,7 @@ They leave the room, taking their machine with them. You're once more plunged in
 	<<makeAbomination _randomtentacles 6 "vine" "vine" true>>
 	<<set $timer to 5>><<set $plantFame to 0>>
 <</if>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 <<if $timer is 3>>
 	<br>
 	<span class="blue">You see the <<person3>><<person>> setting up a camera.</span>
