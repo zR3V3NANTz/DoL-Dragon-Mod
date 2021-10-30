@@ -224,7 +224,7 @@ Please make sure you don't buy too many new clothes once you send them to us, or
 		<<if _items[_i].outfitSecondary isnot undefined>>
 			<<continue>>
 		<</if>>
-		<<set _value += Math.floor(getClothingCost(_items[_i]) * (1 - (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max'))) * 1.25,_label)>>
+		<<set _value += Math.floor(getClothingCost(_items[_i],_label) * (1 - (_items[_i].integrity / clothingData(_label,_items[_i],'integrity_max'))) * 1.25,_label)>>
 	<</for>>
 <</for>>
 You think it will cost you
