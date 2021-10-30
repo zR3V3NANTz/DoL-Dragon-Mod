@@ -390,7 +390,7 @@ Purple mist swirls in the chamber. <<set $hallucinogen += 10>><<ghallucinogens>>
 <br>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 
 <<effects>>
 <<effectstentacles>>

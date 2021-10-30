@@ -46,7 +46,6 @@
 
 <<widget "stateabomination">>
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 <<stateman>>
 <</widget>>
 

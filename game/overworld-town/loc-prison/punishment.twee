@@ -50,7 +50,7 @@ Writing is engraved on its surface.
 <br><br>
 <<prison_list>>
 
-<<relaxed_guard 0 cap>> pulls a pair of dice from <<his>> pocket. <<He>> cups <<his>> hands together, and leans over the desk. 
+<<relaxed_guard 1 cap>> pulls a pair of dice from <<his>> pocket. <<He>> cups <<his>> hands together, and leans over the desk. 
 <br><br>
 
 <<link [[Roll|Prison Punishment Roll]]>><</link>>
@@ -159,7 +159,7 @@ Writing is engraved on its surface.
 <<effects>>
 
 <<if $prison.active_punishments.includes($prison_punishment)>>
-    <<prison_list_speech>> <<methodical_guard 0 cap>> says. "We're already implementing that one. 
+    <<prison_list_speech>> <<methodical_guard 0>> says. "We're already implementing that one. 
     <<for _i to $prison_punishment_number - 2; _i lt 11; _i++>>
         <<if !$prison.active_punishments.includes($prison.punishments[_i])>>
             <<set _prison_punishment_hi to $prison.punishments[_i]>>
@@ -174,29 +174,29 @@ Writing is engraved on its surface.
     <</for>>
     <<if !_prison_punishment_hi>>
         <<set $prison_punishment to _prison_punishment_lo>>
-        We'll ascend the list, and use the next available." <<He>> peers at the list. <<prison_list_speech>>
+        We'll ascend the list, and use the next available." <<He>> peers at the list. <<prison_list_speech end>>
         <br><br>
     <<elseif !_prison_punishment_lo>>
         <<set $prison_punishment to _prison_punishment_hi>>
-        We'll descend the list, and use the next available." <<He>> peers at the list. <<prison_list_speech>>
+        We'll descend the list, and use the next available." <<He>> peers at the list. <<prison_list_speech end>>
         <br><br>
     <<else>>
-        We'll move up or down the list, to the next elligible punishment, depending on a coin flip."
+        We'll move up or down the list, to the next eligible punishment, depending on a coin flip."
         <br><br>
         <<relaxed_guard 2 cap>><<person2>> pulls a coin from <<his>> pocket. "Heads goes up." <<He>> flips it, then covers it with <<his>> free hand before removing it with a flourish. 
         <br><br>
 
         <<if random(1, 2) is 2>>
             <<set $prison_punishment to _prison_punishment_lo>>
-            "Heads," <<he>> announces. They all turn to the metal plate. <<prison_list_speech>>
+            "Heads," <<he>> announces. They all turn to the metal plate. <<prison_list_speech end>>
         <<else>>
             <<set $prison_punishment to _prison_punishment_hi>>
-            "Tails," <<he>> announces. They all turn to the metal plate. <<prison_list_speech>>
+            "Tails," <<he>> announces. They all turn to the metal plate. <<prison_list_speech end>>
         <</if>>
         <br><br>
     <</if>>
 <<else>>
-    <<prison_list_speech>> <<methodical_guard 0 cap>> says.
+    <<prison_list_speech>> <<methodical_guard 0>> says.
     <br><br>
 <</if>>
 
@@ -219,10 +219,10 @@ Writing is engraved on its surface.
         
     <<case "nude">>
         <<if $worn.upper.name is "naked" and $worn.lower.name is "naked" and $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
-            <<methodical_guard 0>><<person1>> adjusts <<his>> glasses. <span class="pink">"You are allowed no clothes,"</span> <<he>> says. "Judged by your peers. Seems you're ahead of us."
+            <<methodical_guard 0 cap>><<person1>> adjusts <<his>> glasses. <span class="pink">"You are allowed no clothes,"</span> <<he>> says. "Judged by your peers. Seems you're ahead of us."
         <<else>>
             <<clothesruined>>
-            <<methodical_guard 0>><<person1>> adjusts <<his>> glasses as the other guards close in. <span class="pink">"Your clothes are forfeit,"</span> <<he>> says. "You will be judged by your peers."
+            <<methodical_guard 0 cap>><<person1>> adjusts <<his>> glasses as the other guards close in. <span class="pink">"Your clothes are forfeit,"</span> <<he>> says. "You will be judged by your peers."
             <br><br>
             Their hands grasp and tug the fabric. You're left bare in the middle of the room.
             <br><br>
@@ -239,18 +239,18 @@ Writing is engraved on its surface.
         <<else>>
             <<facewear 5>>
         <</if>>
-        "You'll need to watch your step." <<methodical_guard 0>><<person1>> says. You hear footsteps behind, but your vision is blocked by a piece of fabric before you can turn. <span class="purple">You've been blindfolded.</span>
+        "You'll need to watch your step." <<methodical_guard 0 cap>><<person1>> says. You hear footsteps behind, but your vision is blocked by a piece of fabric before you can turn. <span class="purple">You've been blindfolded.</span>
         <br><br>
 
         <<link [[Next|Prison Punishment Blindfold]]>><<prison_punishment_init>><</link>>
         <br>
     <<case "topless">>
         <<if $worn.upper.name is "naked" and $worn.under_upper.name is "naked">>
-            <<methodical_guard 0>><<person1>> adjusts <<his>> glasses. <span class="blue">"You are allowed no clothes above the waist,"</span> <<he>> says. "To prove your devotion. Seems you're ahead of us."
+            <<methodical_guard 0 cap>><<person1>> adjusts <<his>> glasses. <span class="blue">"You are allowed no clothes above the waist,"</span> <<he>> says. "To prove your devotion. Seems you're ahead of us."
             <br><br>
         <<else>>
             <<upperruined>><<underupperruined>>
-            <<methodical_guard 0>><<person1>>adjusts <<his>> glasses as the other guards close in. <span class="blue">"You are allowed no clothes above the waist,"</span> <<he>> says. "To prove your devotion."
+            <<methodical_guard 0 cap>><<person1>>adjusts <<his>> glasses as the other guards close in. <span class="blue">"You are allowed no clothes above the waist,"</span> <<he>> says. "To prove your devotion."
             <br><br>
             Their hands grasp and tug the fabric. You're left topless in the middle of the room.
             <br><br>
@@ -424,7 +424,7 @@ You're able to follow the railing back to your cell.
 <<prison_punishment_end>>
 <br><br>
 
-"On your knees, <<bitch>>." <<he>> says once <<he>> has their attention.
+"On your knees, <<bitch>>," <<he>> says once <<he>> has their attention.
 <br><br>
 
 <<link [[Drop to your knees|Prison Punishment Knees]]>><<sub 1>><</link>>
@@ -667,7 +667,7 @@ You're too hurt to resist as <<he>> cuffs you, and drags you to your feet. The o
 :: Prison Remove Leash
 <<effects>>
 
-The pliars bite through the leash, leaving your collar bare.
+The pliers bite through the leash, leaving your collar bare.
 <br><br>
 
 <<detach_leash>>
@@ -761,7 +761,7 @@ You stay still as <<he>> fiddles with the strap behind your head. It comes loose
 :: Prison Repunishment
 <<effects>>
 
-<<He>> leads you into dingy room at the bottom of the central tower.
+<<He>> leads you into a dingy room at the bottom of the central tower.
 <br><br>
 
 <<if $prison.active_punishments.includes("free use") and $worn.neck.name isnot "free use collar" and $worn.neck.name isnot "free use collar with leash">>

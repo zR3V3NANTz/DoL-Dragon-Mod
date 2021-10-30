@@ -2589,7 +2589,7 @@ You brace yourself as the shoots drag you into the undergrowth.
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 
 <<effects>>
 <<effectstentacles>>

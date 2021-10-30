@@ -1156,7 +1156,7 @@ You hum a gentle tune.
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 
 <<effects>>
 <<effectstentacles>>

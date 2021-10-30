@@ -684,7 +684,7 @@ Then again, with the warmth of <<his>> arms wrapped around you, you don't really
 Feeling you shift, Eden glances down at you, slowly stroking your thigh. "I thought I'd let you sleep," <<he>> says. It's almost like <<he>> read your mind.
 <br><br>
 
-Even as the sky darkens, you can't help but sink into <<his>> embrace, the both of you not wanting to leave each other just yet. Pressed against him, the thumping of Eden's heart is only accompanied 
+Even as the sky darkens, you can't help but sink into <<his>> embrace, the both of you not wanting to leave each other just yet. Pressed against <<him>>, the thumping of Eden's heart is only accompanied 
 by the occasional sound of the water sloshing about. 
 <br><br>
 
@@ -1678,7 +1678,6 @@ You hum a gentle tune.
 	<<set $timer to 50>>
 <</if>>
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>
@@ -2479,7 +2478,7 @@ a sheen of sweat lining <<his>> neck. Though <<he>> looks quite focused, you can
 
 <<link [[Ask Eden to join you|Eden Spring Intro 2]]>><<set $edenspringintro to 1>><</link>>
 <br>
-<<link [[Let him work|Clearing Spring]]>><<endevent>><<set $phase to 1>><</link>>
+<<link [["Let " + $NPCList[0].pronouns.him + " work"|Clearing Spring]]>><<endevent>><<set $phase to 1>><</link>>
 
 :: Eden Spring Intro 2
 <<effects>>

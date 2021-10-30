@@ -6327,7 +6327,7 @@ You thrust your $worn.neck.name in no direction in particular. It seems to glow,
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 
 <<effects>>
 <<effectstentacles>>

@@ -3,7 +3,7 @@
 
 You are in the rut, beneath the prison.
 <<if $rut gte 100>>
-    <span class="green">You come across a marble step.</span> As your foot touches it, the darkness retreats, revealing a staircase shrouded in pink mist. You climb to the top, and find a stone chest, decorated with flowery engravings, and a closed eye in the middle. It looks unlocked.
+    <span class="green">You come across a marble step.</span> As your foot touches it, the darkness retreats, revealing a staircase shrouded in pink mist. You climb to the top, and find a stone chest, decorated with floral engravings, and a closed eye in the middle. It looks unlocked.
         <br><br>
 
         <<link [[Open|Prison Rut Chest]]>><</link>>
@@ -422,7 +422,6 @@ The slimes slide into crevices in the rock. <<tearful>> you continue through the
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> tentacles surrounding you.
 
 <<effects>>
 <<effectstentacles>>

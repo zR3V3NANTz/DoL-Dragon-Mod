@@ -167,7 +167,7 @@ Wren pulls up the anchor as you climb aboard, and turns on the engine. The boat 
 
 <<prison_bondage_removal>>
 <<if _punishments_removed is true>>
-    <<He>> abandons the helm for a minute to rummage beneath the hold. <<He>> emerges with a box of tools. "Hold still," <<he>> says. "I'm not making the journey while you're wearing these," <<he>> says. "I would never forgive myself if you fell in." <<He>> soon has your bondage implements removed.
+    <<He>> abandons the helm for a minute to rummage beneath the hold. <<He>> emerges with a box of tools. "Hold still," <<he>> says. "I'm not making the journey while you're wearing these. I would never forgive myself if you fell in." <<He>> soon has your bondage implements removed.
     <br><br>
 <</if>>
 
@@ -289,7 +289,7 @@ Wren rubs <<his>> chin. "There is something I need," <<he>> says. <span class="g
 Wren nods. "So the scarred one is <<scarred_inmate 1>>," <<he>> says. "I'm itching to learn how <<person2>><<he>> got those scars, but I'm not gonna ask."
 <br><br>
 
-<<link [[Next|Prison Beach]]>><<endevent>><</link>>
+<<link [[Next|Prison Beach Wren]]>><<endevent>><</link>>
 <br>
 
 :: Prison Beach Wren Relaxed
@@ -299,7 +299,7 @@ Wren nods. "So the scarred one is <<scarred_inmate 1>>," <<he>> says. "I'm itchi
 Wren nods. "So <<person2>><<his>> name is <<relaxed_guard 1>>," <<he>> says. "Thought <<he>>'d tell me <<himself>>, but <<hes>> not as chill as <<he>> seems."
 <br><br>
 
-<<link [[Next|Prison Beach]]>><<endevent>><</link>>
+<<link [[Next|Prison Beach Wren]]>><<endevent>><</link>>
 <br>
 
 
@@ -310,7 +310,7 @@ Wren nods. "So <<person2>><<his>> name is <<relaxed_guard 1>>," <<he>> says. "Th
 Wren nods. "So it's <<veteran_guard 1>>," <<he>> says. "I've never spoken with <<person2>><<him>>. <<He>> seems to have a temper."
 <br><br>
 
-<<link [[Next|Prison Beach]]>><<endevent>><</link>>
+<<link [[Next|Prison Beach Wren]]>><<endevent>><</link>>
 <br>
 
 :: Prison Beach Wren Methodical
@@ -318,10 +318,10 @@ Wren nods. "So it's <<veteran_guard 1>>," <<he>> says. "I've never spoken with <
 
 
 <<generate_methodical_guard 1>>
-Wren nods. "So the one in glasses is called <<methodical_guard 1>>," <<he>> says. "<<He>> acts like a stickler for rules, but <<he>> was happy to make a deal." Wren frowns in thought.
+Wren nods. "So the one in glasses is called <<methodical_guard 1>>," <<he>> says. "<<person2>><<He>> acts like a stickler for rules, but <<he>> was happy to make a deal." Wren frowns in thought.
 <br><br>
 
-<<link [[Next|Prison Beach]]>><<endevent>><</link>>
+<<link [[Next|Prison Beach Wren]]>><<endevent>><</link>>
 <br>
 
 
@@ -423,9 +423,9 @@ You remain confident you're swimming in the right direction, despite the lack of
 <<elseif $rng gte 41>>
     Tendrils of seaweed caress your stomach.
 <<elseif $rng gte 21>>
-    Several pebbles roll off the surrouding rocks, splashing into the water.
+    Several pebbles roll off the surrounding rocks, splashing into the water.
 <<else>>
-    A particularly large wave breeches the lagoon.
+    A particularly large wave breaches the lagoon.
 <</if>>
 
 <<swimmingskilluse>>

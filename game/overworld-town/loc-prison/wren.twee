@@ -29,7 +29,10 @@
 <<effects>>
 
 <<npc "Wren">><<person1>>
-Wren smiles at you. "If you've got teeth," <<he>> says. "I have some goodies from the outside.""
+Wren smiles at you. "If you've got teeth," <<he>> says. "I have some goodies from the outside."
+<br><br>
+
+<span class="gold">You have <<number $prison.teeth>> shark's teeth.</span>
 <br><br>
 
 <<link [[Clothing selection|Prison Wren Clothes]]>><</link>>

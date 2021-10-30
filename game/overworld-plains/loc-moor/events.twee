@@ -1964,7 +1964,7 @@ You turn away,
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 
 <<effects>>
 <<effectstentacles>>
@@ -2696,7 +2696,7 @@ You examine the lock. It looks old, and delicate with rust.
 	<<set _randomtentacles to random(8, 12)>>
 	<<makeAbomination _randomtentacles 8 "vine" "vine" true>>
 <</if>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 <br>
 <<effects>>
 <<effectsabomination>><<abomination>>

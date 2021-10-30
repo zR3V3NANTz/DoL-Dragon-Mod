@@ -1276,7 +1276,6 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 	<<tentaclestart _randomtentacles 15 "root" "vine" true>>
 <</if>>
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
 
 <<effects>>
 <<effectstentacles>>
@@ -3606,8 +3605,6 @@ The slimes disappear into the river. <<tearful>> you look around frantically.
 		<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">><<set $leftarmstate to 0>>
 	<</if>>
 <</if>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
-<br>
 <<effects>>
 <<effectsabomination>><<abomination>>
 

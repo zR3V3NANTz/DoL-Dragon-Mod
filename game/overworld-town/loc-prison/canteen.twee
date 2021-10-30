@@ -173,7 +173,7 @@ You bow your head, but pay no attention to <<methodical_guard 0 apo>> words.
     <<elseif $rng gte 21>>
         You wonder how many of the other inmates are paying attention.
     <<else>>
-        You hear <<his>> voice though. It seems to echo, but there's something wrong with it. Like another voice is layered atop <<his>>
+        You hear <<his>> voice though. It seems to echo, but there's something wrong with it. Like another voice is layered atop <<his>>.
     <</if>>
 <</if>>
 <br><br>

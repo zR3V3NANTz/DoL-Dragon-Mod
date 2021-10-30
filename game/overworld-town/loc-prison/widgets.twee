@@ -198,7 +198,7 @@
     <<elseif $prison.hours_worked gte 9>>
         | <span class="green">You've finished work for the day.</span>
     <<else>>
-        | The guards expect <span class="purple"><<print (($prison.hours_worked - 9) / -1)>></span> more hours work from you today.
+        | The guards expect <span class="purple"><<number `($prison.hours_worked - 9) / -1`>></span> more hours work from you today.
     <</if>>
 <</if>>
 <<statbar $prison.attention 100 right>>
@@ -562,31 +562,57 @@
 <</widget>>
 
 <<widget "prison_list_speech">>
-<<switch $prison_punishment>>
-    <<case "free use">>
-        <span class="red">"Penance."</span>
-        <br><br>
-    <<case "nude">>
-        <span class="pink">"Judgement."</span>
-    <<case "blindfold">>
-        <span class="purple">"See no evil."</span>
-    <<case "topless">>
-        <span class="blue">"Devotion."</span>
-    <<case "leash">>
-        <span class="lblue">"Discipline."</span>
-    <<case "underwear">>
-        <span class="teal">"Atonement."</span>
-    <<case "cuffs">>
-        <span class="lblue">"Bondage."</span>
-    <<case "bottomless">>
-        <span class="blue">"Chastisement."</span>
-    <<case "gag">>
-        <span class="purple">"Speak no evil."</span>
-    <<case "bindings">>
-        <span class="pink">"Do no evil."</span>
-    <<default>>
-        <span class="red">"Damnation."</span>
-<</switch>>
+<<if $args[0] is "end">>
+	<<switch $prison_punishment>>
+		<<case "free use">>
+			<span class="red">"Penance."</span>
+		<<case "nude">>
+			<span class="pink">"Judgement."</span>
+		<<case "blindfold">>
+			<span class="purple">"See no evil."</span>
+		<<case "topless">>
+			<span class="blue">"Devotion."</span>
+		<<case "leash">>
+			<span class="lblue">"Discipline."</span>
+		<<case "underwear">>
+			<span class="teal">"Atonement."</span>
+		<<case "cuffs">>
+			<span class="lblue">"Bondage."</span>
+		<<case "bottomless">>
+			<span class="blue">"Chastisement."</span>
+		<<case "gag">>
+			<span class="purple">"Speak no evil."</span>
+		<<case "bindings">>
+			<span class="pink">"Do no evil."</span>
+		<<default>>
+			<span class="red">"Damnation."</span>
+	<</switch>>
+<<else>>
+	<<switch $prison_punishment>>
+		<<case "free use">>
+			<span class="red">"Penance,"</span>
+		<<case "nude">>
+			<span class="pink">"Judgement,"</span>
+		<<case "blindfold">>
+			<span class="purple">"See no evil,"</span>
+		<<case "topless">>
+			<span class="blue">"Devotion,"</span>
+		<<case "leash">>
+			<span class="lblue">"Discipline,"</span>
+		<<case "underwear">>
+			<span class="teal">"Atonement,"</span>
+		<<case "cuffs">>
+			<span class="lblue">"Bondage,"</span>
+		<<case "bottomless">>
+			<span class="blue">"Chastisement,"</span>
+		<<case "gag">>
+			<span class="purple">"Speak no evil,"</span>
+		<<case "bindings">>
+			<span class="pink">"Do no evil,"</span>
+		<<default>>
+			<span class="red">"Damnation,"</span>
+	<</switch>>
+<</if>>
 <</widget>>
 
 <<widget "destination_prison">>
@@ -694,7 +720,7 @@
     "Where'd you get those?" <<he>> asks, looking at your cuffs. <<He>> pulls a key from <<his>> pocket.
     <<set $phase to 2>>
 <<elseif $worn.neck.type.includes("leash") and !$prison.active_punishments.includes("leash")>>
-    "You're not supposed to be leashed," <<he>> says, pulling a key from <<his>> pocket.
+    "You're not supposed to be leashed," <<he>> says, pulling a pair of pliers from <<his>> pocket.
     <<set $phase to 3>>
 <<else>>
     <<He>> looks away, seeming satisfied.
@@ -995,9 +1021,8 @@
                 <<He>> reaches around your waist, and gropes your rear.
                 <<if $leftarm is "bound" and $rightarm is "bound">>
                     With your arms bound, all you can do is try to twist away, but <<he>> holds you firm.<<ggattention>><<prison_attention 2>><<gtrauma>><<trauma 6>><<gstress>><<stress 6>><<garousal>><<arousal 600>>
-                    <br><br>
+					<br><br>
                     <<He>> gives you a parting smack, and walks away.
-                    <br><br>
                 <<else>>
                     <<gattention>><<prison_attention 1>><<gstress>><<stress 6>><<garousal>><<arousal 600>>
                     <br><br>
@@ -1005,8 +1030,8 @@
             <<else>>
                 <<generate1>><<person1>>
                 A <<person>> leers at your <<bottom>> as <<he>> walks by.<<gstress>><<stress 6>>
-                <br><br>
             <</if>>
+            <br><br>
             <<endevent>>
         <<case 5>>
             You feel a tremor underfoot.
@@ -1019,7 +1044,7 @@
             <<if $skulduggery lt 400>>
                 You catch snippets intrigue.<<gskulduggery>><<skulduggery 1>>
             <<else>>
-                You catch snippets of intrique. Amateur stuff.
+                You catch snippets of intrigue. Amateur stuff.
             <</if>>
             <br><br>
         <<case 8>>
@@ -1055,7 +1080,7 @@
     <<generate_scarred_inmate 0>>
     <<generate_tattooed_inmate 1>>
     <<generate3>><<generate4>><<generate5>><<generate6>>
-    "I see <<phim>> boss," says a <<person2>><<personsimple>>'s voice. You turn. The <<tattooed_inmate 0>> walks towards you, flanked by a <<person3>><<person>> and <<person4>><<person>>
+    "I see <<phim>> boss," says a <<person2>><<personsimple>>'s voice. You turn. <<tattooed_inmate cap>> walks towards you, flanked by a <<person3>><<person>> and <<person4>><<person>>.
     <br><br>
     <<person2>><<He>> stops several feet away, and examines you from head to toe. "I need a new <<bitch>>," <<he>> says. There's not an inch of space free of the ink covering <<his>> visible body. "The old's all used up."
     <br><br>
@@ -1109,7 +1134,7 @@
 <<widget "prison_laundry_options">>
 <<endevent>>
 <<if $hour is 12>>
-    <<generate_relaxed_guard 0>><<person1>>"Shift over," <<relaxed_guard 0 cap>> shouts. "Lunch time."
+    <<generate_relaxed_guard 0>><<person1>>"Shift over," <<relaxed_guard 0>> shouts. "Lunch time."
     <br><br>
     You shuffle from the room with the other inmates.
     <br><br>
@@ -1117,7 +1142,7 @@
     <<link [[Next|Prison Block]]>><<endevent>><</link>>
     <br>
 <<elseif $hour is 18>>
-    <<generate_relaxed_guard 0>><<person1>>"Shift over," <<relaxed_guard 0 cap>> shouts. "Dinner time."
+    <<generate_relaxed_guard 0>><<person1>>"Shift over," <<relaxed_guard 0>> shouts. "Dinner time."
     <br><br>
     You shuffle from the room with the other inmates.
     <br><br>
@@ -1141,13 +1166,13 @@
 <<widget "prison_medical_options">>
 <<endevent>>
 <<if $hour is 12>>
-    <<generate_methodical_guard 0>><<person1>>"Lunch time," <<methodical_guard 0 cap>> says. <<He>> pulls a prayer book from <<his>> pocket, and walks towards the door.
+    <<generate_methodical_guard 0>><<person1>>"Lunch time," <<methodical_guard 0>> says. <<He>> pulls a prayer book from <<his>> pocket, and walks towards the door.
     <br><br>
 
     <<link [[Next|Prison Medical]]>><<endevent>><</link>>
     <br>
 <<elseif $hour is 18>>
-    <<generate_methodical_guard 0>><<person1>>"Lunch time," <<methodical_guard 0 cap>> says. <<He>> pulls a prayer book from <<his>> pocket, and walks towards the door.
+    <<generate_methodical_guard 0>><<person1>>"Dinner time," <<methodical_guard 0>> says. <<He>> pulls a prayer book from <<his>> pocket, and walks towards the door.
     <br><br>
 
     <<link [[Next|Prison Medical]]>><<endevent>><</link>>
@@ -1167,7 +1192,7 @@
 <<widget "prison_spire_options">>
 <<endevent>>
 <<if $hour is 12>>
-    <<generate_anxious_guard 0>><<person1>>"Lunch," <<anxious_guard 0 cap>> says. <<He>> takes a deep breath, and runs for the staircase down.
+    <<generate_anxious_guard 0>><<person1>>"Lunch," <<anxious_guard 0>> says. <<He>> takes a deep breath, and runs for the staircase down.
     <br><br>
 
     <<link [[Next|Prison Spire]]>><<endevent>><</link>>
@@ -1180,7 +1205,7 @@
     <br>
 <<elseif $prison.anxious gte 60 and $per_npc.anxious_guard.name_known isnot 1>>
     <<beastNEWinit 2 "hawk">><<person1>>
-    You hear a cry. A between two <<beastsplural>> has turned sour. One holds the other down, and looks to be trying to <<bhim>> with <<person2>><<bhis>> talons.
+    You hear a cry. A between two <<beastsplural>> has turned sour. One holds the other down, and looks to be trying to throttle <<bhim>> with <<person2>><<bhis>> talons.
     <<endevent>>
     <br><br>
     <<generate_anxious_guard 0>><<person1>>
@@ -1212,7 +1237,7 @@
 
 <<widget "prison_teeth_text">>
 <<if $args[0]>>
-     | <span class="gold">You've gained $args[0] shark's teeth.</span>
+     | <span class="gold">You've gained <<number $args[0]>> shark's teeth.</span>
 <</if>>
 <</widget>>
 
@@ -1332,9 +1357,9 @@ You have the inmates' attention. A thought flashes through your mind. A desire f
             The shock collars are non-functioning, and the inmates optimistic, <span class="red">but they don't feel their chains tightly enough to revolt.</span>
             <br>
         <<else>>
-            <span class="green">The stage is set.</span> However, be sure you know what you're doing. A revolt without a plan will never end well
+            <span class="green">The stage is set.</span> However, be sure you know what you're doing. A revolt without a plan will never end well.
             <br>
-            <<link [[Incite Revolt|Prison Revolt]]>><</link>>
+            <<link [[Incite revolt|Prison Revolt]]>><</link>>
             <br>
         <</if>>
     <</if>>

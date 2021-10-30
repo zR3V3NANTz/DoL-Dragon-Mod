@@ -50,7 +50,7 @@ You're driven along the clifftop, past the town hall, and down towards the docks
 
 You remain silent. The <<person>> keeps <<his>> eyes fixed on throughout the journey.
 <br><br>
-The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+The car arrives at Mer Street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
 <br><br>
 
 <<link [[Next|Police Prison Intro Docks]]>><</link>>
@@ -61,7 +61,7 @@ The car arrives at Mer street, and pulls into the docks. A small boat awaits you
 
 You close your eyes and mutter a quick prayer. You hear the <<person>> scoff, but you pay <<him>> no mind.
 <br><br>
-The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+The car arrives at Mer Street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
 <br><br>
 
 <<link [[Next|Police Prison Intro Docks]]>><</link>>
@@ -73,7 +73,7 @@ The car arrives at Mer street, and pulls into the docks. A small boat awaits you
 
 You bare your fangs and growl at the <<person>>. <<He>> averts <<his>> eyes at once, and coughs.
 <br><br>
-The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+The car arrives at Mer Street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
 <br><br>
 
 <<link [[Next|Police Prison Intro Docks]]>><</link>>
@@ -84,7 +84,7 @@ The car arrives at Mer street, and pulls into the docks. A small boat awaits you
 
 You bare your fangs and hiss at the <<person>>. <<He>> averts <<his>> eyes at once, and coughs.
 <br><br>
-The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+The car arrives at Mer Street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
 <br><br>
 
 <<link [[Next|Police Prison Intro Docks]]>><</link>>
@@ -129,13 +129,13 @@ The car arrives at Mer street, and pulls into the docks. A small boat awaits you
 
 
 <<if $prison_intro is undefined>>
-    The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
+    The car arrives at Mer Street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
     <br><br>
 
     <<link [[Next|Police Prison Intro Bailey]]>><</link>>
     <br>
 <<else>>
-    The car arrives at Mer street, and pulls into the docks. A small boat awaits you, staffed by familiar guards.
+    The car arrives at Mer Street, and pulls into the docks. A small boat awaits you, staffed by familiar guards.
     <br><br>
     <<link [[Next|Police Prison Intro Docks]]>><</link>>
     <br>
@@ -146,7 +146,7 @@ The car arrives at Mer street, and pulls into the docks. A small boat awaits you
 :: Police Prison Intro Bailey
 <<effects>>
 
-The <<person2>><<person>> shoves you aboard the boat, where you fall into a heap just as you hear the rev of an engine. You struggle to your knees, and see a familiar car approaching. It's Bailey.
+The <<person2>><<person>> shoves you aboard the boat, where you fall into a heap just as you hear the rev of an engine. You struggle to your knees, and see a familiar car approaching. <span class="purple">It's Bailey.</span>
 <br><br>
 
 "Shit," the <<person>> mutters, putting <<himself>> between the boat and approaching car as the crew rush to untie the mooring rope.
@@ -301,7 +301,7 @@ The <<person1>><<personsimple>> at the helm glances at you.
     <br>
     "Until <<pshe>> scraps with the wrong person," replies <<person2>><<anxious_guard 1>>.
 <<else>>
-    "Don't fancy <<pher>> chances myeslf," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Maybe a week."
+    "Don't fancy <<pher>> chances myself," interjects a <<person3>><<person>>, drying <<his>> hands on a towel. <<He>> looks older than the others. "Maybe a week."
 <</if>>
 <br><br>
 
@@ -347,7 +347,7 @@ You remain silent, and try to ignore the crew's discussion.
         A mist rises around the boat, thickening until even the crew are hidden from view. You sail through the murk, until <<person2>><<anxious_guard 1>> cries out in fright.<<gstress>><<stress 6>>
     <</if>>
 <<else>>
-    A mist rises around the boat, concealing the land behind you. The crew don't seem disturbed. You sail through the murk, until a spire of stone looms ahead. <<person2>><<anxious_guard 1 cap>> cries out in fright.
+    A mist rises around the boat, concealing the land behind you. The crew doesn't seem disturbed. You sail through the murk, until a spire of stone looms ahead. <<person2>><<anxious_guard 1 cap>> cries out in fright.
 <</if>>
 <br><br>
 "You're gonna sink us!" <<he>> says.
@@ -372,7 +372,7 @@ You remain silent, and try to ignore the crew's discussion.
 :: Prison Intro
 <<location "prison">><<effects>>
 
-<<person2>><<anxious_guard 1 cap>> sighs in relief as the mist clears. There's an island ahead, towering above any of the spires. A stone fortress sits on top, half carved from the rock itself.
+<<person2>><<anxious_guard 1 cap>> sighs in relief as the mist clears. There's an island ahead, towering above any of the spires. A stone fortress sits on top, half-carved from the rock itself.
 <br><br>
 
 <<if $player.gender_appearance is "m">>
@@ -410,7 +410,7 @@ You're pushed through the door, into a small room. There's a desk, but the room 
 <<if $prison_intro isnot 1>>
     "You're early," <<methodical_guard 3>> says.
     <br>
-    "Left in a hurry," <<person1>><<relaxed_guard 0 cap>> responds. "There's no problem."
+    "Left in a hurry," <<person1>><<relaxed_guard 0>> responds. "There's no problem."
     <br>
     <<person4>><<methodical_guard 3 cap>> nods.
     <br><br>
@@ -432,7 +432,7 @@ The crew push you to the middle of the room, and stand around you, leaving a lit
 :: Prison Intro Name
 <<effects>>
 
-You tell <<person4>><<methodical_guard 3 cap>> your name. <<He>> scribbles something down. "Take off your clothes." <<person2>><<anxious_guard 1 cap>> licks <<his>> lips. "Everything."<<gstress>><<stress 6>>
+You tell <<person4>><<methodical_guard 3>> your name. <<He>> scribbles something down. "Take off your clothes." <<person2>><<anxious_guard 1 cap>> licks <<his>> lips. "Everything."<<gstress>><<stress 6>>
 <br><br>
 
 <<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
@@ -495,7 +495,7 @@ You remain silent.
 :: Prison Intro Strip
 <<effects>>
 <<undress "prison intro">>
-You remove your clothing, piece by piece. You feel their eyes as you revealed your body. You're left naked in the middle of the room.<<covered>>
+You remove your clothing, piece by piece. You feel their eyes as you reveal your body. You're left naked in the middle of the room.<<covered>>
 <br><br>
 
 <<link [[Next|Prison Intro Strip 2]]>><</link>>
@@ -621,12 +621,12 @@ You unravel the mooring rope, and manage to cast off before the guards arrive. <
     <br><br>
     Mist rises around you, hiding the sky, and even the searchlight.
     <<if $cat gte 2 or $harpy gte 2>>
-        A spire of rock looms from the murk. You narrowly pass. <span class="red">Then another looms right in front of you.</span> You turn the helm as far as it'll go, but it's no use. The boat crunches at it comes to a halt, the force throwing you overboard.
+        A spire of rock looms from the murk. You narrowly pass. <span class="red">Then another looms right in front of you.</span> You turn the helm as far as it'll go, but it's no use. The boat crunches as it comes to a halt, the force throwing you overboard.
     <<else>>
         You sail in silence for a few moments, barely able to see the front of the boat. <span class="red">You make out a dark shape ahead a moment before the boat collides with it.</span> The force throws you overboard.
     <</if>>
 <<else>>
-    You sail towards the mist, until it engulfs you. A spire of rock looms from the murk. You narrowly pass. <span class="red">Then another looms right in front of you.</span> You turn the helm as far as it'll go, but it's no use. The boat cruches as it comes to a halt, the force throwing you overboard.
+    You sail towards the mist, until it engulfs you. A spire of rock looms from the murk. You narrowly pass. <span class="red">Then another looms right in front of you.</span> You turn the helm as far as it'll go, but it's no use. The boat crunches as it comes to a halt, the force throwing you overboard.
 <</if>>
 <br><br>
 <<water>>
@@ -951,7 +951,7 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
     <</if>>
     <br><br>
 
-    The cell is almost as small as your room in the orphanage. There's a jagged crack in the wall. A bare mattress sits in one corner. There's a cupboard in another, with a sign above it. "God is watching" is emblazoned across the top. Beneath it is the schudule, but the lights die before you can read it.
+    The cell is almost as small as your room in the orphanage. There's a jagged crack in the wall. A bare mattress sits in one corner. There's a cupboard in another, with a sign above it. "God is watching" is emblazoned across the top. Beneath it is the schedule, but the lights die before you can read it.
     <br><br>
 <<else>>
     The cell door rattles shut.
@@ -968,7 +968,7 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
     <</if>>
     <br><br>
 
-    The cell is almost as small as your room in the orphanage. There's a jagged crack in the wall. A bare mattress sits in one corner. There's a cupboard in another, with a sign above it. "God is watching" is emblazoned in red across the top. Beneath it is the schudule.
+    The cell is almost as small as your room in the orphanage. There's a jagged crack in the wall. A bare mattress sits in one corner. There's a cupboard in another, with a sign above it. "God is watching" is emblazoned in red across the top. Beneath it is the schedule.
     <br><br>
 <</if>>
 

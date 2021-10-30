@@ -685,7 +685,7 @@ You grab the tentacle and try calm it. <<deviancy1>>
 <</if>>
 
 <<statetentacles>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
+
 <<effects>>
 <<effectstentacles>>
 <<tentacles>>

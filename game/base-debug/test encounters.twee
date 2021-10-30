@@ -880,8 +880,6 @@ How do you respond?
 	<br>
 	A bunch of vines pop out of the ground.
 <</if>>
-You count <<number $tentacles.active>> <<print $tentacles[0].type>>s surrounding you.
-<br>
 <<effects>>
 <<effectsabomination>><<abomination>>
 <<stateabomination>>

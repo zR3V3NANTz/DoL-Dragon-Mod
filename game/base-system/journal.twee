@@ -517,10 +517,10 @@
 <</if>>
 
 <<if $location is "prison">>
-	You have <span class="gold"><<print $prison.teeth>></span> shark's teeth.
+	You have <span class="gold"><<number $prison.teeth>></span> shark's teeth.
 	<br>
 	<<if $prison_wren_intro isnot 1>>
-		You can find Wren in the yard on fridays after lunch.
+		You can find Wren in the yard on Fridays after lunch.
 		<br>
 	<</if>>
 	
