@@ -307,7 +307,7 @@
 			<<if $deviancy gte 35>>
 				<<link [[Reward|Moor Plant Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
 			<<else>>
-				<span class="blue">You are not deviant enough to "reward" <<him>>.
+				<span class="blue">You are not deviant enough to "reward" <<him>></span>.
 			<</if>>
 			<br>
 			<<link [[Refuse|Moor Plant Refuse]]>><<set $phase to 1>><</link>>
