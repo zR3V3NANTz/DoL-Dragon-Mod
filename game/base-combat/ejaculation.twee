@@ -722,6 +722,7 @@
 								<<He>> convulses and, with a final shove of <<his>> $NPCList[_nn].penisdesc, cums in your <<bottom>>. Thick waves of semen pump into you. <span class="blue">You gasp as your ass overflows.</span> You feel it drip down your legs. "You need to learn how to take two cocks. Don't worry, I'm sure you'll get lots of practice."
 								<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 						<</switch>>
+						<<violence 3>>
 					<</if>>
 					<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.anus.semen += 1>>
 
@@ -747,7 +748,6 @@
 					<<case 7>>
 						<<He>> <span class="blue">spanks you</span> with one hand while stroking <<his>> $NPCList[_nn].penisdesc with the other. <<He>> ejaculates onto your <<bottom>> with a shudder. "Should've taken us both, <<bitch>>."
 						<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
-						<<gstress>><<gtrauma>><<gpain>><<violence 3>><<bruise bottom>><<hitstat>>
 					<</switch>>
 
 				<<elseif $NPCList[_nn].penis is "chest">>
@@ -1117,6 +1117,7 @@
 						<</switch>>
 					<</if>>
 					<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.anus.semen += 1>>
+					<<gstress>><<gtrauma>><<gpain>><<violence 5>><<bruise bottom>><<hitstat>>
 
 				<<elseif $NPCList[_nn].penis is "anusdoubleimminent" or $NPCList[_nn].penis is "anusdoubleentrance">>
 					<<set _otherNPCindex to 0>>
@@ -1755,6 +1756,7 @@
 		<<tummyejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
 	<</if>>
 	<<chestejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.chest.semen += 1>>
+	<<if _npciswolftype>><<transform wolf 1>><</if>>
 <</if>>
 
 <!-- Female BEAST -->

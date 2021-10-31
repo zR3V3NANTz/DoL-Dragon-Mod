@@ -2123,7 +2123,7 @@ Doren asks you to demonstrate your grammar on the whiteboard. As you walk to the
 			  <<link [[Refuse|Events Swimming Refuse]]>><</link>>
 			  <br>
 			<<else>>
-				<<npc Mason>><<person1>>Mason points at you. "Climb out, I want to see your diving technique." You climb out into the chilly air, and walk to the edge of the diving platform. You dive <<swimmingtext>> into the water.
+				You climb out into the chilly air, and walk to the edge of the diving platform. You dive <<swimmingtext>> into the water.
 				<br><br>
 				You come back up to the surface. Mason gives you a thumbs up, then directs <<his>> attention elsewhere. You feel like something is amiss, and then you realise, your $worn.under_lower.name <<underlowerplural>> gone! Seeing your clothes floating several feet away, you quickly swim over and cover up. You glance around the pool, you don't think anybody noticed.
 				<<gstress>><<stress 2>><<gswimming>><<swimmingskilluse>>
@@ -2132,7 +2132,7 @@ Doren asks you to demonstrate your grammar on the whiteboard. As you walk to the
 			<</if>>
 
 		<<else>>
-			<<npc Mason>><<person1>>Mason points at you. "Climb out, I want to see your diving technique." You climb out into the chilly air, and walk to the edge of the diving platform. You dive <<swimmingtext>> into the water.
+			You climb out into the chilly air, and walk to the edge of the diving platform. You dive <<swimmingtext>> into the water.
 			<br><br>
 			You come back up to the surface. Mason gives you a thumbs up, then directs <<his>> attention elsewhere. You feel like something is amiss, and then you realise, your <<undies>> <<underlowerplural>> gone! Seeing your clothes floating several feet away, you quickly swim over and cover up. You glance around the pool, you don't think anybody noticed.
 			<<gstress>><<stress 2>><<gswimming>><<swimmingskilluse>>

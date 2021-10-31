@@ -65,8 +65,11 @@
 			<<else>>
 				<<set _pp to "penis">>
 			<</if>>
-			
-			<<set _penisaction["Push your penis against " + $NPCList[_j].pronouns.his + " " + _pp] to "penistopenisfuck">>
+			<<if $worn.genitals.type.includes("chastity")>>
+				<<set _penisaction["Push your chastity against " + $NPCList[_j].pronouns.his + " " + _pp] to "penistopenisfuck">>
+			<<else>>
+				<<set _penisaction["Push your penis against " + $NPCList[_j].pronouns.his + " " + _pp] to "penistopenisfuck">>
+			<</if>>
 			<<break>>
 		<</if>>
 	<</if>>
@@ -99,7 +102,7 @@
 <</widget>>
 
 <<widget "actionspenisPenisImminent">>
-<<if $consensual is 0 or ($promiscuity lte 54 and $enemytype is "man" and !$promiscuityIgnore) or ($deviancy lte 54 and $enemytype isnot "man" and !$promiscuityIgnore)>>
+<<if $consensual is 0 or (!$promiscuityIgnore and ($enemytype is "man" ? ($promiscuity lte 54) : ($deviancy lte 54)))>>
    <<set _penisaction["Cooperate"] to "otherpenisrub">>
 <<else>>
    <<set _penisaction["Rub"] to "otherpenisrub">>
