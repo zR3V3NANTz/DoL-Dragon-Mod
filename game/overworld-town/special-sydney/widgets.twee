@@ -156,8 +156,8 @@
 		<br><br>
 		<<sydneyOptions>>
 	<<elseif $bookOverdue and !$sydneyDaily.overdueMessage>>
-		<<set $sydneyDaily.overdueMessage to true>>
 		Sydney looks up at you. "You've got a book overdue." <<bookCriminal>>
+		<<set $sydneyDaily.overdueMessage to true>>
 		<br><br>
 		<<sydneyOptions>>
 	<<elseif $bookStolenAbsent and $sydneyStolenKnown>>

@@ -166,9 +166,9 @@ Bailey's car screeches to a halt, almost colliding with the <<person2>><<person>
 <br><br>
 "We had an agreement," Bailey spits. The mooring comes loose, and the boat begins to pull away.
 <br>
-"And we our orders," the <<person2>><<person>> responds, reaching for the baton at <<his>> side. The <<person3>><<person>> does likewise. "Please step away sir."
+"And we our orders," the <<person2>><<person>> responds, reaching for the baton at <<his>> side. The <<person3>><<person>> does likewise. "Please step away <<person1>><<sir>>."
 <br>
-Bailey takes a step closer, and the officers tense up. "There'll be blood to pay," <<person1>><<he>> says. Then <<he>> laughs. The officers share a worried glance. "I'll make this work." <<He>> still watches you. "Be on your best behaviour."
+Bailey takes a step closer, and the officers tense up. "There'll be blood to pay," <<he>> says. Then <<he>> laughs. The officers share a worried glance. "I'll make this work." <<He>> still watches you. "Be on your best behaviour."
 <br><br>
 Bailey drives away as the boat leaves the harbour. Even at this distance, you can see the officers relax their posture.
 <br><br>
@@ -747,7 +747,7 @@ You take a step toward the hole, careful to keep your footing. Then another. You
     <br><br>
 
     <<if $prison_intro is undefined>>
-        Right at the edge, <<person3>><<veteran_guard 2>> grasps your hair and holes your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good girl, and do as you're told."
+        Right at the edge, <<person3>><<veteran_guard 2>> grasps your hair and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good <<girl>>, and do as you're told."
         <br><br>
     <</if>>
 
@@ -772,7 +772,7 @@ You take a step toward the hole, careful to keep your footing. Then another. You
 <br><br>
 
 <<if $prison_intro is undefined>>
-    Right at the edge, <<person3>><<veteran_guard 2>> grasps your hair and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good girl, and do as you're told."
+    Right at the edge, <<person3>><<veteran_guard 2>> grasps your hair and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good <<girl>>, and do as you're told."
     <br><br>
 <</if>>
 
@@ -789,7 +789,7 @@ They blast you with icy water. The shock knocks you to your knees, but they keep
 <<underlowerruined>>
 <br><br>
 <<if $prison_intro is undefined>>
-    Firm hands grasp you at the last moment. <<person3>><<veteran_guard 2 cap>> grips the back of your hair, and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good girl, and do as you're told."
+    Firm hands grasp you at the last moment. <<person3>><<veteran_guard 2 cap>> grips the back of your hair, and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good <<girl>>, and do as you're told."
     <br><br>
 <</if>>
 

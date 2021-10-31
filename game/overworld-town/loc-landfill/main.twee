@@ -100,17 +100,24 @@ The warmth growing within you passes the point of no return. Your knees buckle. 
 The gate is barred by a heavy-duty padlock.
 <br><br>
 <<set $lock to 800>>
+<<if $trash_key is 1>>
+	<span class="green">It looks like a perfect fit for the key you found.</span>
+	<br><br>
 
-	<<if $skulduggery gte $lock>>
+	<<link [[Use the key (0:05)|Trash Enter]]>><<set $trash_unlocked to 1>><<pass 5>><</link>>
+	<br>
+<<elseif $skulduggery gte $lock>>
 	<span class="green">The lock looks easy to pick.</span>
 	<br><br>
 
 	<<link [[Pick lock (0:05)|Trash Lock Enter]]>><<pass 5>><<crimeup 1>><</link>><<crime>>
 	<br>
-	<<else>>
+<<else>>
 	<span class="red">The lock looks beyond your ability to pick.</span><<skulduggeryrequired>>
 	<br><br>
-	<</if>>
+	<span class="blue"><i>There must be a key, but you haven't any idea where you could find one.</i>.</span>
+	<br><br>
+<</if>>
 
 <<link [[Leave|Elk Street]]>><</link>>
 <br>
