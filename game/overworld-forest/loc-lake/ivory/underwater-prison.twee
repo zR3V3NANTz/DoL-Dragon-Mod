@@ -201,7 +201,7 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 <<effects>>
 <<if !$wraithCount>>
 	<<set $wraithCount to 0>>
-	<<set $wraithMax to 3>>
+	<<set $wraithMax to 1>>
 	<<if $wraith.offspring is "dead">>
 		<<set $wraithMax ++>>
 	<</if>>
@@ -469,9 +469,9 @@ You don't know how much time passes. Your body feels refreshed, but your mind fe
 
 :: Lake Ruin Prison Rape Finish
 <<effects>>
-<<if !$wraithCount and $debug is 1>>
+<<if !$wraithCount>>
 	<<set $wraithCount to 0>>
-	<<set $wraithMax to 3>>
+	<<set $wraithMax to 1>>
 	<<if $wraith.offspring is "dead">>
 		<<set $wraithMax ++>>
 	<</if>>
