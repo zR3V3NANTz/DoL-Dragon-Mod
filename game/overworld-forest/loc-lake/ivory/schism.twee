@@ -524,7 +524,7 @@ You hold your necklace.
 <br><br>
 One last time.
 <br><br>
-<<link [[Sleep|Schism Drowned]]>><</link>>
+<<link [[Sleep|Schism Drowned]]>><<set $wraithSkin to 1>><</link>>
 <br>
 
 :: Schism Drowned
@@ -632,7 +632,7 @@ But that's okay.
 <br><br>
 As long as you take everything from <<if $real_playergender is "m">>him<<else>>her<</if>>.
 <br><br>
-<<link [[Wake up|Schism End]]>><</link>>
+<<link [[Wake up|Schism End]]>><<unset $wraithSkin>><</link>>
 <br>
 
 :: Schism End

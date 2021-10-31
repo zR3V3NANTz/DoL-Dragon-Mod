@@ -100,6 +100,15 @@ if ($skinColor.tanningEnabled is true){
 	<<set _modeloptions.belly to $sexStats.vagina.pregnancy.bellySize>>
 <</if>>
 
+<<if $wraithSkin>>
+    <<set _modeloptions.mannequin to true>>
+    <<set _modeloptions.skin_type to 'custom'>>
+    <<set _modeloptions.filters.body to {blend:'#ffffff',blendMode:'multiply',desaturate:true}>>
+    <<set _modeloptions.filters.breasts to _modeloptions.filters.body>>
+    <<set _modeloptions.filters.penis to _modeloptions.filters.body>>
+    <<set _modeloptions.show_tanlines to false>>
+<</if>>
+
 <!--
  -    ██   ██  █████  ██ ██████
  -    ██   ██ ██   ██ ██ ██   ██

@@ -379,7 +379,7 @@ You buy Sydney a new pair of glasses.
 		<<if $sydneyromance is 1>>"At least these new ones will remind me of you now."<<else>>"Thank you. You didn't have to do this for me."<</if>>
 	<<case "playerbroken">>
 		<<He>> pushes <<his>> <<sydneyGlasses>> to the person working the counter. "I'll miss these old things." <<He>> looks to you with a smile.
-		"Try not to break these on my face, please?" You look down guiltily, but gives you a playful nudge.	
+		"Try not to break these on my face, please?" You look down guiltily, but <<he>> gives you a playful nudge.	
 	<<case "glasses">>
 		"Are you sure? The ones I have now are fine."
 		<br><br>
@@ -423,7 +423,7 @@ You buy Sydney a case of contact lenses, and everything needed to take care of t
 		<<He>> pushes <<his>> <<sydneyGlasses>> to the person working the counter. "I'll miss these old things." <<He>> looks to you with a smile.
 		"At least I don't have to worry about you being rough with me, now." <<npcincr Sydney lust 1>><<glust>>
 	<<case "glasses">>
-		"Well, glasses are pretty cumbersome... and <<sydneymum>> has said I look more cute without them..."
+		"Well, glasses are pretty cumbersome... and <<sydneymum>> has said I look cuter without them..."
 		<br><br>
 		<<if $sydneyromance is 1>>
 			"<<nnpc_Hes "Sirris">> right," you say. <<He>> blushes.
@@ -1797,7 +1797,7 @@ You are on the beach with Sydney.
 			Your waist becomes tangled in seaweed. Sydney quickly comes to your side and begins to free you. <<He>> gets very close, pressing against you as <<he>> tears the seaweed away. <<npcincr Sydney lust 1>><<glust>>
 		<<case 8>>
 			<<generate2>><<person2>>
-			Something grabs you firm by the ankle, and drags you beneath the water. A <<person>> rises from the murk, wearing a diving mask. <<His>> mask flies from <<his>> head as Sydney tackles <<him>>. Realizing you're not alone, <<he>> flees in search of easier prey.
+			Something grabs you firm by the ankle, and drags you beneath the water. A <<person>> rises from the murk, wearing a diving mask. <<His>> mask flies from <<his>> head as Sydney tackles <<him>>. Realising you're not alone, <<he>> flees in search of easier prey.
 			<br><br>
 			<<endevent>><<npc "Sydney">><<person1>><<set $phase to 1>>
 			"Are you okay? That absolute lunatic, I thought someone was trying to drown you!" Sydney spends some time fussing over you. You manage to convince <<him>> that you're fine after some time.

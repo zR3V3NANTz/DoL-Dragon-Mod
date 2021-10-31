@@ -117,9 +117,9 @@ You take a seat and look out the window.
 				<<if $cool lt 80>>
 					<<generatey1>><<generatey2>><<generatey3>><<person1>>One of them, a <<person>>, sits beside you. Two of <<his>> friends, a <<person2>><<person>> and <<person3>><<person>>, sit in front of you and lean over the backs of their seats.
 					<br><br>
-					"We didn't say you could use our bus." Says the <<person1>><<person>>.
+					"We didn't say you could use our bus," says the <<person1>><<person>>.
 					<br>
-					"<<pShes>> probably too stupid to know any better." the <<person2>><<person>> interjects.
+					"<<pShes>> probably too stupid to know any better," the <<person2>><<person>> interjects.
 					<br>
 					<<if $player.gender_appearance is "m" and $worn.upper.type.includes("naked")>>
 						"Probably. <<pShe>> even forgot <<pher>> shirt."
@@ -159,9 +159,9 @@ You take a seat and look out the window.
 				<<if $cool lt 80>>
 					<<generatey1>><<generatey2>><<generatey3>><<person1>>One of them, a <<person>>, sits beside you. Two of <<his>> friends, a <<person2>><<person>> and <<person3>><<person>>, sit in front of you and lean over the backs of their seats.
 					<br><br>
-					"We didn't say you could use our bus." Says the <<person1>><<person>>.
+					"We didn't say you could use our bus," says the <<person1>><<person>>.
 					<br>
-					"<<pShes>> probably too stupid to know any better." the <<person2>><<person>> interjects.
+					"<<pShes>> probably too stupid to know any better," the <<person2>><<person>> interjects.
 					<br>
 					<<if $player.gender_appearance is "m" and $worn.upper.type.includes("naked")>>
 						"Probably. <<pShe>> even forgot <<pher>> shirt."

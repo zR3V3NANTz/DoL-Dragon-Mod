@@ -808,7 +808,7 @@ You give them a rundown of the situation you and Robin found yourselves in, avoi
 "B-but we are on duty. What if they call the police? Or someone worse..."
 <br><br>
 The <<person>> puts <<his>> foot on <<his>> crate with a loud thump.
-"Everyone, listen up! I have an idea, but I need a couple of lads with me. I won't leave a friend of my friend behind. If you are with me, follow my lead. And you," <<he>> turns to you. "You go there and play for time. We'll be there in a minute."
+"Everyone, listen up! I have an idea, but I need a couple of <<person4>><<if $pronoun is "m">>lads<<else>>chicks<</if>> with me. I won't leave a friend of my friend behind. If you are with me, follow my lead. And you," <<he>> turns to you. "You go there and play for time. We'll be there in a minute."
 <br><br>
 You nod and run back to Robin.
 <br><br>
@@ -1873,7 +1873,7 @@ Robin leans on to you, panting, beads of sweat dripping down <<his>> naked body.
 	<br>
 	<<He>> looks
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].dom lte 26>>
-		worried. "But," Robin says. "You didn't finish. Did you atleast feel good?" <<he>> asks. You nod, and <<he>> smiles cheerfully. "That's good."
+		worried. "But," Robin says. "You didn't finish. Did you at least feel good?" <<he>> asks. You nod, and <<he>> smiles cheerfully. "That's good."
 	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].dom lte 41>>
 		<<if $player.penisExist>>
 			<<set $penisuse to 0>><<set $penisstate to 0>>
@@ -1885,7 +1885,7 @@ Robin leans on to you, panting, beads of sweat dripping down <<his>> naked body.
 		<<else>>
 		After a few minutes, <<he>> gives up with a sigh. "I'm sorry." Robin says, frowning.
 		<br><br>
-		"You're fine, Robin." You tell <<him>>. "You were wonderful." Robin perks up a little at the words.
+		"You're fine, Robin," you tell <<him>>. "You were wonderful." Robin perks up a little at the words.
 		<br><br>
 
 		<</if>>
@@ -2286,7 +2286,7 @@ You cling tight to Robin and nearly tackle <<him>> to the bed as you whimper and
 <br><br>
 "Wh-what's wrong!?" Robin yells, horrified at your behaviour. <<He>> wraps <<his>> arms around you, looking like <<he>> is on the verge of a panic attack as <<he>> tries to figure out how to respond to your distress.
 <br><br>
-"Th-that's awful!" Robin responds with a horrified face. "This… we've got to tell somebody!" <<He>> says, stroking your back as <<he>> gives more soothing promises about how to deal with the problem.
+"Th-that's awful!" Robin responds with a horrified face. "This... we've got to tell somebody!" <<he>> says, stroking your back as <<he>> gives more soothing promises about how to deal with the problem.
 <br><br>
 <<robinhug>>
 
@@ -2305,7 +2305,7 @@ You cling tight to Robin and nearly tackle <<him>> to the bed as you whimper and
 <br><br>
 "Wh-what's wrong!?" Robin yells, horrified at your behaviour. <<He>> wraps <<his>> arms around you and looks uneasily about the room, but <<he>> allows you to continue. <<He>> tries to soothe you as you manage to talk past your tears and unload everything that has happened to you.
 <br><br>
-"Th-that's awful!" Robin responds with a horrified face. "This… we've got to tell somebody!" <<He>> tries to struggle out of your grip, but you cling tight to <<him>>. Eventually, <<he>> relents and stays until you finish crying.
+"Th-that's awful!" Robin responds with a horrified face. "This... we've got to tell somebody!" <<He>> tries to struggle out of your grip, but you cling tight to <<him>>. Eventually, <<he>> relents and stays until you finish crying.
 <br><br>
 <<robinhug>>
 
@@ -2867,7 +2867,7 @@ You fall to the ground, too battered to fight. Whitney kicks you for good measur
 <<molested>>
 
 <<npc Whitney>><<person1>><<maninit>>
-Whitney grabs your wrist and drags you to a secluded area behind the canteen, <<he>> <<if $pronoun is "m">>unzips <<his>> fly,<<else>>lifts <<his>> skirt,<</if>> revealing <<his>> <<if $NPCList[0].penis isnot "none">>penis<<else>>pussy<</if>>. "Open wide" <<he>> says. <<His>> friends cheer <<him>> on.
+Whitney grabs your wrist and drags you to a secluded area behind the canteen, <<he>> <<if $pronoun is "m">>unzips <<his>> fly,<<else>>lifts <<his>> skirt,<</if>> revealing <<his>> <<if $NPCList[0].penis isnot "none">>penis<<else>>pussy<</if>>. "Open wide," <<he>> says. <<His>> friends cheer <<him>> on.
 <br><br>
 
 <<npcoral>><<set $NPCList[0].lefthand to "hair">><<set $enemyanger to 70>>
@@ -2882,7 +2882,7 @@ Whitney grabs your wrist and drags you to a secluded area behind the canteen, <<
 
 <<npc Whitney>><<person1>><<maninit>>
 <<set $enemytrust += 100>>
-You follow Whitney out of the canteen, <<he>> leads you to a secluded area behind the canteen and <<if $pronoun is "m">>unzips <<his>> fly,<<else>>lifts <<his>> skirt,<</if>> revealing <<his>> <<if $NPCList[0].penis isnot "none">>penis<<else>>pussy<</if>>. "Time to inspect your vocal chords" <<he>> says with a smirk. <<His>> friends laugh at the joke.
+You follow Whitney out of the canteen, <<he>> leads you to a secluded area behind the canteen and <<if $pronoun is "m">>unzips <<his>> fly,<<else>>lifts <<his>> skirt,<</if>> revealing <<his>> <<if $NPCList[0].penis isnot "none">>penis<<else>>pussy<</if>>. "Time to inspect your vocal chords," <<he>> says with a smirk. <<His>> friends laugh at the joke.
 <<promiscuity4>>
 
 <<npcoral>>

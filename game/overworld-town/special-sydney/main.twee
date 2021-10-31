@@ -374,7 +374,7 @@
 						<<link [["Wake " + $NPCList[0].pronouns.him|Sydney Library Bodywriting Stop]]>><</link>>
 						<br>
 					<<else>>
-						You have a pleasant conversation with Sydney. <<He>> produces a pen, and lifts your sleeve. "May I?"
+						You have a pleasant conversation with Sydney. <<He>> produces a pen, and <<if $worn.upper.name isnot "naked">>lifts your sleeve<<else>>points it at your arm<</if>>. "May I?"
 						<br><br>
 						<<link [[Push away|Sydney Library Bodywriting Stop]]>><</link>>
 						<br>
@@ -1304,7 +1304,7 @@ You open your mouth to speak. Sydney cuts you off. "I want this belt off of me."
 <</if>>
 <br><br>
 
-<<link [[Break down further|Sydney Library Break 2]]>><<set $phase to 1>><<npcincr Sydney purity -5>><<tearup>><</link>><<lslust>><<llspurity>><<sydneyWarning>>
+<<link [[Break down further|Sydney Library Break 2]]>><<set $phase to 1>><<npcincr Sydney lust -1>><<npcincr Sydney purity -5>><<tearup>><</link>><<lslust>><<llspurity>><<sydneyWarning>>
 <br>
 <<link [[Persecute Sydney|Sydney Library Break 2]]>><<set $phase to 2>><<stress -12>><<trauma -6>><</link>><<lstress>><<ltrauma>><<if !$sydneySeen.includes("persecute")>> | <span class="purple">- Love?</span><</if>>
 <br>
@@ -2791,7 +2791,7 @@ Sydney stretches and yawns.
 <<if $NPCName[$NPCNameList.indexOf("Sydney")].love gte 10>>
 	<<if !$sydneyDaily.writing and random(1, 6) is 1>>
 		<<set $sydneyDaily.writing to true>>
-		You have a pleasant conversation with Sydney as you eat. <<He>> produces a pen, and lifts your sleeve. "May I?"
+		You have a pleasant conversation with Sydney as you eat. <<He>> produces a pen, and <<if $worn.upper.name isnot "naked">>lifts your sleeve<<else>>points it at your arm<</if>>. "May I?"
 		<br><br>
 		<<link [[Push away|Sydney Canteen Bodywriting Stop]]>><</link>>
 		<br>
@@ -3164,7 +3164,7 @@ Sydney's pen trails up your arm,
 The <<person2>><<person>> looks surprised, but smiles. "Alright, a deal's a deal. Thanks for the peek." <<He>> picks Sydney's glasses up off the ground and hands them to <<person1>><<him>> before leaving.
 <br><br>
 <<if $corruptionRollover is 1>>
-	Sydney sits back down and continues eating. "It saved me my glasses," <<he>> muttered. "And... you said it was a good idea." <<He>> swallows <<his>> food and smiles at you. "Is that what it's like to live in sin? It's.. convenient. <span class="lewd">I feel like my eyes have been opened.</span>" <<He>> finishes <<his>> food.
+	Sydney sits back down and continues eating. "It saved me my glasses," <<he>> mutters. "And... you said it was a good idea." <<He>> swallows <<his>> food and smiles at you. "Is that what it's like to live in sin? It's... convenient. <span class="lewd">I feel like my eyes have been opened.</span>" <<He>> finishes <<his>> food.
 <<elseif _sydneyStatus.includes("corrupt")>>
 	Sydney sits back down and finishes eating as if nothing had happened.
 <<else>>

@@ -382,7 +382,7 @@ Your heart is pounding with the thrill as you quietly move on.
 		<br>
 		"Look," Whitney jeers.
 		<<if ($goocount + $semencount) is 0>>
-			"The poor slut's that horny and noone will even rape <<phim>>."
+			"The poor slut's that horny and no one will even rape <<phim>>."
 		<<else>>
 			<<if (setup.bodyliquid.combined("vagina")) gte 4>>"That cunt has been wrecked
 			<<elseif (setup.bodyliquid.combined("anus")) gte 4>>"That ass has been ruined
