@@ -625,6 +625,8 @@ You are in the bathroom.
 		<</if>>
 	<</if>>
 	<<if $kylarbed isnot 1>>
+		<<set $wardrobe_location to "wardrobe">>
+		<<wardrobeSelection true>>
 		<<radiooutfits>>
 		<br><br>
 		<<if $renttime lte 0>><<set $bus to "home">>

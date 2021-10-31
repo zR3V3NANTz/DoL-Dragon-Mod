@@ -685,8 +685,11 @@ window.clothesReturnLocation = function(item, type){
 	if(!V.multipleWardrobes) return "wardrobe";
 	let isolated = ["asylum","prison"];
 	let lastTaken = item.lastTaken;
-	if (!lastTaken) {lastTaken = "wardrobe"};
-	if ((V.multipleWardrobes !== "all" && !isolated.includes(lastTaken)) || V.multipleWardrobes[lastTaken].unlocked) {lastTaken = "wardrobe"};
+	if (!lastTaken || (V.multipleWardrobes !== "all" && !isolated.includes(lastTaken))
+		|| !V.wardrobes[lastTaken]
+		|| !V.wardrobes[lastTaken].unlocked) {
+		lastTaken = 'wardrobe';
+	}
 	switch(type){
 		case "rebuy":
 			switch(V.location){

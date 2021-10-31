@@ -19,7 +19,7 @@
 
 	<<if _cursedPrevent isnot true>>
 		/*Primary Piece*/
-		<<if $worn[$args[0]] isnot "naked">>
+		<<if $worn[$args[0]].name isnot "naked">>
 			<<generalUndress `clothesReturnLocation($worn[$args[0]])` $args[0]>>
 			<<unset $_lastTaken>>
 		<</if>>
@@ -29,7 +29,7 @@
 			<<set _colour to $worn[$args[0]].colour>>
 			<<set _accessory_colour to $worn[$args[0]].accessory_colour>>
 			<<for _labelWear, _valueWear range _outfitPrimaryWear>>
-				<<if $worn[_labelWear] isnot "naked">>
+				<<if $worn[_labelWear].name isnot "naked">>
 					<<generalUndress `clothesReturnLocation($worn[_labelWear])` _labelWear>>
 				<</if>>
 				<<unset _pieceId>>
@@ -1350,7 +1350,8 @@
 				<<elseif $args[2] is "check">>
 					<<set _store_check to 1>>
 				<<else>>
-					<<generalUndress `clothesReturnLocation($worn[$args[1]])` $args[1]>>
+					<<set $_location to clothesReturnLocation($worn[$args[1]])>>
+					<<generalUndress $_location $args[1]>>
 					<<if $store[$args[1]][_u].name is "naked">>
 					<<elseif $store[$args[1]][_u].temp is undefined>>
 						<<set $worn[$args[1]] to clone($store[$args[1]][_u])>>

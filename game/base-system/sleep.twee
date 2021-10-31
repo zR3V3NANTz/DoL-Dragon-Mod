@@ -196,8 +196,12 @@
 		<<case "Farm Bed">>
 			<<set $_storeLocation to "Farm Bed">>
 			<<set $wardrobe_location to "alexFarm">>
+		<<case "prison bed">>
+			<<set $_storeLocation to "prison bed">>
+			<<set $wardrobe_location to "prison">>
 		<<default>>
 			Something went wrong with the "bedclotheson" widget, please report
+			<<run console.log('Something went wrong with the "bedclotheson" widget, please report')>>
 	<</switch>>
 	<<wardrobeSelection true>>
 	<<updateWornClothingLocation $wardrobe_location>>
