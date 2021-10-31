@@ -290,7 +290,7 @@ Writing is engraved on its surface.
             <<methodical_guard 0 cap>><<person1>> adjusts <<his>> glasses. "You are to be chastised," <<he>> says <span class="blue">"Allowed no clothes below the waist.</span> Seems you're ahead of us."
             <br><br>
         <<else>>
-            <<upperruined>><<underupperruined>>
+            <<lowerruined>><<underlowerruined>>
             <<methodical_guard 0 cap>><<person1>> adjusts <<his>> glasses as the other guards close in. "You are to be chastised," <<he>> says <span class="blue">"Allowed no clothes below the waist."</span>
             <br><br>
             Their hands grasp and tug the fabric. You're left bottomless in the middle of the room.

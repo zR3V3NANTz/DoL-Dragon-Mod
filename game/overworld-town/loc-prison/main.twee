@@ -375,7 +375,7 @@ You snuggle under the covers.
 
 You open the cupboard.
 <br><br>
-<<set $wardrobe_location to "prison">>
+<<set $wardrobe_location to "Prison Wardrobe">>
 <<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>
@@ -953,12 +953,14 @@ You are on the metal walkway outside your cell, at the top of the cell block. Th
             <</if>>
             <<if $prison.attention_level gte 1 and !$prison.protection and $prison.schedule is "free time">>
                 <<if !$prison.protection>>
-                    <<generate_scarred_inmate 0>><<person1>>
-                    <<scarred_inmate 0 capo>> cell is more spartan the most. Almost as if it were unnoccupied.
-                    <<endevent>>
-                    <br>
-                    <<cellicon>><<link [[Spartan cell|Prison Scarred]]>><</link>>
-                    <br><br>
+                    <<if !$prison_scarred_done>>
+                        <<generate_scarred_inmate 0>><<person1>>
+                        <<scarred_inmate 0 capo>> cell is more spartan the most. Almost as if it were unnoccupied.
+                        <<endevent>>
+                        <br>
+                        <<cellicon>><<link [[Spartan cell|Prison Scarred]]>><</link>>
+                        <br><br>
+                    <</if>>
                     /*
                     <<generate_tattooed_inmate 0>><<person1>>
                     The walls of <<tattooed_inmate 0 apo>> cell, as well as parts of the ceiling, are decorated with pornography.

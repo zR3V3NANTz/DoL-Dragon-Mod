@@ -7,6 +7,7 @@ A "Closed" sign hangs on the door. You tug the door but it's locked.<br><br>
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
 <<endevent>>
 <<generateNPC 1 t $pharmNurseGender $pharmNurseGender $pharmNurseLvl>>
+<<person1>>
 <<set $pronoun = $NPCList[0].pronoun>>
 <<set $description = $NPCList[0].description>>
 <<if $pharmTriedSeduction is undefined>>

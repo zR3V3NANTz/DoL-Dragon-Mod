@@ -119,7 +119,7 @@ You jump after the soap, and manage to catch it,
 <<else>>
     <span class="red">but skid as you land.</span> You end up on your hands and knees.<<gpain>><<pain 4>>
     <br><br>
-    You slip again as you struggle to your feet, attracting more attention.<<gstress>><<stress 6>><<lrespect>><<prison_inmates -1>><<glewdity>><!--<<prison_lewdity 1>>-->
+    You slip again as you struggle to your feet, attracting more attention.<<gstress>><<stress 6>><<lrespect>><<prison_inmates -1>><<glewdity>><<prison_attention 1>>
 <</if>>
 <br><br>
 
@@ -187,7 +187,7 @@ There are pillars in the corners of the room. You strip behind one. It's hardly 
 You move your clothes to another bench.
 <br><br>
 
-<<link [[Next|Prison Shower]]>><<endevent>><<pass 10>><</link>>
+<<link [[Next|Prison Shower Take]]>><<endevent>><</link>>
 <br>
 
 
@@ -693,8 +693,10 @@ You await them with hands on hips, and mentally prepare for a scrap.
     You think <<hes>> referring to Bailey.
     <br><br>
 
-    <<link [[Say that Bailey isn't your parent|Prison Attention Bailey]]>><</link>>
-    <br>
+    <<if $worn.face.type.includes("gag")>>
+        <<link [[Say that Bailey isn't your parent|Prison Attention Bailey]]>><</link>>
+        <br>
+    <</if>>
     <<link [[Nod|Prison Attention Nod]]>><</link>>
     <br>    
 <<else>>
@@ -955,7 +957,7 @@ You awaken to a baton in the stomach.<<ggpain>><<gtrauma>><<pain 8>><<trauma 6>>
 
 "Customers weren't happy," <<he>> says. "Didn't pay to fuck a limp fish. Get moving."
 <br><br>
-
+<<clotheson>>
 You climb the snaking stairs, back to the prison block. <<veteran_guard 0 cap>> locks the door behind <<him>>.
 
 <<prison_unbind>>

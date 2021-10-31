@@ -458,7 +458,7 @@ You spit on the floor. <<person3>><<veteran_guard 2 cap>> takes a step closer, a
     <br><br>
 <</if>>
 
-<<person4>><<methodical_guard 3 cap>> waves a hand. "It doesn't matter," <<he>> says as <<he>> scribbles something down. <<person2>><<anxious_guard 1 cap>> licks <<his>> lips. "Everything."<<gstress>><<stress 6>>
+<<person4>><<methodical_guard 3 cap>> waves a hand. "It doesn't matter," <<he>> says as <<he>> scribbles something down. "Take off your clothes."  <<person2>><<anxious_guard 1 cap>> licks <<his>> lips. "Everything."<<gstress>><<stress 6>>
 <br><br>
 
 <<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
@@ -832,7 +832,7 @@ They blast you with icy water. The shock knocks you to your knees, but they keep
 
 
 :: Prison Intro Walk
-<<effects_prison>><<effects>>
+<<effects>><<effects_prison>>
 
 
 <<generate_scarred_inmate 4>>
@@ -852,8 +852,10 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
     <br>
     <<if $NPCList[0].penis isnot "none">>
         "A new cumsock? Fantastic."
-    <<else>>
+    <<elseif $player.gender_appearance is "m">>
         "A new dildo? Fantastic."
+    <<else>>
+        "A new sex toy? Fantastic."
     <</if>>
     <br>
     <<if $beauty gte ($beautymax * 0.8)>>
@@ -933,7 +935,7 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
 
 
 :: Prison Intro Cell
-<<effects_prison>><<effects>>
+<<effects>><<effects_prison>>
 
 <<if $prison.schedule is "lockdown">>
     The cell door rattles shut.
@@ -1228,7 +1230,7 @@ You climb into the car. Bailey slams the door behind you.
 Bailey pulls onto the main road before speaking. "Try not to be caught in the future," <<he>> says. "I was reimbursed, but it was a headache."
 <br><br>
 
-<<link [[Remain Silent|Prison End Car Silent]]>><</link>>
+<<link [[Remain silent|Prison End Car Silent]]>><</link>>
 <br>
 <<link [[Thank|Prison End Car Thank]]>><</link>>
 <br>

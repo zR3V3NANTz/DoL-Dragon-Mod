@@ -131,6 +131,10 @@
 <</widget>>
 
 <<widget "effects_prison">>
+<<if $prison.work_check isnot 1 and $hour gte 7>>
+    <<set $prison.work_check to 1>>
+    <<set $prison.hours_worked to 0>>
+<</if>>
 <<if $prison.schedule is "hunt">>
     <span class="red">You are being hunted.</span>
 <<elseif $prison.schedule is "revolt">>
@@ -219,7 +223,7 @@
         <<set $prison.job to $prison_job_change>>
         <<unset $prison_job_change>>
     <</if>>
-    
+    <<unset $prison_scarred_done>>
     <<unset $prisonwake>>
     <<unset $prison_relaxed_spoke>>
     <<unset $prison_anxious_spoke>>
@@ -228,6 +232,7 @@
     <<set $prison.morning to 0>>
     <<set $prison.evening to 0>>
     <<set $prison_punished_days -= 1>>
+    <<set $prison.work_check to 0>>
     <<if $location is "prison">>
         <<cell_trouble -1>>
         <<set $prison.time -= 1>>
@@ -831,6 +836,7 @@
     <br><br>
     <<set $prison.hours_worked to 0>>
     <<set $prison_event_trigger to "hunt">>
+    <<set $prison.morning to 1>>
 <<elseif $prison.schedule is "revolt">>
     <<prison_attention 1>>
     Anarchy reigns throughout the prison.
@@ -955,10 +961,10 @@
     <<set _rng to random(1, 5)>>
     <<switch _rng>>
         <<case 1>>
-            You're self-conscious about your underwear, being the only one attired so.<<gstress>><<stress 6>>
+            You're self-conscious about your state of dress, being the only one attired so.<<gstress>><<stress 6>>
             <br><br>
         <<case 2>>
-            Inmates keep leering at your underwear. <<covered>><<gattention>><<prison_attention 1>><<gstress>><<stress 6>>
+            Inmates keep leering at your bare skin. <<covered>><<gattention>><<prison_attention 1>><<gstress>><<stress 6>>
             <br><br>
         <<case 3>>
             <<generate1>><<person1>>
@@ -977,7 +983,7 @@
             <<endevent>>
             <br><br>
         <<case 4>>
-            <<generate1>><<person1>>A <<person>> looks at your underwear and calls you a whore as <<he>> passes.<<gattention>><<prison_attention 1>><<gstress>><<stress 6>>
+            <<generate1>><<person1>>A <<person>> looks you over and calls you a whore as <<he>> passes.<<gattention>><<prison_attention 1>><<gstress>><<stress 6>>
             <<endevent>>
             <br><br>
         <<default>>
@@ -1038,6 +1044,7 @@
             <br><br>
         <<case 6>>
             <<generate1>><<person1>>A <<person>> stares at you from a distance. <<He>> doesn't look away when you make eye contact.<<gattention>><<prison_attention 1>>
+            <<endevent>>
             <br><br>
         <<case 7>>
             Inmates cluster in groups of three or four, lost in furtive discussions.
@@ -1071,7 +1078,7 @@
 <<widget "events_prison_attention">>
 <<set $prison.attention to 0>>
 <<if $prison.schedule is "revolt">>
-    The riotous noise quells. You stagger. <span class="red">Something is wrong.</span>
+    The riotous noise quells. An inmate staggers by, and collapses. You find it hard to remain on your feet yourself. <span class="red">Something is wrong.</span>
     <br><br>
     
     <<link [[Next|Prison Warden]]>><</link>>
@@ -1079,8 +1086,8 @@
 <<elseif $prison.attention_level is 0>>
     <<generate_scarred_inmate 0>>
     <<generate_tattooed_inmate 1>>
-    <<generate3>><<generate4>><<generate5>><<generate6>>
-    "I see <<phim>> boss," says a <<person2>><<personsimple>>'s voice. You turn. <<tattooed_inmate cap>> walks towards you, flanked by a <<person3>><<person>> and <<person4>><<person>>.
+    <<generate3>><<generate4>><<generate5>><<generate6>><<person3>>
+    "I see <<phim>> boss," says a <<personsimple>>'s voice. You turn. <<tattooed_inmate 0 cap>> walks towards you, flanked by a <<person3>><<person>> and <<person4>><<person>>.
     <br><br>
     <<person2>><<He>> stops several feet away, and examines you from head to toe. "I need a new <<bitch>>," <<he>> says. There's not an inch of space free of the ink covering <<his>> visible body. "The old's all used up."
     <br><br>
@@ -1197,7 +1204,7 @@
 
     <<link [[Next|Prison Spire]]>><<endevent>><</link>>
     <br>
-<<elseif $hour is 18>>
+<<elseif $hour gte 18>>
     <<generate_anxious_guard 0>><<person1>>"Dinner," <<anxious_guard 0>> says. <<He>> takes a deep breath, and runs for the staircase down.
     <br><br>
 

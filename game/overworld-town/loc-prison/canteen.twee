@@ -35,13 +35,13 @@ You are in the canteen. Rows of table fill the large room. The ceiling hangs low
                 <<prison_guard_watch methodical>>
             <<else>>
                 <<if $prison.schedule is "wake">>
-                    <<link [[Breakfast (0:40)|Prison Breakfast]]>><<stress -6>><<pass 40>><</link>><<lstress>>
+                    <<link [[Breakfast (Up to an hour)|Prison Breakfast]]>><<stress -6>><</link>><<lstress>>
                     <br>
                 <<elseif $prison.schedule is "lunch">>
-                    <<link [[Lunch (0:40)|Prison Lunch]]>><<stress -6>><<pass 40>><</link>><<lstress>>
+                    <<link [[Lunch (Up to an hour)|Prison Lunch]]>><<stress -6>><</link>><<lstress>>
                     <br>
                 <<elseif $prison.schedule is "dinner">>
-                    <<link [[Dinner (0:40)|Prison Dinner]]>><<stress -6>><<pass 40>><</link>><<lstress>>
+                    <<link [[Dinner (Up to an hour)|Prison Dinner]]>><<stress -6>><</link>><<lstress>>
                     <br>
                 <</if>>
                 <br><br>

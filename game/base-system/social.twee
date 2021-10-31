@@ -245,7 +245,7 @@
 				<<set _guardRepConfig = { currentValue: $prison.guards, preText: 'The guards ', states : [
 					{ requiredValue: 0,		color: 'red',		description: 'have you under constant surveillance.'},
 					{ requiredValue: 15,	color: 'pink',		description: 'consider you a problem.'},
-					{ requiredValue: 30,	color: 'purple',	description: 'watch you.'},
+					{ requiredValue: 30,	color: 'purple',		description: 'watch you.'},
 					{ requiredValue: 45,	color: 'blue',		description: 'are keeping an eye on you.'},
 					{ requiredValue: 60,	color: 'lblue',		description: 'expect no trouble from you.'},
 					{ requiredValue: 80,	color: 'teal',		description: 'overlook you.'},

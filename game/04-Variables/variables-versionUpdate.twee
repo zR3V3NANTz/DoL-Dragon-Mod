@@ -2565,9 +2565,16 @@
 	<<init_names>>	
 <</if>>
 
-<<if $per_npc_update isnot 1>>
+<<if $per_npc_update is undefined>>
 	<<set $per_npc_update to 1>>
 	<<updateNPCsFirst condom false>>
 	<<updateNPCsFirst name_known 0>>
+<</if>>
+<<if $per_npc_update is 1>>
+	<<set $per_npc_update to 2>>
+	<<updateNPCsFirst chastity `{}`>>
+	<<updateNPCsSecond chastity penis "">>
+	<<updateNPCsSecond chastity vagina "">>
+	<<updateNPCsSecond chastity anus "">>
 <</if>>
 <</widget>>

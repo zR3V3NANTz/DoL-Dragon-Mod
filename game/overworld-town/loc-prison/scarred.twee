@@ -66,15 +66,24 @@ You turn and grasp the bars of the cell. <<His>> hands are a blur as <<he>> ties
 :: Prison Scarred Bars 2
 <<effects>>
 
-"Like that, <<bitch>>?" <<he>> asks, delivering another smack. "Say <i>'Thank you for disciplining me, <<if $pronoun is "m">>daddy<<else>>mummy<</if>>.'</i>" <<He>> hits you again. "Say it."<<gpain>><<pain 4>>
-<br><br>
+"Like that, <<bitch>>?" <<he>> asks, delivering another smack. 
 
-<<link [[Say it|Prison Scarred Bars Say]]>><<sub 1>><</link>><<willpowerdifficulty 1 100>>
-<br>
-<<link [[Refuse|Prison Scarred Bars Refuse]]>><<def 1>><</link>><<willpowerdifficulty 1 1000>>
-<br>
-<<link [[Just sob|Prison Scarred Bars Sob]]>><<sub 1>><<pain -4>><</link>><<lpain>>
-<br>
+<<if $worn.face.type.includes("gag")>>
+    "You're my gagged slut, aren't you?"
+    <br><br>
+    <<link [[Just sob|Prison Scarred Bars Sob]]>><<pain -4>><</link>><<lpain>>
+    <br>
+<<else>>
+    "Say <i>'Thank you for disciplining me, <<if $pronoun is "m">>daddy<<else>>mummy<</if>>.'</i>" <<He>> hits you again. "Say it."<<gpain>><<pain 4>>
+    <br><br>
+
+    <<link [[Say it|Prison Scarred Bars Say]]>><<sub 1>><</link>><<willpowerdifficulty 1 100>>
+    <br>
+    <<link [[Refuse|Prison Scarred Bars Refuse]]>><<def 1>><</link>><<willpowerdifficulty 1 1000>>
+    <br>
+    <<link [[Just sob|Prison Scarred Bars Sob]]>><<sub 1>><<pain -4>><</link>><<lpain>>
+    <br>
+<</if>>
 
 
 :: Prison Scarred Bars Say
@@ -261,7 +270,7 @@ The <<person2>><<person>> is still conscious, and medical isn't far away. Still,
 The inmate tries to speak as you lay <<him>> down, but can't form the words.
 <br><br>
 
-<<link [[Next|Prison Scarred Pair Silent]]>><</link>>
+<<link [[Next|Prison Walkway]]>><<endevent>><</link>>
 <br>
 
 :: Prison Scarred Molestation
@@ -485,7 +494,7 @@ You refuse to budge.
 <<elseif $pain gte 100 and $willpowerpain is 0>>
 	<span id="next"><<link [[Next|Prison Scarred Fight Finish]]>><</link>></span><<nexttext>>
 <<else>>
-	<span id="next"><<link [[Next|Fight]]>><</link>></span><<nexttext>>
+	<span id="next"><<link [[Next|Prison Scarred Fight]]>><</link>></span><<nexttext>>
 <</if>>
 
 :: Prison Scarred Fight Finish
@@ -519,6 +528,8 @@ You refuse to budge.
     <br>
 
 <</if>>
+
+<<set $prison_scarred_done to true>>
 
 :: Prison Scarred Walk
 <<effects>>

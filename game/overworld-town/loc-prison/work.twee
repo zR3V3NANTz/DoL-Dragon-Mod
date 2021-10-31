@@ -504,7 +504,11 @@ You step away from the <<person>>. <<He>> takes the hint, though gives your <<bo
     "You spend it as my footstool. Not like your good for much else at the moment."
     <<set $phase to 2>>
 <<else>>
-    <<set $rng to random(1, 3)>>
+    <<if $worn.face.type.includes("gag")>>
+        <<set $rng to random(1, 2)>>
+    <<else>>
+        <<set $rng to random(1, 3)>>
+    <</if>>
     <<switch $rng>>
         <<case 1>>
             "You spend it on your hands and knees, carrying laundry with your mouth."

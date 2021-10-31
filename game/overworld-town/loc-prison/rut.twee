@@ -81,14 +81,14 @@ You return the way you came, the journey faster now that you can see where you'r
 <</if>>
 
 :: Prison Rut Shout
-<<effects>>
+<<effects>><<prison_effects>>
 
 <<if $submissive gte 1150>>
-    "C-can anyone hear me?" you shout. "It's scary down here."
+    <<gagged_speech "C-can anyone hear me" ?>> you shout. <<gagged_speech "It's scary down here" .>>
 <<elseif $submissive lte 850>>
-    "Fuckheads," you shout. "I got you something. Now let me up."
+    <<gagged_speech "Fuckheads" ,>> you shout. <<gagged_speech "I got you something. Now let me up" .>>
 <<else>>
-    "I found a diamond," you shout. "Can I come up?"
+    <<gagged_speech "I found a diamond" ,>> you shout. <<gagged_speech "Can I come up" ?>>
 <</if>>
 There's a few moments of silence, <span class="green">then one end of a rope lands beside you.</span>
 <br><br>

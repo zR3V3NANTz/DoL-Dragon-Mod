@@ -1630,8 +1630,8 @@ You stroke the tip of the <<print $NPCList[($estate.cards.oral - 1)].penisdesc>>
 			<<set $player.bodyliquid.face.semen += 1>>
 			<<set $player.bodyliquid.neck.semen += 1>>
 			<<set $player.bodyliquid.tummy.semen += 1>>
-			<<else>>
-			You are such a thirsty <span class="gold">Cum Addict</span>. You can't help but choke yourself by taking the phallus all the way into your throat. With every spasm, the <<print $NPCList[($estate.cards.oral - 1)].penisdesc>> sends warm loads of semen sliding down your neck and into your stomach. 
+		<<else>>
+			You are such a thirsty <span class="gold">Cum Addict</span>. You can't help but catch as much cum as you can with your mouth. With every spasm, the <<print $NPCList[($estate.cards.oral - 1)].penisdesc>> sends warm loads of semen sliding down your neck and into your stomach. 
 			<<set $hunger -= 200>>
 			<<set $thirst -= 200>>
 			<<ejacstat>>

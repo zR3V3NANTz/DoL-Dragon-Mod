@@ -48,7 +48,7 @@
 
 <<widget "updateNPCsSecond">>
 <<set _per_keys to Object.keys($per_npc)>>
-<<for _i to 0; _i lt $per_npc.length; _i++>>
+<<for _i to 0; _i lt _per_keys.length; _i++>>
 	<<set $per_npc[_per_keys[_i]][$args[0]][$args[1]] to $args[2]>>
 <</for>>
 <</widget>>
