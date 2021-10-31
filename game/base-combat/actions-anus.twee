@@ -217,7 +217,7 @@
 	<<if ($consensual is 0 or ($promiscuity gte 75 and $enemytype is "man") or ($deviancy gte 75 and $enemytype isnot "man")) and $analskill gte 800>>
 		<<set _anusaction["Edging"] to "penisDoubleEdging">>
 	<</if>>
-	<<set _anusaction["Pull away"] to "escape">>
+	<<set _anusaction["Pull away"] to "doubleescape">>
 <</widget>>
 
 <<widget "actionsanusPenisDoublePenetration">>
@@ -255,7 +255,8 @@
 	<<set _end to 0>>
 <</if>>
 
-<<if $anusaction is "anustopenis">><<set $anusaction to 0>><<submission 10>><<analskilluse>><<set $anusactiondefault to "anustopenis">><<combatpromiscuity5>>
+<<if $anusaction is "anustopenis">>
+	<<set $anusaction to 0>><<submission 10>><<analskilluse>><<set $anusactiondefault to "anustopenis">><<combatpromiscuity5>>
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<for _j = $enemyno-1; _j gte _end; _j-->>
 			<<if $NPCList[_j].penis is 0 and ($enemytype isnot "man" or ($NPCList[_j].location.genitals is 0 and $NPCList[_j].location.head isnot "genitals"))>>
@@ -300,7 +301,8 @@
 	<<set _end to 0>>
 <</if>>
 
-<<if $anusaction is "anuspenisfuck">><<set $anusaction to 0>><<submission 20>><<analskilluse>><<set $anusactiondefault to "anuspenisfuck">><<combatpromiscuity5>>
+<<if $anusaction is "anuspenisfuck">>
+	<<set $anusaction to 0>><<submission 20>><<analskilluse>><<set $anusactiondefault to "anuspenisfuck">><<combatpromiscuity5>>
 	<<for _j = $enemyno-1; _j gte _end; _j-->>
 		<<if $NPCList[_j].penis is "anusentrance" or $NPCList[_j].penis is "anusimminent">>
 			<<if $anusWetness + ($analskill / 10) gte ($NPCList[_j].penissize * 15) + random(1, 40) or random(1, 2) is 2>>

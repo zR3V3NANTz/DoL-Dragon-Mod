@@ -5024,6 +5024,16 @@ You <<peniletext>> tease <<their>> anus with your <<penis>>.
 <</if>>
 <</widget>>
 
+<<widget "actionsanusdoubleescape">>
+	<<if $pain lte 20>>
+		<span class="blue">You shift your pelvis, moving your <<bottom>> away from <<their>> penises.</span>
+	<<elseif $pain lte 60>>
+		<span class="blue">You shift your pelvis, moving your <<bottom>> away from <<their>> penises.</span>
+	<<else>>
+		<span class="blue">You shift your pelvis in desperation, moving your <<bottom>> away from <<their>> penises.</span>
+	<</if>>
+<</widget>>
+
 <<widget "actionsconfront">>
 <<if $angel gte 6 and random(1, 2) is 2>>
     <<set _rng to random(1, 3)>>
