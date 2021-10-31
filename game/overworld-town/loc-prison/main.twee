@@ -355,19 +355,20 @@ You snuggle under the covers.
 	<<set $schoolwake to 0>>
     A bell rings, waking you from your slumber.
     <br><br>
-
-	<<set _bedroom to "prison bed">>
-	<<storeon _bedroom "check">>
-	<<if _store_check is 1>>
-		<<storeon _bedroom>>
-		<<set $wardrobe_location to "prison_cupboard">>
-	<</if>>
-	<<link [[Next|Prison Cell]]>><<endevent>><</link>>
+	<<set $wardrobe_location to "prison">>
+	<<wardrobeSelection true>>
+	<<radiooutfits>>
+	<br><br>
+	<<link [[Next|Prison Cell]]>><<bedclotheson "prison bed">><<endevent>><</link>>
 	<br>
 
 <<else>>
 	<br><br>
-		<<link [[Get up|Prison Cell]]>><<bedclotheson "prison bed">><</link>>
+	<<set $wardrobe_location to "prison">>
+	<<wardrobeSelection true>>
+	<<radiooutfits>>
+	<br><br>
+	<<link [[Get up|Prison Cell]]>><<bedclotheson "prison bed">><</link>>
 <</if>>
 
 :: Prison Wardrobe
@@ -375,7 +376,7 @@ You snuggle under the covers.
 
 You open the cupboard.
 <br><br>
-<<set $wardrobe_location to "Prison Wardrobe">>
+<<set $wardrobe_location to "prison">>
 <<wardrobeSelection>>
 <div id="wardrobewear"><<wardrobewear>></div>
 <div id="wardrobeExits"><<wardrobeExits>></div>

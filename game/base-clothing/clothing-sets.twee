@@ -83,7 +83,10 @@
 
 <<widget "radiooutfits">>
 <<for _i to 0; _i lt $outfit.length; _i++>>
-<label><<print 'Wear $outfit[_i].name <<radiobutton "$wear_outfit" "' + _i + '">>'>></label> |
+	<<if $outfit[_i].location and $outfit[_i].location isnot $wardrobe_location>>
+		<<continue>>
+	<</if>>
+	<label><<print 'Wear $outfit[_i].name <<radiobutton "$wear_outfit" "' + _i + '">>'>></label> |
 <</for>>
 <label>Dress like you were <<radiobutton "$wear_outfit" "clotheson" checked>></label>
 <</widget>>
@@ -334,7 +337,12 @@
 	<<set _keys to Object.keys(_notEquipped)>>
 	<<if _keys.length gt 0>>
 		<<set _resultStrings to {}>>
-		<<set _wardrobeName to _selectedWardrobe.name + (!_selectedWardrobe.name.includes("locker") ? " wardrobe" : "")>>
+		<<if $wardrobes[$wardrobe_location] is undefined>>
+			<<set _locationName to "wardrobe">>
+		<<else>>
+			<<set _locationName to $wardrobe_location>>
+		<</if>>
+		<<set _wardrobeName to $wardrobes[_locationName].name + (!$wardrobes[_locationName].name.includes("locker") ? " wardrobe" : "")>>
 		<<for _i to 0; _i lt _keys.length; _i++>>
 			<<switch _notEquipped[_keys[_i]].reason>>
 				<<case "not found">>

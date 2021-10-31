@@ -1,7 +1,17 @@
 :: Widgets Wardrobe [widget]
 
 <<widget "wardrobewear">>
-<<if $wardrobe_location is "wardrobe" or $wardrobes[$wardrobe_location] is undefined>>
+<<if $wardrobes[$wardrobe_location] is undefined>>
+	<span class="red">A wardrobe error occured, please report. The default wardrobe will be shown in place of the intended wardrobe.</span>
+	<br>
+	<!--$wardrobe_location should always point to a specific wardrobe inside of $wardrobes-->
+	wardrobe_location: <<print $wardrobe_location>>
+	<br>
+	passage: <<print $passage>>
+	<br><br>
+	<<wardrobeSelection true>>
+<</if>>
+<<if $wardrobe_location is "wardrobe">>
 	<<set _selectedWardrobe to $wardrobe>>
 <<else>>
 	<<set _selectedWardrobe to $wardrobes[$wardrobe_location]>>
