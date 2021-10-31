@@ -130,10 +130,14 @@ You jump after the soap, and manage to catch it,
 <<effects>>
 
 <<clothesstrip>>
-You strip with the other inmates, and leave your clothes on the bench.
+<<npc Kylar>><<person1>>
+You strip with the other inmates, and leave your clothes on the bench. None of them pay you any mind.
+<<if $prison.kylar is "active">>
+    Kylar looks down, and pretends to fiddle with <<his>> jumpsuit, but you can tell <<hes>> watching you through <<his>> hanging fringe.<<glust>><<npcincr Kylar lust 5>>
+<</if>>
 <br><br>
 
-<<link [[Next|Prison Shower Take]]>><<pass 10>><</link>>
+<<link [[Next|Prison Shower Take]]>><<pass 10>><<endevent>><</link>>
 <br>
 
 :: Prison Shower Private
@@ -143,6 +147,7 @@ You strip with the other inmates, and leave your clothes on the bench.
 There are pillars in the corners of the room. You strip behind one. It's hardly private, but no one can see you directly.
 <br><br>
 
+<<set _rng to random(1, 3)>>
 <<if random(1, 3) is 3>>
     <<generate1>><<person1>>
     A <<person>> arrives as you're finishing up. <<He>> lifts the hem of <<his>> shirt, but then pauses and glances around. <<He>> pushes <<his>> forearm against your neck, forcing you against the pillar.<<gtrauma>><<gstress>>
@@ -157,6 +162,13 @@ There are pillars in the corners of the room. You strip behind one. It's hardly 
     <br>
     <<link [[Stomp on foot|Prison Shower Stomp]]>><<def 1>><</link>><<physiquedifficulty 1 16000>>
     <br>
+<<elseif random(1, 2) is 2 and $prison.kylar is "active">>
+    You see Kylar peek around the pillar.
+    <br><br>
+
+    <<link [[Just take a shower|Prison Shower Take]]>><<pass 10>><<npcincr Kylar lust 5>><</link>><<glust>>
+    <br>
+    <<link [[Get angry|Prison Shower Kylar Angry]]>><<npcincr Kylar rage 1>><<prison_inmates 5>><</link>><<gksuspicion>><<grespect>>
 <<else>>
     You take a deep breath, and walk to the shower.
     <br><br>
@@ -164,6 +176,29 @@ There are pillars in the corners of the room. You strip behind one. It's hardly 
     <<link [[Next|Prison Shower Take]]>><<pass 10>><</link>>
     <br>
 <</if>>
+
+:: Prison Shower Kylar Angry
+<<effects>>
+
+<<npc Kylar>><<person1>>
+<<if $worn.face.type.includes("blindfold")>>
+    You can't speak with that gag, so you march around the pillar, and stare Kylar down.
+<<else>>
+    <<if $submissive gte 1150>>
+        "D-don't be a pervert Kylar!" you say.
+    <<elseif $submissive lte 850>>
+        "Piss off you fucking pervert Kylar," you say.
+    <<else>>
+        "Don't be a pervert Kylar," you say.
+    <</if>>
+<</if>>
+<br><br>
+
+<<He>> jumps, and backs away from the pillar with <<his>> eyes downcast. "I-I," <<he>> gulps. "I w-wasn't-" <<he>> trips over a bench, scrambles to <<his>> feet, and flees the room.
+<br><br>
+
+<<link [[Next|Prison Shower Take]]>><<endevent>><<pass 10>><</link>>
+<br>
 
 :: Prison Shower Apologise
 <<effects>>

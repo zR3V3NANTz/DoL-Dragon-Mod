@@ -735,7 +735,7 @@
 					<</if>>
 					<<switch random(1, 7)>>
 					<<case 1 2>>
-						<<He>> cums before <<he>> can penetrate you, accidentally ejaculating all over $NPCList[_otherNPCindex].fullDescription and their $NPCList[_otherNPCindex].penisdesc. "That's what you get for not giving me a turn with <<pher>> slut ass!"
+						<<He>> cums before <<he>> can penetrate you, accidentally ejaculating all over the $NPCList[_otherNPCindex].fullDescription and their $NPCList[_otherNPCindex].penisdesc. "That's what you get for not giving me a turn with <<pher>> slut ass!"
 					<<case 3 4>>
 						<<He>> strokes <<his>> $NPCList[_nn].penisdesc as <<he>> ejaculates onto your <<bottom>>. You feel semen drip down. <<He>> slaps the $NPCList[_otherNPCindex].fullDescription's backside. "Next time let me join the fun."
 						<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
@@ -1128,7 +1128,7 @@
 					<</if>>
 					<<switch random(1, 7)>>
 					<<case 1 2>>
-						<<He>> cums before <<he>> can penetrate you, accidentally ejaculating all over $NPCList[_otherNPCindex].fullDescription and their $NPCList[_otherNPCindex].penisdesc. "That's what you get for not giving me a turn with <<pher>> slut ass!"
+						<<He>> cums before <<he>> can penetrate you, accidentally ejaculating all over the $NPCList[_otherNPCindex].fullDescription and their $NPCList[_otherNPCindex].penisdesc. "That's what you get for not giving me a turn with <<pher>> slut ass!"
 					<<case 3 4>>
 						<<He>> strokes <<his>> $NPCList[_nn].penisdesc as <<he>> ejaculates onto your <<bottom>>. You feel semen drip down. <<He>> slaps the $NPCList[_otherNPCindex].fullDescription's backside. "Next time let me join the fun."
 						<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>

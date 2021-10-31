@@ -683,6 +683,8 @@ These still require Fertilise
 <br>
 <<link [[Asylum|Hospital Bed]]>><<set $trauma to 4900>><</link>>
 <br>
+<<link [[Prison|Police Prison Intro Bailey]]>><<npc Bailey>><<generate2>><<generate3>><<generate4>><<person2>><<neckwear 1>><<crimeup 5000>><</link>>
+<br>
 <<link [[Remy's Farm|Livestock Intro]]>><</link>>
 <br>
 <<link [[Farmlands|Farmland]]>><</link>>

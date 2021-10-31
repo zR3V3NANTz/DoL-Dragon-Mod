@@ -12,7 +12,7 @@ You are on the secret beach outside the prison. The waves are violent.
 <br><br>
 
 
-<<if ($hour is 12 or $hour is 14) and !$prison_wren_intro and $prison_wren_boat_intro is 1>>
+<<if ($hour is 12 or $hour is 14) and !$prison_wren_intro and $prison_wren_boat_intro is 1 and $weekday is 6>>
     <<npc "Wren">><<person1>>
     There's a boat moored just off shore. Wren emerges from below deck, and leaps over the water onto a nearby rock. <<He>> crouches to pick up a crate, but stops when <<he>> sees you.
     <br><br>
@@ -22,12 +22,12 @@ You are on the secret beach outside the prison. The waves are violent.
     <<link [[Next|Prison Beach]]>><<endevent>><<unset $prison_wren_boat_intro>><</link>>
     <br>
 <<else>>
-    <<if $hour is 12 or $hour is 14 and !$prison_wren_intro>>
+    <<if ($hour is 12 or $hour is 14) and !$prison_wren_intro and $weekday is 6>>
         <<npc "Wren">><<person1>>
         Wren busies <<himself>> on <<his>> ship.
         <br><br>
         <<endevent>>
-    <<elseif $hour is 13 and !$prison_wren_intro>>
+    <<elseif $hour is 13 and !$prison_wren_intro and $weekday is 6>>
         Wren's boat is anchored neared the beach.
         <br><br>
     <<else>>
@@ -51,7 +51,7 @@ You are on the secret beach outside the prison. The waves are violent.
     <<else>>
         Small fish leap from a shallow, placid lagoon.
         <br>
-        <<if ($hour is 12 or $hour is 14) and !$prison_wren_intro>>
+        <<if ($hour is 12 or $hour is 14) and !$prison_wren_intro and $weekday is 6>>
             <br>
             <<link [[Speak to Wren|Prison Beach Wren]]>><</link>>
             <br>
@@ -148,26 +148,196 @@ Wren addresses you with one leg resting on the side of the ship. "Any way I can 
     Wren looks up. "Skies are clear," <<he>> says. "I'll give you a lift back to the mainland. It'll be a one-way trip though. They scrutinise me more on the way in."
     <br><br>
 
-    <<link [[Escape (0:30)|Prison Wren Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 30>><<prison_guards -40>><</link>><<crime>><<gggsuspicion>>
-    <br>
+    <<if $prison.kylar is "solitary">>
+        You could take Kylar with you, but you'll need to wait until they're freed from solitary.
+        <br><br>
+    <</if>>
+
+    <<if $prison.kylar is "active">>
+        <<link [[Escape alone (0:30)|Prison Wren Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 30>><<prison_guards -40>><</link>><<crime>><<gggsuspicion>>
+        <br>
+        <<link [[Escape with Kylar (0:40)|Prison Kylar Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 40>><<prison_guards -40>><<npcincr Kylar rage -60>><<npcincr Kylar love 20>><</link>><<crime>><<gggsuspicion>><<ggglove>><<lllsuspicion>>
+        <br>
+    <<else>>
+        <<link [[Escape (0:30)|Prison Wren Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 30>><<prison_guards -40>><</link>><<crime>><<gggsuspicion>>
+        <br>
+    <</if>>
+
 <<else>>
     Wren points at the sky. <span class="blue">"I can't take you with those birds watching,"</span> <<he>> says. "Hiding behind deck won't work. Befriend them, or distract them, and we'll be good to go."
     <br><br>
+    <<if $prison.kylar is "solitary">>
+        You could take Kylar with you as well, but you'll need to wait until they're freed from solitary.
+        <br><br>
+    <</if>>
 <</if>>
 
 <<link [[Leave|Prison Beach]]>><<endevent>><</link>>
 <br>
 
-:: Prison Wren Escape
+:: Prison Kylar Escape
+<<effects>>
+<<npc Kylar 2>><<person2>>
+You rush back into the prison.
+<<if $prison.schedule is "revolt">>
+    You find Kylar trying to break into the staff room amidst the anarchy.
+    <br><br>
+    <<if $worn.face.type.includes("gag")>>
+        "Mmmhhrr!" you say. 
+    <<else>>
+        <<if $submissive gte 1150>>
+            "I've found a way out," you say. "Pl-please come with me."
+        <<elseif $submissive lte 850>>
+            "I'm leaving this shit hole," you say. "Wanna come?"
+        <<else>>
+            "I've found a way out," you say. "Will you come with me?
+        <</if>>
+        <br><br>
+        "Go with you? O-of course," Kylar says. "Let me get my things."
+    <</if>>
+    <br><br>
+
+    You wait beside Kylar's cell as <<he>> disappears beneath <<his>> bed, and emerges with a rucksack. "That's it. Let's go."
+<<else>>
+    You find Kylar lying on <<his>> mattress.
+
+    <<if $worn.face.type.includes("gag")>>
+        "Mmmhhrr!" you say. 
+    <<else>>
+        <<if $submissive gte 1150>>
+            "I've found a way out," you say. "Pl-please come with me."
+        <<elseif $submissive lte 850>>
+            "I'm leaving this shit hole," you say. "Wanna come?"
+        <<else>>
+            "I've found a way out," you say. "Will you come with me?
+        <</if>>
+        <br><br>
+        Kylar sits upright. "Go with you? O-of course. Let me get my things."
+    <</if>>
+    <br><br>
+
+    <<He>> disappears beneath <<his>> bed, and emerges with a rucksack. "That's it. Let's go."
+<</if>>
+<br><br>
+
+<<link [[Next|Prison Kylar Escape 2]]>><</link>>
+<br>
+
+
+:: Prison Kylar Escape 2
+<<effects>>
+<<earnFeat "Not Meant to be Caged">>
+<<set $prison.kylar to 0>>
+<<npcset Kylar state "active">>
+Wren waits at the helm of the ship. <<person1>><<He>> regards Kylar with curiosity. "Aren't you-"
+<br>
+"Shut up," Kylar spits as you climb aboard. "J-just take us away from here."
+<br>
+Wren shrugs, and steers the vessel away from the island, towards the surrounding mist.
+<br><br>
+<<prison_bondage_removal>>
+<<if _punishments_removed is true>>
+    <<He>> abandons the helm for a minute to rummage beneath the hold, and emerges with a box of tools. "Hold still," <<he>> says. "I'm not making the journey while you're wearing these. I would never forgive myself if you fell in." <<He>> soon has your bondage implements removed.
+    <br><br>
+<</if>>
+
+Kylar clings to your arm as the ship is enveloped.
+<br><br>
+
+<<link [[Kiss|Prison Kylar Escape 3]]>><<set $phase to 2>><<npcincr Kylar love 15>><</link>><<kissvirginitywarning>><<ggglove>>
+<br>
+<<link [[Hug|Prison Kylar Escape 3]]>><<set $phase to 1>><<npcincr Kylar love 5>><</link>><<gglove>>
+<br>
+<<link [[Stay Still|Prison Kylar Escape 3]]>><<set $phase to 0>><</link>>
+<br>
+
+
+:: Prison Kylar Escape 3
 <<effects>>
 
+<<if $phase is 2>>
+    You take Kylar's other arm, and pull <<him>> into a kiss. <<He>> almost swoons into you. <<takeKissVirginity "Kylar" `($kylarenglish gte 1?"loveInterest":"romantic")`>>
+    <br><br>
+<<elseif $phase is 1>>
+    You pull Kylar into a hug. Something about the mist has <<him>> on edge.
+<<else>>
+    
+<</if>>
+
+<<if $cat gte 2 or $harpy gte 2>>
+    Spires of rock loom from the mist ahead. Wren seems unconcerned, and steers around each.
+<<else>>
+    Wren steers around unseen spires of rock, as if from memory. You catch glimpses of them on either side, towering into the sky.
+<</if>>
+<br><br>
+
+At last, the ship breaches the other side.
+
+<<if $daystate is "night">>
+    <<if $weather is "clear">>
+        You see the lights of town light up the horizon.
+    <<else>>
+        Even so, you can't see much further in the dark.
+    <</if>>
+<<else>>
+    You see the town on the horizon.
+<</if>>
+<br><br>
+<<person1>>
+"What did I tell you?" <<he>> says. "That's the third safe passage in a row."
+<br><br>
+
+<<link [[Next|Prison Kylar Escape 4]]>><</link>>
+<br>
+
+
+:: Prison Kylar Escape 4
+<<location "docks">><<effects>>
+
+The ship makes good time, and soon approaches the coast. Wren steers towards the dock.
+<br><br>
+
+"I hope this is a good landing spot for you," <<he>> says, pulling up at the pier. "I have elsewhere to be." <<He>> grins. You step ashore with Kylar.
+<br><br>
+
+"Hope to see you soon." <<He>> steers back towards open water.
+<br><br>
+
+<<person2>>"There are people I need to see," <<he>> says, looking at <<his>> feet.. "Th-thank you."
+<br><br>
+
+<<link [["Ask if " + $NPCList[1].pronouns.he + " will be okay with the police"|Prison Kylar Escape Ask]]>><</link>>
+<br>
+<<link [[Nod|Prison Kylar Escape Nod]]>><</link>>
+<br>
+
+:: Prison Kylar Escape Ask
+<<effects>>
+
+"I'll be fine," Kylar says. "They surprised me last t-time." <<He>> stares at you a moment, then abruptly turns and runs into the docks.
+<br><br>
+
+<<link [[Next|Docks]]>><<endevent>><</link>>
+<br>
+
+:: Prison Kylar Escape Nod
+<<effects>>
+
+You nod. Kylar stares a moment, then abruptly turns and runs into the docks.
+<br><br>
+
+<<link [[Next|Docks]]>><<endevent>><</link>>
+<br>
+
+:: Prison Wren Escape
+<<effects>>
 
 Wren pulls up the anchor as you climb aboard, and turns on the engine. The boat swerves away from the island, towards the surrounding mist.
 <br><br>
 
 <<prison_bondage_removal>>
 <<if _punishments_removed is true>>
-    <<He>> abandons the helm for a minute to rummage beneath the hold. <<He>> emerges with a box of tools. "Hold still," <<he>> says. "I'm not making the journey while you're wearing these. I would never forgive myself if you fell in." <<He>> soon has your bondage implements removed.
+    <<He>> abandons the helm for a minute to rummage beneath the hold, and emerges with a box of tools. "Hold still," <<he>> says. "I'm not making the journey while you're wearing these. I would never forgive myself if you fell in." <<He>> soon has your bondage implements removed.
     <br><br>
 <</if>>
 
@@ -220,7 +390,7 @@ At last, the ship breaches the other side.
 
 
 :: Prison Wren Escape 3
-<<effects>>
+<<location "docks">><<effects>>
 
 The ship makes good time, and soon approaches the coast. Wren steers towards the dock.
 <br><br>

@@ -1634,17 +1634,17 @@ in dev alternative to current "breasts" widget
 <span class="lewd">- - - Lewdity</span>
 <</widget>>
 
-<<widget "gattention">> |
+<<widget "gattention">><<if $prison_attention_day isnot true>> |
 <span class="lewd">+ Attention</span>
-<</widget>>
+<</if>><</widget>>
 
-<<widget "ggattention">> |
+<<widget "ggattention">><<if $prison_attention_day isnot true>> |
 <span class="lewd">+ + Attention</span>
-<</widget>>
+<</if>><</widget>>
 
-<<widget "gggattention">> |
+<<widget "gggattention">><<if $prison_attention_day isnot true>> |
 <span class="lewd">+ + + Attention</span>
-<</widget>>
+<</if>><</widget>>
 
 <<widget "lattention">> |
 <span class="lewd">- Attention</span>
@@ -3694,15 +3694,17 @@ You can't help but be conscious of your <<nudity>>.
 <</silently>>_text_output<</widget>>
 
 <<widget "schoolday">>
-<<if $schoolterm is 1 and $weekday is 1>>
-	You have school tomorrow.
-	<br>
-<<elseif $schoolterm is 1 and $weekday isnot 1 and $weekday isnot 7>>
-	It's a school day.
-	<br>
-<<elseif $schoolterm is 0 and $weekday is 1>>
-	There's no school tomorrow.
-	<br>
+<<if $location isnot "prison" and $location isnot "asylum">>
+	<<if $schoolterm is 1 and $weekday is 1>>
+		You have school tomorrow.
+		<br>
+	<<elseif $schoolterm is 1 and $weekday isnot 1 and $weekday isnot 7>>
+		It's a school day.
+		<br>
+	<<elseif $schoolterm is 0 and $weekday is 1>>
+		There's no school tomorrow.
+		<br>
+	<</if>>
 <</if>>
 <</widget>>
 

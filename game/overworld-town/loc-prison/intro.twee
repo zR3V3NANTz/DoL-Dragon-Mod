@@ -1046,7 +1046,7 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
 <<else>>
     <<methodical_guard 3 cap>> cuffs you, and leads you into the central tower.
 <</if>>
-<<relaxed_guard 0 cap>>, <<anxious_guard 0>>, and <<veteran_guard 0>> await.
+<<relaxed_guard 0 cap>>, <<anxious_guard 1>>, and <<veteran_guard 2>> await.
 <br><br>
 
 <<if $prison.guards gte 80>>

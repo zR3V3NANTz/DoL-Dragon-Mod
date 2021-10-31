@@ -37,6 +37,7 @@
     <<set $prison.medical_intro to 0>>
     <<set $prison.spire_intro to 0>>
     <<set $prison.hours_worked to 9>>
+    <<set $prison.kylar to 0>>
 
     <<set $prison_wren_intro to 1>>
     <<set $prison_wren_boat_intro to 1>>
@@ -61,11 +62,14 @@
     <</if>>
 
 <</if>>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison" and $prison.kylar is 0>>
+    <<set $prison_kylar_timer to 2>>
+<</if>>
 <<set $prison.morning to 1>>
 <</widget>>
 
 <<widget "prison_attention">>
-<<if $args[0]>>
+<<if $args[0] and ($prison_attention_day isnot true or $prison.schedule is "revolt")>>
     <<set $prison.attention += ($args[0] * 10)>>
 <</if>>
 <</widget>>
@@ -165,7 +169,13 @@
             The inmates are being encouraged into the yard.
         <<case 14 15 16 17>>
             <<set $prison.schedule to "work">>
-            Time for <span class="red">work.</span>
+            <<if $prison.job is "laundry">>
+                <span class="red">You are expected in the laundry room.</span>
+            <<elseif $prison.job is "spire">>
+                <span class="red">You are expected on the spire.</span>
+            <<elseif $prison.job is "medical">>
+                <span class="red">You are expected in the medical room.</span>
+            <</if>>
         <<case 18>>
             <<set $prison.schedule to "dinner">>
             Dinner is being served in the canteen.
@@ -238,6 +248,16 @@
         <<set $prison.time -= 1>>
         <<set $stat_police.prison += 1>>
     <</if>>
+    <<if $prison.kylar is "active">>
+        <<npcincr Kylar lust 10>>
+        <<unset $prison_kylar_cell>>
+    <</if>>
+    <<set $prison_kylar_timer -= 1>>
+    <<if $prison.kylar is "solitary" and $prison_kylar_timer lte 0>>
+        <<unset $prison_kylar_timer>>
+        <<set $prison.kylar to "active">>
+    <</if>>
+    <<unset $prison_attention_day>>
 <</if>>
 <</widget>>
 
@@ -1049,7 +1069,7 @@
         <<case 7>>
             Inmates cluster in groups of three or four, lost in furtive discussions.
             <<if $skulduggery lt 400>>
-                You catch snippets intrigue.<<gskulduggery>><<skulduggery 1>>
+                You catch snippets of intrigue.<<gskulduggery>><<skulduggery 1>>
             <<else>>
                 You catch snippets of intrigue. Amateur stuff.
             <</if>>
@@ -1077,6 +1097,7 @@
 
 <<widget "events_prison_attention">>
 <<set $prison.attention to 0>>
+<<set $prison_attention_day to true>>
 <<if $prison.schedule is "revolt">>
     The riotous noise quells. An inmate staggers by, and collapses. You find it hard to remain on your feet yourself. <span class="red">Something is wrong.</span>
     <br><br>
@@ -1093,7 +1114,6 @@
     <br><br>
     "You heard the boss," the <<person3>><<person>> says. <<He>> also wears tattoos, though far less than <<his>> boss. <<if $awareness gte 300>><span class="blue"><<He>> speaks in an odd monotone, as if <<his>> mind were elsewhere.</span><</if>> "Come 'ere."
     <br><br>
-
     <<link [[Go quietly|Prison Attention Quiet]]>><<set $prison.attention_level to 1>><<set $prison.attention to 0>><</link>>
     <br>
     <<link [[Refuse|Prison Attention Refuse]]>><<set $prison.attention_level to 1>><<set $prison.attention to 0>><</link>>
@@ -1135,6 +1155,13 @@
     <br>
     <<link [[Fight|Prison Attention Fight Refuse]]>><</link>>
     <br>
+    <<if $prison.kylar is "active">>
+        <<link [[Call Kylar|Prison Attention Kylar]]>><<set $prison.attention_level to 1>><<set $prison.attention to 0>><<set $prison.kylar to "solitary">><<set $prison_kylar_timer to 3>><</link>>
+        <br>
+    <<elseif $prison.kylar is "solitary">>
+        <span class="blue">Kylar can't help you from solitary.</span>
+        <br>
+    <</if>>
 <</if>>
 <</widget>>
 

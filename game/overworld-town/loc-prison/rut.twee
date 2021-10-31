@@ -16,7 +16,7 @@ You are in the rut, beneath the prison.
         You can't see a thing with this blindfold on, but the ground and walls are damp. You feel a breeze, and a sense that you're in an open space.
         <br><br>
 
-        <<link [[Stagger towards the breeze (0:10)|Prison Rut Walk]]>><<pass 10>><<set $hallucinogen += 10>><<set $phase to 1>><<set $rut += 5>><</link>>
+        <<link [[Stagger towards the breeze (0:10)|Prison Rut Walk]]>><<pass 10>><<set $hallucinogen += 10>><<set $phase to 1>><<set $rut += 8>><</link>>
         <br>
     <<else>>
         An oppressive darkness surrounds you like a fog, but you can see a few feet away. The ground is natural rock, slick with dampness. You feel a breeze. It feels like you're in an open space.
@@ -81,7 +81,7 @@ You return the way you came, the journey faster now that you can see where you'r
 <</if>>
 
 :: Prison Rut Shout
-<<effects>><<prison_effects>>
+<<effects>><<effects_prison>>
 
 <<if $submissive gte 1150>>
     <<gagged_speech "C-can anyone hear me" ?>> you shout. <<gagged_speech "It's scary down here" .>>

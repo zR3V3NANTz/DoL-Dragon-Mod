@@ -298,10 +298,17 @@ You find somewhere to sit, and eat your soup.
 
 You queue with the other prisoners, and receive a slab of meat and a ladle-full of mixed vegetables.
 <br><br>
-
-You find a seat, and eat your meal.
-<br><br>
-<<if $rng gte 81>>
+<<if $prison.kylar is "active">>
+    Kylar appears behind you, following close.
+    <br><br>
+    <<npc Kylar>><<person1>>
+    <<link [["Let " + $NPCList[0].pronouns.him + " sit beside you"|Prison Dinner Kylar]]>><<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<prison_inmates -1>><</link>><<lrespect>><<glove>><<lksuspicion>>
+    <br>
+    <<link [[Insist on sitting alone|Prison Dinner Kylar Refuse]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><<prison_inmates 1>><</link>><<llove>><<gksuspicion>><<grespect>>
+    <br>
+<<elseif $rng gte 81>>
+    You find a seat, and eat your meal.
+    <br><br>
     <<generate1>><<person1>>
     "Hey <<girl>>," says the <<person>> opposite. <<He>> rests <<his>> elbow on the table. "Wrestle?"
     <br><br>
@@ -325,6 +332,33 @@ You find a seat, and eat your meal.
     <<link [[Next|Prison Breakfast Prayer]]>><</link>>
     <br>
 <</if>>
+
+:: Prison Dinner Kylar
+<<effects>>
+
+You take a seat, and Kylar sits beside you. The inmate on the other side of <<him>> gives you a dirty looks as <<he>> moves seats.
+<br><br>
+
+Kylar insists on tasting your food before you eat any.
+<br><br>
+
+<<link [[Next|Prison Breakfast Prayer]]>><<endevent>><</link>>
+<br>
+
+:: Prison Dinner Kylar Refuse
+<<effects>>
+
+You take a seat in a crowded spot. Kylar tries to squeeze in beside you, but the adjacent inmate shoves <<him>> away. Kylar falls, and <<his>> tray scatters across the ground.
+<br><br>
+
+<<He>> covers <<his>> face as <<he>> runs from the room.
+<br><br>
+
+<<link [[Next|Prison Breakfast Prayer]]>><<endevent>><</link>>
+<br>
+
+
+
 
 :: Prison Dinner Wrestle
 <<effects>>

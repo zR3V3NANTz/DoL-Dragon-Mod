@@ -1,7 +1,6 @@
 :: Prison Cell
 <<set $outside to 0>><<location "prison">><<effects>><<effects_prison>><<set $bus to "cell">>
 
-
 You are in your cell. There's a bed in one corner, and a cupboard in another. A barred gate separates you from the walkway outside. There's no privacy.
 <<if $prison.poster is "man">>
     A poster depicting a sexy gentleman hangs on one wall.
@@ -462,9 +461,13 @@ You have <span class="red">$prison.time</span> days left until release.
 <<link [[Step away|Prison Cell]]>><</link>>
 <br>
 
-
 :: Prison Cell Role
 <<set $bus to "walkway">><<effects>><<effects_prison>>
+
+
+<<if $prison_kylar_timer gte 1>>
+    <<set $prison_kylar_timer -= 1>>
+<</if>>
 
 You stand outside your cell, and wait as <<methodical_guard 0>> reads out each number.
 <br><br>
@@ -477,7 +480,21 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
 <</if>>
 <br><br>
 
-<<if $prison.active_punishments.includes("free use") and $worn.neck.name isnot "free use collar" and $worn.neck.name isnot "free use collar with leash">>
+<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison" and $prison.kylar is 0 and $prison_kylar_timer lte 0>>
+    <<set $prison.kylar to "active">>
+    <<unset $prison_kylar_timer>>
+    <<endevent>>
+    <<npc Kylar>><<person1>>
+    <<generate_methodical_guard 1>>
+    <<generate_veteran_guard 2>>
+    <<person2>><<He>> opens <<his>> mouth again, but is interrupted by a banging door somewhere below. You see <<veteran_guard 0>> through the walkway beneath your feet, pushing a small figure ahead of <<person3>><<him>>.
+    <br><br>
+    A final shove knocks the newcomer off <<person1>><<his>> feet, and <<he>> falls oon <<his>> face. <<He>> scrambles to <<his>> feet, and pulls <<his>> hair away from <<his>> face. <span class="gold">It's Kylar.</span>
+    <br><br>
+
+    <<link [[Next|Prison Kylar Intro]]>><</link>>
+    <br>
+<<elseif $prison.active_punishments.includes("free use") and $worn.neck.name isnot "free use collar" and $worn.neck.name isnot "free use collar with leash">>
     "Where's your collar?" <<he>> asks. "Best come with me."$worn.neck.name<br>
     <br><br>
     <<prison_repunishment_options>>
@@ -872,6 +889,9 @@ You are in the prison showers.
 <<set $prison.active_punishments to []>>
 <<if $prison.schedule is "wake">>
     Prisoners undress, leaving their clothes on wood benches, before entering the shower. You hear running water.
+    <<if $prison.kylar is "active">>
+        Kylar stands in the corner, watching you.
+    <</if>>
     <br><br>
     <<generate_veteran_guard 0>><<person1>><<veteran_guard 0 cap>> paces through the room.
     <br><br>
@@ -946,12 +966,10 @@ You are on the metal walkway outside your cell, at the top of the cell block. Th
         <<else>>
             Your cell is in the corner.
             <br>
-            <<if $prison.schedule is "lockdown">>
-                <span class="blue">Your cell is locked. You can't enter from here.</span>
-            <<else>>
-                <<cellicon>><<link [[Your cell|Prison Cell]]>><</link>>
-                <br><br>
-            <</if>>
+            
+            <<cellicon>><<link [[Your cell|Prison Cell]]>><</link>>
+            <br><br>
+            
             <<if $prison.attention_level gte 1 and !$prison.protection and $prison.schedule is "free time">>
                 <<if !$prison.protection>>
                     <<if !$prison_scarred_done>>
@@ -1031,6 +1049,9 @@ You are at the bottom of the cell block. There are stairs leading to a walkway a
             <<events_prison_triggered>>
         <<else>>
             There's a set of double doors on one end of the block, crowned by a couple of signs. "Showers" says one. "Sex is forbidden" warns another.
+            <<if $prison.schedule is "wake">>
+                <span class="lblue">Steam flows out.</span>
+            <</if>>
             <br>
             <<link [[Showers|Prison Shower]]>><</link>>
             <br><br>
@@ -1038,6 +1059,15 @@ You are at the bottom of the cell block. There are stairs leading to a walkway a
             <br>
             <<link [[Laundry|Prison Laundry]]>><</link>>
             <br><br>
+
+            <<if $prison.kylar is "active" and !$prison_kylar_cell and ($prison.schedule is "free time" or $prison.schedule is "yard")>>
+                <<npc Kylar>><<person1>>
+                Kylar sits on the bed in <<his>> cell, fussing over something in <<his>> lap.
+                <<endevent>>
+                <br>
+                <<cellicon>><<link [[Kylar's cell|Prison Kylar]]>><</link>>
+                <br><br>
+            <</if>>
             
 
             A corridor leads away, towards daylight.
