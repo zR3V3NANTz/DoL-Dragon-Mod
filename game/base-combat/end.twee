@@ -638,7 +638,7 @@
 <<unset $childSelected>>
 <<unset $childrenPassage>>
 
-<<unset $index>>
+<<set $index to 0>>
 
 <</widget>>
 

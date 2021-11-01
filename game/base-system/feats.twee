@@ -481,7 +481,7 @@
 		<<if $sexStats.anus.pregnancy.motherStatus is 2>>
 			<<earnFeat "Broodmother Host">>
 		<</if>>
-		<<if $spraymax gte 6>>
+		<<if $spraymax gte 7>>
 			<<earnFeat "Max Those Shots">>
 		<</if>>
 		<<if ($semen_volume gte 2000 and $semen_amount gte $semen_volume)

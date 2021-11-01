@@ -34,7 +34,7 @@ Kylar runs from <<his>> cell as soon as it opens, and climbs the stairs to the w
 <<effects>>
 
 <<if $worn.face.type.includes("gag")>>
-    You can't speak with this gag in the way, so look at your feet an mumble apologetically. You think your point comes across.
+    You can't speak with this gag in the way, so look at your feet and mumble apologetically. You think your point comes across.
     <br><br>
 <<else>>
     <<if $submissive gte 1150>>
@@ -126,7 +126,7 @@ You chat with Kylar.
 <<set $rng to random(1, 10)>>
 <<switch $rng>>
     <<case 1>>
-        <<He>> talks about what <<he>> need to another inmate when <<he>> first arrived. "Th-that's why I was in solitary," <<he>> says. "When you got here."<<gstress>><<stress 6>>
+        <<He>> talks about what <<he>> did to another inmate when <<he>> first arrived. "Th-that's why I was in solitary," <<he>> says. "When you got here."<<gstress>><<stress 6>>
     <<case 2>>
         "I've found lots of hideaways," <<he>> says. "People aren't clever about where they stash things."
     <<case 3>>

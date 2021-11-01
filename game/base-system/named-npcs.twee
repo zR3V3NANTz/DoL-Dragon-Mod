@@ -867,7 +867,7 @@ alternative way to write that:
 		<</if>>
 	<<case Kylar>>
 		Kylar
-		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison">>
+		<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "prison" and $location isnot "prison">>
 			<span class="red"> is imprisoned.</span>
 		<<elseif $NPCName[_i].love gte 90>>
 			<<if $NPCName[_i].rage gte 90>>
