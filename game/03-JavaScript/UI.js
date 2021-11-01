@@ -366,12 +366,12 @@ window.settingsNudeGenderAppearance = function () {
 		}
 		jQuery('#numberslider-value-nudegenderdc').text('').append(text).addClass('small-description')
 												 .css('text-align', 'left')
-												 .css('margin-left', '-14em');
+												 .css('margin-left', '1em');
 	};
 	jQuery(document).ready(() => {
 		updateText();
 		jQuery('#numberslider-input-nudegenderdc').on('input change', function (e) { updateText(); })
-												 .css('width', '75%')
+												 .css('width', '100%')
 												 .css('min-height', 'unset')
 												 .css('height', '0.75em')
 												 .css('margin-left', '1em');
