@@ -2837,7 +2837,7 @@ You sit beside Kylar and say hello.
 <<elseif $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60 and $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $rng gte 80>>
 	Before <<he>> can open <<his>> mouth to greet you, a figure slides into the seat on your other side. It's Whitney.
 	<br><br>
-	<<NPC Whitney 2>><<person2>>
+	<<npc Whitney 2>><<person2>>
 
 	"Thought I saw my favourite slut sitting next to a freak," <<he>> says before grabbing you by the hair and forcing your lips against <<his>>.<<takeKissVirginity "Whitney" `($whitneyromance is 1?"loveInterest":"rape")`>>
 	<<gstress>><<stress 6>>
