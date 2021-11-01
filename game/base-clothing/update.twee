@@ -285,4 +285,29 @@ ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x and allow 
 	<<set $wardrobes.prison.name to "Prison locker">>
 <</if>>
 
+<<if $objectVersion.wardrobes lt 2>>
+	<<set _equip to setup.clothes_all_slots>>
+	<<for $_i to 0; $_i lt _equip.length; $_i++>>
+		<<if $wardrobe[_equip[$_i]] is undefined>>
+			<<continue>>
+		<</if>>
+		<<for $_j to $wardrobe[_equip[$_i]].length - 1; $_j gte 0; $_j-->>
+			<<if $wardrobe[_equip[$_i]][$_j].temp>>
+				<<run console.log($wardrobe[_equip[$_i]][$_j])>>
+				<<run $wardrobe[_equip[$_i]].deleteAt($_j)>>
+			<</if>>
+		<</for>>
+		<<for $_j to $wardrobes.prison[_equip[$_i]].length - 1; $_j gte 0; $_j-->>
+			<<if $wardrobes.prison[_equip[$_i]][$_j].temp>>
+				<<run $wardrobes.prison[_equip[$_i]].deleteAt($_j)>>
+			<</if>>
+		<</for>>
+		<<for $_j to $wardrobes.asylum[_equip[$_i]].length - 1; $_j gte 0; $_j-->>
+			<<if $wardrobes.asylum[_equip[$_i]][$_j].temp>>
+				<<run $wardrobes.asylum[_equip[$_i]].deleteAt($_j)>>
+			<</if>>
+		<</for>>
+	<</for>>
+<</if>>
+
 <</widget>>

@@ -667,7 +667,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 		<a onclick="document.getElementById('wardrobeItemDetails').classList.toggle('hidden')">Extra Info</a>
 		<br>
 		<div id="wardrobeItemDetails" class="hidden">
-			<<if _wornItem.plural is 1>><<integrity clothingData(_wardrobe_list,_wornItem,'integrity_max') "cap">><<else>>A <<integrity clothingData(_wardrobe_list,_wornItem,'integrity_max')>><</if>>
+			<<if _wornItem.plural is 1>><<integrity `clothingData(_wardrobe_list,_wornItem,'integrity_max')` "cap">><<else>>A <<integrity `clothingData(_wardrobe_list,_wornItem,'integrity_max')`>><</if>>
 			and <<reveal _wornItem.reveal>> <<print _wornItem.name>>.
 
 			<<if _wornItem.gender is "m">><span class="lblue">For boys ♂.</span><<elseif _wornItem.gender is "f">><span class="pink">For girls ♀.</span><</if>>

@@ -1299,9 +1299,9 @@
 	<!--If you have added any `colour_combat` or `accessory_colour_combat` to clothes that need their `colour` or `accessory_colour`, this will clear them.
 	Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
 <</if>>
-<<if $objectVersion.wardrobes lt 1 or $objectVersion.wardrobes is undefined>>
+<<if $objectVersion.wardrobes lt 2 or $objectVersion.wardrobes is undefined>>
 	<<wardrobesUpdate>>
-	<<set $objectVersion.wardrobes to 1>>
+	<<set $objectVersion.wardrobes to 2>>
 <</if>>
 
 <<if $mathsprojectwon is 1>>

@@ -1337,13 +1337,15 @@
 		<<for _u to 0; _u lt $store[$args[1]].length; _u++>>
 			<<if $args[0] is $store[$args[1]][_u].location>>
 				<<if $args[2] is "wardrobe" or $wardrobes[$args[2]] isnot undefined>>
-					<<set $_location to clothesReturnLocation($worn[$args[1]])>>
-					<<if $_location is "wardrobe">>
-						<<set $_selectedWardrobe to $wardrobe>>
-					<<else>>
-						<<set $_selectedWardrobe to $wardrobes[$_location]>>
+					<<if $store[$args[1]][_u].temp is undefined>>
+						<<set $_location to clothesReturnLocation($worn[$args[1]])>>
+						<<if $_location is "wardrobe">>
+							<<set $_selectedWardrobe to $wardrobe>>
+						<<else>>
+							<<set $_selectedWardrobe to $wardrobes[$_location]>>
+						<</if>>
+						<<set $_selectedWardrobe[$args[1]].push(clone($store[$args[1]][_u]))>>
 					<</if>>
-					<<set $_selectedWardrobe[$args[1]].push(clone($store[$args[1]][_u]))>>
 					<<set $store[$args[1]].deleteAt(_u)>>
 				<<elseif $args[2] is "delete">>
 					<<set $store[$args[1]].deleteAt(_u)>>
