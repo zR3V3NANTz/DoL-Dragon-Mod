@@ -490,6 +490,7 @@ Type:
 <label><<checkbox "_outfitEditorFilter.type.normal" false true autocheck>> Normal</label> |
 <label><<checkbox "_outfitEditorFilter.type.sleep" false true autocheck>> Sleep</label> |
 <label><<checkbox "_outfitEditorFilter.type.swim" false true autocheck>> Swim</label> |
+<label><<checkbox "_outfitEditorFilter.type.school" false true autocheck>> School (Only used by starter outfits, may be added later)</label> |
 <br><br>
 Location:
 <<for $_label, $_value range _outfitEditorFilter.location>>
@@ -531,6 +532,7 @@ Colour Saved in Outfit:
 		normal: true,
 		sleep: true,
 		swim: true,
+		school: true,
 	},
 	location:{
 		All: true,
@@ -630,6 +632,7 @@ Page <<print _outfitEditorPages.page>>/<<print _outfitEditorPages.maxPages>> |
 				<<option "Normal" "normal">>
 				<<option "Sleep" "sleep">>
 				<<option "Swim" "swim">>
+				<<option "School" "school">>
 			<</listbox>>
 		</label>
 	</div>
