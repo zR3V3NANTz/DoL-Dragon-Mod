@@ -995,7 +995,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<<numberslider "$asphyxiaLvl" $asphyxiaLvl 0 4 1>>
 	<<run settingsAsphyxiation()>>
 	</div>
-	<div class="settingsToggle" style="display: inline-flex;">
+	<div class="settingsToggle">
 	Nude&nbsp;Gender&nbsp;Appearance
 	<<numberslider "$NudeGenderDC" $NudeGenderDC 0 2 1>>
 	<<run settingsNudeGenderAppearance()>>
