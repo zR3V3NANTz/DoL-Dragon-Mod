@@ -226,7 +226,10 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 	<<set $wraithPrison.state to "recovering">>
 	<<clotheson>>
 	<<endcombat>>
-	<<exitWraith>>
+	<<endWraith>>
+	<br><br>
+	<<link [[Next|Lake Ruin Prison]]>><</link>>
+	<br>
 <<elseif $enemyarousal gte $enemyarousalmax or ($wraith.type is "tentacles" and $tentacles.active lte ($tentacles.max / 2)) or ($wraith.type is "slime" and $struggle.done gte $struggle.number)>>
 	<<set $wraithCount ++>>
 	<<ejacW>>
@@ -244,7 +247,10 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 		<<set $wraithPrison.state to "recovering">>
 		<<clotheson>>
 		<<endcombat>>
-		<<exitWraith>>
+		<<endWraith>>
+		<br><br>
+		<<link [[Next|Lake Ruin Prison]]>><</link>>
+		<br>
 	<<else>>
 		<<continueWraith>>
 		<br><br>
@@ -254,7 +260,7 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 <</if>>
 
 :: Lake Ruin Prison
-<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<effects>>
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $wraith.exit to "lake_ruin">><<set $bus to "lake_ruin_prison">><<effects>>
 
 You are in a submerged prison. Pink mist swirls in the air. <<ghallucinogens>>
 <br><br>
@@ -494,7 +500,10 @@ You don't know how much time passes. Your body feels refreshed, but your mind fe
 	<<set $wraithPrison.state to "recovering">>
 	<<clotheson>>
 	<<endcombat>>
-	<<exitWraith>>
+	<<endWraith>>
+	<br><br>
+	<<link [[Next|Lake Ruin Prison]]>><</link>>
+	<br>
 <<elseif $enemyarousal gte $enemyarousalmax or ($wraith.type is "tentacles" and $tentacles.active lte ($tentacles.max / 2)) or ($wraith.type is "slime" and $struggle.done gte $struggle.number)>>
 	<<set $wraithCount ++>>
 	<<ejacW>>
@@ -508,7 +517,10 @@ You don't know how much time passes. Your body feels refreshed, but your mind fe
 		<<set $wraithPrison.state to "recovering">>
 		<<clotheson>>
 		<<endcombat>>
-		<<exitWraith>>
+		<<endWraith>>
+		<br><br>
+		<<link [[Next|Lake Ruin Prison]]>><</link>>
+		<br>
 	<<else>>
 		<<continueWraith>>
 		<br><br>

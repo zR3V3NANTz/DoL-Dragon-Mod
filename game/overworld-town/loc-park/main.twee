@@ -840,6 +840,10 @@ You sit on the toilet, and wait.
 		<<person1>><<He>> suddenly looks angry. "You slut, you think this is funny? I guess <<if $phase2 is 1>>we<<else>>I<</if>>'ll have to teach you a lesson in modesty." <<if $phase2 is 1>>They jump<<else>><<He>> jumps<</if>> at you.
 	<</if>>
 	<br><br>
+	<<saveNPC 0 toilets_1>>
+	<<if $phase2 is 1>>
+		<<saveNPC 1 toilets_2>>
+	<</if>>
 	<<link [[Next|Toilets Molestation]]>><<set $molestationstart to 1>><</link>>
 	<br>
 <<else>>

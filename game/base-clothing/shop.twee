@@ -130,6 +130,9 @@
 		<<clothingcategoryicon "neck">>
 		<<link "Look in the glowing box">><<replace "#clothingShop-div">><<NeckShop>><</replace>><</link>>
 		<br>
+		<<clothingcategoryicon "hand">>
+		<<link "Look in the tilted vanity">><<replace "#clothingShop-div">><<HandsShop>><</replace>><</link>>
+		<br>  
 		<<clothingcategoryicon "legs">>
 		<<link "Look in the worn stocking">><<replace "#clothingShop-div">><<LegsShop>><</replace>><</link>>
 		<br>

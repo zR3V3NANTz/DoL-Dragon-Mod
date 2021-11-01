@@ -644,20 +644,16 @@ The <<beasttype>> whimpers and flees.
 	<<destinationbondage>>
 <<else>>
 	<<if $rng gte 51 and $daystate isnot "night" or $rng gte 76>>
-		<<set $rescued += 1>>
-		<<saveNPC 0 three_dogs>>
-		<<saveNPC 1 three_dogs>>
-		<<saveNPC 2 three_dogs>>
-		<<endcombat>>
-		<<loadNPC 0 three_dogs>>
-		<<loadNPC 1 three_dogs>>
-		<<loadNPC 2 three_dogs>>
-		"Leave that <<girl>> alone," you hear someone shout. The <<beastsplural>> are tugged away from you. You hear them being dragged away.
-		<br><br>
-		<<clearNPC 0 three_dogs>>
-		<<clearNPC 1 three_dogs>>
-		<<clearNPC 2 three_dogs>>
-		<<generate1>><<person1>>
+        <<set $rescued += 1>>
+        <<silently>><<beastsplural>><<set _beastspluraltext to _text_output>><</silently>>
+        <<endcombat>>
+        "Leave that <<girl>> alone," you hear someone shout. The _beastspluraltext are tugged away from you. You hear them being dragged away.
+        <br><br>
+        /* clearing up ghost dogs for old saves */
+        <<if $per_npc.three_dogs>>
+            <<clearNPC three_dogs>>
+        <</if>>
+        <<generate1>><<person1>>
 
 		Footsteps approach. A hand gropes at your blindfold. "It's okay," the voice says. "I got you."
 		<<blindfoldremove>>

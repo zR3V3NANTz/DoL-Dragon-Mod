@@ -66,7 +66,7 @@ You are on Domus Street. The orphanage is here. The street is dominated by small
 				"I can't thank you enough. I'll see you around the orphanage!" <<stress -6>><<lstress>>
 			<</if>>
 			<<unset $averyDismissalScene>>
-			<<clearNPC 0 avery_sidepiece>>
+			<<clearNPC avery_sidepiece>>
 			<br><br>
 			<<endevent>>
 			<<destinationeventend>>

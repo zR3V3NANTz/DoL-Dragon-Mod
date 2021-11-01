@@ -1017,7 +1017,7 @@
 		<<unset $averydatedone>>
 		<<if $averyPub is 1>>
 			<<unset $averyPub>>
-			<<clearNPC 1 avery_sidepiece>>
+			<<clearNPC avery_sidepiece>>
 		<</if>>
 	<<else>>
 		<<unset $averyDismissalSceneWait>>
