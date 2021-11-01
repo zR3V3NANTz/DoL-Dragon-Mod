@@ -498,7 +498,7 @@ You hear a door open above. A person walks down a staircase, carrying something 
 <<He>> stands and hauls the sheet off the large object. It's a great white cake. A wedding cake. <<He>> beams. "It's the big day." <<He>> drops to <<his>> knees again. "The vicar will be here soon." <<He>> touches the chains binding you. "D-do you think, it would be okay if we got a head start? On the honeymoon?"
 <br><br>
 
-<<if $mouthuse isnot "gagged">>
+<<if !$worn.face.type.includes("gag")>>
 	<<link [[Plead|Kylar Basement 3]]>><<set $phase to 1>><</link>>
 	<br>
 	<<link [[Get angry|Kylar Basement 3]]>><<set $phase to 2>><</link>>
@@ -533,7 +533,7 @@ You hear a door open above. A person walks down a staircase, carrying something 
 	<<kylargag>>
 <</if>>
 
-<<if $mouthuse is "gagged">>
+<<if $worn.face.type.includes("gag")>>
 	<<He>> clicks something on the laptop. "I will ride you all night," your voice says.
 	<br><br>
 <</if>>
@@ -593,7 +593,7 @@ You hear a door open above. A person walks down a staircase, carrying something 
 
 	<<He>> moans into your ear, then falls limp. <<He>> hangs from you for a few moments. <<He>> rubs <<his>> nose against yours and stares into your eyes. "We're going to do this every day," <<he>> says. "Forever."
 
-	<<if $mouthuse isnot "gagged">>
+	<<if !$worn.face.type.includes("gag")>>
 		<<He>> kisses your mouth. <<takeKissVirginity "Kylar" "rape">>
 		<<if _npcKissVirginTemp>>
 			"That was my first kiss," <<he>> whispers. "After so long. We have so many other firsts ahead of us, my love."
@@ -614,7 +614,7 @@ You hear a door open above. A person walks down a staircase, carrying something 
 <<He>> walks across the basement without bothering to fix <<his>> clothing. <<He>> hefts a fire axe from the wall. "When you're my <<wife>>," <<he>> says. "I'll protect you. I'll find everyone who ever looked at you and crack them open." <<He>> laughs. "Then it will be just us."
 <br><br>
 
-<<if $mouthuse isnot "gagged">>
+<<if !$worn.face.type.includes("gag")>>
 	<<link [[Plead|Kylar Basement 4]]>><<set $phase to 1>><</link>>
 	<br>
 	<<link [[Get angry|Kylar Basement 4]]>><<set $phase to 2>><</link>>
@@ -662,7 +662,7 @@ A door opens above. "<<Hes>> here," Kylar says, not dropping the axe. A <<person
 Kylar stands at your side as the vicar reads the marriage rites.
 <br><br>
 
-<<if $mouthuse isnot "gagged">>
+<<if !$worn.face.type.includes("gag")>>
 	<<link [[Protest|Kylar Basement Protest]]>><</link>>
 	<br>
 <</if>>
@@ -693,7 +693,7 @@ The vicar shrugs. "You'd be surprised what people are into," <<person2>><<he>> s
 The vicar turns to you. "Do you take Kylar as your <<person1>><<nnpc_wife "Kylar">>?"
 <br><br>
 
-<<if $mouthuse is "gagged">>
+<<if $worn.face.type.includes("gag")>>
 	Kylar crouches and clicks something on the laptop. "I do," says your voice.
 	<br><br>
 

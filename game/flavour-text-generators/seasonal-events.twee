@@ -127,7 +127,7 @@
 					<</addinlineevent>>
 					<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
 						<<addinlineevent "winter_forest_4" 0.5>>
-							<<generatePlant1>>
+							<<generatePlant1>><<person1>>
 							You see a <<personsimple>> walking through the snow. <<He>> turns and waves at you, before bumping into a tree <<he>> didn't notice. <<Plant_details>> get dislodged from <<his>> hair, and <<he>> pouts. <<stress -3>><<lstress>>
 							<<endevent>>
 						<</addinlineevent>>
@@ -388,7 +388,7 @@
 				<</addinlineevent>>
 				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
 					<<addinlineevent "rain_moor_4" 0.5>>
-						<<generatePlant1>>
+						<<generatePlant1>><<person1>>
 						You see a <<personsimple>> spinning in the rain, holding <<his>> arms out. <<He>> almost slips and loses <<his>> balance a few times, but <<he>> doesn't stop smiling. <<stress -3>><<lstress>>
 						<<endevent>>
 					<</addinlineevent>>
@@ -470,7 +470,7 @@
 				<</addinlineevent>>
 				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
 					<<addinlineevent "autumn_forest_4" 0.5>>
-						<<generatePlant1>>
+						<<generatePlant1>><<person1>>
 						A <<personsimple>> runs <<his>> fingers through his hair. <<He>> picks dead leaves out, crunching them in <<his>> hands before dropping them.
 						<<endevent>>
 					<</addinlineevent>>
@@ -561,7 +561,7 @@
 				<</addinlineevent>>
 				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
 					<<addinlineevent "summer_park_4" 0.5>>
-						<<generatePlant1>>
+						<<generatePlant1>><<person1>>
 						A <<personsimple "normal">> with <<plant_details "forest">> in <<his>> hair peeks out of a bush. <<He>> looks nervous. When <<he>> spots you, <<he>> dives back into the bush.
 						<<endevent>>
 					<</addinlineevent>>
@@ -580,7 +580,7 @@
 				<</if>>
 				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
 					<<addinlineevent "summer_forest_4" 0.5>>
-						<<generatePlant1>>
+						<<generatePlant1>><<person1>>
 						A <<personsimple>> stands completely still, holding branches. <<Hes>> pretending to be a tree, but <<he>> can't keep <<his>> balance enough to fool anyone.
 						<<endevent>>
 					<</addinlineevent>>
@@ -686,7 +686,7 @@
 				<</addinlineevent>>
 				<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
 					<<addinlineevent "spring_moor_4" 0.5>>
-						<<generatePlant1>>
+						<<generatePlant1>><<person1>>
 						A <<personsimple>> holds a vine still for a hummingbird to land on.
 						<<if $rng gte 51>>
 							It flits onto the vine and lands, sitting down. The <<personsimple>> lets out a happy gasp. <<stress -3>><<lstress>>

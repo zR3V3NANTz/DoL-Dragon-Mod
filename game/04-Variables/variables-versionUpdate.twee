@@ -2548,10 +2548,6 @@
 	<<set $tentaclePenis to 0>>
 <</if>>
 
-<<if $fullDescription isnot undefined>>
-	<<unset $fullDescription>>
-<</if>>
-
 <<if $index is undefined and $enemyno gte 1>>
 	<<for _n to 0; _n lt $NPCList.length; _n++>>
 		<<if $NPCList[_n].desc is $description>>
@@ -2576,5 +2572,8 @@
 	<<updateNPCsSecond chastity penis "">>
 	<<updateNPCsSecond chastity vagina "">>
 	<<updateNPCsSecond chastity anus "">>
+<</if>>
+<<if $prison.kylar is undefined>>
+	<<set $prison.kylar to 0>>
 <</if>>
 <</widget>>

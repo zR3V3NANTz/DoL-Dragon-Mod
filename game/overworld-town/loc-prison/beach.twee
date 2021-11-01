@@ -149,7 +149,7 @@ Wren addresses you with one leg resting on the side of the ship. "Any way I can 
     <br><br>
 
     <<if $prison.kylar is "solitary">>
-        You could take Kylar with you, but you'll need to wait until they're freed from solitary.
+        You could take Kylar with you, but you'll need to wait until <<nnpc_hes "Kylar">> freed from solitary.
         <br><br>
     <</if>>
 
@@ -167,7 +167,7 @@ Wren addresses you with one leg resting on the side of the ship. "Any way I can 
     Wren points at the sky. <span class="blue">"I can't take you with those birds watching,"</span> <<he>> says. "Hiding behind deck won't work. Befriend them, or distract them, and we'll be good to go."
     <br><br>
     <<if $prison.kylar is "solitary">>
-        You could take Kylar with you as well, but you'll need to wait until they're freed from solitary.
+        You could take Kylar with you as well, but you'll need to wait until <<nnpc_hes "Kylar">> freed from solitary.
         <br><br>
     <</if>>
 <</if>>
@@ -183,7 +183,15 @@ You rush back into the prison.
     You find Kylar trying to break into the staff room amidst the anarchy.
     <br><br>
     <<if $worn.face.type.includes("gag")>>
-        "Mmmhhrr!" you say. 
+        "Mmmhhrr!" you say. Kylar turns to you with a smile.
+        <br><br>
+        You think for a moment, before gesturing to <<him>> and yourself.
+        <<if $leftarm is "bound" and $rightarm is "bound">>
+            You jog in place for a second, tilting your head. Kylar frowns, confused, before gasping.
+        <<else>>
+            You pantomime opening a door, and walk your fingers across your hand. Kylar gasps.
+        <</if>>
+        "Y-you found a way to escape?" <<he>> asks. "Let me get my things."
     <<else>>
         <<if $submissive gte 1150>>
             "I've found a way out," you say. "Pl-please come with me."
@@ -202,7 +210,15 @@ You rush back into the prison.
     You find Kylar lying on <<his>> mattress.
 
     <<if $worn.face.type.includes("gag")>>
-        "Mmmhhrr!" you say. 
+        "Mmmhhrr!" you say. Kylar turns to you with a smile.
+        <br><br>
+        You think for a moment, before gesturing to <<him>> and yourself.
+        <<if $leftarm is "bound" and $rightarm is "bound">>
+            You jog in place for a second, tilting your head. Kylar frowns, confused, before gasping.
+        <<else>>
+            You pantomime opening a door, and walk your fingers across your hand. Kylar gasps.
+        <</if>>
+        "Y-you found a way to escape?" <<he>> asks. "Let me get my things."
     <<else>>
         <<if $submissive gte 1150>>
             "I've found a way out," you say. "Pl-please come with me."
@@ -248,7 +264,7 @@ Kylar clings to your arm as the ship is enveloped.
 <br>
 <<link [[Hug|Prison Kylar Escape 3]]>><<set $phase to 1>><<npcincr Kylar love 5>><</link>><<gglove>>
 <br>
-<<link [[Stay Still|Prison Kylar Escape 3]]>><<set $phase to 0>><</link>>
+<<link [[Stay still|Prison Kylar Escape 3]]>><<set $phase to 0>><</link>>
 <br>
 
 
@@ -303,7 +319,7 @@ The ship makes good time, and soon approaches the coast. Wren steers towards the
 "Hope to see you soon." <<He>> steers back towards open water.
 <br><br>
 
-<<person2>>"There are people I need to see," <<he>> says, looking at <<his>> feet.. "Th-thank you."
+<<person2>>"There are people I need to see," <<he>> says, looking at <<his>> feet. "Th-thank you."
 <br><br>
 
 <<link [["Ask if " + $NPCList[1].pronouns.he + " will be okay with the police"|Prison Kylar Escape Ask]]>><</link>>

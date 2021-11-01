@@ -185,11 +185,11 @@ There are pillars in the corners of the room. You strip behind one. It's hardly 
     You can't speak with that gag, so you march around the pillar, and stare Kylar down.
 <<else>>
     <<if $submissive gte 1150>>
-        "D-don't be a pervert Kylar!" you say.
+        "D-don't be a pervert, Kylar!" you say.
     <<elseif $submissive lte 850>>
-        "Piss off you fucking pervert Kylar," you say.
+        "Piss off, you fucking pervert," you say.
     <<else>>
-        "Don't be a pervert Kylar," you say.
+        "Don't be a pervert, Kylar," you say.
     <</if>>
 <</if>>
 <br><br>
