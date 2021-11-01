@@ -241,6 +241,11 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 		You're placed in a decrepit cage, right next to the center of the lichen colony. There's no door.
 		<<if $wraith.state is "haunt">>
 			"<span class="wraith">I will break open your mind, and then I will show you. And then you will. Give. It. Back.</span>"
+			<<if $worn.neck.cursed is 1>>
+				It rests a hand against your $worn.neck.name. There's a flash of light, a deep groaning sound, and the metal is no more.
+				<<set $worn.neck.type.push("broken")>>
+				<<neckruined>>
+			<</if>>
 		<</if>>
 		It floats away from the cell, out of sight. <<tearful>> you look around, trying to think of a way out. The figure is nowhere to be seen.
 		<<set $wraithPrison.timer to 60>>

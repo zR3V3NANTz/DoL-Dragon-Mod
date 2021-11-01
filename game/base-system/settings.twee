@@ -1209,15 +1209,15 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<input type="button" value="Set Zoom" onclick="zoom(undefined, true)"/>
 	<br><br>
 
-	<<if $maxStates gte 2 or $debug is 1>>
-		<span class="gold">History depth</span><br>
-		<div class="description">Enables going back in history up to N-1 passages. Changes take effect on settings exit.<br>
-		<span class="red"><b>WARNING:</b> Will cause slowdowns. Additionally, values above 5 can exceed your localStorage quota and cause <br>
-		<b>troubles with saves</b>. Use at your own risk.</span>
-		</div>
-		<<numberslider "$maxStates" $maxStates 1 20 1>>
-		<br><br>
-	<</if>>
+	
+	<span class="gold">History depth</span><br>
+	<div class="description">Enables going back in history up to N-1 passages. Changes take effect on settings exit.<br>
+	<span class="red"><b>WARNING:</b> Will cause slowdowns. Additionally, values above 5 can exceed your localStorage quota and cause <br>
+	<b>troubles with saves</b>. Use at your own risk.</span>
+	</div>
+	<<numberslider "$maxStates" $maxStates 1 20 1>>
+	<br><br>
+	
 
 	<span class="gold">Cheats menu</span>
 	<label><div class="settingsToggleBig">

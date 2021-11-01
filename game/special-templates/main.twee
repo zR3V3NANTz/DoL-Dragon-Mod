@@ -1,7 +1,9 @@
 :: Test
-<<location "prison">><<effects>>
+<<location "home">><<effects>>
 <<endcombat>>
 
+
+<<prison_feat_check>>
 
 
 /*

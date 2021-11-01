@@ -365,7 +365,7 @@
 <</widget>>
 
 <<widget "prison_feat_check">>
-<<if $per_npc.scarred_inmate.name_known is 1 /*and $per_npc.tattooed_inmate.name_known is 1*/ and $per_npc.relaxed_guard.name_known is 1 and $per_npc.anxious_guard.name_known is 1 and $per_npc.veteran_guard.name_known is 1 and $per_npc.methodical_guard.name_known is 1>>
+<<if $per_npc.scarred_inmate.name_known is 1 and $per_npc.relaxed_guard.name_known is 1 and $per_npc.anxious_guard.name_known is 1 and $per_npc.veteran_guard.name_known is 1 and $per_npc.methodical_guard.name_known is 1>>
     <<earnFeat "More than a Number">>
 <</if>>
 <</widget>>

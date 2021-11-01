@@ -460,7 +460,7 @@
 <<link "Help">><<toggleclass "#outfitEditorHelp" "hidden">><</link>>
 
 <div id="outfitEditorHelp" class="hidden">
-	All options change the settings the moment you change the option, however, they will only save or be updated in the passage only if you first change the passage (Leave the wardribe or click on 'Update Wardrobe' at the bottom of this overlay).
+	All options change the settings the moment you change the option, however, they will only save or be updated in the passage only if you first change the passage (Leave the wardrobe or click on 'Update Wardrobe' at the bottom of this overlay).
 	<br><br>
 	Changing the clothing items may result in the colour settings being reset for that item. This is caused from going from an item with colour options to one that doesnt have any colour options. Just because you can change it to some item's doesn't mean you have access to every item.
 	<br><br>

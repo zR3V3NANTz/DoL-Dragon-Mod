@@ -19,7 +19,7 @@
 	<<combateffects>>
 <div id="storyCaptionDiv" @class="($extendedStats ? 'storyCaptionDivExtended' : '')">
 	
-
+	
 
 	<<if $numpad is true>>
 		<style>
@@ -109,7 +109,7 @@
 	<<set $rng to random(1, 100)>>
 
 	<<if $worn.neck.collared gte 1>>
-		<span class="pink">A collar with a leash attached encases your neck.</span>
+		<span class="pink">A collar with encases your neck.</span>
 		<br>
 	<</if>>
 
