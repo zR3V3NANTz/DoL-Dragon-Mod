@@ -588,7 +588,7 @@ They disappear between the trees as Eden emerges, marching towards you.
 	"You're prey,"
 <</if>>
 
-<<he>> begins. "When I fire my gun, I want you to run like your life depends on it. If you're caught..." <<He>> pauses, chuckling. "I'll have my fun with you." You glance back at <<him>>. <<Hes>> hiding something behind his back.
+<<he>> begins. "When I fire my gun, I want you to run like your life depends on it. If you're caught..." <<He>> pauses, chuckling. "I'll have my fun with you." You glance back at <<him>>. <<Hes>> hiding something behind h<<his>> back.
 <br>
 "Turn around," <<he>> orders.
 <br><br>
@@ -618,7 +618,7 @@ You turn around, as instructed. A loud crack erupts behind you, shattering the t
 	<br>
 	Eden sighs in frustration and plants <<his>> boot against your <<bottom>>, giving you a swift kick that sends you stumbling <<if $phase is 0>>out the door<<else>>onto your knees<</if>>. "Move," <<he>> commands, the barrel of <<his>> gun pressed against your back. You do as told, coming to a stop at the edge of the clearing.
 	<br><br>
-	"<<if !$edenPrey>>You're prey<<else>>You know the drill<</if>>," <<he>> begins. "When I fire my gun, I want you to run like your life depends on it. If you're caught..." <<He>> pauses, chuckling. "I'll have my fun with you." You glance back at <<him>>. <<Hes>> hiding something behind his back.
+	"<<if !$edenPrey>>You're prey<<else>>You know the drill<</if>>," <<he>> begins. "When I fire my gun, I want you to run like your life depends on it. If you're caught..." <<He>> pauses, chuckling. "I'll have my fun with you." You glance back at <<him>>. <<Hes>> hiding something behind <<his>> back.
 	<br>
 	"Turn around," <<he>> orders.
 	<br><br>

@@ -1693,8 +1693,8 @@ You have to run to keep up,
 
 <</if>>
 
-<<clearNPC 0 moor_pair_1>>
-<<clearNPC 1 moor_pair_2>>
+<<clearNPC moor_pair_1>>
+<<clearNPC moor_pair_2>>
 
 
 :: Moor Flower

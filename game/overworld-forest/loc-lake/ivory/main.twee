@@ -930,10 +930,10 @@ Your eyes snap open. The figure is gone, but you hear laughter echo in your head
 			<br><br>
 			<<tearful>> you stand, wondering if it's really over.
 			<<set $wraith.hunt to 0>>
-			<<clearWraith>>
 			<<clotheson>>
 			<<endcombat>>
 			<<exitWraith>>
+			<<clearWraith>>
 		<<elseif $pain gte 100 or $stress gte $stressmax>>
 			<<set $wraith.hunt to 0>>
 			<<if $pain gte 100>>

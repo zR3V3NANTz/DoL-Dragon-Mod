@@ -88,7 +88,7 @@
 
 		<<famebestiality 10>>
 		<br><br>
-		<<link [[Next|English Lesson]]>><<clearNPC 0 english_dog>><<endevent>><</link>>
+		<<link [[Next|English Lesson]]>><<clearNPC english_dog>><<endevent>><</link>>
 		<br>
 	<<else>>
 		<<set $rescued += 1>>

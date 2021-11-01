@@ -259,8 +259,8 @@ You enter a small room, lit by a single unshaded light in the middle. A thick wo
 
 	<<loadNPC 0 "community_police">>
 	<<loadNPC 1 "community_citizen">>
-	<<clearNPC 0>>
-	<<clearNPC 1>>
+	<<clearNPC "community_police">>
+	<<clearNPC "community_citizen">>
 	<<person2>>
 	<<tearful>> you follow <<him>> outside. The officer unlocks your cuffs at the top of the steps.<<unbind>>
 	<br><br>
@@ -282,8 +282,8 @@ You enter a small room, lit by a single unshaded light in the middle. A thick wo
 
 	<<loadNPC 0 "community_police">>
 	<<loadNPC 1 "community_citizen">>
-	<<clearNPC 0>>
-	<<clearNPC 1>>
+	<<clearNPC "community_police">>
+	<<clearNPC "community_citizen">>
 	<<person2>>
 	<<tearful>> you climb the steps yourself. The <<person>> stands at the top, arguing with the police officer.
 	<br><br>

@@ -1246,7 +1246,7 @@ You are in the main hall of the orphanage.
 		<br>
 	<</if>>
 	<<if $christmas is 1 and $monthday is 25 and $daystate isnot "night" and $exposed lte 0>>
-		<<link [[Celebrate Christmas (1:00)|Orphanage Christmas]]>><<pass 60>><<trauma -12>><<stress -6>><</link>><<lltrauma>><<lstress>>
+		<<ind>><<link [[Celebrate Christmas (1:00)|Orphanage Christmas]]>><<pass 60>><<trauma -12>><<stress -6>><</link>><<lltrauma>><<lstress>>
 		<br>
 	<</if>>
 	<<gardenicon>><<link [[Garden (0:01)|Garden]]>><<pass 1>><</link>>
@@ -1907,7 +1907,7 @@ You lie back and let the <<beasttype>> pleasure you, stroking <<bhis>> ears as i
 <br><br>
 <</if>>
 
-<<link [[Next|Nude Bask]]>><<clearNPC 0 nude_cat>><<endevent>><</link>>
+<<link [[Next|Nude Bask]]>><<clearNPC nude_cat>><<endevent>><</link>>
 <br>
 
 :: Nude Pet
@@ -1915,7 +1915,7 @@ You lie back and let the <<beasttype>> pleasure you, stroking <<bhis>> ears as i
 <<effects>>
 You reach out and pet the <<beasttype>>. <<bHe>> stretches into your hand and yawns. <<bHe>> turns <<bhis>> tail and leaves the way <<bhe>> came.
 <br><br>
-<<link [[Next|Nude Bask]]>><<clearNPC 0 nude_cat>><<endevent>><</link>>
+<<link [[Next|Nude Bask]]>><<clearNPC nude_cat>><<endevent>><</link>>
 <br>
 
 :: Sleep Rape

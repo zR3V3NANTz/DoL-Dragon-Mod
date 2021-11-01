@@ -310,7 +310,7 @@ You flee out the house, the <<beasttype>> snapping at your heels. <<bHe>> doesn'
 	<br><br>
 	<<link [[Take it|Domus House Collar]]>><<crimeup 50>><</link>><<crime>>
 	<br>
-	<<link [[Leave|Domus Street]]>><<clearNPC 0 domus_skul_dog>><<endevent>><</link>>
+	<<link [[Leave|Domus Street]]>><<clearNPC domus_skul_dog>><<endevent>><</link>>
 	<br>
 <<elseif $enemyhealth lte 0>>
 	The <<beasttype>> cowers and rolls over in submission.

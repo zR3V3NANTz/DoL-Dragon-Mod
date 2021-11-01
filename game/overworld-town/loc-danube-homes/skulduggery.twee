@@ -460,7 +460,7 @@ The <<beasttype 0>> pacified, you notice <<bhis 0>> collar glinting. You look cl
 
 	<<link [[Take it|Danube House Collar]]>><<crimeup 100>><</link>><<crime>>
 	<br>
-	<<link [[Leave|Danube Street]]>><<clearNPC 0 danube_cat>><<endevent>><</link>>
+	<<link [[Leave|Danube Street]]>><<clearNPC danube_cat>><<endevent>><</link>>
 	<br>
 
 <<elseif $enemyhealth lte 0>>
@@ -481,7 +481,7 @@ The <<beasttype 0>> pacified, you notice <<bhis 0>> collar glinting. You look cl
 
 	<<link [[Take it|Danube House Collar]]>><<crimeup 100>><</link>><<crime>>
 	<br>
-	<<link [[Leave|Danube Street]]>><<clearNPC 0 danube_cat>><<endevent>><</link>>
+	<<link [[Leave|Danube Street]]>><<clearNPC danube_cat>><<endevent>><</link>>
 	<br>
 
 <<elseif $alarm is 1>>
@@ -570,7 +570,7 @@ The <<beasttype 0>> makes no move as you remove <<bhis 0>> collar. You leave the
 <<set $blackmoney += 100>>
 <br><br>
 
-<<link [[Leave|Danube Street]]>><<clearNPC 0 danube_cat>><<endevent>><</link>>
+<<link [[Leave|Danube Street]]>><<clearNPC danube_cat>><<endevent>><</link>>
 <br>
 
 :: Danube House Sneak Molestation
