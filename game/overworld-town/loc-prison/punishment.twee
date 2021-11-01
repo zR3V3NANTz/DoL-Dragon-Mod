@@ -239,7 +239,7 @@ Writing is engraved on its surface.
         <<else>>
             <<facewear 5>>
         <</if>>
-        "You'll need to watch your step." <<methodical_guard 0 cap>><<person1>> says. You hear footsteps behind, but your vision is blocked by a piece of fabric before you can turn. <span class="purple">You've been blindfolded.</span>
+        "You'll need to watch your step," <<methodical_guard 0>><<person1>> says. You hear footsteps behind, but your vision is blocked by a piece of fabric before you can turn. <span class="purple">You've been blindfolded.</span>
         <br><br>
 
         <<link [[Next|Prison Punishment Blindfold]]>><<prison_punishment_init>><</link>>
@@ -287,7 +287,7 @@ Writing is engraved on its surface.
         <br>
     <<case "bottomless">>
         <<if $worn.lower.name is "naked" and $worn.under_lower.name is "naked">>
-            <<methodical_guard 0 cap>><<person1>> adjusts <<his>> glasses. "You are to be chastised," <<he>> says <span class="blue">"Allowed no clothes below the waist.</span> Seems you're ahead of us."
+            <<methodical_guard 0 cap>><<person1>> adjusts <<his>> glasses. "You are to be chastised," <<he>> says. <span class="blue">"Allowed no clothes below the waist.</span> Seems you're ahead of us."
             <br><br>
         <<else>>
             <<lowerruined>><<underlowerruined>>

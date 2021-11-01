@@ -48,9 +48,10 @@ Tulips grow in great patches near the riverbank.
 	<<elseif ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
 		<<eventsstreet>>
 	<<elseif $robinReunionScene isnot undefined and _robin_location is "park" and $exposed lte 0>>
+		<<npc Robin>><<person1>>
 		<<if $robinReunionScene is "dungeon">>
 			<<unset $robinReunionScene>><<set $robinPostMortem to true>>
-			You see Robin stood behind <<his>> hot chocolate stand. <<His>> mouth goes agape as they see you, and <<he>> sprints towards you.
+			You see Robin stood behind <<his>> hot chocolate stand. <<His>> mouth goes agape as <<he>> sees you, and <<he>> sprints towards you.
 			<br><br>
 
 			"I don’t believe it!" <<he>> squeals as <<he>> buries <<himself>> in your chest. "I-I thought you were gone forever! We need to talk about this at home. When you’re ready."

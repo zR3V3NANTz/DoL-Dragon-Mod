@@ -2393,7 +2393,7 @@
 		<<default>><<set _underUpperWetness to "">>
 	<</switch>>
 
-	<<if $worn.under_upper.integrity lte clothingData('under_upper',$worn.under_upper,'integrity_max') / 10) * 2>>
+	<<if $worn.under_upper.integrity lte (clothingData('under_upper',$worn.under_upper,'integrity_max') / 10) * 2>>
 		<<set _imgName to "tattered">>
 	<<elseif $worn.under_upper.integrity lte (clothingData('under_upper',$worn.under_upper,'integrity_max') / 10) * 5>>
 		<<set _imgName to "torn">>
