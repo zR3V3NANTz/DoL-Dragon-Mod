@@ -998,7 +998,7 @@
             <<if $physique gte random(1, $physiquemax)>>
                 You swat <<him>> away from you, <span class="green">and your hand connects with <<his>> face.</span> <<He>> staggers away.
             <<else>>
-                You swat <<him>> away from you, <span class="red">but <<he>> dodges your blow.</span> At least your got <<his>> mitts off.<<gattention>><<prison_attention>><<gstress>><<stress 6>>
+                You swat <<him>> away from you, <span class="red">but <<he>> dodges your blow.</span> At least you got <<his>> mitts off.<<gattention>><<prison_attention>><<gstress>><<stress 6>>
             <</if>>
             <<endevent>>
             <br><br>
@@ -1184,9 +1184,9 @@
     <<link [[Next|Prison Block]]>><<endevent>><</link>>
     <br>
 <<else>>
-    <<link [[Work hard (1:00)|Prison Laundry Work Hard]]>><<prison_work 1>><</link>> | <span class="green">Will give opportunities to reduce suspicion.</span>
+    <<link [[Work hard (1:00)|Prison Laundry Work Hard]]>><<prison_work 1>><<pass 1>><<advancetohour>><</link>> | <span class="green">Will give opportunities to reduce suspicion.</span>
     <br>
-    <<link [[Socialise with inmates (1:00)|Prison Laundry Work Socialise]]>><<prison_work 1>><</link>> | <span class="green">Will give opportunities to raise respect.</span>
+    <<link [[Socialise with inmates (1:00)|Prison Laundry Work Socialise]]>><<prison_work 1>><<pass 1>><<advancetohour>><</link>> | <span class="green">Will give opportunities to raise respect.</span>
     <br>
     <<if $prison_relaxed_spoke isnot 1>>
         <<link [[Speak with guard (1:00)|Prison Laundry Work Chat]]>><</link>> | <span class="green">Will give opportunities to raise love.</span>
@@ -1212,7 +1212,7 @@
     <<link [[Next|Prison Medical]]>><<endevent>><</link>>
     <br>
 <<else>>
-    <<link [[Assist (1:00)|Prison Medical Work Hard]]>><<prison_work 1>><</link>>
+    <<link [[Assist (1:00)|Prison Medical Work Hard]]>><<prison_work 1>><<pass 1>><<advancetohour>><</link>>
     <br>
     <<if $prison_methodical_spoke isnot 1>>
         <<link [[Speak with guard|Prison Medical Work Chat]]>><</link>>
@@ -1252,7 +1252,7 @@
     <<link [[Next|Prison Spire Precipice]]>><</link>>
     <br>
 <<else>>
-    <<link [[Work (1:00)|Prison Spire Work Hard]]>><<prison_work 1>><</link>>
+    <<link [[Work (1:00)|Prison Spire Work Hard]]>><<prison_work 1>><<pass 1>><<advancetohour>><</link>>
     <br>
     <<if $prison_anxious_spoke isnot 1>>
         <<link [[Speak with guard|Prison Spire Work Chat]]>><</link>>

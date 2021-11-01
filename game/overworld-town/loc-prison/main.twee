@@ -495,7 +495,7 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
     <<link [[Next|Prison Kylar Intro]]>><</link>>
     <br>
 <<elseif $prison.active_punishments.includes("free use") and $worn.neck.name isnot "free use collar" and $worn.neck.name isnot "free use collar with leash">>
-    "Where's your collar?" <<he>> asks. "Best come with me."$worn.neck.name<br>
+    "Where's your collar?" <<he>> asks. "Best come with me."
     <br><br>
     <<prison_repunishment_options>>
 <<elseif $prison.active_punishments.includes("nude") and ($worn.upper.name isnot "naked" or $worn.lower.name isnot "naked" or $worn.under_upper.name isnot "naked" or $worn.under_lower.name isnot "naked")>>
@@ -886,7 +886,6 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
 <<effects>><<effects_prison>><<set $bus to "shower">>
 
 You are in the prison showers.
-<<set $prison.active_punishments to []>>
 <<if $prison.schedule is "wake">>
     Prisoners undress, leaving their clothes on wood benches, before entering the shower. You hear running water.
     <<if $prison.kylar is "active">>
@@ -974,7 +973,7 @@ You are on the metal walkway outside your cell, at the top of the cell block. Th
                 <<if !$prison.protection>>
                     <<if !$prison_scarred_done>>
                         <<generate_scarred_inmate 0>><<person1>>
-                        <<scarred_inmate 0 capo>> cell is more spartan the most. Almost as if it were unnoccupied.
+                        <<scarred_inmate 0 capo>> cell is more spartan the most. Almost as if it were unoccupied.
                         <<endevent>>
                         <br>
                         <<cellicon>><<link [[Spartan cell|Prison Scarred]]>><</link>>

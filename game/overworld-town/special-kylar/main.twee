@@ -181,7 +181,7 @@
 			<br><br>
 		<</if>>
 	<<elseif $bus is "park" and $kylar.fountain is 1 and $season is "winter" and !$kylarSeen.includes("fountainWinter")>>
-		<<set $$kylarSeen.pushUnique("fountainWinter")>>
+		<<set $kylarSeen.pushUnique("fountainWinter")>>
 		<<He>> seems spellbound. The constantly running water and the cold temperature has caused much of the fountain's structure to freeze over and form icicles thicker than your arm, and at least twice as long. Near the centre, some water remains unfrozen.
 		"It's so pretty. It's the most amazing thing I've ever seen!" <<He>> glances at you. "W-well, second most."
 		<br><br>

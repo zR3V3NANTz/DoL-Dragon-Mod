@@ -73,7 +73,6 @@ You line up in front of the massive pile of clothes. <<generate_relaxed_guard 0>
 
 :: Prison Laundry Work Hard
 <<effects>>
-<<pass 1>><<advancetohour>>
 You focus on sorting and folding laundry, loading and unloading the machines.
 <br><br>
 <<set $rng to random(1, 3)>>
@@ -226,7 +225,6 @@ You ignore the <<person>>'s acquisition, and return to work.
 
 :: Prison Laundry Work Socialise
 <<effects>>
-<<pass 1>><<advancetohour>>
 You chat with the other inmates. <<generate_relaxed_guard 0>><<generate2>><<person2>><<relaxed_guard 0 cap>> doesn't seem bothered.
 <br><br>
 
@@ -897,7 +895,6 @@ You're sorting through the last of the paper, when you find another interesting 
 
 :: Prison Medical Work Hard
 <<effects>>
-<<pass 1>><<advancetohour>>
 
 <<generate_methodical_guard 0>><<person1>>You help <<methodical_guard 0>> move patients, take vitals, and apply bandages. <<He>> only speaks when necessary, and gives little heed to the patients' comfort.
 <br><br>
@@ -984,7 +981,7 @@ You attend to your duties. <<methodical_guard 0 cap>> appreciates the lack of di
 :: Prison Medical Work Slip
 <<effects>>
 
-You slip the <<person>> an extra tooth. "Thank you kindly," <<he>> says.<<famegood 1>><<grespect>><<prison_inmates 1>><<ghope>><<prison_hope 1>>
+You slip the <<person2>><<person>> an extra tooth. "Thank you kindly," <<he>> says.<<famegood 1>><<grespect>><<prison_inmates 1>><<ghope>><<prison_hope 1>>
 <br><br>
 
 
@@ -1024,7 +1021,7 @@ You slip the <<person>> an extra tooth. "Thank you kindly," <<he>> says.<<famego
 :: Prison Medical Work Extra
 <<effects>>
 
-You slip the <<person>> an extra tooth, and a couple for yourself. "Thank you kindly," <<he>> says.<<famegood 1>><<grespect>><<prison_inmates 1>><<ghope>><<prison_hope 1>><<prison_teeth_text 2>><<prison_teeth 2>>
+You slip the <<person2>><<person>> an extra tooth, and a couple for yourself. "Thank you kindly," <<he>> says.<<famegood 1>><<grespect>><<prison_inmates 1>><<ghope>><<prison_hope 1>><<prison_teeth_text 2>><<prison_teeth 2>>
 <br><br>
 
 
@@ -1141,7 +1138,6 @@ You administer a single tooth as instructed. The <<person2>><<person>> sighs, bu
 <<set $outside to 0>><<effects>>
 
 <<generate_anxious_guard 0>><<person1>><<anxious_guard 0 cap>> stays in the safety of the cabin, and expects you to perform the more dangerous tasks.
-<<pass 1>><<advancetohour>>
 <<endevent>>
 <br><br>
 <<set $rng to random(1, 5)>>
