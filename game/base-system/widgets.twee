@@ -3313,7 +3313,7 @@ $mouthstate is "tentacledeep">>
 
 <<widget "textmap">>
 
-<<if $map.movement is true ad !$possessed>>
+<<if $map.movement is true and !$possessed>>
 __Map__<br>
 |.....<a class="no-numberify mapmove" onclick="mapMove('Barb Street')" title="Barb Street">Ba</a> &#9866; <a class="no&#9866;numberify mapmove" onclick="mapMove('Cliff Street')" title="Cliff Street">Cl</a> &#9866; <a class="no&#9866;numberify mapmove" onclick="mapMove('Starfish Street')" title="Starfish Street">St</a> &#9866; <a class="no&#9866;numberify mapmove" onclick="mapMove('Mer Street')" title="Mer Street">Me</a><br>
 |..╱ ╲ ╱ ╲ ╱ ╲ ╱ ╲<br>
