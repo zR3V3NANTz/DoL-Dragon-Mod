@@ -308,7 +308,7 @@ Your head quickly tilts to the side, making sickening cracks. Your hands open an
 		"<span class="wraith">You belong to me<<if $wraith.state is "haunt">>, thief<</if>>.</span>" <<trauma 50>><<gggtrauma>>
 		<br><br>
 	<<else>>
-		A beautiful pale figure walks out of your body, towering over you. <<if $wraith.state is "haunt">>It's naked, save an ornate necklace of ivory around its neck.<<else>>It angrily claws at its own neck as it stares you down.<</if>> It places a hand under your chin.
+		A beautiful pale figure walks out of your body, towering over you. <<if $wraith.state is "haunt">>It angrily claws at its own neck as it stares you down.<<else>>It's naked, save an ornate necklace of ivory around its neck.<</if>> It places a hand under your chin.
 		<br><br>
 		"<span class="wraith">Cut short. Next time. See you soon<<if $wraith.state is "haunt">>, thief<</if>>.</span>" <<trauma 50>><<gggtrauma>>
 		<br><br>
@@ -329,7 +329,7 @@ Your head quickly tilts to the side, making sickening cracks. Your hands open an
 		"<span class="wraith">You belong to me. You will not hold against me forever<<if $wraith.state is "haunt">>, thief<</if>>.</span>" <<trauma 50>><<gggtrauma>>
 		<br><br>
 	<<else>>
-		A beautiful pale figure floats before you. <<if $wraith.state is "haunt">>It's naked, save an ornate necklace of ivory around its neck.<<else>>It angrily claws at its own neck as it stares you down.<</if>> It places a hand under your chin.
+		A beautiful pale figure floats before you. <<if $wraith.state is "haunt">>It angrily claws at its own neck as it stares you down.<<else>>It's naked, save an ornate necklace of ivory around its neck.<</if>> It places a hand under your chin.
 		<br><br>
 		"<span class="wraith"><<if $wraith.state isnot "haunt">>Your will is strong. I like you.<<else>>I will have you, graverobber. Soon.<</if>></span>" <<trauma 50>><<gggtrauma>>
 		<br><br>
@@ -354,7 +354,7 @@ Your head quickly tilts to the side, making sickening cracks. Your hands open an
 		"<span class="wraith">You belong to me. You will not hold against me forever<<if $wraith.state is "haunt">>, thief<</if>>.</span>" <<trauma 50>><<gggtrauma>>
 		<br><br>
 	<<else>>
-		A beautiful pale figure floats out of your body, towering over you. <<if $wraith.state is "haunt">>It's naked, save an ornate necklace of ivory around its neck.<<else>>It angrily claws at its own neck as it stares you down.<</if>> It places a hand under your chin.
+		A beautiful pale figure floats out of your body, towering over you. <<if $wraith.state is "haunt">>It angrily claws at its own neck as it stares you down.<<else>>It's naked, save an ornate necklace of ivory around its neck.<</if>> It places a hand under your chin.
 		<br><br>
 		"<span class="wraith">Cut short. Next time. See you soon<<if $wraith.state is "haunt">>, thief<</if>>.</span>" <<trauma 50>><<gggtrauma>>
 		<br><br>
@@ -375,7 +375,7 @@ Your head quickly tilts to the side, making sickening cracks. Your hands open an
 		"<span class="wraith">You belong to me. You will not hold against me forever<<if $wraith.state is "haunt">>, thief<</if>>.</span>" <<trauma 50>><<gggtrauma>>
 		<br><br>
 	<<else>>
-		A beautiful pale figure floats before you. <<if $wraith.state is "haunt">>It's naked, save an ornate necklace of ivory around its neck.<<else>>It angrily claws at its own neck as it stares you down.<</if>> It places a hand under your chin.
+		A beautiful pale figure floats before you. <<if $wraith.state is "haunt">>It angrily claws at its own neck as it stares you down.<<else>>It's naked, save an ornate necklace of ivory around its neck.<</if>> It places a hand under your chin.
 		<br><br>
 		"<span class="wraith"><<if $wraith.state isnot "haunt">>Your will is strong. I like you.<<else>>I will have you, graverobber. Soon.<</if>></span>" <<trauma 50>><<gggtrauma>>
 		<br><br>

@@ -1777,7 +1777,7 @@ A heat travels down your spine, resting in your loins. You're filled with a desp
 			<<link [[Next|Moor Tentacles]]>><<set $molestationstart to 1>><</link>>
 			<br>
 		<</if>>
-	<<elseif $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+	<<elseif $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $hallucinations gte 2)>>
 	<<generatePlant1>><<person1>>
 		<span class="red">Something snags your ankle.</span> Vines whip around your waist and hold you still, and a <<person>> walks up to you. <<Hes>> breathing heavily, and <<his>> hair, adorned with <<plant_details>>, is messed and sweaty.
 		<br><br>
@@ -1865,7 +1865,7 @@ A heat travels down your spine, resting in your loins. You're filled with a desp
 			<<link [[Next|Moor Tentacles]]>><<set $molestationstart to 1>><</link>>
 			<br>
 		<</if>>
-	<<elseif $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $monsterhallucinations is "t" and $hallucinations gte 2)>>
+	<<elseif $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $hallucinations gte 2)>>
 	<<generatePlant1>><<person1>>
 		<span class="red">Something snags your ankle.</span> Vines whip around your waist and hold you still, and a <<person>> walks up to you. <<Hes>> breathing heavily, and <<his>> hair, adorned with <<plant_details>>, is messed and sweaty.
 		<br><br>

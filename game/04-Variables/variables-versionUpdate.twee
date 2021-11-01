@@ -2573,7 +2573,7 @@
 	<<updateNPCsSecond chastity vagina "">>
 	<<updateNPCsSecond chastity anus "">>
 <</if>>
-<<if $prison.kylar is undefined>>
+<<if $prison and $prison.kylar is undefined>>
 	<<set $prison.kylar to 0>>
 <</if>>
 <</widget>>
