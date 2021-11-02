@@ -74,6 +74,7 @@
 	<<set $mouthactiondefault to 0>>
 	<<set $mouthaction to 0>>
 	<<set $mouth to 0>>
+	<<set $penisuse to 0>>
 	<<set $vaginaactiondefault to 0>>
 	<<set $vaginaaction to 0>>
 	<<set $vaginause to 0>>
@@ -90,7 +91,6 @@
 	<<unset $delayRight>>
 	<<unset $corruptionMasturbation>>
 	<<unset $corruptionMasturbationCount>>
-	<<unset $delayRight>>
 	<<unset $leftFingersSemen>>
 	<<unset $rightFingersSemen>>
 	<<set $masturbationorgasmsemen to 0>>
@@ -122,6 +122,7 @@
 	<<set $mouth to 0>>
 	<<set $mouthactiondefault to "mrest">>
 	<<set $mouthaction to 0>>
+	<<set $penisuse to 0>>
 	<<set $vaginaactiondefault to "mrest">>
 	<<set $vaginaaction to 0>>
 	<<set $vaginause to 0>>
