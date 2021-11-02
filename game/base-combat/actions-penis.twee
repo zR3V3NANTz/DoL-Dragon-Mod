@@ -94,19 +94,34 @@
 <</widget>>
 
 <<widget "actionspenisPenisEntrance">>
-<<if $consensual is 0 or ($promiscuity lte 54 and $enemytype is "man" and !$promiscuityIgnore) or ($deviancy lte 54 and $enemytype isnot "man" and !$promiscuityIgnore)>>
-   <<set _penisaction["Cooperate"] to "otherpenisrub">>
-<<else>>
-   <<set _penisaction["Rub"] to "otherpenisrub">>
-<</if>>
+	<<if $consensual is 0 or ($promiscuity lte 54 and $enemytype is "man" and !$promiscuityIgnore) or ($deviancy lte 54 and $enemytype isnot "man" and !$promiscuityIgnore)>>
+		<<set _penisaction["Cooperate"] to "otherpenisrub">>
+	<<else>>
+		<<set _penisaction["Rub"] to "otherpenisrub">>
+	<</if>>
+	<<if $thighuse is 0>>
+		<<set _penisaction["Try to keep it away with your thighs"] to "penisthighs">>
+	<</if>>
+	<<if $analdisable is "f" and $anususe is 0 and $worn.genitals.anal_shield isnot 1>>
+		<<set _penisaction["Offer your anus instead"] to "penisanus">>
+	<</if>>
+	<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1>>
+		<<set _penisaction["Offer double anal instead"] to "penisanusdouble">>
+	<</if>>
 <</widget>>
 
 <<widget "actionspenisPenisImminent">>
-<<if $consensual is 0 or (!$promiscuityIgnore and ($enemytype is "man" ? ($promiscuity lte 54) : ($deviancy lte 54)))>>
-   <<set _penisaction["Cooperate"] to "otherpenisrub">>
-<<else>>
-   <<set _penisaction["Rub"] to "otherpenisrub">>
-<</if>>
+	<<if $consensual is 0 or (!$promiscuityIgnore and ($enemytype is "man" ? ($promiscuity lte 54) : ($deviancy lte 54)))>>
+	<<set _penisaction["Cooperate"] to "otherpenisrub">>
+	<<else>>
+	<<set _penisaction["Rub"] to "otherpenisrub">>
+	<</if>>
+	<<if $analdisable is "f" and $anususe is 0 and $worn.genitals.anal_shield isnot 1>>
+		<<set _penisaction["Offer your anus instead"] to "penisanus">>
+	<</if>>
+	<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1>>
+		<<set _penisaction["Offer double anal instead"] to "penisanusdouble">>
+	<</if>>
 	<<set _penisaction["Pull away"] to "fencingescape">>
 <</widget>>
 

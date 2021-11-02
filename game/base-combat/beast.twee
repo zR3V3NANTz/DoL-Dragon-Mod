@@ -646,10 +646,10 @@
 			pressing
 		<</if>>
 		<<if random(0,1) is 1>>
-			<<bhis>> $NPCList[_n].penisdesc against yours.</span>
+			<<bhis>> $NPCList[_n].penisdesc against yours.
 		<<else>>
-			<<bhis>> $NPCList[_n].penisdesc against your <<penis>>.</span>
-		<</if>>
+			<<bhis>> $NPCList[_n].penisdesc against your <<penis>>.
+		<</if>></span>
 	<<sex 10>><<set $NPCList[_n].penis to "penis">><<set $penisstate to "otherpenis">>
 	<<if $worn.genitals.type.includes("chastity")>>
 		<<set $worn.genitals.integrity -= 10>><<set $speechchastity to 1>>
