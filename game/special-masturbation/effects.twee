@@ -644,6 +644,8 @@
 	<</if>>
 <</if>>
 
+<!-- Mouth actions -->
+
 <<if $mouthaction is "mpenisentrance">>
 	<<set $mouthactiondefault to "mpenislick">><<set $mouthaction to 0>><<arousal 100>><<set $mouth to "mpenisentrance">>
 	<<if $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1>>
@@ -804,7 +806,7 @@
 <</if>>
 
 <<if $mouthaction is "mvaginaentrance">>
-	<<set $mouthactiondefault to "mvaginalick">><<set $mouthaction to 0>><<arousal 100>><<set $mouth to "mvaginaentrance">>
+	<<set $mouthactiondefault to "mvaginalick">><<set $mouthaction to 0>><<arousal 100>><<set $mouth to "mvaginaentrance">><<set $vaginause to "mouth">>
 	<<if $_genitals_exposed>>
 		<span class="blue">You run your tongue over your exposed clit and shiver in anticipation.</span>
 		<<arousal 100>>
@@ -836,7 +838,7 @@
 	<</if>>
 <</if>>
 <<if $mouthaction is "mvaginastop">>
-	<<set $mouthactiondefault to "mrest">><<set $mouthaction to 0>><<set $mouth to 0>>
+	<<set $mouthactiondefault to "mrest">><<set $mouthaction to 0>><<set $mouth to 0>><<set $vaginause to 0>>
 	<span class="lblue">You move your mouth away from your <<pussy>>.</span>
 <</if>>
 
@@ -871,13 +873,11 @@
 
 <<if $mouthaction is "mpenisflowerlick">>
 	<<set $mouthactiondefault to "mpenisflowerlick">><<set $mouthaction to 0>><<set $mouth to "mpenisflowerlick">><<arousal 200>><<set $drugged += 10>><<set $moorPhallusPlant to 2>>
-	<<if $rng gte 67>>
-		You almost take the phallus plant into your mouth, but suddenly feel apprehensive.
-	<<elseif $rng gte 33>>
-		You lick the phallus plant's tip and swallow the sweet liquid.
-	<<else>>
-		You lick the phallus plant's tip.
-	<</if>>
+	<<print either(
+		"You almost take the phallus plant into your mouth, but suddenly feel apprehensive.",
+		"You lick the phallus plant's tip and swallow the sweet liquid.",
+		"You lick the phallus plant's tip.",
+	)>>
 	<<if $vaginaaction is "mpenisflowerrub">>
 		<<set $vaginaaction to 0>><<set $vaginaactiondefault to "mrest">>
 	<</if>>
@@ -913,14 +913,20 @@
 	<span class="red">Your head keeps bobbing up and down, sucking on the phallus plant. Try as you might, you just can't will yourself to stop.</span>
 <</if>>
 
+<!-- Vagina actions -->
+
 <<if $vaginaaction is "mpenisflowerrub">>
-	<<set $vaginaactiondefault to "mpenisflowerrub">><<set $vaginaaction to 0>><<set $vaginause to "mpenisflowerrub">><<arousal 200>><<set $moorPhallusPlant to 2>>
-	<<if $rng gte 67>>
-		You nearly impale yourself on the plant, as a sudden burst of desire hits you. You stop yourself at the last moment, and gently circle the plant around your entrance.
-	<<elseif $rng gte 33>>
-		You <<if $player.penisExist>>occasionally rub your <<penis>><<else>>rub your clit<</if>> against the plant.
+	<<set $vaginaactiondefault to "mpenisflowerrub">><<set $vaginaaction to 0>><<set $vaginause to "mpenisflowerrub">><<set $moorPhallusPlant to 2>>
+	<<if !$_genitals_exposed>>
+		<<arousal 100>>
+		You grind your crotch against the plant, although your clothing gets in the way.
 	<<else>>
-		You rub your vagina against the phallus plant.
+		<<arousal 200>>
+		<<print either(
+			"You nearly impale yourself on the plant, as a sudden burst of desire hits you. You stop yourself at the last moment, and gently circle the plant around your entrance.",
+			"You rub your <<if $player.penisExist>><<penis>><<else>>clit<</if>> against the plant.",
+			"You rub your vagina against the phallus plant.",
+		)>>
 	<</if>>
 	<<if $anusaction is "mpenisflowerrub">>
 		<<set $anusaction to 0>><<set $anusactiondefault to "mrest">>
@@ -928,8 +934,16 @@
 <</if>>
 
 <<if $vaginaaction is "mpenisflowerpenetrate">>
-	<<set $vaginaactiondefault to "mpenisflowerbounce">><<set $vaginaaction to 0>><<set $vaginause to "mpenisflowerpenetrate">><<arousal 1000>><<vaginalstat>><<vaginaraped>><<takeVirginity "phallus plant" "vaginal">>
-	You lower yourself down, allowing the plant to penetrate you, <<if $player.virginity.vaginal is true>>you almost scream out as your vagina struggles to accommodate the plant, but the pain is gone within moments.<<else>>you've never felt anything quite like it before.<</if>>
+	<<set $vaginaactiondefault to "mpenisflowerbounce">><<set $vaginaaction to 0>><<set $vaginause to "mpenisflowerpenetrate">>
+	<<arousal 1000>><<vaginalstat>>
+	You lower yourself down, allowing the plant to penetrate you.
+	<<vaginaraped>>
+	<<if $player.virginity.vaginal is true>>
+		<<takeVirginity "a phallus plant" "vaginal">>
+		You almost scream out as your vagina struggles to accommodate the plant, but the pain is gone within moments.
+	<<else>>
+		You've never felt anything quite like it before.
+	<</if>>
 <</if>>
 
 <<if $vaginaaction is "mpenisflowerstop">>
@@ -953,20 +967,33 @@
 	<span class="red">Your legs fail to lift you off of the plant, as if your body isn't obeying you.</span>
 <</if>>
 
+<!-- Anus actions -->
+
 <<if $anusaction is "mpenisflowerrub">>
-	<<set $anusactiondefault to "mpenisflowerrub">><<set $anusaction to 0>><<set $anususe to "mpenisflowerrub">><<arousal 200>><<set $moorPhallusPlant to 2>>
-	<<if $rng gte 67>>
-		You nearly let yourself take the whole plant into your anus, but stop yourself at the last moment. You gently circle the plant around the entrance.
-	<<elseif $rng gte 33>>
-		You rub the phallus plant between your <<bottom>> cheeks.
+	<<set $anusactiondefault to "mpenisflowerrub">><<set $anusaction to 0>><<set $anususe to "mpenisflowerrub">><<set $moorPhallusPlant to 2>>
+	<<if !$_genitals_exposed>>
+		<<arousal 100>>
+		You grind your ass against the plant, although your clothes get in the way.
 	<<else>>
-		You rub your anus against the phallus plant.
+		<<arousal 200>>
+		<<print either(
+			"You nearly let yourself take the whole plant into your anus, but stop yourself at the last moment. You gently circle the plant around the entrance.",
+			"You rub the phallus plant between your <<bottom>> cheeks.",
+			"You rub your anus against the phallus plant.",
+		)>>
 	<</if>>
 <</if>>
 
 <<if $anusaction is "mpenisflowerpenetrate">>
-	<<set $anusactiondefault to "mpenisflowerbounce">><<set $anusaction to 0>><<set $anususe to "mpenisflowerpenetrate">><<arousal 1000>><<analstat>>
-	You lower yourself down, allowing the plant to penetrate you, <<if $player.virginity.anal is true>><<takeVirginity "phallus plant" "anal">>you almost scream out as <span class="red">your no longer virgin</span> anus struggles to accommodate the plant, but the pain is gone within moments.<<else>>you've never felt anything quite like it before.<</if>>
+	<<set $anusactiondefault to "mpenisflowerbounce">><<set $anusaction to 0>><<set $anususe to "mpenisflowerpenetrate">>
+	<<arousal 1000>><<analstat>>
+	You lower yourself down, allowing the plant to penetrate you.
+	<<if $player.virginity.anal is true>>
+		<<takeVirginity "a phallus plant" "anal">>
+		You almost scream out as <span class="red">your no longer virgin</span> anus struggles to accommodate the plant, but the pain is gone within moments.
+	<<else>>
+		You've never felt anything quite like it before.
+	<</if>>
 <</if>>
 
 <<if $anusaction is "mpenisflowerstop">>
@@ -1433,7 +1460,6 @@
 <<set $rng to random(0,100)>>
 <<if $rightaction is "mrest">>
 	<<set $rightactiondefault to 0>>
-	<<set $rng to random(0,100)>>
 	<<if $rng gte 90 and $corruption_slime gt ($willpower / 10) and $corruptionMasturbation is undefined>>
 		<<set $corruptionMasturbation to true>>
 		<<set $corruptionMasturbationCount to random(2,6)>>

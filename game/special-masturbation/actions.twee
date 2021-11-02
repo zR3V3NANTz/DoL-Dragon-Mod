@@ -286,9 +286,8 @@
 			| <label><<radiobutton "$mouthaction" "mpenisflowerlick" autocheck>> <span class="sub">Lick the phallus plant</span></label>
 		<</if>>
 		| <label><<radiobutton "$mouthaction" "mrest" autocheck>> Rest</label>
-	<</if>>
 
-	<<if $mouth is "mpenisentrance">>
+	<<elseif $mouth is "mpenisentrance">>
 		<br><br>
 		Your mouth is in front of your penis.
 		<br>
@@ -296,18 +295,16 @@
 		| <label><<radiobutton "$mouthaction" "mpenistakein" autocheck>> <span class="sub">Take it into your mouth</span></label>
 		| <label><<radiobutton "$mouthaction" "mpenisstop" autocheck>> Move your mouth away</label>
 		| <label><<radiobutton "$mouthaction" "mrest" autocheck>> Rest</label>
-	<</if>>
 
-	<<if $mouth is "mvaginaentrance">>
+	<<elseif $mouth is "mvaginaentrance">>
 		<br><br>
 		You're licking your pussy.
 		<br>
 		| <label><<radiobutton "$mouthaction" "mvaginalick" autocheck>> <span class="sub">Lick your pussy</span></label>
 		| <label><<radiobutton "$mouthaction" "mvaginaclit" autocheck>> <span class="sub">Focus on your clit</span></label>
 		| <label><<radiobutton "$mouthaction" "mvaginastop" autocheck>> Move your mouth away</label>
-	<</if>>
 
-	<<if $mouth is "mpenis">>
+	<<elseif $mouth is "mpenis">>
 		<br><br>
 		You're sucking on your penis.
 		<<if $selfsuckDepth is $selfsuckLimit>>
@@ -333,18 +330,16 @@
 		<<if $selfsuckDepth lte 1>>
 			| <label><<radiobutton "$mouthaction" "mpenisstop" autocheck>> Move your mouth away</label>
 		<</if>>
-	<</if>>
 
-	<<if $mouth is "mpenisflowerlick">>
+	<<elseif $mouth is "mpenisflowerlick">>
 		<br><br>
 		You're licking the phallus plant.
 		<br>
 		| <label><<radiobutton "$mouthaction" "mpenisflowerlick" autocheck>> <span class="sub">Lick</span></label>
 		| <label><<radiobutton "$mouthaction" "mpenisflowertakein" autocheck>> <span class="sub">Take it into your mouth</span></label>
 		| <label><<radiobutton "$mouthaction" "mpenisflowerstop" autocheck>> Move your mouth away</label>
-	<</if>>
 
-	<<if $mouth is "mpenisflowersuck">>
+	<<elseif $mouth is "mpenisflowersuck">>
 		<br><br>
 		You're sucking on the phallus plant.
 		<br>
@@ -355,28 +350,30 @@
 
 <<if $moorPhallusPlant>>
 	/* Vagina Actions */
-	<<if $player.vaginaExist and $vaginause is 0 and !$worn.genitals.type.includes("chastity")>>
+	<<set $vaginaaction to $vaginaactiondefault>>
+	<<set $_pussy to ($_genitals_exposed ? "pussy" : "crotch")>>
+	<<if !$player.vaginaExist or $worn.genitals.type.includes("chastity")>>
+		<!-- do nothin -->
+	<<elseif $vaginause is 0>>
 		<br><br>
-		Your pussy is free.
+		Your pussy is <<print ($_genitals_exposed ? "free" : "free, but clothed")>>.
 		<br>
 		<<if $moorPhallusPlant is 1>>
 			| <label><<radiobutton "$vaginaaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
 		<</if>>
 		| <label><<radiobutton "$vaginaaction" "mrest" autocheck>> Rest</label>
-	<</if>>
 
-	<<if $vaginause is "mpenisflowerrub">>
+	<<elseif $vaginause is "mpenisflowerrub">>
 		<br><br>
-		You're rubbing your pussy against the phallus plant.
+		You're rubbing your $_pussy against the phallus plant.
 		<br>
 		| <label><<radiobutton "$vaginaaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
-		<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
+		<<if $_genitals_exposed>>
 			| <label><<radiobutton "$vaginaaction" "mpenisflowerpenetrate" autocheck>> <span class="sub">Lower yourself onto the phallus plant</span><<vaginalvirginitywarning>></label>
 		<</if>>
-		| <label><<radiobutton "$vaginaaction" "mpenisflowerstop" autocheck>> Move your pussy away</label>
-	<</if>>
+		| <label><<radiobutton "$vaginaaction" "mpenisflowerstop" autocheck>> Move your $_pussy away</label>
 
-	<<if $vaginause is "mpenisflowerpenetrate">>
+	<<elseif $vaginause is "mpenisflowerpenetrate">>
 		<br><br>
 		You're bouncing on the phallus plant with your vagina.
 		<br>
@@ -385,28 +382,31 @@
 	<</if>>
 
 	/* Anus Actions */
-	<<if $anususe is 0 and $worn.genitals.anal_shield isnot 1>>
+	<<set $anusaction to $anusactiondefault>>
+	<<set $_anus_exposed to $worn.over_lower.anus_exposed gte 1 and $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1>>
+	<<set $_ass to ($_anus_exposed ? "anus" : "ass")>>
+	<<if $worn.genitals.anal_shield is 1>>
+		<!-- do nothin -->
+	<<elseif $anususe is 0>>
 		<br><br>
-		Your anus is free.
+		Your $_ass is <<print ($_anus_exposed ? "free" : "free, but clothed")>>.
 		<br>
 		<<if $moorPhallusPlant is 1>>
 			| <label><<radiobutton "$anusaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
 		<</if>>
 		| <label><<radiobutton "$anusaction" "mrest" autocheck>> Rest</label>
-	<</if>>
 
-	<<if $anususe is "mpenisflowerrub">>
+	<<elseif $anususe is "mpenisflowerrub">>
 		<br><br>
-		You're rubbing your anus against the phallus plant.
+		You're rubbing your $_ass against the phallus plant.
 		<br>
 		| <label><<radiobutton "$anusaction" "mpenisflowerrub" autocheck>> <span class="sub">Rub against the phallus plant</span></label>
-		<<if $worn.over_lower.vagina_exposed gte 1 and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1>>
+		<<if $_anus_exposed>>
 			| <label><<radiobutton "$anusaction" "mpenisflowerpenetrate" autocheck>> <span class="sub">Lower yourself onto the phallus plant</span><<analvirginitywarning>></label>
 		<</if>>
-		| <label><<radiobutton "$anusaction" "mpenisflowerstop" autocheck>> Move your anus away</label>
-	<</if>>
+		| <label><<radiobutton "$anusaction" "mpenisflowerstop" autocheck>> Move your $_ass away</label>
 
-	<<if $anususe is "mpenisflowerpenetrate">>
+	<<elseif $anususe is "mpenisflowerpenetrate">>
 		<br><br>
 		You're bouncing on the phallus plant with your anus.
 		<br>
