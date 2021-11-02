@@ -156,7 +156,7 @@ Wren addresses you with one leg resting on the side of the ship. "Any way I can 
     <<if $prison.kylar is "active">>
         <<link [[Escape alone (0:30)|Prison Wren Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 30>><<prison_guards -40>><</link>><<crime>><<gggsuspicion>>
         <br>
-        <<link [[Escape with Kylar (0:40)|Prison Kylar Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 40>><<prison_guards -40>><<npcincr Kylar rage -60>><<npcincr Kylar love 20>><</link>><<crime>><<gggsuspicion>><<ggglove>><<lllsuspicion>>
+        <<link [[Escape with Kylar (0:40)|Prison Kylar Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 40>><<prison_guards -40>><<npcincr Kylar rage -60>><<npcincr Kylar love 20>><</link>><<crime>><<gggsuspicion>><<ggglove>><<lllksuspicion>>
         <br>
     <<else>>
         <<link [[Escape (0:30)|Prison Wren Escape]]>><<prison_end>><<set $crime += Math.trunc($prison.time * 250)>><<set $crimehistory += Math.trunc($prison.time * 250)>><<pass 30>><<prison_guards -40>><</link>><<crime>><<gggsuspicion>>
@@ -357,7 +357,7 @@ Wren pulls up the anchor as you climb aboard, and turns on the engine. The boat 
     <br><br>
 <</if>>
 
-"Stay close," <<he>> says. "Been a while since I've bumped into anything, but don't want you falling in. <<He>> puts one hand on the helm, but puts the other around your shoulders.
+"Stay close," <<he>> says. "Been a while since I've bumped into anything, but don't want you falling in." <<He>> puts one hand on the helm, but puts the other around your shoulders.
 <br><br>
 
 <<link [["Lean into " + $NPCList[0].pronouns.him|Prison Wren Escape 2]]>><<set $phase to 0>><<npcincr Wren love 1>><</link>><<glove>>
@@ -460,7 +460,7 @@ Wren rubs <<his>> chin. "There is something I need," <<he>> says. <span class="g
 <<elseif $prison.schedule is "revolt">>
     <<He>> looks at the sky. <span class="green">"The birds are busy,"</span> <<he>> says. "Nows the time."
 <<else>>
-    <<He>> points at the sky. <span class="blue">"There's one problem left."</span> "The birds. Hiding behind deck won't work. Tried that once. You gotta get them friendly with you, or distract them somehow."
+    <<He>> points at the sky. "<span class="blue">There's one problem left.</span> The birds. Hiding behind deck won't work. Tried that once. You gotta get them friendly with you, or distract them somehow."
 <</if>>
 <br><br>
 

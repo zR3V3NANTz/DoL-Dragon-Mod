@@ -521,7 +521,7 @@ You find yourself sinking through the ice, submerging without causing a break.
 			<<case "Drain Exit">>
 				<<pass 5>>
 				<<set $nextPassageCheck to "Industrial Drain">>
-				<<set $nextPassage to "Industrial Drain">>				
+				<<set $nextPassage to "Industrial Drain">>
 			<<case "Harvest Street" "Mer Street" "Industrial Drain">>
 				<<pass 5>>
 				<<set $nextPassageCheck to "Industrial alleyways">>

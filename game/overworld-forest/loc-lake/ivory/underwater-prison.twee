@@ -567,7 +567,7 @@ It stands up in your body, steadying itself against the bars of the cage. It cle
 "You're mine," it says with your voice.
 <br><br>
 It sits down against the wall, and spreads your legs. Many pale tentacles enter your vision.
-<<if $worn.lower.type isnot "naked">>
+<<if $worn.lower.name isnot "naked">>
 	Your $worn.lower.name <<lowerplural>> torn to shreds in an instant.<<lowerruined>>
 <</if>>
 They near your groin, and cover your <<genitals>> in a thick slime. Sensation suddenly comes flooding back to you in every spot the slime touches. <<garousal>><<gpain>><<pain 6>>

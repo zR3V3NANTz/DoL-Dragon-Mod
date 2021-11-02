@@ -1637,7 +1637,7 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
                 <<elseif $prison.birds gte 20>>
                     <span class="teal">The watchers think you're useful.</span>
                 <<elseif $prison.birds gte 10>>
-                    <span class="lblue">The watchers recognise you..</span>
+                    <span class="lblue">The watchers recognise you.</span>
                 <<else>>
                     <span class="blue">The watchers see you as meat.</span>
                 <</if>>
