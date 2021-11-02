@@ -506,10 +506,10 @@
 				<<if $carried[$args[0]].accessory_colourCustom isnot undefined>><<set _accessory_colourCustom to $carried[$args[0]].accessory_colourCustom>><</if>>
 				<<if $carried[$args[0]].outfitSecondary isnot undefined>>
 					<<set _outfitSecondaryRebuy to $carried[$args[0]].outfitSecondary>>
-					<<if $money gte Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
+					<<if $money gte Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
 						<<set $_return to clothesReturnLocation($carried[$args[0]],"rebuy")>>
 						<<generalSend $_return _outfitSecondaryRebuy[0] $carried[_outfitSecondaryRebuy[0]].index $carried[_outfitSecondaryRebuy[0]].colour $carried[_outfitSecondaryRebuy[0]].accessory_colour>>
-						<<set $money -= Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
+						<<set $money -= Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
 						<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($carried[_outfitSecondaryRebuy[0]].name),$_return])>>
 					<<else>>
 						<<set $effectsmessage to 1>><<run $rebuy_failure.push(clone($carried[_outfitSecondaryRebuy[0]].name))>>
@@ -527,10 +527,10 @@
 				<<if $worn[$args[0]].accessory_colourCustom isnot undefined>><<set _accessory_colourCustom to $worn[$args[0]].accessory_colourCustom>><</if>>
 				<<if $worn[$args[0]].outfitSecondary isnot undefined>>
 					<<set _outfitSecondaryRebuy to $worn[$args[0]].outfitSecondary>>
-					<<if $money gte Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
+					<<if $money gte Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
 						<<set $_return to clothesReturnLocation($worn[_outfitSecondaryRebuy[0]],"rebuy")>>
 						<<generalSend $_return _outfitSecondaryRebuy[0] $worn[_outfitSecondaryRebuy[0]].index $worn[_outfitSecondaryRebuy[0]].colour $worn[_outfitSecondaryRebuy[0]].accessory_colour>>
-						<<set $money -= Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],$args[0]) * 1.5)>>
+						<<set $money -= Math.trunc(getClothingCost($worn[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
 						<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($worn[_outfitSecondaryRebuy[0]].name),$_return])>>
 					<<else>>
 						<<set $effectsmessage to 1>><<run $rebuy_failure.push(clone($worn[_outfitSecondaryRebuy[0]].name))>>
@@ -552,6 +552,9 @@
 		<<if _outfitPrimaryRuined isnot undefined>>
 			<<for _labelRuined, _valueRuined range _outfitPrimaryRuined>>
 				<<if $carried[_labelRuined].outfitSecondary isnot undefined>>
+					<<set $carried[_labelRuined].outfitSecondary[1] to "broken">>
+					<<set $carried[_labelRuined].one_piece to "broken">>
+					<<set $carried[_labelRuined].set to _labelRuined>>
 					<<if $carried[_labelRuined].outfitSecondary[1] is $carried[$args[0]].name>>
 						<<if $args[1]>>
 							<<generalRuined _labelRuined>>
@@ -559,10 +562,6 @@
 							<<headruined>>
 						<<elseif _labelRuined is "over_head" and $carried.over_head.hood>>
 							<<overheadruined>>
-						<<else>>
-							<<set $carried[_labelRuined].outfitSecondary[1] to "broken">>
-							<<set $carried[_labelRuined].one_piece to "broken">>
-							<<set $carried[_labelRuined].set to _labelRuined>>
 						<</if>>
 					<</if>>
 				<</if>>
@@ -574,16 +573,15 @@
 			<<for _labelRuined, _valueRuined range _outfitPrimaryRuined>>
 				<<if $worn[_labelRuined].outfitSecondary isnot undefined>>
 					<<if $worn[_labelRuined].outfitSecondary[1] is $worn[$args[0]].name>>
+						<<set $worn[_labelRuined].outfitSecondary[1] to "broken">>
+						<<set $worn[_labelRuined].one_piece to "broken">>
+						<<set $worn[_labelRuined].set to _labelRuined>>
 						<<if $args[1]>>
 							<<generalRuined _labelRuined>>
 						<<elseif _labelRuined is "head" and $worn.head.hood>>
 							<<headruined>>
 						<<elseif _labelRuined is "over_head" and $worn.over_head.hood>>
 							<<overheadruined>>
-						<<else>>
-							<<set $worn[_labelRuined].outfitSecondary[1] to "broken">>
-							<<set $worn[_labelRuined].one_piece to "broken">>
-							<<set $worn[_labelRuined].set to _labelRuined>>
 						<</if>>
 					<</if>>
 				<</if>>

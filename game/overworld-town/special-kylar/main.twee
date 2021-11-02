@@ -154,7 +154,7 @@
 			<<He>> looks away.
 			<br><br>
 		<<elseif $bus is "park" and $kylar.fountain is 1 and $season is "winter" and !$kylarSeen.includes("fountainWinter")>>
-			<<set $kylarSeen.pushUnique("fountainWinter") to 1>>
+			<<set $kylarSeen.pushUnique("fountainWinter")>>
 			<<He>> seems spellbound. The constantly running water and the cold temperature has caused much of the fountain's structure to freeze over and form icicles thicker than your arm, and at least twice as long. Near the centre, some water remains unfrozen.
 			"It's so pretty. It's the most amazing thing I've ever seen!" <<He>> glances at you. "W-well, second most."
 			<br><br>
@@ -538,7 +538,7 @@ You hear a door open above. A person walks down a staircase, carrying something 
 	<br><br>
 <</if>>
 
-"You're so rough," <<He>> laughs. "I'm powerless. Do what you want to me."
+"You're so rough," <<he>> laughs. "I'm powerless. Do what you want to me."
 
 <<if $NPCList[0].penis isnot "none">>
 	<<He>> pushes your thighs up and sits on the edge of the chair, pushing against your groin.
@@ -2846,9 +2846,9 @@ You sit beside Kylar and say hello.
 	Kylar freezes up.
 	<br><br>
 
-	<<link [[Kiss back|Canteen Kylar Whitney Kiss]]>><<npcincr Kylar rage 20>><<npcincr Whitney dom 1>><<npcincr Kylar love -20>><</link>><<llllove>><<gggksuspicion>><<gdom>>
+	<<link [[Kiss back|Canteen Kylar Whitney Kiss]]>><<npcincr Kylar rage 20>><<npcincr Whitney dom 1>><<npcincr Kylar love -20>><</link>><<llllove>><<gggksuspicion>><<gdom "Whitney">>
 	<br>
-	<<link [[Pull away|Canteen Kylar Whitney Refuse]]>><<npcincr Kylar rage -1>><<npcincr Whitney dom -1>><</link>><<ldom>><<lksuspicion>>
+	<<link [[Pull away|Canteen Kylar Whitney Refuse]]>><<npcincr Kylar rage -1>><<npcincr Whitney dom -1>><</link>><<ldom "Whitney">><<lksuspicion>>
 	<br>
 	<<if $submissive lte 500>>
 		<<link [[Slap|Canteen Kylar Whitney Slap]]>><<set $submissive -= 1>><<npcincr Whitney dom -3>><<npcincr Kylar rage -10>><</link>><<defianttext>><<llksuspicion>><<lldom>>

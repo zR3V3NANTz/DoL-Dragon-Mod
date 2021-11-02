@@ -841,7 +841,7 @@
 			"It's not fair..." <<he>> pouts, glaring at your $worn.genitals.name.
 		<</if>>
 		<br><br>
-	<<elseif $NPCList[_nn].penis.startsWith("penis") and _sydneyChastity>>
+	<<elseif $NPCList[_nn].penis isnot 0 and $NPCList[_nn].penis.startsWith("penis") and _sydneyChastity>>
 		<<He>> moans loudly as <<he>> climaxes. "Hmph," <<he>> pouts, giving <<his>> chastity belt a useless tug.
 	<<elseif $NPCList[_nn].penis is "penis">>
 		<<if random (1, 2) is 1>>
@@ -1280,7 +1280,7 @@
 			<<if $bodywritingdisable is "f">>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
-	<<elseif $NPCList[_nn].penis.startsWith("penis") and $worn.genitals.type.includes("chastity")>>
+	<<elseif $NPCList[_nn].penis isnot 0 and $NPCList[_nn].penis.startsWith("penis") and $worn.genitals.type.includes("chastity")>>
 		<<He>> gasps as <<he>> cums against your $worn.genitals.name. 
 		<<if _sydneyChastity>>
 			"I'll break both of these things one day," <<he>> says.
@@ -1291,9 +1291,9 @@
 			<</if>>
 		<</if>>
 		<br><br>
-	<<elseif $NPCList[_nn].penis.startsWith("penis") and _sydneyChastity>>
+	<<elseif $NPCList[_nn].penis isnot 0 and $NPCList[_nn].penis.startsWith("penis") and _sydneyChastity>>
 		<<He>> moans loudly as <<he>> climaxes. "Hmph," <<he>> pouts, giving <<his>> chastity belt a useless tug.
-	<<elseif $NPCList[_nn].penis.startsWith("penis")>>
+	<<elseif $NPCList[_nn].penis isnot 0 and $NPCList[_nn].penis.startsWith("penis")>>
 			<<switch random(1, 5)>>
 			<<case 1 2>>
 				<<He>> groans as <<he>> cums, dragging <<his>> cock across your ass and thighs.
