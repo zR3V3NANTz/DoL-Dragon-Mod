@@ -94,7 +94,7 @@ Passage: <<print $passage>>
 <br>
 <<link [[Strip all|$passage]]>><<undress "wardrobe">><</link>>
 <br>
-<<link [[Pass 1 minute|$passage]]>><<pass 1>><</link>>
+<<link [[Pass 1 minute|$passage]]>><<pass 1>><<set $tentacledisable to "t">><</link>>
 <br>
 <<link [[Pass 15 minutes|$passage]]>><<pass 15>><</link>>
 <br>

@@ -1465,7 +1465,7 @@ Second arg: tool */
 <<widget "bodypart_admire_parasite_comment">>
 <<if $NPCList[_n].type is "plant">>
 	<<if !$speechadmired>><<set $speechadmired to 1>>
-		<<if $args[0] is penis>>
+		<<if $args[0] is "penis">>
 			<<He>> pouts. "That thing better not block your cum<<if $orgasmcurrent gte 1>> again<</if>>."
 		<<else>>
 			<<He>> raises an eyebrow. "Alright. Gotta admit, that's a new one."
