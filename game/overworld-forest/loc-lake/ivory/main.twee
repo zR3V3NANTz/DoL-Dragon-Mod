@@ -349,6 +349,7 @@ You shake your head. <<He>> freezes in an unnatural position, and grins. Your pu
 
 :: Wraith Mimic Kylar
 <<effects>>
+<<set $wraith.exit to "town">>
 <<if $submissive gte 1150>>
 	You look away from Kylar. "S-sorry," you say. "Not today."
 <<elseif $submissive lte 850>>
