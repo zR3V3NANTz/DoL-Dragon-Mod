@@ -824,7 +824,10 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 			<<checkbox "$lurkerdisable" "t" "f" autocheck>> Enable lurkers
 			</div></label>
 			<label><div class="settingsToggle">
-			<<checkbox "$horsedisable" "t" "f" autocheck>> Enable horses and centaur
+			<<checkbox "$horsedisable" "t" "f" autocheck>> Enable horses and centaurs
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$plantdisable" "t" "f" autocheck>> Enable plantpeople
 			</div></label>
 			<div style="clear:both;">/*Keep at end of toggles*/</div>
 		</div>

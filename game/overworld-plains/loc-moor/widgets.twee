@@ -293,19 +293,30 @@
 		You see a patch of tall grass rustle. A multi-limbed creature scuttles out from the grass, followed by another behind a bush. The first creature leaps at you.
 		<br><br>
 
-		<<if $monsterchance gte 1 and $tentacledisable is "f" and ($monsterhallucinations is "f" or $hallucinations gte 2)>>
+		<<if $plantdisable is "f">>
 			<<generatePlant1>><<person1>>
-			You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A vine wraps around it in midair, holding it in place. The second creature is restrained in the same way.
-			<br><br>
-			
-			"Yoo-hoo!" A <<person "normal">> steps from behind the bush, waving at you. <<Plant_details>> are weaved into <<his>> hair, and <<hes>> completely naked. <<He>> gestures with <<his>> hand, and <span class="purple">the vines tighten</span>.
+			<<if $tentacledisable is "f">>
+				You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A vine wraps around it in midair, holding it in place. The second creature is restrained in the same way.
+				<br><br>
+
+				"Yoo-hoo!" A <<person "normal">> steps from behind the bush, waving at you. <<Plant_details>> are weaved into <<his>> hair, and <<hes>> completely naked. <<He>> gestures with <<his>> hand, and <span class="purple">the vines tighten</span>.
+			<<else>>
+				You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A hand grabs it out of midair, holding it in place. The owner of the hand steps on the second creature, pressing it against the ground.
+				<br><br>
+
+				"Hey-o!" A <<person "normal">> grins at you, holding the creature effortlessly. <<Plant_details>> are weaved into <<his>> hair, and <<hes>> completely naked.
+			<</if>>
 			<br><br>
 
 			"Good thing I was in the area," the <<person>> says. "Wouldn't want you falling victim to these little things. So..." <<He>> leans forward, licking <<his>> lips. "Don't I deserve a reward for saving you?"
 			<br><br>
 
 			<<if $deviancy gte 35>>
-				<<link [[Reward|Moor Plant Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
+				<<if $tentacledisable is "f">>
+					<<link [[Reward|Moor Plant Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
+				<<else>>
+					<<link [[Reward|Moor Plant Sex No Tentacles]]>><<set $sexstart to 1>><</link>><<deviant3>>
+				<</if>>
 			<<else>>
 				<span class="blue">You are not deviant enough to "reward" <<him>></span>.
 			<</if>>

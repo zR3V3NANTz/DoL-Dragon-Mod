@@ -636,7 +636,7 @@
 <</if>>
 
 <!-- Additional notes for kissing or suckling finishes -->
-<<if $NPCList[_nn].chest is "mouth" or $NPCList[_nn].chest is "mouthentrance" and $NPCList[_nn].pronoun is "f">>
+<<if ($NPCList[_nn].chest is "mouth" or $NPCList[_nn].chest is "mouthentrance") and $NPCList[_nn].pronoun is "f">>
 	_Nectar leaks from <<his>> nipple into your mouth. <span class="purple">It tastes fizzy,</span> and makes your head spin.
 	<<nectarfed 20>>
 <<elseif $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
@@ -646,7 +646,9 @@
 <br><br>
 
 <!-- Retracting the vines -->
-<<tentacles>>
+<<if $tentacledisable is "f">>
+	<<tentacles>>
+<</if>>
 
 <!-- Finishing moves for if the player didn't cum. Plantpeople don't really care about making their partners cum, they only care about the semen. -->
 <<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity") and ($consensual is 1 or $pain gte 100) and !_noCum>>

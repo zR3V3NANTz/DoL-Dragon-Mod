@@ -2576,4 +2576,8 @@
 <<if $prison and $prison.kylar is undefined>>
 	<<set $prison.kylar to 0>>
 <</if>>
+
+<<if $plantdisable is undefined>>
+	<<set $plantdisable to "f">>
+<</if>>
 <</widget>>

@@ -801,7 +801,7 @@
 <</if>>
 
 <<if $NPCList[_n].penis isnot "none">>
-	<<if $NPCList[_n].adult is 1 or $NPCList[_n].type is "plant">> <!-- set adult/plantperson pp size -->
+	<<if $NPCList[_n].adult is 1 or _npcPlant is 1>> <!-- set adult/plantperson pp size -->
 		<<switch _rngpp>>
 		<<case 0>>
 			<<set $NPCList[_n].penisdesc to "tiny penis">>
@@ -880,6 +880,7 @@
 	<<elseif $NPCList[_n].pronoun is "f">>
 		<<set $NPCList[_n].fullDescription += "girl">>
 	<</if>>
+	<<unset _npcPlant>>
 <</if>>
 <</widget>>
 
