@@ -1146,7 +1146,9 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 		<br>
 		Not Available
 	<</if>>
+	<br><br>
 	<span class="gold">Numbered link navigation</span>
+	<br>
 	<<if StartConfig.enableLinkNumberify is true>>
 		<label><div class="settingsToggleBig">
 		<<checkbox "$numberify_enabled" 0 1 autocheck>> Enable numbered link navigation

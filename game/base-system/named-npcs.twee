@@ -37,8 +37,9 @@
 		<<set $NPCList[_ii].type to 0>>
 		<<set $NPCList[_ii].stance to 0>>
 		<<set $NPCList[_ii].monster to 0>>
+		/*multiple orgasms code needs work
 		<<set $NPCList[_ii].maxOrgasms to 1>>
-		<<set $NPCList[_ii].orgasms to 0>>
+		<<set $NPCList[_ii].orgasms to 0>> */
 		<<set $NPCList[_ii].paid to 0>>
 		<<if _ii < 1>>
 			<<set $NPCList[_ii].breastsize to 3>>
@@ -561,7 +562,7 @@ alternative way to write that:
 <<set $NPCList[_npcno].lefthand to 0>>
 <<set $NPCList[_npcno].righthand to 0>>
 <<set $NPCList[_npcno].mouth to 0>>
-<<set $NPCList[_npcno].anus to 0>>
+<<set $NPCList[_npcno].anus to 0>>/* is not actually used anywhere */
 <<set $NPCList[_npcno].chest to 0>>
 
 <<set $NPCList[_npcno].breastsize to $NPCName[_i].breastsize>>

@@ -848,7 +848,7 @@ Second arg: tool */
 			<</switch>>
 		<</if>>
 		<<He>> drops a <span class="gold">£10</span> note atop you.
-		<<set $money += 1000>><<earnFeat "Billboard">>
+		<<set $money += 1000>><<earnFeat "Billboard">><<set $NPCList[_n].paid to 1>>
 	<<elseif (($enemyarousal + ($enemytrust * 5) - $enemyanger + ($attractiveness / 10) * ($seductionskill / 200)) gte 500)>>
 		<<set $enemyanger += 10>><<set $enemytrust -= 100>><<fameprostitution 1>>
 		<<if !$speechadmired>><<set $speechadmired to 1>>
@@ -861,7 +861,7 @@ Second arg: tool */
 			<</switch>>
 		<</if>>
 		<<He>> drops a <span class="gold">£5</span> note atop you.
-		<<set $money += 500>><<earnFeat "Billboard">>
+		<<set $money += 500>><<earnFeat "Billboard">><<set $NPCList[_n].paid to 1>>
 	<<else>><<set $enemytrust -= 20>>
 		<<fameprostitution 1>>
 		<<if !$speechadmired>><<set $speechadmired to 1>>
@@ -886,7 +886,7 @@ Second arg: tool */
 		<</switch>>
 	<</if>>
 	<<He>> drops <span class="gold">£<<print Math.floor($skin[$args[0]].degree / 100)>></span> atop you.
-	<<set $money += $skin[$args[0]].degree>><<earnFeat "Billboard">>
+	<<set $money += $skin[$args[0]].degree>><<earnFeat "Billboard">><<set $NPCList[_n].paid to 1>>
 <<else>>
 	<<set $enemytrust -= 20>><<fameprostitution 1>>
 	<<if !$speechadmired>><<set $speechadmired to 1>>
