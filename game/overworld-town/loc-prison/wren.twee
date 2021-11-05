@@ -102,7 +102,7 @@ Wren smiles at you. "If you've got teeth," <<he>> says. "I have some goodies fro
     Rope: 100 teeth
     <br>
     <<if $prison.teeth gte 100>>
-        <<link [[Buy|Prison Wren Rope]]>><<prison_teeth -50>><<set $prison.rope to 1>><</link>>
+        <<link [[Buy|Prison Wren Rope]]>><<prison_teeth -100>><<set $prison.rope to 1>><</link>>
     <<else>>
         <span class="blue">You need more teeth.</span>
     <</if>>

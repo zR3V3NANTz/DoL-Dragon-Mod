@@ -288,6 +288,9 @@ You hand over the money and <<he>> gets to work.
 		<</link>>
 	<<elseif $money lt _currentCost>>
 		You don't have enough money to pay the hairdresser.
+		<br><br>
+		<<link [[Continue|Sydney Hairdressers Session]]>><</link>>
+		<br>
 	<</if>>
 	<<if _cancel>>
 		<br><br>

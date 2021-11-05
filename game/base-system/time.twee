@@ -243,7 +243,7 @@
 	<<unset $estate_done>>
 	<<if $community_service gte 1>>
 		<<if $community_service_done gte 1>>
-		<<else>>
+		<<elseif !["asylum","prison"].includes($location)>>
 			<<crimeup 200>>
 			<<set $effectsmessage to 1>>
 			<<set $community_message to "missed">>

@@ -167,7 +167,7 @@ You are in your room at Alex's cottage. It's cramped, but larger than your room 
 			<br><br>
 			<<unbind>>
 		<<else>>
-			<<link [[Undo your bindings (0:10)|Bird Tower Unbind]]>><<bird_pass 10>><<unbind>><</link>>
+			<<link [[Undo your bindings (0:10)|Farm Bedroom]]>><<set $unbind to 1>><<pass 10>><<unbind>><</link>>
 			<br><br>
 		<</if>>
 	<</if>>

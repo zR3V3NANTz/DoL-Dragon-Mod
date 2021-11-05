@@ -1097,7 +1097,7 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
 You walk through the cave, and emerge at the pier. The boat awaits. You sit beneath the canopy as <<anxious_guard 1>> and <<veteran_guard 2>> untie the moorings.
 <br><br>
 
-"We're off," <<relaxed_guard 0 cap>> says from the helm.
+"We're off," <<relaxed_guard 0>> says from the helm.
 <br><br>
 
 <<link [[Next|Prison End 4]]>><</link>>

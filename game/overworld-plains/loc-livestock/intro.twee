@@ -245,7 +245,7 @@ Over time, though, you grow accustomed to the sting, and even a bit bored as it 
 			<br><br>
 			"Unlike you, Remy says, stroking the doggirl's hair. "This girl has been good. So your punishment is her reward." Remy tugs the lead as other farmhands gather around you. Two of them release your legs and neck. You spin around just as the doggirl climbs on top of you.<<unbind>>
 			<br><br>
-
+			<<endevent>>
 			<<link [[Next|Livestock Return Dog Girl Rape]]>><<set $molestationstart to 1>><</link>>
 			<br>
 		<</if>>
@@ -312,7 +312,7 @@ Over time, though, you grow accustomed to the sting, and even a bit bored as it 
 		<br><br>
 		"Unlike you, Remy says, stroking the dog's head. "This bitch has been good. So your punishment is her reward." Remy tugs the lead as other farmhands gather around you. Two of them release your legs and neck. You spin around just as the dog climbs on top of you.<<unbind>>
 		<br><br>
-		<<unbind>>
+		<<endevent>>
 		<<link [[Next|Livestock Return Dog Rape]]>><<set $molestationstart to 1>><</link>>
 		<br>
 	<</if>>
@@ -1395,7 +1395,7 @@ Behind you, one of the <<beastsplural>> gives you a cursory sniff before mountin
 <<if $phase is 1>>
 	You tremble for a moment, gathering your strength before spitting as hard as you can in Remy's face as a desperate act of defiance. It's only a small amount, and Remy doesn't even flinch. 
 	<br><br>
-	Remy only smiles in response, pulling a handkerchief from their pocket and wiping their face.
+	Remy only smiles in response, pulling a handkerchief from their pocket and wiping <<his>> face.
 	<br>
 	"You're just an animal," <<he>> whispers. "A filthy, stubborn animal. Sooner or later, you'll learn your place."
 	<br><br>

@@ -2172,10 +2172,9 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>
-	<<npc Remy>><<person1>>
 	The audience hoot with laughter as the horse backs away from you. Semen still trails from its enormous phallus, pooling on the floor beneath it.
 	<br><br>
-	"Good boy," Remy says, leaning down and patting its neck. <<He>> looks down at you. "Take it back to the others. Let's hope it's smart enough to understand the lesson."
+	"Good boy," Remy says, leaning down and patting its neck. <<nnpc_He "Remy">> looks down at you. "Take it back to the others. Let's hope it's smart enough to understand the lesson."
 	<br><br>
 
 	The farmhands release your shoulders and pull you to your feet. <<tearful>> you're pushed along the small lane to the field. The gate clanks shut behind you.
@@ -2187,7 +2186,6 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 	<<link [[Next|Livestock Field]]>><</link>>
 
 <<else>>
-	<<npc Remy>><<person1>>
 	The horse backs away from you, whinnying in a panic. It flinches as its master grasps its hair.
 	<br><br>
 
@@ -2242,10 +2240,9 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>
-	<<npc Remy>><<person1>>
 	The audience hoot with laughter as the horse backs away from you.
 	<br><br>
-	"Good boy," Remy says, leaning down and patting its neck. <<He>> looks down at you. "Take it back to the others. Let's hope it's smart enough to understand the lesson."
+	"Good girl," Remy says, leaning down and patting its neck. <<nnpc_He "Remy">> looks down at you. "Take it back to the others. Let's hope it's smart enough to understand the lesson."
 	<br><br>
 
 	The farmhands release your shoulders and pull you to your feet. <<tearful>> you're pushed along the small lane to the field. The gate clanks shut behind you.
@@ -2257,7 +2254,6 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 	<<link [[Next|Livestock Field]]>><</link>>
 
 <<else>>
-	<<npc Remy>><<person1>>
 	The horse backs away from you, whinnying in a panic. It flinches as its master grasps its hair.
 	<br><br>
 
@@ -2312,11 +2308,10 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>
-	<<npc Remy>><<person1>>
 	The farmhands hoot laughter as the doggirl collapses on top of you. They release your shoulders and lift her to the ground.
 	<br><br>
 
-	"Let's hope it's smart enough to understand the lesson," Remy says, watching from the back of <<his>> <<livestock_horse>>. "I'm the only thing protecting it from the wolves."
+	"Let's hope it's smart enough to understand the lesson," Remy says, watching from the back of <<nnpc_his "Remy">> <<livestock_horse>>. "I'm the only thing protecting it from the wolves."
 
 	The farmhands pull you to your feet. <<tearful>> you're pushed along the small lane to the field. The gate clanks shut behind you.
 	<br><br>
@@ -2328,11 +2323,10 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 	<br>
 
 <<else>>
-	<<npc Remy>><<person1>>
 	The doggirl whimpers and tumbles off the hay bale. She scrambles to the ring of farmhands and hides behind their legs.
 	<br><br>
 
-	"Fine," Remy says from atop <<his>> <<livestock_horse>>. "Just remember, there are actual wolves out there that. You won't fare so well against them. I'm the only thing protecting you."
+	"Fine," Remy says from atop <<nnpc_his "Remy">> <<livestock_horse>>. "Just remember, there are actual wolves out there. You won't fare so well against them. I'm the only thing protecting you."
 	<br><br>
 	The farmhands pull you to your feet. <<tearful>> you're pushed along the small lane to the field. The gate clanks shut behind you.
 	<br><br>
@@ -2384,11 +2378,10 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>
-	<<npc Remy>><<person1>>
 	The farmhands hoot laughter as the dog finishes with you.
 	<br><br>
 
-	"Let's hope it's smart enough to understand the lesson," Remy says, watching from the back of <<his>> <<livestock_horse>>. "I'm the only thing protecting it from the wolves."
+	"Let's hope it's smart enough to understand the lesson," Remy says, watching from the back of <<nnpc_his "Remy">> <<livestock_horse>>. "I'm the only thing protecting it from the wolves."
 
 	The farmhands pull you to your feet. <<tearful>> you're pushed along the small lane to the field. The gate clanks shut behind you.
 	<br><br>
@@ -2400,11 +2393,10 @@ The farmhands form a circle around you. They struggle to hold back the dogs. Rem
 	<br>
 
 <<else>>
-	<<npc Remy>><<person1>>
 	The dog whimpers and tumbles off the hay bale. It scrambles to the ring of farmhands and hides behind their legs.
 	<br><br>
 
-	"Fine," Remy says from atop <<his>> steed. "Just remember, there are actual wolves out there. You won't fare so well against them. I'm the only thing protecting you."
+	"Fine," Remy says from atop <<nnpc_his "Remy">> steed. "Just remember, there are actual wolves out there. You won't fare so well against them. I'm the only thing protecting you."
 	<br><br>
 	The farmhands pull you to your feet. <<tearful>> you're pushed along the small lane to the field. The gate clanks shut behind you.
 	<br><br>

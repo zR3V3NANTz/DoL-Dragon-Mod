@@ -236,8 +236,11 @@
     <<unset $prison_scarred_done>>
     <<unset $prisonwake>>
     <<unset $prison_relaxed_spoke>>
+    <<unset $prison_relaxed_greet>>
     <<unset $prison_anxious_spoke>>
+    <<unset $prison_anxious_greet>>
     <<unset $prison_veteran_spoke>>
+    <<unset $prison_veteran_greet>>
     <<unset $prison_methodical_spoke>>
     <<set $prison.morning to 0>>
     <<set $prison.evening to 0>>
@@ -748,7 +751,16 @@
     "You're not supposed to be leashed," <<he>> says, pulling a pair of pliers from <<his>> pocket.
     <<set $phase to 3>>
 <<else>>
-    <<He>> looks away, seeming satisfied.
+	<<switch $args[0]>>
+		<<case "relaxed">>
+			<<He>> shrugs and shifts <<his>> focus back to <<his>> game.
+		<<case "anxious">>
+			<<He>> looks down and mutters something under <<his>> breath, nodding.
+		<<case "veteran">>
+			<<He>> sneers and turns <<his>> nose up at you, but otherwise leaves you be.
+		<<default>>
+			<<He>> looks away, seeming satisfied.
+	<</switch>>
     <<set $phase to 0>>
 <</if>>
 <br><br>
@@ -764,6 +776,81 @@
     <<destination_prison>>
 <</if>>
 
+<</widget>>
+
+<<widget "prison_guard_greet">>
+	<<switch $args[0]>>
+		<<case "relaxed">>
+			<<set $prison_relaxed_greet to 1>>
+			<<generate_relaxed_guard 0>><<person1>><<relaxed_guard 0 cap>> glances up as you approach.
+			<<if $prison.relaxed gte 45>>
+				<<He>> grins. "My favourite <<girl>>. Feeling lucky today?"
+				<br><br>
+				<<He>> looks between you and the dice in <<his>> hand expectantly, still smiling.
+			<<elseif $prison.relaxed gte 30>>
+				<<He>> grins. "I was starting to get bored." <<He>> chuckles and leans back, rolling <<his>> dice in <<his>> palm.
+			<<else>>
+				"You're looking miserable as ever," <<he>> chuckles, tossing <<his>> dice in the air.
+				<<if random(1, 20) is 1>>
+					<<He>> fails to catch them. You watch one plink off <<his>> head and onto the floor.
+					<br>
+					"I deserved that," <<he>> admits, rubbing <<his>> forehead.<<trauma -2>><<ltrauma>>
+				<</if>>
+			<</if>>
+		<<case "anxious">>
+			<<set $prison_anxious_greet to 1>>
+			<<generate_anxious_guard 0>><<person1>><<anxious_guard 0 cap>> startles at the sound of your footsteps.
+			<<if $prison.anxious gte 45>>
+				<<He>> calms down when <<he>> sees you. A smile flashes on <<his>> face briefly, but <<he>> quickly straightens it into a stern look.
+				<br><br>
+				"Don't do anything stupid," <<he>> says.
+				<<switch random(0, 2)>>
+					<<case 2>>
+						"Dunno what I'd do if specs had you pulled."
+					<<case 1>>
+						"Or else the warden will have both our asses."
+					<<default>>
+						"It's dangerous up here. No screwing around."
+				<</switch>>
+			<<elseif $prison.anxious gte 30>>
+				<<He>> sighs when <<he>> sees you. "Oh, good.
+				<<if random(0, 1) is 1>>
+					This job's a bitch alone."
+				<<else>>
+					The birds are all ornery today. At least I won't have to deal with 'em."<<stress 1>><<gstress>>
+				<</if>>
+			<<else>>
+				<<He>> looks surprised when <<he>> sees you.
+				<<switch random(0, 1)>>
+					<<case 1>>
+						"Huh, they don't usually last so long."<<stress 1>><<gstress>>
+					<<default>>
+						"I thought you would've transferred by now." <<He>> furrows <<his>> brow and mumbles, "I would have, anyway."
+				<</switch>>
+			<</if>>
+		<<case "veteran">>
+			<<set $prison_veteran_greet to 1>>
+			<<generate_veteran_guard 0>><<person1>>
+			<<if $prison.veteran gte 45>>
+				Someone claps you on the shoulder. It's <<veteran_guard 0>>. <<He>> passes without looking at you.
+			<<elseif $prison.veteran gte 30>>
+				Something smacks your <<bottom>>. You look over your shoulder to see <<veteran_guard 0>> turned away, a barely concealed smile on <<his>> lips.
+			<<else>>
+				<<veteran_guard 0 cap>> regards you with a smirk. "Still kicking?
+				<<switch random(0, 2)>>
+					<<case 2>>
+						You lost me a bet, <<girl>>."
+					<<case 1>>
+						Tougher than you look."
+					<<default>>
+						We'll see if it sticks."<<stress 1>><<gstress>>
+				<</switch>>
+			<</if>>
+		<<default>>
+			<<generate_methodical_guard 0>><<person1>><<methodical_guard 0 cap>> gives you a passing glance.
+	<</switch>>
+	<br><br>
+	<<destination_prison>>
 <</widget>>
 
 <<widget "prison_repunishment_options">>
@@ -1042,7 +1129,7 @@
             <br><br>
         <<case 4>>
             <<if $worn.face.type.includes("gag")>>
-                <<generate1>><<person1>>A <<person>> leers at your <<bottom>>. "You would mind if I had a feel, would you?" <<he>> ask. <span class="purple">You can't respond with the $worn.face.name in your mouth.</span> "Didn't think so."
+                <<generate1>><<person1>>A <<person>> leers at your <<bottom>>. "You wouldn't mind if I had a feel, would you?" <<he>> asks. <span class="purple">You can't respond with the $worn.face.name in your mouth.</span> "Didn't think so."
                 <br><br>
                 <<He>> reaches around your waist, and gropes your rear.
                 <<if $leftarm is "bound" and $rightarm is "bound">>
