@@ -1,19 +1,32 @@
 :: PassageHeader
 <<set $passage to passage()>><<set $tags to tags()>>
-<<if $passage isnot "Start" and $passage isnot "Start2">>
-	<<if versionUpdateCheck is true>>
-		<<variablesVersionUpdate>>
-		<<pregnancyVar>>
-
-		<<if $reducedLineHeight is true>><<addclass "#passages" "reducedLineHeight">><</if>>
-		<<if $zoom isnot 100>><<run zoom($zoom)>><</if>>
-		<<set $runWardrobeSanityChecker to true>>
-		<<set versionUpdateCheck = false>>
+<<if $passage isnot "Start">>
+/* Run stuff once on save load or page reload */
+	<<if versionUpdateCheck>>
+		<<set versionUpdateCheck to false>>
 		<<if saveUpdateCheck is true>>
 			<<run prepareSaveDetails($prepareSaveDetails)>>
 			<<set saveUpdateCheck to false>>
 			<<set _preventUpdate to true>>
 		<</if>>
+		<<if $passage isnot "Start2">>
+			/* differentiate from new game and pre-saveVersions saves */
+			<<set $saveVersion to ($saveVersions ? $saveVersions.last() : "ancient")>>
+		<</if>>
+		<<updatehistorycontrols>>
+		<<if $reducedLineHeight is true>><<addclass "#passages" "reducedLineHeight">><</if>>
+		<<if $zoom isnot 100>><<run zoom($zoom)>><</if>>
 	<</if>>
-	<<variablesPassage>>
+
+/* Run backwards compatibility on version change */
+	<<if !$saveVersions or $saveVersions.last() isnot StartConfig.version or versionUpdateCheck>>
+	/* to do: double-check that variablesVersionUpdate doesn't need to run on versionUpdateCheck */
+		<<variablesVersionUpdate>>
+		<<pregnancyVar>>
+		<<set $runWardrobeSanityChecker to true>>
+	<</if>>
+
+/* Variables that you need to check on every passage */
+	<<set $link_table to []>>
+	<<set $map.hideLinksCheck to []>>
 <</if>>
