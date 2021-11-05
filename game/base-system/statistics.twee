@@ -342,6 +342,9 @@ __Save Game Details__
 	<</for>>
 	<br>
 <</if>>
+<<if $saveVersion>>
+	Save loaded from version: $saveVersion
+<</if>>
 <</widget>>
 
 <<widget "extraStatisticsWarning">>

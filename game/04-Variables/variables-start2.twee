@@ -35,21 +35,9 @@
 <<set $physique to ($physiquesize / 7) * 3>>
 <<set $beauty to ($beautymax / 7)>>
 
-<<set $playergender to 1>>/*Needed to stop VersionUpdate triggering on first couple of pages.*/
-
 <<set $devstate to 1>>
 
-<<if $breastsize is 0>>
-	<<set $breastsizeold to 0>><<set $breastgrowthtimer to 350>>
-<<elseif $breastsize is 1>>
-	<<set $breastsizeold to 1>><<set $breastgrowthtimer to 350>>
-<<elseif $breastsize is 2>>
-	<<set $breastsizeold to 2>><<set $breastgrowthtimer to 350>>
-<<elseif $breastsize is 3>>
-	<<set $breastsizeold to 3>><<set $breastgrowthtimer to 350>>
-<<else>>
-	<<set $breastsizeold to 4>><<set $breastgrowthtimer to 350>>
-<</if>>
+<<set $breastgrowthtimer to 350>>
 
 <<tryOnInit>>
 

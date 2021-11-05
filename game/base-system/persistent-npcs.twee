@@ -40,15 +40,13 @@
 <</widget>>
 
 <<widget "updateNPCsFirst">>/*Adds new variables to saved NPCs.*/
-<<set _per_keys to Object.keys($per_npc)>>
-<<for _i to 0; _i lt _per_keys.length; _i++>>
-	<<set $per_npc[_per_keys[_i]][$args[0]] to $args[1]>>
+<<for _per_keys range Object.keys($per_npc)>>
+	<<set $per_npc[_per_keys][$args[0]] to $args[1]>>
 <</for>>
 <</widget>>
 
 <<widget "updateNPCsSecond">>
-<<set _per_keys to Object.keys($per_npc)>>
-<<for _i to 0; _i lt _per_keys.length; _i++>>
-	<<set $per_npc[_per_keys[_i]][$args[0]][$args[1]] to $args[2]>>
+<<for _per_keys range Object.keys($per_npc)>>
+	<<set $per_npc[_per_keys][$args[0]][$args[1]] to $args[2]>>
 <</for>>
 <</widget>>
