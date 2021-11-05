@@ -322,7 +322,7 @@ You could only dig during lockdown. Too risky otherwise.
 <<wearoutfit>>
 
 <<set $bus to "prison_bedroom">><<effects>>
-You snuggle under the covers.
+You lie on your cot. It's hard to get comfortable<<if ($worn.neck.name is "free use collar" or $worn.neck.name is "free use collar with leash")>>, especially with the jagged metal around your neck poking into your skin<</if>>.
 <br><br>
 <<prison_sleep_options>>
 
@@ -895,7 +895,9 @@ You are in the prison showers.
     <<generate_veteran_guard 0>><<person1>><<veteran_guard 0 cap>> paces through the room.
     <br><br>
     <<endevent>>
-    <<if random(1, 5) is 5 and $eventskip isnot 1>>
+    <<if !$prison_veteran_greet and $prison.veteran gte 15>>
+        <<prison_guard_greet veteran>>
+    <<elseif random(1, 5) is 5 and $eventskip isnot 1>>
         <<prison_guard_watch veteran>>
     <<elseif $worn.upper.name is "naked" and $worn.lower.name is "naked" and $worn.under_upper.name is "naked" and $worn.under_lower.name is "naked">>
         <<link [[Have a shower (0:10)|Prison Shower Take]]>><<pass 10>><</link>>
@@ -1106,7 +1108,9 @@ You are in the laundry room. The walls give way to raw rock part way in. Thick p
     <<link [[Next|Prison Cell]]>><<endevent>><</link>>
     <br>
 <<else>>
-    <<if random(1, 5) is 5 and $eventskip isnot 1 and $prison.schedule is "work">>
+    <<if !$prison_relaxed_greet and $prison.relaxed gte 15>>
+        <<prison_guard_greet relaxed>>
+    <<elseif random(1, 5) is 5 and $eventskip isnot 1 and $prison.schedule is "work">>
         <<prison_guard_watch relaxed>>
     <<else>>
         <<if $prison.schedule is "work">>
@@ -1368,7 +1372,9 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
             <<events_prison_triggered>>
         <<else>>
 
-            <<if $prison.schedule is "yard" and random(1, 5) is 5 and $eventskip isnot 1>>
+            <<if $prison.schedule is "yard" and !$prison_veteran_greet and $prison.veteran gte 15>>
+                <<prison_guard_greet veteran>>
+            <<elseif $prison.schedule is "yard" and random(1, 5) is 5 and $eventskip isnot 1>>
                 <<prison_guard_watch veteran>>
             <<else>>
                 <<if $prison.schedule isnot "revolt">>
@@ -1423,8 +1429,14 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                             <br>
                             <<link [[Use rope|Prison Spire Rope]]>><<set $prison.rope to 2>><</link>>
                             <br>
-                        <<else>>
+                        <<elseif $prison.rope is 2>>
                             <<link [[Descend the spire (0:05)|Prison Spire Descend]]>><<tiredness 6>><<pass 5>><</link>><<gtiredness>>
+                            <br>
+                        <<else>>
+                            <br>
+                            There's a deep hole at the bottom of the spire.
+                            <br>
+                            <<link [[Look in the hole|Prison Spire Hole]]>><</link>>
                             <br>
                         <</if>>
                     <</if>>
@@ -1451,10 +1463,25 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
     <</if>>
 <</if>>
 
+:: Prison Spire Hole
+<<set $outside to 1>><<effects>>
+
+You cautiously approach the hole and peer over the edge. Shoddy stonework lines a shaft leading down an abyss. It's too deep to see the bottom. You hear strange, squelching sounds and the occasional rush of water, but you can't make out anything beyond the darkness. The thought of what might lie below fills you with unease.<<stress 2>><<gstress>>
+<br><br>
+
+You wonder what could be down there, <span class="blue">but without something to help you descend the spire, there's no way of telling.</span>
+<br><br>
+
+You return to the yard.
+<br><br>
+
+<<link [[Next|Prison Yard]]>><</link>>
+<br>
+
 :: Prison Spire Rope
 <<location "underground">><<set $outside to 0>><<effects>>
 
-You tie the rope firm, and the other end down the hole. You hear a thud below after a few seconds. You test the rope. It seems safe. You can descend whenever you want.
+You tie the rope firm, and toss the other end down the hole. You hear a thud below after a few seconds. You test the rope. It seems safe. You can descend whenever you want.
 <br><br>
 
 <<link [[Next|Prison Yard]]>><<location "prison">><</link>>
@@ -1544,9 +1571,9 @@ You close the door behind you, and walk towards the light, emerging on a beach.
 <<generate2>><<generate3>>
 <<if $prison.veteran gte 60 and !$NPCList[0].name_known>>
     <<generatep3>>
-    You find <<veteran_guard 0>> examining something in <<his>> palm. <<He>> closes <<his>> fist around it when <<he>> sees you approach. <<He>> was so absorbed <<he>> didn't notice you at first. Nor does <<he>> notice the <<person2>><<person>> backing into <<him>>.
+    You find <<veteran_guard 0>> examining something in <<his>> palm. <<He>> closes <<his>> fist around it when <<he>> sees you approach. <<He>> was so absorbed <<he>> didn't notice you at first. Nor does <<he>> notice the <<person2>><<person>> backing into <<person1>><<him>>.
     <br><br>
-    The collision is accidental, but <<veteran_guard 0>><<person1>> reaches for <<his>> baton, and delivers a punishing blow to the <<person2>><<persons>> stomach. The object slips from <<his>> hand, landing in the grass.
+    The collision is accidental, but <<veteran_guard 0>> reaches for <<his>> baton, and delivers a punishing blow to the <<person2>><<persons>> stomach. The object slips from <<person1>><<his>> hand, landing in the grass.
     <br><br>
 
     <<link [[Pick it up|Prison Yard Locket]]>><</link>>
@@ -1583,7 +1610,7 @@ You close the door behind you, and walk towards the light, emerging on a beach.
 It's an open locket. There's a picture of a young <<person3>><<personsimple>> inside. A drawing rather than a photograph, but rich in detail. "To my <<veteran_guard 0>>," it reads. "Yours forever."
 <br><br>
 
-Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. You hold out the locket. <<He>> snatches it from your grasp, and gives you an evil look.
+Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. You hold out the locket. <<person1>><<He>> snatches it from your grasp, and gives you an evil look.
 <br><br>
 
 <<link [[Next|Prison Yard]]>><<endevent>><</link>>
@@ -1612,9 +1639,9 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
     <<endevent>>
     <br><br>
     <<if $hour is 20>>
-        You hear a bell ring. "Lockdown," <<generate_anxious_guard 0>><<methodical_guard 0>><<person1>> sighs. "At last. Off to your cell."
+        You hear a bell ring. "Lockdown," <<generate_anxious_guard 0>><<anxious_guard 0>><<person1>> sighs. "At last. Off to your cell."
         <br><br>
-        You run for the stairs with <<methodical_guard 0>> before the creatures react. <<He>> leads you down the stairs, through the yard and prison block, and into your cell.
+        You run for the stairs with <<anxious_guard 0>> before the creatures react. <<He>> leads you down the stairs, through the yard and prison block, and into your cell.
         <br><br>
         <<link [[Next|Prison Cell]]>><<endevent>><</link>>
         <br>
@@ -1629,7 +1656,9 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
         <br>
     <<else>>
         <<if $prison.schedule is "work">>
-            <<if random(1, 5) is 5 and $eventskip isnot 1>>
+            <<if !$prison_anxious_greet and $prison.anxious gte 15>>
+                <<prison_guard_greet anxious>>
+            <<elseif random(1, 5) is 5 and $eventskip isnot 1>>
                 <<prison_guard_watch anxious>>
             <<else>>
                 <<if $prison.birds gte 30>>
@@ -1868,7 +1897,7 @@ The creature lands as the door shuts behind you. <<bHe>> takes off again, leavin
 Only <<his>> fingers can be seen, grasping the ledge in desperation.
 <br><br>
 
-<<link [[Help|Prison Spire Precipice Help]]>><<prison_rep anxious 1>><</link>><<ggglove>>
+<<link [[Help|Prison Spire Precipice Help]]>><<famegood 20>><<prison_rep anxious 1>><</link>><<ggglove>>
 <br>
 <<link [[Make demands|Prison Spire Precipice Demand]]>><<def 3>><</link>>
 <br>

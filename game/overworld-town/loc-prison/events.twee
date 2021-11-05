@@ -424,7 +424,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
     <<if $enemyno gte 2>>
         They turn and run from you.
     <<else>>
-	    <<He>> backs away from you and holds up <<his>> hands in surrender.<<grespect>><<prison_inmates 1>>
+	    <<He>> backs away from you and holds up <<his>> hands in surrender.
     <</if>>
     <<switch $enemyno>>
         <<case 1>>
@@ -589,7 +589,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 :: Prison Confront
 <<effects>>
 
-You await them with hands on hips, and mentally prepare for a scrap.
+You await them <<if $leftarm isnot "bound" and $rightarm isnot "bound">>with hands on hips,<</if>> and mentally prepare for a scrap.
 
 <<if random(1, 2) is 2>>
     "Speak of the devil," a <<person1>><<person>> says. "Or the devil's slut." They surround you.

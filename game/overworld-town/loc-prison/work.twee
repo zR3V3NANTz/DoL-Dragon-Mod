@@ -879,7 +879,7 @@ You stay out of the way as <<methodical_guard 0>> chases the creature with a woo
 <<effects>>
 <<pass 30>>
 <<generate_scarred_inmate 1>>
-You help <<methodical_guard 0>> right the desk, and sort through the paper while <<he>> restores the furniture elsewhere. Records of the various inmate. Turns out <<scarred_inmate 1>> is allergic to nuts.
+You help <<methodical_guard 0>> right the desk, and sort through the paper while <<he>> restores the furniture elsewhere. Records of the various inmates. Turns out <<scarred_inmate 1>> is allergic to nuts.
 <br><br>
 
 You're sorting through the last of the paper, when you find another interesting sheet. <<methodical_guard 0 capo>> humourless face stares from the top.
@@ -1465,7 +1465,7 @@ The <<beasttype>> waits for you to return to the cabin before collecting the tee
 <<else>>
     The <<beasttype>> sizes you up, <span class="red">then steps closer.</span>
     <<if $monster is 1>>
-        "Maybe I'll throw you in the sea," <<bhe>> says. "You look light enough.
+        "Maybe I'll throw you in the sea," <<bhe>> says. "You look light enough."
     <</if>>
     <br><br>
 

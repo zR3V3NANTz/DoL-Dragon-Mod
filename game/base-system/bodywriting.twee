@@ -1821,7 +1821,7 @@ Second arg: tool */
 
 <<widget "bodypart_admire_parasite">>
 <<if _admireNothing or $parasite[$args[0]].name is undefined>>
-<<else>>
+<<elseif ($args[0] is "nipples" and $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1) or (["bottom","clit","penis"].includes($args[0]) and $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1) or !["nipples","bottom","clit","penis"].includes($args[0])>>
 	<<He>> <<print either("notices", "stares at", "glances at", "eyes up", "sees")>> the <<print $parasite[$args[0]].name>> on your <<bodypart $args[0]>>.
 	<<if $npc[$npcrow.indexOf(_n)] isnot "Robin" and $npc[$npcrow.indexOf(_n)] isnot "Kylar" and $npc[$npcrow.indexOf(_n)] isnot "Mason" and $npc[$npcrow.indexOf(_n)] isnot "Sydney">>
 		<<bodypart_admire_parasite_comment $args[0]>>

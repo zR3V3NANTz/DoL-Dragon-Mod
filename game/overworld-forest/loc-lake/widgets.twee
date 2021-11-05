@@ -292,11 +292,11 @@ You see a <<beasttype>> rifling through litter at the base of a tree. It spots y
 	<<if $wraith and $wraith.state isnot "" or $hallucinations gte 1>>
 	You thought you heard someone call your name, but there's no one there.
 	<<gtrauma>><<trauma 3>>
-	<br><br>
 	<<else>>
 	The wind makes a low howl as it passes through the trees. <<if $awarelevel gte 1>>For a moment, it looks as though the trees are all blowing away from the lake.<</if>>
 	<<gstress>><<stress 1>>
 	<</if>>
+	<br><br>
 <<set $eventskip to 1>>
 <<destinationlake>>
 <<else>>

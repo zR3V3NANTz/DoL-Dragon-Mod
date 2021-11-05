@@ -791,7 +791,7 @@ __Body Writing__<br>
 <<if $promiscuity gte 35>>
    <<set _bodyWritingOptions.Promiscuity = {}>>
 	<<set _bodyWritingOptions.Promiscuity["Slut"] to "slut">>
-	<<set _bodyWritingOptions.Promiscuity["Promiscuous"] to "Promiscuous">>
+	<<set _bodyWritingOptions.Promiscuity["Promiscuous"] to "promiscuous">>
 	<<set _bodyWritingOptions.Promiscuity["Wanton"] to "wanton">>
 	<<set _bodyWritingOptions.Promiscuity["D.T.F."] to "dtf">>
 <</if>>

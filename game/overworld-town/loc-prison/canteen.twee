@@ -148,7 +148,7 @@ You shuffle outside with the other inmates.
 You bow your head, but pay no attention to <<methodical_guard 0 apo>> words.
 
 <<if ($loveInterest.primary is "Robin" or $loveInterest.secondary is "Robin") and random(1, 3) is 3>>
-    You think about Robin. You hope they're doing okay without you.
+    You think about Robin. You hope <<nnpc_he "Robin">>'s doing okay without you.
 <<elseif ($loveInterest.primary is "Whitney" or $loveInterest.secondary is "Whitney") and random(1, 3) is 3>>
     You think about Whitney. You bet <<nnpc_he Whitney>> misses you, whether <<nnpc_he Whitney>> would admit it or not.
 <<elseif ($loveInterest.primary is "Eden" or $loveInterest.secondary is "Eden") and random(1, 3) is 3>>

@@ -346,6 +346,7 @@ alternative way to write that:
 <</if>>
 
 <<switch $NPCName[_i].nam>>
+	<<case "Jordan">> <<set $NPCName[_i].title to ($NPCName[_i].pronoun is "m" ? "monk" : "nun")>>
 	<<case "Leighton">> <<set $NPCName[_i].title to ($NPCName[_i].pronoun is "m" ? "headmaster" : "headmistress")>>
 	<<case "Eden">> <<set $NPCName[_i].title to ($NPCName[_i].pronoun is "m" ? "hunter" : "huntress")>>
 	<<case "Avery">> <<set $NPCName[_i].title to ($NPCName[_i].pronoun is "m" ? "businessman" : "businesswoman")>>

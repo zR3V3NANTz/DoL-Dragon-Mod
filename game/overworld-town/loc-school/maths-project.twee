@@ -150,8 +150,22 @@ You sit down and get to work.
 	<</if>>
 <</if>>
 <br><br>
-<<link [[Next|Maths Project]]>><</link>>
-<br>
+<<if $mathsproject is "ongoing">>
+	<<link [[Next|Maths Project]]>><</link>>
+	<br>
+<<else>>
+	You glance at the time. You suddenly realise that <span class="red">the maths competition has already ended.</span>
+	<br><br>
+	It would be silly to continue your work at this point. You dump the now obsolete project in a bin, feeling somewhat bitter over the wasted effort.
+	<br><br>
+
+	<<if $location is "home">>
+		<<link [[Next|Bedroom]]>><</link>>
+	<<else>>
+		<<link [[Next|School Library]]>><</link>>
+	<</if>>
+	<br>
+<</if>>
 
 :: Maths Project Stim
 
@@ -311,8 +325,22 @@ You take the stimulant, sit down, and get to work.
 	You sit back and admire your work. You feel a strange heat just beneath your skin.
 	<<ggarousal>><<arousal 1800>><<set $drugged += 120>><<set $hallucinogen += 120>>
 	<br><br>
-	<<link [[Next|Maths Project]]>><</link>>
-	<br>
+	<<if $mathsproject is "ongoing">>
+		<<link [[Next|Maths Project]]>><</link>>
+		<br>
+	<<else>>
+		You glance at the time. You suddenly realise that <span class="red">the maths competition has already ended.</span>
+		<br><br>
+		It would be silly to continue your work at this point. You dump the now obsolete project in a bin, feeling somewhat bitter over the wasted effort.
+		<br><br>
+
+		<<if $location is "home">>
+			<<link [[Next|Bedroom]]>><</link>>
+		<<else>>
+			<<link [[Next|School Library]]>><</link>>
+		<</if>>
+		<br>
+	<</if>>
 <</if>>
 
 :: Maths Project Robin

@@ -235,7 +235,7 @@ You inhale deeply. The lightheadedness almost has you on the ground, but when it
     <br>
 <<case 6>>
     <<if $worn.feet.type.includes("shackle")>>
-        Water thunders towards you, heading your way. You try to climb atop a nearby rock, <span class="red">but your shackles get in the way.</span> The water seizes you, and carries you the way you cam.<<set $rut -= 10>><<gpain>><<gtrauma>><<gstress>><<pain 4>><<trauma 6>><<stress 6>><<water>>
+        Water thunders towards you, heading your way. You try to climb atop a nearby rock, <span class="red">but your shackles get in the way.</span> The water seizes you, and carries you the way you came.<<set $rut -= 10>><<gpain>><<gtrauma>><<gstress>><<pain 4>><<trauma 6>><<stress 6>><<water>>
         <br><br>
     <<else>>
         Water thunders towards you, heading your way. You climb atop a nearby rock, and wait for the deluge to pass.

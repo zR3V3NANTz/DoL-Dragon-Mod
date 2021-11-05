@@ -83,8 +83,22 @@ You can only submit one project to the fair.
 	<br><br>
 <</if>>
 
-<<link [[Next|Science Project]]>><<set $phase to 0>><</link>>
-<br>
+<<if $scienceproject is "ongoing">>
+	<<link [[Next|Science Project]]>><<set $phase to 0>><</link>>
+	<br>
+<<else>>
+	You glance at the time. You suddenly realise that <span class="red">the maths competition has already ended.</span>
+	<br><br>
+	It would be silly to continue your work at this point. You dump the now obsolete project in a bin, feeling somewhat bitter over the wasted effort.
+	<br><br>
+	
+	<<if $location is "home">>
+		<<link [[Next|Bedroom]]>><</link>>
+	<<else>>
+		<<link [[Next|School Library]]>><</link>>
+	<</if>>
+	<br>
+<</if>>
 
 :: Science Project Shroom
 <<effects>>
@@ -101,8 +115,22 @@ You can only submit one project to the fair.
 	<br><br>
 <</if>>
 
-<<link [[Next|Science Project]]>><<set $phase to 0>><</link>>
-<br>
+<<if $scienceproject is "ongoing">>
+	<<link [[Next|Science Project]]>><<set $phase to 0>><</link>>
+	<br>
+<<else>>
+	You glance at the time. You suddenly realise that <span class="red">the maths competition has already ended.</span>
+	<br><br>
+	It would be silly to continue your work at this point. You dump the now obsolete project in a bin, feeling somewhat bitter over the wasted effort.
+	<br><br>
+	
+	<<if $location is "home">>
+		<<link [[Next|Bedroom]]>><</link>>
+	<<else>>
+		<<link [[Next|School Library]]>><</link>>
+	<</if>>
+	<br>
+<</if>>
 
 :: Science Project Phallus
 <<effects>>
@@ -113,8 +141,22 @@ You add the phallus measurements to your project. You incorporate the answers th
 The things you do for school.
 <br><br>
 
-<<link [[Next|Science Project]]>><<set $phase to 0>><</link>>
-<br>
+<<if $scienceproject is "ongoing">>
+	<<link [[Next|Science Project]]>><<set $phase to 0>><</link>>
+	<br>
+<<else>>
+	You glance at the time. You suddenly realise that <span class="red">the maths competition has already ended.</span>
+	<br><br>
+	It would be silly to continue your work at this point. You dump the now obsolete project in a bin, feeling somewhat bitter over the wasted effort.
+	<br><br>
+	
+	<<if $location is "home">>
+		<<link [[Next|Bedroom]]>><</link>>
+	<<else>>
+		<<link [[Next|School Library]]>><</link>>
+	<</if>>
+	<br>
+<</if>>
 
 :: Science Fair
 <<set $outside to 0>><<set $location to "town">><<effects>>

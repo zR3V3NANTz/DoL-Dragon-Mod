@@ -100,6 +100,8 @@
 <<if $community_service gte 1>>
 	<<if $community_service_done is 1>>
 		<span class="lblue">You've performed your community service today.</span>
+	<<elseif ["asylum","prison"].includes($location)>>
+		Your sentence of community service has been put on hold due to your <<if $location is "prison">>incarceration<<else>>treatment<</if>>.
 	<<elseif $hour gte 21>>
 		It's too late in the day to perform your community service.
 	<<elseif $hour lt 6>>
