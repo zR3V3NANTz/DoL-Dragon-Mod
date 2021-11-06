@@ -1427,6 +1427,7 @@ You hold the back of Alex's head, and pull <<him>> into a kiss.<<set $consensual
 		<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>
 	<</if>>
 	<<set $enemytrust += 100>><<promiscuity4>>
+	<<set $NPCList[0].location.head to "genitals">>
 <</if>>
 <<effects>>
 <<effectsman>><<man>>

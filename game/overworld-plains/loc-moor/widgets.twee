@@ -177,6 +177,7 @@
 
 
 <<widget "eventsmoormid">>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if random(1, 8) is 8 or ($moormove is "quick_search" or $moormove is "normal_search" or $moormove is "careful_search" or $moormove is "fly_search") and random(1, 4) is 4>>
 	<<set $rng to random (1, 2)>>
 	<<if $rng is 2>>
@@ -209,7 +210,6 @@
 		<<link [[Continue|Moor]]>><<set $eventskip to 1>><</link>>
 		<br>
 	<</if>>
-<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<elseif $danger gte (9900 - ($allure * $forestmod))>>
 	<<set $rng to random(1, 8)>>
 	<<switch $rng>>
@@ -461,6 +461,7 @@
 
 
 <<widget "eventsmoorhigh">>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if random(1, 8) is 8 or ($moormove is "quick_search" or $moormove is "normal_search" or $moormove is "careful_search" or $moormove is "fly_search") and random(1, 4) is 4>>
 	<<set $rng to random (1, 2)>>
 	<<if $rng is 2>>
@@ -486,7 +487,6 @@
 		<<link [[Continue|Moor]]>><<set $eventskip to 1>><</link>>
 		<br>
 	<</if>>
-<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<elseif $danger gte (9900 - ($allure * $forestmod))>>
 	<<set $rng to random(1, 7)>>
 	<<switch $rng>>

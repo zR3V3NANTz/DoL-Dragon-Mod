@@ -57,7 +57,7 @@
 <<disablearms>>
 
 <<if $bottomuse is "penis">>
-	<<set $bottomuse to 0>><<set $anusstate to 0>>
+	<<set $bottomuse to 0>><<set $anusstate to 0>><<set $anususe to 0>>
 	<<for _i = 0; _i < $NPCList.length; _i++>>
 		<<if $NPCList[_i].penis is "cheeks">>
 			<<set $NPCList[_i].penis to 0>>
