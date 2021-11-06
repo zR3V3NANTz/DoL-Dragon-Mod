@@ -555,11 +555,11 @@ window.DefaultActions = {
 			to.value[type][person][part].pushUnique(action);
 		});
 	},
-	get: function (type, person, part, from = V.actionDefaults) {
+	get: function (type, person, part, defaultValue = 'rest', from = V.actionDefaults) {
 		if (from[type] === undefined
 			|| from[type][person] === undefined
 			|| from[type][person][part] === undefined) {
-			return [];
+			return [ defaultValue ];
 		}
 		return from[type][person][part];
 	},
