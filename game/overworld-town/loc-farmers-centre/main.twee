@@ -10,7 +10,7 @@
 	}>>
 <</if>>
 
-<<if $NPCList[0].pronoun is 0>>
+<<if !$NPCList[0].pronoun>>
 	<<generate1>>
 <</if>>
 <<person1>>

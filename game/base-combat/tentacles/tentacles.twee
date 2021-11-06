@@ -32,7 +32,7 @@
 	* Argument 1 is health.
 	* Argument 2 is tentacle type, which can be replaced with "vines", "machines" etc later on. Optional, unless also using Argument 3.
 	* Argument 3 is variant, and will give different offspring as well as allowing different batches of descriptions.
-	* Argument 4 is whether or not the variant impacts the full description. If Argument 4 is used, Argument 3 will only impact which description batches are part of _tentacledescs.*/
+	* Argument 4 is whether or not the variant impacts the full description and offspring. If Argument 4 is used, Argument 3 will only impact which description batches are part of _tentacledescs. If Argument 4 is "desc", Argument 3 will impact description batches and variant, but not offspring.*/
 	<<set _tentacledescs to [
 		{"desc":"slimy","baby":0,"size":2},
 		{"desc":"sticky","baby":0,"size":2},
@@ -103,18 +103,18 @@
 		<<set _tentacledata to _tentacledescs[_i]>>
 
 		<<set _tentacle to {
-			"desc": ($args[3] and !$args[4] ? $args[3] + " " : "" ) + _tentacledata.desc,
-			"fullDesc": ($args[3] and !$args[4] ? $args[3] + " " : "" ) + _tentacledata.desc +  " " + _tentacleType,
-			"type": _tentacleType,
-			"tentaclehealth": $args[1],
-			"tentaclehealthstart": $args[1],
-			"shaft": 0,
-			"head": 0,
-			"id": "tentacle"+_i,
-			"baby": ($args[3] and !$args[4] and _tentacledata.baby isnot 0 ? $args[3] + " " + _tentacledata.baby : _tentacledata.baby ),
-			"babychance": 400,
-			"size": _tentacledata.size
-		}>>
+            "desc": ($args[3] and (!$args[4] or $args[4] is "desc") ? $args[3] + " " : "" ) + _tentacledata.desc,
+            "fullDesc": ($args[3] and (!$args[4] or $args[4] is "desc") ? $args[3] + " " : "" ) + _tentacledata.desc +  " " + _tentacleType,
+            "type": _tentacleType,
+            "tentaclehealth": $args[1],
+            "tentaclehealthstart": $args[1],
+            "shaft": 0,
+            "head": 0,
+            "id": "tentacle"+_i,
+            "baby": ($args[3] and $args[4] isnot "desc" and _tentacledata.baby isnot 0 ? $args[3] + " " + _tentacledata.baby : _tentacledata.baby ),
+            "babychance": 400,
+            "size": _tentacledata.size
+        }>>
 
 		<<set $tentacles[_i] to clone(_tentacle)>>
 	<</for>>

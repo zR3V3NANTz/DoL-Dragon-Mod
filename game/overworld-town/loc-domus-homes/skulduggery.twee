@@ -306,11 +306,12 @@ You flee out the house, the <<beasttype>> snapping at your heels. <<bHe>> doesn'
 	<<clotheson>>
 	<<endcombat>>
 	<<loadNPC 0 domus_skul_dog>>
+	<<clearNPC domus_skul_dog>>
 	The <<beasttype>> pacified, you notice <<bhis>> collar glinting. You look closer and see it's encrusted with jewels.
 	<br><br>
 	<<link [[Take it|Domus House Collar]]>><<crimeup 50>><</link>><<crime>>
 	<br>
-	<<link [[Leave|Domus Street]]>><<clearNPC domus_skul_dog>><<endevent>><</link>>
+	<<link [[Leave|Domus Street]]>><<endevent>><</link>>
 	<br>
 <<elseif $enemyhealth lte 0>>
 	The <<beasttype>> cowers and rolls over in submission.
@@ -320,11 +321,12 @@ You flee out the house, the <<beasttype>> snapping at your heels. <<bHe>> doesn'
 	<<clotheson>>
 	<<endcombat>>
 	<<loadNPC 0 domus_skul_dog>>
+	<<clearNPC domus_skul_dog>>
 	The <<beasttype>> pacified, you notice <<bhis>> collar glinting. You look closer and see it's encrusted with jewels.
 	<br><br>
 	<<link [[Take it|Domus House Collar]]>><<crimeup 50>><</link>><<crime>>
 	<br>
-	<<link [[Leave|Domus Street]]>><<clearNPC domus_skul_dog>><<endevent>><</link>>
+	<<link [[Leave|Domus Street]]>><<endevent>><</link>>
 	<br>
 <<elseif $alarm is 1>>
 	<<if $NPCList[0].stance is "top">>
@@ -339,6 +341,7 @@ You flee out the house, the <<beasttype>> snapping at your heels. <<bHe>> doesn'
 		<<endcombat>>
 		<<famebestiality 1>>
 		<<loadNPC 0 domus_skul_dog_owner>>
+		<<clearNPC domus_skul_dog_owner>>
 		<br><br>
 		<<link [[Next|Domus House Sneak Molestation]]>><<set $molestationstart to 1>><</link>>
 		<br>
@@ -359,7 +362,7 @@ The <<beasttypes>> ears twitch, but other than that <<bhe>> makes no move as you
 <br><br>
 <<set $blackmoney += 50>>
 <br><br>
-<<link [[Leave|Domus Street]]>><<clearNPC domus_skul_dog>><<endevent>><</link>>
+<<link [[Leave|Domus Street]]>><<endevent>><</link>>
 <br>
 
 :: Domus House Sneak Molestation
@@ -408,7 +411,6 @@ The <<beasttypes>> ears twitch, but other than that <<bhe>> makes no move as you
 <</if>>
 
 :: Domus House Sneak Molestation Finish
-<<clearNPC domus_skul_dog_owner>>
 <<if $enemyhealth lte 0>>
 	You knock the <<person>> into one of <<his>> chairs. <<tearful>> you escape outside.
 	<br><br>

@@ -4740,7 +4740,7 @@
 				<</if>>
 			<</if>>
 		<</if>>
-	<<elseif $enemyanger + $rng lte 90 and $penisuse is 0 and $player.penisExist and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $worn.over_lower.vagina_exposed is 1 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $walltype isnot "front">>
+	<<elseif $enemyanger + $rng lte 70 and $penisuse is 0 and $player.penisExist and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $worn.over_lower.vagina_exposed is 1 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $walltype isnot "front">>
 		<<set $penisuse to "otherpenis">><<set $penisstate to "otherpenisentrance">><<set $NPCList[_n].penis to "penisentrance">><<sex 5>>
 		<<if $NPCList[_n].chastity.penis.includes("chastity")>>
 			<span class="blue"><<He>> moves <<his>> caged $NPCList[_n].penisdesc close to your penis.</span>

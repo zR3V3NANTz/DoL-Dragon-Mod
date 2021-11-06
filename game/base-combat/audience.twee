@@ -1918,7 +1918,7 @@
 <</if>>
 
 <<set $rng to random(1, 100)>>
-<<if $rng gte 91 and $audiencecamera6>>
+<<if $rng gte 91 and $audiencecamera6 is 0>>
 	<span class="pink">A $audiencemember pulls out a phone and points the camera at you.</span>
 	<<if $audiencecamera1 is 0>>
 		<<set $audiencecamera1 to $audiencemember>>
@@ -2419,29 +2419,29 @@
 		<span class="teal">At least your face is hidden.</span>
 		<br>
 	<</if>>
-<</if>>
 
-<<audiencespeech>>
-/*<br> commented out due to excess space they caused*/
-<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 0>>
 	<<audiencespeech>>
-	/*<br>*/
-<</if>>
-<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 20>>
-	<<audiencespeech>>
-	/*<br>*/
-<</if>>
-<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 40>>
-	<<audiencespeech>>
-	/*<br>*/
-<</if>>
-<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 60>>
-	<<audiencespeech>>
-	/*<br>*/
-<</if>>
-<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 80>>
-	<<audiencespeech>>
-	/*<br>*/
+	/*<br> commented out due to excess space they caused*/
+	<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 0>>
+		<<audiencespeech>>
+		/*<br>*/
+	<</if>>
+	<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 20>>
+		<<audiencespeech>>
+		/*<br>*/
+	<</if>>
+	<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 40>>
+		<<audiencespeech>>
+		/*<br>*/
+	<</if>>
+	<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 60>>
+		<<audiencespeech>>
+		/*<br>*/
+	<</if>>
+	<<if $rng - $enemyanger + (($enemyarousalmax / $enemyarousal) * 100) gte 80>>
+		<<audiencespeech>>
+		/*<br>*/
+	<</if>>
 <</if>>
 </div>
 <</widget>>
