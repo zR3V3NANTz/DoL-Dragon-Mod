@@ -227,7 +227,7 @@ The <<person2>><<person>> hesitates, until <<scarred_inmate 0>> presses the shiv
 :: Prison Scarred Pair Spank
 <<effects>>
 
-"Harder! I want to see some fucking tears." The <<person2>><<person>> obliges, until <<he>> almost looks ready to cry <<himself>><<ggpain>><<pain 8>>
+"Harder! I want to see some fucking tears." The <<person2>><<person>> obliges, until <<he>> almost looks ready to cry <<himself>>.<<ggpain>><<pain 8>>
 <br><br>
 At last, <<scarred_inmate 0>> pulls the <<person2>><<person>> away from you. "Get the fuck out."
 <br><br>
@@ -252,7 +252,7 @@ At last, <<scarred_inmate 0>> pulls the <<person2>><<person>> away from you. "Ge
 <br><br>
 <<prison_unbind>>
 
-<<link [["Help " + $NPCList[1].pronouns.him + " to medical (0:05)"|Prison Scarred Pair Help]]>><<trauma -6>><<pass 5>><<tiredness 3>><</link>><<ghope>><<prison_hope 1>><<gtiredness>><<ltrauma>>
+<<link [["Help " + $NPCList[1].pronouns.him + " to medical (0:05)"|Prison Scarred Pair Help]]>><<prison_hope 1>><<trauma -6>><<pass 5>><<tiredness 3>><</link>><<ghope>><<gtiredness>><<ltrauma>>
 <br>
 <<link [[Ignore|Prison Walkway]]>><<endevent>><</link>>
 <br>
@@ -369,7 +369,7 @@ You turn and grasp the bars of the cell. <<His>> hands are a blur as <<he>> ties
 <<effects>>
 <<if $alarm is 1>>
     <<set $alarm to 0>>
-    Another inmate investigates your cry, <span class="purple">but leaves upon seeing <<scarred_inmate 0>></span>
+    Another inmate investigates your cry, <span class="purple">but leaves upon seeing <<scarred_inmate 0>>.</span>
     <br><br>
 <</if>>
 <<effectsman>><<man>>
@@ -954,9 +954,9 @@ You enter a small room, with a chair in front of a microphone and window. There'
     <<if $submissive gte 1150>>
         "Your <<if $pronoun is "m">>brother<<else>>sister<</if>> didn't want to come," you say. "I'm sorry."
     <<elseif $submissive lte 850>>
-        "Your <<if $pronoun is "m">>brother<<else>>sister<</if>> asked me go come instead," you say.
+        "Your <<if $pronoun is "m">>brother<<else>>sister<</if>> asked me to come instead," you say.
     <<else>>
-        "Your <<if $pronoun is "m">>brother<<else>>sister<</if>> asked me go come instead," you say.
+        "Your <<if $pronoun is "m">>brother<<else>>sister<</if>> asked me to come instead," you say.
     <</if>>
 <<else>>
     <<if $submissive gte 1150>>

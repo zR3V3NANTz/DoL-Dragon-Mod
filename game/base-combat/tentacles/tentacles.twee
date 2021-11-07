@@ -23,7 +23,7 @@
 	<<else>>
 		<<set _babyType to _tentacleType>>
 	<</if>>
-	<<if ["root","shoot","vine","metal"].includes(_tentacleType)>>
+	<<if ["root","shoot","vine","metal"].includes(_tentacleType) or $args[3] is "metal">>
 		<<set $banishDisable to true>>
 	<</if>>
 

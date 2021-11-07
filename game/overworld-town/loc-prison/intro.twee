@@ -574,7 +574,7 @@ You're left naked in the middle of the room.<<covered>>
 
     <<link [[Run|Prison Intro Strip Run]]>><<prison_guards 3>><</link>><<ggsuspicion>>
     <br>
-    <<link [[Bargain|Prison Intro Strip Bargain]]>><<prison_guards -1>><</link>><<lsuspicion>>
+    <<link [[Bargain|Prison Intro Strip Bargain]]>><<set $prisonClothesBargain to 1>><<prison_guards -1>><</link>><<lsuspicion>>
     <br>
 
 <<elseif $enemyhealth lte 0>>
@@ -584,7 +584,7 @@ You're left naked in the middle of the room.<<covered>>
 
     <<link [[Run|Prison Intro Strip Run]]>><<prison_guards 3>><</link>><<ggsuspicion>>
     <br>
-    <<link [[Bargain|Prison Intro Strip Bargain]]>><<prison_guards -1>><</link>><<lsuspicion>>
+    <<link [[Bargain|Prison Intro Strip Bargain]]>><<set $prisonClothesBargain to 1>><<prison_guards -1>><</link>><<lsuspicion>>
     <br>
 
 <<else>>
@@ -783,10 +783,14 @@ You take a step toward the hole, careful to keep your footing. Then another. You
 <<effects>>
 
 They blast you with icy water. The shock knocks you to your knees, but they keep blasting, <span class="red">until you tumble towards the hole.</span><<ggstress>><<stress 6>><<wash>>
-<<upperruined>>
-<<lowerruined>>
-<<underupperruined>>
-<<underlowerruined>>
+<<if $prisonClothesBargain is 1>>
+    <<unset $prisonClothesBargain>>
+<<else>>
+    <<upperruined>>
+    <<lowerruined>>
+    <<underupperruined>>
+    <<underlowerruined>>
+<</if>>
 <br><br>
 <<if $prison_intro is undefined>>
     Firm hands grasp you at the last moment. <<person3>><<veteran_guard 2 cap>> grips the back of your hair, and holds your head over the abyss. "Bad <<girl>>s go to prison," <<he>> hisses. "We have lots of ways to deal with bad <<girl>>s here, but really bad <<girl>>s get dumped in the rut. No one will give you a second thought. So be a good <<girl>>, and do as you're told."
@@ -801,10 +805,14 @@ They blast you with icy water. The shock knocks you to your knees, but they keep
 <<effects>>
 
 <<He>> releases you, and you turn away from the edge to find <<person1>><<relaxed_guard 0>> and <<person2>><<anxious_guard 1>> carrying a hose between them. They blast you with with icy water. You'd fall, if not for <<person3>><<veteran_guard 2>> steadying you with one hand.<<wash>>
-<<upperruined>>
-<<lowerruined>>
-<<underupperruined>>
-<<underlowerruined>>
+<<if $prisonClothesBargain is 1>>
+    <<unset $prisonClothesBargain>>
+<<else>>
+    <<upperruined>>
+    <<lowerruined>>
+    <<underupperruined>>
+    <<underlowerruined>>
+<</if>>
 <br><br>
 
 <<link [[Next|Prison Intro Hose 2]]>><</link>>
@@ -1197,11 +1205,11 @@ You walk through the cave, and emerge at the pier. The boat awaits. You sit bene
 <<set $location to "docks">><<effects>>
 <<earnFeat "Institutionalised">>
 <<pass 60>>
-<<relaxed_guard 0 cap>> steers the boat into port while <<veteran_guard 0>> removes your cuffs. A figure waits, leaning against a car. It's Bailey.
+<<relaxed_guard 0 cap>> steers the boat into port while <<veteran_guard 2>> removes your cuffs. A figure waits, leaning against a car. It's Bailey.
 <<prison_bondage_removal>>
 <br><br>
 
-"Be good," <<veteran_guard 0>> says, shoving you onto the dock. "Or we'll see each other again."
+"Be good," <<veteran_guard 2>> says, shoving you onto the dock. "Or we'll see each other again."
 <br><br>
 
 <<link [[Next|Prison End 6]]>><<endevent>><<prison_end>><</link>>
