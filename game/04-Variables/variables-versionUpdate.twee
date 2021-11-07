@@ -1,6 +1,9 @@
 :: Widgets variablesVersionUpdate [widget]
 <<widget "variablesVersionUpdate">>
-/*Variable that you need to check on every new version, page load/refresh or save load*/
+/* * * * * * * * * * * * * * * * * *
+ * OLD BACKWARDS COMPATIBILITY CODE
+ * EDIT widget "backComp" FOR VERSIONS 0.3.4.5+
+ */
 
 <<if $objectVersion is undefined>>
 	<<set $objectVersion to {}>>
@@ -67,11 +70,10 @@
 	<<set $player.penisExist to ($penisexist is 1 ? true : false)>>
 	<<set $player.vaginaExist to ($vaginaexist is 1 ? true : false)>>
 <</if>>
-/* uncomment when we are ready to remove $penisexist completely
 <<if $penisexist isnot undefined>>
 	<<unset $penisexist>>
 	<<unset $vaginaexist>>
-<</if>> */
+<</if>>
 
 <<if $player.ballsExist is undefined>>
 	<<set $player.ballsExist to ($player.gender isnot "f")>>
@@ -1189,15 +1191,6 @@
 	<<set $newlyWritten to []>>
 <</if>>
 
-<!-- This doesn't seem to declare the pbhair
-<<if $objectVersion.pbhair lt 1 or $objectVersion.pbhair is undefined>>
-	<<set $objectVersion.pbhair>>
-	<<set $objectVersion.pbhair to {pblevel:0,pbgrowth:0}>>
-	<<set $objectVersion.pbhair to 1>>
-<</if>>
--->
-<!--PBHair extension END-->
-
 <<wetness_init>>
 
 <<if $player.gender_appearance_factors is undefined>>
@@ -1225,7 +1218,7 @@
 <</if>>
 
 <<if $player.femininity_without_overwear is undefined>>
-	<<set $player.femininity to 0>>
+	<<set $player.femininity_without_overwear to 0>>
 <</if>>
 
 <<if $player.condom is undefined>>
@@ -2230,20 +2223,26 @@
 	<<set $templePromised to "">>
 <</if>>
 
-<<if $perNPCFix is undefined>>
-	<<set $perNPCFix to 1>><<unset $perPronounFix>><<unset $perChastityFix>>
-    <<set _keys to Object.keys($per_npc)>>
-    <<for _npc range _keys>>
-        <<if $per_npc[_npc].pronouns is undefined or $per_npc[_npc].pronouns.he is 0>>
+<<if $perNPCFix isnot 2>>
+	<<set $perNPCFix to 2>><<unset $perPronounFix>><<unset $perChastityFix>>
+	<<set _keys to Object.keys($per_npc)>>
+	<<for _npc range _keys>>
+		<<if $per_npc[_npc].pronouns is undefined or $per_npc[_npc].pronouns.he is 0>>
 			<<generatePronouns $per_npc[_npc]>>
-        <</if>>
-        <<if $per_npc[_npc].chastity is undefined>>
-            <<set $per_npc[_npc].chastity to {penis:"", vagina:"", anus:""}>>
-        <</if>>
+		<</if>>
+		<<if $per_npc[_npc].chastity is undefined>>
+			<<set $per_npc[_npc].chastity to {penis:"", vagina:"", anus:""}>>
+		<</if>>
 		<<if $per_npc[_npc].role is undefined>>
 			<<set $per_npc[_npc].role to "normal">>
 		<</if>>
-    <</for>>
+		<<if $per_npc[_npc].condom is undefined>>
+			<<set $per_npc[_npc].condom false>>
+		<</if>>
+		<<if $per_npc[_npc].name_known is undefined>>
+			<<set $per_npc[_npc].name_known 0>>
+		<</if>>
+	<</for>>
 <</if>>
 
 <<if $sidebarRenderer is undefined>>
@@ -2387,9 +2386,9 @@
 
 <<if $penisexist isnot undefined and ($player.penisExist != $penisexist or $player.vaginaExist != $vaginaexist)>>
 	<<set $player.vaginaExist to ($player.gender isnot "m")>>
-	<<set $vaginaexist to ($player.gender isnot "m" ? 1 : 0)>>
+	/* <<set $vaginaexist to ($player.gender isnot "m" ? 1 : 0)>> */
 	<<set $player.penisExist to ($player.gender isnot "f")>>
-	<<set $penisexist to ($player.gender isnot "f" ? 1 : 0)>>
+	/* <<set $penisexist to ($player.gender isnot "f" ? 1 : 0)>> */
 <</if>>
 
 <<if $NPCName[0].penis is 0>>
@@ -2560,18 +2559,6 @@
 	<<init_names>>	
 <</if>>
 
-<<if $per_npc_update is undefined>>
-	<<set $per_npc_update to 1>>
-	<<updateNPCsFirst condom false>>
-	<<updateNPCsFirst name_known 0>>
-<</if>>
-<<if $per_npc_update is 1>>
-	<<set $per_npc_update to 2>>
-	<<updateNPCsFirst chastity `{}`>>
-	<<updateNPCsSecond chastity penis "">>
-	<<updateNPCsSecond chastity vagina "">>
-	<<updateNPCsSecond chastity anus "">>
-<</if>>
 <<if $prison and $prison.kylar is undefined>>
 	<<set $prison.kylar to 0>>
 <</if>>
@@ -2579,4 +2566,18 @@
 <<if $plantdisable is undefined>>
 	<<set $plantdisable to "f">>
 <</if>>
+
+<<pregnancyVar>>
+<</widget>>
+
+
+
+<<widget "backComp">>
+	<<if _version lt 30405>>/* for versions < 0.3.4.5, run old version handler */
+		<<variablesVersionUpdate>>
+	<</if>>
+/* * * * * * * * * * * * * * * * * * * * * * *
+ * NEW BACKWARDS COMPATIBILITY CODE GOES HERE
+ */
+	<<set $runWardrobeSanityChecker to true>>
 <</widget>>

@@ -69,8 +69,8 @@
 <<set $blinkingdisable to "f">>
 <<set $halfcloseddisable to "f">>
 
-<<set $newWardrobeStyle to false>>
-<<set $imgLighten to false>>
+<<set $newWardrobeStyle to true>>
+<<set $imgLighten to "">>
 <<set $sidebarStats to "Disabled">>
 <<set $sidebarTime to "Disabled">>
 <<set $combatControls to "radio">>

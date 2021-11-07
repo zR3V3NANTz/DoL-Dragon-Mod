@@ -327,8 +327,8 @@ You lie on your cot. It's hard to get comfortable<<if ($worn.neck.name is "free 
 <<prison_sleep_options>>
 
 :: Prison Sleep
-<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
-<<if _preventUpdate is undefined>>
+<<if !_preventUpdate and !$autosavedisabled>>
+	<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
 	<<run setSaveDetail("autosave",{"saveId":$saveId,"saveName":$saveName})>>
 <</if>>
 <<sleep>><<effects>>

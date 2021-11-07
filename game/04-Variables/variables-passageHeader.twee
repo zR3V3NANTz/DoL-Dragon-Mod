@@ -1,29 +1,31 @@
 :: PassageHeader
 <<set $passage to passage()>><<set $tags to tags()>>
-<<if $passage isnot "Start">>
-/* Run stuff once on save load or page reload */
-	<<if versionUpdateCheck>>
-		<<set versionUpdateCheck to false>>
-		<<if saveUpdateCheck is true>>
-			<<run prepareSaveDetails($prepareSaveDetails)>>
-			<<set saveUpdateCheck to false>>
-			<<set _preventUpdate to true>>
-		<</if>>
-		<<if $passage isnot "Start2">>
-			/* differentiate from new game and pre-saveVersions saves */
-			<<set $saveVersion to ($saveVersions ? $saveVersions.last() : "ancient")>>
-		<</if>>
-		<<updatehistorycontrols>>
-		<<if $reducedLineHeight is true>><<addclass "#passages" "reducedLineHeight">><</if>>
-		<<if $zoom isnot 100>><<run zoom($zoom)>><</if>>
+
+<<if $passage isnot "Start" and $passage isnot "Start2">>
+
+/* Run stuff on every save load */
+	<<if onLoadUpdateCheck>>
+		<<set $saveVersion to ($saveVersions ? $saveVersions.last() : "ancient")>> /*update save version */
 	<</if>>
 
-/* Run backwards compatibility on version change */
-	<<if !$saveVersions or $saveVersions.last() isnot StartConfig.version or versionUpdateCheck>>
-	/* to do: double-check that variablesVersionUpdate doesn't need to run on versionUpdateCheck */
-		<<variablesVersionUpdate>>
-		<<pregnancyVar>>
-		<<set $runWardrobeSanityChecker to true>>
+/* Run stuff on every page refresh, save load, or version mismatch */
+	<<if versionUpdateCheck or onLoadUpdateCheck or !$saveVersions or $saveVersions.last() isnot StartConfig.version>>
+		<<set versionUpdateCheck to false>>
+		<<set onLoadUpdateCheck to false>>
+		<<if saveUpdateCheck>>
+			<<set saveUpdateCheck to false>>
+			<<run prepareSaveDetails($prepareSaveDetails)>>
+		<</if>>
+
+		/* convert game version to numeric value for use in <<backComp>> */
+		<<set _version to ($saveVersions ? $saveVersions.last().replace(/[^0-9.]+/g, "").split(".") : 0)>>
+		<<set _version to (_version ? _version[0]*1000000 + _version[1]*10000 + _version[2]*100 + _version[3]*1 : 0)>>
+		<<backComp>>
+
+		<<updatehistorycontrols>>
+		<<set _preventUpdate to true>> /*prevent rewriting autosaves */
+		<<if $reducedLineHeight is true>><<addclass "#passages" "reducedLineHeight">><</if>>
+		<<if $zoom isnot 100>><<run zoom($zoom)>><</if>>
 	<</if>>
 
 /* Variables that you need to check on every passage */

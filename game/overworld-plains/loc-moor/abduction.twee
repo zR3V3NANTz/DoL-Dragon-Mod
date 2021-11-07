@@ -86,8 +86,9 @@ You don't have a lot of time to shout before it's too late.
 
 :: Farm Abduction wake 4
 <<set $location to "alex_cottage">><<set $outside to 0>><<effects>>
-<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
-<<if _preventUpdate is undefined>>
+
+<<if !_preventUpdate and !$autosavedisabled>>
+	<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
 	<<run setSaveDetail("autosave",{"saveId":$saveId,"saveName":$saveName})>>
 <</if>>
 <<set _hour to clone($hour)>>

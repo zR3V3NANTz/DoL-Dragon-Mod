@@ -156,7 +156,7 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
 	<<else>>
 		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>
@@ -437,7 +437,7 @@ You don't know how much time passes. Your body feels refreshed, but your mind fe
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
 	<<else>>
 		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>

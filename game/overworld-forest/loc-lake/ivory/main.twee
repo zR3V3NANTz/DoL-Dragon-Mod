@@ -5,7 +5,7 @@
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
 	<<else>>
 		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>
@@ -392,7 +392,7 @@ This isn't Kylar. <<trauma 12>><<ggtrauma>>
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
 	<<else>>
 		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>
@@ -827,7 +827,7 @@ Your eyes snap open. The figure is gone, but you hear laughter echo in your head
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<if $penisexist is 1>>
+	<<if $player.penisExist>>
 		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
 	<<else>>
 		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>

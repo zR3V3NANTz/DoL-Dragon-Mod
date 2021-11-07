@@ -654,7 +654,7 @@
 <<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity") and ($consensual is 1 or $pain gte 100) and !_noCum>>
 	"Hey," <<he>> says. "You didn't cum. That's not fair, is it?"
 	<<if $penisuse is "tentacle">>
-		<<if $player.condom isnot false>>
+		<<if $player.condom>>
 			<<removeCondom>>
 			<<He>> removes your condom as the
 		<<else>>
@@ -684,7 +684,7 @@
 		<</if>>
 		<<unset $tentaclePenis>><<set $penisuse to 0>><<set $penisstate to 0>>
 	<<elseif $penisuse is "othervagina" or $penisuse is "otheranus">>
-		<<if $player.condom isnot false>>
+		<<if $player.condom>>
 			<<removeCondom>>
 			<<He>> removes your condom and
 		<<else>>
@@ -715,7 +715,7 @@
 			<<set _orgasm to 1>>
 		<</if>>
 	<<elseif $penisuse is "othermouth">>
-		<<if $player.condom isnot false>>
+		<<if $player.condom>>
 			<<removeCondom>>
 			<<He>> removes your condom and
 		<<else>>

@@ -262,9 +262,9 @@ You listen out in case anyone snuck in while you were distracted. You don't hear
 	
 	<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
 		Let me," Eden says, as <<he>> guides your arms out of the way and  
-		<<if $penisexist is 1>>
+		<<if $player.penisExist>>
 			grabs your <<penis>> in <<his>> hand.
-		<<elseif $vaginaexist is 1>>
+		<<elseif $player.vaginaExist>>
 			rubs <<his>> fingers over your <<clit>>.
 		<</if>>
 	<<else>>
