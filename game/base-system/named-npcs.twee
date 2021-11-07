@@ -379,9 +379,6 @@ alternative way to write that:
 	<!-- Special Cases NNPC Variables, Introductions, Adjustments -->
 	<<switch _nam>>
 	<<case Kylar>>
-		<<set $kylartimer to 0>>
-		<<set $kylarstreettimer to 0>>
-		<<set $kylarraped to 0>>
 		<<set $NPCName[$NPCNameList.indexOf("Kylar")].state to 0>>
 		<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
 	<<case Robin>>

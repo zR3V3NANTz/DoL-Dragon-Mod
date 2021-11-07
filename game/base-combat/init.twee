@@ -1007,7 +1007,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 		<</if>>
 	<</if>>
 <</for>>
-<<if $player.condom isnot false>>
+<<if $player.condom>>
 	<<if $player.condom.damaged is false>>
 		<<set $condomPlayerPenisImg to true>>
 	<</if>>

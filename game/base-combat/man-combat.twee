@@ -4354,13 +4354,13 @@
 			<<elseif $enemyanger + $rng lte 100 and $NPCList[_n].location.head is 0 and $NPCList[_n].location.genitals isnot "genitals" and $walltype isnot "front">>
 				<<neutral 10>>
 				<<if $penisuse is 0 and $NPCList[_n].penis is 0 and $player.penisExist>>
-					<<if $player.condom isnot false>>
+					<<if $player.condom>>
 						<<removeCondom>>
 						<<He>> removes the condom from your penis.
 					<</if>>
 					<span class="blue">
 						<<He>> kneels beside
-						<<if $player.condom isnot false>>
+						<<if $player.condom>>
 							<<removeCondom>>
 							you and removes your condom.
 						<<else>>
@@ -4373,7 +4373,7 @@
 				<<elseif $penisuse is 0 and $NPCList[_n].vagina is 0 and $player.penisExist>>
 					<span class="blue">
 						<<He>> kneels beside
-						<<if $player.condom isnot false>>
+						<<if $player.condom>>
 							<<removeCondom>>
 							you and removes your condom.
 						<<else>>
@@ -4386,7 +4386,7 @@
 				<<elseif $penisuse is 0 and $NPCList[_n].vagina is "facesit" and $player.penisExist>>
 					<span class="blue">
 						You feel <<him>> lean forward along your body, then feel <<his>> breath on your
-						<<if $player.condom isnot false>>
+						<<if $player.condom>>
 							<<removeCondom>>
 							<<penis>> as your condom is removed.
 						<<else>>
@@ -4713,7 +4713,7 @@
 			<<if $penisuse is 0>>
 				<<if $analdisable is "f" and $consensual is 1>>
 					<<if $condomUse is false>>
-					<<elseif $condomUse is true and $player.condom is false and $parasite.penis.name is undefined>>
+					<<elseif $condomUse is true and !$player.condom and $parasite.penis.name is undefined>>
 						<<equipCondom>>
 						<span class="green"><<He>> slips a condom on your <<penis>>.</span>
 					<</if>>
@@ -4948,7 +4948,7 @@
 	 <<elseif $enemyanger + $rng lte 50 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals"
 			and $player.penisExist and $penisuse is 0 and $analdisable is "f" and $walltype isnot "front">>
 		<<if $condomUse is false>>
-		<<elseif $condomUse is true and $player.condom is false and $parasite.penis.name is undefined>>
+		<<elseif $condomUse is true and !$player.condom and $parasite.penis.name is undefined>>
 			<<equipCondom>>
 			<span class="green"><<He>> slips a condom on your <<penis>>.</span>
 		<</if>>
@@ -5003,7 +5003,7 @@
 	<<elseif $enemyanger + $rng lte 100 and $penisuse is 0 and $player.penisExist and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $worn.over_lower.vagina_exposed is 1 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $walltype isnot "front">>
 		<<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">>
 		<<if $condomUse is false>>
-		<<elseif $condomUse is true and $player.condom is false and $parasite.penis.name is undefined>>
+		<<elseif $condomUse is true and !$player.condom and $parasite.penis.name is undefined>>
 			<<equipCondom>>
 			<span class="green"><<He>> slips a condom on your <<penis>>.</span>
 		<</if>>
@@ -5016,7 +5016,7 @@
 	<<elseif $enemyanger + $rng lte 120 and $penisuse is 0 and $player.penisExist and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $worn.over_lower.vagina_exposed is 1 and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and !$worn.genitals.type.includes("chastity") and $walltype isnot "front">>
 		<<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisimminent">><<set $penisstate to "imminent">>
 		<<if $condomUse is false>>
-		<<elseif $condomUse is true and $player.condom is false and $parasite.penis.name is undefined>>
+		<<elseif $condomUse is true and !$player.condom and $parasite.penis.name is undefined>>
 			<<equipCondom>>
 			<span class="green"><<He>> slips a condom on your <<penis>>.</span>
 		<</if>>

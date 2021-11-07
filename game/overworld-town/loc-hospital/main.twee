@@ -627,8 +627,8 @@ As you walk down an empty corridor a door beside you opens and a pair of arms dr
 
 :: Hospital Wait
 <<set $outside to 0>><<set $location to "hospital">><<effects>>
-<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
-<<if _preventUpdate is undefined>>
+<<if !_preventUpdate and !$autosavedisabled>>
+	<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
 	<<run setSaveDetail("autosave",{"saveId":$saveId,"saveName":$saveName})>>
 <</if>>
 <<set _hour to clone($hour)>>

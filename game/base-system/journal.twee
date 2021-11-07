@@ -501,7 +501,7 @@
 <</for>>
 
 
-<<if $museumAntiqueJournalHints is not undefined>>
+<<if $museumAntiqueJournalHints.length gte 1>>
 	<<museumAntiqueText>>
 	<br><br>
 	<h4>Winter has mentioned some items missing from the museum</h4>

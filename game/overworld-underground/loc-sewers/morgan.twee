@@ -591,8 +591,8 @@ You help Morgan search for salvage, doing your best to avoid anything too gross.
 <br>
 
 :: Sewers Sleep
-<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
-<<if _preventUpdate is undefined>>
+<<if !_preventUpdate and !$autosavedisabled>>
+	<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
 	<<run setSaveDetail("autosave",{"saveId":$saveId,"saveName":$saveName})>>
 <</if>>
 <<effects>><<set $location to "sewers">><<set $outside to 0>>

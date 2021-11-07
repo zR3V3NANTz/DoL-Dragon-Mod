@@ -43,6 +43,11 @@ Passage Line Height: <<link "1.75">><<unset $reducedLineHeight>><<removeclass "#
 </label>
 <br>
 <label>
+	<<checkbox "$autosavedisabled" false true autocheck>>
+	Disable autosave on sleeping
+</label>
+<br>
+<label>
 	<<checkbox "$numpad" false true autocheck>>
 	Enable numpad. Useful on mobile if links break due to translation software.
 </label>
