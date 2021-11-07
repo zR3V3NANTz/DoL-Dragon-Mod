@@ -681,7 +681,7 @@ The water pulls you further along the tunnel.
 	<<seacliffseventend>>
 <<elseif $enemyarousal gte $enemyarousalmax>>
 	<<beastejaculation>>
-	Seed deposited, the <<beasttype>> loses interest in you.
+	Satisfied, the <<beasttype>> loses interest in you.
 	<br><br>
 	<<tearful>> you gather yourself.
 	<br><br>

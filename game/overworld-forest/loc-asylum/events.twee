@@ -558,7 +558,7 @@ This continues for a few minutes. Puffs of pink mist continue to emerge, along w
 	<<else>>
 		Several disembodied arms emerge from the walls, holding you down.
 	<</if>>
-	Harper's voice is just barely audible. "Something's wrong with the machine! Get <<pher>> out of there!"
+	Harper's voice is just barely audible. "Something's wrong with the machine! Get <<phim>> out of there!"
 	<br><br>
 	<<link [[Next|Asylum Machine Wraith]]>><<set $molestationstart to 1>><</link>>
 	<br>	

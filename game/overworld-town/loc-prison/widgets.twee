@@ -750,6 +750,12 @@
 <<elseif $worn.neck.type.includes("leash") and !$prison.active_punishments.includes("leash")>>
     "You're not supposed to be leashed," <<he>> says, pulling a pair of pliers from <<his>> pocket.
     <<set $phase to 3>>
+<<elseif !$prison.active_punishments.includes("blindfold") and $worn.face.type.includes("blindfold")>>
+    "Time to remove that blindfold," <<he>> says. You hear <<him>> walk closer.
+    <<set $phase to 4>>
+<<elseif !$prison.active_punishments.includes("gag") and $worn.face.type.includes("gag")>>
+    "Time to remove that gag," <<he>> says, walking closer.
+    <<set $phase to 5>>
 <<else>>
 	<<switch $args[0]>>
 		<<case "relaxed">>
@@ -764,7 +770,13 @@
     <<set $phase to 0>>
 <</if>>
 <br><br>
-<<if $phase is 3>>
+<<if $phase is 5>>
+    <<link [["Let " + $NPCList[0].pronouns.him + " remove the gag"|Prison Remove Gag]]>><</link>>
+    <br>
+<<elseif $phase is 4>>
+    <<link [["Let " + $NPCList[0].pronouns.him + " remove the blindfold"|Prison Remove Blindfold]]>><</link>>
+    <br>
+<<elseif $phase is 3>>
     <<link [["Let " + $NPCList[0].pronouns.him + " remove the leash"|Prison Remove Leash]]>><</link>>
     <br>
 <<elseif $phase is 2>>

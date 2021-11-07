@@ -471,7 +471,7 @@
 				<<if $plantdisable is "f">>
 					<<addinlineevent "autumn_forest_4" 0.5>>
 						<<generatePlant1>><<person1>>
-						A <<personsimple>> runs <<his>> fingers through his hair. <<He>> picks dead leaves out, crunching them in <<his>> hands before dropping them.
+						A <<personsimple>> runs <<his>> fingers through <<his>> hair. <<He>> picks dead leaves out, crunching them in <<his>> hands before dropping them.
 						<<endevent>>
 					<</addinlineevent>>
 				<</if>>

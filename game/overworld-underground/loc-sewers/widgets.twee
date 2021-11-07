@@ -94,7 +94,7 @@
 		<br><br>
 		"<span class="wraith">You will never get away.</span>" <<rainWraith>>
 		<br><br>
-		<<generateWraith 1 true>><<initwraith>><<set $wraith.exit to "town">>
+		<<generateWraith 1 true>><<initWraith>><<set $wraith.exit to "town">>
 		<<switch $wraith.gen>>
 			<<case "man">>
 				<<He>> raises <<his>> hand to the air, and an unseen force pushes you to the ground.
