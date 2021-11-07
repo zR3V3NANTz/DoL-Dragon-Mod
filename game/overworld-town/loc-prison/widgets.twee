@@ -1374,7 +1374,13 @@
 
 <<widget "prison_unbind">>
 <<if !$prison.active_punishments.includes("bindings")>>
-    <<unbind>>
+	<<set $rightboundcarry to 0>>
+	<<set $leftboundcarry to 0>>
+	<<set $leftarm to 0>>
+	<<set $rightarm to 0>>
+<</if>>
+<<if !$prison.active_punishments.includes("cuffs")>>
+	<<remove_shackle>>
 <</if>>
 <</widget>>
 

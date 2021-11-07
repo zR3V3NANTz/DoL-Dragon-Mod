@@ -323,8 +323,10 @@
 <</widget>>
 
 <<widget "robinpay">>
+	<<if $robinpaid isnot 1>>
 	<i>Robin is safe for now, but Bailey will keep collecting the toll. Maybe you should confront Bailey about it.</i>
 	<br><br>
+	<</if>>
 <</widget>>
 
 <<widget "robinhug">>

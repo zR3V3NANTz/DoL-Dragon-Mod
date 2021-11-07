@@ -309,7 +309,8 @@ window.beastTogglesCheck = function () {
 		"waspdisable",
 		"beedisable",
 		"lurkerdisable",
-		"horsedisable"
+		"horsedisable",
+		"plantdisable"
 	];
 	T.anyBeastOn = T.beastVars.some(x => V[x] == 'f');
 }

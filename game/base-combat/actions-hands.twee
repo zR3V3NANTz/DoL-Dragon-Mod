@@ -1608,8 +1608,8 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<</if>>
 
 		<<willpowerdifficulty $drugged $willpowermax "silent">>
-		<<if ($mouthuse is "facesit" or ["nipple","breasts"].includes($mouthstate)) and $NPCList[0].type is "plant" and !$willpowerSuccess>>
-			<span class="red">However, you can't tear yourself from the sweet nectar.</span>
+		<<if (($mouthuse is "facesit" and $mouthstate is "vagina") or ["nipple","breasts"].includes($mouthstate)) and $NPCList[0].type is "plant" and !$willpowerSuccess>>
+			<span class="red">but you can't tear yourself from the sweet nectar.</span>
 			<<if $mouthstate is "nipple">>
 				You desperately suck their $NPCList[0].breastdesc.
 			<<elseif $mouthstate is "breasts">>

@@ -971,7 +971,7 @@ The <<person3>><<person>> grasps Alex from behind.
 	<br><br>
 
 	<<if $farm_fight.stage gte 5>>
-		<span class="green">Alex struggles free from the <<person6>><<persons>> grasp,</span> and puts some distance between <<himself>> and the ogling thugs.
+		<span class="green">Alex struggles free from the <<person6>><<persons>> grasp,</span> and puts some distance between <<nnpc_himself "Alex">> and the ogling thugs.
 		<br><br>
 	<<else>>
 		<span class="green">They're too busy ogling to notice Alex gain distance, and ready <<person1>><<himself>> for more violence.</span>
@@ -988,7 +988,7 @@ The <<person3>><<person>> grasps Alex from behind.
 	<br><br>
 
 	<<if $farm_fight.stage gte 5>>
-		<span class="green">Alex struggles free from the <<person6>><<persons>> grasp,</span> and puts some distance between <<himself>> and the ogling thugs.
+		<span class="green">Alex struggles free from the <<person6>><<persons>> grasp,</span> and puts some distance between <<nnpc_himself "Alex">> and the ogling thugs.
 		<br><br>
 	<<else>>
 		<span class="green">They're too busy ogling to notice Alex gain distance, and ready <<person1>><<himself>> for more violence.</span>
@@ -1005,7 +1005,7 @@ The <<person3>><<person>> grasps Alex from behind.
 	<br><br>
 
 	<<if $farm_fight.stage gte 5>>
-		<span class="green">Alex struggles free from the <<person6>><<persons>> grasp,</span> and puts some distance between <<himself>> and the ogling thugs.
+		<span class="green">Alex struggles free from the <<person6>><<persons>> grasp,</span> and puts some distance between <<nnpc_himself "Alex">> and the ogling thugs.
 		<br><br>
 	<<else>>
 		<span class="green">They're too busy ogling to notice Alex gain distance, and ready <<person1>><<himself>> for more violence.</span>

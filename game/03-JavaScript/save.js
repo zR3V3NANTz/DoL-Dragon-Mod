@@ -551,6 +551,7 @@ window.settingsObjects = function (type) {
 				beedisable: { boolLetter: true, bool: true},
 				lurkerdisable: {boolLetter: true, bool: true},
 				horsedisable: {boolLetter: true, bool: true},
+				plantdisable: {boolLetter: true, bool: true},
 				footdisable: {boolLetter: true, bool: true},
 				asphyxiaLvl: { min: 0, max: 4, decimals: 0 },
 				NudeGenderDC: { min: 0, max: 2, decimals: 0 },

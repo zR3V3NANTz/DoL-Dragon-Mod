@@ -115,7 +115,7 @@ The gate is barred by a heavy-duty padlock.
 <<else>>
 	<span class="red">The lock looks beyond your ability to pick.</span><<skulduggeryrequired>>
 	<br><br>
-	<span class="blue"><i>There must be a key, but you haven't any idea where you could find one.</i>.</span>
+	<span class="blue"><i>There must be a key, but you haven't any idea where you could find one.</i></span>
 	<br><br>
 <</if>>
 

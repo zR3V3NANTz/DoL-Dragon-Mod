@@ -313,7 +313,11 @@ You queue with the other prisoners, and receive a slab of meat and a ladle-full 
     "Hey <<girl>>," says the <<person>> opposite. <<He>> rests <<his>> elbow on the table. "Wrestle?"
     <br><br>
 
-    <<link [[Wrestle|Prison Dinner Wrestle]]>><</link>><<physiquedifficulty 2000 16000>>
+    <<if $leftarm is "bound" and $rightarm is "bound">>
+        <span class="blue">You can't wrestle with your arms bound.</span>
+    <<else>>
+        <<link [[Wrestle|Prison Dinner Wrestle]]>><</link>><<physiquedifficulty 2000 16000>>
+    <</if>>
     <br>
     <<link [[Decline|Prison Dinner Wrestle Decline]]>><<prison_inmates -1>><</link>><<lrespect>>
     <br>

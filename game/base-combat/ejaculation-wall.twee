@@ -324,7 +324,7 @@
 			<br><br>
 			<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
 		<<case 4 5 6>>
-			<<He>> strokes <<his>> $NPCList[_nn].penisdesc and ejaculates onto your <<bottom>> before <<he>> can penetrate you, sending streams of semen running down your crack; <<his>> ground sounds disappointed.
+			<<He>> strokes <<his>> $NPCList[_nn].penisdesc and ejaculates onto your <<bottom>> before <<he>> can penetrate you, sending streams of semen running down your crack; <<he>> groans in disappoinment.
 			<br><br>
 			<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
 		<<case 7>>
