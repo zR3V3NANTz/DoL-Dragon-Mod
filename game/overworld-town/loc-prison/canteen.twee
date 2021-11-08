@@ -59,9 +59,6 @@ You are in the canteen. Rows of table fill the large room. The ceiling hangs low
 <<pass 1>><<advancetohour>>
 
 You queue with the other prisoners, and receive a bowl full of sloppy porridge.
-<<if $leftarm is "bound" and $rightarm is "bound">>
-    When seeing your bound 
-<</if>>
 <br><br>
 
 You look for a free seat.

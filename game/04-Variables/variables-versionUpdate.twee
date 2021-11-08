@@ -2,7 +2,7 @@
 <<widget "variablesVersionUpdate">>
 /* * * * * * * * * * * * * * * * * *
  * OLD BACKWARDS COMPATIBILITY CODE
- * EDIT widget "backComp" FOR VERSIONS 0.3.4.6+
+ * EDIT widget "backComp" FOR VERSIONS 0.3.4.7+
  */
 
 <<if $objectVersion is undefined>>
@@ -2573,7 +2573,7 @@
 
 
 <<widget "backComp">>
-	<<if _version lte 30406>>/* for versions <= 0.3.4.6, run old version handler */
+	<<if _version lte 30407>>/* for versions <= 0.3.4.7, run old version handler */
 		<<variablesVersionUpdate>>
 	<</if>>
 /* * * * * * * * * * * * * * * * * * * * * * *

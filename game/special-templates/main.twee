@@ -2,8 +2,9 @@
 <<location "home">><<effects>>
 <<endcombat>>
 
-<<set $prison.active_punishments to []>>
-<<prison_guard_watch>>
+<<bind>>
+<<arm_unbind>>
+
 
 /*
 <<generate_relaxed_guard 0>>

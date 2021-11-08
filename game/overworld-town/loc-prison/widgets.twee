@@ -37,6 +37,7 @@
     <<set $prison.medical_intro to 0>>
     <<set $prison.spire_intro to 0>>
     <<set $prison.hours_worked to 9>>
+    <<set $prison.work_check to 1>>
     <<set $prison.kylar to 0>>
 
     <<set $prison_wren_intro to 1>>
@@ -77,6 +78,7 @@
 <<widget "prison_end">>
 <<set $prison.active_punishments to []>>
 <<set $prison.hours_worked to 9>>
+<<set $prison.work_check to 1>>
 <<set $prison.schedule to "lockdown">>
 <<unset $prison_punished_days>>
 <</widget>>
