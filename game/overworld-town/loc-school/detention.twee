@@ -160,7 +160,7 @@
 	<</if>>
 <<elseif $detention lte 50>>
 	<<if $delinquency gte random(1, 1000)>>
-		You enter the office to find Leighton sitting at <<his>> desk, holding a large wooden paddle. <<He>> taps it against his palm, looking impatient. "You’ve been a very naughty <<girl>>, but I think I know just the way to get through to you." <<He>> leers at your $worn.lower.name. "Take that off."
+		You enter the office to find Leighton sitting at <<his>> desk, holding a large wooden paddle. <<He>> taps it against <<his>> palm, looking impatient. "You’ve been a very naughty <<girl>>, but I think I know just the way to get through to you." <<He>> leers at your $worn.lower.name. "Take that off."
 		<br><br>
 		
 		You do as told, hands trembling.<<lowerstrip>>
@@ -212,7 +212,7 @@
 	<</if>>
 <<elseif $detention lte 60>>
 	<<if $delinquency gte random(1, 1000)>>
-		You enter the office to find Leighton sitting at <<his>> desk, holding a large wooden paddle. <<He>> taps it against his palm, looking impatient. "You’ve been a very naughty <<girl>>, but I think I know just the way to get through to you." <<He>> leers at your $worn.lower.name. "Take that off."
+		You enter the office to find Leighton sitting at <<his>> desk, holding a large wooden paddle. <<He>> taps it against <<his>> palm, looking impatient. "You’ve been a very naughty <<girl>>, but I think I know just the way to get through to you." <<He>> leers at your $worn.lower.name. "Take that off."
 		<br><br>
 		
 		You do as told, hands trembling.<<lowerstrip>>
@@ -631,7 +631,7 @@ You oblige, bringing the paddle down on the <<personsimple>>'s other cheek this 
 The sound of paddle meeting<<if $phase is 1>> bare<</if>> flesh echoes around the room, mixing with the <<personsimple>>'s sobs.
 
 <<if $phase is 1>>
-	<<His>> butt is an angry red colour, nasty welts all along his buttocks where you hit him.
+	<<His>> butt is an angry red colour, nasty welts all along <<his>> buttocks where you hit him.
 <</if>>
 
 By the end, the <<person>> is left a sobbing mess, holding onto the desk for support.

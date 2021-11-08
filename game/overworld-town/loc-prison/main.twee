@@ -1850,17 +1850,16 @@ A great wind howls. You're far above the prison block.
 
 :: Prison Spire Intro 2
 <<set $outside to 1>><<effects>>
-
-<<generate_anxious_guard 0>><<beastNEWinit 5 "hawk">>
-<<person1>>"Over here," says a voice to your left. It's <<anxious_guard 0>>. <<Hes>> stood outside a small concrete cabin, one foot still inside. <<He>> looks at up the sky. "Hurry."
+<!-- fuckity fuck. <<generate_x_guard N>> expects $NPCList[N] slot. <<beastNEWinit N>> expects the number of beasts to generate, NOT slot number. <<generateBEAST N>> expects npc number ($NPCList[N+1]), NOT $NPCList[N] slot. <<beastsplural N>> - expects $NPCList[N] slot. and <<personN>> expects npc number. <<bHe>> and <<beastsplural>> expect npclist slot and do not respect <<personN>>. WHY -->
+<<generate_anxious_guard 0>><<generateBEAST 2 "hawk">>
+<<person1>>"Over here," says a voice to your left. It's <<anxious_guard 0>>. <<Hes>> stood outside a small concrete cabin, one foot still inside. <<He>> looks up at the sky. "Hurry."
 <br><br>
 
 You hasten towards <<him>> as you hear a whoosh, as if the wind were picking up. "Fuck," <<anxious_guard 0>> says as <<he>> recoils into the building. "Run!"
 <br><br>
-<<person2>>
-Animated by a terrible fear, you run for the door, sparing a glance behind. A <<beasttype>> swoops through the air, talons outstretched.<<ggstress>><<stress 12>>
+Animated by a terrible fear, you run for the door, sparing a glance behind. A <<beasttype 1>> swoops through the air, talons outstretched.<<ggstress>><<stress 12>>
 <br><br>
-The creature lands as the door shuts behind you. <<bHe>> takes off again, leaving talon marks in the stone. You watch through the window as other <<beastsplural 1>> descend, landing on and around the beacon.
+You manage to clear the cabin entrance just moments before the <<beasttype 1>> lands, <<anxious_guard 0>> shutting the door behind you. The <<beasttype 1>> takes off again, leaving talon marks in the stone. You watch through the window as other <<beastsplural 1>> descend, landing on and around the beacon.
 <br><br>
 
 <<link [[Next|Prison Spire Intro 3]]>><</link>>

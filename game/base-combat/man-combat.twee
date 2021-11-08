@@ -2515,7 +2515,7 @@
 					<</if>>
 				<<else>>
 					<<if $enemyarousal gte (($enemyarousalmax / 5) * 4)>>
-						<<if $npcSub>>You feel <<him>> approaching <<his>> peak while riding his cock<<else>><<He>> fucks your <<bottom>><</if>> with increasing power.
+						<<if $npcSub>>You feel <<him>> approaching <<his>> peak while riding <<his>> cock<<else>><<He>> fucks your <<bottom>><</if>> with increasing power.
 					<<elseif $enemyarousal gte (($enemyarousalmax / 5) * 2)>>
 						<<if $npcSub>>You continue to ride <<his>> $NPCList[_n].penisdesc.<<else>><<He>> continues thrusting into your <<bottom>>.<</if>>
 					<<else>>

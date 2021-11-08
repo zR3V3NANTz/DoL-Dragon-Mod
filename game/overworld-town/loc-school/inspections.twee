@@ -125,7 +125,7 @@ but Leighton holds them out of reach. "I'll be keeping these," <<person1>><<he>>
 	<<if !$genderknown.includes("Leighton")>>
 		"Young man," Leighton says. "We've already had penis inspection-" <<He>> pauses,
 		<<if $penissize lte 0>>
-			noticing the pussy below your <<penis>>. You wince as <<he>> gropes and inspects you further.
+			noticing the pussy below your <<if $worn.genitals.type.includes("cage")>>caged<</if>> <<penis>>. You wince as <<he>> gropes and inspects you further.
 		<<elseif $player.ballsExist>>
 			and reaches forward. You wince as <<he>> lifts your <<testicles>> and inspects you further.
 		<<else>>
@@ -141,7 +141,7 @@ but Leighton holds them out of reach. "I'll be keeping these," <<person1>><<he>>
 			<<He>> aims the camera at your genitals, and mutters, "Shame about the size, though," seemingly to <<himself>>.
 		<<else>>
 			<br><br>
-			<<He>> aims the camera at your genitals, then stops and looks back up. "Ah, hmm. I'll need you to lift your penis so I may properly inspect your pussy." Blushing,
+			<<He>> aims the camera at your genitals, then stops and looks back up. "Ah, hmm. I'll need you to lift your <<if $worn.genitals.type.includes("cage")>>ahem... device,<<else>>penis<</if>> so I may properly inspect your pussy." Blushing,
 		<</if>>
 	<<else>>
 		"Ah yes," Leighton says.
@@ -155,13 +155,15 @@ but Leighton holds them out of reach. "I'll be keeping these," <<person1>><<he>>
 	<</if>>
 	<<if $penissize gte 1>>
 		<<if $player.ballsExist>>
-			<<if $penissize gte 3>>
+			<<if $penissize gte 3 and !$worn.genitals.type.includes("cage")>>
 				you lift up your <<penis>> with one hand and your <<testicles>> with the other,
 			<<else>> 
-				you lift up your <<penis>> and <<testicles>> with one hand,
+				you lift up your <<if $worn.genitals.type.includes("cage")>>$worn.genitals.name<<else>><<penis>><</if>> and <<testicles>> with one hand,
 			<</if>>
 		<<else>>
-			<<if $penissize gte 3>>
+			<<if $worn.genitals.type.includes("cage")>>
+				you lift your $worn.genitals.name,
+			<<elseif $penissize gte 3>>
 				you lift your <<penis>> with both hands,
 			<<else>> 
 				you lift your <<penis>> with one hand,
@@ -1285,7 +1287,7 @@ The class erupts into whispering when they see your <<penis>>.
 	You feel the boys' eyes on you, taking it in.
 <</if>>
 <br><br>
-<<if $player.gender is "h">>
+<<if $player.gender is "h" and !$worn.genitals.type.includes("hidden")>>
 	<<pussyinspectionherm>>
 	<<schoolrep_naked>>
 	The girls next to you sneak glances at your penis before blushing and looking away.
@@ -1295,7 +1297,7 @@ The class erupts into whispering when they see your <<penis>>.
 
 You look away as Leighton takes a picture.
 
-<<if $worn.genitals.type.includes("chastity")>>
+<<if $worn.genitals.type.includes("hidden")>>
 	Leighton doesn't mention your belt.
 <<elseif $player.bodyliquid.vagina.semen + $player.bodyliquid.vaginaoutside.semen gte 2>>
 	<br><br>
@@ -1329,14 +1331,14 @@ You look away as Leighton takes a picture.
 		"I nearly overlooked your... unique situation, what with your state of dress," Leighton says.
 		"Good thing you came up on your own. You almost missed your inspection." <<He>> laughs as <<he>> beckons the next student forward.
 		<br>
-		
+
 		You drop from the desk and take your place in line.
 	<<else>>
 		<<schoolrep_naked>>
 		"It's unusual for a girl to dress like that, you know," Leighton says.
 		"Good thing you came up on your own. You almost missed your inspection." <<He>> laughs as <<he>> beckons the next student forward.
 		<br>
-		
+
 		You drop from the desk and take your place in line. Some of your classmates give you odd looks.
 	<</if>>
 <<else>>

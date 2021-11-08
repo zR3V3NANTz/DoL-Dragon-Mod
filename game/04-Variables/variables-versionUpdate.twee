@@ -2237,10 +2237,10 @@
 			<<set $per_npc[_npc].role to "normal">>
 		<</if>>
 		<<if $per_npc[_npc].condom is undefined>>
-			<<set $per_npc[_npc].condom false>>
+			<<set $per_npc[_npc].condom to false>>
 		<</if>>
 		<<if $per_npc[_npc].name_known is undefined>>
-			<<set $per_npc[_npc].name_known 0>>
+			<<set $per_npc[_npc].name_known to 0>>
 		<</if>>
 	<</for>>
 <</if>>
