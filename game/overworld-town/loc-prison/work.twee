@@ -296,7 +296,7 @@ You make up a story, one of boldness and daring.
     <<set $rng to random(1, 5)>>
     <<switch $rng>>
         <<case 1>>
-            "A giant slug?!" asks a <<person>>. "Who have thought."
+            "A giant slug?!" asks a <<person>>. "Who'd have thought."
         <<case 2>>
             "All the way in?" asks a <<person>>. "Who'd have thought."
         <<case 3>>

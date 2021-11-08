@@ -1338,7 +1338,7 @@
     <br>
 <<elseif $prison.anxious gte 60 and $per_npc.anxious_guard.name_known isnot 1>>
     <<beastNEWinit 2 "hawk">><<person1>>
-    You hear a cry. A between two <<beastsplural>> has turned sour. One holds the other down, and looks to be trying to throttle <<bhim>> with <<person2>><<bhis>> talons.
+    You hear a cry. A scrap between two <<beastsplural>> has turned sour. One holds the other down, and looks to be trying to throttle <<bhim>> with <<person2>><<bhis>> talons.
     <<endevent>>
     <br><br>
     <<generate_anxious_guard 0>><<person1>>

@@ -3596,15 +3596,14 @@
 			<</if>>
 		<<else>>
 			<<set $consensual to 0>>
-			<<if $enemytype is "man">>
-				<<if $NPCList[0].type is "plant">>
+			<<switch $enemytype>>
+				<<case "plant">>
 					<span class="red"><<He>> shakes <<his>> head happily.</span>
-				<<else>>
+				<<case "beast">>
+					Eager to breed, <span class="red"><<bhe>> ignores your desire.</span>
+				<<default>>
 					<span class="red"><<if $enemyno gte 2>>They refuse!<<else>><<He>> refuses!<</if>></span>
-				<</if>>
-			<<else>>
-				Eager to breed, <span class="red"><<bhe>> ignores your desire.</span>
-			<</if>>
+			<</switch>>
 			<<molested>><<controlloss>>
 		<</if>>
 	<</if>>

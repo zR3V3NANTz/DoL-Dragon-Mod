@@ -89,7 +89,7 @@ You enter a room lined with benches. A number of rough-looking <<people>> sit al
 
 
 :: Police Community Graffiti
-<<set $location to "commercial">><<set $bus to "commercial">><<effects>>
+<<set $location to "alley">><<set $bus to "commercial">><<effects>>
 
 The <<person>> leads you and the other criminals across the road, and into the maze of commercial alleyways. <<He>> stops you beside a concrete wall. It's covered with graffiti.
 <br><br>
