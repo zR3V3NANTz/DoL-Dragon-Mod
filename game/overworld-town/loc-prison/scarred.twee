@@ -41,7 +41,7 @@ You enter <<scarred_inmate 0 apo>> cell.
             <<link [[Turn around|Prison Scarred Turn]]>><<prison_rep scarred 5>><</link>><<gglove>>
             <br>
         <<default>>
-            "Just the <<bitch>> I wanted to see," <<he>> says, rising from <<his>> bed. "There's a length of cord already in <<his>> hands. "Turn around, <<bitch>>".
+            "Just the <<bitch>> I wanted to see," <<he>> says, rising from <<his>> bed. There's a length of cord already in <<his>> hands. "Turn around, <<bitch>>."
             <br><br>
 
             <<link [[Turn around|Prison Scarred Turn]]>><<prison_rep scarred 5>><</link>><<gglove>>
@@ -1002,7 +1002,7 @@ The <<person2>><<person>> nods. "I understand. Tell <<scarred_inmate 0>> we're l
 :: Prison Scarred Sex Refuse
 <<effects>>
 
-"Suit yourself," <<he>> says. "You'll be begging me for it later."
+"Suit yourself," <<person1>><<he>> says. "You'll be begging me for it later."
 <br><br>
 
 <span class="green">You've gained <<scarred_inmate 0 apo>> protection.</span><<set $prison.protection to "scarred">>

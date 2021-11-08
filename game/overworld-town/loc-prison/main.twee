@@ -603,8 +603,8 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
                     "You can cover your chest with a bra or vest, <span class="pink">but no shirts or such, for now."</span>
                 <<else>>
                     <span class="green">"You can clothe yourself properly again."</span> This prompts the other inmates to take another gawk at you.
-                    <br><br>
                 <</if>>
+				<br><br>
             <</if>>
             <<link [[Next|Prison Walkway]]>><<endevent>><</link>>
             <br>
@@ -654,17 +654,17 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
                 <<set $prison.active_punishments.delete("nude")>>
                 <<if $prison.active_punishments.includes("underwear")>>
                     "You can wear underwear again, <span class="pink">but must remain topless."</span>
-                    <br><br>
                 <<else>>
                     "You can wear trousers again," <span class="pink">but must remain topless."</span>
                 <</if>>
+				<br><br>
             <<else>>
                 <<if $prison.active_punishments.includes("underwear")>>
                     "You can wear underwear again, <span class="pink">but no shirts or such, for now."</span>
                 <<else>>
                     <span class="green">"You can clothe yourself properly again."</span> This prompts the other inmates to take another gawk at you.
-                    <br><br>
                 <</if>>
+				<br><br>
             <</if>>
             <<link [[Next|Prison Walkway]]>><<endevent>><</link>>
             <br>
@@ -1108,7 +1108,7 @@ You are in the laundry room. The walls give way to raw rock part way in. Thick p
     <<link [[Next|Prison Cell]]>><<endevent>><</link>>
     <br>
 <<else>>
-    <<if !$prison_relaxed_greet and $prison.relaxed gte 15>>
+    <<if !$prison_relaxed_greet and $prison.relaxed gte 15 and $prison.schedule is "work">>
         <<prison_guard_greet relaxed>>
     <<elseif random(1, 5) is 5 and $eventskip isnot 1 and $prison.schedule is "work">>
         <<prison_guard_watch relaxed>>
