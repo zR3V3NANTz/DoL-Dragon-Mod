@@ -488,18 +488,19 @@
 	<</if>>
 <</if>>
 
-<h4>Seeds</h4>
-<<set _plant_keys to Object.keys(setup.plants)>>
-<<for _i to 0; _i lt _plant_keys.length; _i++>>
-	<<if setup.plants[_plant_keys[_i]].type is "flower" or setup.plants[_plant_keys[_i]].type is "vegetable">>
-		<<if $plants_known.includes( setup.plants[_plant_keys[_i]].name)>>
-			<span class="green"><<print setup.plants[_plant_keys[_i]].plural[0].toUpperCase() + setup.plants[_plant_keys[_i]].plural.substring(1)>></span> |
-		<<else>>
-			??? |
-		<</if>>
-	<</if>>
-<</for>>
+<<if $farm>>
+	<br>
+	<<farm_upgrades_current>>
+<</if>>
 
+<<if $location is "prison">>
+	You have <span class="gold"><<number $prison.teeth>></span> shark's teeth.
+	<br>
+	<<if $prison_wren_intro isnot 1>>
+		You can find Wren in the yard on Fridays after lunch.
+		<br>
+	<</if>>
+<</if>>
 
 <<if $museumAntiqueJournalHints.length gte 1>>
 	<<museumAntiqueText>>
@@ -514,17 +515,17 @@
 	</ul>
 <</if>>
 
-<<if $farm>>
-	<<farm_upgrades_current>>
-<</if>>
-
-<<if $location is "prison">>
-	You have <span class="gold"><<number $prison.teeth>></span> shark's teeth.
-	<br>
-	<<if $prison_wren_intro isnot 1>>
-		You can find Wren in the yard on Fridays after lunch.
-		<br>
-	<</if>>
-	
+<<if $plants_known.length gt 0>>
+	<h4>Seeds</h4>
+	<<set _plant_keys to Object.keys(setup.plants)>>
+	<<for _i to 0; _i lt _plant_keys.length; _i++>>
+		<<if setup.plants[_plant_keys[_i]].type is "flower" or setup.plants[_plant_keys[_i]].type is "vegetable">>
+			<<if $plants_known.includes( setup.plants[_plant_keys[_i]].name)>>
+				<span class="green"><<print setup.plants[_plant_keys[_i]].plural[0].toUpperCase() + setup.plants[_plant_keys[_i]].plural.substring(1)>></span> |
+			<<else>>
+				??? |
+			<</if>>
+		<</if>>
+	<</for>>
 <</if>>
 <</widget>>

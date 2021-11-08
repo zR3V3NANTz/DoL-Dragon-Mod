@@ -446,7 +446,7 @@
 	<<elseif $NPCList[_nn].penis is "mouthentrance">>
 		<<switch $NPCList[_nn].penissize>>
 			<<case 4>>
-				<<He>> holds <<his>> $NPCList[_nn].penisdesc tight, working it while aiming straight at your face. <span class="pink">Thick ropes of _nectar cover your face, with some landing in your mouth. <span class="purple">It tastes fizzy,</span> and makes your head spin.</span> "Pretty good, huh?"
+				<<He>> holds <<his>> $NPCList[_nn].penisdesc tight, working it while aiming straight at your face. <span class="pink">Thick ropes of _nectar cover your face, with some landing in your mouth. <span class="purple">It tastes fizzy,</span> and makes your head spin. "Pretty good, huh?"
 				<<faceejacstat>><<oralejacstat>><<ejacstat>><<set $hygiene += 500>><<nectarfed 8>><<set $player.bodyliquid.face.goo += 1>><<set $player.bodyliquid.mouth.goo += 1>>
 			<<case 1>>
 				<<He>> squeaks as a pathetic dribble of nectar leaks from <<his>> $NPCList[_nn].penisdesc and down your chin. "Shut up," <<he>> mutters. "I-I have vines, okay? Don't laugh."
@@ -469,7 +469,7 @@
 			<<case 3 4>>
 				<<He>> ejaculates onto your face before <<he>> can penetrate, sending sticky streams of nectar running down your cheeks. "Oh, come on!" <<he>> whines. "Can I have a do-over?"
 			<<case 5>>
-				<<He>> grasps your hair and tries to force <<his>> $NPCList[_nn].penisdesc into your mouth, but <<his>> spasms sabotage <<his>> efforts. Thick ropes of _nectar cover your face, and lands in your mouth. <span class="purple">It tastes fizzy,</span> and makes your head spin.</span> "Man, I wanted to give you more."
+				<<He>> grasps your hair and tries to force <<his>> $NPCList[_nn].penisdesc into your mouth, but <<his>> spasms sabotage <<his>> efforts. Thick ropes of _nectar cover your face, and lands in your mouth. <span class="purple">It tastes fizzy,</span> and makes your head spin. "Man, I wanted to give you more."
 				<<oralejacstat>><<nectarfed 8>><<set $player.bodyliquid.mouth.goo += 1>>
 		<</switch>>
 		<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.goo += 1>>
@@ -489,7 +489,7 @@
 						<<He>> sighs and strokes you on the head as <<he>> cums, leaking _nectar into your mouth.
 				<</switch>>
 		<</switch>>
-		<span class="purple">It tastes fizzy</span>, and makes your head spin. <<He>> grins. "Delicious, isn't it? It's all for you."
+		<span class="purple">It tastes fizzy,</span> and makes your head spin. <<He>> grins. "Delicious, isn't it? It's all for you."
 	<<elseif $NPCList[_nn].penis is "feet">>
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
 			<<He>> moans into your mouth as <<he>> cums, spasming around your feet.

@@ -214,7 +214,7 @@
 <<set $speechdisable to 0>>
 <<unset $stealstate>>
 <<unset $position_lock>>
-<<unset $npcDAP>>
+<<set $npcDAP to []>>
 
 <<set $leftactiondefault to $leftaction>>
 <<set $rightactiondefault to $rightaction>>

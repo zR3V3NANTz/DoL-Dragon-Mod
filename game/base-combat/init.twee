@@ -202,12 +202,9 @@
 <<set _beast_monster to $args[4]>>
 <<set $active_enemy to 0>>
 <!-- Error Checking -->
-<<switch _tpe>>
-	<<case "dog" "cat" "pig" "wolf" "dolphin" "lizard" "bear" "boar" "creature" "horse" "fox" "hawk">>
-	<!-- No action-->
-	<<default>>
+<<if !$BeastList.includes(_tpe)>>
 	<span class="red">ERROR: beastNEWinit unknown type</span>
-<</switch>>
+<</if>>
 
 <<for _xx = 1; _xx < _nn+1; _xx++>>
 	<<generateBEAST _xx _tpe _gnn _beast_genitals _beast_monster>>

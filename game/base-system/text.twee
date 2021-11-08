@@ -5229,7 +5229,7 @@ a teacher
 <<elseif $NPCList[_na].type is "fox" and $monster isnot 1>>
 	<<set _text_output to "foxes">>
 <<elseif $monster isnot 1 or $NPCList[_na].type is "centaur">>
-	<<set _text_output to "<<beasttype>>s">>
+	<<set _text_output to "<<beasttype _na>>s">>
 <<elseif $NPCList[_na].type is "harpy">>
 	<<set _text_output to "harpies">>
 <<else>>

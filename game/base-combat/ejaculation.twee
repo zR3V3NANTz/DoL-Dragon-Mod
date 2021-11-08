@@ -3,11 +3,10 @@
 <<set $ejaculating to 1>>
 
 <!-- Dev Notes -->
-<!-- Use <<pussy>> <<pussy>>. <<pussy>>, <<breasts>> <<breasts>>. <<breasts>>, <<bottom>> <<bottom>>. in verbiage as PC status -->
-<!-- Use <<penis>> <<penis>>. <<penis>>, <<genitals>> <<genitals>>. <<genitals>>, in verbiage as status -->
-<!-- Also <<him>>,<<him>>. to end sentences -->
-<!-- NPC references include: <<him>> <<he>> <<He>> <<himself>> and <<hes>> for he's/she's, most also have stop>> comma>> variants as of v2.6-->
-<!-- <<pher>> <<pshe>> refers to PC in third person. Also <<phim>>. and <<phim>>, -->
+<!-- Use <<pussy>> <<breasts>> <<bottom>> in verbiage as PC status -->
+<!-- Use <<penis>> <<genitals>> in verbiage as status -->
+<!-- NPC references include: <<him>> <<he>> <<He>> <<himself>> and <<hes>> for he's/she's -->
+<!-- <<pher>> <<pshe>> refers to PC in third person. Also <<phim>> -->
 <!-- if $leftarm is "bound" and $rightarm is "bound" can be used as check for bound arms. NPC restraining is "grappled" -->
 <!-- $mouthstate indicates what PC mouth is doing -->
 <!-- $position is "wall" can be used as check for body through wall -->

@@ -316,7 +316,7 @@
 		<</if>>
 	/*Wolf Specific*/
 	<<case "sleepingStroke">>
-		You sit next to the slumbering <<childtype>> and stroke <<childhis>> fur. <<childHe>> snorts in his sleep and pushes back into your caressing hand. You spend a few moments together like this before you get back to your feet. <<lstress>><<stress -5>>
+		You sit next to the slumbering <<childtype>> and stroke <<childhis>> fur. <<childHe>> snorts in <<childhis>> sleep and pushes back into your caressing hand. You spend a few moments together like this before you get back to your feet. <<lstress>><<stress -5>>
 	<<case "cuddleAndNap">>
 		The wolf looks at you as you lay down next to it and <<childname>>. The sleepy pair adjust for you to join their cuddling and soon all three of you are snuggled closely together. You enjoy this comfortable moment as long as you can before you have to get up again. <<ltiredness>><<tiredness -6>><<lstress>><<stress -5>>
 	<<case "cryingWolf">>

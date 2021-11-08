@@ -652,7 +652,7 @@ You hear a buzzing in the surrounding trees.
 
 "Cuties like you don't usually come this far into the forest," <<he>> says. "It's dangerous this deep.
 <<if $goooutsidecount + $semenoutsidecount gte 25>>
-	I'd ask if you made it through alright, but..." <<He>> eyes up the <<if $goooutsidecount gte 1 and $sememoutsidecount gte 1>>semen and slime<<elseif $goooutsidecount gte 1>>slime<<else>>semen<</if>> covering your body. "Yeah, you've had some fun."
+	I'd ask if you made it through alright, but..." <<He>> eyes up the <<if $goooutsidecount gte 1 and $semenoutsidecount gte 1>>semen and slime<<elseif $goooutsidecount gte 1>>slime<<else>>semen<</if>> covering your body. "Yeah, you've had some fun."
 <<else>>
 	Hope you didn't run into any trouble. That'd be awful."
 <</if>>
