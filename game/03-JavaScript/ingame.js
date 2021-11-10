@@ -726,3 +726,48 @@ window.clothesReturnLocation = function(item, type){
 	}
 	return "wardrobe";
 }
+
+// Runs before a passage load, returning a string redirects to the new passage name.
+Config.navigation.override = function (dest) {
+	switch (dest) {
+		case 'Forest Shop Outfit':
+		case 'Forest Shop Upper':
+		case 'Forest Shop Lower':
+		case 'Forest Shop Under Outfit':
+		case 'Forest Shop Under Upper':
+		case 'Forest Shop Under Lower':
+		case 'Forest Shop Head':
+		case 'Forest Shop Face':
+		case 'Forest Shop Neck':
+		case 'Forest Shop Legs':
+		case 'Forest Shop Feet':
+			return 'Forest Shop';
+
+		case 'Over Outfit Shop':
+		case 'Outfit Shop':
+		case 'Top Shop':
+		case 'Bottom Shop':
+		case 'Under Outfit Shop':
+		case 'Under Top Shop':
+		case 'Under Bottom Shop':
+		case 'Head Shop':
+		case 'Face Shop':
+		case 'Neck Shop':
+		case 'Hands Shop':
+		case 'Legs Shop':
+		case 'Shoe Shop':
+			return 'Clothing Shop';
+
+		case 'Penis Inspection Flaunt Crossdress':
+			return 'Penis Inspection Flaunt No Penis';
+
+		case 'Pussy Inspection2':
+			return 'Pussy Inspection 2';
+
+		case 'Pussy Inspection Penis':
+			return 'Pussy Inspection Flaunt No Pussy';
+
+		default:
+			return dest;
+	}
+}
