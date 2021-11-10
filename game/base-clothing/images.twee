@@ -663,9 +663,9 @@
 <div class="i256">
 <<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
 	<<if $worn.upper.state is "waist">>
-		<<if $worn.lower.skirt_down is 1>>
+		<<if setup.clothes.lower[$worn.lower.index].skirt_down is 1>>
 			<img @class="'layer-sexlower colour-upper anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/dress/doggyactive_dress_thighs.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
-		<<elseif $worn.lower.skirt_down is 0>>
+		<<elseif setup.clothes.lower[$worn.lower.index].skirt_down is 0>>
 			<img @class="'layer-sexlower colour-upper anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/dress/doggyactive_dress_hips.png" @style="($worn.upper.colour is 'custom' ? $worn.upper.colourCustom + _upperOpacity : '')">
 		<</if>>
 	<<elseif $worn.upper.state is "midriff">>

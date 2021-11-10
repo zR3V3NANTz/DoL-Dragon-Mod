@@ -270,10 +270,12 @@
 				<<set $worn[clone(_labelWW)] to clone(_selectedWardrobe[clone(_labelWW)][clone(_valueWW)])>>
 				<<set $worn[clone(_labelWW)].lastTaken to clone($wardrobe_location)>>
 				<<set _selectedWardrobe[_labelWW].deleteAt(_valueWW)>>
+				<<resetState _labelWW>>
 			<</for>>
 		<</if>>
 		<<set $worn[_equip[_ie]] to clone(_selectedWardrobe[_equip[_ie]][_wearId])>>
 		<<set $worn[_equip[_ie]].lastTaken to clone($wardrobe_location)>>
+		<<resetClothingState _equip[_ie]>>
 		You put on the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>>.
 		<<set _selectedWardrobe[_equip[_ie]].deleteAt(_wearId)>>
 		<br><br>

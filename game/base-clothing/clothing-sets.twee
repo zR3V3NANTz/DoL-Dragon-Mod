@@ -312,6 +312,7 @@
 						<<set $worn[_labelWO] to clone(_selectedWardrobe[_labelWO][_valueWO])>>
 						<<set $worn[_labelWO].lastTaken to clone($wardrobe_location)>>
 						<<set _selectedWardrobe[_labelWO].deleteAt(_valueWO)>>
+						<<resetClothingState _labelWO>>
 					<</for>>
 				<<else>>
 					<<if $worn[_equip[_i]].name is $outfit[$wear_outfit][_equip[_i]]>>

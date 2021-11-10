@@ -148,10 +148,6 @@
 	<</if>>
 <</for>>
 
-<!--
-ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x and allow the update function to run
-<<run clothesDataTrimmerLoop()>>
--->
 <</widget>>
 
 <!--New isolated wardrobes also need updates to the `clothesReturnLocation` function in ingame.js-->
@@ -308,6 +304,10 @@ ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x and allow 
 			<</if>>
 		<</for>>
 	<</for>>
+<</if>>
+
+<<if $objectVersion.wardrobes lt 3>>
+	<<run clothesDataTrimmerLoop()>>
 <</if>>
 
 <</widget>>
