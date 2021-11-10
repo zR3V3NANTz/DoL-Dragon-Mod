@@ -156,9 +156,13 @@ You reach into the box. It's empty. There's a loose grate beneath it.
 <<set $timer to 10>>
 
 <!-- Modified for Monster People -->
-<<link [[Stroke its ears->Residential Dog]]>><<set $phase to 2>><</link>>
-<br>
-<<link [[Endure|Residential Dog]]>><<set $phase to 1>><<set $noise += 1>><</link>>
+<<if $leftarm is 'bound' and $rightarm is 'bound'>>
+	<<link [[Endure|Residential Dog]]>><<set $phase to 5>><<set $noise += 1>><</link>>
+<<else>>
+	<<link [[Stroke its ears->Residential Dog]]>><<set $phase to 2>><</link>>
+	<br>
+	<<link [[Endure|Residential Dog]]>><<set $phase to 1>><<set $noise += 1>><</link>>
+<</if>>
 <br><br>
 
 <</widget>>
