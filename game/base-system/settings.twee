@@ -283,6 +283,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<<initnpcgender>>
 	<<updatePronouns>>
 	<<hirsuteHideCheck>>
+	<<generateTipsList>>
 	<<tanned 0 "ignoreCoverage">>
 	<<if $player.freckles is "random">>
 		<<set $player.freckles to (random(1, 5) is 1)>>
