@@ -2029,6 +2029,232 @@ You cover yourself, and leave them staring in awe.
 <<endevent>>
 <<playground>>
 
+:: Playground Hypnosis Offer
+<<effects>>
+
+"I was wondering," you say, the words forming on their own. "Could I-" you bite your lip. "Could we have some private time?" You nod at the bike shed.
+<br><br>
+
+The <<person>> stammers an incoherent response, so you take <<his>> hand and pull <<him>> behind the shed.
+<br><br>
+
+<<link [[Next|Playground Hypnosis Sex]]>><<set $sexstart to 1>><</link>>
+<br>
+
+:: Playground Hypnosis Sex
+
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+
+	<<maninit>>
+	<<set $enemytrust += 100>>
+	<<enable_rescue>>
+<</if>>
+<<effects>>
+<<effectsman>><<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $finish is 1>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Playground Hypnosis Sex Finish
+
+<<set $outside to 0>><<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	The <<person>> leans against the wall, and slumps to the ground.
+	<br><br>
+	<<tearful>> you saunter away. You're not quite sure what happened, but you feel better.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<<elseif $enemyhealth lte 0>>
+	You shove the <<person>> away from you. <<He>> hits the wall, and slumps to the ground.
+	<br><br>
+	<<tearful>> you run. You're not quite sure what happened.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<<elseif $alarm is 1 and $rescue is 1>><<set $rescued += 1>>
+	<<generatey2>><<generatey3>><<person2>>
+	A <<person>> and <<person3>><<person>> arrive to investigate. They gawk when they see you and the <<person1>><<person>>, and it's enough to send <<him>> running.
+	<br><br>
+
+	<<covered>> <<tearful>> you run to safety. You're not quite sure what happened.
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<<else>>
+	The <<person>> backs away from you. "D-did I do something wrong?" <<he>> asks. <<tearful>> you run. You're not quite sure what happened yourself.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<</if>>
+
+:: Playground Hypnosis Resist
+<<effects>>
+
+<<if $willpowerSuccess>>
+	You ignore the urging voice.
+	<<if $submissive gte 1150>>
+		"S-sorry to bother you," you say. "I was daydreaming."
+	<<elseif $submissive lte 850>>
+		"What you looking at?" you ask.
+	<<else>>
+		"Sorry to bother you," you say. "I was daydreaming."
+	<</if>>
+	You walk away from the <<person>> before <<he>> responds.
+	<br><br>	
+<<else>>
+	You try to ignore the urging voice, <span class="red">but it's a struggle.</span> You manage to tear yourself away from the <<person>> before you say anything, and almost stumble as you escape.
+	<br><br>
+
+	You hide around the corner, and the coercive feelings dissipate. Your strange behaviour was noticed by others.<<lcool>><<status -10>><<gtrauma>><<trauma 6>><<gstress>><<stress 6>>
+	<br><br>
+<</if>>
+
+<<endevent>>
+<<playground>>
+
+
+:: Playground Footage Ignore
+<<effects>>
+
+You ignore them. Whatever it is, you don't want to know.
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+:: Playground Nude Footage Investigate
+<<effects>>
+
+You approach the pair.
+
+<<if $submissive gte 1150>>
+	"P-people keep looking at me funny," you say. "Why?"
+<<elseif $submissive lte 850>>
+	"What's so funny?" you ask.
+<<else>>
+	"Why are people looking at me funny?" you ask.
+<</if>>
+<br><br>
+
+The <<person2>><<person>> and <<person3>><<person>> look at each other, then the <<person2>><<person>> shows you <<his>> phone. A short clip plays. <span class="pink">Of you, naked,</span> in what looks like Niki's studio.
+<br><br>
+
+You're aware of all the other students looking at their phones. How many of them are watching you?
+<br><br>
+
+<<link [[Walk away|Playground Footage Walk]]>><<status -10>><</link>><<lcool>>
+<br>
+<<if $exhibitionism gte 75>>
+	<<link [[Own it|Playground Nude Footage Own]]>><</link>><<exhibitionist5>>
+	<br>
+<</if>>
+
+:: Playground Assault Footage Investigate
+<<effects>>
+
+You approach the pair.
+
+<<if $submissive gte 1150>>
+	"P-people keep looking at me funny," you say. "Why?"
+<<elseif $submissive lte 850>>
+	"What's so funny?" you ask.
+<<else>>
+	"Why are people looking at me funny?" you ask.
+<</if>>
+<br><br>
+
+The <<person2>><<person>> and <<person3>><<person>> look at each other, then the <<person2>><<person>> shows you <<his>> phone. A short clip plays. <span class="pink">Of you, getting gangbanged,</span> in what looks like Niki's studio.
+<br><br>
+
+You're aware of all the other students looking at their phones. How many of them are watching you?
+<br><br>
+
+<<link [[Walk away|Playground Footage Walk]]>><<status -20>><</link>><<llcool>>
+<br>
+<<if $promiscuity gte 75>>
+	<<link [[Own it|Playground Assault Footage Own]]>><</link>><<promiscuous5>>
+	<br>
+<</if>>
+
+
+:: Playground Nude Footage Own
+<<effects>>
+
+You snatch the phone away, and climb atop a nearby table. "Hey!" you shout. "Everyone!" Heads turn. Some look surprised or bemused, but others bear knowing looks.
+<br><br>
+
+"You wanna see me naked? You let the sentence hang a moment. "You can." You look down at the phone, and read the website address aloud.
+<<famemodel 20>>
+<<fameexhibitionism 20>>
+<<exhibitionism5>>
+
+You feel cathartic as you step down from the table.
+<<if $pain gte 20>>
+	Though you're still crying.
+<</if>>
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+:: Playground Assault Footage Own
+<<effects>>
+
+You snatch the phone away, and climb atop a nearby table. "Hey!" you shout. "Everyone!" Heads turn. Some look surprised or bemused, but others bear knowing looks.
+<br><br>
+
+"You wanna see me getting fucked from all sides?" You let the sentence hang a moment. "You can." You look down at the phone, and read the website address aloud.
+<<famemodel 20>>
+<<famerape 20>>
+<<promiscuity5>>
+
+You feel cathartic as you step down from the table.
+<<if $pain gte 20>>
+	Though you're still crying.
+<</if>>
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+
+:: Playground Footage Walk
+<<effects>>
+
+You try to ignore the sinking feeling in your chest as you walk away.
+<<if $pain gte 20>>
+	You can't help but cry.
+<<else>>
+	You feel like crying.
+<</if>>
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+
 :: Events Panty Accept
 <<effects>>
 

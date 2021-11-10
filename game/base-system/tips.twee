@@ -201,7 +201,7 @@
 		<<set setup.tipsList to setup.tipsList.concat(setup.tips.lactation)>>
 	<</if>>
 
-	<<if $bodywritingdisable is "f">>
+	<<if $bodywritingLvl gte 1>>
 		<<set setup.tipsList to setup.tipsList.concat(setup.tips.bodywriting)>>
 	<</if>>
 

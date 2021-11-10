@@ -555,6 +555,34 @@ mouse.tooltip:hover span {
 	z-index: 20;
 }
 
+#prison_map {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	z-index: 10;
+}
+
+#prison_map_overlay {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 20;
+}
+
+#prison_map_rut {
+	position: absolute;
+	left: 0px;
+	top: 86px;
+	z-index: 10;
+}
+
+#prison_map_rut_overlay {
+	position: absolute;
+	left: 0px;
+	top: 86px;
+	z-index: 20;
+}
+
 #ui-bar-toggle {
 	z-index: 500;
 }

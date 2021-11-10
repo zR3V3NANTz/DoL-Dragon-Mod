@@ -321,6 +321,16 @@
 	<br>
 <</if>>
 
+<<if $photo>>
+	<<if $photo.silly is "accepted">>
+		A business owner on the High Street is expecting you during the day.
+		<br>
+	<<elseif $photo.silly is "done">>
+		You can collect your pay for the High Street job from Niki.
+		<br>
+	<</if>>
+<</if>>
+
 <br>
 <<if $scienceproject is "ongoing">>
 	<hr>

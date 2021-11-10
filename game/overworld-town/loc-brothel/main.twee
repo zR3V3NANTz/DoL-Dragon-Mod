@@ -1127,7 +1127,7 @@ The <<person>> recoils from the hole. You hear <<him>> shout at someone, then si
 <<if $bestialitydisable is "f">>
 "Or," <<he>> says, "we could get a pig in from one of the local farms. Then you do nasty things with it for the audience's amusement. I don't know how many would be into it, but it would get tongues flapping. Which is what we want. You'll get £1500 for that."
 <br><br>
-<<else>>
+<<elseif $monsterchance gte 1>>
 "Or," <<he>> says, "we could get a pig person in from one of the local farms. Then you do nasty things with it for the audience's amusement. I don't know how many would be into it, but it would get tongues flapping. Which is what we want. You'll get £1500 for that."
 <br><br>
 <</if>>
@@ -1158,7 +1158,7 @@ You aren't promiscuous or deviant enough to take up any of the offers.
 	<br>
 <</if>>
 <!-- Modified for Monster People -->
-<<if $deviancy gte 75>>
+<<if $deviancy gte 75 and ($bestialitydisable is "f")>>
 	<<link [[Pig|Briar's Office Show 2]]>><<acceptbrothelshow "pig">><</link>><<deviant5>>
 	<br>
 	<<if $farm_stage gte 7 and $farm.steed>>

@@ -129,7 +129,7 @@
 			<br><br>
 			Sydney frowns, concerned. "Robin, this is late. You're normally perfectly punctual. Is everything alright?"
 			<br><br>
-			Robin doesn't respond, and Sydney sighs. "I'm sorry, but you know the rules." <<He>> uncaps a marker and reaches for Robin's forehead. The moment the marker makes contant, <span class="red">Robin yelps</span> and backs away, waving <<nnpc_his "Robin">> arms furiously. <<nnpc_His "Robin">> breaths come out in short, panicked spurts. Sydney looks to you for help.
+			Robin doesn't respond, and Sydney sighs. "I'm sorry, but you know the rules." <<He>> uncaps a marker and reaches for Robin's forehead. The moment the marker makes contact, <span class="red">Robin yelps</span> and backs away, waving <<nnpc_his "Robin">> arms furiously. <<nnpc_His "Robin">> breaths come out in short, panicked spurts. Sydney looks to you for help.
 			<<stress 3>><<gstress>>
 			<br><br>
 			Robin doesn't need this right now. You gently push Sydney's arm away and spend a few minutes rubbing Robin's back. <<nnpc_He "Robin">> eventually calms down. <<nnpc_He "Robin">> wordlessly hugs you for a moment before leaving the library.
@@ -379,7 +379,7 @@
 						<<link [[Push away|Sydney Library Bodywriting Stop]]>><</link>>
 						<br>
 					<</if>>
-					<<if $bodywritingdisable is "f">>
+					<<if $bodywritingLvl gte 1>>
 						<<link [[Allow it|Sydney Library Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>><<gbodywriting>>
 						<br>
 					<<else>>
@@ -2517,7 +2517,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 		<</if>>
 	<</if>>
 	<br><br>
-	<<if $bodywritingdisable is "f">>
+	<<if $bodywritingLvl gte 2>>
 		<<sydneyBodywritingLocation>><<if _writingFail isnot 1>>Looking in the changing room mirror, you notice that something has been written on you in marker. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting sleepyhead>><br><br><</if>>
 	<</if>>
 	<<link [[Get changed and leave (0:01)|School Library]]>><<schoolspareclothes>><<endevent>><<set $eventskip to 1>><<pass 1>><</link>>
@@ -2525,7 +2525,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 <<else>>
 	In <<his>> place is a note. It reads: "Had to get back to work. Rest well. Love you." - Sydney
 	<br><br>
-	<<if $bodywritingdisable is "f">>
+	<<if $bodywritingLvl gte 2>>
 		<<sydneyBodywritingLocation>><<if _writingFail isnot 1>>You look in the mirror. Something has been written on you in marker. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting sleepyhead>><br><br><</if>>
 	<</if>>
 	<<link [[Next|School Library]]>><<endevent>><<set $eventskip to 1>><</link>>
@@ -2796,7 +2796,7 @@ Sydney stretches and yawns.
 		<br><br>
 		<<link [[Push away|Sydney Canteen Bodywriting Stop]]>><</link>>
 		<br>
-		<<if $bodywritingdisable is "f">>
+		<<if $bodywritingLvl gte 1>>
 			<<link [[Allow it|Sydney Canteen Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>><<gbodywriting>>
 			<br>
 		<<else>>
@@ -2885,7 +2885,7 @@ Sydney stretches and yawns.
 			Before you can say anything, Sydney speaks to <<him>>. "Kylar. Good to see you." Kylar tenses up, and doesn't dare interrupt <<nnpc_him "Sydney">>. <<nnpc_He "Sydney">> continues. "<<print either("I trust you've broken the habit of doodling in the margins of my books?", "How's your English grade? Do you need more tutoring?", "You have a book due tomorrow.", "I hope you've been avoiding trouble.", "Keeping your locker clean?", "Want to trade notes? You have a knack for science.")>>"
 			Kylar looks away, pretending to ignore <<nnpc_him "Sydney">>.
 			<br><br><<person1>>
-			<<if $rng gte 51 and $bodywritingdisable is "f">>
+			<<if $rng gte 51 and $bodywritingLvl gte 2>>
 				Sydney begins absentmindedly writing on you. Kylar stares daggers at <<him>>, but <<he>> doesn't seem to notice.
 				<<sydneyBodywritingLocation>>
 				<<if _writingFail isnot 1>>

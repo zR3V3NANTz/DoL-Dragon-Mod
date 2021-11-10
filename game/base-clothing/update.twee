@@ -306,7 +306,7 @@
 	<</for>>
 <</if>>
 
-<<if $objectVersion.wardrobes lt 3>>
+<<if $objectVersion.wardrobes lt 4>>
 	<<run clothesDataTrimmerLoop()>>
 <</if>>
 

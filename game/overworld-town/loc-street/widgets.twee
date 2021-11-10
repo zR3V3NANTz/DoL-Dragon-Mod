@@ -391,12 +391,17 @@ You move from shadow to shadow, dashing through patches of light as quickly as y
 You hear a growl from a nearby alley and instinctively freeze in place. You regain control as a shaggy black <<beasttype>> emerges from the darkness, teeth bared.
 <br><br>
 
-<<link [[Run|StreetEx3]]>><<set $phase to 0>><</link>><<athleticsdifficulty 1 600>>
-<br>
+<<if $monster is 1 or $bestialitydisable is "f">>
+	<<link [[Run|StreetEx3]]>><<set $phase to 0>><</link>><<athleticsdifficulty 1 600>>
+	<br>
 
-<!-- Modified for Beast People -->
-<<link [[Try to befriend it|StreetEx3]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
-<br>
+	<!-- Modified for Beast People -->
+	<<link [[Try to befriend it|StreetEx3]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
+	<br>
+<<else>>
+	<<link [[Run|StreetEx3]]>><<set $phase to 0>><<set $athleticsSuccess to true>><</link>>
+	<br>
+<</if>>
 <br>
 
 <</widget>>
@@ -814,20 +819,21 @@ A <<generates1>><<person1>><<person>> leans out of a passing car and hurls a lar
 <<widget "streetnight1">>
 <!-- Modified for Beast People -->
 <<beastNEWinit 3 dog>>
-<!--
+<<if $monster is 1 or $bestialitydisable is "f">>
+	Your journey is interrupted by a savage growl emerging from the darkness. You turn to avoid it, only to face a pair of glowing eyes. You're surrounded.
+	<br><br>
+	<<link [[Next|Street Dogs]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
 	Your journey is interrupted by a savage growl emerging from the darkness. You turn to avoid it, only to face an approaching pair of glowing eyes. You're surrounded.
 	<br><br>
 
 	You manage to get away, but not without injury.
 	<<beastescape>>
 	<br><br>
-
+	<<endevent>>
 	<<destinationeventend>>
-	-->
-	Your journey is interrupted by a savage growl emerging from the darkness. You turn to avoid it, only to face a pair of glowing eyes. You're surrounded.
-	<br><br>
-	<<link [[Next|Street Dogs]]>><<set $molestationstart to 1>><</link>>
-	<br>
+<</if>>
 <</widget>>
 
 <<widget "streetnight2">>
@@ -843,20 +849,26 @@ A <<generates1>><<person1>><<person>> leans out of a passing car and hurls a lar
 	<</if>>
 	<<saveNPC 0 tower_creature>>
 <</if>>
+<<if $monster is 1 or $bestialitydisable is "f">>
+	You hear something land behind you, followed by a low growl. You turn, and face a pair of glowing yellow eyes. <<bHe>> steps into the light of a streetlamp, revealing a pair of horns
 
-You hear something land behind you, followed by a low growl. You turn, and face a pair of glowing yellow eyes. <<bHe>> steps into the light of a streetlamp, revealing a pair of horns
+	<<if $NPCList[0].monster is "monster">>
+		that split <<bhis>> messy hair. <<bHe>> flashes a sharp-toothed, menacing grin before leaping toward you.
+	<<else>>
+		atop a hairless, scaled head. It opens its colossal maw, and leaps toward you.
+	<</if>>
+	<br><br>
 
-<<if $NPCList[0].monster is "monster">>
-	that split <<bhis>> messy hair. <<bHe>> flashes a sharp-toothed, menacing grin before leaping toward you.
+	<<link [[Stand your ground|Street Monster]]>><<set $molestationstart to 1>><</link>>
+	<br>
+	<<link [[Run|Street Monster Run]]>><</link>><<athleticsdifficulty 400 1400>>
+	<br>
 <<else>>
-	atop a hairless, scaled head. It opens its colossal maw, and leaps toward you.
+	You hear something land behind you, followed by a low growl. You run in a panic, until you trip and fall. Nothing follows.<<beastescape>>
+	<br><br>
+	<<endevent>>
+	<<destinationeventend>>
 <</if>>
-<br><br>
-
-<<link [[Stand your ground|Street Monster]]>><<set $molestationstart to 1>><</link>>
-<br>
-<<link [[Run|Street Monster Run]]>><</link>><<athleticsdifficulty 400 1400>>
-<br>
 <</widget>>
 
 <<widget "streetexday1">>
@@ -1715,10 +1727,11 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 
 <<widget "streetcollared">>
 
+
 	<<if $daystate is "night">>
 		<<set $rng to random(1, 100)>>
-		<<if $rng gte 51>><!-- Modified for Beast People -->
-			<<beastNEWinit 1 dog>>
+		<<beastNEWinit 1 dog>>
+		<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 			<<generate2>><<generate3>><<person2>>A <<person>> and <<person3>><<person>> approach you. The <<person>> holds a <<beasttype 0>> on a leash. "Perfect. We've been looking for a bitch like you for our pet here. You'll get on your knees if you know what's good for you," <<he>> says as the <<person2>><<person>> grabs your collar.
 			<br><br>
 
@@ -1727,6 +1740,7 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 			<<link [[Refuse|Street Collar Molestation]]>><<set $molestationstart to 1>><<set $submissive -= 1>><<set $phase to 1>><</link>>
 			<br>
 		<<else>>
+			<<endevent>>
 			<<generate1>><<generate2>>A <<person1>><<person>> emerges from the darkness to grab the collar around your neck as a <<person2>><<person>> starts groping your <<bottom>>. "What do we have here?" says the <<person1>><<person>>. "A collared slut, alone out in the open. There's only one thing you're good for."
 			<br><br>
 
@@ -2707,6 +2721,10 @@ You find a quiet place and open the <<wallet>>.
 	<<elseif $NPCName[$NPCNameList.indexOf("Avery")].state isnot "dismissed" and $averyseen isnot 1 and $weekday is 7 and $daystate is "day" and ($scienceproject is "won" or $scienceproject is "done" or $NPCName[$NPCNameList.indexOf("Avery")].init is 1)>>
 		<<set $averyseen to 1>>
 		<<streetavery>>
+	<<elseif $fame gte 3000 and $photo_known is undefined>>
+		<<set $photo_known to 1>>
+		<<street_niki>>
+		<<set $niki_seen to "street">>
 	<<elseif $rng gte 52>>
 		<<set $dangerevent to random(1, 190)>>
 		<<if $dangerevent lte 10>>

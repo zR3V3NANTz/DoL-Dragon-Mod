@@ -95,7 +95,7 @@ You are at Remy's riding school. Stables surround a central courtyard. A small o
 	<<else>>
 
 		<<if $money gte 2500>>
-			<<link [[Take riding lesson (1:00)|Riding School Lesson]]>><<set $riding_lesson to 0>><<set $money -= 2500>><<set $thighskill += 12>><</link>><<gtiredness>> | <span class="green">+ Thigh skill</span>
+			<<link [[Take riding lesson (1:00)|Riding School Lesson]]>><<set $riding_lesson to 0>><<set $money -= 2500>><<set $thighskill += 18>><</link>><<gtiredness>> | <span class="green">+ Thigh skill</span>
 			<br>
 		<</if>>
 
@@ -114,7 +114,7 @@ You are at Remy's riding school. Stables surround a central courtyard. A small o
 		<br><br>
 	<</if>>
 	<!-- Modified for Monster People -->
-	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 		<<if $malechance lt random(1, 100)>>
 			Remy assigns you to a centaur, who watches as you <<thightext>> climb into the saddle.
 			<<set $steed to "female">>
@@ -166,6 +166,7 @@ You are at Remy's riding school. Stables surround a central courtyard. A small o
 			Remy leads you to an open field. The steeds are eager to frolic, and become harder to control.
 			<br><br>
 			<!-- Modified for Monster People -->
+			<<if $steed isnot "mare" and $steed isnot "stallion" or $bestialitydisable is "f">>
 				<<if $thighskill gte 200>>
 					Your <<steed_text>> bolts. You manage to remain steady, but nothing you do convinces the steed to stop.
 				<<else>>
@@ -181,13 +182,14 @@ You are at Remy's riding school. Stables surround a central courtyard. A small o
 				<br>
 				<<link [[Brace yourself|Riding School Lesson Brace]]>><</link>>
 				<br>
-				<!-- You manage to keep yours in line, but some of the newer students lose control. Remy gallops after them, herding them back to the others. -->
-				<!-- Your <<steed_text>> lurches aside, and gallops. You throw your arms around <<steed_his>> neck and cling as hard as you can, until Remy catches up and grasps the reins, pulling you to a stop.<<gstress>><<stress 6>> -->
-				<!-- <br><br> -->
+			<<else>>
+				You manage to keep yours in line, but some of the newer students lose control. Remy gallops after them, herding them back to the others.
+				Your <<steed_text>> lurches aside, and gallops. You throw your arms around <<steed_his>> neck and cling as hard as you can, until Remy catches up and grasps the reins, pulling you to a stop.<<gstress>><<stress 6>>
+				<br><br>
 
-				<!-- <<link [[Next|Riding School Lesson]]>><</link>> -->
-				<!-- <br> -->
-
+				<<link [[Next|Riding School Lesson]]>><</link>>
+				<br>
+			<</if>>
 		<<elseif $rng gte 61>>
 			<<npc Remy>><<person1>>
 			Remy leads you to a smooth lane, and pushes <<his>> steed to a trot. The other horses follow suit.
@@ -519,7 +521,7 @@ You drop to your knees and crawl inside. The interior is dark and dusty. You get
 <br><br>
 
 <!-- Modified for Monster People -->
-	<<if $horsedisable is "f">>
+	<<if $horsedisable is "f" and ($steed isnot "mare" and $steed isnot "stallion" or $bestialitydisable is "f")>>
 		You push against the wall and wiggle your hips. You're making progress, but then something wet touches your <<bottom>>. It's a tongue.
 
 		<<if $steed is "male" or $steed is "female">>

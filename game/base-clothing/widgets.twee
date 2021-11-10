@@ -1050,6 +1050,22 @@
 <<generalUndress _undress_temp "feet">>
 <</widget>>
 
+<<widget "undressKeepFace">>
+<<set _undress_temp to $args[0]>>
+<<generalUndress _undress_temp "over_upper">>
+<<generalUndress _undress_temp "over_lower">>
+<<generalUndress _undress_temp "over_head">>
+<<generalUndress _undress_temp "upper">>
+<<generalUndress _undress_temp "lower">>
+<<generalUndress _undress_temp "under_upper">>
+<<generalUndress _undress_temp "under_lower">>
+<<generalUndress _undress_temp "head">>
+<<generalUndress _undress_temp "neck">>
+<<generalUndress _undress_temp "hands">>
+<<generalUndress _undress_temp "legs">>
+<<generalUndress _undress_temp "feet">>
+<</widget>>
+
 <<widget "undressSleep">>
 <<set _undress_temp to $args[0]>>
 <<for $_label, $_value range $worn>>

@@ -170,7 +170,7 @@ You are in your bedroom.
 					<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
 					<br>
 				<</if>>
-				<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 				<br>
 				<<home_outside>>
 				<br><br>
@@ -205,7 +205,7 @@ You are in your bedroom.
 					<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
 					<br>
 				<</if>>
-				<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 				<br>
 				<<home_outside>>
 				<br><br>
@@ -223,10 +223,10 @@ You are in your bedroom.
 				<br>
 			<</if>>
 			<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
-				<<ind>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
 				<br>
 			<<else>>
-				<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 				<br>
 			<</if>>
 			<<home_outside>>
@@ -245,10 +245,10 @@ You are in your bedroom.
 			<br>
 		<</if>>
 		<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
-			<<ind>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
+			<<main_hall_icon>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
 			<br>
 		<<else>>
-			<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+			<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 			<br>
 		<</if>>
 		<<home_outside>>
@@ -333,7 +333,7 @@ You are in the bathroom.
 
 	<<bedroomicon>><<link [[Bedroom (0:01)->Bedroom]]>><<pass 1>><</link>>
 	<br>
-	<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+	<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 	<br>
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].init is 1 and $exposed lte 0>>
 		<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
@@ -1892,8 +1892,10 @@ You're interrupted when you spot a pair of eyes watching you from a bush nearby.
 <<loadNPC 0 nude_cat>>
 
 <!-- Modified for Beast People -->
-<<link [[Spread your legs|Nude Oral]]>><<trauma -6>><<stress -12>><<arousal 600>><</link>><<ltrauma>><<lstress>><<garousal>><<deviant1>>
-<br>
+<<if $monster is 1 or $bestialitydisable is "f">>
+	<<link [[Spread your legs|Nude Oral]]>><<trauma -6>><<stress -12>><<arousal 600>><</link>><<ltrauma>><<lstress>><<garousal>><<deviant1>>
+	<br>
+<</if>>
 <<link [[Pet|Nude Pet]]>><<trauma -6>><<stress -12>><</link>><<ltrauma>><<lstress>>
 <br>
 

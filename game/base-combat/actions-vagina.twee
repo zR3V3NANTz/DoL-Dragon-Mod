@@ -304,7 +304,7 @@
 <<widget "actionsvaginapenisdoublefuck">>
 <<if !$worn.genitals.type.includes("chastity") and $worn.under_lower.vagina_exposed is 1 and $worn.lower.vagina_exposed is 1 and $awareness gte 300>>
 
-		<<if $consensual is 1 and (($promiscuity lte 74 and $enemytype is "man" or $deviancy lte 74 and $enemytype isnot "man" and $awareness lt 300) and !$promiscuityIgnore) or $NPCList[_j].chastity.penis.includes("chastity")>>
+		<<if $consensual is 1 and (($promiscuity lte 74 and $enemytype is "man" or $deviancy lte 74 and $enemytype isnot "man" and $awareness lt 300) and !$promiscuityIgnore) or $NPCList[$vaginatarget].chastity.penis.includes("chastity")>>
 			<!-- Do Nothing -->
 		<<else>>
 			<<if $NPCList[$vaginatarget].penis is "vaginadouble" or $NPCList[$vaginatarget].chastity.penis.includes("chastity")>>

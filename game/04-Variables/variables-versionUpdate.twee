@@ -1292,9 +1292,9 @@
 
 <!-- updateClothes was moved to <<backcomp>> at the bottom of this file -->
 
-<<if $objectVersion.wardrobes lt 3 or $objectVersion.wardrobes is undefined>>
+<<if $objectVersion.wardrobes lt 4 or $objectVersion.wardrobes is undefined>>
 	<<wardrobesUpdate>>
-	<<set $objectVersion.wardrobes to 3>>
+	<<set $objectVersion.wardrobes to 4>>
 <</if>>
 
 <<if $mathsprojectwon is 1>>
@@ -2671,10 +2671,10 @@
 		Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
 	<</if>>
 
-	<<if $objectVersion.specialClothes lt 5 or $objectVersion.specialClothes is undefined>>
+	<<if $objectVersion.specialClothes lt 6 or $objectVersion.specialClothes is undefined>>
 		<<specialClothesSetup>>
 		<<specialClothesUpdate>>
-		<<set $objectVersion.specialClothes to 5>>
+		<<set $objectVersion.specialClothes to 6>>
 	<</if>>
 
 	<<if $objectVersion.museumAntiques lt 7 or $objectVersion.museumAntiques is undefined>>
@@ -2687,6 +2687,15 @@
 	<<if $nectar_addiction is undefined>>
 		<<set $nectar_addiction to 0>>
 		<<set $nectar_timer to 0>>
+	<</if>>
+
+		<<set $hypnotised to 0>>
+	<<if $hypnotised is undefined>>
+		<<set $hypnotised to 0>>
+		<<set $famemodel to 0>>
+	<</if>>
+	<<if $chef_state gte 5 and $photo_known is undefined>>
+		<<set $photo_known to 1>>
 	<</if>>
 
 <</widget>>

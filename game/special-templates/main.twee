@@ -3,84 +3,6 @@
 <<endcombat>>
 
 
-/*
-<<generate_relaxed_guard 0>>
-<<generate_anxious_guard 1>>
-<<generate_veteran_guard 2>>
-<<generate_methodical_guard 3>>
-<<generate_scarred_inmate 4>>
-<<generate_tattooed_inmate 5>>
-<<endevent>>
-	<<prison_init>>
-	<<set $prison_intro to 1>>
-
-<<set $prison.active_punishments to ["free use","nude","blindfold","topless","leash","underwear","cuffs","bottomless","gag","bindings"]>>
-<<neckwear 22>>
-<<facewear 6>>
-<<feetwear 3>>
-<<bind>>
-
-<<set $prison.time to 3>>
-	<<link [[Prison End]]>><</link>>
-	<br>
-	<<link [[Prison Walkway]]>><</link>>
-	<br>	
-	<<link [[Prison Spire]]>><</link>>
-	<br>
-	<<link [[Prison Start|Police Prison Intro]]>><<generate1>><<person1>><</link>>
-	<br>
-	<<link [[Prison Punishment]]>><</link>>
-	<br>
-	<<link [[Prison Cell]]>><</link>>
-	<br>
-	<<link [[Prison Lunch]]>><<set $prison.protection to "tattooed">><</link>>
-	<br>
-	<<link [[Prison Laundry]]>><<set $fightstart to 1>><</link>>
-	<br>
-	<<link [[Prison Medical]]>><<endevent>><</link>>
-	<br>
-	<<link [[Prison Yard]]>><<endevent>><</link>>
-	<br>
-	<<link [[Docks]]>><<endevent>><</link>>
-	<br>
-
-<<print $worn.neck.leash>><br>
-<<set $crime to 5000>>
-<<link [[Hospital Arrest]]>><</link>>
-<br>
-<<link [[Prison Cell]]>><</link>>
-<br>
-<<link [[Prison Punishment]]>><</link>>
-<br>
-/*
-<<generate1>><<person1>>
-<<saveNPC 0 "prison_intro_officer">>
-<<endcombat>>
-    <<set $prison.relaxed to 0>>
-    <<set $prison.anxious to 0>>
-    <<set $prison.veteran to 0>>
-    <<set $prison.methodical to 0>>
-    <<set $prison.scarred to 0>>
-    <<set $prison.tattooed to 0>>
-	<<set $prison_intro to 0>>
-<<clearNPC "relaxed_guard">>
-<<clearNPC "anxious_guard">>
-<<clearNPC "veteran_guard">>
-<<clearNPC "methodical_guard">>
-<<clearNPC "scarred_inmate">>
-<<clearNPC "tattooed_inmate">>
-<<generate_relaxed_guard 0>>
-<<generate_anxious_guard 1>>
-<<generate_veteran_guard 2>>
-<<generate_methodical_guard 3>>
-<<generate_scarred_inmate 4>>
-<<generate_tattooed_inmate 5>>
-<<person1>><<person>>
-<<endcombat>>
-<<set $prison_intro to 1>>
-<<link [[Next|Prison Cell]]>><</link>>
-<br>
-*/
 
 :: Robin
 <<set $NPCName[$NPCNameList.indexOf("Robin")].love to 50>>
@@ -991,7 +913,7 @@ Text about failing the physique check.
 
 :: Monster Selection
 <!-- Modified for Monster People -->
-<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 	<<if $malechance lt random(1, 100)>>
 		Monstergirl
 	<<else>>

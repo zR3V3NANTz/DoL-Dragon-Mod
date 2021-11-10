@@ -1587,6 +1587,13 @@
 	<<set $wolfcavepatrol to 1>>
 <</if>>
 
+<<if $photo>>
+	<<if $photo.silly is "paid">>
+		<<set $photo.silly to 0>>
+	<</if>>
+	<<set $photo.shoot to 0>>
+<</if>>
+
 <</widget>>
 
 <<widget "year">>

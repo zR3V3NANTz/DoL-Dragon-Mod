@@ -304,35 +304,35 @@
 <<widget "destinationsewers">>
 	<<switch $bus>>
 	<<case "sewersresidential">>
-		<<link [[Next|Sewers Residential]]>><</link>>
+		<<link [[Next|Sewers Residential]]>><<endevent>><</link>>
 	<<case "sewerscommercial">>
-		<<link [[Next|Sewers Commercial]]>><</link>>
+		<<link [[Next|Sewers Commercial]]>><<endevent>><</link>>
 	<<case "sewersindustrial">>
-		<<link [[Next|Sewers Industrial]]>><</link>>
+		<<link [[Next|Sewers Industrial]]>><<endevent>><</link>>
 	<<case "sewersalgae">>
-		<<link [[Next|Sewers Algae]]>><</link>>
+		<<link [[Next|Sewers Algae]]>><<endevent>><</link>>
 	<<case "sewersworkshop">>
-		<<link [[Next|Sewers Workshop]]>><</link>>
+		<<link [[Next|Sewers Workshop]]>><<endevent>><</link>>
 	<<case "sewerswood">>
-		<<link [[Next|Sewers Wood]]>><</link>>
+		<<link [[Next|Sewers Wood]]>><<endevent>><</link>>
 	<<case "sewerswebs">>
-		<<link [[Next|Sewers Webs]]>><</link>>
+		<<link [[Next|Sewers Webs]]>><<endevent>><</link>>
 	<<case "sewersruins">>
-		<<link [[Next|Sewers Ruins]]>><</link>>
+		<<link [[Next|Sewers Ruins]]>><<endevent>><</link>>
 	<<case "sewersshrooms">>
-		<<link [[Next|Sewers Shrooms]]>><</link>>
+		<<link [[Next|Sewers Shrooms]]>><<endevent>><</link>>
 	<<case "sewersrubble">>
-		<<link [[Next|Sewers Rubble]]>><</link>>
+		<<link [[Next|Sewers Rubble]]>><<endevent>><</link>>
 	<<case "sewershole">>
-		<<link [[Next|Sewers Hole]]>><</link>>
+		<<link [[Next|Sewers Hole]]>><<endevent>><</link>>
 	<<case "sewersscrap">>
-		<<link [[Next|Sewers Scrap]]>><</link>>
+		<<link [[Next|Sewers Scrap]]>><<endevent>><</link>>
 	<<case "sewersmud">>
-		<<link [[Next|Sewers Mud]]>><</link>>
+		<<link [[Next|Sewers Mud]]>><<endevent>><</link>>
 	<<case "sewerswaterfall">>
-		<<link [[Next|Sewers Waterfall]]>><</link>>
+		<<link [[Next|Sewers Waterfall]]>><<endevent>><</link>>
 	<<case "sewerslake">>
-		<<link [[Next|Sewers Lake]]>><</link>>
+		<<link [[Next|Sewers Lake]]>><<endevent>><</link>>
 	<</switch>>
 	<br>
 <</widget>>
@@ -377,14 +377,20 @@
 	<<set $rng to random(1, 100)>>
 	<<if $rng gte 81>><!-- Modified for Beast People -->
 		<<beastNEWinit 1 lizard>>
-		An enormous <<beasttype>> stalks out of the darkness in front of you! <<if $monster is 1>><<bHe>> licks <<bhis>> lips.<<else>>Its mouth is wide open.<</if>>
-		<br><br>
-		<<if $deviancy gte 35 and $voredisable is "f" and $monster isnot 1>>
-			<<link [[Give it a taste|Sewers Lizard Vore]]>><</link>><<deviant3>>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			An enormous <<beasttype>> stalks out of the darkness in front of you! <<if $monster is 1>><<bHe>> licks <<bhis>> lips.<<else>>Its mouth is wide open.<</if>>
+			<br><br>
+			<<if $deviancy gte 35 and $voredisable is "f" and $monster isnot 1>>
+				<<link [[Give it a taste|Sewers Lizard Vore]]>><</link>><<deviant3>>
+				<br>
+			<</if>>
+			<<link [[Fight|Sewers Lizard Rape]]>><<set $molestationstart to 1>><</link>>
 			<br>
+		<<else>>
+			An enormous <<beasttype>> stalks out of the darkness in front of you! You manage to escape, but not unscathed.<<beastescape>>
+			<br><br>
+			<<destinationsewers>>
 		<</if>>
-		<<link [[Fight|Sewers Lizard Rape]]>><<set $molestationstart to 1>><</link>>
-		<br>
 	<<elseif $rng gte 71>>
 		You hear a click as your feet sink into the ground. A metal shackle clamps round your ankle. The sound echoes down the tunnel. A chain ties it to the ground.
 		<<gstress>><<stress 6>>

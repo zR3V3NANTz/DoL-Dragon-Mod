@@ -116,7 +116,7 @@ There's a path leading down to the beach.
 			<<link [[Watch pillory (0:10)|Cliff Street Pillory]]>><<pass 10>><</link>>
 			<br>
 		<</if>>
-		<<link [[Beach (0:05)|Beach]]>><<pass 5>><</link>>
+		<<beachicon>><<link [[Beach (0:05)|Beach]]>><<pass 5>><</link>>
 		<br>
 		<<if $chef_state is 8 and $daystate is "dusk">>
 		<<link [[Attend opening event (5:00)|Chef Opening]]>><</link>>

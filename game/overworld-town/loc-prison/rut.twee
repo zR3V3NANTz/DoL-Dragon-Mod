@@ -25,6 +25,7 @@ You are in the rut, beneath the prison.
         <<link [[Walk towards the breeze (0:10)|Prison Rut Walk]]>><<pass 10>><<set $hallucinogen += 10>><<set $phase to 0>><<set $rut += 10>><</link>>
         <br>
     <</if>>
+    <<prison_map rut>>
 <</if>>
 
 :: Prison Rut Chest

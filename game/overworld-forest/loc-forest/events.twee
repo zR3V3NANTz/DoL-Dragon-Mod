@@ -1009,15 +1009,16 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 <<if $danger gte (9900 - ($allure * $forestmod)) and $eventskip is 0>>
 	<!-- Modified for monster people -->
 	<<beastNEWinit 1 lizard>>
-	A large <<beasttype>> rears out of the water!
-	<br><br>
-	<<link [[Next|Forest Swim Molestation]]>><<set $molestationstart to 1>><</link>>
-
-	<!-- A large lizard rears out of the water and grabs you in its maw! You manage to struggle free, but not unscathed.<<beastescape>> -->
-	<!-- <br><br> -->
-	<!-- <<link [[Next|Forest Swim]]>><<set $eventskip to 1>><</link>> -->
-	<!-- <br> -->
-
+	<<if $monster is 1 or $bestialitydisable is "f">>
+		A large <<beasttype>> rears out of the water!
+		<br><br>
+		<<link [[Next|Forest Swim Molestation]]>><<set $molestationstart to 1>><</link>>
+	<<else>>
+		A large lizard rears out of the water and grabs you in its maw! You manage to struggle free, but not unscathed.<<beastescape>>
+		<br><br>
+		<<link [[Next|Forest Swim]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<</if>>
 <<else>>
 	<<swimmingdifficulty 1 600 true>>
 	<<if $swimmingSuccess>>

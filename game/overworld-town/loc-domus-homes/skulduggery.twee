@@ -28,7 +28,8 @@ You successfully pick the lock and enter the abode.
 You sneak around the house and look for anything of value.
 <<if $rng gte 81>>
 	<!-- Modified for Beast People -->
-		<<beastNEWinit 1 dog>>
+	<<beastNEWinit 1 dog>>
+	<<if $monster is 1 or $bestialitydisable is "f">>
 		A low growl interrupts you, and a <<beasttype>> emerges from the darkness. <<bHe>> starts to bark.
 		<br><br>
 		<<if $deviancy gte 15>>
@@ -39,15 +40,15 @@ You sneak around the house and look for anything of value.
 		<br>
 		<<link [[Run|Domus House Run]]>><<transform cat 1>><</link>>
 		<br><br>
-		<!--
+	<<else>>
 		A low growl interrupts you, and a dog emerges from the darkness. It starts to bark.
 		<br><br>
 		You flee out the house, the dog snapping at your heels. It doesn't chase you beyond the front door, content to bark into the night.
 		<<beastescape>>
 		<br><br>
-		<<link [[Next|Domus Street]]>><</link>>
+		<<link [[Next|Domus Street]]>><<endevent>><</link>>
 		<br>
-		-->
+	<</if>>
 <<elseif $rng gte 61>>
 	You find a safe with a combination lock.
 	<br><br>

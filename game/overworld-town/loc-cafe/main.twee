@@ -512,21 +512,22 @@ You ask if <<he>> has any work for you. <<His>> smile broadens. "As a matter of 
 <<else>>
 	<<set $rng to random(1, 100)>>
 	<!-- Modified for Monster People -->
-	<<if $rng gte 51>>
 	<<beastNEWinit 1 dog>>
-Sam asks you to take some trash to the dumpster beside the cafe. Stood beside the dumpster, however, is a stray <<beasttype>>. It growls as you approach.
-<br><br>
+	<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>>
+		Sam asks you to take some trash to the dumpster beside the cafe. Stood beside the dumpster, however, is a stray <<beasttype>>. It growls as you approach.
+		<br><br>
 
-<<link [[Continue regardless|Ocean Breeze Dumpster Dog]]>><<stress 6>><</link>><<gstress>>
-<br>
-<<link [[Forget your task and go back inside|Ocean Breeze Dumpster Refuse]]>><</link>>
+		<<link [[Continue regardless|Ocean Breeze Dumpster Dog]]>><<stress 6>><</link>><<gstress>>
+		<br>
+		<<link [[Forget your task and go back inside|Ocean Breeze Dumpster Refuse]]>><</link>>
 	<<else>>
-<<generate1>><<generate2>>Sam asks you to take some trash to the dumpster beside the cafe. Stood beside the dumpster, however, are a <<person1>><<person>> and a <<person2>><<person>>. They have a dangerous look about them.
-<br><br>
+		<<endevent>>
+		<<generate1>><<generate2>>Sam asks you to take some trash to the dumpster beside the cafe. Stood beside the dumpster, however, are a <<person1>><<person>> and a <<person2>><<person>>. They have a dangerous look about them.
+		<br><br>
 
-<<link [[Continue regardless|Ocean Breeze Dumpster]]>><<stress 6>><</link>><<gstress>>
-<br>
-<<link [[Forget your task and go back inside|Ocean Breeze Dumpster Refuse]]>><</link>>
+		<<link [[Continue regardless|Ocean Breeze Dumpster]]>><<stress 6>><</link>><<gstress>>
+		<br>
+		<<link [[Forget your task and go back inside|Ocean Breeze Dumpster Refuse]]>><</link>>
 	<</if>>
 
 <</if>>

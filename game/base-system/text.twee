@@ -5623,7 +5623,7 @@ a teacher
 
 <<widget "monster_passage">>
 <<if _monster_passage is undefined>>
-	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 		<<if $malechance gte 100>>
 			<<set _monster_passage to "m">>
 		<<elseif $malechance lte 0>>
@@ -5639,13 +5639,13 @@ a teacher
 
 <<widget "farm_text_many">>
 <<if $args[0] is "horse">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set _text_output to "centaurs">>
 	<<else>>
 		<<set _text_output to "horses">>
 	<</if>>
 <<elseif $args[0] is "pig">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender_plural is "m">>
 			<<set _text_output to "pigboys">>
 		<<elseif $farm_work[$args[0]].gender_plural is "f">>
@@ -5657,7 +5657,7 @@ a teacher
 		<<set _text_output to "pigs">>
 	<</if>>
 <<elseif $args[0] is "dog">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender_plural is "m">>
 			<<set _text_output to "dogboys">>
 		<<elseif $farm_work[$args[0]].gender_plural is "f">>
@@ -5669,7 +5669,7 @@ a teacher
 		<<set _text_output to "dogs">>
 	<</if>>
 <<else>>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender_plural is "m">>
 			<<set _text_output to "bullboys">>
 		<<elseif $farm_work[$args[0]].gender_plural is "f">>
@@ -5686,13 +5686,13 @@ a teacher
 
 <<widget "farm_text">>
 <<if $args[0] is "horse">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set _text_output to "centaur">>
 	<<else>>
 		<<set _text_output to "horse">>
 	<</if>>
 <<elseif $args[0] is "pig">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender is "m">>
 			<<set _text_output to "pigboy">>
 		<<else>>
@@ -5702,7 +5702,7 @@ a teacher
 		<<set _text_output to "pig">>
 	<</if>>
 <<elseif $args[0] is "dog">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender is "m">>
 			<<set _text_output to "dogboy">>
 		<<else>>
@@ -5712,7 +5712,7 @@ a teacher
 		<<set _text_output to "dog">>
 	<</if>>
 <<else>>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender is "m">>
 			<<set _text_output to "bullboy">>
 		<<else>>

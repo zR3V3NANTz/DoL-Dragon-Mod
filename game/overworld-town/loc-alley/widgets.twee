@@ -62,17 +62,22 @@ You're passing empty barrels lined up against a wall when the front of a van pee
 You hear a growl beside you.
 <br><br>
 
-<<if $daystate isnot "night">>
-There are people about. If you run, you'll be seen.
-<br><br>
-<</if>>
-
 <!-- Modified for Beast People -->
+<<if $monster is 1 or $bestialitydisable is "f">>
+	<<if $daystate isnot "night">>
+	There are people about. If you run, you'll be seen.
+	<br><br>
+	<</if>>
+	<<link [[Run|Park Ex Run]]>><</link>>
+	<br>
+	<<link [[Stay put|Park Ex Dog Molestation]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	You turn and run. You manage to escape, but are left worse for wear.<<beastescape>>
+	<br><br>
 
-<<link [[Run|Park Ex Run]]>><</link>>
-<br>
-<<link [[Stay put|Park Ex Dog Molestation]]>><<set $molestationstart to 1>><</link>>
-<br>
+	<<destinationeventend>>
+<</if>>
 
 
 <</widget>>
@@ -148,22 +153,34 @@ You reach into the box. It's empty. There's a loose grate beneath it.
 <</widget>>
 
 <<widget "residentialex2">>
-<<beastNEWinit 1 dog>>You continue on, your heart pounding in your chest. You hear voices up ahead, so you move into a blind alley and duck behind a dumpster. The voices get louder, it sounds like a pair of teenagers. They stop at the end of the alley, trapping you. As you look around for an escape route you notice a stray <<beasttype>> looking at you from under a discarded newspaper.
-<br><br>
+<<beastNEWinit 1 dog>>
+<<if $monster is 1 or $bestialitydisable is "f">>
+	You continue on, your heart pounding in your chest. You hear voices up ahead, so you move into a blind alley and duck behind a dumpster. The voices get louder, it sounds like a pair of teenagers. They stop at the end of the alley, trapping you. As you look around for an escape route you notice a stray <<beasttype>> looking at you from under a discarded newspaper.
+	<br><br>
 
-<<bHe>> walks over to you, tail wagging, and begins barking. You hope it doesn't attract attention to you.
-<br><br>
-<<set $timer to 10>>
+	<<bHe>> walks over to you, tail wagging, and begins barking. You hope it doesn't attract attention to you.
+	<br><br>
+	<<set $timer to 10>>
 
-<!-- Modified for Monster People -->
-<<if $leftarm is 'bound' and $rightarm is 'bound'>>
-	<<link [[Endure|Residential Dog]]>><<set $phase to 5>><<set $noise += 1>><</link>>
+	<!-- Modified for Monster People -->
+	<<if $leftarm is 'bound' and $rightarm is 'bound'>>
+		<<link [[Endure|Residential Dog]]>><<set $phase to 5>><<set $noise += 1>><</link>>
+	<<else>>
+		<<link [[Stroke its ears->Residential Dog]]>><<set $phase to 2>><</link>>
+		<br>
+		<<link [[Endure|Residential Dog]]>><<set $phase to 1>><<set $noise += 1>><</link>>
+	<</if>>
+	<br><br>
 <<else>>
-	<<link [[Stroke its ears->Residential Dog]]>><<set $phase to 2>><</link>>
+	You continue on, your heart pounding in your chest. You hear voices up ahead, so you move into a blind alley and duck behind a dumpster. The voices get louder, it sounds like a pair of teenagers. They stop at the end of the alley, trapping you. As you look around for an escape route you notice a stray <<beasttype>> looking at you from under a discarded newspaper.
+	<br><br>
+
+	<<bHe>> growls, <span class="red">alerting the pair.</span> You hear them approach.
+	<br><br>
+
+	<<link [[Next|Residential Dog Alarm]]>><</link>>
 	<br>
-	<<link [[Endure|Residential Dog]]>><<set $phase to 1>><<set $noise += 1>><</link>>
 <</if>>
-<br><br>
 
 <</widget>>
 

@@ -151,6 +151,9 @@
 		<<set $enemyhealth += $NPCList[_returnHP].health>>
 	<</if>>
 <</for>>
+<<if $newtarget is undefined>>
+	<<set $newtarget to $oldtarget>>
+<</if>>
 <!-- Give PC stats uptick. Could be replaced with <<violence -xx>> call -->
 <<set $pain to 0>>
 <<stress -18>><<trauma -6>>

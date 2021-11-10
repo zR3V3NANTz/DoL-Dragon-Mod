@@ -676,29 +676,34 @@ You wait around the corner, listening for the patter of feet.
 	<br><br>
 
 	<!-- Modified for Beast People -->
+	<<if $monster is 1 or $bestialitydisable is "f">>
 		<<link [[Next|Docks Dog]]>><<set $molestationstart to 1>><</link>>
 		<br>
-		<!-- <<beastescape>>
+	<<else>>
+		<<beastescape>>
 		It's a struggle, but you manage to cow her into rolling onto her back in submission, and escape before help arrives. That should keep them off your trail for now.
 		<br><br>
 
 		<<link [[Next|Docks Sneak]]>><<endevent>><<set $eventskip to 1>><<unset $dock_dog>><</link>>
-		<br> -->
+		<br>
+	<</if>>
 <<elseif $dock_dog is "boy">>
 	The dogboy should arrive soon. You'll need to subdue him before help arrives.
 	<br><br>
 	You pounce as soon as he appears. "Intruder!" he shouts.
 	<br><br>
-
 	<!-- Modified for Beast People -->
+	<<if $monster is 1 or $bestialitydisable is "f">>
 		<<link [[Next|Docks Dog]]>><<set $molestationstart to 1>><</link>>
 		<br>
-		<!-- <<beastescape>>
+	<<else>>
+		<<beastescape>>
 		It's a struggle, but you manage to cow him into rolling onto his back in submission, and escape before help arrives. That should keep them off your trail for now.
 		<br><br>
 
 		<<link [[Next|Docks Sneak]]>><<endevent>><<set $eventskip to 1>><<unset $dock_dog>><</link>>
-		<br> -->
+		<br>
+	<</if>>
 <<else>>
 	The dog should arrive soon. You'll need to subdue it before help arrives.
 	<br><br>

@@ -22,7 +22,7 @@ Your handler gives the leash a rough tug, and you're led inside.
 	<<livestock_init>>
 	<<set $livestock_obey to 50>>
 	<!-- Modified for Monster People -->
-	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 
 		Rows of caged cattle line the edge, eating cereal from troughs. It's only as you're pulled closer that you realise they aren't cows, but people with cow ears and tails. They eat from their troughs all the same, their feeding broken only by the occasional moo.
 		<br><br>
@@ -55,7 +55,7 @@ Your handler gives the leash a rough tug, and you're led inside.
 <<else>>
 	<<livestock_obey -10>>
 	<!-- Modified for Monster People -->
-	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 
 		Rows of caged cattle line the edge, eating cereal from troughs. It's only as you're pulled closer that you realise they aren't cows, but people with cow ears and tails. They eat from their troughs all the same, their feeding broken only by the occasional moo.
 		<br><br>
@@ -214,7 +214,7 @@ Over time, though, you grow accustomed to the sting, and even a bit bored as it 
 <</if>>
 <br><br>
 <!-- Modified for Monster People -->
-<<if ($monsterchance gte random(1, 100) and ($hallucinations gte 1 or $monsterhallucinations is "f")) or ($bestialitydisable is "t") and $horsedisable is "f">>
+<<if ($monsterchance gte random(1, 100) and ($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "f") and $horsedisable is "f">>
 	<<if $malechance lt random(1, 100)>>
 		<<if $dgchance gte 1>>
 			The doors open once more, and you hear the clomp of hooves alongside other footsteps. Remy walks into view, holding a tall woman by a bridle tied around her face. A moment later you realise she's only a woman above the waist. <span class="lewd">The rest of her body is that of a horse.</span>
@@ -866,7 +866,7 @@ Other farmhands release the bindings around your face and neck as Remy grasps yo
 <<effects>>
 <<npc Remy>><<person1>>
 <!-- Modified for Monster People -->
-<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 	Remy leads you halfway down the bar, past dozens of "cows" in their stalls.
 <<else>>
 	Remy leads you halfway down the barn, past dozens of cows in their stalls.
@@ -1100,7 +1100,7 @@ You jump as <<he>> rests a cold finger against your ass cheek. <<He>> trails <<h
 <</if>>
 <br><br>
 
-<<if $bodywritingdisable is "f">>
+<<if $bodywritingLvl gte 3>>
 	<<link [[Next|Livestock Intro Light Brand]]>><</link>>
 	<br>
 <<else>>
@@ -1162,7 +1162,7 @@ The <<person2>><<person>> and <<person3>><<person>> untie your arms from the tab
 <<effects>>
 <<npc Remy>><<person1>>
 <!-- Modified for Monster People -->
-<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 	Remy leads you halfway down the bar, past dozens of "cows" in their stalls.
 <<else>>
 	Remy leads you halfway down the barn, past dozens of cows in their stalls.
@@ -1214,7 +1214,7 @@ You jump as Remy rests a cold finger against your ass cheek. <<He>> trails <<his
 <</if>>
 <br><br>
 
-<<if $bodywritingdisable is "f">>
+<<if $bodywritingLvl gte 3>>
 	<<link [[Next|Livestock Intro Light Brand]]>><</link>>
 	<br>
 
@@ -1261,7 +1261,7 @@ Remy nods at someone behind you, prompting several unseen hands to grasp your li
 <<bind>><<shackle_feet>>
 <br><br>
 
-<<if $bodywritingdisable is "f" and $skin.left_bottom.special isnot "cattle">>
+<<if $bodywritingLvl gte 3 and $skin.left_bottom.special isnot "cattle">>
 	<<set $livestockReturnBranding to true>>
 	You feel Remy's eyes on your <<bottom>> as the farmhands manhandle you. "Your cattle brand is gone," <<nnpc_he "Remy">> tuts. "We'll worry about it later, though. We have more pressing concerns."
 	<br><br>

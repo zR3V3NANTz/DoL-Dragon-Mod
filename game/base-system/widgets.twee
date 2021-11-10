@@ -1838,7 +1838,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/poolday.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfillday.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfillday.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templeday.png'">
 		<<case strip_club>>
@@ -1977,7 +1977,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/poolnight.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfillnight.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfillnight.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templenight.png'">
 		<<case strip_club>>
@@ -2126,7 +2126,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/pooldawn.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldawn.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldawn.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templedawn.png'">
 		<<case strip_club>>
@@ -2255,7 +2255,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/pooldusk.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldusk.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldusk.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templedusk.png'">
 		<<case strip_club>>
@@ -5147,5 +5147,11 @@ __Map__<br>
 <<widget "enable_rescue">>
 <<if $drugged lte 0>>
 	<<set $rescue to 1>>
+<</if>>
+<</widget>>
+
+<<widget "hypnotised">>
+<<if $args[0]>>
+	<<set $hypnotised += $args[0]>>
 <</if>>
 <</widget>>

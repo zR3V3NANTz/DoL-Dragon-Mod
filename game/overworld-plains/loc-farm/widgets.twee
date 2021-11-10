@@ -193,7 +193,7 @@
 
 <<widget "fox_gen">>
 <!-- Modified for monster people -->
-<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 	<<if $malechance lt random(1, 100)>>
 		<<set $fox to "female">>
 	<<else>>
@@ -344,22 +344,22 @@
 	<<set $farm_work.horse to {}>>
 	<<set $farm_work.cattle to {}>>
 	<!-- Modified for monster people -->
-	<<if ($monsterchance gte random(1, 100)) or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte random(1, 100)) and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set $farm_work.horse.monster_roll to true>>
 	<<else>>
 		<<set $farm_work.horse.monster_roll to false>>
 	<</if>>
-	<<if ($monsterchance gte random(1, 100)) or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte random(1, 100)) and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set $farm_work.pig.monster_roll to true>>
 	<<else>>
 		<<set $farm_work.pig.monster_roll to false>>
 	<</if>>
-	<<if ($monsterchance gte random(1, 100)) or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte random(1, 100)) and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set $farm_work.dog.monster_roll to true>>
 	<<else>>
 		<<set $farm_work.dog.monster_roll to false>>
 	<</if>>
-	<<if ($monsterchance gte random(1, 100)) or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte random(1, 100)) and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set $farm_work.cattle.monster_roll to true>>
 	<<else>>
 		<<set $farm_work.cattle.monster_roll to false>>
@@ -747,10 +747,10 @@
 		<br>
 	<</if>>
 <<elseif $deviancy gte 35 and $farm_work.horses_satisfied lt 6 and $farm_work.horses_out lt 2>> <!-- Modified for Beast People -->
-	<<if $farm_work.horse.monster is true>>
+	<<if $farm_work.horse.monster is true and $horsedisable is "f">>
 		The centaur seem agitated. They need "special" attention.
 		<br>
-	<<else>>
+	<<elseif $bestialitydisable is "f" and $horsedisable is "f">>
 		The horses seem agitated. They need "special" attention.
 		<br>
 	<</if>>
@@ -888,7 +888,7 @@
 	<<elseif $deviancy gte 35 and $farm_work.horses_satisfied lt 6 and $farm_work.horses_out lt 2 and $horsedisable is "f">>
 		<<if $farm_work.horse.monster is true>>
 			<<horseicon>><<link [[Approach a centaur|Farm Horses Lewd]]>><</link>><<run _actions++>>
-		<<else>>
+		<<elseif $bestialitydisable is "f">>
 			<<horseicon>><<link [[Approach a horse|Farm Horses Lewd]]>><</link>><<run _actions++>>
 		<</if>>
 		<br>
@@ -1153,7 +1153,7 @@
 <<set $danger to random(1, 10000)>>
 <<if $danger gte (9900 - $allure)>>
 <!-- Modified for monster people -->
-	<<if $horsedisable is "f">>
+	<<if $horsedisable is "f" and ($bestialitydisable is "f" or $farm_work.horse.monster is true)>>
 		You finish up, and walk toward the gate while cleaning the brush of hair. You hear hooves approach behind you. The <<farm_text horse>> gives chase.
 		<br><br>
 
@@ -1229,7 +1229,7 @@
 	<br>
 	<<link [[Milk by hand (Up to 0:30, depending on skill)|Farm Cattle Milk Hand]]>><<farm_yield 1>><<set $cattle_milked += 1>><<set $farm_work.cattle_milked += 1>><<tending 1>><<farm_cattle 1>><</link>><<deviant1>><<gfarm>><<gtending>><<grespect>>
 	<br>
-	<<if $deviancy gte 55>>
+	<<if $deviancy gte 55 and ($bestialitydisable is "f" or $farm_work.cattle.monster is true)>>
 		<<link [[Milk with your mouth (0:03)|Farm Cattle Milk Mouth]]>><<set $cattle_milked += 1>><<set $farm_work.cattle_milked += 1>><<tending 1>><<farm_count 3>><</link>><<deviant4>><<gtending>>
 		<<if $farm_work.cattle.genitals is "penis" and $player.virginity.oral is true>>
 			| <span class="red">This action will take your oral virginity.</span>
@@ -2606,7 +2606,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 		<<destination_farm_ride>>
 	<</if>>
 <<elseif $rng is 3>>
-	<<if $farm.beasts.horses lt -20 and $horsedisable is "f">><!-- Modified for Beast People -->
+	<<if $farm.beasts.horses lt -20 and $horsedisable is "f" and ($monster is 1 or $bestiality is "f")>><!-- Modified for Beast People -->
 		The <<beasttype>> jerks in another direction, and breaks into a sprint, running across an open field. It stops beside a haybale, and leans forward, dropping you from the saddle.
 		<br><br>
 		You land on the hay, but the <<beasttype>> forces you down with <<bhis>> weight before you can escape.
@@ -2620,7 +2620,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 
 		<<link [[Next|Farm Ride Rape]]>><<set $molestationstart to 1>><</link>>
 		<br>
-	<<elseif $farm.beasts.horses lt 0 and $horsedisable is "f">><!-- Modified for Beast People -->
+	<<elseif $farm.beasts.horses lt 0 and $horsedisable is "f" and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 		The <<beasttype>> pulls to a stop, and refuses to take a step further.
 		<<if $monster is 1>>
 			"I'm frustrated," <<bhe>> says. "It's your job to fix it.""

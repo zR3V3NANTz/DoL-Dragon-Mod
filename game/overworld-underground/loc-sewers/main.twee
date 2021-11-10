@@ -143,12 +143,13 @@ You can access several parts of town from here.
 	You've pushed yourself too much.
 	<br><br>
 	<<passout>>
+	<<beastNEWinit 4 lizard>>
 	<<set $danger to random(1, 10000)>>
 	<<if $danger gte (9900 - $allure)>>
-		<<if $rng gte 51>><!-- Modified for Beast People -->
+		<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 			<<link [[Wake up|Passout Beast Drain]]>><<set $molestationstart to 1>><</link>>
 		<<elseif $rng gte 1>>
-			<<link [[Wake up|Passout Drain Abduction]]>><<set $molestationstart to 1>><</link>>
+			<<link [[Wake up|Passout Drain Abduction]]>><<endevent>><<set $molestationstart to 1>><</link>>
 		<</if>>
 	<<else>>
 		<<ambulance>>
@@ -165,7 +166,6 @@ You can access several parts of town from here.
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<beastNEWinit 4 lizard>>
 	<<beastCombatInit>>
 	<<beastTrainGenerate>>
 	You awaken to the sound of hissing. Four <<beastsplural>> tower above you!
@@ -422,9 +422,18 @@ You are within the storm drain system, being pulled along by the rushing water.
 			<br>
 		<<elseif $rng gte 10>><!-- Modified for Beast People -->
 			<<beastNEWinit 1 lizard>>
-			A shadow in the water moves towards you.
-			<br><br>
-			<<link [[Next|Drain Water Lizard]]>><<set $molestationstart to 1>><</link>>
+			<<if $monster is 1 or $bestialitydisable is "f">>
+				A shadow in the water moves towards you.
+				<br><br>
+				<<link [[Next|Drain Water Lizard]]>><<set $molestationstart to 1>><</link>>
+				<br>
+			<<else>>
+				A shadow in the water moves towards you. You splash at it, and manage to scare it away, whatever it was.<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+				<br><br>
+
+				<<link [[Next|Drain Water]]>><<endevent>><</link>>
+				<br>
+			<</if>>
 		<<else>>
 			You try to swim to the walkway, but the water is too strong.
 			<<if $bus is "drainexit">>

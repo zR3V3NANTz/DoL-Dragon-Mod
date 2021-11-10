@@ -272,23 +272,21 @@ Though afraid, you refuse their demand.
 
 The crowd starts booing. A <<generate1>><<person1>><<person>> runs on stage. "Please accept our apologies," <<he>> says, picking up your leash.
 
-<<if $rng gte 51>><!-- Modified for Beast People -->
 <<endevent>>
 <<beastNEWinit 1 pig>>
-"Instead of our scheduled show, we have a special treat for you." A metal shutter opens behind you, revealing a gigantic <<beasttype>>.
-<br><br>
+<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
+	"Instead of our scheduled show, we have a special treat for you." A metal shutter opens behind you, revealing a gigantic <<beasttype>>.
+	<br><br>
 
-<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
-<br>
-
+	<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
+	<br>
 <<else>>
+	<<endevent>>
+	"Instead of our scheduled show, we invite you to watch our punishment of this insolent <<bitch>>."
+	<br><br>
 
-"Instead of our scheduled show, we invite you to watch our punishment of this insolent <<bitch>>."
-<br><br>
-
-<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
-<br>
-
+	<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
+	<br>
 <</if>>
 
 :: Underground Stage Pig
@@ -541,21 +539,21 @@ You are led off the stage and back to your cell.
 :: Underground Stage Intro
 <<set $outside to 0>><<set $location to "underground">><<effects>>
 
-<<if $rng gte 51>><!-- Modified for Beast People -->
 <<beastNEWinit 1 pig>>
-You are led once more to the stage, where the crowd awaits. <<covered>> Once there, a metal shutter rattles open behind you, and a gigantic <<beasttype>> steps out. The audience cheers it on.
-<br><br>
+<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
+	You are led once more to the stage, where the crowd awaits. <<covered>> Once there, a metal shutter rattles open behind you, and a gigantic <<beasttype>> steps out. The audience cheers it on.
+	<br><br>
 
-<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
-<br>
+	<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
+	<br>
 
 <<else>>
+	<<endevent>>
+	You are led once more to the stage, where the crowd awaits. <<covered>> There's a <<generate1>><<person1>><<person>> already waiting for you. <<He>> takes hold of you leash and pulls you closer while looking at the audience. "What shall I do with <<phim>> my friends?"
+	<br><br>
 
-You are led once more to the stage, where the crowd awaits. <<covered>> There's a <<generate1>><<person1>><<person>> already waiting for you. <<He>> takes hold of you leash and pulls you closer while looking at the audience. "What shall I do with <<phim>> my friends?"
-<br><br>
-
-<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><</link>>
-<br>
+	<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><</link>>
+	<br>
 
 <</if>>
 

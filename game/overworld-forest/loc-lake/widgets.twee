@@ -98,7 +98,7 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 <<bHe>> stands some way apart and watches.
 <br><br>
 <!-- Modified for Monster People -->
-<<if $deviancy gte 15>>
+<<if $deviancy gte 15 and ($monster is 1 or $bestialitydisable is "f")>>
 	<<link [[Deal with it|Lake Wolf Sex]]>><<set $sexstart to 1>><</link>><<deviant2>><<gcool>>
 	<br>
 <</if>>
@@ -283,15 +283,21 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 <<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte random(0, 10)>>
 	<<wHunt "lake">>
 <<elseif $rng gte 81>>
-<!-- Modified for Monster People -->
-<<beastNEWinit 1 boar>>
-You see a <<beasttype>> rifling through litter at the base of a tree. It spots you.
-<br><br>
-
-<<link [[Stand your ground|Lake Boar Stand]]>><</link>>
-<br>
-<<link [[Run|Lake Boar Run]]>><</link>><<athleticsdifficulty>>
-<br>
+	<!-- Modified for Monster People -->
+	<<beastNEWinit 1 boar>>
+	You see a <<beasttype>> rifling through litter at the base of a tree. It spots you.
+	<br><br>
+	<<if $monster is 1 or $bestialitydisable is "f">>
+		<<link [[Stand your ground|Lake Boar Stand]]>><</link>>
+		<br>
+		<<link [[Run|Lake Boar Run]]>><</link>><<athleticsdifficulty>>
+		<br>
+	<<else>>
+		You turn and run into the forest. Branches tear at you until you trip and collapse in a heap. You think you got away, but your heart continues to pound.<<beastescape>>
+		<br><br>
+		<<endevent>>
+		<<destinationlake>>
+	<</if>>
 <<elseif $rng gte 51>>
 	<<if $wraith and $wraith.state isnot "" or $hallucinations gte 1>>
 	You thought you heard someone call your name, but there's no one there.

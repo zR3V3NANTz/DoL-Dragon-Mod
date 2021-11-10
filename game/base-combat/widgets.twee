@@ -17,6 +17,8 @@
 				<<case "Great Hawk">><<earnFeat "Great Hawk the Terror">>
 				<<case "Wren">><<earnFeat "Wren the Sly">>
 				<<case "Black Wolf">><<earnFeat "Great Wolf the Alpha">>
+				<<case "Harper">><<earnFeat "Harper the Hypnotist">>
+				<<case "Morgan">><<earnFeat "Morgan the Lost">>
 			<</switch>>
 		<</if>>
 		<<if $args[0] isnot undefined and $args[0] isnot 0>>

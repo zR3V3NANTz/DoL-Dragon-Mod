@@ -169,14 +169,8 @@
 	<</if>>
 <<else>>
 	<!-- Modified for Beast People -->
-		<<beastNEWinit 1 cat>>
-		<!--
-		The quiet is broken by a low growl behind you. A large cat pounces on you from the shadows. You manage to escape, but not without injury.
-		<<beastescape>>
-		<br><br>
-		<<link [[Next|School Toilets]]>><</link>>
-		<br>
-		-->
+	<<beastNEWinit 1 cat>>
+	<<if $monster is 1 or $bestialitydisable is "f">>
 		The quiet is broken by a low growl behind you. A large <<beasttype>> pounces on you from the shadows, forcing you to your knees.
 		<br><br>
 		<<if $cat gte 6>>
@@ -185,7 +179,13 @@
 		<</if>>
 		<<link [[Fight|School Toilets Cat]]>><<set $molestationstart to 1>><</link>>
 		<br>
-
+	<<else>>
+		The quiet is broken by a low growl behind you. A large cat pounces on you from the shadows. You manage to escape, but not without injury.
+		<<beastescape>>
+		<br><br>
+		<<link [[Next|School Toilets]]>><<endevent>><</link>>
+		<br>
+	<</if>>
 <</if>>
 
 <</widget>>
@@ -198,6 +198,14 @@
 	<<link [[Look through the classroom windows, one must be empty|Hallways Exposed Classroom]]>><</link>>
 	<br>
 	<<link [[Check the lockers, one must be unlocked|Hallways Exposed Lockers]]>><</link>>
+	<br>
+<<elseif $rng gte 51 and $hypnosis gte 1>>
+	You hide beneath a stairwell as a crowd descends. <span class="blue">You feel something shift in your consciousness, as if you're entering a trance.</span> You snap out of it to find yourself about to walk out into the open, with a strong urge to continue.
+	<br><br>
+
+	<<link [[Walk into the open|Hallways Exposed Hypnosis]]>><<hypnotised 1>><<trauma -6>><<stress -6>><</link>><<ltrauma>><<lstress>>
+	<br>
+	<<link [[Resist|Hallways Exposed Hypnosis Resist]]>><</link>><<willpowerdifficulty 1 `150 + ($hypnosis * 50)`>>
 	<br>
 <<else>>
 	You hide beneath a stairwell as a crowd descends. The steps above you vibrate as they pass by.
@@ -346,6 +354,14 @@ Other students ignore what is happening, or watch in amusement.
 
 		<</if>>
 	<</if>>
+<<elseif $rng gte 71 and $hypnosis gte 1>>
+	<<generatey1>><<person1>>You walk past a <<person>> bent over in front of <<his>> locker. <span class="blue">You feel something shift in your consciousness, as if you're entering a trance.</span> A lewd thought strikes you.
+	<br><br>
+
+	<<link [[Spank|Hallways Hypnosis Spank]]>><<def 1>><<hypnotised 1>><<trauma -6>><<stress -12>><<detention 3>><</link>><<gdelinquency>><<ltrauma>><<llstress>>
+	<br>
+	<<link [[Resist|Hallways Hypnosis Spank Resist]]>><</link>><<willpowerdifficulty 1 `150 + ($hypnosis * 50)`>>
+	<br>
 <<elseif $rng gte 61>>
 	<<if $delinquency gte 400>>
 		<<generatey1>><<person1>>A <<person>> gives you a creepy look as you walk by, and starts following you. There's no way <<he>> would try anything with people around, but you come to an empty corridor.
@@ -850,7 +866,47 @@ Other students ignore what is happening, or watch in amusement.
 				<br>
 				<<link [[Ignore|Playground Crush Ignore]]>><</link>>
 				<br>
+			<<elseif $rng gte 61 and $hypnosis gte 1>>
+				<<generatey1>><<person1>>
+				You see a <<person>> watching you from near the bike shed. <<He>> looks away when your eyes meet <<hers>>. It's hard to tell at this distance, but <<he>> might be blushing. 
+				<br><br>
 
+				<span class="blue">You feel something shift in your consciousness, as if you're entering a trance.</span> Then you find yourself stood in front of the <<personsimple>>, a salacious offer on the tip of your tongue. <<He>> watches you, waiting and wearing a nervous expression.
+				<br><br>
+				
+				A wordless voice urges you to continue.
+				<br><br>
+
+				<<link [[Offer|Playground Hypnosis Offer]]>><<hypnotised 1>><<trauma -6>><<stress -6>><</link>><<ltrauma>><<lstress>>
+				<br>
+				<<link [[Resist|Playground Hypnosis Resist]]>><</link>><<willpowerdifficulty 1 `150 + ($hypnosis * 50)`>>
+				<br>
+			<<elseif $rng gte 56 and $photo and $photo.nude_footage is 1>>
+				<<set $photo.nude_footage to 0>>
+				<<generatey1>><<generatey2>><<generatey3>><<person1>>
+				You notice a <<person>> watching you, an odd smirk on <<his>> face. <<He>> looks away.
+				<br><br>
+
+				You turn and catch a <<person2>><<person>> pointing at you. <<Hes>> stood beside a <<person3>><<person>>, a phone in <<person2>><<his>> hand.
+				<br><br>
+
+				<<link [[Investigate|Playground Nude Footage Investigate]]>><<trauma 6>><</link>><<gtrauma>>
+				<br>
+				<<link [[Ignore|Playground Footage Ignore]]>><<stress 12>><<status -10>><</link>><<lcool>><<ggstress>>
+				<br>
+			<<elseif $rng gte 51 and $photo and $photo.assault_footage is 1>>
+				<<set $photo.assault_footage to 0>>
+				<<generatey1>><<generatey2>><<generatey3>><<person1>>
+				You notice a <<person>> watching you, an odd smirk on <<his>> face. <<He>> looks away.
+				<br><br>
+
+				You turn and catch a <<person2>><<person>> pointing at you. <<Hes>> stood beside a <<person3>><<person>>, a phone in <<person2>><<his>> hand.
+				<br><br>
+
+				<<link [[Investigate|Playground Assault Footage Investigate]]>><<trauma 12>><</link>><<ggtrauma>>
+				<br>
+				<<link [[Ignore|Playground Footage Ignore]]>><<stress 12>><<status -20>><</link>><<llcool>><<ggstress>>
+				<br>
 			<<else>>
 				<<generatey1>><<generatey2>><<person1>>
 				You overhear a <<person>> and <<person2>><<person>> sharing their crushes.
@@ -984,36 +1040,33 @@ Other students ignore what is happening, or watch in amusement.
 		<</if>>
 	<</if>>
 <<else>>
-
 	<<if $rng gte 1>>
 		<<beastNEWinit 1 dog>>
 		<<set $rng to random(1, 100)>>
 		<<if $rng gte 61>>
-			<!-- Modified for Beast People -->
-			You see a <<beasttype>> rummaging in litter behind the kitchen. <<bHis>> ears prick, and <<bhe>> bounds towards you.
-			<br><br>
+			<<if $monster is 1 and $bestialitydisable is "f">>
+				You see a <<beasttype>> rummaging in litter behind the kitchen. <<bHis>> ears prick, and <<bhe>> bounds towards you.
+				<br><br>
 
-			<<link [[Next|Rear Playground Dog]]>><<set $molestationstart to 1>><</link>>
-			<br>
-			<!--
-			You see a dog rummaging in litter behind the kitchen. Its ears prick, and it bounds towards you.
-			<br><br>
+				<<link [[Next|Rear Playground Dog]]>><<set $molestationstart to 1>><</link>>
+				<br>
+			<<else>>
+				You see a dog rummaging in litter behind the kitchen. Its ears prick, and it bounds towards you.
+				<br><br>
 
-			You manage to escape, but not unscathed.<<beastescape>>
+				You manage to escape, but not unscathed.<<beastescape>>
+				<br><br>
+
+				<<playground>>
+			<</if>>
+		<<else>>
+			You see a <<beasttype>> rummaging in litter behind the kitchen. <<bHe>> runs away as soon as it hears you.
+			<<endevent>>
 			<br><br>
 
 			<<playground>>
-			-->
-		<<else>>
-		You see a <<beasttype>> rummaging in litter behind the kitchen. <<bHe>> runs away as soon as it hears you.
-		<<endevent>>
-		<br><br>
-
-		<<playground>>
 		<</if>>
-
 	<</if>>
-
 <</if>>
 
 <</widget>>
@@ -1724,7 +1777,7 @@ You see Whitney as you approach the gate. <<He>> grins and pushes past one of <<
 Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> friends appear a moment later, trapping you against the wall.
 <br><br>
 "Just the slut I wanted to see," <<he>> says.
-	<<if $skin.forehead.special is "Whitney" and $skin.forehead.pen is "tattoo" and $bodywritingdisable is "f">>
+	<<if $skin.forehead.special is "Whitney" and $skin.forehead.pen is "tattoo" and $bodywritingLvl gte 2>>
 		<<He>> examines your <span class="lewd">"<<print $skin.forehead.writing>>" tattoo</span>
 		"Good. Still labelled properly." <<He>> assaults your face with <<his>> tongue, then shoves you away. "Later slut."
 		<<glove>><<npcincr Whitney love 1>><<gdom>><<npcincr Whitney dom 1>><<glust>><<npcincr Whitney lust 1>>
@@ -1735,7 +1788,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br><br>
 		<<endevent>><<set $eventskip to 1>>
 		<<playground>>
-	<<elseif $skin.left_cheek.special is "Whitney" and $skin.left_cheek.pen is "tattoo" and $bodywritingdisable is "f">>
+	<<elseif $skin.left_cheek.special is "Whitney" and $skin.left_cheek.pen is "tattoo" and $bodywritingLvl gte 2>>
 		<<if $worn.face.type.includes("mask")>>
 			<<He>> pulls your mask aside and examines your <span class="lewd">"<<print $skin.left_cheek.writing>>" tattoo.</span>
 		<<else>>
@@ -1751,7 +1804,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<<endevent>><<set $eventskip to 1>>
 		<<playground>>
 
-	<<elseif $skin.right_cheek.special is "Whitney" and $skin.right_cheek.pen is "tattoo" and $bodywritingdisable is "f">>
+	<<elseif $skin.right_cheek.special is "Whitney" and $skin.right_cheek.pen is "tattoo" and $bodywritingLvl gte 2>>
 		<<if $worn.face.type.includes("mask")>>
 			<<He>> pulls your mask aside and examines your <span class="lewd">"<<print $skin.right_cheek.writing>>" tattoo.</span>
 		<<else>>
@@ -1767,7 +1820,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<<endevent>><<set $eventskip to 1>>
 		<<playground>>
 
-	<<elseif $skin.left_shoulder.special is "Whitney" and $skin.left_shoulder.pen is "tattoo" and $bodywritingdisable is "f">>
+	<<elseif $skin.left_shoulder.special is "Whitney" and $skin.left_shoulder.pen is "tattoo" and $bodywritingLvl gte 2>>
 		<<if $worn.upper.open is 1 or $worn.upper.name is "naked">>
 			<<He>> examines your <span class="lewd">"<<print $skin.left_shoulder.writing>>" tattoo.</span>
 		<<else>>
@@ -1782,7 +1835,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br><br>
 		<<endevent>><<set $eventskip to 1>>
 		<<playground>>
-	<<elseif $skin.right_shoulder.special is "Whitney" and $skin.right_shoulder.pen is "tattoo" and $bodywritingdisable is "f">>
+	<<elseif $skin.right_shoulder.special is "Whitney" and $skin.right_shoulder.pen is "tattoo" and $bodywritingLvl gte 2>>
 		<<if $worn.upper.open is 1 or $worn.upper.name is "naked">>
 			<<He>> examines your <span class="lewd">"<<print $skin.right_shoulder.writing>>" tattoo.</span>
 		<<else>>
@@ -1797,7 +1850,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br><br>
 		<<endevent>><<set $eventskip to 1>>
 		<<playground>>
-	<<elseif $skin.forehead.special is "Whitney" and $bodywritingdisable is "f">>
+	<<elseif $skin.forehead.special is "Whitney" and $bodywritingLvl gte 2>>
 		<<He>> strokes your forehead. "Still labelled too. Good." <<He>> grasps your collar. "Let's make it permanent." <<He>> pulls you towards the street.
 		<br><br>
 		<<set $phase to 2>>
@@ -1805,7 +1858,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br>
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
-	<<elseif ($skin.left_cheek.special is "Whitney" or $skin.right_cheek.special is "Whitney") and $bodywritingdisable is "f">>
+	<<elseif ($skin.left_cheek.special is "Whitney" or $skin.right_cheek.special is "Whitney") and $bodywritingLvl gte 2>>
 		<<if $worn.upper.type.includes("mask")>>
 			<<He>> pulls your mask aside and strokes your cheek. "Still labelled too. Good." <<He>> grasps your collar. "Let's make it permanent." <<He>> pulls you towards the street.
 		<<else>>
@@ -1817,7 +1870,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br>
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
-	<<elseif ($skin.left_shoulder.special is "Whitney" or $skin.right_shoulder.special is "Whitney") and $bodywritingdisable is "f">>
+	<<elseif ($skin.left_shoulder.special is "Whitney" or $skin.right_shoulder.special is "Whitney") and $bodywritingLvl gte 2>>
 		<<if $worn.upper.open is 1 or $worn.upper.name is "naked">>
 			<<He>> strokes your shoulder. "Still labelled too. Good." <<He>> grasps your collar. "Let's make it permanent." <<He>> pulls you towards the street.
 		<<else>>
@@ -1829,7 +1882,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br>
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
-	<<elseif $skin.forehead.pen is "pen" and $bodywritingdisable is "f">>
+	<<elseif $skin.forehead.pen is "pen" and $bodywritingLvl gte 2>>
 		<<bodywriting_clear forehead>>
 		<<He>> leans in and licks your forehead, then wipes it with <<his>> sleeve. "I've thought of something better." <<He>> pulls a pen from <<his>> pocket. "Hold still."
 		<br><br>
@@ -1838,7 +1891,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br>
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
-	<<elseif ($skin.left_cheek.pen is "pen" or $skin.right_cheek.pen is "pen" or $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.left or $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "pen" or $skin.left) and $bodywritingdisable is "f">>
+	<<elseif ($skin.left_cheek.pen is "pen" or $skin.right_cheek.pen is "pen" or $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.left or $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "pen" or $skin.left) and $bodywritingLvl gte 2>>
 		<<if $skin.left_cheek.pen is "pen" or $skin.left_cheek is "lipstick" or $skin.left_cheek is "mud">>
 			<<bodywriting_clear left_cheek>>
 		<<else>>
@@ -1857,7 +1910,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
 
-	<<elseif ($skin.left_shoulder.pen is "pen" or $skin.right_shoulder.pen is "pen" or $skin.left_shoulder.pen is "lipstick" or $skin.right_shoulder.pen is "lipstick" or $skin.left_shoulder.pen is "mud" or $skin.right_shoulder.pen is "mud") and $bodywritingdisable is "f">>
+	<<elseif ($skin.left_shoulder.pen is "pen" or $skin.right_shoulder.pen is "pen" or $skin.left_shoulder.pen is "lipstick" or $skin.right_shoulder.pen is "lipstick" or $skin.left_shoulder.pen is "mud" or $skin.right_shoulder.pen is "mud") and $bodywritingLvl gte 2>>
 		<<if $skin.left_shoulder.pen is "pen" or $skin_left_shoulder is "lipstick" or $skin.left_shoulder is "mud">>
 			<<bodywriting_clear left_shoulder>>
 		<<else>>
@@ -1875,7 +1928,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
 
-	<<elseif !$skin.forehead.pen and $bodywritingdisable is "f">>
+	<<elseif !$skin.forehead.pen and $bodywritingLvl gte 2>>
 		<<He>> leans in and licks your forehead. "I've decided to mark you properly." <<He>> pulls a pen from <<his>> pocket. "Hold still."
 		<br><br>
 		<<set $phase to 1>>
@@ -1883,7 +1936,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br>
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
-	<<elseif (!$skin.left_cheek.pen or !$skin.right_cheek.pen) and $bodywritingdisable is "f">>
+	<<elseif (!$skin.left_cheek.pen or !$skin.right_cheek.pen) and $bodywritingLvl gte 2>>
 		<<He>> leans in and licks your cheek. "I've decided to mark you properly." <<He>> pulls a pen from <<his>> pocket. "Hold still."
 		<br><br>
 		<<set $phase to 1>>
@@ -1891,7 +1944,7 @@ Whitney looms around a corner and rests <<his>> arm on your shoulder. <<His>> fr
 		<br>
 		<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
 		<br>
-	<<elseif (!$skin.left_shoulder.pen or !$skin.right_shoulder.pen) and $bodywritingdisable is "f">>
+	<<elseif (!$skin.left_shoulder.pen or !$skin.right_shoulder.pen) and $bodywritingLvl gte 2>>
 		<<He>> leans in and licks your shoulder. "I've decided to mark you properly." <<He>> pulls a pen from <<his>> pocket. "Hold still."
 		<br><br>
 		<<set $phase to 1>>

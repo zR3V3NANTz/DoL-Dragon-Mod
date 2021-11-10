@@ -1975,19 +1975,19 @@ The <<person1>><<person>> and <<person2>><<person>> stop when they reach the top
 	<<beastNEWinit 1 dog>>
 	You hear a rapid patter of footsteps. A <<beasttype>> runs through the crowd, locked onto the cream covering your body. <<bHis>> owner runs behind it, straining to pull <<bhim>> back.
 	<br><br>
-
+	<<if $monster is 1 or $bestialitydisable is "f">>
 	<!-- Modified for Beast People -->
 		<<link [[Soothe|Cream Ex Naked Walk Soothe]]>><</link>><<tendingdifficulty 1 1000>>
 		<br>
 		<<link [[Run|Cream Ex Naked Walk Run]]>><</link>>
 		<br>
-	<!--
+	<<else>>
 		You're forced into a run to avoid getting licked. The owner manages to get the dog under control, but the activity loosened the cream.
 		<<cream_damage 15>>
 		<br><br>
-
+		<<endevent>>
 		<<cream_walk>>
-	-->
+	<</if>>
 <<elseif $rng is 6>>
 	<<generate1>><<generate2>><<generate3>>
 	You pass by a popular shop. A queue of people trail down the road, and each turns to observe you. A <<person1>><<person>> and <<his>> friends seem particularly keen. Your face becomes even more flushed.
@@ -2168,31 +2168,30 @@ The crowd surrounds you, too thick to pass through. More and more people arrive 
 "I'm telling you, perverts are getting bolder."
 <br><br>
 
+<<beastNEWinit 1 dog>>
 <<if $exposed gte 2>>
-	<<if random(1, 2) is 2>><!-- Modified for Beast People -->
-	<<beastNEWinit 1 dog>>
+	<<if random(1, 2) is 2 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
+		A <<beasttype>> emerges from the crowd, running right at you. <<bHe>> pounces, knocking you to the ground and licking you for what little cream remains. More <<beasttype>>s appear, drawn by the smell.
+		<br><br>
+		You writhe as the <<beasttype>>s lick you all over. You could try to stand, but doing so would put you in a mating posture. The crowd watches, not sure how to respond to the strange sight.
+		<br><br>
 
-	A <<beasttype>> emerges from the crowd, running right at you. <<bHe>> pounces, knocking you to the ground and licking you for what little cream remains. More <<beasttype>>s appear, drawn by the smell.
-	<br><br>
-	You writhe as the <<beasttype>>s lick you all over. You could try to stand, but doing so would put you in a mating posture. The crowd watches, not sure how to respond to the strange sight.
-	<br><br>
-
-	<<link [[Try to stand anyway|Cream Ex Dog Stand]]>><</link>>
-	<br>
-	<<link [[Endure|Cream Ex Dog Endure]]>><<arousal 2000>><<stress 6>><<trauma 6>><</link>><<gggarousal>><<gtrauma>><<gstress>>
-	<br>
+		<<link [[Try to stand anyway|Cream Ex Dog Stand]]>><</link>>
+		<br>
+		<<link [[Endure|Cream Ex Dog Endure]]>><<arousal 2000>><<stress 6>><<trauma 6>><</link>><<gggarousal>><<gtrauma>><<gstress>>
+		<br>
 
 	<<else>>
+		<<endevent>>
+		<<generate1>><<generate2>><<generate3>><<generate4>>
+		You crouch, surrounded by leering eyes, until a <<person1>><<person>> steps forward. A cruel smile contorts <<his>> face. Others follow <<his>> example.
+		<br><br>
 
-	<<generate1>><<generate2>><<generate3>><<generate4>>
-	You crouch, surrounded by leering eyes, until a <<person1>><<person>> steps forward. A cruel smile contorts <<his>> face. Others follow <<his>> example.
-	<br><br>
-
-	<<link [[Next|Cream Ex Naked Rape]]>><<set $molestationstart to 1>><</link>>
-	<br>
-
+		<<link [[Next|Cream Ex Naked Rape]]>><<set $molestationstart to 1>><</link>>
+		<br>
 	<</if>>
 <<else>>
+	<<endevent>>
 	<<generate1>><<person1>>
 	You crouch, surrounded by leering eyes, until at last a <<person>> steps forward with a towel.
 	<br><br>

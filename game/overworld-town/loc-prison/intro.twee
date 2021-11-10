@@ -48,7 +48,7 @@ You're driven along the clifftop, past the town hall, and down towards the docks
 :: Police Prison Intro Silent
 <<effects>>
 
-You remain silent. The <<person>> keeps <<his>> eyes fixed on throughout the journey.
+You remain silent. The <<person>> keeps <<his>> eyes fixed on you throughout the journey.
 <br><br>
 The car arrives at Mer Street, and pulls into the docks. A small boat awaits you, staffed by uniformed <<people>>. Their attire is similar to the police officers'. The car pulls to a stop.
 <br><br>
@@ -955,7 +955,7 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
     <<person1>><<relaxed_guard 0>> says. "Lights on at <<ampm 6 00>>. There's a schedule on the wall. You can read, right?"
     <br><br>
     <<if $prison_intro isnot 1>>
-        "Quiet down!" <<he>> shouts as <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face stares at you from <<his>> cell. <<He>> licks one of the bars.
+        "Quiet down!" <<he>> shouts as <<he>> walks away. A <<person5>><<personsimple>> with a jagged scar across <<his>> face stares at you from <<his>> cell. <<He>> licks one of the bars.
     <<else>>
         "Quiet down!" <<he>> shouts as <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> stares at you from <<his>> cell. <<He>> licks one of the bars.
     <</if>>
@@ -972,7 +972,7 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
     <</if>> <<person1>><<relaxed_guard 0>> says. "Lights on at <<ampm 6 00>>. There's a schedule on the wall. You can read, right?"
     <br><br>
     <<if $prison_intro isnot 1>>
-        "Quiet down!" <<he>> shouts as <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
+        "Quiet down!" <<he>> shouts as <<he>> walks away. A <<person5>><<personsimple>> with a jagged scar across <<his>> face arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
     <<else>>
         "Quiet down!" <<he>> shouts as <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
     <</if>>

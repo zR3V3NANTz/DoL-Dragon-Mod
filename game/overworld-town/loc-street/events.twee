@@ -148,15 +148,17 @@
 	<<effects>>
 	You run with all the speed you can muster.
 	<<gathletics>><<athletics 1>><<physique>>
-	<!-- Modified for Beast People -->
-		<!-- You manage to escape, but not unscathed.
+	<<if $monster isnot 1 and $bestialitydisable is "t">>
+		<!-- Modified for Beast People -->
+		You manage to escape, but not unscathed.
 		<<trauma 18>><<set $pain += 40>><<set $stress += 400>><<set $worn.lower.integrity -= 20>><<set $worn.upper.integrity -= 20>><<set $worn.under_lower.integrity -= 20>><<bruise leftarm>><<bruise full>>
 		<br><br>
+		<<endevent>>
 		<<destinationeventend>>
-		-->
-	<<if $athleticsSuccess>>
+	<<elseif $athleticsSuccess>>
 		You slowly gain distance on the <<beasttype>> and <<bhe>> eventually gives up the chase. You run a bit further, then stop to catch your breath.
 		<br><br>
+		<<endevent>>
 		<<destinationeventend>>
 	<<else>>
 		The <<beasttype>> is faster than you however. <<bHe>> quickly catches up to you and, grabbing your arm <<if $monster isnot 1>>in its teeth, drags<<else>> and dragging<</if>> you to the ground.
@@ -2627,7 +2629,7 @@ You wake up by the side of the road, leaning against a wall. A <<generate1>><<pe
 
 <<set $outside to 1>><<effects>>
 You follow the <<beasttype>> down the alley. <<bHe>> rounds a corner.
-<<if $rng gte 99>><!-- Modified for Beast People -->
+<<if $rng gte 99 and ($monster is 1 or $bestialitydisable if "f")>><!-- Modified for Beast People -->
 	You find <<bhim>> stood in the middle of the alley, looking at you. You hear a growl to your right and left. You're surrounded.
 	<br><br>
 	<<beastNEWinit 2 dog>>
@@ -2657,9 +2659,13 @@ You follow the <<beasttype>> down the alley. <<bHe>> rounds a corner.
 		There's <<moneyGain 100>> inside!
 		You look further but there's no identification.
 	<</if>>
-	The <<beasttype>> barks happily.
+	<<if $monster is 1>>
+		The <<beasttype>> barks happily.
+	<<else>>
+		"I'm glad to help," the <<beasttype>> says.
+	<</if>>
 	<br><br>
-	<<if $deviancy gte 15>><!-- Modified for Beast People -->
+	<<if $deviancy gte 15 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 		<<link [[Reward it|Street Follow Sex]]>><<set $sexstart to 1>><</link>><<deviant2>>
 		<br>
 	<</if>>

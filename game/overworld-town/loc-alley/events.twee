@@ -473,7 +473,7 @@ You are on the rooftop of a commercial building. You can access the shopping cen
 			<<link [[Glide down|Commercial alleyways]]>><<set $eventskip to 1>><</link>><<flight_text>><<lharass>>
 			<br>
 		<</if>>
-		<<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
+		<<shoppingcentreicon>><<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
 		<br><br>
 	<<else>>
 		<br><br>
@@ -483,7 +483,7 @@ You are on the rooftop of a commercial building. You can access the shopping cen
 			<<link [[Glide down|Commercial alleyways]]>><<set $eventskip to 1>><</link>><<flight_text>><<lharass>>
 			<br>
 		<</if>>
-		<<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
+		<<shoppingcentreicon>><<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
 		<br><br>
 	<</if>>
 <</if>>
@@ -666,7 +666,7 @@ At the sound of their approach, the <<beasttype>> ceases its adventure and bound
 	<br><br>
 	<<set $rescued += 1>>
 	<<clothesontowel>>
-	The <<person1>><<person>> looks concerned. "Are you OK?" <<tearful>> you nod and thank them for their concern, before parting ways.
+	The <<person1>><<person>> looks concerned. "Are you okay?" <<tearful>> you nod and thank them for their concern, before parting ways.
 	<br><br>
 	<<residentialeventend>>
 <</if>>

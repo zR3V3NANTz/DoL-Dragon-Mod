@@ -100,8 +100,10 @@ Your home is nearby.
 	<<link [[Pet|Residential Pet]]>><<stress -6>><</link>><<lstress>>
 	<br>
 	<!-- Modified for Monster People -->
-	<<link [[Tease|Residential Tease]]>><</link>><<deviant1>>
-	<br>
+	<<if $monster is 1 or $bestialitydisable is "f">>
+		<<link [[Tease|Residential Tease]]>><</link>><<deviant1>>
+		<br>
+	<</if>>
 <<elseif $rng gte 51>>
 	Nothing answers but the breeze, and a distant horn.
 	<br><br>
@@ -113,9 +115,10 @@ Your home is nearby.
 	<br><br>
 	<<link [[Pet|Residential Big Pet]]>><<stress 6>><<trauma -6>><</link>><<gstress>><<ltrauma>>
 	<br>
-	<!-- Modified for Monster People -->
-	<<link [[Tease|Residential Big Tease]]>><</link>><<deviant1>>
-	<br>
+	<<if $monster is 1 or $bestialitydisable is "f">><!-- Modified for Monster People -->
+		<<link [[Tease|Residential Big Tease]]>><</link>><<deviant1>>
+		<br>
+	<</if>>
 <<else>>
 	A light turns on inside an upper story room. A silhouette appears behind the curtains, and the window is thrown open. A <<generate1>><<person1>><<person>> leans out. "Stupid cat," <<he>> shouts. "Shut the fuck up." <<He>> hurls something at you, which you dodge with a hiss. "Finally," <<he>> sighs as <<he>> closes the window.
 	<br><br>

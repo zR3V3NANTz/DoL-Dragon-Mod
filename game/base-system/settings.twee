@@ -779,7 +779,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 			<label>At any time <<radiobutton "$monsterhallucinations" "f" autocheck>></label>
 			<br><br>
 
-			<span class="red">Disabling bestiality will automatically replace all beasts with monster girls or boys, regardless of the above settings.</span>
+			<span class="red">Disabling bestiality will stil allow lewd events with monster girls and boys.</span>
 			<br>
 
 			<span class="gold">Beast Toggles</span>

@@ -161,6 +161,7 @@
 <<set $famebusiness to Math.clamp($famebusiness, 0, 2000)>>
 <<set $famepimp to Math.clamp($famepimp, 0, 2000)>>
 <<set $famesocial to Math.clamp($famesocial, 0, 2000)>>
+<<set $famemodel to Math.clamp($famemodel, 0, 2000)>>
 
 <<set $fame to ($famesex + $famerape + $famebestiality + $fameexhibitionism + $fameprostitution + $famescrap + $famegood + $famebusiness + $famepimp + $famesocial)>>
 

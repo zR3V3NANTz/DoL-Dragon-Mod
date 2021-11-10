@@ -175,10 +175,14 @@ A gust of wind blows in from the ocean, pleasantly caressing your skin.
 <</if>>
 <br><br>
 <!-- Modified for Beast People -->
-<<link [[Next|Beach Night Dog]]>><<set $eventskip to 1>><<set $molestationstart to 1>><</link>>
-<!-- You manage to escape, but not unscathed.<<beastescape>> -->
-<!-- <br><br> -->
-<!-- <<link [[Next|Beach]]>><<set $eventskip to 1>><</link>> -->
+<<if $monster is 1 or $bestialitydisable is "f">>
+	<<link [[Next|Beach Night Dog]]>><<set $eventskip to 1>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	You manage to escape, but not unscathed.<<beastescape>>
+	<br><br>
+	<<link [[Next|Beach]]>><<endevent>><<set $eventskip to 1>><</link>>
+<</if>>
 <</widget>>
 
 <<widget "beachnight2">>

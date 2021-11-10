@@ -2082,6 +2082,15 @@ Socialite: <span id="statsfamesocial"><<print Math.trunc($famesocial)>></span>
  | <<link ">>>">><<set $famesocial += 1000>><<set $fame += 100>><<fameclamp>><<replace "#statsfamesocial">><<print Math.trunc($famesocial)>><</replace>><</link>>
 <br>
 
+<<link "<<<">><<set $famemodel -= 1000>><<set $fame -= 100>><<fameclamp>><<replace "#statsfamemodel">><<print Math.trunc($famemodel)>><</replace>><</link>> |
+<<link "<<">><<set $famemodel -= 100>><<set $fame -= 10>><<fameclamp>><<replace "#statsfamemodel">><<print Math.trunc($famemodel)>><</replace>><</link>> |
+<<link "<">><<set $famemodel -= 10>><<set $fame -= 1>><<fameclamp>><<replace "#statsfamemodel">><<print Math.trunc($famemodel)>><</replace>><</link>> |
+Model: <span id="statsfamemodel"><<print Math.trunc($famemodel)>></span>
+ | <<link ">">><<set $famemodel += 10>><<set $fame += 1>><<fameclamp>><<replace "#statsfamemodel">><<print Math.trunc($famemodel)>><</replace>><</link>>
+ | <<link ">>">><<set $famemodel += 100>><<set $fame += 10>><<fameclamp>><<replace "#statsfamemodel">><<print Math.trunc($famemodel)>><</replace>><</link>>
+ | <<link ">>>">><<set $famemodel += 1000>><<set $fame += 100>><<fameclamp>><<replace "#statsfamemodel">><<print Math.trunc($famemodel)>><</replace>><</link>>
+<br>
+
 <</widget>>
 
 <<widget "cheats-other">>

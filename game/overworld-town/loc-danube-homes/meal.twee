@@ -37,12 +37,19 @@ You hear a door opening, and then you fly through the air before landing on hard
 <<beastNEWinit 3 dog>>
 You have yet to recover your bearings when a growl sends a chill down your back. You realise why they would just dump food onto the ground like this. Three stray <<beastsplural>> advance on you, hunger in their eyes.
 <!-- Modified for Beast People -->
-	<!-- You flee, dropping cream and strawberries as you go. You manage to escape them, but not without injury. <<beastescape>> -->
-	<!-- <br><br> -->
-	<!-- <<set $stress -= 1000>> -->
-	<!-- <<residentialquick>> -->
-	<br><br>
+<br><br>
+<<if $monster is 1 or $bestialitydisable is "f">>
 	<<link [[Next|Danube Meal Dogs]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	You flee, dropping cream and strawberries as you go. You manage to escape them, but not without injury. <<beastescape>>
+	<br><br>
+	<<set $stress -= 1000>>
+	<<endevent>>
+	<<residentialquick>>
+<</if>>
+
+
 
 :: Widgets Danube Meal [widget]
 

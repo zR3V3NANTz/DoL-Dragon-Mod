@@ -954,7 +954,8 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 		"mummytop":"locked",
 		"mummyskirt":"locked",
 		"catsuit":"locked",
-		"holystole":"locked"
+		"holystole":"locked",
+		"minisnowman":"locked"
 	}>>
 <</if>>
 <<if $specialClothes.cowbell is undefined>>
@@ -968,6 +969,9 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 <</if>>
 <<if $specialClothes.holystole is undefined>>
 	<<set $specialClothes.holystole to "locked">>
+<</if>>
+<<if $specialClothes.minisnowman is undefined>>
+	<<set $specialClothes.minisnowman to "locked">>
 <</if>>
 <<if $specialClothes.cowbra is undefined>>
 	<<set $specialClothes.cowbra to "locked">>
@@ -999,6 +1003,7 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 	<<set $specialClothes["christmastrousers"] to "unlocked">>
 	<<set $specialClothes["christmashat"] to "unlocked">>
 	<<set $specialClothes["christmaslegwarmers"] to "unlocked">>
+	<<set $specialClothes["minisnowman"] to "unlocked">>
 <</if>>
 <<if $brothelshowdata.intro>>
 	<<set $specialClothes["bellydancer'stop"] to "unlocked">>
@@ -1080,6 +1085,7 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 	<<set $specialClothes["featheredhairclip"] to "unlocked">>
 	<<set $specialClothes["catsuit"] to "unlocked">>
 	<<set $specialClothes["holystole"] to "unlocked">>
+	<<set $specialClothes["minisnowman"] to "unlocked">>
 <</if>>
 
 <</widget>>
@@ -1116,7 +1122,8 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 		"mummyskirt":"In stock from the 21st of October.",
 		"featheredhairclip":"Romance an avian.",
 		"catsuit":"Pillage a shipment.",
-		"holystole":"Requires sufficient devotion."
+		"holystole":"Requires sufficient devotion.",
+		"minisnowman":"In stock from the 15th of December."
 	}>>
 <</if>>
 <</widget>>

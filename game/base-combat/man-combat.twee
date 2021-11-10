@@ -1266,7 +1266,6 @@
 <<widget "combat-set-hand-start">>
 	<<set $rng to random(1, 100)>>
 
-
 	<<combat-get-other-hand $args[0]>>
 
 	<<if $askedtochoke is 1 and $consensual is 1 and $asphyxiaLvl gte 1 and ($neckuse isnot "hand" or ($otherNPChand is "throat" and $rng lte 30))>>
@@ -1311,7 +1310,7 @@
 			<<set _stripped to true>>
 		<</if>>
 		<<combat-set-hand-target $args[0] $handtarget>>
-	<<elseif $rng lte 7 and ($consensual isnot 1 or ["Whitney", "Kylar", "Sydney"].includes($npc[$npcrow.indexOf(_n)])) and $bodywritingdisable is "f" and $enemytype isnot "beast" and !$noBodyWriting>>
+	<<elseif $rng lte 7 and ($consensual isnot 1 or ["Whitney", "Kylar", "Sydney"].includes($npc[$npcrow.indexOf(_n)])) and $bodywritingLvl gte 2 and $enemytype isnot "beast" and !$noBodyWriting>>
 		<<set _rng to random(1, 5)>>
 		<<if (_rng is 5 and $NPCList[_n].type isnot "plant") or $npc.includes("Sydney")>>
 			<span class="purple"><<He>> pulls a <span class="pink">permanent</span> marker pen from <<his>> pocket, flicking off the lid.</span>

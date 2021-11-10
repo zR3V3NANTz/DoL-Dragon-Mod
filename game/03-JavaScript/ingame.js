@@ -829,9 +829,9 @@ window.clothesDataTrimmerLoop = function(){
 
 window.clothesDataTrimmer = function(item){
 	if(!item) return;
-	const toDelete = ["name_cap","iconFile","accIcon","notuck","skirt","description","colour_options","accessory_colour_options","fabric_strength","integrity_max","bustresize","sleeve_img","breast_img","exposed_base","vagina_exposed_base","anus_exposed_base","state_top_base","state_base","word","femininity","strap","cost","shop"];
+	const toDelete = ["name_cap","iconFile","accIcon","notuck","skirt","description","colour_options","accessory_colour_options","fabric_strength","integrity_max","bustresize","sleeve_img","breast_img","exposed_base","vagina_exposed_base","anus_exposed_base","state_top_base","state_base","word","femininity","strap","cost","shop","short"];
 	//To prevent it from running on variables multiple times, when updating toDelete, the last of the new additions should be added here
-	const trimmerVersion = ["shop"];
+	const trimmerVersion = ["shop","short"];
 	let version = 0;
 	let indexToUpdateVersion = toDelete.indexOf(trimmerVersion[version]);
 	toDelete.forEach((v, index) => {

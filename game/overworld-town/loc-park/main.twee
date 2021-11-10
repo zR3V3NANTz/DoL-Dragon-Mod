@@ -289,20 +289,21 @@ The <<beasttype>> whimpers and flees into a bush. <<tearful>> you gather yoursel
 		<<if $weather is "rain" or $weather is "snow">> /*10% chance if running naked in the park at night during rain or snow.*/
 			As you pass <<print either("near a storm-drain","the bridge over the lake","the lake","some trees by the lake","some bushes by the storm-drain")>>
 			something grabs your leg, dragging you down.
-				<!-- Modified for Monster People -->
-				<<beastNEWinit 1 lizard>>
-				<br>
+			<!-- Modified for Monster People -->
+			<<beastNEWinit 1 lizard>>
+			<br>
+			<<if $monster is 1 or $bestialitydisable is "f">>
 				Before you can react, a giant sewer <<beasttype>> has clambered upon you.
 				<br><br>
 				<<link [[Next|Park Lizard Rape]]>><<set $molestationstart to 1>><</link>>
 				<br>
-				<!--
+			<<else>>
 				It's a giant lizard.
 				<br>
-				You narrowly manage to squirm free from the giant lizard's claws and dash away. Glancing behind, you can just make it out scurrying back toward the sewer.
+				You narrowly manage to squirm free from the giant lizard's claws and dash away. Glancing behind, you can just make it out scurrying back toward the sewer.<<beastescape>>
 				<br><br>
-				<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
-				-->
+				<<link [[Next|Park]]>><<endevent>><<set $eventskip to 1>><</link>>
+			<</if>>
 		<<else>>You don't encounter anyone.
 		<br><br>
 		<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>

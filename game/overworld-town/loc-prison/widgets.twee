@@ -738,7 +738,7 @@
     "That doesn't look like underwear," <<he>> says. "Come with me."
     <<set $phase to 1>>
 <<elseif $prison.active_punishments.includes("cuffs") and !$worn.feet.type.includes("shackle")>>
-    "Where are your shackles?" <<he>> asks. "Come with me."
+    "Where is your shackle?" <<he>> asks. "Come with me."
     <<set $phase to 1>>
 <<elseif $prison.active_punishments.includes("gag") and !$worn.face.type.includes("gag")>>
     "Where's your gag?" <<he>> asks. "Come with me."
@@ -747,7 +747,7 @@
     "Your arms aren't supposed to be free," <<he>> says. "Come with me."
     <<set $phase to 1>>
 <<elseif $worn.feet.type.includes("shackle") and !$prison.active_punishments.includes("cuffs")>>
-    "Where'd you get those?" <<he>> asks, looking at your cuffs. <<He>> pulls a key from <<his>> pocket.
+    "Where'd you get that?" <<he>> asks, looking at your shackle. <<He>> pulls a key from <<his>> pocket.
     <<set $phase to 2>>
 <<elseif $worn.neck.type.includes("leash") and !$prison.active_punishments.includes("leash")>>
     "You're not supposed to be leashed," <<he>> says, pulling a pair of pliers from <<his>> pocket.
@@ -782,7 +782,7 @@
     <<link [["Let " + $NPCList[0].pronouns.him + " remove the leash"|Prison Remove Leash]]>><</link>>
     <br>
 <<elseif $phase is 2>>
-    <<link [["Let " + $NPCList[0].pronouns.him + " remove the ankle cuffs"|Prison Remove Cuffs]]>><</link>>
+    <<link [["Let " + $NPCList[0].pronouns.him + " remove the ball and chain"|Prison Remove Cuffs]]>><</link>>
     <br>
 <<elseif $phase is 1>>
     <<prison_repunishment_options>>
@@ -815,7 +815,7 @@
 			<<set $prison_anxious_greet to 1>>
 			<<generate_anxious_guard 0>><<person1>><<anxious_guard 0 cap>> startles at the sound of your footsteps.
 			<<if $prison.anxious gte 45>>
-				<<He>> calms down when <<he>> sees you. A smile flashes on <<his>> face briefly, but <<he>> quickly straightens it into a stern look.
+				<<He>> calms down when <<he>> sees you. A smile flashes on <<his>> face briefly, before <<he>> straightens it into a stern look.
 				<br><br>
 				"Don't do anything stupid," <<he>> says.
 				<<switch random(0, 2)>>
@@ -917,7 +917,7 @@
     <br>
 <<elseif $prison_event_trigger is "two">>
     <<if $worn.feet.type.includes("shackle")>>
-        <span class="blue">It's hard to defend yourself with your ankles cuffed.</span>
+        <span class="blue">It's hard to defend yourself with your ankle cuffed.</span>
         <br>
     <<else>>
         <<link [[Kick|Prison Kick]]>><</link>><<athleticsdifficulty 1 1000>>
@@ -1030,7 +1030,7 @@
             <<if $skulduggery gte random(1, 1000)>>
                 <<if $leftarm is "bound" and $rightarm is "bound">>
                     <<if $worn.feet.type.includes("shackle")>>
-                        <span class="green">You hear light footsteps behind.</span> You can't defend yourself with your arms bound. You try to hasten away, <span class="red">but your shackles slow you.</span> You're helpless to resist as <<he>> grasps your <<breasts>>.
+                        <span class="green">You hear light footsteps behind.</span> You can't defend yourself with your arms bound. You try to hasten away, <span class="red">but your shackle slows you.</span> You're helpless to resist as <<he>> grasps your <<breasts>>.
                         <<set $prison_event_trigger to "rape">>
                     <<else>>
                         <span class="green">You hear light footsteps behind.</span> Someone's trying to sneak up on you. You hasten away before <<he>> accomplishes any devilry.
@@ -1238,7 +1238,7 @@
 
     "See you later, slut," <<scarred_inmate 1>> says. <span class="red">You've lost the scarred inmate's protection.</span>
     <br><br>
-
+    
     <<destination_prison>>
     
 <<elseif $prison.attention_level gte 1>>
@@ -1257,8 +1257,13 @@
     <<link [[Fight|Prison Attention Fight Refuse]]>><</link>>
     <br>
     <<if $prison.kylar is "active">>
-        <<link [[Call Kylar|Prison Attention Kylar]]>><<set $prison.attention_level to 1>><<set $prison.attention to 0>><<set $prison.kylar to "solitary">><<set $prison_kylar_timer to 3>><</link>>
-        <br>
+        <<if $worn.face.type.includes("gag")>>
+            <span class="blue">Kylar would rescue you, but you can't call them with your mouth gagged.</span>
+            <br>
+        <<else>>
+            <<link [[Call Kylar|Prison Attention Kylar]]>><<set $prison.attention_level to 1>><<set $prison.attention to 0>><<set $prison.kylar to "solitary">><<set $prison_kylar_timer to 3>><</link>>
+            <br>
+        <</if>>
     <<elseif $prison.kylar is "solitary">>
         <span class="blue">Kylar can't help you from solitary.</span>
         <br>
@@ -1537,4 +1542,30 @@ You have the inmates' attention. A thought flashes through your mind. A desire f
     <<set _punishments_removed to true>>
 <</if>>
 <<unbind>>
+<</widget>>
+
+<<widget "prison_map">>
+<<if $images is 1>>
+    <br>
+    <div id="prison_map">
+        <img src="img/misc/prison_map.gif">
+        <<if $rut isnot undefined>>
+            <img id="prison_map_rut" src="img/misc/prison_rut.gif">
+            <<if random(1, 1000) is 1000>>
+                <div id="prison_map_hide">
+                    <img id="prison_map_rut_overlay" src="img/misc/prison_rut_eye.png">
+                    <<timed 1s>>
+                        <<replace #prison_map_hide>>
+                        <</replace>>
+                    <</timed>>
+                </div>
+            <</if>>
+        <</if>>
+        <<if $args[0] and $args[0] isnot "rut">>
+            <img id="prison_map_overlay" @src="'img/misc/prison_map_' + $args[0] + '.png'">
+        <<elseif $args[0] is "rut">>
+            <img id="prison_map_rut_overlay" src="img/misc/prison_rut_overlay.png">
+        <</if>>
+    </div>
+<</if>>
 <</widget>>

@@ -120,3 +120,13 @@
 	<</if>>
 <</if>>
 <</widget>>
+
+<<widget "famemodel">>
+<<if $args[0] and $statFreeze isnot true>>
+	<<if $face isnot "covered" and !$worn.face.type.includes("mask") and !$gloryhole>>
+		<<set $fame += $args[0]>>
+		<<set $famemodel += $args[0]>>
+		<<set $famemodel to Math.clamp($famemodel, 0, 2000)>>
+	<</if>>
+<</if>>
+<</widget>>

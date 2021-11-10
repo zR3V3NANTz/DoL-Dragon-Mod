@@ -277,8 +277,8 @@ Writing is engraved on its surface.
 		<<link [[Next|Prison Punishment Underwear]]>><<prison_punishment_init>><</link>>
 		<br>
 	<<case "cuffs">>
-		<<feetwear 3>>
-		<<methodical_guard 0 cap>><<person1>> rummages beneath the desk again. <span class="lblue">A set of black shackles linked by a chain clatter onto the desk.</span> <<veteran_guard 3 cap>><<person4>> takes them in hand, and crouches beside you.
+		<<feetwear 26>>
+		<<methodical_guard 0 cap>><<person1>> rummages beneath the desk again. <span class="lblue">A metal ball chained to a shackle thuds onto the wood.</span> <<veteran_guard 3 cap>><<person4>> takes it in hand, and crouches beside you.
 		<br><br>
 		"Maybe this bondage will remind you of your place."
 		<br><br>
@@ -677,7 +677,7 @@ The pliers bite through the leash, leaving your collar bare.
 :: Prison Remove Cuffs
 <<effects>>
 
-<<He>> crouches beside you, and inserts the key. The ankle cuffs click open.
+<<He>> crouches beside you, and inserts the key. The ball and chain clicks open.
 <br><br>
 
 "Be on your best behaviour," <<he>> says. "Or these go back on."
@@ -799,8 +799,8 @@ You stay still as <<he>> fiddles with the strap behind your head. It comes loose
 	<<He>> pulls a blade from <<his>> pocket, grasps your clothing, and tears through it with rough strokes.<<covered>>
 	<br><br>
 <<elseif $prison.active_punishments.includes("cuffs") and !$worn.feet.type.includes("shackle")>>
-	<<feetwear 3>>
-	<<He>> clamps cold metal around your ankles, a chain between them.
+	<<feetwear 26>>
+	<<He>> clamps cold metal around your ankle, linked to a heavy ball.
 <<elseif $prison.active_punishments.includes("gag") and !$worn.face.type.includes("gag")>>
 	<<if $worn.face.name is "blindfold">>
 		<<set $worn.face.type.push("broken")>>

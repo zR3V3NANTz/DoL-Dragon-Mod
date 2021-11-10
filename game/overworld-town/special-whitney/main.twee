@@ -928,43 +928,45 @@ You dive through the hole. Whitney takes the boxes from your hands. You try to c
 	"Please help," you say.
 	<</if>>
 <br><br>
-
-<<if $whitneyromance is 1>>
-
-Whitney considers a moment, then grabs your arms. <<He>> pulls you through to safety. "Can't let that dog have its way with you. You'd smell all funny." <<He>> and <<his>> friends laugh. "See you later <<girl>>. Thanks for the help."
-<<npcincr Whitney lust 5>><<glust>>
-<br><br>
-
-<<endevent>>
-
-<<link [[Next|Elk Street]]>><<endevent>><</link>>
-<br>
-
-<<else>><!-- Modified for Beast People -->
-
-Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
-<<npcincr Whitney lust 5>><<glust>>
-<br><br>
-
 <<endevent>>
 <<beastNEWinit 1 dog>>
-You feel the <<beasttype>> prod your behind.
-<br><br>
+<<if $monster isnot 1 and $bestialitydisable is "t">>
+	<<endevent>>
+	<<npc Whitney>><<person1>>
+	Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
 
-<<link [[Next|Bully Theft Dog]]>><<set $molestationstart to 1>><</link>>
-<br>
+	You wriggle and manage to get through the hole before the dog reaches you. The struggle hurt you and damaged your clothing.
+	<<npcincr Whitney lust 5>><<glust>><<beastescape>>
+	<br><br>
+
+	<<endevent>>
+
+	<<link [[Next|Elk Street]]>><<endevent>><</link>>
+	<br>
+<<elseif $whitneyromance is 1>>
+	<<endevent>>
+	<<npc Whitney>><<person1>>
+	Whitney considers a moment, then grabs your arms. <<He>> pulls you through to safety. "Can't let that dog have its way with you. You'd smell all funny." <<He>> and <<his>> friends laugh. "See you later <<girl>>. Thanks for the help."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
+
+	<<endevent>>
+
+	<<link [[Next|Elk Street]]>><<endevent>><</link>>
+	<br>
+<<else>><!-- Modified for Beast People -->
+	Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
+	You feel the <<beasttype>> prod your behind.
+	<br><br>
+	
+	<<link [[Next|Bully Theft Dog]]>><<set $molestationstart to 1>><</link>>
+	<br>
 
 <</if>>
-<!--
-You wriggle and manage to get through the hole before the dog reaches you. The struggle hurt you and damaged your clothing.
-<<npcincr Whitney lust 5>><<glust>><<beastescape>>
-<br><br>
-
-<<endevent>>
-
-<<link [[Next|Elk Street]]>><<endevent>><</link>>
-<br>
--->
 
 :: Bully Outside Fight
 <<if $fightstart is 1>>

@@ -171,13 +171,16 @@ Go towards town
 		"Found you," <<bhe>> barks. "Mine."
 	<</if>>
 	<br><br>
+	<<if $monster is 1 or $bestialitydisable is "f">>
+		<<link [[Next|Forest Wolf]]>><<set $molestationstart to 1>><</link>>
+		<br>
+	<<else>>
+		It chases you through the woods. You run until you can no longer hear it behind you. You're not sure if you outran it or it grew bored.
+		<<beastescape>><<gtiredness>><<tiredness 4>><<gathletics>><<athletics 2>><<physique 2>>
+		<br><br>
 
-	<<link [[Next|Forest Wolf]]>><<set $molestationstart to 1>><</link>>
-		<!-- It chases you through the woods. You run until you can no longer hear it behind you. You're not sure if you outran it or it grew bored. -->
-		<!-- <<beastescape>><<gtiredness>><<tiredness 4>><<gathletics>><<athletics 2>><<physique 2>> -->
-		<!-- <br><br> -->
-
-		<!-- <<link [[Next (0:20)|Forest]]>><<pass 20>><<set $eventskip to 1>><</link>> -->
+		<<link [[Next (0:20)|Forest]]>><<pass 20>><<set $eventskip to 1>><<endevent>><</link>>
+	<</if>>
 <</addinlineevent>>
 <<addinlineevent "forestoutskirts_safeperson">>
 	<<if $daystate is "night">>
@@ -251,18 +254,21 @@ Go towards town
 	<<addinlineevent "forest_wolf" 0.33>>
 		<<beastNEWinit 1 wolf>>
 		<!-- Modified for monster people -->
-		A lone <<beasttype>> emerges from between the trees, teeth bared.
-		<<if $monster is 1>>
-			"Prey. No struggle."
+			A lone <<beasttype>> emerges from between the trees, teeth bared.
+			<<if $monster is 1>>
+				"Prey. No struggle."
+			<</if>>
+			<br><br>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			<<link [[Next|Forest Wolf]]>><<set $molestationstart to 1>><</link>>
+			<br>
+		<<else>>
+			It chases you through the woods. You run until you can no longer hear it behind you. You're not sure if you outran it or it grew bored.
+			<<beastescape>><<gtiredness>><<tiredness 4>><<gathletics>><<athletics 2>><<physique 2>>
+			<br><br>
+
+			<<link [[Next (0:20)|Forest]]>><<endevent>><<pass 20>><<set $eventskip to 1>><</link>>
 		<</if>>
-		<br><br>
-		<<link [[Next|Forest Wolf]]>><<set $molestationstart to 1>><</link>>
-
-			<!-- It chases you through the woods. You run until you can no longer hear it behind you. You're not sure if you outran it or it grew bored. -->
-			<!-- <<beastescape>><<gtiredness>><<tiredness 4>><<gathletics>><<athletics 2>><<physique 2>> -->
-			<!-- <br><br> -->
-
-			<!-- <<link [[Next (0:20)|Forest]]>><<pass 20>><<set $eventskip to 1>><</link>> -->
 	<</addinlineevent>>
 	<<addevent "forestbear" 0.15>>
 	<<addevent "forestrock" 0.25>>
@@ -317,13 +323,16 @@ Go towards town
 		<</if>>
 		<br><br>
 		<!-- Modified for monster people -->
-		<<link [[Next|Forest Wolf2]]>><<set $molestationstart to 1>><</link>>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			<<link [[Next|Forest Wolf2]]>><<set $molestationstart to 1>><</link>>
+			<br>
+		<<else>>
+			They chase you through the woods. You run until you can no longer hear them behind you. You're not sure if you outran them or they grew bored.
+			<<beastescape>><<gtiredness>><<tiredness 8>><<gathletics>><<athletics 4>><<physique 4>>
+			<br><br>
 
-			<!-- They chase you through the woods. You run until you can no longer hear them behind you. You're not sure if you outran them or they grew bored. -->
-			<!-- <<beastescape>><<gtiredness>><<tiredness 8>><<gathletics>><<athletics 4>><<physique 4>> -->
-			<!-- <br><br> -->
-
-			<!-- <<link [[Next (0:40)|Forest]]>><<pass 40>><<set $eventskip to 1>><</link>> -->
+			<<link [[Next (0:40)|Forest]]>><<pass 40>><<set $eventskip to 1>><</link>>
+		<</if>>
 	<</addinlineevent>>
 	<<if $voredisable is "f" and $bestialitydisable is "f">>
 		<<addevent "forestsnake" 0.33>>
@@ -472,7 +481,7 @@ A pair of eyes stares out from the darkness beneath a fern.
 <<gstress>><<stress 6>>
 <br><br>
 <!-- Modified for monster people -->
-<<if $parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime">>
+<<if ($parasite.left_ear.name is "slime" or $parasite.right_ear.name is "slime") and $bestialitydisable is "f">>
 	<span class="lewd">You feel the slime in your head command you to drop to all fours.</span> It promises rewards if you comply, and threatens consequences if you do not.
 	<br><br>
 
@@ -486,7 +495,7 @@ A pair of eyes stares out from the darkness beneath a fern.
 	<br>
 
 <<else>>
-	<<if $deviancy gte 15>>
+	<<if $deviancy gte 15 and $bestialitydisable is "f">>
 	<<link [[Adopt mating posture|Forest Wolf Mate]]>><</link>><<deviant2>>
 	<br>
 	<</if>>
@@ -578,7 +587,7 @@ You feel whatever's hunting you draw closer.
 <<link [[Take a detour (0:30)|Forest]]>><<pass 30>><<if $foresthunt gte 1>><<set $foresthunt += 2>><</if>><<set $eventskip to 1>><</link>>
 <br>
 <!-- Modified for Monster People -->
-<<if random(1, 5) is 5>>
+<<if random(1, 5) is 5 and $bestialitydisable is "f">>
 <<link [[Ignore them|Forest Bear Molestation]]>><<set $molestationstart to 1>><</link>>
 <br>
 <<else>>
@@ -703,35 +712,40 @@ You spot a decaying metal shard amongst the fallen bark at your feet. It's an ar
 	<!-- Modified for monster people -->
 	<<npc "Black Wolf">>/*<<beastNNPCinit>>*/
 	<<if $syndromewolves is 1 and $wolfpacktrust gte 24>>
-	The Black Wolf bounds towards you! <<bHis>> excitement knocks you over as <<bhe>> leaps on top of you and licks your face, then turns and walks several paces away. <<bHe>> looks back over <<bhis>> shoulder.
-	<<if $monster is 1>>
-		"Good to see you," <<bhe>> says. "Not safe here. Cold, dark. Come home."
-	<</if>>
-	<br><br>
+		The Black Wolf bounds towards you! <<bHis>> excitement knocks you over as <<bhe>> leaps on top of you and licks your face, then turns and walks several paces away. <<bHe>> looks back over <<bhis>> shoulder.
+		<<if $monster is 1>>
+			"Good to see you," <<bhe>> says. "Not safe here. Cold, dark. Come home."
+		<</if>>
+		<br><br>
 
-	<<link [[Return to wolf cave (0:30)|Wolf Cave Clearing]]>><<endevent>><<pass 30>><</link>>
-	<br>
-	<<link [[Continue|Forest]]>><<endevent>><<set $eventskip to 1>><</link>>
-	<br>
+		<<link [[Return to wolf cave (0:30)|Wolf Cave Clearing]]>><<endevent>><<pass 30>><</link>>
+		<br>
+		<<link [[Continue|Forest]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<br>
 
-	<<elseif $syndromewolves is 1>>
-	The Black Wolf bounds towards you!
-	<<if $monster is 1>>
-		"Runaway, no good," <<bhe>> says.
-	<</if>>
-	<br><br>
+	<<elseif $syndromewolves is 1 and ($monster is 1 or $bestialitydisable is "f")>>
+		The Black Wolf bounds towards you!
+		<<if $monster is 1>>
+			"Runaway, no good," <<bhe>> says.
+		<</if>>
+		<br><br>
 
-	<<link [[Next|Forest Wolf Molestation]]>><<set $molestationstart to 1>><</link>>
+		<<link [[Next|Forest Wolf Molestation]]>><<set $molestationstart to 1>><</link>>
+	<<elseif $monster is 1 or $bestialitydisable is "f">>
+		You hear rustling nearby. A pair of glowing yellow eyes watch you from the canopy.
+		<<if $monster is 1>>
+			Tufts of thick black hair cover a nude, towering body from head to toe. With a primal growl, <<bhe>> leaps towards you!
+		<<else>>
+			A monstrous black wolf bounds towards you!
+		<</if>>
+		<br><br>
+
+		<<link [[Next|Forest Wolf Molestation]]>><<set $molestationstart to 1>><</link>>
 	<<else>>
-	You hear rustling nearby. A pair of glowing yellow eyes watch you from the canopy.
-	<<if $monster is 1>>
-		Tufts of thick black hair cover a nude, towering body from head to toe. With a primal growl, <<bhe>> leaps towards you!
-	<<else>>
-		A monstrous black wolf bounds towards you!
-	<</if>>
-	<br><br>
-
-	<<link [[Next|Forest Wolf Molestation]]>><<set $molestationstart to 1>><</link>>
+		You hear rustling nearby. A pair of glowing yellow eyes watch you from the canopy. A monstrous black wolf bounds towards you! You flee in terror, and somehow manage to escape.<<beastescape>>
+		<br><br>
+		<<link [[Next|Forest]]>><<endevent>><</link>>
+		<br>
 	<</if>>
 <<elseif $wraith and $wraith.hunt>>
 	<<set $wraith.hunt to 0>>

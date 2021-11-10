@@ -41,7 +41,7 @@ You are on Starfish Street. Wind blows in from the ocean.
 		<</if>>
 		Places of Interest
 		<br>
-		<<link [[Beach (0:05)|Beach]]>><<pass 5>><</link>>
+		<<beachicon>><<link [[Beach (0:05)|Beach]]>><<pass 5>><</link>>
 		<br>
 		<<if $daystate is "day" or $daystate is "dusk">>
 		<<arcadeicon>><<link [[Arcade (0:01)|Arcade]]>><<pass 1>><</link>>

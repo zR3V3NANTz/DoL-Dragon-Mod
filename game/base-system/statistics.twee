@@ -317,6 +317,8 @@ Sentenced with the pillory:	$stat_police.pillory
 <br>
 Days in prison: $stat_police.prison
 <br>
+Hypnotised: $hypnotised
+<br>
 
 <br><br>
 __Save Game Details__
@@ -513,6 +515,8 @@ __Save Game Details__
 	Business fame: <<print Math.trunc($famebusiness)>>
 	<br>
 	Socialite fame: <<print Math.trunc($famesocial)>>
+	<br>
+	Model fame: <<print Math.trunc($famemodel)>>
 	<br>
 	<br>
 

@@ -58,7 +58,7 @@ You are in your cell. There's a bed in one corner, and a cupboard in another. A 
     <</if>>
 	<<roomoptions>>
     <<if $prison.schedule isnot "lockdown" and !$worn.face.type.includes("blindfold")>>
-        <<ind>><<link [[Plaque|Prison Plaque]]>><</link>>
+        <<plaqueicon>><<link [[Plaque|Prison Plaque]]>><</link>>
         <br>
     <</if>>
 	<<wardrobeicon>><<link [[Cupboard|Prison Wardrobe]]>><</link>>
@@ -83,7 +83,6 @@ You are in your cell. There's a bed in one corner, and a cupboard in another. A 
 		<<link [[Attitudes]]>><<set $attitudesExitPassage to $passage>><</link>>
 	<</if>>
 	<br>
-
 <</if>>
 
 <<set $eventskip to 0>>
@@ -997,13 +996,14 @@ You are on the metal walkway outside your cell, at the top of the cell block. Th
                 <span class="blue">The door to medical is locked.</span>
                 <br><br>
             <<else>>
-                <<link [[Medical|Prison Medical]]>><</link>>
+                <<prisonmedicalicon>><<link [[Medical|Prison Medical]]>><</link>>
                 <br><br>
             <</if>>
             The stairs snake around the central tower.
             <br>
             <<link [[Downstairs|Prison Block]]>><</link>>
             <br><br>
+            <<prison_map walkway>>
         <</if>>
         <<set $eventskip to 0>>
     <</if>>
@@ -1058,7 +1058,7 @@ You are at the bottom of the cell block. There are stairs leading to a walkway a
             <br><br>
             A faint chemical smell surrounds another door. The closest cells are vacant, the metal warped and corroded.
             <br>
-            <<link [[Laundry|Prison Laundry]]>><</link>>
+            <<prisonlaundryicon>><<link [[Laundry|Prison Laundry]]>><</link>>
             <br><br>
 
             <<if $prison.kylar is "active" and !$prison_kylar_cell and ($prison.schedule is "free time" or $prison.schedule is "yard")>>
@@ -1070,7 +1070,6 @@ You are at the bottom of the cell block. There are stairs leading to a walkway a
                 <br><br>
             <</if>>
             
-
             A corridor leads away, towards daylight.
             <br>
             <<link [[Outside|Prison Yard]]>><</link>>
@@ -1079,6 +1078,8 @@ You are at the bottom of the cell block. There are stairs leading to a walkway a
             <br>
             <<link [[Climb the stairs towards your cell|Prison Walkway]]>><</link>>
             <br><br>
+
+            <<prison_map block>>
         <</if>>
         <<set $eventskip to 0>>
     <</if>>
@@ -1124,6 +1125,8 @@ You are in the laundry room. The walls give way to raw rock part way in. Thick p
         <</if>>
         <<link [[Leave|Prison Block]]>><</link>>
         <br>
+
+        <<prison_map laundry>>
     <</if>>
 <</if>>
 
@@ -1170,6 +1173,7 @@ You are in the medical room. Rows of beds stretch down its length, many occupied
         <</if>>
         <<link [[Leave|Prison Walkway]]>><</link>>
         <br>
+        <<prison_map medical>>
     <</if>>
 <</if>>
 
@@ -1380,24 +1384,30 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                         <span class="blue">You can't run with your legs bound.</span>
                         <br>
                     <<else>>
-                        <<link [[Run (0:30)|Prison Yard Run]]>><<endevent>><<tiredness 6>><<athletics 6>><<pass 30>><</link>><<gathletics>><<gphysique>>
+                        <<prisonrunicon>><<link [[Run (0:30)|Prison Yard Run]]>><<endevent>><<tiredness 6>><<athletics 6>><<pass 30>><</link>><<gathletics>><<gphysique>>
                         <br>
                     <</if>>
                     <<if $leftarm is "bound" or $rightarm is "bound">>
                         <span class="blue">You can't lift with your arms bound.</span>
                         <br>
                     <<else>>
-                        <<link [[Lift weights (0:30)|Prison Yard Exercise]]>><<endevent>><<pass 30>><<tiredness 6>><</link>><<gtiredness>><<ggphysique>>
+                        <<prisonlifticon>><<link [[Lift weights (0:30)|Prison Yard Exercise]]>><<endevent>><<pass 30>><<tiredness 6>><</link>><<gtiredness>><<ggphysique>>
                         <br>
                     <</if>>
                 <</if>>
                 <<if $prison.schedule is "yard">>
                     <<if $worn.face.type.includes("gag")>>
-                        <span class="blue">You can't speak to the guard with this gag in the way.</span>
+                        <span class="blue">You can't speak to the guard or inmates with this gag in the way.</span>
                         <br>
                     <<else>>
                         <<link [[Speak with the guard (0:30)|Prison Yard Speak]]>><<endevent>><<pass 30>><<prison_rep veteran 1>><</link>><<glove>>
                         <br>
+                        <<link [[Cutely flirt with inmates (0:30)|Prison Yard Flirt]]>><<set $phase to 0>><<pass 30>><<prison_hope 1>><</link>><<promiscuous1>><<ghope>>
+                        <br>
+                        <<if $promiscuity gte 15>>
+                            <<link [[Salaciously flirt with inmates (0:30)|Prison Yard Flirt]]>><<set $phase to 1>><<pass 30>><<prison_reb 1>><</link>><<promiscuous2>><<greb>>
+                            <br>
+                        <</if>>
                     <</if>>
                 <</if>>
                 <<if $prison.schedule is "yard" and $weekday is 6>>
@@ -1412,7 +1422,7 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                 <br>
                 The ground slopes gently, leading to a pair of wide doors. The smell of stale food lingers in the air.
                 <br>
-                <<link [[Canteen|Prison Canteen]]>><<endevent>><</link>>
+                <<prisoncanteenicon>><<link [[Canteen|Prison Canteen]]>><<endevent>><</link>>
                 <br><br>
                 
                 The wall protrudes, giving rise to a tower far taller than the rest of the prison. There's a metal door at the bottom.
@@ -1446,15 +1456,16 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                 There's a small area sheltered from view. A large locked door blends into the surrounding stone.
                 <br>
                 <<if $prison.yard_door is 1>>
-                    <<link [[Sneak to beach (0:01)|Prison Beach]]>><<endevent>><<pass 1>><</link>>
+                    <<prisondooricon>><<link [[Sneak to beach (0:01)|Prison Beach]]>><<endevent>><<pass 1>><</link>>
                     <br>
                 <<else>>
-                    <<link [[Large door|Prison Yard Door]]>><<endevent>><</link>>
+                    <<prisondooricon>><<link [[Large door|Prison Yard Door]]>><<endevent>><</link>>
                     <br>
                 <</if>>
                 <br>
                 <<link [[Prison block|Prison Block]]>><<endevent>><</link>>
                 <br>
+                <<prison_map yard>>
             <</if>>
         <</if>>
         <<set $eventskip to 0>>
@@ -1694,6 +1705,7 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
             <<link [[Leave (0:05)|Prison Yard]]>><<pass 6>><</link>>
             <br>
         <</if>>
+        <<prison_map spire>>
     <</if>>
 <</if>>
 
