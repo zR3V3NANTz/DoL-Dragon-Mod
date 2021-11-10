@@ -184,37 +184,3 @@ You hand Gwylan the cash.
 
 <<link [[Next|Forest Shop]]>><</link>>
 <br>
-
-<!-- Redirects for passages that were removed, so that old saves won't break in case they saved in one of these -->
-:: Forest Shop Outfit
-<<goto "Forest Shop">>
-
-:: Forest Shop Upper
-<<goto "Forest Shop">>
-
-:: Forest Shop Lower
-<<goto "Forest Shop">>
-
-:: Forest Shop Under Outfit
-<<goto "Forest Shop">>
-
-:: Forest Shop Under Upper
-<<goto "Forest Shop">>
-
-:: Forest Shop Under Lower
-<<goto "Forest Shop">>
-
-:: Forest Shop Head
-<<goto "Forest Shop">>
-
-:: Forest Shop Face
-<<goto "Forest Shop">>
-
-:: Forest Shop Neck
-<<goto "Forest Shop">>
-
-:: Forest Shop Legs
-<<goto "Forest Shop">>
-
-:: Forest Shop Feet
-<<goto "Forest Shop">>
