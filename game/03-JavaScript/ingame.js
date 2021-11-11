@@ -625,6 +625,7 @@ window.clothingData = function(slot, item, data){
 }
 
 window.clothesDataTrimmerLoop = function(){
+	if(!V.passage) return;
 	const wardrobeKeys = Object.keys(V.wardrobes);
 	setup.clothes_all_slots.forEach(slot => {
 		clothesDataTrimmer(V.worn[slot]);
@@ -663,6 +664,7 @@ window.clothesDataTrimmerLoop = function(){
 }
 
 window.clothesDataTrimmer = function(item){
+	if(!item) return;
 	const toDelete = ["name_cap","iconFile","accIcon","notuck","skirt","description","colour_options","accessory_colour_options","fabric_strength","integrity_max","bustresize","sleeve_img","breast_img","exposed_base","vagina_exposed_base","anus_exposed_base","state_top_base","state_base","word","femininity","strap","cost","shop"];
 	//To prevent it from running on variables multiple times, when updating toDelete, the last of the new additions should be added here
 	const trimmerVersion = ["shop"];
