@@ -11,7 +11,7 @@
 			<<elseif $debugdisable is "f">>
 				<span class="red">ERROR: Unexpected $$NPCList[0].pronoun: [$NPCList[0].pronoun]</span>
 			<</if>>
-			<<if $enemytype is "beast">>
+			<<if $enemytype is "beast" and $monster is 0>>
 				<<set $pronoun to "i">>
 			<</if>>
 			<<if $enemyno gt 1>>
