@@ -119,7 +119,7 @@
 <</if>>
 
 <!-- Set hallucination creatures to always be monsters. Shadow types could be .monster = "shadow" -->
-<<if $NPCList[_n].type is "creature">>
+<<if $NPCList[_n].type is "creature" and !_tower_creature>>
 	<<set $NPCList[_n].monster to "monster">>
 <<elseif ($monsterchance gte $rng and $hallucinations gte 1) or ($monsterchance gte $rng and $monsterhallucinations is "f") or (_beast_monster is "monster") or ($bestialitydisable is "t")>>
 	<<set $NPCList[_n].monster to "monster">>

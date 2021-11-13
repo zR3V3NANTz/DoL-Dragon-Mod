@@ -6309,3 +6309,14 @@ $worn.genitals.name
 <<widget "Plant_details">><<silently>>
 <<plant_details $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
 <</silently>><<print _text_output>><</widget>>
+
+<<widget "tower_creature_text">>
+	<<silently>>
+	<<if $NPCList[0].monster is "monster">>
+		<<set _text_output to "horned " + ($NPCList[0].gender is "m" ? "boy" : "girl")>>
+	<<else>>
+		<<set _text_output to either("creature","monster","beast")>>
+	<</if>>
+	<</silently>>
+	<<print _text_output>>
+<</widget>>

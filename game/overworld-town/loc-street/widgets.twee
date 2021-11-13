@@ -831,27 +831,32 @@ A <<generates1>><<person1>><<person>> leans out of a passing car and hurls a lar
 <</widget>>
 
 <<widget "streetnight2">>
+<<if $tower_creature_intro gte 1>>
+	<<loadNPC 0 tower_creature>>
+<<else>>
+	<<set $tower_creature_intro to 1>>
+	<<set _tower_creature to true>>
+	<<beastNEWinit 1 creature>>
+	<<if $NPCList[0].monster is "monster">>
+		<<set $NPCList[0].fullDescription to "horned " + ($NPCList[0].gender is "m" ? "boy" : "girl")>>
+		<<set $NPCList[0].type to "horned " + ($NPCList[0].gender is "m" ? "boy" : "girl")>>
+	<</if>>
+	<<saveNPC 0 tower_creature>>
+<</if>>
 
-You hear something land behind you, followed by a low growl. You turn, and face a pair of glowing yellow eyes. It steps into the light of a streetlamp, revealing a pair of horns atop a hairless, scaled head. It opens its colossal maw, and leaps toward you.
+You hear something land behind you, followed by a low growl. You turn, and face a pair of glowing yellow eyes. <<bHe>> steps into the light of a streetlamp, revealing a pair of horns
+
+<<if $NPCList[0].monster is "monster">>
+	that split <<bhis>> messy hair. <<bHe>> flashes a sharp-toothed, menacing grin before leaping toward you.
+<<else>>
+	atop a hairless, scaled head. It opens its colossal maw, and leaps toward you.
+<</if>>
 <br><br>
 
-<<if $bestialitydisable is "f">>
-
-<<link [[Next|Street Monster]]>><<set $molestationstart to 1>><</link>>
+<<link [[Stand your ground|Street Monster]]>><<set $molestationstart to 1>><</link>>
 <br>
-
-<<else>>
-
-	You run through the empty streets and alleys, rounding each corner in a bid to escape. The beast keeps up, moving in great leaps.
-	<br><br>
-
-	You manage to escape, but not without injury.<<beastescape>>
-
-	<br><br>
-
-	<<destinationeventend>>
-
-<</if>>
+<<link [[Run|Street Monster Run]]>><</link>><<athleticsdifficulty 400 1400>>
+<br>
 <</widget>>
 
 <<widget "streetexday1">>
