@@ -31,9 +31,9 @@
 	<<set _temp0 to $args[0]>>
 	/*Adds name back into name pool */
 	<<if $per_npc[_temp0].pronoun is "f">>
-		<<set $NPC_names_f.push($per_npc[_temp0].name)>>
+		<<set $NPC_names_f.pushUnique($per_npc[_temp0].name)>>
 	<<else>>
-		<<set $NPC_names_m.push($per_npc[_temp0].name)>>
+		<<set $NPC_names_m.pushUnique($per_npc[_temp0].name)>>
 	<</if>>
 	<<set $per_npc[_temp0] to undefined>>
 <</if>>
