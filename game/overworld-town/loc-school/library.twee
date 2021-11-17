@@ -212,7 +212,7 @@ Next to it is a small basket with returned and not yet sorted books.
 <</if>>
 
 :: Library Study
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneySchedule>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<sydneySchedule>><<rngWraith 1>>
 
 <<if $phase is 1>><<scienceskill>>
 	You settle down at a desk with a science textbook and read through the material.
@@ -228,17 +228,24 @@ Next to it is a small basket with returned and not yet sorted books.
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if $danger gte (9900 - $allure) and $schoolday is 1 and $schoolstate isnot "early" and $schoolstate isnot "late">>
 	<<if $rng gte 51>>
-	<<generatey1>><<generatey2>>While you are minding your own business, a <<person1>><<person>> and <<person2>><<person>> start harassing you.
-	<br><br>
+		<<generatey1>><<generatey2>>While you are minding your own business, a <<person1>><<person>> and <<person2>><<person>> start harassing you.
+		<br><br>
 
-	<<link [[Ignore them|School Library Harass]]>><<set $phase to 0>><<trauma 2>><<stress 2>><</link>><<gtrauma>><<gstress>>
-	<br>
-	<<link [[Ask the librarian for help|School Library Harass]]>><<set $phase to 1>><<status -10>><</link>><<lcool>>
-	<br>
-	<<if $NPCName[$NPCNameList.indexOf("Sydney")].init is 1 and $sydneySeen.includes("library") and _sydney_location is "library">>
-		<<link [[Ask Sydney for help|School Library Harass]]>><<set $phase to 2>><</link>>
+		<<link [[Ignore them|School Library Harass]]>><<set $phase to 0>><<trauma 2>><<stress 2>><</link>><<gtrauma>><<gstress>>
 		<br>
-	<</if>>
+		<<link [[Ask the librarian for help|School Library Harass]]>><<set $phase to 1>><<status -10>><</link>><<lcool>>
+		<br>
+		<<if $NPCName[$NPCNameList.indexOf("Sydney")].init is 1 and $sydneySeen.includes("library") and _sydney_location is "library">>
+			<<link [[Ask Sydney for help|School Library Harass]]>><<set $phase to 2>><</link>>
+			<br>
+		<</if>>
+	<<elseif _wraithEvent>>
+		After some time, you begin to feel anxious. You move to replace your textbook in the bookshelf.
+		<br><br>
+		You catch a brief glimpse of a pale face through the gaps on the other side. <<stress 12>><<ggstress>><<trauma 4>><<gtrauma>>
+		<br><br>
+		<<link [[Next|School Library]]>><</link>>
+		<br>
 	<<else>>
 		<<if !$worn.over_lower.type.includes("naked")>>
 			<<set $worn.over_lower.integrity -= 10>>
@@ -261,8 +268,8 @@ Next to it is a small basket with returned and not yet sorted books.
 				<br><br>
 			<</if>>
 		<</if>>
-	<<link [[Next|School Library]]>><</link>>
-	<br>
+		<<link [[Next|School Library]]>><</link>>
+		<br>
 	<</if>>
 <<else>>
 	<<link [[Next|School Library]]>><</link>>
@@ -270,7 +277,7 @@ Next to it is a small basket with returned and not yet sorted books.
 <</if>>
 
 :: Library Study Exposed
-<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>><<rngWraith 1>>
 
 <<if $phase is 1>>
 	You settle down at a desk with a science textbook and read through the material. Being sat here in the school library with your <<lewdness>> on display feels naughty, even with no one around. It keeps you alert and focused.
@@ -305,6 +312,13 @@ Next to it is a small basket with returned and not yet sorted books.
 			<</if>>
 		<</if>>
 		<<link [[Stay hidden (0:10)|Library Study Hide]]>><<stress 3>><<pass 10>><</link>><<gstress>>
+		<br>
+	<<elseif _wraithEvent>>
+		After some time, you begin to feel anxious. You move to replace your textbook in the bookshelf.
+		<br><br>
+		You catch a brief glimpse of a pale face through the gaps on the other side. <<stress 12>><<ggstress>><<trauma 4>><<gtrauma>>
+		<br><br>
+		<<link [[Next|School Library]]>><</link>>
 		<br>
 	<<else>>
 		<<generate1>><<generate2>><<person1>>A <<person>> and <<person2>><<person>> walk along the street outside the window. They will see you if they look through.

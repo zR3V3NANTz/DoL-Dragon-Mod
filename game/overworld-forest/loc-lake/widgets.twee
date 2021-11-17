@@ -133,7 +133,9 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 
 <<widget "eventlakewater">>
 
-<<if $bus is "lakeshallows">>
+<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte random(0, 10)>>
+	<<wHunt "lake">>
+<<elseif $bus is "lakeshallows">>
 	<<if $laketeenspresent is 1>>
 		<<generatey1>><<person1>> A <<person>> watches you from the bank.
 		<br><br>
@@ -190,7 +192,9 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 
 <<widget "eventlakeice">>
 <<set $rng to random(1, 100)>>
-<<if $rng gte 81>>
+<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte random(0, 10)>>
+	<<wHunt "lake">>
+<<elseif $rng gte 81>>
 	<<dancedifficulty 1 1000 true>>
 	<<if $danceSuccess>>
 		The wind picks up, almost knocking you over, <span class="green">but you manage to keep your footing.</span>
@@ -276,7 +280,7 @@ Someone screams. Everyone turns and backs away from the newcomer, a <<beasttype>
 <</widget>>
 
 <<widget "eventlake">>
-<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and ($wraith.hunt or $wraith.timer gte random(0, 10))>>
+<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte random(0, 10)>>
 	<<wHunt "lake">>
 <<elseif $rng gte 81>>
 <!-- Modified for Monster People -->

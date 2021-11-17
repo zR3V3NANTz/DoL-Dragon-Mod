@@ -175,7 +175,7 @@ With a final push of the lever, the chair lowers the rest of the way, submerging
 
 
 :: Museum Duck Extreme 3
-<<effects>>
+<<effects>><<rngWraith 2>>
 
 <<if $swimmingSuccess>>
 
@@ -194,6 +194,42 @@ With a final push of the lever, the chair lowers the rest of the way, submerging
 	<br>
 	<<link [[Press the buzzer|Museum Duck Extreme 4]]>><<set $phase to 1>><</link>>
 	<br>
+
+<<elseif $wraith and $wraith.state is "haunt" and _wraithEvent>>
+
+	You hold your breath as best you can, but you soon feel panic build within you. What if something has gone wrong? You press the buzzer.
+	<br><br>
+
+	Your fingers stop short. You try to clench your hand, but you can't. <span class="red">A pale hand forms around yours, as a translucent figure materialises in front of you with a manic grin.</span> <<takeHandholdingVirginity "Ivory Wraith" "rape">>
+	<br><br>
+
+	"<span class="wraith">Drown.</span>"
+	You struggle against it, trying desperately to press the buzzer. Its other hand grabs your neck, and it starts to drag you down with the chair. You hear the crane above you creak and groan from the stress.
+	<br><br>
+
+	You feel yourself sharply hoisted upwards. Your head breaks the water, and you seize a sharp breath. You look into the water, but there's no sign of the figure. Your hands are tightly gripping the buzzer. You hear someone clap. Others join in.
+	<br><br>
+
+	Winter rushes over to steady the chair and unbind you. "That ends our demonstration," <<he>> says.
+	"Thank you for attending. We hope you found it informative, and we invite you to visit the museum. The address is on the booklets we handed out. It's right over there."
+	<<He>> points. "Last but not least, let's have a round of applause for our star." <<He>> gestures at you. More join the applause, their eyes exploring your wet body.
+	<br><br>
+
+	Winter wraps a heated towel around you, and then a second, for the journey back to the museum. "You did well," <<he>> says on the way back.
+	"I'm blessed to have your assistance. Thank you. I'd like to repeat the demonstration next weekend if it suits you."
+	<<He>> glances back. Much of the audience is following. "I think we've earned some new interest."
+	<br><br>
+
+	You arrive at the museum. <<He>> takes you to a small side room, and leaves you to get dressed.
+	<br><br>
+
+	That was terrifying, <span class="green">yet you feel a strong catharsis.</span><<trauma -6>>
+	<br><br>
+	<<endevent>>
+	<<set $museuminterest += 20>>
+	<<link [[Next|Museum]]>><<unbind>><<upperruined>><<lowerruined>><<storeon "museum">><</link>>
+	<br>
+
 <<else>>
 
 	You hold your breath as best you can, but you soon feel panic build within you. What if something has gone wrong? <span class="red">You press the buzzer.</span>
@@ -216,7 +252,7 @@ With a final push of the lever, the chair lowers the rest of the way, submerging
 	You arrive at the museum. <<He>> takes you to a small side room, and leaves you to get dressed.
 	<br><br>
 
-	That was terrifying, <span class="green">yet you feel a strong catharsis.</span><<trauma -6>>
+	That was terrifying. The figure's voice echoes between your ears.
 	<br><br>
 	<<endevent>>
 	<<set $museuminterest += 20>>
@@ -244,6 +280,41 @@ With a final push of the lever, the chair lowers the rest of the way, submerging
 	<<link [[Encourage|Museum Duck Extreme 5]]>><</link>><<swimmingdifficulty 600 1400>>
 	<br>
 	<<link [[Shake your head|Museum Duck Extreme End]]>><</link>>
+	<br>
+
+<<elseif $wraith and $wraith.state is "haunt" and _wraithEvent>>
+
+	You hold your breath as best you can, but you soon feel panic build within you. What if something has gone wrong? You press the buzzer.
+	<br><br>
+
+	Your fingers stop short. You try to clench your hand, but you can't. <span class="red">A pale hand forms around yours, as a translucent figure materialises in front of you with a manic grin.</span> <<takeHandholdingVirginity "Ivory Wraith" "rape">>
+	<br><br>
+
+	"<span class="wraith">Drown.</span>"
+	You struggle against it, trying desperately to press the buzzer. Its other hand grabs your neck, and it starts to drag you down with the chair. You hear the crane above you creak and groan from the stress.
+	<br><br>
+
+	You feel yourself sharply hoisted upwards. Your head breaks the water, and you seize a sharp breath. You look into the water, but there's no sign of the figure. Your hands are tightly gripping the buzzer. You hear someone clap. Others join in.
+	<br><br>
+
+	Winter rushes over to steady the chair and unbind you. "That ends our demonstration," <<he>> says.
+	"Thank you for attending. We hope you found it informative, and we invite you to visit the museum. The address is on the booklets we handed out. It's right over there."
+	<<He>> points. "Last but not least, let's have a round of applause for our star." <<He>> gestures at you. More join the applause, their eyes exploring your wet body.
+	<br><br>
+
+	Winter wraps a heated towel around you, and then a second, for the journey back to the museum. "You did well," <<he>> says on the way back.
+	"I'm blessed to have your assistance. Thank you. I'd like to repeat the demonstration next weekend if it suits you."
+	<<He>> glances back. Much of the audience is following. "I think we've earned some new interest."
+	<br><br>
+
+	You arrive at the museum. <<He>> takes you to a small side room, and leaves you to get dressed.
+	<br><br>
+
+	That was terrifying. The figure's voice echoes between your ears.
+	<br><br>
+	<<endevent>>
+	<<set $museuminterest += 30>>
+	<<link [[Next|Museum]]>><<unbind>><<upperruined>><<lowerruined>><<storeon "museum">><</link>>
 	<br>
 
 <<else>>

@@ -5,6 +5,8 @@
 	<<passoutlake>>
 <<elseif $foresthunt gte 10>>
 	<<foresthunt>>
+<<elseif ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte random(0, 10) and !$possessed>>
+	<<wHunt "lake">>
 <<else>>
 	<<if $season is "winter">>
 		You are beneath the lake. You swim beneath a crystal ceiling, between tall weeds.
@@ -198,6 +200,8 @@ You are in the submerged ruin beneath the lake. Glowing purple lichen covers anc
 	<<passoutlake>>
 <<elseif $foresthunt gte 10>>
 	<<foresthunt>>
+<<elseif ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte random(0, 10) and !$possessed>>
+	<<wHunt "lake">>
 <<else>>
 	<<if $sciencelichenknown is 1 and $sciencelichenlake isnot 1 and $scienceproject is "ongoing">>
 		<<link [[Retrieve lichen for your science project|Lake Lichen]]>><<set $sciencelichenlake to 1>><<wateraction>><</link>><<loxygen>>
@@ -237,8 +241,12 @@ You are deep in the submerged ruin beneath the lake. Pots of different sizes fil
 	It's open.
 <</if>>
 <br><br>
-<<if $stress gte $stressmax>>
+<<if $stress gte $stressmax and !$possessed>>
 	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte random(0, 10) and !$possessed>>
+	<<wHunt "lake">>
 <<else>>
 	<<if $lakeruinkey is 1>>
 		<<link [[Use bronze key|Lake Ruin Door]]>><<wateraction>><</link>><<loxygen>>
@@ -390,7 +398,7 @@ You are deep in the lake ruin, in a small room with a plinth.
 You lift the necklace from the plinth. The craftsmanship is masterful, and you get the feeling that this meant a lot to someone.
 <br><br>
 <<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
-	You suddenly hear pounding on the walls all around you. <<if $wraith.seen gte 1>>A familiar<<else>>An unfamiliar<</if>> voice cries out, and it feels like something's grabbing at your arms and legs. You instinctively flail and push yourself backwards through the water. <<trauma 12>><<ggtrauma>>
+	You suddenly hear pounding on the walls all around you. <<if $wraith and $wraith.seen gte 1>>A familiar<<else>>An unfamiliar<</if>> voice cries out, and it feels like something's grabbing at your arms and legs. You instinctively flail and push yourself backwards through the water. <<trauma 12>><<ggtrauma>>
 	<br><br>
 	It dies down after a few moments, leaving you shaken. 
 	<<if $wraith and $wraith.hunt>>
@@ -802,7 +810,7 @@ A warmth spreads through your fingers, up your arm and into the rest of your bod
 <<else>>
 	<<initWraith "man">>
 	You hear whispers, and turn to see a beautiful pale figure floating before you.
-	<<if $wraith.state is "haunt">> 
+	<<if $museumAntiques.antiques.antiqueivorynecklace isnot "notFound">>
 		<<Hes>> naked and has a hand pressed to <<his>> neck, regarding you with rage and disgust.
 	<<else>>
 		<<Hes>> naked, save a necklace of ivory around <<his>> neck.

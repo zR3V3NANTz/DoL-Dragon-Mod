@@ -744,7 +744,8 @@ You spot a decaying metal shard amongst the fallen bark at your feet. It's an ar
 	<</if>>
 	<<wraithCaught>>
 <<else>>
-	<<if $wraith and ($wraith.state is "haunt" or $wraith.offspring is "dead") and $syndromeeden is 1 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6 or $hallucinations gte 2 and $rng gte 90)>>
+	<<rngWraith 2 "night">>
+	<<if $wraith and _wraithEvent and ($wraith.state is "haunt" or $wraith.offspring is "dead") and $syndromeeden is 1>>
 		
 		<<set $wraith.mimic to "Eden">><<npc Eden>><<person1>>Something whizzes past and hits a tree in front of you. You shield your face with your arms and stagger backwards. Something presses against your back, and you hear a <<personsimple>>'s voice. "I've got you now. Don't resist."
 		<br><br>

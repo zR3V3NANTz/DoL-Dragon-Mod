@@ -828,13 +828,13 @@
 			<<case "Sydney">>
 				/* Has all virginities + temple virginity. */
 				<<set $NPCName[_i].virginity to {anal:true, oral:true, penile:true, vaginal:true, temple:true, handholding:true, kiss:true}>>
-			<<case "Robin" "Kylar">>
+			<<case "Robin" "Kylar" "Great Hawk">>
 				/* Has all virginities. */
 				<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
 			<<case "Jordan">>
 				/* Has anal, oral, penile/vaginal, and kiss virginities. Missing handholding. */
 				<<set $NPCName[_i].virginity.handholding to false>>
-			<<case "Black Wolf" "Great Hawk">>
+			<<case "Black Wolf">>
 				/* Has anal, oral, kiss, and handholding virginities. Missing penile/vaginal. */
 				<<set $NPCName[_i].virginity.penile to false>>
 				<<set $NPCName[_i].virginity.vaginal to false>>		

@@ -121,6 +121,9 @@ You look into the mirror.
 	A cheerful <<girl>>
 <</if>>
 stares back.
+<<if $wraith and $wraith.state is "haunt" and $hallucinations gte 1 and random(1, 100) is 1>>
+	<span class="fading">A pale figure stands behind.</span>
+<</if>>
 <br>
 <<link "Examine how you are seen by others">><<replace #mirror>><<mirrorAppearance>><</replace>><<numberify "#passages > .passage">><<set $mirrorMenu to "appearance">><</link>>
 <br><br>

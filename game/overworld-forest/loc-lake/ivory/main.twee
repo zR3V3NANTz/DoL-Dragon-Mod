@@ -364,9 +364,13 @@ Except that's not a hand. Many long, translucent limbs are pinning you to the wa
 <br><br>
 You see <<his>> skin ripple, like wax melting down a candle. <<His>> arms take on an unnatural, ivory pallor. <<endevent>><<generateWraith 1 true>><<initWraith "abomination">>
 <br><br>
-This isn't Kylar. <<trauma 12>><<ggtrauma>>
+This isn't Kylar. <<trauma 12>><<ggtrauma>><<set $wraith.revealed to true>>
 <br><br>
-"<span class="wraith">You stole it from me,</span>" <<he>> hisses. "<span class="wraith">Give it back.</span>" The translucent limbs converge on you.
+<<if $wraith.offspring is "dead">>
+	"<span class="wraith">This one couldn't save them,</span>" <<he>> hisses. "<span class="wraith">You let them die.</span>" The translucent limbs converge on you.
+<<else>>
+	"<span class="wraith">You stole it from me,</span>" <<he>> hisses. "<span class="wraith">Give it back.</span>" The translucent limbs converge on you.
+<</if>>
 <br><br>
 <<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 	<<link [[Next|Wraith Caught]]>><</link>>
@@ -540,7 +544,7 @@ You hear a harsh whipping sound. A pale tendril springs from a drainage grate, a
 <<else>>
 	You try to jump over it, <span class="red">but it catches you.</span> The ground hurdles towards your face. Your stomach rises to your throat as you're flipped upside down.
 	<br><br>
-	A pale visage materializes before you.
+	A pale visage materialises before you.
 	<<generateWraith>><<initWraith "abomination">>
 	<<startWraith>>
 	<br><br>
@@ -876,7 +880,7 @@ Your eyes snap open. The figure is gone, but you hear laughter echo in your head
 :: Wraith Caught Finish
 <<effects>>
 <<if !$wraithCount>>
-	<<if !($wraith.state is "haunt" or $wraith.offspring is "dead")>>
+	<<if $wraith.state isnot "haunt" and $wraith.offspring isnot "dead">>
 		<<set $wraithCount to 1>><<set $wraithMax to 1>>
 	<<else>>
 		<<set $wraithCount to 0>>

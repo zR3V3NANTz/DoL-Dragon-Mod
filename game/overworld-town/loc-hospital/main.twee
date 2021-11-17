@@ -1,7 +1,10 @@
 :: Ambulance rescue
-<<set $outside to 0>><<effects>>
+<<set $outside to 0>><<effects>><<rngWraith 1>>
 
 You feel yourself being lifted onto a stretcher before passing out again.
+<<if _wraithEvent>>
+	You think you saw someone standing next to you. Someone pale and beautiful.
+<</if>>
 <br><br>
 
 <<link [[Sleep|Hospital Bed]]>><</link>>

@@ -373,7 +373,8 @@ The creatures disappear into the mire.
 
 
 :: Moor Quicksand
-<<effects>>
+<<effects>><<rngWraith 2>><<if _wraithEvent>><<set $quicksandWraith to true>><</if>>
+<<if $quicksandWraith>><<if $wraith.state is "haunt">><<set _drown to "Drown">><<else>><<set _drown to "Calm">><</if>><<ind>><<ind>><<ind>><span class="flicker">_drown</span><br><</if>>
 
 You are up to your
 <<switch $quicksand_depth>>
@@ -1044,7 +1045,7 @@ The water is cold, and deep. You swim away from shore. You can see nothing ahead
 <</if>>
 
 :: Moor Passage Swim 2
-<<effects>>
+<<effects>><<rngWraith 2>>
 
 Faced with an impenetrable darkness, you turn and swim back to the glowing shore. You search, until you find another exit. This one slopes upwards, and leads you back into the <<daylight>>
 <br><br>
@@ -1052,7 +1053,7 @@ Faced with an impenetrable darkness, you turn and swim back to the glowing shore
 You examine the ring. A black gemstone sits surrounded by engravings of what appear to be grapes. The ring itself is made of gold. It would be valuable to a collector.
 <br><br>
 
-<<if $wraith and $wraith.state isnot "" and (($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) or $hallucinations gte 2 and $rng gte 50)>>
+<<if _wraithEvent>>
 	<<generateWraith 1>><<initWraith>><<rainWraith>>
 	"<span class="wraith">Graverobber.</span>"
 	<br><br>

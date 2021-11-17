@@ -268,8 +268,10 @@
 				<</if>>
 			<</if>>
 			<br><br>
-			<<set $rng to random(1, 100)>>
-			<<if $dancelocation is 0>>
+			<<set $rng to random(1, 100)>><<rngWraith 2 "night">>
+			<<if $wraith and ($wraith.state is "haunt" or $wraith.offspring is "dead") and _wraithEvent and $rng lte 10>>
+				<<danceWraith>>
+			<<elseif $dancelocation is 0>>
 				<<if $audiencearousal gte 100>>
 					<<if $rng gte 91>>
 						<<dancerape>>
@@ -563,4 +565,11 @@
 <<widget "danceCorruption">>
 	<<set $danceevent to "corruptionDance">>
 	<span class="lewd">You feel the slime in your head command you to not stop dancing for the crowd.</span> It promises rewards if you comply, and threatens consequences if you do not.
+<</widget>>
+
+<<widget "danceWraith">>
+	<<set $danceevent to 0>><<set $audiencearousal -= 5>><<set $audienceexcitement -= 5>>
+	You feel a hand on your body. Then another. Then a third, and a fourth. You look around frantically, <span class="red">and see countless pale limbs emerging from below, grabbing at you wherever they can.</span> You try to scream, but one covers your mouth.
+	<br><br>
+	You blink, and they all vanish. You get strange glances. <<stress 12>><<trauma 4>><<ggstress>><<gtrauma>>
 <</widget>>

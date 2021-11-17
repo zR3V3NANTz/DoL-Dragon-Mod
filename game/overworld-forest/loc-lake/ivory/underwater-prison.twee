@@ -66,8 +66,11 @@ Its gaze bores into you, keeping your body weak and unresponsive.
 	<br>
 <<else>>
 	<<if $parasitedisable is "f" and ($parasite.left_ear.name is undefined or $parasite.right_ear.name is undefined) and $slimedisable is "f">>
+		It raises a hand to the side, and a swirling purple disc appears in the air. It reaches in, and pulls out a writhing red mass. A living slime. It lowers it down to your ear.
 		<br><br>
-		<<link [[Next|Lake Prison Slime]]>><</link>>
+		<<link [[Struggle|Lake Prison Slime Resist]]>><</link>>
+		<br>
+		<<link [[Stay still|Lake Prison Slime]]>><</link>>
 	<<else>>
 		<<initWraith "abomination">>
 		<<startWraith>>
@@ -104,7 +107,11 @@ Its gaze bores into you, keeping your body weak and unresponsive.
 <</if>>
 <br><br>
 <<if $parasitedisable is "f" and ($parasite.left_ear.name is undefined or $parasite.right_ear.name is undefined) and $slimedisable is "f">>
-	<<link [[Next|Lake Prison Slime]]>><</link>>
+	It raises a hand to the side, and a swirling purple disc appears in the air. It reaches in, and pulls out a writhing red mass. A living slime. It lowers it down to your ear.
+	<br><br>
+	<<link [[Struggle|Lake Prison Slime Resist]]>><</link>>
+	<br>
+	<<link [[Stay still|Lake Prison Slime]]>><</link>>
 <<else>>
 	<<initWraith "abomination">>
 	<<startWraith>>
@@ -113,11 +120,21 @@ Its gaze bores into you, keeping your body weak and unresponsive.
 <</if>>
 <br>
 
+:: Lake Prison Slime Resist
+<<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<set $wraith.exit to "lake_ruin">><<effects>>
+With the last of your willpower, you keep moving your head, preventing the slime from entering.
+<br><br>
+It looks down at you and whispers. "<span class="wraith">You will submit.</span>"
+<<initWraith "abomination">>
+<<startWraith>>
+<br><br>
+<<link [[Next|Lake Prison Intro Fight]]>><</link>>
+<br>
+
 :: Lake Prison Slime
 <<set $outside to 0>><<set $location to "lake_ruin">><<set $bus to "lake_ruin_prison">><<set $wraith.exit to "lake_ruin">><<effects>>
-It raises a hand to the side, and a swirling purple disc appears in the air. It reaches in, and pulls out a writhing red mass. A living slime.
-<br><br>
-It brings it down to your
+<<set $wraithParasite to true>>
+It brings the slime down to your
 <<if $parasite.left_ear.name is undefined>>
 	left ear, <span class="lewd">where it squirms in.</span>
 	<<parasite left_ear slime>>
@@ -128,8 +145,10 @@ It brings it down to your
 <br><br>
 You shake in the figure's grasp. You feel unnaturally aroused, especially with it straddling you like this. It's a small feeling at first. Then it grows, until <span class="lewd">an overwhelming desire for lewdity overtakes you.</span>
 <br><br>
-<i>A corruption bar has appeared in the Characteristics tab.</i>
-<br><br>
+<<if !$corruption_slime>>
+	<i>A corruption bar has appeared in the Characteristics tab.</i>
+	<br><br>
+<</if>>
 Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<</if>>. You hear whispers all around you. <span class="lewd">Something inside pressures you to give yourself to the pale figure.</span> Somehow, you know going along with the urges will feel good, and disobeying will be painful.
 <<initWraith "abomination">>
 <<startWraith>>
@@ -201,7 +220,10 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 <<effects>>
 <<if !$wraithCount>>
 	<<set $wraithCount to 0>>
-	<<set $wraithMax to 1>>
+<</if>>
+<<if !$wraithMax>>
+	<<set $wraithCount to 0>>
+	<<set $wraithMax to 2>>
 	<<if $wraith.offspring is "dead">>
 		<<set $wraithMax ++>>
 	<</if>>
@@ -217,6 +239,11 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 		<<His>> extra arms fold back in.
 	<</if>> 
 	A terrible shriek pierces the air, forcing you to your knees. It grabs you by the neck, and lifts you.
+	<<if $worn.neck.cursed is 1>>
+		There's a flash of light, a deep groaning sound, and your $worn.neck.name is no more.
+		<<set $worn.neck.type.push("broken")>>
+		<<neckruined>>
+	<</if>>
 	<br><br>
 	You're dragged and thrust into the cage next to the center of the lichen colony. There's no door. The figure becomes more translucent, and begins fading. "<span class="wraith">I must recover. You will wait.</span>" It vanishes in a bright flash.
 	<br><br>
@@ -228,16 +255,35 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 	<<endcombat>>
 	<<endWraith>>
 	<br><br>
-	<<link [[Next|Lake Ruin Prison]]>><</link>>
+	<<link [[Next|Lake Ruin Prison]]>><<unset $wraithParasite>><</link>>
 	<br>
 <<elseif $enemyarousal gte $enemyarousalmax or ($wraith.type is "tentacles" and $tentacles.active lte ($tentacles.max / 2)) or ($wraith.type is "slime" and $struggle.done gte $struggle.number)>>
 	<<set $wraithCount ++>>
 	<<ejacW>>
-	<<if $wraithCount gte $wraithMax>>
+	<<if $wraithCount gte $wraithMax or $wraithCount gte 5>>
 		<<kissWraith>>
 		<br><br>
+		<<if $parasitedisable is "f" and ($parasite.left_ear.name is undefined or $parasite.right_ear.name is undefined) and $slimedisable is "f" and !$wraithParasite>>
+			<<set $wraithParasite to true>>
+			It brings the slime down to your
+			<<if $parasite.left_ear.name is undefined>>
+				left ear, <span class="lewd">where it squirms in.</span>
+				<<parasite left_ear slime>>
+			<<elseif $parasite.right_ear.name is undefined>>
+				right ear, <span class="lewd">where it squirms in.</span>
+				<<parasite right_ear slime>>
+			<</if>>
+			<br><br>
+			You shake in the figure's grasp. You feel unnaturally aroused, especially with it straddling you like this. It's a small feeling at first. Then it grows, until <span class="lewd">an overwhelming desire for lewdity overtakes you.</span>
+			<br><br>
+			<<if !$corruption_slime>>
+				<i>A corruption bar has appeared in the Characteristics tab.</i>
+				<br><br>
+			<</if>>
+			Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<</if>>. You hear whispers all around you. <span class="lewd">Something inside pressures you to give yourself to the pale figure.</span> Somehow, you know going along with the urges will feel good, and disobeying will be painful.
+			<br><br>
+		<</if>>
 		It suddenly lifts you, and begins to carry you. You're helpless to resist.
-		<br><br>
 		You're placed in a decrepit cage, right next to the center of the lichen colony. There's no door.
 		<<if $wraith.state is "haunt">>
 			"<span class="wraith">I will break open your mind, and then I will show you. And then you will. Give. It. Back.</span>"
@@ -254,7 +300,7 @@ Its grip on you loosens<<if $wraith.state is "haunt">>, and you gasp for breath<
 		<<endcombat>>
 		<<endWraith>>
 		<br><br>
-		<<link [[Next|Lake Ruin Prison]]>><</link>>
+		<<link [[Next|Lake Ruin Prison]]>><<unset $wraithParasite>><</link>>
 		<br>
 	<<else>>
 		<<continueWraith>>
@@ -283,7 +329,7 @@ You are in a submerged prison. Pink mist swirls in the air. <<ghallucinogens>>
 		<br><br>
 		You struggle against it. It screams. "<span class="wraith">I will show you exactly what you've done. I will find you again, thief. You have not suffered enough. You were not ready.</span>"
 		<br><br>
-		It suddenly vanishes. You bring your head back up above the water, and cough. <<tearful>> you stand. The rune at the bottom of the stairs glows again.
+		It flickers backwards. You bring your head back up above the water, and cough. <<tearful>> you stand. The rune at the bottom of the stairs glows again.
 		<br><br>
 	<<else>>
 		"<span class="wraith">My time comes to an end. You will return, next moon.</span>"
@@ -481,6 +527,9 @@ You don't know how much time passes. Your body feels refreshed, but your mind fe
 :: Lake Ruin Prison Rape Finish
 <<effects>>
 <<if !$wraithCount>>
+	<<set $wraithCount to 0>>
+<</if>>
+<<if !$wraithMax>>
 	<<set $wraithCount to 0>>
 	<<set $wraithMax to 1>>
 	<<if $wraith.offspring is "dead">>

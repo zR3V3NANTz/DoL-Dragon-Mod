@@ -3327,10 +3327,18 @@ Soon enough, you both reach the lake. The <<if $daystate is "night">>moonlight<<
 <br><br>
 
 :: Eden Lake Raft
-<<set $outside to 1>><<effects>>
+<<set $outside to 1>><<effects>><<rngWraith 1>>
 
 You and Eden inflate the raft and push it onto the water. You spend the time basking in the peaceful scenery of the lake. <<stress -6>><<lstress>>
 <br><br>
+
+<<if _wraithEvent>>
+	You see someone standing out in the middle of the lake. Silver hair blows in the wind behind it,<<if $wraith.state is "haunt">> and a pair of red eyes stare through you<<else>> and an ornate necklace of ivory hangs around its neck<</if>>. Your ears begin to ring as it slowly turns to you.
+	<br><br>
+
+	You turn to Eden, but <<nnpc_he "Eden">> doesn't react. You look back, and the figure is gone. <<stress 12>><<ggstress>><<trauma 4>><<gtrauma>>
+	<br><br>
+<</if>>
 
 <<link [[Go back to the cabin|Eden Clearing]]>><<endevent>><</link>>
 
