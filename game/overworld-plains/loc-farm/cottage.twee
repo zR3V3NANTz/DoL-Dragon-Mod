@@ -220,6 +220,9 @@ You snuggle under the covers.
 <<if $alex_bed is "player">>
 	Alex snores beside you.
 <</if>>
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
+<</if>>
 <br><br>
 <<farm_sleep_options>>
 
@@ -891,6 +894,9 @@ You are in Alex's bedroom. It's similar to yours. Clothes tumble from the wardro
 You snuggle beside Alex.
 <<else>>
 	You snuggle under the covers.
+<</if>>
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
 <</if>>
 <br><br>
 

@@ -687,6 +687,7 @@
 <<widget "quicksand_end">>
 <<unset $quicksand_depth>>
 <<unset $quicksand_learn>>
+<<unset $quicksandWraith>>
 <</widget>>
 
 <<widget "quicksand_pull">>
@@ -725,7 +726,16 @@
 	With a final tug, <span class="red">the earth swallows you.</span><<ggtrauma>><<ggstress>><<trauma 12>><<stress 12>>
 	<br><br>
 	<<passout_moor>>
+	<<if $quicksandWraith>>
+		<<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><span class="flicker">_drown</span>
+		<br><br><<ind>><<ind>><span class="flicker">_drown</span>
+		<br><<ind>><<ind>><<ind>><<ind>><<ind>><span class="flicker">_drown</span>
+	<</if>>
 <</switch>>
+<<if $quicksandWraith>>
+	<br><br><<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><span class="flicker">_drown</span>
+	<br><br><br><<ind>><span class="flicker">_drown</span>
+<</if>>
 <</widget>>
 
 <<widget "passout_moor">>

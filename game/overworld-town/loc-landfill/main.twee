@@ -49,8 +49,10 @@ The warmth growing within you passes the point of no return. Your knees buckle. 
 		<br><br>
 		<<tearful>> you rise to your feet. You feel unnaturally aroused, despite your orgasm. It's a small feeling at first. Then it grows, until <span class="lewd">an overwhelming desire for lewdity overtakes you.</span>
 		<br><br>
-		<i>A corruption bar has appeared in the Characteristics tab.</i>
-		<br><br>
+		<<if !$corruption_slime>>
+			<i>A corruption bar has appeared in the Characteristics tab.</i>
+			<br><br>
+		<</if>>
 
 		<<link [[Next|Trash Slime]]>><</link>>
 		<br>

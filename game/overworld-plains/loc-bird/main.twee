@@ -1395,6 +1395,9 @@ You don't move.
 	You lie on the nest. It's hard to get comfortable.
 <</if>>
 <<endevent>>
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and $bird.mirror is 1 and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
+<</if>>
 <br><br>
 
 <<if $syndromebird is 1 and $bird.activity is "sleep" and $bird.state is "home" and $bird.satisfied isnot true>>

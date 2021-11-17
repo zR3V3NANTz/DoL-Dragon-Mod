@@ -981,6 +981,7 @@ You push Sydney away from you.
 	<</switch>>
 <</if>>
 <<if _noOptions isnot 1>>
+	<br>
 	<<promiscuity1>>
 	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 		Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>

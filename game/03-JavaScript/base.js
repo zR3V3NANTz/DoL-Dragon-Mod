@@ -489,6 +489,18 @@ $(document).on(':passagedisplay', function (ev) {
 	if (V.combat) {
 		initTouchToFixAnimations();
 	}
+	function checkFadingSpans() {
+		let spans = $(".fading");
+	  if (spans.length > 0) {
+		  let span = spans[Math.floor(Math.random()*spans.length)];
+		setTimeout(()=>{
+			$(span).removeClass("fading").addClass("faded");
+		  checkFadingSpans();
+		}, Math.random()*1000 + 500);
+	  }
+	}
+	
+	setTimeout(checkFadingSpans, 1000);
 });
 
 window.saveDataCompare = function(save1, save2){

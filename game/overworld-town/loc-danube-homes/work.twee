@@ -215,16 +215,26 @@ You look more closely at the apron. It's such a slight thing it would be little 
 	<</if>>
 <<elseif $phase is 6>>
 	<<if $rng gte 1>>
-	<<set $rng1 to random(1, 4)>>
-	<<He>> looks at you with interest. "Our <<person1>><<daughter>> is preparing for a
-	<<if $rng1 is 1>>science<<elseif $rng1 is 2>>maths<<elseif $rng1 is 3>>English<<elseif $rng1 is 4>>history<</if>>
-	exam. Perhaps you could tutor <<him>> for an hour? We'll pay between £10 and £100. Depends how good you are."
-	<br><br>
+		<<if $schoolday is 1 and !["first","second","third","lunch","fourth","fifth"].includes($schoolstate)>>
+			<<set $rng1 to random(1, 4)>>
+			<<He>> looks at you with interest. "Our <<person1>><<daughter>> is preparing for a
+			<<if $rng1 is 1>>science<<elseif $rng1 is 2>>maths<<elseif $rng1 is 3>>English<<elseif $rng1 is 4>>history<</if>>
+			exam. Perhaps you could tutor <<him>> for an hour? We'll pay between £10 and £100. Depends how good you are."
+			<br><br>
 
-	<<link [[Accept (1:00)|Danube Tutor]]>><</link>>
-	<br>
-	<<link [[Refuse|Danube Street]]>><<endevent>><</link>>
-	<br>
+			<<link [[Accept (1:00)|Danube Tutor]]>><</link>>
+			<br>
+			<<link [[Refuse|Danube Street]]>><<endevent>><</link>>
+			<br>
+		<<else>>
+			"I'm interested in a tutor, but I'm afraid my <<person1>><<daughter>> is in school at the moment." <<person2>><<He>> pauses and looks you over. "Shouldn't you be in school yourself?" <<gstress>><<stress 2>>
+			<br><br>
+			
+			<<link [[Try another house|Danube House Knock]]>><<endevent>><</link>>
+			<br>
+			<<link [[Stop|Danube Street]]>><<endevent>><</link>>
+			<br>
+		<</if>>
 
 	<<else>>
 

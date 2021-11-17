@@ -4517,6 +4517,45 @@ img, canvas {
 	color: transparent;	
 }
 
+.fading {
+	background: #f1f1db;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	opacity: 1;
+}
+.faded {
+	background: #f1f1db;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	opacity: 0;
+	transition: opacity 0.5s ease-in;
+}
+
+@keyframes flicker {
+	0% {
+		opacity: 0;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.flicker {
+	background: #f1f1db;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	animation: 3s flicker alternate infinite;
+}
+
 .tentacles-blue {
 	-webkit-filter: hue-rotate(-120deg) saturate(100%) brightness(100%) contrast(100%);
 	filter: hue-rotate(-120deg) saturate(100%) brightness(100%) contrast(100%);

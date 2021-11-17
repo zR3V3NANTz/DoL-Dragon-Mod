@@ -351,17 +351,32 @@ You move your hands back up the <<persons>> back. <<He>> occasionally moans, but
 <</widget>>
 
 <<widget "spa_tan_events">>
-<span class="red">You hear the door open.</span> You turn your head, and see a pair of legs rush in. They crouch a moment, then turn and leave the room.
-<br><br>
+<<rngWraith 1>>
+<<if _wraithEvent and $wraith and $wraith.state is "haunt">>
+	The lights abruptly shut off, plunging you into total darkness. You try to force the bed open, but it remains fixed in place.
+	<br><br>
 
-You push open the tanning bed. <span class="pink">Your clothes are gone!</span><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
-<br><br>
+	You begin to feel deathly cold. You try to scream, but no noise comes out. You hear <<if $wraith.seen gte 3>>familiar <</if>>laughter in the distance. <<stress 12>><<trauma 4>><<ggstress>><<gtrauma>>
+	<br><br>
 
-<<link [[Chase the culprit|Spa Tan Chase]]>><</link>><<athleticsdifficulty 1 1400>>
-<br>
-<<link [[Ask for help|Spa Tan Help]]>><</link>>
-<br>
-<<set $skulduggerydifficulty to 500>>
-<<link [[Look for towels|Spa Tan Sneak]]>><</link>><<skulduggerydifficulty>>
-<br>
+	The lights flicker back on, filling you with warmth and relief. You try to relax until the session ends, and the lights fade again.
+	<br><br>
+
+	<<link [[Next|Spa]]>><<clotheson>><</link>>
+	<br>
+<<else>>
+	<span class="red">You hear the door open.</span> You turn your head, and see a pair of legs rush in. They crouch a moment, then turn and leave the room.
+	<br><br>
+
+	You push open the tanning bed. <span class="pink">Your clothes are gone!</span><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+	<br><br>
+
+	<<link [[Chase the culprit|Spa Tan Chase]]>><</link>><<athleticsdifficulty 1 1400>>
+	<br>
+	<<link [[Ask for help|Spa Tan Help]]>><</link>>
+	<br>
+	<<set $skulduggerydifficulty to 500>>
+	<<link [[Look for towels|Spa Tan Sneak]]>><</link>><<skulduggerydifficulty>>
+	<br>
+<</if>>
 <</widget>>

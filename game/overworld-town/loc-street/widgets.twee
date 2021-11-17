@@ -1174,9 +1174,9 @@ You take cover in a bus shelter, just as a bus rounds the corner. It slows down 
 			"Relax," <<He>> whispers next to your ear quietly. "We know what you've been up to,
 
 			<<if $crime gte 1000>>
-				and we can arrest you whenever we feel like. But we're not here for that. Not right now. Be smart kid and just play along. You might even enjoy it."
+				and we can arrest you whenever we feel like. But we're not here for that. Not right now. Be smart and just play along. You might even enjoy it."
 			<<else>>
-				and you know we can't prove it. But we're still cops, and we know who you are. We can make your life difficult. Just be smart and play along, kid."
+				and you know we can't prove it. But we're still cops, and we know who you are. We can make your life difficult. Just be smart and play along."
 			<</if>>
 			<br>
 			<<He>> pats your shoulder and steps back.
@@ -1471,11 +1471,11 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 	<</if>>
 
 <<elseif _kylarStatus.includes("LoveLust")>>
-	<<set $kylarwatchedtimer to 0>>
+	<<set $kylarwatchedtimer to 0>><<rngWraith 2 "night">>
 
 	<<npc Kylar>><<person1>>Something tugs your arm. It's Kylar. "H-hi," <<he>> gulps. <<He>> tries to pull you toward a dark alley. "We need privacy. I need you to do things to me."
 	<br><br>
-	<<if $wraith and ($wraith.state is "haunt") and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6 or $hallucinations gte 2 and $rng gte 90)>>
+	<<if $wraith and _wraithEvent and ($wraith.state is "haunt" or $wraith.offspring is "dead")>>
 		<<set $wraith.mimic to "Kylar">><<set $wraith.exit to "town">>
 		<<link [[Go with Kylar|Wraith Mimic Fight]]>><<set $sexstart to 1>><</link>><<promiscuous1>><<gglove>><<llksuspicion>>
 		<br>
@@ -1911,6 +1911,45 @@ You spot a hooded figure skulking under a streetlamp.
 	<<endevent>>
 	<<destinationeventend>>
 <</if>>
+<</widget>>
+
+<<widget "streetorphancookie">>
+<<generatey1>><<generate2>><<person1>><<set $rng to random(1, 100)>>
+You smell freshly baked pastries, and hear a knock on a nearby door. You recognise a <<personsimple>> from the orphanage standing in front of one of the houses while carrying a box full of cookies.
+<br><br>
+
+<<if $loft_river>>
+	You expect that <<he>> made good use of the installations in the loft to bake them.
+	<br><br>
+
+	<<if $rng gte 51>>
+		After a brief exchange, the owner of the house hands out a small stack of bills to the <<personsimple>>. <<He>> beams, thanking the homeowner before moving on to the next house. <<stress -12>><<llstress>><<hope 1>><<ghope>>
+	<<else>>
+		<<if $bus is "domus">>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before saying something that makes the <<person1>><<personsimple>> blush. <<He>> quickly backs up, and moves on to the next house without looking back.<<if $awareness gte 200>> You expect that <<he>> was propositioned, and refused.<</if>> You find <<his>> stubbornness inspiring. <<stress -6>><<lstress>>
+		<<else>>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before holding out a large stack of bills. The <<person1>><<personsimple>> looks shocked. Even from here, you can tell it's a lot of money. <<He>> hands the entire box over to the <<person2>><<person>>, says <<person1>><<his>> thanks, and rushes back towards the orphanage with a look of pure joy. You expect <<hes>> off to bake more. <<stress -12>><<llstress>><<ghope>><<hope 2>>
+		<</if>>
+	<</if>>
+
+<<else>>
+	You wonder how <<he>> managed to bake them, given the miserable equipment at home.
+	<br><br>
+
+	<<if $rng gte 51>>
+		After a brief but stormy exchange, the owner of the house slams the door in <<his>> face. Still, the <<personsimple>> doesn't seem to relent in <<his>> efforts, and moves on to the next house. You find <<his>> stubbornness inspiring. <<stress -6>><<lstress>>
+	<<else>>
+		<<if $bus is "domus">>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before saying something that makes the <<person1>><<personsimple>> blush. <<He>> quickly backs up, and moves on to the next house without looking back.<<if $awareness gte 200>> You expect that <<he>> was propositioned, and refused.<</if>> You find <<his>> stubbornness inspiring. <<stress -6>><<lstress>>
+		<<else>>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before holding out a large stack of bills. The <<person1>><<personsimple>> looks shocked, and the <<person2>><<person>> motions for <<person1>><<him>> to enter the house. <<He>> hesitates, but looks down at the money. Even from here, you can tell it's a lot. With a flushed face, <<he>> enters. <<gtrauma>><<trauma 3>><<lhope>><<hope -1>><<greb>><<reb 1>>
+		<</if>>
+	<</if>>
+<</if>>
+<br><br>
+
+<<endevent>>
+<<destinationeventend>>
 <</widget>>
 
 :: Widget Passout Street [widget]
@@ -2667,7 +2706,7 @@ You find a quiet place and open the <<wallet>>.
 		<<set $averyseen to 1>>
 		<<streetavery>>
 	<<elseif $rng gte 52>>
-		<<set $dangerevent to random(1, 180)>>
+		<<set $dangerevent to random(1, 190)>>
 		<<if $dangerevent lte 10>>
 			<<if $exhibitionismrun is undefined and $exhibitionismrunon isnot 1 and $days gte 8>>
 				<<streetexoffer>>
@@ -2786,6 +2825,12 @@ You find a quiet place and open the <<wallet>>.
 			<<bodywriting_exposure_check true>>
 			<<if _bodywriting_exposed is 1 and $skin[_bodypart].special is "criminal">>
 				<<streetcriminalbodywriting>>
+			<<else>>
+				<<eventsstreetday>>
+			<</if>>
+		<<elseif $dangerevent lte 190>>
+			<<if $bus is "domus" or $bus is "danube">>
+				<<streetorphancookie>>
 			<<else>>
 				<<eventsstreetday>>
 			<</if>>

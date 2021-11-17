@@ -37,7 +37,7 @@
 				<<set $schoolwake to 1>>
 				<<set $robindebtwake to 1>>
 			<</if>>
-		<<elseif $wraith and $wraith.nightmare is 1 and ($moonstate is "evening" and $hour gte 22 or $moonstate is "morning" and $hour lt 5)>>		
+		<<elseif $wraith and $wraith.state isnot "" and $wraith.nightmare is 1 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5)>>		
 			<<if $location is "home" or $location is "cabin" or $location is "wolf_cave" or ($location is "tower" and $bird and $bird.mirror is 1) or $location is "alex_cottage">>
 				<<set $schoolwake to 1>>
 				<<set $wraith.nightmare to 2>>

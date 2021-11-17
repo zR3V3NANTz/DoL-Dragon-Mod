@@ -88,7 +88,7 @@ You are in your bedroom.
 			<span class="nextLink"><<bedicon>><<link [[Kylar.|Bed]]>><</link>></span>
 		<</if>>
 		<br>
-		<<listsleepoutfits>>		
+		<<listsleepoutfits>>
 	<<elseif $slimeEvent is undefined>>
 		<br>
 		<<bedicon>><<link [[Strip and get in bed|Bed]]>><<undressSleep "bed">><</link>>
@@ -1037,8 +1037,7 @@ You've pushed yourself too much.
 <<effects>>
 <<wearoutfit>>
 <<if $robinbed is 1>>
-You snuggle under the covers with Robin.
-<br><br>
+	You snuggle under the covers with Robin.
 <<else>>
 	<<if $location is "home" and $corruption_slime gte ($willpower / 20) and random(0,100) lt 3 and ($daystate is "night" and ($hour gte 20 or $hour lte 1)) and $slimeSleepEvent is 0 and $slimeEvent is undefined>>
 		<<set $slimeSleepEvent to 4>>
@@ -1047,8 +1046,11 @@ You snuggle under the covers with Robin.
 	<<else>>
 	You snuggle under the covers.
 	<</if>>
-	<br><br>
 <</if>>
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
+<</if>>
+<br><br>
 
 <<if _skip isnot true>>
 	<<if $sleeptrouble is 1 and $controlled is 0>>
@@ -1756,7 +1758,7 @@ The last of the water drains from the bath, taking the slime with it. <<tearful>
 	<<else>>
 		<<set $rng to random(1, 100)>>
 		<<if $rng gte 81>>
-		You hear <<him>> search and find the children one by one, until you're the only one left. After a couple more minutes <<his>> impatience gets the better of <<him>>. "I give up. You win." <<he>> shouts. You leave your hiding place triumphant.
+		You hear <<him>> search and find the orphans one by one, until you're the only one left. After a couple more minutes <<his>> impatience gets the better of <<him>>. "I give up. You win." <<he>> shouts. You leave your hiding place triumphant.
 		<br><br>
 
 		<<else>>

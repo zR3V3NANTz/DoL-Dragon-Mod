@@ -352,7 +352,7 @@ Kylar grasps the backs of your thighs greedily. Once your convulsions stop, <<he
 <<else>>
 	 <<set _kylarStatus to "">>
 <</if>>
-<!-- USAGE: if Kylar's lust is over 60, <<if _kylarStatus.includes("Love")>>; otherwise, <<else>>  -->
+<!-- USAGE: if Kylar's lust is over 60, <<if _kylarStatus.includes("Lust")>>; otherwise, <<else>>  -->
 <<if $NPCName[$NPCNameList.indexOf("Kylar")].lust gte 60>>
 	<<set _kylarStatus += "Lust">>
 <</if>>
@@ -1418,6 +1418,9 @@ You can feel <<his>> breath, now stabilised and calm, against your skin.
 <<effects>>
 
 You snuggle under the covers with Kylar.
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
+<</if>>
 <br><br>
 
 <<if $sleeptrouble is 1 and $controlled is 0>>
