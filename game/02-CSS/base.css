@@ -1,4 +1,7 @@
-mouse.tooltip {font-weight: normal;}
+mouse.tooltip {
+	font-weight: normal;
+	border-bottom: 1px dotted rgb(176, 176, 180);
+}
 
 mouse.tooltip span {
 	z-index:210;
@@ -15,12 +18,11 @@ mouse.tooltip span {
 mouse.tooltip:hover span {
 	display:inline;
 	position:absolute;
-	border:2px solid #000000;
-	color: #000000;
+	border:2px solid gold;
 	font-weight: normal;
 	text-decoration: none;
 	font-size:1.0em;
-	background:#C4C4C4 repeat-x 0 0;
+	background:#1a1919 repeat-x 0 0;
 }
 
 #next {
@@ -101,6 +103,16 @@ mouse.tooltip:hover span {
 .macro-button:hover {
 	background-color: #333;
 	border: 1px solid #fff;
+}
+
+.macro-button:active {
+	background-color: #ffd700;
+	border: 1px solid #fff;
+}
+
+.macro-button:focus {
+	background-color: #555;
+	border: 1px solid #ffd700;
 }
 
 .customOverlay {
@@ -869,6 +881,10 @@ span.number, span.suit {
 
 .gold, .gold button, .goldLink a {
 	color: #FFD700;
+}
+
+.linkBlue {
+	color: #5888dd;
 }
 
 .silver {
