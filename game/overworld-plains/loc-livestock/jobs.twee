@@ -187,7 +187,7 @@
 		<br>
 	<<elseif $livestock_pig is 1>>
 		<<set $livestock_pig to 2>>
-		<<beastNEWinit 1 pig>>
+		<<endevent>><<beastNEWinit 1 pig>>
 		Remy leads you down the small lane towards the barn. You arrive in front of it, but then are turned toward the second, smaller barn opposite.
 		<br><br>
 
@@ -206,7 +206,7 @@
 
 	<<elseif $livestock_pig is 2>>
 		<<set $livestock_pig to 1>>
-		<<beastNEWinit 3 pig>>
+		<<endevent>><<beastNEWinit 3 pig>>
 		Remy leads you down the small lane towards the barn. You arrive in front of it, but then are turned toward the second, smaller barn opposite.
 		<br><br>
 

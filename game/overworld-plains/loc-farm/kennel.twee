@@ -1,8 +1,8 @@
 :: Farm Kennel 
 <<set $outside to 0>><<effects>>
-<<beastNEWinit 1 dog>> 
+<<beastNEWinit 1 dog>>
 <<if $kennel_intro isnot true>>
-<<set $kennel_intro to true>>
+    <<set $kennel_intro to true>>
     You enter the kennel. The scent of <<beastsplural>> surrounds you. <<if $farm.kennel gte 1>>Here, you can train them to defend the farm.<</if>>
     <br><br>
     <<if $wolfgirl gte 5>>
@@ -49,7 +49,7 @@
     <<if $farm.beasts.dogs gte 20>>
         The <<beastsplural>> await your words, their tails wagging.
     <<elseif $farm.beasts.dogs gte 5>>
-        The <<beastsplural>> awaits your words.
+        The <<beastsplural>> await your words.
     <<elseif $farm.beasts.dogs gte -5>>
         The <<beastsplural>> ignore you.
     <<elseif $farm.beasts.dogs gte -20>>
@@ -155,7 +155,7 @@ You open the locked cupboard in an adjoining room, and find the bag of treats.
     It's empty. You can buy more treats from the pet shop in town.
     <br><br>
 
-    <<link [[Next|Farm Kennel]]>><</link>>
+    <<link [[Next|Farm Kennel]]>><<endevent>><</link>>
     <br>
 <<else>>
     <<set $farm_kennel to 1>>
@@ -480,7 +480,7 @@ The other <<beastsplural>> watch.
     <</if>>
 <<else>>
 
-	<<kennel_treats -= 100>>The <<beastsplural>> lose interest in you as you collapse. They tear apart the bag of treats, and feast.<<llrespect>><<farm_dogs -3>>
+	<<kennel_treats -100>>The <<beastsplural>> lose interest in you as you collapse. They tear apart the bag of treats, and feast.<<llrespect>><<farm_dogs -3>>
 	<br><br>
 
 	<<tearful>> you stagger from the kennel.
@@ -660,7 +660,7 @@ You let the <<beastsplural>> outside, and race them around the field.
     <br><br>
 <</if>>
 
-<<link [[Next|Farm Work]]>><</link>>
+<<link [[Next|Farm Work]]>><<endevent>><</link>>
 <br>
 
 :: Farm Kennel Play Lewd

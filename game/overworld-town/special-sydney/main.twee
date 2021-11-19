@@ -199,7 +199,7 @@
 		<br><br>
 		Sirris laughs to <<himself>>. "That is true," <<he>> says. "I remember you saying that, little Syd." Sydney pouts harder.
 		<<sydneySirrisResemble>>
-		Sydney looks at you, then to Sirris. <<He>> takes a moment to arrange the counter besides <<him>>, in an attempt to ease the awkwardness.
+		Sydney looks at you, then to Sirris. <<nnpc_He "Sydney">> takes a moment to arrange the counter besides <<nnpc_him "Sydney">>, in an attempt to ease the awkwardness.
 		<br><br>
 		"So why are you here?" Sydney asks.
 		<br>
@@ -886,7 +886,7 @@ You push Sydney away from you.
 			you say.
 			<br><br>
 			<<if $handskill gte 800>>
-				<<He>> melts in your grasp. <<He>> doesn't even say anything, and just lays back in <<his>> chair. <<He>> makes make a tiny squeak of pleasure. <<npcincr Sydney lust 1>><<glust>>
+				<<He>> melts in your grasp. <<He>> doesn't even say anything, and just lays back in <<his>> chair. <<He>> makes a tiny squeak of pleasure. <<npcincr Sydney lust 1>><<glust>>
 			<<elseif $handskill gte 400>>
 				You feel <<him>> loosen up. "You're pretty good at this." <<He>> leans back in <<his>> chair, enjoying your touch.
 			<<else>>

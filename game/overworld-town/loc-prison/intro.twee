@@ -246,7 +246,7 @@ The other guards stand around you, watching.
 
 <<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
 <br>
-<<if $exhibitionism gte 75>>
+<<if $exhibitionism gte 55>>
     <<link [[Flaunt|Prison Intro Flaunt]]>><<prison_guards 3>><</link>><<exhibitionist4>><<llsuspicion>>
     <br>
 <</if>>
@@ -437,7 +437,7 @@ You tell <<person4>><<methodical_guard 3>> your name. <<He>> scribbles something
 
 <<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
 <br>
-<<if $exhibitionism gte 75>>
+<<if $exhibitionism gte 55>>
     <<link [[Flaunt|Prison Intro Flaunt]]>><<prison_guards 3>><</link>><<exhibitionist4>><<llsuspicion>>
     <br>
 <</if>>
@@ -463,7 +463,7 @@ You spit on the floor. <<person3>><<veteran_guard 2 cap>> takes a step closer, a
 
 <<link [[Strip|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
 <br>
-<<if $exhibitionism gte 75>>
+<<if $exhibitionism gte 55>>
     <<link [[Flaunt|Prison Intro Flaunt]]>><<prison_guards 3>><</link>><<exhibitionist4>><<llsuspicion>>
     <br>
 <</if>>
@@ -484,7 +484,7 @@ You remain silent.
 
 <<link [[Strip (0:01)|Prison Intro Strip]]>><<trauma 6>><<stress 6>><<prison_guards -1>><</link>><<gtrauma>><<gstress>><<lsuspicion>>
 <br>
-<<if $exhibitionism gte 75>>
+<<if $exhibitionism gte 55>>
     <<link [[Flaunt (0:03)|Prison Intro Flaunt]]>><<prison_guards 3>><<pass 3>><</link>><<exhibitionist4>><<llsuspicion>>
     <br>
 <</if>>
@@ -955,9 +955,9 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
     <<person1>><<relaxed_guard 0>> says. "Lights on at <<ampm 6 00>>. There's a schedule on the wall. You can read, right?"
     <br><br>
     <<if $prison_intro isnot 1>>
-        "Quiet down!" <<he>> shouts at <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face stares at you from <<his>> cell. <<He>> licks one of the bars.
+        "Quiet down!" <<he>> shouts as <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face stares at you from <<his>> cell. <<He>> licks one of the bars.
     <<else>>
-        "Quiet down!" <<he>> shouts at <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> stares at you from <<his>> cell. <<He>> licks one of the bars.
+        "Quiet down!" <<he>> shouts as <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> stares at you from <<his>> cell. <<He>> licks one of the bars.
     <</if>>
     <br><br>
 
@@ -972,9 +972,9 @@ You emerge on a walkway above a long hall, stretching in both directions. Three 
     <</if>> <<person1>><<relaxed_guard 0>> says. "Lights on at <<ampm 6 00>>. There's a schedule on the wall. You can read, right?"
     <br><br>
     <<if $prison_intro isnot 1>>
-        "Quiet down!" <<he>> shouts at <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
+        "Quiet down!" <<he>> shouts as <<he>> walks away. A <<person5>><<person>> with a jagged scar across <<his>> face arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
     <<else>>
-        "Quiet down!" <<he>> shouts at <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
+        "Quiet down!" <<he>> shouts as <<he>> walks away. <<person5>><<scarred_inmate 4 cap>> arrives to gawk at you for a few moments. <<He>> licks the bar before leaving.
     <</if>>
     <br><br>
 

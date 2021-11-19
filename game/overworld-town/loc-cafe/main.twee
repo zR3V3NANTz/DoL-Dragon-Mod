@@ -1363,6 +1363,10 @@ You take a seat at one of the elevated seats at the window and order a <<print _
 			/* for loops seem to hate me so we'll have to do it this way i guess */
 			<<set _photos_taken to 0>>
 			<<if $cameras_raised gte 1>>
+				<!-- Necessary as attempting to clear the first NPC if it did not exist would cause issues with $eventslot. -->
+				<<if $eventslot isnot undefined and $eventslot.includes(0)>>
+					<<clearsinglenpc 0>>
+				<</if>>
 				<span class="pink">
 				A <<generate1>><<person1>><<person>> raises <<his>> phone and takes a photo.
 				</span>
@@ -1383,6 +1387,9 @@ You take a seat at one of the elevated seats at the window and order a <<print _
 			<</if>>
 
 			<<if $cameras_raised gte 2>>
+				<<if $eventslot isnot undefined and $eventslot.includes(1)>>
+					<<clearsinglenpc 1>>
+				<</if>>
 				<span class="pink">
 				A <<generate2>><<person2>><<person>> raises <<his>> phone and takes a photo.
 				</span>
@@ -1403,6 +1410,9 @@ You take a seat at one of the elevated seats at the window and order a <<print _
 			<</if>>
 
 			<<if $cameras_raised gte 3>>
+				<<if $eventslot isnot undefined and $eventslot.includes(2)>>
+					<<clearsinglenpc 2>>
+				<</if>>
 				<span class="pink">
 				A <<generate3>><<person3>><<person>> raises <<his>> phone and takes a photo.
 				</span>

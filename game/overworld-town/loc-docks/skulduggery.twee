@@ -1158,7 +1158,7 @@ You see the pair up ahead, a <<person1>><<person>> and <<person2>><<person>>. Yo
 <<elseif $rng is 4>>
 	"Glad to work away from the compound," the <<person1>><<person>> says.
 	<br>
-	The <<person2>><<person>> nods. "Don't care what the company line is," <<he>> says. "Those fume make me lightheaded."
+	The <<person2>><<person>> nods. "Don't care what the company line is," <<he>> says. "Those fumes make me lightheaded."
 	<br><br>
 <<else>>
 	They remain silent.

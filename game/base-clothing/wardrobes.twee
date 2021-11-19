@@ -270,7 +270,7 @@
 				<<set $worn[clone(_labelWW)] to clone(_selectedWardrobe[clone(_labelWW)][clone(_valueWW)])>>
 				<<set $worn[clone(_labelWW)].lastTaken to clone($wardrobe_location)>>
 				<<set _selectedWardrobe[_labelWW].deleteAt(_valueWW)>>
-				<<resetState _labelWW>>
+				<<resetClothingState _labelWW>>
 			<</for>>
 		<</if>>
 		<<set $worn[_equip[_ie]] to clone(_selectedWardrobe[_equip[_ie]][_wearId])>>
@@ -318,13 +318,17 @@
 </div>
 <br>
 <<if $upperwet gte 1 or $lowerwet gte 1 or $underlowerwet gte 1 or $underupperwet gte 1>>
+	<div class="wardrobe-dry">
 	<<link "Dry your clothes">>
 		<<set $wear to "dry">>
 		<<updatewardrobe>>
+		<<if $upperwet lt 1 and $lowerwet lt 1 and $underlowerwet lt 1 and $underupperwet lt 1>>
+			<<remove ".wardrobe-dry">>
+		<</if>>
 	<</link>>
 	<br>
+	</div>
 <</if>>
-
 <div class="wardrobe-action">
 	<<link "Strip all">>
 		<<set $wear to "strip">>

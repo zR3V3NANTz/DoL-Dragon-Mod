@@ -48,10 +48,10 @@ You sneak around the mansion and look for anything of value.
 			<br>
 		<</if>>
 		<<if $deviancy gte 15>>
-			<<link [[Try to calm it|Danube House Cat]]>><<set $sexstart to 1>><<generate2>><</link>><<deviant2>>
+			<<link [[Try to calm it|Danube House Cat]]>><<set $sexstart to 1>><</link>><<deviant2>>
 			<br>
 		<</if>>
-		<<link [[Fight|Danube House Cat]]>><<set $molestationstart to 1>><<generate2>><<set $phase to 0>><</link>>
+		<<link [[Fight|Danube House Cat]]>><<set $molestationstart to 1>><<set $phase to 0>><</link>>
 		<br>
 		<<link [[Run|Danube House Run]]>><</link>><<athleticsdifficulty>>
 		<br><br>

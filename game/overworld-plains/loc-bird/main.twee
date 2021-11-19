@@ -967,7 +967,7 @@ You remain still.
 <<if $monster is 1>>
 	<<bHis>> feathers lay flat as <<bhis>> wings hang limp. "Will find better meat next hunt." <<bHe>> lifts the lurker, and walks away with it.
 <<else>>
-	The <<beasttype>>'s feathers lay flat. <<bHe>> lifts the lurker, and hops away with it.
+	The <<beasttype>>'s feathers lay flat. <<bhe>> lifts the lurker, and hops away with it.
 <</if>>
 <br><br>
 
@@ -1015,7 +1015,7 @@ You remain still.
 <<if $monster is 1>>
 	<<bHis>> wings hang limp as <<bhe>> frowns. "I'm sorry. Value of landbound trinkets is hard to understand. Will bring something more shiny next time."
 <<else>>
-	The <<beasttype>>'s feathers lay flat, and <<bHe>> hops away.
+	The <<beasttype>>'s feathers lay flat, and <<bhe>> hops away.
 <</if>>
 <br><br>
 
@@ -1032,7 +1032,7 @@ You remain still.
 <<if $monster is 1>>
 	<<bHis>> wings hang limp. "Will bring something more shiny to impress you. Next time."
 <<else>>
-	The <<beasttype>>'s feathers lay flat, and <<bHe>> hops away.
+	The <<beasttype>>'s feathers lay flat, and <<bhe>> hops away.
 <</if>>
 <br><br>
 

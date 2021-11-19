@@ -498,10 +498,10 @@
 			<<if $carried[$args[0]].name isnot "naked" and $clothingrebuy is 1 and $carried[$args[0]].one_piece isnot "broken" and setup.clothes[$args[0]][$carried[$args[0]].index].shop.length gt 0>>
 				<<if $carried[$args[0]].colourCustom isnot undefined>><<set _colourCustom to $carried[$args[0]].colourCustom>><</if>>
 				<<if $carried[$args[0]].accessory_colourCustom isnot undefined>><<set _accessory_colourCustom to $carried[$args[0]].accessory_colourCustom>><</if>>
+				<<set $_return to clothesReturnLocation($carried[$args[0]],"rebuy")>>
 				<<if $carried[$args[0]].outfitSecondary isnot undefined>>
 					<<set _outfitSecondaryRebuy to $carried[$args[0]].outfitSecondary>>
 					<<if $money gte Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
-						<<set $_return to clothesReturnLocation($carried[$args[0]],"rebuy")>>
 						<<generalSend $_return _outfitSecondaryRebuy[0] $carried[_outfitSecondaryRebuy[0]].index $carried[_outfitSecondaryRebuy[0]].colour $carried[_outfitSecondaryRebuy[0]].accessory_colour>>
 						<<set $money -= Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
 						<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($carried[_outfitSecondaryRebuy[0]].name),$_return])>>
@@ -512,7 +512,7 @@
 				<<elseif $money gte Math.trunc(getClothingCost($carried[$args[0]],$args[0]) * 1.5)>>
 					<<generalSend `clothesReturnLocation($carried[$args[0]],"rebuy")` $args[0] $carried[$args[0]].index $carried[$args[0]].colour $carried[$args[0]].accessory_colour>>
 					<<set $money -= Math.trunc(getClothingCost($carried[$args[0]],$args[0]) * 1.5)>>
-					<<set $effectsmessage to 1>><<run $rebuy_success.push(clone($carried[$args[0]].name))>>
+					<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($carried[$args[0]].name), $_return])>>
 				<<else>>
 					<<set $effectsmessage to 1>><<run $rebuy_failure.push(clone($carried[$args[0]].name))>>
 				<</if>>

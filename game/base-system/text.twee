@@ -2304,7 +2304,7 @@ in dev alternative to current "breasts" widget
 <<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
 	<span class="lblue">- Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-	<span class="purple">- $args[0]'s Dominance</span>
+	<span class="lblue">- $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
 	<span class="lblue">- $npc[0]'s Dominance</span>
 <<else>>
@@ -2316,7 +2316,7 @@ in dev alternative to current "breasts" widget
 <<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
 	<span class="lblue">- - Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-	<span class="purple">- - $args[0]'s Dominance</span>
+	<span class="lblue">- - $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
 	<span class="lblue">- - $npc[0]'s Dominance</span>
 <<else>>
@@ -2328,7 +2328,7 @@ in dev alternative to current "breasts" widget
 <<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
 	<span class="lblue">- - - Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-	<span class="purple">- - - $args[0]'s Dominance</span>
+	<span class="lblue">- - - $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
 	<span class="lblue">- - - $npc[0]'s Dominance</span>
 <<else>>

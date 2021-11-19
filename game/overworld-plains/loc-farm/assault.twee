@@ -1799,7 +1799,7 @@ You hear Alex fighting the other intruder.
 	<br><br>
 	<<endcombat>>
 	<<clotheson>>
-	<<npc Alex>><<person1>>
+	<<npc Alex>><<person1>><<generate2>>
 	<<tearful>> you rush to Alex's side. You find <<him>> wrestling with the remaining intruder, a <<person2>><<person>>. The intruder has the upper hand, until you smack <<him>> over the head from behind.<<person1>><<npcincr Alex dom 1>>
 	<br><br>
 	"You showed em," Alex says as you help <<him>> to <<his>> feet.

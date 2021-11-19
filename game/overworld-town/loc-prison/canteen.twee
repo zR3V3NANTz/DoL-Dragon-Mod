@@ -1,7 +1,7 @@
 :: Prison Canteen
 <<set $bus to "canteen">><<set $outside to 0>><<effects>><<effects_prison>>
 
-You are in the canteen. Rows of table fill the large room. The ceiling hangs low enough that taller inmates can't stand upright, giving it a claustrophobic feel despite its length and breadth.
+You are in the canteen. Rows of tables fill the large room. The ceiling hangs low enough that taller inmates can't stand upright, giving it a claustrophobic feel despite its length and breadth.
 <<if $prison.schedule is "wake" or $prison.schedule is "lunch" or $prison.schedule is "dinner">>
     Inmates queue for their grub. <<generate_methodical_guard 0>><<methodical_guard 0 cap>> stands in the corner, flipping through the pages of a book.
 <<elseif $prison.schedule is "work">>
