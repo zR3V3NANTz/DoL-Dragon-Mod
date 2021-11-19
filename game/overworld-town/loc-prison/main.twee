@@ -1361,7 +1361,6 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
         <br>
     <</if>>
 <<else>>
-    
     <<if $prison.schedule isnot "lockdown" and $prison.attention gte 100>>
         <<events_prison_attention>>
     <<else>>
@@ -1371,7 +1370,6 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
         <<if $prison_event_trigger>>
             <<events_prison_triggered>>
         <<else>>
-
             <<if $prison.schedule is "yard" and !$prison_veteran_greet and $prison.veteran gte 15>>
                 <<prison_guard_greet veteran>>
             <<elseif $prison.schedule is "yard" and random(1, 5) is 5 and $eventskip isnot 1>>
@@ -1382,14 +1380,14 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                         <span class="blue">You can't run with your legs bound.</span>
                         <br>
                     <<else>>
-                        <<link [[Run (0:30)|Prison Yard Run]]>><<tiredness 6>><<athletics 6>><<pass 30>><</link>><<gathletics>><<gphysique>>
+                        <<link [[Run (0:30)|Prison Yard Run]]>><<endevent>><<tiredness 6>><<athletics 6>><<pass 30>><</link>><<gathletics>><<gphysique>>
                         <br>
                     <</if>>
                     <<if $leftarm is "bound" or $rightarm is "bound">>
                         <span class="blue">You can't lift with your arms bound.</span>
                         <br>
                     <<else>>
-                        <<link [[Lift weights (0:30)|Prison Yard Exercise]]>><<pass 30>><<tiredness 6>><</link>><<gtiredness>><<ggphysique>>
+                        <<link [[Lift weights (0:30)|Prison Yard Exercise]]>><<endevent>><<pass 30>><<tiredness 6>><</link>><<gtiredness>><<ggphysique>>
                         <br>
                     <</if>>
                 <</if>>
@@ -1398,7 +1396,7 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                         <span class="blue">You can't speak to the guard with this gag in the way.</span>
                         <br>
                     <<else>>
-                        <<link [[Speak with the guard (0:30)|Prison Yard Speak]]>><<pass 30>><<prison_rep veteran 1>><</link>><<glove>>
+                        <<link [[Speak with the guard (0:30)|Prison Yard Speak]]>><<endevent>><<pass 30>><<prison_rep veteran 1>><</link>><<glove>>
                         <br>
                     <</if>>
                 <</if>>
@@ -1414,7 +1412,7 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                 <br>
                 The ground slopes gently, leading to a pair of wide doors. The smell of stale food lingers in the air.
                 <br>
-                <<link [[Canteen|Prison Canteen]]>><</link>>
+                <<link [[Canteen|Prison Canteen]]>><<endevent>><</link>>
                 <br><br>
                 
                 The wall protrudes, giving rise to a tower far taller than the the rest of the prison. There's a metal door at the bottom.
@@ -1448,14 +1446,14 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                 There's a small area sheltered from view. A large locked door blends into the surrounding stone.
                 <br>
                 <<if $prison.yard_door is 1>>
-                    <<link [[Sneak to beach (0:01)|Prison Beach]]>><<pass 1>><</link>>
+                    <<link [[Sneak to beach (0:01)|Prison Beach]]>><<endevent>><<pass 1>><</link>>
                     <br>
                 <<else>>
-                    <<link [[Large door|Prison Yard Door]]>><</link>>
+                    <<link [[Large door|Prison Yard Door]]>><<endevent>><</link>>
                     <br>
                 <</if>>
                 <br>
-                <<link [[Prison block|Prison Block]]>><</link>>
+                <<link [[Prison block|Prison Block]]>><<endevent>><</link>>
                 <br>
             <</if>>
         <</if>>
@@ -1639,7 +1637,7 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
     <<endevent>>
     <br><br>
     <<if $hour is 20>>
-        You hear a bell ring. "Lockdown," <<generate_anxious_guard 0>><<anxious_guard 0>><<person1>> sighs. "At last. Off to your cell."
+        You hear a bell ring. "Lockdown," <<anxious_guard 0>><<person1>> sighs. "At last. Off to your cell."
         <br><br>
         You run for the stairs with <<anxious_guard 0>> before the creatures react. <<He>> leads you down the stairs, through the yard and prison block, and into your cell.
         <br><br>

@@ -339,15 +339,15 @@
 		<br>
 	<</if>>
 	<<if $robinhugcomplain isnot 1>>
-		<<link [[Complain (0:10)|Robin Hug Complain]]>><<set $robinhugcomplain to 1>><<stress -12>><<trauma -6>><<pass 10>><</link>><<ltrauma>><<lstress>>
+		<<link [[Complain (0:10)|Robin Hug Complain]]>><<set $robinhugcomplain to 1>><<stress -12>><<trauma -6>><<pass 10>><</link>><<lstress>><<ltrauma>>
 		<br>
 	<</if>>
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].love gte 50>>
-		<<link [[Cuddle (0:10)|Robin Hug Cuddle]]>><<set $robinhugging to 1>><<pass 10>><<npcincr Robin love 1>><<trauma -1>><<stress -1>><</link>><<ltrauma>><<lstress>><<glove>>
+		<<link [[Cuddle (0:10)|Robin Hug Cuddle]]>><<set $robinhugging to 1>><<pass 10>><<npcincr Robin love 1>><<trauma -1>><<stress -1>><</link>><<lstress>><<ltrauma>><<glove>>
 		<br>
 	<</if>>
 	<<if $robinstunned isnot 1 and $robinconsole is 1>>
-		<<link [[Watch Robin play (0:30)|Robin Watch]]>><<set $robinhugging to 1>><<stress -6>><<trauma -3>><<pass 30>><<npcincr Robin love 1>><</link>><<glove>><<ltrauma>><<lstress>>
+		<<link [[Watch Robin play (0:30)|Robin Watch]]>><<set $robinhugging to 1>><<stress -6>><<trauma -3>><<pass 30>><<npcincr Robin love 1>><</link>><<lstress>><<ltrauma>><<glove>>
 		<br>
 	<</if>>
 	<<link [[Stop hugging|Robin Hug Stop]]>><</link>>
@@ -423,7 +423,7 @@ You knock on the door. Robin throws it open and hugs you. "Come in," <<he>> says
 	<<if _hand is 1>><<He>> squeezes your hand.<</if>><<npcincr Robin dom 3>><<gdom>>
 <</if>>
 <br><br>
-<<He>> sits on the bed beside the television and picks up the controller.
+<<He>> sits on the bed beside the television<<if $robinconsole is 1>> and picks up the controller<<else>> and reaches for something, quickly realising nothing is there to grab. A look of boredom washes over him<</if>>.
 <</widget>>
 
 <<widget "robinbrothelappear">>

@@ -412,7 +412,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[1].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -422,7 +422,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[0].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -432,7 +432,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[2].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -442,7 +442,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[3].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -452,7 +452,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[5].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -471,8 +471,10 @@ You find a large, iron key. You wonder if it opens anything nearby.
 
 	<<link [[Try and back out|Trash Boys Back Out]]>><</link>>
 	<br>
-	<<link [[Show them yours|Trash Boys Show]]>><</link>><<exhibitionist4>>
-	<br>
+	<<if $exhibitionism gte 55>>
+		<<link [[Show them yours|Trash Boys Show]]>><</link>><<exhibitionist4>>
+		<br>
+	<</if>>
 
 :: Trash Boys Back Out
 <<effects>>
@@ -480,8 +482,10 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<br><br>
 	"You made a promise" the <<person1>><<person>> retorts angrily, stepping forward. "Now you can either strip of your own free will, or we can make you" He states flatly. "It's ok if you feel a little embarrassed, but a promise is a promise."
 	<br><br>
-	<<link [[Strip|Trash Boys Show]]>><</link>><<exhibitionist4>>
-	<br>
+	<<if $exhibitionism gte 55>>
+		<<link [[Strip|Trash Boys Show]]>><</link>><<exhibitionist4>>
+		<br>
+	<</if>>
 	<<link [[Refuse|Trash Boys Forced Strip]]>><<set $molestationstart to 1>><</link>>
 	<br>
 

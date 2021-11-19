@@ -3360,7 +3360,7 @@ You let Alex's hands wander as <<he>> pleases. <<He>> brushes <<his>> fingers ov
 	<br>
 	<<link [[Allow|Farm Rest Sex]]>><<set $sexstart to 1>><</link>>
 	<br>
-	<<link [[Push Alex onto the grass|Farm Rest Grass]]>><<npcincr Alex lust 1>><<npcincr Alex love 1>><<npcincr Alex dom 1>><</link>><<glust>><<glove>><<ldom>>
+	<<link [[Push Alex onto the grass|Farm Rest Grass]]>><<npcincr Alex lust 1>><<npcincr Alex love 1>><<npcincr Alex dom -1>><</link>><<glust>><<glove>><<ldom>>
 	<br>
 <</if>>
 
@@ -5276,7 +5276,7 @@ You struggle to stand upright as the
 
 	<<clotheson>>
 
-	<<link [[Next|Farm Work]]>><</link>>
+	<<link [[Next|Farm Work]]>><<endevent>><</link>>
 	<br>
 <<else>>
 	"B-Bad dog," you scold, but it's hard to sound authoritative while being dragged through a field by a cock. <span class="red">The <<farm_text dog>> ignores you,</span> and pulls you further along.

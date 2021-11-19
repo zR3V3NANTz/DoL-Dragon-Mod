@@ -16,12 +16,15 @@
 <</widget>>
 
 <<widget "loadNPC">>
+<!-- Checks if endevent was properly used after the last event -->
+<<checkEventNPC $args[0]>>
 /*First argument is the NPClist you want the NPC to fill. Second argument is the string you want to load, as saved with saveNPC.*/
 <<if $args[0] gte 0 and $args[1]>>
 	<<set _temp1 to $args[1]>>
 	<<set _temp0 to $args[0]>>
 	<<set $NPCList[_temp0] to clone($per_npc[_temp1])>>
 	<<if $enemyno lt 6>><<set $enemyno += 1>><</if>>
+	<<pushEventNPC $args[0]>>
 <</if>>
 <</widget>>
 

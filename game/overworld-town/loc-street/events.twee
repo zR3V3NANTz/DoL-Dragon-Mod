@@ -6478,7 +6478,7 @@ You let the <<person>> grope and fondle your <<bottom>> as <<he>> pleases. <<He>
 
 :: Street Bottom Accept
 <<effects>>
-Your led into the alley and allow the <<person>> to take things further.
+You're led into the alley and allow the <<person>> to take things further.
 <<promiscuity2>>
 <<link [[Next|Street Bottom]]>><<set $sexstart to 1>><</link>>
 
@@ -7635,7 +7635,7 @@ You punch the <<person>> in the face, putting a stop to the torrent of abuse.
 :: Street Criminal Ignore
 <<effects>>
 
-You walk on. The <<person>> hurls insults behind you, but you do you best to ignore them.
+You walk on. The <<person>> hurls insults behind you, but you do your best to ignore them.
 <br><br>
 
 <<endevent>>
@@ -8472,7 +8472,7 @@ They seem pleased by your display, but you can tell by the look in their eyes th
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	
+	<<fameprostitution 1>>
 	<<tipset>>
 	“Thanks, <<girl>>,” the <<person1>><<person>> says, tossing a wad of cash at your feet. “It was worth every penny.” <<He>> laughs as <<he>> leads <<his>> friends out of the alley.
 	<br><br>

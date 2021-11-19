@@ -50,11 +50,6 @@
 		<</if>>
 		<<unset $endeventerror>>
 	<</if>>
-	<<if $debugdisable is "f">>
-		<<if $event isnot undefined>>
-			<br><<eventAlert>><br><br>
-		<</if>>
-	<</if>>
 
 	<<if $physiquechange is 1>><<set $physiquechange to 0>>
 		<<if $physiqueuse gte $physique / 1000>>
@@ -259,7 +254,25 @@
 			<<debug>>
 		<</if>>
 	</div>
-
+	<<if $debugdisable is "f">>
+		<<set _temp to "<span class='yellow'>SHOW EVENT INFO</span>">>
+		<<if $event isnot undefined>>
+			<<if $event[0] is $passage>>
+				<<set _eventalertmajorarea to false>>
+				<<set _temp to "<span class='green'>EVENT ACTIVE</span>">>
+			<<elseif setup.majorAreas.includes($passage)>>
+				<<set _eventalertmajorarea to true>>
+				<<set _temp to "<span class='red'>EVENT ACTIVE</span>">>
+			<<elseif ensureIsArray($event).length is 1 and ["Forest Cabin", "Eden Cabin", "Eden Clearing"].includes($event[0])>>
+				<<set _temp to "<span class='green'>EVENT ACTIVE</span>">>
+			<</if>>
+		<</if>>
+		<<button _temp>><<overlayReplace "eventExtraInfo">><</button>>
+		<<unset _temp>>
+	<</if>>
+/* 	<<button "More Event Info">>
+		<<overlayReplace "eventExtraInfo">>
+	<</button>> */
 	<<if $showDebugRenderer>>
 		<<button "DEBUG RENDERER">><<overlayReplace "canvasModel">><</button>>
 	<</if>>
@@ -324,7 +337,7 @@
 			<br>
 		<</if>>
 	<</if>>-->
-	<<clothingCpationText>>
+	<<clothingCaptionText>>
 
 	<<switch $body_temperature>>
 	<<case "hot">>

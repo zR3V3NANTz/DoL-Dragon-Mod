@@ -50,9 +50,9 @@
 	Your mouth is free, but involuntary sobs and cries prevent speaking.
 	<br>
 	<<if $mouthactiondefault is "stifle">>
-		| <label>Stifle <<radiobutton "$mouthaction" "stifle" checked>></label>
+		| <label><span class="brat">Stifle</span> <<radiobutton "$mouthaction" "stifle" checked>></label>
 	<<else>>
-		| <label>Stifle <<radiobutton "$mouthaction" "stifle">></label>
+		| <label><span class="brat">Stifle</span> <<radiobutton "$mouthaction" "stifle">></label>
 	<</if>>
 	<<if $mouthactiondefault is "letout">>
 		| <label><span class="meek">Let it out</span> <<radiobutton "$mouthaction" "letout" checked>></label>

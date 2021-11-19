@@ -264,4 +264,7 @@
 <<set $actionDefaults = DefaultActions.setDefaults()>>
 
 <<set versionUpdateCheck to false>>
+
+<<set $rebuy_failure to []>>
+<<set $rebuy_success to []>>
 <</widget>>

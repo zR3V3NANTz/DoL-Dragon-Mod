@@ -222,7 +222,7 @@ There are pillars in the corners of the room. You strip behind one. It's hardly 
 You move your clothes to another bench.
 <br><br>
 
-<<link [[Next|Prison Shower Take]]>><<endevent>><</link>>
+<<link [[Next|Prison Shower Take]]>><<endevent>><<pass 10>><</link>>
 <br>
 
 
@@ -241,7 +241,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 
 	<<link [[Intervene|Prison Shower Intervene]]>><<prison_rep veteran -3>><<prison_inmates 1>><<prison_guards -1>><</link>><<lllove>><<gsuspicion>><<grespect>>
 	<br>
-	<<link [[Just take a shower|Prison Shower Take]]>><<endevent>><</link>>
+	<<link [[Just take a shower|Prison Shower Take]]>><<endevent>><<pass 10>><</link>>
 	<br>
 <<else>>
 	"What you sweethearts getting up to?" interrupts <<veteran_guard 1>>. <<person2>><<He>> walks around the pillar. "Prisoner <<print random(3, 143)>>. Let's have a word."
@@ -250,7 +250,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 	<br><br>
 	You leave your clothes on the bench.
 	<br><br>
-	<<link [[Next|Prison Shower Take]]>><<endevent>><</link>>
+	<<link [[Next|Prison Shower Take]]>><<endevent>><<pass 10>><</link>>
 	<br>
 <</if>>
 
@@ -273,7 +273,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 <<veteran_guard 1 cap>><<person2>> glares at you, then straps <<his>> baton and stomps off. The <<person1>><<person>> remains prone.
 <br><br>
 
-<<link [[Next|Prison Shower Take]]>><<endevent>><</link>>
+<<link [[Next|Prison Shower Take]]>><<endevent>><<pass 10>><</link>>
 <br>
 
 :: Prison Shower Stomp
@@ -286,7 +286,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 	You leave your clothes on the bench.
 	<br><br>
 
-	<<link [[Next|Prison Shower Take]]>><</link>>
+	<<link [[Next|Prison Shower Take]]>><<pass 10>><</link>>
 	<br>
 <<else>>
 	You stomp on the <<persons>> foot. <span class="red"><<He>> doesn't budge.</span> Instead, <<he>> leans in. "So that's how you want it," <<he>> whispers.
@@ -345,7 +345,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 	<<veteran_guard 1 cap>> pushes through the audience, and starts breaking them up. <<tearful>> you stagger away.
 	<br><br>
 	<<endcombat>>
-	<<link [[Next|Prison Shower Take]]>><</link>>
+	<<link [[Next|Prison Shower Take]]>><<pass 10>><</link>>
 
 <<elseif $enemyhealth lte 0>>
 	<<generate_veteran_guard 1>>
@@ -356,7 +356,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 	<<tearful>> you disappear into the crowd.
 	<br><br>
 	<<endcombat>>
-	<<link [[Next|Prison Shower Take]]>><</link>>
+	<<link [[Next|Prison Shower Take]]>><<pass 10>><</link>>
 <<else>>
 	<<generate_veteran_guard 1>>
 	<<veteran_guard 1 cap>><<person2>> pushes <<his>> way through the crowd. <<He>> smacks the <<person1>><<persons>> arm with <<person2>><<his>> baton. "Let's have a word," <<he>> says.
@@ -365,7 +365,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 	<br><br>
 
 	<<endcombat>>
-	<<link [[Next|Prison Shower Take]]>><</link>>
+	<<link [[Next|Prison Shower Take]]>><<pass 10>><</link>>
 	<br>
 
 <</if>>

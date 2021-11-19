@@ -98,6 +98,11 @@ window.ensureIsArray = function (x) {
 	return [x];
 }
 
+window.ensure = function(x, y) {
+	/* lazy comparison to include null. */
+	return (x == undefined) ? y : x;
+}
+
 /**
  * Copies to targets keys from source that are not present there.
  * Shallow.

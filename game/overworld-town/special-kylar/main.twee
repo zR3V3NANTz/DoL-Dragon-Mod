@@ -55,7 +55,7 @@
 	<<kylaroptionsleave>>
 <<else>>
 	<<if !$kylarDaily.walkKiss and $kylar_action is "walk">>
-		<<link [[Kiss|Kylar Walk In The Park End 2]]>><<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<npcincr Kylar rage -5>><</link>><<glove>><<glust>><<llksuspicion>><<kissvirginitywarning>><<NPCvirginitywarning "Kylar" "kiss">>
+		<<link [[Kiss|Kylar Walk In The Park End 2]]>><</link>><<glove>><<glust>><<llksuspicion>><<kissvirginitywarning>><<NPCvirginitywarning "Kylar" "kiss">>
 		<br>
 	<</if>>
 	<<link [[Chat (0:15)|Kylar Chat]]>><<pass 15>><<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<stress -2>><</link>><<lstress>><<glove>><<lksuspicion>>
@@ -1351,7 +1351,7 @@ You ignore the voices in the corridor and lay back down, your arms still wrapped
 <<if $submissive gte 1150>>
 	pulls you into <<his>> arms. You can feel <<his>> heartbeat through <<his>> chest. It's rapid, like it's trying to escape from <<his>> chest. You wonder if yours is just as fast.
 <<else>>
-	curls into your arms, wrapping <<his>> own around your waist. <<He>> rests <<his>> head on your <<breasts>>. <<He>> can surely feel your heart beating through your chest. You wonder if <<his>> is just as fast.
+	curls into your arms, wrapping <<his>> own around your waist. <<He>> rests <<his>> head on your <<breasts>>. <<He>> can surely feel your heart beating through your chest. You wonder if <<hers>> is just as fast.
 <</if>>
 <<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<stress -6>><<glove>><<lksuspicion>><<lstress>>
 <br><br>
@@ -2854,7 +2854,7 @@ You sit beside Kylar and say hello.
 	<<link [[Pull away|Canteen Kylar Whitney Refuse]]>><<npcincr Kylar rage -1>><<npcincr Whitney dom -1>><</link>><<ldom "Whitney">><<lksuspicion>>
 	<br>
 	<<if $submissive lte 500>>
-		<<link [[Slap|Canteen Kylar Whitney Slap]]>><<set $submissive -= 1>><<npcincr Whitney dom -3>><<npcincr Kylar rage -10>><</link>><<defianttext>><<llksuspicion>><<lldom>>
+		<<link [[Slap|Canteen Kylar Whitney Slap]]>><<set $submissive -= 1>><<npcincr Whitney dom -3>><<npcincr Kylar rage -10>><</link>><<defianttext>><<llksuspicion>><<lldom "Whitney">>
 		<br>
 	<</if>>
 
@@ -2955,7 +2955,7 @@ Whitney lunges for the smaller student, grasps <<person1>><<his>> collar, and sh
 Excited at the prospect of violence, other students gather around.
 <br><br>
 
-<<link [[Intervene|Canteen Kylar Whitney Intervene]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><<status -10>><<endevent>><<npc Whitney>><<person1>><</link>><<ldom>><<lcool>>
+<<link [[Intervene|Canteen Kylar Whitney Intervene]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><<status -10>><<endevent>><<npc Whitney>><<person1>><</link>><<ldom "Whitney">><<lcool>>
 <br>
 <<link [[Encourage|Canteen Kylar Whitney Encourage]]>><<npcincr Kylar rage 20>><<status 1>><</link>><<promiscuous1>><<gcool>><<gggksuspicion>>
 <br>
@@ -3169,9 +3169,9 @@ Kylar looks around, as if looking for a way out, until <<person1>><<his>> eyes r
 "That hurt?" Whitney asks. <<He>> delivers a kick to Kylar's stomach, much to the delight of the onlookers.
 <br><br>
 
-<<link [[Cheer for Kylar|Canteen Kylar Cheer]]>><<status -10>><<npcincr Kylar rage -10>><<npcincr Kylar love 3>><<npcincr Whitney dom -1>><</link>><<lcool>><<llksuspicion>><<glove>><<ldom>>
+<<link [[Cheer for Kylar|Canteen Kylar Cheer]]>><<status -10>><<npcincr Kylar rage -10>><<npcincr Kylar love 3>><<npcincr Whitney dom -1>><</link>><<lcool>><<llksuspicion>><<glove>><<ldom "Whitney">>
 <br>
-<<link [[Cheer for Whitney|Canteen Whitney Cheer]]>><<status 1>><<npcincr Kylar rage 10>><<npcincr Whitney dom 1>><</link>><<ggcool>><<ggksuspicion>><<gdom>>
+<<link [[Cheer for Whitney|Canteen Whitney Cheer]]>><<status 1>><<npcincr Kylar rage 10>><<npcincr Whitney dom 1>><</link>><<ggcool>><<ggksuspicion>><<gdom "Whitney">>
 <br>
 
 :: Canteen Kylar Cheer
@@ -4252,6 +4252,7 @@ The two of you continue walking.
 	You shake Kylar off of you. <<He>> looks stunned for a moment, before putting <<his>> face to <<his>> hands in shame. "I'm sorry, I don't know what came over me."
 <<else>>
 	<<set $kylarDaily.walkKiss to true>>
+	<<npcincr Kylar love 1>><<npcincr Kylar lust 1>><<npcincr Kylar rage -5>>
 	<<if $submissive gte 1150>>
 		You slowly bring your face closer to <<his>>, and plant a kiss on <<his>> lips.
 	<<elseif $submissive lte 850>>

@@ -2750,7 +2750,7 @@ You examine the lock. It looks old, and delicate with rust.
 	<br><br>
 
 	<<if $phase is 1 and $rng gte 76>>
-		<span class="blue">The creature from before leaps onto <<his>> shoulder and chitters.</span> "Yeah, I'm fine, little buddy," the <<plantperson>> says. "Maybe it'll work on someone else."
+		<span class="blue">The creature from before leaps onto <<his>> shoulder and chitters.</span> "Yeah, I'm fine, little buddy," the <<person>> says. "Maybe it'll work on someone else."
 	<<else>>
 		<<He>> rubs one of <<his>> vines, frowning. "Well, if you're ever in the area, hit me up. Maybe we can pick up where we left off, if you're in a better mood!" 
 	<</if>>
@@ -2824,7 +2824,7 @@ You examine the lock. It looks old, and delicate with rust.
 	<br><br>
 
 	<<if $phase is 1 and $rng gte 76>>
-		<span class="blue">The creature from before leaps onto <<his>> shoulder and chitters.</span> "Yeah, I'm fine, little buddy," the <<plantperson>> says. "Maybe it'll work on someone else."
+		<span class="blue">The creature from before leaps onto <<his>> shoulder and chitters.</span> "Yeah, I'm fine, little buddy," the <<person>> says. "Maybe it'll work on someone else."
 	<<else>>
 		<<He>> rubs <<his>> shoulder, frowning. "Well, if you're ever in the area, hit me up. Maybe we can pick up where we left off, if you're in a better mood!" 
 	<</if>>

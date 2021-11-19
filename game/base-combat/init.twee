@@ -206,13 +206,15 @@
 	<span class="red">ERROR: beastNEWinit unknown type</span>
 <</if>>
 
-<<for _xx = 1; _xx < _nn+1; _xx++>>
+<<set _offset to $enemyno + 1>>
+<<for _xx = _offset; _xx < _nn + _offset; _xx++>>
+	<!-- NPC#(1-6), Type, Gender -->
 	<<generateBEAST _xx _tpe _gnn _beast_genitals _beast_monster>>
 <</for>>
+<<unset _offset>>
 
 <<set $enemytype to "beast">>
 
-<<set $enemyno to _nn>>
 <<set $enemynomax to _nn>>
 
 <!-- NG This means if Beast 1 is a monster, they are all monsters -->
