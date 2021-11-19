@@ -25,6 +25,12 @@ mouse.tooltip:hover span {
 	background:#1a1919 repeat-x 0 0;
 }
 
+@media only screen and (max-width: 800px) {
+    mouse.tooltip:hover span {
+        left: 100px;
+    }
+}
+
 #next {
 	position: fixed;
 	bottom: -1px;

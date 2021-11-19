@@ -994,6 +994,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	</div></label>
 	<label><div class="settingsToggle">
 	<<checkbox "$footdisable" "t" "f" autocheck>> Enable feet
+	<mouse class="tooltip linkBlue">(?)<span>Does not remove the player's feet.</span></mouse>
 	</div></label>
 	<div class="settingsToggle" style="display: inline-flex;">
 	Asphyxiation
