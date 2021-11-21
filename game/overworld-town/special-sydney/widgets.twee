@@ -655,7 +655,7 @@
 				<<He>> sighs. "You know the rules." <<He>> brandishes a marker, and reaches for you.
 			<</if>>
 		<</if>>
-		<<if $bodywritingdisable is "t">>
+		<<if $bodywritingLvl is 0>>
 			<span class="red">You smack the marker away.</span> Sydney pouts at you. <<detention 3>><<gdelinquency>><<npcincr Sydney love -2>><<llove>>
 		<<else>>
 			<<if _bodywriting_exposed gte 1 and $skin[_bodypart].special is "Sydney">>

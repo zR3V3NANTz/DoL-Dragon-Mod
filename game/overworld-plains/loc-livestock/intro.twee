@@ -121,7 +121,7 @@ Without waiting for a command, they step forward and grasp both your arms before
 <<legbind>>
 <br><br>
 
-<<if $bodywritingdisable is "t">>
+<<if $bodywritingLvl is 0>>
 
 	<<link [[Next|Livestock Return 3]]>><</link>>
 	<br>
