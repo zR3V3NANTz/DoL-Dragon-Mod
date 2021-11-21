@@ -33,7 +33,7 @@
 <<set $beedisable to "f">>
 <<set $lurkerdisable to "f">>
 <<set $horsedisable to "f">>
-<<set $bodywritingdisable to "f">>
+<<set $bodywritingLvl to 3>>
 <<set $parasitedisable to "f">>
 <<set $bestialitydisable to "f">>
 <<set $slimedisable to "f">>
@@ -989,23 +989,30 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<<checkbox "$watersportsdisable" "t" "f" autocheck>> Enable watersports
 	<mouse class="tooltip linkBlue">(?)<span>This toggle is largely unused, only affecting a single very rare event as of right now.</span></mouse>
 	</div></label>
-	<label><div class="settingsToggle">
-	<<checkbox "$bodywritingdisable" "t" "f" autocheck>> Enable body-writing and forced tattoos
-	</div></label>
+
 	<label><div class="settingsToggle">
 	<<checkbox "$footdisable" "t" "f" autocheck>> Enable feet
 	<mouse class="tooltip linkBlue">(?)<span>Does not remove the player's feet.</span></mouse>
 	</div></label>
+	
 	<div class="settingsToggle" style="display: inline-flex;">
-	Asphyxiation
+	&nbsp;Asphyxiation
 	<<numberslider "$asphyxiaLvl" $asphyxiaLvl 0 4 1>>
 	<<run settingsAsphyxiation()>>
 	</div>
+
+	<div class="settingsToggle" style="display: inline-flex;">
+	&nbsp;Bodywriting
+	<<numberslider "$bodywritingLvl" $bodywritingLvl 0 3 1>>
+	<<run settingsBodywriting()>>
+	</div>
+		
 	<div class="settingsToggle">
-	Nude&nbsp;Gender&nbsp;Appearance
+	&nbsp;Nude&nbsp;Gender&nbsp;Appearance
 	<<numberslider "$NudeGenderDC" $NudeGenderDC 0 2 1>>
 	<<run settingsNudeGenderAppearance()>>
 	</div>
+
 	<div style="clear:both;">/*Keep at end of toggles*/</div>
 <</widget>>
 

@@ -2575,13 +2575,16 @@
 	<<if _version lte 30408>>/* for versions <= 0.3.4.8, run old version handler */
 		<<variablesVersionUpdate>>
 	<</if>>
-/* * * * * * * * * * * * * * * * * * * * * * *
- * NEW BACKWARDS COMPATIBILITY CODE GOES HERE
- */
+	/* * * * * * * * * * * * * * * * * * * * * * *
+	* NEW BACKWARDS COMPATIBILITY CODE GOES HERE
+	*/
 	<<set $runWardrobeSanityChecker to true>>
 
 	<!-- Makes sure $kennel_treats aren't strings due to bug. -->
 	<<if typeof $kennel_treats isnot "number">>
 		<<set $kennel_treats to 0>>
+	<</if>>
+	<<if $bodywritingLvl is undefined>>
+		<<set $bodywritingLvl to ($bodywritingdisable is "f" ? 3 : 0)>>
 	<</if>>
 <</widget>>

@@ -507,6 +507,13 @@ mouse.tooltip:hover span {
 	border: 1px solid #666;
 }
 
+.settingsToggle input[name|="numberslider-input"]{
+	width: 83%;
+	height: 0.75em;
+	min-height: unset;
+	margin-left: 1em;
+}
+
 .settingsToggleBig {
 	float: left;
 	width: 100%;
@@ -2168,6 +2175,18 @@ div[id|="numberslider-body"] span {
 	text-align: center;
 	vertical-align: middle;
 }
+
+div[id|="numberslider-body"] .small-description{
+	margin-left: -6em;
+	text-align: left;
+}
+
+div[id|="numberslider-body"] span .inline-colour{
+	margin-left: unset;
+	min-width: unset; 
+	vertical-align: unset;
+}
+
 div[id|="numberslider-body"] input {
 	-webkit-appearance: none;
 	cursor: pointer;
