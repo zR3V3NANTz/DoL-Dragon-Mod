@@ -140,7 +140,7 @@
 			<<set $NPCList[$lefttarget].penis to 0>>
 		<</if>>
 	<</if>>
-	<<if $leftarm isnot "grappled" and $leftarm isnot "bound">>
+	<<if $leftarm isnot "grappled" and $leftarm isnot "bound" and $leftarm isnot "struggle">>
 		<<set $leftarm to 0>>
 	<</if>>
 <</widget>>
@@ -156,7 +156,7 @@
 			<<set $NPCList[$righttarget].penis to 0>>
 		<</if>>
 	<</if>>
-	<<if $rightarm isnot "grappled" and $rightarm isnot "bound">>
+	<<if $rightarm isnot "grappled" and $rightarm isnot "bound" and $rightarm isnot "struggle">>
 		<<set $rightarm to 0>>
 	<</if>>
 <</widget>>

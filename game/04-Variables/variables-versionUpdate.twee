@@ -2616,5 +2616,13 @@
 		<<set $chestuse to $breastuse>>
 		<<unset $breastuse>>
 	<</if>>
+
+	<<if $machine isnot undefined and $machine.number lte 0>>
+		<<unset $machine>>
+	<<elseif $enemytype isnot "machine">>
+		<<unset $machine>>
+	<<elseif $combat isnot 1>>
+		<<unset $machine>>
+	<</if>>
 	/* End of Target variables */
 <</widget>>

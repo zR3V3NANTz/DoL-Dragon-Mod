@@ -938,7 +938,6 @@
 <<widget "penisActionInitStruggle">>
 <<set $penistarget to "struggle">>
 <<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
-	<<set $penistarget to "struggle">>
 	<<switch $penisstate>>
 	<<case "struggle" "struggle_pen">>
 		A <<print $struggle.penis.creature>> clings to your tummy, where it threatens your penis.
@@ -1021,7 +1020,6 @@
 <<widget "vaginaActionInitStruggle">>
 <<set $vaginatarget to "struggle">>
 <<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
-	<<set $vaginatarget to "struggle">>
 	<<switch $vaginastate>>
 	<<case "struggle" "struggle_pen">>
 		A <<print $struggle.vagina.creature>> clings to your pelvis, where it threatens your pussy.
@@ -1107,7 +1105,6 @@
 	<<if $bottomuse is "mouth" or $bottomuse is "penis">>
 		<<set $_changetype to true>><<anusActionInit>>>
 	<<else>>
-		<<set $anustarget to "struggle">>
 		<<switch $anusstate>>
 		<<case "struggle" "struggle_pen">>
 			A <<print $struggle.anus.creature>> clings to your bottom.
@@ -1191,7 +1188,6 @@
 <<widget "chestActionInitStruggle">>
 <<set $chesttarget to "struggle">>
 <<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
-	<<set $chesttarget to "struggle">>
 	<<switch $chestuse>>
 	<<case "struggle">>
 		A <<print $struggle.chest.creature>> clings to your chest.
