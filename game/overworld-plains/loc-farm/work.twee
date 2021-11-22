@@ -2570,20 +2570,20 @@ The machine continues its devilish work, sucking with more intensity. You feel a
 	You remove the suction tube with a shaking hand, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <<elseif $farm.milking.caught is true and $farm.milking.alexNightEvent is false>>
 	<<set $farm.milking.alexNightEvent to true>>
 	<<set $farm.milking.dayMilking to true>>
 	As you remove the suction tubes with shaking hands.
 	<<deviancy2>>
-	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<endcombat>><<endevent>><</link>>
+	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<machine_end>><<endevent>><</link>>
 	<br>
 <<else>>
 	You remove the suction tubes with shaking hands, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <</if>>
 
@@ -2691,20 +2691,20 @@ You remain on your hands and knees as the machine milks you again and again, suc
 	You remove the suction tube with a shaking hand, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <<elseif $farm.milking.caught is true and $farm.milking.alexNightEvent is false>>
 	<<set $farm.milking.alexNightEvent to true>>
 	<<set $farm.milking.dayMilking to true>>
 	As you remove the suction tube with a shaking hand.
 	<<deviancy2>>
-	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<endcombat>><<endevent>><</link>>
+	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<machine_end>><<endevent>><</link>>
 	<br>
 <<else>>
 	You remove the suction tube with a shaking hand, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <</if>>
 
