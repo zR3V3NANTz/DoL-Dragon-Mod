@@ -534,18 +534,3 @@ window.mobBtnShow = function mobBtnShow(){
 	$('.mob-btn').show()
 	$('.mob-btn-h').hide()
 }
-
-//Sidebar scroll resetting fix
-//When a passage is finished loading:
-$(document).on(":passageend", function (event) {
-	//get sidebar dom element, assign it to variable for convenience
-	let sidebar = document.querySelector("#storyCaptionDiv");
-	
-	//scroll to last known scroll position
-	sidebar.scroll(0, setup.sidebarScrollY);
-
-	//update last known scroll position whenever the position is changed
-	sidebar.addEventListener("scroll", () => {
-		setup.sidebarScrollY = sidebar.scrollTop;
-	});
-});
