@@ -407,7 +407,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		They leave you lying on the floor.<<lrespect>><<prison_inmates -1>>
 	<<else>>
 		<<He>> leaves you lying on the floor.<<lrespect>><<prison_inmates -1>>
@@ -421,12 +421,12 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 	<br>
 
 <<elseif $enemyhealth lte 0>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		They turn and run from you.
 	<<else>>
 		<<He>> backs away from you and holds up <<his>> hands in surrender.
 	<</if>>
-	<<switch $enemyno>>
+	<<switch $enemynomax>>
 		<<case 1>>
 			<<grespect>><<prison_inmates 1>>
 		<<case 2>>
@@ -449,7 +449,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 
 <<else>>
 	<<set $rescued += 1>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		They flee at the sound of a heavy pair of footsteps. <<tearful>> you climb to your feet.
 	<<else>>
 		<<He>> flees at the sound of a heavy pair of footsteps. <<tearful>> you climb to your feet.

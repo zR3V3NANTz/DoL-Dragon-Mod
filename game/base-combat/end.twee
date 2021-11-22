@@ -4,7 +4,7 @@
 
 <<if $enemyhealth lte 0>>
 	<<if $enemytype is "man">>
-		<<famescrap $enemyno>>
+		<<famescrap $enemynomax>>
 	<</if>>
 	<<if $audiencepresent is 1>>
 		<<famescrap 10>>
@@ -214,7 +214,6 @@
 <<set $speechdisable to 0>>
 <<unset $stealstate>>
 <<unset $position_lock>>
-<<set $npcDAP to []>>
 
 <<set $leftactiondefault to $leftaction>>
 <<set $rightactiondefault to $rightaction>>
@@ -241,6 +240,21 @@
 <<set $chestaction to 0>>
 <<set $mockaction to "none">>
 <<set $bodyaction to 0>>
+
+<<set $lefttarget to 0>>
+<<set $righttarget to 0>>
+<<set $feettarget to 0>>
+<<set $mouthtarget to 0>>
+<<if $player.penisExist>>
+<<set $penistarget to 0>>
+<</if>>
+<<if $player.vaginaExist>>
+<<set $vaginatarget to 0>>
+<</if>>
+<<set $anustarget to 0>>
+<<unset $anusdoubletarget>>
+<<set $chesttarget to 0>>
+<<set $thightarget to 0>>
 
 <<set $carryblock to 0>>
 
@@ -296,7 +310,6 @@
 
 <<set $leftleg to 0>>
 <<set $rightleg to 0>>
-<<set $breastuse to 0>>
 <<set $leftnipple to 0>>
 <<set $rightnipple to 0>>
 <<set $leftarmstate to 0>>
@@ -441,6 +454,7 @@
 <<set $beastgenderoverride to 0>>
 
 <<set $enemyno to 0>>
+<<set $enemynomax to 0>>
 
 <<set $combattype to 0>>
 <!-- Clear the arrays but don't unset them. -->
@@ -476,6 +490,7 @@
 }>>
 <<if $enemyno gt 0>>
 	<<set $enemyno -= 1>>
+	<<set $enemynomax -= 1>>
 <</if>>
 <<if $endeventerror is undefined>>
 	<<if $eventslot.indexOf(_i) isnot -1>>
@@ -484,7 +499,7 @@
 		<<set $eventslot.splice($eventslot.indexOf(_i), 1)>>
 	<</if>>
 <</if>>
-<<if $enemyno is 0>>
+<<if $enemynomax is 0>>
 	<<set $pronoun to 0>>
 	<<if $endeventerror is undefined>>
 		<<unset $event>>
@@ -533,7 +548,7 @@
 <<unset $tip_add>>
 <<unset $monster>>
 <<set $enemyno to 0>>
-<<set $enemynomax to 1>>
+<<set $enemynomax to 0>>
 <<unset $noFinish>>
 <<unset $promiscuityIgnore>>
 <<unset $npcSub>>

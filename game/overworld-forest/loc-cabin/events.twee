@@ -1673,8 +1673,8 @@ You hum a gentle tune.
 	<<molested>>
 	<<controlloss>>
 	<<tentaclestart 4 15 "vine" "vine" true>>
-	<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">>
-	<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">>
+	<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $lefttarget to "tentacles">>
+	<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $righttarget to "tentacles">>
 	<<set $timer to 50>>
 <</if>>
 <<statetentacles>>

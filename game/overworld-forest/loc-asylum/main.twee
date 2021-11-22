@@ -1838,8 +1838,6 @@ You lean closer to the <<person>>. "There are a lot of quiet places here," you w
 <<effects>>
 <<effectsman>><<man>>
 
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
-
 <<stateman>>
 <br><br>
 <<actionsman>>

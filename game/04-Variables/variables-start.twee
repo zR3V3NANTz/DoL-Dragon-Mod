@@ -437,6 +437,7 @@
 <<set $enemywounded to 0>>
 <<set $enemyejaculated to 0>>
 <<set $enemyno to 0>>
+<<set $enemynomax to 0>>
 <<set $semenpuddle to 0>>
 <<set $eventskip to 0>>
 <<set $menu to 0>>
@@ -599,7 +600,6 @@
 
 <<set $leftleg to 0>>
 <<set $rightleg to 0>>
-<<set $breastuse to 0>>
 <<set $leftnipple to 0>>
 <<set $rightnipple to 0>>
 <<set $leftarmstate to 0>>

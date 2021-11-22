@@ -55,6 +55,25 @@ window.wikifier2 = function (str) {
 	new Wikifier(null, str);
 }
 
+window.actionsreplace = function (bodypart) {
+	var check = bodypart+"target";
+	if (V[check] == "tentacles"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitTentacle>><</replace>>');
+	}else if (V[check] == "swarm"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitSwarm>><</replace>>');
+	}else if (V[check] == "vore"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitVore>><</replace>>');
+	}else if (V[check] == "struggle"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitStruggle>><</replace>>');
+	}else if (V[check] == "machine"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitMachine>><</replace>>');
+	}else if (V[check] == "self"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitSelf>><</replace>>');
+	}else{
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInit>><</replace>>');
+	}
+}
+
 window.combatListColor = function (name, value, type) {
 	var color = "";
 	var check = "";
@@ -70,19 +89,20 @@ window.combatListColor = function (name, value, type) {
 			case "rightcovervagina": case "rightcoverpenis": case "rightcoveranus":
 			case "leftunderpull": case "leftskirtpull": case "leftlowerpull": case "leftupperpull":
 			case "rightunderpull": case "rightskirtpull": case "rightlowerpull": case "rightupperpull": case "rightUndressOther": case "leftUndressOther":
-			case "stopchoke":
-			case "clench":
-			case "shacklewhack":
+			case "stopchoke": case "clench": case "shacklewhack": case "leftfold": case "rightfold":
+			case "leftstruggleweak": case "rightstruggleweak":
 			/*feetaction*/
 			case "run": case "hide": case "confront":
 			/*mouthaction*/
 			case "pullaway": case "pullawayvagina": case "finish": case "novaginal": case "nopenile": case "noanal": case "scream":
 			case "mock": case "breastclosed": case "breastpull": case "pullawaykiss": case "noupper":
-			case "up":
+			case "up": case "stifleorgasm": case "stifle":
 			/*penisaction*/
 			case "othermouthescape": case "escape": case "otheranusescape":
 			/*vaginaaction*/
 			case "tribescape":
+			/*anusaction*/
+			case "doubleescape":
 				color = "brat";
 				break;
 
@@ -95,13 +115,14 @@ window.combatListColor = function (name, value, type) {
 				color = "def";
 				break;
 			/*leftaction or rightaction*/
-			case "behind":
-			case "fold":
+			case "behind": case "fold":
 			case "leftcovervaginameek": case "leftcoverpenismeek": case "leftcoveranusmeek":
 			case "rightcovervaginameek": case "rightcoverpenismeek": case "rightcoveranusmeek":
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip":
+			case "leftcurl": case "rightcurl":
 			/*mouthaction*/
-			case "grasp": case "plead": case "forgive":
-			case "down":
+			case "grasp": case "plead": case "forgive": case "down":
+			case "letout": case "letoutorgasm": case "noises":
 			/*penisaction*/
 			case "thighbay": case "bay": case "otheranusbay":
 			/*vaginaaction*/
@@ -154,9 +175,9 @@ window.combatListColor = function (name, value, type) {
 				break;
 
 			/*leftaction or rightaction*/
-			case "leftescape": case "rightescape": case "lefthold": case "righthold": case "leftvorefree": case "rightvorefree":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
 			/*mouthaction*/
-			case "mouthpullawaytentacle":
+			case "mouthpullawaytentacle": case "stifleorgasm": case "stifle":
 			/*penisaction*/
 			case "penispullawaytentacle":
 			/*vaginaaction*/
@@ -187,10 +208,152 @@ window.combatListColor = function (name, value, type) {
 			case "chestrubtentacle":
 				color = "sub";
 				break;
+
+			/*leftaction or rightaction*/
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+			/*mouthaction*/
+			case "letout": case "letoutorgasm": case "noises":
+				color = "meek";
+				break;
+
 			default:
 				color = "white";
 				break;
 		}
+	}
+	else if (type === "Vore") {
+		switch (check.replace(/\d+/g, '')) {
+			case "leftescape": case "rightescape": case "lefthold": case "righthold": case "leftvorefree": case "rightvorefree":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+				color = "meek";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Swarm") {
+		switch (check.replace(/\d+/g, '')) {
+			/*leftaction or rightaction*/
+			case "leftfree": case "rightfree": case "frontpurgeleft": case "frontpurgeright":
+			case "frontclearleft": case "frontclearright": case "backpurgeleft": case "backpurgeright":
+			case "backclearleft": case "backclearright": case "chestclearleft": case "chestclearright":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+				color = "meek";
+				break;
+	
+			case "swim":
+				color = "teal";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Struggle") {
+		switch (check.replace(/\d+/g, '')) {
+			/*leftaction or rightaction*/
+			case "mouth_strengthen": case "mouth_grasp": case "vagina_strengthen": case "vagina_grasp":
+			case "penis_strengthen": case "penis_grasp": case "anus_strengthen": case "anus_grasp":
+			case "chest_strengthen": case "chest_grasp":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+			
+			/*leftaction or rightaction*/
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+			case "rest":
+			/*feetaction*/
+			case "evade": case "plant":
+				color = "meek";
+				break;
+
+			/*leftaction or rightaction*/
+			case "capture": case "mouth_pull": case "mouth_spray": case "vagina_pull": case "vagina_spray":
+			case "penis_pull": case "penis_spray": case "anus_pull": case "anus_spray": case "chest_pull": case "chest_spray":
+			/*mouthaction*/
+			case "bite":
+				color = "def";
+				break;
+
+			/*leftaction or rightaction*/
+ 			case "mouth_stroke": case "vagina_stroke": case "penis_stroke": case "anus_stroke": case "chest_stroke":
+			/*mouthaction*/
+			case "open": case "suck":
+				color = "sub";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Machine") {
+		switch (check.replace(/\d+/g, '')) {
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak": case "vaginal_push": case "anal_push":
+				color = "brat";
+				break;
+			
+			case "chain_struggle": case "whack": case "vaginal_whack": case "anal_whack":
+				color = "def";
+				break;
+
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+				color = "sub";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Self") {
+		switch (check.replace(/\d+/g, '')) {
+			/*leftaction or rightaction*/
+			case "leftfree": case "rightfree":
+			case "leftcovervagina": case "leftcoverpenis": case "leftcoveranus":
+			case "rightcovervagina": case "rightcoverpenis": case "rightcoveranus":
+			case "leftunderpull": case "leftskirtpull": case "leftlowerpull": case "leftupperpull":
+			case "rightunderpull": case "rightskirtpull": case "rightlowerpull": case "rightupperpull":
+			case "leftcovervagina": case "leftcoverpenis": case "leftcoveranus":
+			case "rightcovervagina": case "rightcoverpenis": case "rightcoveranus":
+			case "leftunderpull": case "leftskirtpull": case "leftlowerpull": case "leftupperpull":
+			case "rightunderpull": case "rightskirtpull": case "rightlowerpull": case "rightupperpull":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+
+			/*leftaction or rightaction*/
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl":
+			case "rightcurl": case "behind":
+			/*feetaction*/
+			case "evade": case "plant":
+				color = "meek";
+				break;
+
+			case "swim":
+				color = "teal";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
 	}
 	return color;
 }

@@ -60,18 +60,21 @@
 <<actioncarry>>
 <<actioncarrydrop>>
 
-<<if $trance lte 0 and $dissociation lte 1 and $panicparalysis is 0 and ($panicviolence is 0 or $position is "stalk")
-and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+<<combatstate>>
+<<carryblock>>
 
-	<<if $images is 1 and $consensual is 1 and $position_lock isnot 1>>
-		<<if $position is "doggy">>
-			| <label>Roll over <<radiobutton "$bodyaction" "missionary">></label>
-		<<elseif $position is "missionary">>
-			| <label>Roll over <<radiobutton "$bodyaction" "doggy">></label>
-		<</if>>
-		<<if $position isnot "stalk">>
-			| <label>Rest <<radiobutton "$bodyaction" "rest" checked>></label>
-			<br>
+<<if $trance lte 0 and $panicparalysis is 0 and ($panicviolence is 0 or $position is "stalk")>>
+	<<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+		<<if $images is 1 and $consensual is 1 and $position_lock isnot 1>>
+			<<if $position is "doggy">>
+				| <label>Roll over <<radiobutton "$bodyaction" "missionary">></label>
+			<<elseif $position is "missionary">>
+				| <label>Roll over <<radiobutton "$bodyaction" "doggy">></label>
+			<</if>>
+			<<if $position isnot "stalk">>
+				| <label>Rest <<radiobutton "$bodyaction" "rest" checked>></label>
+				<br>
+			<</if>>
 		<</if>>
 	<</if>>
 
@@ -81,8 +84,6 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 	<br>
 <</if>>
 
-<<combatstate>>
-<<carryblock>>
 <br><br>
 
 <<set $face to 0>>
@@ -94,8 +95,14 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 <<if $debug is 1>>
 	__Debug__
 	<br>
-	<<for _i to 0; _i lt $enemyno; _i++>>
+	Enemy Health: $enemyhealth --- Enemy Health Max: $enemyhealthmax 
+	<br>
+	Enemy number: $enemyno --- Enemy max number: $enemynomax
+	<br><br>
+	<<for _i to 0; _i lt $enemynomax; _i++>>
 		<<print _i>> $NPCList[_i].fullDescription: Head Location: $NPCList[_i].location.head --- Genitals Location: $NPCList[_i].location.genitals
+		<br>
+		Active: $NPCList[_i].active --- Stance: $NPCList[_i].stance --- Health: $NPCList[_i].health
 		<br>
 		Penis: $NPCList[_i].penis --- Vagina: $NPCList[_i].vagina --- Mouth: $NPCList[_i].mouth --- Anus: $NPCList[_i].anus
 		<br><br>

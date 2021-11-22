@@ -1,5 +1,248 @@
-:: Widgets Vore [widget]
+:: Widgets Vore Actions Generation [widget]
+<<widget "generateActionsVore">>
+<<set $combat to 1>>
+<<if _targetlist is undefined>>
+	<<getTargetList>>
+<</if>>
+<div id="listContainer">
+	<div id="leftaction" @class="$combatControls + 'Control'">
+		<<leftActionInitVore>>
+	</div>
 
+	<div id="rightaction" @class="$combatControls + 'Control'">
+		<<rightActionInitVore>>
+	</div>
+
+	<<if ($mouthuse is 0 and !($dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)))>>
+		<div id="mouthaction" @class="$combatControls + 'Control'">
+			<<mouthActionInit>>
+		</div>
+	<</if>>
+</div>
+<</widget>>
+
+<<widget "leftActionInitVore">>
+<<set $lefttarget to "vore">>
+<<switch $leftarm>>
+<<case 0>>
+	<<set $lefttarget to "vore">>
+	<<if $orgasmdown gte 1>>
+		<<set _leftOptions to "orgasm">>
+		<span class="lewd">Your left arm is free, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _leftOptions to "pain">>
+		<span class="red">Your left arm is free, but hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _leftOptions to "unreal">>
+		<span class="pink">Your left arm is free, but doesn't feel real.</span>
+	<<else>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistarms["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			Target: <span onchange="actionsreplace('left')">
+			<<listbox "$lefttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<set _leftOptions to "free">>
+		<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is free.</span>
+		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+			Target: <span onchange="actionsreplace('left')">
+			<<listbox "$lefttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span><br>
+		<</if>>
+	<</if>>
+<<case "bound">>
+	<<set _leftOptions to "bound">>
+	<<if $orgasmdown gte 1>>
+		<span class="lewd">Your left arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<span class="red">Your left arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<span class="pink">Your left arm lies limp in its bonds.</span>
+	<<else>>
+		<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is bound.</span>
+	<</if>><<if $combatControls is "radio">><br><</if>>
+<<case "trapped">>
+	<<set _leftOptions to "trapped">>
+	<span @class="($lastOptions.left isnot _leftOptions ?'gold':'purple')">Your left arm is trapped by the $vorecreature.</span><<if $combatControls is "radio">><br><</if>>
+<<case "grappled" "penis" "othervagina" "vagina" "coverpenis" "anus" "behind">>
+	<<set $_changetype to true>><<leftActionInit>>
+<<case "struggle">>
+	<<set $_changetype to true>><<leftActionInitStruggle>>
+<<case "swarmgrappled">>
+	<<set $_changetype to true>><<leftActionInitSwarm>>
+<<case "mechgrappled">>
+	<<set $_changetype to true>><<leftActionInitMachine>>
+<<default>>
+	<<set $_changetype to true>><<leftActionInitTentacle>>
+<</switch>>
+<<if $_changetype isnot true>>
+	<<leftActionsVore>>
+	<<if Object.keys(_leftaction).length gt 0>>
+		<<if !(Object.values(_leftaction).includes($leftactiondefault))>>
+			<<set $leftactiondefault to "rest">>
+		<</if>>
+		<<set $leftaction to $leftactiondefault>>
+		<<set _textColor to combatListColor('leftaction', (Object.values(_leftaction).includes($leftaction) ? $leftaction : Object.values(_leftaction)[0]), "Vore")>>
+		<div class="extraMargin">
+			<<generateCombatActionOthers _leftaction "leftaction" _textColor $leftaction "Vore">>
+		</div>
+		<<if $combatControls.includes("ists")>>
+			<div id="leftactionDifficulty">
+				<<leftactionDifficulty>>
+			</div>
+		<</if>>
+	<</if>>
+	<<set $lastOptions.left to clone(_leftOptions)>>
+<</if>>
+<</widget>>
+
+<<widget "leftactionDifficultyVore">>/* Blank widget to pacify the JavaScript Gods. */
+<</widget>>
+
+<<widget "leftActionsVore">>
+<<set _leftaction to {}>>
+<<if !(["orgasm", "pain", "unreal"].includes(_leftOptions))>>
+	<<set _leftaction["Rest"] to "rest">>
+<</if>>
+<<switch _leftOptions>>
+<<case "free">>
+	<<set _leftaction["Escape the "+$vorecreature] to "leftescape">>
+	<<if $vorestage lte 6>>
+		<<set _leftaction["Hold on to the "+$vorecreature] to "lefthold">>
+	<</if>>
+	<<if $rightarm is "trapped">>
+		<<set _leftaction["Free your right arm"] to "leftvorefree">>
+	<</if>>
+<<case "bound" "trapped">>
+<<case "orgasm">>
+	<<set _leftaction["Fold"] to "leftfold">>
+	<<set _leftaction["Grip"] to "leftgrip">>
+<<case "pain">>
+	<<set _leftaction["Struggle"] to "leftstruggleweak">>
+	<<set _leftaction["Protect"] to "leftprotect">>
+<<case "unreal">>
+	<<set _leftaction["Poke yourself"] to "leftpoke">>
+	<<set _leftaction["Keep your arms out of the way"] to "leftcurl">>
+<</switch>>
+<</widget>>
+
+<<widget "rightActionInitVore">>
+<<set $righttarget to "vore">>
+<<switch $rightarm>>
+<<case 0>>
+	<<if $orgasmdown gte 1>>
+		<<set _rightOptions to "orgasm">>
+		<span class="lewd">Your right arm is free, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _rightOptions to "pain">>
+		<span class="red">Your right arm is free, but hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _rightOptions to "unreal">>
+		<span class="pink">Your right arm is free, but doesn't feel real.</span>
+	<<else>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistarms["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			Target: <span onchange="actionsreplace('right')">
+			<<listbox "$righttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<set _rightOptions to "free">>
+		<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is free.</span>
+		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+			Target: <span onchange="actionsreplace('right')">
+			<<listbox "$righttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span><br>
+		<</if>>
+	<</if>>
+<<case "bound">>
+	<<set _rightOptions to "bound">>
+	<<if $orgasmdown gte 1>>
+		<span class="lewd">Your right arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<span class="red">Your right arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<span class="pink">Your right arm lies limp in its bonds.</span>
+	<<else>>
+		<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is bound.</span>
+	<</if>>
+<<case "trapped">>
+	<<set _rightOptions to "trapped">>
+	<span @class="($lastOptions.right isnot _rightOptions ?'gold':'purple')">Your right arm is trapped by the $vorecreature.</span><br>
+<<case "grappled" "penis" "othervagina" "vagina" "coverpenis" "anus" "behind">>
+	<<set $_changetype to true>><<rightActionInit>>
+<<case "struggle">>
+	<<set $_changetype to true>><<rightActionInitStruggle>>
+<<case "swarmgrappled">>
+	<<set $_changetype to true>><<rightActionInitSwarm>>
+<<case "mechgrappled">>
+	<<set $_changetype to true>><<rightActionInitMachine>>
+<<default>>
+	<<set $_changetype to true>><<rightActionInitTentacle>>
+<</switch>>
+<<if $_changetype isnot true>>
+	<<rightActionsVore>>
+	<<if Object.keys(_rightaction).length gt 0>>
+		<<if !(Object.values(_rightaction).includes($rightactiondefault))>>
+			<<set $rightactiondefault to "rest">>
+		<</if>>
+		<<set $rightaction to $rightactiondefault>>
+		<<set _textColor to combatListColor('rightaction', (Object.values(_rightaction).includes($rightaction) ? $rightaction : Object.values(_rightaction)[0]), "Vore")>>
+		<div class="extraMargin">
+			<<generateCombatActionOthers _rightaction "rightaction" _textColor $rightaction "Vore">>
+		</div>
+		<<if $combatControls.includes("ists")>>
+			<div id="rightactionDifficulty">
+				<<rightactionDifficulty>>
+			</div>
+		<</if>>
+	<</if>>
+	<<set $lastOptions.right to clone(_rightOptions)>>
+<</if>>
+<</widget>>
+
+<<widget "rightactionDifficultyVore">>/* But seriously, not having this blank widget will cause red blocks of error in the "lists" actions types */
+<</widget>>
+
+<<widget "rightActionsVore">>
+<<set _rightaction to {}>>
+<<if !(["orgasm", "pain", "unreal"].includes(_rightOptions))>>
+	<<set _rightaction["Rest"] to "rest">>
+<</if>>
+<<switch _rightOptions>>
+<<case "free">>
+	<<set _rightaction["Escape the "+$vorecreature] to "rightescape">>
+	<<if $vorestage lte 6>>
+		<<set _rightaction["Hold on to the "+$vorecreature] to "righthold">>
+	<</if>>
+	<<if $rightarm is "trapped">>
+		<<set _rightaction["Free your right arm"] to "rightvorefree">>
+	<</if>>
+<<case "bound" "trapped">>
+<<case "orgasm">>
+	<<set _rightaction["Fold"] to "rightfold">>
+	<<set _rightaction["Grip"] to "rightgrip">>
+<<case "pain">>
+	<<set _rightaction["Struggle"] to "rightstruggleweak">>
+	<<set _rightaction["Protect"] to "rightprotect">>
+<<case "unreal">>
+	<<set _rightaction["Poke yourself"] to "rightpoke">>
+	<<set _rightaction["Keep your arms out of the way"] to "rightcurl">>
+<</switch>>
+<</widget>>
+
+:: Widgets Vore [widget]
 <<widget "vore">>
 <<set $rng to random(1, 100)>>
 <<if $vorestage is 1>>
@@ -197,7 +440,7 @@
 		<<set $vorestage += 1>>
 		<<if $vorestruggle is 2>>
 			You grab the inside of the $vorecreature's maw with both your arms,<span class="pink"> but it isn't enough.</span> The $vorecreature sucks you further down, depositing you in a fleshy chamber.
-			<<if $leftarm is "grappled">><<set $leftarm to 0>><</if>><<if $rightarm is "grappled">><<set $rightarm to 0>><<swallowed>><</if>>
+			<<if $leftarm is "trapped">><<set $leftarm to 0>><</if>><<if $rightarm is "trapped">><<set $rightarm to 0>><<swallowed>><</if>>
 		<<elseif $vorestruggle is 1>>
 			You grab the inside of the $vorecreature's maw with one arm,<span class="pink"> but it isn't enough.</span> The $vorecreature sucks you further down, depositing you in a fleshy chamber.
 			<<if $leftarm is "trapped">><<set $leftarm to 0>><</if>><<if $rightarm is "trapped">><<set $rightarm to 0>><<swallowed>><</if>>
@@ -289,10 +532,10 @@
 <<elseif $vorestage is 6>>
 	<<if $rng gte 81 and $leftarm is 0>>
 		A groove in the side of the gullet constricts around your left arm, trapping it.
-		<<set $leftarm to "trapped">><<neutral 10>>
+		<<set $leftarm to "trapped">><<set $lefttarget to "vore">><<neutral 10>>
 	<<elseif $rng gte 61 and $rightarm is 0>>
 		A groove in the side of the gullet constricts around your right arm, trapping it.
-		<<set $rightarm to "trapped">><<neutral 10>>
+		<<set $rightarm to "trapped">><<set $righttarget to "vore">><<neutral 10>>
 	<<elseif $rng gte 41>>
 		The gullet tightens around your entire body, holding you in place.
 		<<neutral 10>>
@@ -306,13 +549,13 @@
 <<elseif $vorestage is 7>>
 	<<if $rng gte 81 and $rightarm is 0>>
 		A groove in the side of the chamber constricts around your right arm, trapping it.
-		<<set $rightarm to "trapped">><<neutral 15>>
+		<<set $rightarm to "trapped">><<set $righttarget to "vore">><<neutral 15>>
 	<<elseif $rng gte 61>>
 		More liquid squirts out the side of the chamber, covering you in a slimy goo.
 		<<neutral 15>><<outergoo>>
 	<<elseif $rng gte 41 and $leftarm is 0>>
 		A groove in the side of the chamber constricts around your left arm, trapping it.
-		<<set $leftarm to "trapped">><<neutral 15>>
+		<<set $leftarm to "trapped">><<set $lefttarget to "vore">><<neutral 15>>
 	<<elseif $rng gte 21>>
 		The chamber pulses to a gentle rhythm.
 		<<neutral 15>>
@@ -368,27 +611,22 @@
 <<if $voretrait gte 1>>
 	<<set $vorestrength -= 2500>>
 <</if>>
-<<if $enemytype isnot "tentacles">>
-	<<if $panicattacks gte 1 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0>>
-		<<set $rng to random(1, 100)>>
-		<<if $rng is 100>>
-			<<set $panicparalysis to 5>>
-		<</if>>
+<<if $panicattacks gte 1 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0 and _panicchecked isnot true>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng is 100>>
+		<<set $panicparalysis to 5>>
 	<</if>>
-	<<if $panicattacks gte 2 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0>>
-		<<set $rng to random(1, 100)>>
-		<<if $rng is 100>>
-			<<set $panicviolence to 3>>
-		<</if>>
+	<<set _panicchecked to true>>
+<</if>>
+<<if $panicattacks gte 2 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0 and _paniccheckedviolence isnot true>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng is 100>>
+		<<set $panicviolence to 3>>
 	<</if>>
-	<<if $arousal gte $arousalmax>>
-		<<orgasm>>
-	<</if>>
-	<<set $seconds += 10>>
-	<<if $seconds gte 60>>
-		<<set $seconds to 0>>
-		<<pass 1>>
-	<</if>>
+	<<set _paniccheckedviolence to true>>
+<</if>>
+<<if $arousal gte $arousalmax and $orgasmdown lte 0>>
+	<<orgasm>>
 <</if>>
 <</widget>>
 <<widget "swallowedstat">>
@@ -408,21 +646,16 @@
 	<br>
 	<</timed>>
 <</if>>
-<<if $enemytype isnot "tentacles">>
-	<<willpowerpain>>
-	<<willpowerorgasm>>
-	<<actioncarry>>
-	<<actioncarrydrop>>
-<</if>>
-<<if $trance lte 0 and $dissociation lte 1 and $panicparalysis is 0 and $panicviolence is 0 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
-	<<if $enemytype isnot "tentacles">>
-		<<generateActionsTentacle>>
-	<</if>>
-<</if>>
+<<willpowerpain>>
+<<willpowerorgasm>>
+<<actioncarry>>
+<<actioncarrydrop>>
 
-<<if $enemytype isnot "tentacles">>
-	<<combatstate>>
-	<<carryblock>>
+<<combatstate>>
+<<carryblock>>
+
+<<if $trance lte 0 and $panicparalysis is 0 and $panicviolence is 0>>
+	<<generateActionsVore>>
 <</if>>
 <br>
 <</widget>>

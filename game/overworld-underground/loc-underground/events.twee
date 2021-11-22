@@ -1020,7 +1020,7 @@ The <<person>> tugs on your leash, and you almost trip as you leave the bath. Yo
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<set $enemyno to 1>><<maninit>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>><<maninit>>
 	<<set $timer to 24>>
 	<<set $NPCList[1].penis to "none">>
 	<<set $NPCList[1].lefthand to "none">>
@@ -1221,7 +1221,7 @@ They leave the room, taking their machine with them. You're once more plunged in
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<set $enemyno to 1>><<maninit>><<npcexpose>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>><<maninit>><<npcexpose>>
 	<<set $enemytype to "plant">>
 	<<set $enemyarousalmax to 800>>
 	<<set _randomtentacles to random(6, 10)>>
@@ -1340,7 +1340,7 @@ They leave the room, taking their machine with them. You're once more plunged in
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<set $enemyno to 1>><<maninit>><<npcexpose>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>><<maninit>><<npcexpose>>
 	<<set $enemytype to "plant">>
 	<<set $timer to 5>><<set $plantFame to 0>>
 <</if>>

@@ -158,58 +158,36 @@
 <</widget>>
 
 <<widget "oralnew">>
-
-<<if $combattype is "train">>
-	<<set _end to $enemyno-1>>
-<<else>>
-	<<set _end to 0>>
-<</if>>
-
-<<set _xx to $enemyno-1>>
-<<if _xx is -1>>
-	<<set _stanceCheck to 0>>
-<<else>>
-	<<set _stanceCheck to $NPCList[_xx].stance>>
-<</if>>
+<<set _stanceCheck to $NPCList[$mouthtarget].stance>>
 
 <<if $consensual is 1 and ($promiscuity lte 54 and $enemytype is "man" or $deviancy lte 54 and $enemytype isnot "man") and !$promiscuityIgnore>>
 	<!-- Do Nothing -->
 <<elseif _stanceCheck is "top">>
 	<!-- Do Nothing -->
 <<else>>
-	<<for _j = $enemyno-1; _j gte _end; _j-->>
-		<<if $NPCList[_j].penis is 0 and ($enemytype isnot "man" or ($NPCList[_j].location.genitals is 0 and $NPCList[_j].location.head isnot "head"))>>
-			<<if $NPCList[_j].chastity.penis.includes("chastity")>>
-				<<set _mouthaction["Move your head to " + $NPCList[_j].pronouns.his + " " + $NPCList[_j].chastity.penis] to "mouth">>
-			<<else>>
-				<<set _mouthaction["Move your lips to " + $NPCList[_j].pronouns.his + " penis"] to "mouth">>
-			<</if>>
-		<<break>>
+	<<if $NPCList[$mouthtarget].penis is 0 and ($enemytype isnot "man" or ($NPCList[$mouthtarget].location.genitals is 0 and $NPCList[$mouthtarget].location.head isnot "head"))>>
+		<<if $NPCList[$mouthtarget].chastity.penis.includes("chastity")>>
+			<<set _mouthaction["Move your head to " + $NPCList[$mouthtarget].pronouns.his + " " + $NPCList[$mouthtarget].chastity.penis] to "mouth">>
+		<<else>>
+			<<set _mouthaction["Move your lips to " + $NPCList[$mouthtarget].pronouns.his + " penis"] to "mouth">>
 		<</if>>
-	<</for>>
-	<<for _j = $enemyno-1; _j gte _end; _j-->>
-		<<if $NPCList[_j].vagina is 0 and ($enemytype isnot "man" or ($NPCList[_j].location.genitals is 0 and $NPCList[_j].location.head isnot "head"))>>
-			<<if $NPCList[_j].chastity.vagina.includes("chastity")>>
-				<<set _mouthaction["Move your head to " + $NPCList[_j].pronouns.his + " " + $NPCList[_j].chastity.vagina] to "othervagina">>
-			<<else>>
-				<<set _mouthaction["Move your mouth to " + $NPCList[_j].pronouns.his + " pussy"] to "othervagina">>
-			<</if>>
-			<<break>>
+	<</if>>
+	<<if $NPCList[$mouthtarget].vagina is 0 and ($enemytype isnot "man" or ($NPCList[$mouthtarget].location.genitals is 0 and $NPCList[$mouthtarget].location.head isnot "head"))>>
+		<<if $NPCList[$mouthtarget].chastity.vagina.includes("chastity")>>
+			<<set _mouthaction["Move your head to " + $NPCList[$mouthtarget].pronouns.his + " " + $NPCList[$mouthtarget].chastity.vagina] to "othervagina">>
+		<<else>>
+			<<set _mouthaction["Move your mouth to " + $NPCList[$mouthtarget].pronouns.his + " pussy"] to "othervagina">>
 		<</if>>
-	<</for>>
+	<</if>>
 <</if>>
 
 <<if $consensual is 1 and ($promiscuity lte 34 and $enemytype is "man" or $deviancy lte 34 and $enemytype isnot "man") and !$promiscuityIgnore>>
 	<!-- Do Nothing -->
 <<elseif !$gloryhole>>
-	<<for _j = $enemyno-1; _j gte _end; _j-->>
-		<<if $NPCList[_j].chest is 0 and $NPCList[_j].location.genitals isnot "head" and $NPCList[_j].location.head isnot "head" and $NPCList[_j].location.head isnot "genitals">>
-			<<set _mouthaction["Move your lips to " + $NPCList[_j].pronouns.his + " chest"] to "movetochest">>
-			<<break>>
-		<</if>>
-	<</for>>
+	<<if $NPCList[$mouthtarget].chest is 0 and $NPCList[$mouthtarget].location.genitals isnot "head" and $NPCList[$mouthtarget].location.head isnot "head" and $NPCList[$mouthtarget].location.head isnot "genitals">>
+		<<set _mouthaction["Move your lips to " + $NPCList[$mouthtarget].pronouns.his + " chest"] to "movetochest">>
+	<</if>>
 <</if>>
-
 <</widget>>
 
 <<widget "oralswallow">>
@@ -229,17 +207,9 @@
 <<widget "oralswallownew">>
 <<if $consensual is 1 and ($promiscuity lte 74 and $enemytype is "man" or $deviancy lte 74 and $enemytype isnot "man") and !$promiscuityIgnore>>
 <<else>>
-	<<if $combattype is "train">>
-		<<set _end to $enemyno-1>>
-	<<else>>
-		<<set _end to 0>>
+	<<if !$NPCList[$mouthtarget].chastity.penis.includes("chastity") and ($NPCList[$mouthtarget].penis is "mouthentrance" or $NPCList[$mouthtarget].penis is "mouthimminent")>>
+		<<set _mouthaction["Take " + $NPCList[$mouthtarget].pronouns.his + " penis into your mouth"] to "swallow">>
 	<</if>>
-	<<for _j = $enemyno-1; _j gte _end; _j-->>
-		<<if !$NPCList[_j].chastity.penis.includes("chastity") and ($NPCList[_j].penis is "mouthentrance" or $NPCList[_j].penis is "mouthimminent")>>
-			<<set _mouthaction["Take " + $NPCList[_j].pronouns.his + " penis into your mouth"] to "swallow">>
-			<<break>>
-		<</if>>
-	<</for>>
 <</if>>
 <</widget>>
 

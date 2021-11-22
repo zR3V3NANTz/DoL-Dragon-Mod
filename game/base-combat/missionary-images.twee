@@ -4,7 +4,7 @@
 <<set _filters to $skinColor.current>>
 <<set _img to setup.tanImg.missionary[$skinColor.tanImgEnabled]>>
 <<set _disabled to ["disabled","hidden"]>>
-<<set _xx to $enemyno-1>>
+<<set _xx to $enemynomax-1>>
 <<if _xx is -1>>
 	<<set _stanceCheck to 0>>
 <<else>>
@@ -406,7 +406,7 @@ Same as above, but with eyelashes.
 
 <<if $machine>>
 	<<if $machine.arm_chains>>
-		<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+		<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 			<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms_bound.png">
 		<<else>>
 			<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms.png">
@@ -425,7 +425,7 @@ Same as above, but with eyelashes.
 	<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/neck.png">
 <</if>>
 <<if $prop.includes("arm_shackle")>>
-	<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+	<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 		<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms_bound.png">
 	<<else>>
 		<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms.png">
@@ -832,7 +832,7 @@ Same as above, but with eyelashes.
 
 <<if $machine>>
 	<<if $machine.arm_chains>>
-		<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+		<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 			<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms_bound.png">
 		<<else>>
 			<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms.png">
@@ -852,7 +852,7 @@ Same as above, but with eyelashes.
 	<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/neck.png">
 <</if>>
 <<if $prop.includes("arm_shackle")>>
-	<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+	<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 		<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms_bound.png">
 	<<else>>
 		<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms.png">

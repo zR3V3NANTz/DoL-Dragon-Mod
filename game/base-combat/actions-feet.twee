@@ -42,51 +42,36 @@
 <</widget>>
 
 <<widget "feetgrabnew">>
+<<if $feettarget isnot "self">>
+	<<set _stanceCheck to $NPCList[$feettarget].stance>>
 
-<<if $combattype is "train">>
-	<<set _end to $enemyno-1>>
-<<else>>
-	<<set _end to 0>>
-<</if>>
-
-<<set _xx to $enemyno-1>>
-<<if _xx is -1>>
-	<<set _stanceCheck to 0>>
-<<else>>
-	<<set _stanceCheck to $NPCList[_xx].stance>>
-<</if>>
-
-<<if $consensual is 1 and ($promiscuity lte 34 and $enemytype is "man" or $deviancy lte 34 and $enemytype isnot "man") and !$promiscuityIgnore>>
-	<!-- Do Nothing -->
-<<elseif _stanceCheck isnot "topface">>
-	<<for _j = $enemyno-1; _j gte _end; _j-->>
-		<<if $NPCList[_j].penis is 0>>
-			<<if $NPCList[_j].chastity.penis.includes("chastity")>>
-				<<set _feetaction["Press your foot on " + $NPCList[_j].pronouns.his + " " + $NPCList[_j].chastity.penis] to "grab">>
-			<<else>>
-				<<set _feetaction["Grab "+ $NPCList[_j].pronouns.his + " penis"] to "grab">>
+	<<if $consensual is 1 and ($promiscuity lte 34 and $enemytype is "man" or $deviancy lte 34 and $enemytype isnot "man") and !$promiscuityIgnore>>
+		<!-- Do Nothing -->
+	<<elseif _stanceCheck isnot "topface">>
+		<<if $NPCList[$feettarget].penis is 0>>
+			<<if $NPCList[$feettarget].chastity.penis.includes("chastity")>>
+				<<set _feetaction["Press your foot on " + $NPCList[$feettarget].pronouns.his + " " + $NPCList[$feettarget].chastity.penis] to "grab">>
+			<<elseif !($leftleg isnot 0 or $rightleg isnot 0)>>
+				<<set _feetaction["Grab "+ $NPCList[$feettarget].pronouns.his + " penis"] to "grab">>
 			<</if>>
-			<<break>>
 		<</if>>
-	<</for>>
 
-	<<for _j = $enemyno-1; _j gte _end; _j-->>
-		<<if $NPCList[_j].vagina is 0>>
-			<<if $NPCList[_j].chastity.vagina.includes("chastity")>>
-				<<set _feetaction["Press your feet against " + $NPCList[_j].pronouns.his + " " + $NPCList[_j].chastity.vagina] to "vaginagrab">>
+		<<if $NPCList[$feettarget].vagina is 0>>
+			<<if $NPCList[$feettarget].chastity.vagina.includes("chastity")>>
+				<<set _feetaction["Press your feet against " + $NPCList[$feettarget].pronouns.his + " " + $NPCList[$feettarget].chastity.vagina] to "vaginagrab">>
 			<<else>>
-				<<set _feetaction["Press your feet against " + $NPCList[_j].pronouns.his + " pussy"] to "vaginagrab">>
+				<<set _feetaction["Press your feet against " + $NPCList[$feettarget].pronouns.his + " pussy"] to "vaginagrab">>
 			<</if>>
-			<<break>>
 		<</if>>
-	<</for>>
+	<</if>>
 <</if>>
-
 <</widget>>
 
 <<widget "feetKick">>
-<<if $consensual isnot 1>>
-	<<set _feetaction["Kick"] to "kick">>
+<<if $feettarget isnot "self">>
+	<<if $consensual isnot 1>>
+		<<set _feetaction["Kick"] to "kick">>
+	<</if>>
 <</if>>
 <</widget>>
 
@@ -100,42 +85,28 @@
 <<set _feetaction["Stop"] to "stop">>
 <</widget>>
 
-<<widget "feetRunClothed">>
-<<if $combattype is "train">>
-	<<set _end to $enemyno-1>>
-<<else>>
-	<<set _end to 0>>
-<</if>>
-
-<<set _xx to $enemyno-1>>
-<<if _xx is -1>>
-	<<set _stanceCheck to 0>>
-<<else>>
-	<<set _stanceCheck to $NPCList[_xx].stance>>
-<</if>>
-
-<<for _j = $enemyno-1; _j gte _end; _j-->>
-	<<if $NPCList[_j].vagina is 0>>
-		<<if $NPCList[_j].penis is "clothed">>
-			<<set _feetaction["Rub " + $NPCList[_j].pronouns.his + " crotch"] to "rub">>
-			<<break>>
-		<</if>>
-	<</if>>
-<</for>>
+<<widget "feetRunClothed">>/* Commented for lack of effect
+<<if $NPCList[$feettarget].vagina is "clothed" or $NPCList[$feettarget].penis is "clothed">>
+	<<set _feetaction["Rub " + $NPCList[$feettarget].pronouns.his + " crotch"] to "rub">>
+<</if>>*/
 <</widget>>
 
 <<widget "feetshoes">>
-<<if !$worn.feet.type.includes("shackle") and !$worn.feet.type.includes("naked")>>
-	<<set _feetaction["Kick off your shoes"] to "feetshoes">>
+<<if $feettarget is "self" or $targetYourself is false or _targetnumber is 1>>
+	<<if !$worn.feet.type.includes("shackle") and !$worn.feet.type.includes("naked")>>
+		<<set _feetaction["Kick off your shoes"] to "feetshoes">>
+	<</if>>
 <</if>>
 <</widget>>
 
 <<widget "feetsocks">>
-<<if $worn.feet.type.includes("shackle") or $worn.feet.type.includes("naked")>>
-	<<if $worn.legs.state is "ankles">>
-		<<set _feetaction["Kick off your legwear"] to "feetsocks">>
-	<<elseif $worn.legs.state is "thighs">>
-		<<set _feetaction["Peel down your legwear"] to "feetsocks">>
+<<if $feettarget is "self" or $targetYourself is false or _targetnumber is 1>>
+	<<if $worn.feet.type.includes("shackle") or $worn.feet.type.includes("naked")>>
+		<<if $worn.legs.state is "ankles">>
+			<<set _feetaction["Kick off your legwear"] to "feetsocks">>
+		<<elseif $worn.legs.state is "thighs">>
+			<<set _feetaction["Peel down your legwear"] to "feetsocks">>
+		<</if>>
 	<</if>>
 <</if>>
 <</widget>>

@@ -92,6 +92,7 @@
 <<set $condomchance to 50>>
 <<set $condomautochance to 50>>
 <<set $multipleWardrobes to "isolated">>
+<<set $targetYourself to false>>
 
 <<set $notifyUpdate = true>>
 

@@ -511,7 +511,7 @@ The <<person3>><<person>> looks serious. "You know I would never let that happen
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<set $enemyno to 2>>
+	<<set $enemyno to 2>><<set $enemynomax to 2>>
 	<<if $phase is 1>>
 		<<maninit>><<set $enemyanger += 150>><<set $enemytrust -= 50>>
 		<br><br>
@@ -3886,11 +3886,11 @@ Your fall is broken by something slimy and soft. It flees before your eyes adjus
 
 	<!-- Make tentacle start at the target body part -->
 	<<if $phase is 0>>
-		<<set $anususe to "tentaclerub">><<set $anusstate to "tentaclerub">><<set _tentacle.head to "anusrub">>
+		<<set $anususe to "tentaclerub">><<set $anusstate to "tentaclerub">><<set _tentacle.head to "anusrub">><<set $anustarget to "tentacles">>
 	<<elseif $phase is 1>>
-		<<set $vaginause to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "vaginarub">>
+		<<set $vaginause to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "vaginarub">><<set $vaginatarget to "tentacles">>
 	<<elseif $phase is 2>>
-		<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">>
+		<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<set $penistarget to "tentacles">>
 	<</if>>
 	<<set _tentacle.shaft to "thighs">>
 <</if>>
@@ -4158,7 +4158,6 @@ The figure gets closer.
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -5269,8 +5268,7 @@ You drop to the ground, writhing and moaning. You're not sure what you're doing,
 
 <<effectsman>><<man>>
 
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 
 <<stateman>>
 <br><br>
@@ -7275,7 +7273,7 @@ You're cornered by the <<person>>, "You thought I'd let you get away with that?"
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<set $enemyno to 1>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<maninit>><<set $enemyanger += 150>><<set $enemytrust -= 150>>
 	<<set $rng to random(1, 100)>>
 	<<if $rng lte 50>>
@@ -7363,7 +7361,7 @@ Now that you're fully exposed, the <<person>> lets go, and gathers your clothes.
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<set $enemyno to 1>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<maninit>><<set $enemyanger += 50>><<set $enemytrust -= 50>>
 	<br><br>
 	"Oh yes, I know exactly what I'm going to do with you!" the <<person1>><<person>> smirks.

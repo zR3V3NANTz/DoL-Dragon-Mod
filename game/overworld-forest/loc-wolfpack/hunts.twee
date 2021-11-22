@@ -528,7 +528,6 @@ The hunters nod and march from the camp with <<wolf_cave_plural>> nipping at the
 
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>

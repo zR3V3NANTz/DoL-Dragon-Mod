@@ -92,7 +92,8 @@
 <<set _ps to [2,2,2,3,2,2,3,3,2,5,2,2]>>
 
 <<set _i to $BeastList.indexOf(_type)>>
-<<set $NPCList[_n].health to _h[_i]>>
+<<set $NPCList[_n].healthmax to _h[_i]>>
+<<set $NPCList[_n].health to $NPCList[_n].healthmax>>
 <<set $NPCList[_n].description to _d[_i]>>
 <<set $NPCList[_n].type to _t[_i]>>
 /% <<set $NPCList[_n].claws to _cla[_i]>> %/

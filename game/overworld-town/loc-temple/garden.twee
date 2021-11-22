@@ -615,7 +615,6 @@ You hear muffled laughter, then a grinding sound. "I said it was a dead end <<gi
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>

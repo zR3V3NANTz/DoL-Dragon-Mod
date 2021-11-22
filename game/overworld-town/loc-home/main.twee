@@ -1695,7 +1695,11 @@ The warmth feels wonderful on your bare skin.
 
 <<swarm>><<if $tentacledisable is "f">><<tentacles>><</if>>
 <<if $tentacledisable is "f">><<statetentacles>><</if>>
-<<swarmactions>><<if $tentacledisable is "f">><<actionstentacles>><</if>>
+<<if $tentacledisable is "f">>
+	<<actionsOmni>>
+<<else>>
+	<<swarmactions>>
+<</if>>
 
 <<if $timer lte 0>>
 	<span id="next"><<link [[Next|Bath Slime Finish]]>><</link>></span><<nexttext>>

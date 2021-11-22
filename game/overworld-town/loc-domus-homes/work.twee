@@ -1651,7 +1651,6 @@ You've made <<moneyGain 30>>.
 
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -1708,7 +1707,7 @@ You've made <<moneyGain 30>>.
 	<<set $position to "wall">>
 	<<set $walltype to "pillory">>
 	<<set $head to "grappled">>
-	<<set $NPCList[0].penis to "anusentrance">><<set $anusstate to "entrance">>
+	<<set $NPCList[0].penis to "anusentrance">><<set $anusstate to "entrance">><<set $anustarget to 0>>
 <</if>>
 <<if $enemyarousal gte ($enemyarousalmax / 3) * 3>>
 	Only a few dedicated artists are still painting, most are just watching. More than a few are surreptitiously masturbating.
@@ -2420,7 +2419,6 @@ Using your seductive powers, you stroke <<his>> neck and kiss <<him>>, while rub
 <<effects>>
 
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>

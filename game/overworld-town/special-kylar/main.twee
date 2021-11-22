@@ -563,7 +563,7 @@ You hear a door open above. A person walks down a staircase, carrying something 
 	<<if $worn.under_lower.type.includes("naked")>><<set $NPCList[0].lefthand to "none">><<else>><<set $NPCList[0].lefthand to "underclothes">><</if>>
 	<<if $worn.lower.type.includes("naked")>><<set $NPCList[0].righthand to "none">><<else>><<set $NPCList[0].righthand to "lowerclothes">><</if>>
 	<<if $NPCList[0].penis isnot "none" and $player.vaginaExist>>
-		<<set $NPCList[0].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[0].location.genitals to "genitals">>
+		<<set $NPCList[0].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[0].location.genitals to "genitals">><<set $vaginatarget to 0>>
 	<</if>>
 	<<if $NPCList[0].vagina isnot "none" and $player.penisExist>>
 		<<set $NPCList[0].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">><<set $NPCList[0].location.genitals to "genitals">>

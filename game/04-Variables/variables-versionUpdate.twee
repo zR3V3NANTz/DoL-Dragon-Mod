@@ -2569,8 +2569,6 @@
 <<pregnancyVar>>
 <</widget>>
 
-
-
 <<widget "backComp">>
 	<<if _version lte 30408>>/* for versions <= 0.3.4.8, run old version handler */
 		<<variablesVersionUpdate>>
@@ -2587,4 +2585,36 @@
 	<<if $bodywritingLvl is undefined>>
 		<<set $bodywritingLvl to ($bodywritingdisable is "f" ? 3 : 0)>>
 	<</if>>
+	
+	/* Start of Target variables */
+	<<if $npcDAP isnot undefined>>
+		<<set $anustarget to $npcDAP[0]>>
+		<<set $anusdoubletarget to $npcDAP[1]>>
+		<<unset $npcDAP>>
+	<</if>>
+
+	<<if $targetYourself is undefined>>
+		<<set $targetYourself to false>>
+	<</if>>
+
+	<<if $NPCList isnot undefined and $NPCList[0].active is undefined>>
+		<<for _i = 0; _i < $NPCList.length; _i++>>
+			<<set $NPCList[_i].active to 0>>
+		<</for>>
+		<<if $combat is 1>>
+			<<for _i = 0; _i < $enemyno; _i++>>
+				<<set $NPCList[_i].active to "active">>
+				<<if $NPCList[_i].type is 0>>
+					<<set $NPCList[_i].type to "human">>
+				<</if>>
+				<<set $NPCList[_i].healthmax to $NPCList[_i].health>>
+			<</for>>
+		<</if>>
+	<</if>>
+	
+	<<if $breastuse isnot undefined and $breastuse isnot 0>>
+		<<set $chestuse to $breastuse>>
+		<<unset $breastuse>>
+	<</if>>
+	/* End of Target variables */
 <</widget>>

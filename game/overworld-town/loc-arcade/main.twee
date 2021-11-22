@@ -925,8 +925,8 @@ You are playing Tenyclus. You find your emotions and responses much more intense
 	<<controlloss>>
 	<<molested>>
 	<<tentaclestart 8 15>>
-	<<leftarmtentacledisable>><<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">><<set $leftarmstate to 0>>
-	<<rightarmtentacledisable>><<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+	<<leftarmtentacledisable>><<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
+	<<rightarmtentacledisable>><<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 <</if>>
 <<effects>>
 <<effectstentacles>>
@@ -974,7 +974,6 @@ They begin to remove your clothes, before grabbing you by the shoulder and pulli
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>

@@ -310,8 +310,8 @@
 	<<if $tentacledisable is "f" and $hallucinations gte 1>>
 		<<set $enemytype to "tentacles">>
 		<<tentaclestart 2 15>>
-		<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">>
-		<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">>
+		<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $lefttarget to "tentacles">>
+		<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $righttarget to "tentacles">>
 		<span class="purple">A $tentacles[0].fullDesc and $tentacles[1].fullDesc emerge from the creature and restrain your arms.</span>
 		<br><br>
 	<<else>>
@@ -332,7 +332,7 @@
 	<<voreeffects>><<effectstentacles>>
 	<<vore>><<tentacles>>
 	<<statetentacles>>
-	<<voreactions>><<actionstentacles>>
+	<<actionsvorentacles>>
 <<else>>
 	<<voreeffects>>
 	<<vore>>

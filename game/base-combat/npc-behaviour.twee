@@ -171,14 +171,14 @@
 
 <<widget "npcoral">>
 <<if $NPCList[0].penis isnot "none">>
-	<<set $NPCList[0].penis to "mouthentrance">><<submission 5>><<set $mouthstate to "entrance">><<set $mouthuse to "penis">>
+	<<set $NPCList[0].penis to "mouthentrance">><<submission 5>><<set $mouthstate to "entrance">><<set $mouthuse to "penis">><<set $mouthtarget to 0>>
 	<<He>> presses <<his>> penis against your lips.
 	<<if $NPCList[0].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
 		<span class="pink">Nectar glistens on the tip. It smells sweet.</span>
 	<</if>>
 	<br><br>
 <<elseif $NPCList[0].vagina isnot "none">>
-	<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[0].vagina to "mouth">><<set $mouthstate to "othervagina">>
+	<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[0].vagina to "mouth">><<set $mouthstate to "othervagina">><<set $mouthtarget to 0>>
 	<<He>> presses <<his>> pussy against your lips.
 	<<if $NPCList[0].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
 		<span class="pink">Nectar glistens at the entrance. It smells sweet.</span>
@@ -208,7 +208,7 @@
 <</widget>>
 
 <<widget "npckiss">>
-<<set $NPCList[0].mouth to "kiss">><<set $mouthstate to "kiss">><<set $mouthuse to "kiss">>
+<<set $NPCList[0].mouth to "kiss">><<set $mouthstate to "kiss">><<set $mouthuse to "kiss">><<set $mouthtarget to 0>>
 <</widget>>
 
 <<widget "npcexpose">>
@@ -296,13 +296,13 @@
 <<widget "npc_attempt_sex">>
 <<if $NPCList[0].penis isnot "none">>
 	<<if $player.vaginaExist>>
-		<<set $NPCList[0].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">>
+		<<set $NPCList[0].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $vaginatarget to 0>>
 	<<elseif $analdisable is "f">>
-		<<set $NPCList[0].penis to "anusentrance">><<set $anususe to "penis">><<set $anusstate to "entrance">>
+		<<set $NPCList[0].penis to "anusentrance">><<set $anususe to "penis">><<set $anusstate to "entrance">><<set $anustarget to 0>>
 	<</if>>
 <<else>>
 	<<if $player.penisExist>>
-		<<set $NPCList[0].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">>
+		<<set $NPCList[0].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">><<set $penistarget to 0>>
 	<</if>>
 <</if>>
 <</widget>>

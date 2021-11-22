@@ -295,7 +295,7 @@ You walk around the corner. A <<person1>><<person>> pins a <<person3>><<person>>
 	<<set $enemytrust -= 100>>
 	<<set $enemyanger += 200>>
 	<<npcidlegenitals>>
-	<<set $enemyno to 2>>
+	<<set $enemyno to 2>><<set $enemynomax to 2>>
 	<<set $enemyhealthmax -= $NPCList[2].health>>
 	<<set $enemyarousalmax -= 500>>
 	You launch your fist at the <<person>>. <<He>> holds <<his>> arms up to protect <<his>> face, freeing the <<person3>><<person>> and letting <<him>> slide to the ground.

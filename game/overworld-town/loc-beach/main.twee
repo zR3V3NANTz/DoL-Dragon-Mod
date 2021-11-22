@@ -627,8 +627,7 @@ The <<person>> leaves you. <<He>> looks dejected.
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -1031,8 +1030,7 @@ The <<person>> tries to keep <<his>> camera steady, barely managing to control <
 <<effects>>
 <<effectsman>><<man>>
 
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 
 <<stateman>>
 <br><br>
