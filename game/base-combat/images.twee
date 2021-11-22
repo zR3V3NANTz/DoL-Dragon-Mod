@@ -46,7 +46,7 @@
 <<set _filters to $skinColor.current>>
 <<set _img to setup.tanImg.doggy[$skinColor.tanImgEnabled]>>
 <<set _disabled to ["disabled","hidden"]>>
-<<set _xx to $enemyno-1>>
+<<set _xx to $enemynomax-1>>
 <<if _xx is -1>>
 	<<set _stanceCheck to 0>>
 <<else>>
@@ -1133,7 +1133,7 @@ and _stanceCheck isnot "top">>
 		</div>
 	<</if>>
 <<elseif $anusstate is "doublepenetrated">>
-	<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+	<<if $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 		<div @class="_anusClass" @id="_anusID">
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xraydoubleanal.png">
 		</div>
@@ -1241,7 +1241,7 @@ and _stanceCheck isnot "top">>
 		</div>
 	<</if>>
 	<<if $anusstate is "doublepenetrated">>
-		<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+		<<if $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 			<<set _tempspeed to _animspeed>>
 			<<set _animspeed to 'mid'>>
 			<div class="i256" @id="_anusID">
@@ -1274,7 +1274,7 @@ and _stanceCheck isnot "top">>
 		</div>
 	<</if>>
 	<<if $anusstate is "doublepenetrated">>
-		<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+		<<if $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 			<<set _tempspeed to _animspeed>>
 			<<set _animspeed to 'mid'>>
 			<div class="i256" @id="_anusID">
@@ -1582,7 +1582,7 @@ and _stanceCheck isnot "top">>
 
 
 <div class="i64" id="closechest">
-<<if $chestuse is "penis" or $breastuse is "tentacle">>
+<<if $chestuse is "penis" or $chestuse is "tentacle">>
 	<<if $breastsize gte 8>>
 		<img @src="_img.chest+'chest_job_big.png'" @class="'anim-close-10f-'+_animspeed" @style="'filter: ' + _filters.body">
 		<img id="closechestnip" @src="_img.chest+'chest_job_big_nip.png'" @class="'anim-close-10f-'+_animspeed">

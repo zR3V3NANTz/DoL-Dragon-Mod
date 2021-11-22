@@ -1801,7 +1801,7 @@ The <<person>> pauses, <<if $phase is 0>>sniffles<<else>>takes a deep breath<</i
 		<<set $NPCList[0].lefthand to "anusentrance">><<set $anususe to 1>>
 	<<else>>
 		<<set $anususe to "penis">><<set $NPCList[0].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
-		<<set $NPCList[0].location.genitals = "genitals">>
+		<<set $NPCList[0].location.genitals = "genitals">><<set $anustarget to 0>>
 	<</if>>
 <<elseif $sexstart is 1>>
 	<<set $sexstart to 0>>
@@ -1815,7 +1815,7 @@ The <<person>> pauses, <<if $phase is 0>>sniffles<<else>>takes a deep breath<</i
 		<<set $NPCList[0].lefthand to "anusentrance">><<set $anususe to 1>>
 	<<elseif $phase is 0>>
 		<<set $anususe to "penis">><<set $NPCList[0].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
-		<<set $NPCList[0].location.genitals = "genitals">>
+		<<set $NPCList[0].location.genitals = "genitals">><<set $anustarget to 0>>
 	<</if>>	
 <</if>>
 <<set $position to "doggy">>

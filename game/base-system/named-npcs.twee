@@ -48,6 +48,7 @@
 			<<set $NPCList[_ii].penisdesc to "penis">>
 			<<set $NPCList[_ii].penissize to 2>>
 			<<set $NPCList[_ii].health to 200>>
+			<<set $NPCList[_ii].healthmax to 200>>
 		<<else>>
 			<<set $NPCList[_ii].breastsize to 0>>
 			<<set $NPCList[_ii].breastsdesc to 0>>
@@ -57,6 +58,7 @@
 			<<set $NPCList[_ii].health to 0>>
 		<</if>>
 		<<set $enemyno -= 1>>
+		<<set $enemynomax -= 1>>
 		<<if $endeventerror is undefined>>
 			<<set $event.splice($eventslot.indexOf(_ii), 1)>>
 			<<set $eventtime.splice($eventslot.indexOf(_ii), 1)>>

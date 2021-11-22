@@ -516,8 +516,6 @@ Charlie immediately recognises that something is wrong. <<He>> pulls you aside a
 <<effects>>
 <<effectsman>><<man>>
 
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
-
 <<stateman>>
 <br><br>
 <<actionsman>>

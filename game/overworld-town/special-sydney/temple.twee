@@ -1107,7 +1107,7 @@ With shaking hands, Sydney inserts the key into <<his>> chastity belt. It drops 
 <br>
 
 :: Sydney Temple Prayer Room
-<<effects>>
+<<set $combat to 0>><<effects>>
 <<endevent>><<npc "Sydney">><<person1>>
 <<defileSacredGround>>
 Sydney leads the way, and you follow behind, making sure the secret door shuts quietly behind you. You don't have to crawl long before <<he>> reaches another door. <<He>> pushes it open and drops down, and you drop soon after.

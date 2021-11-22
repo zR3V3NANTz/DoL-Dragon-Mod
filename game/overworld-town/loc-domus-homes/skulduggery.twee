@@ -228,6 +228,7 @@ You sneak around the house and look for anything of value.
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
 	<<set $enemyno to 1>>
+	<<set $enemynomax to 1>>
 	<<controlloss>>
 	<<violence 1>>
 	<<neutral 1>>
@@ -237,6 +238,7 @@ You sneak around the house and look for anything of value.
 	<<enable_rescue>>
 <<elseif $sexstart is 1>>
 	<<set $enemyno to 1>>
+	<<set $enemynomax to 1>>
 	<<set $sexstart to 0>>
 	<<consensual>>
 	<<set $consensual to 1>>

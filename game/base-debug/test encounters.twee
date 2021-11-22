@@ -32,8 +32,6 @@ DEBUG PC (P/V/A/M/LARM): $penisstate $vaginastate $anusstate $mouthstate $leftar
 
 <<audience>>
 
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
-
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -365,7 +363,7 @@ PenActiv: <span class="gold">$NPCList[_x].penis</span> VagActiv: <span class="go
 <<voreeffects>><<swarmeffects>><<effectstentacles>>
 <<vore>><<swarm>><<tentacles>>
 <<statetentacles>>
-<<voreactions>><<swarmactions>><<actionstentacles>>
+<<actionsOmni>>
 
 <<if $stress gte $stressmax>>
 	<span id="next"><<link [[Next|Monster Test]]>><</link>></span><<nexttext>>
@@ -384,8 +382,8 @@ PenActiv: <span class="gold">$NPCList[_x].penis</span> VagActiv: <span class="go
 	<<neutral 1>>
 	<<molested>>
 	<<generate1>><<generate2>><<maninit>>
-	<<set $NPCList[0].penis to "vagina">><<set $vaginause to "penis">><<set $vaginastate to "penetrated">>
-	<<set $NPCList[1].penis to "anus">><<set $anususe to "penis">><<set $anusstate to "penetrated">>
+	<<set $NPCList[0].penis to "vagina">><<set $vaginause to "penis">><<set $vaginastate to "penetrated">><<set $vaginatarget to 0>>
+	<<set $NPCList[1].penis to "anus">><<set $anususe to "penis">><<set $anusstate to "penetrated">><<set $anustarget to 1>>
 <</if>>
 
 <<effects>>

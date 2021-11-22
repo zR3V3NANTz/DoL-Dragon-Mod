@@ -288,50 +288,32 @@
 
 
 <<widget "someones">><<silently>>
-/* Take target into consideration. Pre-set _target and use it instead.
-	<<if _target isnot undefined>>
-		<<hisselect _target>>
-	<<else>>
-		<<his>>
-	<</if>>
- */
-<<if $enemyno gte 2 and $enemytype is "man">>
-	<<set $rng to random(1, $enemyno)>>
-	<<if $rng is 1>>
-		<<his1>>
-	<<elseif $rng is 2>>
-		<<his2>>
-	<<elseif $rng is 3>>
-		<<his3>>
-	<<elseif $rng is 4>>
-		<<his4>>
-	<<elseif $rng is 5>>
-		<<his5>>
-	<<elseif $rng is 6>>
-		<<his6>>
-	<</if>>
+<<if $args[0] is "two">>
+	<<set _text_output to "their">>
+<<elseif $args[0] isnot undefined>>
+	<<set $_target to $args[0]>>
+	<<hisselect $_target>>
 <<else>>
 	<<his>>
 <</if>>
 <</silently>>_text_output<</widget>>
 
 <<widget "someone">><<silently>>
-/* Same as above
-	<<if _target isnot undefined>>
-		<<personselect _target>>
-	<<else>>
-		<<him>>
-	<</if>>
- */
-<<if $enemyno gte 2 and $enemytype is "man">>
-	<<set _text_output to "someone">>
+<<if $args[0] is "two">>
+	<<set _text_output to "them">>
+<<elseif $args[0] isnot undefined>>
+	<<set $_target to $args[0]>>
+	<<personselect $_target>><<him>>
 <<else>>
 	<<him>>
 <</if>>
 <</silently>>_text_output<</widget>>
 
 <<widget "their">><<silently>>
-<<if $enemyno gte 2 and $enemytype is "man">>
+<<if $args[0] isnot undefined>>
+	<<set $_target to $args[0]>>
+	<<hisselect $_target>>
+<<elseif $enemyno gte 2 and $enemytype is "man">>
 	<<set _text_output to "their">>
 <<else>>
 	<<his>>
@@ -1238,9 +1220,9 @@ in dev alternative to current "breasts" widget
 
 <<widget "combatperson">><<silently>>
 <<if $npc_named is 1>>
-	<<set _text_output to $NPCList[_j].fullDescription>>
+	<<set _text_output to $NPCList[$index].fullDescription>>
 <<elseif $enemytype is "beast">>
-	<<set _text_output to "the " + $NPCList[_j].type>>
+	<<set _text_output to "the " + $NPCList[$index].type>>
 <<elseif $role isnot "normal">>
 	<<set _text_output to $description + " " + $role>>
 <<elseif $npcadult is 1>>
@@ -1252,7 +1234,7 @@ in dev alternative to current "breasts" widget
 		<<set _text_output to "the " + $description>>
 	<</if>>
 <<else>>
-	<<set _text_output to "the " + $NPCList[_j].fullDescription>>
+	<<set _text_output to "the " + $NPCList[$index].fullDescription>>
 <</if>><</silently>><<print _text_output>><</widget>>
 
 <<widget "combatpersons">><<silently>>

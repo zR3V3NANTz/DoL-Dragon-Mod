@@ -732,7 +732,7 @@
 				<<elseif $rng gte 33>>
 					"Now however large your breasts grow, I'll have evidence of when they were small and cute."
 					<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
-				<<elseif $rng gte 20 and $npcDAP.length gte 2 and $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+				<<elseif $rng gte 20 and $anusdoubletarget isnot undefined and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 					"<<pHer>> nipples are so hard! This <<bitch>> loves double stuffing!"
 				<<else>>
 					"Don't be ashamed of your small breasts, they're adorable."
@@ -782,7 +782,7 @@
 			<<elseif $rng gte 33>>
 				"Those are some impressive mammaries."
 				<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
-			<<elseif $rng gte 20 and $npcDAP.length gte 2 and $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+			<<elseif $rng gte 20 and $anusdoubletarget isnot undefined and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 				"I love how <<pher>> milkers jiggle as their cocks ravage <<pher>> slut ass!"
 				<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
 			<<else>>
@@ -891,7 +891,7 @@
 			"You're actually gonna eat <<pher>> ass?"
 		<</if>>
 	<<elseif $anusstate isnot 0 and $anusstate.startsWith("double")>>
-		<<if $NPCList[$npcDAP[0]].penis is "anusdouble" and $NPCList[$npcDAP[1]].penis is "anusdouble">>
+		<<if $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 			<<if $orgasmdown gte 1>>
 				"This is the money shot! Look at <<phim>> shake with two cocks in <<pher>> ass!"
 			<<else>>

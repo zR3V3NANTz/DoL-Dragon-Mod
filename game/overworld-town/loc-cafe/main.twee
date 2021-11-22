@@ -885,8 +885,6 @@ The rest of the shift passes uneventfully. You earn <<moneyGain 5>>.
 <<effects>>
 <<effectsman>><<man>>
 
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
-
 <<stateman>>
 <br><br>
 <<actionsman>>

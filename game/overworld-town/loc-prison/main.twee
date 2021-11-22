@@ -839,7 +839,7 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 
-    <<if $enemyno gte 2>>
+    <<if $enemynomax gte 2>>
         The inmates cheer as the guards stagger from your cell. <<veteran_guard 1>> eyes you cautiously, but <<methodical_guard 0>> shakes <<person1>><<his>> head. "No time for this," <<he>> says, groping for <<his>> glasses. "We'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
     <<else>>
 	    The inmates cheer as <<methodical_guard 0>> staggers from your cell, and would fall from the walkway if not for the railing. "No time for this," <<he>> says, groping for <<his>> glasses. "I'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
@@ -851,12 +851,12 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
     <<prison_revolt_options>>
 
 <<elseif $enemyhealth lte 0>>
-    <<if $enemyno gte 2>>
+    <<if $enemynomax gte 2>>
         The inmates cheer as the guards stagger from your cell. <<veteran_guard 1>> eyes you cautiously, but <<methodical_guard 0>> shakes <<person1>><<his>> head. "No time for this," <<he>> says, groping for <<his>> glasses. "We'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
     <<else>>
 	    The inmates cheer as <<methodical_guard 0>> staggers from your cell, and would fall from the walkway if not for the railing. "No time for this," <<he>> says, groping for <<his>> glasses. "I'll be watching you."<<ggsuspicion>><<prison_guards -3>><<ggrespect>><<prison_inmates 3>>
     <</if>>
-    <<switch $enemyno>>
+    <<switch $enemynomax>>
         <<case 1>>
             <<greb>><<prison_reb 1>>
         <<case 2>>

@@ -713,7 +713,7 @@ A minute passes before a <<generatey1>><<generatey2>><<person1>><<person>> and <
 
 			This leaves you powerless to stop the <<person1>><<person>>'s penis from pressing insistently against your mouth.
 			<<set $NPCList[0].penis to "mouthentrance">><<set $NPCList[0].location.genitals = "head">>
-			<<set $mouthuse to "penis">><<set $mouthstate to "entrance">>
+			<<set $mouthuse to "penis">><<set $mouthstate to "entrance">><<set $mouthtarget to 0>>
 		<<else>>
 			The <<person>> bends down, covering your mouth with <<his>> hand. <<He>> straddles your face, and begins lowering <<himself>>, so that <<he>> is kneeling above your face,
 			with <<his>> knees holding your face upwards, looking up under <<his>> skirt. <<He>> lifts up <<his>> skirt, revealing <<his>> moist pussy. You know what's coming.
@@ -727,7 +727,7 @@ A minute passes before a <<generatey1>><<generatey2>><<person1>><<person>> and <
 			You are powerless to stop the <<person1>><<person>>. You watch as <<his>> pussy draws closer and closer.
 			<<He>> removes <<his>> hand from over your mouth, only for it to be replaced by <<his>> wet pussy as <<he>> sits on your face.
 			<<set $NPCList[0].vagina to "facesit">><<set $NPCList[_n].location.genitals = "head">>
-			<<set $mouthuse to "facesit">><<set $mouthstate to "vagina">>
+			<<set $mouthuse to "facesit">><<set $mouthstate to "vagina">><<set $mouthtarget to 0>>
 		<</if>>
 
 		<<if random(1) is 0>>
@@ -746,7 +746,6 @@ A minute passes before a <<generatey1>><<generatey2>><<person1>><<person>> and <
 <<effects>>
 
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -777,7 +776,6 @@ You awaken in the science classroom, bent over a desk. Straps tie down your arms
 <<effects>>
 
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>

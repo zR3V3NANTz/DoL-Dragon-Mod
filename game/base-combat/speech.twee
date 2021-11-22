@@ -4534,13 +4534,13 @@
 <<elseif random(1,10) is 10 and $NPCList[_n].penis isnot "chest" and $NPCList[_n].location.genitals isnot "head" and $mouthstate is 0>>
 	<span class="blue"><<He>> moves <<his>> lips close to yours, about to kiss.</span>
 	<span class="pink"><<His>> breath smells sweet.</span>
-	<<set $mouthuse to "kiss">><<set $mouthstate to "kissentrance">><<set $NPCList[_n].mouth to "kissentrance">><<sex 1>>
+	<<set $mouthuse to "kiss">><<set $mouthstate to "kissentrance">><<set $NPCList[_n].mouth to "kissentrance">><<sex 1>><<set $mouthtarget to _n>>
 	<<set $NPCList[_n].location.head = "head">>
 <<elseif random(1,20) is 20 and $tentacleMouth>>
 	<<He>> <span class="lblue">yanks the $tentacleMouth <<if $mouthstate is "tentacle" or $mouthstate is "tentacledeep">>out of<<else>>away from<</if>> your mouth</span> and
 	<span class="blue">moves <<his>> lips close to yours, about to kiss.</span>
 	<span class="pink"><<His>> breath smells sweet.</span>
-	<<set $mouthuse to "kiss">><<set $mouthstate to "kissentrance">><<set $NPCList[_n].mouth to "kissentrance">><<sex 1>>
+	<<set $mouthuse to "kiss">><<set $mouthstate to "kissentrance">><<set $NPCList[_n].mouth to "kissentrance">><<sex 1>><<set $mouthtarget to _n>>
 	<<set $NPCList[_n].location.head = "head">>
 	<<set $tentacleMouth to "removed">>
 <<elseif random(1,3) is 3>>

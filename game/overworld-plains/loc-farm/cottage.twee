@@ -1423,14 +1423,14 @@ You hold the back of Alex's head, and pull <<him>> into a kiss.<<set $consensual
 	<<maninit>>
 	<<if $player.penisExist and $player.vaginaExist>>
 		<<if random(1, 2) is 2>>
-			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">>
+			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to 0>>
 		<<else>>
-			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>
+			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginatarget to 0>>
 		<</if>>
 	<<elseif $player.penisExist>>
-		<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">>
+		<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to 0>>
 	<<else>>
-		<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>
+		<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginatarget to 0>>
 	<</if>>
 	<<set $enemytrust += 100>><<promiscuity4>>
 	<<set $NPCList[0].location.head to "genitals">>

@@ -404,7 +404,7 @@ The words you have just read echo in your head. You can no longer ignore what yo
 	<<neutral 1>>
 
 	<<generateNPC 1 a m m 17>><<person1>>
-	<<set $enemyno = 1>>
+	<<set $enemyno = 1>><<set $enemynomax = 1>>
 	<<maninit>>
 	<<set $NPCList[0].insecurity to "weak">>
 	<<set $enemytrust += 500>>
@@ -478,7 +478,7 @@ The words you have just read echo in your head. You can no longer ignore what yo
 	<<molested>>
 
 	<<generateNPC 1 a m m 17>><<person1>>
-	<<set $enemyno = 1>>
+	<<set $enemyno = 1>><<set $enemynomax = 1>>
 	<<maninit>>
 	<<set $NPCList[0].insecurity to "weak">>
 	<<set $NPCList[0].fullDescription to "Raul">>

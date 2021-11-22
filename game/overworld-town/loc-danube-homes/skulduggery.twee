@@ -315,6 +315,7 @@ With a little luck, they will take a while to notice you were ever there.
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
 	<<set $enemyno to 1>>
+	<<set $enemynomax to 1>>
 	<<controlloss>>
 	<<violence 1>>
 	<<neutral 1>>
@@ -336,6 +337,7 @@ With a little luck, they will take a while to notice you were ever there.
 <<elseif $sexstart is 1>>
 	<<set $sexstart to 0>>
 	<<set $enemyno to 1>>
+	<<set $enemynomax to 1>>
 	<<consensual>>
 	<<set $consensual to 1>>
 	<<neutral 1>>

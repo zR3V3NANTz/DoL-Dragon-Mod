@@ -118,7 +118,7 @@ and hips while wiggling closer to your <<genitals>>.
 
 	<<set $enemytrust += 100>>
 	<<tentaclestart 10 15>>
-	<<set $mouthstate to "tentacledeep">><<set $mouthuse to "tentacle">><<set $tentacles[0].shaft to "shoulders">><<set $tentacles[0].head to "mouthdeep">>
+	<<set $mouthstate to "tentacledeep">><<set $mouthuse to "tentacle">><<set $tentacles[0].shaft to "shoulders">><<set $tentacles[0].head to "mouthdeep">><<set $mouthtarget to "tentacles">>
 <</if>>
 <span class="lewd">A red mist is coming from the mirror, and it's making you feel funny.</span><<set $drugged++>>
 <br>

@@ -423,7 +423,7 @@ The creature rises behind you. A gargantuan slug, larger than a horse. <span cla
 	<<voreeffects>><<effectstentacles>>
 	<<vore>><<tentacles>>
 	<<statetentacles>>
-	<<voreactions>><<actionstentacles>>
+	<<actionsvorentacles>>
 <<else>>
 	<<voreeffects>>
 	<<vore>>

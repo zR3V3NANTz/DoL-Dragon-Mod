@@ -50,7 +50,7 @@
 				You are overcome by sensation. You ejaculate into the condom that covers your penis.
 				<<set $player.condom.cum to true>>
 			<<elseif $penisuse is "othervagina">>
-				<<for $_i = 0; $_i lt $enemyno; $_i++>>
+				<<for $_i = 0; $_i lt $enemynomax; $_i++>>
 					<<if $NPCList[$_i].vagina is "penis">>
 						<<personselect $_i>>
 						<<penileejacstat>>
@@ -70,7 +70,7 @@
 					<span class="red">The condom is too damaged, and semen bursts through.</span>
 				<</if>>
 			<<elseif $penisuse is "otheranus">>
-				<<for $_i = 0; $_i lt $enemyno; $_i++>>
+				<<for $_i = 0; $_i lt $enemynomax; $_i++>>
 					<<if $NPCList[$_i].penis is "otheranus">>
 						<<personselect $_i>>
 						<<penileejacstat>>
@@ -85,7 +85,7 @@
 					<span class="red">The condom is too damaged, and semen bursts through.</span>
 				<</if>>
 			<<elseif $penisuse is "othermouth">>
-				<<for $_i = 0; $_i lt $enemyno; $_i++>>
+				<<for $_i = 0; $_i lt $enemynomax; $_i++>>
 					<<if $NPCList[$_i].mouth is "penis">>
 						<<personselect $_i>>
 						<<penileejacstat>>

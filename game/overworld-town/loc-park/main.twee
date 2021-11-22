@@ -887,7 +887,7 @@ You sit on the toilet, and wait.
 			<<npcoral>>
 		<<case 4>>
 			<<npc_attempt_sex>>
-			<<set $NPCList[1].penis to "mouthentrance">><<submission 5>><<set $mouthstate to "entrance">><<set $mouthuse to "penis">>
+			<<set $NPCList[1].penis to "mouthentrance">><<submission 5>><<set $mouthstate to "entrance">><<set $mouthuse to "penis">><<set $mouthtarget to 1>>
 			The <<person2>><<person>> presses <<his>> penis against your lips as the <<person1>><<person>> approaches your entrance.
 		<<case 5>>
 			<<npc_attempt_sex>>
@@ -896,9 +896,6 @@ You sit on the toilet, and wait.
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<if $phase2 is 1>>
-	<<if $enemyhealth gt 0>><<npcdamage>><</if>>
-<</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -996,9 +993,6 @@ You sit on the toilet, and wait.
 
 <<effects>>
 <<effectsman>><<man>>
-<<if $phase2 is 1>>
-	<<if $enemyhealth gt 0>><<npcdamage>><</if>>
-<</if>>
 
 <<stateman>>
 <br><br>

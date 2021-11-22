@@ -1,3 +1,432 @@
+:: Widgets Machine Actions Generation [widget]
+<<widget "generateActionsMachine">>
+<<set $combat to 1>>
+<<if _targetlist is undefined>>
+	<<getTargetList>>
+<</if>>
+<div id="listContainer">
+	<div id="leftaction" @class="$combatControls + 'Control'">
+		<<leftActionInitMachine>>
+	</div>
+
+	<div id="rightaction" @class="$combatControls + 'Control'">
+		<<rightActionInitMachine>>
+	</div>
+
+	<div id="feetaction" @class="$combatControls + 'Control'">
+		<<feetActionInitMachine>>
+	</div>
+	
+	<<if ($mouthuse is 0 and !($dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)))>>
+		<div id="mouthaction" @class="$combatControls + 'Control'">
+			<<mouthActionInit>>
+		</div>
+	<</if>>
+</div>
+<</widget>>
+
+<<widget "leftActionInitMachine">>
+<<set $lefttarget to "machine">>
+<<switch $leftarm>>
+<<case 0>>
+	<<if $orgasmdown gte 1>>
+		<<set _leftOptions to "orgasm">>
+		<span class="lewd">Your left arm is free, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _leftOptions to "pain">>
+		<span class="red">Your left arm is free, but hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _leftOptions to "unreal">>
+		<span class="pink">Your left arm is free, but doesn't feel real.</span>
+	<<else>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistarms["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			Target: <span onchange="actionsreplace('left')">
+			<<listbox "$lefttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<set _leftOptions to "free">>
+		<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is free.</span>
+		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+			Target: <span onchange="actionsreplace('left')">
+			<<listbox "$lefttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span><br>
+		<</if>>
+	<</if>>
+<<case "mechgrappled">>
+	<<if $orgasmdown gte 1>>
+		<<set _leftOptions to "bound">>
+		<span class="lewd">Your left arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _leftOptions to "bound">>
+		<span class="red">Your left arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _leftOptions to "bound">>
+		<span class="pink">Your left arm lies limp in its bonds.</span>
+	<<else>>
+		<<set _leftOptions to "mech">>
+		<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is held down.</span>
+	<</if>>
+<<case "swarmgrappled">>
+	<<set $_changetype to true>><<leftActionInitSwarm>>
+<<case "bound">>
+	<<if $orgasmdown gte 1>>
+		<<set _leftOptions to "bound">>
+		<span class="lewd">Your left arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _leftOptions to "bound">>
+		<span class="red">Your left arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _leftOptions to "bound">>
+		<span class="pink">Your left arm lies limp in its bonds.</span>
+	<<else>>
+		<<set _leftOptions to "bound">>
+		<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is bound and helpless.</span>
+	<</if>><<if $combatControls is "radio">><br><</if>>
+<<case "trapped">>
+	<<set $_changetype to true>><<leftActionInitVore>>
+<<case "grappled" "penis" "othervagina" "vagina" "coverpenis" "anus" "behind">>
+	<<set $_changetype to true>><<leftActionInit>>
+<<case "struggle">>
+	<<set $_changetype to true>><<leftActionInitStruggle>>
+<<default>>
+	<<set $_changetype to true>><<leftActionInitTentacle>>
+<</switch>>
+<<if $_changetype isnot true>>
+	<<leftActionsMachine>>
+	<<if Object.keys(_leftaction).length gt 0>>
+		<<if !(Object.values(_leftaction).includes($leftactiondefault))>>
+			<<set $leftactiondefault to "rest">>
+		<</if>>
+		<<set $leftaction to $leftactiondefault>>
+		<<set _textColor to combatListColor('leftaction', (Object.values(_leftaction).includes($leftaction) ? $leftaction : Object.values(_leftaction)[0]), "Machine")>>
+		<div class="extraMargin">
+			<<generateCombatActionOthers _leftaction "leftaction" _textColor $leftaction "Machine">>
+		</div>
+		<<if $combatControls.includes("ists")>>
+			<div id="leftactionDifficulty">
+				<<leftactionDifficulty>>
+			</div>
+		<</if>>
+	<</if>>
+	<<set $lastOptions.left to clone(_leftOptions)>>
+<</if>>
+<</widget>>
+
+<<widget "leftactionDifficultyMachine">>/* Just so things don't break. */
+<</widget>>
+
+<<widget "leftActionsMachine">>
+<<set _leftaction to {}>>
+<<switch _leftOptions>>
+<<case "free">>
+	<<if $machine.arm_chains>>
+		<<if $machine.arm_chains.use isnot "inert" and $machine.arm_chains.use isnot "destroyed">>
+			<<set _leftaction["Pull on the chains"] to "chain_struggle">>
+		<</if>>
+	<</if>>
+	<<if $machine.tattoo>>
+		<<if $machine.tattoo.use isnot "inert" and $machine.tattoo.use isnot "destroyed">>
+			<<set _leftaction["Whack the tattoo gun"] to "whack">>
+		<</if>>
+	<</if>>
+	<<if $machine.vaginal>>
+		<<if $machine.vaginal.use isnot "inert" and $machine.vaginal.use isnot "destroyed">>
+			<<set _leftaction["Whack the phallic machine"] to "vaginal_whack">>
+			<<set _leftaction["Push the phallic machine away"] to "vaginal_push">>
+		<</if>>
+	<</if>>
+	<<if $machine.anal>>
+		<<if $machine.anal.use isnot "inert" and $machine.anal.use isnot "destroyed">>
+			<<set _leftaction["Whack the small phallic machine"] to "anal_whack">>
+			<<set _leftaction["Push the small phallic machine away"] to "anal_push">>
+		<</if>>
+	<</if>>
+	<<set _leftaction["Rest"] to "rest">>
+<<case "mech">>
+	<<if $machine.arm_chains>>
+		<<if $machine.arm_chains.use isnot "inert" and $machine.arm_chains.use isnot "destroyed">>
+			<<set _leftaction["Pull on the chains"] to "chain_struggle">>
+		<</if>>
+	<</if>>
+	<<set _leftaction["Rest"] to "rest">>
+<<case "orgasm">>
+	<<set _leftaction["Fold"] to "leftfold">>
+	<<set _leftaction["Grip"] to "leftgrip">>
+<<case "pain">>
+	<<set _leftaction["Struggle"] to "leftstruggleweak">>
+	<<set _leftaction["Protect"] to "leftprotect">>
+<<case "unreal">>
+	<<set _leftaction["Poke yourself"] to "leftpoke">>
+	<<set _leftaction["Keep your arms out of the way"] to "leftcurl">>
+<</switch>>
+<</widget>>
+
+<<widget "rightActionInitMachine">>
+<<set $righttarget to "machine">>
+<<switch $rightarm>>
+<<case 0>>
+	<<if $orgasmdown gte 1>>
+		<<set _rightOptions to "orgasm">>
+		<span class="lewd">Your right arm is free, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _rightOptions to "pain">>
+		<span class="red">Your right arm is free, but hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _rightOptions to "unreal">>
+		<span class="pink">Your right arm is free, but doesn't feel real.</span>
+	<<else>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistarms["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			Target: <span onchange="actionsreplace('right')">
+			<<listbox "$righttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<set _rightOptions to "free">>
+		<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is free.</span>
+		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+			Target: <span onchange="actionsreplace('right')">
+			<<listbox "$righttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span><br>
+		<</if>>
+	<</if>>
+<<case "mechgrappled">>
+	<<if $orgasmdown gte 1>>
+		<<set _rightOptions to "bound">>
+		<span class="lewd">Your right arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _rightOptions to "bound">>
+		<span class="red">Your right arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _rightOptions to "bound">>
+		<span class="pink">Your right arm lies limp in its bonds.</span>
+	<<else>>
+		<<set _rightOptions to "mech">>
+		<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is held down.</span>
+	<</if>>
+<<case "swarmgrappled">>
+	<<set $_changetype to true>><<rightActionInitSwarm>>
+<<case "bound">>
+	<<if $orgasmdown gte 1>>
+		<<set _rightOptions to "bound">>
+		<span class="lewd">Your right arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _rightOptions to "bound">>
+		<span class="red">Your right arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _rightOptions to "bound">>
+		<span class="pink">Your right arm lies limp in its bonds.</span>
+	<<else>>
+		<<set _rightOptions to "bound">>
+		<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is bound and helpless.</span>
+	<</if>><<if $combatControls is "radio">><br><</if>>
+<<case "trapped">>
+	<<set $_changetype to true>><<rightActionInitVore>>
+<<case "grappled" "penis" "othervagina" "vagina" "coverpenis" "anus" "behind">>
+	<<set $_changetype to true>><<rightActionInit>>
+<<case "struggle">>
+	<<set $_changetype to true>><<rightActionInitStruggle>>
+<<default>>
+	<<set $_changetype to true>><<rightActionInitTentacle>>
+<</switch>>
+<<if $_changetype isnot true>>
+	<<rightActionsMachine>>
+	<<if Object.keys(_rightaction).length gt 0>>
+		<<if !(Object.values(_rightaction).includes($rightactiondefault))>>
+			<<set $rightactiondefault to "rest">>
+		<</if>>
+		<<set $rightaction to $rightactiondefault>>
+		<<set _textColor to combatListColor('rightaction', (Object.values(_rightaction).includes($rightaction) ? $rightaction : Object.values(_rightaction)[0]), "Machine")>>
+		<div class="extraMargin">
+			<<generateCombatActionOthers _rightaction "rightaction" _textColor $rightaction "Machine">>
+		</div>
+		<<if $combatControls.includes("ists")>>
+			<div id="rightactionDifficulty">
+				<<rightactionDifficulty>>
+			</div>
+		<</if>>
+	<</if>>
+	<<set $lastOptions.right to clone(_rightOptions)>>
+<</if>>
+<</widget>>
+
+<<widget "rightactionDifficultyMachine">>/* Don't think about it, just accept. */
+<</widget>>
+
+<<widget "rightActionsMachine">>
+<<set _rightaction to {}>>
+<<switch _rightOptions>>
+<<case "free">>
+	<<if $machine.arm_chains>>
+		<<if $machine.arm_chains.use isnot "inert" and $machine.arm_chains.use isnot "destroyed">>
+			<<set _rightaction["Pull on the chains"] to "chain_struggle">>
+		<</if>>
+	<</if>>
+	<<if $machine.tattoo>>
+		<<if $machine.tattoo.use isnot "inert" and $machine.tattoo.use isnot "destroyed">>
+			<<set _rightaction["Whack the tattoo gun"] to "whack">>
+		<</if>>
+	<</if>>
+	<<if $machine.vaginal>>
+		<<if $machine.vaginal.use isnot "inert" and $machine.vaginal.use isnot "destroyed">>
+			<<set _rightaction["Whack the phallic machine"] to "vaginal_whack">>
+			<<set _rightaction["Push the phallic machine away"] to "vaginal_push">>
+		<</if>>
+	<</if>>
+	<<if $machine.anal>>
+		<<if $machine.anal.use isnot "inert" and $machine.anal.use isnot "destroyed">>
+			<<set _rightaction["Whack the small phallic machine"] to "anal_whack">>
+			<<set _rightaction["Push the small phallic machine away"] to "anal_push">>
+		<</if>>
+	<</if>>
+	<<set _rightaction["Rest"] to "rest">>
+<<case "mech">>
+	<<if $machine.arm_chains>>
+		<<if $machine.arm_chains.use isnot "inert" and $machine.arm_chains.use isnot "destroyed">>
+			<<set _rightaction["Pull on the chains"] to "chain_struggle">>
+		<</if>>
+	<</if>>
+	<<set _rightaction["Rest"] to "rest">>
+<<case "orgasm">>
+	<<set _rightaction["Fold"] to "rightfold">>
+	<<set _rightaction["Grip"] to "rightgrip">>
+<<case "pain">>
+	<<set _rightaction["Struggle"] to "rightstruggleweak">>
+	<<set _rightaction["Protect"] to "rightprotect">>
+<<case "unreal">>
+	<<set _rightaction["Poke yourself"] to "rightpoke">>
+	<<set _rightaction["Keep your arms out of the way"] to "rightcurl">>
+<</switch>>
+<</widget>>
+
+<<widget "feetActionInitMachine">>
+<<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+	<<set $feettarget to "machine">>
+	<<switch $feetuse>>
+	<<case 0>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistall["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			<<if ($leftleg is "grappled" and $rightleg is "grappled") or ($leftleg is "bound" and $rightleg is "bound")>>
+			<<else>>
+				Target: <span onchange="actionsreplace('feet')">
+				<<listbox "$feettarget" autoselect>>
+					<<optionsfrom _targetlistall>>
+				<</listbox>>
+				</span>
+			<</if>>
+		<</if>>
+		<<if $leftleg is 0 and $rightleg is 0>>
+			<<set _feetOptions to "free">>
+			<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your legs are free.</span>
+		<<elseif $leftleg is "grappled" or $rightleg is "grappled">>
+			<<set $_changetype to true>><<feetActionInitTentacle>>
+		<<elseif $leftleg is "bound" and $rightleg is "bound">>
+			<<set $_changetype to true>><<feetActionInitTentacle>>
+		<<else>>
+			<<set _feetOptions to "free">>
+			<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')">Your legs are free.</span>
+		<</if>>
+		<<if $combatControls is "radio" and _targetnumber gt 1 and _feetOptions.toLowerCase().includes("free")>><br>
+			Target: <span onchange="actionsreplace('feet')">
+			<<listbox "$feettarget" autoselect>>
+				<<optionsfrom _targetlistall>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<if _targetnumber is 1>>
+			<<set $feettarget to _firsttarget>>
+		<</if>>
+	<<case "mechgrappled">>
+		<<set _feetOptions to "mech">>
+		<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')">Your legs are chained.</span>
+	<<case "bound" "penis" "othervagina" "walk" "run" "none">>
+		<<set $_changetype to true>><<feetActionInit>>
+	<<default>>
+		<<set $_changetype to true>><<feetActionInitTentacle>>
+	<</switch>>
+	<<if $lastOptions.feet isnot _feetOptions>>
+		<<set _feetGold to true>>
+	<</if>>
+	<<if $_changetype isnot true>>
+		<<feetActionsMachine>>
+		<<if Object.keys(_feetaction).length gt 0>>
+			<<if !(Object.values(_feetaction).includes($feetactiondefault))>>
+				<<set $feetactiondefault to "rest">>
+			<</if>>
+			<<set $feetaction to $feetactiondefault>>
+			<<set _textColor to combatListColor('feetaction', (Object.values(_feetaction).includes($feetaction) ? $feetaction : Object.values(_feetaction)[0]), "Machine")>>
+			<div class="extraMargin">
+				<<generateCombatActionOthers _feetaction "feetaction" _textColor $feetaction "Machine">>
+			</div>
+			<<if $combatControls.includes("ists")>>
+				<div id="feetactionDifficulty">
+					<<feetactionDifficulty>>
+				</div>
+			<</if>>
+		<</if>>
+		<<set $lastOptions.feet to clone(_feetOptions)>>
+	<</if>>
+<<else>>
+	<<timed 100ms>>
+		<<run jQuery("#feetaction").remove();>>
+	<</timed>>
+<</if>>
+<</widget>>
+
+<<widget "feetactionDifficultyMachine">> /* Sometimes in life, there's not much we can do. */
+<</widget>>
+
+<<widget "feetActionsMachine">>
+<<set _feetaction to {}>>
+<<switch _feetOptions>>
+<<case "free">>
+	<<if $machine.leg_chains>>
+		<<if $machine.leg_chains.use isnot "inert" and $machine.leg_chains.use isnot "destroyed">>
+			<<set _feetaction["Pull on the chains"] to "chain_struggle">>
+		<</if>>
+	<</if>>
+	<<if $machine.tattoo>>
+		<<if $machine.tattoo.use isnot "inert" and $machine.tattoo.use isnot "destroyed">>
+			<<set _feetaction["Kick the tattoo gun"] to "whack">>
+		<</if>>
+	<</if>>
+	<<if $machine.vaginal>>
+		<<if $machine.vaginal.use isnot "inert" and $machine.vaginal.use isnot "destroyed">>
+			<<set _feetaction["Kick the phallic machine"] to "vaginal_whack">>
+			<<set _feetaction["Push the phallic machine away"] to "vaginal_push">>
+		<</if>>
+	<</if>>
+	<<if $machine.anal>>
+		<<if $machine.anal.use isnot "inert" and $machine.anal.use isnot "destroyed">>
+			<<set _feetaction["Kick the small phallic machine"] to "anal_whack">>
+			<<set _feetaction["Push the small phallic machine away"] to "anal_push">>
+		<</if>>
+	<</if>>
+	<<set _feetaction["Rest"] to "rest">>
+<<case "mech">>
+	<<if $machine.leg_chains>>
+		<<if $machine.leg_chains.use isnot "inert" and $machine.leg_chains.use isnot "destroyed">>
+			<<set _feetaction["Pull against the chains"] to "chain_struggle">>
+		<</if>>
+	<</if>>
+	<<set _feetaction["Rest"] to "rest">>
+<</switch>>
+<</widget>>
+
 :: Machine Actions [widget]
 <<widget "machine_actions">>
 
@@ -6,8 +435,15 @@
 <<actioncarry>>
 <<actioncarrydrop>>
 
+<<combatstate>>
+<<carryblock>>
+
+<<if $trance lte 0 and $panicparalysis is 0 and $panicviolence is 0 and $combatControls isnot "disabled">>
+	<<generateActionsMachine>>
+<</if>>
+
 <<if $trance lte 0 and $dissociation lte 1 and $panicparalysis is 0 and $panicviolence is 0
-and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined) and $combatControls is "disabled">>
 
 <<if $leftarm is 0>>
 	<br>
@@ -64,7 +500,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 	<<else>>
 		| <label>Rest <<radiobutton "$leftaction" "rest">></label>
 	<</if>>
-<<elseif $leftarm is "grappled">>
+<<elseif $leftarm is "mechgrappled">>
 	<br>
 	Your left arm is held down.
 	<br>
@@ -143,7 +579,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 	<<else>>
 		| <label>Rest <<radiobutton "$rightaction" "rest">></label>
 	<</if>>
-<<elseif $rightarm is "grappled">>
+<<elseif $rightarm is "mechgrappled">>
 	<br>
 	Your right arm is chained.
 	<br>
@@ -222,7 +658,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 	<<else>>
 		| <label>Rest <<radiobutton "$feetaction" "rest">></label>
 	<</if>>
-<<elseif $feetuse is "grappled">>
+<<elseif $feetuse is "mechgrappled">>
 	<br>
 	Your legs are chained.
 	<br>
@@ -253,8 +689,6 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 	<</timed>>
 <</if>>
 
-<<combatstate>>
-<<carryblock>>
 <br><br>
 
 <<setupMidOrgasm>>

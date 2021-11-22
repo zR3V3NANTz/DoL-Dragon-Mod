@@ -738,6 +738,9 @@
 
 <<heelsUpdate>>
 
+<<if $combat is 1>>
+	<<pass10sec>>
+<</if>>
 <br>
 <<set $menu to 0>>
 <</widget>>

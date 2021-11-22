@@ -111,6 +111,10 @@ Combat Controls:
 <label><<radiobutton "$combatControls" "radio" autocheck>> Radio Buttons</label> |
 <label><<radiobutton "$combatControls" "lists" autocheck>> Lists (No width limit)</label> |
 <label><<radiobutton "$combatControls" "limitedLists" autocheck>> Lists (Width Limit)</label>
+<br>
+"Yourself" as a target option:
+<label><<radiobutton "$targetYourself" false autocheck>> Disabled</label> |
+<label><<radiobutton "$targetYourself" true autocheck>> Enabled</label>
 <br><br>
 
 

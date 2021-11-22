@@ -507,7 +507,7 @@ You return to the pantry and put your clothes back on.
 <<neutral 1>>
 <<molested>>
 
-<<set $enemyno to 1>><<maninit>>
+<<set $enemyno to 1>><<set $enemynomax to 1>><<maninit>>
 
 <<set $NPCList[1].penis to "none">>
 <<set $NPCList[1].lefthand to "none">>
@@ -1160,8 +1160,8 @@ You hum a gentle tune.
 <<controlloss>>
 
 <<tentaclestart 6 15 "root" "vine" true>>
-<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">>
-<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">>
+<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $lefttarget to "tentacles">>
+<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $righttarget to "tentacles">>
 
 <</if>>
 

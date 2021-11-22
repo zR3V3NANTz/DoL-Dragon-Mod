@@ -761,7 +761,7 @@ The others jostle closer.
 	<<voreeffects>><<effectstentacles>>
 	<<vore>><<tentacles>>
 	<<statetentacles>>
-	<<voreactions>><<actionstentacles>>
+	<<actionsvorentacles>>
 <<else>>
 	<<voreeffects>>
 	<<vore>>
@@ -2699,7 +2699,7 @@ You examine the lock. It looks old, and delicate with rust.
 		<<molested>>
 	<</if>>
 	<<maninit>><<npcexpose>>
-	<<set $enemytype to "plant">><<set $enemyno to 1>>
+	<<set $enemytype to "plant">><<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<if $phase is 0>>
 		<<set $enemyarousalmax to 1500>>
 		<<set $enemyarousal to 500>>
@@ -2777,7 +2777,7 @@ You examine the lock. It looks old, and delicate with rust.
 		<<molested>>
 	<</if>>
 	<<maninit>><<npcexpose>>
-	<<set $enemytype to "plant">><<set $enemyno to 1>>
+	<<set $enemytype to "plant">><<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<if $phase is 0>>
 		<<set $enemyarousalmax to 1000>>
 		<<set $enemyarousal to 400>>

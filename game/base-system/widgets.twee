@@ -613,13 +613,41 @@
 		<<set $stress -= 10 * _defiance>>
 		<<combattrauma _negargs>>
 		<<set $enemyanger += 5 * _defiance>>
-		<<set $enemyhealth -= (2 * _defiance * ($physique / 4000))>>
 		<<set $submissive -= 1>>
 		<<set $enemytrust -= 4>>
 		<<set _defiance_arousal to (_defiance * ($sadism / 40))>>
 		<<arousal _defiance_arousal>>
 		<<if $arousal gte ($arousalmax * 0.8)>>
 			<<sadism $args[0]>>
+		<</if>>
+		<<set _thedamage to (2 * _defiance * ($physique / 4000))>>
+		<<set $enemyhealth -= _thedamage>>
+		<<if $args[1] isnot undefined>>
+			<<if $args[2] isnot undefined>>
+				<<set $NPCList[$args[1]].health -= (_thedamage/2)>>
+				<<set $NPCList[$args[2]].health -= (_thedamage/2)>>
+				<<if $enemyno gte 2>>
+					<<npcdamage $args[1]>>
+					<<npcdamage $args[2]>>
+				<</if>>
+			<<else>>
+				<<set $NPCList[$args[1]].health -= _thedamage>>
+				<<if $enemyno gte 2>>
+					<<npcdamage $args[1]>>
+				<</if>>
+			<</if>>
+			<<if $newtarget isnot undefined>>
+				<<setnewtarget>>
+			<</if>>
+		<<else>>
+			<<for _npctodamage to 0; _npctodamage lt $enemynomax; _npctodamage++>>
+				<<if $NPCList[_npctodamage].active is "active" and $NPCList[_npctodamage].stance isnot "defeated">>
+					<<set $NPCList[_npctodamage].health -= (_thedamage/$enemyno)>>/* Divide damage by all current active enemies. */
+					<<if $enemyno gte 2>>
+						<<npcdamage _npctodamage>>
+					<</if>>
+				<</if>>
+			<</for>>
 		<</if>>
 	<</if>>
 <</widget>>
@@ -1608,7 +1636,7 @@
 <<if $rapeavoid is 1 and $consensual is 0 and $gamemode isnot "soft">>
 <<set $rapeavoid to 0>><<set $rapestat += 1>>
 	<<if $enemytype is "man" and !($npc.length is 1 and $npc[0] is "Eden")>>
-		<<famerape $enemyno>>
+		<<famerape $enemynomax>>
 	<</if>>
 	<<if $awareness lte 200>>
 	<<awareness 5>>
@@ -1633,7 +1661,7 @@
 <<elseif $sexavoid is 1 and $consensual is 1>>
 <<set $sexavoid to 0>>
 	<<if $enemytype is "man" and !($npc.length is 1 and $npc[0] is "Eden")>>
-		<<famesex $enemyno>>
+		<<famesex $enemynomax>>
 	<</if>>
 <<controlloss>>
 <</if>>
@@ -3993,7 +4021,7 @@ __Map__<br>
 <</widget>>
 
 <<widget "willpowerpain">>
-	<<if $pain gte 100 and $willpowerpain is undefined>>
+	<<if $pain gte 100 and $willpowerpain is undefined and _willpowerpainchecked isnot true>>
 		<<if ($willpower / 10) gte (($pain - 100) + random(1, 100))>>
 			<span class="green">The pain threatens to overwhelm, but you endure it.</span>
 			<<gwillpower>><<willpower 1>>
@@ -4006,11 +4034,12 @@ __Map__<br>
 			<<ggwillpower>><<willpower 5>><<set $willpowerpain to 0>>
 			<br>
 		<</if>>
+	<<set _willpowerpainchecked to true>>
 	<</if>>
 <</widget>>
 
 <<widget "willpowerorgasm">>
-	<<if $orgasmdown gte 1>>
+	<<if $orgasmdown gte 1 and _willpowerorgasmchecked isnot true>>
 		<<if ($willpower / 10) gte (($orgasmdown * 30) + random(1, 80))>>
 			<span class="green">You endure the orgasmic shivers running through you.</span>
 			<<gwillpower>><<willpower 1>><<set $orgasmdown to 0>>
@@ -4023,6 +4052,7 @@ __Map__<br>
 			<<gwillpower>><<willpower 1>>
 			<br>
 		<</if>>
+	<<set _willpowerorgasmchecked to true>>
 	<</if>>
 <</widget>>
 

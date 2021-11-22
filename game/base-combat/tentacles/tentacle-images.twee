@@ -77,7 +77,7 @@
 		<img @class="'layer-sextears '+_tentacleColour+' anim-doggy-4f-'+_animspeed" src="img/sex/doggy/tentacles/tentaclefootjob.png">
 		<img @class="'layer-sexbase anim-doggy-4f-'+_animspeed" @src="_img.doggyactivefeetjob" @style="'filter: '+_filters.body">
 	<</if>>
-	<<if $breastuse is "tentacle">>
+	<<if $chestuse is "tentacle">>
 		<img @class="'layer-sexpenis '+_tentacleColour+' anim-doggy-4f-'+_animspeed" src="img/sex/doggy/tentacles/tentaclebreasts.png">
 	<</if>>
 <</widget>>
@@ -158,13 +158,13 @@
 		<img @class="'layer-sextears '+_tentacleColour+' anim-doggy-4f-'+_animspeed" src="img/sex/missionary/tentacles/tentaclefootjob.png">
 		<img @class="'layer-sexbase anim-doggy-4f-'+_animspeed" @src="_img.activefeetjob" @style="'filter: '+_filters.body">
 	<</if>>
-	<<if $breastuse is "tentacle">>
+	<<if $chestuse is "tentacle">>
 		<img @class="'layer-sexpenis '+_tentacleColour+' anim-doggy-4f-'+_animspeed" src="img/sex/missionary/tentacles/tentaclebreasts.png">
 	<</if>>
-	<<if $leftarm is "grappled" and $tentacles.max gte 1>>
+	<<if $leftarm is "tentgrappled" and $tentacles.max gte 1>>
 		<img @class="'layer-sexpenis '+_tentacleColour+' anim-doggy-4f-'+_animspeed" src="img/sex/missionary/tentacles/tentacleleftarmbound.png">
 	<</if>>
-	<<if $rightarm is "grappled" and $tentacles.max gte 1>>
+	<<if $rightarm is "tentgrappled" and $tentacles.max gte 1>>
 		<img @class="'layer-sexpenis '+_tentacleColour+' anim-doggy-4f-'+_animspeed" src="img/sex/missionary/tentacles/tentaclerightarmbound.png">
 	<</if>>
 	<<if $leftleg is "grappled" and $tentacles.max gte 1>>

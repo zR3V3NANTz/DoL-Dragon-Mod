@@ -9,7 +9,8 @@
 <<if !$per_npc.wraith>>
 	<<set _strapIgnore to true>>
 	<<generateNPC _w a n n 20>>
-	<<set $NPCList[_n].health to 900>>
+	<<set $NPCList[_n].healthmax to 900>>
+	<<set $NPCList[_n].health to $NPCList[_n].healthmax>>
 	<<set $NPCList[_n].description to "pale figure">>
 	<<set $NPCList[_n].fullDescription to "Ivory Wraith">>
 	<<set $NPCList[_n].skincolour to "white">>
@@ -141,6 +142,7 @@
 				<<set $NPCList[_i].mouth to "none">>
 				<<set $NPCList[_i].penis to "none">>
 				<<set $NPCList[_i].vagina to "none">>
+				<<set $NPCList[_i].active to "active">>
 			<</for>>
 			<<npcexpose>>
 			<<set $enemyarousalmax to 900>>
@@ -174,7 +176,7 @@
 			<<initWraith "arms">>
 	<</switch>>
 <</if>>
-<<set $speechdisable to 1>>
+<<set $speechdisable to 1>><<set $enemynomax to 1>>
 <</widget>>
 
 <<widget "startWraith">>
@@ -525,13 +527,13 @@
 		<<actionsman>>
 	<<case "arms">>
 		<<set _introSkip to true>>
+		<<set $enemynomax to 4>>
 		<<effectsman>><<man>>
 		<<rescueWraith>>
 		<<set $enemyno to 1>>
 		<<stateman>>
-		<<set $enemyno to 4>>
 		<br><br>
-		<<actionsman>>	
+		<<actionsman>>
 	<<case "tentacles">>
 		<<chastityBreakWraith>>
 		<<effectstentacles>><<speechWraith>><<tentacles>>
@@ -546,7 +548,7 @@
 		<<statetentacles>>
 		
 		<br><br>
-		<<swarmactions>><<actionstentacles>>
+		<<actionsOmni>>
 	<<case "slime">>
 		<<speechWraith>><<struggle>>
 	<<case "abomination">>

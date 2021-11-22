@@ -3586,7 +3586,7 @@ The slimes disappear into the river. <<tearful>> you look around frantically.
 		<</if>>
 	<</if>>
 	<<maninit>><<npcexpose>>
-	<<set $enemytype to "plant">><<set $enemyno to 1>>
+	<<set $enemytype to "plant">><<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<set $enemyarousalmax to 800>>
 	<<if $phase is 2>>
 		<<set _randomtentacles to random(10, 12)>>
@@ -3596,13 +3596,13 @@ The slimes disappear into the river. <<tearful>> you look around frantically.
 	<<makeAbomination _randomtentacles 8 "vine" "vine" true>>
 	<<if $phase is 1>>
 		<<if $player.penisExist>>
-			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">>
+			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to 0>>
 		<<else>>
-			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>
+			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginatarget to 0>>
 		<</if>>
 		<<set $NPCList[0].location.head to "genitals">>
-		<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">><<set $leftarmstate to 0>>
-		<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">><<set $leftarmstate to 0>>
+		<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
+		<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $leftarmstate to 0>><<set $righttarget to "tentacles">>
 	<<elseif $phase is 0 and !$consensual>>
 		<<npckiss>>
 	<</if>>
@@ -3715,12 +3715,12 @@ The slimes disappear into the river. <<tearful>> you look around frantically.
 		<</if>>
 	<</if>>
 	<<maninit>><<npcexpose>>
-	<<set $enemytype to "plant">><<set $enemyno to 1>>
+	<<set $enemytype to "plant">><<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<if $phase is 1>>
 		<<if $player.penisExist>>
-			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">>
+			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to 0>>
 		<<else>>
-			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>
+			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginatarget to 0>>
 		<</if>>
 		<<set $NPCList[0].location.head to "genitals">>
 		<<set $leftarm to "bound">><<set $leftarmstate to 0>>
