@@ -201,8 +201,10 @@ Fluid forcibly milked: $fluid_forced_stat mL
 	<br>
 	Pepper spray used: $spraystat
 	<br>
-	Practise shots fired with Eden: $stat_shoot
-	<br>
+	<<if $NPCName[$NPCNameList.indexOf("Eden")].init>>
+		Practise shots fired with Eden: $stat_shoot
+		<br>
+	<</if>>
 	Machines disabled: $machine_stat
 	<br>
 	Lurkers captured: $stat_lurkers_captured

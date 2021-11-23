@@ -94,7 +94,7 @@
 	<</if>>
 <</if>>
 
-<<if $chestuse isnot 0 and $chestuse isnot "struggle">>
+<<if $chestuse is "penis">>
 	<<set $chestuse to 0>>
 	<<if $NPCList[$chesttarget].penis is "chest">>
 		<<set $NPCList[$chesttarget].penis to 0>>

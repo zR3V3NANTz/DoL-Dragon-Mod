@@ -375,6 +375,7 @@
 	<br>
 <</widget>>
 
+<!-- obsolete macro: use `getRobinLocation()` instead
 <<widget "robin_location">>
 <<if $NPCName[$NPCNameList.indexOf("Robin")].init is 1>>
 	<<if $robinmissing is 1>>
@@ -396,6 +397,7 @@
 	<</if>>
 <</if>>
 <</widget>>
+-->
 
 <<widget "robinPayout">>
 <<set $robinPayout to 1>>
