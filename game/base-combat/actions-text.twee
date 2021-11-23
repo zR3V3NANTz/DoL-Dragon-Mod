@@ -4271,7 +4271,7 @@ You <<peniletext>> rub your penis against <<their $args[0]>> labia.
 <</widget>>
 
 <<widget "actionspussythrust">><<silently>>
-<<hisselect '$args[0]'>>
+<<hisselect $args[0]>>
 <<set _their to _text_output>>
 <<his>>
 <<set _her to _text_output>>
@@ -4337,7 +4337,7 @@ _otheraction _youraction
 		<<set _youraction to "You <<peniletext>> rub your <<penis>> against their pussy to control their arousal, trying to reduce your discomfort.">>
 	<</if>>
 <<else>>
-	<<hisselect '$args[0]'>>
+	<<hisselect $args[0]>>
 	<<set _their to _text_output>>
 	<<his>>
 	<<set _her to _text_output>>
