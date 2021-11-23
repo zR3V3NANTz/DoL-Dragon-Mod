@@ -1551,7 +1551,7 @@
 			<<elseif $player.penisExist>>
 				<<bHe>> licks and <span class="blue">wraps <<bhis>> tongue around your <<penis>>.</span>
 				<br>
-				<<sex 3>><<set $NPCList[_n].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to_n>>
+				<<sex 3>><<set $NPCList[_n].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to _n>>
 			<<else>>
 				<<bHe>> licks and <span class="blue">wiggles <<bhis>> tongue against your <<pussy>>.</span>
 				<br>
