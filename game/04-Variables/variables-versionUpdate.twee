@@ -2625,4 +2625,17 @@
 		<<unset $machine>>
 	<</if>>
 	/* End of Target variables */
+
+	<!-- remove duplicates from the hints list -->
+	<<if $objectVersion.museumAntiques lt 8>>
+		<<set $objectVersion.museumAntiques to 8>>
+		<<set _newlist to []>>
+		<!-- run in reverse to preserve only most recently added entries -->
+		<<for _i = $museumAntiqueJournalHints.length - 1; _i gte 0; _i-->>
+			<<if $museumAntiques.antiques[$museumAntiqueJournalHints[_i]] is "notFound">>
+				<<set _newlist.pushUnique($museumAntiqueJournalHints[_i])>>
+			<</if>>
+		<</for>>
+		<<set $museumAntiqueJournalHints to clone(_newlist).reverse()>>
+	<</if>>
 <</widget>>

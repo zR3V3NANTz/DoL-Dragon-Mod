@@ -507,11 +507,13 @@
 	<br><br>
 	<h4>Winter has mentioned some items missing from the museum</h4>
 	<ul>
-		<<for _hint range $museumAntiqueJournalHints>>
-			<li>
-				<<print _museumAntiqueText[_hint].journal>>
-			</li>
-		<</for>>
+	<<set _hintslist to clone($museumAntiqueJournalHints).reverse()>>
+	<!-- most recent go on top -->
+	<<for _hint range _hintslist>>
+		<li>
+			<<print _museumAntiqueText[_hint].journal>>
+		</li>
+	<</for>>
 	</ul>
 <</if>>
 
