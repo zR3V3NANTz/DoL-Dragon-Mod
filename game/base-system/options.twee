@@ -158,7 +158,9 @@ Combat Controls:
 <</if>>
 
 <h4>Text Import/Export</h4>
-<<if ($dancing is 0 and $combat is 0 and $replayScene is undefined) or $debug is 1>>
+<<if !($dancing is 0 and $combat is 0 and $replayScene is undefined)>>
+	<span class="red"><b>Combat event active, only use resulting save data for bug reporting!!</b></span><br>
+<</if>>
 	This feature lets you transfer saves between devices when one or more does not allow access to save files, such as on Android.
 	<br>
 	To save, click on "Get Save Data", then copy and paste the save data where required.
@@ -177,9 +179,6 @@ Combat Controls:
 	<input type="button" value="Get Save Data" onclick="getSaveData()"/>
 	<input type="button" value="Load Save Data" onclick="loadSaveData()"/>
 	<input id="CopyTextArea" type="button" value="Copy Text Area" onclick="copySavedata('saveDataInput')">
-<<else>>
-	Unable to save currently.
-<</if>>
 <br><br>
 <label>
 	<<print '<<checkbox "$disableAutoSelect" false true '+($disableAutoSelect is true? "checked":"")+'>>'>>
