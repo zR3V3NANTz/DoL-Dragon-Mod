@@ -426,12 +426,14 @@
 		"Take a bow.",
 		"All for this.",
 		"And so do you.",
+		"The pursuit bends.",
 		"Tick-tock, tick-tock.",
 		"Just a little further.",
 		"I know why you're here.",
 		"Is this your idea of heaven?",
 		"Don't make me repeat myself.",
 		"I can feel your heart pounding.",
+		"With a dream that casts a shadow.",
 		"Join me, why don't you? It's not far.",
 		"Like sand slipping through your fingers.",
 		"You don't have enough. You never had enough.",
@@ -461,7 +463,24 @@
 			"Water down your shame, until the lake runs dry.",
 			"Until naught remains, but carved bone and midnight blue."
 		)>>
+	<<else>>
+		<<run _linePool.pushUnique(
+			"Just once, can't they stay?",
+			"I'm sorry that you put your trust in me."
+		)>>	
 	<</if>>
+	<<if $templePromised is "Sydney">>
+		<<run _linePool.pushUnique(
+			"And you are wedded to calamity."
+		)>>
+	<</if>>
+	<<if $wraithPrison and $wraithPrison.vision is true>>
+		<<run _linePool.pushUnique(
+			"Different place, same disgrace.",
+			"It's comforting to know we have that in common.",
+			"Stepped from the past. Steeped in the present. Yet to be stopped."
+		)>>
+	<<if>>
 	<<if $wraith.offspring is "dead">>
 		<<run _linePool.pushUnique(
 			"Join them.",
@@ -491,13 +510,25 @@
 		<<run _linePool.pushUnique("The cold iron bell rings again.")>>
 	<</if>>
 	<<if $awareness gte 400>>
-		<<run _linePool.pushUnique("The Elk fancies itself the predator.")>>
+		<<run _linePool.pushUnique(
+			"The Elk fancies itself the predator.",
+			"To be blind again. You'll miss your ignorance.",
+			"The arrow of time struck midnight long before you were born."
+		)>>
 	<</if>>
 	<<if $awareness gte 600>>
-		<<run _linePool.pushUnique("Under bloody moon, under faithless sun. Dancing to my tune, standing here <span class=\"tentacle\">As One</span>.")>>
+		<<run _linePool.pushUnique(
+			"The shattered lay under the edge of blue.",
+			"Under bloody moon, under faithless sun. Dancing to my tune, standing here <span class=\"tentacle\">As One</span>."
+		)>>
 	<</if>>
 	<<if $angel gte 6>>
-		<<run _linePool.pushUnique("It won't last. It never does.")>>
+		<<run _linePool.pushUnique(
+			"It won't last. It never does.",
+			"Your descent will be beautiful.",
+			"Fly with me, gaoler. Fly and fall.",
+			"You were only a prisoner, after everything."
+		)>>
 	<<elseif $fallenangel gte 2>>
 		<<run _linePool.pushUnique(
 			"Falling. Falling. Falling.",

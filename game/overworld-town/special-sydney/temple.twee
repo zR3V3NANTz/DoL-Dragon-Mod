@@ -1195,7 +1195,7 @@ You find yourself in a small hexagonal room, the edges ringed with steps leading
 		<br><br>
 		A phantom howl fills the room as it comes back into focus around you. You feel your consciousness slipping, and your body gives in to exhaustion.
 		<br><br>
-		<<link [[Forever, as one...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
+		<<link [[Forever, As One...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
 	<<elseif $loveDrunk gte 3 and $worn.genitals.type.includes("chastity")>>
 		Sydney lets out a feral growl, pinning you to the cushion. "Why?!" <<he>> hisses. "You brought me back here with that thing on! That... damned mockery! It's between me and... I can't..." <<He>> dives to the floor and begins tearing at your $worn.genitals.name, digging <<his>> fingernails into it with a feverish passion.
 		<<set $worn.genitals.integrity -= 100>>
@@ -1211,7 +1211,7 @@ You find yourself in a small hexagonal room, the edges ringed with steps leading
 			<br><br>
 			A phantom howl fills the room as it comes back into focus around you. You feel your consciousness slipping, and your body gives in to exhaustion.
 			<br><br>
-			<<link [[Forever, as one...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
+			<<link [[Forever, As One...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
 		<</if>>
 	<<else>>
 		<<ejaculation>>

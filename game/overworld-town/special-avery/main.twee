@@ -513,10 +513,12 @@ Avery slams the door after you, then gets in the front. The doors lock as you dr
 	<<link [[Next|Avery Party]]>><</link>>
 	<br>
 <<else>><<set $avery_location to 1>>
-	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> takes your hand and leads you into the building.<<takeHandholdingVirginity "Avery" "romantic">>
+	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> offers <<his>> hand as <<he>> leads you into the building.
 	<br><br>
 
-	<<link [[Next|Avery Date 2]]>><</link>>
+	<<link [[Take it|Avery Date 2]]>><<set $phase to 1>><</link>><<handholdingvirginitywarning>>
+	<br>
+	<<link [[Refuse|Avery Date 2]]>><<set $phase to 2>><<npcincr Avery love -1>><<set $endear -= 10>><</link>><<lendear>><<llove>>
 	<br>
 <</if>>
 
@@ -542,10 +544,12 @@ You smile at <<him>>. <<He>> smiles back. "You're so sweet," <<he>> says as <<he
 	<<link [[Next|Avery Party]]>><</link>>
 	<br>
 <<else>><<set $avery_location to 1>>
-	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> takes your hand and leads you into the building.<<takeHandholdingVirginity "Avery" "romantic">>
+	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> offers <<his>> hand as <<he>> leads you into the building.
 	<br><br>
 
-	<<link [[Next|Avery Date 2]]>><</link>>
+	<<link [[Take it|Avery Date 2]]>><<set $phase to 1>><</link>><<handholdingvirginitywarning>>
+	<br>
+	<<link [[Refuse|Avery Date 2]]>><<set $phase to 2>><<npcincr Avery love -1>><<set $endear -= 10>><</link>><<lendear>><<llove>>
 	<br>
 <</if>>
 <br>
@@ -2385,6 +2389,14 @@ You leave the mansion alone. Another servant opens the gate for you and you exit
 :: Avery Date 2
 <<effects>><<set $outside to 0>>
 <<pass 20>><<famesocial 10>><<set $dateCount.Total++>><<set $dateCount.Avery++>>
+<<if $phase is 1>>
+	You let Avery take your hand. <<He>> smiles.<<takeHandholdingVirginity "Avery" "romantic">>
+	<br><br>
+<<else>>
+	You lightly clench your hand. <<He>> frowns at you, but doesn't say anything.
+	<br><br>
+<</if>>
+<<set $phase to 0>>
 <<generate2>><<person2>>A <<person>> greets Avery and you. "Aha," <<he>> says. "It's nice to see you again, <<person1>><<sir>>. And your friend." <<person2>><<He>> smiles at you. "Right this way."
 <br><br>
 
@@ -2682,8 +2694,7 @@ The food soon arrives.
 <br><br>
 
 <<if $endear gte 30>>
-	"Thank you for the pleasant evening," <<he>> says after dropping <<his>> spoon into the empty bowl. <<He>> takes your hand and leads you from the restaurant. <<He>> opens the door of <<his>> car for you.
-	<<takeHandholdingVirginity "Avery" "romantic">>
+	"Thank you for the pleasant evening," <<he>> says after dropping <<his>> spoon into the empty bowl. <<He>> takes your arm and leads you from the restaurant. <<He>> opens the door of <<his>> car for you.
 <<elseif $endear gte 0>>
 	"You don't have to be so difficult," <<he>> says after dropping <<his>> spoon into the empty bowl. "Try not to embarrass me on the way out." You leave the restaurant together, and climb into <<his>> car.
 <<else>>
