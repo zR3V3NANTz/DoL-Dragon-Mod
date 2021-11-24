@@ -5028,7 +5028,7 @@ School finishes on the first Monday of December.
 
 <<widget "handholdingvirginitywarning">>
 	<<if $player.virginity.handholding is true>>
-		<span class="red">This action will take your handholding virginity.</span>
+		| <span class="red">This action will take your handholding virginity.</span>
 	<</if>>
 <</widget>>
 
