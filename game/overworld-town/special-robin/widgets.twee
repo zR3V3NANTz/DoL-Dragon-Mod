@@ -262,7 +262,7 @@
 			<</if>>
 		<</if>>
 
-		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80 and $robinwalk isnot 1>>
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80 and ($robinwalk lt 1 or ($halloween_robin is 1 and $halloween_robin_costume is "ghost") or ($NPCName[$NPCNameList.indexOf("Robin")].love lt 20 and $money gte 1500)) and $passage isnot "Robin Walk">>
 			<<link [[Go somewhere together|Robin Walk]]>><<set $robinroomentered to 1>><<set $robinhugging to 0>><</link>>
 			<br>
 		<</if>>

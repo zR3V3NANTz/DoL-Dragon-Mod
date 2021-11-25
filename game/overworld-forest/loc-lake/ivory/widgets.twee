@@ -480,7 +480,7 @@
 			"It's comforting to know we have that in common.",
 			"Stepped from the past. Steeped in the present. Yet to be stopped."
 		)>>
-	<<if>>
+	<</if>>
 	<<if $wraith.offspring is "dead">>
 		<<run _linePool.pushUnique(
 			"Join them.",

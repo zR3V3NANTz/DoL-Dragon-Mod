@@ -571,6 +571,7 @@ The branches tear as you push inside. They close behind you, sealing you from vi
 	<<molested>>
 	<<controlloss>>
 
+	<<set _randomtentacles to random(6, 10)>>
 	<<tentaclestart _randomtentacles 10 "shoot" "vine" true>>
 
 <</if>>
