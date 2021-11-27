@@ -34,6 +34,9 @@ You are in front of the hospital. It is open at all hours.
 		You are hiding in the bushes just outside the entrance. You should be able to enter without being seen if you time it right.
 		<br><br>
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "hospital">>
+	<</if>>
 
 	<<link [[Go inside hospital (0:01)->Hospital Foyer]]>><<pass 1>><</link>>
 	<br>
@@ -50,6 +53,9 @@ You are inside the hospital foyer. <<if $psych is 1>>You see a sign directing to
 <<if $stress gte $stressmax>>
 	<<passouthospital>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "hospital">>
+	<</if>>
 	<<if $exposed gte 1>>
 		You are hiding under a hospital bed, hoping no one spots you in this state of undress. You see a cart full of sheets not far away that you could use to cover yourself. You could wait until the coast looks clear then make a break for it. Alternatively, you could inch the bed closer to the cart to try to remain concealed from view.
 		<br><br>

@@ -35,6 +35,9 @@ You are in the school canteen.
 <<if $stress gte $stressmax>>
 	<<link [[Everything fades to black...|School Passout]]>><</link>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "canteen">>
+	<</if>>
 	<<if $schoolday is 1>>
 		<<if $schoolstate is "early">>
 		<<elseif $schoolstate is "late">>

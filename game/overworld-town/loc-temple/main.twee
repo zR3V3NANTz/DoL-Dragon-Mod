@@ -71,6 +71,9 @@ You are in the main hall of the temple. Stone walls and pillars tower into darkn
 <<elseif $temple_event is 1 and $daystate isnot "night" and $exposed lte 0>><<set $temple_event to 0>>
 	<<eventstemple>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "temple">>
+	<</if>>
 	<<if $scienceproject is "ongoing" and $sciencelichentemple is 0 and $exposed lte 0>>
 		<<link [[Search for lichen (0:30)|Temple Lichen]]>><<pass 30>><<set $sciencelichentemple to 1>><</link>>
 		<br>

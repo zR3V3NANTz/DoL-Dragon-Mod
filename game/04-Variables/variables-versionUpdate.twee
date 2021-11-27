@@ -84,7 +84,7 @@
 	<<givestartclothing>>
 <</if>>
 
-<<if $outfit_update is undefined or $outfit_update lt 2>><<set $outfit_update to 2>>
+<<if $outfit_update is undefined or $outfit_update lt 3>><<set $outfit_update to 3>>
 	<<for _i to 0; _i lt $outfit.length; _i++>>
 		<<if $outfit[_i].colors is undefined>>
 			<<set $outfit[_i].colors to false>>
@@ -93,6 +93,10 @@
 			<<set $outfit[_i].over_upper to "naked">>
 			<<set $outfit[_i].over_lower to "naked">>
 			<<set $outfit[_i].over_head to "naked">>
+		<</if>>
+		<<if $outfit[_i].type[1]>>
+			<<set $outfit[_i].type[0] to $outfit[_i].type[1]>>
+			<<set $outfit[_i].type.deleteAt(1)>>
 		<</if>>
 	<</for>>
 <</if>>

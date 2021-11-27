@@ -45,6 +45,9 @@
 <<else>>
 	You enter the pub. It's busy as always.
 <</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "pub">>
+<</if>>
 <br><br>
 <<if $averyPub is 1 and ($daystate is "day" or $daystate is "dusk")>>
 	<<npc Avery>><<person1>>

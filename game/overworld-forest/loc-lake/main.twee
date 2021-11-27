@@ -317,6 +317,9 @@ There's a rocky alcove where you could store your clothes.
 <<elseif $danger gte (9900 - $allure) and $eventskip is 0 and $laketeenspresent isnot 1>>
 	<<eventlake>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "lake" `$laketeenspresent isnot 1`>>
+	<</if>>
 	<<eventlakesafe>>
 	<<lakereturnjourney>>
 	<<link [[South to shore (0:10)|Lake Shore]]>><<pass 10>><</link>>
@@ -377,6 +380,9 @@ There's a rocky alcove where you could store your clothes.
 <<elseif $danger gte (9900 - $allure) and $eventskip is 0 and $laketeenspresent isnot 1>>
 	<<eventlake>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "campsite">>
+	<</if>>
 	<<eventlakesafe>>
 	<<lakereturnjourney>>
 	<<if $weather isnot "rain" and $weather isnot "snow" and $hour gte 18 and $exposed lte 0 and $lakecouple isnot 1>>

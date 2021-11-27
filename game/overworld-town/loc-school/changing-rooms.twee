@@ -2,7 +2,9 @@
 <<set $outside to 0>><<set $location to "pool">><<set $bus to "boys">><<schooleffects>><<effects>>
 
 You are in the boys' changing room.
-
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "boyChangingRoom">>
+<</if>>
 <<if $changingroomstate is "own">>
 	<<if $player.gender_appearance is "m">>
 		It's full of boys in various states of undress.
@@ -339,6 +341,9 @@ You are in the boys' changing room.
 
 You are in the girls' changing room.
 
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "girlChangingRoom">>
+<</if>>
 <<if $changingroomstate is "own">>
 	<<if $player.gender_appearance is "m">>
 		<<if $exposed gte 2 and $malechance isnot 100>>

@@ -209,6 +209,9 @@
 <<else>><!-- $poolroomstate is "empty" -->
 	You are in the swimming pool room. It's saturated with the smell of chlorine.
 	<br><br>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "emptySwimClassroom">>
+	<</if>>
 
 	<<exhibitionclassroom>>
 
@@ -358,6 +361,9 @@ Once done, Leighton takes the swimwear and puts it in a hamper.
 			The rest of the class sneak looks when they think you can't see them.
 			<br><br>
 		<</if>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "swimClassroom">>
+		<</if>>
 		The swimming lesson begins, how do you want to conduct yourself?
 		<br><br>
 	<<else>>
@@ -367,6 +373,9 @@ Once done, Leighton takes the swimwear and puts it in a hamper.
 		<<elseif $exposed gte 1>>
 			The water helps conceal you, but you still feel exposed. The rest of the class sneak looks when they think you can't see them.
 			<br><br>
+		<</if>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "swimClassroom">>
 		<</if>>
 		The swimming lesson continues, how do you want to conduct yourself?
 		<br><br>

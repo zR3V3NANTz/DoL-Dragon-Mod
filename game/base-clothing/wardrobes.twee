@@ -547,7 +547,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 		<<if $outfit_name is "" or $outfit_name is "Custom">><<print '<<set $outfit_name to "Custom ' + $outfit.length + '">>'>><</if>>
 		<<set $outfit.last().name to $outfit_name>>
 		<<if $outfit_type>>
-			<<set $outfit.last().type.push($outfit_type)>>
+			<<set $outfit.last().type[0] to $outfit_type)>>
 		<</if>>
 
 		<<if _saveColor>>
