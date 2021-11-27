@@ -1599,10 +1599,11 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<</if>>
 	<</if>>
 
-	<<if $NPCList[_n].lefthand is "genitals">>
+	<<if $NPCList[_n].lefthand is "genitals" and $NPCList[_n].righthand is "genitals">>
+		<<combat-hand-on-chastity "both">>
+	<<elseif $NPCList[_n].lefthand is "genitals">>
 		<<combat-hand-on-chastity "left">>
-	<</if>>
-	<<if $NPCList[_n].righthand is "genitals">>
+	<<elseif $NPCList[_n].righthand is "genitals">>
 		<<combat-hand-on-chastity "right">>
 	<</if>>
 
