@@ -23,7 +23,9 @@
 	The school hallways are empty.
 	<br><br>
 <</if>>
-
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "schoolHallway">>
+<</if>>
 <<schoolperiodtext>>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if $whitneypantiesmaths>>

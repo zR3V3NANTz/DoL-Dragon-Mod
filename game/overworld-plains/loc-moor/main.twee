@@ -78,6 +78,9 @@
 		<<eventsmoorlow>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "moor">>
+	<</if>>
 	<<if $moor gte 100>>
 		<<link [[Enter the castle (0:10)|Castle]]>><<pass 10>><</link>>
 		<br><br>

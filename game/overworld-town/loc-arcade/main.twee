@@ -28,6 +28,9 @@ The games and gambling machines lie silent.
 <<if $stress gte $stressmax>>
 <<passoutarcade>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "arcade">>
+	<</if>>
 	<<if $hour is 21>>
 	It's closing time. Security is herding everyone outside. <<if $exposed gte 1>>Panic swells within you as you realise how exposed you'll be should security find you in this state of dress.<</if>>
 	<br><br>
@@ -46,6 +49,9 @@ The games and gambling machines lie silent.
 		<<elseif $exposed gte 1>>
 		You hide beneath a pinball machine to protect your dignity.
 		<br><br>
+		<</if>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "arcade">>
 		<</if>>
 		<<if $money gte 500 and ($daystate is "day" or $daystate is "dusk") and $exposed lte 0>>
 			<<link [[Play (£5 0:20)|Arcade Play]]>><<set $money -= 500>><<pass 20>><<stress -2>><</link>><<lstress>>

@@ -85,6 +85,9 @@ You are alone in the darkness.
 You are hiding beneath a table to protect your dignity.
 <br><br>
 <</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "cafe">>
+<</if>>
 
 <<if $openinghours is 1 and $exposed lt 1 and $oceanbreezejob isnot 1>>
 	<<if $oceanbreezejoboffer is 1>>

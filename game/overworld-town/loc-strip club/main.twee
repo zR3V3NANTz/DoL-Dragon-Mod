@@ -8,7 +8,9 @@ You are in the strip club on Connudatus Street. <<if $daystate isnot "day" and $
 <<if $stress gte $stressmax>>
 	<<passoutshop>>
 <<else>>
-
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "stripClub">>
+<</if>>
 <<if $hour is 6>>
 
 	It's closing time. Security is herding everyone outside. <<if $exposed gte 1>>One hands you some towels.<<towelup>><</if>>

@@ -46,6 +46,10 @@ You are in the brothel. Several stages dot the crowded room. The staff look flus
 	<br><br>
 <</if>>
 
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "brothel">>
+<</if>>
+
 <<if $brotheljob is 1 and $fameprostitution gte 30 and not $brothelshowdata.intro>>
 	<<generate1>><<person1>>The <<person>> guarding the door rests a hand on your shoulder. <span class="gold">"Boss wants to see you."</span><<endevent>>
 	<br><br>

@@ -25,6 +25,9 @@ You are in the old sewers. A canal runs past, disappearing through a metal grate
 		<<morganhunt>>
 		<br><br>
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
 	<<link [[Tunnel filled with scrap (0:05)|Sewers Scrap]]>><<pass 5>><</link>>
 	<br>
 	<<link [[Tunnel filled with wood (0:05)|Sewers Wood]]>><<pass 5>><</link>>
@@ -64,6 +67,9 @@ You are in the old sewers. A canal runs past, disappearing into the dark. Piles 
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
 		<<morganhunt>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
 	<</if>>
 	<<link [[Muddy tunnel (0:05)|Sewers Mud]]>><<pass 5>><</link>>
 	<br>
@@ -107,6 +113,9 @@ You are in the old sewers. A canal runs past, disappearing into the dark. Much o
 		<<morganhunt>>
 		<br><br>
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
 	<<link [[Algae-coated tunnel (0:05)|Sewers Algae]]>><<pass 5>><</link>>
 	<br>
 	<<link [[Crumbling tunnel (0:05)|Sewers Rubble]]>><<pass 5>><</link>>
@@ -139,8 +148,13 @@ You are in the old sewers. Torrents of water crash down from multiple breaches i
 	<<eventssewers>>
 <<else>>
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
-		<<morganhunt>>
+		<<morganhunt>><<set _hideOption to true>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
+	<<if _hideOption>>
 		<<link [[Hide behind the waterfalls|Sewers Waterfall Hide]]>><</link>>
 		<br>
 	<</if>>
@@ -190,6 +204,9 @@ You are in a cavern near the old sewers, beside a pool of water. The pool stretc
 		<<morganhunt>>
 		<br><br>
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
 	<<if $sewersspray isnot 1>>
 		<<link [[Take the cylinder|Sewers Lake Cylinder]]>><<set $sewersspray to 1>><<set $spraymax += 1>><<spray 5>><</link>><<gspraymax>>
 		<br>
@@ -230,8 +247,13 @@ You are in the old sewers. The tunnel is full of metal scrap.
 	<<eventssewers>>
 <<else>>
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
-		<<morganhunt>>
+		<<morganhunt>><<set _hideOption to true>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
+	<<if _hideOption>>
 		<<link [[Hide under scrap|Sewers Scrap Hide]]>><</link>>
 		<br>
 	<</if>>
@@ -269,8 +291,13 @@ You are in the old sewers. Decaying logs litter the tunnel.
 	<<eventssewers>>
 <<else>>
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
-		<<morganhunt>>
+		<<morganhunt>><<set _hideOption to true>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
+	<<if _hideOption>>
 		<<link [[Hide in a log|Sewers Wood Hide]]>><</link>>
 		<br>
 	<</if>>
@@ -321,6 +348,9 @@ You are in the old sewers. The walls are covered in huge spider webs.
 		<<morganhunt>>
 		<br><br>
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
 	<<if $sewersantiquecandlestick isnot 1>>
 		<<link [[Take the candlestick|Sewers Candlestick]]>><</link>>
 		<br>
@@ -366,6 +396,9 @@ You are in the old sewers. The walls and floor here are covered in fungus. Some 
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
 		<<morganhunt>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
 	<</if>>
 	<<if $sewersantiquedildo isnot 1>>
 		<<link [[Take the antique|Sewers Dildo]]>><</link>>
@@ -413,6 +446,9 @@ A breeze emerges from the pit. It makes your <<genitals 1>> tingle.
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
 		<<morganhunt>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
 	<</if>>
 	<<if $sewersantiquehorn isnot 1>>
 		<<link [[Take the antique|Sewers Horn]]>><<arousal 1800>><</link>><<ggarousal>>
@@ -471,8 +507,13 @@ You are in the old sewers. You can't walk too fast, lest you slip on the algae c
 	<<eventssewers>>
 <<else>>
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
-		<<morganhunt>>
+		<<morganhunt>><<set _hideOption to true>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
+	<<if _hideOption>>
 		<<link [[Hide in the algae|Sewers Algae Hide]]>><</link>>
 		<br>
 	<</if>>
@@ -522,8 +563,13 @@ You are in the old sewers. You're up to your ankles in mud.
 	<<eventssewers>>
 <<else>>
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
-		<<morganhunt>>
+		<<morganhunt>><<set _hideOption to true>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
+	<<if _hideOption>>
 		<<link [[Hide in the mud|Sewers Mud Hide]]>><</link>>
 		<br>
 	<</if>>
@@ -569,8 +615,13 @@ You are in the old sewers. The tunnels have collapsed here, revealing ancient st
 	<<eventssewers>>
 <<else>>
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
-		<<morganhunt>>
+		<<morganhunt>><<set _hideOption to true>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
+	<<if _hideOption>>
 		<<link [[Hide in the ruins|Sewers Ruins Hide]]>><</link>>
 		<br>
 	<</if>>
@@ -610,8 +661,13 @@ You are in the old sewers. Rubble is strewn throughout this tunnel. The stone is
 	<<eventssewers>>
 <<else>>
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
-		<<morganhunt>>
+		<<morganhunt>><<set _hideOption to true>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
+	<</if>>
+	<<if _hideOption>>
 		<<link [[Hide behind rubble|Sewers Rubble Hide]]>><</link>>
 		<br>
 	<</if>>
@@ -661,6 +717,9 @@ You are in the old sewers. You are surrounded by metal scrap, twisted into a par
 	<<if $sewerschased is 1 and $sewerschasedstep gte 0>>
 		<<morganhunt>>
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "sewers" `($sewerschased is 1 ? true : false)`>>
 	<</if>>
 	<<if $sewersantiquewatch isnot 1>>
 		<<link [[Investigate the ticking|Sewers Ticking]]>><</link>>

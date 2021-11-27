@@ -146,6 +146,9 @@ Next to it is a small basket with returned and not yet sorted books.
 		<br>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "library">>
+	<</if>>
 	<<if $exposed gte 1 and $schoolday is 1 and $schoolstate isnot "early" and $schoolstate isnot "late">>
 	<<else>>
 		<<if $exposed lte 0>>

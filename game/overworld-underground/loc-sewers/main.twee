@@ -14,6 +14,9 @@ You can access several parts of town from here.
 	<<elseif ($rng gte 92 or $eventforced) and $eventskip is 0>>
 		<<eventsdrain>>
 	<<else>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "sewers">>
+		<</if>>
 		<<if $sewersintro is 1>>
 			<<link [[Climb down|Sewers Industrial]]>><<set $eventskip to 1>><<sewersstart>><</link>>
 			<br><br>
@@ -54,6 +57,9 @@ You can access several parts of town from here.
 	<<elseif ($rng gte 92 or $eventforced) and $eventskip is 0>>
 		<<eventsdrain>>
 	<<else>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "sewers">>
+		<</if>>
 		<<if $sewersintro is 1>>
 			<<link [[Climb down|Sewers Commercial]]>><<sewersstart>><<set $eventskip to 1>><</link>>
 			<br><br>
@@ -103,6 +109,9 @@ You can access several parts of town from here.
 	<<elseif ($rng gte 92 or $eventforced) and $eventskip is 0>>
 		<<eventsdrain>>
 	<<else>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "sewers">>
+		<</if>>
 		<<if $sewersintro is 1>>
 			<<link [[Climb down|Sewers Residential]]>><<sewersstart>><<set $eventskip to 1>><</link>>
 			<br><br>

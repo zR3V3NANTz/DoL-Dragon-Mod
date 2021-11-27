@@ -7,6 +7,9 @@ You are in the dance studio. Here you can pay for lessons to improve your dancin
 <<if $stress gte $stressmax>>
 	<<passoutshop>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "danceStudio">>
+	<</if>>
 	<<if $hour is $closinghour>>
 		It's closing time. The receptionist is herding everyone outside.<<if $exposed gte 1>>Panic swells within you as you realise how exposed you'll be should you be found in this state of dress.<</if>>
 		<br>
@@ -212,6 +215,9 @@ Your heart beats faster as you walk away from the dance studio, and away from re
 	<br><br>
 	<<link [[Next|Dance Studio]]>><<endevent>><</link>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "danceStudioLesson">>
+	<</if>>
 	<<if $exposed gte 1>>
 		You seem to be distracting the class somehow. Looking down, you immediately discover why.
 		<<if $uncomfortable.nude is false>>
@@ -611,6 +617,9 @@ If you're interested, the shopping centre sells them."
 	<br>
 
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "danceStudioHeelLesson">>
+	<</if>>
 	<<set $rng to random(1, 5)>>
 	<<if $rng is 1>>
 	Charlie hands you and the other class members a stack of books. Instead of telling you to read them, <<npc Charlie>><<person1>><<he>> instructs you to balance them on your head and do laps around the room. It takes all of your concentration to keep them from falling.

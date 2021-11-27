@@ -97,6 +97,9 @@
 <<else>>
 	You are in the maths classroom. Charts and graphs cover the walls.
 	<br><br>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "emptyClassroom">>
+	<</if>>
 	<<storeon "mathsClassroom" "check">>
 	<<if _store_check is 1>>
 		<<storeon "mathsClassroom">>
@@ -133,6 +136,10 @@
 	<</if>>
 	<br><br>
 	<<endevent>>
+	<<if $arousal gte $arousalmax>>
+		<<set _teacher to "River">>
+		<<orgasmLocation "classroom">>
+	<</if>>
 	<<exam_cheat maths>>
 	<<link [[Focus|Maths Exam]]>><<stress 6>><<set $phase to 0>><<set $exam_chance += 5>><</link>><<gstress>> | <span class="green">+ 5% Pass chance</span>
 	<br>
@@ -161,6 +168,10 @@
 	<<else>>
 		The maths lesson continues, how do you want to conduct yourself?
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<set _teacher to "River">>
+		<<orgasmLocation "classroom">>
 	<</if>>
 
 	<<link [[Focus on the lesson|Maths Lesson Focus]]>><</link>><<gstress>><<gmaths>>
