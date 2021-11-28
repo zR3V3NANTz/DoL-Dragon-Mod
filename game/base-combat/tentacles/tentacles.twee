@@ -111,7 +111,7 @@
             "shaft": 0,
             "head": 0,
             "id": "tentacle"+_i,
-            "baby": ($args[3] and $args[4] isnot "desc" and _tentacledata.baby isnot 0 ? $args[3] + " " + _tentacledata.baby : _tentacledata.baby ),
+            "baby": ($args[3] and (!$args[4] or $args[4] is "baby") and _tentacledata.baby isnot 0 ? $args[3] + " " + _tentacledata.baby : _tentacledata.baby ),
             "babychance": 400,
             "size": _tentacledata.size
         }>>

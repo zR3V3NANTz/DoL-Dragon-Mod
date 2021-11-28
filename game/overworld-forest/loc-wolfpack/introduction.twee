@@ -69,54 +69,54 @@
 <<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
 
 <<if $enemywounded gte 2 and $enemyejaculated is 0>>
-In a display of power, you defeat the pack. <<tearful>> you escape from the cave.
-<br><br>
+	In a display of power, you defeat the pack. <<tearful>> you escape from the cave.
+	<br><br>
 
-<<clotheson>>
-<<endcombat>>
+	<<clotheson>>
+	<<endcombat>>
 
-<<link [[Next|Forest]]>><<set $stress -= 1000>><<set $eventskip to 1>><<set $eventskip to 1>><</link>>
+	<<link [[Next|Forest]]>><<set $stress -= 1000>><<set $eventskip to 1>><<set $eventskip to 1>><</link>>
 
 <<elseif $enemywounded is 0 and $enemyejaculated gte 2>>
-Finished with you, the <<beastsplural>> leave you be. However, they rest between you and the cave entrance, and could easily block your escape. <<tearful>> you settle down.
-<br><br>
+	Finished with you, the <<beastsplural>> leave you be. However, they rest between you and the cave entrance, and could easily block your escape. <<tearful>> you settle down.
+	<br><br>
 
-<<if $phase is 1>>
-The other <<wolf_cave_plural>> soon return from their hunt.
-<</if>>
+	<<if $phase is 1>>
+	The other <<wolf_cave_plural>> soon return from their hunt.
+	<</if>>
 
-<<clotheson>>
-<<endcombat>>
+	<<clotheson>>
+	<<endcombat>>
 
-<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
+	<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
 
 <<elseif $enemywounded gte 1 and $enemyejaculated gte 1>>
-Finished with you, the <<beasttypes>> leave you be. However, they rest between you and the cave entrance, and could easily block your escape. <<tearful>> you settle down.
-<br><br>
+	Finished with you, the <<beasttypes>> leave you be. However, they rest between you and the cave entrance, and could easily block your escape. <<tearful>> you settle down.
+	<br><br>
 
-<<if $phase is 1>>
-The other <<wolf_cave_plural>> soon return from their hunt.
-<</if>>
+	<<if $phase is 1>>
+	The other <<wolf_cave_plural>> soon return from their hunt.
+	<</if>>
 
-<<clotheson>>
-<<endcombat>>
+	<<clotheson>>
+	<<endcombat>>
 
-<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
+	<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
 <</if>>
 
 :: Forest Wolf Cave
 <<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
 
 <<if $eventskip is 0>>
-<<eventwolfcave>>
+	<<eventwolfcave>>
 <<else>>
-The <<wolf_cave_plural>> are blocking your way out of the cave. A draft blows from the back.
-<br><br>
-<<link [[Rest (2:00)|Forest Wolf Cave Wait]]>><<set $tiredness -= 480>><<pass 2 hours>><</link>>
-<br>
+	The <<wolf_cave_plural>> are blocking your way out of the cave. A draft blows from the back.
+	<br><br>
+	<<link [[Rest (2:00)|Forest Wolf Cave Wait]]>><<set $tiredness -= 480>><<pass 2 hours>><</link>>
+	<br>
 
-<<link [[Try to escape|Forest Wolf Cave Escape]]>><</link>>
-<br>
+	<<link [[Try to escape|Forest Wolf Cave Escape]]>><</link>>
+	<br>
 	<<if $wolfcavedig gte 13>>
 		<<link [[Go down the hole|Forest Wolf Cave Hole]]>><</link>>
 		<br>
@@ -151,28 +151,28 @@ You huddle at the back of the cave, and the pack pays you little heed for a time
 <<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
 
 <<if $wolfpacktrust gte 12>>
-The pack looks at you as you try to leave, but make no move to stop you. It seems they trust you enough to let you go.
-<<lstress>>
+	The pack looks at you as you try to leave, but make no move to stop you. It seems they trust you enough to let you go.
+	<<lstress>>
 
-<br><br>
-<<link [[Next|Forest]]>><<set $stress -= 1000>><<set $eventskip to 1>><<set $forest to 80>><<set $eventskip to 1>><</link>>
-<br>
+	<br><br>
+	<<link [[Next|Forest]]>><<set $stress -= 1000>><<set $eventskip to 1>><<set $forest to 80>><<set $eventskip to 1>><</link>>
+	<br>
 <<elseif $wolfpackfear gte 12>>
-The pack growls at you as you try to leave, but make no move to stop you. It seems they fear you too much to try and stop you.
-<<lstress>>
+	The pack growls at you as you try to leave, but make no move to stop you. It seems they fear you too much to try and stop you.
+	<<lstress>>
 
-<br><br>
-<<link [[Next|Forest]]>><<set $stress -= 1000>><<set $eventskip to 1>><<set $forest to 80>><<set $eventskip to 1>><</link>>
-<br>
+	<br><br>
+	<<link [[Next|Forest]]>><<set $stress -= 1000>><<set $eventskip to 1>><<set $forest to 80>><<set $eventskip to 1>><</link>>
+	<br>
 
 <<else>>
-The pack immediately stirs as you try to leave, and they block your path. The pack stares at you, growling a warning.
-<<stress 6>><<gstress>>
-<br><br>
-<<link [[Try to escape anyway|Forest Wolf Cave Rape]]>><<beastNEWinit 6 wolf>><<set $molestationstart to 1>><</link>>
-<br>
-<<link [[Back down|Forest Wolf Cave]]>><</link>>
-<br>
+	The pack immediately stirs as you try to leave, and they block your path. The pack stares at you, growling a warning.
+	<<stress 6>><<gstress>>
+	<br><br>
+	<<link [[Try to escape anyway|Forest Wolf Cave Rape]]>><<beastNEWinit 6 wolf>><<set $molestationstart to 1>><</link>>
+	<br>
+	<<link [[Back down|Forest Wolf Cave]]>><</link>>
+	<br>
 <</if>>
 
 :: Forest Wolf Cave Pair
@@ -196,11 +196,11 @@ You decide not to risk it. You wait at the back of the cave. The pack soon retur
 
 :: Forest Wolf Cave Molestation
 <<if $molestationstart is 1>>
-<<set $molestationstart to 0>>
-<<controlloss>>
-<<violence 1>>
-<<neutral 1>>
-<<molested>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
 	<<beastCombatInit>>
 
 <</if>>
@@ -227,36 +227,34 @@ You decide not to risk it. You wait at the back of the cave. The pack soon retur
 <<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
 
 <<if $enemyarousal gte $enemyarousalmax>>
+	<<beastejaculation>>
 
-<<beastejaculation>>
+	The <<beasttype>> grunts in satisfaction, and heads back to the rest of the pack.
+	<<wolfpacktrust>>
+	<br><br>
 
-The <<beasttype>> grunts in satisfaction, and heads back to the rest of the pack.
-<<wolfpacktrust>>
-<br><br>
+	<<tearful>> you settle down.
+	<<gstockholm>>
+	<br><br>
 
-<<tearful>> you settle down.
-<<gstockholm>>
-<br><br>
+	<<clotheson>>
+	<<endcombat>>
 
-<<clotheson>>
-<<endcombat>>
-
-<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
-<br>
+	<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
+	<br>
 <<elseif $enemyhealth lte 0>>
+	The <<beasttype>> whines in pain and returns to the rest of the pack.
+	<<wolfpackfear>>
+	<br><br>
 
-The <<beasttype>> whines in pain and returns to the rest of the pack.
-<<wolfpackfear>>
-<br><br>
+	<<tearful>> you settle down.
+	<br><br>
 
-<<tearful>> you settle down.
-<br><br>
+	<<clotheson>>
+	<<endcombat>>
 
-<<clotheson>>
-<<endcombat>>
-
-<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
-<br>
+	<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
+	<br>
 <</if>>
 
 :: Forest Wolf Cave Dig
@@ -322,11 +320,11 @@ The <<beasttype>> whines in pain and returns to the rest of the pack.
 		<br>
 	<</if>>
 <<elseif $syndromewolves gte 1>>
-<<link [[Next|Wolf Cave]]>><</link>>
-<br>
+	<<link [[Next|Wolf Cave]]>><</link>>
+	<br>
 <<else>>
-<<link [[Next|Forest Wolf Cave]]>><</link>>
-<br>
+	<<link [[Next|Forest Wolf Cave]]>><</link>>
+	<br>
 <</if>>
 
 :: Forest Wolf Cave Examine
@@ -336,11 +334,11 @@ The feel around the darkness at the back of the cave, looking for the source of 
 <br><br>
 
 <<if $syndromewolves gte 1>>
-<<link [[Next|Wolf Cave]]>><</link>>
-<br>
+	<<link [[Next|Wolf Cave]]>><</link>>
+	<br>
 <<else>>
-<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
-<br>
+	<<link [[Next|Forest Wolf Cave]]>><<set $eventskip to 1>><</link>>
+	<br>
 <</if>>
 
 :: Forest Wolf Cave Hole
@@ -353,23 +351,23 @@ You peer down the hole at the back of the cave, but can't make anything out. You
 <br>
 
 <<if $syndromewolves gte 1>>
-<<link [[Leave|Wolf Cave]]>><</link>>
-<br>
+	<<link [[Leave|Wolf Cave]]>><</link>>
+	<br>
 <<else>>
-<<link [[Leave|Forest Wolf Cave]]>><</link>>
-<br>
+	<<link [[Leave|Forest Wolf Cave]]>><</link>>
+	<br>
 <</if>>
 
 :: Wolf Cave Hand
 <<if $sexstart is 1>>
-<<set $sexstart to 0>>
-<<consensual>>
-<<set $consensual to 1>>
-<<neutral 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
 	<<beastCombatInit>>
 
-<<blackwolfhand>>
-<<deviancy1>>
+	<<blackwolfhand>>
+	<<deviancy1>>
 <</if>>
 
 <<effects>>
@@ -404,22 +402,22 @@ You shuffle away from the Black Wolf, preparing for another assault. But none co
 <<set $wolfpackharmony to 10>>
 <<if $bestialitydisable is "f">>
 	<span class="red"><i>It's not their fault. They're just cute animals.</i> You've gained the "Stockholm Syndrome: Wolves" trait.</span>
-	<br><br>
 <<else>>
 	<span class="red"><i>It's not their fault. They're just cute monsters.</i> You've gained the "Stockholm Syndrome: Wolf People" trait.</span>
-	<br><br>
 <</if>>
+<br><br>
 <<npc "Black Wolf">>/*<<beastNNPCinit>>*/
-	<<if $loveInterest.primary is "None" and $deviancy gte 35>>
-		<<set $loveInterest.primary to "Black Wolf">>
-		<span class = "gold">The Black Wolf is now your love interest! <<bHe>> seems happy to have found a mate.</span>
-		<br><br>
-	<<elseif $deviancy gte 35>>
-		<span class = "gold">The Black Wolf can now be claimed as your love interest! <<bHe>> seems happy to have found a mate. <br>You can change your love interest in the "Attitudes" menu.</span>
-		<br><br>
-	<<else>>
-		<span class = "blue">You aren't sure if a <<beasttype>> would make a good love interest...</span><br><br>
-	<</if>>
+<<if $loveInterest.primary is "None" and $deviancy gte 35>>
+	<<set $loveInterest.primary to "Black Wolf">>
+	<span class="gold">The Black Wolf is now your love interest! <<bHe>> seems happy to have found a mate.</span>
+<<elseif $deviancy gte 35>>
+	<span class="gold">The Black Wolf can now be claimed as your love interest! <<bHe>> seems happy to have found a mate.
+	<br>
+	You can change your love interest in the "Attitudes" menu.</span>
+<<else>>
+	<span class="blue">You aren't sure if a <<beasttype>> would make a good love interest...</span>
+<</if>>
+<br><br>
 <<link [[Next|Wolf Cave]]>><<endevent>><</link>>
 <br>
 
@@ -453,21 +451,21 @@ You shuffle away from the Black Wolf, preparing for another assault. But none co
 <<set $wolfpackharmony to 10>>
 <<if $bestialitydisable is "f">>
 	<span class="red"><i>It's not their fault. They're just cute animals.</i> You've gained the "Stockholm Syndrome: Wolves" trait.</span>
-	<br><br>
 <<else>>
 	<span class="red"><i>It's not their fault. They're just cute monsters.</i> You've gained the "Stockholm Syndrome: Wolf People" trait.</span>
-	<br><br>
 <</if>>
+<br><br>
 <<npc "Black Wolf">>/*<<beastNNPCinit>>*/
-	<<if $loveInterest.primary is "None" and $deviancy gte 35>>
-		<<set $loveInterest.primary to "Black Wolf">>
-		<span class = "gold">The Black Wolf is now your love interest! <<bHe>> seems happy to have found a mate.</span>
-		<br><br>
-	<<elseif $deviancy gte 35>>
-		<span class = "gold">The Black Wolf can now be claimed as your love interest! <<bHe>> seems happy to have found a mate. <br>You can change your love interest in the "Attitudes" menu.</span>
-		<br><br>
-	<<else>>
-		<span class = "blue">You aren't sure if a <<beasttype>> would make a good love interest...</span><br><br>
-	<</if>>
+<<if $loveInterest.primary is "None" and $deviancy gte 35>>
+	<<set $loveInterest.primary to "Black Wolf">>
+	<span class="gold">The Black Wolf is now your love interest! <<bHe>> seems happy to have found a mate.</span>
+<<elseif $deviancy gte 35>>
+	<span class="gold">The Black Wolf can now be claimed as your love interest! <<bHe>> seems happy to have found a mate.
+	<br>
+	You can change your love interest in the "Attitudes" menu.</span>
+<<else>>
+	<span class="blue">You aren't sure if a <<beasttype>> would make a good love interest...</span>
+<</if>>
+<br><br>
 <<link [[Next|Wolf Cave]]>><<endevent>><</link>>
 <br>

@@ -439,7 +439,7 @@ You find yourself sinking through the ice, submerging without causing a break.
 						<<set $nextPassageCheck to "Containers">>
 						<<set $nextPassage to "Wraith Snatched Offspring">>
 						<<set $phaseWraith to 2>>
-					<<elseif $phaseWraith lt 3 and $robinbed is 1 or $kylarbed is 1>>
+					<<elseif $phaseWraith lt 3 and ($robinbed is 1 or $kylarbed is 1)>>
 						<<set $nextPassageCheck to "Bed">>
 						<<set $nextPassage to "Wraith Snatched Guest">>
 						<<set $phaseWraith to 3>>					

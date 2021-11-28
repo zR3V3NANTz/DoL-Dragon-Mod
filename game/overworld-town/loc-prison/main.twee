@@ -322,7 +322,7 @@ You could only dig during lockdown. Too risky otherwise.
 <<wearoutfit>>
 
 <<set $bus to "prison_bedroom">><<effects>>
-You lie on your cot. It's hard to get comfortable<<if ($worn.neck.name is "free use collar" or $worn.neck.name is "free use collar with leash")>>, especially with the jagged metal around your neck poking into your skin<</if>>.
+You lie on your mattress. It's hard to get comfortable<<if ($worn.neck.name is "free use collar" or $worn.neck.name is "free use collar with leash")>>, especially with the jagged metal around your neck poking into your skin<</if>>.
 <br><br>
 <<prison_sleep_options>>
 

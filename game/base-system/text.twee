@@ -462,6 +462,30 @@
 <<set _text_output to _text_output.toLocaleUpperFirst()>>
 <</silently>><<print _text_output>><</widget>>
 
+<<widget "bhes">><<silently>>
+<<if typeof $args[0] is "number">>
+	<<set _na to $args[0]>>
+<<elseif $enemyno gte 0>>
+	<<set _na to $enemyno-1>>
+<<else>>
+	<<set _na to 0>>
+<</if>>
+<<if $NPCList[_na].monster is "monster">>
+	<<set _text_output to ($NPCList[_na].pronoun is "m" ? "he's" : "she's")>>
+<<else>>
+	<<set _text_output to "it's">>
+<</if>>
+<</silently>>_text_output<</widget>>
+
+<<widget "bHes">><<silently>>
+<<if typeof $args[0] is "number">>
+	<<bhes $args[0]>>
+<<else>>
+	<<bhes>>
+<</if>>
+<<set _text_output to _text_output.toLocaleUpperFirst()>>
+<</silently>><<print _text_output>><</widget>>
+
 <<widget "hes">><<silently>>
 <!-- Add the option to call for named NPCs individually -->
 <<if $args[0]>>

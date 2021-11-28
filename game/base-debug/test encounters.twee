@@ -851,29 +851,14 @@ How do you respond?
 :: Plantperson Test
 <br>
 <<if $plantdisable is "f">>
-	<<if $tentacledisable is "f">>
-		<b>Tentacles are enabled.</b> The plantperson encounter will include vines.
-		<br><br>
-		<<link [[Enable tentacles|Plantperson Test]]>><<set $tentacledisable to "t">><</link>>
-		<br><br>
-		<<link [[Consensual sex in the forest|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "forest">><</link>><br>
-		<<link [[Nonconsensual sex in the forest|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "forest">><</link>><br>
-		<<link [[Consensual sex in the moor|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "moor">><</link>><br>
-		<<link [[Nonconsensual sex in the moor|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "moor">><</link>><br>
-	<<else>>
-		<b>Tentacles are disabled.</b> The plantperson encounter will not include vines.
-		<br><br>
-		<<link [[Disable tentacles|Plantperson Test]]>><<set $tentacledisable to "f">><</link>>
-		<br><br>
-		<<link [[Consensual sex in the forest|Plantperson Test Sex No Tentacles]]>><<set $sexstart to 1>><<set $location to "forest">><</link>><br>
-		<<link [[Nonconsensual sex in the forest|Plantperson Test Sex No Tentacles]]>><<set $molestationstart to 1>><<set $location to "forest">><</link>><br>
-		<<link [[Consensual sex in the moor|Plantperson Test Sex No Tentacles]]>><<set $sexstart to 1>><<set $location to "moor">><</link>><br>
-		<<link [[Nonconsensual sex in the moor|Plantperson Test Sex No Tentacles]]>><<set $molestationstart to 1>><<set $location to "moor">><</link>><br>
-	<</if>>
+	<<link [[Consensual sex in the forest|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "forest">><</link>><br>
+	<<link [[Nonconsensual sex in the forest|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "forest">><</link>><br>
+	<<link [[Consensual sex in the moor|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "moor">><</link>><br>
+	<<link [[Nonconsensual sex in the moor|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "moor">><</link>>
 <<else>>
-	<b>Plantpeople are disabled.</b> I don't know what you're trying to do here.
+	<b>Plantpeople are disabled or otherwise unavailable.</b> I don't know what you're trying to do here.
 	<br><br>
-	<<link [[Enable plantpeople|Plantperson Test]]>><<set $plantdisable to "f">><</link>>
+	<<link [[Enable plantpeople|Plantperson Test]]>><<set $hallucinogen += 10>><<set $plantdisable to "f">><<set $tentacledisable to "f">><</link>><<ghallucinogen>>
 <</if>>
 <br><br>
 <<link [[Back home|Bedroom]]>><<endevent>><</link>>
@@ -943,74 +928,6 @@ How do you respond?
 	The <<person>> retracts <<his>> vines and retreats into the forest right as Eden emerges. <<nnpc_He "Eden">> helps you collect yourself. "Damn hikers," <<nnpc_he "Eden">> mutters. "Are you okay?"
 <<else>>
 	"Emergency exit? Bummer," the <<person>> says. <<He>> shrugs. "Oh well. Fuck your holes until you're a gibbering mess hopelessly addicted to my nectar later!" <<He>> digs back into the ground, and <<his>> vines follow. One of the vines checks <<his>> notifications on <<his>> phone.
-<</if>>
-<<endcombat>>
-<<clotheson>>
-<<link [[Do it again|Plantperson Test]]>><</link>><br>
-<<link [[Back home|Bedroom]]>><</link>>
-
-:: Plantperson Test Sex No Tentacles
-<<if $sexstart is 1 or $molestationstart is 1>>
-	<<if $sexstart is 1>>
-		<<set $sexstart to 0>>
-		<<consensual>><<set $consensual to 1>>
-		<<neutral 1>>
-	<<elseif $molestationstart is 1>>
-		<<set $molestationstart to 0>>
-		<<controlloss>>
-		<<violence 1>>
-		<<neutral 1>>
-		<<molested>>
-	<</if>>
-	<<generatePlant1>><<person1>>
-	<<maninit>><<npcexpose>>
-	<<set $enemytype to "plant">>
-	<<if $location is "forest">>
-		<<enable_rescue>>
-	<</if>>
-	"Hi there!" A <<person>> pops up in front of you, <<plant_details>> strewn through <<his>> hair because you're in the $location and it's $season. "You're cute! I'm gonna fuck you without my vines!"
-	<br>
-	A bunch of vines don't pop out of the ground, because tentacles are disabled.
-<</if>>
-<<effects>>
-<<effectsman>><<man>>
-<<stateman>>
-<br><br>
-<<actionsman>>
-
-<<if $enemyhealth lte 0>>
-	<span id="next"><<link [[HEALTH|Plantperson Test Sex No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<elseif $enemyarousal gte $enemyarousalmax>>
-	<span id="next"><<link [[ORGASM|Plantperson Test Sex No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<elseif $alarm is 1 and $rescue is 1>>
-	<span id="next"><<link [[RESCUE|Plantperson Test Sex No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<else>>
-	<span id="next"><<link [[Next|Plantperson Test Sex No Tentacles]]>><</link>></span><<nexttext>>
-<</if>>
-<br>
-<<link [[Emergency exit|Plantperson Test Sex No Tentacles Finish]]>><<set $finish to 1>><</link>>
-<br><br><br><br>
-
-:: Plantperson Test Sex No Tentacles Finish
-<<effects>>
-<<if $enemyarousal gte $enemyarousalmax>>
-	<<ejaculation>>
-	<<if _orgasm>>
-		"That was great!" the <<person>> cheers. "And thanks for cumming in me! Later!"
-	<<else>>
-		"That was fun!" the <<person>> chirps. "Later!"
-	<</if>>
-	<<He>> digs back into the ground.
-<<elseif $enemyhealth lte 0>>
-	"Ow!" the <<person>> whines. "You're no fun!" <<He>> digs back into the ground.
-<<elseif $alarm is 1 and $rescue is 1>>
-	You hear a gun fire close by, and a bullet lands at the <<persons>> feet. "Fuck," <<he>> hisses. "It's the <<nnpc_title "Eden">>. Fuck. Fuck shit fuck. Um." <<He>> grabs your face and gives you a syrupy kiss on each cheek, before pulling away from you. "See ya! I'm out!"
-	<<set $player.bodyliquid.face.goo += 1>>
-	<br><br>
-
-	The <<person>> retreats into the forest right as Eden emerges. <<nnpc_He "Eden">> helps you collect yourself. "Damn hikers," <<nnpc_he "Eden">> mutters. "Are you okay?"
-<<else>>
-	"Emergency exit? Bummer," the <<person>> says. <<He>> shrugs. "Oh well. Fuck your holes until you're a gibbering mess hopelessly addicted to my nectar later!" <<He>> digs back into the ground.
 <</if>>
 <<endcombat>>
 <<clotheson>>

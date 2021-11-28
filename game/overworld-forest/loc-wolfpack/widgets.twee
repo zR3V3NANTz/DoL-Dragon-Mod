@@ -114,63 +114,76 @@
 				<<link [[Ignore|Wolf Cave Young]]>><<set $phase to 1>><</link>>
 				<br>
 			<</addinlineevent>>
+			<<addinlineevent "wolf cave howl chorus">>
+				<<endevent>><<npc "Black Wolf">>
+				Amidst the group, you notice the Black Wolf standing atop a large rock, surrounded by a larger group of <<wolf_cave_plural>>. <<bHe>> suddenly raises <<bhis>> head and begins howling loudly, yet beautifully. A second <<beasttype>> takes notice and joins <<bhis>> pack sibling in hearty bonding.
+				<br><br>
+				Moments later, a modest group follows the lead and begins to howl loudly in harmonic unison.
+				<br><br>
+				<<link [[Watch them|Wolf Cave Howl]]>><<set $phase to 0>><</link>>
+				<br>
+				<<link [[Join in|Wolf Cave Howl]]>><<set $phase to 1>><</link>>
+				<br>
+			<</addinlineevent>>
 		<</if>>
 	<</if>>
 	<<runeventpool>>
 <</widget>>
+
 <<widget "wolfcavestate">>
 <<if $wolfpackferocity gte 20 and $wolfpackharmony gte 20>>
-<span class="green">The pack is unified in lethal purpose.</span>
+	<span class="green">The pack is unified in lethal purpose.</span>
 <<elseif $wolfpackferocity gte 20 and $wolfpackharmony gte 10>>
-<span class="purple">The <<wolf_cave_plural>> pace and growl at each other, anxious for a hunt.</span>
+	<span class="purple">The <<wolf_cave_plural>> pace and growl at each other, anxious for a hunt.</span>
 <<elseif $wolfpackferocity gte 20 and $wolfpackharmony gte 1>>
-<span class="pink">The <<wolf_cave_plural>> are agitated, afraid of losing their place in the pecking order.</span>
+	<span class="pink">The <<wolf_cave_plural>> are agitated, afraid of losing their place in the pecking order.</span>
 <<elseif $wolfpackferocity gte 20>>
-<span class="red">The <<wolf_cave_plural>> keep a large space between them. Any trespass is met with gnashing teeth.</span>
+	<span class="red">The <<wolf_cave_plural>> keep a large space between them. Any trespass is met with gnashing teeth.</span>
 <<elseif $wolfpackharmony gte 20 and $wolfpackferocity gte 10>>
-<span class="teal">Play fights break out frequently.</span>
+	<span class="teal">Play fights break out frequently.</span>
 <<elseif $wolfpackharmony gte 20 and $wolfpackferocity gte 1>>
-<span class="lblue">The <<wolf_cave_plural>> lie together, grooming each other.</span>
+	<span class="lblue">The <<wolf_cave_plural>> lie together, grooming each other.</span>
 <<elseif $wolfpackharmony gte 20>>
-<span class="blue">The <<wolf_cave_plural>> lie together in a big cuddly pile.</span>
+	<span class="blue">The <<wolf_cave_plural>> lie together in a big cuddly pile.</span>
 <<elseif $wolfpackferocity gte 10 and $wolfpackharmony gte 10>>
-<span class="lblue">Some of the <<wolf_cave_plural>> lie and groom each other, while others pace and watch the trees.</span>
+	<span class="lblue">Some of the <<wolf_cave_plural>> lie and groom each other, while others pace and watch the trees.</span>
 <<elseif $wolfpackferocity gte 10 and $wolfpackharmony gte 1>>
-<span class="purple">The <<wolf_cave_plural>> are on edge, growling and baring teeth at each other.</span>
+	<span class="purple">The <<wolf_cave_plural>> are on edge, growling and baring teeth at each other.</span>
 <<elseif $wolfpackferocity gte 10>>
-<span class="pink">The <<wolf_cave_plural>> eye each other warily.</span>
+	<span class="pink">The <<wolf_cave_plural>> eye each other warily.</span>
 <<elseif $wolfpackharmony gte 10 and $wolfpackferocity gte 1>>
-<span class="blue">Most of the <<wolf_cave_plural>> lie with their eyes shut, while others groom each other.</span>
+	<span class="blue">Most of the <<wolf_cave_plural>> lie with their eyes shut, while others groom each other.</span>
 <<elseif $wolfpackharmony gte 10>>
-<span class="purple">The <<wolf_cave_plural>> groom themselves, and occasionally each other.</span>
+	<span class="purple">The <<wolf_cave_plural>> groom themselves, and occasionally each other.</span>
 <<elseif $wolfpackferocity gte 1 and $wolfpackharmony gte 1>>
-<span class="purple">The <<wolf_cave_plural>> groom themselves and ignore each other.</span>
+	<span class="purple">The <<wolf_cave_plural>> groom themselves and ignore each other.</span>
 <<elseif $wolfpackferocity gte 1>>
-<span class="pink">The pack lazes around, barely able to summon the energy to growl at each other.</span>
+	<span class="pink">The pack lazes around, barely able to summon the energy to growl at each other.</span>
 <<elseif $wolfpackharmony gte 1>>
-<span class="pink">The pack lazes together, able to summon little energy.</span>
+	<span class="pink">The pack lazes together, able to summon little energy.</span>
 <<else>>
-<span class="red">A depressive malaise lies on the pack.</span>
+	<span class="red">A depressive malaise lies on the pack.</span>
 <</if>>
 <</widget>>
+
 <<widget "wolfcaveselect">>
 <<if $daystate is "day" or $daystate is "dawn">>
-<<set $huntstate to "failed">>
+	<<set $huntstate to "failed">>
 <</if>>
-	<<if $wolfstate is "hunt" and $daystate is "dawn" or $wolfstate is "hunt" and $daystate is "day">>
+
+<<if $wolfstate is "hunt" and $daystate is "dawn" or $wolfstate is "hunt" and $daystate is "day">>
 	<<set $wolfstate to "cave">>
-		<<if $rng + $wolfpackferocity + $wolfpackharmony gte 80>>
+	<<if $rng + $wolfpackferocity + $wolfpackharmony gte 80>>
 		The pack returns from the hunt. Some carry pieces of meat for the younger <<wolf_cave_plural>> that stayed at the cave. The hunt was successful.
 		<<gharmony>><<lferocity>>
 		<br><br>
-		<<else>>
+	<<else>>
 		The pack returns from the hunt. They failed to catch anything.
 		<<gferocity>><<lharmony>>
 		<br><br>
-
-		<</if>>
+	<</if>>
 	<<destinationwolfcave>>
-	<<elseif $wolfstate is "cave" and $huntstate isnot "finished" and $daystate is "dusk" or $wolfstate is "cave" and $huntstate isnot "finished" and $daystate is "night">>
+<<elseif $wolfstate is "cave" and $huntstate isnot "finished" and $daystate is "dusk" or $wolfstate is "cave" and $huntstate isnot "finished" and $daystate is "night">>
 	<<set $wolfstate to "hunt">><<set $huntstate to "failed">><<set $wolfpackpoisoned to 0>>
 	The Black Wolf howls and the others join in.
 	<<npc "Black Wolf">>
@@ -187,152 +200,156 @@
 	<<link [[Watch them leave|Wolf Cave Hunt Leave]]>><</link>>
 	<br>
 
+<<elseif$wolfstate is "cave" and $wolfpackleader is 1 and $wolfpackharmony lte random(0,10) and $wolfpackferocity gte random(11,20) and $wolfchallengetimer lte 0>>
+	<<set $wolfchallengetimer to 14>><<npc "Black Wolf">>
+	You hear a loud bark behind you. You turn to face the Black Wolf, who stands firmly and bares <<bhis>> teeth to you.
+	<<if $monster is 1>>
+		"Leader weak!" <<bhe>> snarls. "Pack need strength, courage. Pack will have new leader today. <<pPackbrother>>'s time as alpha is over!"
 	<<else>>
-	<<wolfcaveevent>>
+		<<bHis>> fur bristles and <<bhis>> tail is held straight in the air. <<bHe>> seeks to challenge you for role as pack alpha.
 	<</if>>
-
-<</widget>>
-<<widget "destinationwolfcave">>
-<<if $bus is "wolfcave">>
-<<link [[Next|Wolf Cave]]>><<endevent>><</link>>
-<br>
-<<else>>
-<<link [[Next|Wolf Cave Clearing]]>><<endevent>><</link>>
-<br>
-<</if>>
-<</widget>>
-<<widget "wolfhuntevents">>
-
-<<if $huntstate is "success">>
-<<set $huntstate to "finished">>
-<<set $wolfstate to "cave">>
-Satiated, the pack heads back to the cave. Some carry food for the younger <<wolf_cave_plural>>.
-<<lferocity>><<gharmony>>
-<br><br>
-
-<<link [[Next|Wolf Cave]]>><</link>>
-<br>
-
-<<elseif $daystate is "dawn" or $daystate is "day">>
-<<set $huntstate to "finished">>
-With the sun rising on the horizon, the pack returns to the cave. The failure of the hunt has the pack riled.
-<<gferocity>><<lharmony>>
-<br><br>
-
-<<link [[Next|Wolf Cave]]>><</link>>
-<br>
-
-<<else>>
-<<set $rng to random(1, 100)>>
-	<<if $bus is "wolfpackriver">>
-
-	You come to two pairs of tracks. One looks like a deer's hoof prints. The other several pairs of shoes.
+	<br><br>
+	A small group gathers around you.
 	<br><br>
 
+	<<link [[Fight|Wolf Challenge Accept]]>><</link>>
+	<br>
+	<<link [[Surrender|Wolf Challenge Surrender]]>><</link>>
+	<br>
+	<<if $wolfgirl gte 6>>
+		<<link [[Reason|Wolf Challenge Reason]]>><</link>><<wolfgirl>>
+		<br>
+	<</if>>
+<<else>>
+	<<wolfcaveevent>>
+<</if>>
+<</widget>>
+
+<<widget "destinationwolfcave">>
+<<if $bus is "wolfcave">>
+	<<link [[Next|Wolf Cave]]>><<endevent>><</link>>
+	<br>
+<<else>>
+	<<link [[Next|Wolf Cave Clearing]]>><<endevent>><</link>>
+	<br>
+<</if>>
+<</widget>>
+
+<<widget "wolfhuntevents">>
+<<if $huntstate is "success">>
+	<<set $huntstate to "finished">>
+	<<set $wolfstate to "cave">>
+	Satiated, the pack heads back to the cave. Some carry food for the younger <<wolf_cave_plural>>.
+	<<lferocity>><<gharmony>>
+	<br><br>
+
+	<<link [[Next|Wolf Cave]]>><</link>>
+	<br>
+<<elseif $daystate is "dawn" or $daystate is "day">>
+	<<set $huntstate to "finished">>
+	With the sun rising on the horizon, the pack returns to the cave. The failure of the hunt has the pack riled.
+	<<gferocity>><<lharmony>>
+	<br><br>
+
+	<<link [[Next|Wolf Cave]]>><</link>>
+	<br>
+<<else>>
+	<<set $rng to random(1, 100)>>
+	<<if $bus is "wolfpackriver">>
+		You come to two pairs of tracks. One looks like a deer's hoof prints. The other several pairs of shoes.
+		<br><br>
+
 		<<if $wolfpackleader is 1>>
-		The pack waits for your decision.
-		<br><br>
+			The pack waits for your decision.
+			<br><br>
 
-		<<link [[Follow the deer tracks (1:00)|Wolf Deer]]>><<pass 1 hour>><<set $bus to "wolfpackdeer">><<tiredness 12>><</link>><<athleticsdifficulty>><<gtiredness>>
-		<br>
-		<<link [[Follow the shoe tracks (1:00)|Wolf Hunters]]>><<pass 1 hour>><<set $bus to "wolfpackhunters">><<tiredness 12>><</link>><<gtiredness>>
-		<br>
-		<<link [[Let the Black Wolf decide (1:00)|Wolf Deer]]>><<pass 1 hour>><<set $bus to "wolfpackdeer">><<tiredness 12>><</link>><<gtiredness>>
-		<br>
-
+			<<link [[Follow the deer tracks (1:00)|Wolf Deer]]>><<pass 1 hour>><<set $bus to "wolfpackdeer">><<tiredness 12>><</link>><<athleticsdifficulty>><<gtiredness>>
+			<br>
+			<<link [[Follow the shoe tracks (1:00)|Wolf Hunters]]>><<pass 1 hour>><<set $bus to "wolfpackhunters">><<tiredness 12>><</link>><<gtiredness>>
+			<br>
+			<<link [[Let the Black Wolf decide (1:00)|Wolf Deer]]>><<pass 1 hour>><<set $bus to "wolfpackdeer">><<tiredness 12>><</link>><<gtiredness>>
+			<br>
 		<<else>>
-
-		The Black Wolf follows the deer prints without a second thought.
-		<br><br>
+			The Black Wolf follows the deer prints without a second thought.
+			<br><br>
 
 			<<link [[Next (1:00)|Wolf Deer]]>><<pass 1 hour>><<set $bus to "wolfpackdeer">><<tiredness 12>><</link>><<athleticsdifficulty>><<gtiredness>>
 			<br>
-
 		<</if>>
-
 	<<elseif $bus is "wolfpackcliff">>
 		You come to two pairs of tracks. One of a deer's hooves, but the steps are irregular. The other of large paws, with claws digging into the earth.
 
 		<<if $wolfpackleader is 1>>
-		The pack waits for your decision.
-		<br><br>
+			The pack waits for your decision.
+			<br><br>
 
-		<<link [[Follow the deer prints (1:00)|Wolf Carrion]]>><<pass 1 hour>><<set $bus to "wolfpackcarrion">><<tiredness 12>><</link>><<gtiredness>>
-		<br>
-		<<link [[Follow the large prints (1:00)|Wolf Bear]]>><<pass 1 hour>><<set $bus to "wolfpackbear">><<tiredness 12>><</link>><<gtiredness>>
-		<br>
+			<<link [[Follow the deer prints (1:00)|Wolf Carrion]]>><<pass 1 hour>><<set $bus to "wolfpackcarrion">><<tiredness 12>><</link>><<gtiredness>>
+			<br>
+			<<link [[Follow the large prints (1:00)|Wolf Bear]]>><<pass 1 hour>><<set $bus to "wolfpackbear">><<tiredness 12>><</link>><<gtiredness>>
+			<br>
 			<<if $rng gte 51>>
-			<<link [[Let the Black Wolf decide (1:00)|Wolf Carrion]]>><<pass 1 hour>><<set $bus to "wolfpackcarrion">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
+				<<link [[Let the Black Wolf decide (1:00)|Wolf Carrion]]>><<pass 1 hour>><<set $bus to "wolfpackcarrion">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<<else>>
-			<<link [[Let the Black Wolf decide (1:00)|Wolf Bear]]>><<pass 1 hour>><<set $bus to "wolfpackbear">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
+				<<link [[Let the Black Wolf decide (1:00)|Wolf Bear]]>><<pass 1 hour>><<set $bus to "wolfpackbear">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<</if>>
-
 		<<else>>
 			<<if $rng gte 51>>
-			The Black Wolf sniffs the air, then follows the deer prints.
-			<br><br>
+				The Black Wolf sniffs the air, then follows the deer prints.
+				<br><br>
 
-			<<link [[Next (1:00)|Wolf Carrion]]>><<pass 1 hour>><<set $bus to "wolfpackcarrion">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
-
+				<<link [[Next (1:00)|Wolf Carrion]]>><<pass 1 hour>><<set $bus to "wolfpackcarrion">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<<else>>
-			The Black Wolf sniffs the air, then follows the large prints.
-			<br><br>
+				The Black Wolf sniffs the air, then follows the large prints.
+				<br><br>
 
-			<<link [[Next (1:00)|Wolf Bear]]>><<pass 1 hour>><<set $bus to "wolfpackbear">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
+				<<link [[Next (1:00)|Wolf Bear]]>><<pass 1 hour>><<set $bus to "wolfpackbear">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<</if>>
 		<</if>>
-
 	<<elseif $bus is "wolfpackbear">>
-
 	<<elseif $bus is "wolfpackhunters">>
-
 	<<elseif $bus is "wolfpackdeer">>
-
 	<<elseif $bus is "wolfpackcarrion">>
-
 	<<else>>
-	You come to a river emerging from the base of the cliff.
+		You come to a river emerging from the base of the cliff.
 
 		<<if $wolfpackleader is 1>>
-		The pack waits for your decision.
-		<br><br>
+			The pack waits for your decision.
+			<br><br>
 
-		<<link [[Follow the river (1:00)|Wolf River]]>><<pass 1 hour>><<set $bus to "wolfpackriver">><<tiredness 12>><</link>><<gtiredness>>
-		<br>
-		<<link [[Follow the cliff (1:00)|Wolf Cliff]]>><<pass 1 hour>><<set $bus to "wolfpackcliff">><<tiredness 12>><</link>><<gtiredness>>
-		<br>
+			<<link [[Follow the river (1:00)|Wolf River]]>><<pass 1 hour>><<set $bus to "wolfpackriver">><<tiredness 12>><</link>><<gtiredness>>
+			<br>
+			<<link [[Follow the cliff (1:00)|Wolf Cliff]]>><<pass 1 hour>><<set $bus to "wolfpackcliff">><<tiredness 12>><</link>><<gtiredness>>
+			<br>
 			<<if $rng gte 51>>
-			<<link [[Let the Black Wolf decide (1:00)|Wolf River]]>><<pass 1 hour>><<set $bus to "wolfpackriver">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
+				<<link [[Let the Black Wolf decide (1:00)|Wolf River]]>><<pass 1 hour>><<set $bus to "wolfpackriver">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<<else>>
-			<<link [[Let the Black Wolf decide (1:00)|Wolf Cliff]]>><<pass 1 hour>><<set $bus to "wolfpackcliff">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
+				<<link [[Let the Black Wolf decide (1:00)|Wolf Cliff]]>><<pass 1 hour>><<set $bus to "wolfpackcliff">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<</if>>
-
 		<<else>>
 			<<if $rng gte 51>>
-			The Black Wolf sniffs the air, then runs along the river.
-			<br><br>
+				The Black Wolf sniffs the air, then runs along the river.
+				<br><br>
 
-			<<link [[Next (1:00)|Wolf River]]>><<pass 1 hour>><<set $bus to "wolfpackriver">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
-
+				<<link [[Next (1:00)|Wolf River]]>><<pass 1 hour>><<set $bus to "wolfpackriver">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<<else>>
-			The Black Wolf sniffs the air, then runs along the cliff.
-			<br><br>
+				The Black Wolf sniffs the air, then runs along the cliff.
+				<br><br>
 
-			<<link [[Next (1:00)|Wolf Cliff]]>><<pass 1 hour>><<set $bus to "wolfpackcliff">><<tiredness 12>><</link>><<gtiredness>>
-			<br>
+				<<link [[Next (1:00)|Wolf Cliff]]>><<pass 1 hour>><<set $bus to "wolfpackcliff">><<tiredness 12>><</link>><<gtiredness>>
+				<br>
 			<</if>>
 		<</if>>
-
 	<</if>>
 <</if>>
 <</widget>>
+
 <<widget "blackwolfhealth">>
 	<<if $wolfpackpoisoned is 1>>
 		<<set $enemyhealth to 200>><<set $enemyhealthmax to 200>>
@@ -389,10 +406,10 @@ With the sun rising on the horizon, the pack returns to the cave. The failure of
 
 <<widget "wolf_cave_update">>
 <<if ($monsterchance gte random(1, 100) and ($hallucinations gte 1 or $monsterhallucinations is "f")) or ($bestialitydisable is "t")>>
-		<<set $wolfcave_monster_roll to true>>
-	<<else>>
-		<<set $wolfcave_monster_roll to false>>
-	<</if>>
+	<<set $wolfcave_monster_roll to true>>
+<<else>>
+	<<set $wolfcave_monster_roll to false>>
+<</if>>
 <</widget>>
 
 <<widget "wolf_cave_plural">><<silently>>

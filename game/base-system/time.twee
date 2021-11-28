@@ -195,6 +195,11 @@
 	<</if>>
 	<<if $syndromewolves is 1>>
 		<<wolf_cave_update>>
+		<<if $wolfchallengetimer is undefined>>
+			<<set $wolfchallengetimer to 14>>
+		<<else>>
+			<<set $wolfchallengetimer-->>
+		<</if>>
 	<</if>>
 	<<unset $blackWolfMonsterRoll>>
 	<<unset $temple_pray>>
@@ -1277,6 +1282,9 @@
 		<<menstruationCycle>>
 	<</if>>
 	<<set $robinDebtAsk to 0>>
+	<<if $wolfcavepatrol is 1>>
+		<<set $wolfcavepatrolchance to random(1,3)>>
+	<</if>>
 <</if>>
 <</widget>>
 
@@ -1403,6 +1411,12 @@
 				/* Do Nothing */
 			<</switch>>
 		<</if>>
+	<</if>>
+
+	<<if $wolfpatrolsent gte 24>>
+		<<unset $wolfpatrolsent>>
+	<<elseif $wolfpatrolsent gte 1>>
+		<<set $wolfpatrolsent++>>
 	<</if>>
 
 <</if>>
@@ -1546,6 +1560,10 @@
 	<<if $sydney.glasses is "broken" or $sydney.glasses is "playerbroken">>
 		<<set $sydney.glasses to "glasses">><<set $sydneyGlassesNotice to 1>>
 	<</if>>
+<</if>>
+
+<<if $syndromewolves is 1>>
+	<<set $wolfcavepatrol to 1>>
 <</if>>
 
 <</widget>>

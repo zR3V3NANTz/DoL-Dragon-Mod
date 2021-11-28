@@ -1826,15 +1826,15 @@
 		<<print either("You feel squeamish,", "You feel unsettled,", "You feel uncomfortable,")>>
 	<</if>>
 	<<if $NPCList[_jj].penis is "anus" or $NPCList[_jj].penis is "mouth" or $NPCList[_jj].penis is "vagina">>
-		having been fucked by the <<beasttype>>
+		having been fucked by the
 	<<elseif $NPCList[_jj].vagina is "penis" or $NPCList[_jj].mouth is "penis" or $NPCList[_jj].vagina is "otheranus">>
-		having fucked the <<beasttype>>
+		having fucked the
 	<<elseif $NPCList[_jj].vagina isnot "none" and $NPCList[_jj].penis is "none">>
-		having been used by the <<beasttype>>
+		having been used by the
 	<<else>>
-		having pleasured yourself with a <<beasttype>>
+		having pleasured yourself with a
 	<</if>>
-	<<if $audience gte 6 or $pilloryaudience gte 6>> in front of a crowd.<<elseif $audiencepresent gte 1 or $pilloryaudience gte 1>> in front of others.<<else>>.<</if>>
+	<<if $audience gte 6 or $pilloryaudience gte 6>> <<beasttype>> in front of a crowd.<<elseif $audiencepresent gte 1 or $pilloryaudience gte 1>> <<beasttype>> in front of others.<<else>><<beasttype>>.<</if>>
 <<else>>
 	<<if $deviancy gte 75>>
 		<<print either("You feel ashamed,", "You feel embarrassed,", "You feel distraught,")>>
