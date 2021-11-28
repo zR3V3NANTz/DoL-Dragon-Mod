@@ -932,6 +932,27 @@ Config.navigation.override = function (dest) {
 		case 'Pussy Inspection Penis':
 			return 'Pussy Inspection Flaunt No Pussy';
 
+		case 'Forest Plant Sex No Tentacles':
+			return 'Forest Plant Sex';
+		
+		case 'Forest Plant Sex No Tentacles Finish':
+			return 'Forest Plant Sex Finish';
+		
+		case 'Forest Plant Passout No Tentacles':
+			return 'Forest';
+
+		case 'Moor Plant Sex No Tentacles':
+			return 'Moor Plant Sex';
+
+		case 'Moor Plant Sex No Tentacles Finish':
+			return 'Moor Plant Sex Finish'
+
+		case 'Underground Plant Molestation No Tentacles':
+			return 'Underground Plant Molestation';
+
+		case 'Underground Plant Molestation No Tentacles Finish':
+			return 'Underground Plant Molestation Finish';
+
 		default:
 			return dest;
 	}

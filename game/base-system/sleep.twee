@@ -11,7 +11,7 @@
 	<<if $worn.upper.type.includes("sleep") or $worn.lower.type.includes("sleep")>>
 		<<set _sleepTraitEffect += 5>>
 	<</if>>
-	<<if $robinbed is 1 or $kylarbed is 1>>
+	<<if $robinbed is 1 or $kylarbed is 1 or $wolfbed is 1>>
 		<<set _sleepTraitEffect += 5>>
 	<</if>>
 	<<for $_i to 0; $_i lt _equip.length; $_i++>>

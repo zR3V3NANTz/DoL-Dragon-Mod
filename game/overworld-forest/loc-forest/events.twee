@@ -3696,151 +3696,25 @@ The slimes disappear into the river. <<tearful>> you look around frantically.
 	<<link [[Say goodbye|Forest]]>><<endevent>><</link>>
 <</if>>
 
-:: Forest Plant Sex No Tentacles
-<<if $sexstart is 1 or $molestationstart is 1>>
-	<<if $sexstart is 1>>
-		<<set $sexstart to 0>>
-		<<consensual>><<set $consensual to 1>>
-		<<neutral 1>>
-	<<elseif $molestationstart is 1>>
-		<<set $molestationstart to 0>>
-		<<controlloss>>
-		<<violence 1>>
-		<<neutral 1>>
-		<<molested>>
-	<</if>>
-	<<if $loveInterest>>
-		<<if $loveInterest.primary is "Eden" or $loveInterest.secondary is "Eden">>
-			<<enable_rescue>>
-		<</if>>
-	<</if>>
-	<<maninit>><<npcexpose>>
-	<<set $enemytype to "plant">><<set $enemyno to 1>><<set $enemynomax to 1>>
-	<<if $phase is 1>>
-		<<if $player.penisExist>>
-			<<set $NPCList[0].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to 0>>
-		<<else>>
-			<<set $NPCList[0].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginatarget to 0>>
-		<</if>>
-		<<set $NPCList[0].location.head to "genitals">>
-		<<set $leftarm to "bound">><<set $leftarmstate to 0>>
-		<<set $rightarm to "bound">><<set $leftarmstate to 0>>
-	<<elseif $phase is 0 and !$consensual>>
-		<<npckiss>>
-	<</if>>
-<</if>>
-<<effects>>
-<<effectsman>><<man>>
-
-<<if $alarm is 1 and $rescue is 0>>
-	<<set $alarm to 0>>
-	<<if ($loveInterest.primary is "Eden" or $loveInterest.secondary is "Eden")>>
-		<<if $gwylan_rescue is 1>>
-			<span class="red">You're too deep into the forest for Gwylan to hear you, and Eden must not be in the area.</span>
-		<<else>>
-			<span class="red">You're too far from the town for anyone to hear you, and Eden must not be in the area.</span>
-		<</if>>
-	<<else>>
-		<<if $gwylan_rescue is 1>>
-			<span class="red">You're too deep into the forest for Gwylan to hear you.</span>
-		<<else>>
-			<span class="red">You're too far from the town for anyone to hear you.</span>
-		<</if>>
-	<</if>>
-	<br><br>
-<</if>>
-
-<<stateman>>
-<br><br>
-<<actionsman>>
-
-<<if $enemyhealth lte 0>>
-	<span id="next"><<link [[Next|Forest Plant Sex No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<elseif $enemyarousal gte $enemyarousalmax>>
-	<span id="next"><<link [[Next|Forest Plant Sex No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<elseif $alarm is 1 and $rescue is 1>>
-	<span id="next"><<link [[Next|Forest Plant Sex No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<else>>
-	<span id="next"><<link [[Next|Forest Plant Sex No Tentacles]]>><</link>></span><<nexttext>>
-<</if>>
-
-:: Forest Plant Sex No Tentacles Finish
-<<location "forest">><<effects>>
-<<if $phase is 1>>
-	<<set _noCum to 1>>
-<</if>>
-<<if $enemyarousal gte $enemyarousalmax>>
-	<<ejaculation>>
-	"That was fun!" the <<person>> chirps. "I wish more humans were like you."
-	<br><br>
-
-	<<He>> picks <<himself>> up off the ground and dusts off <<his>> hands. "If you're ever in the area, hit me up! I'd love to do this again!" <<He>> walks off, <<his>> vines shambling behing <<him>>.
-	<br><br>
-
-	<<tearful>> you gather yourself.
-	<<clotheson>>
-	<<endcombat>>
-	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
-<<elseif $enemyhealth lte 0>>
-	The <<person>> backpedals from you, looking at you warily. "Yeesh, a bit uncalled for, wouldn't you say? I just wanted us to feel good."
-	<br><br>
-
-	<<He>> rubs <<his>> shoulder, frowning. "Well, if you're ever in the area, hit me up. Maybe we can pick up where we left off, if you're in a better mood!" <<He>> walks off, limping slightly.
-	<br><br>
-
-	<<tearful>> you gather yourself.
-	<<clotheson>>
-	<<endcombat>>
-	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
-<<elseif $alarm is 1 and $rescue is 1>>
-	You hear a gun fire close by, and a bullet lands at the <<persons>> feet. "Fuck," <<he>> hisses. "It's the <<nnpc_title "Eden">>. Fuck. Fuck shit fuck. Um." <<He>> grabs your face and gives you a syrupy kiss on each cheek, before pulling away from you. "See ya! I'm out!"
-	<<set $player.bodyliquid.face.goo += 1>>
-	<br><br>
-
-	The <<person>> retreats into the forest right as Eden emerges. <<nnpc_He "Eden">> helps you collect yourself. "Damn hikers," <<nnpc_he "Eden">> mutters. "Are you okay?"
-	<br><br>
-
-	<<clotheson>>
-	<<endcombat>>
-	<<if $gwylan_eden_coop gte 1>>
-		Eden glances around for a moment. "We must be in too deep for that shopkeep," <<nnpc_he "Eden">> says.
-		<br><br>
-	<</if>>
-
-	<<if $eden_rescue isnot 1>>
-		<<set $eden_rescue to 1>>
-		Eden pats you on the shoulder. "I was able to hear you because I happened to be in the area," <<nnpc_he "Eden">> says. "<span class="gold">I might not always be around, but I should be able to save you anywhere in the forest.</span> Give me a shout if you're in trouble."
-		<br><br>
-	<</if>>
-
-	<<link [[Go back to the cabin (0:30)|Forest Cabin Return]]>><<pass 30>><</link>>
-	<br>
-	<<link [[Say goodbye|Forest]]>><<endevent>><</link>>
-<</if>>
-
 :: Forest Plant Kiss
 <<location "forest">><<effects>>
 
 You lean forward and kiss the <<person "normal">>, and <<he>> smiles against your mouth. <span class="lewd"><<His>> lips are sticky, and taste very sweet.</span>
 <<takeKissVirginity $NPCList[0].fullDescription "consensual">><<promiscuity1>>
 <<if $rng gte 81>>
-	<<He>> suddenly thrusts <<his>> tongue into your mouth. Something drips into your mouth, and your taste buds are assaulted by a dizzyingly sweet flavor. Your mind gets foggy, and you barely notice <<him>> pushing you to the ground. <<if $tentacledisable is "f">><span class="purple">The vines behind <<him>> writhe to life, slithering behind <<him>>.</span><</if>>
+	<<He>> suddenly thrusts <<his>> tongue into your mouth. Something drips into your mouth, and your taste buds are assaulted by a dizzyingly sweet flavor. Your mind gets foggy, and you barely notice <<him>> pushing you to the ground. <span class="purple">The vines behind <<him>> writhe to life, slithering behind <<him>>.</span>
 	<<nectarfed 10>>
 	<br><br>
 
 	"Thanks for that," the <<person>> whispers, lowering <<himself>> to lie on top of you. "Now I think I'll take a bit more than a kiss."
 	<br><br>
 
-	<<if $tentacledisable is "f">>
-		<<link [[Next|Forest Plant Sex]]>><<set $molestationstart to 1>><<set $phase to 0>><</link>>
-	<<else>>
-		<<link [[Next|Forest Plant Sex No Tentacles]]>><<set $molestationstart to 1>><<set $phase to 0>><</link>>
-	<</if>>
+	<<link [[Next|Forest Plant Sex]]>><<set $molestationstart to 1>><<set $phase to 0>><</link>>
 <<else>>
 	<<He>> holds the kiss for a few seconds, before nipping your upper lip and pulling away. You lick your lips. Syrupy nectar lingers around your mouth.
 	<br><br>
 
-	<<if $tentacledisable is "f">>Behind <<him>>, <span class="purple">the vines writhe to life</span>, wriggling in contentment.<</if>> "What did you think?" the <<person>> asks, winking. "Pretty great kiss, huh? Well, I thought so."
+	Behind <<him>>, <span class="purple">the vines writhe to life</span>, wriggling in contentment. "What did you think?" the <<person>> asks, winking. "Pretty great kiss, huh? Well, I thought so."
 	<br><br>
 
 	<<He>> turns to walk away. "Well, hope that brings you good luck! See you around, <<girl>>!"
@@ -3858,7 +3732,7 @@ You lean forward and kiss the <<person "normal">>, and <<he>> smiles against you
 :: Forest Plant Seduce
 <<location "forest">><<effects>>
 
-"Leaving so soon?" you ask, batting your eyes. The <<person>> turns back. "I could give you so much more than just a kiss. <<if $tentacledisable is "f">>Show me what those vines can do<<else>>Come and get me<</if>>."
+"Leaving so soon?" you ask, batting your eyes. The <<person>> turns back. "I could give you so much more than just a kiss. Show me what those vines can do<<else>>Come and get me."
 <br><br>
 
 <<set $seductiondifficulty to 0>>
@@ -3870,11 +3744,7 @@ You lean forward and kiss the <<person "normal">>, and <<he>> smiles against you
 
 <<if $seductionskill lt 1000>><span class="gold">You feel more confident in your powers of seduction... though you suspect <<he>> would've said yes no matter what.</span><br><br><</if>><<seductionskilluse>>
 
-<<if $tentacledisable is "f">>
-	<<link [[Next|Forest Plant Sex]]>><<set $sexstart to 1>><<set $phase to 0>><</link>>
-<<else>>
-	<<link [[Next|Forest Plant Sex No Tentacles]]>><<set $sexstart to 1>><<set $phase to 0>><</link>>
-<</if>>
+<<link [[Next|Forest Plant Sex]]>><<set $sexstart to 1>><<set $phase to 0>><</link>>
 
 :: Forest Plant Kiss Refuse
 <<location "forest">><<effects>>
@@ -3930,33 +3800,3 @@ You try to sit up again, but the vines pull you back down. "Ah bup bup," the <<p
 <br><br>
 
 <<link [[Next|Forest Plant Sex]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
-
-:: Forest Plant Passout No Tentacles
-<<effects>><<location "forest">>
-<<set $forest += random(15,-15)>><<set $forest = Math.clamp($forest, 21, 100)>>
-<<generatePlant1>><<person1>>
-
-<<orgasm>>
-You wake up to a sudden rush of pleasure, and a wet sensation on your <<genitals 1>>. You try to sit up, only to find <span class="red">vines binding your arms to the ground</span>. You struggle for a moment, but they hold firm.
-<br><br>
-
-"Oh, hi there!" You crane your neck, and see a <<person>> sitting between your legs, with <<plant_details>> braided into <<his>> hair.
-<<if $exposed lte 1>>
-	Your $worn.lower.name has been <<if $worn.lower.skirt is 1>>lifted up<<else>>pulled down<</if>>, <<if !$worn.under_lower.type.includes("naked")>> and your $worn.under_lower.name has been pulled aside,<</if>> <span class="pink">revealing your <<genitals>>.</span>
-<</if>>
-<<He>> licks <<his>> lips. "I found you conked out in the forest, so I dragged you somewhere safe and helped myself."
-<<if $worn.genitals.type.includes("chastity")>>
-	<<He>> pokes your $worn.genitals.name. "At least, as best I could through this thing. Who put this on you? How cruel.
-<<else>>
-	<<He>> grins. "It was just a taste, I wanted to wait until you woke up before really going at it.
-<</if>>
-I had to get a bit creative with restraining you, hope you don't mind."
-<<if $worn.lower.skirt is 1>><<set $worn.lower.skirt_down to 0>><<else>><<set $worn.lower.state to "thighs">><</if>>
-<<set $worn.lower.vagina_exposed to 1>><<set $worn.lower.anus_exposed to 1>><<set $worn.lower.exposed to 2>>
-<<set $worn.under_lower.vagina_exposed to 1>><<set $worn.under_lower.anus_exposed to 1>><<set $worn.under_lower.exposed to 1>><<set $worn.under_lower.state to "thighs">>
-<br><br>
-
-You try to sit up again, but the vines hold you still. "Ah bup bup," the <<person>> chides. "Just let me take care of you. Now, where was I...?" <<He>> moves <<his>> mouth back down to your <<genitals>>.
-<br><br>
-
-<<link [[Next|Forest Plant Sex No Tentacles]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>

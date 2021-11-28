@@ -370,7 +370,7 @@ Go towards town
 
 		<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 	<</addinlineevent>>
-<<if $plantdisable is "f">>
+<<if $plantdisable is "f" and $tentacledisable is "f" and $hallucinations gte 2>>
 	<<addevent "forestplantkiss">>
 <</if>>
 <<addevent "forestrock">>
@@ -910,7 +910,7 @@ The Black Wolf walks up to you and <<if $monster is 1>>kneels<<else>>turns<</if>
 	<<set $danger to random(1, 10000)>>
 	<<if $danger gte (9900 - $allure)>>
 
-		<<if $rng gte 71 and $forest gte 21 and $plantdisable is "f">>
+		<<if $rng gte 71 and $forest gte 21 and $plantdisable is "f" and $tentacledisable is "f" and $hallucinations gte 2>>
 			<<link [[Everything fades to black...|Forest Plant Passout]]>><</link>>
 		<<else>>
 			<<foresthunt>>
