@@ -612,20 +612,19 @@
 	<<case 0>>
 		<<if $dragonbuild gte 10 and $transformdisable is "f" and $physicalTransform isnot 1>>
 			<<set $dragon to 1>><<set $physicalTransform to 1>>
-			<span class="gold">Your head aches for a moment, and horns appear.</span>
-			<<set $transformationParts.dragon.horns to "default">>
+			<span class="gold">Your eyes have turned a strange red and yellow. Your vision has improved.</span>
+			<<set $transformationParts.dragon.eyes to "default">>
 			<br><br>
 		<</if>>
 	<<case 1>>
 		<<if $dragonbuild gte 20 and $transformdisable is "f">>
 			<<set $dragon to 2>>
-			<span class="gold">Your eyes have turned a strange red and yellow. Your vision has improved.</span>
-			<<set $transformationParts.dragon.eyes to "default">>
+			<span class="gold">Your head aches for a moment, and horns appear.</span>
+			<<set $transformationParts.dragon.horns to "default">>
 			<br><br>
 		<<elseif $dragonbuild lt 10>>
-			<<set $dragon to 0>><<set $physicalTransform to 0>>
-			<span class="gold">Your eyes have reverted and your vision has returned to normal.</span>
-			<<set $transformationParts.dragon.horns to "disabled">>
+			<span class="gold">Your vision has worsened significantly.</span>
+			<<set $transformationParts.dragon.eyes to "disabled">>
 			<br><br>
 		<</if>>
 	<<case 2>>
@@ -635,8 +634,8 @@
 			<br><br>
 		<<elseif $dragonbuild lt 10>>
 			<<set $dragon to 1>>
-			<span class="gold">Your vision has worsened significantly.</span>
-			<<set $transformationParts.dragon.eyes to "disabled">>
+			<span class="gold">Your horns have completely disappeared. Your head is normal again.</span>
+			<<set $transformationParts.dragon.horns to "disabled">>
 			<br><br>
 		<</if>>
 	<<case 3>>
@@ -647,7 +646,7 @@
 			<br><br>
 		<<elseif $dragonbuild lt 20>>
 			<<set $dragon to 2>>
-			<span class="gold">Your tail slowly disappears. Your ass no longer feels weird.</span>
+			<span class="gold">Your tail is gone.</span>
 			<br><br>
 		<</if>>
 	<<case 4>>
@@ -657,7 +656,7 @@
 			<br><br>
 		<<elseif $dragonbuild lt 30>>
 			<<set $dragon to 3>>
-			<span class="gold">Your tail is gone.</span>
+			<span class="gold">Your tail is slowly disappearing.</span>
 			<<set $transformationParts.dragon.tail to "disabled">>
 			<br><br>
 		<</if>>
