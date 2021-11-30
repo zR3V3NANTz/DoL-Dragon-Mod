@@ -533,6 +533,10 @@ __Save Game Details__
 	<br>
 	Cow manifestation: <<print Math.trunc($cow)>>
 	<br>
+	Dragon-ness: <<print Math.trunc($dragonbuild)>> (50+ for full transformation)
+	<br>
+	Dragon manifestation: <<print Math.trunc($dragon)>>
+	<br>
 	Angelicness: <<print Math.trunc($angelbuild)>> (50+ for full transformation)
 	<br>
 	Angel manifestation: <<print Math.trunc($angel)>>

@@ -34,6 +34,7 @@
 <<set $wolfbuild = Math.clamp($wolfbuild, 0, 100)>>
 <<set $catbuild = Math.clamp($catbuild, 0, 100)>>
 <<set $cowbuild = Math.clamp($cowbuild, 0, 100)>>
+<<set $dragonbuild = Math.clamp($dragonbuild, 0, 100)>>
 
 <<set $seductionskill = Math.clamp($seductionskill, 0, 1000)>>
 <<set $oralskill = Math.clamp($oralskill, 0, 1000)>>

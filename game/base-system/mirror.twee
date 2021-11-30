@@ -283,6 +283,10 @@ Attractiveness rating:
 		Demon
 		<br>
 	<</if>>
+	<<if $dragon gte 6>>
+	    Dragon
+		<br>
+	<</if>>
 	<<if $makeup.lipstick != 0 or $makeup.eyeshadow != 0 or $makeup.mascara != 0>>
 		Attractive makeup
 		<br>
@@ -1553,6 +1557,51 @@ If your Trauma gets too high, you will be unable to hide.
 	<</if>>
 	<br>
 <</if>>
+<<if $dragon gt 1>>
+    __Dragon__
+	<br>
+	<<if $transformationParts.dragon.eyes isnot "disabled">>
+	    Dragon eyes:
+		<<listbox "$transformationParts.dragon.eyes" autoselect>>
+		    <<option "hide" "hidden">>
+			<<option "Default" "default">>
+		<</listbox>>
+		<br>
+	<</if>>
+	<<if $transformationParts.dragon.horns isnot "disabled">>
+	    Dragon horns:
+        <<listbox "$transformationParts.dragon.horns" autoselect>>
+		    <<option "hide" "hidden">>
+			<<option "Default" "default">>
+		<</listbox>>
+		<br>
+	<</if>>
+	<<if $transformationParts.dragon.wings isnot "disabled">>
+	    Dragon wings:
+		<<listbox "$transformationParts.dragon.wings" autoselect>>
+		    <<option "hide" "hidden">>
+			<<option "Default" "default">>
+		<</listbox>>
+		<br>
+	<</if>>
+	<<if $transformationParts.dragon.tail isnot "disabled">>
+	    Dragon tail:
+		<<listbox "$transformationParts.dragon.tail" autoselect>>
+		    <<option "hide" "hidden">>
+			<<option "Default" "default">>
+		<</listbox>>
+		<br>
+	<</if>>
+	<<if $transformationParts.dragon.claws isnot "disabled">>
+	    Dragon claws:
+		<<listbox "$transformationParts.dragon.claws" autoselect>>
+		    <<option "hide" "hidden">>
+			<<option "Default" "default">>
+		<</listbox>>
+		<br>
+	<</if>>
+<</if>>
+
 <<if $harpy gt 1>>
 	__Bird__
 	<br>

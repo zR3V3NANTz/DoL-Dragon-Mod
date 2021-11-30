@@ -1544,6 +1544,10 @@ Bird (30 needed for full transformation): <<link "<">><<set $birdbuild -= 5>><<c
 <span id="statsbirdbuild"><<print Math.trunc($birdbuild)>></span>
  | <<link ">">><<set $birdbuild += 5>><<clamp>><<replace "#statsbirdbuild">><<print Math.trunc($birdbuild)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
+Dragon (50 needed for full transformation): <<link "<">><<set $dragonbuild -= 5>><<clamp>><<replace "#statsdragonbuild">><<print Math.trunc($dragonbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+<span id="statsdragonbuild"><<print Math.trunc($dragonbuild)>></span>
+ | <<link ">">><<set $dragonbuild += 5>><<clamp>><<replace "#statsdragonbuild">><<print Math.trunc($dragonbuild)>><</replace>> <<updatesidebarimg>><</link>>
+<br>
 <</widget>>
 
 <<widget "cheats-npcs">>

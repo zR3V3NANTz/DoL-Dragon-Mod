@@ -2462,7 +2462,7 @@ The <<person2>><<person>> returns once more, this time with the main menu. Just 
 :: Avery Date Order
 <<effects>>
 
-Avery orders a salad for you, and a fish soup for <<himself>>.
+Avery orders a sirlion steak for you, and a fish soup for <<himself>>.
 <br><br>
 
 <<He>> leans back and regards the restaurant.
@@ -2502,7 +2502,7 @@ Avery orders a salad for you, and a fish soup for <<himself>>.
 <</if>>
 <br><br>
 
-You order a sandwich. Avery seems irritated, but doesn't say anything. <<He>> orders a fish soup for <<himself>>.
+You order a hamburger. Avery seems irritated, but doesn't say anything. <<He>> orders a fish soup for <<himself>>.
 <br><br>
 
 <<He>> leans back and regards the restaurant.
@@ -2542,7 +2542,7 @@ You order a sandwich. Avery seems irritated, but doesn't say anything. <<He>> or
 <</if>>
 <br><br>
 
-You order the most expensive thing on the menu. Which turns out to be a fish soup. Avery bristles, but orders <<himself>> the same.
+You order the most expensive thing on the menu. Which turns out to be wagyu beef from Japan. Avery bristles, but orders <<himself>> the same.
 <br><br>
 
 <<He>> leans back and regards the restaurant.
@@ -2671,11 +2671,11 @@ The food soon arrives.
 <<effects>>
 <<pass 20>>
 <<if $phase is 0>>
-	The salad is nice, but the smell of Avery's fish soup wafts over and makes you wish you had something heartier.
+	The steak is great. Avery wishes <<he>> ordered one too.
 <<elseif $phase is 1>>
-	The sandwich is nice, and bigger than you expected given the price. Avery seems to be enjoying <<his>> fish soup.
+	The hamburger is nice, and bigger than you expected given the price. Avery seems to be enjoying <<his>> fish soup.
 <<elseif $phase is 2>>
-	The soup is delicious. Avery seems to enjoy <<his>> too.
+	The wagyu beef is delicious. Avery seems to enjoy <<his>> soup.
 <</if>>
 
 <<He>> chats between spoonfuls, stopping now and then to wave at patrons <<he>> recognises. They're all well-dressed.

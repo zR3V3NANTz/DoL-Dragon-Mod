@@ -9,7 +9,8 @@
 			cat: {ears:"disabled", tail:"disabled"},
 			cow: {horns:"disabled", ears:"disabled", tail:"disabled"},
 			wolf: {ears:"disabled", tail:"disabled", pubes:"disabled", pits:"disabled"},
-			bird: {tail:"disabled", wings:"disabled", eyes:"disabled", malar:"disabled", plumage:"disabled", pubes:"disabled"}
+			bird: {tail:"disabled", wings:"disabled", eyes:"disabled", malar:"disabled", plumage:"disabled", pubes:"disabled"},
+			dragon: {tail:"disabled", wings:"disabled", eyes:"disabled", horns:"disabled", claws:"disabled"}
 		}>>
 		<<if $specialTransform is 1>>
 			<<if $angel gte 4>>
@@ -87,6 +88,9 @@
 	<<if $transformationParts.bird is undefined>>
 		<<set $transformationParts.bird to {tail:"disabled", wings:"disabled", eyes:"disabled", malar:"disabled", plumage:"disabled"}>>
 	<</if>>
+	<<if $transformationParts.dragon is undefined>>
+	    <<set $transformationParts.dragon to {tail:"disabled", wings:"disabled", eyes:"disabled", claws:"disabled", horns:"disabled"}>>
+	<</if>>	
 	<<if $transformationParts.bird.pubes is undefined>>
 		<<if $harpy gte 6>>
 			<<set $transformationParts.bird.pubes to "hidden">>
@@ -112,6 +116,10 @@
 
 <<if $birdbuild gte 1 and $worn.head.name isnot "feathered hair clip">>
 	<<transform bird -1>>
+<</if>>
+
+<<if $dragonbuild gte 1 and $worn.hands.name isnot "dragonstone ring">>
+    <<transform dragon -1>>
 <</if>>
 
 <<if $wolfgirl gte 6>>
@@ -600,14 +608,103 @@
 		<</if>>
 <</switch>>
 
-<<if $cat gt 0 or $wolfgirl gt 0 or $cow gt 0 or $harpy gt 0>>
+<<switch $dragon>>
+	<<case 0>>
+		<<if $dragonbuild gte 10 and $transformdisable is "f" and $physicalTransform isnot 1>>
+			<<set $dragon to 1>><<set $physicalTransform to 1>>
+			<span class="gold">Your head aches for a moment, and horns appear.</span>
+			<<set $transformationParts.dragon.horns to "default">>
+			<br><br>
+		<</if>>
+	<<case 1>>
+		<<if $dragonbuild gte 20 and $transformdisable is "f">>
+			<<set $dragon to 2>>
+			<span class="gold">Your eyes have turned a strange red and yellow. Your vision has improved.</span>
+			<<set $transformationParts.dragon.eyes to "default">>
+			<br><br>
+		<<elseif $dragonbuild lt 10>>
+			<<set $dragon to 0>><<set $physicalTransform to 0>>
+			<span class="gold">Your eyes have reverted and your vision has returned to normal.</span>
+			<<set $transformationParts.dragon.horns to "disabled">>
+			<br><br>
+		<</if>>
+	<<case 2>>
+		<<if $dragonbuild gte 25 and $transformdisable is "f">>
+			<<set $dragon to 3>>
+			<span class="gold">Your lower back itches.</span>
+			<br><br>
+		<<elseif $dragonbuild lt 10>>
+			<<set $dragon to 1>>
+			<span class="gold">Your vision has worsened significantly.</span>
+			<<set $transformationParts.dragon.eyes to "disabled">>
+			<br><br>
+		<</if>>
+	<<case 3>>
+		<<if $dragonbuild gte 30 and $transformdisable is "f">>
+			<<set $dragon to 4>>
+			<span class="gold">Your bottom feels strange. You reach behind you, and find a tail covered in rough scales.</span>
+			<<set $transformationParts.dragon.tail to "default">>
+			<br><br>
+		<<elseif $dragonbuild lt 20>>
+			<<set $dragon to 2>>
+			<span class="gold">Your tail slowly disappears. Your ass no longer feels weird.</span>
+			<br><br>
+		<</if>>
+	<<case 4>>
+		<<if $dragonbuild gte 40 and $transformdisable is "f">>
+			<<set $dragon to 5>>
+			<span class="gold">Your back itches.</span>
+			<br><br>
+		<<elseif $dragonbuild lt 30>>
+			<<set $dragon to 3>>
+			<span class="gold">Your tail is gone.</span>
+			<<set $transformationParts.dragon.tail to "disabled">>
+			<br><br>
+		<</if>>
+	<<case 5>>
+		<<if $dragonbuild gte 50 and $transformdisable is "f">>
+			<<set $dragon to 6>>
+			<span class="gold">You feel stronger and lighter than ever before.</span>
+			<<set $transformationParts.dragon.wings to "default">>
+			<<if $transformationParts.angel.wings is "default">>
+				<<set $transformationParts.angel.wings to "hidden">>
+			<<elseif $transformationParts.fallenAngel.wings is "default">>
+				<<set $transformationParts.fallenAngel.wings to "hidden">>
+			<<elseif $transformationParts.demon.wings is "default">>
+				<<set $transformationParts.demon.wings to "hidden">>
+			<</if>>
+			<br><br>
+		<<elseif $dragonbuild lt 40>>
+			<<set $dragon to 4>>
+			<span class="gold">You feel weaker.</span>
+			<br><br>
+	    <</if>>
+	<<case 6>>
+		<<if $dragonbuild lt 50>>
+			<span class="gold">You feel as weak as you once were. Your scaley wings have disappeared.</span>
+			<<set $dragon to 5>>
+			<<set $transformationParts.dragon.wings to "disabled">>
+			<<if $angel gte 6>>
+				<<set $transformationParts.angel.wings to "default">>
+			<</if>>
+			<<if $demon gte 6>>
+				<<set $transformationParts.demon.wings to "default">>
+			<</if>>
+			<<if $fallenangel gte 2>>
+				<<set $transformationParts.fallenAngel.wings to "default">>
+			<</if>>
+			<br><br>
+		<</if>>
+<</switch>>
+
+<<if $cat gt 0 or $wolfgirl gt 0 or $cow gt 0 or $harpy gt 0 or $dragon gt 0>>
 	<<set $physicalTransform to 1>>
 <<else>>
 	<<set $physicalTransform to 0>>
 <</if>>
 <<if $physicalTransform is 1 or $specialTransform is 1>>
-	<<if $harpy gte 6 and ($angel gte 6 or $fallenangel gte 2 or $demon gte 6)>>
-		<<if $transformationParts.bird.wings is "hidden" and ($transformationParts.demon.wings is "hidden" or $transformationParts.angel.wings is "hidden" or $transformationParts.fallenAngel.wings is "hidden")>>
+	<<if $harpy gte 6 or $dragon gte 6 and ($angel gte 6 or $fallenangel gte 2 or $demon gte 6)>>
+		<<if $transformationParts.bird.wings is "hidden" or $transformationParts.dragon.wings is "hidden" and ($transformationParts.demon.wings is "hidden" or $transformationParts.angel.wings is "hidden" or $transformationParts.fallenAngel.wings is "hidden")>>
 		<<else>>
 			<<set _excludeWings to true>>
 		<</if>>

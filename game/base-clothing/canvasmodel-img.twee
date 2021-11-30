@@ -337,6 +337,11 @@ $worn.under_upper.type.includes("naked") and $worn.under_lower.type.includes("na
 <<set _modeloptions.bird_plumage_type to $transformationParts.bird.plumage>>
 <<set _modeloptions.bird_pubes_type to $transformationParts.bird.pubes>>
 
+<<set _modeloptions.dragon_wings_type to $transformationParts.dragon.wings>>
+<<set _modeloptions.dragon_tail_type to $transformationParts.dragon.tail>>
+<<set _modeloptions.dragon_horns_type to $transformationParts.dragon.horns>>
+<<set _modeloptions.dragon_eyes_type to $transformationParts.dragon.eyes>>
+
 <!--
  -     ██████ ██████   ██████  ████████  ██████ ██   ██
  -    ██      ██   ██ ██    ██    ██    ██      ██   ██

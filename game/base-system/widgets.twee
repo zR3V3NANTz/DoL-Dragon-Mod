@@ -4852,6 +4852,10 @@ __Map__<br>
 		<<set $birdbuild += $args[1]>>
 		<<set $birdbuild = Math.clamp($birdbuild, 0, 100)>>
 	<</if>>
+	<<if $args[0] is "dragon">>
+	    <<set $dragonbuild += $args[1]>>
+		<<set $dragonbuild = Math.clamp($dragonbuild, 0, 100)>>
+	<</if>>
 <</if>>
 <<if $args[1] gte 1>>
 	<<if $args[0] isnot "wolf" and $worn.neck.name isnot "spiked collar">>
@@ -4869,6 +4873,10 @@ __Map__<br>
 	<<if $args[0] isnot "bird" and $worn.head.name isnot "feathered hair clip">>
 		<<set $birdbuild -= $args[1]>>
 		<<set $birdbuild = Math.clamp($birdbuild, 0, 100)>>
+	<</if>>
+	<<if $args[0] isnot "dragon" and $worn.hands.name isnot "dragonstone ring">>
+	    <<set $dragonbuild -= $args[1]>>
+		<<set $birdbuild = Math.clamp($dragonbuild, 0, 100)>>
 	<</if>>
 <</if>>
 <</widget>>

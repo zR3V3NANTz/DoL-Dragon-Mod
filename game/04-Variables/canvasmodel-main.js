@@ -1634,6 +1634,64 @@ Renderer.CanvasModels["main"] = {
 		},
 
 		/***
+		 * 
+		 * DRAGON TF
+		 * 
+		*/
+		"dragon_horns": {
+			srcfn(options) {
+				return 'img/transformations/dragon/horns/'+options.dragon_horns_type+'.png'
+			},
+			showfn(options) {
+				return options.show_tf && tf_enabled(options.dragon_horns_type)
+			},
+			z: ZIndices.horns,
+			animation: "idle"
+		},
+		"dragon_eyes": {
+			srcfn(options) {
+				return 'img/transformations/dragon/eyes/'+options.dragon_eyes_type+'.png'
+			},
+			showfn(options) {
+				return options.show_tf && options.show_face && tf_enabled(options.dragon_eyes_type)
+			},
+			z: ZIndices.irisacc,
+			animation: "idle"
+		},
+		"dragon_wings_right": {
+			srcfn(options) {
+				return 'img/transformations/dragon/rightwing/'+options.dragon_wings_type+'.png'
+			},
+			showfn(options) {
+				return options.show_tf && tf_enabled(options.dragon_wings_type) /*&& options.dragon_wing_right === "idle"*/
+			},
+			filters: ["hair"],
+			z: ZIndices.backhair,
+			animation: "idle"
+		},
+		"dragon_wings_left": {
+			srcfn(options) {
+				return 'img/transformations/dragon/leftwing/'+options.dragon_wings_type+'.png'
+			},
+			showfn(options) {
+				return options.show_tf && tf_enabled(options.dragon_wings_type) /*&& options.dragon_wing_left === "idle"*/
+			},
+			filters: ["hair"],
+			z: ZIndices.backhair,
+			animation: "idle"
+		},
+		"dragon_tail": {
+			srcfn(options) {
+				return 'img/transformations/dragon/tail/'+options.dragon_tail_type+'.png'
+			},
+			showfn(options) {
+				return options.show_tf && tf_enabled(options.dragon_tail_type)
+			},
+			filters: ["hair"],
+			z: ZIndices.backhair,
+			animation: "idle"
+		},
+		/***
 		 *    ██     ██ ██████  ██ ████████ ██ ███    ██  ██████  ███████
 		 *    ██     ██ ██   ██ ██    ██    ██ ████   ██ ██       ██
 		 *    ██  █  ██ ██████  ██    ██    ██ ██ ██  ██ ██   ███ ███████

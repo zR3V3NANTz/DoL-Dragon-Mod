@@ -1080,6 +1080,7 @@ Name: <input id="colorName" type="text" value="Custom" maxlength="30" onfocus="V
 	<<set $specialClothes["featheredhairclip"] to "unlocked">>
 	<<set $specialClothes["catsuit"] to "unlocked">>
 	<<set $specialClothes["holystole"] to "unlocked">>
+	<<set $specialClothes["dragonstone ring"] to "unlocked">>
 <</if>>
 
 <</widget>>
