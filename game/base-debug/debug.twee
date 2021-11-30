@@ -715,6 +715,8 @@ Turn beast into: <<link [[Creature|$passage]]>><<set _xy to $enemyno-1>><<set $N
 <br>
 <<link [[Pig|$passage]]>><<set _xy to $enemyno-1>><<set $NPCList[_xy].type to "pig">><</link>>
 <br>
+<<link [[Dragon|$passage]]>><<set _xy to $enemyno-1>><<set $NPCList[_xy].type to "dragon">><</link>>
+<br>
 <<link [[Lizard|$passage]]>><<set _xy to $enemyno-1>><<set $NPCList[_xy].type to "lizard">><</link>>
 <br><br>
 Swarm Encounters:

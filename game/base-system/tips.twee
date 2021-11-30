@@ -1,7 +1,7 @@
 :: Widgets Tips [widget]
 
 <<widget "tips">>
-<<set _maxTipCount = 140>>
+<<set _maxTipCount = 160>>
 <<if $args[0] is undefined>>
 	<<tipsList `random(0,_maxTipCount)`>>
 	<<unset _maxTipCount>>
@@ -293,6 +293,46 @@
 	The book store in the school library offers school appropriate clothing at a hefty markup.
 <<case 140>>
 	There are rumours of people in the forest and moor who are as much plant as they are person. Supposedly, their nectar is a potent aphrodisiac.
+<<case 141>>
+    The dragon mod is currently WIP.
+<<case 142>>
+    You can fuck dragons or lizards for dragon TF points.
+<<case 143>>
+    Dragonsoul is a noob.
+<<case 144>>
+    Did you know the square root of 144 is 12?
+<<case 145>>
+    Revenant can't code for shit. Bad mod maker.
+<<case 146>>
+    Kekw
+<<case 147>>
+    Rukarin is mean.
+<<case 148>>
+	Does anybody even read these?
+<<case 149>>
+	Rawr.
+<<case 150>>
+	#TeamSeas
+<<case 151>>
+	Apple is stupid.
+<<case 152>>
+    Whitney is stupid.
+<<case 153>>
+    Kylar is stupid.
+<<case 154>>
+	Morgan is an objectively bad character, change my mind.
+<<case 155>>
+	I'll fucking do it again.
+<<case 156>>
+	Bird TF is dead content.
+<<case 157>>
+	Eden is lame now.
+<<case 158>>
+	Gardevoir is overrated.
+<<case 159>>
+	Meat is a great way to increase points for the dragon transformation.
+<<case 160>>
+	I'm running out of ideas.
 <</switch>>
 <</widget>>
 

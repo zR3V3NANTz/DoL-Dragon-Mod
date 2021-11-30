@@ -3303,6 +3303,8 @@
 		<<bHe>> purrs.
 	<<elseif $NPCList[_n].type is "harpy">>
 		<<bHe>> chirps.
+	<<elseif $NPCList[_n].type is "dragon">>
+	    <<bHe>> roars.
 	<<else>>
 		<<bHe>> growls.
 	<</if>>

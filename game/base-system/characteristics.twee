@@ -46,7 +46,6 @@ You are
 		<<else>>
 			bird
 		<</if>>
-	<</if>>
 	<<elseif $dragon gte 6>>
 	    dragon
 	<</if>>

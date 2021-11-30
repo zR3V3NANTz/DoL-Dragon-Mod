@@ -89,10 +89,10 @@
 <!-- v2.7 $BeastList is 0-7: "dog", "cat", "pig", "wolf", "dolphin", "lizard", "bear", "creature" -->
 <!-- v2.13 "horse" added to $BeastList -->
 
-<<set _h to [200,150,200,300,200,250,500,300,200,500,200,150]>>
-<<set _t to ["dog","cat","pig","wolf","dolphin","lizard","bear","boar","creature","horse","fox","hawk"]>>
-<<set _d to ["large","large","fat","enormous","bottlenose","scaly","brown","hairy","strange","huge","large","fierce"]>>
-<<set _pd to ["knotted penis","spiked penis","penis","knotted penis","strange penis","penis","penis","penis","penis","equine cock","knotted penis","avian cock"]>>
+<<set _h to [200,150,200,300,200,250,500,300,200,500,200,150,250]>>
+<<set _t to ["dog","cat","pig","wolf","dolphin","lizard","bear","boar","creature","horse","fox","hawk","dragon"]>>
+<<set _d to ["large","large","fat","enormous","bottlenose","scaly","brown","hairy","strange","huge","large","fierce","scaly"]>>
+<<set _pd to ["knotted penis","spiked penis","penis","knotted penis","strange penis","penis","penis","penis","penis","equine cock","knotted penis","avian cock","draconic cock"]>>
 /% <<set _cla to [1,1,1,1,0,1,1,1]>> %/
 <<set _ps to [2,2,2,3,2,2,3,3,2,5,2,2]>>
 
@@ -425,4 +425,29 @@
 
 <<widget "generatefox6">>
 	<<generateBEAST 6 fox>>
+<</widget>>
+
+<!-- creature dragon calls -->
+<<widget "generatedragon1">>
+	<<generateBEAST 1 dragon>>
+<</widget>>
+
+<<widget "generatedragon2">>
+	<<generateBEAST 2 dragon>>
+<</widget>>
+
+<<widget "generatedragon3">>
+	<<generateBEAST 3 dragon>>
+<</widget>>
+
+<<widget "generatedragon4">>
+	<<generateBEAST 4 dragon>>
+<</widget>>
+
+<<widget "generatedragon5">>
+	<<generateBEAST 5 dragon>>
+<</widget>>
+
+<<widget "generatedragon6">>
+	<<generateBEAST 6 dragon>>
 <</widget>>
