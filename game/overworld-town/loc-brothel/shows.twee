@@ -172,9 +172,13 @@
 :: Brothel Show Gangbang Sex Finish
 	/* Check variables before combat is reset */
 	<<set _extremeshow to "f">>
-	<<if $anusstate is "doublepenetrated" and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
-		<<set _extremeshow to "d">>
-	<<elseif $anusstate is "doublepenetration" and $vaginastate is "penetrated" and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+	<<if $anusstate is "doublepenetrated" and $vaginastate isnot "penetrated" and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+		<<set _extremeshow to "da">>
+	<<elseif $anusstate is "doublepenetrated" and $vaginastate is "penetrated" and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+		<<set _extremeshow to "t">>
+	<<elseif $vaginastate is "doublepenetrated" and $anusstate isnot "penetrated" and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
+		<<set _extremeshow to "dv">>
+	<<elseif $vaginastate is "doublepenetrated" and $anusstate is "penetrated" and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
 		<<set _extremeshow to "t">>
 	<</if>>
 <<effects>>
@@ -203,9 +207,14 @@
 		"I almost believed your performance myself."
 	<</if>>
 	/* Double anal/vaginal/oral */
-	<<if _extremeshow is "d">>
+	<<if _extremeshow is "da">>
 		<br>
 		<<He>> pauses, licking <<his>> lips thoughtfully. "Double anal, now that's real talent. The audience loved it. Keep up the great work; your elastic ass will make us both a lot of money."
+		<<He>> hands you the <<moneyGain 1000>> <<he>> promised, along with a bonus <<moneyGain 200>>.<<gglove>>
+		<<npcincr Briar love 2>>
+	<<elseif _extremeshow is "dv">>
+		<br>
+		<<He>> pauses, licking <<his>> lips thoughtfully. "Double pussy, now that's real talent. The audience loved it. Keep up the great work; your elastic ass will make us both a lot of money."
 		<<He>> hands you the <<moneyGain 1000>> <<he>> promised, along with a bonus <<moneyGain 200>>.<<gglove>>
 		<<npcincr Briar love 2>>
 	<<elseif _extremeshow is "t">>

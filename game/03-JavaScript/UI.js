@@ -449,3 +449,14 @@ window.settingsPCGenderUpdate = function () {
 		jQuery('.playergender [id*=radiobutton-playergender]').on('change', function (e) { updateButtonsActive(); });
 	});
 }
+
+window.settingsDoubleAnalToggleGreyOut = function() {
+    let updateButtonsActive = () => {
+        jQuery('[id*=checkbox-analdoubledisable]').prop("disabled", V.analdisable == "t");
+    };
+
+    jQuery(document).ready(() => {
+        updateButtonsActive();
+        jQuery('[id*=checkbox-analdisable]').on('change', function (e) { updateButtonsActive(); });
+    });
+}

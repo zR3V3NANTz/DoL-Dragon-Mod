@@ -215,6 +215,7 @@
 <<unset $stealstate>>
 <<unset $position_lock>>
 
+
 <<set $leftactiondefault to $leftaction>>
 <<set $rightactiondefault to $rightaction>>
 <<set $feetactiondefault to $feetaction>>
@@ -250,6 +251,7 @@
 <</if>>
 <<if $player.vaginaExist>>
 <<set $vaginatarget to 0>>
+<<unset $vaginadoubletarget>>
 <</if>>
 <<set $anustarget to 0>>
 <<unset $anusdoubletarget>>

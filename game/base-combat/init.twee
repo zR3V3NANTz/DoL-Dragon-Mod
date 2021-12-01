@@ -182,6 +182,7 @@
 <<set $enemyhealth6 to $enemyhealthmax>>
 <<set $enemytrust6 to $enemytrust>>
 
+
 <<combatinit>>
 <</widget>>
 

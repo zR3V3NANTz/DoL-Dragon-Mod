@@ -2641,6 +2641,17 @@
 	<</if>>
 
 <<elseif $speechmoan is 1>>
+	<<if random(0,2) isnot 0 and (($vaginastate is "doublepenetrated" and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble") 
+		or ($anusstate is "doublepenetrated" and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble"))>>
+		<<He>> <<print either("speaks","speaks","whispers","coos","laughs","sniggers","jeers")>>.
+		<<switch random(0,4)>>
+			<<case 0>> "You love having your hole ruined by us, don't you <<bitch>>?"
+			<<case 1>> "You like that, slut? Two fat cocks stretching you out?"
+			<<case 2>> "Don't worry, we'll use you properly."
+			<<case 3>> "You're so cute. You love taking our cocks."
+			<<case 4>> "Yes baby, take our cocks you filthy cock-sleeve."
+		<</switch>>
+	<<else>>
 	<<if $enemyanger lte 20>>
 		<<if $rng lte 20>>
 			<<He>> speaks. "I knew you'd love it."
@@ -2677,6 +2688,7 @@
 		<<else>>
 			<<He>> speaks. "Don't make me laugh, <<bitch>>. You're a manipulative whore."
 		<</if>>
+	<</if>>
 	<</if>>
 
 <<elseif $speechdemand is 1>>

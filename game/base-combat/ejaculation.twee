@@ -570,7 +570,7 @@
 							<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 							<<tummyejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.semen += 1>>
 						<</switch>>
-					<<elseif $NPCList[_nn].penis is "vaginaentrance" and $worn.genitals.type.includes("chastity")>>
+					<<elseif ($NPCList[_nn].penis is "vaginaentrance" or $NPCList[_nn].penis is "vaginadoubleentrance") and $worn.genitals.type.includes("chastity")>>
 						<<He>> strokes <<his>> $NPCList[_nn].penisdesc and ejaculates onto your $worn.genitals.name without a word, sending white streams of semen running down your thighs.
 						<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
 					<<elseif $NPCList[_nn].penis is "vaginaentrance">>
@@ -584,7 +584,7 @@
 							<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
 						<</switch>>
 						<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
-					<<elseif $NPCList[_nn].penis is "vaginaimminent" and $worn.genitals.type.includes("chastity")>>
+					<<elseif ($NPCList[_nn].penis is "vaginaimminent" or $NPCList[_nn].penis is "vaginadoubleimminent") and $worn.genitals.type.includes("chastity")>>
 						<<He>> ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs. "Wish I could have fucked you properly."
 						<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
 					<<elseif $NPCList[_nn].penis is "vaginaimminent">>
@@ -625,6 +625,57 @@
 								<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 							<</switch>>
 						<</switch>>
+
+					<<elseif $NPCList[_nn].penis is "vaginadoubleentrance">>
+						<<switch random(1, 7)>>
+						<<case 1 2 3>>
+							<<He>> holds you firm by the hip with one hand and holds <<his>> $NPCList[_nn].penisdesc with the other, ejaculating onto your <<pussy>>. Semen covers you and pools around your legs.
+						<<case 4 5 6>>
+							<<He>> strokes <<his>> $NPCList[_nn].penisdesc and ejaculates onto your <<pussy>> without a word, sending white streams of semen running down your cunt.
+						<<case 7>>
+							<<He>> moans and strokes <<his>> $NPCList[_nn].penisdesc as <<he>> cums, sending thick ropes of semen onto your <<pussy>> and <<bottom>>.
+							<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+						<</switch>>
+						<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+					<<elseif $NPCList[_nn].penis is "vaginadoubleimminent">>
+						<<switch random(1, 7)>>
+						<<case 1 2 3>>
+							<<He>> cums before <<he>> can penetrate your <<pussy>>, ejaculating over your labia. Semen drips into a pool beneath you. "Damn it, I wanted to cum inside you."
+						<<case 4 5 6>>
+							<<He>> ejaculates onto your <<pussy>> before <<he>> can penetrate, sending white streams of semen running down your labia. "Fuck, that should have gone inside."
+						<<case 7>>
+							<<He>> moans and strokes <<his>> $NPCList[_nn].penisdesc as <<he>> cums, sending thick ropes of semen onto your <<pussy>> and <<bottom>>. "Wish I could have cum inside you. I just made a mess instead."
+							<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+						<</switch>>
+						<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+					<<elseif $NPCList[_nn].penis is "vaginadouble">>
+						<<switch $NPCList[_nn].penissize>>
+						<<case 4>>
+							<<He>> convulses and grinds into your crotch as <<he>> cums, <<his>> $NPCList[_nn].penisdesc sending thick waves of semen into your <<pussy>>. It drips down your thighs.
+							<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+							<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+							<<vaginalentranceejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+							<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+						<<case 1>>
+							<<He>> moans as a dribble of cum leaks from <<his>> $NPCList[_nn].penisdesc into your <<pussy>>. You expected more.
+						<<default>>
+							<<switch random(1, 7)>>
+							<<case 1 2 3>>
+								<<He>> moans and thrusts deep into your <<pussy>> as <<he>> cums, holding <<his>> $NPCList[_nn].penisdesc against your womb. You feel warm as semen fills you.
+								<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+								<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+							<<case 4 5 6>>
+								<<He>> grasps your shoulders, pulling you deeper onto <<his>> $NPCList[_nn].penisdesc as <<he>> cums. Semen fills your <<pussy>>, leaving you breathless.
+								<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+								<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+							<<case 7>>
+								<<He>> convulses and grinds down on your crotch as <<he>> cums, sending thick waves of cum into your <<pussy>>. Semen drips down your thighs.
+								<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+								<<vaginalejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+								<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+							<</switch>>
+						<</switch>>
+
 					<<elseif $NPCList[_nn].penis is "cheeks">>
 						<<switch random(1, 7)>>
 						<<case 1 2 3>>
@@ -637,7 +688,7 @@
 							<<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>> <!-- intentional dupe line, total of 1000 and 2 -->
 						<</switch>>
 						<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
-					<<elseif $NPCList[_nn].penis is "anusentrance" and $worn.genitals.anal_shield is 1>>
+					<<elseif ($NPCList[_nn].penis is "anusentrance" or $NPCList[_nn].penis is "anusdoubleentrance") and $worn.genitals.anal_shield is 1>>
 						<<He>> cums before <<he>> can penetrate your ass. Semen coats your <<bottom>> and drips down your thighs. "Damn it, I wanted to pound your ass properly."
 						<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
 					<<elseif $NPCList[_nn].penis is "anusentrance">>
@@ -651,7 +702,7 @@
 							<<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>> <!-- intentional dupe line, total of 1000 and 2 -->
 						<</switch>>
 						<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
-					<<elseif $NPCList[_nn].penis is "anusimminent" and $worn.genitals.anal_shield is 1>>
+					<<elseif ($NPCList[_nn].penis is "anusimminent" or $NPCList[_nn].penis is "anusdoubleimminent") and $worn.genitals.anal_shield is 1>>
 						<<He>> cums before <<he>> can penetrate your ass, ejaculating over your cheeks. Semen coats your <<bottom>> and pools beneath you. "Fuck, I wanted to cum inside that ass of yours."
 						<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
 					<<elseif $NPCList[_nn].penis is "anusimminent">>
@@ -710,11 +761,11 @@
 						<<else>>
 							<<switch random(1, 7)>>
 								<<case 1 2>>
-									<<He>> moans, pounding your <<bottom>> and the $NPCList[_otherNPCindex].fullDescription's <<npcPenisSimple _otherNPCindex>> without mercy as <<he>> cums. You whimper as you take <<his>> entire length, feeling warm semen streaming into your bowels.
+									<<He>> moans, pounding your <<bottom>> and <<personselect _otherNPCindex>><<combatpersons>> <<npcPenisSimple _otherNPCindex>> without mercy as <<personselect _nn>><<he>> cums. You whimper as you take <<his>> entire length, feeling warm semen streaming into your bowels.
 								<<case 3 4>>
-									<<He>> screams, ramming your <<bottom>> and the $NPCList[_otherNPCindex].fullDescription's <<npcPenisSimple _otherNPCindex>> savagely as <<he>> cums. You whimper as you take <<his>> entire length. Despite the pain, you can't help but enjoy the feel of semen streaming into your bowels. "I can't believe you took both of our cocks. I think I'm in love!"
+									<<He>> screams, ramming your <<bottom>> and <<personselect _otherNPCindex>><<combatpersons>> <<npcPenisSimple _otherNPCindex>> savagely as <<personselect _nn>><<he>> cums. You whimper as you take <<his>> entire length. Despite the pain, you can't help but enjoy the feel of semen streaming into your bowels. "I can't believe you took both of our cocks. I think I'm in love!"
 								<<case 5 6>>
-									<<He>> grasps your hair, pulling you hard onto <<his>> $NPCList[_nn].penisdesc as <<he>> cums while giving no thought to the comfort of the $NPCList[_otherNPCindex].fullDescription's <<npcPenisSimple _otherNPCindex>>. <span class="blue">You cry out as you feel semen fill you,</span> <<his>> length pulsing in your anus.
+									<<He>> grasps your hair, pulling you hard onto <<his>> $NPCList[_nn].penisdesc as <<he>> cums while giving no thought to the comfort of <<personselect _otherNPCindex>><<combatpersons>> <<npcPenisSimple _otherNPCindex>>. <span class="blue">You moan as you feel semen fill you,</span> <<personselect _nn>><<his>> length pulsing in your anus.
 								<<case 7>>
 									<<He>> convulses and, with a final shove of <<his>> $NPCList[_nn].penisdesc, cums in your <<bottom>>. Thick waves of semen pump into you. <span class="blue">You gasp as your ass overflows.</span> You feel it drip down your legs. "You need to learn how to take two cocks. Don't worry, I'm sure you'll get lots of practice."
 									<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
@@ -722,7 +773,7 @@
 							<<violence 3>>
 						<</if>>
 						<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.anus.semen += 1>>
-
+						
 					<<elseif $NPCList[_nn].penis is "anusdoubleimminent" or $NPCList[_nn].penis is "anusdoubleentrance">>
 						<<set _otherNPCindex to 0>>
 						<<if _nn is $anustarget>>
@@ -1007,6 +1058,94 @@
 								<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
 							<</switch>>
 						<</switch>>
+					<<elseif $NPCList[_nn].penis is "vaginadoubleentrance">>
+						<<switch random(1, 7)>>
+						<<case 1 2 3>>
+							<<He>> grasps your <<bottom>> and tries to pull you onto <<him>> as <<he>> ejaculates over your <<pussy>>. Semen coats your outer labia and pools around your legs.
+						<<case 4 5 6>>
+							<<He>> rubs <<his>> $NPCList[_nn].penisdesc against your <<pussy>> with greater intensity as <<he>> ejaculates, covering your labia with semen.
+						<<case 7>>
+							<<He>> moans and rubs <<his>> $NPCList[_nn].penisdesc hard against your <<pussy>> as <<he>> cums, sending thick ropes of semen onto your labia and <<bottom>>.
+							<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+						<</switch>>
+						<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+						<br>
+					<<elseif $NPCList[_nn].penis is "vaginadoubleimminent" and $worn.genitals.type.includes("chastity")>>
+						<<set _otherNPCIndex to (_nn is $vaginatarget ? $vaginatarget : $vaginadoubletarget)>>
+						<<switch random(0,2)>>
+							<<case 0>>
+								<<He>> ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs. "Wish you weren't wearing that thing."
+								<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
+							<<case 0>>
+								<<He>> ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs and <<personselect _otherNPCIndex>><<combatpersons>> <<npcPenisSimple _otherNPCIndex>>. "Fucking whore, look what I've done."
+								<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
+							<<default>>
+								<<He>> ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs. "Wish you weren't wearing that thing."
+								<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
+						<</switch>>
+						<br>
+					<<elseif $NPCList[_nn].penis is "vaginadoubleimminent">>
+						<<set _otherNPCIndex to (_nn is $vaginatarget ? $vaginadoubletarget : $vaginatarget)>>
+						<<switch random(1, 7)>>
+						<<case 1 2>>
+							<<He>> cums before penetrating your <<pussy>>, ejaculating on your labia and tummy. <span class="red"><<He>> slaps your <<bottom>> hard in anger.</span>
+							<<gstress>><<gtrauma>><<gpain>><<violence 6>><<bruise bottom>><<hitstat>>
+						<<case 3 4>>
+							<<He>> ejaculates onto your <<pussy>> before penetrating you, sending white streams of semen onto your labia. "Fuck. I wanted that to go inside."
+						<<case 5 6>>
+							<<He>> cums before penetrating your <<pussy>>, ejaculating on your labia and all over <<personselect _otherNPCIndex>><<combatpersons>> <<npcPenis _otherNPCIndex>>. <span class="red"><<personselect _nn>><<He>> slaps your <<bottom>> hard in anger.</span>
+							<<gstress>><<gtrauma>><<gpain>><<violence 6>><<bruise bottom>><<hitstat>>
+						<<case 4 5>>
+							<<He>> ejaculates onto your <<pussy>> before penetrating you, sending white streams of semen onto your labia. "Fuck. I wanted that to go inside."
+						<<case 7>>
+							<<He>> moans and spasms as <<he>> cums, trying to penetrate your <<pussy>> with desparate thrusts. <<He>> lacks the coordination mid-climax, instead sending thick ropes of semen over your labia and <<bottom>> "I'm fucking you properly next time, slut."
+							<<bottomejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
+						<</switch>>
+						<br>
+						<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+					<<elseif $NPCList[_nn].penis is "vaginadouble">>
+						<<set _otherNPCIndex to (_nn is $vaginatarget ? $vaginadoubletarget : $vaginatarget)>>
+						<<switch $NPCList[_nn].penissize>>
+						<<case 4 5>>
+							<<He>> convulses and pounds your crotch as <<he>> cums, <<his>> $NPCList[_nn].penisdesc sending thick waves of cum into your <<pussy>>. Semen drips from your vagina and down your legs. "Doesn't look like you can handle my load."
+
+							<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+							<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+							<<vaginalentranceejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+							<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+						<<case 1>>
+							<<He>> moans as a dribble of cum leaks from <<his>> $NPCList[_nn].penisdesc, oozing over your <<pussy>> and <<personselect _otherNPCIndex>><<combatpersons>> <<npcPenis _otherNPCIndex>>.
+
+						<<default>>
+							<<switch random(1, 7)>>
+							<<case 1 2 3>>
+								<<He>> grabs your hair and thrusts <<his>> $NPCList[_nn].penisdesc deep into your <<pussy>> as <<he>> cums. You feel unwelcome semen splash inside.
+		
+								<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+								<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+							<<case 4 5>>
+								<<He>> <span class="purple">grasps your throat</span> and pounds <<his>> $NPCList[_nn].penisdesc into you as <<he>> cums. Semen fills your <<pussy>> as you gasp for air.
+								<<gstress>><<gtrauma>><<gpain>><<violence 3>><<bruise neck>><<hitstat>>
+		
+								<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+								<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+							<<case 6>>
+								<<He>> convulses and pounds your <<pussy>> as <<he>> cums, giving no head to <<personselect _otherNPCIndex>><<combatpersons>> <<npcPenis _otherNPCIndex>>. Semen drips from your vagina and down your legs. "Filthy cum slut, take it!"
+								
+								<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+								<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+								<<vaginalentranceejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+								<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+							<<case 7>>
+								<<He>> convulses and pounds your <<pussy>> as <<he>> cums. Rubbing against your <<clit>> and sending thick waves of cum into your body. Semen drips from your vagina and down your legs. "Didn't think you could handle my load."
+								
+								<<recordVaginalSperm "pc" $NPCList[_nn].fullDescription `($enemytype is "man" ? "human" : $NPCList[_nn].type)`>>
+								<<vaginalejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vagina.semen += 1>>
+								<<vaginalentranceejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
+								<<thighejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
+							<</switch>>
+						<</switch>>
+						<br>
 					<<elseif $NPCList[_nn].penis is "cheeks">>
 						<<switch random(1, 7)>>
 						<<case 1 2 3>>
