@@ -741,7 +741,7 @@ After <<his>> thirty minutes are up, <<he>> pays you the agreed fee and thanks y
 
 :: Brothel Private Sex Finish
 <<set $outside to 0>><<set $location to "brothel">><<effects>>
-<<if $stealstate is 3>><<set $brothel_thief += 1>><</if>>
+<<if $stealtarget isnot "">><<set $brothel_thief += 1>><</if>>
 <<if $consensual is 1>>
 
 	<<if $enemyarousal gte $enemyarousalmax>>

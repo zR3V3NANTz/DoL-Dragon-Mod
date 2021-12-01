@@ -39,7 +39,6 @@
 <<set $stresssaved to $stress>>
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
-<<set $enemynomax to $enemyno>>
 
 <<set $combattype to "gang">>
 
@@ -95,7 +94,6 @@
 <<set $stresssaved to $stress>>
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
-<<set $enemynomax to $enemyno>>
 
 <!-- NG This means if Beast 1 is a monster, they are all monsters -->
 <!-- This should be fixed globally later -->
@@ -214,8 +212,6 @@
 
 <<set $enemytype to "beast">>
 
-<<set $enemynomax to _nn>>
-
 <!-- NG This means if Beast 1 is a monster, they are all monsters -->
 <!-- This should be fixed globally later -->
 <<if $NPCList[0].monster is "monster">>
@@ -260,7 +256,6 @@
 <<set $stresssaved to $stress>>
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
-<<set $enemynomax to $enemyno>>
 
 <!-- NG This means if Beast 1 is a monster, they are all monsters -->
 <!-- This should be fixed globally later -->
@@ -670,7 +665,6 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
 <<set $enemyno to 1>>
-<<set $enemynomax to 1>>
 
 <<set $leftarm to "grappled">>
 <<set $rightarm to "grappled">>
@@ -805,7 +799,6 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
 <<set $enemyno to 1>>
-<<set $enemynomax to 1>>
 
 <<set $NPCList[0].pronoun to "n">>
 <<combatinit>>
@@ -851,7 +844,6 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
 <<set $enemyno to 1>>
-<<set $enemynomax to 1>>
 
 <<set $NPCList[0].pronoun to "n">>
 <<combatinit>>
@@ -896,6 +888,8 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<else>>
   <<crossdressing_check>>
 <</if>>
+
+<<set $enemynomax to $enemyno>>
 
 <<if $enemytype is "beast">>
 	<<if $NPCList[0].penis is "none" and $player.penisExist>>

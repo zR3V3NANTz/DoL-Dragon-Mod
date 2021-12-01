@@ -240,7 +240,7 @@
 		<<if _targetYourself is true and _targetnumber gt 1>>
 			<<set _targetlistarms["Yourself"] to "self">>
 		<</if>>
-		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1 and $stealstateleft is undefined>>
 			Target: <span onchange="actionsreplace('left')">
 			<<listbox "$lefttarget" autoselect>>
 				<<optionsfrom _targetlistarms>>
@@ -249,7 +249,7 @@
 		<</if>>
 		<<set _leftOptions to "free">>
 		<span @class="($lastOptions.left isnot _leftOptions or _leftGold is true ?'gold':'')">Your left hand is free.</span>
-		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+		<<if $combatControls is "radio" and _targetnumber gt 1 and $stealstateleft is undefined>><br>
 			Target: <span onchange="actionsreplace('left')">
 			<<listbox "$lefttarget" autoselect>>
 				<<optionsfrom _targetlistarms>>
@@ -449,7 +449,7 @@
 		<<if _targetYourself is true and _targetnumber gt 1>>
 			<<set _targetlistarms["Yourself"] to "self">>
 		<</if>>
-		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1 and $stealstateright is undefined>>
 			Target: <span onchange="actionsreplace('right')">
 			<<listbox "$righttarget" autoselect>>
 				<<optionsfrom _targetlistarms>>
@@ -458,7 +458,7 @@
 		<</if>>
 		<<set _rightOptions to "free">>
 		<span @class="($lastOptions.right isnot _rightOptions or _rightGold is true ?'gold':'')">Your right hand is free.</span>
-		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+		<<if $combatControls is "radio" and _targetnumber gt 1 and $stealstateright is undefined>><br>
 			Target: <span onchange="actionsreplace('right')">
 			<<listbox "$righttarget" autoselect>>
 				<<optionsfrom _targetlistarms>>

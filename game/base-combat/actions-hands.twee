@@ -206,7 +206,7 @@
 <</widget>>
 
 <<widget "leftsteal">>
-<<if $skulduggery gte 200 and $stealstate isnot 3 and $enemytype is "man" and $abomination isnot 1 and $npc.length is 0 and $water isnot 1 and $punishmentposition isnot "gloryhole">>
+<<if $skulduggery gte 200 and $stealstateleft isnot 3 and $enemytype is "man" and $abomination isnot 1 and $npc.length is 0 and $water isnot 1 and $punishmentposition isnot "gloryhole">>
 <<set $skulduggerydifficulty to 1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger>>
 	<<if $leftactiondefault is "steal">>
 	| <label><span class="brat">Steal</span> <<radiobutton "$leftaction" "steal" checked>> <<skulduggerydifficulty>><<combatcrime>></label>
@@ -217,11 +217,17 @@
 <</widget>>
 
 <<widget "leftstealnew">>
-<<if $lefttarget isnot "self">>
-	<<if $skulduggery gte 200 and $stealstate isnot 3 and $enemytype is "man" and $abomination isnot 1 and $npc.length is 0 and $water isnot 1 and $punishmentposition isnot "gloryhole">>
-		<<set $skulduggerydifficulty to 1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger>>
+<<if $lefttarget isnot "self" and !($stealtarget.includes($lefttarget))>>
+	<<if $skulduggery gte 200 and $enemytype is "man" and $abomination isnot 1 and !($npcrow.includes($lefttarget)) and $water isnot 1 and $punishmentposition isnot "gloryhole">>
+		<<set $skulduggerydifficulty to (1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger) * $stealdifficulty>>
 		/*Missing <<skulduggerydifficulty>><<combatcrime>>*/
-		<<set _leftaction["Steal"] to "steal">>
+		<<if $stealstateleft is undefined>>
+			<<set _leftaction["Steal"] to "steal">>
+		<<elseif $stealstateleft is 2>>
+			<<set _leftaction["Take " + $NPCList[$lefttarget].pronouns.his + " belongings"] to "steal">>
+		<<else>>
+			<<set _leftaction["Commit to stealing"] to "steal">>
+		<</if>>
 	<</if>>
 <</if>>
 <</widget>>
@@ -599,7 +605,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 <</widget>>
 
 <<widget "rightsteal">>
-<<if $skulduggery gte 200 and $stealstate isnot 3 and $enemytype is "man" and $abomination isnot 1 and $npc.length is 0 and $water isnot 1 and $punishmentposition isnot "gloryhole">>
+<<if $skulduggery gte 200 and $stealstateright isnot 3 and $enemytype is "man" and $abomination isnot 1 and $npc.length is 0 and $water isnot 1 and $punishmentposition isnot "gloryhole">>
 <<set $skulduggerydifficulty to 1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger>>
 	<<if $rightactiondefault is "steal">>
 	| <label><span class="brat">Steal</span> <<radiobutton "$rightaction" "steal" checked>> <<skulduggerydifficulty>><<combatcrime>></label>
@@ -610,11 +616,17 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 <</widget>>
 
 <<widget "rightstealnew">>
-<<if $righttarget isnot "self">>
-	<<if $skulduggery gte 200 and $stealstate isnot 3 and $enemytype is "man" and $abomination isnot 1 and $npc.length is 0 and $water isnot 1 and $punishmentposition isnot "gloryhole">>
-		<<set $skulduggerydifficulty to 1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger>>
+<<if $righttarget isnot "self" and !($stealtarget.includes($righttarget))>>
+	<<if $skulduggery gte 200 and $enemytype is "man" and $abomination isnot 1 and !($npcrow.includes($righttarget)) and $water isnot 1 and $punishmentposition isnot "gloryhole">>
+		<<set $skulduggerydifficulty to (1000 - ($enemyarousal / $enemyarousalmax * 400) - $skulduggery - $enemytrust + $enemyanger) * $stealdifficulty>>
 		/*Missing <<skulduggerydifficulty>><<combatcrime>>*/
-		<<set _rightaction["Steal"] to "steal">>
+		<<if $stealstateright is undefined>>
+			<<set _rightaction["Steal"] to "steal">>
+		<<elseif $stealstateright is 2>>
+			<<set _rightaction["Take " + $NPCList[$righttarget].pronouns.his + " belongings"] to "steal">>
+		<<else>>
+			<<set _rightaction["Commit to stealing"] to "steal">>
+		<</if>>
 	<</if>>
 <</if>>
 <</widget>>
@@ -1188,55 +1200,74 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 
 <<widget "effectssteal">>
 
-<<if $leftaction is "steal" and $rightaction is "steal">><<set $rightaction to 0>><<set $leftactiondefault to "steal">><<set $rightactiondefault to "steal">><<set $skulduggerydifficulty += 400>><<skulduggerycheck>><<person1>>
-	<<if $skulduggerysuccess is 1>><<set $stealstate to 3>>
-	You rummage through the <<persons>> <<wallet>>. <<encountersteal>><<set $leftactiondefault to "rest">><<set $rightactiondefault to "rest">>
-	<<else>><<brat 30>><<set $speechsteal to 1>>
-	You rummage inside the <<persons>> <<wallet>>. <<He 1>> notices and shifts <<his>> valuables away from your hands.
-	<</if>>
-<<elseif $leftaction is "steal">><<set $leftactiondefault to "steal">><<set $leftaction to 0>><<skulduggerycheck>><<person1>>
+<<if $leftaction is "steal" and $rightaction is "steal" and $lefttarget is $righttarget>><<set $leftaction to 0>><<set $rightaction to 0>><<set $leftactiondefault to "steal">><<set $rightactiondefault to "steal">><<set $skulduggerydifficulty += 400>><<skulduggerycheck>><<personselect $lefttarget>>
+	<<unset $stealstateleft>><<unset $stealstateright>>
 	<<if $skulduggerysuccess is 1>>
-		<<if $stealstate is undefined>><<set $stealstate to 0>>
+		<<set $stealtarget += $lefttarget>><<set $stealdifficulty += 0.2>>
+		You rummage through the <<persons>> <<wallet>>. <<encountersteal>><<set $leftactiondefault to "rest">><<set $rightactiondefault to "rest">>
+	<<else>>
+		<<brat 30 $lefttarget>><<set $speechsteal to 1>>
+		You rummage inside the <<persons>> <<wallet>>. <<He>> notices and shifts <<his>> valuables away from your hands.
+	<</if>>
+<</if>>
+
+<<if $leftaction is "steal">><<set $leftactiondefault to "steal">><<set $leftaction to 0>><<skulduggerycheck>><<personselect $lefttarget>>
+	<<if $skulduggerysuccess is 1>>
+		<<if $stealstateleft is undefined>>
+			<<set $stealstateleft to 0>>
 			You run your hand over the <<persons>> skin, until it rests on <<his>> <<wallet>>.
-		<<elseif $stealstate is 0>><<set $stealstate to 1>>
+		<<elseif $stealstateleft is 0>>
+			<<set $stealstateleft to 1>>
 			You open the <<persons>> <<wallet>>.
-		<<elseif $stealstate is 1>><<set $stealstate to 2>>
+		<<elseif $stealstateleft is 1>>
+			<<set $stealstateleft to 2>>
 			You rummage through the <<persons>> <<wallet>>.
-		<<else>><<set $stealstate to 3>>
+		<<else>>
+			<<unset $stealstateleft>><<set $stealtarget += $lefttarget>><<set $stealdifficulty += 0.2>>
 			You sneak your hand into the <<persons>> <<wallet>>. <<encountersteal>><<set $leftactiondefault to "rest">>
 		<</if>>
-	<<else>><<brat 30>><<set $speechsteal to 1>>
-		<<if $stealstate is undefined>>
-			You run your hand over the <<persons>> skin, until it rests on <<his>> <<wallet>>. <<He 1>> isn't fooled. <<He 1>> shifts <<his>> valuables away from you.
-		<<elseif $stealstate is 0>>
+	<<else>>
+		<<brat 30 $lefttarget>><<set $speechsteal to 1>>
+		<<if $stealstateleft is undefined>>
+			You run your hand over the <<persons>> skin, until it rests on <<his>> <<wallet>>. <<He>> isn't fooled. <<He>> shifts <<his>> valuables away from you.
+		<<elseif $stealstateleft is 0>>
 			You try to open the <<persons>> <<wallet>>. <<He>> notices and shifts <<his>> valuables away.
-		<<elseif $stealstate is 1>>
+		<<elseif $stealstateleft is 1>>
 			You rummage through the <<persons>> <<wallet>>. <<He>> notices and shifts <<his>> valuables away.
 		<<else>>
 			You sneak your hand into the <<persons>> <<wallet>>. <<He>> notices and shifts <<his>> valuables away.
 		<</if>>
+		<<unset $stealstateleft>>
 	<</if>>
-<<elseif $rightaction is "steal">><<set $rightaction to 0>><<set $rightactiondefault to "steal">><<skulduggerycheck>><<person1>>
+<</if>>
+
+<<if $rightaction is "steal">><<set $rightaction to 0>><<set $rightactiondefault to "steal">><<skulduggerycheck>><<personselect $righttarget>>
 	<<if $skulduggerysuccess is 1>>
-		<<if $stealstate is undefined>><<set $stealstate to 0>>
+		<<if $stealstateright is undefined>>
+			<<set $stealstateright to 0>>
 			You run your hand over the <<persons>> skin, until it rests on <<his>> <<wallet>>.
-		<<elseif $stealstate is 0>><<set $stealstate to 1>>
+		<<elseif $stealstateright is 0>>
+			<<set $stealstateright to 1>>
 			You open the <<persons>> <<wallet>>.
-		<<elseif $stealstate is 1>><<set $stealstate to 2>>
+		<<elseif $stealstateright is 1>>
+			<<set $stealstateright to 2>>
 			You rummage through the <<persons>> <<wallet>>.
-		<<else>><<set $stealstate to 3>>
+		<<else>>
+			<<unset $stealstateright>><<set $stealtarget += $righttarget>><<set $stealdifficulty += 0.2>>
 			You sneak your hand into the <<persons>> <<wallet>>. <<encountersteal>><<set $rightactiondefault to "rest">>
 		<</if>>
-	<<else>><<brat 30>><<set $speechsteal to 1>>
-		<<if $stealstate is undefined>>
-			You run your hand over the <<persons>> skin, until it rests on <<his>> <<wallet>>. <<He 1>> isn't fooled. <<He 1>> shifts <<his>> valuables away from you.
-		<<elseif $stealstate is 0>>
+	<<else>>
+		<<brat 30 $righttarget>><<set $speechsteal to 1>>
+		<<if $stealstateright is undefined>>
+			You run your hand over the <<persons>> skin, until it rests on <<his>> <<wallet>>. <<He>> isn't fooled. <<He>> shifts <<his>> valuables away from you.
+		<<elseif $stealstateright is 0>>
 			You try to open the <<persons>> <<wallet>>. <<He>> notices and shifts <<his>> valuables away.
-		<<elseif $stealstate is 1>>
+		<<elseif $stealstateright is 1>>
 			You rummage through the <<persons>> <<wallet>>. <<He>> notices and shifts <<his>> valuables away.
 		<<else>>
 			You sneak your hand into the <<persons>> <<wallet>>. <<He>> notices and shifts <<his>> valuables away.
 		<</if>>
+		<<unset $stealstateright>>
 	<</if>>
 <</if>>
 <</widget>>

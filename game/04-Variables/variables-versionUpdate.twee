@@ -2650,4 +2650,22 @@
 		<</for>>
 		<<set $museumAntiqueJournalHints to clone(_newlist).reverse()>>
 	<</if>>
+
+	<<if $stealtarget is undefined>>
+		<<if $combat is 1 and $stealstate is 3>>
+			<<set $stealtarget to "012345">>
+		<<else>>
+			<<set $stealtarget to "">>
+		<</if>>
+	<</if>>
+
+	<<if $stealdifficulty is undefined>>
+		<<set $stealdifficulty to 1>>
+	<</if>>
+
+	<<if $stealstate isnot undefined>>
+		<<set $stealstateleft to $stealstate>>
+		<<set $stealstateright to $stealstate>>
+		<<unset $stealstate>>
+	<</if>>
 <</widget>>
