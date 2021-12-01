@@ -3038,7 +3038,6 @@ You <<feettext>> press your feet against <<their $args[0]>> pelvis and fondle <<
 <</widget>>
 
 <<widget "actionsmock">>
-
 	<<if $mockaction is "penis">>
 		<<if $vaginause is "penis">>
 			<<if $vaginastate is "penetrated">>
@@ -3695,34 +3694,17 @@ You <<feettext>> press your feet against <<their $args[0]>> pelvis and fondle <<
 		<</if>>
 	<</if>>
 	you say in a <<if $consensual is 1>>teasing<<else>>mocking<</if>> tone.
-	<<if $enemyno is 1>>
-		<<if $mockaction is $NPCList[0].insecurity>>
-			<<if $consensual is 1>>
-				<span class="teal"><<He>> breathes faster as you speak.</span>
-			<<else>>
-				<span class="teal"><<He>> winces at your words.</span>
-				<<gcombatcontrol>>
-			<</if>>
+	<<personselect $mouthtarget>>
+	<<if $mockaction is $NPCList[$mouthtarget].insecurity>>
+		<<if $consensual is 1>>
+			<span class="teal"><<He $mouthtarget>> breathes faster as you speak.</span>
 		<<else>>
-			<span class="pink"><<He>> isn't impressed by your words.</span>
+			<span class="teal"><<He $mouthtarget>> winces at your words.</span>
+			<<gcombatcontrol>>
 		<</if>>
 	<<else>>
-		<<for _j = $enemyno-1; _j gte _end; _j-->>
-			<<if $mockaction is $NPCList[_j].insecurity>>
-				<<if $consensual is 1>>
-					<span class="teal"><<personselect _j>><<combatPerson>> breathes faster as you speak.</span>
-				<<else>>
-					<span class="teal"><<personselect _j>><<combatPerson>> winces at your words.</span>
-					<<gcombatcontrol>>
-				<</if>>
-				<<set _insec to 1>>
-				<<break>>
-			<</if>>
-		<</for>>
-		<<if _insec is 0>><span class="pink">None are impressed by your words.</span><</if>>
-		<<set _insec to 0>>
+		<span class="pink"><<He $mouthtarget>> isn't impressed by your words.</span>
 	<</if>>
-
 <</widget>>
 
 <<widget "actionspeniskiss">>

@@ -25,6 +25,7 @@
 	<<set $NPCList[_temp0] to clone($per_npc[_temp1])>>
 	<<if $enemyno lt 6>><<set $enemyno += 1>><</if>>
 	<<pushEventNPC $args[0]>>
+	<<set $enemynomax to $enemyno>>
 <</if>>
 <</widget>>
 

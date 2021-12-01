@@ -43,7 +43,7 @@
 			<<set $wraith.type to "man">>
 			<<set _genderknownbeforehand to true>>
 			<<set $noBodyWriting to true>>
-			<<set $stealstate to 3>>
+			<<set $stealtarget to "012345">>
 			<<maninit>>
 			<<set $enemyarousalmax to 900>>
 			<<if $wraith.state is "haunt">>
@@ -132,7 +132,7 @@
 			<<set $wraith.type to "man">>
 			<<set _genderknownbeforehand to true>>
 			<<set $noBodyWriting to true>>
-			<<set $stealstate to 3>>	
+			<<set $stealtarget to "012345">>
 			<<maninit>>
 			<<for _i to 1; _i lt 4; _i++>>
 				<<loadNPC _i "wraith">>

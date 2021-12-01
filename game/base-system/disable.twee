@@ -143,6 +143,7 @@
 	<<if $leftarm isnot "grappled" and $leftarm isnot "bound" and $leftarm isnot "struggle">>
 		<<set $leftarm to 0>>
 	<</if>>
+	<<unset $stealstateleft>>
 <</widget>>
 
 <<widget "disablerightarm">>
@@ -159,4 +160,5 @@
 	<<if $rightarm isnot "grappled" and $rightarm isnot "bound" and $rightarm isnot "struggle">>
 		<<set $rightarm to 0>>
 	<</if>>
+	<<unset $stealstateright>>
 <</widget>>

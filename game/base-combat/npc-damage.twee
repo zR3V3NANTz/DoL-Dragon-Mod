@@ -137,7 +137,7 @@
 <<set $enemyarousalmax to 500 * $enemyno>>
 <<set $enemyarousal to $enemyarousal * ($enemyno / ($enemyno +1))>>
 <<set $enemyhealthmax -= $NPCList[_i].healthmax>>
-<<set $_excessdamage to (0-$NPCList[_i].health)>><br> Excess damage: $_excessdamage<br>
+<<set $_excessdamage to (0-$NPCList[_i].health)>><<if $debug is 1>><br> Excess damage: $_excessdamage<br><</if>>
 <<set $NPCList[_i].health to 0>>
 <<set $enemyhealth to 0>>
 <<set $oldtarget to _i>>

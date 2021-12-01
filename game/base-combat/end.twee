@@ -212,7 +212,8 @@
 <<unset $vaginafucked>>
 <<unset $anusfucked>>
 <<set $speechdisable to 0>>
-<<unset $stealstate>>
+<<unset $stealstateleft>>
+<<unset $stealstateright>>
 <<unset $position_lock>>
 
 
@@ -241,6 +242,7 @@
 <<set $chestaction to 0>>
 <<set $mockaction to "none">>
 <<set $bodyaction to 0>>
+<<set $stealdifficulty to 1>>
 
 <<set $lefttarget to 0>>
 <<set $righttarget to 0>>
@@ -257,6 +259,7 @@
 <<unset $anusdoubletarget>>
 <<set $chesttarget to 0>>
 <<set $thightarget to 0>>
+<<set $stealtarget to "">>
 
 <<set $carryblock to 0>>
 

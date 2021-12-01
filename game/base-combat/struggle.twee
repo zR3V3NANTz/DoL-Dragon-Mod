@@ -430,7 +430,7 @@
 <<if $_changetype isnot true>>
 	<<leftActionsStruggle>>
 	<<if Object.keys(_leftaction).length gt 0>>
-		<<if !(Object.values(_leftaction).includes($leftactiondefault))>>
+		<<if $leftactiondefault is undefined>>
 			<<set $leftactiondefault to "rest">>
 		<</if>>
 		<<set $leftaction to $leftactiondefault>>
@@ -624,7 +624,7 @@
 <<if $_changetype isnot true>>
 	<<rightActionsStruggle>>
 	<<if Object.keys(_rightaction).length gt 0>>
-		<<if !(Object.values(_rightaction).includes($rightactiondefault))>>
+		<<if $rightactiondefault is undefined>>
 			<<set $rightactiondefault to "rest">>
 		<</if>>
 		<<set $rightaction to $rightactiondefault>>
@@ -863,7 +863,7 @@
 		<</if>>
 		<<if $combatControls is "radio">>
 			<<if ($leftarm is 0 and $leftarmstate is 0) or ($leftarm is "struggle" and $leftarmstate is "mouth_struggle")>>
-				<<if !(Object.values(_leftactionmouth).includes($leftactiondefault))>>
+				<<if $leftactiondefault is undefined>>
 					<<set $leftactiondefault to "rest">>
 				<</if>>
 				<<set $leftaction to $leftactiondefault>>
@@ -872,7 +872,7 @@
 				<<generateCombatActionOthers _leftactionmouth "leftaction" _textColor $leftaction "Struggle">>
 			<</if>>
 			<<if ($rightarm is 0 and $rightarmstate is 0) or ($rightarm is "struggle" and $rightarmstate is "mouth_struggle")>>
-				<<if !(Object.values(_rightactionmouth).includes($rightactiondefault))>>
+				<<if $rightactiondefault is undefined>>
 					<<set $rightactiondefault to "rest">>
 				<</if>>
 				<<set $rightaction to $rightactiondefault>>
@@ -957,7 +957,7 @@
 		<<penisActionsStruggle>>
 		<<if $combatControls is "radio">>
 			<<if ($leftarm is 0 and $leftarmstate is 0) or ($leftarm is "struggle" and $leftarmstate is "penis_struggle")>>
-				<<if !(Object.values(_leftactionpenis).includes($leftactiondefault))>>
+				<<if $leftactiondefault is undefined>>
 					<<set $leftactiondefault to "rest">>
 				<</if>>
 				<<set $leftaction to $leftactiondefault>>
@@ -966,7 +966,7 @@
 				<<generateCombatActionOthers _leftactionpenis "leftaction" _textColor $leftaction "Struggle">>
 			<</if>>
 			<<if ($rightarm is 0 and $rightarmstate is 0) or ($rightarm is "struggle" and $rightarmstate is "penis_struggle")>>
-				<<if !(Object.values(_rightactionpenis).includes($rightactiondefault))>>
+				<<if $rightactiondefault is undefined>>
 					<<set $rightactiondefault to "rest">>
 				<</if>>
 				<<set $rightaction to $rightactiondefault>>
@@ -1039,7 +1039,7 @@
 		<<vaginaActionsStruggle>>
 		<<if $combatControls is "radio">>
 			<<if ($leftarm is 0 and $leftarmstate is 0) or ($leftarm is "struggle" and $leftarmstate is "vagina_struggle")>>
-				<<if !(Object.values(_leftactionvagina).includes($leftactiondefault))>>
+				<<if $leftactiondefault is undefined>>
 					<<set $leftactiondefault to "rest">>
 				<</if>>
 				<<set $leftaction to $leftactiondefault>>
@@ -1048,7 +1048,7 @@
 				<<generateCombatActionOthers _leftactionvagina "leftaction" _textColor $leftaction "Struggle">>
 			<</if>>
 			<<if ($rightarm is 0 and $rightarmstate is 0) or ($rightarm is "struggle" and $rightarmstate is "vagina_struggle")>>
-				<<if !(Object.values(_rightactionvagina).includes($rightactiondefault))>>
+				<<if $rightactiondefault is undefined>>
 					<<set $rightactiondefault to "rest">>
 				<</if>>
 				<<set $rightaction to $rightactiondefault>>
@@ -1125,7 +1125,7 @@
 		<<anusActionsStruggle>>
 		<<if $combatControls is "radio">>
 			<<if ($leftarm is 0 and $leftarmstate is 0) or ($leftarm is "struggle" and $leftarmstate is "anus_struggle")>>
-				<<if !(Object.values(_leftactionanus).includes($leftactiondefault))>>
+				<<if $leftactiondefault is undefined>>
 					<<set $leftactiondefault to "rest">>
 				<</if>>
 				<<set $leftaction to $leftactiondefault>>
@@ -1134,7 +1134,7 @@
 				<<generateCombatActionOthers _leftactionanus "leftaction" _textColor $leftaction "Struggle">>
 			<</if>>
 			<<if ($rightarm is 0 and $rightarmstate is 0) or ($rightarm is "struggle" and $rightarmstate is "anus_struggle")>>
-				<<if !(Object.values(_rightactionanus).includes($rightactiondefault))>>
+				<<if $rightactiondefault is undefined>>
 					<<set $rightactiondefault to "rest">>
 				<</if>>
 				<<set $rightaction to $rightactiondefault>>
@@ -1207,7 +1207,7 @@
 		<<chestActionsStruggle>>
 		<<if $combatControls is "radio">>
 			<<if ($leftarm is 0 and $leftarmstate is 0) or ($leftarm is "struggle" and $leftarmstate is "chest_struggle")>>
-				<<if !(Object.values(_leftactionchest).includes($leftactiondefault))>>
+				<<if $leftactiondefault is undefined>>
 					<<set $leftactiondefault to "rest">>
 				<</if>>
 				<<set $leftaction to $leftactiondefault>>
@@ -1216,7 +1216,7 @@
 				<<generateCombatActionOthers _leftactionchest "leftaction" _textColor $leftaction "Struggle">>
 			<</if>>
 			<<if ($rightarm is 0 and $rightarmstate is 0) or ($rightarm is "struggle" and $rightarmstate is "chest_struggle")>>
-				<<if !(Object.values(_rightactionchest).includes($rightactiondefault))>>
+				<<if $rightactiondefault is undefined>>
 					<<set $rightactiondefault to "rest">>
 				<</if>>
 				<<set $rightaction to $rightactiondefault>>
@@ -1601,7 +1601,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined) and $com
 			<</if>>
 		<</if>>
 		<br>
-		<<if $rightarm isnot "bound" and !$rightarm.includes("grappled"))>>
+		<<if $rightarm isnot "bound" and !($rightarm.includes("grappled"))>>
 			<<if $struggle.penis.grip gte 1 and $rightarmstate is "penis_struggle">>
 				Right arm:
 				<<if $struggle.penis.success lt 100>>

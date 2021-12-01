@@ -2157,9 +2157,9 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 	<<set $enemytrust += 40>>
 	<<set $tipmod to 2>><<tipset>>
 <</if>>
-<<if $phase is 10 and $stealstate is 3 and $street_car_police isnot true>>
+<<if $phase is 10 and $stealtarget isnot "" and $street_car_police isnot true>>
 	<<set $street_car_police to true>>
-	While searching <<his>> wallet, your hand brushed against <span class="red">a police badge.</span>
+	While searching <<his>> <<wallet>>, your hand brushed against <span class="red">a police badge.</span>
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
@@ -2221,7 +2221,7 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 			<br><br>
 			"Look I..." <<he>> says. "You're a sweet, gorgeous <<if $player.gender_appearance is "m">>guy<<else>>girl<</if>>, and that was pretty good just now. I liked that. A lot. And no one else knows I caught you yet, so... We can just pretend I didn't, right."
 			<br><br>
-			<<if $stealstate is 3>>
+			<<if $stealtarget isnot "">>
 				"You already helped yourself to the money in my wallet, so we'll agree you've been paid."
 			<<else>>
 				"Here's your pay."
@@ -2314,7 +2314,7 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 
 <<set $outside to 0>><<effects>>
 <<if $phase is 0>>
-	"There's no charge, <<if $skulduggery gte 700 or $stealstate gte 3>>Officer,<<else>><<if $pronoun is "m">>sir,<<else>>ma'am,<</if>><</if>>" you smile. "I'm not a prostitute!"
+	"There's no charge, <<if $skulduggery gte 700 or $stealtarget isnot "">>Officer,<<else>><<if $pronoun is "m">>sir,<<else>>ma'am,<</if>><</if>>" you smile. "I'm not a prostitute!"
 	<br><br>
 	"Right..." <<he>> says. "Then I guess you better be on your way."
 	<br><br>

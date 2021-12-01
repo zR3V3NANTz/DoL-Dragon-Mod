@@ -82,9 +82,7 @@
 
 <<effectsspray>>
 <<effectshandsclothes>>
-<<if $stealstate isnot 3>>
-	<<effectssteal>>
-<</if>>
+<<effectssteal>>
 <<effectspenwhack>>
 <<effectsshacklewhack>>
 <<effectshandsfreeface>>
@@ -1763,17 +1761,14 @@
 	<<else>>
 		<<set $mouthactiondefault to "mock">>
 		<<actionsmock>><<set $speechdemand to 1>>
-		<<brat `1 + $englishtrait`>>
-		<<for _j = 0; _j lt $enemynomax; _j++>>
-			<<if $mockaction is $NPCList[_j].insecurity and $NPCList[_j].stance isnot "defeated" and $NPCList[_j].active is "active">>
-				<<if $consensual is 1>>
-					<<submission `1 + $englishtrait`>>
-				<<else>>
-					<<combatcontrol `1 + $englishtrait`>>
-				<</if>>
-				<<break>>
+		<<brat `1 + $englishtrait` $mouthtarget>>
+		<<if $mockaction is $NPCList[$mouthtarget].insecurity>>
+			<<if $consensual is 1>>
+				<<submission `1 + $englishtrait` $mouthtarget>>
+			<<else>>
+				<<combatcontrol `1 + $englishtrait`>>
 			<</if>>
-		<</for>>
+		<</if>>
 	<</if>>
 <</if>>
 
