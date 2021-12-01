@@ -110,7 +110,7 @@
 	<<elseif $arousal gte ($arousalmax / 5) * 2>>
 		dicks
 	<<elseif $arousal gte $arousalmax / 5>>
-		glans
+		glandes
 	<<else>>
 		penises
 	<</if>>
@@ -719,7 +719,7 @@ You <<feettext>> press your feet against <<their $args[0]>> pelvis and fondle <<
 			The Black Wolf seems to notice, and releases a low growl.
 		<</if>>
 
-		<<elseif $vaginastate is "imminent">>
+		<<elseif $vaginastate is "imminent" or $vaginastate is "doubleimminent">>
 			<<if $player.virginity.vaginal is true>>
 				<<if $awarelevel gte 1>>
 					You <<voice "plead">>. "No! I don't want to lose my virginity to a <<beasttype>>!"
@@ -752,7 +752,7 @@ You <<feettext>> press your feet against <<their $args[0]>> pelvis and fondle <<
 				You <<voice "plead">>. "Please don't put it in!"
 			<</if>>
 
-		<<elseif $anusstate is "imminent">>
+		<<elseif $anusstate is "imminent" or $anusstate is "doubleimminent">>
 			<<if $player.virginity.anal is true>>
 				<<if $awarelevel gte 1>>
 					You <<voice "plead">>. "Why are you poking me there? What do you want?"
@@ -763,7 +763,7 @@ You <<feettext>> press your feet against <<their $args[0]>> pelvis and fondle <<
 				You <<voice "plead">>. "No, not there! I don't want it!"
 			<</if>>
 
-		<<elseif $vaginastate is "penetrated">>
+		<<elseif $vaginastate is "penetrated" or $vaginastate is "doublepenetrated">>
 			<<if $arousal lte $arousalmax / 5>>
 				You <<voice "plead">>. "Take it out, take it out!"
 			<<elseif $arousal lte ($arousalmax / 5) * 4>>
@@ -790,7 +790,7 @@ You <<feettext>> press your feet against <<their $args[0]>> pelvis and fondle <<
 				You <<voice "plead">>. "P-please... s-someone help..."
 			<</if>>
 
-		<<elseif $anusstate is "penetrated">>
+		<<elseif $anusstate is "penetrated" or $anusstate is "doublepenetrated">>
 			<<if $arousal lte $arousalmax / 5>>
 				You <<voice "plead">>. "Take it out, take it out!"
 			<<elseif $arousal lte ($arousalmax / 5) * 4>>
@@ -3912,6 +3912,10 @@ You <<oraltext>> lick <<their $args[0]>> penis.
 	You <<vaginaltext>> kiss the tip of <<their $args[0]>> penis with your <<pussy>>.
 <</widget>>
 
+<<widget "actionspenisdoubletip">>
+	You <<vaginaltext>> kiss the tip of <<their>> phalluses with your <<pussy>>.
+<</widget>>
+
 <<widget "actionspenisrub">>
 	You <<vaginaltext>> rub back against the penis probing your <<pussy>>.
 <</widget>>
@@ -4088,6 +4092,208 @@ _otheraction _youraction
 		<</if>>
 	<</if>>
 <</if>>
+<</widget>>
+
+<<widget "actionspenisdoubleride">>
+	<!-- double vaginal -->
+	<<silently>>
+	<<pussy>>
+	<<set _pussy to _text_output>>
+	<</silently>>
+	<<set _otheraction to "">>
+
+	<<set _npcA to (_n is $vaginatarget ? $vaginatarget : $vaginadoubletarget)>>
+	<<set _npcB to (_n is $vaginatarget ? $vaginadoubletarget : $vaginatarget)>>
+	/* State 1 is out of sync, state 2 is in sync */
+	<<set _dvp to ($NPCList[_npcB].penis isnot "vaginadouble" or $NPCList[_npcA].penis isnot "vaginadouble" ? 1 : 2)>>
+
+	<<if _dvp is 2>>
+		<<if $enemytype is "beast">> <!-- future proofing for beasts, text has not been updated -->
+			<<beasttype>>
+			<<set _beasttype to _text_output>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<set _otheraction to "The _beasttype savagely hammers in and out of your _pussy.">>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<set _otheraction to "The _beasttype relentlessly pounds your _pussy.">>
+			<<else>>
+				<<set _otheraction to "The _beasttype rhythmically fucks your _pussy.">>
+			<</if>>
+		<<else>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<set _otheraction to "Your _pussy is ruthlessly fucked by both cocks.">>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<set _otheraction to "Your _pussy is relentlessly pounded by both cocks.">>
+			<<else>>
+				<<set _otheraction to "Your _pussy yields to the repeated insertions by both cocks.">>
+			<</if>>
+		<</if>>
+		<<silently>>
+		<<vaginaltext>>
+		<<set _vaginaltext to _text_output>>
+		<</silently>>
+		<<set _youraction to "">>
+		<<set _islewd to ($promiscuity gte 55 and $enemytype is "man") or ($deviancy gte 55 and $enemytype isnot "man")>>
+		<<set _isverylewd to ($promiscuity gte 75 and $enemytype is "man") or ($deviancy gte 75 and $enemytype isnot "man")>>
+		<<if $consensual is 0 or $vaginalskill lt 600 or not _islewd>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				<<set _youraction to "Driven by instinct, you _vaginaltext push back against their cocks as you approach your peak.">>
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				<<set _youraction to "You _vaginaltext push back against the movements of both cocks.">>
+			<<else>>
+				<<if $consensual is 0>>
+					<<set _youraction to "You _vaginaltext push back against both cocks, trying to reduce your discomfort.">>
+				<<else>>
+					<<set _youraction to "You _vaginaltext push back against both cocks, trying to enjoy it.">>
+				<</if>>
+			<</if>>
+		<<elseif $vaginalskill lt 800 or not _isverylewd>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				<<set _enjoying to either("enjoying", "savouring", "delighting in", "relishing", "revelling in")>>
+				<<set _youraction to "Driven by instinct, you _vaginaltext rock your pelvis back and forth against both cocks, _enjoying every moment as you approach your peak.">>
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				<<set _youraction to "You _vaginaltext hump both cocks in sync with the movements.">>
+			<<else>>
+				<<set _youraction to "You _vaginaltext hump both cocks back against the movements.">>
+			<</if>>
+		<<else>>
+			<<set _penis to "penis">>
+			<<if $NPCList[$vaginatarget].penis is "vagina" and $NPCList[$vaginatarget].location.genitals is "genitals">>
+				<<set _penis to $NPCList[$vaginatarget].penisdesc>>
+			<</if>>
+			<<set _penisB to "penis">>
+			<<if $NPCList[$vaginadoubletarget].penis is "vagina" and $NPCList[$vaginadoubletarget].location.genitals is "genitals">>
+				<<set _penisB to $NPCList[$vaginatarget].penisdesc>>
+			<</if>>
+
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				<<set _eagerclimax to either("You're eager to climax", "You look forward to climaxing", "You yearn to climax", "You crave climaxing", "You want to climax")>>
+				<<set _youraction to "Lust taking over, you _vaginaltext rock your pelvis back and forth and squeeze the penises hard as you approach your peak. _eagerclimax with two cocks inside you.">>
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				<<set _youraction to "You _vaginaltext rock your pelvis back and forth, while also squeezing <<combatperson $vaginatarget>>'s _penis and <<combatperson $vaginadoubletarget>>'s _penisB each time they slide into you.">>
+			<<else>>
+				<<set _eagerfor to either("eager for", "hungry for", "yearning", "craving", "keen on", "hungering for")>>
+				<<set _youraction to "You _vaginaltext hump back in rhythm, _eagerfor the pleasure you know is coming.">>
+			<</if>>
+		<</if>>
+		_otheraction _youraction
+	<<else>>
+		<<actionspenisride>>
+	<</if>>
+<</widget>>
+
+<<widget "actionspenisdoubleedging">>
+	<!-- double vaginal -->
+
+	<<set _dvp to 1>>
+	<<set _npcA to $vaginatarget>>
+	<<set _npcB to $vaginadoubletarget>>
+	/* State 1 is out of sync, state 2 is in sync */
+	<<set _dvp to ($NPCList[_npcB].penis isnot "vaginadouble" or $NPCList[_npcA].penis isnot "vaginadouble" ? 1 : 2)>>
+
+	<<if _dvp is 2>>
+		<<if $vaginastate is "doubleimminent">>
+			<<set _otheraction to "">>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				<<set _youraction to "Driven partly by instinct, you <<vaginaltext>> rub your ass against their penises to control their arousal as you approach your peak.">>
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				<<set _youraction to "You <<vaginaltext>> rub your <<bottom>> against their penises to control their arousal.">>
+			<<else>>
+				<<set _youraction to "You <<vaginaltext>> rub your <<bottom>> against their penises to control their arousal, trying to reduce your discomfort.">>
+			<</if>>
+		<<else>>
+			<<silently>>
+			<<pussy>>
+			<<set _pussy to _text_output>>
+			<</silently>>
+			<<set _otheraction to "">>
+
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<set _otheraction to "Your _pussy is ruthlessly fucked by both cocks.">>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<set _otheraction to "Your _pussy is relentlessly pounded by both cocks.">>
+			<<else>>
+				<<set _otheraction to "Your _pussy yields to the repeated insertions by both cocks.">>
+			<</if>>
+
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				<<set _youraction to "Driven partly by instinct, you <<vaginaltext>> move your <<pussy>> to control their arousal as you approach your peak.">>
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				<<set _youraction to "You <<vaginaltext>> move your <<pussy>> to control their arousal.">>
+			<<else>>
+				<<set _youraction to "You <<vaginaltext>> move your <<pussy>> to control their arousal, trying to reduce your discomfort.">>
+			<</if>>
+		<</if>>
+		_otheraction _youraction
+	<<else>>
+		<<actionspenisedging>>
+	<</if>>
+<</widget>>
+
+<<widget "actionspenisdoubletake">>
+	<!-- double vaginal -->
+	<<set _dvp to "f">>
+	<<set _npcA to (_n is $vaginatarget ? $vaginatarget : $vaginadoubletarget)>>
+	<<set _npcB to (_n is $vaginatarget ? $vaginadoubletarget : $vaginatarget)>>
+	/* State 1 is out of sync, state 2 is in sync */
+	<<set _dvp to ($NPCList[_npcA].penis isnot "vaginadouble" and $NPCList[_npcB].penis isnot "vaginadouble" ? 1 : 2)>>
+	
+	<<if $enemytype is "beast">> <!-- future proofing for beasts, text has not been updated -->
+		<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				The <<beasttype>> savagely hammers in and out of your <<pussy>>.
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				The <<beasttype>> savagely hammers in and out of your <<pussy>>.
+			<<else>>
+				The <<beasttype>> savagely hammers in and out of your <<pussy>>.
+			<</if>>
+		<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				The <<beasttype>> relentlessly pounds your <<pussy>>.
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				The <<beasttype>> relentlessly pounds your <<pussy>>.
+			<<else>>
+				The <<beasttype>> relentlessly pounds your <<pussy>>.
+			<</if>>
+		<<else>>
+			<<if $arousal gte ($arousalmax / 5) * 4>>
+				The <<beasttype>> rhythmically fucks your <<pussy>>.
+			<<elseif $arousal gte ($arousalmax / 5) * 2>>
+				The <<beasttype>> rhythmically fucks your <<pussy>>.
+			<<else>>
+				The <<beasttype>> rhythmically fucks your <<pussy>>.
+			<</if>>
+		<</if>>
+	<<else>>
+		<<if _dvp is 2>>
+			<<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your <<pussy>> is ruthlessly fucked by both cocks.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your <<pussy>> is ruthlessly fucked by both cocks.
+				<<else>>
+					Your <<pussy>> is ruthlessly fucked by both cocks.
+				<</if>>
+			<<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your <<pussy>> is relentlessly pounded by both cocks.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your <<pussy>> is relentlessly pounded by both cocks.
+				<<else>>
+					Your <<pussy>> is relentlessly pounded by both cocks.
+				<</if>>
+			<<else>>
+				<<if $arousal gte ($arousalmax / 5) * 4>>
+					Your <<pussy>> yields to the repeated insertions by both cocks.
+				<<elseif $arousal gte ($arousalmax / 5) * 2>>
+					Your <<pussy>> yields to the repeated insertions by both cocks.
+				<<else>>
+					Your <<pussy>> yields to the repeated insertions by both cocks.
+				<</if>>
+			<</if>>
+		<<else>>
+			<<actionspenistake>>
+		<</if>>
+	<</if>>
 <</widget>>
 
 <<widget "actionstribtake">>
@@ -4785,9 +4991,9 @@ You <<peniletext>> tease <<their $args[0]>> anus with your <<penis>>.
 		<<if $arousal gte ($arousalmax / 5) * 4>>
 			Driven partly by instinct, you <<analtext>> move to control their arousal as you approach your peak.
 		<<elseif $arousal gte ($arousalmax / 5) * 2>>
-			You <<analtext>> move to control their arousal of both cocks.
+			You <<analtext>> move to control the arousal of both cocks.
 		<<else>>
-			You <<analtext>> move to control their arousal of both cocks, trying to reduce your discomfort.
+			You <<analtext>> move to control the arousal of both cocks, trying to reduce your discomfort.
 		<</if>>
 	<</if>>
 <</widget>>

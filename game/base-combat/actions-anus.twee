@@ -136,8 +136,11 @@
 <<if $vaginause is 0 and !$worn.genitals.type.includes("chastity")>>
 	<<set _anusaction["Offer your pussy instead"] to "penispussy">>
 <</if>>
+<<if $awareness gt 300 and $vaginause is "penis" and $NPCList[$vaginatarget].penissize gte 2 and $NPCList[$anustarget].penissize gte 2>>
+	<<set _anusaction["Offer double vaginal instead"] to "penispussydouble">>
+<</if>>
 <<set _anusaction["Tease the tip"] to "penistease">>
-<<if _secondtarget is true>>
+<<if _secondtarget is true and ($vaginause is 0 or ($vaginause isnot 0 and $vaginause isnot "penisdouble")) and $awareness gte 300>>
 	<<if $npc.includes($NPCList[$anusdoubletarget].fullDescription)>>
 		<<set _anusaction["Straddle " + $NPCList[$anusdoubletarget].fullDescription + "'s " + $NPCList[$anusdoubletarget].penisdesc] to "anustopenisdouble">>
 	<<else>>
@@ -165,7 +168,7 @@
 <<if ($consensual is 0 or ($promiscuity gte 55 and $enemytype is "man") or ($deviancy gte 55 and $enemytype isnot "man")) and $analskill gte 800>>
 	<<set _anusaction["Edging"] to "penisEdging">>
 <</if>>
-<<if _secondtarget is true>>
+<<if _secondtarget is true and ($vaginause is 0 or ($vaginause isnot 0 and $vaginause isnot "penisdouble")) and $awareness gte 300>>
 	<<if $npc.includes($NPCList[$anusdoubletarget].fullDescription)>>
 		<<set _anusaction["Straddle " + $NPCList[$anusdoubletarget].fullDescription + "'s " + $NPCList[$anusdoubletarget].penisdesc] to "anustopenisdouble">>
 	<<else>>
@@ -177,6 +180,9 @@
 <<widget "actionsanusPenisDoubleEntrance">>
 	<<actionsanuspenisdoublefuck>>
 	<<set _anusaction["Tease"] to "penisdoubletease">>
+	<<if $vaginause is 0 and !$worn.genitals.type.includes("chastity")>>
+		<<set _anusaction["Offer your pussy instead"] to "penispussydap">>
+	<</if>>
 <</widget>>
 
 <<widget "actionsanusPenisDoubleImminent">>
@@ -297,7 +303,7 @@
 		<<if $rightarm is "anus">>
 			<<set $rightarm to 0>>
 		<</if>>
-		<span class="lblue">You straddle <<personselect $anusdoubletarget>><<combatperson>> and press <<his>> <<npcPenis $anusdoubletarget>> with your <<bottom>>.</span>
+		<span class="lblue">You straddle <<personselect $anusdoubletarget>><<combatperson>> and press <<his>> <<npcPenis $anusdoubletarget>> with your <<bottom>>, joining <<personselect $anustarget>><<combatpersons>> <<npcPenisSimple $anustarget>>.</span>
 		<<if $condomUse is false>>
 		<<elseif ($condomUse is true or (random(0,100) lt $condomautochance and $npcCondoms isnot undefined)) and $NPCList[$anusdoubletarget].condom is false>>
 			<<equipCondom $anusdoubletarget>>
@@ -312,46 +318,53 @@
 <</widget>>
 
 <<widget "effectsanuspenisdoublefuck">>
-<<if $anusaction is "anuspenisdoublefuck">>
-	<<set $anusaction to 0>><<submission 20 $anustarget $anusdoubletarget>><<analskilluse>><<combatpromiscuity5>>
-	<<if $NPCList[$anustarget].penissize gte $NPCList[$anusdoubletarget].penissize>>
-		<<set _doublepenissize to ($NPCList[$anustarget].penissize+1)>>
-	<<else>>
-		<<set _doublepenissize to ($NPCList[$anusdoubletarget].penissize+1)>>
-	<</if>>
-	<<if _doublepenissize gt 5>> /* Ensure combined they're not larger than the largest possible phallus */
-		<<set _doublepenissize to 5>>
-	<</if>>
-	<<if $anusWetness + ($analskill / 10) gte (_doublepenissize * 15) + random(1, 40) or random(1, 3) is 2>>
-		<<set $anusactiondefault to "doublecooperate">>
-		<<if $player.virginity.anal isnot true>>
-			<<set $NPCList[$anustarget].penis to "anusdouble">>
-			<<set $NPCList[$anusdoubletarget].penis to "anusdouble">>
-			<<anus_lube_text>> <span class="pink">you <<analtext>> push against the $NPCList[$anustarget].fullDescription's $NPCList[$anustarget].penisdesc and the $NPCList[$anusdoubletarget].fullDescription's $NPCList[$anusdoubletarget].penisdesc, taking them deep into your <<bottom>>.</span>
-			<<switch _doublepenissize>>
-			<<case 5>>
-				<span class="lewd">You'd moan, but the sheer size of both cocks drives all breath from your body.</span>
-			<<case 4>>
-				<span class="lewd">You shiver as your ass stretches to accommodate both cocks.</span>
-			<<default>>
-				<span class="lewd">You shiver as the phalluses invade your body.</span>
-			<</switch>>
-			<<sex 30 $anustarget $anusdoubletarget>><<takeNPCVirginity $NPCList[$anustarget].fullDescription "penile">><<takeNPCVirginity $NPCList[$anusdoubletarget].fullDescription "penile">><<analstat>><<raped>><<anusraped>><<set $anusstate to "doublepenetrated">>
-		<<elseif $player.virginity.anal is true>>
-			<<set $NPCList[$anustarget].penis to "anusdouble">>
-			<<set $NPCList[$anusdoubletarget].penis to "anusdouble">>
-			<<anus_lube_text>> <span class="pink">you <<analtext>> push against the $NPCList[_npcA].fullDescription's $NPCList[_npcA].penisdesc and the $NPCList[_npcB].fullDescription's $NPCList[_npcB].penisdesc, taking them deep into</span> <span class="red">your virgin <<bottom>>.</span>
-			<<switch _doublepenissize>>
-				<<case 5>><span class="red">You'd scream, but the sheer size of the invading phalluses drive out all thought and breath.</span>
-				<<case 4>><span class="red">You scream as your ass struggles to accommodate both cocks.</span>
-				<<default>><span class="red">You gasp as your <<bottom>> is violated for the first time.</span> <span class="pink">Your nipples harden while your body shivers from taking two cocks.</span>
-			<</switch>>
-			<<set _mydesc to ($NPCList[$anustarget].fullDescription + " and " + $NPCList[$anusdoubletarget].fullDescription)>>
-			<<sex 100 $anustarget $anusdoubletarget>><<takeVirginity _mydesc "anal">><<takeNPCVirginity $NPCList[$anustarget].fullDescription "penile">><<takeNPCVirginity $NPCList[$anusdoubletarget].fullDescription "penile">><<bruise anus>><<analstat>><<violence 30 $anustarget $anusdoubletarget>><<raped>><<anusraped>><<set $anusstate to "doublepenetrated">><<set $speechanusvirgin to 1>>
+	<<if $anusaction is "anuspenisdoublefuck">>
+		<<set $anusaction to 0>><<submission 20 $anustarget $anusdoubletarget>><<analskilluse>><<combatpromiscuity5>>
+		<<set _doublepenissize to $NPCList[$anustarget].penissize>>
+				
+		<<set _npcA to $anustarget>>
+		<<set _npcB to $anusdoubletarget>>
+		<<set _npcdicksizeA to $NPCList[_npcA].penissize>>
+		<<set _npcdicksizeB to $NPCList[_npcB].penissize>>
+		<<if _npcdicksizeA gte _npcdicksizeB>>
+			<<set _doublepenissize to (_npcdicksizeA+1)>>
+		<<else>>
+			<<set _doublepenissize to (_npcdicksizeB+1)>>
 		<</if>>
-	<<else>>
-		You <<analtext>> press your <<bottom>> against their cocks, <span class="blue">but fail to envelop.</span> Their penises angle away and rubs between your cheeks.
-		<<sex 20 $anustarget $anusdoubletarget>><<analstat>><<set $anusactiondefault to "anuspenisdoublefuck">>
+		<<if _doublepenissize gt 5>> /* Ensure combined they're not larger than the largest possible phallus */
+			<<set _doublepenissize to 5>>
+		<</if>>
+		<<if $anusWetness + ($analskill / 10) gte (_doublepenissize * 15) + random(1, 40) or random(1, 3) is 2>>
+			<<set $anusactiondefault to "doublecooperate">>
+			<<if $player.virginity.anal isnot true>>
+				<<set $NPCList[$anustarget].penis to "anusdouble">>
+				<<set $NPCList[$anusdoubletarget].penis to "anusdouble">>
+				<<anus_lube_text>> <span class="pink">you <<analtext>> push against the $NPCList[$anustarget].fullDescription's $NPCList[$anustarget].penisdesc and the $NPCList[$anusdoubletarget].fullDescription's $NPCList[$anusdoubletarget].penisdesc, taking them deep into your <<bottom>>.</span>
+				<<switch _doublepenissize>>
+					<<case 5>>
+						<span class="lewd">You'd moan, but the sheer size of both cocks drives all breath from your body.</span>
+					<<case 4>>
+						<span class="lewd">You shiver as your ass stretches to accommodate both cocks.</span>
+					<<default>>
+						<span class="lewd">You shiver as the phalluses invade your body.</span>
+				<</switch>>
+				<<sex 30 $anustarget $anusdoubletarget>><<takeNPCVirginity $NPCList[$anustarget].fullDescription "penile">><<takeNPCVirginity $NPCList[$anusdoubletarget].fullDescription "penile">><<analstat>><<raped>><<anusraped>><<set $anusstate to "doublepenetrated">>
+			<<elseif $player.virginity.anal is true>>
+				<<set $NPCList[$anustarget].penis to "anusdouble">>
+				<<set $NPCList[$anusdoubletarget].penis to "anusdouble">>
+				<<anus_lube_text>> <span class="pink">you <<analtext>> push against the $NPCList[_npcA].fullDescription's $NPCList[_npcA].penisdesc and the $NPCList[_npcB].fullDescription's $NPCList[_npcB].penisdesc, taking them deep into</span> <span class="red">your virgin <<bottom>>.</span>
+				<<switch _doublepenissize>>
+					<<case 5>><span class="red">You'd scream, but the sheer size of the invading phalluses drive out all thought and breath.</span>
+					<<case 4>><span class="red">You scream as your ass struggles to accommodate both cocks.</span>
+					<<default>><span class="red">You gasp as your <<bottom>> is violated for the first time.</span>
+				<</switch>>
+				<<set _mydesc to ($NPCList[$anustarget].fullDescription + " and " + $NPCList[$anusdoubletarget].fullDescription)>>
+				<<sex 100 $anustarget $anusdoubletarget>><<takeVirginity _mydesc "anal">><<takeNPCVirginity $NPCList[$anustarget].fullDescription "penile">><<takeNPCVirginity $NPCList[$anusdoubletarget].fullDescription "penile">><<bruise anus>><<analstat>><<violence 30 $anustarget $anusdoubletarget>><<raped>><<anusraped>><<set $anusstate to "doublepenetrated">><<set $speechanusvirgin to 1>>
+			<</if>>
+			<span class="pink">Your nipples harden while your body shivers from taking two cocks.</span>
+		<<else>>
+			You <<analtext>> press your <<bottom>> against their cocks, <span class="blue">but fail to envelop.</span> Their penises angle away and rubs between your cheeks.
+			<<sex 20 $anustarget $anusdoubletarget>><<analstat>><<set $anusactiondefault to "anuspenisdoublefuck">>
+		<</if>>
 	<</if>>
-<</if>>
 <</widget>>

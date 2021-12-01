@@ -48,9 +48,9 @@
 		<<link [[Sneak behind the school (0:05)|School Rear Playground]]>><<pass 5>><</link>>
 		<br>
 	<<else>>
-		<<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
+		<<entranceicon>><<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
 		<br>
-		<<link [[Rear playground (0:02)|School Rear Playground]]>><<pass 2>><</link>>
+		<<playgroundicon>><<link [[Rear playground (0:02)|School Rear Playground]]>><<pass 2>><</link>>
 		<br><br>
 		<<if $schoolstate is "afternoon" and $detention gte 1 and $detentionattended isnot 1 and $headnodetention isnot 1 and $pillory_tenant.special.name isnot "Leighton">>
 			<<link [[Leave the school|School Leave Stop]]>><</link>>
@@ -59,10 +59,10 @@
 			<<link [[Leave the school|School Leave Whitney]]>><</link>>
 			<br>
 		<<elseif $schoolday is 1 and $hour gte 7 and $hour lte 16>>
-			<<link [[Leave the school (0:01)|Oxford Street]]>><<pass 1>><</link>>
+			<<ind>><<link [[Leave the school (0:01)|Oxford Street]]>><<pass 1>><</link>>
 			<br>
 		<<else>>
-			<<link [[Leave the school|School Gate Exit]]>><</link>>
+			<<ind>><<link [[Leave the school|School Gate Exit]]>><</link>>
 			<br>
 		<</if>>
 	<</if>>
@@ -129,11 +129,11 @@
 				<<link [[Look for the underwear thief (0:10)|School Panty]]>><<pass 10>><</link>>
 				<br>
 			<</if>>
-			<<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
+			<<entranceicon>><<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
 			<br>
-			<<link [[Front playground (0:02)|School Front Playground]]>><<pass 2>><</link>>
+			<<playgroundicon>><<link [[Front playground (0:02)|School Front Playground]]>><<pass 2>><</link>>
 			<br><br>
-			<<link [[Climb over the fence to the industrial district (0:02)|School Rear Fence Exit]]>><<pass 2>><</link>>
+			<<ind>><<link [[Climb over the fence to the industrial district (0:02)|School Rear Fence Exit]]>><<pass 2>><</link>>
 			<br>
 		<</if>>
 

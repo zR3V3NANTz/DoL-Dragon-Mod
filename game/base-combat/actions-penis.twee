@@ -90,7 +90,7 @@
 <<if $analdisable is "f" and $anususe is 0 and $worn.genitals.anal_shield isnot 1>>
 	<<set _penisaction["Offer your anus instead"] to "penisanus">>
 <</if>>
-<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1>>
+<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1 and $NPCList[$anustarget].penissize gte 2 and $NPCList[$penistarget].penissize gte 2>>
 	<<set _penisaction["Offer double anal instead"] to "penisanusdouble">>
 <</if>>
 <</widget>>
@@ -104,7 +104,7 @@
 <<if $analdisable is "f" and $anususe is 0 and $worn.genitals.anal_shield isnot 1>>
 	<<set _penisaction["Offer your anus instead"] to "penisanus">>
 <</if>>
-<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1>>
+<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1 and $NPCList[$anustarget].penissize gte 2 and $NPCList[$penistarget].penissize gte 2>>
 	<<set _penisaction["Offer double anal instead"] to "penisanusdouble">>
 <</if>>
 <<set _penisaction["Pull away"] to "fencingescape">>
@@ -297,7 +297,7 @@
 <</if>>
 	<<set _penisaction["Take it"] to "fencingtake">>
 	<<set _penisaction["Pull away"] to "fencingescape">>
-<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1>>
+<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1 and $NPCList[$anustarget].penissize gte 2 and $NPCList[$penistarget].penissize gte 2>>
 	<<if !($consensual is 1 and ($promiscuity lte 74 and $enemytype is "man" or $deviancy lte 74 and $enemytype isnot "man") and !$promiscuityIgnore)>>
 		<<set _penisaction["Offer double anal instead"] to "penisanusdouble">>
 	<</if>>
@@ -464,11 +464,11 @@
 		<<if $rightarm is "penis">>
 			<<set $rightarm to 0>>
 		<</if>>
-		<span class="lblue">You caress <<personselect $penistarget>><<combatperson>>'s <<npcPenisSimple $penistarget>> with your penis<<if $worn.genitals.type.includes("chastity")>>, through your $worn.genitals.name<</if>>.</span>
+		<span class="lblue">You caress <<personselect $penistarget>><<combatpersons>> <<npcPenisSimple $penistarget>> with your penis<<if $worn.genitals.type.includes("chastity")>>, through your $worn.genitals.name<</if>>.</span>
 		<<if $enemytype is "beast">><<set $NPCList[$penistarget].stance to "top">><</if>>
 		<<set $NPCList[$penistarget].location.genitals to "genitals">>
 	<<else>>
-		<span class="blue">You try to move your <<penis>> nearer <<personselect $penistarget>><<combatperson>>'s <<npcPenisSimple $penistarget>>, but <<ohe>> pushes you off.</span><<set $penisactiondefault to "penistopenis">>
+		<span class="blue">You try to move your <<penis>> nearer <<personselect $penistarget>><<combatpersons>> <<npcPenisSimple $penistarget>>, but <<ohe>> pushes you off.</span><<set $penisactiondefault to "penistopenis">>
 	<</if>>
 <</if>>
 <</widget>>
@@ -478,9 +478,9 @@
 	<<set $penisaction to 0>><<submission 5 $penistarget>><<penileskilluse>><<combatpromiscuity5>>
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $penileskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<submission 5 $penistarget>><<set $penisuse to "otherpenis">><<set $penisstate to "otherpenis">><<set $NPCList[$penistarget].penis to "penis">><<set $penisactiondefault to "fencingcooperate">>
-		<span class="blue">You press <<personselect $penistarget>><<combatperson>>'s <<npcPenisSimple $penistarget>> with your penis<<if $worn.genitals.type.includes("chastity")>>, through your $worn.genitals.name<</if>>.</span>
+		<span class="blue">You press <<personselect $penistarget>><<combatpersons>> <<npcPenisSimple $penistarget>> with your penis<<if $worn.genitals.type.includes("chastity")>>, through your $worn.genitals.name<</if>>.</span>
 	<<else>>
-		<span class="blue">You try to press your <<penis>> against <<personselect $penistarget>><<combatperson>>'s, but <<ohe>> keeps you away.</span><<set $penisactiondefault to "penistopenisfuck">>
+		<span class="blue">You try to press your <<penis>> against <<personselect $penistarget>><<combatpersons>>, but <<ohe>> keeps you away.</span><<set $penisactiondefault to "penistopenisfuck">>
 	<</if>>
 <</if>>
 <</widget>>

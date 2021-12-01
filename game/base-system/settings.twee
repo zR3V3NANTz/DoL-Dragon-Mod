@@ -39,10 +39,12 @@
 <<set $slimedisable to "f">>
 <<set $voredisable to "f">>
 <<set $tentacledisable to "f">>
+<<set $plantdisable to "t">>
 <<set $analdisable to "f">>
-<<set $analdoubledisable to "t">>
+<<set $analdoubledisable to "f">>
 <<set $analingusdisablegiving to "f">>
 <<set $analingusdisablereceiving to "f">>
+<<set $vaginaldoubledisable to "f">>
 <<set $transformdisable to "f">>
 <<set $transformdisabledivine to "f">>
 /*<<set $hirsutedisable to "t">>*/
@@ -952,16 +954,10 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 
 	<span class="gold">Togglable Features</span>
 	<br>
-	/*<label><div class="settingsToggle">
+	<label><div class="settingsToggle">
 	<<checkbox "$analdisable" "t" "f" autocheck>> Enable anal
-	</div></label>*/
-	<div class="settingsToggle" role="group" aria-labelledby="settingsAnalandDAPHead">
-	<label>
-	<<checkbox "$analdisable" "t" "f" autocheck>> Enable anal |
-	</label>
-	<label>
-	<<checkbox "$analdoubledisable" "t" "f" autocheck>> Enable double anal
-	</label></div>
+	</div></label>
+	<<run settingsDoubleAnalToggleGreyOut()>>
 	<div class="settingsToggle" role="group" aria-labelledby="settingsAnalingusHead">
 	<span id="settingsAnalingusHead">Analingus:</span>
 	<label>
@@ -970,6 +966,17 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<label>
 		<<checkbox "$analingusdisablereceiving" "t" "f" autocheck>> Receiving
 	</label>
+	</div>
+	<div class="settingsToggle" role="group" aria-labelledby="settingsDoubleHead">
+	<span id="settingsAnalingusHead">Double penetration:</span>
+	<label>
+		<<checkbox "$vaginaldoubledisable" "t" "f" autocheck>> Vaginal
+	</label>
+	<label>
+		<<checkbox "$analdoubledisable" "t" "f" autocheck>> Anal
+	</label>
+	<mouse class="tooltip linkBlue">(?)<span>Note that double anal requires anal to be enabled.
+	<br>"Double penetration" here means two phalluses in the same orifice of the player.</span></mouse>
 	</div>
 	<label><div class="settingsToggle">
 	<<checkbox "$pbdisable" "t" "f" autocheck>> Enable pubic hair growth

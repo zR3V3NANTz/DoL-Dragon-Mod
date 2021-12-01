@@ -98,7 +98,7 @@ window.combatListColor = function (name, value, type) {
 			case "mock": case "breastclosed": case "breastpull": case "pullawaykiss": case "noupper":
 			case "up": case "stifleorgasm": case "stifle":
 			/*penisaction*/
-			case "othermouthescape": case "escape": case "otheranusescape":
+			case "othermouthescape": case "escape": case "otheranusescape": case "fencingescape" :
 			/*vaginaaction*/
 			case "tribescape":
 			/*anusaction*/
@@ -111,7 +111,7 @@ window.combatListColor = function (name, value, type) {
 			/*feetaction*/
 			case "kick":
 			/*mouthaction*/
-			case "bite": case "demand": case "breastbite": case "handbite": case "headbutt":
+			case "bite": case "demand": case "breastbite": case "handbite": case "headbutt": case "bitepussy":
 				color = "def";
 				break;
 			/*leftaction or rightaction*/
@@ -128,7 +128,7 @@ window.combatListColor = function (name, value, type) {
 			/*vaginaaction*/
 			case "penisthighs":
 			/*anusaction*/
-			case "bottombay": case "penischeeks": case "penispussy": case "penisanus":
+			case "bottombay": case "penischeeks": case "penispussy": case "penispussydap": case "penisanus":
 				color = "meek";
 				break;
 
@@ -149,6 +149,7 @@ window.combatListColor = function (name, value, type) {
 			case "otherpenisrub": case "penistopenis": case "penistopenisfuck": case "fencingcooperate":
 			/*vaginaaction*/
 			case "vaginatopenis": case "vaginapenisfuck": case "othervaginarub": case "vaginatovagina": case "vaginatovaginafuck": case "tribcooperate": case "penisEdging":
+			case "vaginatopenisdouble": case "vaginapenisdoublefuck": case "penispussydouble": case "penisanusdvp":
 			/*anusaction*/
 			case "anustopenis": case "anuspenisfuck": case "penistease": case "otherMouthAnusRub": case "otherAnusRub": case "penisEdging":
 			/*doubleanusaction*/

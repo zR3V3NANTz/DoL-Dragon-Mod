@@ -2115,6 +2115,14 @@
 	<<set $analingusdisablereceiving to $analdisable>>
 <</if>>
 
+<<if $analdoubledisable is undefined >>
+	<<set $analdoubledisable to $analdisable>>
+<</if>>
+
+<<if $vaginaldoubledisable is undefined>>
+	<<set $vaginaldoubledisable to "f">>
+<</if>>
+
 <<if $rentmod is undefined>>
 	<<set $rentmod to 1>>
 <<elseif $rentmod gt 3>>

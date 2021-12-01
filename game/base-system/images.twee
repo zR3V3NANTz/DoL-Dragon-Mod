@@ -889,6 +889,24 @@
 	<</if>>
 <</widget>>
 
+<<widget "playgroundicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/playground.png">
+	<</if>>
+<</widget>>
+
+<<widget "entranceicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/entrance.png">
+	<</if>>
+<</widget>>
+
+<<widget "exiticon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/exit.png">
+	<</if>>
+<</widget>>
+
 <<widget "lakeicon">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/lake.png">

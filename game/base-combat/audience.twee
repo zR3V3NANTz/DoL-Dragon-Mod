@@ -667,6 +667,8 @@
 					"Boys have such cute nipples."
 				<<elseif $rng gte 33>>
 					"That sleek chest of yours is a thing of beauty."
+				<<elseif $rng gte 20 and $anusdoubletarget isnot undefined and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+					"<<pHer>> hard nipples tell all. This boy loves two hard cocks up the ass!"
 				<<else>>
 					"Don't be shy, there's nothing lewd about your boy nipples."
 				<</if>>
@@ -686,6 +688,12 @@
 					<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
 				<<elseif $rng gte 33>>
 					"<<pHer>> chest is so flat <<pshe>> could pass as a boy."
+					<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+				<<elseif $rng gte 20 and $anusdoubletarget isnot undefined and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+					"<<pHer>> boy nipples are so hard! This flat <<bitch>> loves two hard cocks up the ass!"
+					<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
+				<<elseif $rng gte 20 and $vaginadoubletarget isnot undefined and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
+					"<<pHer>> nipples are so hard! This flat <<bitch>> loves a double pussy pounding!"
 					<<insecurity "breasts_tiny" 1>><<ginsecurity "breasts_tiny">>
 				<<else>>
 					"It's important I take pictures of her cute chest. I'll need them later."
@@ -733,6 +741,8 @@
 					"Now however large your breasts grow, I'll have evidence of when they were small and cute."
 					<<insecurity "breasts_small" 1>><<ginsecurity "breasts_small">>
 				<<elseif $rng gte 20 and $anusdoubletarget isnot undefined and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+					"<<pHer>> nipples are so hard! This <<bitch>> loves double stuffing!"
+				<<elseif $rng gte 20 and $vaginadoubletarget isnot undefined and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
 					"<<pHer>> nipples are so hard! This <<bitch>> loves double stuffing!"
 				<<else>>
 					"Don't be ashamed of your small breasts, they're adorable."
@@ -784,6 +794,9 @@
 				<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
 			<<elseif $rng gte 20 and $anusdoubletarget isnot undefined and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 				"I love how <<pher>> milkers jiggle as their cocks ravage <<pher>> slut ass!"
+				<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
+			<<elseif $rng gte 20 and $vaginadoubletarget isnot undefined and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
+				"I love how <<pher>> milkers flop about as their cocks wreck this slut's pussy!"
 				<<insecurity "breasts_big" 1>><<ginsecurity "breasts_big">>
 			<<else>>
 				"Don't be ashamed, you should be proud of such large breasts."
@@ -994,6 +1007,26 @@
 				"<<pShes>> cumming from such little stimulation, fucking <<pher>> pussy might break <<phim>> fully."
 			<<else>>
 				"Your pussy is about to get the treatment it deserves."
+			<</if>>
+		<</if>>
+	<<elseif $vaginastate isnot 0 and $vaginastate.startsWith("double")>>
+		<<if $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
+			<<if $orgasmdown gte 1>>
+				"This is the money shot! Look at <<phim>> shake with two cocks in <<pher>> ass!"
+			<<else>>
+				<<set _myrng to random(1,2)>>
+				<<switch _myrng>>
+					<<case 1>>
+						"I got a nice close-up of <<pher>> pussy getting double fucked. Super slut!"
+					<<case 2>>
+						"Yes that's it, take both those cocks you dirty slut! The camera loves you!"
+				<</switch>>
+			<</if>>
+		<<else>>
+			<<if $orgasmdown gte 1>>
+				"<<pShes>> already cumming, I wonder how <<pshe>> would take a proper double pussy fucking."
+			<<else>>
+				"I want to catch the moment both cocks go in <<pher>> cunt!"
 			<</if>>
 		<</if>>
 	<<elseif $penisstate is "penetrated">>
@@ -1242,7 +1275,7 @@
 <<elseif $bodypic isnot 1>>
 	<<set $bodypic to 1>>
 	The $audiencedesc $audiencecamera leans back so <<ahis>> camera can take in the whole scene. A light flashes as <<ahe>> takes a picture.
-	<<if $vaginastate is "penetrated">>
+	<<if $vaginastate is "penetrated" or $vaginastate is "doublepenetrated">>
 		<<if $enemytype is "beast">>
 			<<if $orgasmdown gte 1>>
 				<<if $face is "covered">>
@@ -1329,6 +1362,39 @@
 					"Stop covering your face, I want to capture your expression when it goes in."
 				<<else>>
 					"What are you waiting for? Fuck <<phim>> now."
+				<</if>>
+			<</if>>
+		<</if>>
+	<<elseif $vaginastate is "doubleentrance" or $vaginastate is "doubleimminent">>
+		/* Neither dick in */
+		<<if $vaginadoubletarget isnot undefined and $NPCList[$vaginatarget].penis isnot "vaginadouble" and $NPCList[$vaginadoubletarget].penis isnot "vaginadouble">>
+			<<if $orgasmdown gte 1>>
+				<<if $face is "covered">>
+					"<<pHer>> pussy isn't being fucked yet <<pshes>> still cumming."
+				<<else>>
+					"There's no escaping now, slut."
+				<</if>>
+			<<else>>
+				<<if $face is "covered">>
+					"Stop covering your face, I want to capture your expression when both dicks go in."
+				<<else>>
+					"What are you waiting for? Fuck <<phim>> now."
+				<</if>>
+			<</if>>
+		/* One dick in, the other at entrance */
+		<<elseif $vaginadoubletarget isnot undefined and (($NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis isnot "vaginadouble")
+			or ($NPCList[$vaginatarget].penis isnot "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble"))>>
+			<<if $orgasmdown gte 1>>
+				<<if $face is "covered">>
+					"<<pHer>> pussy is  cumming at the thought of double dicking!"
+				<<else>>
+					"About to get double stuffed now, slut."
+				<</if>>
+			<<else>>
+				<<if $face is "covered">>
+					"Stop covering your face, I want to capture your expression when both dicks go in."
+				<<else>>
+					"What are you waiting for? Double fuck <<phim>> now."
 				<</if>>
 			<</if>>
 		<</if>>
@@ -1725,6 +1791,20 @@
 				"Lick <<phim>> good and proper."
 			<<else>>
 				"I hope I get a shot of <<phim>> cumming on your face."
+			<</if>>
+		<</if>>
+	<<elseif $penisstate is "otherpenis">>
+		<<if $orgasmdown gte 1>>
+			<<if $face is "covered">>
+				"Hiding <<phis>> face while cumming on that dick. Cute!"
+			<<else>>
+				"Look at <<pher>> cum squirting, it's covering that dick!"
+			<</if>>
+		<<else>>
+			<<if $face is "covered">>
+				"Yes, smash those <<penises>> together!"
+			<<else>>
+				"I hope I get a good shot of <<phim>> cumming over that cock!"
 			<</if>>
 		<</if>>
 	<<elseif $anusstate is "othermouth">>

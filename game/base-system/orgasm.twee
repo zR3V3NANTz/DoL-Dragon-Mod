@@ -12,8 +12,11 @@
 	<</if>>
 	<<if $player.penisExist and $femaleclimax is -1 and $penissize lt 0>>
 		<<set $_femaleclimaxchance to 50>>
-		<<if $anusstate is "penetrated" or $anusstate is "tentacle" or $anusstate is "tentacledeep">>
+		<<if $anusstate is "penetrated" or $anusstate is "tentacle" or $anusstate is "tentacledeep" or $anusstate is "doublepenetrated">>
 			<<set $_femaleclimaxchance += 40>>
+			<<if $anusstate is "doublepenetrated">>
+				<<set $_femaleclimaxchance += 20>>
+			<</if>>
 		<</if>>
 		<<if $mouthstate is "penetrated" or $mouthstate is "tentacle" or $mouthstate is "tentacledeep">>
 			<<set $_femaleclimaxchance += 20>>
@@ -105,7 +108,7 @@
 						<<personselect $_i>>
 						<<penileejacstat>>
 						<span class="pink">You are overcome by sensation and ejaculate over <<his>> penis.</span>
-						<<purity -1>><<internalejac>><<creampie "npc" "mouth">>
+						<<purity -1>><<internalejac>><<creampie "npc" "penis">>
 					<<elseif $NPCList[$_i].penis is "penisimminent" or $NPCList[$_i].penis is "penisentrance">>
 						<<personselect $_i>>
 						<span class="pink">You are overcome by sensation and ejaculate over <<his>> cock and stomach.</span>

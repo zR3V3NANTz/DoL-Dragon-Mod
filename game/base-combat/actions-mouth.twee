@@ -252,6 +252,9 @@
 
 <<widget "combatOthervagina">>
 <<set _mouthaction["Lick"] to "vaginalick">>
+<<if $consensual isnot 1>>
+	<<set _mouthaction["Bite"] to "bitepussy">>
+<</if>>
 <<if $head isnot "grappled" and $head isnot "bound" and $mouthuse isnot "facesit">>
 	<<set _mouthaction["Pull away"] to "pullawayvagina">>
 <</if>>
