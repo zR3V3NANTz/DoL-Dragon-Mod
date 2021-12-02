@@ -94,7 +94,7 @@
 <<set _d to ["large","large","fat","enormous","bottlenose","scaly","brown","hairy","strange","huge","large","fierce","scaly"]>>
 <<set _pd to ["knotted penis","spiked penis","penis","knotted penis","strange penis","penis","penis","penis","penis","equine cock","knotted penis","avian cock","draconic cock"]>>
 /% <<set _cla to [1,1,1,1,0,1,1,1]>> %/
-<<set _ps to [2,2,2,3,2,2,3,3,2,5,2,2]>>
+<<set _ps to [2,2,2,3,2,2,3,3,2,5,2,2,5]>>
 
 <<set _i to $BeastList.indexOf(_type)>>
 <<set $NPCList[_n].health to _h[_i]>>

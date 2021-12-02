@@ -4055,10 +4055,24 @@ __Map__<br>
 
 <<widget "breastfed">>
 <<set $milk_drank_stat += random(1, 5)>>
-<<if random(1, 100) gte 70>><<transform cat 1>><</if>>
-<<if $milkdranktrait is 1>><<physique 1>><</if>>
+<<if random(1, 100) gte 70>>
+	<<transform cat 1>>
+<</if>>
+<<if $milkdranktrait is 1>>
+	<<physique 1>>
+<</if>>
 <<purity -1>>
-<<set $hunger -= 200>><<set $thirst -= 200>>
+<<set $hunger -= 200>>
+<<set $thirst -= 200>>
+<</widget>>
+
+<<widget "dragonmeat">>
+<<set $dragonmeat_eaten_stat += 1>>
+<<transform dragon 1>>
+<<if $dragonmeat_eaten_stat is 1>>
+	<<physique 1>>
+<</if>>
+<<set $hunger -= 200>>
 <</widget>>
 
 <<widget "nectarfed">>

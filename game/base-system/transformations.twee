@@ -619,8 +619,8 @@
 	<<case 1>>
 		<<if $dragonbuild gte 20 and $transformdisable is "f">>
 			<<set $dragon to 2>>
-			<span class="gold">Your head aches for a moment, and horns appear.</span>
-			<<set $transformationParts.dragon.horns to "default">>
+			<span class="gold">Your mouth hurts for a moment. You lick your teeth and find sharp new fangs.</span>
+			<<set $transformationParts.dragon.fangs to "default">>
 			<br><br>
 		<<elseif $dragonbuild lt 10>>
 			<span class="gold">Your vision has worsened significantly.</span>
@@ -630,12 +630,13 @@
 	<<case 2>>
 		<<if $dragonbuild gte 25 and $transformdisable is "f">>
 			<<set $dragon to 3>>
-			<span class="gold">Your lower back itches.</span>
+			<span class="gold">Your head aches for a moment, and horns appear.</span>
+			<<set $transformationParts.dragon.horns to "default">>
 			<br><br>
 		<<elseif $dragonbuild lt 10>>
 			<<set $dragon to 1>>
-			<span class="gold">Your horns have completely disappeared. Your head is normal again.</span>
-			<<set $transformationParts.dragon.horns to "disabled">>
+			<span class="gold">Your fangs have completely disappeared.</span>
+			<<set $transformationParts.dragon.fangs to "disabled">>
 			<br><br>
 		<</if>>
 	<<case 3>>
@@ -646,7 +647,8 @@
 			<br><br>
 		<<elseif $dragonbuild lt 20>>
 			<<set $dragon to 2>>
-			<span class="gold">Your tail is gone.</span>
+			<span class="gold">Your horns have disappeared.</span>
+			<<set $transformationParts.dragon.horns to "disabled">>
 			<br><br>
 		<</if>>
 	<<case 4>>
@@ -656,7 +658,7 @@
 			<br><br>
 		<<elseif $dragonbuild lt 30>>
 			<<set $dragon to 3>>
-			<span class="gold">Your tail is slowly disappearing.</span>
+			<span class="gold">Your tail is gone.</span>
 			<<set $transformationParts.dragon.tail to "disabled">>
 			<br><br>
 		<</if>>

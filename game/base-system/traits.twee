@@ -85,7 +85,7 @@
 	<br><br>
 <</if>>
 
-<<if $wolfgirl gte 2 or $cat gte 2>>
+<<if $wolfgirl gte 2 or $cat gte 2 or $dragon gte 2>>
 	<span class="def">Fangs</span> - Biting is three times as effective.
 	<br>
 <</if>>
@@ -98,6 +98,9 @@
 	<br>
 <<elseif $demon gte 2>>
 	<span class="def">Dark Horns</span> - Headbutts deal twice as much damage.
+	<br>
+<<elseif $dragon gte 3>>
+	<span class="def">Draconic Horns</span> - Headbutts are twice as strong and no longer hurt you.
 	<br>
 <</if>>
 
@@ -129,7 +132,7 @@
 	<br>
 <</if>>
 
-<<if $harpy gte 2 or $cat gte 2>>
+<<if $harpy gte 2 or $cat gte 2 or $dragon gte 1>>
 	<span class="def">Sharp eyes</span> - Little escapes your notice. +5% skulduggery.
 	<br>
 <</if>>
@@ -140,6 +143,8 @@
 <<elseif $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6>>
 	<span class="grey">Wings</span> - Can glide from high locations.
 	<br>
+<<elseif $dragon gte 6>>
+	<span class="grey">Dragon wings</span> - The skies are yours. You can fly all across town quickly.
 <</if>>
 
 <<if $harpy gte 6>>

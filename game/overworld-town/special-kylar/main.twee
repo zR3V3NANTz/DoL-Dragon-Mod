@@ -2153,6 +2153,16 @@ You nod, and <<he>> blushes. You think <<hes>> going to turn you down, but <<he>
 				At one point, <<his>> hand brushes against your chest, and <<he>> flinches back. "S-sorry, I didn't mean to... sorry." After that, <<he>> sticks to looking at your plumage, not touching.
 			<</if>>
 			<br><br>
+		<<elseif $dragon gte 6 and $transformationParts.dragon.tail isnot "hidden" $rng % 2 is 1>>
+			After a while <<he>> brings <<his>> other hand towards your ass and finds your tail. "Is that a tail?" <<he>> asks.
+			<br>
+			You yelp in surprise and hit <<him>> with your tail with such force that <<he>> falls over. "Sorry!" <<he>> exclaims.
+			<br>
+			<<He>> gets back up and continues, trying to act like nothing happened.
+			<br>
+			<<gstress>><<stress 10>>
+			<<llove>><<npcincr kylar love -1>>
+			<<glust>><<npcincr Kylar lust 1>>
 		<</if>>
 		Eventually, <<he>> withdraws <<his>> hand and smiles at you. "Thanks. Your hair is so soft," <<he>> says.
 	<</if>>

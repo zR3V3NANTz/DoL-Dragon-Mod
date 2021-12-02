@@ -211,7 +211,7 @@
 		<br>
 	<</if>>
 <<elseif $danger gte (9900 - ($allure * $forestmod))>>
-	<<set $rng to random(1, 8)>>
+	<<set $rng to random(1, 10)>>
 	<<switch $rng>>
 	<<case 1>>
 		<<beastNEWinit 1 cat>>
@@ -331,6 +331,21 @@
 		<</if>>
 	<<case 8>>
 		<<moor_hunt_start>>
+	<<case 9>>
+		<<beastNEWinit 1 dragon>>
+		You feel uneasy, and as you turn you face a pair of red eyes as a <<if $monster isnot 1>>large <</if>><<beasttype>> sprints towards you.
+		<br><br>
+
+		<<link [[Next|Moor Dragon]]>><<set $molestationstart to 1>><</link>>
+		<br>
+	<<case 10>>
+		<span class="blue">You feel watched.</span> You glance around. Anything could be lurking around you.<<gstress>><<stress 6>>
+		<br><br>
+
+		<<link [[Take a detour (0:30)|Moor Dragons Detour]]>><<pass 30>><<trauma 6>><</link>><<gtrauma>>
+		<br>
+		<<link [[Continue|Moor Dragons Continue]]>><</link>>
+		<br>
 	<</switch>>
 <<else>>
 	<<set $rng to random(1, 7)>>

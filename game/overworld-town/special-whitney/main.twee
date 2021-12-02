@@ -1706,7 +1706,10 @@ The crew make sure you're okay, then head back to their ship.
 			<<link [[Take control (0:10)|School Leave Whitney Control]]>><<pass 10>><<npcincr Whitney dom -1>><</link>><<ldom>>
 			<br>
 			<<link [[Throw Whitney off|School Leave Whitney Throw]]>><<npcincr Whitney love -1>><</link>><<llove>>
-
+			<br>
+			<<if $dragon gte 6>>
+				<<link [[Poke Whitneys eyes|School Leave Whitney Hurt]]>><<npcinc Whitney love -5>><<npcinc Whitney dom -5>><</link>><<llove>><<ldom>>
+			<</if>>
 		<<else>>
 			<<npc Whitney>><<person1>>You hear footsteps behind you. Before you can turn, Whitney leaps on your back and wraps <<his>> arms around your neck. "Giddy up, <<bitch>>," <<he>> says. <span class="red">The weight forces you to your knees.</span> "You're a shit horse. Maybe you need to be ridden more." <<He>> turns to <<his>> friends. "Any takers?" They laugh as you climb to your feet.
 			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<glust>><<npcincr Whitney lust 5>>
@@ -3172,6 +3175,18 @@ You rear back. Whitney tries to cling on, but you throw <<him>> to the ground.
 <br><br>
 
 "Stubborn <<bitch>>," <<he>> says, pushing <<himself>> to <<his>> feet. "But it's alright. I'll have fun breaking you in." <<He>> shoves past you, and <<his>> friends follow.
+<br><br>
+
+<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+<br>
+
+:: School Leave Whitney Hurt
+<<effects>>
+
+You rear back your head and poke Whitney in the eyes. Hurt, <<he>> jumps off of you as quick as he could.
+<br><br>
+
+"Fucking psycho," <<he>> says, rubbing his eyes in pain. "You'll get yours for that you dumb bitch!" <<He>> runs away, <<his>> friends not far behind him.
 <br><br>
 
 <<link [[Next|Oxford Street]]>><<endevent>><</link>>
