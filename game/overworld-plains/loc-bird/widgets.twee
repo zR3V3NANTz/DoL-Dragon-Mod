@@ -414,7 +414,7 @@
 <</widget>>
 
 <<widget "bird_fly_options">>
-<<if $harpy gte 6>>
+<<if $harpy gte 6 or $dragon gte 6>>
 	The wind could carry you a long way<<if $birdFly isnot 1>>, <span class="red">but you don't know how to fly.</span> Your wings should at least carry you down safely<</if>>.
 	<<if $syndromebird isnot 1 and ($bird.activity is "sing" or $bird.activity is "groom") and $bird.state is "home">>
 		<span class="red">However, you won't be getting far with the Great Hawk watching you.</span>
@@ -425,7 +425,7 @@
 	<</if>>
 	<<if $birdFly isnot 1 and ($bird.activity is "sing" or $bird.activity is "groom") and $bird.state is "home">>
 		<<link [[Ask the Great Hawk to teach you to fly|Bird Tower Fly Intro]]>><</link>><<flight_text>><br>
-	<<elseif $birdFly is 1>>
+	<<elseif $birdFly is 1 or $dragon gte 6>>
 		<br>
 		<<flight_time_check 60>>
 		<<if $exposed gte 2 and $exhibitionism lt 55>>

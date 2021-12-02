@@ -78,6 +78,9 @@ You are on the High Street, centre of the town's commercial activity. The shoppi
 			<<if $exposed lte 0>>
 				<<buswait>>
 			<</if>>
+			<<if $dragon gte 6>>
+				<<flywait>>
+			<</if>>
 			<<loiter>>
 		<</if>>
 		<<add_link "<br>Alternate routes<br>">><<hideDisplay>>

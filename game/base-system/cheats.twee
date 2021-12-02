@@ -10,9 +10,13 @@
 <<button "NPCs">>
 	<<replace #cheatsShown>><<cheats-npcs>><</replace>>
 <</button>>
+<<button "Teleport">>
+	<<replace #cheatsShown>><<cheats-teleport>><</replace>>
+<</button>>
 <<button "Other">>
 	<<replace #cheatsShown>><<cheats-other>><</replace>>
 <</button>>
+
 
 <br><br>
 <<link [[Confirm|$passage]]>><</link>>
@@ -2190,4 +2194,52 @@ Sets: <span id="statsDefaultSets"><<print $maxDefaultActionSets>></span>
 		<<break>>
 	<</if>>
 <</for>>
+<</widget>>
+
+/*noeinan mod START*/
+/*added teleporting to locations*/
+
+<<widget "cheats-teleport">>
+<div class = "threecolumn">
+<u>Town</u><br>
+<<domusicon>><<link [[Domus Street|Domus Street]]>><</link>><br>
+<<barbicon>><<link [[Barb Street|Barb Street]]>><</link>><br>
+<<danubeicon>><<link [[Danube Street|Danube Street]]>><</link>><br>
+<<connudatusicon>><<link [[Connudatus Street|Connudatus Street]]>><</link>><br>
+<<clifficon>><<link [[Cliff Street|Cliff Street]]>><</link>><br>
+<<wolficon>><<link [[Wolf Street|Wolf Street]]>><</link>><br>
+<<highicon>><<link [[High Street|High Street]]>><</link>><br>
+<<starfishicon>><<link [[Starfish Street|Starfish Street]]>><</link>><br>
+<<nightingaleicon>><<link [[Nightingale Street|Nightingale Street]]>><</link>><br>
+<<oxfordicon>><<link [[Oxford Street|Oxford Street]]>><</link>><br>
+<<mericon>><<link [[Mer Street|Mer Street]]>><</link>><br>
+<<elkicon>><<link [[Elk Street|Elk Street]]>><</link>><br>
+<<harvesticon>><<link [[Harvest Street|Harvest Street]]>><</link>><br>
+<<alleyicon>><<link [[Residential alleyways|Residential alleyways]]>><</link>><br>
+<<alleyicon>><<link [[Commercial alleyways]]>><</link>><br>
+<<parkicon>><<link [[Park|Park]]>><</link>><br>
+<<alleyicon>><<link [[Industrial alleyways|Industrial alleyways]]>><</link>><br>
+<br>
+<u>Forest Locations</u><br>
+<<foresticon>><<link [[Forest Outskirts|Forest]]>><<set $forest = 0>><</link>><br>
+<<foresticon>><<link [[Forest Lake|Forest]]>><<set $forest = 50>><</link>><br>
+<<foresticon>><<link [[Asylum|Asylum Cell]]>><</link>><br>
+<<foresticon>><<link [[Eden Cabin|Eden Cabin]]>><</link>><br>
+<<foresticon>><<link [[Churchyard|Churchyard]]>><</link>><br>
+<<lakeicon>><<link [[Lake Shore|Lake Shore]]>><</link>><br>
+<<dogicon>><<link [[Wolf Cave|Wolf Cave]]>><</link>><br>
+<br>
+<u>Plains</u><br>
+<<cowicon>><<link [[Farmland|Farmland]]>><</link>><br>
+<<gardenicon>><<link [[Meadow|Meadow]]>><</link>><br>
+<<horseicon>><<link [[Riding School|Riding School]]>><</link>><br>
+<<horseicon>><<link [[Remy's Estate (Gate)|Estate]]>><<estate_init gate>><</link>><br>
+<<cowicon>><<link [[Moor Plains|Moor]]>><<set $moor = 1>><</link>><br>
+<<cowicon>><<link [[Moor Castle|Moor]]>><<set $moor = 100>><</link>><br>
+<br>
+<u>Special Areas</u><br>
+<<elkicon>><<link [[Elk Compound|Elk Compound]]>><</link>><br>
+<<mirroricon>><<link [[Tentacle Plains|Tentacle Plains]]>><</link>><br>
+<<chickenicon>><<link [[Great Hawk Tower|Bird Tower]]>><</link>><br>
+</div>
 <</widget>>

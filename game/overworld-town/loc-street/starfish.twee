@@ -61,6 +61,9 @@ You are on Starfish Street. Wind blows in from the ocean.
 			<<if $exposed lte 0>>
 				<<buswait>>
 			<</if>>
+			<<if $dragon gte 6>>
+				<<flywait>>
+			<</if>>
 			<<loiter>>
 		<</if>>
 		<<add_link "<br>Alternate Routes<br>">><<hideDisplay>>

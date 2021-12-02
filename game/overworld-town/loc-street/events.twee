@@ -4406,7 +4406,7 @@ You are in a strange monster's lair within a building near Elk Street. A gaping 
 			<<link [[Make sheet rope (1:00)|Monster Tower Sheet]]>><<pass 60>><</link>>
 			<br>
 		<</if>>
-		<<if $harpy gte 6 and $birdFly gte 1>>
+		<<if $harpy gte 6 and $birdFly gte 1 or $dragon gte 6>>
 			<<link [[Fly to safety (0:02)|Monster Tower Fly]]>><<pass 2>><</link>><<flight_text>>
 			<br>
 		<</if>>

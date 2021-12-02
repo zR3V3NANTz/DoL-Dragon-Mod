@@ -35,7 +35,7 @@ White rose bushes flower here, unbothered by the wind.
 			<br>
 		<</if>>
 	<</if>>
-	<<if $harpy gte 6 and $birdFly gte 1>>
+	<<if $harpy gte 6 and $birdFly gte 1 or $dragon gte 6>>
 		<<flight_time_check 20>>
 		<<print '<<link [[Soar east ('+_hoursPassed+':'+ (_minutesPassed lt 10 ? "0" : "") + _minutesPassed + ')|Coast Path East]]>><<set $fatigueMod to _fatigueMod>><<set $flightTime to _flightTime>><<pass _flightTime>><<set $speed to "fly">><</link>>'>><<flight_text>><<gtiredness>>
 		<br>
@@ -102,7 +102,7 @@ You're on a thin coastal path north of the farmlands, above a cliff facing the s
 		<br>
 	<</if>>
 <</if>>
-<<if $harpy gte 6 and $birdFly gte 1>>
+<<if $harpy gte 6 and $birdFly gte 1 or $dragon gte 6>>
 	<<flight_time_check 20>>
 	<<print '<<link [[Soar west ('+_hoursPassed+':'+ (_minutesPassed lt 10 ? "0" : "") + _minutesPassed + ')|Coast Path West]]>><<set $fatigueMod to _fatigueMod>><<set $flightTime to _flightTime>><<pass _flightTime>><<set $speed to "fly">><</link>>'>><<flight_text>><<gtiredness>>
 	<br>

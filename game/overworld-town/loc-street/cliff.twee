@@ -152,6 +152,9 @@ There's a path leading down to the beach.
 			<<if $exposed lte 0>>
 				<<buswait>>
 			<</if>>
+			<<if $dragon gte 6>>
+				<<flywait>>
+			<</if>>
 			<<loiter>>
 		<</if>>
 		<<add_link "<br>Alternate Routes<br>">><<hideDisplay>>

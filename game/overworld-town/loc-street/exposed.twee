@@ -22,6 +22,9 @@
 	<<if $exposed lte 0>>
 		<<buswait>>
 	<</if>>
+	<<if $dragon gte 6>>
+		<<flywait>>
+	<</if>>
 	<<loiter>>
 
 	<<add_link "<br>Alternate Routes<br>">><<hideDisplay>>

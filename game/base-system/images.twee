@@ -615,6 +615,12 @@
 	<</if>>
 <</widget>>
 
+<<widget "dragonwingsicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/dragonwings.png">
+	<</if>>
+<</widget>>
+
 <<widget "hairdressericon">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/hairdresser.gif">
