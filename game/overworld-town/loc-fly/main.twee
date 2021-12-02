@@ -1,0 +1,36 @@
+:: Fly
+<<set $outside to 0>><<effects>>
+
+You spread your wings.
+<br><br>
+<u>Town</u>
+<br>
+<<domusicon>><<link [[Domus Street|Domus Street]]>><</link>><br>
+<<barbicon>><<link [[Barb Street|Barb Street]]>><</link>><br>
+<<danubeicon>><<link [[Danube Street|Danube Street]]>><</link>><br>
+<<connudatusicon>><<link [[Connudatus Street|Connudatus Street]]>><</link>><br>
+<<clifficon>><<link [[Cliff Street|Cliff Street]]>><</link>><br>
+<<wolficon>><<link [[Wolf Street|Wolf Street]]>><</link>><br>
+<<highicon>><<link [[High Street|High Street]]>><</link>><br>
+<<starfishicon>><<link [[Starfish Street|Starfish Street]]>><</link>><br>
+<<nightingaleicon>><<link [[Nightingale Street|Nightingale Street]]>><</link>><br>
+<<oxfordicon>><<link [[Oxford Street|Oxford Street]]>><</link>><br>
+<<mericon>><<link [[Mer Street|Mer Street]]>><</link>><br>
+<<elkicon>><<link [[Elk Street|Elk Street]]>><</link>><br>
+<<harvesticon>><<link [[Harvest Street|Harvest Street]]>><</link>><br>
+<<alleyicon>><<link [[Residential alleyways|Residential alleyways]]>><</link>><br>
+<<alleyicon>><<link [[Commercial alleyways]]>><</link>><br>
+<<parkicon>><<link [[Park|Park]]>><</link>><br>
+<<alleyicon>><<link [[Industrial alleyways|Industrial alleyways]]>><</link>><br>
+<<cowicon>><<link [[Farmland|Farmland]]>><</link>><br>
+
+<<if $syndromeeden gte 1>>
+    <<foresticon>><<link [[Eden Cabin|Eden Cabin]]>><</link>><br>
+<</if>>
+<<if $syndromewolves gte 1>>
+    <<dogicon>><<link [[Wolf Cave|Wolf Cave]]>><</link>><br>
+<</if>>
+<<if $syndromebird gte 1>>
+    <<chickenicon>><<link [[Great Hawk Tower|Bird Tower]]>><</link>><br>
+<</if>>
+<br>

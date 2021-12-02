@@ -132,19 +132,27 @@
 	<br>
 <</if>>
 
-<<if $harpy gte 2 or $cat gte 2 or $dragon gte 1>>
+<<if $harpy gte 2 or $cat gte 2>>
 	<span class="def">Sharp eyes</span> - Little escapes your notice. +5% skulduggery.
+	<br>
+<</if>>
+
+<<if $dragon gte 1>>
+	<span class="def">Dragon eyes</span> - Your eyes are better than even that of an eagle. +10% skulduggery.
+	<br>
+<</if>>
+
+<<if $dragon gte 6>>
+	<span class="blue">Dragon wings</span> - The skies are yours. You can fly all across town quickly.
 	<br>
 <</if>>
 
 <<if $harpy gte 6 and $birdFly gte 1>>
 	<span class="gold">Strong wings</span> - Can glide from high locations. Can fly where the wind is willing.
 	<br>
-<<elseif $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6>>
+<<elseif $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6 or $dragon gte 6>>
 	<span class="grey">Wings</span> - Can glide from high locations.
 	<br>
-<<elseif $dragon gte 6>>
-	<span class="grey">Dragon wings</span> - The skies are yours. You can fly all across town quickly.
 <</if>>
 
 <<if $harpy gte 6>>

@@ -236,6 +236,8 @@
 <</if>>
 <<if $harpy gte 2 or $cat gte 2>>
 	<<set _skulduggery to Math.floor(_skulduggery * 1.05)>>
+<<elseif $dragon gte 1>>
+	<<set _skulduggery to Math.floor(_skulduggery * 1.10)>>
 <</if>>
 <<if _skulduggery gte $skulduggerydifficulty>>
 	<<set $skulduggerysuccess to 1>>
@@ -299,6 +301,8 @@
 	<</if>>
 	<<if $harpy gte 2 or $cat gte 2>>
 		<<set _skulduggery to Math.floor(_skulduggery * 1.05)>>
+	<<elseif $dragon gte 1>>
+		<<set _skulduggery to Math.floor(_skulduggery * 1.10)>>
 	<</if>>
  	| <span class="orange">Skulduggery:</span>
 	<<if _skulduggery gte $skulduggerydifficulty>>

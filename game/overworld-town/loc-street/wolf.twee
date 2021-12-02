@@ -61,6 +61,9 @@ You are on Wolf Street. The nearby forest bleeds into the town here, particularl
 			<<if $exposed lte 0>>
 				<<buswait>>
 			<</if>>
+			<<if $dragon gte 6>>
+				<<flywait>>
+			<</if>>
 			<<loiter>>
 		<</if>>
 		<<add_link "<br>Alternate routes<br>">><<hideDisplay>>

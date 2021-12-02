@@ -153,6 +153,9 @@ You are on Oxford Street. There's an eclectic mix of buildings, but most notable
 			<<if $exposed lte 0>>
 				<<buswait>>
 			<</if>>
+			<<if $dragon gte 6>>
+				<<flywait>>
+			<</if>>
 			<<loiter>>
 		<</if>>
 		<<add_link "<br>Alternate routes<br>">><<hideDisplay>>

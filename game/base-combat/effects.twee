@@ -2038,7 +2038,7 @@
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "breastbite">>
 	You bite down on the nipple, <<theowner>> <<if $enemytype is "man">>yelps<<elseif $enemytype is "beast">>growls<<else>>shrieks<</if>> and recoils in agony.
 	<<defiance 20>><<attackstat>><<set $mouthuse to 0>><<set $breastbitten to 1>><<set $mouthstate to 0>>
-	<<if $wolfgirl gte 2 or $cat gte 2>>
+	<<if $wolfgirl gte 2 or $cat gte 2 or $dragon gte 2>>
 		<<defiance 40>>
 		You lick your fangs clean.
 	<</if>>
@@ -2300,7 +2300,7 @@
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "bite">>
 	You bite down on the penis, <<theowner>> <<if $enemytype is "man">>yelps<<elseif $enemytype is "beast">>growls<<else>>shrieks<</if>> and recoils in agony.
 	<<defiance 20>><<attackstat>><<control 15>><<set $mouthuse to 0>><<set $penisbitten to 1>><<set $mouthstate to 0>>
-	<<if $wolfgirl gte 2 or $cat gte 2>>
+	<<if $wolfgirl gte 2 or $cat gte 2 or $dragon gte 2>>
 		<<defiance 20>><<defiance 20>>
 		You lick your fangs clean.
 	<</if>>
@@ -2384,12 +2384,12 @@
 <<if $mouthaction is "handbite">>
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "handbite">>
 	<<actionshandbite>>
-	<<if $wolfgirl gte 2 or $cat gte 2>>
+	<<if $wolfgirl gte 2 or $cat gte 2 or $dragon gte 2>>
 		<<defiance 6>>
 	<<else>>
 		<<defiance 2>>
 	<</if>>
-	<<if random(1, 5) gte 3 and ($wolfgirl gte 2 or $cat gte 2) or random(1, 5) gte 5>>
+	<<if random(1, 5) gte 3 and ($wolfgirl gte 2 or $cat gte 2 or $dragon gte 2) or random(1, 5) gte 5>>
 		<<set $mouthuse to 0>>
 		<<for _j = 0; _j lt $enemyno; _j++>>
 			<<if $NPCList[_j].lefthand is "mouth">>
@@ -2421,11 +2421,11 @@
 	<<if $cow gte 2 and $demon gte 2>>
 		<<defiance 10>><<defiance 10>>
 	<</if>>
-	<<if $demon gte 2>>
+	<<if $demon gte 2 or $dragon gte 3>>
 		<<defiance 10>>
 		You rub your horns.
 	<</if>>
-	<<if $cow gte 2>>
+	<<if $cow gte 2 or $dragon gte 3>>
 		<<print either("That didn't hurt you at all!", "You remain unshaken by the blow.", "You're unharmed by the hit.")>>
 	<<else>>
 		<<pain 4>>

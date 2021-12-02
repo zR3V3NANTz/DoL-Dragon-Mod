@@ -107,6 +107,9 @@ You are on Domus Street. The orphanage is here. The street is dominated by small
 				<<if $exposed lte 0>>
 					<<buswait>>
 				<</if>>
+				<<if $dragon gte 6>>
+					<<flywait>>
+				<</if>>
 				<br>
 			<</if>>
 			<<add_link "<br>Alternate Routes<br>">><<hideDisplay>>
