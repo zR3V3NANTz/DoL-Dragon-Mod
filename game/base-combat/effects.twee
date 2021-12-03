@@ -2848,19 +2848,22 @@
 			You give your <<bottom>> a little wiggle, but receive a slap.
 			<<violence 2>><<hitstat>><<bruise bottom>>
 		<</if>>
-	<<else>>
-	<<set $vaginaaction to 0>><<meek 5 $vaginatarget>><<analskilluse>><<set $vaginaactiondefault to "penisanus">>
-	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<personselect $vaginatarget>>
-		<span class="blue">You give your <<bottom>> a little wiggle, <<combatperson>> responds to the provocation and moves <<his>> penis in front of your butt.</span>
-		<<if $NPCList[$vaginatarget].type is "plant" and $NPCList[$vaginatarget].penissize gte 4>>
-			<span class="red">Something about it scares you.</span>
-		<</if>>
-		<<submission 2 $vaginatarget>><<set $anususe to "penis">><<set $NPCList[$vaginatarget].penis to "anusentrance">><<set $vaginause to 0>><<set $anusstate to "entrance">><<set $vaginastate to 0>>
-	<<else>>
-		You give your <<bottom>> a little wiggle, but you just receive a slap.
+	<<elseif $anusstate isnot 0 and $anusstate.includes("double")>>
+		You give your <<bottom>> a little wiggle, but receive a slap. "Settle down, <<bitch>>."
 		<<violence 2>><<hitstat>><<bruise bottom>>
-	<</if>>
+	<<else>>
+		<<set $vaginaaction to 0>><<meek 5 $vaginatarget>><<analskilluse>><<set $vaginaactiondefault to "penisanus">>
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<personselect $vaginatarget>>
+			<span class="blue">You give your <<bottom>> a little wiggle, <<combatperson>> responds to the provocation and moves <<his>> penis in front of your butt.</span>
+			<<if $NPCList[$vaginatarget].type is "plant" and $NPCList[$vaginatarget].penissize gte 4>>
+				<span class="red">Something about it scares you.</span>
+			<</if>>
+			<<submission 2 $vaginatarget>><<set $anususe to "penis">><<set $NPCList[$vaginatarget].penis to "anusentrance">><<set $vaginause to 0>><<set $anusstate to "entrance">><<set $vaginastate to 0>>
+		<<else>>
+			You give your <<bottom>> a little wiggle, but you just receive a slap.
+			<<violence 2>><<hitstat>><<bruise bottom>>
+		<</if>>
 	<</if>>
 <</if>>
 
@@ -2873,6 +2876,9 @@
 			You give your <<bottom>> a little wiggle, but receive a slap.
 			<<violence 2>><<hitstat>><<bruise bottom>>
 		<</if>>
+	<<elseif $anusstate isnot 0 and $anusstate.includes("double")>>
+		You give your <<bottom>> a little wiggle, but receive a slap. "Settle down, <<bitch>>."
+		<<violence 2>><<hitstat>><<bruise bottom>>
 	<<else>>
 		<<set $vaginaaction to 0>><<meek 5>><<analskilluse>><<set $vaginaactiondefault to "penisanusdvp">>
 		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
@@ -2910,7 +2916,9 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<personselect $vaginatarget>><<set $vaginaactiondefault to "rest">>
 		<span class="blue">You give your <<bottom>> a little wiggle, <<combatperson>> responds to the provocation and moves <<his>> penis to join the phallus in front of your butt.</span>
-		<<submission 2 $vaginatarget>><<set $anususe to "penisdouble">><<set $NPCList[$vaginatarget].penis to "anusdoubleentrance">><<set $vaginause to 0>><<set $anusstate to "doubleentrance">><<set $vaginastate to 0>>
+		<<submission 2 $vaginatarget>>
+		<<set $anususe to "penisdouble">><<set $anusstate to "doubleentrance">><<set $vaginause to 0>><<set $vaginastate to 0>>
+		<<set $NPCList[$vaginatarget].penis to "anusdoubleentrance">>
 		<<set $anusdoubletarget to $vaginatarget>>
 		<<if $NPCList[$anustarget].penis is "anus">>
 			<<set $NPCList[$anustarget].penis to "anusdouble">>
@@ -2918,7 +2926,11 @@
 			<<set $NPCList[$anustarget].penis to "anusdoubleimminent">>
 		<<elseif $NPCList[$anustarget].penis is "anusentrance">>
 			<<set $NPCList[$anustarget].penis to "anusdoubleentrance">>
+		<<elseif $NPCList[$anustarget].penis is "cheeks">>
+			<<set $NPCList[$anustarget].penis to "anusentrance">>
+			<<set $bottomuse to 0>> /* Issues with ass cheeks likely stem from this culprit right here */
 		<</if>>
+		<<set $NPCList[$anustarget].location.genitals to "genitals">>
 	<<else>>
 		You give your <<bottom>> a little wiggle, but you just receive a slap.
 		<<violence 2>><<hitstat>><<bruise bottom>><<set $vaginaactiondefault to "penisanusdouble">>
@@ -3128,6 +3140,9 @@
 		<<else>>
 			You spread your thighs, but fail to garner further interest.
 		<</if>>
+	<<elseif $vaginastate isnot 0 and $vaginastate.includes("double")>>
+		You spread your thighs, but just receive a slap. "Settle down, <<bitch>>."
+		<<violence 2>><<hitstat>><<bruise bottom>>
 	<<else>>
 		<<set $anusaction to 0>><<meek 10 $anustarget>><<analskilluse>><<set $anusactiondefault to "penispussy">>
 		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
@@ -3149,30 +3164,33 @@
 		<<else>>
 			You spread your thighs, but fail to garner further interest.
 		<</if>>
+	<<elseif $vaginastate isnot 0 and $vaginastate.includes("double")>>
+		You spread your thighs, but just receive a slap. "Settle down, <<bitch>>."
+		<<violence 2>><<hitstat>><<bruise bottom>>
 	<<else>>
-	<<set $anusaction to 0>><<meek 10 $anustarget>><<analskilluse>><<set $anusactiondefault to "penispussy">>
-	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+		<<set $anusaction to 0>><<meek 10 $anustarget>><<analskilluse>><<set $anusactiondefault to "penispussy">>
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 
-		<<set _npcA to ($NPCList[$anustarget].penis is "anusdoubleentrance" ? $anustarget : $anusdoubletarget)>>
-		<<set _npcB to ($NPCList[$anustarget].penis is "anusdoubleentrance" ? $anusdoubletarget : $anustarget)>>
+			<<set _npcA to ($NPCList[$anustarget].penis is "anusdoubleentrance" ? $anustarget : $anusdoubletarget)>>
+			<<set _npcB to ($NPCList[$anustarget].penis is "anusdoubleentrance" ? $anusdoubletarget : $anustarget)>>
 
-		<<if $NPCList[_npcB].penis is "anusdouble">>
-			<<set $NPCList[_npcB].penis to "anus">>
-			<<set $anusstate to "penetrated">>
-		<<elseif $NPCList[_npcB].penis is "anusdoubleimminent">>
-			<<set $NPCList[_npcB].penis to "anusimminent">>
-			<<set $anusstate to "imminent">>
-		<<elseif $NPCList[_npcB].penis is "anusdoubleentrance">>
-			<<set $NPCList[_npcB].penis to "anusentrance">>
-			<<set $anusstate to "entrance">>
+			<<if $NPCList[_npcB].penis is "anusdouble">>
+				<<set $NPCList[_npcB].penis to "anus">>
+				<<set $anusstate to "penetrated">>
+			<<elseif $NPCList[_npcB].penis is "anusdoubleimminent">>
+				<<set $NPCList[_npcB].penis to "anusimminent">>
+				<<set $anusstate to "imminent">>
+			<<elseif $NPCList[_npcB].penis is "anusdoubleentrance">>
+				<<set $NPCList[_npcB].penis to "anusentrance">>
+				<<set $anusstate to "entrance">>
+			<</if>>
+			<<personselect _npcA>>
+
+			<<submission 2 _npcA>><<set $vaginause to "penis">><<set $NPCList[_npcA].penis to "vaginaentrance">><<set $anususe to "penis">><<set $vaginastate to "entrance">>
+			<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
+		<<else>>
+			You spread your thighs, but fail to garner interest.
 		<</if>>
-		<<personselect _npcA>>
-
-		<<submission 2 _npcA>><<set $vaginause to "penis">><<set $NPCList[_npcA].penis to "vaginaentrance">><<set $anususe to "penis">><<set $vaginastate to "entrance">>
-		<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
-	<<else>>
-		You spread your thighs, but fail to garner interest.
-	<</if>>
 	<</if>>
 <</if>>
 
@@ -3578,7 +3596,11 @@
 			<<set $NPCList[$anustarget].penis to "anusdoubleimminent">>
 		<<elseif $NPCList[$anustarget].penis is "anusentrance">>
 			<<set $NPCList[$anustarget].penis to "anusdoubleentrance">>
+		<<elseif $NPCList[$anustarget].penis is "cheeks">>
+			<<set $NPCList[$anustarget].penis to "anusentrance">>
+			<<set $bottomuse to 0>> /* Issues with ass cheeks likely stem from this culprit right here */
 		<</if>>
+		<<set $NPCList[$anustarget].location.genitals to "genitals">>
 	<<else>>
 		You give your <<bottom>> a little wiggle, but you just receive a slap.
 		<<violence 2>><<hitstat>><<bruise bottom>><<set $penisactiondefault to "penisanusdouble">>
