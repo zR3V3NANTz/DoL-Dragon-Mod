@@ -26,6 +26,10 @@
 <<link [[Go shopping for Halloween costumes (0:30)|Robin Forest Shop]]>><<pass 30>><</link>>
 <br>
 <</if>>
+<<if $dragon gte 6>>
+	<<link [[Go to Sam's (0:30)|Robin Walk Steakhouse]]>><<pass 30>><</link>>
+	<br>
+<</if>>
 <br>
 <<robinoptions>>
 
@@ -1784,3 +1788,166 @@ You bid Gwylan farewell. Together you and Robin walk back to the orphanage. Robi
 	<br><br>
 <</if>>
 <<robinoptions>>
+
+
+
+:: Robin Walk Steakhouse
+
+<<set $outside to 0>><<set $location to "town">><<effects>>
+<<if $submissive gte 1150>>
+	"Would you like to go to Sam's for dinner?" you ask.
+<<elseif $submissive lte 850>>
+	"Let's get some food," you say.
+<<else>>
+	"Want to go get some food?" you ask.
+<</if>>
+<br><br>
+<<if $hour lt 12 and $schoolday is 1 or $hour lt 12 and $weekday is 7 or $hour lt 12 and $weekday is 1>>
+	<<His>> eyes light up, but then looks at the clock on the wall. "I can't," <<he>> says. "I need to get ready soon. I can go in the evening."
+	<br><br>
+	<<robinoptions>>
+<<else>>
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].outfits isnot undefined>>
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].outfits.length gt 0>>
+			<<set $NPCName[$NPCNameList.indexOf("Robin")].currentOutfit to $NPCName[$NPCNameList.indexOf("Robin")].outfits[random(0, $NPCName[$NPCNameList.indexOf("Robin")].outfits.length - 1)]>>
+		<<else>>
+			<<set $NPCName[$NPCNameList.indexOf("Robin")].currentOutfit to undefined>>
+		<</if>>
+	<</if>>
+	<<set $robinwalk to 1>><<set $money -= 1500>>
+	<<if (["tuxedo", "shirt"].includes($NPCName[$NPCNameList.indexOf("Robin")].currentOutfit) and $NPCName[$NPCNameList.indexOf("Robin")].pronoun is "m") or (["sundress", "gothic gown"].includes($NPCName[$NPCNameList.indexOf("Robin")].currentOutfit) and $NPCName[$NPCNameList.indexOf("Robin")].pronoun is "f") or ["clothes", "kimono"].includes($NPCName[$NPCNameList.indexOf("Robin")].currentOutfit)>>
+		<<His>> eyes light up and <<he>> jumps to <<his>> feet. "Let me get changed first", as <<he>> pulls out <<his>> <<print $NPCName[$NPCNameList.indexOf("Robin")].currentOutfit>>.
+		<<if $robinromance is 1>>
+			<<He>> looks at you, blushing, "I don't mind if you want to watch me change."<<glust>><<npcincr Robin lust 1>>
+		<<else>>
+			<<He>> looks at you, blushing, "Can you turn around while I change, please?"
+		<</if>>
+		<br><br>
+	<<elseif (["tuxedo", "shirt"].includes($NPCName[$NPCNameList.indexOf("Robin")].currentOutfit) and $NPCName[$NPCNameList.indexOf("Robin")].pronoun is "f") or (["sundress", "gothic gown"].includes($NPCName[$NPCNameList.indexOf("Robin")].currentOutfit) and $NPCName[$NPCNameList.indexOf("Robin")].pronoun is "m") and $robinromance is 1>>
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].crossdress is undefined>>
+			<<set $NPCName[$NPCNameList.indexOf("Robin")].crossdress to 1>>
+		<<else>>
+			<<set $NPCName[$NPCNameList.indexOf("Robin")].crossdress += 1>>
+		<</if>>
+		<<His>> eyes light up and <<he>> jumps to <<his>> feet. "Let me get changed first," <<he>> says as <<he>> pulls out <<his>> <<print $NPCName[$NPCNameList.indexOf("Robin")].currentOutfit>>.
+		<br><br>
+		"I wonder if anyone will recognise me." <<He>> looks at you, blushing. "I don't mind if you want to watch me change."<<glust>><<npcincr Robin lust 1>>
+		<br><br>
+	<<else>>
+		<<His>> eyes light up and <<he>> jumps to <<his>> feet.
+	<</if>>
+	"What will we eat?" <<he>> asks. <<His>> smile broadens. "Hamburgers?"
+
+	<br><br>
+	<<if $robinromance is 1>>
+		You walk hand in hand to the Cliff Street. Sam's cafe overlooks the sea.
+		<br><br>
+	<<else>>
+		You walk together to the Cliff Street. Sam's cafe overlooks the sea.
+		<br><br>
+	<</if>>
+	<<link [[Cafe|Robin Cafe Steak]]>><<pass 1 hour>><<pass 30>><<stress -12>><</link>><<lstress>>
+	<br>
+<</if>>
+
+:: Robin Cafe Steak
+
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+"I've always wanted to eat here," Robin says. "Can we buy some cream buns too?"
+<br><br>
+
+You walk together into Sam's cafe. The waitress seats you, and <<he>> orders a ribeye.
+<br><br>
+
+<<if $robinromance is 1>>
+	<<link [[Fondle|Robin Cafe Fondle]]>><<npcincr Robin lust 1>><</link>><<promiscuous1>><<glust>>
+	<br>
+<</if>>
+<<link [[Eat|Robin Cafe Enjoy]]>><<pass 15>><</link>>
+<br>
+
+:: Robin Cafe Fondle
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+You spill your drink on Robin's lap. You grab some napkins, and start wiping around <<his>> thighs to clean the drink off. In a moment of daring, you
+
+<<if $NPCName[$NPCNameList.indexOf("Robin")].currentOutfit is undefined>>
+	<<if $NPCName[$NPCNameList.indexOf("Robin")].pronoun is "m">>
+		pull down <<his>> shorts
+	<<else>>
+		pull up <<his>> skirt
+	<</if>>
+<<else>>
+	<<switch $NPCName[$NPCNameList.indexOf("Robin")].currentOutfit>>
+		<<case "shirt">>pull down <<his>> shorts
+		<<case "sundress">>pull up <<his>> sundress
+		<<case "kimono">>pull up <<his>> kimono
+		<<case "tuxedo">>pull down <<his>> tuxedo trousers
+		<<case "gothic gown">>pull up <<his>> gothic gown
+	<</switch>>
+<</if>>
+and
+<<if $NPCList[0].penis isnot "none">>
+	fondle <<his>> penis through <<his>> underwear. <<Hes>> soon erect under your attention.
+<<else>>
+	fondle <<his>> pussy through <<his>> underwear. <<Hes>> soon wet under your attention.
+<</if>>
+<<promiscuity1>>
+
+<<He>> stares at you for a moment, and you hear a small moan escape <<him>>.
+<br><br>
+
+<<if $promiscuity gte 55>>
+	<<link [[Give oral|Robin Cafe Oral]]>><<pass 15>><<npcincr Robin love 1>><</link>><<promiscuous4>><<glove>>
+	<br>
+<</if>>
+<<link [[Cover Robin and Eat|Robin Cafe Enjoy]]>><<set $phase to 1>><<pass 15>><</link>>
+<br>
+
+:: Robin Cafe Oral
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+You glance around. Everyone's busy eating. You lean into Robin's lap and pull down <<his>> underwear. <<He>> looks down, incredulous, but <<he>> doesn't stop you.
+<<promiscuity4>>
+
+<<if $NPCList[0].penis isnot "none">>
+	You kiss <<his>> shaft a couple of times, then <<oraltext>> lick <<his>> glans. <<He>> rests <<his>> hands on your head as you circle and tease <<his>> tip. <<He>> grips your hair.
+<<else>>
+	You kiss <<his>> labia a couple of times, then <<oraltext>> lick <<his>> clit. <<He>> rests <<his>> hands on your head as you circle and tease <<his>> tip. <<He>> grips your hair.
+<</if>>
+You keep working at it, until <<he>> shudders and moans in climax.
+<br><br>
+<<if $NPCList[0].penis isnot "none">>
+	<<set $player.bodyliquid.face.semen += 1>>
+<</if>>
+Someone turns and looks at <<him>>. "S-sorry," <<he>> pants in response. You clean up the spilled juices with another napkin, then sit back upright. <<He>> pants as <<he>> covers <<his>> lap.
+<br><br>
+
+Your food arrives. You chat with Robin as you eat. 
+<br>
+
+Robin doesn't say much on the way home, but insists on holding your hand. <<takeHandholdingVirginity "Robin" "romantic">>
+<br><br>
+
+<<link [[Next|Robin Options]]>><</link>>
+<br>
+
+:: Robin Cafe Enjoy
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+<<if $phase is 1>>
+	Your food arrives. You chat with Robin as you eat.
+	<br>
+
+	Robin talks about it the entire way home. <<He>> doesn't mention your probing hand, though <<he>> looks flushed.
+	<br><br>
+<<else>>
+	Your food arrives. You chat with Robin as you eat.
+	<br>
+	Robin talks about it the entire way home, stopping only once back in <<his>> bedroom.
+	<br><br>
+<</if>>
+<<set $phase to 0>>
+<<link [[Next|Robin Options]]>><</link>>
+<br>

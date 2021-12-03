@@ -3,29 +3,35 @@
 
 You spread your wings.
 <br><br>
-<u>Town</u>
+<u>Residential Town Areas</u>
 <br>
 <<domusicon>><<link [[Domus Street|Domus Street]]>><</link>><br>
 <<barbicon>><<link [[Barb Street|Barb Street]]>><</link>><br>
 <<danubeicon>><<link [[Danube Street|Danube Street]]>><</link>><br>
+<<wolficon>><<link [[Wolf Street|Wolf Street]]>><</link>><br>
+<<alleyicon>><<link [[Residential alleyways|Residential alleyways]]>><</link>><br>
+
+<u>Commercial Town Areas</u>
+<br>
 <<connudatusicon>><<link [[Connudatus Street|Connudatus Street]]>><</link>><br>
 <<clifficon>><<link [[Cliff Street|Cliff Street]]>><</link>><br>
-<<wolficon>><<link [[Wolf Street|Wolf Street]]>><</link>><br>
 <<highicon>><<link [[High Street|High Street]]>><</link>><br>
 <<starfishicon>><<link [[Starfish Street|Starfish Street]]>><</link>><br>
 <<nightingaleicon>><<link [[Nightingale Street|Nightingale Street]]>><</link>><br>
 <<oxfordicon>><<link [[Oxford Street|Oxford Street]]>><</link>><br>
+<<alleyicon>><<link [[Commercial alleyways]]>><</link>><br>
+<<parkicon>><<link [[Park|Park]]>><</link>><br>
+
+<u>Industrial Town Areas</u>
+<br>
 <<mericon>><<link [[Mer Street|Mer Street]]>><</link>><br>
 <<elkicon>><<link [[Elk Street|Elk Street]]>><</link>><br>
 <<harvesticon>><<link [[Harvest Street|Harvest Street]]>><</link>><br>
-<<alleyicon>><<link [[Residential alleyways|Residential alleyways]]>><</link>><br>
-<<alleyicon>><<link [[Commercial alleyways]]>><</link>><br>
-<<parkicon>><<link [[Park|Park]]>><</link>><br>
 <<alleyicon>><<link [[Industrial alleyways|Industrial alleyways]]>><</link>><br>
-<<cowicon>><<link [[Farmland|Farmland]]>><</link>><br>
 
-<u>Stockholms</u>
+<u>Out of Town</u>
 <br>
+<<cowicon>><<link [[Farmland|Farmland]]>><</link>><br>
 <<if $syndromeeden gte 1>>
     <<foresticon>><<link [[Eden Cabin|Eden Cabin]]>><</link>><br>
 <</if>>

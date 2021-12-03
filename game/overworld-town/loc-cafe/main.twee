@@ -142,6 +142,14 @@ You are hiding beneath a table to protect your dignity.
 	<<if $images is 1>><img id="icon" src="img/misc/icon/food_creambun.png"><</if>><<link [[Buy Deluxe Cream Bun (0:20 £50)|Cafe Cream Bun]]>><<set $cafeeaten to 1>><<transform cat 1>><<set $money -= 5000>><<pass 20>><<stress -18>><</link>><<llstress>>
 	<br>
 	<</if>>
+	<<if $money gte 10000>>
+	<<if $images is 1>><img id="icon" src="img/misc/icon/food_steak.png"><</if>><<link [[Buy Steak (0:30 £100)|Cafe Steak]]>><<set $cafeeaten to 1>><<transform dragon 1>><<set $money -= 10000>><<pass 30>><<stress -30>><</link>><<llstress>>
+	<</if>>
+	<br>
+	<<if $money gte 10000>>
+	<<if $images is 1>><img id="icon" src="img/misc/icon/food_steak.png"><</if>><<link [[Buy Cheeseburger (0:20 £50)|Cafe Hamburger]]>><<set $cafeeaten to 1>><<transform dragon 1>><<set $money -= 5000>><<pass 20>><<stress -18>><</link>><<llstress>>
+	<</if>>
+	<br>
 <</if>>
 
 <<if $openinghours is 0 and $hour isnot $closinghour and $oceanbreezetheft isnot 1>>
@@ -221,7 +229,7 @@ You ask if <<he>> has any work for you. <<His>> smile broadens. "As a matter of 
 <<if $rng gte 81 and $weather isnot "rain" and $weather isnot "snow">>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure)>>
-		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
+		<<if $worn.lower.skirt is 1>>
 		As you're serving tables outside the cafe, a strong breeze blows in from the ocean, lifting your skirt and exposing your <<undies>> for anyone who looks.
 		<<undiestrauma>>
 		<br><br>
@@ -308,7 +316,7 @@ You ask if <<he>> has any work for you. <<His>> smile broadens. "As a matter of 
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure)>>
 	<<generate1>><<generate2>>You serve a young pair, a <<person1>><<person>> and a <<person2>><<person>>.
-		<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
+		<<if $worn.lower.skirt is 1>>
 			<<if $worn.under_lower.type.includes("naked")>>
 			As you turn to leave, the <<person1>><<person>> lifts the hem of your $worn.lower.name, revealing your bare <<bottom>> to the cafe. "No underwear?" <<He>> says with incredulity. "You're a little slut, aren't you?"
 			<<fameexhibitionism 10>><<stress 6>><<arousal 600>><<gstress>><<garousal>>
@@ -1045,7 +1053,7 @@ The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 Cheeks flushing, you press down on your skirt to cover your dignity before the situation worsens, and hasten back inside.
 <br><br>
 
-<<if $player.gender_appearance is "f" and $player.penisExist>>
+<<if $player.gender_appearance is "f" and $penisexist is 1>>
 As you escape into the cafe you think you hear someone say, "Was that a penis?"
 <br><br>
 <</if>>
@@ -1069,7 +1077,7 @@ You sit. The <<person>> passes you a spoon, then looks down. "I've left my shoes
 You press the spoon into the bun, but are interrupted by the <<person>> appearing between your knees. "Now that I'm down here," <<he>> whispers. "I've a different craving." You glance around. No one else has noticed.
 <br><br>
 
-<<if setup.clothes.lower[$worn.lower.index].skirt is 1>>
+<<if $worn.lower.skirt is 1>>
 <<He>> tries to lift your $worn.lower.name.
 <<else>>
 <<He>> tries pull down your $worn.lower.name.
@@ -1121,20 +1129,25 @@ The rest of the shift passes uneventfully. You earn <<moneyGain 5>>.
 You let the <<person>> continue.
 
 <<if $worn.genitals.type.includes("chastity")>>
-	<<His>> eyes widen as <<he>> exposes your chastity belt.
-	<<promiscuity1>>
+<<His>> eyes widen as <<he>> exposes your chastity belt.
+<<promiscuity1>>
 
-	"You're all locked up," <<he>> says. "And I was so keen on having a taste." <<He>> disappears once more, and emerges beside <<his>> chair. 
-	"Your secret's safe with me." <<He>> winks.
-	<br><br>
+"You're all locked up," <<he>> says. "And I was so keen on having a taste." <<He>> disappears once more, and emerges beside <<his>> chair. "Your secret's safe with me." <<He>> winks.
+<br><br>
 
-	<<set $tip += 500>>
-	<<set $tip += 100>>
+<<set $tipmod to 0.2>><<tipset "serving">>
+
+<<set $tip += 500>>
+<<set $tip += 100>>
+
+The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
+<br><br>
+
+<<link [[Next|Ocean Breeze]]>><<endevent>><<pass 1 hour>><</link>>
 
 <<else>>
-	<<if $player.penisExist and $player.vaginaExist>>
-		<<His>> eyes light up as <<he>> exposes your <<genitals>>. "They're beautiful," <<he>> says,
-		before closing <<his>> eyes in rapture and planting kisses down your shaft, from tip to base, and then over your labia.
+	<<if $penisexist is 1 and $vaginaexist is 1>>
+		<<His>> eyes light up as <<he>> exposes your <<genitals>>. "They're beautiful," <<he>> says, before closing <<his>> eyes in rapture and planting kisses down your shaft, from tip to base, and then over your labia.
 		<br><br>
 
 		You erect in response. <<He>> pulls away and examines you.
@@ -1145,65 +1158,62 @@ You let the <<person>> continue.
 		<</if>>
 		<<He>> leans forward again, and runs <<his>> tongue along your length.
 	<<else>>
-		<<His>> eyes light up as <<he>> exposes your <<genitals>>, then close in rapture as <<he>> kisses it. <<He>> looks up at you. 
-		"Your <<print ($player.penisExist ? "penis" : "pussy")>> is beautiful," <<he>> says. <<He>> closes <<his>> eyes and plants another kiss. Then another.
+		<<His>> eyes light up as <<he>> exposes your <<genitals>>, then close in rapture as <<he>> kisses it. <<He>> looks up at you. "Your <<if $penisexist is 1>>penis<<else>>pussy<</if>> is beautiful," <<he>> says. <<He>> closes <<his>> eyes and plants another kiss. Then another.
 		<<promiscuity1>>
 
-		<<if $player.penisExist>>
-			You erect in response. <<He>> pulls away and examines you.
+		<<if $penisexist is 1>>
+		You erect in response. <<He>> pulls away and examines you.
 			<<if $player.virginity.penile is true>>
-				"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
+			"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
 			<<else>>
-				"It's working," <<he>> whispers. <<He>> sounds satisfied.
+			"It's working," <<he>> whispers. <<He>> sounds satisfied.
 			<</if>>
 			<<He>> leans forward again, and runs <<his>> tongue along your length.
 		<<else>>
-			<<He>> pulls away and examines you.
+		<<He>> pulls away and examines you.
 			<<if $player.virginity.vaginal is true>>
-				"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
+			"You're a virgin," <<he>> whispers, gazing at your groin in awe. "That's so precious. It's not my place to take it. I need to be gentle."
 			<<else>>
-				"It's working," <<he>> whispers. <<He>> sounds satisfied.
+			"It's working," <<he>> whispers. <<He>> sounds satisfied.
 			<</if>>
-			<<He>> leans forward again, and runs <<his>> tongue around your clit.
+		<<He>> leans forward again, and runs <<his>> tongue around your clit.
 		<</if>>
 	<</if>>
 	<br><br>
 
-	<<He>> continues licking, kissing and blowing you. <<He>> alternates between looking up at your face, and at your <<genitals>>. 
-	<<Hes>> sensitive to your responses, and adapts before you get too used to any one technique. Your breath quickens.
-	<br><br>
+<<He>> continues licking, kissing and blowing you. <<He>> alternates between looking up at your face, and at your <<genitals>>. <<Hes>> sensitive to your responses, and adapts before you get too used to any one technique. Your breath quickens.
+<br><br>
 
-	<<arousal 1000>><<orgasm>>
+<<arousal 1000>><<orgasm>>
 
-	<<if $player.penisExist>>
-		<<He>> closes <<his>> eyes as you shudder, and catches your semen with <<his>> face. <<He>> scoops with <<his>> fingers and laps it up. "The best cream," <<he>> whispers.
+	<<if $penisexist is 1>>
+	<<He>> closes <<his>> eyes as you shudder, and catches your semen with <<his>> face. <<He>> scoops with <<his>> fingers and laps it up. "The best cream," <<he>> whispers.
 	<<else>>
-		<<He>> watches as you shudder, and smiles. "I hope you enjoyed the treat," <<he>> whispers.
+	<<He>> watches as you shudder, and smiles. "I hope you enjoyed the treat," <<he>> whispers.
 	<</if>>
 	<br><br>
 
-	<<He>> emerges from beneath the table and sits back down. <<He>> winks as you return to work.
-	<br><br>
-
-	<<set $tip += 500>>
-	<<set $tip += 500>>
-
-<</if>>
+<<He>> emerges from beneath the table and sits back down. <<He>> winks as you return to work.
+<br><br>
 
 <<set $tipmod to 0.2>><<tipset "serving">>
+
+<<set $tip += 500>>
+<<set $tip += 500>>
 
 The rest of the shift passes uneventfully. Someone left you a tip.<<tipreceive>>
 <br><br>
 
 <<link [[Next|Ocean Breeze]]>><<endevent>><<pass 1 hour>><</link>>
-<br>
+
+<</if>>
 
 :: Cafe Coffee
 <<endevent>>
 <<set _coffee to ["mocha", "latte", "caramel latte", "white chocolate mocha", "flat white", "caramel iced latte"].pluck()>>
 You take a seat at one of the elevated seats at the window and order a <<print _coffee>> from the menu. It arrives promptly; Wafting the delicious smell of fresh coffee up your nose.
 
-<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $exhibitionism gte 55>>
+<<if $worn.lower.skirt is 1 and $exhibitionism gte 55>>
 	A wicked thought occurs to you as you take a sip of your coffee. The seat has your legs elevated to almost eye level from the perspective of passers-by, and you're wearing a skirt.
 	<<if $exhibitionism gte 75 and $worn.under_lower.exposed>>
 		You're also not wearing any underwear. <<arousal 500>><<garousal>>
@@ -1218,12 +1228,13 @@ You take a seat at one of the elevated seats at the window and order a <<print _
 	<<else>>
 		<br><br>
 	<</if>>
+	<br><br>
+	<<link [[Finish your drink|Cafe Coffee Finish]]>><</link>>
 <<else>>
 	You take your time with your coffee, enjoying the indulgent richness of it one sip at a time.
+	<br><br>
+	<<link [[Finish your drink|Cafe Coffee Finish]]>><</link>>
 <</if>>
-
-<br><br>
-<<link [[Finish your drink|Cafe Coffee Finish]]>><</link>>
 
 :: Cafe Coffee Flash
 <<if ndef _caught>> <<set _caught to 0>> <</if>>
@@ -1536,7 +1547,7 @@ You drink the last of your coffee and place the mug back down on the table, befo
 <</if>>
 
 <<set $rng to random(0, 10)>>
-<<if setup.clothes.lower[$worn.lower.index].skirt is 1 and $rng gte 6>>
+<<if $worn.lower.skirt is 1 and $rng gte 6>>
 	<<endevent>>
 	You notice a <<generate1>><<person1>><<person>> staring at you from across the cafe. Suddenly you realise you've let your legs drift apart slightly, and the <<person>> is trying to look up your skirt.
 	<<if $worn.under_lower.exposed>>
@@ -1733,6 +1744,30 @@ It's big, and bursting with cream. It's a struggle to eat without cream squeezin
 <<link [[That's enough|Ocean Breeze]]>><</link>>
 <br>
 <<link [[Lick the plate clean|Cafe Cream Lick]]>><<transform cat 1>><<stress -6>><</link>><<lstress>>
+<br>
+
+:: Cafe Steak
+<<set $outside to 0>><<set $location to "cafe">><<effects>>
+
+You take a seat and order a sirloin steak, medium rare, with mashed potatos and corn. It soon arrives.
+<br><br>
+
+It's big and juicy. It's so tasty, it leaves you feeling satisfied.
+<br><br>
+
+<<link [[That's enough|Ocean Breeze]]>><</link>>
+<br>
+
+:: Cafe Hamburger
+<<set $outside to 0>><<set $location to "cafe">><<effects>>
+
+You take a seat and order a cheeseburger with tomato, lettuce, and pickle. It soon arrives.
+<br><br>
+
+It's big and juicy. It's so tasty, it leaves you feeling satisfied.
+<br><br>
+
+<<link [[That's enough|Ocean Breeze]]>><</link>>
 <br>
 
 :: Cafe Cream Lick
