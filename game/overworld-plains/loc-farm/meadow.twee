@@ -679,7 +679,7 @@ You look up. A rope coils around your ankle, attaching you to a thick branch abo
 	<<link [[Next|Meadow]]>><</link>>
 	<br>
 <<else>>
-	You squirm agains the rope, <span class="red">but it only tightens further.</span>
+	You squirm against the rope, <span class="red">but it only tightens further.</span>
 	<br><br>
 	<<generate1>><<person1>>
 	"Not what I was expecting," says a <<personsimple>>'s voice.

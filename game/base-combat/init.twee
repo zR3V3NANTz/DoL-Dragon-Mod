@@ -203,12 +203,36 @@
 	<span class="red">ERROR: beastNEWinit unknown type</span>
 <</if>>
 
+<!-- Jimmy: Loops over _nn (How many beasts you plan to initiate) 
+			Then loops over the NPCList, currently size of 6.
+			If a slot does not define .type (WIP: Plan to make this standard),
+			generate the beast in that slot ID and break the NPCList loop.
+		Variables:
+			$_i is the current iteration of how many beasts to generate.
+			$_j is the NPCList slot index that is being selected for insertion.
+-->
+<<set $_j to 0>>
+<!-- Loop from 0 to the number of beasts to create. -->
+<<for $_i = 0; $_i < _nn; $_i++>>
+	<!-- Attempt to insert each NPC into a slot of NPCList -->
+	<<for $_j = $_j; $_j < 6; $_j++>>
+		<<if $NPCList[$_j].type is undefined>>
+			<<set $_j += 1>>
+			<<generateBEAST $_j _tpe _gnn _beast_genitals _beast_monster>>
+			<<break>>
+		<</if>>
+	<</for>>
+<</for>>
+
+<!-- Jimmy: Old iterator code.
+			This was replaced with above because people could insert NPCs before beasts at higher positions.
+			Typically because the beast has to be by itself in encounter combat (For now)
 <<set _offset to $enemyno + 1>>
 <<for _xx = _offset; _xx < _nn + _offset; _xx++>>
-	<!-- NPC#(1-6), Type, Gender -->
 	<<generateBEAST _xx _tpe _gnn _beast_genitals _beast_monster>>
 <</for>>
-<<unset _offset>>
+<<unset _offset>> 
+-->
 
 <<set $enemytype to "beast">>
 

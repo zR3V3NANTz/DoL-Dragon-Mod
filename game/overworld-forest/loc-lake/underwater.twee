@@ -283,8 +283,12 @@ You hear the ancient mechanism creak and the door groans open. Beyond is a plint
 
 You grip the plinth, and pull your <<bottom>> against it. The instant you do, a red light blazes into life, illuminating the room. Previously unseen statues stare down at you from above.
 <br><br>
-
-You jerk back, and convulse. The room shakes and trembles. A crack appears in the floor. It widens, letting in more of the red light. You feel the slime squirm from your ear. It vanishes into the crevice.
+You jerk back, and convulse. The room shakes and trembles. A crack appears in the floor. It widens, letting in more of the red light.
+<<if $parasite.left_ear.name is "slime" and $parasite.right_ear.name is "slime">>
+	You feel the slimes squirm from your ears. They vanish into the crevice.
+<<else>>
+	You feel the slime squirm from your ear. It vanishes into the crevice.
+<</if>>
 <br><br>
 
 <<set $corruption_slime to 1>>

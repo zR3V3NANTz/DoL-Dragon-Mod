@@ -564,6 +564,7 @@ You struggle against the void, as if trying to wake from a nightmare. The presen
 <</if>>
 <br><br>
 Jordan raises a hand to <<his>> mouth to muffle laughter. "I know that shortcut too," <<he>> says. "I remember reading about it at school." <<He>> takes your hands in <<his>> own. "Shall we pray together?"
+<<takeHandholdingVirginity "Jordan">>
 <br><br>
 <<link [[Pray (1:00)|Temple Jordan Prayer]]>><<pass 60>><<trauma -12>><<stress -12>><</link>><<lltrauma>><<llstress>>
 <br>
@@ -584,6 +585,7 @@ Jordan raises a hand to <<his>> mouth to muffle laughter. "I know that shortcut 
 Jordan smiles. "Oh?" <<he>> asks. "You didn't use the secret door to get in? The one in the history textbooks at school." <<He>> laughs. "I wonder if the bishop knows."
 <br><br>
 <<He>> takes your hands in <<his>> own. "Shall we pray together?"
+<<takeHandholdingVirginity "Jordan">>
 <br><br>
 <<link [[Pray (1:00)|Temple Jordan Prayer]]>><<pass 60>><<trauma -12>><<stress -12>><<tiredness -6>><</link>><<lltrauma>><<llstress>><<ltiredness>>
 <br>

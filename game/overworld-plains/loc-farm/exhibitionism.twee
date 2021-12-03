@@ -310,7 +310,7 @@ You call to the <<personsimple>> as <<he>> walks round the bend. <<He>> looks at
 You're trapped in the back of the lorry. You try to stand, but lurch as the vehicle springs into motion.
 <br><br>
 /*$bestialitydisable*/
-<<beastNEWinit 6 pig>>
+<<beastNEWinit 2 pig>>
 A <<beasttype>> takes advantage of your vulnerability, and jumps on top.
 <br><br>
 

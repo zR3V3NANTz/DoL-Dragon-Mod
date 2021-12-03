@@ -634,24 +634,25 @@
 <</widget>>
 
 <<widget "printbuysendhome">>
-	<<set _canAfford = ($money >= getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple and _spaceLeft >= $buyMultiple) ? "" : "disabled">>
+	<<set _clothingCost = getClothingCost(_temp_choice, $clothingShopSlot)>>
+	<<set _canAfford = ($money >= _clothingCost * $buyMultiple and _spaceLeft >= $buyMultiple) ? "" : "disabled">>
 	<div class="buy-button">
 		<div @class="'buy-button-inner buy-multiple div-link ' + _canAfford">
-				<<link `'Buy and send home × ' + $buyMultiple`>>
-					<<if $money >= getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple and _spaceLeft >= $buyMultiple>>
-						<<clothingReset $clothingShopSlot>>
-						<<shopbuyv2 $clothingShopSlot "buy" "send" $clothes_choice $buyMultiple>>
-						<<set $money -= getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple>>
-						<<if $shopDefaults.disableReturn is false>>
-							<<unset $clothes_choice>>
-						<</if>>
-						<<updateclotheslist>>
-						<<updatesidebarimg>>
-						<<updatesidebarmoney>>
-						<<run updateMoment()>>
+			<<link `'Buy and send home × ' + $buyMultiple`>>
+				<<if $money >= _clothingCost * $buyMultiple and _spaceLeft >= $buyMultiple>>
+					<<clothingReset $clothingShopSlot>>
+					<<shopbuyv2 $clothingShopSlot "buy" "send" $clothes_choice $buyMultiple>>
+					<<set $money -= _clothingCost * $buyMultiple>>
+					<<if $shopDefaults.disableReturn is false>>
+						<<unset $clothes_choice>>
 					<</if>>
-				<</link>>
-				<span>(<span class="gold"><<print getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple / 100>></span>)</span>
+					<<updateclotheslist>>
+					<<updatesidebarimg>>
+					<<updatesidebarmoney>>
+					<<run updateMoment()>>
+				<</if>>
+			<</link>>
+			<span>(<span class="gold"><<printmoney `_clothingCost * $buyMultiple`>></span>)</span>
 		</div>
 
 		<div id="buy-multiple-slider" class="buy-multiple-slider">
@@ -659,15 +660,17 @@
 		</div>
 		<!-- Update text of "Buy and send home" button -->
 		<!-- <<run $(() => { $('#buy-multiple-slider input').on('change', () => { new Wikifier (null, "<<updateclotheslist>>") }); })>> -->
-		<<run $(() => { $('#buy-multiple-slider input').on('input change', () => {
+		<<run $(() => { 
+			$('#buy-multiple-slider input').on('input change', () => {
+				let cost = getClothingCost(_temp_choice, $clothingShopSlot);
 				let el = $('#buy-send-home > .buy-button > .buy-button-inner > a');
 				let text = el.text().split(' ');
 				text.pop();
 				text.push($buyMultiple);
 				el.text(text.join(' '));
 
-				$('#buy-send-home > .buy-button > .buy-button-inner > span > span').text('£' + getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple / 100);
-				$('#buy-send-home > .buy-button > .buy-button-inner').toggleClass('disabled', $money < getClothingCost(_temp_choice,$clothingShopSlot) * $buyMultiple or _spaceLeft < $buyMultiple);
+				$('#buy-send-home > .buy-button > .buy-button-inner > span > span').text('£' + cost * $buyMultiple / 100);
+				$('#buy-send-home > .buy-button > .buy-button-inner').toggleClass('disabled', $money < cost * $buyMultiple || _spaceLeft < $buyMultiple);
 			});
 		})>>
 	</div>

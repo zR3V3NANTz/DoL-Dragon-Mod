@@ -268,7 +268,7 @@
 				<<set _output += $_clothes[$_type][0] + " and " + $_clothes[$_type][1] + $_verb>>
 			<<else>>
 				<<set _lastClothes to $_clothes[$_type].pop()>>
-				<<set _output += $_clothes[$_type].join(", ")) + "and _lastClothes" + $_verb>>
+				<<set _output += $_clothes[$_type].join(", ") + "and _lastClothes" + $_verb>>
 			<</if>>
 		<</for>>
 

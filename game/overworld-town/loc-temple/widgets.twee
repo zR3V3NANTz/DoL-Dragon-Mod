@@ -311,9 +311,9 @@
 	"I didn't expect to find anyone here," <<he>> whispers. <<He>> leans closer. "Did you sneak in?"
 	<br><br>
 
-	<<link [[Tell the truth|Temple Prayer Truth]]>><<grace 1>><</link>><<ggrace>>
+	<<link [[Tell the truth|Temple Prayer Truth]]>><<grace 1>><</link>><<ggrace>><<handholdingvirginitywarning>>
 	<br>
-	<<link [[Lie|Temple Prayer Lie]]>><<grace -1>><</link>><<lgrace>>
+	<<link [[Lie|Temple Prayer Lie]]>><<grace -1>><</link>><<lgrace>><<handholdingvirginitywarning>>
 	<br>
 <<elseif $temple_sneak is 1>>
 	<<link [[Continue praying (1:00)|Temple Prayer]]>><<grace -5>><</link>><<llgrace>>

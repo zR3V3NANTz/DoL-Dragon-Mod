@@ -3162,7 +3162,7 @@ Whitney lands with a splash. <<His>> friends can't contain their laughter. Not w
 <<He>> turns and walks away, <<his>> friends in tow.
 <br><br>
 
-<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+<<link [[Next|Hallways]]>><<endevent>><<set $bullytimeroutside to 0>><<set $eventskip to 1>><</link>>
 <br>
 
 :: School Leave Whitney Throw
@@ -3728,7 +3728,7 @@ Whitney brings you to your knees. "All I wanted was some fucking peace and quiet
 	<<ejaculation>><<npcincr Whitney lust -20>>
 
 	<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 10 and $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		"Don't think I wouldn't return the favor, slut."
+		"Don't think I wouldn't return the favour, slut."
 		<<if !$genderknown.includes("Whitney") and ($player.gender is "h") or ($player.gender_appearance is "m" and $player.gender isnot "m") or ($player.gender_appearance is "f" and $player.gender isnot "f")>>
 			<<set $genderknown.pushUnique("Whitney")>>
 			<<His>> hand trails down, until it makes contact with your <<genitals>>. For a moment, <<he>> seems surprised by what <<he>> feels, but <<he>> smiles anyway.

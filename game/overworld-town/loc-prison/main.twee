@@ -487,7 +487,7 @@ You stand outside your cell, and wait as <<methodical_guard 0>> reads out each n
     <<npc Kylar>><<person1>>
     <<generate_methodical_guard 1>>
     <<generate_veteran_guard 2>>
-    <<person2>><<He>> opens <<his>> mouth again, but is interrupted by a banging door somewhere below. You see <<veteran_guard 0>> through the walkway beneath your feet, pushing a small figure ahead of <<person3>><<him>>.
+    <<person2>><<He>> opens <<his>> mouth again, but is interrupted by a banging door somewhere below. You see <<veteran_guard 2>> through the walkway beneath your feet, pushing a small figure ahead of <<person3>><<him>>.
     <br><br>
     A final shove knocks the newcomer off <<person1>><<his>> feet, and <<he>> falls on <<his>> face. <<He>> scrambles to <<his>> feet, and pulls <<his>> hair away from <<his>> face. <span class="gold">It's Kylar.</span>
     <br><br>
@@ -975,7 +975,7 @@ You are on the metal walkway outside your cell, at the top of the cell block. Th
                 <<if !$prison.protection>>
                     <<if !$prison_scarred_done>>
                         <<generate_scarred_inmate 0>><<person1>>
-                        <<scarred_inmate 0 capo>> cell is more spartan the most. Almost as if it were unoccupied.
+                        <<scarred_inmate 0 capo>> cell is more spartan than most. Almost as if it were unoccupied.
                         <<endevent>>
                         <br>
                         <<cellicon>><<link [[Spartan cell|Prison Scarred]]>><</link>>
@@ -1415,7 +1415,7 @@ You are in the prison yard. It's spacious, but the surrounding walls are unreaso
                 <<link [[Canteen|Prison Canteen]]>><<endevent>><</link>>
                 <br><br>
                 
-                The wall protrudes, giving rise to a tower far taller than the the rest of the prison. There's a metal door at the bottom.
+                The wall protrudes, giving rise to a tower far taller than the rest of the prison. There's a metal door at the bottom.
                 <br>
                 <<if $prison.job is "spire">>
                     <<link [[Climb the spire (0:05)|Prison Spire]]>><<tiredness 6>><<pass 5>><</link>><<gtiredness>>
@@ -1988,7 +1988,7 @@ It's enough to bask in your victory, for now.
 <</if>>
 <br><br>
 <<generate1>><<person1>><<generate2>>
-The inmates cheer. A <<person>> grasps the the bars of a nearby window, and pulls them apart with <<his>> bare hands. Another throws a rock, shattering one of the lights. Anarchy breaks out.
+The inmates cheer. A <<person>> grasps the bars of a nearby window, and pulls them apart with <<his>> bare hands. Another throws a rock, shattering one of the lights. Anarchy breaks out.
 <br><br>
 <<set $prison.attention to 0>>
 <<destination_prison>>

@@ -55,7 +55,7 @@
 				<<set _rem to 420 - $time>>
 				<<pass _rem>>
 			<<else>>
-				<<set _rem to 1440 - $time + 360>>
+				<<set _rem to 1440 - $time + 420>>
 				<<pass _rem>>
 			<</if>>
 		<</link>>
@@ -511,7 +511,7 @@ Robin spots you exiting the alley. "A-Are you okay?" <<he>> asks, with a worried
 <br><br>
 You nod, continuing to walk to the school with Robin. The rest of the trip is uneventful.
 <br><br>
-<<link [[Next|School Front Playground]]>><</link>>
+<<link [[Next|School Front Playground]]>><<endevent>><</link>>
 
 :: Robin Walk Home
 <<set $outside to 1>><<set $location to "town">><<effects>>

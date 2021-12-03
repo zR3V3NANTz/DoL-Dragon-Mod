@@ -2647,7 +2647,7 @@
 				<<if _npcReject>>
 					<<set $condomUse to true>>
 					<<switch $npc>>
-						<<default>><span class="lewd"><<He>> says, "Im not ready for children, it's better to be safe than sorry."</span>
+						<<default>><span class="lewd"><<He>> says, "I'm not ready for children, it's better to be safe than sorry."</span>
 					<</switch>>
 					/*Your penis*/
 					<<if $penisstate is "entrance" or $penisstate is "imminent" or $penisstate is "otheranusentrance" or $penisstate is "otheranusimminent">>

@@ -2154,10 +2154,6 @@
 <<if $player.virginity.penile is "Great Hawk" or $player.virginity.vaginal is "Great Hawk">>
 	<<earnFeat "Great Hawk the Terror">>
 <</if>>
-<<if $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.penile is false>>
-	<<set $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.penile to true>>
-	<<set $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.vaginal to true>>
-<</if>>
 <<if $player.virginity.penile is "Black Wolf" or $player.virginity.vaginal is "Black Wolf">>
 	<<earnFeat "Great Wolf the Alpha">>
 <</if>>
@@ -2237,6 +2233,11 @@
 		<</switch>>
 	<</for>>
 	<<set $templePromised to "">>
+<</if>>
+
+<<if $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.penile is false>>
+	<<set $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.penile to true>>
+	<<set $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.vaginal to true>>
 <</if>>
 
 <<if $perNPCFix isnot 2>>

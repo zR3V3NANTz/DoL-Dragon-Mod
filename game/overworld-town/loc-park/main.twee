@@ -857,7 +857,7 @@ You sit on the toilet, and wait.
 			look at yourself in the mirror, giving <<if $phase2 is 1>>one of them<<else>><<him>><</if>> a wink and
 		<</if>>giving your <<bottom>> a wiggle as you do so. They make no other moves towards you.
 		<<clotheson>>
-		<<link [[Leave|Park]]>><<set $eventskip to 1>><</link>>
+		<<link [[Leave|Park]]>><<set $eventskip to 1>><<endevent>><</link>>
 		<br>
 	<<elseif $phase is 2>>
 		<<person1>><<He>> smiles<<if $phase2 is 1>> and turns to the <<person2>><<person>><</if>>. "Well... if you insist."
@@ -931,9 +931,9 @@ You sit on the toilet, and wait.
 		You've gained <<moneyGain 10>>.
 		<br><br>
 	<</if>>
-	<<clearNPC 0>>
+	<<clearNPC toilets_1>>
 	<<if $phase2 is 1>>
-		<<clearNPC 1>>
+		<<clearNPC toilets_2>>
 	<</if>>
 	<<clotheson>>
 	<<endcombat>>

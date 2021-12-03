@@ -465,7 +465,7 @@ You drop to your knees. "Good slut," <<relaxed_guard 1>><<person2>> says. <<He>>
 <<effects>>
 
 <<if $submissive gte 1150>>
-	<<gagged_speech "I-I'm sorry but I dont want" ->>
+	<<gagged_speech "I-I'm sorry but I don't want" ->>
 <<elseif $submissive lte 850>>
 	<<gagged_speech "I'm not a dog you piece of" ->>
 <<else>>

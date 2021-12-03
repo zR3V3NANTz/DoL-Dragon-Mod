@@ -1103,7 +1103,7 @@
 <<set $anustarget to "struggle">>
 <<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 	<<if $bottomuse is "mouth" or $bottomuse is "penis">>
-		<<set $_changetype to true>><<anusActionInit>>>
+		<<set $_changetype to true>><<anusActionInit>>
 	<<else>>
 		<<switch $anusstate>>
 		<<case "struggle" "struggle_pen">>

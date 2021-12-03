@@ -3783,23 +3783,27 @@ School finishes on the first Monday of December.
 <<undertop>>
 <<set _undertop to _text_output>>
 <<if $worn.under_lower.exposed gte 1 and $worn.lower.exposed gte 2 and $worn.upper.exposed lte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed _genitals</span>">>
+	<<set _text_output to '<span class="lewd">exposed _genitals</span>'>>
 <<elseif $worn.under_lower.exposed lte 0 and $worn.lower.exposed gte 2 and $worn.upper.exposed lte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed $worn.under_lower.name</span>">>
+	<<set _text_output to '<span class="lewd">exposed $worn.under_lower.name</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed lte 1 and $player.gender_appearance is "m" and $player.gender is "m">>
-	<<set _text_output to "<span class=\"lewd\">lewdness</span>">>
+	<<set _text_output to '<span class="lewd">lewdness</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed lte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed _undertop</span>">>
+	<<set _text_output to '<span class="lewd">exposed _undertop</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed gte 2 and $worn.under_lower.exposed lte 0 and $player.gender_appearance is "m" and $player.gender is "m">>
-	<<set _text_output to "<span class=\"lewd\">exposed $worn.under_lower.name</span>">>
+	<<set _text_output to '<span class="lewd">exposed $worn.under_lower.name</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed gte 2 and $worn.under_lower.exposed lte 0>>
-	<<set _text_output to "<span class=\"lewd\">exposed _undertop and $worn.under_lower.name</span>">>
+	<<set _text_output to '<span class="lewd">exposed _undertop and $worn.under_lower.name</span>'>>
 <<elseif $worn.under_lower.exposed gte 1 and $worn.lower.exposed gte 2 and $player.gender_appearance is "m" and $player.gender is "m">>
-	<<set _text_output to "<span class=\"lewd\">exposed _genitals</span>">>
+	<<set _text_output to '<span class="lewd">exposed _genitals</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed _undertop and _genitals</span>">>
+	<<if $player.penisExist and $player.vaginaExist>>
+		<<set _text_output to '<span class="lewd">exposed _undertop, _genitals</span>'>>
+	<<else>>
+		<<set _text_output to '<span class="lewd">exposed _undertop and _genitals</span>'>>
+	<</if>>
 <<else>>
-	<<set _text_output to "<span class=\"lewd\">lewdness</span>">>
+	<<set _text_output to '<span class="lewd">lewdness</span>'>>
 <</if>>
 <</silently>>_text_output<</widget>>
 

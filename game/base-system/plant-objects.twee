@@ -2,119 +2,6 @@
 <<widget "init_plant_objects">>
 
 <<set setup.plants to {
-
-	red_rose: {
-		index: 0,
-		name: "red_rose",
-		plural: "red roses",
-		plant_cost: 400,
-		difficulty: 1,
-		bed: "earth",
-		type: "flower",
-		days: 14,
-		multiplier: 1,
-		special: [],
-		season: ["spring","autumn"]
-		},
-
-	white_rose: {
-		index: 1,
-		name: "white_rose",
-		plural: "white roses",
-		plant_cost: 400,
-		difficulty: 1,
-		bed: "earth",
-		type: "flower",
-		days: 14,
-		multiplier: 1,
-		special: [],
-		season: ["spring","autumn"]
-		},
-
-	orchid: {
-		index: 2,
-		name: "orchid",
-		plural: "orchids",
-		plant_cost: 1000,
-		difficulty: 2,
-		bed: "earth",
-		type: "flower",
-		days: 28,
-		multiplier: 1,
-		special: [],
-		season: ["summer"]
-		},
-
-	daisy: {
-		index: 3,
-		name: "daisy",
-		plural: "daisies",
-		plant_cost: 100,
-		difficulty: 1,
-		bed: "earth",
-		type: "flower",
-		days: 7,
-		multiplier: 1,
-		special: [],
-		season: ["spring","summer","autumn"]
-		},
-
-	tulip: {
-		index: 4,
-		name: "tulip",
-		plural: "tulips",
-		plant_cost: 200,
-		difficulty: 1,
-		bed: "earth",
-		type: "flower",
-		days: 12,
-		multiplier: 1,
-		special: [],
-		season: ["autumn"]
-		},
-
-	lotus: {
-		index: 5,
-		name: "lotus",
-		plural: "lotus",
-		plant_cost: 300,
-		difficulty: 2,
-		bed: "water",
-		type: "flower",
-		days: 5,
-		multiplier: 1,
-		special: [],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	lily: {
-		index: 6,
-		name: "lily",
-		plural: "lilies",
-		plant_cost: 200,
-		difficulty: 1,
-		bed: "earth",
-		type: "flower",
-		days: 10,
-		multiplier: 1,
-		special: [],
-		season: ["spring","autumn"]
-		},
-
-	poppy: {
-		index: 7,
-		name: "poppy",
-		plural: "poppies",
-		plant_cost: 200,
-		difficulty: 2,
-		bed: "earth",
-		type: "flower",
-		days: 8,
-		multiplier: 1,
-		special: [],
-		season: ["spring","autumn"]
-		},
-
 	apple: {
 		index: 8,
 		name: "apple",
@@ -124,20 +11,6 @@
 		bed: "earth",
 		type: "fruit",
 		days: 7,
-		multiplier: 1,
-		special: [],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	orange: {
-		index: 9,
-		name: "orange",
-		plural: "oranges",
-		plant_cost: 45,
-		difficulty: 1,
-		bed: "earth",
-		type: "fruit",
-		days: 6,
 		multiplier: 1,
 		special: [],
 		season: ["spring","summer","autumn","winter"]
@@ -157,20 +30,6 @@
 		season: ["spring","summer","autumn","winter"]
 		},
 
-	lemon: {
-		index: 11,
-		name: "lemon",
-		plural: "lemons",
-		plant_cost: 120,
-		difficulty: 1,
-		bed: "earth",
-		type: "fruit",
-		days: 12,
-		multiplier: 1,
-		special: [],
-		season: ["spring","summer","autumn","winter"]
-		},
-
 	blood_lemon: {
 		index: 12,
 		name: "blood_lemon",
@@ -185,57 +44,155 @@
 		season: ["spring","summer","autumn","winter"]
 		},
 
-	pear: {
-		index: 13,
-		name: "pear",
-		plural: "pears",
-		plant_cost: 80,
+	bottle_of_breast_milk: {
+		index: 28,
+		name: "bottle_of_breast_milk",
+		plural: "bottles of breast milk",
+		plant_cost: 3000,
+		difficulty: 1,
+		bed: "human",
+		type: "produce",
+		days: 1,
+		multiplier: 1,
+		special: ["large"],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	bottle_of_milk: {
+		index: 26,
+		name: "bottle_of_milk",
+		plural: "bottles of milk",
+		plant_cost: 100,
+		difficulty: 1,
+		bed: "cow",
+		type: "produce",
+		days: 1,
+		multiplier: 1,
+		special: [],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	bottle_of_semen: {
+		index: 29,
+		name: "bottle_of_semen",
+		plural: "bottles of semen",
+		plant_cost: 3000,
+		difficulty: 1,
+		bed: "human",
+		type: "produce",
+		days: 1,
+		multiplier: 1,
+		special: ["large"],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	broccoli: {
+		index: 32,
+		name: "broccoli",
+		plural: "broccoli",
+		plant_cost: 50,
 		difficulty: 1,
 		bed: "earth",
-		type: "fruit",
+		type: "vegetable",
 		days: 10,
-		multiplier: 1,
+		multiplier: 3,
 		special: [],
-		season: ["spring","summer","autumn","winter"]
+		season: ["spring","autumn"]
 		},
 
-	strawberry: {
-		index: 14,
-		name: "strawberry",
-		plural: "strawberries",
-		plant_cost: 180,
+	cabbage: {
+		index: 30,
+		name: "cabbage",
+		plural: "cabbages",
+		plant_cost: 50,
 		difficulty: 1,
 		bed: "earth",
-		type: "fruit",
-		days: 14,
-		multiplier: 1,
-		special: [],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	peach: {
-		index: 15,
-		name: "peach",
-		plural: "peaches",
-		plant_cost: 65,
-		difficulty: 1,
-		bed: "earth",
-		type: "fruit",
+		type: "vegetable",
 		days: 8,
+		multiplier: 3,
+		special: [],
+		season: ["spring","winter"]
+		},
+
+	daisy: {
+		index: 3,
+		name: "daisy",
+		plural: "daisies",
+		plant_cost: 100,
+		difficulty: 1,
+		bed: "earth",
+		type: "flower",
+		days: 7,
+		multiplier: 1,
+		special: [],
+		season: ["spring","summer","autumn"]
+		},
+
+	egg: {
+		index: 27,
+		name: "egg",
+		plural: "eggs",
+		plant_cost: 40,
+		difficulty: 1,
+		bed: "chicken",
+		type: "produce",
+		days: 1,
 		multiplier: 1,
 		special: [],
 		season: ["spring","summer","autumn","winter"]
 		},
 
-	plum: {
-		index: 16,
-		name: "plum",
-		plural: "plums",
-		plant_cost: 80,
+	garlic_bulb: {
+		index: 22,
+		name: "garlic_bulb",
+		plural: "garlic bulbs",
+		plant_cost: 100,
+		difficulty: 2,
+		bed: "earth",
+		type: "vegetable",
+		days: 8,
+		multiplier: 3,
+		special: [],
+		season: ["autumn"]
+		},
+
+	lemon: {
+		index: 11,
+		name: "lemon",
+		plural: "lemons",
+		plant_cost: 120,
 		difficulty: 1,
 		bed: "earth",
 		type: "fruit",
+		days: 12,
+		multiplier: 1,
+		special: [],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	lily: {
+		index: 6,
+		name: "lily",
+		plural: "lilies",
+		plant_cost: 200,
+		difficulty: 1,
+		bed: "earth",
+		type: "flower",
 		days: 10,
+		multiplier: 1,
+		special: [],
+		season: ["spring","autumn"]
+		},
+
+	lotus: {
+		index: 5,
+		name: "lotus",
+		plural: "lotus",
+		plant_cost: 300,
+		difficulty: 2,
+		bed: "water",
+		type: "flower",
+		days: 5,
 		multiplier: 1,
 		special: [],
 		season: ["spring","summer","autumn","winter"]
@@ -255,48 +212,6 @@
 		season: ["spring","summer","autumn","winter"]
 		},
 
-	wolfshroom: {
-		index: 18,
-		name: "wolfshroom",
-		plural: "wolfshrooms",
-		plant_cost: 300,
-		difficulty: 1,
-		bed: "wood",
-		type: "shroom",
-		days: 21,
-		multiplier: 1,
-		special: ["aphrodisiac"],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	wild_honeycomb: {
-		index: 19,
-		name: "wild_honeycomb",
-		plural: "wild honeycombs",
-		plant_cost: 12000,
-		difficulty: 3,
-		bed: "hive",
-		type: "produce",
-		days: 7,
-		multiplier: 1,
-		special: ["large"],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	wild_carrot: {
-		index: 20,
-		name: "wild_carrot",
-		plural: "carrots",
-		plant_cost: 40,
-		difficulty: 1,
-		bed: "earth",
-		type: "vegetable",
-		days: 10,
-		multiplier: 3,
-		special: [],
-		season: ["spring","summer","autumn"]
-		},
-
 	onion: {
 		index: 21,
 		name: "onion",
@@ -311,18 +226,88 @@
 		season: ["spring","autumn"]
 		},
 
-	garlic_bulb: {
-		index: 22,
-		name: "garlic_bulb",
-		plural: "garlic bulbs",
-		plant_cost: 100,
+	orange: {
+		index: 9,
+		name: "orange",
+		plural: "oranges",
+		plant_cost: 45,
+		difficulty: 1,
+		bed: "earth",
+		type: "fruit",
+		days: 6,
+		multiplier: 1,
+		special: [],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	orchid: {
+		index: 2,
+		name: "orchid",
+		plural: "orchids",
+		plant_cost: 1000,
 		difficulty: 2,
 		bed: "earth",
-		type: "vegetable",
-		days: 8,
-		multiplier: 3,
+		type: "flower",
+		days: 28,
+		multiplier: 1,
 		special: [],
-		season: ["autumn"]
+		season: ["summer"]
+		},
+
+	peach: {
+		index: 15,
+		name: "peach",
+		plural: "peaches",
+		plant_cost: 65,
+		difficulty: 1,
+		bed: "earth",
+		type: "fruit",
+		days: 8,
+		multiplier: 1,
+		special: [],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	pear: {
+		index: 13,
+		name: "pear",
+		plural: "pears",
+		plant_cost: 80,
+		difficulty: 1,
+		bed: "earth",
+		type: "fruit",
+		days: 10,
+		multiplier: 1,
+		special: [],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	plum: {
+		index: 16,
+		name: "plum",
+		plural: "plums",
+		plant_cost: 80,
+		difficulty: 1,
+		bed: "earth",
+		type: "fruit",
+		days: 10,
+		multiplier: 1,
+		special: [],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	poppy: {
+		index: 7,
+		name: "poppy",
+		plural: "poppies",
+		plant_cost: 200,
+		difficulty: 2,
+		bed: "earth",
+		type: "flower",
+		days: 8,
+		multiplier: 1,
+		special: [],
+		season: ["spring","autumn"]
 		},
 
 	potato: {
@@ -339,6 +324,20 @@
 		season: ["spring","autumn","winter"]
 		},
 
+	red_rose: {
+		index: 0,
+		name: "red_rose",
+		plural: "red roses",
+		plant_cost: 400,
+		difficulty: 1,
+		bed: "earth",
+		type: "flower",
+		days: 14,
+		multiplier: 1,
+		special: [],
+		season: ["spring","autumn"]
+		},
+
 	strange_flower: {
 		index: 24,
 		name: "strange_flower",
@@ -350,6 +349,20 @@
 		days: 28,
 		multiplier: 1,
 		special: ["aphrodisiac"],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	strawberry: {
+		index: 14,
+		name: "strawberry",
+		plural: "strawberries",
+		plant_cost: 180,
+		difficulty: 1,
+		bed: "earth",
+		type: "fruit",
+		days: 14,
+		multiplier: 1,
+		special: [],
 		season: ["spring","summer","autumn","winter"]
 		},
 
@@ -367,74 +380,18 @@
 		season: ["spring","summer","autumn","winter"]
 		},
 
-	bottle_of_milk: {
-		index: 26,
-		name: "bottle_of_milk",
-		plural: "bottles of milk",
-		plant_cost: 100,
-		difficulty: 1,
-		bed: "cow",
-		type: "produce",
-		days: 1,
-		multiplier: 1,
-		special: [],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	egg: {
-		index: 27,
-		name: "egg",
-		plural: "eggs",
-		plant_cost: 40,
-		difficulty: 1,
-		bed: "chicken",
-		type: "produce",
-		days: 1,
-		multiplier: 1,
-		special: [],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	bottle_of_breast_milk: {
-		index: 28,
-		name: "bottle_of_breast_milk",
-		plural: "bottles of breast milk",
-		plant_cost: 3000,
-		difficulty: 1,
-		bed: "human",
-		type: "produce",
-		days: 1,
-		multiplier: 1,
-		special: ["large"],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	bottle_of_semen: {
-		index: 29,
-		name: "bottle_of_semen",
-		plural: "bottles of semen",
-		plant_cost: 3000,
-		difficulty: 1,
-		bed: "human",
-		type: "produce",
-		days: 1,
-		multiplier: 1,
-		special: ["large"],
-		season: ["spring","summer","autumn","winter"]
-		},
-
-	cabbage: {
-		index: 30,
-		name: "cabbage",
-		plural: "cabbages",
-		plant_cost: 50,
+	tulip: {
+		index: 4,
+		name: "tulip",
+		plural: "tulips",
+		plant_cost: 200,
 		difficulty: 1,
 		bed: "earth",
-		type: "vegetable",
-		days: 8,
-		multiplier: 3,
+		type: "flower",
+		days: 12,
+		multiplier: 1,
 		special: [],
-		season: ["spring","winter"]
+		season: ["autumn"]
 		},
 
 	turnip: {
@@ -451,20 +408,61 @@
 		season: ["spring","summer","autumn","winter"]
 		},
 
-	broccoli: {
-		index: 32,
-		name: "broccoli",
-		plural: "broccoli",
-		plant_cost: 50,
+	white_rose: {
+		index: 1,
+		name: "white_rose",
+		plural: "white roses",
+		plant_cost: 400,
+		difficulty: 1,
+		bed: "earth",
+		type: "flower",
+		days: 14,
+		multiplier: 1,
+		special: [],
+		season: ["spring","autumn"]
+		},
+
+	wild_carrot: {
+		index: 20,
+		name: "wild_carrot",
+		plural: "carrots",
+		plant_cost: 40,
 		difficulty: 1,
 		bed: "earth",
 		type: "vegetable",
 		days: 10,
 		multiplier: 3,
 		special: [],
-		season: ["spring","autumn"]
-		}
+		season: ["spring","summer","autumn"]
+		},
 
+	wild_honeycomb: {
+		index: 19,
+		name: "wild_honeycomb",
+		plural: "wild honeycombs",
+		plant_cost: 12000,
+		difficulty: 3,
+		bed: "hive",
+		type: "produce",
+		days: 7,
+		multiplier: 1,
+		special: ["large"],
+		season: ["spring","summer","autumn","winter"]
+		},
+
+	wolfshroom: {
+		index: 18,
+		name: "wolfshroom",
+		plural: "wolfshrooms",
+		plant_cost: 300,
+		difficulty: 1,
+		bed: "wood",
+		type: "shroom",
+		days: 21,
+		multiplier: 1,
+		special: ["aphrodisiac"],
+		season: ["spring","summer","autumn","winter"]
+		}
 }>>
 
 <<set setup.plot_base to {

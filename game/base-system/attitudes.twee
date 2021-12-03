@@ -267,10 +267,13 @@ __If consensual:__
 	<<set $actionDefaults = DefaultActions.check(DefaultActions.setup())>>
 <</widget>>
 
+<!-- $args[0] As Boolean: false is consensual, true is non-consensual. -->
 <<widget "sexDefaults">>
 <<set _leftHand to {
-	"Rest":"rest",
-	"Stroke":"leftchest",
+	"Rest": "rest",
+	"Stroke": "leftchest",
+	"Hold behind back": "behind",
+	"Stop holding behind": "stopbehind"
 }>>
 
 <<if $args[0] is true>>
@@ -300,6 +303,8 @@ __If consensual:__
 <<set _rightHand to {
 	"Rest":"rest",
 	"Stroke":"rightchest",
+	"Hold behind back": "behind",
+	"Stop holding behind": "stopbehind"
 }>>
 
 <<if $args[0] is true>>
@@ -342,6 +347,7 @@ __If consensual:__
 
 <<set _mouth to {
 	"Rest":"rest",
+	"Kiss":"kiss",
 }>>
 
 <<if $args[0] is true>>

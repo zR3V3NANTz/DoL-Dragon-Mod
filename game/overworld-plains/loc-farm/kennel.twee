@@ -711,7 +711,7 @@ You attach a collar and leash to a <<beasttype>>, and lead it into an adjoining 
 
 	<<beastejaculation>>
 
-	<<tearful>> rise to your feet. "Good <<if $pronoun is "f">>girl<<else>>boy<</if>>," you say.
+	<<tearful>> you rise to your feet. "Good <<if $pronoun is "f">>girl<<else>>boy<</if>>," you say.
 	<br><br>
 
 	You return the <<beasttype>> to the kennel proper.
