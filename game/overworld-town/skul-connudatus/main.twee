@@ -45,7 +45,7 @@ You scan the crowds.
 	<br><br>
 	<<link [[Take it|Connudatus Car]]>><<crimeup 5>><</link>><<crime>>
 	<br>
-	<<link [[Leave it|Connudatus Street]]>><</link>>
+	<<link [[Leave it|Connudatus Street]]>><<endevent>><</link>>
 	<br>
 <<else>>
 	<<generate1>><<person1>>A <<person>> sits on a bench, their <<wallet>> sat next to them.

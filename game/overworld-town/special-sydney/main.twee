@@ -11,7 +11,7 @@
 	<</if>>
 	<<He>> resumes stamping after a moment, while still looking at you. "First time at the rental counter? You can rent out one book at a ti-" <<he>> pauses to yawn<<if $sydneyDaily.greeting and $hour lte 12>> again<</if>>. "Time. You can also buy school-approved clothes here. <<nnpc_Title "Leighton">> Leighton's marked the prices way up, though. <span class="green">Students with a good record get special discounts.</span>" <<His>> tone is upbeat, and <<he>> seems excited despite <<his>> clear exhaustion.
 	<br><br>
-	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realizing that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that a demonstration of what happens if you return a late or damaged book. My name's Sydney, by the way! Pleased to meet you."
+	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realising that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that a demonstration of what happens if you return a late or damaged book. My name's Sydney, by the way! Pleased to meet you."
 	<br><br>
 <<elseif !$sydneySeen.includes("library")>>
 	<<npc "Sydney">><<person1>>
@@ -20,7 +20,7 @@
 	<br><br>
 	<<He>> resumes stamping after a moment, while still looking at you. "First time at the rental counter? You can rent out one book at a ti-" <<he>> pauses to yawn<<if $sydneyDaily.greeting and $hour lte 12>> again<</if>>. "Time. You can also buy school-approved clothes here. <<nnpc_Title "Leighton">> Leighton's marked the prices way up, though. <span class="green">Students with a good record get special discounts.</span>" <<His>> tone is upbeat, and <<he>> seems excited despite <<his>> clear exhaustion.
 	<br><br>
-	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realizing that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that foreshadowing for what happens if you return a late or damaged book."
+	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realising that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that foreshadowing for what happens if you return a late or damaged book."
 	<br><br>
 <</if>>
 <<link [[Respond politely|Sydney Library Intro 2]]>><<set $phase to 1>><<npcincr Sydney love 1>><</link>>
@@ -420,7 +420,7 @@
 					It's foreign to you, and you shake your head. Sydney looks disappointed, before bouncing back up. "Maybe we can read it together some time. I love the part where the <<print either ("father reveals his","dog runs toward the","tree falls and blocks the","door gets picked by")>>- oops, sorry, no spoilers!"
 				<</if>>
 			<<case 11>>
-				You chat with Sydney. <<He>> shakes <<his>> head to startle a fly away, and <<his>> <<npcHairColour "Sydney">> <<if $sydney.hair is "ponytail">>ponytail<<else>>hair<</if>> whips you in the face. It's too soft to hurt, but it makes you jump. Sydney spends a few minutes <<if _sydneyStatus.includes("corrupt")>>giggling at you<<else>>fussing over you and apologizing<</if>>.
+				You chat with Sydney. <<He>> shakes <<his>> head to startle a fly away, and <<his>> <<npcHairColour "Sydney">> <<if $sydney.hair is "ponytail">>ponytail<<else>>hair<</if>> whips you in the face. It's too soft to hurt, but it makes you jump. Sydney spends a few minutes <<if _sydneyStatus.includes("corrupt")>>giggling at you<<else>>fussing over you and apologising<</if>>.
 			<<case 12>>
 				You chat with Sydney.
 				<<if !$sydneyDaily.pendant and (["holy", "dark", "eerie"].includes($worn.neck.type)) or $worn.neck.name is "scarf" or $worn.neck.name is "collar" or $worn.head.name is "feathered hair clip">>
@@ -2058,7 +2058,7 @@ You watch as Leighton brings down <<nnpc_his "Leighton">> hand on Sydney's botto
 :: Sydney Leighton Spank Refuse 2
 You shake your head, and turn your back to Sydney. "Then you are no longer needed here." Leighton walks you to the door of the library, unlocks it, and pushes you out.
 <br><br>
-After a moment, you can hear Sydney's cries resume. They sound much more agonized. <<stress 24>><<trauma 3>><<gggstress>><<gtrauma>>
+After a moment, you can hear Sydney's cries resume. They sound much more agonised. <<stress 24>><<trauma 3>><<gggstress>><<gtrauma>>
 <br><br>
 <<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><<set $libraryMoneyStolen to 0>><<set $sydneyPunish to 1>><</link>>
 <br>

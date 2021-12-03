@@ -130,10 +130,9 @@ You jump after the soap, and manage to catch it,
 <<effects>>
 
 <<clothesstrip>>
-<<npc Kylar>><<person1>>
 You strip with the other inmates, and leave your clothes on the bench. None of them pay you any mind.
 <<if $prison.kylar is "active">>
-	Kylar looks down, and pretends to fiddle with <<his>> jumpsuit, but you can tell <<hes>> watching you through <<his>> hanging fringe.<<glust>><<npcincr Kylar lust 5>>
+	<<npc Kylar>><<person1>>Kylar looks down, and pretends to fiddle with <<his>> jumpsuit, but you can tell <<hes>> watching you through <<his>> hanging fringe.<<glust>><<npcincr Kylar lust 5>>
 <</if>>
 <br><br>
 
@@ -523,7 +522,7 @@ You shout. The <<person>> shoves a hand over your mouth. "You'll regret that, sl
 <<effects>>
 
 <<if $worn.face.type.includes("gag")>>
-	The <<person2>><<person>> grasps your $worn.face.name with one hand, and gropes your body with with the other.
+	The <<person2>><<person>> grasps your $worn.face.name with one hand, and gropes your body with the other.
 <<else>>
 	The <<person2>><<person>> pushes a finger into your mouth, while groping your body with <<his>> other hand.
 <</if>>

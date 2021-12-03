@@ -217,15 +217,15 @@ The officers shove you into the boat. You struggle to your knees as the crew unt
 <</if>>
 <br>
 <<if $prison.anxious gte 80>>
-    "Couldn't keep your nose clean?" the <<person2>><<anxious_guard 1>> asks with a grin. "Or did you just miss us?"
+    "Couldn't keep your nose clean?" <<person2>><<anxious_guard 1>> asks with a grin. "Or did you just miss us?"
 <<else>>
-    "Couldn't keep your ass clean?" the <<person2>><<anxious_guard 1>> asks.
+    "Couldn't keep your ass clean?" <<person2>><<anxious_guard 1>> asks.
 <</if>>
 <br>
 <<if $prison.veteran gte 80>>
-    "Career criminals are like that," the <<person3>><<veteran_guard 2>> replies.
+    "Career criminals are like that," <<person3>><<veteran_guard 2>> replies.
 <<else>>
-    "Once a thief..." the <<person3>><<veteran_guard 2>> replies while drying the deck.
+    "Once a thief..." <<person3>><<veteran_guard 2>> replies while drying the deck.
 <</if>>
 <br><br>
 
@@ -695,7 +695,7 @@ They look to <<person4>><<methodical_guard 3>>, who steadies <<himself>> against
 You awaken on a hard mattress, and stare at the grey ceiling above. You feel a chill.
 <br><br>
 
-"Look who's awake," says a familiar voice. <<covered>> It's <<person2>><<anxious_guard 1>>. <<person4>><<methodical_guard 3 cap>> stands next to <<him>>. You're in a long room. There other other beds, occupied by bandaged figures.
+"Look who's awake," says a familiar voice. <<covered>> It's <<person2>><<anxious_guard 1>>. <<person4>><<methodical_guard 3 cap>> stands next to <<him>>. You're in a long room. There are other beds, occupied by bandaged figures.
 <br><br>
 "There's no escaping this island," <<person4>><<methodical_guard 3>> says. "Not until you've served your sentence. Get <<him>> up."
 <br><br>
@@ -804,7 +804,7 @@ They blast you with icy water. The shock knocks you to your knees, but they keep
 :: Prison Intro Hose
 <<effects>>
 
-<<He>> releases you, and you turn away from the edge to find <<person1>><<relaxed_guard 0>> and <<person2>><<anxious_guard 1>> carrying a hose between them. They blast you with with icy water. You'd fall, if not for <<person3>><<veteran_guard 2>> steadying you with one hand.<<wash>>
+<<He>> releases you, and you turn away from the edge to find <<person1>><<relaxed_guard 0>> and <<person2>><<anxious_guard 1>> carrying a hose between them. They blast you with icy water. You'd fall, if not for <<person3>><<veteran_guard 2>> steadying you with one hand.<<wash>>
 <<if $prisonClothesBargain is 1>>
     <<unset $prisonClothesBargain>>
 <<else>>

@@ -1189,7 +1189,7 @@ You nod. The two of you watch the embers crackle into the night.
 <<elseif $rng gte 21>>
 	from an old fishing magazine. You wonder where <<he>> got it.
 <<else>>
-	from a victorian novel. It drags on a bit, but Eden seems to like it. You might have dozed off.<<genglish>><<englishskill>><<ltiredness>><<tiredness -3>>
+	from a Victorian novel. It drags on a bit, but Eden seems to like it. You might have dozed off.<<genglish>><<englishskill>><<ltiredness>><<tiredness -3>>
 <</if>>
 <br><br>
 <<if $hour isnot 0>>
@@ -2811,9 +2811,9 @@ You wash Eden's clothes in the spring, making sure to get every bit of dirt and 
 	/* eden is already generated on passages that lead here <<npc Eden>><<person1>>*/You feel a pair of arms wrap around you from behind. Eden buries <<his>> head in your neck and kisses your collarbone.
 	<br><br>
 		<<if $NPCName[$NPCNameList.indexOf("Eden")].dom gte 75>>
-			"You're such a good <<wife>>, doing this for me," <<he>> says. "Let me return the favor." You feel <<his>> hand slide to your <<genitals>> as <<he>> presses <<him>>self against you.
+			"You're such a good <<wife>>, doing this for me," <<he>> says. "Let me return the favour." You feel <<his>> hand slide to your <<genitals>> as <<he>> presses <<him>>self against you.
 		<<else>>
-			"You're such a good <<wife>>, doing this for me," <<he>> says. "Maybe there's a way I can return the favor." You feel <<his>> hand slide onto your thigh.
+			"You're such a good <<wife>>, doing this for me," <<he>> says. "Maybe there's a way I can return the favour." You feel <<his>> hand slide onto your thigh.
 		<</if>>
 	<br><br>
 
@@ -3244,7 +3244,7 @@ Placing the air pump on the raft, Eden grabs the oars and starts rowing.
 	As the boat floats over the lake, you take some time to appreciate the scenery. The sounds of the gently flowing water put you at ease, and you're mesmerised as the falling autumn leaves surround you.
 	Glancing around, one of the leaves fall in your hair. Giggling, you brush it off.
 <<elseif $hour gte 6 and $hour lte 8>>
-	As the boat floats over the lake, you take some time to appreciate the scenery. The sounds of the gently flowing water put you at ease, and the glow of the orange sun is mesmerizing.
+	As the boat floats over the lake, you take some time to appreciate the scenery. The sounds of the gently flowing water put you at ease, and the glow of the orange sun is mesmerising.
 	Glancing around, you see some swans swimming nearby. Looking closer, you notice that a pair of them has faced each other, forming a heart. You smile at the sight.
 <<else>>
 	As the boat floats over the lake, you take some time to appreciate the scenery. The sounds of the gently flowing water put you at ease, and the view of the sky is enchanting.

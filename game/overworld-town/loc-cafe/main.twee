@@ -1560,23 +1560,21 @@ You drink the last of your coffee and place the mug back down on the table, befo
 		/* show our options depending on our possession of panties */
 		<<if $worn.under_lower.exposed>>
 			<<if $exhibitionism gte 75>>
-			<<link [[Part your legs and wink at them|Cafe Exhibitionism Legs Part Pantiless Wink]]>><</link>> <<exhibitionist5>>
-			<br>
+				<<link [[Part your legs and wink at them|Cafe Exhibitionism Legs Part Pantiless Wink]]>><</link>><<exhibitionist5>><br>
 			<</if>>
 			<<if $exhibitionism gte 55>>
-				<<link [[Pretend not to notice as you part your legs|Cafe Exhibitionism Legs Part Pantiless]]>><</link>> <<exhibitionist4>> <br>
-				<<link [[Ignore the pervert and finish your food|Ocean Breeze]]>><</link>>
-				<br>
+				<<link [[Pretend not to notice as you part your legs|Cafe Exhibitionism Legs Part Pantiless]]>><</link>><<exhibitionist4>><br>
+				<<link [[Ignore the pervert and finish your food|Ocean Breeze]]>><<endevent>><</link>><br>
 			<</if>>
 			<<if $exhibitionism lte 54>>
 				You close your legs carefully so <<he>> doesn't see any more than <<he>> already has. As you carry on eating your delicious pancakes you can't help imagining what it would feel like to spread your legs and expose everything to <<his>> wandering eyes.
 				<<arousal +15>><<garousal>>
 				<br><br>
-				<<link [[Finish your food|Ocean Breeze]]>><</link>>
+				<<link [[Finish your food|Ocean Breeze]]>><<endevent>><</link>>
 			<</if>>
 		<<else>>
-			<<link [[Pretend not to notice as you part your legs|Cafe Exhibitionism Legs Part]]>><</link>><<exhibitionist2>> <br>
-			<<link [[Ignore the pervert and finish your food|Ocean Breeze]]>><</link>> <br>
+			<<link [[Pretend not to notice as you part your legs|Cafe Exhibitionism Legs Part]]>><</link>><<exhibitionist2>><br>
+			<<link [[Ignore the pervert and finish your food|Ocean Breeze]]>><<endevent>><</link>><br>
 		<</if>>
 	<<else>>
 		/* we don't, so shut your legs you dirty normie */

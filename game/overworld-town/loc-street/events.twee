@@ -4789,7 +4789,7 @@ You fall several feet before the air catches you, and brings you to the street b
 <<endcombat>>
 <<loadNPC 0 tower_creature>>
 
-<<link [[Next|Monster Tower]]>>><</link>>
+<<link [[Next|Monster Tower]]>><</link>>
 
 :: Monster Tower Wake
 <<set $outside to 0>><<effects>>
@@ -4811,7 +4811,7 @@ The <<tower_creature_text>> lumbers over to you, stopping just within arm's reac
 
 <<switch $rng>>
 	<<case 1>>
-		<<bHis>> glowing eyes scrutinize every inch of your form, until <<bhis>> gaze is caught by something behind you.
+		<<bHis>> glowing eyes scrutinise every inch of your form, until <<bhis>> gaze is caught by something behind you.
 		<br><br>
 
 		Your blood freezes for a split second as <<bhe>> closes the distance between the two of you, only for <<bhim>> to step past you. <<bHe>> pulls a necklace out of the pile, then backs up to examine you once again. After a moment or two, <<bhe>> places the necklace on your head and lets it fall down to your neck.
@@ -4835,7 +4835,7 @@ The <<tower_creature_text>> lumbers over to you, stopping just within arm's reac
 		The <<tower_creature_text>> shuffles over to a rusted valve, and grasps it. With a metallic creak, it gives way. Steaming hot water gushes out of the pipe. <<bHe>> sticks <<bhis>> hand underneath the spout, as if testing the waters. <<bHe>> seems satisfied.
 		<br><br>
 
-		<<link [[Next|Monster Tower Clean]]>>><</link>>
+		<<link [[Next|Monster Tower Clean]]>><</link>>
 		<br>
 	<<case 3>>
 		<<if $worn.over_upper.name isnot "naked" or $worn.over_lower.name isnot "naked">>
@@ -6395,7 +6395,7 @@ Surprised by your reaction, <<he>> relaxes and mumbles "Uhmm... Yeah... just be 
    The tight hug squeezes your <<breasts>> against the <<person>>. Your <<nipples>> harden in response.
    <<arousal 300>>
 <<elseif $NPCList[0].breastsize gte 2>>
-   The tight hug squeezes you agains the <<person>>'s $NPCList[0].breastsdesc. <<arousal 300>>
+   The tight hug squeezes you against the <<person>>'s $NPCList[0].breastsdesc. <<arousal 300>>
    <<set $rng to random(0, 100)>>
    <<if $rng gte 66>>
       You clearly feel <<his>> hard nipples. <<arousal 300>>

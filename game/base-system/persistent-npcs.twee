@@ -39,7 +39,7 @@
 	<<else>>
 		<<set $NPC_names_m.pushUnique($per_npc[_temp0].name)>>
 	<</if>>
-	<<set $per_npc[_temp0] to undefined>>
+	<<run delete $per_npc[_temp0]>>
 <</if>>
 <</widget>>
 

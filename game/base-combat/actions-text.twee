@@ -4551,29 +4551,31 @@ _otheraction _youraction
 <</widget>>
 
 <<widget "actionspussytake">>
+<<set $_pussyDesc to ($args[0] is "tentacles" ? $tentacleVagina : "pussy")>>
+
 <<if $enemyarousal gte ($enemyarousalmax / 5) * 4>>
 	<<if $arousal gte ($arousalmax / 5) * 4>>
-		Your <<penis>> is ruthlessly fucked by <<their $args[0]>> pussy.
+		Your <<penis>> is ruthlessly fucked by <<their $args[0]>> $_pussyDesc.
 	<<elseif $arousal gte ($arousalmax / 5) * 2>>
-		Your <<penis>> is ruthlessly fucked by <<their $args[0]>> pussy.
+		Your <<penis>> is ruthlessly fucked by <<their $args[0]>> $_pussyDesc.
 	<<else>>
-		Your <<penis>> is ruthlessly fucked by <<their $args[0]>> pussy.
+		Your <<penis>> is ruthlessly fucked by <<their $args[0]>> $_pussyDesc.
 	<</if>>
 <<elseif $enemyarousal gte ($enemyarousalmax / 5) * 2>>
 	<<if $arousal gte ($arousalmax / 5) * 4>>
-		Your <<penis>> is hungrily devoured by <<their $args[0]>> pussy.
+		Your <<penis>> is hungrily devoured by <<their $args[0]>> $_pussyDesc.
 	<<elseif $arousal gte ($arousalmax / 5) * 2>>
-		Your <<penis>> is hungrily devoured by <<their $args[0]>> pussy.
+		Your <<penis>> is hungrily devoured by <<their $args[0]>> $_pussyDesc.
 	<<else>>
-		Your <<penis>> is hungrily devoured by <<their $args[0]>> pussy.
+		Your <<penis>> is hungrily devoured by <<their $args[0]>> $_pussyDesc.
 	<</if>>
 <<else>>
 	<<if $arousal gte ($arousalmax / 5) * 4>>
-		Your <<penis>> is rhythmically swallowed and regurgitated by <<their $args[0]>> pussy.
+		Your <<penis>> is rhythmically swallowed and regurgitated by <<their $args[0]>> $_pussyDesc.
 	<<elseif $arousal gte ($arousalmax / 5) * 2>>
-		Your <<penis>> is rhythmically swallowed and regurgitated by <<their $args[0]>> pussy.
+		Your <<penis>> is rhythmically swallowed and regurgitated by <<their $args[0]>> $_pussyDesc.
 	<<else>>
-		Your <<penis>> is rhythmically swallowed and regurgitated by <<their $args[0]>> pussy.
+		Your <<penis>> is rhythmically swallowed and regurgitated by <<their $args[0]>> $_pussyDesc.
 	<</if>>
 <</if>>
 <</widget>>

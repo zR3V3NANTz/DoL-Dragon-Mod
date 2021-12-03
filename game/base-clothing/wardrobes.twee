@@ -282,7 +282,7 @@
 	<</if>>
 <</for>>
 <<if $wear is "dry">><<set $wear to 0>>
-	<<set $upperwet to 0>><<set $lowerwet to 0>><<set $underlowerwet to 0>><<set $underupperwet to 0>>
+	<<set $upperwet to 0>><<set $lowerwet to 0>><<set $underlowerwet to 0>><<set $underupperwet to 0>><<set $upperwetstage to 0>><<set $lowerwetstage to 0>>
 	You squeeze the water from your clothes.
 	<<effectswater>>
 	<br><br>
@@ -547,7 +547,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 		<<if $outfit_name is "" or $outfit_name is "Custom">><<print '<<set $outfit_name to "Custom ' + $outfit.length + '">>'>><</if>>
 		<<set $outfit.last().name to $outfit_name>>
 		<<if $outfit_type>>
-			<<set $outfit.last().type[0] to $outfit_type)>>
+			<<set $outfit.last().type[0] to $outfit_type>>
 		<</if>>
 
 		<<if _saveColor>>

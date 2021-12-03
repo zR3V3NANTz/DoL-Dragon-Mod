@@ -1537,7 +1537,7 @@ Doren asks you to demonstrate your grammar on the whiteboard. As you walk to the
 	<<npc Robin>><<generatey2>><<person2>>
 	A paper airplane flies across the room, hitting Winter in the back.
 	<br><br>
-	"<<person1>>It was <<him>>," says a <<person2>><<person>>, pointing at Robin.
+	<<person1>>"It was <<him>>," says a <<person2>><<person>>, pointing at Robin.
 	<br><br>
 	<<if random(1, 2) is 2>>
 		Winter glares at Robin. "Out. Now."

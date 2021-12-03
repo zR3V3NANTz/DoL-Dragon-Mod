@@ -1593,7 +1593,7 @@ You creep up to the door.
 		<<case "libRescue">>
 			"I... we met when..." There's a brief pause. "I found <<phim>> unconscious at the school, and carried <<phim>> somewhere safe. That's where we first met."
 			<br>
-			"I'm sorry, that must have been traumatizing. I'm glad you've come this far with <<phim>>."
+			"I'm sorry, that must have been traumatising. I'm glad you've come this far with <<phim>>."
 		<<case "science">>
 			"We met in our shared science class."
 			<br>

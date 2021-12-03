@@ -196,7 +196,7 @@ The gate shudders open, and a lorry rumbles out, on its way to collect your prod
 				<<set $farmersProduce.toSell[_item] to 0>>
 			<</if>>
 			<<if $plants[_item] is undefined>>
-				You dont have any <<print $plants[_item].plural>> right now.
+				You don't have any <<print $plants[_item].plural>> right now.
 			<<elseif $plants[_item].amount lt 250>>
 				<<print $plants[_item].plural.charAt(0).toUpperCase() + $plants[_item].plural.slice(1)>>: Not enough to sell.
 			<<else>>

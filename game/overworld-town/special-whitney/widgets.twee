@@ -17,7 +17,7 @@
 			"You're getting on my nerves, <<bitch>>." <<He>> looks away.
 		<<else>>
 			<<if $whitneyromance is 1 or $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 10>>
-				"What's my favorite slut doing here?"
+				"What's my favourite slut doing here?"
 			<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].state is "rescued">>
 				<<He>> looks at you, but quickly looks away.
 			<<else>>

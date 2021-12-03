@@ -20,9 +20,11 @@ Feel free to delete this coment at leisure.
 	<<set $event to ensure($event, [])>>
 	<<set $eventslot to ensure($eventslot, [])>>
 	<<set $eventtime to ensure($eventtime, [])>>
-	<<set ensureIsArray($event).push($passage)>>
-	<<set ensureIsArray($eventslot).push($args[0])>>
-	<<set ensureIsArray($eventtime).push($time)>>
+	<<run 
+		ensureIsArray($event).push($passage);
+		ensureIsArray($eventslot).push($args[0]);
+		ensureIsArray($eventtime).push($time);
+	>>
 <</widget>>
 
 <<widget "eventExtraInfo">>
