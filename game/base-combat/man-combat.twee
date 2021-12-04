@@ -1199,17 +1199,18 @@
 	<<bodypart_admire_chance forehead>>
 <</widget>>
 
-<!-- pass "left", "right" or "both" as the first argument, and "<<his> left/right hand" or "both hands" for the second argument -->
+<!-- pass "left", "right" or "both" as the first argument, and "hand" or "hands" for the second argument -->
 <<widget "combat-hand-on-mask">>
 	<<if $worn.face.type.includes("mask")>>
+		<<set $_hishand to ($args[0] isnot "both" ? "<<his>> " : "") + $args[0] + " " + $args[1]>>
 		<<if $face is "covered">>
-			<<He>> tries to pull your $worn.face.name off your face with $args[1], <span class="lblue">but you grip it tight.</span>
+			<<He>> tries to pull your $worn.face.name off your face with $_hishand, <span class="lblue">but you grip it tight.</span>
 			<<if random(1, 3) is 3>>
 				<span class="lblue"><<He>> releases it with a frustrated sigh.</span>
 				<<combat-reset-hand $args[0]>>
 			<</if>>
 		<<else>>
-			<<He>> pulls your $worn.face.name off your face with $args[1], <span class="pink">revealing your identity.</span>
+			<<He>> pulls your $worn.face.name off your face with $_hishand, <span class="pink">revealing your identity.</span>
 			<<facestrip>><<clothesstripstat>><<combat-reset-hand $args[0]>>
 		<</if>>
 	<<else>>
@@ -1222,10 +1223,44 @@
 		<<cast_aside_clothes>>
 		<<combat-reset-hand $args[0]>>
 	<<else>>
-		<span class="blue"><<He>> tries to loosen your $worn.genitals.name.</span> <<His>> rough handling leaves you feeling more frustrated and aroused. <<He>> gives up after a few moments of impotent tugging, looking disappointed.
+		<span class="blue"><<He>> tries to loosen your $worn.genitals.name.</span>
+		<<His>> rough handling leaves you feeling more frustrated and aroused. <<He>> gives up after a few moments of impotent tugging, looking disappointed.
 		<<neutral 1 _n>><<set $enemyanger += 5>><<arousal 5>><<combat-reset-hand $args[0]>><<set $speechchastity to 1>><<set $worn.genitals.integrity -= 10>>
 		<<bodypart_admire_chance pubic>>
 	<</if>>
+<</widget>>
+
+<<widget "combat-hand-on-throat">>
+	<<if $asphyxiaLvl gte 1>>
+		<<set $rng to random(1, 100)>>
+		<<if $consensual is 1>>
+			<<mancombat_choke>>
+		<<else>>
+			<<mancombat_strangle>>
+		<</if>>
+	<</if>>
+<</widget>>
+
+<<widget "combat-hand-on-head_nipples">>
+	<<sex 3>>
+	<<personselect _n>>
+	<<He>> continues to push your mouth against <<his>> $NPCList[_n].breastdesc.
+	<<if $breastfeedingdisable is "f">>
+		<<if $NPCList[_n].type is "plant" and $NPCList[_n].pronoun is "f">>
+			<span class="pink">Nectar leaks from <<his>> bud.</span>
+		<<elseif $NPCList[_n].lactation is 1>>
+			<span class="pink">Milk leaks from <<his>> bud.</span>
+		<</if>>
+	<</if>>
+	<<bodypart_admire_chance forehead>>
+<</widget>>
+
+<<widget "combat-pen-on-bodypart">>
+	<<set $_hand to $args[0]>><<set $_penbodypart to $args[1]>>
+	<<He>> scrawls on your <<bodypart $_penbodypart>>:
+	<<bodywriting_npc $_penbodypart $NPCList[_n][$_hand + "tool"]>>
+	<<set $newlyWritten.pushUnique($_penbodypart)>>
+	<<combat-reset-hand $_hand>><<set $NPCList[_n][$_hand + "tool"] to 0>>
 <</widget>>
 
 <<widget "combat-set-hand-start">>
@@ -2708,11 +2743,11 @@
 	<<if $NPCList[_n].penis is "anusdouble">>
 		<!-- Notes for how double functions work are found in the NPC action select section -->
 		<<set _dap to 0>>
-        <<if $NPCList[$anustarget] is $NPCList[_n]>> /* State 1 is out of sync, state 2 is in sync */
-            <<set _dap to ($NPCList[$anusdoubletarget].penis isnot "anusdouble" ? 1 : 2)>>
-        <<elseif $NPCList[$anusdoubletarget] is $NPCList[_n]>>
-            <<set _dap to ($NPCList[$anustarget].penis isnot "anusdouble" ? 1 : 2)>>
-        <</if>>
+		<<if $NPCList[$anustarget] is $NPCList[_n]>> /* State 1 is out of sync, state 2 is in sync */
+			<<set _dap to ($NPCList[$anusdoubletarget].penis isnot "anusdouble" ? 1 : 2)>>
+		<<elseif $NPCList[$anusdoubletarget] is $NPCList[_n]>>
+			<<set _dap to ($NPCList[$anustarget].penis isnot "anusdouble" ? 1 : 2)>>
+		<</if>>
 
 		<<if $rng gte 101>>
 			<span class="purple"><<He>> withdraws <<his>> penis from your anus.</span>
@@ -2785,13 +2820,13 @@
 
 		<<set _dap to 0>>
 		<<set _otherNPCindex to "f">>
-        <<if $NPCList[$anustarget] is $NPCList[_n]>> /* State 1 is out of sync, state 2 is in sync */
-            <<set _dap to ($NPCList[$anusdoubletarget].penis isnot "anusdouble" ? 1 : 2)>>
+		<<if $NPCList[$anustarget] is $NPCList[_n]>> /* State 1 is out of sync, state 2 is in sync */
+			<<set _dap to ($NPCList[$anusdoubletarget].penis isnot "anusdouble" ? 1 : 2)>>
 			<<set _otherNPCindex to $anusdoubletarget>>
-        <<elseif $NPCList[$anusdoubletarget] is $NPCList[_n]>>
-            <<set _dap to ($NPCList[$anustarget].penis isnot "anusdouble" ? 1 : 2)>>
+		<<elseif $NPCList[$anusdoubletarget] is $NPCList[_n]>>
+			<<set _dap to ($NPCList[$anustarget].penis isnot "anusdouble" ? 1 : 2)>>
 			<<set _otherNPCindex to $anustarget>>
-        <</if>>
+		<</if>>
 
 		<<if $rng gte 101>>
 			<span class="blue"><<He>> stops pressing <<his>> $NPCList[_n].penisdesc against your anus.</span>
@@ -2875,11 +2910,11 @@
 	<<set $rng to random(1, 100)>>
 	<<if $NPCList[_n].penis is "anusdoubleentrance">>
 		<<set _dap to 0>>
-        <<if $NPCList[$anustarget] is $NPCList[_n]>> /* State 1 is out of sync, state 2 is in sync */
-            <<set _dap to ($NPCList[$anusdoubletarget].penis isnot "anusdouble" ? 1 : 2)>>
-        <<elseif $NPCList[$anusdoubletarget] is $NPCList[_n]>>
-            <<set _dap to ($NPCList[$anustarget].penis isnot "anusdouble" ? 1 : 2)>>
-        <</if>>
+		<<if $NPCList[$anustarget] is $NPCList[_n]>> /* State 1 is out of sync, state 2 is in sync */
+			<<set _dap to ($NPCList[$anusdoubletarget].penis isnot "anusdouble" ? 1 : 2)>>
+		<<elseif $NPCList[$anusdoubletarget] is $NPCList[_n]>>
+			<<set _dap to ($NPCList[$anustarget].penis isnot "anusdouble" ? 1 : 2)>>
+		<</if>>
 
 		<<if $rng gte 101>>
 			<span class="lblue"><<He>> moves <<his>> penis away from your <<bottom>> and the other cock.</span>
@@ -5262,10 +5297,10 @@
 		<</if>>
 	<<elseif $enemyanger + $rng lte 80 and $NPCList[_n].lefthand is 0>>
 		<span class="lblue"><<He>> presses <<his>> fingers against <<his>> labia.</span>
-		<<neutral 1 _n>><<set $enemyarousal += 10>><<set $NPCList[_n].vagina to "lefthand">><<set $NPCList[_n].lefthand to "othervagina">>
+		<<neutral 1 _n>><<set $enemyarousal += 10>><!-- <<set $NPCList[_n].vagina to "lefthand">><<set $NPCList[_n].lefthand to "othervagina">> -->
 	<<elseif $enemyanger + $rng lte 80 and $NPCList[_n].righthand is 0>>
 		<span class="lblue"><<He>> presses <<his>> fingers against <<his>> labia.</span>
-		<<neutral 1 _n>><<set $enemyarousal += 10>><<set $NPCList[_n].vagina to "righthand">><<set $NPCList[_n].righthand to "othervagina">>
+		<<neutral 1 _n>><<set $enemyarousal += 10>><!-- <<set $NPCList[_n].vagina to "righthand">><<set $NPCList[_n].righthand to "othervagina">> -->
 	<<elseif $enemyanger + $rng lte 80>>
 		<<if $walltype is "front">>
 			<<He>> rubs <<his>> pussy against your cheek.
