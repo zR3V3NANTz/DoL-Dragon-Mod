@@ -58,6 +58,11 @@
 <<elseif $moor is 50>>
 	You see a faded sign. You can make out little: "D----- Q--c-s--d"
 	<br><br>
+<<elseif $moor is 80>>
+	<<if $syndromedragon gte 1>>
+		You see a lost grove, long since hidden from the world.
+		<br><br>
+	<</if>>
 <<elseif $moor is 0>>
 	You see a sign beside a trail leading into the heather. It reads: "Danger. Keep out."
 	<br><br>
@@ -82,6 +87,14 @@
 		<<link [[Enter the castle (0:10)|Castle]]>><<pass 10>><</link>>
 		<br><br>
 	<</if>>
+	/* 
+	<<if $moor gte 80>>
+		<<if $syndrome dragon gte 1>>
+			<<link [[Enter Lost Grove (0:05)|Enter Lost Grove]]>><<pass 5>><</link>>
+		<</if>>
+		<br>
+	<</if>>
+	*/
 	<<if $moor gte 51>>
 		<<if $pubtask is "moor" and $pubtask2 isnot 1>>
 			<<if $pubtasksetting is "lurkers" and $bestialitydisable is "f" and $lurkerdisable is "f">>

@@ -5,40 +5,43 @@ You spread your wings.
 <br><br>
 <u>Residential Town Areas</u>
 <br>
-<<domusicon>><<link [[Domus Street|Domus Street]]>><</link>><br>
-<<barbicon>><<link [[Barb Street|Barb Street]]>><</link>><br>
-<<danubeicon>><<link [[Danube Street|Danube Street]]>><</link>><br>
-<<wolficon>><<link [[Wolf Street|Wolf Street]]>><</link>><br>
-<<alleyicon>><<link [[Residential alleyways|Residential alleyways]]>><</link>><br>
+<<domusicon>><<link [[Domus Street (0:02)|Domus Street]]>><<pass 2>><</link>><br>
+<<barbicon>><<link [[Barb Street (0:02)|Barb Street]]>><<pass 2>><</link>><br>
+<<danubeicon>><<link [[Danube Street (0:02)|Danube Street]]>><<pass 2>><</link>><br>
+<<wolficon>><<link [[Wolf Street (0:02)|Wolf Street]]>><<pass 2>><</link>><br>
+<<alleyicon>><<link [[Residential alleyways (0:02)|Residential alleyways]]>><<pass 2>><</link>><br>
 
 <u>Commercial Town Areas</u>
 <br>
-<<connudatusicon>><<link [[Connudatus Street|Connudatus Street]]>><</link>><br>
-<<clifficon>><<link [[Cliff Street|Cliff Street]]>><</link>><br>
-<<highicon>><<link [[High Street|High Street]]>><</link>><br>
-<<starfishicon>><<link [[Starfish Street|Starfish Street]]>><</link>><br>
-<<nightingaleicon>><<link [[Nightingale Street|Nightingale Street]]>><</link>><br>
-<<oxfordicon>><<link [[Oxford Street|Oxford Street]]>><</link>><br>
-<<alleyicon>><<link [[Commercial alleyways]]>><</link>><br>
-<<parkicon>><<link [[Park|Park]]>><</link>><br>
+<<connudatusicon>><<link [[Connudatus Street (0:02)|Connudatus Street]]>><<pass 2>><</link>><br>
+<<clifficon>><<link [[Cliff Street (0:02)|Cliff Street]]>><<pass 2>><</link>><br>
+<<highicon>><<link [[High Street (0:02)|High Street]]>><<pass 2>><</link>><br>
+<<starfishicon>><<link [[Starfish Street (0:02)|Starfish Street]]>><<pass 2>><</link>><br>
+<<nightingaleicon>><<link [[Nightingale Street (0:02)|Nightingale Street]]>><<pass 2>><</link>><br>
+<<oxfordicon>><<link [[Oxford Street (0:02)|Oxford Street]]>><<pass 2>><</link>><br>
+<<alleyicon>><<link [[Commercial alleyways (0:02)|Commercial alleyways]]>><<pass 2>><</link>><br>
+<<parkicon>><<link [[Park (0:02)|Park]]>><<pass 2>><</link>><br>
 
 <u>Industrial Town Areas</u>
 <br>
-<<mericon>><<link [[Mer Street|Mer Street]]>><</link>><br>
-<<elkicon>><<link [[Elk Street|Elk Street]]>><</link>><br>
-<<harvesticon>><<link [[Harvest Street|Harvest Street]]>><</link>><br>
-<<alleyicon>><<link [[Industrial alleyways|Industrial alleyways]]>><</link>><br>
+<<mericon>><<link [[Mer Street (0:02)|Mer Street]]>><<pass 2>><</link>><br>
+<<elkicon>><<link [[Elk Street (0:02)|Elk Street]]>><<pass 2>><</link>><br>
+<<harvesticon>><<link [[Harvest Street (0:02)|Harvest Street]]>><<pass 2>><</link>><br>
+<<alleyicon>><<link [[Industrial alleyways (0:02)|Industrial alleyways]]>><<pass 2>><</link>><br>
 
 <u>Out of Town</u>
 <br>
-<<cowicon>><<link [[Farmland|Farmland]]>><</link>><br>
+<<cowicon>><<link [[Farmland (0:30)|Farmland]]>><<pass 30>><</link>><br>
 <<if $syndromeeden gte 1>>
-    <<foresticon>><<link [[Eden Cabin|Eden Cabin]]>><</link>><br>
+    <<foresticon>><<link [[Eden Cabin (0:30)|Eden Cabin]]>><<pass 30>><</link>><br>
 <</if>>
 <<if $syndromewolves gte 1>>
-    <<dogicon>><<link [[Wolf Cave|Wolf Cave]]>><</link>><br>
+    <<dogicon>><<link [[Wolf Cave (0:30)|Wolf Cave]]>><<pass 30>><</link>><br>
 <</if>>
 <<if $syndromebird gte 1>>
-    <<chickenicon>><<link [[Great Hawk Tower|Bird Tower]]>><</link>><br>
+    <<chickenicon>><<link [[Great Hawk Tower (0:45)|Bird Tower]]>><<pass 45>><</link>><br>
+<</if>>
+<<if $syndromedragon gte 1>>
+    <<dragonwingsicon>><<link [[Lost Grove (0:45)|Enter Lost Grove]]>><<pass 45>><</link>><br>
 <</if>>
 <br>
