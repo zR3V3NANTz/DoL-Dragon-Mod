@@ -789,7 +789,7 @@ window.clothingData = function(slot, item, data){
 }
 
 window.clothesDataTrimmerLoop = function(){
-	if(!V.passage) return;
+	if(!V.passage || V.passage === "Start") return;
 	const wardrobeKeys = Object.keys(V.wardrobes);
 	setup.clothes_all_slots.forEach(slot => {
 		clothesDataTrimmer(V.worn[slot]);

@@ -1,12 +1,13 @@
 :: Widgets variablesStart2 [widget]
 <<widget "variablesStart2">>
 /*Variables required at the start of passage 'Start2', please remove if not required"*/
+/*This widget should be used to initialize most or all variables that are required when you begin a new game. also check <<gameStartOnly>> for other initializations. */
 
 <<if $hairselect is "random">>
-	<<set $hairselect to ["red","jetblack","black","brown","softbrown","lightbrown","burntorange","blond","softblond","platinumblond","ashyblond","strawberryblond","ginger"][random(0,12)]>>
+	<<set $hairselect to ["red","jetblack","black","brown","softbrown","lightbrown","burntorange","blond","softblond","platinumblond","ashyblond","strawberryblond","ginger"].random()>>
 <</if>>
 <<if $eyeselect is "random">>
-	<<set $eyeselect to ["purple","dark blue","light blue","amber","hazel","green","red","pink","grey"][random(0,8)]>>
+	<<set $eyeselect to ["purple","dark blue","light blue","amber","hazel","green","red","pink","grey"].random()>>
 <</if>>
 
 <<switch $bodysize>>
