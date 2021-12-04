@@ -272,10 +272,7 @@
 	<</if>>
 	<<if $anususe is 0 and $worn.genitals.anal_shield isnot 1>>
 		<<set _vaginaaction["Offer your anus instead"] to "penisanusdvp">>
-	<</if>>/*
-	<<if $analdoubledisable is "f" and $awareness gt 300 and $anususe is "penis" and $worn.genitals.anal_shield isnot 1>> <!-- Possible source of bugs? -->
-		<<set _vaginaaction["Offer double anal instead"] to "penisanusdouble">>
-	<</if>>*/
+	<</if>>
 	<<set _vaginaaction["Tease the tip"] to "penistease">>
 <</widget>>
 

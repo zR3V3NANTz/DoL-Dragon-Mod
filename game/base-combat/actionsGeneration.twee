@@ -1290,9 +1290,10 @@
 		<<if $vaginaldoubledisable is "f">>
 			<<getDoubleTargetList>>
 		<</if>>
-		<<if _secondtarget is true>><<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
+		<<if _secondtarget is true>>
+			<<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
 			<<if $vaginadoubletarget is undefined>>
-				<<set $vaginadoubletarget to _firsttarget>>
+				<<set $vaginadoubletarget to _firstdoubletarget>>
 			<</if>>
 			Target: <span onchange="actionsreplace('anus')">
 			<<listbox "$vaginadoubletarget" autoselect>>
@@ -1303,9 +1304,13 @@
 	<<case "imminent">>
 		<<set _vaginaOptions to "penisImminent">>
 		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vaginaimminent">><<set $vaginatarget to _j>><<His>> <<npcPenis _j>> presses against your <<pussy>>.</span>
-		<<if _secondtarget is true>><<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
+		<<if $vaginaldoubledisable is "f">>
+			<<getDoubleTargetList>>
+		<</if>>
+		<<if _secondtarget is true>>
+			<<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
 			<<if $vaginadoubletarget is undefined>>
-				<<set $vaginadoubletarget to _firsttarget>>
+				<<set $vaginadoubletarget to _firstdoubletarget>>
 			<</if>>
 			Target: <span onchange="actionsreplace('anus')">
 			<<listbox "$vaginadoubletarget" autoselect>>
@@ -1319,9 +1324,10 @@
 		<<if $vaginaldoubledisable is "f">>
 			<<getDoubleTargetList>>
 		<</if>>
-		<<if _secondtarget is true>><<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
+		<<if _secondtarget is true>>
+			<<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
 			<<if $vaginadoubletarget is undefined>>
-				<<set $vaginadoubletarget to _firsttarget>>
+				<<set $vaginadoubletarget to _firstdoubletarget>>
 			<</if>>
 			Target: <span onchange="actionsreplace('anus')">
 			<<listbox "$vaginadoubletarget" autoselect>>
@@ -1428,10 +1434,11 @@
 	<<case "thighbay">><<thighdifficulty>> <<combatpromiscuous1>>
 	<<case "penisthighs">><<thighdifficulty>> <<combatpromiscuous4>>
 	<<case "penisanus">><<analdifficulty>>
+	<<case "penisanusdvp">><<analdifficulty>>
 	<<case "penisanusdouble">><<analdifficulty>><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
 	<<case "penisDoubleEdging">><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
-	<<case "vaginatopenisdouble">><<vaginaldifficulty>> <<combatpromiscuous5>>
-	<<case "vaginapenisdoublefuck">><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span> <<vaginalvirginitywarning>><<NPCvirginitywarning $NPCList[_n].fullDescription "penile">>
+	<<case "vaginatopenisdouble">><<vaginaldifficulty>> <<combatpromiscuous5>> <span class="pink"><<print "Awareness 4">></span>
+	<<case "vaginapenisdoublefuck">><<vaginaldifficulty>> <<combatpromiscuous5>> <span class="pink"><<print "Awareness 4">></span> <<vaginalvirginitywarning>><<NPCvirginitywarning $NPCList[_n].fullDescription "penile">>
 	<<case "penisEdging">><<combatpromiscuous4>>
 <</switch>>
 <</widget>>
@@ -1532,9 +1539,10 @@
 			<<if $analdoubledisable is "f">>
 				<<getDoubleTargetList>>
 			<</if>>
-			<<if _secondtarget is true>><<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
+			<<if _secondtarget is true>>
+				<<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
 				<<if $anusdoubletarget is undefined>>
-					<<set $anusdoubletarget to _firsttarget>>
+					<<set $anusdoubletarget to _firstdoubletarget>>
 				<</if>>
 				Target: <span onchange="actionsreplace('anus')">
 				<<listbox "$anusdoubletarget" autoselect>>
@@ -1551,9 +1559,10 @@
 			<<if $analdoubledisable is "f">>
 				<<getDoubleTargetList>>
 			<</if>>
-			<<if _secondtarget is true>><<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
+			<<if _secondtarget is true>>
+				<<if $combatControls is "radio" and _targetnumber gt 1>><br><</if>>
 				<<if $anusdoubletarget is undefined>>
-					<<set $anusdoubletarget to _firsttarget>>
+					<<set $anusdoubletarget to _firstdoubletarget>>
 				<</if>>
 				Target: <span onchange="actionsreplace('anus')">
 				<<listbox "$anusdoubletarget" autoselect>>
@@ -1651,6 +1660,9 @@
 	<<case "anuspenisfuck">><<combatpromiscuous5>> <<analvirginitywarning>><<NPCvirginitywarning $NPCList[_n].fullDescription "penile">>
 	<<case "otherAnusRub" "otherMouthAnusRub">> <<analdifficulty>>
 	<<case "penisEdging">><<combatpromiscuous4>>
+	<<case "penispussy">><<vaginaldifficulty>>
+	<<case "penispussydap">><<vaginaldifficulty>><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
+	<<case "penispussydouble">><<vaginaldifficulty>><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
 	<<case "penisDoubleEdging">><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
 	<<case "anustopenisdouble">><<analdifficulty>> <<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span>
 	<<case "anuspenisdoublefuck">><<combatpromiscuous5>><span class="pink"><<print "Awareness 4">></span> <<analvirginitywarning>><<NPCvirginitywarning $NPCList[_n].fullDescription "penile">>
@@ -1908,7 +1920,7 @@
 <</silently>><</widget>>
 
 <<widget "getDoubleTargetList">><<silently>>
-<<unset _firsttarget>>
+<<unset _firstdoubletarget>>
 <<if $consensual is 1 and ((($promiscuity gte 75 and $enemytype is "man") or ($deviancy gte 75 and $enemytype isnot "man")) and $awareness gte 300 or ($promiscuityIgnore is 1))>>
 	<<set _doubletargetlist to {}>><<set _secondtarget to false>>
 	<<set _repeatcontroller to []>>
@@ -1921,8 +1933,8 @@
 				<<set _smoltext to "the " + _smoltext>>
 			<</if>>
 			<<set _doubletargetlist[_smoltext] to _namecontroller>><<set _secondtarget to true>>
-			<<if _firsttarget is undefined>>
-				<<set _firsttarget to _namecontroller>>
+			<<if _firstdoubletarget is undefined>>
+				<<set _firstdoubletarget to _namecontroller>>
 			<</if>>
 		<</if>>
 	<</for>>
