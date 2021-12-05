@@ -18,9 +18,8 @@
 <<init_feet>>
 <<set setup.clothes_all_slots to ["over_upper", "over_lower", "upper", "lower", "under_upper", "under_lower","over_head", "head", "face", "neck", "hands", "legs", "feet", "genitals"]>>
 
-<!-- Re-assign clothes IDs (indices) automatically to avoid accidentally giving multiple clothes the same ID manually
-	due to copypaste error (cue moon & star pj pants). Normally, this doesn't modify anything, just a failsafe -->
-<<run Object.keys(setup.clothes).forEach(slot => setup.clothes[slot].forEach((item, i) => item.index = i))>>
+<!-- Throw an error if any clothing item has an index which is not correct for its position in its array. -->
+<<run Object.keys(setup.clothes).forEach(slot => setup.clothes[slot].forEach((item, i) => {if (item.index !== i) throw new Error("The index of "+item.name+" should be "+i+", not "+item.index)}))>>
 
 <!-- Find all unique traits (types) clothes can have -->
 <<set $clothingTraits = [...new Set(Object.keys(setup.clothes).flatMap(x => setup.clothes[x]).flatMap(x => x.type))]>>
@@ -67,9 +66,8 @@
 <<set $wardrobe.feet to []>>
 <<set $wardrobe.space to 40>>
 
-<<set $outfit to [
-
-	{index: 0,
+<<set $outfit to [{
+	index: 0,
 	name: "Pyjamas",
 	over_upper: "naked",
 	over_lower: "naked",
@@ -85,9 +83,7 @@
 	legs: "naked",
 	feet: "naked",
 	type: ["sleep"]
-}
-
-]>>
+}]>>
 
 <<set $carried.over_upper to clone(setup.clothes.over_upper[0])>>
 <<set $carried.over_lower to clone(setup.clothes.over_lower[0])>>

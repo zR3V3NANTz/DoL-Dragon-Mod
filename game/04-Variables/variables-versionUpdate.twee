@@ -112,7 +112,8 @@
 	<<updateNewNamedNpcs>>
 <</if>>
 
-<<clothing_data>> /*Keeps clothing data up to date with new and changed items*/
+/* <<clothing_data>> Keeps clothing data up to date with new and changed items */
+/* unnecessary because it is run in variables-static every time game is loaded */
 
 <<if $npcListVersion isnot 1>>
 	<<npcList>>
@@ -1565,7 +1566,10 @@
 	<<resetLastOptions>>
 <</if>>
 
-<<generateNPCNameHairAndEyeColors>>
+<<set $_npcHairEyeNeedsGenerating to $NPCName.some(n => !(n.eyeColour || n.hairColour))>>
+<<if $_npcHairEyeNeedsGenerating>>
+	<<generateNPCNameHairAndEyeColors>>
+<</if>>
 
 <<if $stat_shoot is undefined>>
 	<<set $stat_shoot to 0>>

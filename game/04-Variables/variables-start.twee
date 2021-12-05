@@ -1,6 +1,14 @@
 :: StoryInit
+/* This passage runs EVERY time the page is opened or refreshed, not just when a new game is started */
+/* This passage ALWAYS runs BEFORE story variables are loaded, meaning EVERY variable is undefined. Checking if they are undefined WILL NOT WORK. */
+/* You should ONLY use this passage to define setup variables, NOT $variables. */
 
 <<variablesStatic>>
+
+:: gameStartOnly [widget]
+/* The following is only run when the widget is called, which is only on new game start. Add to this if you want something to be run when you start a new game. */
+<<widget "gameStartOnly">>
+
 <<if StartConfig.enableImages is true>>
 	<<set $images to 1>>
 <<else>>
@@ -881,3 +889,4 @@
 <</if>>
 
 <<set $templePromised to "">>
+<</widget>>
