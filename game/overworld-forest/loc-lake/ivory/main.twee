@@ -639,10 +639,10 @@ You slowly take in a breath, and hold it. You hope it can't hear you.
 <<struggle>>
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Wraith Hide Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Wraith Hide Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Wraith Hide Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Wraith Hide Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

@@ -321,10 +321,10 @@ You inhale deeply. The lightheadedness almost has you on the ground, but when it
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Prison Slime End]]>><</link>>
+	<span id="next"><<link [[Next|Prison Slime End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Prison Slime]]>><</link>>
+	<span id="next"><<link [[Next|Prison Slime]]>><</link>></span>
 	<br>
 <</if>>
 

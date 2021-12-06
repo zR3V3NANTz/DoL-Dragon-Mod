@@ -1126,10 +1126,10 @@ Number of active machines: <<print $machine.number>><br>
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

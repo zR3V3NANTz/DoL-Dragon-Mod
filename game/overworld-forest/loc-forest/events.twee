@@ -3167,10 +3167,10 @@ The instant you're finished, they approach you with a more relaxed pace.
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Forest Wasps End]]>><</link>>
+	<span id="next"><<link [[Next|Forest Wasps End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Forest Wasps]]>><</link>>
+	<span id="next"><<link [[Next|Forest Wasps]]>><</link>></span>
 	<br>
 <</if>>
 
@@ -3320,10 +3320,10 @@ You climb the tree until you're level with the hive. You reach for the honeycomb
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Forest Honey Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Forest Honey Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Forest Honey Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Forest Honey Struggle]]>><</link>></span>
 	<br>
 <</if>>
 
@@ -3537,10 +3537,10 @@ You escape into the forest.
 <<struggle>>
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Forest Pale Slime Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Forest Pale Slime Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Forest Pale Slime Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Forest Pale Slime Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

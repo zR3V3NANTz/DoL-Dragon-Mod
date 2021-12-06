@@ -235,10 +235,10 @@ You tear free from the thorny bush.
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Moor Struggle Low End]]>><</link>>
+	<span id="next"><<link [[Next|Moor Struggle Low End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Moor Struggle Low]]>><</link>>
+	<span id="next"><<link [[Next|Moor Struggle Low]]>><</link>></span>
 	<br>
 <</if>>
 
@@ -292,10 +292,10 @@ The creatures disappear into the heather.
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Moor Struggle Mid End]]>><</link>>
+	<span id="next"><<link [[Next|Moor Struggle Mid End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Moor Struggle Mid]]>><</link>>
+	<span id="next"><<link [[Next|Moor Struggle Mid]]>><</link>></span>
 	<br>
 <</if>>
 
@@ -351,10 +351,10 @@ The creatures disappear beneath the rocks.
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Moor Struggle High End]]>><</link>>
+	<span id="next"><<link [[Next|Moor Struggle High End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Moor Struggle High]]>><</link>>
+	<span id="next"><<link [[Next|Moor Struggle High]]>><</link>></span>
 	<br>
 <</if>>
 
@@ -997,10 +997,10 @@ You enter the passage. It's dark, but small holes in the ceiling let in a little
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Moor Passage Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Moor Passage Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Moor Passage Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Moor Passage Struggle]]>><</link>></span>
 	<br>
 <</if>>
 
