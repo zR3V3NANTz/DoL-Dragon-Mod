@@ -2815,6 +2815,58 @@ You stroke the <<beasttype>>'s feathers.
 <<link [[Next|Moor]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>
 
+:: Moor Dragon Roar
+<<effects>>
+
+<<npc "Skye the Dragon">>
+You roar at the sky. The <<beasttype>> hears you, and swoops closer. <<bHe>> lands nearby.
+<br><br>
+
+"Did you call for me?" <<bhe>> asks.
+<br><br>
+
+<<link [[Ask for a ride to the nest (0:20)|Moor Dragon Roar Nest]]>><<pass 20>><</link>>
+<br>
+<<link [[Ask for a ride to the farmlands (0:20)|Moor Dragon Roar Farmlands]]>><<pass 20>><</link>>
+<br>
+<<link [[Just groom (0:05)|Moor Dragon Roar Stroke]]>><<transform bird 1>><<pass 5>><<stress -6>><<trauma -6>><</link>><<ltrauma>><<lstress>>
+<br>
+
+:: Moor Dragon Roar Nest
+<<effects>>
+
+The <<beasttype>> wraps <<bhis>> arms around your chest, and lifts you into the air. <<bHe>> pants by the time you make it back to the nest.
+<br><br>
+
+<<link [[Next|Dragon Grove]]>><<endevent>><</link>>
+<br>
+
+:: Moor Dragon Roar Farmlands
+<<effects>>
+
+The <<beasttype>> hesitates. "I haven't been that way in a while," <<bhe>> warns. "But if you want." <<bHe>> wraps <<bhis>> arms around your chest, and lifts you into the air. Together, you soar across the moor. You land near the road.
+<br><br>
+"Be careful," <<bhe>> says. <<bHe>> takes to the sky once more.
+<br><br>
+
+<<link [[Next|Moor]]>><<endevent>><<set $moor to 0>><<set $eventskip to 1>><</link>>
+<br>
+
+
+
+:: Moor Dragon Roar Stroke
+<<effects>>
+
+You stroke the <<beasttype>>'s scales.
+
+<<bHe>> laughs, and returns the favour.
+<br><br>
+"Be careful," <<bhe>> says while giving you a parting hug. <<bHe>> takes to the skies.
+<br><br>
+
+<<link [[Next|Moor]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
 :: Moor Shackle Break
 <<effects>>
 

@@ -87,14 +87,14 @@
 		<<link [[Enter the castle (0:10)|Castle]]>><<pass 10>><</link>>
 		<br><br>
 	<</if>>
-	/* 
+	
 	<<if $moor gte 80>>
 		<<if $syndrome dragon gte 1>>
 			<<link [[Enter Lost Grove (0:05)|Enter Lost Grove]]>><<pass 5>><</link>>
 		<</if>>
 		<br>
 	<</if>>
-	*/
+	
 	<<if $moor gte 51>>
 		<<if $pubtask is "moor" and $pubtask2 isnot 1>>
 			<<if $pubtasksetting is "lurkers" and $bestialitydisable is "f" and $lurkerdisable is "f">>

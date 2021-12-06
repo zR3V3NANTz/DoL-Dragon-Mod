@@ -1,2 +1,230 @@
-:: Enter Lost Grove
+/*everything in here needs a change right now. */
+:: Widgets Dragon [widget]
+<<widget "dragon_init">>
+<<set $dragon to {}>>
+<<set $dragon.lock to 1>>
+<<set $dragon.rope to 0>>
+<<set $dragon.fabric to 0>>
+<<set $dragon.loot to {}>>
+<<set $dragon.loot.lurker to 100>>
+<<set $dragon.loot.trash to 0>>
+<<set $dragon.loot.valuables to 0>>
+<<set $dragon.loot.food to 0>>
+<<set $dragon.loot.clothes to 0>>
+<<set $dragon.state to "hunting">>
+<<set $dragon.timer to 20>>
+<<set $dragon.syndrome to 0>>
+<</widget>>
 
+<<widget "dragon_pass">>
+<<if $args[0]>>
+	<<pass $args[0]>>
+	<<if $dragon.timer>>
+		<<set $dragon.timer -= $args[0]>>
+		<<if $syndromedragon isnot 1>>
+			<<hunger $args[0]>>
+			<<if $hunger gte 2000>>
+				<<trauma `$args[0] / 4`>>
+				<<physique_loss `$args[0] / 10`>>
+				<<willpower `$args[0] / 10`>>
+			<</if>>
+		<</if>>
+	<</if>>
+<</if>>
+<</widget>>
+
+
+<<widget "dragon_stockholm">>
+<<if $args[0] and $dragon.syndrome isnot undefined>>
+	<<set $dragon.syndrome += $args[0]>>
+<</if>>
+<</widget>>
+
+<<widget "gdragonstockholm">>
+<<if $syndromedragon isnot 1>>
+	<<gstockholm>>
+<</if>>
+<</widget>>
+
+<<widget "dragon_schedule">>
+<<if $hour gte 21 or $hour lte 5>>
+	<<set $dragon.activity to "sleep">>
+<<elseif $hour lte 9>>
+	<<set $dragon.activity to "lounge">>
+<<elseif $hour lte 12>>
+	<<set $dragon.activity to "bathe">>
+<<elseif $hour lte 15>>
+	<<set $dragon.activity to "build">>
+<<elseif $hour lte 17>>
+	<<set $bird.activity to "lounge">>
+<</if>>
+<</widget>>
+
+<<widget "dragon_grove_options">>
+<<if $dragon.state is "home" and $dragon.activity isnot "sleep" and $dragon.activity isnot "lounge" and $dragon.timer lte 0>>
+	<<endevent>>
+	<<npc "Skye the Dragon">>
+	<<if $dragonLoungeIntro is 1>>
+		<<link [[Lounge (0:30)|Dragon Grove Lounge]]>><<set $birdSingAbsent to 1>><<bird_pass 30>><<endevent>><</link>><br>
+	<</if>>
+	<<link [[Go back|Dragon Grove]]>><<unset $dragonLounge>><<endevent>><</link>><br>
+	<br>
+<<elseif $dragon.activity is "sleep" and $dragonSleep is undefined and $dragon.state is "home">>
+	<<set $dragonSleep to 1>><<unset $dragonLounge>>
+	<<endevent>>
+	<<npc "Skye the Dragon">>
+	The <<beasttype>> scoops you in <<bhis>> arms. "Night has come," <<bhe>> says. "Let me take you to bed."
+	<br><br>
+
+	<<link [[Nest|Dragon Grove Hill Nest]]>><</link>>
+	<br>
+	<<link [[Stay up|Dragon Grove]]>><<endevent>><</link>>
+	<br>
+<<elseif $syndromedragon is 1 and ($dragon.activity is "lounge") and $dragon.state is "home">>
+	<<link [[Lounge (0:30)|Dragon Grove Lounge]]>><<transform dragon 1>><<dragon_pass 30>><<trauma -3>><<endevent>><</link>><<ltrauma>><br>
+	<<link [[Go back|Dragon Grove]]>><<unset $dragonLounge>><<endevent>><</link>><br>
+	<br>
+	<<dragon_fly_options>>
+<<else>>
+	<<if $dragonLoungeIntro is 1>>
+		<<link [[Lounge (0:30)|Dragon Grove Lounge]]>><<set $dragonLoungeAbsent to 1>><<dragon_pass 30>><<trauma -3>><<endevent>><</link>><<ltrauma>><br>
+	<</if>>
+	<<link [[Go back|Dragon Grove]]>><<unset $birdPerch>><<endevent>><</link>><br>
+	<br>
+	<<dragon_fly_options>>
+<</if>>
+<<unset $dragonLoungeAbsent>>
+<</widget>>
+
+<<widget "dragon_fly_options">>
+<<if $harpy gte 6 or $dragon gte 6>>
+	Your wings should let you fly safely.
+	<<if $syndromedragon isnot 1 and ($dragon.activity is "lounge") and $dragon.state is "home">>
+		<span class="red">However, you won't be getting far with Skye watching you.</span>
+		<br><br>
+	<<else>>
+		<br><br>
+		<<link [[Leave the Grove (0:01)|Dragon Grove Leave]]>><<unset $dragonLounge>><<dragon_pass 1>><<endevent>><</link>><<flight_text>><br>
+	<</if>>
+	<<if $birdFly is 1 or $dragon gte 6>>
+		<br>
+		<<flight_time_check 60>>
+		<<if $exposed gte 2 and $exhibitionism lt 55>>
+			<span class="red">You aren't lewd enough to fly exposed towards the town or farmlands.</span>
+			<br>
+		<<else>>
+			<<print '<<link [[Fly to the farmlands ('+_hoursPassed+':'+ (_minutesPassed lt 10 ? "0" : "") + _minutesPassed + ')|Dragon Grove Farmlands]]>><<set $fatigueMod to _fatigueMod>><<set $flightTime to _flightTime>><<unset $birdPerch>><<bird_pass _flightTime>><<endevent>><</link>>'>><<flight_text>><<print _fatigueText>><<if $exposed gte 2>><<exhibitionist4>><</if>>
+			<br>
+			<<print '<<link [[Fly to town ('+_hoursPassedLong+':'+ (_minutesPassedLong lt 10 ? "0" : "") + _minutesPassedLong + ')|Dragon Grove Town]]>><<set $fatigueMod to (_fatigueMod + 1)>><<set $flightTime to _flightTimeLong>><<unset $birdPerch>><<bird_pass _flightTimeLong>><<endevent>><</link>>'>><<flight_text>><<print _fatigueText>><<if $exposed gte 2>><<exhibitionist4>><</if>>
+			<br>
+		<</if>>
+		<<print '<<link [[Fly to the forest ('+_hoursPassed+':'+ (_minutesPassed lt 10 ? "0" : "") + _minutesPassed + ')|Dragon Grove Forest]]>><<set $fatigueMod to _fatigueMod>><<set $flightTime to _flightTime>><<unset $birdPerch>><<bird_pass 30>><<endevent>><</link>>'>><<flight_text>><<print _fatigueText>>
+		<br>
+	<</if>>
+<<else>>
+	<<link [[Leave Grove (0:02)|Dragon Grove Leave]]>><<unset $dragonlounge>><<dragon_pass 2>><<endevent>><</link>><<flight_text>>
+<</if>>
+<</widget>>
+
+<<widget "dragon_greeting">>
+<<if $dragonDailyGreeting isnot 1>>
+	<<set $dragonDailyGreeting to 1>>
+		<<if $hour lte 3 or $hour gte 18>>
+			"Good evening."
+		<<elseif $hour lte 12>>
+			"Good morning."
+		<<else>>
+			"Good afternoon."
+		<</if>>
+<</if>>
+<</widget>>
+
+<<widget "flight_time_check">>
+<<if $args[0]>>
+	<<set _flightTimeBase to $args[0]>>
+<<else>>
+	<<set _flightTimeBase to 60>>
+<</if>>
+<<set _flightTime to _flightTimeBase>>
+<<switch $weather>>
+	<<case "overcast">>
+		<<set _flightTime -= Math.floor(_flightTimeBase / 3)>>
+		<<set _fatigueText to "<<gtiredness>>">>
+		<<set _fatigueMod to 0.5>>
+		<span class="gold">The strong winds will make flight easy and fast.</span>
+	<<case "rain">>
+		<<set _flightTime += 1>>
+		<<for _active_clothes range Object.keys($worn)>>
+			<<if !$worn[_active_clothes].type.includes("naked") and !$worn[_active_clothes].type.includes("swim")>>
+				<<switch _active_clothes>>
+					<<case "over_upper" "over_lower">>
+						<<set _flightTime += Math.floor(_flightTimeBase / 6)>>
+					<<case "upper" "lower">>
+						<<set _flightTime += Math.floor(_flightTimeBase / 9)>>
+					<<case "under_upper" "under_lower" "feet">>
+						<<set _flightTime += Math.floor(_flightTimeBase / 18)>>
+					<<default>>
+				<</switch>>
+			<</if>>
+		<</for>>
+		<<if _flightTime gte Math.floor(_flightTimeBase + (_flightTimeBase * 0.5))>>
+			<<set _fatigueText to "<<gggtiredness>>">>
+			<<set _fatigueMod to 3>>
+			<span class="red">Flying in the rain will soak your clothes, heavily slowing you down and exposing you.</span>
+		<<elseif _flightTime gte Math.floor(_flightTimeBase + (_flightTimeBase * 0.25))>>
+			<<set _fatigueText to "<<gggtiredness>>">>
+			<<set _fatigueMod to 3>>
+			<span class="pink">Flying in the rain will soak your clothes, slowing you down and exposing you.</span>
+		<<elseif _flightTime gt _flightTimeBase>>
+			<<set _fatigueText to "<<ggtiredness>>">>
+			<<set _fatigueMod to 2>>
+			<span class="blue">Flying in the rain will soak your clothes, slightly slowing you down and exposing you.</span>
+		<<else>>
+			<<set _fatigueText to "<<ggtiredness>>">>
+			<<set _fatigueMod to 2>>
+			<span class="green">Flying in the rain won't slow you down at all in your current state of dress.</span>
+		<</if>>
+	<<default>>
+		<<set _fatigueText to "<<gtiredness>>">>
+		<<set _fatigueMod to 1>>
+		<span class="green">The weather shouldn't affect your flight.</span>
+<</switch>>
+<br>
+<<if $athletics gt 0>>
+	<<set _flightTime -= Math.floor((_flightTime / 20) * ($athletics / 100))>>
+<</if>>
+<<if _flightTime lte 0>>
+	<<set _flightTime to 1>>
+<</if>>
+<<set _hoursPassed to Math.floor(_flightTime / 60)>>
+<<set _minutesPassed to _flightTime % 60>>
+
+<<set _flightTimeLong to Math.floor(_flightTime + 15)>>
+<<set _hoursPassedLong to Math.floor(_flightTimeLong / 60)>>
+<<set _minutesPassedLong to _flightTimeLong % 60>>
+
+<<set _flightTimeSearch to Math.floor(_flightTime + 3)>>
+<<set _hoursPassedSearch to Math.floor(_flightTimeSearch / 60)>>
+<<set _minutesPassedSearch to _flightTimeSearch % 60>>
+<</widget>>
+
+<<widget "flight_effects">>
+<<if $weather is "rain">>
+	<<if !$worn.upper.type.includes("swim") and !$worn.upper.type.includes("naked")>>
+		<<set $upperwet to Math.floor($flightTime * 4)>>
+	<</if>>
+	<<if !$worn.lower.type.includes("swim") and !$worn.lower.type.includes("naked")>>
+		<<set $lowerwet to Math.floor($flightTime * 4)>>
+	<</if>>
+	<<if !$worn.under_lower.type.includes("swim") and !$worn.under_lower.type.includes("naked")>>
+		<<set $underlowerwet to Math.floor($flightTime * 4)>>
+	<</if>>
+	<<if !$worn.under_upper.type.includes("swim") and !$worn.under_upper.type.includes("naked")>>
+		<<set $underupperwet to Math.floor($flightTime * 4)>>
+	<</if>>
+<</if>>
+<<set _tempTired to (Math.floor($flightTime / 4) + 1)>>
+<<tiredness _tempTired>>
+<<unset $flightTime>>
+<<unset $fatigueMod>>
+<</widget>>
