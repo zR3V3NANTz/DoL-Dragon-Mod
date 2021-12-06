@@ -121,6 +121,9 @@ You look into the mirror.
 	A cheerful <<girl>>
 <</if>>
 stares back.
+<<if $wraith and $wraith.state is "haunt" and $hallucinations gte 1 and random(1, 100) is 1>>
+	<span class="fading">A pale figure stands behind.</span>
+<</if>>
 <br>
 <<link "Examine how you are seen by others">><<replace #mirror>><<mirrorAppearance>><</replace>><<numberify "#passages > .passage">><<set $mirrorMenu to "appearance">><</link>>
 <br><br>
@@ -1055,8 +1058,8 @@ __Hair__
 Your sides are in the "$hairtype" style, and positioned <<if $hairposition is "front">>in front of<<else>>behind<</if>> your body.
 
 <br>
-<<set _hairTypeByName to {"Braid left": "braid left", "Braid right": "braid right", "Flat ponytail": "flat ponytail", "Loose": "loose", "Messy": "messy", "Pigtails": "pigtails", "Ponytail": "ponytail", "Short": "short", "Side tail left": "side tail left", "Side tail right": "side tail right", "Straight": "straight", "Swept left": "swept left", "Twin braids": "twin braids", "Twintails": "twintails", "Curl": "curl", "Defined curl": "defined curl"}>>
-<<set _fringeTypeByName to {"Thin flaps": "thin flaps", "Wide flaps": "wide flaps", "Hime": "hime", "Loose": "loose", "Messy": "messy", "Overgrown": "overgrown", "Ringlets": "ringlets", "Split": "split", "Straight": "straight", "Swept left": "swept left", "Back": "back", "Parted": "parted", "Flat": "flat", "Quiff": "quiff", "Straight curl": "straight curl", "Ringlet curl": "ringlet curl"}>>
+<<set _hairTypeByName to {"Braid left": "braid left", "Braid right": "braid right", "Flat ponytail": "flat ponytail", "Loose": "loose", "Messy": "messy", "Pigtails": "pigtails", "Ponytail": "ponytail", "Short": "short", "Side tail left": "side tail left", "Side tail right": "side tail right", "Straight": "straight", "Swept left": "swept left", "Twin braids": "twin braids", "Twintails": "twintails", "Curl": "curl", "Defined curl": "defined curl", "Neat": "neat"}>>
+<<set _fringeTypeByName to {"Thin flaps": "thin flaps", "Wide flaps": "wide flaps", "Hime": "hime", "Loose": "loose", "Messy": "messy", "Overgrown": "overgrown", "Ringlets": "ringlets", "Split": "split", "Straight": "straight", "Swept left": "swept left", "Back": "back", "Parted": "parted", "Flat": "flat", "Quiff": "quiff", "Straight curl": "straight curl", "Ringlet curl": "ringlet curl", "Curtain": "curtain"}>>
 
 <<linkradiogroup "$hairtype" _hairTypeByName>>
 

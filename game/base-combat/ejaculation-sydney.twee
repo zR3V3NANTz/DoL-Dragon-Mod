@@ -281,7 +281,7 @@
 				"I'll break both of these things one day," <<he>> says.
 			<<else>>
 				"Fucking sextease." <<he>> pouts, glaring at your $worn.genitals.name.
-				<<if $bodywritingdisable is "f">>
+				<<if $bodywritingLvl gte 2>>
 					<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 				<</if>>
 			<</if>>
@@ -322,7 +322,7 @@
 				"I'll break both of these things one day," <<he>> says. "I need you inside me."
 			<<else>>
 				"Fucking cocktease," <<he>> pouts, glaring at your $worn.genitals.name.
-				<<if $bodywritingdisable is "f">>
+				<<if $bodywritingLvl gte 2>>
 					<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 				<</if>>
 			<</if>>
@@ -333,7 +333,7 @@
 				"I'll break this thing one day," <<he>> says. "I need you inside me."
 			<<else>>
 				"Fucking cocktease," <<he>> pouts. "Why didn't you fuck me?"
-				<<if $bodywritingdisable is "f">>
+				<<if $bodywritingLvl gte 2>>
 					<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 				<</if>>
 			<</if>>			
@@ -344,7 +344,7 @@
 				"I'll break both of these things one day," <<he>> says. "I need you inside me."
 			<<else>>
 				"Fucking cocktease," <<he>> pouts, glaring at your $worn.genitals.name.
-				<<if $bodywritingdisable is "f">>
+				<<if $bodywritingLvl gte 2>>
 					<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 				<</if>>
 			<</if>>
@@ -355,7 +355,7 @@
 				"I'll break this thing one day," <<he>> says. "I need you inside me."
 			<<else>>
 				"Fucking cocktease," <<he>> pouts. "Why didn't you fuck me?"
-				<<if $bodywritingdisable is "f">>
+				<<if $bodywritingLvl gte 2>>
 					<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 				<</if>>
 			<</if>>			
@@ -366,14 +366,14 @@
 				"I'll break both of these things one day," <<he>> says.
 			<<else>>
 				"Fucking sextease." <<he>> pouts, glaring at your $worn.genitals.name.
-				<<if $bodywritingdisable is "f">>
+				<<if $bodywritingLvl gte 2>>
 					<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 				<</if>>
 			<</if>>
 			<br><br>
 		<<elseif $NPCList[_nn].vagina is "frot">>
 			<<He>> grinds <<his>> clit hard against your cock as <<he>> cums. "Fucking cocktease," <<he>> pouts. "Why didn't you fuck me?"
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 			<br><br>
@@ -912,7 +912,7 @@
 			"I'll break these things one day," <<he>> says. "I need to be inside you."
 		<<else>>
 			"Fucking cocktease," <<he>> pouts. "Why didn't you let me fuck you?"
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 		<</if>>			
@@ -939,7 +939,7 @@
 			"I'll break these things one day," <<he>> says. "I need to be inside you."
 		<<else>>
 			"Fucking cocktease," <<he>> pouts. "Why didn't you let me fuck you?"
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 		<</if>>			
@@ -987,7 +987,7 @@
 			"I'll break these things one day," <<he>> says. "I need to be inside you."
 		<<else>>
 			"Fucking cocktease," <<he>> pouts. "Why didn't you let me fuck you?"
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 		<</if>>			
@@ -1017,7 +1017,7 @@
 			"I'll break these things one day," <<he>> says. "I need to be inside you."
 		<<else>>
 			"Fucking cocktease," <<he>> pouts. "Why didn't you let me fuck you?"
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 		<</if>>			
@@ -1047,7 +1047,7 @@
 			"I'll break these things one day," <<he>> says. "I need to be inside you."
 		<<else>>
 			"Fucking cocktease," <<he>> pouts. "Why didn't you let me fuck you?"
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 		<</if>>			
@@ -1256,7 +1256,7 @@
 			"I'll break these things one day," <<he>> says. "I need to be inside you."
 		<<else>>
 			"Fucking cocktease," <<he>> pouts. "Why didn't you let me fuck you?"
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 		<</if>>			
@@ -1277,7 +1277,7 @@
 			<<He>> sighs as <<he>> ejaculates onto <<his>> own chest. <<He>> seems sad rather than spent. "I need the real thing."
 			<br><br>
 		<</switch>>
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 	<<elseif $NPCList[_nn].penis isnot 0 and $NPCList[_nn].penis.startsWith("penis") and $worn.genitals.type.includes("chastity")>>
@@ -1286,7 +1286,7 @@
 			"I'll break both of these things one day," <<he>> says.
 		<<else>>
 			"Fucking sextease." <<he>> pouts, glaring at your $worn.genitals.name.
-			<<if $bodywritingdisable is "f">>
+			<<if $bodywritingLvl gte 2>>
 				<<sydneyBodywritingLocation>><<if _writingFail isnot 1>><<He>> uncaps a marker, quickly writing something on your <<bodypart _bodypart>> before you can react. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting stupid_little_fucking_sextease_bitch_fucker>><</if>>
 			<</if>>
 		<</if>>

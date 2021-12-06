@@ -272,23 +272,21 @@ Though afraid, you refuse their demand.
 
 The crowd starts booing. A <<generate1>><<person1>><<person>> runs on stage. "Please accept our apologies," <<he>> says, picking up your leash.
 
-<<if $rng gte 51>><!-- Modified for Beast People -->
 <<endevent>>
 <<beastNEWinit 1 pig>>
-"Instead of our scheduled show, we have a special treat for you." A metal shutter opens behind you, revealing a gigantic <<beasttype>>.
-<br><br>
+<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
+	"Instead of our scheduled show, we have a special treat for you." A metal shutter opens behind you, revealing a gigantic <<beasttype>>.
+	<br><br>
 
-<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
-<br>
-
+	<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
+	<br>
 <<else>>
+	<<endevent>>
+	"Instead of our scheduled show, we invite you to watch our punishment of this insolent <<bitch>>."
+	<br><br>
 
-"Instead of our scheduled show, we invite you to watch our punishment of this insolent <<bitch>>."
-<br><br>
-
-<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
-<br>
-
+	<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
+	<br>
 <</if>>
 
 :: Underground Stage Pig
@@ -541,21 +539,21 @@ You are led off the stage and back to your cell.
 :: Underground Stage Intro
 <<set $outside to 0>><<set $location to "underground">><<effects>>
 
-<<if $rng gte 51>><!-- Modified for Beast People -->
 <<beastNEWinit 1 pig>>
-You are led once more to the stage, where the crowd awaits. <<covered>> Once there, a metal shutter rattles open behind you, and a gigantic <<beasttype>> steps out. The audience cheers it on.
-<br><br>
+<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
+	You are led once more to the stage, where the crowd awaits. <<covered>> Once there, a metal shutter rattles open behind you, and a gigantic <<beasttype>> steps out. The audience cheers it on.
+	<br><br>
 
-<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
-<br>
+	<<link [[Next|Underground Stage Pig]]>><<set $molestationstart to 1>><</link>>
+	<br>
 
 <<else>>
+	<<endevent>>
+	You are led once more to the stage, where the crowd awaits. <<covered>> There's a <<generate1>><<person1>><<person>> already waiting for you. <<He>> takes hold of you leash and pulls you closer while looking at the audience. "What shall I do with <<phim>> my friends?"
+	<br><br>
 
-You are led once more to the stage, where the crowd awaits. <<covered>> There's a <<generate1>><<person1>><<person>> already waiting for you. <<He>> takes hold of you leash and pulls you closer while looking at the audience. "What shall I do with <<phim>> my friends?"
-<br><br>
-
-<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><</link>>
-<br>
+	<<link [[Next|Underground Stage Molestation]]>><<set $molestationstart to 1>><</link>>
+	<br>
 
 <</if>>
 
@@ -699,17 +697,12 @@ The cool night air blows against your skin.
 It looks like you're in a forest clearing.
 <br><br>
 
-<<if $rng gte 51 and $plantdisable is "f">>
-	<<if $tentacledisable is "f">>
-		<<set _link to "Underground Plant Molestation">>
-	<<else>>
-		<<set _link to "Underground Plant Molestation No Tentacles">>
-	<</if>>
+<<if $rng gte 51 and $plantdisable is "f" and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 	<<generate1>><<generate2>><<generatePlant3>>
 	You see a <<person2>><<person>> and a <<person3>><<person "normal">> talking up ahead, with a <<person1>><<person>> nearby smoking while watching the door. The <<person2>><<person>> cuts <<himself>> off as you approach, gesturing to you. "See, <<pshes>> right here. We upheld our end."
 	<br><br>
 
-	The <<person3>><<person "normal">> ignores <<person2>><<him>> and examines you. "Ooh, I like this one!" <<person3>><<He>> has <<plant_details>> braided into <<his>> hair<<if $tentacledisable is "f">>, and a collection of vines protruding from <<his>> back<</if>>.
+	The <<person3>><<person "normal">> ignores <<person2>><<him>> and examines you. "Ooh, I like this one!" <<person3>><<He>> has <<plant_details>> braided into <<his>> hair, and a collection of vines protruding from <<his>> back.
 	<br><br>
 
 	The <<person>> prances toward you and smiles. "Hey! Do you want to have sex with me?"
@@ -725,7 +718,7 @@ It looks like you're in a forest clearing.
 		"Oh yeah! I forgot this place worked like that!" The <<person1>><<person>> claps <<his>> hands together and lunges for you.
 		<br><br>
 
-		[[Next|_link]]<<set $molestationstart to 1>><</replace>><</link>>
+		[[Next|Underground Plant Molestation]]<<set $molestationstart to 1>><</replace>><</link>>
 		<br>
 	<<link "No">><<replace "#choice">>	
 		"Did you hit your head?" the <<person2>><<person>> grunts. "It doesn't matter if <<pshe>> wants to or not. <<pShes>> yours."
@@ -734,7 +727,7 @@ It looks like you're in a forest clearing.
 		"Oh yeah! I forgot this place worked like that!" The <<person1>><<person>> claps <<his>> hands together and lunges for you.
 		<br><br>
 
-		[[Next|_link]]<<set $molestationstart to 1>><</replace>><</link>>
+		[[Next|Underground Plant Molestation]]<<set $molestationstart to 1>><</replace>><</link>>
 	</span>
 
 <<else>>
@@ -781,6 +774,8 @@ You run as fast you can. You hear the <<victimgirls>> scream as they are caught,
 	"Looks like <<bhe 0>> likes you," you hear the <<person>> say as <<he>> catches up. <<He>> is not alone, much of the crowd follows behind <<him>>. "And it's only fair <<bhe 0>> gets to do as <<bhe 0>> likes with <<bhis 0>> quarry." The crowd forms a circle around you.
 	<br><br>
 
+	<<clearsinglenpc 1>>
+
 	<<link [[Next|Underground Hunt Dog]]>><<set $molestationstart to 1>><</link>>
 	<br>
 	<<else>>
@@ -790,6 +785,11 @@ You run as fast you can. You hear the <<victimgirls>> scream as they are caught,
 
 	"Got you," the <<person>> says. A number of others from the crowd arrive, panting. "Now the hunter devours <<his>> prey."
 	<br><br>
+
+	<<saveNPC 1 "underground_hunt_1">>
+	<<endevent>>
+	<<loadNPC 0 "underground_hunt_1">>
+	<<clearNPC "underground_hunt_1">>
 
 	<<link [[Next|Underground Hunt Molestation]]>><<set $molestationstart to 1>><</link>>
 	<br>
@@ -813,7 +813,7 @@ You run as fast you can. You hear the <<victimgirls>> scream as they are caught,
 
 <<effectsman>>
 <br>
-<<beast $enemyno>>
+<<beast>>
 <br><br>
 
 <<audience>>
@@ -1020,7 +1020,7 @@ The <<person>> tugs on your leash, and you almost trip as you leave the bath. Yo
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<set $enemyno to 1>><<maninit>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>><<maninit>>
 	<<set $timer to 24>>
 	<<set $NPCList[1].penis to "none">>
 	<<set $NPCList[1].lefthand to "none">>
@@ -1221,7 +1221,7 @@ They leave the room, taking their machine with them. You're once more plunged in
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<set $enemyno to 1>><<maninit>><<npcexpose>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>><<maninit>><<npcexpose>>
 	<<set $enemytype to "plant">>
 	<<set $enemyarousalmax to 800>>
 	<<set _randomtentacles to random(6, 10)>>
@@ -1333,101 +1333,6 @@ They leave the room, taking their machine with them. You're once more plunged in
 <</if>>
 <<clearNPC underground_plant>><<clearNPC underground_guard_1>><<clearNPC underground_guard_2>>
 
-:: Underground Plant Molestation No Tentacles
-<<if $molestationstart is 1>>
-	<<set $molestationstart to 0>>
-	<<controlloss>>
-	<<violence 1>>
-	<<neutral 1>>
-	<<molested>>
-	<<set $enemyno to 1>><<maninit>><<npcexpose>>
-	<<set $enemytype to "plant">>
-	<<set $timer to 5>><<set $plantFame to 0>>
-<</if>>
-
-<<if $timer is 3>>
-	<br>
-	<span class="blue">You see the <<person3>><<person>> setting up a camera.</span>
-<<elseif $timer is 2>>
-	<br>
-	<span class="purple">You see the <<person3>><<person>> turning the camera on.</span> "So how are you gonna sell this footage without people freaking out over that thing?" the <<person2>><<person>> asks. "Public's not supposed to know."
-<<elseif $timer is 1>>
-	<br>
-	<span class="pink">You see the <<person3>><<person>> facing the camera your way.</span> "Make up some fake-sounding plot," the <<person3>><<person>> replies. "Hell, tell it like it is. Say it's a magic forest person, people will assume it's a costume."
-	<<if $face isnot "covered">>
-		<<fameexhibitionism 1>><<famerape 1>><<famebestiality 1>>
-		<<set $plantFame -= 1>>
-	<</if>>
-<<elseif $timer lte 0>>
-	<br>
-	<span class="pink">The <<person3>><<person>> films you.</span>
-	<<if $face isnot "covered">>
-		<<fameexhibitionism 1>><<famerape 1>><<famebestiality 1>>
-		<<set $plantFame -= 1>>
-	<</if>>
-<</if>>
-<<person1>>
-<br>
-<<effects>>
-<<effectsman>><<man>>
-<<stateman>>
-<br><br>
-<<actionsman>>
-
-<<if $enemyhealth lte 0>>
-	<span id="next"><<link [[Next|Underground Plant Molestation No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<elseif $enemyarousal gte $enemyarousalmax>>
-	<span id="next"><<link [[Next|Underground Plant Molestation No Tentacles Finish]]>><</link>></span><<nexttext>>
-<<else>>
-	<span id="next"><<link [[Next|Underground Plant Molestation No Tentacles]]>><</link>></span><<nexttext>>
-<</if>>
-
-:: Underground Plant Molestation No Tentacles Finish
-<<effects>><<set _noCum to 1>>
-<<if $enemyarousal gte $enemyarousalmax>>
-	<<ejaculation>>
-	<<if $enemyanger lte 0>>
-		<<location "forest">>
-		"That was great!" the <<person1>><<person>> squeals, flinging <<his>> arms around your neck. "You were one of the best ones yet. I like you!" <<He>> begins planting syrupy kisses on your neck.
-		<<set $player.bodyliquid.neck.goo += 1>>
-		<br><br>
-		"That'll do," the <<person2>><<person>> says as <<he>> walks toward you. The moment <<he>> gets close, the <<person1>><<person>> clutches you close to <<his>> body and growls. <<His>> nails dig into your back.
-		<br><br>
-		The <<person2>><<person>> steps back, while the <<person3>><<person>> rubs <<his>> face. "Never take a toy from these things, how many times have we told you this?"
-		<br><br>
-		The <<person1>><<personsimple>> makes a content sound once the guard backs off, and nuzzles back into your neck. "I like you."
-		<br><br>
-		<<clotheson>>
-		<<endcombat>>
-		<<loadNPC 0 underground_plant>><<loadNPC 1 underground_guard_1>><<loadNPC 2 underground_guard_2>>
-		<<link [[Next|Underground Plant Escape 1]]>><</link>>
-	<<else>>
-		<<set $outside to 0>><<set $location to "underground">>
-		"That was pretty good!" the <<person>> says, grinning. "You guys know how to pick 'em."
-		<br><br>
-		"As per our agreement, you'll supply us with your nectar now," the <<person3>><<person>> says, as the <<person2>><<person>> leads you away. You hear the <<person1>><<person>> let out an exaggerated groan.
-		<br><br>
-		The <<person2>><<person>> leads you back to your cell. <<tearful>> you sit on the mattress.
-		<br><br>
-		<<clotheson>>
-		<<endcombat>>
-		<<unset $plantFame>>
-		<<link [[Next|Underground Cell]]>><</link>>
-	<</if>>
-<<elseif $enemyhealth lte 0>>
-	<<location "forest">>
-	The <<person>> falls back with a wince. <<tearful>> you jump to your feet and run for it. <<He>> tries to jump toward you, <span class="green">but <<his>> leg crumples and <<he>> hisses in pain</span>. The <<person3>><<person>> shouts something into a walkie-talkie.
-	<br><br>
-	<<clotheson>>
-	<<endcombat>>
-	A chill runs up your spine, a warning from some primal instinct. <span class="red">Something is hunting you.</span>
-	<<set $foresthunt to 1>><<dungeonescape>>
-	<br><br>
-	<<link [[Next|Forest]]>><<set $forest to 40>><</link>>
-	<<unset $plantFame>>
-<</if>>
-<<clearNPC underground_plant>><<clearNPC underground_guard_1>><<clearNPC underground_guard_2>>
-
 :: Underground Plant Escape 1
 <<location "forest">><<effects>>
 
@@ -1450,7 +1355,7 @@ The <<person1>><<person>> blinks, before frowning. "Aw... well, if you're sure, 
 "We'll take <<pher>> from here," the <<person3>><<person>> says, walking toward you. "As per our agreement, you'll supply us with your nectar now-"
 <br><br>
 
-The <<person1>><<person>> lazily flips <<person3>><<him>> off. <<if $tentacledisable is "f">>A vine whips forward and <span class="green">smashes the camera, wrecking it</span><<else>><<person1>><<He>> grabs a rock off the ground and <span class="green">chucks it at the camera, wrecking it</span><</if>>. "You shit!" the <<person3>><<person>> shouts. "We just lost the footage, you-"
+The <<person1>><<person>> lazily flips <<person3>><<him>> off. A vine whips forward and <span class="green">smashes the camera, wrecking it</span>. "You shit!" the <<person3>><<person>> shouts. "We just lost the footage, you-"
 <<fameexhibitionism $plantFame>><<famerape $plantFame>><<famebestiality $plantFame>>
 <<unset $plantFame>>
 
@@ -1465,10 +1370,10 @@ The <<persons>> shouting fades away as you're led back to your cell. You sit on 
 "Sweet." The <<person>> stiffens slightly. "Now, on my mark..."
 <br><br>
 
-<<He>> snaps <<his>> fingers, and <<if $tentacledisable is "f">><<his>> vines surge toward the guards<<else>><span class="purple">vines surge toward the guards</span><</if>>. The <<person2>><<person>> shouts in alarm as <<hes>> restrained. The <<person3>><<person>> grimaces and reaches for <<his>> walkie-talkie. "It went rogue, we need-"
+<<He>> snaps <<his>> fingers, and <<his>> vines surge toward the guards. The <<person2>><<person>> shouts in alarm as <<hes>> restrained. The <<person3>><<person>> grimaces and reaches for <<his>> walkie-talkie. "It went rogue, we need-"
 <br><br>
 
-A vine slaps the radio out of <<his>> hand and entangles <<him>>. Another vine <span class="green">smashes the camera, wrecking it</span>. The <<person1>><<person>><<if $tentacledisable is "t">> grins at you. "Bet you didn't know I could do that." <<He>><</if>> lets you go and waves at the forest. "Go, go, go! I'll catch up!"
+A vine slaps the radio out of <<his>> hand and entangles <<him>>. Another vine <span class="green">smashes the camera, wrecking it</span>. The <<person1>><<person>> lets you go and waves at the forest. "Go, go, go! I'll catch up!"
 <<fameexhibitionism $plantFame>><<famerape $plantFame>><<famebestiality $plantFame>>
 <<unset $plantFame>>
 <br><br>
@@ -1497,11 +1402,6 @@ A bush nearby rustles and you tense up. Somebody pops their head out the top. <s
 	<br><br>
 <</if>>
 
-<<if $tentacledisable is "t">>
-	"So..." <<he>> looks away. "Yeah. The vines. I... don't like using them. But I had to, y'know? I won't do anything with 'em if it freaks you out."
-	<br><br>
-<</if>>
-
 <<He>> eyes you up for a moment. "Hey, now that we're away from them, do you want to have sex with me?" <<He>> shrugs. "I know we technically just did, but... for real this time."
 <br><br>
 
@@ -1517,21 +1417,17 @@ A bush nearby rustles and you tense up. Somebody pops their head out the top. <s
 <<location "forest">><<effects>>
 
 <<if $phase is 2>>
-	You step forward and open your mouth. Before you can say anything, the <<person>> grins and tugs you to the forest floor, flipping on top of you. <<He>> caresses your face with <<if $tentacledisable is "f">>one of <<his>> vines<<else>>his hand<</if>>.
+	You step forward and open your mouth. Before you can say anything, the <<person>> grins and tugs you to the forest floor, flipping on top of you. <<He>> caresses your face with one of <<his>> vines.
 	<<deviancy3>>
 
 	"You know why those guys wanted me to work with them?" <<he>> whispers. "It's because of my nectar. It's very special." <<He>> gives you a sultry smile. "Let me show you why."
 	<br><br>
-	<<if $tentacledisable is "f">>
-		<<link [[Next|Forest Plant Sex]]>><<set $sexstart to 1>><<set $phase to 2>><</link>>
-	<<else>>
-		<<link [[Next|Forest Plant Sex No Tentacles]]>><<set $sexstart to 1>><<set $phase to 2>><</link>>
-	<</if>>
+	<<link [[Next|Forest Plant Sex]]>><<set $sexstart to 1>><<set $phase to 2>><</link>>
 <<else>>
 	The <<person>> frowns in disappointment, but nods. "Still tired out, huh? That makes sense." <<He>> shakes <<his>> head, dislodging a few <<plant_details>>. "Well, good luck out here."
 	<br><br>
 
-	<<He>> plants one more kiss on your cheek, then departs into the forest. <<if $tentacledisable is "f">>One of <<his>> vines waves at you.<</if>>
+	<<He>> plants one more kiss on your cheek, then departs into the forest. One of <<his>> vines waves at you.
 	<<stress -6>><<trauma -6>><<lstress>><<ltrauma>>
 	<br><br>
 

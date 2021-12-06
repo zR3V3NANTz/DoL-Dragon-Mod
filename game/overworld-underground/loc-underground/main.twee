@@ -52,7 +52,7 @@ You are in an underground cell. You can't see a thing but can tell that the wall
 	There's a tap in the corner, which they turned off to punish your disobedience.
 	<<if $undergroundwater gte 25>>
 		<span class="red">You're dying of thirst!</span>
-		<<set $pain += 60>><<stress 6>><<trauma 6>><<gtrauma>><<gstress>>
+		<<set $pain += 60>><<stress 6>><<trauma 6>><<gtrauma>><<gstress>><<rngWraith>>
 	<<elseif $undergroundwater gte 20>>
 		<span class="pink">You really need water.</span>
 		<<set $pain += 30>>
@@ -69,7 +69,31 @@ You are in an underground cell. You can't see a thing but can tell that the wall
 <</if>>
 <br><br>
 <<set $undergroundtime += 1>>
-<<if $undergroundtime is 2 and $bodywritingdisable is "f">>
+<<if _wraithEvent and !$wraithUnderground>>
+	<<set $wraithUnderground to true>>
+	<<set $undergroundwater to 1>>
+	The lights flicker on for a moment. You brace yourself, but your room remains sealed. A dim white light hovers above you. You look, and see a cloaked pale figure looking down to you with <<wraithEyes>> eyes.
+	<<if $wraith.state isnot "haunt">>
+		It rubs a necklace of ivory around its neck.
+	<</if>>
+	<br><br>
+	It puts a hand behind your head, and tilts it up. Its other hand clenches into a fist, and from it, water begins to flow. Your body goes limp in relief as you drink. <<stress -12>><<trauma -12>><<pain -50>><<lstress>><<ltrauma>><<lpain>>
+	<br><br>
+	<<if $wraith.state is "haunt">>
+		<<if $wraithPrison and $wraithPrison.vision is true>>
+			"<span class="wraith">Disappear. Drown. Don't make me repeat myself.</span>"
+		<<else>>
+			"<span class="wraith">Alone. Desolate. Your suffering hasn't ended.</span>"
+		<</if>>
+	<<else>>
+		"<span class="wraith">No one deserves to die in a cage.</span>"
+	<</if>>
+	<br><br>
+	You cough. You're standing in front of the tap. No water runs from it, but you feel better.
+	<br><br>
+	<<link [[Next|Underground Cell]]>><</link>>
+	<br>
+<<elseif $undergroundtime is 2 and $bodywritingLvl gte 3>>
 	Dim pink-hued lights turn on, bathing the room in light. Before your eyes can adjust, one of the doors opens and a number of people enter. You think there are four of them.<<generate1>><<generate2>><<generate3>><<generate4>><<person1>> They grab your arms and legs, and force you onto your back.
 	<br><br>
 
@@ -308,7 +332,7 @@ The stone gives way and you fall several feet into cold water.
 
 :: Underground Lake
 
-<<set $outside to 0>><<set $location to "underground">><<water>><<effects>>
+<<set $outside to 0>><<set $location to "underground">><<water>><<effects>><<rngWraith>><<if _wraithEvent>><<if $wraith.state is "haunt">><<set _drown to "Drown">><<else>><<set _drown to "Don't">><</if>><<ind>><<ind>><<ind>><span class="flicker">_drown</span><br><br><</if>>
 <<set $stress -= 1000>>
 <<if $historytrait gte 4>>
 	You are pulled through the dark by a current. You've read about these tunnels, and should be able to influence where you end up.
@@ -322,6 +346,10 @@ The stone gives way and you fall several feet into cold water.
 	<br><br>
 	<<link [[Next|Sea]]>><<set $sea to 50>><</link>>
 	<br>
+<</if>>
+<<if _wraithEvent>>
+<<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><span class="flicker">_drown</span>
+<br><br><br><br><br><br><span class="flicker">_drown</span>
 <</if>>
 
 
@@ -352,4 +380,5 @@ The current sucks you underwater. After a few moments, the darkness gives way to
 <</if>>
 
 <<unset $baileySold>>
+<<unset $wraithUnderground>>
 <</widget>>

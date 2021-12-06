@@ -473,7 +473,7 @@ You are on the rooftop of a commercial building. You can access the shopping cen
 			<<link [[Glide down|Commercial alleyways]]>><<set $eventskip to 1>><</link>><<flight_text>><<lharass>>
 			<br>
 		<</if>>
-		<<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
+		<<shoppingcentreicon>><<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
 		<br><br>
 	<<else>>
 		<br><br>
@@ -483,7 +483,7 @@ You are on the rooftop of a commercial building. You can access the shopping cen
 			<<link [[Glide down|Commercial alleyways]]>><<set $eventskip to 1>><</link>><<flight_text>><<lharass>>
 			<br>
 		<</if>>
-		<<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
+		<<shoppingcentreicon>><<link [[Shopping centre (0:02)->Shopping Centre Top]]>><<pass 2>><</link>>
 		<br><br>
 	<</if>>
 <</if>>
@@ -531,90 +531,114 @@ You are on the rooftop of a commercial building. You can access the shopping cen
 	<br><br>
 <</if>>
 <<if $timer is 1 and $combat is 0>>
-	You hear the youths move away from the alley. You take a peek and see that they are indeed gone. The <<beasttype>> looks dejected as you walk away.
-	<br><br>
-	<<endevent>>
-	<<residentialeventend>>
-	<br><br>
-<<elseif $timer is 1 and $combat is 1>>
-	You hear the youths move away from the alley. You try to take a peek but the <<beasttype>> tackles you to the ground.
-	<br><br>
-	<<set $rescue to 0>>
-	<<link [[Next|Residential Dog]]>><</link>><<nexttext>>
+	You hear the youths move away from the alley.
+	<<if $combat is 0>>
+		You take a peek and see that they are indeed gone. The <<beasttype>> looks dejected as you walk away.
+		<br><br>
+		<<endevent>>
+		<<residentialeventend>>
+	<<else>>
+		You try to take a peek but the <<beasttype>> tackles you to the ground.
+		<br><br>
+		<<set $rescue to 0>>
+		<<link [[Next|Residential Dog]]>><</link>><<nexttext>>
+	<</if>>
 	<br><br>
 <<elseif $noise gte 3>>
 	Fed up with the racket, the pair make their way over.
 	<br><br>
 	<<link [[Next|Residential Dog Alarm]]>><</link>><<nexttext>>
-<<elseif $phase is 1>>
-	<<bHe>> continues barking. You're afraid the youths will investigate if this continues.
-	<br><br>
-	<<link [[Quietly tell it to shut up|Residential Dog]]>><<set $noise += 1>><</link>>
-	<br>
-	<!-- Modified for Beast People -->
-	<<link [[Stroke its head->Residential Dog]]>><<set $phase to 2>><</link>>
-	<br><br>
-<<elseif $phase is 2>>
-	<<bHe>> quiets at your touch, runs in a small circle, then walks right up to you. You notice <<bhis>> genitals are ready and waiting. <<bHe>> looks at you expectantly.
-	<br><br>
-	<<link [[Just keep stroking its head->Residential Dog]]>><<set $noise += 1>><<set $phase to 3>><</link>>
-	<br>
-	<span class="sub"><<link [[Take its genitals in your hand|Residential Dog]]>><<handskilluse>><<handstat>><<set $phase to 4>><</link>></span>
-	<br><br>
-<<elseif $phase is 3>>
-	You continue to stroke <<bhis>> head, but <<bhe>> doesn't seem pleased and barks again.
-	<br><br>
-	<<link [[Just keep stroking its head->Residential Dog]]>><<set $noise += 1>><<set $phase to 3>><</link>>
-	<br>
-	<<link [[Take its genitals in your hand|Residential Dog]]>><<set $phase to 4>><<handskilluse>><<handstat>><</link>>
-	<br><br>
-<<elseif $phase is 4>>
-	<<set $molestationstart to 1>><<set $phase to 5>>
-	You take <<bhis>> genitals in your hand. <<bHe>> starts humping against your fingers.
-	<br><br>
-	<<link [[Next|Residential Dog]]>><</link>><<nexttext>>
-	<br><br>
-<<elseif $phase is 5>>
-	<<if $molestationstart is 1>>
-		<<set $molestationstart to 0>>
-		<<controlloss>>
-		<<violence 1>>
-		<<neutral 1>>
-		<<molested>>
-		<<beastCombatInit>>
-		<<npchand>>
-	<</if>>
-	<<if $timer gte 1>><<enable_rescue>><</if>>
-	<<effectsman>>
-	<br>
-	<<beast $enemyno>>
-	<br><br>
-	<<stateman>>
-	<br><br>
-	<<actionsman>>
-	<<if $alarm is 1>>
-		<<if $rescue is 1>>
-			<span id="next"><<link [[Next->Residential Dog Alarm]]>><</link>></span><<nexttext>>
-		<<else>>
-			No one comes to your aid.
-			<<set $alarm to 0>>
-			<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+<<else>>
+	<<switch $phase>>
+		<<case 1>>
+			<<bHe>> continues barking. You're afraid the youths will investigate if this continues.
 			<br><br>
-			<<if $enemyarousal gte $enemyarousalmax>>
+			<<link [[Quietly tell it to shut up|Residential Dog]]>><<set $noise += 1>><</link>>
+			<br>
+			<!-- Modified for Beast People -->
+			<<link [[Stroke its head|Residential Dog]]>><<set $phase to 2>><</link>>
+			<br><br>
+		<<case 2>>
+			<<bHe>> quiets at your touch, runs in a small circle, then walks right up to you. You notice <<bhis>> genitals are ready and waiting. <<bHe>> looks at you expectantly.
+			<br><br>
+			<<link [[Just keep stroking its head|Residential Dog]]>><<set $noise += 1>><<set $phase to 3>><</link>>
+			<br>
+			<span class="sub"><<link [[Take its genitals in your hand|Residential Dog]]>><<handskilluse>><<handstat>><<set $phase to 4>><</link>></span>
+			<br><br>
+		<<case 3>>
+			You continue to stroke <<bhis>> head, but <<bhe>> doesn't seem pleased and barks again.
+			<br><br>
+			<<link [[Just keep stroking its head|Residential Dog]]>><<set $noise += 1>><<set $phase to 3>><</link>>
+			<br>
+			<<link [[Take its genitals in your hand|Residential Dog]]>><<set $phase to 4>><<handskilluse>><<handstat>><</link>>
+			<br><br>
+		<<case 4>>
+			<<set $molestationstart to 1>><<set $phase to 6>>
+			You take <<bhis>> genitals in your hand. <<bHe>> starts humping against your fingers.
+			<br><br>
+			<<link [[Next|Residential Dog]]>><</link>><<nexttext>>
+			<br><br>
+		<<case 5>>
+			<<set $phase to 6>>
+			The <<beasttype>>, still agitated, jumps up against your body.
+			Your bindings leave you unable to keep yourself upright. You fall on your face. <<gpain>>
+			<br><br>
+			As you regain your bearings, you notice the <<beasttype>> preparing to mount from behind you.
+			<br><br>
+			<<if $deviancy gte 35>>
+				<<link [["Goad the " + $NPCList[0].type|Residential Dog]]>><<set $sexstart to 1>><<deviancy3>><</link>><<deviant3>>
+				<br>
+			<</if>>
+			<<link [[Endure|Residential Dog]]>><<set $molestationstart to 1>><</link>>
+		<<case 6>>
+			<<if $sexstart is 1>>
+				<<set $sexstart to 0>>
+				<<consensual>>
+				<<set $consensual to 1>>
+				<<neutral 1>>
+				<<beastCombatInit>>
+				<<npc_attempt_sex>>
+			<<elseif $molestationstart is 1>>
+				<<set $molestationstart to 0>>
+				<<controlloss>>
+				<<violence 1>>
+				<<neutral 1>>
+				<<molested>>
+				<<beastCombatInit>>
+				<<npchand>>
+			<</if>>
+			<<if $timer gte 1>><<enable_rescue>><</if>>
+			<<effectsman>>
+			<br>
+			<<beast $enemyno>>
+			<br><br>
+			<<stateman>>
+			<br><br>
+			<<actionsman>>
+			<<if $alarm is 1>>
+				<<if $rescue is 1>>
+					<span id="next"><<link [[Next->Residential Dog Alarm]]>><</link>></span><<nexttext>>
+				<<else>>
+					No one comes to your aid.
+					<<set $alarm to 0>>
+					<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+					<br><br>
+					<<if $enemyarousal gte $enemyarousalmax>>
+						<span id="next"><<link [[Next->Residential Dog Ejaculation]]>><</link>></span><<nexttext>>
+					<<elseif $enemyhealth lte 0>>
+						<span id="next"><<link [[Next->Residential Dog Escape]]>><</link>></span><<nexttext>>
+					<<else>>
+						<span id="next"><<link [[Next->Residential Dog]]>><</link>></span><<nexttext>>
+					<</if>>
+				<</if>>
+			<<elseif $enemyarousal gte $enemyarousalmax>>
 				<span id="next"><<link [[Next->Residential Dog Ejaculation]]>><</link>></span><<nexttext>>
 			<<elseif $enemyhealth lte 0>>
 				<span id="next"><<link [[Next->Residential Dog Escape]]>><</link>></span><<nexttext>>
 			<<else>>
 				<span id="next"><<link [[Next->Residential Dog]]>><</link>></span><<nexttext>>
 			<</if>>
-		<</if>>
-	<<elseif $enemyarousal gte $enemyarousalmax>>
-		<span id="next"><<link [[Next->Residential Dog Ejaculation]]>><</link>></span><<nexttext>>
-	<<elseif $enemyhealth lte 0>>
-		<span id="next"><<link [[Next->Residential Dog Escape]]>><</link>></span><<nexttext>>
-	<<else>>
-		<span id="next"><<link [[Next->Residential Dog]]>><</link>></span><<nexttext>>
-	<</if>>
+	<</switch>>
 <</if>>
 
 :: Residential Dog Alarm
@@ -642,7 +666,7 @@ At the sound of their approach, the <<beasttype>> ceases its adventure and bound
 	<br><br>
 	<<set $rescued += 1>>
 	<<clothesontowel>>
-	The <<person1>><<person>> looks concerned. "Are you OK?" <<tearful>> you nod and thank them for their concern, before parting ways.
+	The <<person1>><<person>> looks concerned. "Are you okay?" <<tearful>> you nod and thank them for their concern, before parting ways.
 	<br><br>
 	<<residentialeventend>>
 <</if>>

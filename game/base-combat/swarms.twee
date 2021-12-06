@@ -326,10 +326,10 @@
 <<set $rng to random(1, 100)>>
 <<if $rng gte 91 and $leftarm is 0 and $rightarm is 0>>
 	<<if $rng gte 96>>
-		<<set $leftarm to "swarmgrappled">>
+		<<set $leftarm to "swarmgrappled">><<set $lefttarget to "swarm">>
 		<span class="purple">The $swarm["type"] swarm over your left arm, restraining it.</span>
 	<<else>>
-		<<set $rightarm to "swarmgrappled">>
+		<<set $rightarm to "swarmgrappled">><<set $righttarget to "swarm">>
 		<span class="purple">The $swarm["type"] swarm over your right arm, restraining it.</span>
 	<</if>>
 <</if>>
@@ -561,30 +561,22 @@
 
 <br><br>
 
-<<if $enemytype isnot "tentacles">>
-	<<if $panicattacks gte 1 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0>>
-		<<set $rng to random(1, 100)>>
-		<<if $rng is 100>>
-			<<set $panicparalysis to 5>>
-		<</if>>
+<<if $panicattacks gte 1 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0 and _panicchecked isnot true>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng is 100>>
+		<<set $panicparalysis to 5>>
 	<</if>>
-
-	<<if $panicattacks gte 2 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0>>
-		<<set $rng to random(1, 100)>>
-		<<if $rng is 100>>
-			<<set $panicviolence to 3>>
-		<</if>>
+	<<set _panicchecked to true>>
+<</if>>
+<<if $panicattacks gte 2 and $panicviolence is 0 and $panicparalysis is 0 and $controlled is 0 and _paniccheckedviolence isnot true>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng is 100>>
+		<<set $panicviolence to 3>>
 	<</if>>
-
-	<<if $arousal gte $arousalmax>>
-		<<orgasm>>
-	<</if>>
-
-	<<set $seconds += 10>>
-	<<if $seconds gte 60>>
-		<<set $seconds to 0>>
-		<<pass 1>>
-	<</if>>
+	<<set _paniccheckedviolence to true>>
+<</if>>
+<<if $arousal gte $arousalmax and $orgasmdown lte 0>>
+	<<orgasm>>
 <</if>>
 </div>
 <</widget>>

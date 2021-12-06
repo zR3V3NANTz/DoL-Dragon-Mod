@@ -1,5 +1,187 @@
 :: Widgets Tips [widget]
 
+<<widget "init_tips">>
+	<<if !setup.tips>>
+		<<set setup.tips to {}>>
+
+		<!-- General tips -->
+		<<set setup.tips.general to [
+			"Arousal increases during lewd acts, and decreases over time or when you orgasm.",
+			"Fatigue increases over time. High fatigue increases stress and trauma, but you can sleep to remove it.",
+			"Stress increases when you are assaulted.",
+			"You will pass out if stress gets too high, making you vulnerable.",
+			"Stress usually decreases over time. Fun or relaxing activities also reduce it, as do orgasms.",
+			"Trauma increases when you are assaulted, harassed or humiliated. Trauma slowly decreases over time.",
+			"High trauma causes psychological problems, but also opens up new options.",
+			"Wilfully performing lewd acts will restore your sense of control, mitigating the effects of psychological trauma.",
+			"Feeling in control will diminish when violated.",
+			"Frequently performing lewd acts will inure you to them, allowing more options but requiring more extreme behaviour to achieve a sense of control.",
+			"There are three categories of lewd act; promiscuous, exhibitionist, and deviant.",
+			"Higher promiscuity allows you to initiate lewder acts during consensual encounters.",
+			"Higher exhibitionism allows lewder acts while dancing.",
+			"Promiscuous, exhibitionist, and deviant acts can put you in danger. Be careful.",
+			"You can buy new clothing at the High Street shopping centre.",
+			"You need to wear a uniform to attend school. If you forget it, you might be able to borrow a spare from somewhere, or buy one from the book store.",
+			"If your clothes get destroyed or stolen, you'll have to buy more. You could always just wrap yourself in towels, but it might attract attention.",
+			"Try to get home before dark. There are some nasty people about.",
+			"You can buy a chastity belt from the temple on Wolf Street. They give them out for free to virgins.",
+			"The forest is dangerous. People sometimes never return.",
+			"No matter how bad things seem, there's always a way out.",
+			"If you need some money, the cafe on Cliff Street is always hiring, and is fairly safe.",
+			"You'll need a swimsuit for school. You probably don't want to borrow one.",
+			"Your physique will deteriorate if you don't get enough exercise.",
+			"Swimming close to shore is easy. You should practise in a safe environment before swimming further out.",
+			"Going without underwear makes you more vulnerable, particularly if you're wearing a skirt.",
+			"Lower purity can speed up breast and penis growth.",
+			"A topless girl with a flat chest can sometimes pass as a boy.",
+			"If your arms are bound, you should be able to free yourself once in a safe place.",
+			"If a situation seems dangerous, it probably is.",
+			"A chastity belt is a good way to protect your virginity.",
+			"There's a club on Connudatus Street that features erotic dancers. They're always hiring.",
+			"There are rumours of an underground brothel somewhere in town.",
+			"If you want to learn how to dance, there's a studio on Barb Street.",
+			"The storm drains allow quick, secretive travel around town. Rumours of giant lizards are surely wrong.",
+			"Travelling through alleyways lets you shave time off journeys, but unsavoury figures lurk there.",
+			"If you sense something hunting you in the forest, get out before it's too late.",
+			"The students at school can be evil. Particularly towards those with a low social status.",
+			"It's hard to be popular at school and endear yourself to the teachers at the same time. You'll have to make sacrifices.",
+			"If you get a reputation as a delinquent, teachers will no longer respond to your cries for help.",
+			"If you lose your virginity, you'll never be entirely pure again.",
+			"If you orgasm, you'll temporarily lose focus.",
+			"Too many orgasms in a short span of time can be bad for one's mental state.",
+			"When the odds are stacked against you, fighting can make things worse.",
+			"A little defiance can go a long way.",
+			"There are some mental problems that cannot be fully controlled.",
+			"The better your physique, the more effort needed to maintain and improve it.",
+			"Your <span class=\"def\">defiant</span> acts cause more pain if you have a good physique.",
+			"Tactical use of <span class=\"brat\">bratty</span> actions can be very powerful.",
+			"Apologising more than once is pointless.",
+			"Be mindful if you crossdress, some people don't take kindly to it.",
+			"Semen and other lewd fluids will stick around until you wash.",
+			"Walking around covered in lewd fluid will attract attention.",
+			"Genitals are not the only thing that can rob you of your virginity.",
+			"Attempts to influence a molester are less likely to succeed as they become angrier and hornier.",
+			"<span class=\"sub\">Submissive</span> and <span class=\"meek\">meek</span> acts will make someone trust you more, making them easier to influence.",
+			"You can escape from most encounters by inflicting enough pain through <span class=\"def\">defiant</span> acts.",
+			"Enraged assailants will become less hostile as they take their anger out on you.",
+			"If you suffer too much pain, you'll be disabled and unable to act until you recover.",
+			"If you're small or out of shape fighting might just make things worse for you.",
+			"An assailant foiled by a chastity belt will become angrier.",
+			"Assailants might stop gagging you if they trust you more.",
+			"It's much harder to build social status than it is to lose it.",
+			"The tips you make dancing are based on the size of the audience, their arousal and how impressed they are.",
+			"A large, aroused audience can be dangerous.",
+			"Some venues are safer to dance in than others.",
+			"A skilled dancer garners interest more easily.",
+			"Even an unskilled dancer can garner attention, if they're willing to strip.",
+			"Performing lewd or promiscuous acts will inure you to them, even if you already feel in control.",
+			"If you're having trouble with game performance or images not loading correctly, try disabling some images or animations in the settings.",
+			"Being consistently <span class=\"sub\">submissive</span> or <span class=\"def\">defiant</span> can alter your personality and open new options.",
+			"Each turn during an encounter represents ten seconds.",
+			"Anything that increases delinquency will give you detention.",
+			"Your skulduggery determines your ability to perform underhanded acts, including deceiving people and picking locks.",
+			"You can sell stolen goods in the pub on Harvest Street.",
+			"Criminal acts may come back to haunt you.",
+			"News of your lewdness will spread quickly if people take pictures of you in the act.",
+			"You can cover your face to prevent a picture from being linked to you.",
+			"Word of your lewdness will slowly spread, even without hard evidence.",
+			"Allure increases the amount made from tips.",
+			"<span class=\"def\">Defiant</span> acts reduce stress and trauma.",
+			"<span class=\"brat\">Bratty</span> acts reduce trauma but increase stress.",
+			"<span class=\"sub\">Submissive</span> acts reduce trauma but increase stress.",
+			"<span class=\"meek\">Meek</span> acts impact neither stress nor trauma.",
+			"In addition to enter, you can press the z or n key to end the turn.",
+			"Being raped is more traumatic than just being molested.",
+			"Purity drops when something cums inside you, or you cum inside something else.",
+			"Awareness enables more actions during masturbation.",
+			"Beauty increases over time, but excess trauma will decrease it.",
+			"The police station can remove collars.",
+			"It's possible to afford Bailey's demands, no matter how harsh.",
+			"Higher deviancy allows you to initiate lewder acts during consensual encounters with <<if $bestialitydisable is \"t\">>beastpeople<<else>>beasts<</if>>.",
+			"You can exercise nude at the park during the night, if you're lewd enough.",
+			"Naked exercise raises physique faster.",
+			"The drain system is more dangerous if it's raining.",
+			"It's dark in the old sewers. The chance of harassment there isn't based on allure.",
+			"Using both hands to steal during an encounter is faster but more conspicuous.",
+			"The controlled state will not prevent all hallucinations.",
+			"Drunkenness gives stress resistance, but increases tiredness.",
+			"Actions that increase delinquency give detention.",
+			"Masks will conceal your identity and stop fame from rising, but not crime.",
+			"School breaks up for holidays.",
+			"Low purity can increase the volume and generation of your lewd fluids.",
+			"Factors influencing attractiveness can be viewed from your mirror.",
+			"Attractive and seductive characters can convince people to part with more money.",
+			"Some changes only manifest at midnight.",
+			"Try clicking on the \"money/time/day\" stats in the sidebar.",
+			"Check the \"SAVE/OPTIONS\" menu between updates, new options may have been added to it.",
+			"Don't forget to backup your save by exporting in the \"SAVE/OPTIONS\" menu. Can also be done on Android now.",
+			"Slime and semen are powerful lubricants.",
+			"The only road out of town can be found on Harvest Street.",
+			"There's a spa on Danube Street. Working there could get you known by the town's elite.",
+			"Some treasures can be retrieved once a week.",
+			"The dancing skill also improves physical coordination.",
+			"Remember to wrap up warm against the cold.",
+			"The temperature drops at night.",
+			"Wear lighter clothes if you find yourself overheating.",
+			"Clear skies mean warmer days and cooler nights.",
+			"Aboveground freshwater becomes very cold during winter.",
+			"If you're having trouble with game performance or images not loading correctly, try disabling some images or animations in the settings.",
+			"Access to food is not usually an issue. When it is, starvation can weaken your physique.",
+			"Fields take a long time to till with low tending skill.",
+			"Some NPCs become more assertive as their <span class=\"lewd\">lust</span> increases.",
+			"Sleeping while naked or only wearing underwear, pajamas or eerie accessories helps you sleep better.",
+			"Bound legs will make dancing and swimming very difficult, and make athletics impossible.",
+			"You can rent a textbook from the school library, which will increase one of your grades over time.",
+			"The book store in the school library offers school appropriate clothing at a hefty markup.",
+			"Blood moons are said to cause strange behavior and hallucinations. They happen on the last day of every month.",
+			"Sleeping through a blood moon can be dangerous.",
+		]>>
+
+		<!-- Tentacle tips -->
+		<<set setup.tips.tentacles to [
+			"Tentacles can ejaculate a lot, but quickly tire when they do.",
+			"When half or more of a monster's tentacles are tired, the monster will withdraw.",
+			"Individual tentacles are easy to deal with.",
+			"Milking tentacles is easier if you're skilled with the body part you're using.",
+		]>>
+
+		<!-- Animal TF tips -->
+		<<set setup.tips.animalTFs to [
+			"Ingesting wolf<<if $bestialitydisable is \"t\">>person<</if>> cum can have strange effects on the body.",
+		]>>
+
+		<!-- Lactation tips -->
+		<<set setup.tips.lactation to [
+			"Drinking breast milk lowers purity.",
+			"Having your nipples licked, sucked or played with will encourage milk production.",
+		]>>
+
+		<!-- Bodywriting tips -->
+		<<set setup.tips.bodywriting to [
+			"Permanent marker won't wash off, but will fade with time.",
+		]>>
+
+		<!-- Parasite tips -->
+		<<set setup.tips.parasite to [
+			"The hospital on Nightingale Street has facilities for dealing with large parasites.",
+			"Urchin parasites increase the size of whatever they're attached to.",
+			"Slime parasites decrease the size of whatever they're attached to.",
+			"Maggot parasites increase your arousal over time, but they can be washed off.",
+		]>>
+
+		<!-- Slime tips -->
+		<<set setup.tips.slime to [
+			"Strange slimes are said to live in the abandoned sewers beneath the drains.",
+		]>>
+
+		<<set setup.tips.plantpeople to [
+			"There are rumours of people in the forest and moor who are as much plant as they are person. Supposedly, their nectar is a potent aphrodisiac.",
+			"The nectar of some wild flora is known to be dangerously addictive."
+		]>>
+	<</if>>
+	<<generateTipsList>>
+<</widget>>
+
 <<widget "tips">>
 <<set _maxTipCount = 160>>
 <<if $args[0] is undefined>>
@@ -334,24 +516,58 @@
 <<case 160>>
 	I'm running out of ideas.
 <</switch>>
+	<<print setup.tipsList.random()>>
+<</widget>>
+
+<<widget "generateTipsList">>
+	<<set setup.tipsList to setup.tips.general>>
+	
+	<<if $tentacledisable is "f">>
+		<<set setup.tipsList to setup.tipsList.concat(setup.tips.tentacles)>>
+	<</if>>
+
+	<<if $transformdisable is "f">>
+		<<set setup.tipsList to setup.tipsList.concat(setup.tips.animalTFs)>>
+	<</if>>
+
+	<<if $breastfeedingdisable is "f">>
+		<<set setup.tipsList to setup.tipsList.concat(setup.tips.lactation)>>
+	<</if>>
+
+	<<if $bodywritingLvl gte 1>>
+		<<set setup.tipsList to setup.tipsList.concat(setup.tips.bodywriting)>>
+	<</if>>
+
+	<<if $parasitedisable is "f">>
+		<<set setup.tipsList to setup.tipsList.concat(setup.tips.parasite)>>
+	<</if>>
+
+	<<if $slimedisable is "f">>
+		<<set setup.tipsList to setup.tipsList.concat(setup.tips.slime)>>
+	<</if>>
+
+	<<if $plantdisable is "f">>
+		<<set setup.tipsList to setup.tipsList.concat(setup.tips.plantpeople)>>
+	<</if>>
+<</widget>>
+
+<<widget "printTipsList">>
+	<<set _tipListOutput to "">>
+	<<run setup.tipsList.forEach((tip, index) => {
+		T.tipListOutput += `${(index+1)}. ${tip} <br>`
+	})>>
+	<<print _tipListOutput>>
 <</widget>>
 
 :: Tips
-<<tips true>>
-<<link [[Return|$lastPassage]]>>
-	<<unset $lastPassage>>
-	<<tanned 0 "ignoreCoverage">>
-<</link>>
+<!-- the return link is placed at both the top and bottom of page for player convenience. -->
+<<link [[Return|$lastPassage]]>><<unset $lastPassage>><<tanned 0 "ignoreCoverage">><</link>>
 <br><br>
+
 <h3>All Tips</h3>
-<<for _i to 0; _i < (_maxTipCount + 1); _i++>>
-	<<print _i + 1>>. <<tipsList _i>>
-	<br>
-<</for>>
+<<generateTipsList>>
+<<printTipsList>>
 <br>
 
-<<link [[Return|$lastPassage]]>>
-	<<unset $lastPassage>>
-	<<tanned 0 "ignoreCoverage">>
-<</link>>
+<<link [[Return|$lastPassage]]>><<unset $lastPassage>><<tanned 0 "ignoreCoverage">><</link>>
 <<unset _maxTipCount>>

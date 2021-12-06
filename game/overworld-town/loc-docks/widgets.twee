@@ -93,7 +93,7 @@ A <<generate1>><<person1>><<person>> approaches you, smiling. "Rope accident?" <
 		<br><br>
 		<<endevent>>
 		<<if $money gte 500>>
-			<<link [[Accept (1:00 £5)|Docks Pub Crawl]]>><<set $dockpubcount to 0>><<set $money -= 500>><<set $drunk += 120>><<dockstatus 1>><<stress -6>><<pass 60>><</link>><<gcool>><<lstress>>
+			<<link [[Accept (1:00 £5)|Docks Pub Crawl]]>><<set $dockpubcount to 0>><<set $money -= 500>><<alcohol 120>><<dockstatus 1>><<stress -6>><<pass 60>><</link>><<gcool>><<lstress>>
 			<br>
 		<</if>>
 		<<link [[Decline|Docks]]>><</link>>
@@ -192,7 +192,7 @@ A <<generate1>><<person1>><<person>> approaches you, smiling. "Rope accident?" <
 		<br><br>
 		"Don't pay them no mind," the <<person2>><<person>> working beside you says. "They handle their own shipments."
 		<br><br>
-		<<link [[Sneak closer for a look|Docks Compound]]>><<set $drugged += 240>><<stress -6>><</link>><<garousal>><<lstress>>
+		<<link [[Sneak closer for a look|Docks Compound]]>><<drugs 240>><<stress -6>><</link>><<garousal>><<lstress>>
 		<br>
 		<<link [[Ignore|Docks Compound Ignore]]>><</link>>
 		<br>
@@ -363,7 +363,7 @@ A <<generate1>><<person1>><<person>> approaches you, smiling. "Rope accident?" <
 <<widget "dockpuboptions">>
 	<<endevent>>
 	<<if $money gte 500>>
-		<<link [[Continue (1:00 £5)|Docks Pub Crawl]]>><<set $dockpubcount to 0>><<set $money -= 500>><<set $drunk += 120>><<dockstatus 1>><<stress -6>><<pass 60>><</link>><<gcool>><<lstress>>
+		<<link [[Continue (1:00 £5)|Docks Pub Crawl]]>><<set $dockpubcount to 0>><<set $money -= 500>><<alcohol 120>><<dockstatus 1>><<stress -6>><<pass 60>><</link>><<gcool>><<lstress>>
 		<br>
 	<</if>>
 	<<dockpubdestination>>
@@ -617,7 +617,7 @@ is lovemaking, which prompts a bawdy cheer. Your colleagues insist this will be 
 	<<elseif $rng is 3>>
 		You hear a patter of feet on the other side of a row of containers.
 		<!-- Modified for Monster People -->
-		<<if ($monsterchance gte random(1, 100) and ($hallucinations gte 1 or $monsterhallucinations is "f")) or ($bestialitydisable is "t")>>
+		<<if ($monsterchance gte random(1, 100) and ($hallucinations gte 1 or $monsterhallucinations is "f"))>>
 			<<if $beastmalechance lt random(1, 100)>>
 				<<set $dock_dog to "girl">>
 				You peer between them, and see a doggirl on all fours sniffing the ground. You walked there not long ago. She has your scent.

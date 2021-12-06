@@ -2,7 +2,7 @@
 <<widget "tentacleadv">>
 
 <<set _tentacle to $args[0] >>
-<<if _tentacle.type is "vine" and $abomination is 1>>
+<<if _tentacle.type is "vine" and $abomination is 1 or ["vine","root","shoot"].includes(_tentacle.type)>>
 	<<set _fluid to "nectar">>
 <<else>>
 	<<set _fluid to "fluid">>
@@ -139,12 +139,12 @@ The _tentacle.fullDesc writhes between your feet.
 <</if>>
 
 <<if _tentacle.head is "chest">>
-	<<if $chestuse is "squeezed">>
-		then<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> up between your <<breasts>>, rubbing itself between them.
-		<<neutralbreast 2>>
-	<<else>>
+	<<if $chestuse is 0>>
 		moves away from your <<breasts>>
-		<<set _tentacle.head to 0>><<set $breastuse to 0>>
+		<<set _tentacle.head to 0>>
+		<<else>>
+	then<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> up between your <<breasts>>, rubbing itself between them.
+		<<neutralbreast 2>>
 	<</if>>
 	<br>
 <</if>>
@@ -153,7 +153,7 @@ The _tentacle.fullDesc writhes between your feet.
 	and<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> up into your mouth where it spurts a sweet _fluid down your throat at the apex of each thrust.
 	<br>
 	<<purity -1>><<internalejac>><<sex 5>>
-	<<if _fluid is "nectar">><<nectarfed 5>><<else>><<set $drugged += 3>><</if>><<set $player.bodyliquid.mouth.goo += 1>>
+	<<if _fluid is "nectar">><<nectarfed 5>><<else>><<drugs 3>><</if>><<set $player.bodyliquid.mouth.goo += 1>>
 	<<set _tentacle.tentaclehealth -= 1>>
 	<<if _tentacle.desc.includes("pale")>>
 		<<set $hallucinogen += 5>>
@@ -209,7 +209,7 @@ The _tentacle.fullDesc writhes between your feet.
 	and <<slithers>> into your <<pussy>> where it pumps a viscous _fluid at the apex of each thrust.
 	<br>
 	<<purity -1>><<internalejac>><<sex 5>>
-	<<set $drugged += 3>><<set $player.bodyliquid.vagina.goo += 1>><<pain $vaginalPain>>
+	<<drugs 3>><<set $player.bodyliquid.vagina.goo += 1>><<pain $vaginalPain>>
 	<<set _tentacle.tentaclehealth -= 1>>
 	<<if _tentacle.desc.includes("pale")>>
 		<<set $hallucinogen += 5>>
@@ -340,7 +340,7 @@ The _tentacle.fullDesc writhes between your feet.
 		and <<slithers>> into your <<bottom>> where it pumps a viscous _fluid at the apex of each thrust.
 	<</if>>
 	<<purity -1>><<internalejac>><<sex 5>>
-	<<set $drugged += 3>><<set $player.bodyliquid.anus.goo += 1>>
+	<<drugs 3>><<set $player.bodyliquid.anus.goo += 1>>
 	<<set _tentacle.tentaclehealth -= 1>><<pain $analPain>>
 	<<if _tentacle.desc.includes("pale")>>
 		<<set $hallucinogen += 5>>
@@ -434,7 +434,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<<else>>
 			and<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> between your thighs <span class="blue">where it <<slithers>> toward your <<pussy>>.</span>
 		<</if>>
-		<<set $vaginause to "tentacle">><<set $vaginastate to "tentacleentrance">><<set _tentacle.head to "vaginaentrance">><<set $thighuse to 0>>
+		<<set $vaginause to "tentacle">><<set $vaginastate to "tentacleentrance">><<set _tentacle.head to "vaginaentrance">><<set $thighuse to 0>><<set $vaginatarget to "tentacles">>
 	<</if>>
 	<br>
 <</if>>
@@ -462,7 +462,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<<else>>
 			and<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> between your thighs <span class="blue">where the tip opens as it <<slithers>> toward your <<penis>>.</span>
 		<</if>>
-		<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">><<set $thighuse to 0>>
+		<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">><<set $thighuse to 0>><<set $penistarget to "tentacles">>
 	<</if>>
 	<br>
 <</if>>
@@ -483,7 +483,7 @@ The _tentacle.fullDesc writhes between your feet.
 			<<neutral 3>>
 		<</if>>
 		<<set $anususe to "tentacle">>
-		<<set $anusstate to "tentacleentrance">><<set _tentacle.head to "anusentrance">>
+		<<set $anusstate to "tentacleentrance">><<set _tentacle.head to "anusentrance">><<set $anustarget to "tentacles">>
 	<</if>>
 	<br>
 <</if>>
@@ -491,9 +491,9 @@ The _tentacle.fullDesc writhes between your feet.
 <<set $rng to random(1, 100)>>
 <<if _tentacle.head is 0 and _tentacle.shaft isnot 0>>
 	<<if $rng lte 10>>
-		<<if $chestuse is "squeezed" and $breastuse is 0>>
+		<<if $chestuse is "squeezed">>
 			<<upperslither>><span class="blue">and<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> up between your squeezed <<breasts>>.</span>
-			<<set _tentacle.head to "chest">><<neutralbreast 2>><<set $breastuse to "tentacle">><<cheststat>>
+			<<set _tentacle.head to "chest">><<neutralbreast 2>><<set $chestuse to "tentaclerub">><<cheststat>><<set $chesttarget to "tentacles">>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -520,7 +520,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<<if $mouthuse is 0>>
 			<<upperslither>> <span class="blue">and<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> up toward your mouth.</span>
 			<<neutral 2>>
-			<<set $mouthuse to "tentacle">><<set $mouthstate to "tentacleentrance">><<set _tentacle.head to "mouthentrance">>
+			<<set $mouthuse to "tentacle">><<set $mouthstate to "tentacleentrance">><<set _tentacle.head to "mouthentrance">><<set $mouthtarget to "tentacles">>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -532,7 +532,7 @@ The _tentacle.fullDesc writhes between your feet.
 				<span class="green"> Something about it scares you.</span>
 			<</if>>
 			<<neutral 2>>
-			<<set $anususe to "tentacle">><<set $anusstate to "tentacleentrance">><<set _tentacle.head to "anusentrance">>
+			<<set $anususe to "tentacle">><<set $anusstate to "tentacleentrance">><<set _tentacle.head to "anusentrance">><<set $anustarget to "tentacles">>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -541,7 +541,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<<if $player.vaginaExist and $vaginause is 0 and $novaginal is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<pussy>>.</span>
 			<<neutralgenitals 2>>
-			<<set $vaginause to "tentacle">><<set $vaginastate to "tentacleentrance">><<set _tentacle.head to "vaginaentrance">>
+			<<set $vaginause to "tentacle">><<set $vaginastate to "tentacleentrance">><<set _tentacle.head to "vaginaentrance">><<set $vaginatarget to "tentacles">>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -550,7 +550,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<<if $player.penisExist and $penisuse is 0 and $nopenile is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<penis>>.</span>
 			<<neutralgenitals 2>>
-			<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">>
+			<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">><<set $penistarget to "tentacles">>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -562,14 +562,14 @@ The _tentacle.fullDesc writhes between your feet.
 			<<else>>
 				<<underslither>> <span class="blue">where it <<slithers>> between your thighs and against your tummy and <<penis>>.</span>
 			<</if>>
-			<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<sex 3>><<thighstat>>
+			<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<sex 3>><<thighstat>><<set $penistarget to "tentacles">>
 		<<elseif $player.vaginaExist and $vaginause is 0 and random(0,100) gte 50>>
 			<<if _tentacle.shaft is "thighs">>
 				<<underslither>> <span class="blue">where it <<slithers>> against your tummy and <<pussy>>.</span>
 			<<else>>
 				<<underslither>> <span class="blue">where it <<slithers>> between your thighs and against your tummy and <<pussy>>.</span>
 			<</if>>
-			<<set $vaginause to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "vaginarub">><<sex 3>><<thighstat>>
+			<<set $vaginause to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "vaginarub">><<sex 3>><<thighstat>><<set $vaginatarget to "tentacles">>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -577,7 +577,7 @@ The _tentacle.fullDesc writhes between your feet.
 	<<elseif $rng lte 90>>
 		<<if $anusstate is 0 and $anususe is 0 and $analdisable is "f">>
 			<<underslither>> <span class="blue">and <<slithers>> between your <<bottom>> cheeks and against your back.</span>
-			<<set $anusstate to "tentaclerub">><<set $anususe to "tentaclerub">><<set _tentacle.head to "anusrub">><<sex 1>><<bottomstat>>
+			<<set $anusstate to "tentaclerub">><<set $anususe to "tentaclerub">><<set _tentacle.head to "anusrub">><<sex 1>><<bottomstat>><<set $anustarget to "tentacles">>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -651,7 +651,7 @@ The _tentacle.fullDesc writhes between your feet.
 	<<elseif $rng lte 80>>
 		<<if $leftleg is 0>>
 			The _tentacle.fullDesc winds its way around your left leg, <span class="blue">restraining it.</span>
-			<<neutral 1>><<feettentacledisable>><<set _tentacle.shaft to "leftleg">><<set $leftleg to "grappled">>
+			<<neutral 1>><<feettentacledisable>><<set _tentacle.shaft to "leftleg">><<set $leftleg to "grappled">><<set $feettarget to "tentacles">>
 		<<else>>
 			The _tentacle.fullDesc tickles your feet.
 			<<neutral 1>>
@@ -660,7 +660,7 @@ The _tentacle.fullDesc writhes between your feet.
 	<<elseif $rng lte 85>>
 		<<if $rightleg is 0>>
 			The _tentacle.fullDesc winds its way around your right leg, <span class="blue">restraining it.</span>
-			<<neutral 1>><<feettentacledisable>><<set _tentacle.shaft to "rightleg">><<set $rightleg to "grappled">>
+			<<neutral 1>><<feettentacledisable>><<set _tentacle.shaft to "rightleg">><<set $rightleg to "grappled">><<set $feettarget to "tentacles">>
 		<<else>>
 			The _tentacle.fullDesc tickles your feet.
 			<<neutral 1>>
@@ -669,7 +669,7 @@ The _tentacle.fullDesc writhes between your feet.
 	<<elseif $rng lte 90>>
 		<<if $leftarm is 0>>
 			The _tentacle.fullDesc winds its way around your left arm, <span class="blue">restraining it.</span>
-			<<neutral 1>><<leftarmtentacledisable>><<set _tentacle.shaft to "leftarm">><<set $leftarm to "grappled">><<set $leftarmstate to 0>>
+			<<neutral 1>><<leftarmtentacledisable>><<set _tentacle.shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
 		<<else>>
 			The _tentacle.fullDesc tickles your armpit.
 			<<neutral 1>>
@@ -678,7 +678,7 @@ The _tentacle.fullDesc writhes between your feet.
 	<<elseif $rng lte 95>>
 		<<if $rightarm is 0>>
 			The _tentacle.fullDesc winds its way around your right arm, <span class="blue">restraining it.</span>
-			<<rightarmtentacledisable>><<neutral 1>><<set _tentacle.shaft to "rightarm">><<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+			<<rightarmtentacledisable>><<neutral 1>><<set _tentacle.shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 		<<else>>
 			The _tentacle.fullDesc tickles your armpit.
 			<<neutral 1>>
@@ -767,9 +767,9 @@ The _tentacle.fullDesc writhes between your feet.
 		<<unset $tentaclePenis>>
 	<</if>>
 
-	<<if _tentacle.shaft is "breasts" or _tentacle.head is "chest">>
-		<<set $chestuse to 0>>
-	<</if>>
+	<<if _tentacle.head is "chest">><<set $chestuse to "squeezed">><</if>>
+
+	<<if _tentacle.shaft is "breasts">><<set $chestuse to 0>><</if>>
 
 	<<if _tentacle.head is "vaginarub">><<set $vaginause to 0>><<set $thighuse to 0>><</if>>
 	<<if _tentacle.head is "penisrub">><<set $penisuse to 0>><<set $thighuse to 0>><</if>>
@@ -781,8 +781,6 @@ The _tentacle.fullDesc writhes between your feet.
 	<<if _tentacle.shaft is "rightleg" and $rightleg isnot "bound">><<set $rightleg to 0>><</if>>
 	<<if _tentacle.shaft is "leftarm" and $leftarm isnot "bound">><<set $leftarm to 0>><</if>>
 	<<if _tentacle.shaft is "rightarm" and $rightarm isnot "bound">><<set $rightarm to 0>><</if>>
-
-	<<if _tentacle.head is "chest">><<set $breastuse to 0>><</if>>
 
 	<<set _tentacle.shaft to 0>>
 	<<set _tentacle.head to 0>>
@@ -1152,10 +1150,10 @@ The _tentacle.fullDesc writhes between your feet.
 		<<tentacleadvdisable _tentacle>> /* Make sure you call this before trying to set the tentacle info */
 		<<if $leftaction is "leftgrabtentacle" and $leftactionTarget is _tentacle.id>>
 			<<set _hand to "left">><<set $leftaction to 0>><<set $leftactiondefault to "leftrub">>
-			<<set $leftarm to _tentacle.id>><<set _tentacle.head to "leftarm">><<set $leftarmstate to "tentacle">>
+			<<set $leftarm to _tentacle.id>><<set _tentacle.head to "leftarm">><<set $leftarmstate to "tentacle">><<set $lefttarget to "tentacles">>
 		<<else>>
 			<<set _hand to "right">><<set $rightaction to 0>><<set $rightactiondefault to "rightrub">>
-			<<set $rightarm to _tentacle.id>><<set _tentacle.head to "rightarm">><<set $rightarmstate to "tentacle">>
+			<<set $rightarm to _tentacle.id>><<set _tentacle.head to "rightarm">><<set $rightarmstate to "tentacle">><<set $righttarget to "tentacles">>
 		<</if>>
 		<span class="lblue">You <<handtext>> grab the _tentacle.fullDesc with your _hand hand.</span>
 		<<submission 1>><<handstat>>
@@ -1262,11 +1260,11 @@ The _tentacle.fullDesc writhes between your feet.
 			<<if _hand is "left">>
 				<<leftarmtentacledisable>>
 				<<set _tentacle.shaft to "leftarm">>
-				<<set $leftarm to "grappled">><<set $leftarmstate to 0>>
+				<<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
 			<<else>>
 				<<rightarmtentacledisable>>
 				<<set _tentacle.shaft to "rightarm">>
-				<<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+				<<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 			<</if>>
 			The _tentacle.fullDesc winds its way around your _hand arm, <span class="blue">restraining it.</span>
 			<<neutral 1>>
@@ -1277,7 +1275,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<</if>>
 
 		<<set $anusstate to "tentaclerub">><<set $anususe to "tentaclerub">>
-		<<set _tentacle.head to "anusrub">><<sex 1>><<bottomstat>>
+		<<set _tentacle.head to "anusrub">><<sex 1>><<bottomstat>><<set $anustarget to "tentacles">>
 	<</if>>
 
 	<<if $leftaction is "showmouth"+_tentacle.id or $rightaction is "showmouth"+_tentacle.id>>
@@ -1301,11 +1299,11 @@ The _tentacle.fullDesc writhes between your feet.
 			<<if _hand is "left">>
 				<<leftarmtentacledisable>>
 				<<set _tentacle.shaft to "leftarm">>
-				<<set $leftarm to "grappled">><<set $leftarmstate to 0>>
+				<<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
 			<<else>>
 				<<rightarmtentacledisable>>
 				<<set _tentacle.shaft to "rightarm">>
-				<<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+				<<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 			<</if>>
 			The _tentacle.fullDesc winds its way around your _hand arm, <span class="blue">restraining it.</span>
 			<<neutral 1>>
@@ -1319,7 +1317,7 @@ The _tentacle.fullDesc writhes between your feet.
 			<</if>>
 		<</if>>
 
-		<<set $mouthuse to "tentacle">><<set $mouthstate to "tentacleentrance">>
+		<<set $mouthuse to "tentacle">><<set $mouthstate to "tentacleentrance">><<set $mouthtarget to "tentacles">>
 		<<set _tentacle.head to "mouthentrance">><<neutral 2>>
 	<</if>>
 
@@ -1344,11 +1342,11 @@ The _tentacle.fullDesc writhes between your feet.
 			<<if _hand is "left">>
 				<<leftarmtentacledisable>>
 				<<set _tentacle.shaft to "leftarm">>
-				<<set $leftarm to "grappled">><<set $leftarmstate to 0>>
+				<<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
 			<<else>>
 				<<rightarmtentacledisable>>
 				<<set _tentacle.shaft to "rightarm">>
-				<<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+				<<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 			<</if>>
 			The _tentacle.fullDesc winds its way around your _hand arm, <span class="blue">restraining it.</span>
 			<<neutral 1>>
@@ -1359,9 +1357,9 @@ The _tentacle.fullDesc writhes between your feet.
 		<</if>>
 
 		<<if $player.penisExist and $penisuse is 0>>
-			<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">>
+			<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<set $penistarget to "tentacles">>
 		<<elseif $player.vaginaExist and $vaginause is 0>>
-			<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">>
+			<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">><<set $vaginatarget to "tentacles">>
 		<</if>>
 
 		<<sex 3>><<thighstat>>
@@ -1389,11 +1387,11 @@ The _tentacle.fullDesc writhes between your feet.
 				<<if _hand is "left">>
 					<<leftarmtentacledisable>>
 					<<set _tentacle.shaft to "leftarm">>
-					<<set $leftarm to "grappled">><<set $leftarmstate to 0>>
+					<<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
 				<<else>>
 					<<rightarmtentacledisable>>
 					<<set _tentacle.shaft to "rightarm">>
-					<<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+					<<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 				<</if>>
 				The _tentacle.fullDesc winds its way around your _hand arm, <span class="blue">restraining it.</span>
 				<<neutral 1>>
@@ -1404,7 +1402,7 @@ The _tentacle.fullDesc writhes between your feet.
 			<</if>>
 
 			<<if $penisuse is 0>>
-				<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">>
+				<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<set $penistarget to "tentacles">>
 			<</if>>
 
 			<<sex 3>><<thighstat>>
@@ -1433,11 +1431,11 @@ The _tentacle.fullDesc writhes between your feet.
 				<<if _hand is "left">>
 					<<leftarmtentacledisable>>
 					<<set _tentacle.shaft to "leftarm">>
-					<<set $leftarm to "grappled">><<set $leftarmstate to 0>>
+					<<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
 				<<else>>
 					<<rightarmtentacledisable>>
 					<<set _tentacle.shaft to "rightarm">>
-					<<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+					<<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 				<</if>>
 				The _tentacle.fullDesc winds its way around your _hand arm, <span class="blue">restraining it.</span>
 				<<neutral 1>>
@@ -1448,7 +1446,7 @@ The _tentacle.fullDesc writhes between your feet.
 			<</if>>
 
 			<<if $vaginause is 0>>
-				<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">>
+				<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">><<set $vaginatarget to "tentacles">>
 			<</if>>
 
 			<<sex 3>><<thighstat>>
@@ -1489,7 +1487,7 @@ The _tentacle.fullDesc writhes between your feet.
 	<<if $feetaction is "feetgrab" and $feetactionTarget is _tentacle.id>>
 		<<set $feetaction to 0>><<set $feetactiondefault to "feetrub">><<submission 1>><<feetstat>>
 		<span class="lblue">You <<feettext>> grab the _tentacle.fullDesc between your feet.</span>
-		<<tentacleadvdisable _tentacle>><<set $leftleg to _tentacle.id>><<set $rightleg to _tentacle.id>>
+		<<tentacleadvdisable _tentacle>><<set $leftleg to _tentacle.id>><<set $rightleg to _tentacle.id>><<set $feettarget to "tentacles">>
 		<<set _tentacle.head to "feet">><<feetstat>><<set $feetstate to "tentacle">>
 	<</if>>
 
@@ -1524,9 +1522,9 @@ The _tentacle.fullDesc writhes between your feet.
 
 		<<if $rng lte 30>> /* Leg grapple? */
 			<<if $rng gte 15>>
-				<<set _leg to "left">><<set _tentacle.shaft to "leftleg">><<set $leftleg to "grappled">>
+				<<set _leg to "left">><<set _tentacle.shaft to "leftleg">><<set $leftleg to "grappled">><<set $feettarget to "tentacles">>
 			<<else>>
-				<<set _leg to "right">><<set _tentacle.shaft to "rightleg">><<set $rightleg to "grappled">>
+				<<set _leg to "right">><<set _tentacle.shaft to "rightleg">><<set $rightleg to "grappled">><<set $feettarget to "tentacles">>
 			<</if>>
 			<<neutral 1>><<feettentacledisable>>
 			The _tentacle.fullDesc winds its way around your _leg leg, <span class="blue">restraining it.</span>
@@ -1542,16 +1540,16 @@ The _tentacle.fullDesc writhes between your feet.
 
 		<<if _dir is "thighs">>
 			<<if $player.penisExist and $penisuse is 0>>
-				<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">>
+				<<set $penisuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<set $penistarget to "tentacles">>
 			<<elseif $player.vaginaExist and $vaginause is 0>>
-				<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">>
+				<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">><<set $vaginatarget to "tentacles">>
 			<</if>>
 
 			<<sex 3>><<thighstat>>
 			<<set $thighuse to "tentaclerub">>
 		<<else>>
 			<<set $anusstate to "tentaclerub">><<set $anususe to "tentaclerub">>
-			<<set _tentacle.head to "anusrub">><<sex 1>><<bottomstat>>
+			<<set _tentacle.head to "anusrub">><<sex 1>><<bottomstat>><<set $anustarget to "tentacles">>
 		<</if>>
 	<</if>>
 
@@ -1568,9 +1566,9 @@ The _tentacle.fullDesc writhes between your feet.
 
 			<<if $rng lte 30>>
 				<<if $rng gte 15>>
-					<<set _leg to "left">><<set _tentacle.shaft to "leftleg">><<set $leftleg to "grappled">>
+					<<set _leg to "left">><<set _tentacle.shaft to "leftleg">><<set $leftleg to "grappled">><<set $feettarget to "tentacles">>
 				<<else>>
-					<<set _leg to "right">><<set _tentacle.shaft to "rightleg">><<set $rightleg to "grappled">>
+					<<set _leg to "right">><<set _tentacle.shaft to "rightleg">><<set $rightleg to "grappled">><<set $feettarget to "tentacles">>
 				<</if>>
 				<<neutral 1>><<feettentacledisable>>
 				The _tentacle.fullDesc winds its way around your _leg leg, <span class="blue">restraining it.</span>
@@ -1581,7 +1579,7 @@ The _tentacle.fullDesc writhes between your feet.
 			<</if>>
 
 			<<if $vaginause is 0>>
-				<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">>
+				<<set $vaginause to "tentaclerub">><<set _tentacle.head to "vaginarub">><<set $vaginatarget to "tentacles">>
 			<</if>>
 
 			<<sex 3>><<thighstat>>
@@ -1632,7 +1630,7 @@ The _tentacle.fullDesc writhes between your feet.
 		You <<oraltext>> suck the _tentacle.fullDesc invading your mouth.
 		<<if $oralskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy _fluid erupts from the tip and into your mouth.</span>
-			<<set _tentacle.tentaclehealth -= 3>><<if _fluid is "nectar">><<nectarfed 5>><<else>><<set $drugged += 3>><</if>><<set $player.bodyliquid.mouth.goo += 1>><<oralejacstat>><<ejacstat>>
+			<<set _tentacle.tentaclehealth -= 3>><<if _fluid is "nectar">><<nectarfed 5>><<else>><<drugs 3>><</if>><<set $player.bodyliquid.mouth.goo += 1>><<oralejacstat>><<ejacstat>>
 			<<if _tentacle.desc.includes("pale")>>
 				<<set $hallucinogen += 5>>
 			<</if>>
@@ -1696,7 +1694,7 @@ The _tentacle.fullDesc writhes between your feet.
 		You <<vaginaltext>> push back against the _tentacle.fullDesc invading your <<pussy>>.
 		<<if $vaginalskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy _fluid erupts from the tip, flooding your womb with its warmth.</span>
-			<<set _tentacle.tentaclehealth -= 3>><<set $drugged += 3>><<set $player.bodyliquid.vagina.goo += 1>><<vaginalejacstat>><<ejacstat>>
+			<<set _tentacle.tentaclehealth -= 3>><<drugs 3>><<set $player.bodyliquid.vagina.goo += 1>><<vaginalejacstat>><<ejacstat>>
 			<<if _tentacle.desc.includes("pale")>>
 				<<set $hallucinogen += 5>>
 			<</if>>
@@ -1773,7 +1771,7 @@ The _tentacle.fullDesc writhes between your feet.
 		You <<analtext>> push back against the _tentacle.fullDesc invading your <<bottom>>.
 		<<if $analskill gte (800 - ($rng * 10))>>
 			<span class="lblue">Slimy _fluid erupts from the tip, flooding your bowels with its warmth.</span>
-			<<set _tentacle.tentaclehealth -= 3>><<set $drugged += 3>><<set $player.bodyliquid.anus.goo += 1>><<analejacstat>><<ejacstat>>
+			<<set _tentacle.tentaclehealth -= 3>><<drugs 3>><<set $player.bodyliquid.anus.goo += 1>><<analejacstat>><<ejacstat>>
 			<<if _tentacle.desc.includes("pale")>>
 				<<set $hallucinogen += 5>>
 			<</if>>

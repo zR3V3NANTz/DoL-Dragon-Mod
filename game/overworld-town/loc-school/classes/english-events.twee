@@ -31,14 +31,16 @@
 		<<beastNEWinit 1 dog>>
 		You briskly walk up to the outbuilding and deliver the note, but turn to find the <<beasttype>> advancing on you.
 		<br><br>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			<<link [[Next|English Outbuilding Molestation]]>><<set $molestationstart to 1>><</link>>
+			<br>
+		<<else>>
+			You manage to flee back to the classroom, though not unscathed.<<beastescape>>
+			<br><br>
+			<<integritycheck>><<towelup>>
+			<<link [[Next|English Lesson]]>><<endevent>><</link>>
+		<</if>>
 		<!-- Modified for Beast People -->
-		<!-- You manage to flee back to the classroom, though not unscathed.<<beastescape>>
-		<br><br>
-		<<integritycheck>><<towelup>>
-		<<link [[Next|English Lesson]]>><</link>>
-		-->
-		<<link [[Next|English Outbuilding Molestation]]>><<set $molestationstart to 1>><</link>>
-		<br>
 	<</if>>
 <</if>>
 

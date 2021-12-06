@@ -195,6 +195,11 @@
 	<</if>>
 	<<if $syndromewolves is 1>>
 		<<wolf_cave_update>>
+		<<if $wolfchallengetimer is undefined>>
+			<<set $wolfchallengetimer to 14>>
+		<<else>>
+			<<set $wolfchallengetimer-->>
+		<</if>>
 	<</if>>
 	<<unset $blackWolfMonsterRoll>>
 	<<unset $temple_pray>>
@@ -708,6 +713,27 @@
 			<<set $lactating to 1>>
 			<<set $effectsmessage to 1>>
 			<<set $lactationmessage to 1>>
+		<</if>>
+	<</if>>
+
+	<<set $nectar_addiction -= 5>>
+	<<if $backgroundTraits.includes("plantlover")>>
+		<<set $nectar_timer-->>
+		<<if $nectar_timer lte 0>>
+			<<set $backgroundTraits.delete("plantlover")>>
+			<<set $effectsmessage to 1>>
+			<<set $nectarmessage to "traitLost">>
+			<<set $nectar_addiction to 0>>
+		<<elseif $nectar_timer lte 14>>
+			<<set $effectsmessage to 1>>
+			<<set $nectarmessage to "withdrawals">>
+		<</if>>
+	<<else>>
+		<<if $nectar_addiction gte 150>>
+			<<set $backgroundTraits.pushUnique("plantlover")>>
+			<<set $effectsmessage to 1>>
+			<<set $nectarmessage to "traitGain">>
+			<<set $nectar_timer to 21>>
 		<</if>>
 	<</if>>
 
@@ -1277,6 +1303,9 @@
 		<<menstruationCycle>>
 	<</if>>
 	<<set $robinDebtAsk to 0>>
+	<<if $wolfcavepatrol is 1>>
+		<<set $wolfcavepatrolchance to random(1,3)>>
+	<</if>>
 <</if>>
 <</widget>>
 
@@ -1403,6 +1432,12 @@
 				/* Do Nothing */
 			<</switch>>
 		<</if>>
+	<</if>>
+
+	<<if $wolfpatrolsent gte 24>>
+		<<unset $wolfpatrolsent>>
+	<<elseif $wolfpatrolsent gte 1>>
+		<<set $wolfpatrolsent++>>
 	<</if>>
 
 <</if>>
@@ -1546,6 +1581,17 @@
 	<<if $sydney.glasses is "broken" or $sydney.glasses is "playerbroken">>
 		<<set $sydney.glasses to "glasses">><<set $sydneyGlassesNotice to 1>>
 	<</if>>
+<</if>>
+
+<<if $syndromewolves is 1>>
+	<<set $wolfcavepatrol to 1>>
+<</if>>
+
+<<if $photo>>
+	<<if $photo.silly is "paid">>
+		<<set $photo.silly to 0>>
+	<</if>>
+	<<set $photo.shoot to 0>>
 <</if>>
 
 <</widget>>

@@ -19,7 +19,7 @@
 	<<combateffects>>
 <div id="storyCaptionDiv" @class="($extendedStats ? 'storyCaptionDivExtended' : '')">
 	
-	
+
 
 	<<if $numpad is true>>
 		<style>
@@ -49,11 +49,6 @@
 			<br><br>
 		<</if>>
 		<<unset $endeventerror>>
-	<</if>>
-	<<if $debugdisable is "f">>
-		<<if $event isnot undefined>>
-			<br><<eventAlert>><br><br>
-		<</if>>
 	<</if>>
 
 	<<if $physiquechange is 1>><<set $physiquechange to 0>>
@@ -259,7 +254,21 @@
 			<<debug>>
 		<</if>>
 	</div>
-
+	<!-- Event debug button - Shows an overlay stored in debug-events.twee. -->
+	<<if $event isnot undefined and $debugdisable is "f">>
+		<<set _temp to "<span class='yellow'>SHOW EVENT INFO</span>">>
+		<<if $event[0] is $passage>>
+			<<set _eventalertmajorarea to false>>
+			<<set _temp to "<span class='green'>EVENT ACTIVE</span>">>
+		<<elseif setup.majorAreas.includes($passage)>>
+			<<set _eventalertmajorarea to true>>
+			<<set _temp to "<span class='red'>EVENT ACTIVE</span>">>
+		<<elseif ensureIsArray($event).length is 1 and ["Forest Cabin", "Eden Cabin", "Eden Clearing"].includes($event[0])>>
+			<<set _temp to "<span class='green'>EVENT ACTIVE</span>">>
+		<</if>>
+		<<button _temp>><<overlayReplace "eventExtraInfo">><</button>>
+		<<unset _temp>>
+	<</if>>
 	<<if $showDebugRenderer>>
 		<<button "DEBUG RENDERER">><<overlayReplace "canvasModel">><</button>>
 	<</if>>
@@ -324,7 +333,7 @@
 			<br>
 		<</if>>
 	<</if>>-->
-	<<clothingCpationText>>
+	<<clothingCaptionText>>
 
 	<<switch $body_temperature>>
 	<<case "hot">>
@@ -435,7 +444,7 @@
 	<<if $makeup.mascara != 0>><<set $attractiveness += 100>><</if>>
 <</widget>>
 
-/* NOTE: THIS WIDGET IS UNUSED
+<!-- NOTE: THIS WIDGET IS UNUSED
 <<widget "clothingcaption">>
 <<if $worn.upper.name is "naked">>
 	<<if $worn.lower.name is "naked">>
@@ -590,9 +599,9 @@ Your identity is concealed by your $worn.face.name.
 <</if>>
 
 <</widget>>
-*/
+-->
 
-/* NOTE: THIS WIDGET IS UNUSED 
+<!-- NOTE: THIS WIDGET IS UNUSED 
 <<widget "stripcaption">>
 
 <<if !$worn.upper.type.includes("naked") and $upperwetstage gte 3 and !$worn.lower.type.includes("naked") and $lowerwetstage gte 3 and !$worn.under_lower.type.includes("naked") and !$worn.genitals.type.includes("chastity") and $underlowerwetstage gte 3 and !$worn.under_upper.type.includes("naked") and $underupperwetstage gte 3>>
@@ -769,7 +778,7 @@ Your $worn.under_upper.name <<underupperhas>> been pulled to your $worn.under_up
 <</if>>
 
 <</widget>>
-*/
+-->
 
 <<widget "clock">><<silently>>
 <<if $hour gte 12>>

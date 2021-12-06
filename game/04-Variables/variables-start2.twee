@@ -1,12 +1,13 @@
 :: Widgets variablesStart2 [widget]
 <<widget "variablesStart2">>
 /*Variables required at the start of passage 'Start2', please remove if not required"*/
+/*This widget should be used to initialize most or all variables that are required when you begin a new game. also check <<gameStartOnly>> for other initializations. */
 
 <<if $hairselect is "random">>
-	<<set $hairselect to ["red","jetblack","black","brown","softbrown","lightbrown","burntorange","blond","softblond","platinumblond","ashyblond","strawberryblond","ginger"][random(0,12)]>>
+	<<set $hairselect to ["red","jetblack","black","brown","softbrown","lightbrown","burntorange","blond","softblond","platinumblond","ashyblond","strawberryblond","ginger"].random()>>
 <</if>>
 <<if $eyeselect is "random">>
-	<<set $eyeselect to ["purple","dark blue","light blue","amber","hazel","green","red","pink","grey"][random(0,8)]>>
+	<<set $eyeselect to ["purple","dark blue","light blue","amber","hazel","green","red","pink","grey"].random()>>
 <</if>>
 
 <<switch $bodysize>>
@@ -121,9 +122,14 @@
 		<<set $player.gender_posture to "f">>
 	<<else>>
 		<<set $player.gender_posture to "n">>
+		<<set $background to "waif">>
 	<</if>>
 <<elseif $background is "greenthumb">>
+	/* Leaving this here in case we ever turn Green Thumb back into a background. Can't be set to the background variable in cyrrent state. */
 	<<set $tending += 200>>
+<<elseif $background is "plantlover">>
+	<<set $nectar_addiction to 200>>
+	<<set $nectar_timer to 21>>
 <</if>>
 <<set $backgroundTraits to [$background]>>
 
@@ -239,6 +245,13 @@
 	sepia:{primary:1, secondary:1}
 }>>
 
+<<set $combatTrain to {
+	length: 0,
+	generateInit: 1,
+	beastTypes: [],
+	numberPerTrain: [],
+}>>
+
 <<set $kylar to {}>>
 <<set $kylar.raped to 0>>
 <<set $kylar.riddle to 0>>
@@ -259,9 +272,15 @@
 
 <<if $fertiliser is undefined>>
 	<<set $fertiliser to {current:0,used:0}>>
+	<<if $backgroundTraits.includes("greenthumb")>>
+		<<set $fertiliser.current++>>
+	<</if>>
 <</if>>
 
 <<set $actionDefaults = DefaultActions.setDefaults()>>
 
 <<set versionUpdateCheck to false>>
+
+<<set $rebuy_failure to []>>
+<<set $rebuy_success to []>>
 <</widget>>

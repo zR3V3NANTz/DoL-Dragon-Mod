@@ -496,6 +496,9 @@ You are in Eden's cabin.
 <<else>>
 	You snuggle under the covers.
 <</if>>
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
+<</if>>
 <br><br>
 
 <<if $sleeptrouble is 1 and $controlled is 0>>

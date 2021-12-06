@@ -88,7 +88,7 @@ You are in your bedroom.
 			<span class="nextLink"><<bedicon>><<link [[Kylar.|Bed]]>><</link>></span>
 		<</if>>
 		<br>
-		<<listsleepoutfits>>		
+		<<listsleepoutfits>>
 	<<elseif $slimeEvent is undefined>>
 		<br>
 		<<bedicon>><<link [[Strip and get in bed|Bed]]>><<undressSleep "bed">><</link>>
@@ -170,7 +170,7 @@ You are in your bedroom.
 					<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
 					<br>
 				<</if>>
-				<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 				<br>
 				<<home_outside>>
 				<br><br>
@@ -205,7 +205,7 @@ You are in your bedroom.
 					<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
 					<br>
 				<</if>>
-				<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 				<br>
 				<<home_outside>>
 				<br><br>
@@ -223,10 +223,10 @@ You are in your bedroom.
 				<br>
 			<</if>>
 			<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
-				<<ind>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
 				<br>
 			<<else>>
-				<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+				<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 				<br>
 			<</if>>
 			<<home_outside>>
@@ -245,10 +245,10 @@ You are in your bedroom.
 			<br>
 		<</if>>
 		<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
-			<<ind>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
+			<<main_hall_icon>><<link [[Main hall (0:01)|Robin Trauma Visit]]>><<set $phase to 1>><<pass 1>><</link>>
 			<br>
 		<<else>>
-			<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+			<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 			<br>
 		<</if>>
 		<<home_outside>>
@@ -333,7 +333,7 @@ You are in the bathroom.
 
 	<<bedroomicon>><<link [[Bedroom (0:01)->Bedroom]]>><<pass 1>><</link>>
 	<br>
-	<<ind>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
+	<<main_hall_icon>><<link [[Main hall (0:01)->Orphanage]]>><<pass 1>><</link>>
 	<br>
 	<<if $NPCName[$NPCNameList.indexOf("Robin")].init is 1 and $exposed lte 0>>
 		<<bedroomicon>><<link [[Robin's room (0:01)|Robin's Room Entrance]]>><<pass 1>><</link>>
@@ -1037,8 +1037,7 @@ You've pushed yourself too much.
 <<effects>>
 <<wearoutfit>>
 <<if $robinbed is 1>>
-You snuggle under the covers with Robin.
-<br><br>
+	You snuggle under the covers with Robin.
 <<else>>
 	<<if $location is "home" and $corruption_slime gte ($willpower / 20) and random(0,100) lt 3 and ($daystate is "night" and ($hour gte 20 or $hour lte 1)) and $slimeSleepEvent is 0 and $slimeEvent is undefined>>
 		<<set $slimeSleepEvent to 4>>
@@ -1047,8 +1046,11 @@ You snuggle under the covers with Robin.
 	<<else>>
 	You snuggle under the covers.
 	<</if>>
-	<br><br>
 <</if>>
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
+<</if>>
+<br><br>
 
 <<if _skip isnot true>>
 	<<if $sleeptrouble is 1 and $controlled is 0>>
@@ -1129,22 +1131,28 @@ You are in the main hall of the orphanage.
 <<elseif $baileyReunionScene is "dungeon">>
 	<<npc Bailey>><<person1>>
 	<<unset $baileyReunionScene>>
-	
-	Bailey leans against a wall. A missing person’s poster with a picture of you on it is pinned next to <<him>>.
+
+	<<if $home_gone gte 24>>
+		Bailey leans against a wall. A missing person's poster with a picture of you on it is pinned next to <<him>>.
+		<br><br>
+
+		"You took your time getting back. I'm glad you're alright." <<He>> smirks. "Hope you enjoyed your vacation."
+		<br><br>
+
+		<<He>> pushes <<himself>> off the wall, tearing down the poster and crumpling it up.
+	<<else>>
+		A snide voice greets you on your way inside. "You're a slippery little shit, aren't you?" It's Bailey. <<Hes>> leaning against the wall, musing at you. "I'm glad you're alright."
+		<br><br>
+
+		<<He>> pushes <<himself>> off the wall and prowls towards you.
+	<</if>>
 	<br><br>
-	
-	"You took your time getting back. I’m glad you’re alright." <<He>> smirks. "Hope you enjoyed your vacation."
-	<br><br>
-	
-	<<He>> pushes <<himself>> off the wall, tearing down the poster and crumpling it up.
-	<br><br>
-	
 	<<if $renttime lte 0>>
-		"Pay your dues next time so we won’t have to go through this again. Speaking of which..." <<He>> holds out <<his>> hand.
+		"Pay your dues next time so we won't have to go through this again. Speaking of which..." <<He>> holds out <<his>> hand.
 		<<endevent>>
 		<<rentdue>>
 	<<else>>
-		"Pay your dues next time so we won’t have to go through this again," <<he>> says before pinching your cheek painfully.<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
+		"Pay your dues next time so we won't have to go through this again," <<he>> says before pinching your cheek painfully.<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
 		<br><br>
 		
 		Bailey walks back into <<his>> office. You rub your cheek as you trudge to your bedroom.
@@ -1349,7 +1357,7 @@ You celebrate Christmas with the other residents.
 	<<elseif $rng gte 81>>
 		Some chat about how cold it is outside. You can't help but agree.
 	<<elseif $rng gte 71>>
-		A <<generatey1>><<person1>><<person>> passes a gift to a <<generatey2>><<person2>><<person>>. <<He>> look delighted, but is patient enough to resist unwrapping it on the spot.
+		A <<generatey1>><<person1>><<person>> passes a gift to a <<generatey2>><<person2>><<person>>. <<He>> looks delighted, but is patient enough to resist unwrapping it on the spot.
 	<<elseif $rng gte 61>>
 		<<if $robinmissing isnot 1>>
 			Robin passes out small bags of snacks. A <<generatey1>><<person1>><<person>> keeps watch for Bailey.
@@ -1693,7 +1701,11 @@ The warmth feels wonderful on your bare skin.
 
 <<swarm>><<if $tentacledisable is "f">><<tentacles>><</if>>
 <<if $tentacledisable is "f">><<statetentacles>><</if>>
-<<swarmactions>><<if $tentacledisable is "f">><<actionstentacles>><</if>>
+<<if $tentacledisable is "f">>
+	<<actionsOmni>>
+<<else>>
+	<<swarmactions>>
+<</if>>
 
 <<if $timer lte 0>>
 	<span id="next"><<link [[Next|Bath Slime Finish]]>><</link>></span><<nexttext>>
@@ -1756,7 +1768,7 @@ The last of the water drains from the bath, taking the slime with it. <<tearful>
 	<<else>>
 		<<set $rng to random(1, 100)>>
 		<<if $rng gte 81>>
-		You hear <<him>> search and find the children one by one, until you're the only one left. After a couple more minutes <<his>> impatience gets the better of <<him>>. "I give up. You win." <<he>> shouts. You leave your hiding place triumphant.
+		You hear <<him>> search and find the orphans one by one, until you're the only one left. After a couple more minutes <<his>> impatience gets the better of <<him>>. "I give up. You win." <<he>> shouts. You leave your hiding place triumphant.
 		<br><br>
 
 		<<else>>
@@ -1880,8 +1892,10 @@ You're interrupted when you spot a pair of eyes watching you from a bush nearby.
 <<loadNPC 0 nude_cat>>
 
 <!-- Modified for Beast People -->
-<<link [[Spread your legs|Nude Oral]]>><<trauma -6>><<stress -12>><<arousal 600>><</link>><<ltrauma>><<lstress>><<garousal>><<deviant1>>
-<br>
+<<if $monster is 1 or $bestialitydisable is "f">>
+	<<link [[Spread your legs|Nude Oral]]>><<trauma -6>><<stress -12>><<arousal 600>><</link>><<ltrauma>><<lstress>><<garousal>><<deviant1>>
+	<br>
+<</if>>
 <<link [[Pet|Nude Pet]]>><<trauma -6>><<stress -12>><</link>><<ltrauma>><<lstress>>
 <br>
 
@@ -2571,7 +2585,7 @@ The pair make you keep their drinks full, and fetch snacks from the kitchen on d
 
 <<if $footdisable is "f">>
 	The <<person2>><<person>> gestures at <<his>> glass. This time, when you bend over to fill it, <<he>> kicks your bottom, knocking you to your knees. A weight presses against your back before you can stand up. Then another. "I need a new footstool," <<he>> says. "Best stay still. Footstools don't move."
-	<<gtrauma>><<gstress>><<pain>><<trauma 6>><<stress 6>><<pain 6>>
+	<<gtrauma>><<gstress>><<gpain>><<trauma 6>><<stress 6>><<pain 6>>
 	<br><br>
 	<<link [[Endure|Sold Work Foot]]>><<pass 60>><<sub 1>><<trauma 6>><<stress 6>><<arousal 4000>><</link>><<gtrauma>><<gstress>><<ggarousal>>
 	<br>

@@ -212,7 +212,7 @@ Overwhelmed with unending orgasms, you eventually crash into unconsciousness.
 <<if $tentacleorgasmignore is undefined>><<set $tentacleorgasmignore to 0>><</if>>
 You are on the tentacle plains. Tendrils growing from the ground strain to reach your <<genitals>>, caressing your thighs and
 whatever else they can reach. The air is sweet.
-<<set $drugged += 10>><<ggarousal>><<arousal 1200>>
+<<drugs 10>><<ggarousal>><<arousal 1200>>
 <br><br>
 <<if $phase is 1>>
 	You walk north.

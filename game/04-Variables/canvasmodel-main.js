@@ -2026,7 +2026,7 @@ Renderer.CanvasModels["main"] = {
 			showfn(options) {
 				return options.worn_genitals > 0 &&
 					options.worn_genitals_setup.mainImage !== 0 &&
-					!options.worn_genitals_setup.hideUnderLower.includes(options.worn_under_lower.name)
+					!options.worn_genitals_setup.hideUnderLower.includes(options.worn_under_lower_setup.name)
 			}
 		}),
 		/***

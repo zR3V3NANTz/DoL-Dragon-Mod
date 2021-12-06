@@ -9,7 +9,8 @@
 <<if !$per_npc.wraith>>
 	<<set _strapIgnore to true>>
 	<<generateNPC _w a n n 20>>
-	<<set $NPCList[_n].health to 900>>
+	<<set $NPCList[_n].healthmax to 900>>
+	<<set $NPCList[_n].health to $NPCList[_n].healthmax>>
 	<<set $NPCList[_n].description to "pale figure">>
 	<<set $NPCList[_n].fullDescription to "Ivory Wraith">>
 	<<set $NPCList[_n].skincolour to "white">>
@@ -42,7 +43,7 @@
 			<<set $wraith.type to "man">>
 			<<set _genderknownbeforehand to true>>
 			<<set $noBodyWriting to true>>
-			<<set $stealstate to 3>>
+			<<set $stealtarget to "012345">>
 			<<maninit>>
 			<<set $enemyarousalmax to 900>>
 			<<if $wraith.state is "haunt">>
@@ -131,7 +132,7 @@
 			<<set $wraith.type to "man">>
 			<<set _genderknownbeforehand to true>>
 			<<set $noBodyWriting to true>>
-			<<set $stealstate to 3>>	
+			<<set $stealtarget to "012345">>
 			<<maninit>>
 			<<for _i to 1; _i lt 4; _i++>>
 				<<loadNPC _i "wraith">>
@@ -141,6 +142,7 @@
 				<<set $NPCList[_i].mouth to "none">>
 				<<set $NPCList[_i].penis to "none">>
 				<<set $NPCList[_i].vagina to "none">>
+				<<set $NPCList[_i].active to "active">>
 			<</for>>
 			<<npcexpose>>
 			<<set $enemyarousalmax to 900>>
@@ -174,7 +176,7 @@
 			<<initWraith "arms">>
 	<</switch>>
 <</if>>
-<<set $speechdisable to 1>>
+<<set $speechdisable to 1>><<set $enemynomax to 1>>
 <</widget>>
 
 <<widget "startWraith">>
@@ -208,12 +210,15 @@
 	<<initWraith _wraithSelect>>
 	<<set $NPCList[0].intro to 0>>
 	<<set $enemyhealth to $wraithHealth>>
+	<<if $pain gte 50 and $bus isnot "lake_ruin_prison">>
+		<<kissWraith>>
+	<</if>>
 	<<if _wraithLast is $wraith.gen>>
 		<<He>> looks down at you with a smile. "<span class="wraith">Again.</span>"
 	<<else>>
 		<<switch $wraith.gen>>
 			<<case "man">>
-				<<He>> raises <<his>> hand, and an invisibe force pulls you towards <<him>>. "<span class="wraith">Forever.</span>"
+				<<He>> raises <<his>> hand, and an invisibe force pulls you back in. "<span class="wraith">Forever.</span>"
 			<<case "abomination">>
 				Many tentacles burst from <<his>> back, and <<he>> pulls you in. "<span class="wraith">Embrace it.</span>"
 			<<case "arms">>
@@ -223,9 +228,6 @@
 			<<case "slime">>
 				<<He>> makes strange motions with <<his>> arms, and a swirling purple disc appears in the air. Several large pale slimes emerge from it. <<He>> sits back mid-air, and watches with a grin. "<span class="wraith">The waves chew.</span>"
 		<</switch>>
-	<</if>>
-	<<if $pain gte 50 and $wraith.state isnot "haunt">>
-		<<kissWraith>>
 	<</if>>
 <</widget>>
 
@@ -320,7 +322,7 @@
 	<</if>>
 <</if>>
 <<if $args[0]>>
-	<<if !$wraithCheck and $wraith.nightmare is 0 and (random(0,2) is 2 or $wraith.state is "haunt" or $wraith.offspring is "dead")>>
+	<<if $wraith.state isnot "" and !$wraithCheck and $wraith.nightmare is 0 and (random(0,2) is 2 or $wraith.state is "haunt" or $wraith.offspring is "dead")>>
 		<<set $wraith.nightmare to 1>>
 		<<set $wraithCheck to true>>
 	<</if>>
@@ -411,7 +413,7 @@
 		<<default>>
 	<</switch>>
 <<elseif $wraith.state isnot "haunt" and $rng lte 8>>
-	<<set _speechWraith to "<span class=\"wraith\"><<He>> holds <<his>> necklace close.</span>">>
+	<<set _speechWraith to "<<He>> holds <<his>> necklace close.">>
 <<else>>
 	<<set _speaks to ["snarls","growls","cackles","purrs","hisses","emanates","speaks","grunts","giggles","whispers","speaks in an eerily calm tone"].pluck()>>
 	<<if $alarm is 1>>
@@ -424,12 +426,14 @@
 		"Take a bow.",
 		"All for this.",
 		"And so do you.",
+		"The pursuit bends.",
 		"Tick-tock, tick-tock.",
 		"Just a little further.",
 		"I know why you're here.",
 		"Is this your idea of heaven?",
 		"Don't make me repeat myself.",
 		"I can feel your heart pounding.",
+		"With a dream that casts a shadow.",
 		"Join me, why don't you? It's not far.",
 		"Like sand slipping through your fingers.",
 		"You don't have enough. You never had enough.",
@@ -458,6 +462,23 @@
 			"Even if I have to drag you there myself.",
 			"Water down your shame, until the lake runs dry.",
 			"Until naught remains, but carved bone and midnight blue."
+		)>>
+	<<else>>
+		<<run _linePool.pushUnique(
+			"Just once, can't they stay?",
+			"I'm sorry that you put your trust in me."
+		)>>	
+	<</if>>
+	<<if $templePromised is "Sydney">>
+		<<run _linePool.pushUnique(
+			"And you are wedded to calamity."
+		)>>
+	<</if>>
+	<<if $wraithPrison and $wraithPrison.vision is true>>
+		<<run _linePool.pushUnique(
+			"Different place, same disgrace.",
+			"It's comforting to know we have that in common.",
+			"Stepped from the past. Steeped in the present. Yet to be stopped."
 		)>>
 	<</if>>
 	<<if $wraith.offspring is "dead">>
@@ -489,13 +510,25 @@
 		<<run _linePool.pushUnique("The cold iron bell rings again.")>>
 	<</if>>
 	<<if $awareness gte 400>>
-		<<run _linePool.pushUnique("The Elk fancies itself the predator.")>>
+		<<run _linePool.pushUnique(
+			"The Elk fancies itself the predator.",
+			"To be blind again. You'll miss your ignorance.",
+			"The arrow of time struck midnight long before you were born."
+		)>>
 	<</if>>
 	<<if $awareness gte 600>>
-		<<run _linePool.pushUnique("Under bloody moon, under faithless sun. Dancing to my tune, standing here <span class=\"tentacle\">As One</span>.")>>
+		<<run _linePool.pushUnique(
+			"The shattered lay under the edge of blue.",
+			"Under bloody moon, under faithless sun. Dancing to my tune, standing here <span class=\"tentacle\">As One</span>."
+		)>>
 	<</if>>
 	<<if $angel gte 6>>
-		<<run _linePool.pushUnique("It won't last. It never does.")>>
+		<<run _linePool.pushUnique(
+			"It won't last. It never does.",
+			"Your descent will be beautiful.",
+			"Fly with me, gaoler. Fly and fall.",
+			"You were only a prisoner, after everything."
+		)>>
 	<<elseif $fallenangel gte 2>>
 		<<run _linePool.pushUnique(
 			"Falling. Falling. Falling.",
@@ -525,13 +558,13 @@
 		<<actionsman>>
 	<<case "arms">>
 		<<set _introSkip to true>>
+		<<set $enemynomax to 4>>
 		<<effectsman>><<man>>
 		<<rescueWraith>>
 		<<set $enemyno to 1>>
 		<<stateman>>
-		<<set $enemyno to 4>>
 		<br><br>
-		<<actionsman>>	
+		<<actionsman>>
 	<<case "tentacles">>
 		<<chastityBreakWraith>>
 		<<effectstentacles>><<speechWraith>><<tentacles>>
@@ -546,7 +579,7 @@
 		<<statetentacles>>
 		
 		<br><br>
-		<<swarmactions>><<actionstentacles>>
+		<<actionsOmni>>
 	<<case "slime">>
 		<<speechWraith>><<struggle>>
 	<<case "abomination">>
@@ -667,7 +700,7 @@
 <<widget "wHunt">>
 <<switch $args[0]>>
 	<<case "town">>
-		<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte (random(0, 60))>>
+		<<if ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5) and $wraith and $wraith.state isnot "" and $wraith.hunt is 0 and $wraith.timer gte (random(0, 50))>>
 			<br><br>
 			<<set $wraith.hunt to 1>>
 			A wave of dizziness and confusion washes over you. Every time you blink, you see a blurred image.
@@ -696,7 +729,7 @@
 				<</if>>
 			<<else>>
 				<span class="red">Something unnatural stalks the streets.</span>
-				<<set $wraith.hunt += 0.25>>
+				<<set $wraith.hunt += 0.5>>
 				<<if $wraith.hunt gte ($rng / 10)>>
 					<<set $eventforced to true>>
 				<</if>>
@@ -753,7 +786,7 @@
 				<</if>>
 			<<else>>
 				<span class="red">Something unnatural stalks the streets above.</span>
-				<<set $wraith.hunt += 0.25>>
+				<<set $wraith.hunt += 0.5>>
 				<<if $wraith.hunt gte ($rng / 10)>>
 					<<set $eventforced to true>>
 				<</if>>
@@ -762,8 +795,11 @@
 	<<case "lake">>
 		Your ears begin to ring, and you feel like you're being watched. Out of instinct, you turn around.
 		<br><br>
-		<<if $bus is "lakeshore">>
+		<<if $bus is "lakeshore" or $bus is "lakeshallows" or $bus is "lakedepths">>
 			A beautiful pale figure hovers over the center of the lake. You see a long stream of silver hair flowing in the wind. As soon as you see it, it vanishes. <<stress 6>><<gstress>>
+			<br><br>
+		<<elseif $location is "lake_ruin">>
+			A beautiful pale figure floats in the water. Long streams of silver hair flow in the current. As soon as you see it, it vanishes. <<stress 6>><<gstress>>
 			<br><br>
 		<<else>>
 			For a moment, you think you see the shape of a pale face between the trees. <<stress 6>><<gstress>>
@@ -772,10 +808,19 @@
 		<span class="red">You're trespassing. Something is hunting you.</span>
 		<<set $edenforesthunt to 0>>
 		<<set $blackwolfhunt to 0>>
-		<<set $wraith.hunt to 5>>
+		<<set $wraith.hunt to 1>>
 		<<set $foresthunt to $wraith.hunt>>
 		<br><br>
-		<<destinationlake>>
+		<<set $eventskip to 1>>
+		<<if $location is "lake_ruin">>
+			<<destinationlakeruin>>
+		<<else>>
+			<<if $season is "winter" and ($bus is "lakeshallows" or $bus is "lakedepths")>>
+				<<destination_lake_ice>>
+			<<else>>
+				<<destinationlake>>
+			<</if>>
+		<</if>>
 <</switch>>
 <</widget>>
 
@@ -793,8 +838,8 @@
 				You enter the treeline, <span class="red"> but can't shake the feeling that something's still coming for you.</span>
 			<</if>>
 			<<if ($location is "lake" or $location is "lake_ruin") and !$possessed>>
-				<<set $wraith.hunt += 2>>
-				<<set $foresthunt += 2>>
+				<<set $wraith.hunt += 1.5>>
+				<<set $foresthunt += 1.5>>
 				<<if $moonstate is "morning" and $hour gte 6>>
 					With the rising of the sun, you feel a sense of relief. The dread passes. <span class="blue"><i>You're safe until the next blood moon.</i></span>
 					<<clearWraith>>
@@ -881,6 +926,23 @@
 <</switch>>
 <<if !$args[0]>>
 	<<endWraith>>
+<</if>>
+<</widget>>
+
+<<widget "rngWraith">>
+<<if $wraith and $wraith.state isnot "">>
+	<<if $args[1] is "night" and $daystate isnot "night">>
+		<<set _wraithEvent to false>>
+	<<else>>
+		<<set _rngWraith to ($wraith.state is "haunt" or $wraith.offspring is "dead") ? 4 : 2>>
+		<<if $daystate is "night">>
+			<<set _rngWraith += 2>>
+		<</if>>
+		<<set _wraithHallucinations to ($args[0] is 1 or $args[0] is 2 ? $args[0] : 0)>>
+		<<if ($hallucinations gte _wraithHallucinations and _rngWraith gte random(1,100)) or ($moonstate is "evening" and $hour gte 21) or ($moonstate is "morning" and $hour lt 6)>>
+			<<set _wraithEvent to true>>
+		<</if>>
+	<</if>>
 <</if>>
 <</widget>>
 
@@ -1005,7 +1067,7 @@
 		<<destinationeventend>>
 	<</addinlineevent>>
 	<<addinlineevent "wraith2" 0.1>>
-		You think you hear someone call your name. You dont see a single person around you. <<stress 6>><<gstress>>
+		You think you hear someone call your name. You don't see a single person around you. <<stress 6>><<gstress>>
 		<br><br>
 		<<destinationeventend>>
 	<</addinlineevent>>

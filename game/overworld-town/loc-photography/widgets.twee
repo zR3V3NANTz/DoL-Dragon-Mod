@@ -1,0 +1,53 @@
+:: Widgets Photo [widget]
+<<widget "street_niki">>
+<<npc Niki>><<person1>>
+A car pulls up alongside you. A young <<personsimple>> leans out, a white stick in <<his>> mouth. 
+
+<<if $niki_seen is "farm">>
+    It's Niki. The photographer from Remy's farm. You hasten your pace.
+    <br><br>
+    "Hold up," <<he>> says, speeding up to keep pace. "I'll be quick. You didn't... see me at my best. <span class="gold">I run a photography studio on Nightingale Street.</span> All above board. Drop by sometime if you need work."
+    <br><br>
+
+    You dart into an alley, leaving <<him>> to drive away.
+    <br><br>
+
+    <<endevent>>
+    <<destinationeventend>>
+<<else>>
+    "Hey," <<he>> says. "You got a moment?"
+    <br><br>
+
+    <<link [[Stop|Photo Street Stop]]>><<npcincr Niki love 1>><</link>><<glove>>
+    <br>
+    <<link [[Hasten|Photo Street Hasten]]>><</link>>
+    <br>
+<</if>>
+<</widget>>
+
+<<widget "photo_evidence_upload">>
+<<He>> taps the phone in an exaggerated fashion, <span class="pink">and uploads the footage to the internet.</span>
+<<if $photo.blackmail is 1>>
+    <<fameexhibitionism 20 vid>>
+    Your bare body is exposed for all to see.
+    <<set $photo.nude_footage to 1>>
+<<elseif $photo.blackmail is 2>>
+    <<famerape 20 vid>>
+    <<fameexhibitionism 20 vid>>
+    The footage of your sexual assault is there for all to see.
+    <<set $photo.assault_footage to 1>>
+<</if>>
+<</widget>>
+
+<<widget "photo_end">>
+<<set $photo.blackmail to 0>>
+<<unset $photo_upper_index>>
+<<unset $photo_lower_index>>
+<<unset $photo_under_index>>
+<<unset $photo_upper_f_index>>
+<<unset $photo_lower_f_index>>
+<<unset $photo_under_f_index>>
+<<unset $photo_upper_m_index>>
+<<unset $photo_lower_m_index>>
+<<unset $photo_under_m_index>>
+<</widget>>

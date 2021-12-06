@@ -1,17 +1,10 @@
 :: Widgets NPC Damage [widget]
 <<widget "npcdamage">>
 <!-- Calculates damage inflicted by PC on NPCs and removes highest number NPC from group combat NG v2.8-->
+<<set _thenpc to $args[0]>>
 
-<<set _grphealth to 0>>
-<<set _damage to $enemyhealthmax-$enemyhealth>>
-
-<<for _i = 0; _i < $enemyno-1 ; _i++>>
-	<<set _grphealth to $NPCList[_i].health+_grphealth>>
-<</for>>
-
-<<if $enemyhealth lte _grphealth>>
-	<<defeatnpc>>
-	<<npcdamage>>
+<<if $NPCList[_thenpc].stance isnot "defeated" and $NPCList[_thenpc].health lte 0>>
+	<<defeatnpc _thenpc>>
 <</if>>
 
 <</widget>>
@@ -20,7 +13,7 @@
 <!-- This knocks out and resets the last NPC on the list from 5 to 0 -->
 <!-- Resets PC variables to release PC from NPC actions, resets NPC variables as partial cleanup prior to cleannpc, gives PC stats uptick as side benefit to defeating NPCs. -->
 
-<<set _i to $enemyno-1>>
+<<set _i to $args[0]>>
 <<personselect _i>>
 <span class="blue">The <<person>> staggers back, defeated.</span>
 <<llpain>><<llstress>><<lltrauma>>
@@ -39,10 +32,10 @@
 <</if>>
 <<if $NPCList[_i].penis is "anusdouble" or $NPCList[_i].penis is "anusdoubleimminent" or $NPCList[_i].penis is "anusdoubleentrance">>
 	<<set _otherNPCindex to "f">>
-	<<if _i is $npcDAP[0]>>
-		<<set _otherNPCindex to $npcDAP[1]>>
+	<<if _i is $anustarget>>
+		<<set _otherNPCindex to $anusdoubletarget>>
 	<<else>>
-		<<set _otherNPCindex to $npcDAP[0]>>
+		<<set _otherNPCindex to $anustarget>>
 	<</if>>
 	<<if _otherNPCindex isnot "f" and $NPCList[_otherNPCindex].penis isnot 0 and $NPCList[_otherNPCindex].penis.includes("double")>>
 		<<switch $NPCList[_otherNPCindex].penis>>
@@ -143,11 +136,58 @@
 <!-- Reset Group attributes-->
 <<set $enemyarousalmax to 500 * $enemyno>>
 <<set $enemyarousal to $enemyarousal * ($enemyno / ($enemyno +1))>>
-<<set $enemyhealthmax to $enemyhealthmax-$NPCList[_i].health>>
+<<set $enemyhealthmax -= $NPCList[_i].healthmax>>
+<<set $_excessdamage to (0-$NPCList[_i].health)>><<if $debug is 1>><br> Excess damage: $_excessdamage<br><</if>>
 <<set $NPCList[_i].health to 0>>
-
+<<set $enemyhealth to 0>>
+<<set $oldtarget to _i>>
+<<for _returnHP to 0; _returnHP lt $enemynomax; _returnHP++>>
+	<<if $NPCList[_returnHP].active is "active" and $NPCList[_returnHP].stance isnot "defeated">>
+		<<set $NPCList[_returnHP].health -= $_excessdamage>>
+		<<if $newtarget is undefined>>
+			<<set $newtarget to _returnHP>>
+		<</if>>
+		<<set $_excessdamage to 0>>
+		<<set $enemyhealth += $NPCList[_returnHP].health>>
+	<</if>>
+<</for>>
+<<if $newtarget is undefined>>
+	<<set $newtarget to $oldtarget>>
+<</if>>
 <!-- Give PC stats uptick. Could be replaced with <<violence -xx>> call -->
 <<set $pain to 0>>
 <<stress -18>><<trauma -6>>
 
+<</widget>>
+
+<<widget "setnewtarget">>
+<<if $lefttarget is $oldtarget>>
+	<<set $lefttarget to $newtarget>>
+<</if>>
+<<if $righttarget is $oldtarget>>
+	<<set $righttarget to $newtarget>>
+<</if>>
+<<if $feettarget is $oldtarget>>
+	<<set $feettarget to $newtarget>>
+<</if>>
+<<if $mouthtarget is $oldtarget>>
+	<<set $mouthtarget to $newtarget>>
+<</if>>
+<<if $vaginatarget is $oldtarget>>
+	<<set $vaginatarget to $newtarget>>
+<</if>>
+<<if $penistarget is $oldtarget>>
+	<<set $penistarget to $newtarget>>
+<</if>>
+<<if $anustarget is $oldtarget>>
+	<<set $anustarget to $newtarget>>
+<</if>>
+<<if $thightarget is $oldtarget>>
+	<<set $thighaction to 0>>
+<</if>>
+<<if $chesttarget is $oldtarget>>
+	<<set $chestaction to 0>>
+<</if>>
+<<unset $oldtarget>>
+<<unset $newtarget>>
 <</widget>>

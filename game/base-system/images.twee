@@ -895,6 +895,24 @@
 	<</if>>
 <</widget>>
 
+<<widget "playgroundicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/playground.png">
+	<</if>>
+<</widget>>
+
+<<widget "entranceicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/entrance.png">
+	<</if>>
+<</widget>>
+
+<<widget "exiticon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/exit.png">
+	<</if>>
+<</widget>>
+
 <<widget "lakeicon">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/lake.png">
@@ -1009,10 +1027,96 @@
 	<</if>>
 <</widget>>
 
+<<widget "stairsicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/stairs.png">
+	<</if>>
+<</widget>>
+
+<<widget "stairschristmasicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/stairs_christmas.png">
+	<</if>>
+<</widget>>
+
+<<widget "doubledoorsicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/double_doors.png">
+	<</if>>
+<</widget>>
+
+<<widget "shoppingcentreicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/shopping_centre.png">
+	<</if>>
+<</widget>>
+
+<<widget "beachicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/beach.gif">
+	<</if>>
+<</widget>>
+
+<<widget "plaqueicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/plaque.png">
+	<</if>>
+<</widget>>
+
+<<widget "prisonrunicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/prison_run.png">
+	<</if>>
+<</widget>>
+
+<<widget "prisonlifticon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/prison_lift.png">
+	<</if>>
+<</widget>>
+
+<<widget "prisoncanteenicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/prison_canteen.png">
+	<</if>>
+<</widget>>
+
+<<widget "prisonmedicalicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/prison_medical.png">
+	<</if>>
+<</widget>>
+
+<<widget "prisonlaundryicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/prison_laundry.png">
+	<</if>>
+<</widget>>
+
+<<widget "prisondooricon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/prison_door.png">
+	<</if>>
+<</widget>>
+
+<<widget "hospitalicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/hospital.png">
+	<</if>>
+<</widget>>
+
 <<widget "ind">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/indent.png">
 	<</if>>
+<</widget>>
+
+<<widget "main_hall_icon">>
+<<if $christmas is 1>>
+	<<stairschristmasicon>>
+<<else>>
+	<<stairsicon>>
+<</if>>
 <</widget>>
 
 <<widget "clothingicon">>

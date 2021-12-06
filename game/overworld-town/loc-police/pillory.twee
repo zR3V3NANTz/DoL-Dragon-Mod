@@ -242,19 +242,20 @@ A <<generate1>><<person1>><<person>> in a police uniform arrives. <<He>> removes
 	<<set $rng to random(1, 5)>>
 	<<if $pilloryaudience + $exposed + $rng gte 10>>
 	<<set $rng to random(1, 100)>>
-		<<if $rng gte 51>><!-- Modified for Monster People -->
 		<<beastNEWinit 1 dog>>
-		You feel something prod your <<bottom>>. A <<beasttype>> is sniffing you curiously.
-		<br><br>
+		<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Monster People -->
+			You feel something prod your <<bottom>>. A <<beasttype>> is sniffing you curiously.
+			<br><br>
 
-		<<link [[Next|Pillory Dog]]>><<set $molestationstart to 1>><</link>>
-		<br>
+			<<link [[Next|Pillory Dog]]>><<set $molestationstart to 1>><</link>>
+			<br>
 		<<else>>
-		<<generate1>><<person1>>A <<person>> walks right up to the pillory.
-		<br><br>
+			<<endevent>>
+			<<generate1>><<person1>>A <<person>> walks right up to the pillory.
+			<br><br>
 
-		<<link [[Next|Pillory Molestation]]>><<set $molestationstart to 1>><<set $molestationstart to 1>><</link>>
-		<br>
+			<<link [[Next|Pillory Molestation]]>><<set $molestationstart to 1>><<set $molestationstart to 1>><</link>>
+			<br>
 		<</if>>
 
 	<<elseif $pilloryaudience + $exposed + $rng gte 6>>
@@ -292,7 +293,7 @@ A <<generate1>><<person1>><<person>> in a police uniform arrives. <<He>> removes
 					<br>
 				<</if>>
 			<<elseif $worn.upper.exposed lte 1>>
-				<<if $worn.upper.open is 1 or $worn.upper.set isnot $worn.lower.set>>
+				<<if $worn.under_upper.exposed lte 0 and ($worn.upper.open is 1 or $worn.upper.set isnot $worn.lower.set)>>
 					A <<generate1>><<person1>><<person>> approaches, and grasps your $worn.under_upper.name.
 					<br><br>
 
@@ -374,7 +375,7 @@ A <<generate1>><<person1>><<person>> in a police uniform arrives. <<He>> removes
 			<<link [[Next|Pillory]]>><<pass 1 hour>><<set $pillorytime -= 1>><</link>>
 			<br>
 		<</if>>
-	<<elseif $pilloryaudience + $exposed + $rng gte 3 and $bodywritingdisable is "f">>
+	<<elseif $pilloryaudience + $exposed + $rng gte 3 and $bodywritingLvl gte 2>>
 		<<generate1>><<person1>>
 		<<if $rng gte 81>>
 			<<set $phase to 1>>

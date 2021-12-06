@@ -33,16 +33,18 @@
 <<set $beedisable to "f">>
 <<set $lurkerdisable to "f">>
 <<set $horsedisable to "f">>
-<<set $bodywritingdisable to "f">>
+<<set $bodywritingLvl to 3>>
 <<set $parasitedisable to "f">>
 <<set $bestialitydisable to "f">>
 <<set $slimedisable to "f">>
 <<set $voredisable to "f">>
 <<set $tentacledisable to "f">>
+<<set $plantdisable to "t">>
 <<set $analdisable to "f">>
-<<set $analdoubledisable to "t">>
+<<set $analdoubledisable to "f">>
 <<set $analingusdisablegiving to "f">>
 <<set $analingusdisablereceiving to "f">>
+<<set $vaginaldoubledisable to "f">>
 <<set $transformdisable to "f">>
 <<set $transformdisabledivine to "f">>
 /*<<set $hirsutedisable to "t">>*/
@@ -92,6 +94,7 @@
 <<set $condomchance to 50>>
 <<set $condomautochance to 50>>
 <<set $multipleWardrobes to "isolated">>
+<<set $targetYourself to false>>
 
 <<set $notifyUpdate = true>>
 
@@ -202,7 +205,7 @@
 	<<settingsExit>>
 </div>
 <</if>>
-<br><br>
+<br><br><br>
 <</widget>>
 
 <<widget "settingsExit">>
@@ -283,6 +286,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<<initnpcgender>>
 	<<updatePronouns>>
 	<<hirsuteHideCheck>>
+	<<generateTipsList>>
 	<<tanned 0 "ignoreCoverage">>
 	<<if $player.freckles is "random">>
 		<<set $player.freckles to (random(1, 5) is 1)>>
@@ -377,10 +381,9 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 <<widget "characterSettings">>
 
 	<<if StartConfig.enableImages is true>>
-		<span class="gold">View a preview of the character in the side bar.</span> <label>Hide Clothes <<checkbox "_showClothes" true false autocheck>></label> <label>Hide Underwear <<checkbox "_showUnderwear" true false autocheck>></label>
-		<br>
-		<span class="red">'Visual representation of the player character's skin colour' needs to be enabled in the general tab for skin colouring to show during normal gameplay.</span>
-		<br>
+		<span class="gold">View a preview of the character in the side bar</span> <label>Hide Clothes <<checkbox "_showClothes" true false autocheck>></label> <label>Hide Underwear <<checkbox "_showUnderwear" true false autocheck>></label>
+	<mouse class="tooltip linkBlue">(?)<span>'Visual representation of the player character's skin colour' needs to be enabled in the general tab for skin colouring to show during normal gameplay.</span></mouse>
+	<br>
 	<</if>>
 	<br>
 
@@ -392,7 +395,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 		<<numberslider "$devlevel" $devlevel 6 16 1>>
 		<br><br>
 	<<else>>
-		<span class="gold">Body size</span> - A smaller body makes you inflict less damage during encounters, making defiance harder.
+		<span class="gold">Body size</span> <mouse class="tooltip linkBlue">(?)<span>A smaller body makes you inflict less damage during encounters, making defiance harder.</span></mouse>
 		<br>
 		<label>Tiny <<radiobutton "$bodysize" 0 autocheck>></label> |
 		<label>Small <<radiobutton "$bodysize" 1 autocheck>></label> |
@@ -516,7 +519,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<label>Random <<radiobutton "$player.freckles" "random" autocheck>></label> |
 	<br><br>
 
-	<span class="gold">Skin Colour</span>
+	<span class="gold">Skin Colour</span> <mouse class="tooltip linkBlue">(?)<span>Visual representation of the PC's skin colour and tanning changes must be enabled through the General tab of this Settings menu before they will function. They are disabled by default due to performance issues on some devices.</span></mouse>
 	<br>
 	Reddish:
 	<label>Light <<radiobutton "$skinColor.natural" "light" autocheck>></label> |
@@ -545,13 +548,13 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 					<<set $skinColor.tanImgEnabled to "f">>
 				<</if>>
 			<</replace>>
-		<</link>> (approximate) - <span class="red">Visual representation of the PC's skin colour and tanning changes must be enabled through the General tab of this Settings menu before they will function. They are disabled by default due to performance issues on some devices.</span>
+		<</link>> (approximate)
 		<div id="test">/*<<print '<div style="height: 30px; width: 50px; background-color: red; filter: '+skinColor($skinColor.tanImgEnabled, $skinColor.range,setup.skinColor[$skinColor.natural])+';"></div>'>>*/</div>
 		<br>
 	<</if>>
 	<br>
 
-	<span class="gold">Awareness</span> - Whether your character knows a thing or two about sex despite their lack of experience.
+	<span class="gold">Awareness</span> <mouse class="tooltip linkBlue">(?)<span>Whether your character knows a thing or two about sex despite their lack of experience.</span></mouse>
 	<br>
 	<label>Innocent <<radiobutton "$awareselect" "innocent" autocheck>></label> |
 	<label>Knowledgeable <<radiobutton "$awareselect" "knowledgeable" autocheck>></label>
@@ -559,27 +562,31 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 
 	<span class="gold">Background</span>
 	<br>
-	<label>Waif <<radiobutton "$background" "waif" autocheck>> - No special advantages or disadvantages. <i>Recommended for beginners.</i></label>
+	<label><span class="green">Waif</span> <<radiobutton "$background" "waif" autocheck>> - No special advantages or disadvantages. <i>Recommended for beginners.</i></label>
 	<br>
-	<label>Nerd <<radiobutton "$background" "nerd" autocheck>> - Good at school. Picked on. <span class="red">(This will prevent Unsocial Moth feat from being earned)</span></label>
+	<label><span class="teal">Nerd</span> <<radiobutton "$background" "nerd" autocheck>> - Good at school. Picked on. <span class="red">(This will prevent Unsocial Moth feat from being earned)</span></label>
 	<br>
-	<label>Athlete <<radiobutton "$background" "athlete" autocheck>> - Physically capable. Grades have suffered.</label>
+	<label><span class="teal">Athlete</span> <<radiobutton "$background" "athlete" autocheck>> - Physically capable. Grades have suffered.</label>
 	<br>
-	<label>Delinquent <<radiobutton "$background" "delinquent" autocheck>> - Your antics have made you popular with other students. Less so with the teachers.</label>
+	<label><span class="teal">Delinquent</span> <<radiobutton "$background" "delinquent" autocheck>> - Your antics have made you popular with other students. Less so with the teachers.</label>
 	<br>
-	<label>Promiscuous <<radiobutton "$background" "promiscuous" autocheck>> - You've experimented sexually.</label>
+	<label><span class="blue">Promiscuous</span> <<radiobutton "$background" "promiscuous" autocheck>> - You've experimented sexually.</label>
 	<br>
-	<label>Exhibitionist <<radiobutton "$background" "exhibitionist" autocheck>> - You have an affinity for exposing yourself in public places.</label>
+	<label><span class="blue">Exhibitionist</span> <<radiobutton "$background" "exhibitionist" autocheck>> - You have an affinity for exposing yourself in public places.</label>
 	<br>
-	<label>Deviant <<radiobutton "$background" "deviant" autocheck>> - You <i>really</i> like animals.</label>
+	<label><span class="blue">Deviant</span> <<radiobutton "$background" "deviant" autocheck>> - You <i>really</i> like animals.</label>
 	<br>
-	<label>Beautiful <<radiobutton "$background" "beautiful" autocheck>> - You turn heads. <i>Not recommended for beginners.</i></label>
+	<label><span class="lewd">Beautiful</span> <<radiobutton "$background" "beautiful" autocheck>> - You turn heads. <i>Not recommended for beginners.</i></label>
 	<br>
-	<label>Crossdresser <<radiobutton "$background" "crossdresser" autocheck>> - You've taken a liking to the clothing of the opposite sex. Does nothing for hermaphrodites.</label>
+	<label><span class="lewd">Crossdresser</span> <<radiobutton "$background" "crossdresser" autocheck>> - You've taken a liking to the clothing of the opposite sex. Does nothing for hermaphrodites.</label>
 	<br>
-	<label>Lustful <<radiobutton "$background" "lustful" autocheck>> - Arousal increases over time, and needs to be managed.</label>
+	<label><span class="lewd">Lustful</span> <<radiobutton "$background" "lustful" autocheck>> - Arousal increases over time, and needs to be managed.</label>
+	/*<br>
+	<label>Green Thumb <<radiobutton "$background" "greenthumb" autocheck>> - More bountiful crops and no decay when using fertiliser. Start with ne unit of fertiliser.</label>*/
 	<br>
-	<label>Green Thumb <<radiobutton "$background" "greenthumb" autocheck>> - Increased starting tending, more bountiful crops and no decay when using fertiliser.</label>
+	<label><mouse class="tooltip lewd">Dendrophile <<radiobutton "$background" "plantlover" autocheck>> - Plants are everything to you.<span class="green">You're addicted to nectar. You're more vulnerable to aphrodisiacs and alcohol. Plantpeople and plant-based tentacles no longer require hallucinations to encounter. You get a bonus to Tending, as your Trauma increases.</span></mouse>
+	</label>
+	<br>
 
 <</widget>>
 
@@ -626,16 +633,16 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 <<widget "gameSettings">>
 	<span class="gold">Game Mode</span>
 	<br>
-	<label><span class = "green">Normal mode</span> <<radiobutton "$gamemode" "normal" autocheck>> - Survive in a dangerous world.</label>
+	<label><mouse class="tooltip green">Normal mode<span>Survive in a dangerous world.</span></mouse>
+	<<radiobutton "$gamemode" "normal" autocheck>></label>
 	<br>
-	<label><span class = "blue">Soft mode</span>
-	<<radiobutton "$gamemode" "soft" autocheck>>
-	- For those who prefer a light-hearted lewd adventure, though the game is still dark in places. <span class="red">This is an experimental feature, and contains gamebreaking bugs. It will be changed or removed in the future. Leaving the settings with soft mode will prevent you from earning feats until it is set to normal mode. Doing this will permanently prevent some feats from being earned.</span></label>
+	<label><mouse class = "tooltip blue">Soft mode<span>For those who prefer a light-hearted lewd adventure, though the game is still dark in places.<span class="red">This is an experimental feature, and contains gamebreaking bugs. It will be changed or removed in the future. Leaving the settings with soft mode will prevent you from earning feats until it is set to normal mode. Doing this will permanently prevent some feats from being earned.</span></span></mouse>
+	<<radiobutton "$gamemode" "soft" autocheck>></label>
 	<br>
 	<<if $intro is 1 or $gamemode is "hard">>
-		<label><span class = "purple">Hard mode</span>
+		<label><mouse class = "tooltip purple">Hard mode<span>Removes lewd stat decay (promiscuity, exhibitionism, deviancy) making trauma and control increasingly difficult to manage. Can only be chosen at the game's start, and being incarcerated in the asylum will put you in normal mode.<span class="red">This is an experimental feature, and will be changed or removed in the future.</span></span></mouse>
 		<<radiobutton "$gamemode" "hard" autocheck>>
-		- Removes lewd stat decay (promiscuity, exhibitionism, deviancy) making trauma and control increasingly difficult to manage. Can only be chosen at the game's start, and being incarcerated in the asylum will put you in normal mode. <span class="red">This is an experimental feature, and will be changed or removed in the future.</span></label>
+		</label>
 		<br>
 	<</if>>
 	<br>
@@ -647,9 +654,9 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<<numberslider "$alluremod" $alluremod 0.2 2 0.1>>
 	<br><br>
 
-	<span class="gold">Multiple Wardrobes</span>
+	<span class="gold">Multiple Wardrobes</span> <mouse class="tooltip linkBlue">(?)<span class="red">This is an experimental feature, and will be changed or removed in the future. While you may change this during gameplay, it's not recommended as disabling will remove access to clothing and enabling it may leave you stuck with your only option wearing a towel.</span></mouse>
 	<br>
-	<span class="red">This is an experimental feature, and will be changed or removed in the future.</span> While you may change this during gameplay, it's not recommended as disabling will remove access to clothing and enabling it may leave you stuck with your only option wearing a towel.
+	
 	<br>
 	<label><<radiobutton "$multipleWardrobes" false autocheck>> Single shared wardrobe only</label>
 	<br>
@@ -718,12 +725,12 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 			<<numberslider "$homochance" $homochance 0 100 1>>
 			<br><br>
 
-			<span class="gold">Average size of women's breasts</span> - A bigger number means bigger breasts in the world. At 12 everyone will have enormous breasts. At -12 everyone will have flat chests. Defaults to 0, which will result in a broad range of sizes.
+			<span class="gold">Average size of women's breasts</span> <mouse class="tooltip linkBlue">(?)<span>A bigger number means bigger breasts in the world. At 12 everyone will have enormous breasts. At -12 everyone will have flat chests. Defaults to 0, which will result in a broad range of sizes.</span></mouse>
 			<br>
 			<<numberslider "$breast_mod" $breast_mod -12 12 1>>
 			<br><br>
 
-			<span class="gold">Average size of NPC penises</span> - A bigger number means bigger penises in the world. At 8 everyone will have enormous penises. At -8 everyone will have tiny penises. Defaults to 0, which will result in a broad range of sizes.
+			<span class="gold">Average size of NPC penises</span> <mouse class="tooltip linkBlue">(?)<span>A bigger number means bigger penises in the world. At 8 everyone will have enormous penises. At -8 everyone will have tiny penises. Defaults to 0, which will result in a broad range of sizes.</span></mouse>
 			<br>
 			<<numberslider "$penis_mod" $penis_mod -8 8 1>>
 			<br><br>
@@ -772,7 +779,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 			<label>At any time <<radiobutton "$monsterhallucinations" "f" autocheck>></label>
 			<br><br>
 
-			<span class="red">Disabling bestiality will automatically replace all beasts with monster girls or boys, regardless of the above settings.</span>
+			<span class="red">Disabling bestiality will stil allow lewd events with monster girls and boys.</span>
 			<br>
 
 			<span class="gold">Beast Toggles</span>
@@ -951,16 +958,10 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 
 	<span class="gold">Togglable Features</span>
 	<br>
-	/*<label><div class="settingsToggle">
+	<label><div class="settingsToggle">
 	<<checkbox "$analdisable" "t" "f" autocheck>> Enable anal
-	</div></label>*/
-	<div class="settingsToggle" role="group" aria-labelledby="settingsAnalandDAPHead">
-	<label>
-	<<checkbox "$analdisable" "t" "f" autocheck>> Enable anal |
-	</label>
-	<label>
-	<<checkbox "$analdoubledisable" "t" "f" autocheck>> Enable double anal
-	</label></div>
+	</div></label>
+	<<run settingsDoubleAnalToggleGreyOut()>>
 	<div class="settingsToggle" role="group" aria-labelledby="settingsAnalingusHead">
 	<span id="settingsAnalingusHead">Analingus:</span>
 	<label>
@@ -970,6 +971,17 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 		<<checkbox "$analingusdisablereceiving" "t" "f" autocheck>> Receiving
 	</label>
 	</div>
+	<div class="settingsToggle" role="group" aria-labelledby="settingsDoubleHead">
+	<span id="settingsAnalingusHead">Double penetration:</span>
+	<label>
+		<<checkbox "$vaginaldoubledisable" "t" "f" autocheck>> Vaginal
+	</label>
+	<label>
+		<<checkbox "$analdoubledisable" "t" "f" autocheck>> Anal
+	</label>
+	<mouse class="tooltip linkBlue">(?)<span>Note that double anal requires anal to be enabled.
+	<br>"Double penetration" here means two phalluses in the same orifice of the player.</span></mouse>
+	</div>
 	<label><div class="settingsToggle">
 	<<checkbox "$pbdisable" "t" "f" autocheck>> Enable pubic hair growth
 	</div></label>
@@ -977,6 +989,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	Transformations:
 	<label><<checkbox "$transformdisable" "t" "f" autocheck>> Animal</label>
 	<label><<checkbox "$transformdisabledivine" "t" "f" autocheck>> Divine</label>
+	<mouse class="tooltip linkBlue">(?)<span>You may have both one divine and one animal transformation at the same time.</span></mouse>
 	</div>
 	/*<label><div class="settingsToggle">
 	<<checkbox "$hirsutedisable" "t" "f" autocheck>> Extra hirsute/hairy wolf transformation
@@ -986,28 +999,37 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	</div></label>
 	<label><div class="settingsToggle">
 	<<checkbox "$watersportsdisable" "t" "f" autocheck>> Enable watersports
+	<mouse class="tooltip linkBlue">(?)<span>This toggle is largely unused, only affecting a single very rare event as of right now.</span></mouse>
 	</div></label>
-	<label><div class="settingsToggle">
-	<<checkbox "$bodywritingdisable" "t" "f" autocheck>> Enable body-writing and forced tattoos
-	</div></label>
+
 	<label><div class="settingsToggle">
 	<<checkbox "$footdisable" "t" "f" autocheck>> Enable feet
+	<mouse class="tooltip linkBlue">(?)<span>Does not remove the player's feet.</span></mouse>
 	</div></label>
+	
 	<div class="settingsToggle" style="display: inline-flex;">
-	Asphyxiation
+	&nbsp;Asphyxiation
 	<<numberslider "$asphyxiaLvl" $asphyxiaLvl 0 4 1>>
 	<<run settingsAsphyxiation()>>
 	</div>
+
+	<div class="settingsToggle" style="display: inline-flex;">
+	&nbsp;Bodywriting
+	<<numberslider "$bodywritingLvl" $bodywritingLvl 0 3 1>>
+	<<run settingsBodywriting()>>
+	</div>
+		
 	<div class="settingsToggle">
-	Nude&nbsp;Gender&nbsp;Appearance
+	&nbsp;Nude&nbsp;Gender&nbsp;Appearance
 	<<numberslider "$NudeGenderDC" $NudeGenderDC 0 2 1>>
 	<<run settingsNudeGenderAppearance()>>
 	</div>
+
 	<div style="clear:both;">/*Keep at end of toggles*/</div>
 <</widget>>
 
 <<widget "sizeLimitsSettings">>
-	<span class="gold">Maximum player character breast size</span> - Breasts already above this size won't automatically shrink. Your breasts will grow regardless of gender. Males and those with high purity experience slower growth. Surgery, pills and parasites can influence growth in both directions. Having breasts played with and hosting internal parasites increase growth.
+	<span class="gold">Maximum player character breast size</span> <mouse class="tooltip linkBlue">(?)<span>Breasts already above this size won't automatically shrink. Your breasts will grow regardless of gender. Males and those with high purity experience slower growth. Surgery, pills and parasites can influence growth in both directions. Having breasts played with and hosting internal parasites increase growth.</span></mouse>
 	<br>
 	<<set _name to ["Flat", "Budding", "Tiny", "Small", "Pert", "Modest", "Full", "Large", "Ample", "Massive", "Huge", "Gigantic", "Enormous"]>>
 	<<for _i to 0; _i lt _name.length; _i++>>
@@ -1015,14 +1037,14 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<</for>>
 	<br><br>
 
-	<span class="gold">Minimum player character breast size</span> - Breasts already below this size won't automatically grow.
+	<span class="gold">Minimum player character breast size</span> <mouse class="tooltip linkBlue">(?)<span>Breasts already below this size won't automatically grow.</span></mouse>
 	<br>
 	<<for _i to 0; _i lt 5; _i++>>
 		<label><<print _name[_i]>> <<radiobutton "$breastsizemin" _i autocheck>></label> |
 	<</for>>
 	<br><br>
 
-	<span class="gold">Maximum player character ass size</span> - Bottoms already above this size won't automatically shrink.
+	<span class="gold">Maximum player character ass size</span> <mouse class="tooltip linkBlue">(?)<span>Bottoms already above this size won't automatically shrink.</span></mouse>
 	<br>
 	<<set _name to ["Slender", "Slim", "Modest", "Cushioned", "Soft", "Round", "Plump", "Large", "Huge"]>>
 	<<for _i to 0; _i lt _name.length; _i++>>
@@ -1030,7 +1052,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<</for>>
 	<br><br>
 
-	<span class="gold">Maximum player character penis size</span> - Penises already above this size won't automatically shrink. Surgery, pills and parasites can influence growth in both directions.
+	<span class="gold">Maximum player character penis size</span> <mouse class="tooltip linkBlue">(?)<span>Penises already above this size won't automatically shrink. Surgery, pills and parasites can influence growth in both directions.</span></mouse>
 	<br>
 	<<set _name to ["Micro","Mini", "Tiny", "Small", "Normal", "Large", "Enormous"]>>
 	<<for _i to 0; _i lt _name.length; _i++>>
@@ -1038,7 +1060,7 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<</for>>
 	<br><br>
 
-	<span class="gold">Minimum player character penis size</span> - Penises already below this size won't automatically grow. The smaller sizes have additional requirements to shrink to/grow from.
+	<span class="gold">Minimum player character penis size</span> <mouse class="tooltip linkBlue">(?)<span>Penises already below this size won't automatically grow. The smaller sizes have additional requirements to shrink to/grow from.</span></mouse>
 	<br>
 	<<set _name to ["Micro","Mini", "Tiny"]>>
 	<<for _i to 0; _i lt _name.length; _i++>>
@@ -1198,15 +1220,14 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 	<div class="description">Shows in the save menu in place of the save id.</div>
 	<div class="description"><span class="red">Only 10 characters at most will show in the save menu, leave empty to show the save ID.</span></div>
 	<br>
-	<span class="gold">Game Zoom</span> -Will allow you to adjust the size of game elements and text. 100 is the default value.
+	<span class="gold">Game Zoom</span> <mouse class="tooltip linkBlue">(?)<span>Will allow you to adjust the size of game elements and text. 100 is the default value.
 	A value of 50 will zoom the page out to half of its original size, while a value of 200 will zoom the page in to double its size.
 	The test button will not save the zoom value into the current save.
-	<br>
 	<span class="red">
 		Please be careful with this setting! Only save if you are happy with the changes made, as reloading the game will reset it to the last value used in that save.
 		Depending on the device and browser, the setting may break entirely, and may cause unexpected effects. Please report these issues as necessary.
-	</span>
-	<br>
+	</span></span></mouse>
+	<br><br>
 	<<numberslider "$zoom" $zoom 50 200 1>>
 	<input type="button" value="Set Zoom Test" onclick="zoom()"/>
 	<br><br>

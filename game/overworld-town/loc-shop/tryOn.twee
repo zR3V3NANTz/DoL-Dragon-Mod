@@ -297,11 +297,8 @@
 		<<set $worn[_labelTO] to clone(_valueTO)>>
 		<<set $tryOn.tryingOn[_labelTO] to clone(_valueTO)>>
 		<<set $tryOn.value += getClothingCost($tryOn.tryingOn[_labelTO],_labelTO)>>
-		<!--
-			ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x
-			<<run clothesDataTrimmer($worn[_labelTO])>>
-			<<run clothesDataTrimmer($tryOn.tryingOn[_labelTO])>>
-		-->
+		<<run clothesDataTrimmer($worn[_labelTO])>>
+		<<run clothesDataTrimmer($tryOn.tryingOn[_labelTO])>>
 	<</for>>
 
 	/*re-equip original clothes where needed*/

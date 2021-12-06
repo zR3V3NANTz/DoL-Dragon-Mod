@@ -1,289 +1,780 @@
 :: Widgets Struggle [widget]
 <<widget "struggle_init">>
-<<set $struggle to {}>>
-<<set $struggle.timer to 0>>
-<<set $struggle.creature to "lurker">>
-<<set $struggle.number to 1>>
-<<set $struggle.warded to 0>>
-<<set $struggle.satisfied to 0>>
-<<set $struggle.done to 0>>
-<<set $struggle.enemy to {}>>
-
-<<set $enemytype to "struggle">>
+	<<set $enemytype to "struggle">>
+	<<set $struggle to {
+		timer: 0,
+		creature: "lurker",
+		number: 1,
+		warded: 0,
+		satisfied: 0,
+		done: 0,
+		enemy: {}
+	}>>
+	<<resetLastOptions>>
+	<<set $feetaction to "evade">>
 <</widget>>
 
 <<widget "struggle_creatures">>
-<<set $struggle.number to $args[0]>>
-<<set $struggle.descriptions to ["twisting", "slimy", "chittering", "slippery", "darting", "mesmerising", "big", "small", "colourful", "dull", "jittering", "shuddering", "pulsating", "wide", "thin", "thick", "buzzing", "glistening"]>>
-<<for _i to 0; _i lt $struggle.number; _i++>>
-	<<generate_struggle _i $args[1]>>
-<</for>>
+	<<set $struggle.number to $args[0]>>
+	<<set $struggle.descriptions to ["twisting", "slimy", "chittering", "slippery", "darting", "mesmerising", "big", "small", "colourful", "dull", "jittering", "shuddering", "pulsating", "wide", "thin", "thick", "buzzing", "glistening"]>>
+	<<for _i to 0; _i lt $struggle.number; _i++>>
+		<<generate_struggle_creature _i $args[1]>>
+	<</for>>
+	<<for _part range ["mouth", "vagina", "penis", "anus", "chest"]>>
+		<<struggle_part_init _part>>
+	<</for>>
 <</widget>>
 
 <<widget "struggle_add">>
-<<for _i to 0; _i lt $args[0]; _i++>>
-	<<set _struggle_add to $struggle.number>>/*Because $struggle.number starts 1 higher than $args*/
-	<<set $struggle.number += 1>>
-	<<generate_struggle_creatures _struggle_add $args[1]>>
-<</for>>
-<</widget>>
-
-<<widget "generate_struggle_creatures">>
-<<set $struggle.enemy[$args[0]] to {}>>
-<<set $struggle.enemy[$args[0]].location to "lurking">>
-<<set $struggle.enemy[$args[0]].health to $args[1]>>
-<<set $struggle.enemy[$args[0]].name to $struggle.creature>>
-<<set $struggle.enemy[$args[0]].description to $struggle.descriptions.pluck()>>
-<<if $struggle.enemy[$args[0]].name is "wasp">>
-	<<set $struggle.enemy[$args[0]].motion to "flying">>
-	<<set $struggle.enemy[$args[0]].legs to "legs">>
-<<elseif $struggle.enemy[$args[0]].name is "squid">>
-	<<set $struggle.enemy[$args[0]].motion to "swimming">>
-	<<set $struggle.enemy[$args[0]].legs to "tentacles">>
-<<else>>
-	<<set $struggle.enemy[$args[0]].motion to "jumping">>
-	<<set $struggle.enemy[$args[0]].legs to "none">>
-<</if>>
-<</widget>>
-
-<<widget "generate_struggle">>
-<<generate_struggle_creatures $args[0] $args[1]>>
-<<struggle_mouth_init>>
-<<struggle_vagina_init>>
-<<struggle_penis_init>>
-<<struggle_anus_init>>
-<<struggle_chest_init>>
-<</widget>>
-
-<<widget "struggle_mouth_init">>
-<<set $struggle.mouth to {}>>
-<<set $struggle.mouth.grip to 0>>
-<<set $struggle.mouth.creature to 0>>
-<<set $struggle.mouth.progress to 0>>
-<<set $struggle.mouth.success to 0>>
-<<set $struggle.mouth.action to 0>>
-<<set $struggle.mouth.action_default to 0>>
-<<set $struggle.mouth.damage to 0>>
-<<if !$struggle_start>>
-	<<struggle_purge mouth>>
-<</if>>
-<</widget>>
-
-<<widget "struggle_vagina_init">>
-<<set $struggle.vagina to {}>>
-<<set $struggle.vagina.grip to 0>>
-<<set $struggle.vagina.creature to 0>>
-<<set $struggle.vagina.progress to 0>>
-<<set $struggle.vagina.success to 0>>
-<<set $struggle.vagina.action to 0>>
-<<set $struggle.vagina.action_default to 0>>
-<<set $struggle.vagina.damage to 0>>
-<<if !$struggle_start>>
-	<<struggle_purge vagina>>
-<</if>>
-<</widget>>
-
-<<widget "struggle_penis_init">>
-<<set $struggle.penis to {}>>
-<<set $struggle.penis.grip to 0>>
-<<set $struggle.penis.creature to 0>>
-<<set $struggle.penis.progress to 0>>
-<<set $struggle.penis.success to 0>>
-<<set $struggle.penis.action to 0>>
-<<set $struggle.penis.action_default to 0>>
-<<set $struggle.penis.damage to 0>>
-<<if !$struggle_start>>
-	<<struggle_purge penis>>
-<</if>>
-<</widget>>
-
-<<widget "struggle_anus_init">>
-<<set $struggle.anus to {}>>
-<<set $struggle.anus.grip to 0>>
-<<set $struggle.anus.creature to 0>>
-<<set $struggle.anus.progress to 0>>
-<<set $struggle.anus.success to 0>>
-<<set $struggle.anus.action to 0>>
-<<set $struggle.anus.action_default to 0>>
-<<set $struggle.anus.damage to 0>>
-<<if !$struggle_start>>
-	<<struggle_purge anus>>
-<</if>>
-<</widget>>
-
-<<widget "struggle_chest_init">>
-<<set $struggle.chest to {}>>
-<<set $struggle.chest.grip to 0>>
-<<set $struggle.chest.creature to 0>>
-<<set $struggle.chest.progress to 0>>
-<<set $struggle.chest.success to 0>>
-<<set $struggle.chest.action to 0>>
-<<set $struggle.chest.action_default to 0>>
-<<set $struggle.chest.damage to 0>>
-<<if !$struggle_start>>
-	<<struggle_purge chest>>
-<</if>>
-<</widget>>
-
-<<widget "struggle_purge">>
-<<for _i to 0; _i lt $struggle.number; _i++>>
-	<<if $struggle.enemy[_i].location is $args[0]>>
-		<<set $struggle.enemy[_i].location to "fleeing">>
-		<<set $struggle.enemy[_i].health -= 1>>
-	<</if>>
-<</for>>
-<</widget>>
-
-<<widget "struggle_name">>
-<<if $args[0] isnot undefined>>
-	<<print $struggle.enemy[$args[0]].description>> <<print $struggle.enemy[$args[0]].name>>
-<<else>>
-	<<for _i to 0; _i lt $struggle.number; _i++>>
-		<<if $struggle.enemy[_i].location is $args[0]>>
-			<<print $struggle.enemy[_i].name>> <<print $struggle.enemy[_i].description>>
-		<</if>>
+	<<set _i to $struggle_number>>
+	<<set $struggle_number += $args[0]>>
+	<<for _i to _i; _i lt $struggle.number; _i++>>
+		<<generate_struggle_creature _i $args[1]>>
 	<</for>>
-<</if>>
 <</widget>>
 
+<<widget "generate_struggle_creature">>
+	<<set	_slot = $args[0];
+			_health = $args[1];
+			_type = $args[2] ? $args[2] : $struggle.creature
+	>>
+	<<set $struggle.enemy[_slot] to {
+		location: "lurking",
+		health: _health,
+		name: _type,
+		description: $struggle.descriptions.pluck(),
+		motion: {wasp: "flying", bee: "flying", squid: "swimming"}[_type] || "jumping",
+		legs: {wasp: "legs", bee: "legs", squid: "tentacles"}[_type] || "none"
+	}>>
+<</widget>>
 
+<<widget "struggle_part_init">>
+	<!-- reset bodypart states -->
+	<<set $struggle[$args[0]] to {
+		grip: 0,
+		creature: 0,
+		progress: 0,
+		success: 0,
+		action: 0,
+		action_default: 0,
+		damage: 0
+	}>>
+	<<if !$struggle_start>>
+		<!-- also clean all creatures stuck to bodypart -->
+		<<for _i to 0; _i lt $struggle.number; _i++>>
+			<<if $struggle.enemy[_i].location is $args[0]>>
+				<<set $struggle.enemy[_i].location to "fleeing">>
+				<<set $struggle.enemy[_i].health -= 1>>
+			<</if>>
+		<</for>>
+	<</if>>
+<</widget>>
+
+<<widget "struggle_name">><<silently>>
+<!-- prints full description of an enemy in specified slot or location -->
+	<<set $_loc to $args[0]>>
+	<<if $_loc lt $struggle.number>>
+	<!-- when $args[0] is a slot number -->
+		<<set _fulldesc to $struggle.enemy[$_loc].description + ' ' + $struggle.enemy[$_loc].name>>
+	<<elseif ["mouth", "vagina", "penis", "anus", "chest"].includes($_loc)>>
+	<!-- when $args[0] is a location -->
+		<<if $struggle[$_loc].description>>
+		<!-- description doesn't exist in older versions -->
+			<<set _fulldesc to $struggle[$_loc].description + ' ' + $struggle[$_loc].creature>>
+		<<elseif $struggle[$_loc].creature>>
+			<<for _i to 0; _i lt $struggle.number; _i++>>
+				<<if $struggle.enemy[_i].location is $_loc>>
+					<<set _fulldesc to $struggle.enemy[_i].description + ' ' + $struggle.enemy[_i].name>>
+					<<set $struggle[$_loc].description to $struggle.enemy[_i].description>>
+				<</if>>
+			<</for>>
+		<</if>>
+	<</if>>
+	<</silently>><<print _fulldesc>>
+<</widget>>
 
 <<widget "struggle">>
-<<struggle_effects>>
-<<struggle_enemy>>
-<<struggle_state>>
-<<struggle_actions>>
+	<<struggle_effects>>
+	<<struggle_enemy>>
+	<<struggle_state>>
+	<<struggle_actions>>
 <</widget>>
 
 
 <<widget "struggle_state">>
-<<if $struggle.mouth.creature>>
-	<<switch $struggle.mouth.grip>>
-		<<case 0>>
-			You have <span class="red">no</span> grip on the <<print $struggle.mouth.creature>> clutching your face.
-		<<case 1>>
-			You have a <span class="pink">fragile</span> grip on the <<print $struggle.mouth.creature>> clutching your face.
-		<<case 2>>
-			You have a <span class="purple">weak</span> grip on the <<print $struggle.mouth.creature>> clutching your face.
-		<<case 3>>
-			You have a <span class="blue">tentative</span> grip on the <<print $struggle.mouth.creature>> clutching your face.
-		<<case 4>>
-			You have a <span class="lblue">decent</span> grip on the <<print $struggle.mouth.creature>> clutching your face.
-		<<case 5>>
-			You have a <span class="teal">strong</span> grip on the <<print $struggle.mouth.creature>> clutching your face.
-		<<default>>
-			You have an <span class="green">iron</span> grip on the <<print $struggle.mouth.creature>> clutching your face.
-	<</switch>>
+	<<for $_part range ["mouth", "vagina", "penis", "anus", "chest"]>>
+		<<if $struggle[$_part].creature>>
+			You have
+			<<switch $struggle[$_part].grip>>
+				<<case 0>><span class="red"> no </span>
+				<<case 1>><span class="pink"> fragile </span>
+				<<case 2>><span class="purple"> weak </span>
+				<<case 3>><span class="blue"> tentative </span>
+				<<case 4>><span class="lblue"> decent </span>
+				<<case 5>><span class="teal"> strong </span>
+				<<default>><span class="green"> iron </span>
+			<</switch>>
+			grip on the <<print $struggle[$_part].creature>> clutching your
+			<<switch $_part>>
+				<<case "mouth">> mouth.
+				<<case "vagina">> pelvis.
+				<<case "penis">> tummy.
+				<<case "anus">> bottom.
+				<<case "chest">> chest.
+			<</switch>>
+			<br>
+		<</if>>
+	<</for>>
 	<br>
-<</if>>
-<<if $struggle.vagina.creature>>
-	<<switch $struggle.vagina.grip>>
-		<<case 0>>
-			You have <span class="red">no</span> grip on the <<print $struggle.vagina.creature>> clutching your pelvis.
-		<<case 1>>
-			You have a <span class="pink">fragile</span> grip on the <<print $struggle.vagina.creature>> clutching your pelvis.
-		<<case 2>>
-			You have a <span class="purple">weak</span> grip on the <<print $struggle.vagina.creature>> clutching your pelvis.
-		<<case 3>>
-			You have a <span class="blue">tentative</span> grip on the <<print $struggle.vagina.creature>> clutching your pelvis.
-		<<case 4>>
-			You have a <span class="lblue">decent</span> grip on the <<print $struggle.vagina.creature>> clutching your pelvis.
-		<<case 5>>
-			You have a <span class="teal">strong</span> grip on the <<print $struggle.vagina.creature>> clutching your pelvis.
-		<<default>>
-			You have an <span class="green">iron</span> grip on the <<print $struggle.vagina.creature>> clutching your pelvis.
-	<</switch>>
-	<br>
-<</if>>
-<<if $struggle.penis.creature>>
-	<<switch $struggle.penis.grip>>
-		<<case 0>>
-			You have <span class="red">no</span> grip on the <<print $struggle.penis.creature>> clutching your tummy.
-		<<case 1>>
-			You have a <span class="pink">fragile</span> grip on the <<print $struggle.penis.creature>> clutching your tummy.
-		<<case 2>>
-			You have a <span class="purple">weak</span> grip on the <<print $struggle.penis.creature>> clutching your tummy.
-		<<case 3>>
-			You have a <span class="blue">tentative</span> grip on the <<print $struggle.penis.creature>> clutching your tummy.
-		<<case 4>>
-			You have a <span class="lblue">decent</span> grip on the <<print $struggle.penis.creature>> clutching your tummy.
-		<<case 5>>
-			You have a <span class="teal">strong</span> grip on the <<print $struggle.penis.creature>> clutching your tummy.
-		<<default>>
-			You have an <span class="green">iron</span> grip on the <<print $struggle.penis.creature>> clutching your tummy.
-	<</switch>>
-	<br>
-<</if>>
-<<if $struggle.anus.creature>>
-	<<switch $struggle.anus.grip>>
-		<<case 0>>
-			You have <span class="red">no</span> grip on the <<print $struggle.anus.creature>> clutching your bottom.
-		<<case 1>>
-			You have a <span class="pink">fragile</span> grip on the <<print $struggle.anus.creature>> clutching your bottom.
-		<<case 2>>
-			You have a <span class="purple">weak</span> grip on the <<print $struggle.anus.creature>> clutching your bottom.
-		<<case 3>>
-			You have a <span class="blue">tentative</span> grip on the <<print $struggle.anus.creature>> clutching your bottom.
-		<<case 4>>
-			You have a <span class="lblue">decent</span> grip on the <<print $struggle.anus.creature>> clutching your bottom.
-		<<case 5>>
-			You have a <span class="teal">strong</span> grip on the <<print $struggle.anus.creature>> clutching your bottom.
-		<<default>>
-			You have an <span class="green">iron</span> grip on the <<print $struggle.anus.creature>> clutching your bottom.
-	<</switch>>
-	<br>
-<</if>>
-<<if $struggle.chest.creature>>
-	<<switch $struggle.chest.grip>>
-		<<case 0>>
-			You have <span class="red">no</span> grip on the <<print $struggle.chest.creature>> clutching your chest.
-		<<case 1>>
-			You have a <span class="pink">fragile</span> grip on the <<print $struggle.chest.creature>> clutching your chest.
-		<<case 2>>
-			You have a <span class="purple">weak</span> grip on the <<print $struggle.chest.creature>> clutching your chest.
-		<<case 3>>
-			You have a <span class="blue">tentative</span> grip on the <<print $struggle.chest.creature>> clutching your chest.
-		<<case 4>>
-			You have a <span class="lblue">decent</span> grip on the <<print $struggle.chest.creature>> clutching your chest.
-		<<case 5>>
-			You have a <span class="teal">strong</span> grip on the <<print $struggle.chest.creature>> clutching your chest.
-		<<default>>
-			You have an <span class="green">iron</span> grip on the <<print $struggle.chest.creature>> clutching your chest.
-	<</switch>>
-	<br>
-<</if>>
-<br>
 
-<<if $arousal gte $arousalmax>>
-	<<orgasm>>
-<</if>>
-<<set $seconds += 10>>
-<<if $seconds gte 60>>
-<<set $seconds to 0>>
-<<pass 1>>
-<</if>>
-<<set $struggle.timer += 1>>
-<<sexcheck>>
+	<<if $arousal gte $arousalmax and $orgasmdown lte 0>>
+		<<orgasm>>
+	<</if>>
+	<<set $struggle.timer += 1>>
+	<<sexcheck>>
 <</widget>>
 
 <<widget "struggle_end">>
-<<unset $struggle>>
+	<<unset $struggle>>
+<</widget>>
+
+<<widget "generateActionsStruggle">>
+<<set $combat to 1>>
+<<if _targetlist is undefined>>
+	<<getTargetList>>
+<</if>>
+<<for _i to 0; _i lt $struggle.number; _i++>>
+	<<if $struggle.enemy[_i].location is "fleeing" or $struggle.enemy[_i].location is "lurking">>
+		The <<struggle_name _i>> keeps at a distance.
+		<br>
+		<<if $farm_stage gte 10 and $lurkers_held lt 1>>
+			<<set _lurker_net_possible to true>>
+		<</if>>
+	<</if>>
+<</for>>
+<hr>
+
+<div id="listContainer" style="margin-bottom:0px">
+	<div id="leftaction" @class="$combatControls + 'Control'">
+		<<leftActionInitStruggle>>
+	</div>
+
+	<div id="rightaction" @class="$combatControls + 'Control'">
+		<<rightActionInitStruggle>>
+	</div>
+	<<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+		<div id="feetaction" @class="$combatControls + 'Control'">
+			<<feetActionInitStruggle>>
+		</div>
+	<</if>>
+</div>
+
+<<if ($mouthuse is "struggle" and $struggle.mouth.creature) or ($mouthuse is 0 and !($dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)))>>
+	<hr>
+	<div id="listContainer" style="margin-bottom:0px">
+		<div id="mouthaction" @class="$combatControls + 'Control'">
+			<<mouthActionInitStruggle>>
+		</div>
+	</div>
+<</if>>
+	
+<<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+	<<if $vaginastate isnot 0 and $player.vaginaExist>>
+		<hr>
+		<div id="listContainer" style="margin-bottom:0px">
+			<div id="vaginaaction" @class="$combatControls + 'Control'">
+				<<vaginaActionInitStruggle>>
+			</div>
+		</div>
+	<</if>>
+
+	<<if $penisstate isnot 0 and $player.penisExist>>
+		<hr>
+		<div id="listContainer" style="margin-bottom:0px">
+			<div id="penisaction" @class="$combatControls + 'Control'">
+				<<penisActionInitStruggle>>
+			</div>
+		</div>
+	<</if>>
+
+	<<if $anusstate isnot 0>>
+		<hr>
+		<div id="listContainer" style="margin-bottom:0px">
+			<div id="anusaction" @class="$combatControls + 'Control'">
+				<<anusActionInitStruggle>>
+			</div>
+		</div>
+	<</if>>
+
+	<<if $chestuse isnot 0 and $chestuse isnot "squeezed">>
+		<hr>
+		<div id="listContainer" style="margin-bottom:0px">
+			<div id="chestaction" @class="$combatControls + 'Control'">
+				<<chestActionInitStruggle>>
+			</div>
+		</div>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "leftActionInitStruggle">>
+<<set $lefttarget to "struggle">>
+<<switch $leftarm>>
+<<case 0>>
+	<<if $orgasmdown gte 1>>
+		<<set _leftOptions to "orgasm">>
+		<span class="lewd">Your left arm is free, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _leftOptions to "pain">>
+		<span class="red">Your left arm is free, but hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _leftOptions to "unreal">>
+		<span class="pink">Your left arm is free, but doesn't feel real.</span>
+	<<else>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistarms["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			Target: <span onchange="actionsreplace('left')">
+			<<listbox "$lefttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<set _leftOptions to "free">>
+		<span @class="($lastOptions.left isnot _leftOptions ? 'gold' : '')">Your left arm is free.</span>
+		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+			Target: <span onchange="actionsreplace('left')">
+			<<listbox "$lefttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span><br>
+		<</if>>
+	<</if>>
+	<<if $combatControls is "radio">><br><</if>>
+<<case "struggle">>
+	<<if $orgasmdown gte 1>>
+		<<set _leftOptions to "orgasm">>
+		<span class="lewd">You hold a $struggle.creature with your left arm, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _leftOptions to "bound">>
+		<span class="red">You hold a $struggle.creature with your left arm, but it hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _leftOptions to "bound">>
+		<span class="pink">You hold a $struggle.creature with your left arm, but it doesn't feel real.</span>
+	<<else>>
+		<<set _leftOptions to "struggle">>
+		<<switch $leftarmstate>>
+		<<case "mouth_struggle">>
+			<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm grips the $struggle.mouth.creature over your mouth.</span>
+		<<case "penis_struggle">>
+			<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm grips the $struggle.penis.creature over your <<penis>>.</span>
+		<<case "vagina_struggle">>
+			<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm grips the $struggle.vagina.creature over your <<pussy>>.</span>
+		<<case "anus_struggle">>
+			<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm grips the $struggle.anus.creature over your <<bottom>>.</span>
+		<<case "chest_struggle">>
+			<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm grips the $struggle.chest.creature over your chest.</span>
+		<</switch>>
+	<</if>>
+	<<if $combatControls is "radio">><br><</if>>
+<<case "bound">>
+	<<set _leftOptions to "bound">>
+	<<if $orgasmdown gte 1>>
+		<span class="lewd">Your left arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<span class="red">Your left arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<span class="pink">Your left arm lies limp in its bonds.</span>
+	<<else>>
+		<span @class="($lastOptions.left isnot _leftOptions ?'gold':'')">Your left arm is bound.</span>
+	<</if>>
+	<<if $combatControls is "radio">><br><</if>>
+<<case "trapped">>
+	<<set $_changetype to true>><<leftActionInitVore>>
+<<case "grappled" "penis" "othervagina" "vagina" "coverpenis" "anus" "behind">>
+	<<set $_changetype to true>><<leftActionInit>>
+<<case "swarmgrappled">>
+	<<set $_changetype to true>><<leftActionInitSwarm>>
+<<case "mechgrappled">>
+	<<set $_changetype to true>><<leftActionInitMachine>>
+<<default>>
+	<<set $_changetype to true>><<leftActionInitTentacle>>
+<</switch>>
+<<if $_changetype isnot true>>
+	<<leftActionsStruggle>>
+	<<if Object.keys(_leftaction).length gt 0>>
+		<<if Object.values(_leftaction).includes($leftactiondefault)>>
+			<<set $leftaction to $leftactiondefault>>
+		<</if>>
+		<<set _textColor to combatListColor('leftaction', (Object.values(_leftaction).includes($leftaction) ? $leftaction : Object.values(_leftaction)[0]), "Struggle")>>
+		<<generateCombatActionOthers _leftaction "leftaction" _textColor $leftaction "Struggle">>
+		<<if $combatControls.includes("ists")>>
+			<div id="leftactionDifficulty">
+				<<leftactionDifficulty>>
+			</div>
+		<</if>>
+	<</if>>
+	<<set $lastOptions.left to clone(_leftOptions)>>
+<</if>>
+<</widget>>
+
+<<widget "leftactionDifficultyStruggle">>/* Don't mind the blank widget. */
+<</widget>>
+
+<<widget "leftActionsStruggle">>
+<<set _leftaction to {}>>
+<<switch _leftOptions>>
+<<case "free" "struggle">>
+	<<set _leftaction["Keep left arm still"] to "rest">>
+	<<if _lurker_net_possible is true>>
+		<<set _leftaction["Hurl net"] to "capture">>
+	<</if>>
+	<<if $combatControls isnot "radio">>
+		<<for $_part range ["mouth", "vagina", "penis", "anus", "chest"]>>
+			<<if V[$_part + 'use'] is "struggle" and $struggle[$_part].creature>>
+				<<set $_desc to ($leftactiondefault.includes($_part) ? '' : ' (' + $_part + ')')>>
+				<<if $leftactiondefault.includes($_part) and $struggle[$_part].grip gte 1>>
+					<!-- require hand on the creature before pulling or strengthening -->
+					<<if $struggle[$_part].success lt 100>>
+						<<set _leftaction["Strengthen your grip"] to $_part + '_strengthen'>>
+					<</if>>
+					<<set _leftaction["Pull"] to $_part + '_pull'>>
+				<<elseif $struggle[$_part].success lt 100>>
+					<<set _leftaction['Grasp' + $_desc] to $_part + '_grasp'>>
+				<</if>>
+				<<if $spray gte 1 and $consensual isnot 1>>
+					<<set _leftaction['Spray' + $_desc] to $_part + '_spray'>>
+				<</if>>
+				<<set _leftaction['Stroke' + $_desc] to $_part + '_stroke'>>
+			<</if>>
+		<</for>>
+	<</if>>
+<<case "bound">>
+<<case "orgasm">>
+	<<set _leftaction["Fold"] to "leftfold">>
+	<<set _leftaction["Grip"] to "leftgrip">>
+<<case "pain">>
+	<<set _leftaction["Struggle"] to "leftstruggleweak">>
+	<<set _leftaction["Protect"] to "leftprotect">>
+<<case "unreal">>
+	<<set _leftaction["Poke yourself"] to "leftpoke">>
+	<<set _leftaction["Keep your arms out of the way"] to "leftcurl">>
+<</switch>>
+<</widget>>
+
+<<widget "rightActionInitStruggle">>
+<<set $righttarget to "struggle">>
+<<switch $rightarm>>
+<<case 0>>
+	<<if $orgasmdown gte 1>>
+		<<set _rightOptions to "orgasm">>
+		<span class="lewd">Your right arm is free, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _rightOptions to "pain">>
+		<span class="red">Your right arm is free, but hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _rightOptions to "unreal">>
+		<span class="pink">Your right arm is free, but doesn't feel real.</span>
+	<<else>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistarms["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			Target: <span onchange="actionsreplace('right')">
+			<<listbox "$righttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<set _rightOptions to "free">>
+		<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is free.</span>
+		<<if $combatControls is "radio" and _targetnumber gt 1>><br>
+			Target: <span onchange="actionsreplace('right')">
+			<<listbox "$righttarget" autoselect>>
+				<<optionsfrom _targetlistarms>>
+			<</listbox>>
+			</span><br>
+		<</if>>
+	<</if>>
+	<<if $combatControls is "radio">><br><</if>>
+<<case "struggle">>
+	<<if $orgasmdown gte 1>>
+		<<set _rightOptions to "orgasm">>
+		<span class="lewd">You hold a $struggle.creature with your right arm, but you can't stop the spasms.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<<set _rightOptions to "bound">>
+		<span class="red">You hold a $struggle.creature with your right arm, but it hurts to move.</span>
+	<<elseif $dissociation gte 2>>
+		<<set _rightOptions to "bound">>
+		<span class="pink">You hold a $struggle.creature with your right arm, but it doesn't feel real.</span>
+	<<else>>
+		<<set _rightOptions to "struggle">>
+		<<switch $rightarmstate>>
+		<<case "mouth_struggle">>
+			<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm grips the $struggle.mouth.creature over your mouth.</span>
+		<<case "penis_struggle">>
+			<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm grips the $struggle.penis.creature over your <<penis>>.</span>
+		<<case "vagina_struggle">>
+			<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm grips the $struggle.vagina.creature over your <<pussy>>.</span>
+		<<case "anus_struggle">>
+			<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm grips the $struggle.anus.creature over your <<bottom>>.</span>
+		<<case "chest_struggle">>
+			<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm grips the $struggle.chest.creature over your chest.</span>
+		<</switch>>
+	<</if>>
+	<<if $combatControls is "radio">><br><</if>>
+<<case "bound">>
+	<<set _rightOptions to "bound">>
+	<<if $orgasmdown gte 1>>
+		<span class="lewd">Your right arm jerks against its bonds.</span>
+	<<elseif $pain gte 100 and $willpowerpain is 0>>
+		<span class="red">Your right arm is held in a painful bind.</span>
+	<<elseif $dissociation gte 2>>
+		<span class="pink">Your right arm lies limp in its bonds.</span>
+	<<else>>
+		<span @class="($lastOptions.right isnot _rightOptions ?'gold':'')">Your right arm is bound.</span>
+	<</if>>
+	<<if $combatControls is "radio">><br><</if>>
+<<case "trapped">>
+	<<set $_changetype to true>><<rightActionInitVore>>
+<<case "grappled" "penis" "othervagina" "vagina" "coverpenis" "anus" "behind">>
+	<<set $_changetype to true>><<rightActionInit>>
+<<case "swarmgrappled">>
+	<<set $_changetype to true>><<rightActionInitSwarm>>
+<<case "mechgrappled">>
+	<<set $_changetype to true>><<rightActionInitMachine>>
+<<default>>
+	<<set $_changetype to true>><<rightActionInitTentacle>>
+<</switch>>
+<<if $_changetype isnot true>>
+	<<rightActionsStruggle>>
+	<<if Object.keys(_rightaction).length gt 0>>
+		<<if Object.values(_rightaction).includes($rightactiondefault)>>
+			<<set $rightaction to $rightactiondefault>>
+		<</if>>
+		<<set _textColor to combatListColor('rightaction', (Object.values(_rightaction).includes($rightaction) ? $rightaction : Object.values(_rightaction)[0]), "Struggle")>>
+		<<generateCombatActionOthers _rightaction "rightaction" _textColor $rightaction "Struggle">>
+		<<if $combatControls.includes("ists")>>
+			<div id="rightactionDifficulty">
+				<<rightactionDifficulty>>
+			</div>
+		<</if>>
+	<</if>>
+	<<set $lastOptions.right to clone(_rightOptions)>>
+<</if>>
+<</widget>>
+
+<<widget "rightactionDifficultyStruggle">>/* It's a necessary evil. */
+	<!-- todo: investigate why combatButtonAdjustments() needs this -->
+<</widget>>
+
+<<widget "rightActionsStruggle">>
+<<set _rightaction to {}>>
+<<switch _rightOptions>>
+<<case "free" "struggle">>
+	<<set _rightaction["Keep right arm still"] to "rest">>
+	<<if _lurker_net_possible is true>>
+		<<set _rightaction["Hurl net"] to "capture">>
+	<</if>>
+	<<if $combatControls isnot "radio">>
+		<<for $_part range ["mouth", "vagina", "penis", "anus", "chest"]>>
+			<<if V[$_part + 'use'] is "struggle" and $struggle[$_part].creature>>
+				<<set $_desc to ($rightactiondefault.includes($_part) ? '' : ' (' + $_part + ')')>>
+				<<if $rightactiondefault.includes($_part) and $struggle[$_part].grip gt 0>>
+					<!-- require hand on the creature before pulling or strengthening -->
+					<<if $struggle[$_part].success lt 100>>
+						<<set _rightaction["Strengthen your grip"] to $_part + '_strengthen'>>
+					<</if>>
+					<<set _rightaction["Pull"] to $_part + '_pull'>>
+				<<elseif $struggle[$_part].success lt 100>>
+					<<set _rightaction['Grasp' + $_desc] to $_part + '_grasp'>>
+				<</if>>
+				<<if $spray gte 1 and $consensual isnot 1>>
+					<<set _rightaction['Spray' + $_desc] to $_part + '_spray'>>
+				<</if>>
+				<<set _rightaction['Stroke' + $_desc] to $_part + '_stroke'>>
+			<</if>>
+		<</for>>
+	<</if>>
+<<case "bound">>
+<<case "orgasm">>
+	<<set _rightaction["Fold"] to "rightfold">>
+	<<set _rightaction["Grip"] to "rightgrip">>
+<<case "pain">>
+	<<set _rightaction["Struggle"] to "rightstruggleweak">>
+	<<set _rightaction["Protect"] to "rightprotect">>
+<<case "unreal">>
+	<<set _rightaction["Poke yourself"] to "rightpoke">>
+	<<set _rightaction["Keep your arms out of the way"] to "rightcurl">>
+<</switch>>
+<</widget>>
+
+<<widget "feetActionInitStruggle">>
+	<<set $feettarget to "struggle">>
+	<<switch $feetuse>>
+	<<case 0>>
+		<<if _targetYourself is true and _targetnumber gt 1>>
+			<<set _targetlistall["Yourself"] to "self">>
+		<</if>>
+		<<if $combatControls isnot "radio" and _targetnumber gt 1>>
+			<<if ($leftleg is "grappled" and $rightleg is "grappled") or ($leftleg is "bound" and $rightleg is "bound")>>
+			<<else>>
+				Target: <span onchange="actionsreplace('feet')">
+				<<listbox "$feettarget" autoselect>>
+					<<optionsfrom _targetlistall>>
+				<</listbox>>
+				</span>
+			<</if>>
+		<</if>>
+		<<if $leftleg is 0 and $rightleg is 0>>
+			<<set _feetOptions to "free">>
+			<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your feet are free.</span>
+		<<elseif $leftleg is 0>>
+			<<set _feetOptions to "leftfree">>
+			<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your left leg is free.</span>
+		<<elseif $rightleg is 0>>
+			<<set _feetOptions to "rightfree">>
+			<span @class="($lastOptions.feet isnot _feetOptions ?'gold':'')">Your right leg is free.</span>
+		<<elseif $leftleg is "grappled" and $rightleg is "grappled">>
+			<<set $_changetype to true>><<feetActionInitTentacle>>
+		<<elseif $leftleg is "bound" and $rightleg is "bound">>
+			<<set $_changetype to true>><<feetActionInitTentacle>>
+		<<else>>
+			<<set _feetOptions to "free">>
+			<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')">Your feet are free.</span>
+		<</if>>
+		<<if $combatControls is "radio" and _targetnumber gt 1 and _feetOptions.toLowerCase().includes("free")>><br>
+			Target: <span onchange="actionsreplace('feet')">
+			<<listbox "$feettarget" autoselect>>
+				<<optionsfrom _targetlistall>>
+			<</listbox>>
+			</span>
+		<</if>>
+		<<if _targetnumber is 1>>
+			<<set $feettarget to _firsttarget>>
+		<</if>>
+		<<if $combatControls is "radio">><br><</if>>
+	<<case "penis" "othervagina" "bound" "walk" "run" "none">>
+		<<set $_changetype to true>><<feetActionInit>>
+	<<case "mechgrappled">>
+		<<set $_changetype to true>><<feetActionInitMachine>>
+	<<default>>
+		<<set $_changetype to true>><<feetActionInitTentacle>>
+	<</switch>>
+	<<if $_changetype isnot true>>
+		<<feetActionsStruggle>>
+		<<if Object.keys(_feetaction).length gt 0>>
+			<<if !(Object.values(_feetaction).includes($feetactiondefault))>>
+				<<set $feetactiondefault to "rest">>
+			<</if>>
+			<<set $feetaction to $feetactiondefault>>
+			<<set _textColor to combatListColor('feetaction', (Object.values(_feetaction).includes($feetaction) ? $feetaction : Object.values(_feetaction)[0]), "Struggle")>>
+			<<generateCombatActionOthers _feetaction "feetaction" _textColor $feetaction "Struggle">>
+			<<if $combatControls.includes("ists")>>
+				<div id="feetactionDifficulty">
+					<<feetactionDifficulty>>
+				</div>
+			<</if>>
+		<</if>>
+		<<set $lastOptions.feet to clone(_feetOptions)>>
+	<</if>>
+<</widget>>
+
+<<widget "feetactionDifficultyStruggle">>/* "How so", you ask? */
+<</widget>>
+
+<<widget "feetActionsStruggle">>
+<<set _feetaction to {}>>
+<<set _feetaction["Keep still"] to "rest">>
+<<set _feetaction["Dodge"] to "evade">>
+<<set _feetaction["Plant"] to "plant">>
+<</widget>>
+
+<<widget "mouthActionInitStruggle">>
+<<if $orgasmdown gte 1>>
+	<<mouthActionInit>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	<<mouthActionInit>>
+<<elseif $dissociation gte 2>>
+	<<mouthActionInit>>
+<<else>>
+	<<set $mouthtarget to "struggle">>
+	<<switch $mouthuse>>
+	<<case "struggle">>
+		<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">A <<print $struggle.mouth.creature>> clings to your face.</span>
+		<<if $leftarmstate is "mouth_struggle" and $rightarmstate is "mouth_struggle">>
+			You clutch it with both hands.
+		<<elseif $leftarmstate is "mouth_struggle">>
+			You clutch it with your left hand.
+		<<elseif $rightarmstate is "mouth_struggle">>
+			You clutch it with your right hand.
+		<</if>>
+		<<if $combatControls is "radio">><br><</if>>
+	<<case "tentacle">>
+		<<set $_changetype to true>><<mouthActionInitTentacle>>
+	<<default>>
+		<<set $_changetype to true>><<mouthActionInit>>
+	<</switch>>
+	<<if $_changetype isnot true>>
+		<<set _mouthaction to {}>>
+		<<if $mouthstate is "struggle">>
+			<<set _mouthaction["Keep closed"] to "rest">>
+			<<set _mouthaction["Open"] to "open">>
+		<<elseif $mouthstate is "struggle_pen">>
+			<<set _mouthaction["Rest"] to "rest">>
+			<<set _mouthaction["Suck"] to "suck">>
+			<<if $consensual isnot 1>>
+				<<set _mouthaction["Bite"] to "bite">>
+			<</if>>
+		<</if>>
+		<<if Object.keys(_mouthaction).length gt 0>>
+			<<if !(Object.values(_mouthaction).includes($mouthactiondefault))>>
+				<<if !["open", "suck", "bite"].includes($mouthactiondefault)>>
+					<<set $mouthactiondefault to "rest">>
+				<</if>>
+			<</if>>
+			<<set $mouthaction to $mouthactiondefault>>
+			<<set _textColor to combatListColor('mouthaction', (Object.values(_mouthaction).includes($mouthaction) ? $mouthaction : Object.values(_mouthaction)[0]), "Struggle")>>
+			<<if $combatControls is "radio">> Mouth:<</if>>
+			<<generateCombatActionOthers _mouthaction "mouthaction" _textColor $mouthaction "Struggle">>
+			<<if $combatControls.includes("ists")>>
+				<div id="mouthactionDifficulty">
+					<<mouthactionDifficulty>>
+				</div>
+			<</if>>
+		<</if>>
+		<<if $combatControls is "radio">>
+			<<handsActionsStruggleRadio "mouth">>
+		<</if>>
+		<<set $lastOptions.mouth to clone(_mouthOptions)>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "mouthactionDifficultyStruggle">>/* Simply put, there's a JavaScript macro that needs it. */
+<</widget>>
+
+<<widget "penisActionInitStruggle">>
+<<set $penistarget to "struggle">>
+<<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+	<<switch $penisstate>>
+	<<case "struggle" "struggle_pen">>
+		<span @class="(_gold_penis ? 'gold' : '')">A <<print $struggle.penis.creature>> clings to your tummy, where it threatens your penis.</span>
+		<<if $leftarmstate is "penis_struggle" and $rightarmstate is "penis_struggle">>
+			You clutch it with both hands.
+		<<elseif $leftarmstate is "penis_struggle">>
+			You clutch it with your left hand.
+		<<elseif $rightarmstate is "penis_struggle">>
+			You clutch it with your right hand.
+		<</if>>
+	<<case "tentacleentrance" "tentacleimminent" "tentacle" "tentacledeep" "tentaclerub">>
+		<<set $_changetype to true>><<penisActionInitTentacle>>
+	<<default>>
+		<<set $_changetype to true>><<penisActionInit>>
+	<</switch>>
+	<<if $_changetype isnot true and $combatControls is "radio">>
+		<<handsActionsStruggleRadio penis>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "vaginaActionInitStruggle">>
+	<<set $vaginatarget to "struggle">>
+	<<switch $vaginastate>>
+	<<case "struggle" "struggle_pen">>
+		<span @class="(_gold_vagina ? 'gold' : '')">A <<print $struggle.vagina.creature>> clings to your pelvis, where it threatens your pussy.</span>
+		<<if $leftarmstate is "vagina_struggle" and $rightarmstate is "vagina_struggle">>
+			You clutch it with both hands.
+		<<elseif $leftarmstate is "vagina_struggle">>
+			You clutch it with your left hand.
+		<<elseif $rightarmstate is "vagina_struggle">>
+			You clutch it with your right hand.
+		<</if>>
+	<<case "tentacleentrance" "tentacleimminent" "tentacle" "tentacledeep" "tentaclerub">>
+		<<set $_changetype to true>><<vaginaActionInitTentacle>>
+	<<default>>
+		<<set $_changetype to true>><<vaginaActionInit>>
+	<</switch>>
+	<<if $_changetype isnot true and $combatControls is "radio">>
+		<<handsActionsStruggleRadio "vagina">>
+	<</if>>
+<</widget>>
+
+<<widget "anusActionInitStruggle">>
+	<<set $anustarget to "struggle">>
+	<<if $bottomuse is "mouth" or $bottomuse is "penis">>
+		<<set $_changetype to true>><<anusActionInit>>
+	<<else>>
+		<<switch $anusstate>>
+		<<case "struggle" "struggle_pen">>
+			<span @class="(_gold_anus ? 'gold' : '')">A <<print $struggle.anus.creature>> clings to your bottom.</span>
+			<<if $leftarmstate is "anus_struggle" and $rightarmstate is "anus_struggle">>
+				You clutch it with both hands.
+			<<elseif $leftarmstate is "anus_struggle">>
+				You clutch it with your left hand.
+			<<elseif $rightarmstate is "anus_struggle">>
+				You clutch it with your right hand.
+			<</if>>
+		<<case "tentacleentrance" "tentacleimminent" "tentacle" "tentacledeep" "tentaclerub">>
+			<<set $_changetype to true>><<anusActionInitTentacle>>
+		<<default>>
+			<<set $_changetype to true>><<anusActionInit>>
+		<</switch>>
+	<</if>>
+	<<if $_changetype isnot true and $combatControls is "radio">>
+		<<handsActionsStruggleRadio "anus">>
+	<</if>>
+<</widget>>
+
+<<widget "chestActionInitStruggle">>
+	<<switch $chestuse>>
+	<<case "struggle">>
+		<span @class="(_gold_chest ? 'gold' : '')">A <<print $struggle.chest.creature>> clings to your chest.</span>
+		<<if $leftarmstate is "chest_struggle" and $rightarmstate is "chest_struggle">>
+			You clutch it with both hands.
+		<<elseif $leftarmstate is "chest_struggle">>
+			You clutch it with your left hand.
+		<<elseif $rightarmstate is "chest_struggle">>
+			You clutch it with your right hand.
+		<</if>>
+	<<case "tentaclerub">>
+		<<set $_changetype to true>><<chestActionInitTentacle>>
+	<<case "penis">>
+		<<set $_changetype to true>><<chestActionInit>>
+	<</switch>>
+	<<if $_changetype isnot true and $combatControls is "radio">>
+		<<handsActionsStruggleRadio "chest">>
+	<</if>>
 <</widget>>
 
 <<widget "struggle_actions">>
-<<oxygen 50>>
+<<if !($struggle.mouth.progress gte 6 and $struggle.mouth.progress lte 14) and !$underwater>>
+	<<oxygen 50>>
+<</if>>
 
 <<willpowerpain>>
 <<willpowerorgasm>>
 <<actioncarry>>
 <<actioncarrydrop>>
 
+<<combatstate>>
+<<carryblock>>
 
+
+<<if $trance lte 0 and $panicparalysis is 0 and $panicviolence is 0 and $combatControls isnot "radio_old">>
+	<<struggle_difficulty_set>>
+	<<if $combatControls is "radio">>
+		<<set $leftaction to $leftactiondefault>>
+		<<set $rightaction to $rightactiondefault>>
+	<</if>>
+	<<generateActionsStruggle>>
+<</if>>
 
 <<if $trance lte 0 and $dissociation lte 1 and $panicparalysis is 0 and $panicviolence is 0
-and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
-<<struggle_difficulty_set>>
-	<br>
+and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined) and $combatControls is "radio_old">>
+	<<struggle_difficulty_set>>
+	<!-- arms bound set -->
 	<<if $leftarm is "bound" and $rightarm is "bound">>
 		<span class="pink">Your arms are helplessly bound, leaving you defenceless.</span>
 	<<elseif $leftarm is "grappled" and $rightarm is "grappled">>
@@ -294,2137 +785,1029 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 		<span class="purple">Your right arm is grappled.</span>
 	<<else>>
 		Your arms are free.
-		<br>
 	<</if>>
+	<!-- arms line -->
+	<<set $leftaction to $leftactiondefault>>
 	<<if $leftarm isnot "grappled" and $leftarm isnot "bound">>
-		<<if $leftactiondefault is "rest">>
-			| <label><span class="meek">Keep left arm still</span> <<radiobutton "$leftaction" "rest" checked>></label>
-		<<else>>
-			| <label><span class="meek">Keep left arm still</span> <<radiobutton "$leftaction" "rest">></label>
-		<</if>>
-		<br>
+		<label><span class="meek">Keep left arm still</span> <<radiobutton "$leftaction" "rest" autocheck>></label>
+		<<set _pipe to 1>>
 	<</if>>
+	<<set $rightaction to $rightactiondefault>>
 	<<if $rightarm isnot "grappled" and $rightarm isnot "bound">>
-		<<if $rightactiondefault is "rest">>
-			| <label><span class="meek">Keep right arm still</span> <<radiobutton "$rightaction" "rest" checked>></label>
-		<<else>>
-			| <label><span class="meek">Keep right arm still</span> <<radiobutton "$rightaction" "rest">></label>
-		<</if>>
-		<br>
+		<<if _pipe>>| <</if>><label><span class="meek">Keep right arm still</span> <<radiobutton "$rightaction" "rest" autocheck>></label>
 	<</if>>
+	<<set _pipe to 0>>
 	<br>
+	<!-- feet line -->
+	<<set $feetaction to $feetactiondefault>>
 	<<if $feetuse is 0>>
 		Your feet are free.
-		<br>
-		<<if $feetactiondefault is "rest">>
-			| <label><span class="meek">Keep still</span> <<radiobutton "$feetaction" "rest" checked>></label>
-		<<else>>
-			| <label><span class="meek">Keep still</span> <<radiobutton "$feetaction" "rest">></label>
-		<</if>>
-		<br>
-		<<if $feetactiondefault is "evade">>
-			| <label><span class="meek">Dodge</span> <<radiobutton "$feetaction" "evade" checked>></label>
-		<<else>>
-			| <label><span class="meek">Dodge</span> <<radiobutton "$feetaction" "evade">></label>
-		<</if>>
-		<br>
-		<<if $feetactiondefault is "plant">>
-			| <label><span class="meek">Plant</span> <<radiobutton "$feetaction" "plant" checked>></label>
-		<<else>>
-			| <label><span class="meek">Plant</span> <<radiobutton "$feetaction" "plant">></label>
-		<</if>>
-		<br>
+		<<set $feetaction to $feetactiondefault>>
+		  <label><span class="meek">Keep still</span> <<radiobutton "$feetaction" "rest" autocheck>></label>
+		| <label><span class="meek">Dodge</span> <<radiobutton "$feetaction" "evade" autocheck>></label>
+		| <label><span class="meek">Plant</span> <<radiobutton "$feetaction" "plant" autocheck>></label>
 	<</if>>
 	<br>
-	<<for _i to 0; _i lt $struggle.number; _i++>>
-		<<if $struggle.enemy[_i].location is "fleeing" or $struggle.enemy[_i].location is "lurking">>
-			The <<struggle_name _i>> keeps at a distance.
-			<br>
-			<<if $farm_stage gte 10 and $lurkers_held lt 1>>
-				<<if $leftarm isnot "grappled" and $leftarm isnot "bound">>
-					Left arm:
-					<<if $leftactiondefault is "capture">>
-						| <label><span class="def">Hurl net</span> <<radiobutton "$leftaction" "capture" checked>></label>
-					<<else>>
-						| <label><span class="def">Hurl net</span> <<radiobutton "$leftaction" "capture">></label>
-					<</if>>
-					<br>
-				<</if>>
-				<<if $rightarm isnot "grappled" and $rightarm isnot "bound">>
-					Right arm:
-					<<if $rightactiondefault is "capture">>
-						| <label><span class="def">Hurl net</span> <<radiobutton "$rightaction" "capture" checked>></label>
-					<<else>>
-						| <label><span class="def">Hurl net</span> <<radiobutton "$rightaction" "capture">></label>
-					<</if>>
-					<br>
-				<</if>>
-			<</if>>
-			<hr>
-		<</if>>
-	<</for>>
+	<hr>
+	<!-- attached lurkers -->
+	<!-- mouth -->
 	<<if $mouthuse is "struggle" and $struggle.mouth.creature>>
-		A <<print $struggle.mouth.creature>> clings to your face.
+		The <<struggle_name "mouth">> clings to your face.
 		<br>
 		Mouth:
 		<<if $mouthstate is "struggle">>
-			<<if !["open"].includes($mouthactiondefault)>>
-				<<set $mouthactiondefault to "rest">>
-			<</if>>
-			<<if $mouthactiondefault is "rest">>
-				| <label>Keep closed <<radiobutton "$mouthaction" "rest" checked>></label>
-			<<else>>
-				| <label>Keep closed <<radiobutton "$mouthaction" "rest">></label>
-			<</if>>
-			<<if $mouthactiondefault is "open">>
-				| <label><span class="sub">Open</span> <<radiobutton "$mouthaction" "open" checked>></label>
-			<<else>>
-				| <label><span class="sub">Open</span> <<radiobutton "$mouthaction" "open">></label>
-			<</if>>
+			<<set $mouthaction to ($mouthactiondefault is "open" ? "open" : "rest")>>
+			<label>Keep closed <<radiobutton "$mouthaction" "rest" autocheck>></label>
+			| <label><span class="sub">Open</span> <<radiobutton "$mouthaction" "open" autocheck>></label>
 		<<elseif $mouthstate is "struggle_pen">>
-			<<set _actions to ["suck"]>>
-			<<if $consensual isnot 1>>
-				<<run _actions.push("bite")>>
-			<</if>>
-			<<if !_actions.includes($mouthactiondefault)>>
+			<<if $mouthactiondefault is "suck" or ($consensual isnot 1 and $mouthactiondefault is "bite")>>
+				<!-- all is good -->
+			<<else>>
 				<<set $mouthactiondefault to "rest">>
 			<</if>>
-			<<if $mouthactiondefault is "rest">>
-				| <label>Rest <<radiobutton "$mouthaction" "rest" checked>></label>
-			<<else>>
-				| <label>Rest <<radiobutton "$mouthaction" "rest">></label>
-			<</if>>
-			<<if $mouthactiondefault is "suck">>
-				| <label><span class="sub">Suck</span> <<radiobutton "$mouthaction" "suck" checked>></label>
-			<<else>>
-				| <label><span class="sub">Suck</span> <<radiobutton "$mouthaction" "suck">></label>
-			<</if>>
+			<<set $mouthaction to $mouthactiondefault>>
+			<label>Rest <<radiobutton "$mouthaction" "rest" autocheck>></label>
+			| <label><span class="sub">Suck</span> <<radiobutton "$mouthaction" "suck" autocheck>></label>
 			<<if $consensual isnot 1>>
-				<<if $mouthactiondefault is "bite">>
-					| <label><span class="def">Bite</span> <<radiobutton "$mouthaction" "bite" checked>></label>
-				<<else>>
-					| <label><span class="def">Bite</span> <<radiobutton "$mouthaction" "bite">></label>
-				<</if>>
+				| <label><span class="def">Bite</span> <<radiobutton "$mouthaction" "bite" autocheck>></label>
 			<</if>>
 		<</if>>
 		<br>
-		<<if $leftarm isnot "bound" and $leftarm isnot "grappled">>
-			Left arm:
-			<<if $struggle.mouth.grip gte 1>>
-				<<if $struggle.mouth.success lt 100>>
-					<<if $leftactiondefault is "mouth_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "mouth_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "mouth_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $leftactiondefault is "mouth_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "mouth_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "mouth_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $leftactiondefault is "mouth_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "mouth_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "mouth_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $leftactiondefault is "mouth_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "mouth_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "mouth_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $leftactiondefault is "mouth_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "mouth_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "mouth_stroke">></label>
-			<</if>>
-		<</if>>
-		<br>
-		<<if $rightarm isnot "bound" and $rightarm isnot "grappled">>
-			Right arm:
-			<<if $struggle.mouth.grip gte 1>>
-				<<if $struggle.mouth.success lt 100>>
-					<<if $rightactiondefault is "mouth_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "mouth_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "mouth_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $rightactiondefault is "mouth_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "mouth_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "mouth_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $rightactiondefault is "mouth_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "mouth_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "mouth_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $rightactiondefault is "mouth_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "mouth_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "mouth_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $rightactiondefault is "mouth_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "mouth_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "mouth_stroke">></label>
-			<</if>>
-		<</if>>
+		<<handsActionsStruggleRadio "mouth">>
 		<hr>
 	<</if>>
-	<<if $vaginause is "struggle">>
-		A <<print $struggle.vagina.creature>> clings to your pelvis, where it threatens your pussy.
-		<br>
-		<<if $leftarm isnot "bound" and $leftarm isnot "grappled">>
-			Left arm:
-			<<if $struggle.vagina.grip gte 1>>
-				<<if $struggle.vagina.success lt 100>>
-					<<if $leftactiondefault is "vagina_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "vagina_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "vagina_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $leftactiondefault is "vagina_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "vagina_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "vagina_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $leftactiondefault is "vagina_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "vagina_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "vagina_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $leftactiondefault is "vagina_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "vagina_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "vagina_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $leftactiondefault is "vagina_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "vagina_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "vagina_stroke">></label>
-			<</if>>
+	<!-- the rest of it -->
+	<<for _part range ["vagina", "penis", "anus", "chest"]>>
+		<<if V[_part + 'use'] is "struggle">>
+			The <<struggle_name _part>> clings to your <<struggle_region _part>><<if ["vagina", "penis"].includes(_part)>>, where it threatens your <<struggle_bodypart _part>><</if>>.
+			<br>
+			<<handsActionsStruggleRadio _part>>
+			<hr>
 		<</if>>
-		<br>
-		<<if $rightarm isnot "bound" and $rightarm isnot "grappled">>
-			Right arm:
-			<<if $struggle.vagina.grip gte 1>>
-				<<if $struggle.vagina.success lt 100>>
-					<<if $rightactiondefault is "vagina_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "vagina_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "vagina_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $rightactiondefault is "vagina_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "vagina_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "vagina_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $rightactiondefault is "vagina_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "vagina_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "vagina_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $rightactiondefault is "vagina_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "vagina_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "vagina_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $rightactiondefault is "vagina_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "vagina_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "vagina_stroke">></label>
-			<</if>>
-		<</if>>
-		<hr>
-	<</if>>
-	<<if $penisuse is "struggle">>
-		A <<print $struggle.penis.creature>> clings to your tummy, where it threatens your penis.
-		<br>
-		<<if $leftarm isnot "bound" and $leftarm isnot "grappled">>
-			Left arm:
-			<<if $struggle.penis.grip gte 1>>
-				<<if $struggle.penis.success lt 100>>
-					<<if $leftactiondefault is "penis_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "penis_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "penis_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $leftactiondefault is "penis_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "penis_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "penis_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $leftactiondefault is "penis_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "penis_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "penis_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $leftactiondefault is "penis_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "penis_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "penis_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $leftactiondefault is "penis_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "penis_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "penis_stroke">></label>
-			<</if>>
+	<</for>>
 
+	<!-- distant lurkers -->
+	<<set _dlurkers to []>>
+	<<for _i to 0; _i lt $struggle.number; _i++>>
+		<<if $struggle.enemy[_i].location is "fleeing" or $struggle.enemy[_i].location is "lurking">>
+			<<set _dlurkers.push(_i)>>
 		<</if>>
-		<br>
-		<<if $rightarm isnot "bound" and $rightarm isnot "grappled">>
-			Right arm:
-			<<if $struggle.penis.grip gte 1>>
-				<<if $struggle.penis.success lt 100>>
-					<<if $rightactiondefault is "penis_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "penis_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "penis_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $rightactiondefault is "penis_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "penis_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "penis_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $rightactiondefault is "penis_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "penis_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "penis_grasp">></label>
-				<</if>>
+	<</for>>
+	<<if _dlurkers.length gt 0>>
+		The
+		<<for _i to _dlurkers.length - 1; _i gte 0; _i-->>
+			<<struggle_name _dlurkers[_i]>><<if _i gte 2>>, the<<elseif _i is 1>> and the<</if>>
+		<</for>>
+		keep<<if _dlurkers.length is 1>>s<</if>> at a distance.
+		<<if $farm_stage gte 10 and $lurkers_held lt 1>>
+			<<if $leftarm isnot "grappled" and $leftarm isnot "bound">>
+				<br>
+				Left arm: <label><span class="def">Hurl net</span> <<radiobutton "$leftaction" "capture" autocheck>></label>
 			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $rightactiondefault is "penis_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "penis_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "penis_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $rightactiondefault is "penis_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "penis_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "penis_stroke">></label>
-			<</if>>
-		<</if>>
-	<hr>
-	<</if>>
-	<<if $anususe is "struggle">>
-		A <<print $struggle.anus.creature>> clings to your bottom.
-		<br>
-		<<if $leftarm isnot "bound" and $leftarm isnot "grappled">>
-			Left arm:
-			<<if $struggle.anus.grip gte 1>>
-				<<if $struggle.anus.success lt 100>>
-					<<if $leftactiondefault is "anus_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "anus_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "anus_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $leftactiondefault is "anus_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "anus_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "anus_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $leftactiondefault is "anus_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "anus_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "anus_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $leftactiondefault is "anus_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "anus_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "anus_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $leftactiondefault is "anus_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "anus_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "anus_stroke">></label>
+			<<if $rightarm isnot "grappled" and $rightarm isnot "bound">>
+				<br>
+				Right arm: <label><span class="def">Hurl net</span> <<radiobutton "$rightaction" "capture" autocheck>></label>
 			<</if>>
 		<</if>>
 		<br>
-		<<if $rightarm isnot "bound" and $rightarm isnot "grappled">>
-			Right arm:
-			<<if $struggle.anus.grip gte 1>>
-				<<if $struggle.anus.success lt 100>>
-					<<if $rightactiondefault is "anus_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "anus_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "anus_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $rightactiondefault is "anus_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "anus_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "anus_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $rightactiondefault is "anus_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "anus_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "anus_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $rightactiondefault is "anus_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "anus_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "anus_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $rightactiondefault is "anus_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "anus_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "anus_stroke">></label>
-			<</if>>
-		<</if>>
-	<hr>
-	<</if>>
-	<<if $chestuse is "struggle">>
-		A <<print $struggle.chest.creature>> clings to your chest.
-		<br>
-		<<if $leftarm isnot "bound" and $leftarm isnot "grappled">>
-			Left arm:
-			<<if $struggle.chest.grip gte 1>>
-				<<if $struggle.chest.success lt 100>>
-					<<if $leftactiondefault is "chest_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "chest_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$leftaction" "chest_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $leftactiondefault is "chest_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "chest_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$leftaction" "chest_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $leftactiondefault is "chest_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "chest_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$leftaction" "chest_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $leftactiondefault is "chest_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "chest_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$leftaction" "chest_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $leftactiondefault is "chest_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "chest_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$leftaction" "chest_stroke">></label>
-			<</if>>
-		<</if>>
-		<br>
-		<<if $rightarm isnot "bound" and $rightarm isnot "grappled">>
-			Right arm:
-			<<if $struggle.chest.grip gte 1>>
-				<<if $struggle.chest.success lt 100>>
-					<<if $rightactiondefault is "chest_strengthen">>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "chest_strengthen" checked>></label>
-					<<else>>
-						| <label><span class="brat">Strengthen your grip</span> <<radiobutton "$rightaction" "chest_strengthen">></label>
-					<</if>>
-				<</if>>
-				<<if $rightactiondefault is "chest_pull">>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "chest_pull" checked>></label>
-				<<else>>
-					| <label><span class="def">Pull</span> <<radiobutton "$rightaction" "chest_pull">></label>
-				<</if>>
-			<<else>>
-				<<if $rightactiondefault is "chest_grasp">>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "chest_grasp" checked>></label>
-				<<else>>
-					| <label><span class="brat">Grasp</span> <<radiobutton "$rightaction" "chest_grasp">></label>
-				<</if>>
-			<</if>>
-			<<if $spray gte 1 and $consensual isnot 1>>
-				<<if $rightactiondefault is "chest_spray">>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "chest_spray" checked>></label>
-				<<else>>
-					| <label><span class="def">Spray</span> <<radiobutton "$rightaction" "chest_spray">></label>
-				<</if>>
-			<</if>>
-			<<if $rightactiondefault is "chest_stroke">>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "chest_stroke" checked>></label>
-			<<else>>
-				| <label><span class="sub">Stroke it</span> <<radiobutton "$rightaction" "chest_stroke">></label>
-			<</if>>
-		<</if>>
-	<hr>
+		<hr>
 	<</if>>
 <</if>>
-
-<<combatstate>>
-<<carryblock>>
 <br><br>
 
 <<setupMidOrgasm>>
 
 <</widget>>
 
-<<widget "struggle_effects">>
-
-
-<<set $pain -= 1>>
-
-<<if $trance gte 1 or $dissociation gte 2>>
-	<<if $position is "stalk">>
-		You wander in a daze, unaware of your surroundings.
-	<<else>>
-		You stare straight ahead, your body passive and compliant.
-	<</if>>
-<</if>>
-
-<<if $underwater is 1>>
-	<<set $underwatertime += 1>>
-	<<if $underwatertime lte 5>>
-		You are underwater, and cannot speak.
-	<<elseif $underwatertime lte 10>>
-		<span class="blue">You are underwater, and cannot breathe.</span>
-		<<gstress>><<stress 1>>
-	<<elseif $underwatertime lte 15>>
-		<span class="purple">You are underwater, and cannot breathe.</span>
-		<<gstress>><<stress 2>>
-	<<elseif $underwatertime lte 20>>
-		<span class="pink">You are underwater, and cannot breathe.</span>
-		<<gtrauma>><<gstress>><<stress 4>><<trauma 2>>
-	<<else>>
-		<span class="red">You are suffocating beneath the water.</span>
-		<<set $pain += 20>><<gtrauma>><<gstress>><<stress 6>><<trauma 4>>
-		<br><br>
-	<</if>>
-<</if>>
-
-<<effectspain>>
-<<effectsorgasm>>
-<<effectsdissociation>>
-
-<<if $mouthaction is "rest">>
-	<<set $mouthaction to 0>><<set $mouthactiondefault to "rest">>
-<<elseif $mouthaction is "open" and $mouthstate is "struggle">>
-	<<set $mouthactiondefault to "suck">><<set $mouthaction to 0>>
-	You open your mouth wide allowing it to enter.
-	<<set _mouthOpen to true>>
-	<<if $struggle.mouth.progress gte 1 and $struggle.mouth.progress lte 3>>
-		<<set $struggle.mouth.progress to 4>><<submission 1>>
-	<</if>>
-<<elseif $mouthaction is "suck" and $mouthstate is "struggle_pen">>
-	<<set $mouthaction to 0>><<set $mouthactiondefault to "suck">>
-	You suck on its <<struggle_appendage mouth>><<if $struggle.mouth.progress gte 8>>, forcing it to release more sweet fluid down your throat<</if>>.
-	<<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>><<submission 2>>
-	<<if $struggle.mouth.progress gt 7 and $struggle.mouth.progress lt 13>>
-		<<set $struggle.mouth.progress += 1>>
-	<</if>>
-<<elseif $mouthaction is "bite" and $mouthstate is "struggle_pen">>
-	<<set $mouthaction to 0>><<set $mouthactiondefault to "bite">>
-	<<if $wolfgirl gte 2 or $cat gte 2>>
-		You bite its <<struggle_appendage mouth>> with your fangs. <span class="green">It leaps off your face.</span>
-		<<set $mouthuse to 0>>
-		<<set $mouthstate to 0>>
-		<<struggle_mouth_init>>
-		<<set $struggle.warded += 1>>
-		<<defiance 2>> <<control 5>>
-		<<struggleClearActions "mouth_">>
+<<widget "handsActionsStruggleRadio">>
+	<<set _hpart to $args[0]>>
+	<<set V[_hpart + 'target'] to "struggle">>
+	<<if V[_hpart + 'use'] is "struggle">>
 		<br>
-	<<else>>
-		No matter how hard you try to bite on its <<struggle_appendage mouth>>, it doesn't react.
-		<<defiance 1>>
+		<<for _hhand range ["left", "right"]>>
+			<<if ["free", "struggle"].includes(_leftOptions)>>
+				<<print (_hhand is "left" ? "Left" : "Right")>> arm:
+				<<if V[_hhand + 'actiondefault'].includes(_hpart) and $struggle[_hpart].grip gte 1>>
+					<!-- require hand on the creature before pulling or strengthening -->
+					<<if $struggle[_hpart].success lt 100>>
+						<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_strengthen'` autocheck>> <span class="brat">Strengthen your grip</span></label> |
+					<</if>>
+					<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_pull'` autocheck>> <span class="def">Pull</span></label> |
+				<<elseif $struggle[_hpart].success lt 100>>
+					<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_grasp'` autocheck>> <span class="brat">Grasp</span></label> |
+				<</if>>
+				<<if $spray gte 1 and !$consensual>>
+					<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_spray'` autocheck>> <span class="def">Spray</span></label> |
+				<</if>>
+				<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_stroke'` autocheck>> <span class="sub">Stroke it</span></label> |
+			<</if>>
+			<br>
+		<</for>>
 	<</if>>
-<</if>>
+<</widget>>
 
+<<widget "handsActionsStruggleRadiobkp">>
+	<<set _hpart to $args[0]>>
+	<<set V[_hpart + 'target'] to "struggle">>
+	<<if V[_hpart + 'use'] is "struggle">>
+		<br>
+		<<for _hhand range ["left", "right"]>>
+			<<if V[_hhand + 'arm'] isnot "bound" and !(V[_hhand + 'arm'] and V[_hhand + 'arm'].includes("grappled"))>>
+				<<print (_hhand is "left" ? "Left" : "Right")>> arm:
+				<<if $struggle[_hpart].success lt 100>>
+					<<if !V[_hhand + 'armstate'].includes(_hpart)>>
+						<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_grasp'` autocheck>> <span class="brat">Grasp</span></label> |
+					<<else>>
+						<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_strengthen'` autocheck>> <span class="brat">Strengthen your grip</span></label> |
+					<</if>>
+				<</if>>
+				<<if $struggle[_hpart].grip gte 1>>
+					<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_pull'` autocheck>> <span class="def">Pull</span></label> |
+				<</if>>
+				<<if $spray gte 1 and !$consensual>>
+					<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_spray'` autocheck>> <span class="def">Spray</span></label> |
+				<</if>>
+				<label><<radiobutton `'$' + _hhand + 'action'` `_hpart + '_stroke'` autocheck>> <span class="sub">Stroke it</span></label> |
+			<</if>>
+			<br>
+		<</for>>
+	<</if>>
+<</widget>>
 
-<<if $feetaction is "rest">>
-	<<set $feetaction to 0>><<set $feetactiondefault to "rest">>
-	<<unset $dodging>>
-	<<unset $feet_planted>>
-	You rest your legs.
-<</if>>
+<<widget "struggle_effects">>
+	<<set $pain -= 1>>
 
-<<if $feetaction is "evade">>
-	<<set $feetaction to 0>><<set $feetactiondefault to "evade">>
-	<<set $dodging to 1>>
-	<<unset $feet_planted>>
-	You remain light on your feet, ready to dodge incoming attacks.
-<</if>>
-
-<<if $feetaction is "plant">>
-	<<set $feetaction to 0>><<set $feetactiondefault to "plant">>
-	<<unset $dodging>>
-	<<set $feet_planted to 1>>
-	You plant your feet, helping you get a firm grip.
-	<<feetskilluse>>
-<</if>>
-
-<<if $leftaction is "rest">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "rest">>
-<</if>>
-<<if $rightaction is "rest">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "rest">>
-<</if>>
-<<if $leftaction is "mouth_stroke" or $rightaction is "mouth_stroke">>
-	<<if $leftaction is "mouth_stroke">><<set $leftaction to 0>><<set $leftactiondefault to "mouth_stroke">><<submission 2>><</if>>
-	<<if $rightaction is "mouth_stroke">><<set $rightaction to 0>><<set $rightactiondefault to "mouth_stroke">><<submission 2>><</if>>
-	You stroke the <<print $struggle.mouth.creature>>, hoping to put it at ease.<<neutral 5>>
-<</if>>
-
-
-<<if $feet_planted gte 1>>
-	<<set _grip_strength to ($handskill + $feetskill + ($physique / 20))>>
-<<else>>
-	<<set _grip_strength to ($handskill + ($physique / 20))>>
-<</if>>
-<<if $leftaction is "mouth_strengthen" and $rightaction is "mouth_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "mouth_strengthen">>
-	You tighten your grip on the <<print $struggle.mouth.creature>> clinging to your face with both hands.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.mouth.grip += 4>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.mouth.grip += 2>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $leftaction is "mouth_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_strengthen">>
-	You tighten your grip on the <<print $struggle.mouth.creature>> clinging to your face.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.mouth.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.mouth.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $rightaction is "mouth_strengthen">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "mouth_strengthen">>
-	You tighten your grip on the <<print $struggle.mouth.creature>> clinging to your face.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.mouth.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.mouth.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<</if>>
-<<if $leftaction is "mouth_pull" and $rightaction is "mouth_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_pull">><<set $rightaction to 0>><<set $rightactiondefault to "mouth_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.mouth.creature>> off your face.
-	<<struggle_difficulty_set>>
-	<<if $struggle.mouth.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $mouthuse to 0>>
-		<<set $mouthstate to 0>>
-		<<struggle_mouth_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "mouth_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.mouth.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $leftaction is "mouth_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.mouth.creature>> off your face.
-	<<struggle_difficulty_set>>
-	<<if $struggle.mouth.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $mouthuse to 0>>
-		<<set $mouthstate to 0>>
-		<<struggle_mouth_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "mouth_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.mouth.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $rightaction is "mouth_pull">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "mouth_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.mouth.creature>> off your face.
-	<<struggle_difficulty_set>>
-	<<if $struggle.mouth.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $mouthuse to 0>>
-		<<set $mouthstate to 0>>
-		<<struggle_mouth_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "mouth_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.mouth.grip to 0>>
-	<</if>>
-	<br>
-<</if>>
-<<if $leftaction is "mouth_grasp" and $rightaction is "mouth_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "mouth_strengthen">>
-	You raise your hands to the <<print $struggle.mouth.creature>> clinging to your face, though it's hard to find purchase.
-	<br>
-	<<set $struggle.mouth.grip += 2>>
-<<elseif $leftaction is "mouth_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_strengthen">>
-	You raise your left hand to the <<print $struggle.mouth.creature>> clinging to your face, though it's hard to find purchase.
-	<br>
-	<<set $struggle.mouth.grip += 1>>
-<<elseif $rightaction is "mouth_grasp">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "mouth_strengthen">>
-	You raise your right hand to the <<print $struggle.mouth.creature>> clinging to your face, though it's hard to find purchase.
-	<br>
-	<<set $struggle.mouth.grip += 1>>
-<</if>>
-<<if $leftaction is "mouth_spray" and $rightaction is "mouth_spray">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_spray">><<set $rightaction to 0>><<set $rightactiondefault to "mouth_spray">>
-	You spray the <<print $struggle.mouth.creature>>. <span class="green">It leaps off your face.</span>
-	<<set $spraystat += 1>><<spray -1>>
-	<<set $mouthuse to 0>>
-	<<set $mouthstate to 0>>
-	<<struggle_mouth_init>>
-	<<set $struggle.warded += 1>>
-	<<struggleClearActions "mouth_">>
-	<br>
-<<elseif $leftaction is "mouth_spray">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "mouth_spray">>
-	You spray the <<print $struggle.mouth.creature>>. <span class="green">It leaps off your face.</span>
-	<<set $spraystat += 1>><<spray -1>>
-	<<set $mouthuse to 0>>
-	<<set $mouthstate to 0>>
-	<<struggle_mouth_init>>
-	<<set $struggle.warded += 1>>
-	<<struggleClearActions "mouth_">>
-	<br>
-<<elseif $rightaction is "mouth_spray">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "mouth_spray">>
-	You spray the <<print $struggle.mouth.creature>>. <span class="green">It leaps off your face.</span>
-	<<set $spraystat += 1>><<spray -1>>
-	<<set $mouthuse to 0>>
-	<<set $mouthstate to 0>>
-	<<struggle_mouth_init>>
-	<<set $struggle.warded += 1>>
-	<<struggleClearActions "mouth_">>
-	<br>
-<</if>>
-
-
-<<if $leftaction is "vagina_stroke" or $rightaction is "vagina_stroke">>
-	<<if $leftaction is "vagina_stroke">><<set $leftaction to 0>><<set $leftactiondefault to "vagina_stroke">><<submission 2>><</if>>
-	<<if $rightaction is "vagina_stroke">><<set $rightaction to 0>><<set $rightactiondefault to "vagina_stroke">><<submission 2>><</if>>
-	You stroke the <<print $struggle.vagina.creature>>'s <<struggle_appendage vagina>>, hoping to excite it.<<neutral 5>>
-	<<if $struggle.vagina.progress gt 7 and $struggle.vagina.progress lt 13>>
-		<<set $struggle.vagina.progress += 1>><<struggle_fluid vagina>><<purity -1>><<internalejac>><<set $player.bodyliquid.vagina.goo += 1>>
-	<</if>>
-<</if>>
-
-<<if $leftaction is "vagina_strengthen" and $rightaction is "vagina_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "vagina_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "vagina_strengthen">>
-	You tighten your grip on the <<print $struggle.vagina.creature>> clinging to your pelvis with both hands.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.vagina.grip += 4>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.vagina.grip += 2>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $leftaction is "vagina_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "vagina_strengthen">>
-	You tighten your grip on the <<print $struggle.vagina.creature>> clinging to your pelvis.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.vagina.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.vagina.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $rightaction is "vagina_strengthen">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "vagina_strengthen">>
-	You tighten your grip on the <<print $struggle.vagina.creature>> clinging to your pelvis.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.vagina.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.vagina.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<</if>>
-<<if $leftaction is "vagina_pull" and $rightaction is "vagina_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "vagina_pull">><<set $rightaction to 0>><<set $rightactiondefault to "vagina_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.vagina.creature>> off your pelvis.
-	<<struggle_difficulty_set>>
-	<<if $struggle.vagina.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $vaginause to 0>>
-		<<set $vaginastate to 0>>
-		<<struggle_vagina_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "vagina_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.vagina.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $leftaction is "vagina_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "vagina_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.vagina.creature>> off your pelvis.
-	<<struggle_difficulty_set>>
-	<<if $struggle.vagina.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $vaginause to 0>>
-		<<set $vaginastate to 0>>
-		<<struggle_vagina_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "vagina_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.vagina.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $rightaction is "vagina_pull">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "vagina_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.vagina.creature>> off your pelvis.
-	<<struggle_difficulty_set>>
-	<<if $struggle.vagina.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $vaginause to 0>>
-		<<set $vaginastate to 0>>
-		<<struggle_vagina_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "vagina_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.vagina.grip to 0>>
-	<</if>>
-	<br>
-<</if>>
-<<if $leftaction is "vagina_grasp" and $rightaction is "vagina_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "vagina_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "vagina_strengthen">>
-	You raise your hands to the <<print $struggle.vagina.creature>> clinging to your pelvis, though it's hard to find purchase.
-	<br>
-	<<set $struggle.vagina.grip += 2>>
-<<elseif $leftaction is "vagina_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "vagina_strengthen">>
-	You raise your left hand to the <<print $struggle.vagina.creature>> clinging to your pelvis, though it's hard to find purchase.
-	<br>
-	<<set $struggle.vagina.grip += 1>>
-<<elseif $rightaction is "vagina_grasp">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "vagina_strengthen">>
-	You raise your right hand to the <<print $struggle.vagina.creature>> clinging to your pelvis, though it's hard to find purchase.
-	<br>
-	<<set $struggle.vagina.grip += 1>>
-<</if>>
-<<if $leftaction is "vagina_spray" and $rightaction is "vagina_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "vagina_spray">><<set $rightaction to 0>><<set $rightactiondefault to "vagina_spray">>
-		You spray the <<print $struggle.vagina.creature>>. <span class="green">It leaps off your pelvis.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $vaginause to 0>>
-		<<set $vaginastate to 0>>
-		<<struggle_vagina_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "vagina_">>
-	<<else>>
-		You try to spray the <<print $struggle.vagina.creature>> clinging to your pelvis, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $leftaction is "vagina_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "vagina_spray">>
-		You spray the <<print $struggle.vagina.creature>>. <span class="green">It leaps off your pelvis.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $vaginause to 0>>
-		<<set $vaginastate to 0>>
-		<<struggle_vagina_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "vagina_">>
-	<<else>>
-		You try to spray the <<print $struggle.vagina.creature>> clinging to your pelvis, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $rightaction is "vagina_spray">>
-	<<if $spray gte 1>>
-		<<set $rightaction to 0>><<set $rightactiondefault to "vagina_spray">>
-		You spray the <<print $struggle.vagina.creature>>. <span class="green">It leaps off your pelvis.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $vaginause to 0>>
-		<<set $vaginastate to 0>>
-		<<struggle_vagina_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "vagina_">>
-	<<else>>
-		You try to spray the <<print $struggle.vagina.creature>> clinging to your pelvis, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<</if>>
-
-
-<<if $leftaction is "penis_stroke" or $rightaction is "penis_stroke">>
-	<<if $leftaction is "penis_stroke">><<set $leftaction to 0>><<set $leftactiondefault to "penis_stroke">><<submission 2>><</if>>
-	<<if $rightaction is "penis_stroke">><<set $rightaction to 0>><<set $rightactiondefault to "penis_stroke">><<submission 2>><</if>>
-	You stroke the <<print $struggle.penis.creature>>'s <<struggle_appendage penis>>, hoping to excite it.<<neutral 5>>
-	<<if $struggle.penis.progress gt 7 and $struggle.penis.progress lt 13>>
-		<<set $struggle.penis.progress += 1>><<set $player.bodyliquid.penis.goo += 1>>
-	<</if>>
-<</if>>
-
-<<if $leftaction is "penis_strengthen" and $rightaction is "penis_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "penis_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "penis_strengthen">>
-	You tighten your grip on the <<print $struggle.penis.creature>> clinging to your tummy with both hands.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.penis.grip += 4>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.penis.grip += 2>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $leftaction is "penis_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "penis_strengthen">>
-	You tighten your grip on the <<print $struggle.penis.creature>> clinging to your tummy.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.penis.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.penis.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $rightaction is "penis_strengthen">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "penis_strengthen">>
-	You tighten your grip on the <<print $struggle.penis.creature>> clinging to your tummy.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.penis.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.penis.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<</if>>
-<<if $leftaction is "penis_pull" and $rightaction is "penis_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "penis_pull">><<set $rightaction to 0>><<set $rightactiondefault to "penis_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.penis.creature>> off your tummy.
-	<<struggle_difficulty_set>>
-	<<if $struggle.penis.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $penisuse to 0>>
-		<<set $penisstate to 0>>
-		<<struggle_penis_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "penis_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.penis.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $leftaction is "penis_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "penis_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.penis.creature>> off your tummy.
-	<<struggle_difficulty_set>>
-	<<if $struggle.penis.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $penisuse to 0>>
-		<<set $penisstate to 0>>
-		<<struggle_penis_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "penis_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.penis.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $rightaction is "penis_pull">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "penis_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.penis.creature>> off your tummy.
-	<<struggle_difficulty_set>>
-	<<if $struggle.penis.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $penisuse to 0>>
-		<<set $penisstate to 0>>
-		<<struggle_penis_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "penis_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.penis.grip to 0>>
-	<</if>>
-	<br>
-<</if>>
-<<if $leftaction is "penis_grasp" and $rightaction is "penis_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "penis_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "penis_strengthen">>
-	You raise your hands to the <<print $struggle.penis.creature>> clinging to your tummy, though it's hard to find purchase.
-	<br>
-	<<set $struggle.penis.grip += 2>>
-<<elseif $leftaction is "penis_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "penis_strengthen">>
-	You raise your left hand to the <<print $struggle.penis.creature>> clinging to your tummy, though it's hard to find purchase.
-	<br>
-	<<set $struggle.penis.grip += 1>>
-<<elseif $rightaction is "penis_grasp">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "penis_strengthen">>
-	You raise your right hand to the <<print $struggle.penis.creature>> clinging to your tummy, though it's hard to find purchase.
-	<br>
-	<<set $struggle.penis.grip += 1>>
-<</if>>
-<<if $leftaction is "penis_spray" and $rightaction is "penis_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "penis_spray">><<set $rightaction to 0>><<set $rightactiondefault to "penis_spray">>
-		You spray the <<print $struggle.penis.creature>>. <span class="green">It leaps off your tummy.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $penisuse to 0>>
-		<<set $penisstate to 0>>
-		<<struggle_penis_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "penis_">>
-	<<else>>
-		You try to spray the <<print $struggle.penis.creature>> clinging to your tummy, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $leftaction is "penis_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "penis_spray">>
-		You spray the <<print $struggle.penis.creature>>. <span class="green">It leaps off your tummy.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $penisuse to 0>>
-		<<set $penisstate to 0>>
-		<<struggle_penis_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "penis_">>
-	<<else>>
-		You try to spray the <<print $struggle.penis.creature>> clinging to your tummy, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $rightaction is "penis_spray">>
-	<<if $spray gte 1>>
-		<<set $rightaction to 0>><<set $rightactiondefault to "penis_spray">>
-		You spray the <<print $struggle.penis.creature>>. <span class="green">It leaps off your tummy.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $penisuse to 0>>
-		<<set $penisstate to 0>>
-		<<struggle_penis_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "penis_">>
-	<<else>>
-		You try to spray the <<print $struggle.penis.creature>> clinging to your tummy, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<</if>>
-
-
-<<if $leftaction is "anus_stroke" or $rightaction is "anus_stroke">>
-	<<if $leftaction is "anus_stroke">><<set $leftaction to 0>><<set $leftactiondefault to "anus_stroke">><<submission 2>><</if>>
-	<<if $rightaction is "anus_stroke">><<set $rightaction to 0>><<set $rightactiondefault to "anus_stroke">><<submission 2>><</if>>
-	You stroke the <<print $struggle.anus.creature>>'s <<struggle_appendage anus>>, hoping to excite it. <<neutral 5>>
-	<<if $struggle.anus.progress gt 7 and $struggle.anus.progress lt 13>>
-		<<set $struggle.anus.progress += 1>><<set $player.bodyliquid.anus.goo += 1>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>>
-	<</if>>
-<</if>>
-
-<<if $leftaction is "anus_strengthen" and $rightaction is "anus_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "anus_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "anus_strengthen">>
-	You tighten your grip on the <<print $struggle.anus.creature>> clinging to your tummy with both hands.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.anus.grip += 4>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.anus.grip += 2>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $leftaction is "anus_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "anus_strengthen">>
-	You tighten your grip on the <<print $struggle.anus.creature>> clinging to your tummy.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.anus.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.anus.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $rightaction is "anus_strengthen">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "anus_strengthen">>
-	You tighten your grip on the <<print $struggle.anus.creature>> clinging to your tummy.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.anus.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.anus.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<</if>>
-<<if $leftaction is "anus_pull" and $rightaction is "anus_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "anus_pull">><<set $rightaction to 0>><<set $rightactiondefault to "anus_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.anus.creature>> off your <<bottom>>.
-	<<struggle_difficulty_set>>
-	<<if $struggle.anus.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $anususe to 0>>
-		<<set $anusstate to 0>>
-		<<struggle_anus_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "anus_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.anus.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $leftaction is "anus_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "anus_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.anus.creature>> off your <<bottom>>.
-	<<struggle_difficulty_set>>
-	<<if $struggle.anus.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $anususe to 0>>
-		<<set $anusstate to 0>>
-		<<struggle_anus_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "anus_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.anus.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $rightaction is "anus_pull">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "anus_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.anus.creature>> off your <<bottom>>.
-	<<struggle_difficulty_set>>
-	<<if $struggle.anus.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $anususe to 0>>
-		<<set $anusstate to 0>>
-		<<struggle_anus_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "anus_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.anus.grip to 0>>
-	<</if>>
-	<br>
-<</if>>
-<<if $leftaction is "anus_grasp" and $rightaction is "anus_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "anus_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "anus_strengthen">>
-	You grope behind you and grasp the <<print $struggle.anus.creature>> clinging to your <<bottom>>, though it's hard to find purchase.
-	<br>
-	<<set $struggle.anus.grip += 2>>
-<<elseif $leftaction is "anus_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "anus_strengthen">>
-	You grope behind you with your left hand and grasp the <<print $struggle.anus.creature>> clinging to your <<bottom>>, though it's hard to find purchase.
-	<br>
-	<<set $struggle.anus.grip += 1>>
-<<elseif $rightaction is "anus_grasp">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "anus_strengthen">>
-	You grope behind you with your right hand and grasp the <<print $struggle.anus.creature>> clinging to your <<bottom>>, though it's hard to find purchase.
-	<br>
-	<<set $struggle.anus.grip += 1>>
-<</if>>
-<<if $leftaction is "anus_spray" and $rightaction is "anus_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "anus_spray">><<set $rightaction to 0>><<set $rightactiondefault to "anus_spray">>
-		You spray the <<print $struggle.anus.creature>>. <span class="green">It leaps off your <<bottom>>.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $anususe to 0>>
-		<<set $anusstate to 0>>
-		<<struggle_anus_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "anus_">>
-	<<else>>
-		You try to spray the <<print $struggle.anus.creature>> clinging to your <<bottom>>, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $leftaction is "anus_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "anus_spray">>
-		You spray the <<print $struggle.anus.creature>>. <span class="green">It leaps off your <<bottom>>.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $anususe to 0>>
-		<<set $anusstate to 0>>
-		<<struggle_anus_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "anus_">>
-	<<else>>
-		You try to spray the <<print $struggle.anus.creature>> clinging to your <<bottom>>, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $rightaction is "anus_spray">>
-	<<if $spray gte 1>>
-		<<set $rightaction to 0>><<set $rightactiondefault to "anus_spray">>
-		You spray the <<print $struggle.anus.creature>>. <span class="green">It leaps off your <<bottom>>.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $anususe to 0>>
-		<<set $anusstate to 0>>
-		<<struggle_anus_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "anus_">>
-	<<else>>
-		You try to spray the <<print $struggle.anus.creature>> clinging to your <<bottom>>, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<</if>>
-
-
-<<if $leftaction is "chest_stroke" or $rightaction is "chest_stroke">>
-	<<if $leftaction is "chest_stroke">><<set $leftaction to 0>><<set $leftactiondefault to "chest_stroke">><<submission 2>><</if>>
-	<<if $rightaction is "chest_stroke">><<set $rightaction to 0>><<set $rightactiondefault to "chest_stroke">><<submission 2>><</if>>
-	You stroke the <<print $struggle.chest.creature>>'s <<struggle_appendage chest>>, hoping to excite it. <<sex 5>>
-	<<if $struggle.chest.progress gt 7 and $struggle.chest.progress lt 12>>
-		<<set $struggle.chest.progress += 1>><<set $player.bodyliquid.chest.goo += 1>>
-	<</if>>
-<</if>>
-
-<<if $leftaction is "chest_strengthen" and $rightaction is "chest_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "chest_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "chest_strengthen">>
-	You tighten your grip on the <<print $struggle.chest.creature>> clinging to your chest with both hands.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.chest.grip += 4>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.chest.grip += 2>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $leftaction is "chest_strengthen">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "chest_strengthen">>
-	You tighten your grip on the <<print $struggle.chest.creature>> clinging to your chest.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.chest.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.chest.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<<elseif $rightaction is "chest_strengthen">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "chest_strengthen">>
-	You tighten your grip on the <<print $struggle.chest.creature>> clinging to your chest.
-	<<if _grip_strength gte random(1, 2000)>>
-		Your grasp is <span class="teal">much better.</span>
-		<<set $struggle.chest.grip += 2>>
-	<<else>>
-		Your grasp is <span class="blue">a bit better.</span>
-		<<set $struggle.chest.grip += 1>>
-	<</if>>
-	<<handskilluse>>
-	<br>
-<</if>>
-<<if $leftaction is "chest_pull" and $rightaction is "chest_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "chest_pull">><<set $rightaction to 0>><<set $rightactiondefault to "chest_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.chest.creature>> off your <<breasts>>.
-	<<struggle_difficulty_set>>
-	<<if $struggle.chest.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $chestuse to 0>>
-		<<set $cheststate to 0>>
-		<<struggle_chest_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "chest_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.chest.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $leftaction is "chest_pull">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "chest_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.chest.creature>> off your <<breasts>>.
-	<<struggle_difficulty_set>>
-	<<if $struggle.chest.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $chestuse to 0>>
-		<<set $cheststate to 0>>
-		<<struggle_chest_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "chest_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.chest.grip to 0>>
-	<</if>>
-	<br>
-<<elseif $rightaction is "chest_pull">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "chest_pull">>
-	You dig your nails in and try to wrench the <<print $struggle.chest.creature>> off your <<breasts>>.
-	<<struggle_difficulty_set>>
-	<<if $struggle.chest.success gte random (1, 100)>>
-		<span class="green">You hurl it away from you.</span>
-		<<set $chestuse to 0>>
-		<<set $cheststate to 0>>
-		<<struggle_chest_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "chest_">>
-	<<else>>
-		You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
-		<<set $struggle.chest.grip to 0>>
-	<</if>>
-	<br>
-<</if>>
-<<if $leftaction is "chest_grasp" and $rightaction is "chest_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "chest_strengthen">><<set $rightaction to 0>><<set $rightactiondefault to "chest_strengthen">>
-	You grasp the <<print $struggle.chest.creature>> clinging to your <<breasts>>, though it's hard to find purchase.
-	<br>
-	<<set $struggle.chest.grip += 2>>
-<<elseif $leftaction is "chest_grasp">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "chest_strengthen">>
-	You grope behind you with your left hand and grasp the <<print $struggle.chest.creature>> clinging to your <<breasts>>, though it's hard to find purchase.
-	<br>
-	<<set $struggle.chest.grip += 1>>
-<<elseif $rightaction is "chest_grasp">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "chest_strengthen">>
-	You grope behind you with your right hand and grasp the <<print $struggle.chest.creature>> clinging to your <<breasts>>, though it's hard to find purchase.
-	<br>
-	<<set $struggle.chest.grip += 1>>
-<</if>>
-<<if $leftaction is "chest_spray" and $rightaction is "chest_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "chest_spray">><<set $rightaction to 0>><<set $rightactiondefault to "chest_spray">>
-		You spray the <<print $struggle.chest.creature>>. <span class="green">It leaps off your <<breasts>>.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $chestuse to 0>>
-		<<set $cheststate to 0>>
-		<<struggle_chest_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "chest_">>
-	<<else>>
-		You try to spray the <<print $struggle.chest.creature>> clinging to your <<breasts>>, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $leftaction is "chest_spray">>
-	<<if $spray gte 1>>
-		<<set $leftaction to 0>><<set $leftactiondefault to "chest_spray">>
-		You spray the <<print $struggle.chest.creature>>. <span class="green">It leaps off your <<breasts>>.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $chestuse to 0>>
-		<<set $cheststate to 0>>
-		<<struggle_chest_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "chest_">>
-	<<else>>
-		You try to spray the <<print $struggle.chest.creature>> clinging to your <<breasts>>, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<<elseif $rightaction is "chest_spray">>
-	<<if $spray gte 1>>
-		<<set $rightaction to 0>><<set $rightactiondefault to "chest_spray">>
-		You spray the <<print $struggle.chest.creature>>. <span class="green">It leaps off your <<breasts>>.</span>
-		<<set $spraystat += 1>><<spray -1>>
-		<<set $chestuse to 0>>
-		<<set $cheststate to 0>>
-		<<struggle_chest_init>>
-		<<set $struggle.warded += 1>>
-		<<struggleClearActions "chest_">>
-	<<else>>
-		You try to spray the <<print $struggle.chest.creature>> clinging to your <<breasts>>, <span class="purple">but your spray is empty!</span>
-	<</if>>
-	<br>
-<</if>>
-
-/*Capture should go last, so it can work on lurkers removed the same turn.*/
-<<if $leftaction is "capture" and $rightaction is "capture">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "capture">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "capture">>
-	<<for _i to 0; _i lt $struggle.number; _i++>>
-		<<if $struggle.enemy[_i].location is "fleeing">>
-			You cast your net at the <span class="green">recoiling</span> <<print $struggle.enemy[_i].name>> with both hands.
-			<<set _capture_creature to _i>>
-			<<set _capture_chance to 100>>
-			<<break>>
+	<<if $trance gte 1 or $dissociation gte 2>>
+		<<if $position is "stalk">>
+			You wander in a daze, unaware of your surroundings.
+		<<else>>
+			You stare straight ahead, your body passive and compliant.
 		<</if>>
-		<<if $struggle.enemy[_i].location is "lurking">>
-			You cast your net at the <<print $struggle.enemy[_i].name>> with both hands.
-			<<set _capture_creature to _i>>
-			<<set _capture_chance to 60>>
-			<<break>>
+	<</if>>
+
+	<<if $underwater is 1>>
+		<<set $underwatertime += 1>>
+		<<if $underwatertime lte 5>>
+			You are underwater, and cannot speak.
+		<<elseif $underwatertime lte 10>>
+			<span class="blue">You are underwater, and cannot breathe.</span>
+			<<gstress>><<stress 1>>
+		<<elseif $underwatertime lte 15>>
+			<span class="purple">You are underwater, and cannot breathe.</span>
+			<<gstress>><<stress 2>>
+		<<elseif $underwatertime lte 20>>
+			<span class="pink">You are underwater, and running out of breath.</span>
+			<<gtrauma>><<gstress>><<stress 4>><<trauma 2>>
+		<<else>>
+			<span class="red">You are suffocating beneath the water.</span>
+			<<set $pain += 20>><<gtrauma>><<gstress>><<stress 6>><<trauma 4>>
+			<br><br>
 		<</if>>
+	<</if>>
+
+	<<effectspain>>
+	<<effectsorgasm>>
+	<<effectsdissociation>>
+
+	<!-- MOUTH -->
+	<<if $mouthaction is "rest">>
+		<!-- nothing to do. add some flavor text maybe? -->
+	<<elseif $mouthaction is "open" and $mouthstate is "struggle">>
+		<<set $mouthactiondefault to "suck">>
+		You open your mouth wide allowing it to enter.
+		<<set _mouthOpen to true>>
+		<<if $struggle.mouth.progress gte 1 and $struggle.mouth.progress lte 3>>
+			<<set $struggle.mouth.progress to 4>><<submission 1>>
+		<</if>>
+	<<elseif $mouthaction is "suck" and $mouthstate is "struggle_pen">>
+		You suck on <<struggle_name mouth>>'s <<struggle_appendage mouth>><<if $struggle.mouth.progress gte 8>>, forcing it to release more sweet fluid down your throat<</if>>.
+		<<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>><<submission 2>>
+		<<if $struggle.mouth.progress gt 7 and $struggle.mouth.progress lt 13>>
+			<<set $struggle.mouth.progress += 1>>
+		<</if>>
+	<<elseif $mouthaction is "bite" and $mouthstate is "struggle_pen">>
+		<<if $wolfgirl gte 2 or $cat gte 2>>
+			You bite its <<struggle_appendage mouth>> with your fangs. <span class="green">It leaps off your face.</span>
+			<<set $mouthuse to 0>>
+			<<set $mouthstate to 0>>
+			<<struggle_part_init "mouth">>
+			<<set $struggle.warded += 1>>
+			<<defiance 2>> <<control 5>>
+			<<struggleClearActions "mouth_">>
+			<br>
+		<<else>>
+			No matter how hard you try to bite on its <<struggle_appendage mouth>>, it doesn't react.
+			<<defiance 1>>
+		<</if>>
+	<</if>>
+	<<if !$carryblock>>
+		<<set $mouthactiondefault to ($mouthaction is "bite" ? "rest" : $mouthaction)>>
+		<<set $mouthaction to 0>>
+	<</if>>
+
+	<!-- FEET -->
+	<<set _grip_strength to $physique / 20 + $handskill>>
+	<<if $feetaction is "rest">>
+		<<unset $dodging>>
+		You rest your legs.
+	<<elseif $feetaction is "evade">>
+		<<set $dodging to 1>>
+		You remain light on your feet, ready to dodge incoming attacks.
+	<<elseif $feetaction is "plant">>
+		<<unset $dodging>>
+		<<set _grip_strength += $feetskill>>
+		You plant your feet, helping you get a firm grip.
+		<<feetskilluse>>
+	<</if>>
+	<<if !$carryblock>>
+		<<set $feetactiondefault to ($feetaction ? $feetaction : "rest")>>
+		<<set $feetaction to 0>>
+	<</if>>
+
+	<!-- HANDS -->
+	<<for _hand range ["left", "right"]>>
+	<!-- iterate once per hand, unless $leftaction is $rightaction, in which case do stuff for the right hand immediately and <<break>> -->
+		<<set _handaction to V[_hand + 'action']>>
+		<<if _handaction>>
+			<<if _handaction.includes("_stroke")>>
+				<<set _action to "stroke">>
+			<<elseif _handaction.includes("strengthen")>>
+				<<set _action to "strengthen">>
+			<<elseif _handaction.includes("pull")>>
+				<<set _action to "pull">>
+			<<elseif _handaction.includes("grasp")>>
+				<<set _action to "grasp">>
+			<<elseif _handaction.includes("spray")>>
+				<<set _action to "spray">>
+			<<else>>
+				<<set _action to _handaction>>
+			<</if>>
+			<<if _handaction.includes("mouth_")>>
+				<<set _actionpart to "mouth">>
+			<<elseif _handaction.includes("vagina_")>>
+				<<set _actionpart to "vagina">>
+			<<elseif _handaction.includes("penis_")>>
+				<<set _actionpart to "penis">>
+			<<elseif _handaction.includes("anus_")>>
+				<<set _actionpart to "anus">>
+			<<elseif _handaction.includes("chest_")>>
+				<<set _actionpart to "chest">>
+			<</if>>
+		<</if>>
+		<<switch _action>>
+			<<case "rest">>
+				/* nothing to do */
+			<<case "stroke">>
+				<<if _actionpart is "mouth">>
+					You stroke the <<struggle_name _actionpart>>, hoping to put it at ease.
+				<<else>>
+					You stroke the <<struggle_name _actionpart>>'s <<struggle_appendage _actionpart>>, hoping to excite it.
+					<<if $struggle[_actionpart].progress gt 7 and $struggle[_actionpart].progress lt (_actionpart is "chest" ? 12 : 13)>>
+						<<set $struggle[_actionpart].progress++>>
+						<<set $player.bodyliquid[_actionpart].goo++>>
+						<<if ["vagina", "anus"].includes(_actionpart)>>
+							<<struggle_fluid _actionpart>>
+							<<purity -1>>
+							<<internalejac>>
+						<</if>>
+					<</if>>
+				<</if>>
+				<br>
+				<<neutral 5>><<submission 2>>
+
+				<<if $leftaction is $rightaction>>
+					<<submission 2>>
+					<<break>>
+				<</if>>
+			<<case "grasp">>
+				You raise your <<if $leftaction is $rightaction>>hands<<else>>_hand hand<</if>> to the <<print $struggle[_actionpart].creature>> clinging to your <<struggle_region _actionpart>>, though it's hard to find purchase.
+				<<set V[_hand + 'arm'] to "struggle">>
+				<<set V[_hand + 'armstate'] to _actionpart + '_struggle'>>
+				<<set $struggle[_actionpart].grip++>>
+
+				<<if $leftaction is $rightaction>>
+					<<set $leftaction to _actionpart + '_strengthen'>>
+					<<set $rightaction to _actionpart + '_strengthen'>>
+					<<set $rightarm to "struggle">>
+					<<set $rightarmstate to _actionpart + '_struggle'>>
+					<<set $struggle[_actionpart].grip++>>
+					<<break>>
+				<<else>>
+				<!-- changing $leftaction or $rightaction is needed to correctly set action defaults at the end of hands section, and it should be done after the `$leftaction is $rightaction` comparison -->
+					<<set V[_hand + 'action'] to _actionpart + '_strengthen'>>
+				<</if>>
+			<<case "strengthen">>
+				You tighten your grip on the <<print $struggle[_actionpart].creature>> clinging to your <<struggle_region _actionpart>><<if $leftaction is $rightaction>> with both hands<</if>>.
+				<<set V[_hand + 'arm'] to "struggle">>
+				<<set V[_hand + 'armstate'] to _actionpart + '_struggle'>>
+				<<set _rng2000 to random(2000)>>
+				<!-- _grip_strength is set above in the FEET section -->
+				<<if _grip_strength gte _rng2000>>
+					Your grasp is <span class="teal">much better.</span>
+					<<set $struggle[_actionpart].grip += 2>>
+				<<else>>
+					Your grasp is <span class="blue">a bit better.</span>
+					<<set $struggle[_actionpart].grip += 1>>
+				<</if>>
+				<br>
+				<<handskilluse>>
+
+				<<if $leftaction is $rightaction>>
+					<<set $struggle[_actionpart].grip += (_grip_strength gte _rng2000 ? 2 : 1)>>
+					<<set $rightarm to "struggle">>
+					<<set $rightarmstate to _actionpart + '_struggle'>>
+					<<break>>
+				<</if>>
+			<<case "pull">>
+				<br>
+				You dig your nails in and try to wrench the <<print $struggle[_actionpart].creature>> off your <<struggle_region _actionpart>>.
+				<<struggle_difficulty_set>>
+				<<if $struggle[_actionpart].success gte random (1, 100)>>
+					<span class="green">You hurl it away from you.</span>
+					<<set V[_actionpart + 'use'] to 0>>
+					<<set V[_actionpart + 'state'] to 0>>
+					<<struggle_part_init _actionpart>>
+					<<set $struggle.warded++>>
+					<<struggleClearActions `_actionpart + '_'`>>
+				<<else>>
+					<!-- TODO: maybe add some skill and random checks, with possibilities (and corresponding flavor text) to retain the grip, or lessen it instead of outright resetting it to 0 -->
+					You can't maintain your grip, and <span class="red">your fingers pull away without the creature.</span>
+					<<set $struggle[_actionpart].grip to 0>>
+				<</if>>
+
+				<<if $leftaction is $rightaction>>
+					<<break>>
+				<</if>>
+
+			<<case "spray">>
+				<<if $spray gte 1>>
+					You spray the <<print $struggle[_actionpart].creature>>. <span class="green">It leaps off your <<struggle_region _actionpart>>.</span>
+					<<set $spraystat++>><<spray -1>>
+					<<set V[_actionpart + 'use'] to 0>>
+					<<set V[_actionpart + 'state'] to 0>>
+					<<struggle_part_init _actionpart>>
+					<<set $struggle.warded++>>
+					<<struggleClearActions _actionpart>>
+				<<else>>
+					You try to spray the <<print $struggle[_actionpart].creature>> clinging to your <<struggle_region _actionpart>>, <span class="purple">but your spray is empty!</span>
+				<</if>>
+				<br>
+				<<if $leftaction is $rightaction>>
+					<<break>>
+				<</if>>
+		<</switch>>
 	<</for>>
-	<<if _capture_chance>>
-		<<set _capture_chance += ($prof.net / 20)>>
-	<<else>>
-		You prepare to cast your net at a <<print $struggle.creature>>, <span class="pink">but they're too close.</span> You'll have to drive one back first.
+
+	/* lose grasp on the lurkers that you have no contact with */
+	<<if !$carryblock>>
+		<<for _part range ["mouth", "vagina", "penis", "anus", "chest"]>>
+			<<if $struggle[_part].grip gt 0 and (!$leftaction or !$leftaction.includes(_part)) and (!$rightaction or !$rightaction.includes(_part))>>
+				Switching all attention away from it, <span class="red">you lose all grasp on the <<print $struggle[_part].creature>> clutching your <<struggle_region _part>>.</span>
+				<<set $struggle[_part].grip to 0>>
+				<!-- reset arm state -->
+				<<if $leftarmstate.toString().includes(_part)>>
+					<<set $leftarmstate to 0>>
+					<<set $leftarm to 0>>
+				<</if>>
+				<<if $rightarmstate.toString().includes(_part)>>
+					<<set $rightarmstate to 0>>
+					<<set $rightarm to 0>>
+				<</if>>
+				<!-- prevent attempts to strenghten what hasn't been grasped after orgasm, disassociation, etc -->
+				<!-- pretty useless unless !$carryblock check above goes away some day -->
+				<<if $rightactioncarry is (_part + '_strengthen')>>
+					<<set $rightactioncarry to (_part + '_grasp')>>
+				<</if>>
+				<<if $leftactioncarry is (_part + '_strengthen')>>
+					<<set $leftactioncarry to (_part + '_grasp')>>
+				<</if>>
+			<</if>>
+		<</for>>
 	<</if>>
 
-<<elseif $leftaction is "capture">>
-	<<set $leftaction to 0>><<set $leftactiondefault to "capture">>
-	<<for _i to 0; _i lt $struggle.number; _i++>>
-		<<if $struggle.enemy[_i].location is "fleeing">>
-			You cast a net at the <span class="green">recoiling</span> <<print $struggle.enemy[_i].name>> with your left hand.
-			<<set _capture_creature to _i>>
-			<<set _capture_chance to 60>>
-			<<break>>
+	/* capture calculations should go independently */
+	<<if $leftaction is "capture" or $rightaction is "capture">>
+		<<set _capture_chance to (!!($leftaction is "capture") + !!($rightaction is "capture")) * 30>>
+		<!-- select the best target -->
+		<<for _i to 0; _i lt $struggle.number; _i++>>
+			<<if $struggle.enemy[_i].location is "fleeing">>
+				<<set _capture_chance *= 2>>
+				<<set _capture_creature to _i>>
+				<<break>>
+			<<elseif $struggle.enemy[_i].location is "lurking">>
+				<<set _capture_creature to _i>>
+			<</if>>
+		<</for>>
+		<<if _capture_creature isnot undefined>>
+		<!-- do a strict check for undefined and not something else! otherwise the check will fail on 0 -->
+			You cast your net at the <<if $struggle.enemy[_capture_creature] is "fleeing">><span class="green">recoiling </span><</if>><<print $struggle.enemy[_capture_creature].name>><<if $leftaction is $rightaction>> with both hands<</if>>.
+			<<if $prof.net / 20 + _capture_chance gte random(100)>>
+				<<set _succ to true>>
+			<</if>>
+		<<else>>
+			You prepare to cast your net at a <<print $struggle.creature>>, <span class="pink">but they're too close.</span> You'll have to drive one back first.
 		<</if>>
-		<<if $struggle.enemy[_i].location is "lurking">>
-			You cast a net at the <<print $struggle.enemy[_i].name>> with your left hand.
-			<<set _capture_creature to _i>>
-			<<set _capture_chance to 30>>
-			<<break>>
+		<<if _succ>>
+			<span class="green">The net lands true.</span> You pull the creature into your possession.
+			<<if $struggle.enemy[_capture_creature].name is "lurker">>
+				<<set $lurkers_held += 1>>
+				<<set $stat_lurkers_captured += 1>>
+			<</if>>
+			<<set $struggle.done += 1>>
+			<<set $struggle.enemy[_capture_creature].location to "fled">>
+			<<set $leftaction to "rest">>
+		<<else>>
+			<span class="red">The creature squirms aside.</span><<gnet>><<prof net 1>>
 		<</if>>
-	<</for>>
-	<<if _capture_chance>>
-		<<set _capture_chance += ($prof.net / 20)>>
-	<<else>>
-		You prepare to cast your net at a <<print $struggle.creature>>, <span class="pink">but they're too close.</span> You'll have to drive one back first.
 	<</if>>
-
-<<elseif $rightaction is "capture">>
-	<<set $rightaction to 0>><<set $rightactiondefault to "capture">>
-	<<for _i to 0; _i lt $struggle.number; _i++>>
-		<<if $struggle.enemy[_i].location is "fleeing">>
-			You cast a net at the <span class="green">recoiling</span> <<print $struggle.enemy[_i].name>> with your right hand.
-			<<set _capture_creature to _i>>
-			<<set _capture_chance to 60>>
-			<<break>>
-		<</if>>
-		<<if $struggle.enemy[_i].location is "lurking">>
-			You cast a net at the <<print $struggle.enemy[_i].name>> with your right hand.
-			<<set _capture_creature to _i>>
-			<<set _capture_chance to 30>>
-			<<break>>
-		<</if>>
-	<</for>>
-	<<if _capture_chance>>
-		<<set _capture_chance += ($prof.net / 20)>>
-	<<else>>
-		You prepare to cast your net at a <<print $struggle.creature>>, <span class="pink">but they're too close.</span> You'll have to drive one back first.
+	<<if !$carryblock>>
+		<<set $leftactiondefault to ($leftaction ? $leftaction : "rest"); $leftaction to 0>>
+		<<set $rightactiondefault to ($rightaction ? $rightaction : "rest"); $rightaction to 0>>
 	<</if>>
-
-<</if>>
-<<if _capture_chance>>
-	<<if _capture_chance gte random(1, 100)>>
-		<span class="green">The net lands true.</span> You pull the creature into your possession.
-		<<if $struggle.enemy[_capture_creature].name is "lurker">>
-			<<set $lurkers_held += 1>>
-			<<set $stat_lurkers_captured += 1>>
-		<</if>>
-		<<set $struggle.done += 1>>
-		<<set $struggle.enemy[_capture_creature].location to "fled">>
-
-	<<else>>
-		<span class="red">The creature squirms aside.</span><<gnet>><<prof net 1>>
-	<</if>>
-<</if>>
-
-<br>
-
-
-
+	<br>
 <</widget>>
 
 <<widget "struggle_enemy">>
-<<if $struggle.mouth.creature>>
-	<<switch $struggle.mouth.progress>>
-	<<case 0>>
-		<<if $struggle.mouth.legs is "tentacles">>
-			The <<print $struggle.mouth.creature>>'s tentacles wrap around your neck.<<neutral 2>>
-		<<else>>
-			The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> rubs against your face.<<neutral 1>>
+	<<if $struggle.mouth.creature>>
+		<<switch $struggle.mouth.progress>>
+			<<case 0>>
+				<<if $struggle.mouth.legs is "tentacles">>
+					The <<print $struggle.mouth.creature>>'s tentacles wrap around your neck.<<neutral 2>>
+				<<else>>
+					The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> rubs against your face.<<neutral 1>>
+				<</if>>
+			<<case 1>>
+				The <<print $struggle.mouth.creature>> plays with your lips, <span class="blue">searching for a way in.</span><<neutral 2>>
+			<<case 2>>
+				The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> <span class="purple">pushes against your lips.</span><<neutral 4>>
+			<<case 3>>
+				The tip of the <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> begins to part your lips. <span class="pink">It's about to penetrate fully.</span><<neutral 5>>
+			<<case 4>>
+				<<if $player.virginity.oral isnot true>>
+					The <<print $struggle.mouth.creature>> <span class="pink"><<print (_mouthOpen ?'slides':'forces')>> its <<struggle_appendage mouth>> into your mouth</span>. It becomes girthier as more enters.
+					<<oralstat>>
+				<<else>>
+					The <<print $struggle.mouth.creature>> <span class="pink"><<print (_mouthOpen ?'slides':'forces')>> its <<struggle_appendage mouth>> into your mouth</span>. <span class="red">It tastes strange.</span>
+					<<takeVirginity $struggle.mouth.creature "oral">><<oralstat>>
+				<</if>>
+				<<if $consensual isnot 1>><<bruise face>><<violence 1>><<raped>><</if>>
+				<<neutral 5>><<set $mouthstate to "struggle_pen">><<set $mouthaction to 0>>
+			<<case 5>>
+				The <<print $struggle.mouth.creature>> pushes itself deeper into your mouth.<<neutral 5>>
+			<<case 6>>
+				The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> pushes down your throat. <<if $underwater isnot 1>><span class="purple">You can't breathe!</span><</if>><<neutral 5>>
+			<<case 7>>
+				The <<print $struggle.mouth.creature>> <span class="pink">shudders as it begins to pump a sweet fluid down your throat.</span><<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>><<oralejacstat>><<ejacstat>>
+			<<case 13>>
+				<<if $struggle.creature is "lurker">>
+					<<impregnate "Lurker" 400>><<fertilise>>
+					<<if _impreg is true>>
+						The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> <span class="red">expands again</span>, but the extra pressure disappears quickly. It feels like it left something behind. <<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>>
+					<<else>>
+						<<set _failedImpreg to true>>
+					<</if>>
+					<<set _impreg to false>>
+				<<else>>
+					<<set _failedImpreg to true>>
+				<</if>>
+				<<if _failedImpreg>>
+					The <<print $struggle.mouth.creature>> pumps a sweet fluid down your throat.<<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>>
+				<</if>>
+			<<case 14>>
+				The <<print $struggle.mouth.creature>> shudders, <span class="blue">and withdraws its <<struggle_appendage mouth>> from your throat.</span> It leaps from your face.<<neutral 5>><<struggle_fluid mouth>>
+				<<set $mouthuse to 0>>
+				<<set $mouthstate to 0>>
+				<<struggle_part_init "mouth">>
+
+				<<set $struggle.satisfied += 1>>
+			<<default>>
+				The <<print $struggle.mouth.creature>> pumps a sweet fluid down your throat.<<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>>
+		<</switch>>
+		<<if $struggle.mouth.progress gte 6 and $struggle.mouth.progress lte 14>>
+			<<if $underwater isnot 1>>
+				<<oxygen -150>>
+			<</if>>
+			<<if $oxygen gte 900>>
+				<!-- TODO: maybe add something here? -->
+			<<elseif $oxygen gte 600>>
+			<<elseif $oxygen gte 300>>
+			<<elseif $oxygen gte 1>>
+			<<else>>
+				<<violence 15>>
+			<</if>>
 		<</if>>
-	<<case 1>>
-		The <<print $struggle.mouth.creature>> plays with your lips, <span class="blue">searching for a way in.</span><<neutral 2>>
-	<<case 2>>
-		The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> <span class="purple">pushes against your lips.</span><<neutral 4>>
-	<<case 3>>
-		The tip of the <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> begins to part your lips. <span class="pink">It's about to penetrate fully.</span><<neutral 5>>
-	<<case 4>>
-		<<if $player.virginity.oral isnot true>>
-			The <<print $struggle.mouth.creature>> <span class="pink"><<print (_mouthOpen ?'slides':'forces')>> its <<struggle_appendage mouth>> into your mouth</span>. It becomes girthier as more enters.
-			<<oralstat>>
-		<<else>>
-			The <<print $struggle.mouth.creature>> <span class="pink"><<print ($_mouthOpen ?'slides':'forces')>> its <<struggle_appendage mouth>> into your mouth</span>. <span class="red">It tastes strange.</span>
-			<<takeVirginity $struggle.mouth.creature "oral">><<oralstat>>
-		<</if>>
-		<<if $consensual isnot 1>><<bruise face>><<violence 1>><<raped>><</if>>
-		<<neutral 5>><<set $mouthstate to "struggle_pen">><<set $mouthaction to 0>>
-	<<case 5>>
-		The <<print $struggle.mouth.creature>> pushes itself deeper into your mouth.<<neutral 5>>
-	<<case 6>>
-		The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> pushes down your throat. <<if $underwater isnot 1>><span class="purple">You can't breathe!</span><</if>><<neutral 5>>
-	<<case 7>>
-		The <<print $struggle.mouth.creature>> <span class="pink">shudders as it begins to pump a sweet fluid down your throat.</span><<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>><<oralejacstat>><<ejacstat>>
-	<<case 13>>
-		<<if $struggle.creature is "lurker">>
-			<<impregnate "Lurker" 400>><<fertilise>>
+		<<set $struggle.mouth.progress += 1>>
+		<br>
+	<</if>>
+
+	<<if $struggle.vagina.creature>>
+		<<switch $struggle.vagina.progress>>
+			<<case 0>>
+				<<if $struggle.vagina.legs is "tentacles">>
+					The <<print $struggle.vagina.creature>>'s tentacles grope and cling to your pelvis.<<neutral 2>>
+				<<else>>
+					The <<print $struggle.vagina.creature>>'s <<struggle_appendage vagina>> prods your pelvis, as if searching for something.<<neutral 1>>
+				<</if>>
+			<<case 1>>
+				The <<print $struggle.vagina.creature>> slides over your labia, <span class="blue">searching for a way in.</span><<neutral 2>>
+			<<case 2>>
+				<<struggle_clothes vagina>>
+			<<case 3>>
+				The tip of the <<print $struggle.vagina.creature>>'s <<struggle_appendage vagina>> pushes against your <<pussy>>. <span class="pink">It's about to penetrate fully.</span><<neutral 5>>
+			<<case 4>>
+				<<set _pain to $vaginalPain>>
+				<<if $player.virginity.vaginal isnot true>>
+					The <<print $struggle.vagina.creature>> <span class="pink">forces its <<struggle_appendage vagina>> into your <<pussy>>.</span> It becomes girthier as more enters.
+					<<set $vaginastate to "struggle_pen">><<vaginalstat>><<vaginaraped>>
+					<<sex 30>><<pain _pain>>
+				<<else>>
+					The <<print $struggle.vagina.creature>> <span class="pink">forces its <<struggle_appendage vagina>> into your <<pussy>>,</span>
+					<<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>
+						<span class="red">Despite your lack of a hymen, you feel something inside you change as your virginity and purity are taken.</span>
+					<<else>>
+						<span class="red">breaking your hymen and forever robbing you of your purity.</span>
+					<</if>>
+					<<set $vaginastate to "struggle_pen">><<vaginalstat>><<vaginaraped>>
+					<<sex 30>><<pain _pain>>
+				<</if>>
+				<<takeVirginity $struggle.vagina.creature "vaginal">>
+				<<if $consensual isnot 1>><<bruise vagina>><<violence 2>><<raped>><<vaginaraped>><</if>>
+				<<neutral 5>>
+			<<case 5>>
+				The <<print $struggle.vagina.creature>> pushes itself deeper into your <<pussy>>.<<neutral 5>>
+			<<case 6>>
+				The <<print $struggle.vagina.creature>>'s <<struggle_appendage vagina>> begins to thrust into your <<pussy>>.<<neutral 5>>
+			<<case 7>>
+				The <<print $struggle.vagina.creature>> <span class="pink">shudders and pumps a warm fluid into your <<pussy>>.</span><<neutral 5>><<struggle_fluid vagina>><<purity -1>><<internalejac>><<set $player.bodyliquid.vagina.goo += 1>><<vaginalejacstat>><<ejacstat>>
+			<<case 14>>
+				The <<print $struggle.vagina.creature>> shudders, <span class="blue">and withdraws its <<struggle_appendage vagina>> from your <<pussy>>.</span> It leaps from your pelvis.<<neutral 5>><<struggle_fluid vagina>>
+				<<set $vaginause to 0>>
+				<<set $vaginastate to 0>>
+				<<struggle_part_init "vagina">>
+
+				<<set $struggle.satisfied += 1>>
+			<<default>>
+				The <<print $struggle.vagina.creature>> pumps a warm fluid into your <<pussy>>.<<neutral 5>><<struggle_fluid vagina>><<purity -1>><<internalejac>><<set $player.bodyliquid.vagina.goo += 1>>
+			<</switch>>
+		<<set $struggle.vagina.progress += 1>>
+		<br>
+	<</if>>
+
+	<<if $struggle.penis.creature>>
+		<<switch $struggle.penis.progress>>
+			<<case 0>>
+				<<if $struggle.penis.legs is "tentacles">>
+					The <<print $struggle.penis.creature>> lowers itself towards your <<penis>> as its tentacles slide and grope.<<neutral 2>>
+				<<else>>
+					The <<print $struggle.penis.creature>> lowers itself towards your <<penis>>.<<neutral 1>>
+				<</if>>
+			<<case 1>>
+				The <<print $struggle.penis.creature>> presses against your <<penis>>, <span class="blue">trying to envelop.</span><<neutral 2>>
+			<<case 2>>
+				<<struggle_clothes penis>>
+			<<case 3>>
+				The <<print $struggle.penis.creature>> pushes against your <<penis>>. <span class="pink">It's about to envelop you fully.</span><<neutral 5>>
+			<<case 4>>
+				<<set _pain to $penisPain>>
+				<<if $player.virginity.penile isnot true>>
+					The <<print $struggle.penis.creature>> <span class="pink">forces your <<penis>> inside its body.</span> It becomes tighter as more enters.
+					<<set $penisstate to "struggle_pen">><<penilestat>><<penisraped>>
+					<<sex 30>><<pain _pain>>
+				<<else>>
+					The <<print $struggle.penis.creature>> <span class="pink">forces your <<penis>> into its body,</span> <span class="red">separating your foreskin from your glans and forever robbing you of your purity.</span>
+					<<set $penisstate to "struggle_pen">><<penilestat>><<penisraped>>
+					<<sex 30>><<pain _pain>>
+				<</if>>
+				<<takeVirginity $struggle.penis.creature "penile">>
+				<<if $consensual isnot 1>><<bruise penis>><<violence 2>><<raped>><<penisraped>><</if>>
+				<<neutral 5>>
+			<<case 5>>
+				The <<print $struggle.penis.creature>> takes your <<penis>> deeper inside.<<neutral 5>>
+			<<case 6>>
+				The <<print $struggle.penis.creature>> begins to thrust against your <<penis>>.<<neutral 5>>
+			<<case 7>>
+				The <<print $struggle.penis.creature>> <span class="pink">shudders as your <<penis>> thrusts against its core.</span><<neutral 5>><<set $player.bodyliquid.penis.goo += 1>>
+			<<case 14>>
+				The <<print $struggle.penis.creature>> shudders, <span class="blue">and releases your <<penis>>.</span> It leaps from your tummy.<<neutral 5>>
+				<<set $penisuse to 0>>
+				<<set $penisstate to 0>>
+				<<struggle_part_init "penis">>
+
+				<<set $struggle.satisfied += 1>>
+			<<default>>
+				The <<print $struggle.penis.creature>> thrusts against your <<penis>>.<<neutral 5>><<set $player.bodyliquid.penis.goo += 1>>
+		<</switch>>
+		<<set $struggle.penis.progress += 1>>
+		<br>
+	<</if>>
+
+	<<if $struggle.anus.creature>>
+		<<switch $struggle.anus.progress>>
+		<<case 0>>
+			<<if $struggle.anus.legs is "tentacles">>
+				The <<print $struggle.anus.creature>>'s tentacles slide and grope over your <<bottom>>.<<neutral 2>>
+			<<else>>
+				The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> slides over your <<bottom>>.<<neutral 1>>
+			<</if>>
+		<<case 1>>
+			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> gropes your <<bottom>>, <span class="blue">trying to find an entrance.</span><<neutral 2>>
+		<<case 2>>
+			<<struggle_clothes anus>>
+		<<case 3>>
+			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> pushes against your <<bottom>>, <span class="pink">about to penetrate you fully.</span><<neutral 5>>
+		<<case 4>>
+			<<set _pain to $analPain>>
+			<<if $player.virginity.anal isnot true>>
+				The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> <span class="pink">thrusts into your <<bottom>>.</span> It becomes girthier as more enters.
+				<<set $anusstate to "struggle_pen">><<analstat>><<anusraped>>
+				<<sex 30>><<pain _pain>>
+			<<else>>
+				The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> <span class="pink">thrusts into your <<bottom>>,</span> <span class="red">violating you in a way you hadn't conceived of.</span>
+				<<takeVirginity $struggle.anus.creature "anal">><<set $anusstate to "struggle_pen">><<analstat>><<anusraped>>
+				<<sex 30>><<pain _pain>>
+			<</if>>
+			<<if $consensual isnot 1>><<bruise anus>><<violence 2>><<raped>><<anusraped>><</if>>
+			<<neutral 5>>
+		<<case 5>>
+			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> pushes deeper into your <<bottom>>.<<neutral 5>>
+		<<case 6>>
+			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> begins to thrust into your <<bottom>>.<<neutral 5>>
+		<<case 7>>
+			The <<print $struggle.anus.creature>> <span class="pink">shudders as it pumps a warm fluid into your <<bottom>>.</span><<neutral 5>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>><<analejacstat>><<ejacstat>>
+		<<case 13>>
+			<<impregnate $struggle.anus.creature 50>>
 			<<if _impreg is true>>
-				The <<print $struggle.mouth.creature>>'s <<struggle_appendage mouth>> <span class="red">expands again</span>, but the extra pressure disappears quickly. It feels like it left something behind. <<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>>
+				The <<print $struggle.anus.creature>>'s <<struggle_appendage mouth>> <span class="red">expands again</span>, but the extra pressure disappears quickly. It feels like it left something behind.<<neutral 5>><<set $player.bodyliquid.anus.goo += 1>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>>
+				<<set _impreg to false>>
 			<<else>>
-				<<set _failedImpreg to true>>
+				The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> thrusts into your <<bottom>>.<<neutral 5>><<set $player.bodyliquid.anus.goo += 1>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>>
 			<</if>>
-			<<set _impreg to false>>
-		<<else>>
-			<<set _failedImpreg to true>>
-		<</if>>
-		<<if _failedImpreg>>
-			The <<print $struggle.mouth.creature>> pumps a sweet fluid down your throat.<<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>>
-		<</if>>
-	<<case 14>>
-		The <<print $struggle.mouth.creature>> shudders, <span class="blue">and withdraws its <<struggle_appendage mouth>> from your throat.</span> It leaps from your face.<<neutral 5>><<struggle_fluid mouth>>
-		<<set $mouthuse to 0>>
-		<<set $mouthstate to 0>>
-		<<struggle_mouth_init>>
+		<<case 14>>
+			The <<print $struggle.anus.creature>> shudders <span class="blue">and withdraws its <<struggle_appendage anus>>,</span> leaping from your <<bottom>><<neutral 5>><<struggle_fluid anus>>
+			<<set $anususe to 0>>
+			<<set $anusstate to 0>>
+			<<struggle_part_init "anus">>
 
-		<<set $struggle.satisfied += 1>>
-	<<default>>
-		The <<print $struggle.mouth.creature>> pumps a sweet fluid down your throat.<<neutral 5>><<struggle_fluid mouth>><<purity -1>><<internalejac>><<set $player.bodyliquid.mouth.goo += 1>>
-	<</switch>>
-	<<if $struggle.mouth.progress gte 6 and $struggle.mouth.progress lte 14>>
-		<<if $underwater isnot 1>>
-			<<oxygen -150>>
-		<</if>>
-		<<if $oxygen gte 900>>
-
-		<<elseif $oxygen gte 600>>
-
-		<<elseif $oxygen gte 300>>
-
-		<<elseif $oxygen gte 1>>
-
-		<<else>>
-			<<violence 15>>
-		<</if>>
-	<</if>>
-	<<set $struggle.mouth.progress += 1>>
-	<br>
-<</if>>
-<<if $struggle.vagina.creature>>
-	<<switch $struggle.vagina.progress>>
-	<<case 0>>
-		<<if $struggle.vagina.legs is "tentacles">>
-			The <<print $struggle.vagina.creature>>'s tentacles grope and cling to your pelvis.<<neutral 2>>
-		<<else>>
-			The <<print $struggle.vagina.creature>>'s <<struggle_appendage vagina>> prods your pelvis, as if searching for something.<<neutral 1>>
-		<</if>>
-	<<case 1>>
-		The <<print $struggle.vagina.creature>> slides over your labia, <span class="blue">searching for a way in.</span><<neutral 2>>
-	<<case 2>>
-		<<struggle_clothes vagina>>
-	<<case 3>>
-		The tip of the <<print $struggle.vagina.creature>>'s <<struggle_appendage vagina>> pushes against your <<pussy>>. <span class="pink">It's about to penetrate fully.</span><<neutral 5>>
-	<<case 4>>
-		<<set _pain to $vaginalPain>>
-		<<if $player.virginity.vaginal isnot true>>
-			The <<print $struggle.vagina.creature>> <span class="pink">forces its <<struggle_appendage vagina>> into your <<pussy>>.</span> It becomes girthier as more enters.
-			<<set $vaginastate to "struggle_pen">><<vaginalstat>><<vaginaraped>>
-			<<sex 30>><<pain _pain>>
-		<<else>>
-			The <<print $struggle.vagina.creature>> <span class="pink">forces its <<struggle_appendage vagina>> into your <<pussy>>,</span>
-			<<if $sexStats.vagina.pregnancy.totalBirthEvents gt 0>>
-				<span class="red">Despite your lack of a hymen, you feel something inside you change as your virginity and purity are taken.</span>
-			<<else>>
-				<span class="red">breaking your hymen and forever robbing you of your purity.</span>
-			<</if>>
-			<<set $vaginastate to "struggle_pen">><<vaginalstat>><<vaginaraped>>
-			<<sex 30>><<pain _pain>>
-		<</if>>
-		<<takeVirginity $struggle.vagina.creature "vaginal">>
-		<<if $consensual isnot 1>><<bruise vagina>><<violence 2>><<raped>><<vaginaraped>><</if>>
-		<<neutral 5>>
-	<<case 5>>
-		The <<print $struggle.vagina.creature>> pushes itself deeper into your <<pussy>>.<<neutral 5>>
-	<<case 6>>
-		The <<print $struggle.vagina.creature>>'s <<struggle_appendage vagina>> begins to thrust into your <<pussy>>.<<neutral 5>>
-	<<case 7>>
-		The <<print $struggle.vagina.creature>> <span class="pink">shudders and pumps a warm fluid into your <<pussy>>.</span><<neutral 5>><<struggle_fluid vagina>><<purity -1>><<internalejac>><<set $player.bodyliquid.vagina.goo += 1>><<vaginalejacstat>><<ejacstat>>
-	<<case 14>>
-		The <<print $struggle.vagina.creature>> shudders, <span class="blue">and withdraws its <<struggle_appendage vagina>> from your <<pussy>>.</span> It leaps from your pelvis.<<neutral 5>><<struggle_fluid vagina>>
-		<<set $vaginause to 0>>
-		<<set $vaginastate to 0>>
-		<<struggle_vagina_init>>
-
-		<<set $struggle.satisfied += 1>>
-	<<default>>
-		The <<print $struggle.vagina.creature>> pumps a warm fluid into your <<pussy>>.<<neutral 5>><<struggle_fluid vagina>><<purity -1>><<internalejac>><<set $player.bodyliquid.vagina.goo += 1>>
-	<</switch>>
-	<<set $struggle.vagina.progress += 1>>
-	<br>
-<</if>>
-<<if $struggle.penis.creature>>
-	<<switch $struggle.penis.progress>>
-	<<case 0>>
-		<<if $struggle.penis.legs is "tentacles">>
-			The <<print $struggle.penis.creature>> lowers itself towards your <<penis>> as its tentacles slide and grope.<<neutral 2>>
-		<<else>>
-			The <<print $struggle.penis.creature>> lowers itself towards your <<penis>>.<<neutral 1>>
-		<</if>>
-	<<case 1>>
-		The <<print $struggle.penis.creature>> presses against your <<penis>>, <span class="blue">trying to envelop.</span><<neutral 2>>
-	<<case 2>>
-		<<struggle_clothes penis>>
-	<<case 3>>
-		The <<print $struggle.penis.creature>> pushes against your <<penis>>. <span class="pink">It's about to envelop you fully.</span><<neutral 5>>
-	<<case 4>>
-		<<set _pain to $penisPain>>
-		<<if $player.virginity.penile isnot true>>
-			The <<print $struggle.penis.creature>> <span class="pink">forces your <<penis>> inside its body.</span> It becomes tighter as more enters.
-			<<set $penisstate to "struggle_pen">><<penilestat>><<penisraped>>
-			<<sex 30>><<pain _pain>>
-		<<else>>
-			The <<print $struggle.penis.creature>> <span class="pink">forces your <<penis>> into its body,</span> <span class="red">separating your foreskin from your glans and forever robbing you of your purity.</span>
-			<<set $penisstate to "struggle_pen">><<penilestat>><<penisraped>>
-			<<sex 30>><<pain _pain>>
-		<</if>>
-		<<takeVirginity $struggle.penis.creature "penile">>
-		<<if $consensual isnot 1>><<bruise penis>><<violence 2>><<raped>><<penisraped>><</if>>
-		<<neutral 5>>
-	<<case 5>>
-		The <<print $struggle.penis.creature>> takes your <<penis>> deeper inside.<<neutral 5>>
-	<<case 6>>
-		The <<print $struggle.penis.creature>> begins to thrust against your <<penis>>.<<neutral 5>>
-	<<case 7>>
-		The <<print $struggle.penis.creature>> <span class="pink">shudders as your <<penis>> thrusts against its core.</span><<neutral 5>><<set $player.bodyliquid.penis.goo += 1>>
-	<<case 14>>
-		The <<print $struggle.penis.creature>> shudders, <span class="blue">and releases your <<penis>>.</span> It leaps from your tummy.<<neutral 5>>
-		<<set $penisuse to 0>>
-		<<set $penisstate to 0>>
-		<<struggle_penis_init>>
-
-		<<set $struggle.satisfied += 1>>
-	<<default>>
-		The <<print $struggle.penis.creature>> thrusts against your <<penis>>.<<neutral 5>><<set $player.bodyliquid.penis.goo += 1>>
-	<</switch>>
-	<<set $struggle.penis.progress += 1>>
-	<br>
-<</if>>
-<<if $struggle.anus.creature>>
-	<<switch $struggle.anus.progress>>
-	<<case 0>>
-		<<if $struggle.anus.legs is "tentacles">>
-			The <<print $struggle.anus.creature>>'s tentacles slide and grope over your <<bottom>>.<<neutral 2>>
-		<<else>>
-			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> slides over your <<bottom>>.<<neutral 1>>
-		<</if>>
-	<<case 1>>
-		The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> gropes your <<bottom>>, <span class="blue">trying to find an entrance.</span><<neutral 2>>
-	<<case 2>>
-		<<struggle_clothes anus>>
-	<<case 3>>
-		The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> pushes against your <<bottom>>, <span class="pink">about to penetrate you fully.</span><<neutral 5>>
-	<<case 4>>
-		<<set _pain to $analPain>>
-		<<if $player.virginity.anal isnot true>>
-			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> <span class="pink">thrusts into your <<bottom>>.</span> It becomes girthier as more enters.
-			<<set $anusstate to "struggle_pen">><<analstat>><<anusraped>>
-			<<sex 30>><<pain _pain>>
-		<<else>>
-			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> <span class="pink">thrusts into your <<bottom>>,</span> <span class="red">violating you in a way you hadn't conceived of.</span>
-			<<takeVirginity $struggle.anus.creature "anal">><<set $anusstate to "struggle_pen">><<analstat>><<anusraped>>
-			<<sex 30>><<pain _pain>>
-		<</if>>
-		<<if $consensual isnot 1>><<bruise anus>><<violence 2>><<raped>><<anusraped>><</if>>
-		<<neutral 5>>
-	<<case 5>>
-		The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> pushes deeper into your <<bottom>>.<<neutral 5>>
-	<<case 6>>
-		The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> begins to thrust into your <<bottom>>.<<neutral 5>>
-	<<case 7>>
-		The <<print $struggle.anus.creature>> <span class="pink">shudders as it pumps a warm fluid into your <<bottom>>.</span><<neutral 5>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>><<analejacstat>><<ejacstat>>
-	<<case 13>>
-		<<impregnate $struggle.anus.creature 50>>
-		<<if _impreg is true>>
-			The <<print $struggle.anus.creature>>'s <<struggle_appendage mouth>> <span class="red">expands again</span>, but the extra pressure disappears quickly. It feels like it left something behind.<<neutral 5>><<set $player.bodyliquid.anus.goo += 1>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>>
-			<<set _impreg to false>>
-		<<else>>
+			<<set $struggle.satisfied += 1>>
+		<<default>>
 			The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> thrusts into your <<bottom>>.<<neutral 5>><<set $player.bodyliquid.anus.goo += 1>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>>
-		<</if>>
-	<<case 14>>
-		The <<print $struggle.anus.creature>> shudders <span class="blue">and withdraws its <<struggle_appendage anus>>,</span> leaping from your <<bottom>><<neutral 5>><<struggle_fluid anus>>
-		<<set $anususe to 0>>
-		<<set $anusstate to 0>>
-		<<struggle_anus_init>>
-
-		<<set $struggle.satisfied += 1>>
-	<<default>>
-		The <<print $struggle.anus.creature>>'s <<struggle_appendage anus>> thrusts into your <<bottom>>.<<neutral 5>><<set $player.bodyliquid.anus.goo += 1>><<struggle_fluid anus>><<purity -1>><<internalejac>><<set $player.bodyliquid.anus.goo += 1>>
-	<</switch>>
-	<<set $struggle.anus.progress += 1>>
-	<br>
-<</if>>
-<<if $struggle.chest.creature>>
-	<<switch $struggle.chest.progress>>
-	<<case 0>>
-		<<neutral 2>>
-		<<if $struggle.chest.legs is "tentacles">>
-			The <<print $struggle.chest.creature>>'s tentacles grope your <<breasts>>,
-			<<if $breastsize gte 3>>
-				squeezing them together as <span class="blue">a phallic <<struggle_appendage chest>> rubs against them.</span>
-			<<else>>
-				teasing them as <span class="blue">a phallic <<struggle_appendage chest>> rubs between them.</span>
-			<</if>>
-		<<elseif $struggle.chest.legs is "legs">>
-			The <<print $struggle.chest.creature>>'s legs grope your
-			<<if $breastsize gte 3>>
-				<<breasts>>. <span class="blue">A phallic <<struggle_appendage chest>> emerges from the creature,</span> and rubs against them.
-			<<else>>
-				<<breasts>>, teasing them as <span class="blue">a phallic <<struggle_appendage chest>> emerges from the creature,</span> and joins the flurry.
-			<</if>>
-		<<else>>
-			The <<print $struggle.chest.creature>>'s body slides over your <<breasts>>.
-			<<if $breastsize gte 3>>
-				<span class="blue">A phallic <<struggle_appendage chest>> emerges from the creature</span> and rubs against them.
-			<<else>>
-				It teases them as <span class="blue">a phallic <<struggle_appendage chest>> emerges from the creature.</span>
-			<</if>>
-		<</if>>
-	<<case 1>>
-		<<struggle_clothes chest>>
-	<<case 2>>
-		<<if $breastsize gte 3>>
-			<<if $struggle.chest.legs is "tentacles">>
-				The <<print $struggle.chest.creature>>'s tentacles <span class="pink">wrap around your breasts.</span><<neutral 5>>
-			<<else>>
-				The <<print $struggle.chest.creature>> squeezes your <<breasts>> together, and <span class="pink">pushes its <<struggle_appendage chest>> between them.</span><<neutral 3>>
-			<</if>>
-		<<else>>
-			<<if $struggle.chest.legs is "tentacles">>
-				The <<print $struggle.chest.creature>>'s tentacles grope and flick your <<breasts>>.<<neutral 5>>
-			<<else>>
-				The <<print $struggle.chest.creature>> gropes and teases your <<breasts>>.<<neutral 3>>
-			<</if>>
-		<</if>>
-		<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-			<span class="pink">You feel milk leak from your buds.</span>
-			<<breastfeed>>
-			<<milkvolume 1>>
-		<<else>>
-			<<milkvolume 1>>
-		<</if>>
-	<<case 3>>
-		<<if $breastsize gte 3>>
-			<<if $struggle.chest.legs is "tentacles">>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s tentacles <span class="pink">squeeze milk from your <<breasts>>.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s tentacles squeeze your <<breasts>>, while others flick your nipples.
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>>
-			<<else>>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>> <span class="pink">thrusts its <<struggle_appendage chest>> between your <<breasts>></span> as <span class="pink">milk leaks from your buds.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>> <span class="pink">thrusts its <<struggle_appendage chest>> between your <<breasts>>.</span>
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>>
-			<</if>>
-		<<else>>
-			<<struggle_flat_chest>>
-		<</if>>
-	<<case 4>>
-		<<if $breastsize gte 3>>
-			<<if $struggle.chest.legs is "tentacles">>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s appendage <span class="pink">presses against your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze milk from your buds.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s appendage <span class="pink">presses against your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze.</span>
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>>
-			<<else>>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>> fucks your <<breasts>> as <span class="pink">milk leaks from your buds.</span> The creature shudders as <span class="purple">a warm fluid erupts from its <<struggle_appendage chest>>.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>. The creature shudders as <span class="purple">a warm fluid erupts from its <<struggle_appendage chest>>.</span>
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
-			<</if>>
-		<<else>>
-			<<struggle_flat_chest>>
-		<</if>>
-	<<case 5>>
-		<<if $breastsize gte 3>>
-			<<if $struggle.chest.legs is "tentacles">>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s appendage <span class="pink">thrusts between your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze milk from your buds.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s appendage <span class="pink">thrusts between your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze.</span>
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>>
-			<<else>>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>, pumping warm fluid with each thrust as <span class="pink">milk leaks from your buds.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> keeps thrusting between your <<breasts>>, pumping out a warm fluid.
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
-			<</if>>
-		<<else>>
-			<<struggle_flat_chest>>
-		<</if>>
-	<<case 6>>
-		<<if $breastsize gte 3>>
-			<<if $struggle.chest.legs is "tentacles">>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s appendage fucks your <<breasts>> as <span class="pink">the tentacles continue to squeeze milk from your buds.</span> The creature shudders as a warm fluid erupts from its <<struggle_appendage chest>>.
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s appendage fucks your <<breasts>> as <span class="pink">the tentacles continue to squeeze.</span> The creature shudders as a warm fluid erupts from its <<struggle_appendage chest>>.
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
-			<<else>>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>, pumping warm fluid with each thrust as <span class="pink">milk leaks from your buds.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> keeps thrusting between your <<breasts>>, pumping out a warm fluid.
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
-			<</if>>
-		<<else>>
-			<<struggle_flat_chest>>
-		<</if>>
-	<<case 12>>
-		<<if $breastsize gte 3>>
-			The <<print $struggle.chest.creature>> shudders <span class="blue">and withdraws its <<struggle_appendage chest>>,</span> leaping from your <<breasts>><<set $player.bodyliquid.chest.goo += 1>>
-		<<else>>
-			The <<print $struggle.chest.creature>> <span class="blue">leaps from your <<breasts>>.</span>
-		<</if>>
-		<<set $chestuse to 0>>
-		<<set $cheststate to 0>>
-		<<struggle_chest_init>>
-
-		<<set $struggle.satisfied += 1>>
-	<<default>>
-		<<if $breastsize gte 3>>
-			<<if $struggle.chest.legs is "tentacles">>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s appendage keeps thrusting between your <<breasts>>, pumping a warm fluid as the tentacles <span class="pink">continue to squeeze milk from your buds.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s appendage keeps thrusting between your <<breasts>>, pumping out a warm fluid.
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
-			<<else>>
-				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-					The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>, pumping warm fluid with each thrust as <span class="pink">milk leaks from your buds.</span>
-					<<breastfeed>>
-				<<else>>
-					The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> keeps thrusting between your <<breasts>>, pumping out a warm fluid.
-					<<milkvolume 1>>
-				<</if>>
-				<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
-			<</if>>
-		<<else>>
-			<<struggle_flat_chest>>
-		<</if>>
-	<</switch>>
-	<<set $struggle.chest.progress += 1>>
-	<br>
-<</if>>
-<<for _i to 0; _i lt $struggle.number; _i++>>
-	<<if $struggle.enemy[_i].location is "fleeing">>
-		<<if $struggle.enemy[_i].satisfied gte 1>>
-			<<if $underwater is 1>>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims into the murk. <span class="green">It won't return.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies away. <span class="green">It won't return.</span>
-			<<else>>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps away. <span class="green">It won't return.</span>
-			<</if>>
-			<<set $struggle.done += 1>>
-			<<set $struggle.enemy[_i].location to "fled">>
-		<<elseif $struggle.enemy[_i].health gte 1>>
-			<<if $underwater is 1>>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims around you, <span class="blue">preparing to attack.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies around you, <span class="blue">preparing to attack.</span>
-			<<else>>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> lands nearby, <span class="blue">preparing to attack.</span>
-			<</if>>
-			<<set $struggle.enemy[_i].location to "lurking">>
-		<<else>>
-			<<if $underwater is 1>>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims into the murk. <span class="green">It won't return.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies away. <span class="green">It won't return.</span>
-			<<else>>
-				<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps away. <span class="green">It won't return.</span>
-			<</if>>
-			<<set $struggle.done += 1>>
-			<<set $struggle.enemy[_i].location to "fled">>
-		<</if>>
-		<br>
-	<<elseif $struggle.enemy[_i].location is "lurking">>
-		<<set $rng to random(1, 100)>>
-		<<if $dodging gte 1>>
-			<<set _dodge_chance to (($feetskill / 2) - $drunk)>>
-			<<feetskilluse>>
-		<</if>>
-		<<set _hit_chance to random(1, 1000)>>
-		<<if _dodge_chance gte _hit_chance>>
-			<<set $dodging -= 1>>
-			<<if $underwater is 1>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you,
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies towards you,
-			<<else>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps towards you,
-			<</if>>
-			<<if $drunk gte 60>>
-				but you drunkenly stagger out of the way,
-			<<elseif $feetskill gte 800>>
-				but you dance aside,
-			<<elseif $feetskill gte 200>>
-				but you step aside,
-			<<else>>
-				but you stumble aside,
-			<</if>>
-			<<if _dodge_chance - _hit_chance gte 200>>
-				<span class="green">dodging it.</span>
-			<<else>>
-				<span class="teal">narrowly dodging it.</span>
-				<<if $worn.over_upper.name isnot "naked">>
-					<<set $worn.over_upper.integrity -= 15>>
-					It tears your $worn.over_upper.name as it passes.
-				<<elseif $worn.over_lower.name isnot "naked">>
-					<<set $worn.over_lower.integrity -= 15>>
-					It tears your $worn.over_lower.name as it passes.
-				<<elseif $worn.upper.name isnot "naked">>
-					<<set $worn.upper.integrity -= 15>>
-					It tears your $worn.upper.name as it passes.
-				<<elseif $worn.lower.name isnot "naked">>
-					<<set $worn.lower.integrity -= 15>>
-					It tears your $worn.lower.name as it passes.
-				<<elseif $worn.under_upper.name isnot "naked">>
-					<<set $worn.under_upper.integrity -= 15>>
-					It tears your $worn.under_upper.name as it passes.
-				<<elseif $worn.under_lower.name isnot "naked">>
-					<<set $worn.under_lower.integrity -= 15>>
-					It tears your $worn.under_lower.name as it passes.
-				<<else>>
-					It whips you as it passes.
-				<</if>>
-				<<neutral 2>>
-			<</if>>
-		<<elseif $rng gte 81 and $mouthuse is 0>>
-			<<if $underwater is 1>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you, <span class="blue">landing on your face.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies towards you, <span class="blue">landing on your face.</span>
-			<<else>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps towards you, <span class="blue">landing on your face.</span>
-			<</if>>
-
-			<<struggle_attach mouth>><<set $mouthuse to "struggle">><<set $mouthstate to "struggle">>
-		<<elseif $rng gte 61 and $vaginause is 0 and $player.vaginaExist>>
-			<<if $underwater is 1>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you, <span class="blue">landing on your pelvis.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies towards you, <span class="blue">landing on your pelvis.</span>
-			<<else>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps towards you, <span class="blue">landing on your pelvis.</span>
-			<</if>>
-			<<struggle_attach vagina>><<set $vaginause to "struggle">><<set $vaginastate to "struggle">>
-		<<elseif $rng gte 41 and $penisuse is 0 and $player.penisExist>>
-			<<if $underwater is 1>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you, <span class="blue">landing on your tummy.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies towards you, <span class="blue">landing on your tummy.</span>
-			<<else>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps towards you, <span class="blue">landing on your tummy.</span>
-			<</if>>
-			<<struggle_attach penis>><<set $penisuse to "struggle">><<set $penisstate to "struggle">>
-		<<elseif $rng gte 21 and $anususe is 0 and $analdisable is "f">>
-			<<if $underwater is 1>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you, <span class="blue">landing on your <<bottom>>.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies towards you, <span class="blue">landing on your <<bottom>>.</span>
-			<<else>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps towards you, <span class="blue">landing on your <<bottom>>.</span>
-			<</if>>
-			<<struggle_attach anus>><<set $anususe to "struggle">><<set $anusstate to "struggle">>
-		<<elseif $rng gte 1 and $chestuse is 0>>
-			<<if $underwater is 1>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> swims towards you, <span class="blue">landing on your <<breasts>>.</span>
-			<<elseif $struggle.enemy[_i].motion is "flying">>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> flies towards you, <span class="blue">landing on your <<breasts>>.</span>
-			<<else>>
-				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> leaps towards you, <span class="blue">landing on your <<breasts>>.</span>
-			<</if>>
-			<<struggle_attach chest>><<set $chestuse to "struggle">><<set $cheststate to "struggle">>
-		<<else>>
-			<<struggle_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> waits for an opening.
-			<<set $struggle.enemy[_i].bide to true>>
-		<</if>>
+		<</switch>>
+		<<set $struggle.anus.progress += 1>>
 		<br>
 	<</if>>
-<</for>>
 
-<<if $oxygen lt $oxygenmax and $underwater isnot 1 and _strangle is 1>>
-	<<unset _strangle>>
-	<br>Air: <<oxygencaption>>
-<</if>>
-<br>
-<<turnend>>
+	<<if $struggle.chest.creature>>
+		<<switch $struggle.chest.progress>>
+			<<case 0>>
+				<<neutral 2>>
+				<<if $struggle.chest.legs is "tentacles">>
+					The <<print $struggle.chest.creature>>'s tentacles grope your <<breasts>>,
+					<<if $breastsize gte 3>>
+						squeezing them together as <span class="blue">a phallic <<struggle_appendage chest>> rubs against them.</span>
+					<<else>>
+						teasing them as <span class="blue">a phallic <<struggle_appendage chest>> rubs between them.</span>
+					<</if>>
+				<<elseif $struggle.chest.legs is "legs">>
+					The <<print $struggle.chest.creature>>'s legs grope your
+					<<if $breastsize gte 3>>
+						<<breasts>>. <span class="blue">A phallic <<struggle_appendage chest>> emerges from the creature,</span> and rubs against them.
+					<<else>>
+						<<breasts>>, teasing them as <span class="blue">a phallic <<struggle_appendage chest>> emerges from the creature,</span> and joins the flurry.
+					<</if>>
+				<<else>>
+					The <<print $struggle.chest.creature>>'s body slides over your <<breasts>>.
+					<<if $breastsize gte 3>>
+						<span class="blue">A phallic <<struggle_appendage chest>> emerges from the creature</span> and rubs against them.
+					<<else>>
+						It teases them as <span class="blue">a phallic <<struggle_appendage chest>> emerges from the creature.</span>
+					<</if>>
+				<</if>>
+			<<case 1>>
+				<<struggle_clothes chest>>
+			<<case 2>>
+				<<if $breastsize gte 3>>
+					<<if $struggle.chest.legs is "tentacles">>
+						The <<print $struggle.chest.creature>>'s tentacles <span class="pink">wrap around your breasts.</span><<neutral 5>>
+					<<else>>
+						The <<print $struggle.chest.creature>> squeezes your <<breasts>> together, and <span class="pink">pushes its <<struggle_appendage chest>> between them.</span><<neutral 3>>
+					<</if>>
+				<<else>>
+					<<if $struggle.chest.legs is "tentacles">>
+						The <<print $struggle.chest.creature>>'s tentacles grope and flick your <<breasts>>.<<neutral 5>>
+					<<else>>
+						The <<print $struggle.chest.creature>> gropes and teases your <<breasts>>.<<neutral 3>>
+					<</if>>
+				<</if>>
+				<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+					<span class="pink">You feel milk leak from your buds.</span>
+					<<breastfeed>>
+					<<milkvolume 1>>
+				<<else>>
+					<<milkvolume 1>>
+				<</if>>
+			<<case 3>>
+				<<if $breastsize gte 3>>
+					<<if $struggle.chest.legs is "tentacles">>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s tentacles <span class="pink">squeeze milk from your <<breasts>>.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s tentacles squeeze your <<breasts>>, while others flick your nipples.
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>>
+					<<else>>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>> <span class="pink">thrusts its <<struggle_appendage chest>> between your <<breasts>></span> as <span class="pink">milk leaks from your buds.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>> <span class="pink">thrusts its <<struggle_appendage chest>> between your <<breasts>>.</span>
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>>
+					<</if>>
+				<<else>>
+					<<struggle_flat_chest>>
+				<</if>>
+			<<case 4>>
+				<<if $breastsize gte 3>>
+					<<if $struggle.chest.legs is "tentacles">>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s appendage <span class="pink">presses against your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze milk from your buds.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s appendage <span class="pink">presses against your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze.</span>
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>>
+					<<else>>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>> fucks your <<breasts>> as <span class="pink">milk leaks from your buds.</span> The creature shudders as <span class="purple">a warm fluid erupts from its <<struggle_appendage chest>>.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>. The creature shudders as <span class="purple">a warm fluid erupts from its <<struggle_appendage chest>>.</span>
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
+					<</if>>
+				<<else>>
+					<<struggle_flat_chest>>
+				<</if>>
+			<<case 5>>
+				<<if $breastsize gte 3>>
+					<<if $struggle.chest.legs is "tentacles">>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s appendage <span class="pink">thrusts between your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze milk from your buds.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s appendage <span class="pink">thrusts between your <<breasts>></span> as <span class="pink">the tentacles continue to squeeze.</span>
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>>
+					<<else>>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>, pumping warm fluid with each thrust as <span class="pink">milk leaks from your buds.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> keeps thrusting between your <<breasts>>, pumping out a warm fluid.
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
+					<</if>>
+				<<else>>
+					<<struggle_flat_chest>>
+				<</if>>
+			<<case 6>>
+				<<if $breastsize gte 3>>
+					<<if $struggle.chest.legs is "tentacles">>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s appendage fucks your <<breasts>> as <span class="pink">the tentacles continue to squeeze milk from your buds.</span> The creature shudders as a warm fluid erupts from its <<struggle_appendage chest>>.
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s appendage fucks your <<breasts>> as <span class="pink">the tentacles continue to squeeze.</span> The creature shudders as a warm fluid erupts from its <<struggle_appendage chest>>.
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
+					<<else>>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>, pumping warm fluid with each thrust as <span class="pink">milk leaks from your buds.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> keeps thrusting between your <<breasts>>, pumping out a warm fluid.
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
+					<</if>>
+				<<else>>
+					<<struggle_flat_chest>>
+				<</if>>
+			<<case 12>>
+				<<if $breastsize gte 3>>
+					The <<print $struggle.chest.creature>> shudders <span class="blue">and withdraws its <<struggle_appendage chest>>,</span> leaping from your <<breasts>><<set $player.bodyliquid.chest.goo += 1>>
+				<<else>>
+					The <<print $struggle.chest.creature>> <span class="blue">leaps from your <<breasts>>.</span>
+				<</if>>
+				<<set $chestuse to 0>>
+				<<set $cheststate to 0>>
+				<<struggle_part_init "chest">>
+
+				<<set $struggle.satisfied += 1>>
+			<<default>>
+				<<if $breastsize gte 3>>
+					<<if $struggle.chest.legs is "tentacles">>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s appendage keeps thrusting between your <<breasts>>, pumping a warm fluid as the tentacles <span class="pink">continue to squeeze milk from your buds.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s appendage keeps thrusting between your <<breasts>>, pumping out a warm fluid.
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
+					<<else>>
+						<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+							The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> fucks your <<breasts>>, pumping warm fluid with each thrust as <span class="pink">milk leaks from your buds.</span>
+							<<breastfeed>>
+						<<else>>
+							The <<print $struggle.chest.creature>>'s <<struggle_appendage chest>> keeps thrusting between your <<breasts>>, pumping out a warm fluid.
+							<<milkvolume 1>>
+						<</if>>
+						<<sex 5>><<set $player.bodyliquid.chest.goo += 1>>
+					<</if>>
+				<<else>>
+					<<struggle_flat_chest>>
+				<</if>>
+		<</switch>>
+		<<set $struggle.chest.progress += 1>>
+		<br>
+	<</if>>
+
+	<!-- populate an array of unoccupied bodyparts to target -->
+	<<set _targets to []>>
+	<<if $mouthuse is 0>><<set _targets.push("mouth")>><</if>>
+	<<if $vaginause is 0 and $player.vaginaExist>><<set _targets.push("vagina")>><</if>>
+	<<if $penisuse is 0 and $player.penisExist>><<set _targets.push("penis")>><</if>>
+	<<if $anususe is 0 and $analdisable is "f">><<set _targets.push("anus")>><</if>>
+	<<if $chestuse is 0>><<set _targets.push("chest")>><</if>>
+
+	<<for _i to 0; _i lt $struggle.number; _i++>>
+		<<if $struggle.enemy[_i].location is "fleeing">>
+			The <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>>
+			<<if $struggle.enemy[_i].health gte 1 and $struggle.enemy[_i].satisfied lt 1>>
+				<<if $underwater is 1>>
+					swims around you,
+				<<elseif $struggle.enemy[_i].motion is "flying">>
+					flies around you,
+				<<else>>
+					lands nearby,
+				<</if>>
+				<span class="blue">preparing to attack.</span>
+				<<set $struggle.enemy[_i].location to "lurking">>
+			<<else>>
+				<<if $underwater is 1>>
+					swims into the murk.
+				<<elseif $struggle.enemy[_i].motion is "flying">>
+					flies away.
+				<<else>>
+					leaps away.
+				<</if>>
+				<span class="green">It won't return.</span>
+				<<set $struggle.done += 1>>
+				<<set $struggle.enemy[_i].location to "fled">>
+			<</if>>
+			<br>
+		<<elseif $struggle.enemy[_i].location is "lurking" and _targets.length gt 0>>
+			<!-- lurkers attacc -->
+			<<set $rng to random(1, 100)>>
+			<<if $dodging gte 1>>
+				<<set _doge_chance to (($feetskill / 3) + ($danceskill / 3) - $drunk - (!!$worn.feet.type.includes("heels") * 200))>>
+				<<feetskilluse>>
+			<</if>>
+			<<set _hit_chance to random(1, 1000)>>
+			<<if _doge_chance gte _hit_chance>>
+				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>>
+				<<if $underwater is 1>>
+					swims towards you,
+				<<elseif $struggle.enemy[_i].motion is "flying">>
+					flies towards you,
+				<<else>>
+					leaps towards you,
+				<</if>>
+				<<set $dodging -= 1>>
+				<<if $drunk gte 60>>
+					but you drunkenly stagger out of the way<<if !random(100)>> like a drunk master you are<</if>>,
+				<<elseif $feetskill gte 800 or $danceskill gte 400>>
+					but you dance aside,
+				<<elseif $feetskill gte 200>>
+					but you step aside,
+				<<else>>
+					but you stumble aside,
+				<</if>>
+				<<if _doge_chance - _hit_chance gte 200>>
+					<span class="green">dodging it.</span>
+				<<else>>
+					<span class="teal">narrowly dodging it.</span>
+					<<for $_slot range ["over_upper", "over_lower", "upper", "lower", "under_upper", "under_lower"]>>
+						<<if $worn[$_slot].name isnot "naked">>
+							<<set $worn[$_slot].integrity -= random(10, 15)>>
+							<<set _clothesdamaged to true>>
+							It tears your $worn[$_slot].name as it passes
+							<<break>>
+						<</if>>
+					<</for>>
+					<<if !_clothesdamaged>>
+						It whips you as it passes. <<pain 2>>
+					<</if>>
+					<<neutral 2>>
+				<</if>>
+			<<elseif $rng lte 66 and _targets.length gt 0>>
+				<<set _target to _targets.pluck()>>
+				<<struggle_bide_the>> <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>>
+				<<if $underwater is 1>>
+					swims towards you,
+				<<elseif $struggle.enemy[_i].motion is "flying">>
+					flies towards you,
+				<<else>>
+					leaps towards you,
+				<</if>>
+				<span class="blue">landing on your <<struggle_region _target>>.</span>
+				<<struggle_attach _target>>
+				<<set V[_target + 'use'] to "struggle">>
+				<<set V[_target + 'state'] to "struggle">>
+				<<set V[_target + 'target'] to "struggle">>
+			<<else>>
+				The <<print $struggle.enemy[_i].description>> <<print $struggle.enemy[_i].name>> waits for an opening.
+				<<set $struggle.enemy[_i].bide to true>>
+			<</if>>
+			<br>
+		<</if>>
+	<</for>>
+
+	<<if $oxygen lt $oxygenmax and $underwater isnot 1 and _strangle is 1>>
+		<<unset _strangle>>
+		<br>Air: <<oxygencaption>>
+	<</if>>
+	<br>
+	<<turnend>>
 <</widget>>
 
 
 <<widget "struggle_difficulty">>/*Unused for now*/
+<!-- can be slapped at the end of _pull actions to show difficulty -->
+	<<set $_chance to $struggle[$args[0]].success>>
+	<<struggle_difficulty_set>>
 
-<<struggle_difficulty_set>>
-
- | Success Chance :
-<<if $struggle.mouth.success gte 100>>
-	<span class="green"><<print $struggle.mouth.success>>%</span>
-<<elseif $struggle.mouth.success gte 80>>
-	<span class="teal"><<print $struggle.mouth.success>>%</span>
-<<elseif $struggle.mouth.success gte 60>>
-	<span class="lblue"><<print $struggle.mouth.success>>%</span>
-<<elseif $struggle.mouth.success gte 40>>
-	<span class="blue"><<print $struggle.mouth.success>>%</span>
-<<elseif $struggle.mouth.success gte 20>>
-	<span class="purple"><<print $struggle.mouth.success>>%</span>
-<<elseif $struggle.mouth.success gte 1>>
-	<span class="pink"><<print $struggle.mouth.success>>%</span>
-<<else>>
-	<span class="red"><<print $struggle.mouth.success>>%</span>
-<</if>>
-
+	| Success Chance :
+	<<if $_chance gte 100>>
+		<span class="green"><<print $_chance>>%</span>
+	<<elseif $_chance gte 80>>
+		<span class="teal"><<print $_chance>>%</span>
+	<<elseif $_chance gte 60>>
+		<span class="lblue"><<print $_chance>>%</span>
+	<<elseif $_chance gte 40>>
+		<span class="blue"><<print $_chance>>%</span>
+	<<elseif $_chance gte 20>>
+		<span class="purple"><<print $_chance>>%</span>
+	<<elseif $_chance gte 1>>
+		<span class="pink"><<print $_chance>>%</span>
+	<<else>>
+		<span class="red"><<print $_chance>>%</span>
+	<</if>>
 <</widget>>
 
 <<widget "struggle_difficulty_set">>
-	<<set $struggle.mouth.success to Math.trunc(($struggle.mouth.grip * 17) + ($physique / 600))>>
-	<<set $struggle.vagina.success to Math.trunc(($struggle.vagina.grip * 17) + ($physique / 600))>>
-	<<set $struggle.penis.success to Math.trunc(($struggle.penis.grip * 17) + ($physique / 600))>>
-	<<set $struggle.anus.success to Math.trunc(($struggle.anus.grip * 17) + ($physique / 600))>>
-	<<set $struggle.chest.success to Math.trunc(($struggle.chest.grip * 17) + ($physique / 600))>>
-	<<if $struggle.mouth.success gte 100>>
-		<<if $leftactiondefault is "mouth_strengthen">>
-			<<set $leftactiondefault to "mouth_pull">>
+	<<for $_part range ["mouth", "vagina", "penis", "anus", "chest"]>>
+		<<set $struggle[$_part].success to Math.trunc(($struggle[$_part].grip * 17) + ($physique / 600))>>
+		<<if $struggle[$_part].success gte 100>>
+			<!-- can't strengthen anymore, default to pull -->
+			<<if $leftactiondefault is $_part + '_strengthen'>>
+				<<set $leftactiondefault to $_part + '_pull'>>
+			<</if>>
+			<<if $rightactiondefault is $_part + '_strengthen'>>
+				<<set $rightactiondefault to $_part + '_pull'>>
+			<</if>>
 		<</if>>
-		<<if $rightactiondefault is "mouth_strengthen">>
-			<<set $rightactiondefault to "mouth_pull">>
-		<</if>>
-	<</if>>
-	<<if $struggle.vagina.success gte 100>>
-		<<if $leftactiondefault is "vagina_strengthen">>
-			<<set $leftactiondefault to "vagina_pull">>
-		<</if>>
-		<<if $rightactiondefault is "vagina_strengthen">>
-			<<set $rightactiondefault to "vagina_pull">>
-		<</if>>
-	<</if>>
-	<<if $struggle.penis.success gte 100>>
-		<<if $leftactiondefault is "penis_strengthen">>
-			<<set $leftactiondefault to "penis_pull">>
-		<</if>>
-		<<if $rightactiondefault is "penis_strengthen">>
-			<<set $rightactiondefault to "penis_pull">>
-		<</if>>
-	<</if>>
-	<<if $struggle.anus.success gte 100>>
-		<<if $leftactiondefault is "anus_strengthen">>
-			<<set $leftactiondefault to "anus_pull">>
-		<</if>>
-		<<if $rightactiondefault is "anus_strengthen">>
-			<<set $rightactiondefault to "anus_pull">>
-		<</if>>
-	<</if>>
-	<<if $struggle.chest.success gte 100>>
-		<<if $leftactiondefault is "chest_strengthen">>
-			<<set $leftactiondefault to "chest_pull">>
-		<</if>>
-		<<if $rightactiondefault is "chest_strengthen">>
-			<<set $rightactiondefault to "chest_pull">>
-		<</if>>
-	<</if>>
+	<</for>>
 <</widget>>
 
 <<widget "struggle_bide_the">>
-<<if $struggle.enemy[_i].bide is true>>
-	<<set $struggle.enemy[_i].bide to false>>
-	Seeing an opening, the
-<<elseif $struggle.done lte ($struggle.number - 1)>>
-	The
-<<else>>
-	The
-<</if>>
-<</widget>>
-
-<<widget "struggle_the">>
-<<if $struggle.done lte ($struggle.number - 1)>>
-	The
-<<else>>
-	The
-<</if>>
+	<<if $struggle.enemy[_i].bide is true>>
+		<<set $struggle.enemy[_i].bide to false>>
+		Seeing an opening, the
+	<<else>>
+		The
+	<</if>>
 <</widget>>
 
 <<widget "struggle_fluid">>
-<<if $args[0] is "mouth" and ($struggle.mouth.creature is "lurker" or $struggle.mouth.creature is "slime")>>
-	<<set $drugged += 25>>
-<<elseif $args[0] is "vagina" and ($struggle.vagina.creature is "lurker" or $struggle.vagina.creature is "slime")>>
-	<<set $drugged += 25>>
-<<elseif $args[0] is "anus" and ($struggle.anus.creature is "lurker" or $struggle.anus.creature is "slime")>>
-	<<set $drugged += 25>>
-<<elseif $args[0] is "mouth" and $struggle.mouth.creature is "pale slime">>
-	<<set $drugged += 50>>
-	<<set $hallucinogen += 40>>
-<<elseif $args[0] is "vagina" and $struggle.vagina.creature is "pale slime">>
-	<<set $drugged += 50>>
-	<<set $hallucinogen += 40>>
-<<elseif $args[0] is "anus" and $struggle.anus.creature is "pale slime">>
-	<<set $drugged += 50>>
-	<<set $hallucinogen += 40>>
-<</if>>
+	<<if ["mouth", "vagina", "anus"].includes($args[0])>>
+		<<if $struggle[$args[0]].creature is "lurker" or $struggle.mouth.creature is "slime">>
+			<<drugs 25>>
+		<<elseif $struggle[$args[0]].creature is "pale slime">>
+			<<drugs 50>>
+			<<set $hallucinogen += 40>>
+		<</if>>
+	<</if>>
 <</widget>>
-
-
 
 <<widget "struggle_clothes">>
 
@@ -2612,23 +1995,23 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 		<</if>>
 	<<else>>
 		<<if $struggle[$args[0]].damage gte 10>>
-			It hurts itself against the material, <span class="green">and it leaps away.</span>
+			It hurts itself against the material, <span class="green">and leaps away.</span>
 			<<if $args[0] is "vagina">>
 				<<set $vaginause to 0>>
 				<<set $vaginastate to 0>>
-				<<struggle_vagina_init>>
+				<<struggle_part_init "vagina">>
 				<<set $struggle.warded += 1>>
 				<<struggleClearActions "vagina_">>
 			<<elseif $args[0] is "penis">>
 				<<set $penisuse to 0>>
 				<<set $penisstate to 0>>
-				<<struggle_penis_init>>
+				<<struggle_part_init "penis">>
 				<<set $struggle.warded += 1>>
 				<<struggleClearActions "penis_">>
 			<<else>>
 				<<set $anususe to 0>>
 				<<set $anusstate to 0>>
-				<<struggle_anus_init>>
+				<<struggle_part_init "anus">>
 				<<set $struggle.warded += 1>>
 				<<struggleClearActions "anus_">>
 			<</if>>
@@ -2651,68 +2034,91 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 
 <</widget>>
 
-<<widget "struggle_bodypart">>
-<<if $args[0] is "vagina">>
-	<<pussy>>
-<<elseif $args[0] is "penis">>
-	<<penis>>
-<<elseif $args[0] is "anus">>
-	<<bottom>>
-<<elseif $args[0] is "chest">>
-	<<breasts>>
-<</if>>
+<<widget "struggle_bodypart">><<silently>>
+	<<switch $args[0]>>
+		<<case "vagina">>
+			<<pussy>>
+		<<case "penis">>
+			<<penis>>
+		<<case "anus">>
+			<<bottom>>
+		<<case "chest">>
+			<<breasts>>
+	<</switch>>
+<</silently>><<print _text_output>>
 <</widget>>
 
-<<widget "struggle_appendage">>
-<<if $struggle[$args[0]].creature is "insect">>
-	<<set $text_output to "stinger">>
-<<elseif $struggle[$args[0]].creature is "wasp">>
-	<<set $text_output to "stinger">>
-<<elseif $struggle[$args[0]].creature is "bee">>
-	<<set $text_output to "stinger">>
-<<else>>
-	<<set $text_output to "appendage">>
-<</if>>
-<<print $text_output>>
+<<widget "struggle_appendage">><<silently>>
+	<<switch $struggle[$args[0]].creature>>
+		<<case "wasp" "bee">>
+			<<set $_text_output to "stinger">>
+		<<case "squid">>
+			<<set $_text_output to "tentacle">>
+		<<default>>
+			<<set $_text_output to "appendage">>
+	<</switch>>
+	<</silently>><<print $_text_output>>
 <</widget>>
 
 <<widget "struggle_flat_chest">>
-<<if $struggle.chest.legs is "tentacles">>
-	<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-		The <<print $struggle.chest.creature>>'s tentacles flick your <<breasts>> as <span class="pink">milk leaks from your buds.</span>
+	<<if $struggle.chest.legs is "tentacles">>
+		<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+			The <<print $struggle.chest.creature>>'s tentacles flick your <<breasts>> as <span class="pink">milk leaks from your buds.</span>
+		<<else>>
+			The <<print $struggle.chest.creature>>'s tentacles flick and tease your <<breasts>>.
+		<</if>>
+		<<sex 5>>
 	<<else>>
-		The <<print $struggle.chest.creature>>'s tentacles flick and tease your <<breasts>>.
+		<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
+			The <<print $struggle.chest.creature>> suckles your <<breasts>> as <span class="pink">milk leaks from your buds.</span>
+			<<breastfeed>><<sex 3>>
+		<<else>>
+			The <<print $struggle.chest.creature>> sucks on your <<breasts>> as its <<struggle_appendage chest>> rubs against your abdomen.
+			<<milkvolume 1>><<sex 5>>
+		<</if>>
+		<<sex 3>>
 	<</if>>
-	<<sex 5>>
-<<else>>
-	<<if $lactating is 1 and $breastfeedingdisable is "f" and $milk_amount gte 1>>
-		The <<print $struggle.chest.creature>> suckles your <<breasts>> as <span class="pink">milk leaks from your buds.</span>
-		<<breastfeed>><<sex 3>>
-	<<else>>
-		The <<print $struggle.chest.creature>> sucks on your <<breasts>> as its <<struggle_appendage chest>> rubs against your abdomen.
-		<<milkvolume 1>><<sex 5>>
-	<</if>>
-	<<sex 3>>
-<</if>>
 <</widget>>
 
 <<widget "struggle_attach">>
-<<set $struggle[$args[0]].creature to $struggle.enemy[_i].name>>
-<<set $struggle[$args[0]].legs to $struggle.enemy[_i].legs>>
-<<set $struggle.enemy[_i].location to $args[0]>>
+	<<set $struggle[$args[0]].creature to $struggle.enemy[_i].name>>
+	<<set $struggle[$args[0]].description to $struggle.enemy[_i].description>>
+	<<set $struggle[$args[0]].legs to $struggle.enemy[_i].legs>>
+	<<set $struggle.enemy[_i].location to $args[0]>>
+	<!-- temp var to highlight newly attached lurkers -->
+	<<set T['gold_' + $args[0]] to true>>
 <</widget>>
 
 
 <<widget "struggleClearActions">>
-<<if $args[0]>>
-	<<if ($mouthaction).toString().includes($args[0])>>
-		<<set $mouthactiondefault to $mouthaction>><<set $mouthaction to 0>>
+	<<if $args[0]>>
+		<<if ($mouthaction).toString().includes($args[0])>>
+			<<set $mouthactiondefault to $mouthaction>><<set $mouthaction to 0>>
+		<</if>>
+		<<if ($leftaction).toString().includes($args[0])>>
+			<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
+		<</if>>
+		<<if ($rightaction).toString().includes($args[0])>>
+			<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
+		<</if>>
+		<<if ($leftarmstate).toString().includes($args[0])>>
+			<<set $leftarm to 0>><<set $leftarmstate to 0>>
+		<</if>>
+		<<if ($rightarmstate).toString().includes($args[0])>>
+			<<set $rightarm to 0>><<set $rightarmstate to 0>>
+		<</if>>
 	<</if>>
-	<<if ($leftaction).toString().includes($args[0])>>
-		<<set $leftactiondefault to $leftaction>><<set $leftaction to 0>>
+<</widget>>
+
+<<widget "struggle_region">><<silently>>
+	<<if ["mouth","vagina","penis","anus","chest"].includes($args[0])>>
+		<<switch $args[0]>>
+			<<case "mouth">><<set _text_output to "head">>
+			<<case "vagina">><<set _text_output to "pelvis">>
+			<<case "penis">><<set _text_output to "tummy">>
+			<<case "anus">><<set _text_output to "bottom">>
+			<<case "chest">><<set _text_output to "chest">>
+		<</switch>>
 	<</if>>
-	<<if ($rightaction).toString().includes($args[0])>>
-		<<set $rightactiondefault to $rightaction>><<set $rightaction to 0>>
-	<</if>>
-<</if>>
+	<</silently>><<print _text_output>>
 <</widget>>

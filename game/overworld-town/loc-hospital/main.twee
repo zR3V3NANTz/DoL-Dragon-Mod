@@ -1,7 +1,10 @@
 :: Ambulance rescue
-<<set $outside to 0>><<effects>>
+<<set $outside to 0>><<effects>><<rngWraith 1>>
 
 You feel yourself being lifted onto a stretcher before passing out again.
+<<if _wraithEvent>>
+	You think you saw someone standing next to you. Someone pale and beautiful.
+<</if>>
 <br><br>
 
 <<link [[Sleep|Hospital Bed]]>><</link>>
@@ -31,6 +34,9 @@ You are in front of the hospital. It is open at all hours.
 		You are hiding in the bushes just outside the entrance. You should be able to enter without being seen if you time it right.
 		<br><br>
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "hospital">>
+	<</if>>
 
 	<<link [[Go inside hospital (0:01)->Hospital Foyer]]>><<pass 1>><</link>>
 	<br>
@@ -47,6 +53,9 @@ You are inside the hospital foyer. <<if $psych is 1>>You see a sign directing to
 <<if $stress gte $stressmax>>
 	<<passouthospital>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "hospital">>
+	<</if>>
 	<<if $exposed gte 1>>
 		You are hiding under a hospital bed, hoping no one spots you in this state of undress. You see a cart full of sheets not far away that you could use to cover yourself. You could wait until the coast looks clear then make a break for it. Alternatively, you could inch the bed closer to the cart to try to remain concealed from view.
 		<br><br>
@@ -139,11 +148,14 @@ You awaken on a hard metallic surface in a dark room. Dim lights along the walls
 Through the door and to the left there is a precipitous drop. You peer down and see dark running water; you can vaguely make out a wide tunnel leading away from the bottom. To the right is a long corridor. A door stands shut at the other end. In front of you is a small hole in the wall, which you might be able to squeeze through.
 <br><br>
 
-<<link [[Climb down to the water (0:01)|Abduction Hospital Water]]>><<set $molestationstart to 1>><<pass 1>><</link>>
+<<beastNEWinit 2 wolf>>
+<<if $monster is 1 or $bestialitydisable is "f">>
+	<<link [[Climb down to the water (0:01)|Abduction Hospital Water]]>><<set $molestationstart to 1>><<pass 1>><</link>>
+	<br>
+<</if>>
+<<link [[Head down the corridor (0:01)|Abduction Hospital Corridor]]>><<pass 1>><<endevent>><</link>>
 <br>
-<<link [[Head down the corridor (0:01)|Abduction Hospital Corridor]]>><<pass 1>><</link>>
-<br>
-<<link [[Squeeze through the hole (0:01)|Abduction Hospital Hole]]>><<pass 1>><</link>>
+<<link [[Squeeze through the hole (0:01)|Abduction Hospital Hole]]>><<pass 1>><<endevent>><</link>>
 <br>
 
 :: Molestation Hospital

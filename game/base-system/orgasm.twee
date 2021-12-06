@@ -12,8 +12,11 @@
 	<</if>>
 	<<if $player.penisExist and $femaleclimax is -1 and $penissize lt 0>>
 		<<set $_femaleclimaxchance to 50>>
-		<<if $anusstate is "penetrated" or $anusstate is "tentacle" or $anusstate is "tentacledeep">>
+		<<if $anusstate is "penetrated" or $anusstate is "tentacle" or $anusstate is "tentacledeep" or $anusstate is "doublepenetrated">>
 			<<set $_femaleclimaxchance += 40>>
+			<<if $anusstate is "doublepenetrated">>
+				<<set $_femaleclimaxchance += 20>>
+			<</if>>
 		<</if>>
 		<<if $mouthstate is "penetrated" or $mouthstate is "tentacle" or $mouthstate is "tentacledeep">>
 			<<set $_femaleclimaxchance += 20>>
@@ -50,7 +53,7 @@
 				You are overcome by sensation. You ejaculate into the condom that covers your penis.
 				<<set $player.condom.cum to true>>
 			<<elseif $penisuse is "othervagina">>
-				<<for $_i = 0; $_i lt $enemyno; $_i++>>
+				<<for $_i = 0; $_i lt $enemynomax; $_i++>>
 					<<if $NPCList[$_i].vagina is "penis">>
 						<<personselect $_i>>
 						<<penileejacstat>>
@@ -70,13 +73,13 @@
 					<span class="red">The condom is too damaged, and semen bursts through.</span>
 				<</if>>
 			<<elseif $penisuse is "otheranus">>
-				<<for $_i = 0; $_i lt $enemyno; $_i++>>
-					<<if $NPCList[$_i].penis is "otheranus">>
+				<<for $_i = 0; $_i lt $enemynomax; $_i++>>
+					<<if $NPCList[$_i].penis is "otheranus" or $NPCList[$_i].vagina is "otheranus">>
 						<<personselect $_i>>
 						<<penileejacstat>>
 						<span class="pink">You are overcome by sensation and ejaculate deep into <<his>> bowels.</span>
 						<<purity -1>><<internalejac>><<creampie "npc" "anus">>
-					<<elseif $NPCList[$_i].penis is "otheranusimminent" or $NPCList[$_i].penis is "otheranusentrance">>
+					<<elseif $NPCList[$_i].penis is "otheranusimminent" or $NPCList[$_i].penis is "otheranusentrance" or $NPCList[$_i].vagina is "otheranusimminent" or $NPCList[$_i].vagina is "otheranusentrance">>
 						<<personselect $_i>>
 						<span class="pink">You are overcome by sensation and ejaculate on <<his>> ass.</span>
 					<</if>>
@@ -85,7 +88,7 @@
 					<span class="red">The condom is too damaged, and semen bursts through.</span>
 				<</if>>
 			<<elseif $penisuse is "othermouth">>
-				<<for $_i = 0; $_i lt $enemyno; $_i++>>
+				<<for $_i = 0; $_i lt $enemynomax; $_i++>>
 					<<if $NPCList[$_i].mouth is "penis">>
 						<<personselect $_i>>
 						<<penileejacstat>>
@@ -105,7 +108,7 @@
 						<<personselect $_i>>
 						<<penileejacstat>>
 						<span class="pink">You are overcome by sensation and ejaculate over <<his>> penis.</span>
-						<<purity -1>><<internalejac>><<creampie "npc" "mouth">>
+						<<purity -1>><<internalejac>><<creampie "npc" "penis">>
 					<<elseif $NPCList[$_i].penis is "penisimminent" or $NPCList[$_i].penis is "penisentrance">>
 						<<personselect $_i>>
 						<span class="pink">You are overcome by sensation and ejaculate over <<his>> cock and stomach.</span>
@@ -413,6 +416,253 @@
 		<<else>>
 			You steady yourself as your spasms subside, feeling exposed on the open beach.
 		<</if>>
+	<</if>>
+	<br><br>
+<</widget>>
+
+<<widget "orgasmLocation">>
+	<<orgasm>>
+	<<switch $args[0]>>
+		<<case "schoolHallway">>
+			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+				You steady yourself as your spasms subside. You feel fortunate that the hallway is empty right now, and hope the noise hasn't attracted attention.
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the hallway. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "emptyClassroom">>
+			You steady yourself as your spasms subside. You feel fortunate that the classroom is empty right now, and hope the noise hasn't attracted attention.
+		<<case "classroom">>
+			<<if $schoolstate is "second" and $whitneymaths isnot "absent">>
+				Having taken notice of your orgasm, Whitney smiles at you.
+				<<npcincr Whitney lust 1>><<glust>>
+				<br><br>
+			<<elseif $schoolstate is "third" and $kylarenglishstate isnot "absent">>
+				Kylar watches you, transfixed by your orgasm.
+				<<npcincr Kylar lust 1>><<glust>>
+				<br><br>
+			<<elseif $schoolstate is "fourth" and $robinhistory is "seat">>
+				Robin politely tries to look away, but still can't avoid to peek.
+				<<npcincr Robin lust 1>><<glust>>
+				<br><br>
+			<</if>>
+			You manage to keep yourself from moaning, but your spasms denounce your climax to the students around you. A few whispers start to run down the classroom, but are quickly shut down by <<print _teacher>>. <<He>> doesn't seem to know the reason, but understands that you are the talk of the class.
+			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>><<detention 1>><<gdelinquency>>
+		<<case "swimClassroom">>
+			You manage to keep quiet, so as to not draw Mason's attention. However, your spasms denounce your climax to the students around you. A few whispers start to run down the pool. <<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+		<<case "emptySwimClassroom">>
+			You steady yourself as your spasms subside. You feel fortunate that the pool is empty right now, and hope the noise hasn't attracted attention.
+		<<case "canteen">>
+			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+				You steady yourself as your spasms subside. You feel fortunate that the canteen is empty right now, and hope the noise hasn't attracted attention.
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in climax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the canteen. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "library">>
+			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+				You steady yourself as your spasms subside. You feel fortunate that the library is empty right now, and hope the noise hasn't attracted attention.
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<elseif _sydney_location is "library">>
+				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the hallway.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+				<br><br>
+				Sydney clears <<his>> throat. The other students get the message and the whispers stop.
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the Library. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "boyChangingRoom">>
+			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
+			<<elseif $player.gender_appearance is "f">>
+				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the room. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "girlChangingRoom">>
+			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
+			<<elseif $player.gender_appearance is "m">>
+				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the room. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "policeStation">>
+			<<if $daystate is "night">>
+				<<set $_quiet to "police station">>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of those in the police station. Their reaction is mixed. Some citizens filing a complaint avoid looking. Some more sketchi individuals loudly cheer you on. As you regain control of yourself, you see two officers coming in your direction. Face red, you decide it's best to flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "danceStudio">>
+			<<if $openinghours is 0 and $hour isnot $closinghour>>
+				<<set $_quiet to "studio">>
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of those in the studio. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the studio has become. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "danceStudioLesson">>
+			The sight and sound of a <<girl>> convulsing in climax draws the attention of those in the studio. Their reaction is mostly muted, only the odd glances as they focus on their dancing. As you regain control of yourself, you notice Charlie blushing.
+			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>><<npcincr Charlie love 1>>
+		<<case "danceStudioHeelLesson">>
+			The sight and sound of a <<girl>> convulsing in climax draws the attention of those in the studio. Their reaction is mostly muted, only the odd glances as they focus on Charlie. As you regain control of yourself, you notice Charlie blushing.
+			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>><<npcincr Charlie love 1>>
+		<<case "cafe">>
+			<<if $openinghours is 0>>
+				<<set $_quiet to "cafe">>
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the patrons. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the cafe has become. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "arcade">>
+			<<if $daystate is "night" or $daystate is "dawn">>
+				<<set $_quiet to "arcade">>
+			<<else>>
+				You steady yourself as your spasms subside. Fortunately, the loud ambient has stifled your moans, and the dim lights made your spasms almost imperceptible. Still, as you look around, you notice a <<person1>><<person>> staring at you, with a look of surprise and disbelief. <<His>> attention, however, quickly goes back to the game <<he>> was playing.
+				<<endevent>>
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "docks">>
+			<<if $daystate is "night">>
+				<<set $_quiet to "docks">>
+			<<else>>
+				You steady yourself as your spasms subside. You look around, and it doesn't look like anyone noticed your orgasm. That is, until you take note of a <<person1>><<person>> looking at you from afar. <<He>> gives you a grin, and then goes back to work. +Status(?)
+				<<endevent>>
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "stripClub">>
+			<<if $daystate isnot "night" and $daystate isnot "dusk" and $hour isnot 6>>
+				<<set $_quiet to "club">>
+			<<else>>
+				You steady yourself as your spasms subside. Fortunately, the loud ambient has stifled your moans, and the dim lights made your spasms almost imperceptible. Still, as you look around, you notice a patron staring at you. He grins and give you a wink, before getting up and leaving.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>	
+		<<case "shoppingCentre">>
+			<<if $daystate is "night">>
+				<<set $_quiet to "shopping centre">>
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the other shoppers. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "museum">>
+			<<if $daystate is "night">>
+				<<set $_quiet to "museum">>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the other visitors. As you regain control, you feel yourself stared from all directions. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "brothel">>
+			The sight and sound of a <<girl>> convulsing in clímax draws attention. Those in the brothel cheer you on, while shouting all kinds of profanities. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+		<<case "pub">>
+			The sight and sound of a <<girl>> convulsing in clímax draws attention. Those in the pub cheer you on, while shouting all kinds of profanities. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+		<<case "spa">>
+			<<if $openinghours is 0 and $hour isnot $closinghour>>
+				<<set $_quiet to "spa">>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the patrons. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the spa has become. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "temple">>
+			<<if $daystate is "night">>
+				<<set $_quiet to "temple walls">>
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws attention. The prevalent silence only makes your moans more obvious. Most look at you with disdain, but some shower you with a lustful gaze. As you regain control, you noticed yourself stared at from all directions. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "hospital">>
+			<<if $daystate is "night">>
+				<<set $_quiet to "hospital">>
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws attention. The reaction of those in the hospital is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "countryside">>
+			<<switch random(1,10)>>
+				<<case 1 2 3>>
+					You steady yourself as your spasms subside. A car passes by your side. You wonder if the people inside noticed your climax.
+					<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+				<<case 4>>
+					You steady yourself as your spasms subside. A truck passes by your side. You wonder if the driver noticed your climax.
+					<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+				<<case 5>>
+					You steady yourself as your spasms subside. A tractor passes by your side. You wonder if the farmer noticed your climax.
+					<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+				<<default>>
+					<<set $_quiet to "countryside">>
+			<</switch>>
+		<<case "alexFarmWork">>
+			<<if $daystate is "night">>
+				You steady yourself as your spasms subside, and hope the noise hasn't disturbed the animals.
+			<<elseif ($exposed gte 2 and $uncomfortable.nude is true) or ($exposed is 1 and $uncomfortable.underwear is true)>>
+				<<set $_hidden to true>>
+			<<elseif ["shower","tending","admin","clearing"].includes($farm_work.alex)>>
+				The sight and sound of a <<girl>> convulsing in clímax agitate the animals around you. Fortunately, Alex is not around to see you in such a state. You steady yourself and go back to work.
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax agitate the animals around you. Alex takes notice of the small commotion, looking at you as your orgasm starts to subside. Face deep red, you both avoid eye contact, and try to act like nothing happened.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<npcincr Alex lust 1>><<glust>>
+			<</if>>
+		<<case "alexFarmTending">>
+				Noticing your spasms, Alex comes to check on you.Once <<he>> understands what was happening, however, <<he>> stops <<himself>>, watching as your orgasm subside. Face deep red, you both avoid eye contact, and try to act like nothing happened.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<npcincr Alex lust 1>><<glust>>
+		<<case "alexFarmTendingAlone">>
+				You steady yourself as your spasms subside, and feel grateful that Alex isn’t around right now to see you in such a state.
+		<<case "sewers">>
+			Your loud moans echo through the tunnels.
+			<<if $args[1]>>
+				As your spasms subside, you hope the noise hasn't attracted further attention.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+				<<set $sewerschasedstep -= 1>>
+			<<else>>
+				As your spasms subside, you hope the noise hasn't attracted attention.
+			<</if>>
+		<<case "lake">>
+			<<if $args[1]>>
+				You steady yourself against a three as your spasms subside. Fortunately, there is no one around right now to see you in such a state.
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				You steady yourself as your spasms subside. Fortunately, the loud ambient has stifled your moans, and the foliage provides cover for your spasms. Still, as you look around, you notice a teenager staring at you. <<He>> grins, before going back to <<his>> friends.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "campsite">>
+			<<if $weather is "rain" or $weather is "snow" or $hour lt 18 or $lakecouple is 1>>
+				You steady yourself against a three as your spasms subside. Fortunately, there is no one around right now to see you in such a state.
+			<<elseif $exposed gte 1>>
+				<<set $_hidden to true>>
+			<<else>>
+				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the campers. They look surprised for a moment, but soon smile at your lewd display. As you regain control of yourself, you notice their lustful gaze. Face red, you flee the scene.
+				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
+			<</if>>
+		<<case "moor">>
+			You almost fall down to the short grass, but manage to steady yourself as your orgasm subsides.
+	<</switch>>
+	<<if $_hidden>>
+		You steady yourself as your spasms subside, feeling exposed and hoping the noise hasn't given away your hiding place.
+	<</if>>
+	<<if $_quiet>>
+		Your loud moans echo through the empty <<print $_quiet>>. As your spasms subside, you hope the noise hasn't attracted attention.
 	<</if>>
 	<br><br>
 <</widget>>

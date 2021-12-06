@@ -92,6 +92,7 @@
 			dancing:0,
 			swimming:0,
 			tending:0,
+			greenThumb:0,
 			seduction:0,
 			purity:0,
 			impurity:0,
@@ -109,6 +110,7 @@
 			dancing:{cost:5, limit: 20, minCount: 1, count:_keys.count("May I have this Dance?"), exclusive:""},
 			swimming:{cost:5, limit: 20, minCount: 1, count:_keys.count("Aquanaut"), exclusive:""},
 			tending:{cost:5, limit: 20, minCount: 1, count:_keys.count("Green Fingered"), exclusive:""},
+			greenThumb:{cost:40, limit: 40, minCount: 1, count:_keys.count("Green Fingered"), exclusive:"", hidden:true},
 			seduction:{cost:5, limit: 20, minCount: 1, count:_keys.count("Seductress"), exclusive:""},
 			purity:{cost:20, limit: 100, minCount: 2, count:_purityFeats, exclusive:"impurity"},
 			impurity:{cost:20, limit: 100, minCount: 1, count:_keys.count("Demon"), exclusive:"purity"},
@@ -143,6 +145,7 @@
 			dancing:"Dancing grade",
 			swimming:"Swimming grade",
 			tending:"Tending grade",
+			greenThumb:"Green Thumb trait",
 			seduction:"Seduction grade",
 			purity:"Daily purity",
 			impurity:"Daily impurity",
@@ -210,7 +213,7 @@
 	<<set $tending += _upgrades.tending / _details.tending.cost * 100>>
 <</if>>
 <<if _upgrades.swimming gt 0>>
-	<<set $swimmingskill to _upgrades.swimming / _details.swimming.cost * 100>>
+	<<set $swimmingskill += _upgrades.swimming / _details.swimming.cost * 100>>
 <</if>>
 <<if _upgrades.seduction gt 0>>
 	<<set $seductionskill to _upgrades.seduction / _details.seduction.cost * 100>>
@@ -237,6 +240,9 @@
 <</if>>
 <<if _upgrades.aNewBestFriend gt 0>>
 	<<parasite left_ear slime>>
+<</if>>
+<<if _upgrades.greenThumb gt 0>>
+	<<set $backgroundTraits.pushUnique("greenthumb")>>
 <</if>>
 <<if _upgrades.randomClothing gt 0>>
 	<<set _clothingItems to _upgrades.randomClothing * 3>>
@@ -471,11 +477,11 @@
 			<<earnFeat "Cattle">>
 		<</if>>
 		<<if $orgasmtrait gte 1 or $ejactrait gte 1 or $molesttrait gte 1 or $rapetrait gte 1 or $bestialitytrait gte 1
-		or $tentacletrait gte 1 or $voretrait gte 1 or $milkdranktrait gte 1>>
+		or $tentacletrait gte 1 or $voretrait gte 1 or $milkdranktrait gte 1 or $choketrait gte 1>>
 			<<earnFeat "A Special Trait">>
 		<</if>>
 		<<if $orgasmtrait gte 1 and $ejactrait gte 1 and $molesttrait gte 1 and $rapetrait gte 1 and $bestialitytrait gte 1
-		and $tentacletrait gte 1 and $voretrait gte 1 and $milkdranktrait gte 1>>
+		and $tentacletrait gte 1 and $voretrait gte 1 and $milkdranktrait gte 1 and $choketrait gte 1>>
 			<<earnFeat "A Special Trait Collector">>
 		<</if>>
 		<<if $sexStats.anus.pregnancy.motherStatus is 2>>
@@ -1040,6 +1046,20 @@
 		},
 		"Sydney the Pure Hearted":{
 			title: "Sydney the Pure-Hearted",
+			desc: "They gave their virginity to you.",
+			difficulty: 2,
+			series: "",
+			filter: ["All", "Social"],
+		},
+		"Harper the Hypnotist":{
+			title: "Harper the Hypnotist",
+			desc: "They gave their virginity to you.",
+			difficulty: 2,
+			series: "",
+			filter: ["All", "Social"],
+		},
+		"Morgan the Lost":{
+			title: "Morgan the Lost",
 			desc: "They gave their virginity to you.",
 			difficulty: 2,
 			series: "",

@@ -125,9 +125,9 @@
 		You smell a sweet fragrance. A <<if $moorFlower is "flower">>pink flower<<else>>odd plant<</if>> grows among the heather.
 		<br><br>
 		<<if $moorFlower is "flower">>
-			<<link [[Investigate|Moor Flower]]>><<arousal 600>><<set $drugged += 60>><</link>><<garousal>>
+			<<link [[Investigate|Moor Flower]]>><<arousal 600>><<drugs 60>><</link>><<garousal>>
 		<<else>>
-			<<link [[Investigate|Moor Phallus Plant]]>><<arousal 600>><<set $drugged += 60>><</link>><<garousal>>
+			<<link [[Investigate|Moor Phallus Plant]]>><<arousal 600>><<drugs 60>><</link>><<garousal>>
 		<</if>>
 		<br>
 		<<link [[Ignore|Moor Flower Ignore]]>><</link>><<willpowerdifficulty 1 600>>
@@ -293,30 +293,19 @@
 		You see a patch of tall grass rustle. A multi-limbed creature scuttles out from the grass, followed by another behind a bush. The first creature leaps at you.
 		<br><br>
 
-		<<if $plantdisable is "f">>
+		<<if $plantdisable is "f" and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 			<<generatePlant1>><<person1>>
-			<<if $tentacledisable is "f">>
-				You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A vine wraps around it in midair, holding it in place. The second creature is restrained in the same way.
-				<br><br>
+			You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A vine wraps around it in midair, holding it in place. The second creature is restrained in the same way.
+			<br><br>
 
-				"Yoo-hoo!" A <<person "normal">> steps from behind the bush, waving at you. <<Plant_details>> are weaved into <<his>> hair, and <<hes>> completely naked. <<He>> gestures with <<his>> hand, and <span class="purple">the vines tighten</span>.
-			<<else>>
-				You <<if $submissive gte 850>>swing your arm to swat it away<<else>>hold your arms in front of you defensively<</if>>, but the creature doesn't make it to you. A hand grabs it out of midair, holding it in place. The owner of the hand steps on the second creature, pressing it against the ground.
-				<br><br>
-
-				"Hey-o!" A <<person "normal">> grins at you, holding the creature effortlessly. <<Plant_details>> are weaved into <<his>> hair, and <<hes>> completely naked.
-			<</if>>
+			"Yoo-hoo!" A <<person "normal">> steps from behind the bush, waving at you. <<Plant_details>> are weaved into <<his>> hair, and <<hes>> completely naked. <<He>> gestures with <<his>> hand, and <span class="purple">the vines tighten</span>.
 			<br><br>
 
 			"Good thing I was in the area," the <<person>> says. "Wouldn't want you falling victim to these little things. So..." <<He>> leans forward, licking <<his>> lips. "Don't I deserve a reward for saving you?"
 			<br><br>
 
 			<<if $deviancy gte 35>>
-				<<if $tentacledisable is "f">>
-					<<link [[Reward|Moor Plant Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
-				<<else>>
-					<<link [[Reward|Moor Plant Sex No Tentacles]]>><<set $sexstart to 1>><</link>><<deviant3>>
-				<</if>>
+				<<link [[Reward|Moor Plant Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
 			<<else>>
 				<span class="blue">You are not deviant enough to "reward" <<him>></span>.
 			<</if>>
@@ -702,6 +691,7 @@
 <<widget "quicksand_end">>
 <<unset $quicksand_depth>>
 <<unset $quicksand_learn>>
+<<unset $quicksandWraith>>
 <</widget>>
 
 <<widget "quicksand_pull">>
@@ -740,7 +730,16 @@
 	With a final tug, <span class="red">the earth swallows you.</span><<ggtrauma>><<ggstress>><<trauma 12>><<stress 12>>
 	<br><br>
 	<<passout_moor>>
+	<<if $quicksandWraith>>
+		<<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><span class="flicker">_drown</span>
+		<br><br><<ind>><<ind>><span class="flicker">_drown</span>
+		<br><<ind>><<ind>><<ind>><<ind>><<ind>><span class="flicker">_drown</span>
+	<</if>>
 <</switch>>
+<<if $quicksandWraith>>
+	<br><br><<ind>><<ind>><<ind>><<ind>><<ind>><<ind>><span class="flicker">_drown</span>
+	<br><br><br><<ind>><span class="flicker">_drown</span>
+<</if>>
 <</widget>>
 
 <<widget "passout_moor">>
@@ -869,51 +868,5 @@
 <<link [[Stay still|Moor Bird Still]]>><</link>>
 <br>
 <<link [[Resist|Moor Bird Resist]]>><</link>><<willpowerdifficulty 1 300>>
-<br>
-<</widget>>
-
-
-<<widget "moor_dragon_hunt_start">>
-<<if $weather is "clear">>
-	A shadow passes over you. You hear a terrible roar
-<<else>>
-	You hear a terrible roar.
-<</if>>
-<<if $syndromedragon is 1>>
-	<<npc "Skye the Dragon">>
-	Your <<beasttype>> circles overhead.
-	<br><br>
-	<<endevent>>
-
-	<<if $dragon gte 6>>
-		<<link [[Roar back|Moor Dragon Roar]]>><</link>><<harpy>>
-		<br>
-	<</if>>
-	<<link [[Continue|Moor]]>><<set $eventskip to 1>><</link>>
-	<br>
-<<else>>
-	A dragon circles overhead.
-	<<if $moor_dragon_hunt is undefined>>
-		<span class="red">You are being hunted.</span><<ggstress>><<stress 12>>
-		<<set $moor_dragon_hunt to 1>>
-	<</if>>
-
-	<br><br>
-
-	<<link [[Next|Moor]]>><<set $eventskip to 1>><</link>>
-	<br>
-<</if>>
-<</widget>>
-
-<<widget "moor_dragon_hunt">>
-<<npc "Skye the Dragon">>
-<span class="red">You hear another growl.</span> This one from behind you. It's close.
-You turn, and see a winged <<nnpc_gendery "Skye the Dragon">> with claws instead of feet. <<bHe>> swoops towards you, claws outstretched.
-
-<<bHis>> eyes pierce yours. Terror roots you to the spot.
-<br><br>
-<<link [[Stay still|Moor Dragon Still]]>><</link>>
-<br>
-<<link [[Resist|Moor Dragon Resist]]>><</link>><<willpowerdifficulty 1 300>>
 <br>
 <</widget>>

@@ -118,7 +118,7 @@
 	<<if $player.vaginaExist>>
 		<<if $rng gte 101>>
 			<span class="blue"><<bHe>> angles <<bhis>> $NPCList[_n].penisdesc towards your <<pussy>>.</span>
-			<<set $thighuse to 0>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $thighactiondefault to "thighs">>
+			<<set $thighuse to 0>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $thighactiondefault to "thighs">><<set $vaginatarget to _n>>
 		<<else>>
 			<<bHe>> rubs <<bhis>> $NPCList[_n].penisdesc between your thighs and <<pussy>>.
 			<<sex 5>>
@@ -253,7 +253,7 @@
 <<if $NPCList[_n].penis is "cheeks">>
 	<<if $rng gte 101>>
 		<span class="blue"><<bHe>> angles <<bhis>> $NPCList[_n].penisdesc toward your anus.</span>
-		<<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $bottomuse to 0>><<set $cheekactiondefault to "cheeks">>
+		<<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $bottomuse to 0>><<set $cheekactiondefault to "cheeks">><<set $anustarget to _n>>
 	<<else>>
 		<<bHe>> rubs <<bhis>> $NPCList[_n].penisdesc between your cheeks.
 		<<submission 3>>
@@ -1491,7 +1491,7 @@
 		<<elseif $rng lte 100>>
 			<<if $player.vaginaExist and $vaginause is 0 and (!$player.penisExist or random(0,100) lt 75)>>
 				<span class="blue"><<bHe>> humps your rear frantically, gaining purchase in front of your <<pussy>>.</span>
-				<<sex 5>><<bruise vagina>><<violence 1>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">>
+				<<sex 5>><<bruise vagina>><<violence 1>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $vaginatarget to _n>>
 			<<elseif $player.penisExist and $penisuse is 0 and !$worn.genitals.type.includes("chastity") and (!$player.vaginaExist or $vaginause is 0)>>
 				<<bHe>> humps your rear frantically, rubbing against your <<penis>>.
 				<<sex 5>><<bruise penis>><<violence 1>>
@@ -1515,10 +1515,10 @@
 				<<sex 3>>
 			<<elseif $player.penisExist and $penisuse is 0 and (!$player.vaginaExist or random(0,100) lt 75)>>
 				<span class="blue"><<bHe>> humps between your legs, gaining purchase on the tip of your <<penis>>.</span>
-				<<sex 5>><<bruise penis>><<violence 1>><<set $NPCList[_n].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">>
+				<<sex 5>><<bruise penis>><<violence 1>><<set $NPCList[_n].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">><<set $penistarget to _n>>
 			<<elseif $player.vaginaExist and $vaginause is 0 and (!$player.penisExist or $penisuse is 0)>>
 				<span class="blue"><<bHe>> humps between your legs, brushing your <<pussy>> with <<bhis>> own.</span>
-				<<sex 5>><<bruise vagina>><<violence 1>><<set $NPCList[_n].vagina to "vaginaentrance">><<set $vaginause to "othervagina">><<set $vaginastate to "othervaginaentrance">>
+				<<sex 5>><<bruise vagina>><<violence 1>><<set $NPCList[_n].vagina to "vaginaentrance">><<set $vaginause to "othervagina">><<set $vaginastate to "othervaginaentrance">><<set $vaginatarget to _n>>
 			<<else>>
 				<<bHe>> humps between your legs, rubbing <<bhis>> pussy against your <<genitals>>.
 				<<sex 3>>
@@ -1551,16 +1551,16 @@
 			<<elseif $player.penisExist>>
 				<<bHe>> licks and <span class="blue">wraps <<bhis>> tongue around your <<penis>>.</span>
 				<br>
-				<<sex 3>><<set $NPCList[_n].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">>
+				<<sex 3>><<set $NPCList[_n].mouth to "penisentrance">><<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penistarget to _n>>
 			<<else>>
 				<<bHe>> licks and <span class="blue">wiggles <<bhis>> tongue against your <<pussy>>.</span>
 				<br>
-				<<sex 3>><<set $NPCList[_n].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">>
+				<<sex 3>><<set $NPCList[_n].mouth to "vaginaentrance">><<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginatarget to _n>>
 			<</if>>
 		<<elseif ($enemyanger + $rng) lte 100 and $position isnot "wall" and $analingusdisablereceiving is "f">>
 			<<bHe>> buries <<bhis>> wet tongue between your <<bottom>> cheeks, <span class="blue">and prods your <<if $worn.genitals.type.includes("chastity")>>$worn.genitals.name<<else>>opening<</if>>.</span>
 			<br>
-			<<sex 3>><<set $NPCList[_n].mouth to "anusentrance">><<set $anususe to "othermouth">><<set $anusstate to "othermouthentrance">>
+			<<sex 3>><<set $NPCList[_n].mouth to "anusentrance">><<set $anususe to "othermouth">><<set $anusstate to "othermouthentrance">><<set $anustarget to _n>>
 		<<elseif ($enemyanger + $rng) lte 125 and $position isnot "wall">>
 			<<bHe>> <<beast_growls_text>>, <<bhis>> breath hot on your <<if $worn.genitals.type.includes("chastity")>>$worn.genitals.name.<<else>><<genitals>>.<</if>>
 			<<sex 1>>
@@ -1588,7 +1588,7 @@
 		<<elseif ($enemyanger + $rng) lte 100>>
 			<<if !$worn.face.type.includes("gag")>>
 				<span class="blue"><<bHe>> pushes <<bhis>> $NPCList[_n].penisdesc against your lips.</span>
-				<<sex 3>><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthuse to "penis">><<set $mouthstate to "entrance">>
+				<<sex 3>><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthuse to "penis">><<set $mouthstate to "entrance">><<set $mouthtarget to _n>>
 			<<else>>
 				<<bHe>> thrusts <<bhis>> $NPCList[_n].penisdesc against the $worn.face.name covering your mouth.
 				<<neutral 5>>
@@ -1596,7 +1596,7 @@
 		<<else>>
 			<<if !$worn.face.type.includes("gag")>>
 				<span class="purple"><<bHe>> shoves <<bhis>> $NPCList[_n].penisdesc between your lips.</span>
-				<<sex 3>><<set $NPCList[_n].penis to "mouthimminent">><<set $mouthuse to "penis">><<set $mouthstate to "imminent">>
+				<<sex 3>><<set $NPCList[_n].penis to "mouthimminent">><<set $mouthuse to "penis">><<set $mouthstate to "imminent">><<set $mouthtarget to _n>>
 			<<else>>
 				<<bHe>> thrusts <<bhis>> $NPCList[_n].penisdesc against the $worn.face.name covering your mouth.
 				<<neutral 5>>
@@ -1615,10 +1615,10 @@
 			<<neutral 3>>
 		<<elseif ($enemyanger + $rng) lte 100>>
 			<span class="blue"><<bHe>> pushes <<bhis>> pussy against your lips.</span>
-			<<sex 3>><<set $NPCList[_n].vagina to "mouth">><<set $mouthuse to "othervagina">><<set $mouthstate to "othervagina">>
+			<<sex 3>><<set $NPCList[_n].vagina to "mouth">><<set $mouthuse to "othervagina">><<set $mouthstate to "othervagina">><<set $mouthtarget to _n>>
 		<<else>>
 			<span class="purple"><<bHe>> shoves <<bhis>> pussy against your lips.</span>
-			<<sex 3>><<set $NPCList[_n].vagina to "mouth">><<set $mouthuse to "othervagina">><<set $mouthstate to "othervagina">>
+			<<sex 3>><<set $NPCList[_n].vagina to "mouth">><<set $mouthuse to "othervagina">><<set $mouthstate to "othervagina">><<set $mouthtarget to _n>>
 		<</if>>
 	<</if>>
 <</if>>

@@ -148,15 +148,17 @@
 	<<effects>>
 	You run with all the speed you can muster.
 	<<gathletics>><<athletics 1>><<physique>>
-	<!-- Modified for Beast People -->
-		<!-- You manage to escape, but not unscathed.
+	<<if $monster isnot 1 and $bestialitydisable is "t">>
+		<!-- Modified for Beast People -->
+		You manage to escape, but not unscathed.
 		<<trauma 18>><<set $pain += 40>><<set $stress += 400>><<set $worn.lower.integrity -= 20>><<set $worn.upper.integrity -= 20>><<set $worn.under_lower.integrity -= 20>><<bruise leftarm>><<bruise full>>
 		<br><br>
+		<<endevent>>
 		<<destinationeventend>>
-		-->
-	<<if $athleticsSuccess>>
+	<<elseif $athleticsSuccess>>
 		You slowly gain distance on the <<beasttype>> and <<bhe>> eventually gives up the chase. You run a bit further, then stop to catch your breath.
 		<br><br>
+		<<endevent>>
 		<<destinationeventend>>
 	<<else>>
 		The <<beasttype>> is faster than you however. <<bHe>> quickly catches up to you and, grabbing your arm <<if $monster isnot 1>>in its teeth, drags<<else>> and dragging<</if>> you to the ground.
@@ -511,7 +513,7 @@ The <<person3>><<person>> looks serious. "You know I would never let that happen
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<set $enemyno to 2>>
+	<<set $enemyno to 2>><<set $enemynomax to 2>>
 	<<if $phase is 1>>
 		<<maninit>><<set $enemyanger += 150>><<set $enemytrust -= 50>>
 		<br><br>
@@ -609,6 +611,7 @@ The <<person3>><<person>> looks serious. "You know I would never let that happen
 <</if>>
 <<tearful>> you rise to your feet.
 <br><br>
+<<clotheson>>
 <<endcombat>>
 <<destinationeventend>>
 
@@ -628,6 +631,7 @@ The <<person3>><<person>> looks serious. "You know I would never let that happen
 	"You lost <<phim>>, you weak, slow idiots! What you gonna do now?"
 	<br><br>
 <</if>>
+<<clotheson>>
 <<endcombat>>
 <<destinationeventend>>
 
@@ -2157,9 +2161,9 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 	<<set $enemytrust += 40>>
 	<<set $tipmod to 2>><<tipset>>
 <</if>>
-<<if $phase is 10 and $stealstate is 3 and $street_car_police isnot true>>
+<<if $phase is 10 and $stealtarget isnot "" and $street_car_police isnot true>>
 	<<set $street_car_police to true>>
-	While searching <<his>> wallet, your hand brushed against <span class="red">a police badge.</span>
+	While searching <<his>> <<wallet>>, your hand brushed against <span class="red">a police badge.</span>
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
@@ -2221,7 +2225,7 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 			<br><br>
 			"Look I..." <<he>> says. "You're a sweet, gorgeous <<if $player.gender_appearance is "m">>guy<<else>>girl<</if>>, and that was pretty good just now. I liked that. A lot. And no one else knows I caught you yet, so... We can just pretend I didn't, right."
 			<br><br>
-			<<if $stealstate is 3>>
+			<<if $stealtarget isnot "">>
 				"You already helped yourself to the money in my wallet, so we'll agree you've been paid."
 			<<else>>
 				"Here's your pay."
@@ -2314,7 +2318,7 @@ Your cries attract the attention of the people passing by the alley's entrance. 
 
 <<set $outside to 0>><<effects>>
 <<if $phase is 0>>
-	"There's no charge, <<if $skulduggery gte 700 or $stealstate gte 3>>Officer,<<else>><<if $pronoun is "m">>sir,<<else>>ma'am,<</if>><</if>>" you smile. "I'm not a prostitute!"
+	"There's no charge, <<if $skulduggery gte 700 or $stealtarget isnot "">>Officer,<<else>><<if $pronoun is "m">>sir,<<else>>ma'am,<</if>><</if>>" you smile. "I'm not a prostitute!"
 	<br><br>
 	"Right..." <<he>> says. "Then I guess you better be on your way."
 	<br><br>
@@ -2625,7 +2629,7 @@ You wake up by the side of the road, leaning against a wall. A <<generate1>><<pe
 
 <<set $outside to 1>><<effects>>
 You follow the <<beasttype>> down the alley. <<bHe>> rounds a corner.
-<<if $rng gte 99>><!-- Modified for Beast People -->
+<<if $rng gte 99 and ($monster is 1 or $bestialitydisable if "f")>><!-- Modified for Beast People -->
 	You find <<bhim>> stood in the middle of the alley, looking at you. You hear a growl to your right and left. You're surrounded.
 	<br><br>
 	<<beastNEWinit 2 dog>>
@@ -2655,9 +2659,13 @@ You follow the <<beasttype>> down the alley. <<bHe>> rounds a corner.
 		There's <<moneyGain 100>> inside!
 		You look further but there's no identification.
 	<</if>>
-	The <<beasttype>> barks happily.
+	<<if $monster is 1>>
+		The <<beasttype>> barks happily.
+	<<else>>
+		"I'm glad to help," the <<beasttype>> says.
+	<</if>>
 	<br><br>
-	<<if $deviancy gte 15>><!-- Modified for Beast People -->
+	<<if $deviancy gte 15 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 		<<link [[Reward it|Street Follow Sex]]>><<set $sexstart to 1>><</link>><<deviant2>>
 		<br>
 	<</if>>
@@ -3886,11 +3894,11 @@ Your fall is broken by something slimy and soft. It flees before your eyes adjus
 
 	<!-- Make tentacle start at the target body part -->
 	<<if $phase is 0>>
-		<<set $anususe to "tentaclerub">><<set $anusstate to "tentaclerub">><<set _tentacle.head to "anusrub">>
+		<<set $anususe to "tentaclerub">><<set $anusstate to "tentaclerub">><<set _tentacle.head to "anusrub">><<set $anustarget to "tentacles">>
 	<<elseif $phase is 1>>
-		<<set $vaginause to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "vaginarub">>
+		<<set $vaginause to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "vaginarub">><<set $vaginatarget to "tentacles">>
 	<<elseif $phase is 2>>
-		<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">>
+		<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<set $penistarget to "tentacles">>
 	<</if>>
 	<<set _tentacle.shaft to "thighs">>
 <</if>>
@@ -4158,7 +4166,6 @@ The figure gets closer.
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -4237,6 +4244,29 @@ You manage to brace yourself before impact, but still hit the ground hard.
 	<<destinationeventend>>
 <</if>>
 
+:: Street Monster Run
+<<effects>>
+
+You run through the empty streets and alleys, rounding each corner in a bid to escape. The <<tower_creature_text>> keeps up, moving in great leaps.
+<br><br>
+
+<<if $athleticsSuccess>>
+	<span class="green">You manage to escape,</span> but not without injury.<<beastescape>>
+	<br><br>
+
+	<<endevent>>
+	<<destinationeventend>>
+<<else>>
+	<span class="red">A great weight forces you to the ground</span> as the <<tower_creature_text>> leaps onto your back, winding you. You try to crawl away, but <<bhe>> holds you down.<<gpain>><<pain 2>>
+	<br><br>
+
+	You feel <<bhis>> breath on the back of your neck.
+	<br><br>
+
+	<<link [[Next|Street Monster]]>><<set $phase to 1>><<set $molestationstart to 1>><</link>>
+	<br>
+<</if>>
+
 :: Street Monster
 
 <<if $molestationstart is 1>>
@@ -4245,9 +4275,11 @@ You manage to brace yourself before impact, but still hit the ground hard.
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<beastNEWinit 1 creature>>
-	<<saveNPC 0 tower_creature>>
 	<<beastCombatInit>><<set $enemyhealthmax to 400>><<set $enemyhealth to 400>><<set $enemyarousalmax to 1000>>
+
+	<<if $phase is 1>>
+		<<set $position to "doggy">>
+	<</if>>
 <</if>>
 
 <<effects>>
@@ -4273,33 +4305,77 @@ You manage to brace yourself before impact, but still hit the ground hard.
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<beastejaculation>>
+
+	<<bHe>> gets up and snarls, then slinks back into the darkness.
 	<<if $beauty gte 6000>>
-		It hooks a front leg around your waist, and clutches you tightly against its body. With a leap, it jumps up the wall. It scrambles to the roof, claws digging into the brickwork.
+		Something stops <<bhim>> in place. <<bHe>> stares at you, transfixed.
 		<br><br>
-		It runs towards the edge. It doesn't slow down. Instead, it leaps, and lands on another building. It continues leaping between buildings, across Elk Street, and into the labyrinth of plants and compounds.
+		<<if $NPCList[0].monster is "monster">>
+			"Pretty," <<bhe>> says as <<bhe>> creeps towards you. Before you can react, <<bhe>> hooks an arm around your waist, and clutches you tightly against <<bhis>> body.
+			<<if $tower_creature_intro gte 2>>
+				"Missed seeing you," <<bhe>> grunts.
+			<<else>>
+				"Won’t drop you like the last one," <<bhe>> reassures in a rumbling voice.
+			<</if>>
+		<<else>>
+			<<bHis>> long tongue darts across <<bhis>> lips as <<bhe>> prowls towards you.
+			<<if $tower_creature_intro gte 2>>
+				<<bHe>> hooks a front leg around your waist, holding you close. <<bHe>> makes an odd chittering sound, then drags <<bhis>> tongue across your face. You shiver.
+			<<else>>
+				Before you can react, it hooks a front leg around your waist, and clutches you tightly against its body.
+			<</if>>
+		<</if>>
 		<br><br>
-		It scrambles up the side of a taller building with its free legs, until you arrive at an alcove near the top. It dumps you on a mattress, and snarls.
+		With a leap, <<bhe>> jumps up the wall. <<bHe>> scrambles to the roof, claws digging into the brickwork.
+		<br><br>
+		<<bHe>> runs towards the edge. <<bHe>> doesn't slow down. Instead, <<bhe>> leaps, and lands on another building. <<bHe>> continues leaping between buildings, across Elk Street, and into the labyrinth of plants and compounds.
+		<br><br>
+		<<bHe>> scrambles up the side of a taller building<<if $monster is 0>> with <<bhis>> free legs<</if>>, until you arrive at an alcove near the top. <<bHe>> dumps you on a mattress.
+		<<if $NPCList[0].monster is "monster">>
+			<<if $tower_creature_intro gte 2>>
+				"Mine again," <<bhe>> snarls.
+			<<else>>
+				"Mine now," <<bhe>> snarls. "Got it?"
+			<</if>>
+			<br><br>
+			<<bHe>> mounts you before you can answer.
+		<</if>>
 		<br><br>
 		<<endcombat>>
 		<<set $location to "night_monster_lair">>
-		<<link [[Next|Street Monster 2]]>><<set $molestationstart to 1>><</link>>
+		<<link [[Next|Street Monster 2]]>><<set $tower_creature_intro to 2>><<set $molestationstart to 1>><</link>>
 		<br>
 	<<else>>
-		<<tearful>> you gather yourself. The creature prowls into the darkness.
+		<<if $tower_creature_intro gte 2>>
+			The <<tower_creature_text>> steps closer to you, 
+
+			<<if $NPCList[0].monster is "monster">>
+				a scowl forming on <<bhis>> face as <<bhe>> stares at you. "Got uglier," <<bhe>> remarks in a frustrated tone. "Not pretty anymore." Disappointed, <<bhe>> prowls into the darkness.
+			<<else>>
+				<<bhis>> lip curled menacingly. <<bHe>> lets out a strange, guttural sound, then turns around and prowls into the darkness, disappearing as abruptly as <<bhe>> came.
+			<</if>>
+			<br><br>
+
+			<<tearful>> you gather yourself.
+		<<else>>
+			<<bHe>>'s gone as abruptly as <<bhe>> arrived. <<tearful>> you gather yourself.
+		<</if>>
 		<br><br>
 		<<clotheson>>
 		<<endcombat>>
-		<<clearNPC tower_creature>>
 		<<destinationeventend>>
 	<</if>>
 <<else>>
-	The creature screeches in pain, and bounds into the darkness.
+	<<if $NPCList[0].monster is "monster">>
+		The <<tower_creature_text>> recoils in pain. "Get you next time," <<bhe>> snarls, then retreats into the darkness.
+	<<else>>
+		The creature screeches in pain, and bounds into the darkness.
+	<</if>>
 	<br><br>
 	<<tearful>> you gather yourself.
 	<br><br>
 	<<clotheson>>
 	<<endcombat>>
-	<<clearNPC tower_creature>>
 	<<destinationeventend>>
 <</if>>
 
@@ -4340,58 +4416,85 @@ You manage to brace yourself before impact, but still hit the ground hard.
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>
-	The beast stretches, then collapses on top of you.
-	<br><br>
-	<<tearful>> you struggle free.
+	The <<tower_creature_text>> lets out a satisified sound and turns <<bhis>> back to you. <<tearful>> you slowly back away. <<bHe>> begins digging into the mattress.
 	<br><br>
 
 <<else>>
 
-	<<tearful>> you struggle away from the creature. It growls, but doesn't pursue. It curls up and snores.
+	<<tearful>> you struggle away from the <<tower_creature_text>>. <<bHe>> snorts in frustration and turns <<bhis>> back to you. <<bHe>> begins digging into the mattress.
 	<br><br>
 
 <</if>>
 
-You look around. The creature made its lair inside a mess of pipes and girders, many of them bent and twisted out of shape by some great strength. The "floor" is littered with trash and piles of detritus.
+<<clotheson>>
+<<endcombat>>
+<<loadNPC 0 tower_creature>>
+
+You look around. The <<tower_creature_text>> made <<bhis>> lair inside a mess of pipes and girders, many of them bent and twisted out of shape by some great strength. The "floor" is littered with trash and piles of detritus.
 <br><br>
 
 A gaping hole dominates one wall. The same you entered through. It looks like the only way in or out.
 <br><br>
 
-<<clotheson>>
-<<endcombat>>
+<<if $NPCList[0].monster is "monster">>A clawed hand suddenly wraps<<else>>A pair of jaws suddenly clamps<</if>> around your ankle. You're unable to resist as <<bhe>> drags you to an isolated corner of the room stacked with shiny trinkets of varied worth - jewelry, ornate pottery, chrome dishes, toasters. The <<tower_creature_text>> tucks you amongst them. <<bHe>> steps back and stares at you, as if appraising your place in <<bhis>> collection.
+<br><br>
+
+<<if $NPCList[0].monster is "monster">>
+	<<bHe>> nods, seeming satisfied, before stomping over to the mattress and lying down with a thud.
+<<else>>
+	<<bHe>> snorts, seeming satisfied, before shambling over to the mattress and collapsing with a thud.
+<</if>>
+<br><br>
 
 <<link [[Next|Monster Tower]]>><<set $eventskip to 1>><<set $tower_sleep to 115>><<set $tower_sheet to 0>><</link>>
 <br>
 
 :: Monster Tower
-
 <<set $bus to "elk">><<set $outside to 0>><<effects>>
+
+<<if $enemyno is 0>>
+	<<loadNPC 0 tower_creature>>
+<</if>>
+
 <<set $tower_sleep -= 10>>
-You are in a strange monster's lair within a building near Elk Street. A gaping hole dominates one wall.
+You are in a <<if $NPCList[0].monster is "monster">>strange, monstrous <<if $NPCList[0].gender is "m">>boy<<else>>girl<</if>><<else>>strange monster<</if>>'s lair within a building near Elk Street. A gaping hole dominates one wall.
 <br><br>
 <<if $stress gte $stressmax>>
 	<<link [[Next|Passout Monster Tower]]>><</link>>
 	<br>
 <<elseif $eventskip isnot 1 and $rng gte $tower_sleep>>
-	The beast stirs from its slumber. It steps toward you, growling.
+	The <<tower_creature_text>> stirs from <<bhis>> slumber. You scurry back to your spot in the corner before <<bhe>> wakes.
 	<br><br>
-	<<link [[Next|Monster Tower Rape]]>><<set $molestationstart to 1>><</link>>
-	<br>
-<<else>>
-	The beast slumbers on a ruined mattress.
-	<<if $tower_sleep gte 90>>
-		<span class="teal">It snores deeply.</span>
-	<<elseif $tower_sleep gte 75>>
-		<span class="lblue">It snores.</span>
-	<<elseif $tower_sleep gte 60>>
-		<span class="blue">It snores, occasionally swatting at the air.</span>
-	<<elseif $tower_sleep gte 45>>
-		<span class="purple">It stretches in its sleep.</span>
-	<<elseif $tower_sleep gte 30>>
-		<span class="pink">It growls in its sleep.</span>
+	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if $danger gte (9900 - $allure)>>
+		Before you can make it back, <span class="red">something snatches your foot.</span> You're pulled onto the mattress with the <<tower_creature_text>> looming over you. <<bHe>> growls.
+		<br><br>
+		<<link [[Next|Monster Tower Rape]]>><<set $molestationstart to 1>><</link>>
+		<br>
 	<<else>>
-		<span class="red">Its eyes open and it starts to stand, before falling back to sleep.</span>
+		You make it back just in time. The <<tower_creature_text>> rises from the bed with a snort. <<bHe>> lumbers towards you.
+		<br><br>
+		<<link [[Next|Monster Tower Wake]]>><</link>>
+		<br>
+	<</if>>
+<<else>>
+	The <<tower_creature_text>> slumbers on a ruined mattress.
+	<<if $tower_sleep gte 90>>
+		<span class="teal"><<bHe>> snores deeply.</span>
+	<<elseif $tower_sleep gte 75>>
+		<span class="lblue"><<bHe>> snores.</span>
+	<<elseif $tower_sleep gte 60>>
+		<span class="blue"><<bHe>> snores, occasionally swatting at the air.</span>
+	<<elseif $tower_sleep gte 45>>
+		<span class="purple"><<bHe>> stretches in <<bhis>> sleep.</span>
+	<<elseif $tower_sleep gte 30>>
+		<<if $NPCList[0].monster is "monster">>
+			<span class="pink"><<bHe>> lets out a guttural yawn and scratches <<bhis>> <<print either("belly","side","head","face","leg","back","ass")>>.</span>
+		<<else>>
+			<span class="pink"><<bHe>> growls in its sleep.</span>
+		<</if>>
+	<<else>>
+		<span class="red"><<bHis>> eyes open and <<bhe>> starts to <<if $NPCList[0].monster is "monster">>sit up<<else>>stand<</if>>, before falling back to sleep.</span>
 	<</if>>
 	<<set $tower_sleep -= 15>>
 	<br><br>
@@ -4426,7 +4529,7 @@ You are in a strange monster's lair within a building near Elk Street. A gaping 
 
 :: Passout Monster Tower
 <<set $bus to "elk">><<set $outside to 0>><<effects>>
-<<clearNPC tower_creature>>
+<<endevent>>
 /*ToDo: Pregnancy, remove $pregnancyTesting to properly enable*/
 <<if $sexStats.vagina.pregnancy.waterBreaking is true and $pregnancyTesting>>
 	<<pregnancyWatersBrokenPassout "monsterTower">>
@@ -4453,7 +4556,12 @@ You search the detritus for anything wearable. You find some old towels. Better 
 
 You walk over to the hole in the wall. A blast of wind almost snatches you away, but you cling to a pipe for support. Other tall buildings tower around. Beneath you is a sheer drop into a bed of mist below. You can't see the ground.
 <br><br>
-You call out. Only the wind howls in response. You call again. You hear the beast emit a low growl behind you.
+You call out. Only the wind howls in response. You call again.
+<<if $NPCList[0].monster is "monster">>
+	"Shut up," the <<tower_creature_text>> snaps in <<bhis>> sleep.
+<<else>>
+	You hear the <<tower_creature_text>> emit a low growl behind you.
+<</if>>
 <br><br>
 You look around the lair, at the rubbish littering the floor and piled against the walls. You lift a strip of ruined cloth, and tug. It's sturdy.
 <br><br>
@@ -4464,7 +4572,15 @@ You look around the lair, at the rubbish littering the floor and piled against t
 :: Monster Tower Calm
 <<set $bus to "elk">><<set $outside to 0>><<effects>>
 
-You approach the creature, and kneel down beside it. You make soothing noises. It seems to have little effect at first, but you continue until its fidgeting calms, and it sleeps soundly.
+You approach the <<tower_creature_text>>, and kneel down beside <<bhim>>.
+<<if $NPCList[0].monster is "monster">>
+	You pull <<bhis>> head into your lap. <<bHe>> resists and shoves you away with a grunt. After a moment, however, <<bhe>> shambles over to you and drops <<bhis>> head back between your legs.
+	<br><br>
+
+	"Again," <<bhe>> grumbles. You oblige, stroking <<bhis>> messy mane of hair and humming softly until <<bhe>> finally drifts back to sleep.
+<<else>>
+	You make soothing noises. It seems to have little effect at first, but you continue until <<bhis>> fidgeting calms, and <<bhe>> sleeps soundly.
+<</if>>
 <br><br>
 
 <<link [[Next|Monster Tower]]>><</link>>
@@ -4503,7 +4619,7 @@ You soon reach the mist, and continue through it. The rope just about reaches th
 <br><br>
 You follow one of the alleys in the direction of traffic, and soon emerge on Elk Street.
 <br><br>
-<<clearNPC tower_creature>>
+<<endevent>>
 <<link [[Next|Elk Street]]>><<set $eventskip to 1>><</link>>
 <br>
 
@@ -4519,7 +4635,7 @@ You stand at the precipice, feeling the air around you. You leap from the tower.
 
 You fall several feet before the air catches you, and brings you to the street below.
 <br><br>
-<<clearNPC tower_creature>>
+<<endevent>>
 <<link [[Next|Elk Street]]>><<set $eventskip to 1>><</link>>
 <br>
 
@@ -4531,9 +4647,9 @@ You fall several feet before the air catches you, and brings you to the street b
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<loadNPC 0 tower_creature>>
 	<<beastNOGENinit>>
 	<<set $enemyhealthmax to 400>><<set $enemyhealth to 400>><<set $enemyarousalmax to 1000>>
+	<<if $phase is 1>><<set $enemyanger += 200>><</if>>
 <</if>>
 
 <<effects>>
@@ -4560,20 +4676,30 @@ You fall several feet before the air catches you, and brings you to the street b
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>
-	The beast stretches, then collapses on top of you.
-	<br><br>
-	<<tearful>> you struggle free.
-	<br><br>
+	<<if $NPCList[0].monster is "monster">>
+		<<bHe>> stretches, then curls up on top of you. <<bHis>> arms and legs wrap tightly around your body. <<bHe>> runs <<bhis>> clawed fingers through your hair. "Tired out," <<bhe>> yawns. You soon hear <<bhim>> snoring.
+		<br><br>
 
+		<<tearful>> you squirm free of <<bhis>> grip.
+	<<else>>
+		The <<tower_creature_text>> stretches, then collapses on top of you.
+		<br><br>
+		<<tearful>> you struggle free.
+	<</if>>
 <<else>>
 
-	<<tearful>> you struggle away from the creature. It growls, but doesn't pursue. It curls up and snores.
-	<br><br>
-
+	<<tearful>> you struggle away from the <<tower_creature_text>>.
+	<<if $NPCList[0].monster is "monster">>
+		"Not worth it," <<bhe>> growls. <<bHe>> curls up and snores.
+	<<else>>
+		It growls, but doesn't pursue. It curls up and snores.
+	<</if>>
 <</if>>
+<br><br>
 
 <<clotheson>>
 <<endcombat>>
+<<loadNPC 0 tower_creature>>
 
 <<link [[Next|Monster Tower]]>><<set $eventskip to 1>><<set $tower_sleep to 115>><</link>>
 <br>
@@ -4585,15 +4711,21 @@ You fall several feet before the air catches you, and brings you to the street b
 	<<set $consensual to 1>>
 	<<neutral 1>>
 
-	<<loadNPC 0 tower_creature>>
 	<<beastNOGENinit>>
 
 	<<set $enemyhealthmax to 400>><<set $enemyhealth to 400>><<set $enemyarousalmax to 1000>>
 
-	You rub the creature's belly. One eye opens and regards you. You look right at it as you run your hand further down its body.
-	<<deviancy2>>
+	<<if $NPCList[0].monster is "monster">>
+		You stroke the <<tower_creature_text>>'s chest. <<bHe>> crinkles <<bhis>> nose and mumbles something. You don't stop, trailing your hand lower.
+		<<deviancy2>>
 
-	Not able to resist, the beast climbs to its feet.
+		Not able to resist, <<bhe>> grasps your wrist and pulls you against <<bhis>> body, <<bhis>> other arm holding you firm around the waist.
+	<<else>>
+		You rub the creature's belly. One eye opens and regards you. You look right at it as you run your hand further down its body.
+		<<deviancy2>>
+
+		Not able to resist, the beast climbs to its feet.
+	<</if>>
 	<br><br>
 <</if>>
 
@@ -4623,30 +4755,269 @@ You fall several feet before the air catches you, and brings you to the street b
 <<if $enemyarousal gte $enemyarousalmax>>
 
 	<<beastejaculation>>
-	The beast stretches, then collapses on top of you.
-	<br><br>
-	<<tearful>> you struggle free.
+	<<if $NPCList[0].monster is "monster">>
+		<<bHe>> stretches, then curls up on top of you. <<bHis>> arms and legs wrap tightly around your body. <<bHe>> runs <<bhis>> clawed fingers through your hair. "Tired out," <<bhe>> yawns. You soon hear <<bhim>> snoring.
+		<br><br>
+
+		<<tearful>> you squirm free of <<bhis>> grip.
+	<<else>>
+		The <<tower_creature_text>> stretches, then collapses on top of you.
+		<br><br>
+		<<tearful>> you struggle free.
+	<</if>>
+	<<set $tower_sleep to 115>>
 	<br><br>
 
 <<elseif $enemyhealth lte 0>>
 
-<<tearful>> you struggle away from the creature. It growls, but doesn't pursue. It curls up falls back into a disurbed sleep.
-<br><br>
+	<<tearful>> you struggle away from the <<tower_creature_text>>.
+	<<if $NPCList[0].monster is "monster">>
+		"Not worth it," <<bhe>> growls.
+	<<else>>
+		It growls, but doesn't pursue.
+	<</if>>	
+	<<bHe>> curls up falls back into a disturbed sleep.
+	<br><br>
 
 <<else>>
+	The <<tower_creature_text>> emits a low, frustrated growl.
+	<<if $NPCList[0].monster is "monster">>
+		"Fine," <<bhe>> mutters. <<bHe>> doesn't push you, instead falling back into a disturbed sleep.
+	<<else>>
+		It doesn't push you though, instead falling back into a disturbed sleep.
+	<</if>>
+	<br><br>
 
-The beast emits a low, frustrated growl. It doesn't push you though, instead falling back into a disturbed sleep.
-<br><br>
-
-<<tearful>> you gather yourself.
-<br><br>
+	<<tearful>> you gather yourself.
+	<br><br>
 
 <</if>>
 
 <<clotheson>>
 <<endcombat>>
+<<loadNPC 0 tower_creature>>
 
-<<link [[Next|Monster Tower]]>><<set $tower_sleep to 115>><</link>>
+<<link [[Next|Monster Tower]]>><</link>>
+
+:: Monster Tower Wake
+<<set $outside to 0>><<effects>>
+
+<<if $exposed gte 2>>
+	<<set $rng to random(1,2)>>
+<<else>>
+	<<set $rng to random(1,3)>>
+<</if>>
+
+The <<tower_creature_text>> lumbers over to you, stopping just within arm's reach.
+
+<<if $NPCList[0].monster is "monster">>
+	<<bHis>> intense stare makes you feel uneasy. "Need to be prettier," <<bhe>> growls.
+<<else>>
+	You can feel <<bhis>> hot breath on your face. <<bHe>> lets out an angry snort.
+<</if>>
+<br><br>
+
+<<switch $rng>>
+	<<case 1>>
+		<<bHis>> glowing eyes scrutinise every inch of your form, until <<bhis>> gaze is caught by something behind you.
+		<br><br>
+
+		Your blood freezes for a split second as <<bhe>> closes the distance between the two of you, only for <<bhim>> to step past you. <<bHe>> pulls a necklace out of the pile, then backs up to examine you once again. After a moment or two, <<bhe>> places the necklace on your head and lets it fall down to your neck.
+		<br><br>
+
+		<<link [[Stay still (1:00)|Monster Tower Decorate]]>><<pass 60>><<set $phase to 0>><<tiredness 12>><<pain 2>><<stress 18>><</link>><<ggtiredness>><<ggstress>><<gpain>>
+		<br>
+		<<link [[Resist|Monster Tower Decorate]]>><<set $phase to 1>><<trauma -6>><</link>><<ltrauma>>
+		<br>
+	<<case 2>>
+		<<if $NPCList[0].monster is "monster">>
+			<<bHe>> grabs you by the wrist and grabs an armful of the trinkets surrounding you.
+		<<else>>
+			<<bHe>> wraps a front leg around your waist, then grabs as many trinkets as <<bhe>> can between <<bhis>> jaws.
+		<</if>>
+		<br><br>
+
+		You're helplessly dragged to a corner of <<bhis>> lair, where a large pipe hangs overhead. <<bHe>> shoves some rubbish aside, revealing a drainage grate underneath. Unsure of <<bhis>> intentions, all you can do is watch, perched within <<bhis>> stack of treasure.
+		<br><br>
+
+		The <<tower_creature_text>> shuffles over to a rusted valve, and grasps it. With a metallic creak, it gives way. Steaming hot water gushes out of the pipe. <<bHe>> sticks <<bhis>> hand underneath the spout, as if testing the waters. <<bHe>> seems satisfied.
+		<br><br>
+
+		<<link [[Next|Monster Tower Clean]]>><</link>>
+		<br>
+	<<case 3>>
+		<<if $worn.over_upper.name isnot "naked" or $worn.over_lower.name isnot "naked">>
+			<<overupperruined>><<overlowerruined>>
+			<<bHe>> swipes <<bhis>> claw at you, ripping your clothes off your body in one swift motion.
+
+			<<if $worn.upper.name is "naked" or $worn.lower.name is "naked">>
+				<<if $worn.under_upper.name isnot "naked" or $worn.under_lower.name isnot "naked">>
+					You're left with only your underwear protecting you from the <<tower_creature_text>>'s prying eyes.
+				<<else>>
+					<span class="lewd">You're left stark naked in front of the <<tower_creature_text>>.</span>
+				<</if>>
+			<</if>>
+		<<elseif $worn.upper.name isnot "naked" or $worn.lower.name isnot "naked">>
+			<<upperruined>><<lowerruined>>
+			<<bHe>> swipes <<bhis>> claw at you, tearing your clothes from your body in one swift motion.
+
+			<<if $worn.under_upper.name isnot "naked" or $worn.under_lower.name isnot "naked">>
+				You're left with only your underwear protecting you from the <<tower_creature_text>>'s prying eyes.
+			<<else>>
+				<span class="lewd">You're left stark naked in front of the <<tower_creature_text>>.</span>
+			<</if>>
+		<<elseif $worn.under_upper.name isnot "naked" or $worn.under_lower.name isnot "naked">>
+			<<underupperruined>><<underlowerruined>>
+			In a precise motion, <<bhe>> drags <<bhis>> clawed fingertip from your chin to your groin, ripping your underwear right down the middle. The scraps fall freely to the floor, <span class="lewd">leaving you stark naked in front of the <<tower_creature_text>>.</span>
+		<</if>>
+		<br><br>
+
+		<<if $NPCList[0].monster is "monster">>
+			"Better without those," <<bhe>> says as <<bhe>> shakes the ruined fabric off <<bhis>> claw.
+		<<else>>
+			<<bHe>> grunts in satisfaction, then shakes the ruined fabric off <<bhis>> claw.
+		<</if>>
+		<br><br>
+
+		<<bHe>> lumbers over to <<bhis>> mattress and resumes <<bhis>> slumber, leaving you shivering in draftiness of <<bhis>> lair.
+		<br><br>
+
+		<<link [[Next|Monster Tower]]>><<set $eventskip to 1>><<set $tower_sleep to 115>><</link>>
+		<br>
+<</switch>>
+
+:: Monster Tower Decorate
+<<set $outside to 0>><<effects>>
+
+<<if $phase is 0>>
+	<<if $NPCList[0].monster is "monster">>
+		<<bHe>> grins. "There," <<bhe>> says, "even prettier." <<bHe>> sits down, curling <<bhis>> arms around <<bhis>> legs and resting <<bhis>> chin on <<bhis>> knees. <<bHe>> stares blankly.
+	<<else>>
+		The <<tower_creature_text>> snorts again. It sounds pleased, somehow. <<bHe>> lies on the ground, resting <<bhis>> head on <<bhis>> front legs and staring up at you, motionless.
+	<</if>>
+
+	You’re not sure what to do, so you stand in place.
+	<br><br>
+
+	Finally, <<bhe>> grows tired of staring at you and stands up again.
+
+	<<if $NPCList[0].monster is "monster">>
+		"Not enough, need more," <<bhe>> says.
+	<</if>>
+	<br><br>
+
+	<<bHe>> spends the next several minutes adding more and more trinkets to you. <<bHe>>'ll grab something from the pile, put it on you, sit and stare, then do it again. By the time <<bhe>>'s done, you're adorned with too many trinkets to count - a handful of necklaces, some gaudy fabric draped over your arms, and a fancy bowl on your head to name a few. Every time you drop your arms from the pose <<bhe>> put you in, <<bhe>> lets out a warning growl.<<stress 6>><<gstress>>
+	<br><br>
+
+	After what feels like an hour of posing, the <<tower_creature_text>> stands up without warning. <<bHe>> <<if $NPCList[0].monster is "monster">>walks<<else>>lopes<</if>> back to the mattress and flops down. Soon after, you hear <<bhim>> snoring. You waste no time taking everything off of yourself, feeling rather stiff and sore from standing for so long.
+	<br><br>
+
+	<<link [[Next|Monster Tower]]>><<set $eventskip to 1>><<set $tower_sleep to 115>><</link>>
+	<br>
+<<else>>
+	You rip the necklace off and chuck it right through the hole in the wall.
+
+	<<if $NPCList[0].monster is "monster">>
+		The <<tower_creature_text>>'s eyes widen in panic.
+	<<else>>
+		The <<tower_creature_text>> shrieks.
+	<</if>>
+
+	<<bHe>> scurries to retrieve <<bhis>> discarded treasure, but <<bhe>> can only watch it disappear into the mist below. <<bHe>> stands at the precipice, gripping one of the pipes hard enough to dent the metal.
+    <br><br>
+
+    Your moment of triumph is short-lived. <<bHe>> slowly turns around to face you, eyes narrowed into glowing yellow slits. <<bHis>> breathing is heavy.
+	<<if $NPCList[0].monster is "monster">>
+		"Ungrateful..." <<bhe>> growls.
+	<<else>>
+		<<bHe>> growls.
+	<</if>>
+    <br><br>
+
+    In a blur of motion, <<bhe>> bounds towards you, kicking up the debris littered about the place.
+
+	<<if $NPCList[0].monster is "monster">>
+		<<bHe>> grabs you by the throat, lifting you up with alarming strength and hefting you onto the mattress.
+	<<else>>
+		<<bHe>> bites down on your ankle, yanking you from the pile and dragging you to the mattress.
+	<</if>>
+    <br><br>
+
+    By the time you come to your senses, the <<tower_creature_text>> is already on top of you, snarling.
+	<br><br>
+
+	<<link [[Next|Monster Tower Rape]]>><<set $phase to 1>><<set $molestationstart to 1>><</link>>
+	<br>
+<</if>>
+
+:: Monster Tower Clean
+<<set $outside to 0>><<effects>>
+
+<<bHe>> reaches towards you. You instinctively duck out of the way. Undettered, <<bhe>> instead grabs a metal plate from the pile,
+<<if $NPCList[0].monster is "monster">>
+	giving it a good scrub
+<<else>>
+	letting it soak
+<</if>>
+underneath the boiling water.
+<br><br>
+
+<<bHe>> does this for all of <<bhis>> treasures, polishing each one to a shine, until <<bhe>> finally <<bhe>> gets to you. <<bHe>> tries to pull you under the water.
+<br><br>
+
+<<link [[Allow it|Monster Tower Clean 2]]>><<wash>><<pass 10>><<set $phase to 0>><<trauma 6>><<stress 18>><<pain 4>><</link>><<gtrauma>><<ggstress>><<gggpain>>
+<br>
+<<link [[Resist|Monster Tower Clean 2]]>><<set $phase to 1>><</link>>
+<br>
+
+:: Monster Tower Clean 2
+<<set $outside to 0>><<effects>>
+
+<<if $phase is 0>>
+	You're too afraid to resist, so you let the <<tower_creature_text>> pull you under. It's not as hot as you expected, but it still stings. Every now and then you have to jump out, only for the <<tower_creature_text>> to force you back under.<<water>>
+	<br><br>
+
+	At last, <<bhe>> pulls you out. "Nice and shiny." <<bHe>> gives you a once-over, nods, then steps under the pipe <<bhimself>>.
+	<br><br>
+
+	The cold air is a relief on your skin, but that changes once the water starts to cool, leaving you soaked and shivering. The <<tower_creature_text>> doesn't seem bothered. Sufficiently clean, <<bhe>> turns off the water and carries you back to your place in <<bhis>> hoard.
+	<br><br>
+
+	<<if $NPCList[0].monster is "monster">>
+		<<bHe>> stomps back to the mattress and flops down without another word.
+	<<else>>
+		<<bHe>> shambles back to the mattress, stretches, and flops down unceremoniously.
+	<</if>>
+	<br><br>
+
+	<<link [[Next|Monster Tower]]>><<set $eventskip to 1>><<set $tower_sleep to 115>><</link>>
+	<br>
+<<else>>
+	You wrench yourself free of the <<tower_creature_text>>'s grip. You end up stumbling backwards, right into the pile. You hear something crack behind you.
+	<br><br>
+
+	<<if $NPCList[0].monster is "monster">>
+		The <<tower_creature_text>> shoves you aside and kneels down, trying to piece whatever was broken back together. Judging by <<bhis>> growling, it doesn't appear to be working.
+	<<else>>
+		The <<tower_creature_text>> bounds past you and crouches down, using <<bhis>> claws to scrape together the broken shards. Judging by <<bhis>> growling, whatever <<bhe>>'s trying to do isn't working.
+	<</if>>
+	<br><br>
+
+	Enraged, <<bhe>> turns to you and pounces.
+
+	<<if $NPCList[0].monster is "monster">>
+		"Stupid," <<bhe>> hisses. "That was my favourite. Prettier than you."
+	<<else>>
+		<<bHe>> curls <<bhis>> lip, revealing rows of sharp teeth.
+	<</if>>
+	<br><br>
+
+	<<bHis>> claws tighten around you.
+	<br><br>
+
+	<<link [[Next|Monster Tower Rape]]>><<set $phase to 1>><<set $molestationstart to 1>><</link>>
+	<br>
+<</if>>
 
 :: Street Slime Submit willingly
 <<set $outside to 0>><<effects>>
@@ -4905,8 +5276,7 @@ You drop to the ground, writhing and moaning. You're not sure what you're doing,
 
 <<effectsman>><<man>>
 
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 
 <<stateman>>
 <br><br>
@@ -5035,7 +5405,7 @@ You lift the box.
 	<br>
 <<elseif $rng gte 41>>
 	You flick open the latch. <span class="pink">A purple mist</span> spews from the opening, making you sneeze and drop the box. You feel warm.
-	<<set $drugged += 120>><<garousal>><<arousal 1000>>
+	<<drugs 120>><<garousal>><<arousal 1000>>
 	<br><br>
 
 	<<destinationeventend>>
@@ -6033,7 +6403,7 @@ Surprised by your reaction, <<he>> relaxes and mumbles "Uhmm... Yeah... just be 
    The tight hug squeezes your <<breasts>> against the <<person>>. Your <<nipples>> harden in response.
    <<arousal 300>>
 <<elseif $NPCList[0].breastsize gte 2>>
-   The tight hug squeezes you agains the <<person>>'s $NPCList[0].breastsdesc. <<arousal 300>>
+   The tight hug squeezes you against the <<person>>'s $NPCList[0].breastsdesc. <<arousal 300>>
    <<set $rng to random(0, 100)>>
    <<if $rng gte 66>>
       You clearly feel <<his>> hard nipples. <<arousal 300>>
@@ -6114,7 +6484,7 @@ You let the <<person>> grope and fondle your <<bottom>> as <<he>> pleases. <<He>
 
 :: Street Bottom Accept
 <<effects>>
-Your led into the alley and allow the <<person>> to take things further.
+You're led into the alley and allow the <<person>> to take things further.
 <<promiscuity2>>
 <<link [[Next|Street Bottom]]>><<set $sexstart to 1>><</link>>
 
@@ -6495,7 +6865,7 @@ You ignore the <<persons>> request and try walk away, but <<he>> blocks your pat
 <<destinationeventend>>
 
 :: Street Friendly Respond
-<<effects>>
+<<effects>><<rngWraith 1>>
 
 
 <<if $rng gte 91>>
@@ -6504,7 +6874,7 @@ You ignore the <<persons>> request and try walk away, but <<he>> blocks your pat
 
 	You hasten your steps.<<gstress>><<gtrauma>><<stress 6>><<trauma 6>>
 	<br><br>
-<<elseif $wraith and $wraith.state isnot "" and $hallucinations gte 1 and ($rng gte 75 or ($wraith.state is "haunt" and $rng gte 50) or ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6))>>
+<<elseif _wraithEvent>>
 	You smile and greet the <<person>> as you walk by.<<if $wraith.state isnot "haunt">> You steal a glance at the ornate necklace around <<his>> neck.<</if>> <<His>> smile becomes wider, and you suddenly grow very anxious. <<He>> looks like <<hes>> getting more pale by the second. You quicken your pace, and you hear footsteps running after you. <<stress 6>><<gstress>>
 	<br><br>
 
@@ -6911,7 +7281,7 @@ You're cornered by the <<person>>, "You thought I'd let you get away with that?"
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<set $enemyno to 1>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<maninit>><<set $enemyanger += 150>><<set $enemytrust -= 150>>
 	<<set $rng to random(1, 100)>>
 	<<if $rng lte 50>>
@@ -6999,7 +7369,7 @@ Now that you're fully exposed, the <<person>> lets go, and gathers your clothes.
 	<<controlloss>>
 	<<violence 1>>
 	<<molested>>
-	<<set $enemyno to 1>>
+	<<set $enemyno to 1>><<set $enemynomax to 1>>
 	<<maninit>><<set $enemyanger += 50>><<set $enemytrust -= 50>>
 	<br><br>
 	"Oh yes, I know exactly what I'm going to do with you!" the <<person1>><<person>> smirks.
@@ -7271,7 +7641,7 @@ You punch the <<person>> in the face, putting a stop to the torrent of abuse.
 :: Street Criminal Ignore
 <<effects>>
 
-You walk on. The <<person>> hurls insults behind you, but you do you best to ignore them.
+You walk on. The <<person>> hurls insults behind you, but you do your best to ignore them.
 <br><br>
 
 <<endevent>>
@@ -8108,7 +8478,7 @@ They seem pleased by your display, but you can tell by the look in their eyes th
 
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	
+	<<fameprostitution 1>>
 	<<tipset>>
 	“Thanks, <<girl>>,” the <<person1>><<person>> says, tossing a wad of cash at your feet. “It was worth every penny.” <<He>> laughs as <<he>> leads <<his>> friends out of the alley.
 	<br><br>
@@ -8322,14 +8692,14 @@ They seem pleased by your display, but you can tell by the look in their eyes th
 You close your eyes and take slow, deep breaths. Soon enough, you fall unconscious.
 <br><br>
 
-<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<set $drugged += 240>><<garousal>><<arousal 1000>><</link>>
+<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<drugs 240>><<garousal>><<arousal 1000>><</link>>
 <br>
 
 :: Street Kidnap Struggle
 <<set $outside to 1>><<effects>>
 
 <<if $physiqueSuccess>>
-	<<set $drugged += 20>>
+	<<drugs 20>>
 	<span class="green">You break loose, gulping down breaths of fresh air.</span> You try to run away, but you wind up tripping. Your body feels heavy and sluggish, but you persevere, get up and keep running.
 	<br><br>
 	
@@ -8342,7 +8712,7 @@ You close your eyes and take slow, deep breaths. Soon enough, you fall unconscio
 	You start hyperventilating and try to struggle free, <span class="red">but your movements start to feel sluggish.</span> Your vision begins to darken. Soon enough, you fall unconscious.
 	<br><br>
 	
-	<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<set $drugged += 240>><<garousal>><<arousal 1000>><</link>>
+	<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<drugs 240>><<garousal>><<arousal 1000>><</link>>
 	<br>
 <</if>>
 

@@ -11,7 +11,7 @@
 	<</if>>
 	<<He>> resumes stamping after a moment, while still looking at you. "First time at the rental counter? You can rent out one book at a ti-" <<he>> pauses to yawn<<if $sydneyDaily.greeting and $hour lte 12>> again<</if>>. "Time. You can also buy school-approved clothes here. <<nnpc_Title "Leighton">> Leighton's marked the prices way up, though. <span class="green">Students with a good record get special discounts.</span>" <<His>> tone is upbeat, and <<he>> seems excited despite <<his>> clear exhaustion.
 	<br><br>
-	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realizing that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that a demonstration of what happens if you return a late or damaged book. My name's Sydney, by the way! Pleased to meet you."
+	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realising that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that a demonstration of what happens if you return a late or damaged book. My name's Sydney, by the way! Pleased to meet you."
 	<br><br>
 <<elseif !$sydneySeen.includes("library")>>
 	<<npc "Sydney">><<person1>>
@@ -20,7 +20,7 @@
 	<br><br>
 	<<He>> resumes stamping after a moment, while still looking at you. "First time at the rental counter? You can rent out one book at a ti-" <<he>> pauses to yawn<<if $sydneyDaily.greeting and $hour lte 12>> again<</if>>. "Time. You can also buy school-approved clothes here. <<nnpc_Title "Leighton">> Leighton's marked the prices way up, though. <span class="green">Students with a good record get special discounts.</span>" <<His>> tone is upbeat, and <<he>> seems excited despite <<his>> clear exhaustion.
 	<br><br>
-	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realizing that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that foreshadowing for what happens if you return a late or damaged book."
+	"<span class="gold">Books can be rented out for two weeks at a time</span>, you can renew your rental at any time..." <<He>> suddenly looks down at <<his>> hand, realising that <<hes>> stamped <<himself>> "<span class="red"><i>Overdue</i></span>". <<He>> smiles at you nervously, before sitting back down. "Let's call that foreshadowing for what happens if you return a late or damaged book."
 	<br><br>
 <</if>>
 <<link [[Respond politely|Sydney Library Intro 2]]>><<set $phase to 1>><<npcincr Sydney love 1>><</link>>
@@ -129,7 +129,7 @@
 			<br><br>
 			Sydney frowns, concerned. "Robin, this is late. You're normally perfectly punctual. Is everything alright?"
 			<br><br>
-			Robin doesn't respond, and Sydney sighs. "I'm sorry, but you know the rules." <<He>> uncaps a marker and reaches for Robin's forehead. The moment the marker makes contant, <span class="red">Robin yelps</span> and backs away, waving <<nnpc_his "Robin">> arms furiously. <<nnpc_His "Robin">> breaths come out in short, panicked spurts. Sydney looks to you for help.
+			Robin doesn't respond, and Sydney sighs. "I'm sorry, but you know the rules." <<He>> uncaps a marker and reaches for Robin's forehead. The moment the marker makes contact, <span class="red">Robin yelps</span> and backs away, waving <<nnpc_his "Robin">> arms furiously. <<nnpc_His "Robin">> breaths come out in short, panicked spurts. Sydney looks to you for help.
 			<<stress 3>><<gstress>>
 			<br><br>
 			Robin doesn't need this right now. You gently push Sydney's arm away and spend a few minutes rubbing Robin's back. <<nnpc_He "Robin">> eventually calms down. <<nnpc_He "Robin">> wordlessly hugs you for a moment before leaving the library.
@@ -199,7 +199,7 @@
 		<br><br>
 		Sirris laughs to <<himself>>. "That is true," <<he>> says. "I remember you saying that, little Syd." Sydney pouts harder.
 		<<sydneySirrisResemble>>
-		Sydney looks at you, then to Sirris. <<He>> takes a moment to arrange the counter besides <<him>>, in an attempt to ease the awkwardness.
+		Sydney looks at you, then to Sirris. <<nnpc_He "Sydney">> takes a moment to arrange the counter besides <<nnpc_him "Sydney">>, in an attempt to ease the awkwardness.
 		<br><br>
 		"So why are you here?" Sydney asks.
 		<br>
@@ -379,7 +379,7 @@
 						<<link [[Push away|Sydney Library Bodywriting Stop]]>><</link>>
 						<br>
 					<</if>>
-					<<if $bodywritingdisable is "f">>
+					<<if $bodywritingLvl gte 1>>
 						<<link [[Allow it|Sydney Library Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>><<gbodywriting>>
 						<br>
 					<<else>>
@@ -420,7 +420,7 @@
 					It's foreign to you, and you shake your head. Sydney looks disappointed, before bouncing back up. "Maybe we can read it together some time. I love the part where the <<print either ("father reveals his","dog runs toward the","tree falls and blocks the","door gets picked by")>>- oops, sorry, no spoilers!"
 				<</if>>
 			<<case 11>>
-				You chat with Sydney. <<He>> shakes <<his>> head to startle a fly away, and <<his>> <<npcHairColour "Sydney">> <<if $sydney.hair is "ponytail">>ponytail<<else>>hair<</if>> whips you in the face. It's too soft to hurt, but it makes you jump. Sydney spends a few minutes <<if _sydneyStatus.includes("corrupt")>>giggling at you<<else>>fussing over you and apologizing<</if>>.
+				You chat with Sydney. <<He>> shakes <<his>> head to startle a fly away, and <<his>> <<npcHairColour "Sydney">> <<if $sydney.hair is "ponytail">>ponytail<<else>>hair<</if>> whips you in the face. It's too soft to hurt, but it makes you jump. Sydney spends a few minutes <<if _sydneyStatus.includes("corrupt")>>giggling at you<<else>>fussing over you and apologising<</if>>.
 			<<case 12>>
 				You chat with Sydney.
 				<<if !$sydneyDaily.pendant and (["holy", "dark", "eerie"].includes($worn.neck.type)) or $worn.neck.name is "scarf" or $worn.neck.name is "collar" or $worn.head.name is "feathered hair clip">>
@@ -886,7 +886,7 @@ You push Sydney away from you.
 			you say.
 			<br><br>
 			<<if $handskill gte 800>>
-				<<He>> melts in your grasp. <<He>> doesn't even say anything, and just lays back in <<his>> chair. <<He>> makes make a tiny squeak of pleasure. <<npcincr Sydney lust 1>><<glust>>
+				<<He>> melts in your grasp. <<He>> doesn't even say anything, and just lays back in <<his>> chair. <<He>> makes a tiny squeak of pleasure. <<npcincr Sydney lust 1>><<glust>>
 			<<elseif $handskill gte 400>>
 				You feel <<him>> loosen up. "You're pretty good at this." <<He>> leans back in <<his>> chair, enjoying your touch.
 			<<else>>
@@ -981,6 +981,7 @@ You push Sydney away from you.
 	<</switch>>
 <</if>>
 <<if _noOptions isnot 1>>
+	<br>
 	<<promiscuity1>>
 	<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($weather is "rain" or $weather is "snow") and $schoolstate is "lunch" and !$kylarDaily.leightonPunch>>
 		Kylar stares from across the library. <<gksuspicion>><<npcincr Kylar rage 1>>
@@ -2057,7 +2058,7 @@ You watch as Leighton brings down <<nnpc_his "Leighton">> hand on Sydney's botto
 :: Sydney Leighton Spank Refuse 2
 You shake your head, and turn your back to Sydney. "Then you are no longer needed here." Leighton walks you to the door of the library, unlocks it, and pushes you out.
 <br><br>
-After a moment, you can hear Sydney's cries resume. They sound much more agonized. <<stress 24>><<trauma 3>><<gggstress>><<gtrauma>>
+After a moment, you can hear Sydney's cries resume. They sound much more agonised. <<stress 24>><<trauma 3>><<gggstress>><<gtrauma>>
 <br><br>
 <<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><<set $libraryMoneyStolen to 0>><<set $sydneyPunish to 1>><</link>>
 <br>
@@ -2516,7 +2517,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 		<</if>>
 	<</if>>
 	<br><br>
-	<<if $bodywritingdisable is "f">>
+	<<if $bodywritingLvl gte 2>>
 		<<sydneyBodywritingLocation>><<if _writingFail isnot 1>>Looking in the changing room mirror, you notice that something has been written on you in marker. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting sleepyhead>><br><br><</if>>
 	<</if>>
 	<<link [[Get changed and leave (0:01)|School Library]]>><<schoolspareclothes>><<endevent>><<set $eventskip to 1>><<pass 1>><</link>>
@@ -2524,7 +2525,7 @@ You awaken some time later. Sydney is nowhere to be seen.
 <<else>>
 	In <<his>> place is a note. It reads: "Had to get back to work. Rest well. Love you." - Sydney
 	<br><br>
-	<<if $bodywritingdisable is "f">>
+	<<if $bodywritingLvl gte 2>>
 		<<sydneyBodywritingLocation>><<if _writingFail isnot 1>>You look in the mirror. Something has been written on you in marker. Your <<bodypart _bodypart>> now reads: <<sydneyBodywriting sleepyhead>><br><br><</if>>
 	<</if>>
 	<<link [[Next|School Library]]>><<endevent>><<set $eventskip to 1>><</link>>
@@ -2795,7 +2796,7 @@ Sydney stretches and yawns.
 		<br><br>
 		<<link [[Push away|Sydney Canteen Bodywriting Stop]]>><</link>>
 		<br>
-		<<if $bodywritingdisable is "f">>
+		<<if $bodywritingLvl gte 1>>
 			<<link [[Allow it|Sydney Canteen Bodywriting Allow]]>><<npcincr Sydney lust 1>><</link>><<gslust>><<gbodywriting>>
 			<br>
 		<<else>>
@@ -2884,7 +2885,7 @@ Sydney stretches and yawns.
 			Before you can say anything, Sydney speaks to <<him>>. "Kylar. Good to see you." Kylar tenses up, and doesn't dare interrupt <<nnpc_him "Sydney">>. <<nnpc_He "Sydney">> continues. "<<print either("I trust you've broken the habit of doodling in the margins of my books?", "How's your English grade? Do you need more tutoring?", "You have a book due tomorrow.", "I hope you've been avoiding trouble.", "Keeping your locker clean?", "Want to trade notes? You have a knack for science.")>>"
 			Kylar looks away, pretending to ignore <<nnpc_him "Sydney">>.
 			<br><br><<person1>>
-			<<if $rng gte 51 and $bodywritingdisable is "f">>
+			<<if $rng gte 51 and $bodywritingLvl gte 2>>
 				Sydney begins absentmindedly writing on you. Kylar stares daggers at <<him>>, but <<he>> doesn't seem to notice.
 				<<sydneyBodywritingLocation>>
 				<<if _writingFail isnot 1>>

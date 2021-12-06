@@ -8,9 +8,9 @@ Half an hour passes before a <<generatey1>><<person1>><<person>> unwittingly fre
 <<if $submissive gte 1150>>
 	You scurry past <<him>> without looking.
 <<elseif $submissive lte 850>>
-	"Took long enough," you say, leaving them dumbstruck.
+	"Took long enough," you say, leaving <<him>> dumbstruck.
 <<else>>
-	"Thanks," you say as you hurry past them, leaving them dumbstruck.
+	"Thanks," you say as you hurry past <<him>>, leaving <<him>> dumbstruck.
 <</if>>
 <br><br>
 <<clotheson>>
@@ -928,43 +928,45 @@ You dive through the hole. Whitney takes the boxes from your hands. You try to c
 	"Please help," you say.
 	<</if>>
 <br><br>
-
-<<if $whitneyromance is 1>>
-
-Whitney considers a moment, then grabs your arms. <<He>> pulls you through to safety. "Can't let that dog have its way with you. You'd smell all funny." <<He>> and <<his>> friends laugh. "See you later <<girl>>. Thanks for the help."
-<<npcincr Whitney lust 5>><<glust>>
-<br><br>
-
-<<endevent>>
-
-<<link [[Next|Elk Street]]>><<endevent>><</link>>
-<br>
-
-<<else>><!-- Modified for Beast People -->
-
-Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
-<<npcincr Whitney lust 5>><<glust>>
-<br><br>
-
 <<endevent>>
 <<beastNEWinit 1 dog>>
-You feel the <<beasttype>> prod your behind.
-<br><br>
+<<if $monster isnot 1 and $bestialitydisable is "t">>
+	<<endevent>>
+	<<npc Whitney>><<person1>>
+	Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
 
-<<link [[Next|Bully Theft Dog]]>><<set $molestationstart to 1>><</link>>
-<br>
+	You wriggle and manage to get through the hole before the dog reaches you. The struggle hurt you and damaged your clothing.
+	<<npcincr Whitney lust 5>><<glust>><<beastescape>>
+	<br><br>
+
+	<<endevent>>
+
+	<<link [[Next|Elk Street]]>><<endevent>><</link>>
+	<br>
+<<elseif $whitneyromance is 1>>
+	<<endevent>>
+	<<npc Whitney>><<person1>>
+	Whitney considers a moment, then grabs your arms. <<He>> pulls you through to safety. "Can't let that dog have its way with you. You'd smell all funny." <<He>> and <<his>> friends laugh. "See you later <<girl>>. Thanks for the help."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
+
+	<<endevent>>
+
+	<<link [[Next|Elk Street]]>><<endevent>><</link>>
+	<br>
+<<else>><!-- Modified for Beast People -->
+	Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
+	You feel the <<beasttype>> prod your behind.
+	<br><br>
+	
+	<<link [[Next|Bully Theft Dog]]>><<set $molestationstart to 1>><</link>>
+	<br>
 
 <</if>>
-<!--
-You wriggle and manage to get through the hole before the dog reaches you. The struggle hurt you and damaged your clothing.
-<<npcincr Whitney lust 5>><<glust>><<beastescape>>
-<br><br>
-
-<<endevent>>
-
-<<link [[Next|Elk Street]]>><<endevent>><</link>>
-<br>
--->
 
 :: Bully Outside Fight
 <<if $fightstart is 1>>
@@ -1261,7 +1263,7 @@ You hear Whitney's voice behind you. "You sure showed them." Your hands<<if $fee
 <<if $phase is 0>>
 You sip the drink. It's very sweet. You feel light-headed within moments.
 <br><br>
-<<set $drunk += 120>>
+<<alcohol 120>>
 <</if>>
 
 <<He>> sips <<his>> drink and stares at you. "Why don't you come over here? Sit on my lap."
@@ -2076,7 +2078,7 @@ You watch Whitney undress. In mere seconds <<hes>> already completely exposed. Y
 :: Bully Rob Reversal 2
 <<endevent>>
 <<generate1>><<person1>>
-With Whitney at the ready, you move out of the alleyway and onto the main street. You look up and down the road, trying to find an easy target to fleece. A short while passes, and you manage to find your mark. A <<person>> walking down your side of the street. You wait until <<hes>> close, then gesture to Whitney. <<person1>><<He>> jumps into the open.
+With Whitney at the ready, you move out of the alleyway and onto the main street. You look up and down the road, trying to find an easy target to fleece. A short while passes, and you manage to find your mark. A <<person>> walking down your side of the street. You wait until <<hes>> close, then gesture to Whitney. <<nnpc_He "Whitney">> jumps into the open.
 <br><br>
 
 <<if $rng gte 80>>
@@ -3030,7 +3032,7 @@ About how a bully wrote on you, and is coercing you to get it made into a tattoo
 	You can't stop the tears.
 <</if>>
 <br><br>
-<<He>> listens without speaking, but <<his>> expression becomes serious. <<He>> glances up and out the window, where Whitney and <<his>> friend maintain their vigil.
+<<He>> listens without speaking, but <<his>> expression becomes serious. <<He>> glances up and out the window, where Whitney and <<nnpc_his "Whitney">> friend maintain their vigil.
 <br><br>
 "Please take a seat," <<he>> says. "I'll sort this out."
 <br><br>
@@ -3165,7 +3167,7 @@ Whitney lands with a splash. <<His>> friends can't contain their laughter. Not w
 <<He>> turns and walks away, <<his>> friends in tow.
 <br><br>
 
-<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+<<link [[Next|Hallways]]>><<endevent>><<set $bullytimeroutside to 0>><<set $eventskip to 1>><</link>>
 <br>
 
 :: School Leave Whitney Throw
@@ -3743,7 +3745,7 @@ Whitney brings you to your knees. "All I wanted was some fucking peace and quiet
 	<<ejaculation>><<npcincr Whitney lust -20>>
 
 	<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 10 and $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
-		"Don't think I wouldn't return the favor, slut."
+		"Don't think I wouldn't return the favour, slut."
 		<<if !$genderknown.includes("Whitney") and ($player.gender is "h") or ($player.gender_appearance is "m" and $player.gender isnot "m") or ($player.gender_appearance is "f" and $player.gender isnot "f")>>
 			<<set $genderknown.pushUnique("Whitney")>>
 			<<His>> hand trails down, until it makes contact with your <<genitals>>. For a moment, <<he>> seems surprised by what <<he>> feels, but <<he>> smiles anyway.

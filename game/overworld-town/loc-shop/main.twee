@@ -24,6 +24,9 @@
 	<<if $stress gte $stressmax>>
 		<<passoutshop>>
 	<<else>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "shoppingCentre">>
+		<</if>>
 		<<if $hour is 21>>
 			It's closing time. Security is herding everyone outside. <<if $exposed gte 1>>Panic swells within you as you realise how exposed you'll be should security find you in this state of dress.<</if>>
 			<br><br>
@@ -205,7 +208,7 @@ You've pushed yourself too much.
 <<set $outside to 0>><<effects>>
 
 <<if $phase is 0>><<set $phase to 1>>
-<<set $drugged += 180>>
+<<drugs 180>>
 <<lowerruined>>
 <<upperruined>>
 <<underruined>>
@@ -447,6 +450,9 @@ Their bodies shudder in unison as they reach orgasm.
 <<elseif $stress gte $stressmax>>
 	<<passoutshop>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "shoppingCentre">>
+	<</if>>
 	<<if $hour is 21>>
 		It's closing time. Security is herding everyone outside. <<if $exposed gte 1>>Panic swells within you as you realise how exposed you'll be should security find you in this state of dress.<</if>>
 		<br><br>

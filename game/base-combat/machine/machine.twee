@@ -349,10 +349,10 @@
 			<<set $machine.arm_chains.use to "grapple">>
 			<<set $machine.arm_chains.state to "grapple">>
 			<<if $leftarm isnot "bound">>
-				<<set $leftarm to "grappled">>
+				<<set $leftarm to "mechgrappled">><<set $lefttarget to "machine">>
 			<</if>>
 			<<if $rightarm isnot "bound">>
-				<<set $rightarm to "grappled">>
+				<<set $rightarm to "mechgrappled">><<set $righttarget to "machine">>
 			<</if>>
 		<<else>>
 			The <<machine_damage arm_chains>> chains holding your arms resist your movements, <span class="lblue">but remain loose.</span>
@@ -371,14 +371,14 @@
 		<<if _machine_legs is 1>>
 			The <<machine_damage leg_chains>> chains attached to your shackles retract, <span class="pink">pulling on your legs and immobilising them.</span>
 			<<set $feetactiondefault to "chain_struggle">>
-			<<set $feetuse to "grappled">>
+			<<set $feetuse to "mechgrappled">><<set $feettarget to "machine">>
 			<<set $machine.leg_chains.use to "grapple">>
 			<<set $machine.leg_chains.state to "grapple">>
 			<<if $leftleg isnot "bound">>
-				<<set $leftleg to "grappled">>
+				<<set $leftleg to "mechgrappled">>
 			<</if>>
 			<<if $rightleg isnot "bound">>
-				<<set $rightleg to "grappled">>
+				<<set $rightleg to "mechgrappled">>
 			<</if>>
 		<<else>>
 			The <<machine_damage leg_chains>> chains holding your legs resist your movements, <span class="lblue">but remain loose.</span>

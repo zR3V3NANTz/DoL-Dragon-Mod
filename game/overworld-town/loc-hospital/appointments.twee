@@ -24,7 +24,7 @@ You knock on the door, and hear Harper's voice on the other side. "Come in." You
 	<<link [[This feels nice|Doctor Harper's Office Trance]]>><<pass 10>><<set $phase to 1>><<npcincr Harper dom 5>><<control 25>><<set $trance to 1>><<trauma -6>><<stress -12>><<awareness -10>><</link>><<ggcontrol>><<llawareness>><<ltrauma>><<lstress>>
 	<br>
 	<<link [[Resist|Doctor Harper's Office Trance]]>><<pass 10>><<set $phase to 0>><<stress 6>><<npcincr Harper dom -5>><</link>><<gstress>>
-
+	<br>
 <<elseif $rng gte 51>>
 
 	"Please, sit down and relax." You do so, and <<he>> swivels to face you. <<His>> voice takes on a soothing quality. "I want you to breathe deeply." <<He>> holds up <<his>> pen. "Focus on the pen. There's nothing in the universe except this pen, my voice, and your own breath."
@@ -118,7 +118,7 @@ You knock on the door, and hear Harper's voice on the other side. "Come in." You
 
 	<<link [[Next|Hospital Foyer]]>><<endevent>><</link>>
 <<elseif $phase is 1>>
-	<<if $hypnosis is 0>><<set $hypnosis to 1>>
+	<<if $hypnosis is 0>><<set $hypnosis to 1>><<hypnotised 1>>
 
 		You slip deeper into the trance. <span class="green">You don't remember ever feeling so tranquil.</span> You hear Harper's voice drifting toward you. "That's very good. Now, the next time you feel overwhelmed by it all, I want you to remember this feeling, and..." <<He>> gives you instructions. "...you won't remember this. "When I drop this pen, you will awaken."
 		<br><br>
@@ -134,7 +134,7 @@ You knock on the door, and hear Harper's voice on the other side. "Come in." You
 		You slip deeper into the trance. <span class="green">You return to the familiar state of tranquillity.</span> You hear Harper's voice drifting toward you. "That's very good." <<He>> rummages through the drawer on <<his>> desk and produces a camera. "Now, take off your clothes."
 		<br><br>
 
-		<<link [[Take off your clothes|Doctor Harper's Office Camera]]>><<pass 20>><<npcincr Harper dom 5>><<set $hypnosis to 2>><<set $phase to 1>><<strip>><</link>>
+		<<link [[Take off your clothes|Doctor Harper's Office Camera]]>><<pass 20>><<npcincr Harper dom 5>><<set $hypnosis to 2>><<hypnotised 1>><<set $phase to 1>><<strip>><</link>>
 		<br>
 		<<link [[Refuse|Doctor Harper's Office Camera]]>><<npcincr Harper dom -5>><<set $phase to 0>><<stress 6>><</link>><<gstress>>
 		<br>
@@ -145,18 +145,19 @@ You knock on the door, and hear Harper's voice on the other side. "Come in." You
 		While <<he>> sets it up, <<person1>>Harper turns to you and softly speaks. "Take off your clothes."
 		<br><br>
 
-		<<link [[Take off your clothes|Doctor Harper's Office Camera2]]>><<pass 20>><<npcincr Harper dom 5>><<set $hypnosis to 3>><<set $phase to 1>><<strip>><</link>>
+		<<link [[Take off your clothes|Doctor Harper's Office Camera2]]>><<pass 20>><<npcincr Harper dom 5>><<set $hypnosis to 3>><<set $phase to 1>><<hypnotised 1>><<strip>><</link>>
 		<br>
 		<<link [[Refuse|Doctor Harper's Office Camera2]]>><<npcincr Harper dom -5>><<stress 6>><<set $phase to 0>><</link>><<gstress>>
 		<br>
 	<<elseif $hypnosis gte 3>>
+		
 		<span class="green">You slip deeper into the trance and return to the familiar state of tranquillity.</span> You hear Harper's voice drifting toward you. "That's very good." <<He>> walks briskly over to the window. <<He>> opens it, and a <<generate2>><<person2>><<person>> climbs through, carrying a large camera and tripod. <<generate3>><<generate4>><<generate5>><<generate6>><<He>> is closely followed by four others, a <<person3>><<person>>, a <<person4>><<person>>, a <<person5>><<person>> and a <<person6>><<person>>.
 		<br><br>
 
 		<<person2>>While the <<person>> sets up the camera, the other four start handing Harper money.<<person1>> <<He>> counts it, then hides it away in <<his>> drawer before turning to face you. "Take off your clothes," <<he>> says softly.
 		<br><br>
 
-		<<link [[Take off your clothes|Doctor Harper's Office Camera3]]>><<pass 20>><<npcincr Harper dom 5>><<set $phase to 1>><<strip>><</link>>
+		<<link [[Take off your clothes|Doctor Harper's Office Camera3]]>><<pass 20>><<npcincr Harper dom 5>><<set $phase to 1>><<hypnotised 1>><<strip>><</link>>
 		<br>
 		<<link [[Refuse|Doctor Harper's Office Camera3]]>><<npcincr Harper dom -5>><<stress 6>><<set $phase to 0>><</link>><<gstress>>
 		<br>

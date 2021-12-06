@@ -105,30 +105,30 @@
 <<actioncarry>>
 <<actioncarrydrop>>
 
-<<if $trance lte 0 and $dissociation lte 1 and $panicparalysis is 0 and ($panicviolence is 0 or $position is "stalk")
-and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
+<<combatstate>>
+<<carryblock>>
 
-	<<if $images is 1 and $consensual is 1 and $position_lock isnot 1>>
-		<<if $position is "doggy">>
-			| <label>Roll over <<radiobutton "$bodyaction" "missionary">></label>
-		<<elseif $position is "missionary">>
-			| <label>Roll over <<radiobutton "$bodyaction" "doggy">></label>
-		<</if>>
-		<<if $position isnot "stalk">>
-			| <label>Rest <<radiobutton "$bodyaction" "rest" checked>></label>
-			<br>
+<<if $trance lte 0 and $panicparalysis is 0 and ($panicviolence is 0 or $position is "stalk")>>
+	<<if $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined) and $dissociation lte 1>>
+		<<if $images is 1 and $consensual is 1 and $position_lock isnot 1>>
+			<<if $position is "doggy">>
+				| <label>Roll over <<radiobutton "$bodyaction" "missionary">></label>
+			<<elseif $position is "missionary">>
+				| <label>Roll over <<radiobutton "$bodyaction" "doggy">></label>
+			<</if>>
+			<<if $position isnot "stalk">>
+				| <label>Rest <<radiobutton "$bodyaction" "rest" checked>></label>
+				<br>
+			<</if>>
 		<</if>>
 	<</if>>
 
 	<<if $combatControls isnot "disabled">>
-		<<generateActionsMan>>
-		<<generateActionsTentacle>>
+		<<generateActionsAbomination>>
 	<</if>>
 	<br>
 <</if>>
 
-<<combatstate>>
-<<carryblock>>
 <br><br>
 <<set $face to 0>>
 </div>
@@ -138,7 +138,7 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 <<if $debug is 1>>
 	__Debug__
 	<br>
-	<<for _i to 0; _i lt $enemyno; _i++>>
+	<<for _i to 0; _i lt $enemynomax; _i++>>
 		<<print _i>> $NPCList[_i].fullDescription: Head Location: $NPCList[_i].location.head --- Genitals Location: $NPCList[_i].location.genitals
 		<br>
 		Penis: $NPCList[_i].penis --- Vagina: $NPCList[_i].vagina --- Mouth: $NPCList[_i].mouth --- Anus: $NPCList[_i].anus
@@ -147,4 +147,94 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 <</if>>
 
 <br><br>
+<</widget>>
+
+<<widget "generateActionsAbomination">>
+<<set $combat to 1>>
+<<if _targetlist is undefined>>
+	<<getTargetList>>
+<</if>>
+<div id="listContainer">
+	<div id="leftaction" @class="$combatControls + 'Control'">
+		<<if $lefttarget is "self">>
+			<<leftActionInitSelf>>
+		<<elseif $lefttarget is "tentacles" and Object.values(_targetlistarms).includes("tentacles")>>
+			<<leftActionInitTentacle>>
+		<<else>>
+			<<leftActionInit>>
+		<</if>>
+	</div>
+
+	<div id="rightaction" @class="$combatControls + 'Control'">
+		<<if $righttarget is "self">>
+			<<rightActionInitSelf>>
+		<<elseif $righttarget is "tentacles" and Object.values(_targetlistarms).includes("tentacles")>>
+			<<rightActionInitTentacle>>
+		<<else>>
+			<<rightActionInit>>
+		<</if>>
+	</div>
+
+	<div id="feetaction" @class="$combatControls + 'Control'">
+		<<if $feettarget is "self">>
+			<<feetActionInitSelf>>
+		<<elseif $feettarget is "tentacles" and Object.values(_targetlistall).includes("tentacles")>>
+			<<feetActionInitTentacle>>
+		<<else>>
+			<<feetActionInit>>
+		<</if>>
+	</div>
+
+	<div id="mouthaction" @class="$combatControls + 'Control'">
+		<<if $mouthtarget is "tentacles" and Object.values(_targetlistall).includes("tentacles")>>
+			<<mouthActionInitTentacle>>
+		<<else>>
+			<<mouthActionInit>>
+		<</if>>
+	</div>
+
+	<<if $player.penisExist>>
+		<div id="penisaction" @class="$combatControls + 'Control'">
+			<<if $penistarget is "tentacles" and Object.values(_targetlistall).includes("tentacles")>>
+				<<penisActionInitTentacle>>
+			<<else>>
+				<<penisActionInit>>
+			<</if>>
+		</div>
+	<</if>>
+
+	<<if $player.vaginaExist>>
+		<div id="vaginaaction" @class="$combatControls + 'Control'">
+			<<if $vaginatarget is "tentacles" and Object.values(_targetlistall).includes("tentacles")>>
+				<<vaginaActionInitTentacle>>
+			<<else>>
+				<<vaginaActionInit>>
+			<</if>>
+		</div>
+	<</if>>
+
+	<div id="anusaction" @class="$combatControls + 'Control'">
+		<<if $anustarget is "tentacles" and Object.values(_targetlistall).includes("tentacles")>>
+			<<anusActionInitTentacle>>
+		<<else>>
+			<<anusActionInit>>
+		<</if>>
+	</div>
+
+	<<if $chestuse is "tentaclerub">>
+		<div id="chestaction" @class="$combatControls + 'Control'">
+			<<chestActionInitTentacle>>
+		</div>
+	<<elseif $chestuse is "penis">>
+		<div id="chestaction" @class="$combatControls + 'Control'">
+			<<chestActionInit>>
+		</div>
+	<</if>>
+
+	<<if $thighuse isnot 0>>
+		<div id="thighaction" @class="$combatControls + 'Control'">
+			<<thighActionInit>>
+		</div>
+	<</if>>
+</div>
 <</widget>>

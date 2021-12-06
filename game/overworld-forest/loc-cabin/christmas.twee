@@ -43,7 +43,7 @@ You're about to tell <<him>> that <<he>> didn't need to do anything, but <<he>> 
 :: Eden Christmas Meal 2
 <<effects>>
 
-You and Eden take a seat, and you try a bite of the food. It's delicious and bursting with flavor. You're about to take another bite, but stop when you notice that Eden isn't eating. In fact, <<he>> looks tense as <<he>> glances between you and the food.
+You and Eden take a seat, and you try a bite of the food. It's delicious and bursting with flavour. You're about to take another bite, but stop when you notice that Eden isn't eating. In fact, <<he>> looks tense as <<he>> glances between you and the food.
 <br><br>
 It's not usual for <<him>> to be nervous. In an attempt to reassure <<him>>, you smile and compliment <<his>> work. <<He>> looks relieved by your words, and starts eating. <<He>> still seems doubtful.
 <br><br>
@@ -62,7 +62,7 @@ You chat with Eden over the meal, attempting to lighten the mood. <<He>>'s as qu
 
 	You accept, and <<he>> pours a glass for you. The smooth taste of the drink compliments your meal perfectly.
 	<br><br>
-	<<set $drunk += 120>>
+	<<alcohol 120>>
 
 <<elseif $phase is 2>>
 

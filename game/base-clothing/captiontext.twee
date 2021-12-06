@@ -1,6 +1,6 @@
 :: Widgets Clothing caption text [widget]
 
-<<widget "clothingCpationText">>
+<<widget "clothingCaptionText">>
 <<run window.outfitChecks()>>
 <<if _fullyNaked is false>>
 	<<set _clothingCaptionItems to []>>
@@ -10,14 +10,14 @@
 	<<set _wearing to "You are " + (_topless ? "<span class='pink'>topless</span>, " : "") + "wearing ">>
 	
 	<<if !_overNaked>>
-		<<clothingCpationTextOver>>
+		<<clothingCaptionTextOver>>
 	<</if>>
 	
 	<<if !_middleNaked>>
-		<<clothingCpationTextMiddle>>
+		<<clothingCaptionTextMiddle>>
 	<</if>>
 	
-	<<clothingCpationTextUnder>>
+	<<clothingCaptionTextUnder>>
 	
 	<<switch Math.clamp(_clothingCaptionItems.length, 0, 3)>>
 	<<case 3>>
@@ -33,16 +33,16 @@
 	<<set _text_output += _finally>>
 	<<print _text_output>>
 
-	<<clothingCpationTextGenitals>>
+	<<clothingCaptionTextGenitals>>
 <</if>>
-<<clothingCpationTextNothing>>
-<<clothingCpationTextMask>>
+<<clothingCaptionTextNothing>>
+<<clothingCaptionTextMask>>
 <br>
 <<if window.checkForExposedClothing()>>
-	<<clothingCpationTextStrip>>
+	<<clothingCaptionTextStrip>>
 <</if>>
 
-<<clothingCpationTextGender>>
+<<clothingCaptionTextGender>>
 <br>
 <</widget>>
 
@@ -71,7 +71,7 @@
 	<<set _clothingCaptionItems.pushUnique($_output)>>	
 <</widget>>
 
-<<widget "clothingCpationTextOver">><<silently>>
+<<widget "clothingCaptionTextOver">><<silently>>
 	<<if $worn.over_upper.name isnot "naked">>
 		<!--Upper and maybe lower-->
 		<<pushClothingCaption "over_upper">>
@@ -82,7 +82,7 @@
 	<</if>>
 <</silently>><</widget>>
 
-<<widget "clothingCpationTextMiddle">><<silently>>
+<<widget "clothingCaptionTextMiddle">><<silently>>
 	<<if $worn.upper.name isnot "naked">>
 		<!--Upper and maybe lower-->
 		<<pushClothingCaption "upper">>
@@ -93,7 +93,7 @@
 	<</if>>
 <</silently>><</widget>>
 
-<<widget "clothingCpationTextUnder">><<silently>>
+<<widget "clothingCaptionTextUnder">><<silently>>
 <<set $_exposed to (_overNaked and _middleNaked)>>
 
 <<if _underNaked>>
@@ -139,7 +139,7 @@
 <</if>>
 <</silently>><</widget>>
 
-<<widget "clothingCpationTextGenitals">><<silently>>
+<<widget "clothingCaptionTextGenitals">><<silently>>
 <<if $worn.genitals.name isnot "naked">>
 	<<if _bottomless>>
 		<<set $_text_output to " <span class='red'>Your <<genitalsintegrity>> $worn.genitals.name <<if $worn.genitals.anal_shield is 1>>with an anal shield<</if>> gives you no comfort.</span>">>
@@ -150,11 +150,11 @@
 <</silently>><<if $_text_output>><<print $_text_output>><</if>>
 <</widget>>
 
-<<widget "clothingCpationTextMask">>
+<<widget "clothingCaptionTextMask">>
 	<<if $worn.face.type.includes("mask")>><br>Your identity is concealed by your $worn.face.name.<</if>>
 <</widget>>
 
-<<widget "clothingCpationTextNothing">><<silently>>
+<<widget "clothingCaptionTextNothing">><<silently>>
 <<if _fullyNaked>>
 	<<if $worn.genitals.name isnot "naked">>
 		<<set $_text_output to "Your <<genitalsintegrity>> $worn.genitals.name <<if $worn.genitals.anal_shield is 1>>with an anal shield<</if>> gives you no comfort.">>
@@ -175,7 +175,7 @@
 	<<if $worn[$args[0]].state is "totheside">><<set _compare_result to 0>><</if>>
 <</widget>>
 
-<<widget "clothingCpationTextStrip">>
+<<widget "clothingCaptionTextStrip">>
 	<<set _captionCount to 0>>
 	<<set _clothing_levels to [0,"ankles","knees","thighs","waist","midriff","chest"]>>
 	<<clothingCaptionExposed "upper">>
@@ -268,7 +268,7 @@
 				<<set _output += $_clothes[$_type][0] + " and " + $_clothes[$_type][1] + $_verb>>
 			<<else>>
 				<<set _lastClothes to $_clothes[$_type].pop()>>
-				<<set _output += $_clothes[$_type].join(", ")) + "and _lastClothes" + $_verb>>
+				<<set _output += $_clothes[$_type].join(", ") + "and _lastClothes" + $_verb>>
 			<</if>>
 		<</for>>
 
@@ -279,7 +279,7 @@
 	<</if>>
 <</widget>>
 
-<<widget "clothingCpationTextGender">><<silently>>
+<<widget "clothingCaptionTextGender">><<silently>>
 
 <<if $player.gender isnot "f" and $player.gender_appearance is "f">>
 	<<if $breastindicator is 1>>

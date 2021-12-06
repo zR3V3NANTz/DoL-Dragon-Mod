@@ -276,6 +276,9 @@ The museum is closed. A sign on the door reads.
 	<<else>>
 		The building is empty of visitors, save yourself.
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "museum">>
+	<</if>>
 	<br><br>
 
 	<<if $museumhorseintro is 0>>

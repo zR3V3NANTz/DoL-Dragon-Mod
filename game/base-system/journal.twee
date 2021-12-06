@@ -321,6 +321,16 @@
 	<br>
 <</if>>
 
+<<if $photo>>
+	<<if $photo.silly is "accepted">>
+		A business owner on the High Street is expecting you during the day.
+		<br>
+	<<elseif $photo.silly is "done">>
+		You can collect your pay for the High Street job from Niki.
+		<br>
+	<</if>>
+<</if>>
+
 <br>
 <<if $scienceproject is "ongoing">>
 	<hr>
@@ -507,11 +517,13 @@
 	<br><br>
 	<h4>Winter has mentioned some items missing from the museum</h4>
 	<ul>
-		<<for _hint range $museumAntiqueJournalHints>>
-			<li>
-				<<print _museumAntiqueText[_hint].journal>>
-			</li>
-		<</for>>
+	<<set _hintslist to clone($museumAntiqueJournalHints).reverse()>>
+	<!-- most recent go on top -->
+	<<for _hint range _hintslist>>
+		<li>
+			<<print _museumAntiqueText[_hint].journal>>
+		</li>
+	<</for>>
 	</ul>
 <</if>>
 

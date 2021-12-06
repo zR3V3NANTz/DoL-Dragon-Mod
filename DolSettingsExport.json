@@ -1,5 +1,5 @@
-//Variables that are missing, not expected or invalid will be ignored
-//"starting" values will only import when on the start screen
+/*Variables that are missing, not expected or invalid will be ignored*/
+/*"starting" values will only import when on the start screen*/
 DolSettingsExport = {
 	"starting":{
 		"player":{
@@ -50,7 +50,10 @@ DolSettingsExport = {
 		"slimedisable":false,
 		"voredisable":false,
 		"tentacledisable":false,
+		"plantdisable":true,
 		"analdisable":false,
+		"analdoubledisable":false,
+		"vaginaldoubledisable":false,
 		"transformdisable":false,
 		"hirsutedisable":true,
 		"breastfeedingdisable":false,

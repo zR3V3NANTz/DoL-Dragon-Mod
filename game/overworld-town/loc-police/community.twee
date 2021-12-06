@@ -166,7 +166,7 @@ Removing the paint with just water and a coarse brush is difficult. The <<person
 	<<generate2>><<person2>>
 	A <<person>> enters the alley, and chats with the police officer.
 	<br><br>
-	<<if $bodywritingdisable is "f">>
+	<<if $bodywritingLvl gte 2>>
 		They approach you. "You've earned a break," the officer says. "This is the owner of the establishment. <<Hes>> agreed to help with your rehabilitation."
 		<br><br>
 		"Come here <<girl>>," the <<person>> says, <span class="pink">pulling the lid off a permanent marker.</span>

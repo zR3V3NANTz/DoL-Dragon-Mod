@@ -55,6 +55,25 @@ window.wikifier2 = function (str) {
 	new Wikifier(null, str);
 }
 
+window.actionsreplace = function (bodypart) {
+	var check = bodypart+"target";
+	if (V[check] == "tentacles"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitTentacle>><</replace>>');
+	}else if (V[check] == "swarm"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitSwarm>><</replace>>');
+	}else if (V[check] == "vore"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitVore>><</replace>>');
+	}else if (V[check] == "struggle"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitStruggle>><</replace>>');
+	}else if (V[check] == "machine"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitMachine>><</replace>>');
+	}else if (V[check] == "self"){
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInitSelf>><</replace>>');
+	}else{
+		new Wikifier(null, '<<replace #'+ bodypart + 'action>><<'+ bodypart + 'ActionInit>><</replace>>');
+	}
+}
+
 window.combatListColor = function (name, value, type) {
 	var color = "";
 	var check = "";
@@ -70,19 +89,20 @@ window.combatListColor = function (name, value, type) {
 			case "rightcovervagina": case "rightcoverpenis": case "rightcoveranus":
 			case "leftunderpull": case "leftskirtpull": case "leftlowerpull": case "leftupperpull":
 			case "rightunderpull": case "rightskirtpull": case "rightlowerpull": case "rightupperpull": case "rightUndressOther": case "leftUndressOther":
-			case "stopchoke":
-			case "clench":
-			case "shacklewhack":
+			case "stopchoke": case "clench": case "shacklewhack": case "leftfold": case "rightfold":
+			case "leftstruggleweak": case "rightstruggleweak":
 			/*feetaction*/
 			case "run": case "hide": case "confront":
 			/*mouthaction*/
 			case "pullaway": case "pullawayvagina": case "finish": case "novaginal": case "nopenile": case "noanal": case "scream":
 			case "mock": case "breastclosed": case "breastpull": case "pullawaykiss": case "noupper":
-			case "up":
+			case "up": case "stifleorgasm": case "stifle":
 			/*penisaction*/
-			case "othermouthescape": case "escape": case "otheranusescape":
+			case "othermouthescape": case "escape": case "otheranusescape": case "fencingescape" :
 			/*vaginaaction*/
 			case "tribescape":
+			/*anusaction*/
+			case "doubleescape":
 				color = "brat";
 				break;
 
@@ -91,23 +111,24 @@ window.combatListColor = function (name, value, type) {
 			/*feetaction*/
 			case "kick":
 			/*mouthaction*/
-			case "bite": case "demand": case "breastbite": case "handbite": case "headbutt":
+			case "bite": case "demand": case "breastbite": case "handbite": case "headbutt": case "bitepussy":
 				color = "def";
 				break;
 			/*leftaction or rightaction*/
-			case "behind":
-			case "fold":
+			case "behind": case "fold":
 			case "leftcovervaginameek": case "leftcoverpenismeek": case "leftcoveranusmeek":
 			case "rightcovervaginameek": case "rightcoverpenismeek": case "rightcoveranusmeek":
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip":
+			case "leftcurl": case "rightcurl":
 			/*mouthaction*/
-			case "grasp": case "plead": case "forgive":
-			case "down":
+			case "grasp": case "plead": case "forgive": case "down":
+			case "letout": case "letoutorgasm": case "noises":
 			/*penisaction*/
 			case "thighbay": case "bay": case "otheranusbay":
 			/*vaginaaction*/
 			case "penisthighs":
 			/*anusaction*/
-			case "bottombay": case "penischeeks": case "penispussy": case "penisanus":
+			case "bottombay": case "penischeeks": case "penispussy": case "penispussydap": case "penisanus":
 				color = "meek";
 				break;
 
@@ -128,6 +149,7 @@ window.combatListColor = function (name, value, type) {
 			case "otherpenisrub": case "penistopenis": case "penistopenisfuck": case "fencingcooperate":
 			/*vaginaaction*/
 			case "vaginatopenis": case "vaginapenisfuck": case "othervaginarub": case "vaginatovagina": case "vaginatovaginafuck": case "tribcooperate": case "penisEdging":
+			case "vaginatopenisdouble": case "vaginapenisdoublefuck": case "penispussydouble": case "penisanusdvp":
 			/*anusaction*/
 			case "anustopenis": case "anuspenisfuck": case "penistease": case "otherMouthAnusRub": case "otherAnusRub": case "penisEdging":
 			/*doubleanusaction*/
@@ -154,9 +176,9 @@ window.combatListColor = function (name, value, type) {
 				break;
 
 			/*leftaction or rightaction*/
-			case "leftescape": case "rightescape": case "lefthold": case "righthold": case "leftvorefree": case "rightvorefree":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
 			/*mouthaction*/
-			case "mouthpullawaytentacle":
+			case "mouthpullawaytentacle": case "stifleorgasm": case "stifle":
 			/*penisaction*/
 			case "penispullawaytentacle":
 			/*vaginaaction*/
@@ -187,10 +209,152 @@ window.combatListColor = function (name, value, type) {
 			case "chestrubtentacle":
 				color = "sub";
 				break;
+
+			/*leftaction or rightaction*/
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+			/*mouthaction*/
+			case "letout": case "letoutorgasm": case "noises":
+				color = "meek";
+				break;
+
 			default:
 				color = "white";
 				break;
 		}
+	}
+	else if (type === "Vore") {
+		switch (check.replace(/\d+/g, '')) {
+			case "leftescape": case "rightescape": case "lefthold": case "righthold": case "leftvorefree": case "rightvorefree":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+				color = "meek";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Swarm") {
+		switch (check.replace(/\d+/g, '')) {
+			/*leftaction or rightaction*/
+			case "leftfree": case "rightfree": case "frontpurgeleft": case "frontpurgeright":
+			case "frontclearleft": case "frontclearright": case "backpurgeleft": case "backpurgeright":
+			case "backclearleft": case "backclearright": case "chestclearleft": case "chestclearright":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+				color = "meek";
+				break;
+	
+			case "swim":
+				color = "teal";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Struggle") {
+		switch (check.replace(/\d+/g, '')) {
+			/*leftaction or rightaction*/
+			case "mouth_strengthen": case "mouth_grasp": case "vagina_strengthen": case "vagina_grasp":
+			case "penis_strengthen": case "penis_grasp": case "anus_strengthen": case "anus_grasp":
+			case "chest_strengthen": case "chest_grasp":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+			
+			/*leftaction or rightaction*/
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+			case "rest":
+			/*feetaction*/
+			case "evade": case "plant":
+				color = "meek";
+				break;
+
+			/*leftaction or rightaction*/
+			case "capture": case "mouth_pull": case "mouth_spray": case "vagina_pull": case "vagina_spray":
+			case "penis_pull": case "penis_spray": case "anus_pull": case "anus_spray": case "chest_pull": case "chest_spray":
+			/*mouthaction*/
+			case "bite":
+				color = "def";
+				break;
+
+			/*leftaction or rightaction*/
+ 			case "mouth_stroke": case "vagina_stroke": case "penis_stroke": case "anus_stroke": case "chest_stroke":
+			/*mouthaction*/
+			case "open": case "suck":
+				color = "sub";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Machine") {
+		switch (check.replace(/\d+/g, '')) {
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak": case "vaginal_push": case "anal_push":
+				color = "brat";
+				break;
+			
+			case "chain_struggle": case "whack": case "vaginal_whack": case "anal_whack":
+				color = "def";
+				break;
+
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl": case "rightcurl":
+				color = "sub";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
+	}
+	else if (type === "Self") {
+		switch (check.replace(/\d+/g, '')) {
+			/*leftaction or rightaction*/
+			case "leftfree": case "rightfree":
+			case "leftcovervagina": case "leftcoverpenis": case "leftcoveranus":
+			case "rightcovervagina": case "rightcoverpenis": case "rightcoveranus":
+			case "leftunderpull": case "leftskirtpull": case "leftlowerpull": case "leftupperpull":
+			case "rightunderpull": case "rightskirtpull": case "rightlowerpull": case "rightupperpull":
+			case "leftcovervagina": case "leftcoverpenis": case "leftcoveranus":
+			case "rightcovervagina": case "rightcoverpenis": case "rightcoveranus":
+			case "leftunderpull": case "leftskirtpull": case "leftlowerpull": case "leftupperpull":
+			case "rightunderpull": case "rightskirtpull": case "rightlowerpull": case "rightupperpull":
+			case "leftfold": case "rightfold": case "leftstruggleweak": case "rightstruggleweak":
+				color = "brat";
+				break;
+
+			/*leftaction or rightaction*/
+			case "leftprotect": case "rightprotect": case "leftgrip": case "rightgrip": case "leftcurl":
+			case "rightcurl": case "behind":
+			/*feetaction*/
+			case "evade": case "plant":
+				color = "meek";
+				break;
+
+			case "swim":
+				color = "teal";
+				break;
+
+			default:
+				color = "white";
+				break;
+		}
+
 	}
 	return color;
 }
@@ -555,11 +719,11 @@ window.DefaultActions = {
 			to.value[type][person][part].pushUnique(action);
 		});
 	},
-	get: function (type, person, part, from = V.actionDefaults) {
+	get: function (type, person, part, defaultValue = 'rest', from = V.actionDefaults) {
 		if (from[type] === undefined
 			|| from[type][person] === undefined
 			|| from[type][person][part] === undefined) {
-			return [];
+			return [ defaultValue ];
 		}
 		return from[type][person][part];
 	},
@@ -625,6 +789,7 @@ window.clothingData = function(slot, item, data){
 }
 
 window.clothesDataTrimmerLoop = function(){
+	if(!V.passage || V.passage === "Start") return;
 	const wardrobeKeys = Object.keys(V.wardrobes);
 	setup.clothes_all_slots.forEach(slot => {
 		clothesDataTrimmer(V.worn[slot]);
@@ -663,9 +828,10 @@ window.clothesDataTrimmerLoop = function(){
 }
 
 window.clothesDataTrimmer = function(item){
-	const toDelete = ["name_cap","iconFile","accIcon","notuck","skirt","description","colour_options","accessory_colour_options","fabric_strength","integrity_max","bustresize","sleeve_img","breast_img","exposed_base","vagina_exposed_base","anus_exposed_base","state_top_base","state_base",,"word","femininity","strap","cost","shop"];
+	if(!item) return;
+	const toDelete = ["name_cap","iconFile","accIcon","notuck","skirt","description","colour_options","accessory_colour_options","fabric_strength","integrity_max","bustresize","sleeve_img","breast_img","exposed_base","vagina_exposed_base","anus_exposed_base","state_top_base","state_base","word","femininity","strap","cost","shop","short"];
 	//To prevent it from running on variables multiple times, when updating toDelete, the last of the new additions should be added here
-	const trimmerVersion = ["shop"];
+	const trimmerVersion = ["shop","short"];
 	let version = 0;
 	let indexToUpdateVersion = toDelete.indexOf(trimmerVersion[version]);
 	toDelete.forEach((v, index) => {
@@ -725,4 +891,89 @@ window.clothesReturnLocation = function(item, type){
 			}
 	}
 	return "wardrobe";
+}
+
+// Runs before a passage load, returning a string redirects to the new passage name.
+Config.navigation.override = function (dest) {
+	switch (dest) {
+		case 'Forest Shop Outfit':
+		case 'Forest Shop Upper':
+		case 'Forest Shop Lower':
+		case 'Forest Shop Under Outfit':
+		case 'Forest Shop Under Upper':
+		case 'Forest Shop Under Lower':
+		case 'Forest Shop Head':
+		case 'Forest Shop Face':
+		case 'Forest Shop Neck':
+		case 'Forest Shop Legs':
+		case 'Forest Shop Feet':
+			return 'Forest Shop';
+
+		case 'Over Outfit Shop':
+		case 'Outfit Shop':
+		case 'Top Shop':
+		case 'Bottom Shop':
+		case 'Under Outfit Shop':
+		case 'Under Top Shop':
+		case 'Under Bottom Shop':
+		case 'Head Shop':
+		case 'Face Shop':
+		case 'Neck Shop':
+		case 'Hands Shop':
+		case 'Legs Shop':
+		case 'Shoe Shop':
+			return 'Clothing Shop';
+
+		case 'Penis Inspection Flaunt Crossdress':
+			return 'Penis Inspection Flaunt No Penis';
+
+		case 'Pussy Inspection2':
+			return 'Pussy Inspection 2';
+
+		case 'Pussy Inspection Penis':
+			return 'Pussy Inspection Flaunt No Pussy';
+
+		case 'Forest Plant Sex No Tentacles':
+			return 'Forest Plant Sex';
+		
+		case 'Forest Plant Sex No Tentacles Finish':
+			return 'Forest Plant Sex Finish';
+		
+		case 'Forest Plant Passout No Tentacles':
+			return 'Forest';
+
+		case 'Moor Plant Sex No Tentacles':
+			return 'Moor Plant Sex';
+
+		case 'Moor Plant Sex No Tentacles Finish':
+			return 'Moor Plant Sex Finish'
+
+		case 'Underground Plant Molestation No Tentacles':
+			return 'Underground Plant Molestation';
+
+		case 'Underground Plant Molestation No Tentacles Finish':
+			return 'Underground Plant Molestation Finish';
+
+		default:
+			return dest;
+	}
+}
+
+window.currentSkillValue = function(skill){
+    let result = V[skill];
+    if(!result) {
+        console.log(`currentSkillValue - skill '${skill}' unknown`);
+        return 0;
+    };
+    if(['skulduggery','physique','danceskill','swimmingskill','athletics','willpower','tending','english'].includes(skill) && V.moorLuck > 0){
+        result = Math.floor(result * (1 + (V.moorLuck / 100)));
+    }
+    switch(skill){
+        case 'tending':
+            if(V.backgroundTraits.includes("plantlover")){
+                result = Math.floor(result * (1 + (V.trauma / (V.traumamax * 2))));
+            }
+        break;
+    }
+    return result;
 }

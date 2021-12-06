@@ -49,8 +49,10 @@ The warmth growing within you passes the point of no return. Your knees buckle. 
 		<br><br>
 		<<tearful>> you rise to your feet. You feel unnaturally aroused, despite your orgasm. It's a small feeling at first. Then it grows, until <span class="lewd">an overwhelming desire for lewdity overtakes you.</span>
 		<br><br>
-		<i>A corruption bar has appeared in the Characteristics tab.</i>
-		<br><br>
+		<<if !$corruption_slime>>
+			<i>A corruption bar has appeared in the Characteristics tab.</i>
+			<br><br>
+		<</if>>
 
 		<<link [[Next|Trash Slime]]>><</link>>
 		<br>
@@ -410,7 +412,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[1].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -420,7 +422,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[0].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -430,7 +432,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[2].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -440,7 +442,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[3].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -450,7 +452,7 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<<elseif $NPCList[5].penissize lte 0>>
 		You try not to laugh at the sight of such a <<EZsmall>> penis on a boy taller than you.
 	<<else>>
-		You take a moment to take in the view, before the next boy decides its his turn.
+		You take a moment to take in the view, before the next boy decides it's his turn.
 	<</if>>
 	<br><br>
 
@@ -469,8 +471,10 @@ You find a large, iron key. You wonder if it opens anything nearby.
 
 	<<link [[Try and back out|Trash Boys Back Out]]>><</link>>
 	<br>
-	<<link [[Show them yours|Trash Boys Show]]>><</link>><<exhibitionist4>>
-	<br>
+	<<if $exhibitionism gte 55>>
+		<<link [[Show them yours|Trash Boys Show]]>><</link>><<exhibitionist4>>
+		<br>
+	<</if>>
 
 :: Trash Boys Back Out
 <<effects>>
@@ -478,8 +482,10 @@ You find a large, iron key. You wonder if it opens anything nearby.
 	<br><br>
 	"You made a promise" the <<person1>><<person>> retorts angrily, stepping forward. "Now you can either strip of your own free will, or we can make you" He states flatly. "It's ok if you feel a little embarrassed, but a promise is a promise."
 	<br><br>
-	<<link [[Strip|Trash Boys Show]]>><</link>><<exhibitionist4>>
-	<br>
+	<<if $exhibitionism gte 55>>
+		<<link [[Strip|Trash Boys Show]]>><</link>><<exhibitionist4>>
+		<br>
+	<</if>>
 	<<link [[Refuse|Trash Boys Forced Strip]]>><<set $molestationstart to 1>><</link>>
 	<br>
 

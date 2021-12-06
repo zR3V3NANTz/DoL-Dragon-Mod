@@ -227,13 +227,13 @@
 			<<if $pubtask is "forest" and $pubtask2 isnot 1>>
 				<<set $rng to random(1, 100)>>
 				<!-- Modified for Monster People -->
-				<<if $pubtasksetting is "bear">>
+				<<if $pubtasksetting is "bear" and $bestialitydisable is "f">>
 					<<link [[Search for Landry's black box|Forest Bear Box]]>><</link>>
 					<br>
 				<<elseif $pubtasksetting is "pair">>
 					<<link [[Search for Landry's black box|Forest Box]]>><</link>>
 					<br>
-				<<elseif $rng gte 51>>
+				<<elseif $rng gte 51 and $bestialitydisable is "f">>
 					<<link [[Search for Landry's black box|Forest Bear Box]]>><</link>>
 					<br>
 				<<else>>

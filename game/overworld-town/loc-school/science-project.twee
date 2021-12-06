@@ -79,7 +79,7 @@ You can only submit one project to the fair.
 <<else>>
 	<<set $sciencelichenlakeready += 1>>
 	You measure the purple lichen. You note down its weight, its volume, where you found it and describe what it looks like. You note that it smells sweet. Your hand is shaking by the end.
-	<<set $drugged += 180>>
+	<<drugs 180>>
 	<br><br>
 <</if>>
 

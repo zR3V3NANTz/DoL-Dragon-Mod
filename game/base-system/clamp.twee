@@ -4,7 +4,7 @@
 <<if $trauma gte $traumamax>>
 	<<set $beauty -= (($trauma - $traumamax) / 5)>>
 <</if>>
-<<if $innocencestate is 1>>
+<<if $innocencestate is 1 and $trauma gt 0>>
 	<<set $innocencetrauma += $trauma>>
 	<<set $trauma to 0>>
 <</if>>
@@ -51,6 +51,7 @@
 <<set $semen_amount = Math.clamp($semen_amount, 0, $semen_volume)>>
 <<set $milk_amount = Math.clamp($milk_amount, 0, $milk_volume)>>
 <<set $lactation_pressure = Math.clamp($lactation_pressure, 0, 100)>>
+<<set $nectar_addiction = Math.clamp($nectar_addiction, 0, 200)>>
 
 <<set $hygiene = Math.clamp($hygiene, 0, 2000)>>
 <<set $arousal = Math.clamp($arousal, 0, $arousalmax)>>
@@ -161,6 +162,7 @@
 <<set $famebusiness to Math.clamp($famebusiness, 0, 2000)>>
 <<set $famepimp to Math.clamp($famepimp, 0, 2000)>>
 <<set $famesocial to Math.clamp($famesocial, 0, 2000)>>
+<<set $famemodel to Math.clamp($famemodel, 0, 2000)>>
 
 <<set $fame to ($famesex + $famerape + $famebestiality + $fameexhibitionism + $fameprostitution + $famescrap + $famegood + $famebusiness + $famepimp + $famesocial)>>
 

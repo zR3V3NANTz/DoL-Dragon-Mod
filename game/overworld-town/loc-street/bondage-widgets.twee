@@ -132,19 +132,20 @@
 	<<beastNEWinit 1 dog>>
 	You hear a <<beasttype>> barking.
 	<!-- Modified for Beast People -->
+	<<if $monster is 1 or $bestialitydisable is "f">>
 		A heavy weight presses against your back and forces you to the ground. You try to struggle to your knees, but the <<beasttype>> mounts you and holds you down.
 		<br><br>
 
 		<<link [[Next|Bondage Dog Rape]]>><<set $molestationstart to 1>><</link>>
 		<br>
-	<!--
-	It gets closer, until you hear it right beside you. You run.
-	<br><br>
-	You manage to escape, though not without injury.
-	<br><br>
-	<<set $eventskip to 1>>
-	<<destinationbondage>>
-	-->
+	<<else>>
+		It gets closer, until you hear it right beside you. You run.
+		<br><br>
+		You manage to escape, though not without injury.
+		<br><br>
+		<<set $eventskip to 1>>
+		<<destinationbondage>>
+	<</if>>
 <<else>>
 
 	The sound of a speeding car is your only warning before you feel an impact against your
@@ -189,7 +190,7 @@
 <<elseif $rng gte 31>>
 
 	You hear the rumble of a van pulling up beside you. Its doors slide open. Two pairs of hands grab you, but they don't pull you inside. Instead, a choking mist sprays against your face. You feel a warmth in your groin and a fuzziness in your head.
-	<<set $drugged += 120>><<set $hallucinogen += 120>><<garousal>><<arousal 600>>
+	<<drugs 120>><<set $hallucinogen += 120>><<garousal>><<arousal 600>>
 	<br><br>
 
 	You hear the doors close and the van speed down the street. <<tearful>> you stagger away. You think you hear another set of footsteps somewhere behind you, that stop and start with yours. You're not sure if you're imagining it.
@@ -368,31 +369,32 @@
 <<elseif $rng gte 31>>
 	<!-- Modified for Beast People -->
 		<<beastNEWinit 3 dog>>
-		You hear several <<beastsplural>> barking. They're approaching fast, and soon surround you.
-		<br><br>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			You hear several <<beastsplural>> barking. They're approaching fast, and soon surround you.
+			<br><br>
 
-		Someone laughs. "Their owner said I should let them work off their energy," the voice says. "I'd say this counts."
-		<br><br>
+			Someone laughs. "Their owner said I should let them work off their energy," the voice says. "I'd say this counts."
+			<br><br>
 
-		One of the <<beastsplural>> pushes you to the ground.
-		<br><br>
-		<<link [[Next|Bondage Three Dogs Rape]]>><<set $molestationstart to 1>><</link>>
-		<br>
-		<!--
-		<<generate1>><<person1>>
-		You hear several dogs barking. They're approaching fast, and soon surround you.
-		<br><br>
+			One of the <<beastsplural>> pushes you to the ground.
+			<br><br>
+			<<link [[Next|Bondage Three Dogs Rape]]>><<set $molestationstart to 1>><</link>>
+			<br>
+		<<else>>
+			<<generate1>><<person1>>
+			You hear several dogs barking. They're approaching fast, and soon surround you.
+			<br><br>
 
-		A <<person>> laughs. "Their owner said I should let them work off their energy," <<he>> says. "I'd say this counts."
-		<br><br>
+			A <<person>> laughs. "Their owner said I should let them work off their energy," <<he>> says. "I'd say this counts."
+			<br><br>
 
-		You run in a random direction, the dogs biting at your heels. You manage to escape, though not without injury.<<beastescape>>
-		<br><br>
+			You run in a random direction, the dogs biting at your heels. You manage to escape, though not without injury.<<beastescape>>
+			<br><br>
 
-		<<endevent>>
-		<<set $eventskip to 1>>
-		<<destinationbondage>>
-		-->
+			<<endevent>>
+			<<set $eventskip to 1>>
+			<<destinationbondage>>
+		<</if>>
 <<elseif $rng gte 16>>
 <<beastNEWinit 2 wolf>>
 You freeze as you hear the twin growls of two wolves. They're close. A sudden impact against your legs knocks you to the ground. You feel a <<beasttype>> sniff at your prone body.
@@ -434,15 +436,16 @@ You freeze as you hear the twin growls of two wolves. They're close. A sudden im
 
 	<<else>>
 		<!-- Modified for Beast People -->
+		<<if $monster is 1 or $bestialitydisable is "f">>
 			<<link [[Next|Bondage Two Wolf Rape]]>><<set $molestationstart to 1>><</link>>
 			<br>
-		<!--
+		<<else>>
 			You leap to your feet and run. The wolves give chase. Somehow you escape, though not without injury.<<beastescape>>
 			<br><br>
 
 			<<set $eventskip to 1>>
 			<<destinationbondage>>
-		-->
+		<</if>>
 	<</if>>
 
 <<else>>
@@ -484,19 +487,19 @@ A sudden impact from behind knocks you over. You struggle, but the sound of a <<
 
 	<<else>>
 		<!-- Modified for Beast People -->
-		Then mounts you.
-		<br><br>
-		<<link [[Next|Bondage Wolf Rape]]>><<set $molestationstart to 1>><</link>>
-		<br>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			Then mounts you.
+			<br><br>
+			<<link [[Next|Bondage Wolf Rape]]>><<set $molestationstart to 1>><</link>>
+			<br>
+		<<else>>
+			<br><br>
+			You leap to your feet and run. The wolf gives chase. Somehow you escape, though not without injury.<<beastescape>>
+			<br><br>
 
-		<br><br>
-		<!--
-		You leap to your feet and run. The wolf gives chase. Somehow you escape, though not without injury.<<beastescape>>
-		<br><br>
-
-		<<set $eventskip to 1>>
-		<<destinationbondage>>
-		-->
+			<<set $eventskip to 1>>
+			<<destinationbondage>>
+		<</if>>
 	<</if>>
 <</if>>
 
@@ -505,64 +508,64 @@ A sudden impact from behind knocks you over. You struggle, but the sound of a <<
 <<widget "destinationbondage">>
 	<<switch $bus>>
 	<<case "nightingale">>
-		<<link [[Next|Bondage Nightingale]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Nightingale]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "domus">>
-		<<link [[Next|Bondage Domus]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Domus]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "elk">>
-		<<link [[Next|Bondage Elk]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Elk]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "high">>
-		<<link [[Next|Bondage High]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage High]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "starfish">>
-		<<link [[Next|Bondage Starfish]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Starfish]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "barb">>
-		<<link [[Next|Bondage Barb]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Barb]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "connudatus">>
-		<<link [[Next|Bondage Connudatus]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Connudatus]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "wolf">>
-		<<link [[Next|Bondage Wolf]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Wolf]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "harvest">>
-		<<link [[Next|Bondage Harvest]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Harvest]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "oxford">>
-		<<link [[Next|Bondage Oxford]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Oxford]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "danube">>
-		<<link [[Next|Bondage Danube]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Danube]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "mer">>
-		<<link [[Next|Bondage Mer]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Mer]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "cliff">>
-		<<link [[Next|Bondage Cliff]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Cliff]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "industrial">>
-		<<link [[Next|Bondage Industrial]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Industrial]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "residential">>
-		<<link [[Next|Bondage Residential]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Residential]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "commercial">>
-		<<link [[Next|Bondage Commercial]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Commercial]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "park">>
-		<<link [[Next|Bondage Park]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Park]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "industrialdrain">>
-		<<link [[Next|Bondage Industrial]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Industrial]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "residentialdrain">>
-		<<link [[Next|Bondage Residential]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Residential]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "commercialdrain">>
-		<<link [[Next|Bondage Commercial]]>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Commercial]]>><<endevent>><<set $eventskip to 1>><</link>>
 		<br>
 	<</switch>>
 	<br><br>

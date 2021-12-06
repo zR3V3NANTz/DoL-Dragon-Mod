@@ -20,8 +20,6 @@
 
 <div class="debugBorder"><<audience>></div>
 
-<div class="debugBorder"><<if $enemyhealth gt 0>><<npcdamage>><</if>></div>
-
 <div class="debugBorder"><<stateman>></div>
 <br><br>
 <div class="debugBorder"><<debugactionsman>></div>

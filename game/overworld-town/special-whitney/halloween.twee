@@ -317,7 +317,7 @@ They drink and swap stories. It sounds like they got up to some mischief before 
 Whitney offers you a bottle.
 <br><br>
 
-<<link [[Accept|Whitney Trick Drink]]>><<set $phase to 0>><<set $drunk += 180>><</link>>
+<<link [[Accept|Whitney Trick Drink]]>><<set $phase to 0>><<alcohol 180>><</link>>
 <br>
 <<link [[Refuse|Whitney Trick Drink]]>><<set $phase to 1>><</link>>
 <br>

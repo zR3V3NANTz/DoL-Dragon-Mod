@@ -513,10 +513,12 @@ Avery slams the door after you, then gets in the front. The doors lock as you dr
 	<<link [[Next|Avery Party]]>><</link>>
 	<br>
 <<else>><<set $avery_location to 1>>
-	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> takes your hand and leads you into the building.<<takeHandholdingVirginity "Avery" "romantic">>
+	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> offers <<his>> hand as <<he>> leads you into the building.
 	<br><br>
 
-	<<link [[Next|Avery Date 2]]>><</link>>
+	<<link [[Take it|Avery Date 2]]>><<set $phase to 1>><</link>><<handholdingvirginitywarning>>
+	<br>
+	<<link [[Refuse|Avery Date 2]]>><<set $phase to 2>><<npcincr Avery love -1>><<set $endear -= 10>><</link>><<lendear>><<llove>>
 	<br>
 <</if>>
 
@@ -542,10 +544,12 @@ You smile at <<him>>. <<He>> smiles back. "You're so sweet," <<he>> says as <<he
 	<<link [[Next|Avery Party]]>><</link>>
 	<br>
 <<else>><<set $avery_location to 1>>
-	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> takes your hand and leads you into the building.<<takeHandholdingVirginity "Avery" "romantic">>
+	<<He>> drives you to Connudatus Street and parks outside a restaurant. <<He>> offers <<his>> hand as <<he>> leads you into the building.
 	<br><br>
 
-	<<link [[Next|Avery Date 2]]>><</link>>
+	<<link [[Take it|Avery Date 2]]>><<set $phase to 1>><</link>><<handholdingvirginitywarning>>
+	<br>
+	<<link [[Refuse|Avery Date 2]]>><<set $phase to 2>><<npcincr Avery love -1>><<set $endear -= 10>><</link>><<lendear>><<llove>>
 	<br>
 <</if>>
 <br>
@@ -609,7 +613,7 @@ You are snapped out of your reverie by a click from the door. Your heart begins 
 <<arousal 4000>>
 <<if $arousal gte $arousalmax>>
 	<<orgasm>>
-	You moan as Avery finally separates from you, leaving your tongue to helplessly lull out of your mouth. <<He>> looks proud of <<himself>>. <<set $endear += 20>><<ggendear>>
+	You moan as Avery finally separates from you, leaving your tongue to helplessly loll out of your mouth. <<He>> looks proud of <<himself>>. <<set $endear += 20>><<ggendear>>
 <<else>>
 	After some time, Avery pulls away from you, giving you another smile.
 <</if>>
@@ -689,7 +693,7 @@ When the two of you finish eating, <<person1>><<he>> raises the bottle with a sm
 <br><br>
 
 
-<<link [[Accept|Avery Hotel Drink]]>><<endevent>><<set $phase to 0>><<set $drunk += 160>><<set $drugged += 220>><<npcincr Avery love 1>><</link>><<glove>><<garousal>>
+<<link [[Accept|Avery Hotel Drink]]>><<endevent>><<set $phase to 0>><<alcohol 160>><<drugs 220>><<npcincr Avery love 1>><</link>><<glove>><<garousal>>
 <br>
 <<link [[Decline|Avery Hotel Drink]]>><<endevent>><<set $phase to 1>><</link>>
 <br>
@@ -1144,7 +1148,7 @@ You take Avery by the hand, and <<he>> pulls you from the hot tub. <<He>> helps 
 <<He>> uncorks the bottle, taking a brief sip of it, before handing it to you. "It'll help. I promise."
 <br><br>
 
-<<link [[Accept|Avery Hotel Trauma Drink]]>><<set $drunk += 260>><<trauma -24>><<stress -24>><<awareness -5>><</link>><<lllstress>><<llltrauma>><<llawareness>>
+<<link [[Accept|Avery Hotel Trauma Drink]]>><<alcohol 260>><<trauma -24>><<stress -24>><<awareness -5>><</link>><<lllstress>><<llltrauma>><<llawareness>>
 <br>
 <<link [[Decline|Avery Hotel 5]]>><<endevent>><<set $phase to 3>><</link>>
 <br>
@@ -1682,7 +1686,7 @@ You practically hang off Avery's arm. You laugh at <<his>> jokes, and the jokes 
 A servant offers you a drink. Avery nods at you.
 <br><br>
 
-<<link [[Drink|Avery Party Drink]]>><<set $drunk += 120>><<set $endear += 10>><</link>><<gendear>>
+<<link [[Drink|Avery Party Drink]]>><<alcohol 120>><<set $endear += 10>><</link>><<gendear>>
 <br>
 <<link [[Refuse|Avery Party Drink Refuse]]>><</link>><<set $endear -= 5>><<lendear>>
 <br>
@@ -1696,7 +1700,7 @@ You do your best to be polite. You speak when addressed directly. You responses 
 A servant offers you a drink. Avery nods at you.
 <br><br>
 
-<<link [[Drink|Avery Party Drink]]>><<set $drunk += 120>><<set $endear += 10>><</link>><<gendear>>
+<<link [[Drink|Avery Party Drink]]>><<alcohol 120>><<set $endear += 10>><</link>><<gendear>>
 <br>
 <<link [[Refuse|Avery Party Drink Refuse]]>><</link>><<set $endear -= 5>><<lendear>>
 <br>
@@ -1710,7 +1714,7 @@ You ignore their conversations, as if beneath you. You give only curt responses 
 A servant offers you a drink. Avery nods at you.
 <br><br>
 
-<<link [[Drink|Avery Party Drink]]>><<set $drunk += 120>><<set $endear += 10>><</link>><<gendear>>
+<<link [[Drink|Avery Party Drink]]>><<alcohol 120>><<set $endear += 10>><</link>><<gendear>>
 <br>
 <<link [[Refuse|Avery Party Drink Refuse]]>><</link>><<set $endear -= 5>><<lendear>>
 <br>
@@ -2385,6 +2389,14 @@ You leave the mansion alone. Another servant opens the gate for you and you exit
 :: Avery Date 2
 <<effects>><<set $outside to 0>>
 <<pass 20>><<famesocial 10>><<set $dateCount.Total++>><<set $dateCount.Avery++>>
+<<if $phase is 1>>
+	You let Avery take your hand. <<He>> smiles.<<takeHandholdingVirginity "Avery" "romantic">>
+	<br><br>
+<<else>>
+	You lightly clench your hand. <<He>> frowns at you, but doesn't say anything.
+	<br><br>
+<</if>>
+<<set $phase to 0>>
 <<generate2>><<person2>>A <<person>> greets Avery and you. "Aha," <<he>> says. "It's nice to see you again, <<person1>><<sir>>. And your friend." <<person2>><<He>> smiles at you. "Right this way."
 <br><br>
 
@@ -2396,7 +2408,7 @@ When <<he>> returns <<he>> isn't carrying a menu, though, but a bottle of wine. 
 
 <<person1>>
 
-<<link [[Drink Avery's preferred wine|Avery Date Wine]]>><<set $drunk += 120>><<set $drugged += 180>><<set $endear += 10>><<npcincr Avery love 1>><</link>><<glove>><<gendear>><<garousal>>
+<<link [[Drink Avery's preferred wine|Avery Date Wine]]>><<alcohol 120>><<drugs 180>><<set $endear += 10>><<npcincr Avery love 1>><</link>><<glove>><<gendear>><<garousal>>
 <br>
 <<link [[Let them pour, but don't drink it|Avery Date No Wine]]>><</link>>
 <br>
@@ -2682,8 +2694,7 @@ The food soon arrives.
 <br><br>
 
 <<if $endear gte 30>>
-	"Thank you for the pleasant evening," <<he>> says after dropping <<his>> spoon into the empty bowl. <<He>> takes your hand and leads you from the restaurant. <<He>> opens the door of <<his>> car for you.
-	<<takeHandholdingVirginity "Avery" "romantic">>
+	"Thank you for the pleasant evening," <<he>> says after dropping <<his>> spoon into the empty bowl. <<He>> takes your arm and leads you from the restaurant. <<He>> opens the door of <<his>> car for you.
 <<elseif $endear gte 0>>
 	"You don't have to be so difficult," <<he>> says after dropping <<his>> spoon into the empty bowl. "Try not to embarrass me on the way out." You leave the restaurant together, and climb into <<his>> car.
 <<else>>

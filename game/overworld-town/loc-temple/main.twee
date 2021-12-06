@@ -71,6 +71,9 @@ You are in the main hall of the temple. Stone walls and pillars tower into darkn
 <<elseif $temple_event is 1 and $daystate isnot "night" and $exposed lte 0>><<set $temple_event to 0>>
 	<<eventstemple>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "temple">>
+	<</if>>
 	<<if $scienceproject is "ongoing" and $sciencelichentemple is 0 and $exposed lte 0>>
 		<<link [[Search for lichen (0:30)|Temple Lichen]]>><<pass 30>><<set $sciencelichentemple to 1>><</link>>
 		<br>
@@ -82,16 +85,16 @@ You are in the main hall of the temple. Stone walls and pillars tower into darkn
 
 	<<if $weekday is 1 and $hour gte 11 and $hour lte 12 and $massattended isnot 1 and $exposed lte 0 and $NPCName[$NPCNameList.indexOf("Jordan")].init is 1>>
 		<<if $angel gte 6>>
-			<<link [[Attend mass (1:00)|Temple Mass Angel]]>><<purity 10>><<pass 60>><<trauma -18>><<stress -18>><<set $drunk += 10>><<set $massattended to 1>><</link>> | <span class="green">+ Purity</span><<lltrauma>><<llstress>>
+			<<link [[Attend mass (1:00)|Temple Mass Angel]]>><<purity 10>><<pass 60>><<trauma -18>><<stress -18>><<alcohol 10>><<set $massattended to 1>><</link>> | <span class="green">+ Purity</span><<lltrauma>><<llstress>>
 			<br>
 		<<elseif $fallenangel gte 2>>
-			<<link [[Attend mass (1:00)|Temple Mass Fallen Angel]]>><<purity 70>><<pass 60>><<trauma 6>><<stress 6>><<pain 6>><<set $drunk += 10>><<set $massattended to 1>><</link>> | <span class="green">+ + + Purity</span><<trauma>><<gstress>><<gpain>>
+			<<link [[Attend mass (1:00)|Temple Mass Fallen Angel]]>><<purity 70>><<pass 60>><<trauma 6>><<stress 6>><<pain 6>><<alcohol 10>><<set $massattended to 1>><</link>> | <span class="green">+ + + Purity</span><<trauma>><<gstress>><<gpain>>
 			<br>
 		<<elseif $demon gte 6>>
-			<<link [[Attend mass (1:00)|Temple Mass Demon]]>><<purity 10>><<pass 60>><<trauma 6>><<stress 6>><<pain 6>><<set $drunk += 10>><<set $massattended to 1>><</link>> | <span class="green">+ Purity</span><<trauma>><<gstress>><<gpain>>
+			<<link [[Attend mass (1:00)|Temple Mass Demon]]>><<purity 10>><<pass 60>><<trauma 6>><<stress 6>><<pain 6>><<alcohol 10>><<set $massattended to 1>><</link>> | <span class="green">+ Purity</span><<trauma>><<gstress>><<gpain>>
 			<br>
 		<<else>>
-			<<link [[Attend mass (1:00)|Temple Mass]]>><<purity 10>><<pass 60>><<set $drunk += 10>><<set $massattended to 1>><</link>> | <span class="green">+ Purity</span>
+			<<link [[Attend mass (1:00)|Temple Mass]]>><<purity 10>><<pass 60>><<alcohol 10>><<set $massattended to 1>><</link>> | <span class="green">+ Purity</span>
 			<br>
 		<</if>>
 	<<elseif $exposed lte 0>>

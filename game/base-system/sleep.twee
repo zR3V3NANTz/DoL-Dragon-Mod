@@ -11,7 +11,7 @@
 	<<if $worn.upper.type.includes("sleep") or $worn.lower.type.includes("sleep")>>
 		<<set _sleepTraitEffect += 5>>
 	<</if>>
-	<<if $robinbed is 1 or $kylarbed is 1>>
+	<<if $robinbed is 1 or $kylarbed is 1 or $wolfbed is 1>>
 		<<set _sleepTraitEffect += 5>>
 	<</if>>
 	<<for $_i to 0; $_i lt _equip.length; $_i++>>
@@ -37,7 +37,7 @@
 				<<set $schoolwake to 1>>
 				<<set $robindebtwake to 1>>
 			<</if>>
-		<<elseif $wraith and $wraith.nightmare is 1 and ($moonstate is "evening" and $hour gte 22 or $moonstate is "morning" and $hour lt 5)>>		
+		<<elseif $wraith and $wraith.state isnot "" and $wraith.nightmare is 1 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5)>>		
 			<<if $location is "home" or $location is "cabin" or $location is "wolf_cave" or ($location is "tower" and $bird and $bird.mirror is 1) or $location is "alex_cottage">>
 				<<set $schoolwake to 1>>
 				<<set $wraith.nightmare to 2>>

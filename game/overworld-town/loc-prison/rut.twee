@@ -25,6 +25,7 @@ You are in the rut, beneath the prison.
         <<link [[Walk towards the breeze (0:10)|Prison Rut Walk]]>><<pass 10>><<set $hallucinogen += 10>><<set $phase to 0>><<set $rut += 10>><</link>>
         <br>
     <</if>>
+    <<prison_map rut>>
 <</if>>
 
 :: Prison Rut Chest
@@ -255,7 +256,7 @@ You inhale deeply. The lightheadedness almost has you on the ground, but when it
         You could eat it.
         <br><br>
 
-        <<link [[Eat|Prison Rut]]>><<endevent>><<stress -6>><<arousal 600>><<set $drugged += 30>><</link>><<garousal>><<lstress>>
+        <<link [[Eat|Prison Rut]]>><<endevent>><<stress -6>><<arousal 600>><<drugs 30>><</link>><<garousal>><<lstress>>
         <br>
         <<link [[Ignore|Prison Rut]]>><<endevent>><</link>>
         <br>
@@ -264,7 +265,7 @@ You inhale deeply. The lightheadedness almost has you on the ground, but when it
     <<if $tentacledisable is "f">>
         Your path dips into a thin ravine. Strange plants grow on the walls. Their bulbous fronds track you.
         <<if $leftarm is "bound" and $rightarm is "bound">>
-            <span class="red">With your arms bound,</span> there's not much you can do but push through. You shiver as they rub against you. Their tips are warm.<<gstress>><<garousal>><<stress 6>><<arousal 600>><<set $drugged += 30>>
+            <span class="red">With your arms bound,</span> there's not much you can do but push through. You shiver as they rub against you. Their tips are warm.<<gstress>><<garousal>><<stress 6>><<arousal 600>><<drugs 30>>
             <br><br>
         <<else>>
             You bat them aside as you pass through.
@@ -321,10 +322,10 @@ You inhale deeply. The lightheadedness almost has you on the ground, but when it
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Prison Slime End]]>><</link>>
+	<span id="next"><<link [[Next|Prison Slime End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Prison Slime]]>><</link>>
+	<span id="next"><<link [[Next|Prison Slime]]>><</link>></span>
 	<br>
 <</if>>
 

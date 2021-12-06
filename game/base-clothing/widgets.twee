@@ -70,10 +70,7 @@
 	<<run _accessoryColorOption.delete("custom")>>
 	<<set $worn[$args[0]].accessory_colour to clone(_accessoryColorOption.random())>>
 <</if>>
-<!--
-	ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x
-	<<run clothesDataTrimmer($worn[$args[0]])>>
--->
+<<run clothesDataTrimmer($worn[$args[0]])>>
 <</widget>>
 
 /*The "...wear" widgets give the player character new clothing. They take the index of the item you want to provide as the first argument, and the colour of the item as an optional second argument. The third argument defines the secondary colour, optionally. Only the upper half is required in the case of outfits. Currently worn clothes are sent to wardrobe.*/
@@ -207,10 +204,7 @@
 <<elseif $_selectedWardrobe[$args[1]].last().accessory_colour_options.length gt 0 and $_selectedWardrobe[$args[1]].last().accessory is 1>>
 	<<set $_selectedWardrobe[$args[1]].last().accessory_colour to clone($_selectedWardrobe[$args[1]].last().accessory_colour_options.random())>>
 <</if>>
-<!--
-	ToDo: clothes trimming, Uncomment after a major version after 0.3.4.x
-	<<run clothesDataTrimmer($_selectedWardrobe[$args[1]].last())>>
--->
+<<run clothesDataTrimmer($_selectedWardrobe[$args[1]].last())>>
 <</widget>>
 
 /*The "...send" widgets give the player character new clothing. They take the index of the item you want to provide as an argument, the location you want to send it to as a second argument, (such as "wardrobe",) and the colour of the item as an optional third argument. Fourth argument defines the secondary colour, if present. Only the upper half is required in the case of outfits. They differ from the "...wear" widgets in that they send clothes to your wardrobe, rather than put them on your character.*/
@@ -504,10 +498,10 @@
 			<<if $carried[$args[0]].name isnot "naked" and $clothingrebuy is 1 and $carried[$args[0]].one_piece isnot "broken" and setup.clothes[$args[0]][$carried[$args[0]].index].shop.length gt 0>>
 				<<if $carried[$args[0]].colourCustom isnot undefined>><<set _colourCustom to $carried[$args[0]].colourCustom>><</if>>
 				<<if $carried[$args[0]].accessory_colourCustom isnot undefined>><<set _accessory_colourCustom to $carried[$args[0]].accessory_colourCustom>><</if>>
+				<<set $_return to clothesReturnLocation($carried[$args[0]],"rebuy")>>
 				<<if $carried[$args[0]].outfitSecondary isnot undefined>>
 					<<set _outfitSecondaryRebuy to $carried[$args[0]].outfitSecondary>>
 					<<if $money gte Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
-						<<set $_return to clothesReturnLocation($carried[$args[0]],"rebuy")>>
 						<<generalSend $_return _outfitSecondaryRebuy[0] $carried[_outfitSecondaryRebuy[0]].index $carried[_outfitSecondaryRebuy[0]].colour $carried[_outfitSecondaryRebuy[0]].accessory_colour>>
 						<<set $money -= Math.trunc(getClothingCost($carried[_outfitSecondaryRebuy[0]],_outfitSecondaryRebuy[0]) * 1.5)>>
 						<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($carried[_outfitSecondaryRebuy[0]].name),$_return])>>
@@ -518,7 +512,7 @@
 				<<elseif $money gte Math.trunc(getClothingCost($carried[$args[0]],$args[0]) * 1.5)>>
 					<<generalSend `clothesReturnLocation($carried[$args[0]],"rebuy")` $args[0] $carried[$args[0]].index $carried[$args[0]].colour $carried[$args[0]].accessory_colour>>
 					<<set $money -= Math.trunc(getClothingCost($carried[$args[0]],$args[0]) * 1.5)>>
-					<<set $effectsmessage to 1>><<run $rebuy_success.push(clone($carried[$args[0]].name))>>
+					<<set $effectsmessage to 1>><<run $rebuy_success.push([clone($carried[$args[0]].name), $_return])>>
 				<<else>>
 					<<set $effectsmessage to 1>><<run $rebuy_failure.push(clone($carried[$args[0]].name))>>
 				<</if>>
@@ -1050,6 +1044,22 @@
 <<generalUndress _undress_temp "under_lower">>
 <<generalUndress _undress_temp "head">>
 <<generalUndress _undress_temp "face">>
+<<generalUndress _undress_temp "neck">>
+<<generalUndress _undress_temp "hands">>
+<<generalUndress _undress_temp "legs">>
+<<generalUndress _undress_temp "feet">>
+<</widget>>
+
+<<widget "undressKeepFace">>
+<<set _undress_temp to $args[0]>>
+<<generalUndress _undress_temp "over_upper">>
+<<generalUndress _undress_temp "over_lower">>
+<<generalUndress _undress_temp "over_head">>
+<<generalUndress _undress_temp "upper">>
+<<generalUndress _undress_temp "lower">>
+<<generalUndress _undress_temp "under_upper">>
+<<generalUndress _undress_temp "under_lower">>
+<<generalUndress _undress_temp "head">>
 <<generalUndress _undress_temp "neck">>
 <<generalUndress _undress_temp "hands">>
 <<generalUndress _undress_temp "legs">>
@@ -1657,5 +1667,28 @@
 	<<for $_label, $_value range $worn>>
 		<<set $worn[$_label].lastTaken to $args[0]>>
 	<</for>>
+<</if>>
+<</widget>>
+
+<<widget "resetClothingState">>
+<<if $args[0] and $args[0] isnot "genitals">>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].state_base>>
+		<<set $worn[$args[0]].state to setup.clothes[$args[0]][$worn[$args[0]].index].state_base>>
+	<</if>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].state_top_base>>
+		<<set $worn[$args[0]].state_top to setup.clothes[$args[0]][$worn[$args[0]].index].state_top_base>>
+	<</if>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].exposed_base>>
+		<<set $worn[$args[0]].exposed to setup.clothes[$args[0]][$worn[$args[0]].index].exposed_base>>
+	<</if>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].skirt>>
+		<<set $worn[$args[0]].skirt_down to 1>>
+	<</if>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].vagina_exposed_base>>
+		<<set $worn[$args[0]].vagina_exposed to setup.clothes[$args[0]][$worn[$args[0]].index].vagina_exposed_base>>
+	<</if>>
+	<<if setup.clothes[$args[0]][$worn[$args[0]].index].anus_exposed_base>>
+		<<set $worn[$args[0]].anus_exposed to setup.clothes[$args[0]][$worn[$args[0]].index].anus_exposed_base>>
+	<</if>>
 <</if>>
 <</widget>>

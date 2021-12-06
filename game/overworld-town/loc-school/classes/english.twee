@@ -96,6 +96,9 @@
 <<else>>
 	You are in the English classroom. Bookshelves line the walls.
 	<br><br>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "emptyClassroom">>
+	<</if>>
 	<<storeon "englishClassroom" "check">>
 	<<if _store_check is 1>>
 		<<storeon "englishClassroom">>
@@ -117,6 +120,10 @@
 	<<npc Doren>><<person1>>
 	"It's that time of week," Doren announces, lifting a booklet-filled tray from beneath <<his>> desk. <<He>> walks around the room, placing one in front of each student. "Don't worry. I'm sure you'll all do great."<<gstress>><<stress 6>>
 	<br><br>
+	<<if $arousal gte $arousalmax>>
+		<<set _teacher to "Doren">>
+		<<orgasmLocation "classroom">>
+	<</if>>
 
 	<<exam english>>
 	<br><br>
@@ -144,6 +151,10 @@
 		The English lesson continues, how do you want to conduct yourself?
 		<br><br>
 	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<set _teacher to "Doren">>
+		<<orgasmLocation "classroom">>
+	<</if>>
 
 	<<link [[Focus on the lesson|English Lesson Focus]]>><</link>><<gstress>><<genglish>>
 	<br>
@@ -163,6 +174,10 @@
 	<<else>>
 		The English lesson continues, how do you want to conduct yourself?
 		<br><br>
+	<</if>>
+	<<if $arousal gte $arousalmax>>
+		<<set _teacher to "Doren">>
+		<<orgasmLocation "classroom">>
 	<</if>>
 
 	<<link [[Focus on the lesson|English Lesson Focus]]>><</link>><<gstress>><<genglish>>

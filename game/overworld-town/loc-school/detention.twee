@@ -646,7 +646,7 @@ By the end, the <<person>> is left a sobbing mess, holding onto the desk for sup
 :: School Detention Paddle Gentle
 <<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
 
-You lift the paddle a little and swing it down upon <<persons>> upturned ass, stopping just shy of <<his>> cheek. <<He>> yelps in surprise, but then turns to you, looking relieved. You do the same to <<his>> other cheek. <<He>> flinches and cries out, but you know <<hes>> not in any real pain.
+You lift the paddle a little and swing it down upon <<person2>><<persons>> upturned ass, stopping just shy of <<his>> cheek. <<He>> yelps in surprise, but then turns to you, looking relieved. You do the same to <<his>> other cheek. <<He>> flinches and cries out, but you know <<hes>> not in any real pain.
 <br><br>
 
 <<if $skulduggery lte ($skulduggerydifficulty + 100)>>
@@ -1711,7 +1711,7 @@ You feel the <<persons>> hands hovering above your cheeks, but they don't make c
 Leighton slams <<his>> palm against the desk, cutting <<him>> off. "Either do as you're told, or next time, you can take <<pher>> place."
 <br><br>
 
-The <<person>> gulps and nods. Suddenly, you feel a pair of hands on your bottom. You gasp at the sensation. <<His>> motions are much clumsier than Leighton's, rubbing around your anus with a lustful fervor.
+The <<person>> gulps and nods. Suddenly, you feel a pair of hands on your bottom. You gasp at the sensation. <<His>> motions are much clumsier than Leighton's, rubbing around your anus with a lustful fervour.
 <br><br>
 
 <<if $promiscuity gte 35>>
@@ -1801,7 +1801,7 @@ The <<person>> pauses, <<if $phase is 0>>sniffles<<else>>takes a deep breath<</i
 		<<set $NPCList[0].lefthand to "anusentrance">><<set $anususe to 1>>
 	<<else>>
 		<<set $anususe to "penis">><<set $NPCList[0].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
-		<<set $NPCList[0].location.genitals = "genitals">>
+		<<set $NPCList[0].location.genitals = "genitals">><<set $anustarget to 0>>
 	<</if>>
 <<elseif $sexstart is 1>>
 	<<set $sexstart to 0>>
@@ -1815,7 +1815,7 @@ The <<person>> pauses, <<if $phase is 0>>sniffles<<else>>takes a deep breath<</i
 		<<set $NPCList[0].lefthand to "anusentrance">><<set $anususe to 1>>
 	<<elseif $phase is 0>>
 		<<set $anususe to "penis">><<set $NPCList[0].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
-		<<set $NPCList[0].location.genitals = "genitals">>
+		<<set $NPCList[0].location.genitals = "genitals">><<set $anustarget to 0>>
 	<</if>>	
 <</if>>
 <<set $position to "doggy">>

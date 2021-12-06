@@ -513,7 +513,7 @@ Alex seems less tense now the <<person>> is gone. <<person1>>"Sorry," <<he>> say
 <<effects>>
 
 <<if $phase is 0>>
-	<<set $drunk += 60>>
+	<<alcohol 60>>
 	You take the proferred bottle, and take a swig. It's a bitter spirit.
 <<else>>
 	Alex puts the bottle away.
@@ -806,7 +806,7 @@ Alex turns. "That's right," <<he>> says, resting a hand on your shoulder. "<<pSh
 <br>
 <<His>> <<if $pronoun is "m">>father<<else>>mother<</if>> nods. "A farm this size with only two people? Impressive. You need to show me around. First though-"
 <br>
-Alex is already walking towards the farmhouse. <<He>> stops at the door. "Tea of coffee?"
+Alex is already walking towards the farmhouse. <<He>> stops at the door. "Tea or coffee?"
 <br>
 "You know the answer to that."
 <br><br>
@@ -2473,7 +2473,7 @@ Bottles of milk: $farm.stock.milk
 <</if>>
 <br><br>
 
-Alex holds out the seeds. A sweet scent rises. "Good luck."<<set $drugged += 30>><<garousal>>
+Alex holds out the seeds. A sweet scent rises. "Good luck."<<drugs 30>><<garousal>>
 <br><br>
 
 <<set $plants_known.push("strange_flower")>>
@@ -2495,7 +2495,7 @@ Alex holds out the seeds. A sweet scent rises. "Good luck."<<set $drugged += 30>
 <</if>>
 <br><br>
 
-Alex shrugs, and holds out the seeds. "The farm needs the money," <<he>> says. "It's up to you. You're in charge of the fields."<<garousal>><<set $drugged += 30>>
+Alex shrugs, and holds out the seeds. "The farm needs the money," <<he>> says. "It's up to you. You're in charge of the fields."<<garousal>><<drugs 30>>
 <br><br>
 
 <<set $plants_known.push("strange_flower")>>

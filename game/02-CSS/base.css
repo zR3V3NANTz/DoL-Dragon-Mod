@@ -1,4 +1,7 @@
-mouse.tooltip {font-weight: normal;}
+mouse.tooltip {
+	font-weight: normal;
+	border-bottom: 1px dotted rgb(176, 176, 180);
+}
 
 mouse.tooltip span {
 	z-index:210;
@@ -15,12 +18,17 @@ mouse.tooltip span {
 mouse.tooltip:hover span {
 	display:inline;
 	position:absolute;
-	border:2px solid #000000;
-	color: #000000;
+	border:2px solid gold;
 	font-weight: normal;
 	text-decoration: none;
 	font-size:1.0em;
-	background:#C4C4C4 repeat-x 0 0;
+	background:#1a1919 repeat-x 0 0;
+}
+
+@media only screen and (max-width: 800px) {
+    mouse.tooltip:hover span {
+        left: 100px;
+    }
 }
 
 #next {
@@ -101,6 +109,16 @@ mouse.tooltip:hover span {
 .macro-button:hover {
 	background-color: #333;
 	border: 1px solid #fff;
+}
+
+.macro-button:active {
+	background-color: #ffd700;
+	border: 1px solid #fff;
+}
+
+.macro-button:focus {
+	background-color: #555;
+	border: 1px solid #ffd700;
 }
 
 .customOverlay {
@@ -489,6 +507,13 @@ mouse.tooltip:hover span {
 	border: 1px solid #666;
 }
 
+.settingsToggle input[name|="numberslider-input"]{
+	width: 83%;
+	height: 0.75em;
+	min-height: unset;
+	margin-left: 1em;
+}
+
 .settingsToggleBig {
 	float: left;
 	width: 100%;
@@ -527,6 +552,34 @@ mouse.tooltip:hover span {
 	position: absolute;
 	left: 0px;
 	top: 0px;
+	z-index: 20;
+}
+
+#prison_map {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	z-index: 10;
+}
+
+#prison_map_overlay {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 20;
+}
+
+#prison_map_rut {
+	position: absolute;
+	left: 0px;
+	top: 86px;
+	z-index: 10;
+}
+
+#prison_map_rut_overlay {
+	position: absolute;
+	left: 0px;
+	top: 86px;
 	z-index: 20;
 }
 
@@ -869,6 +922,10 @@ span.number, span.suit {
 
 .gold, .gold button, .goldLink a {
 	color: #FFD700;
+}
+
+.linkBlue {
+	color: #5888dd;
 }
 
 .silver {
@@ -2146,6 +2203,18 @@ div[id|="numberslider-body"] span {
 	text-align: center;
 	vertical-align: middle;
 }
+
+div[id|="numberslider-body"] .small-description{
+	margin-left: -6em;
+	text-align: left;
+}
+
+div[id|="numberslider-body"] span .inline-colour{
+	margin-left: unset;
+	min-width: unset; 
+	vertical-align: unset;
+}
+
 div[id|="numberslider-body"] input {
 	-webkit-appearance: none;
 	cursor: pointer;
@@ -4515,6 +4584,45 @@ img, canvas {
 	background-clip: text;
 	-webkit-background-clip: text;
 	color: transparent;	
+}
+
+.fading {
+	background: #f1f1db;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	opacity: 1;
+}
+.faded {
+	background: #f1f1db;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	opacity: 0;
+	transition: opacity 0.5s ease-in;
+}
+
+@keyframes flicker {
+	0% {
+		opacity: 0;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.flicker {
+	background: #f1f1db;
+	text-shadow: 0 0 32px #8800ff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	animation: 3s flicker alternate infinite;
 }
 
 .tentacles-blue {

@@ -210,7 +210,9 @@
 			<<set _chokeTraitMod += ($oxygenmax - $oxygen) / 1200>>
 		<</if>>
 		<<set $arousal to Math.clamp($arousal + ($args[0] * _orgasmTraitMod * _chokeTraitMod), 0, $arousalmax)>>
-		<<if $args[0] gte 0>>
+		<<if $args[1] is "maso">>
+			<<set $arousalmasochism += $args[0] * _orgasmTraitMod * _chokeTraitMod>>
+		<<elseif $args[0] gte 0>>
 			<<if $args[1] is true>>
 				<<if $trackedArousal.length gt 4>>
 					<<run $trackedArousal.deleteAt(0)>>
@@ -290,17 +292,20 @@
 <</widget>>
 
 <<widget "pain">>
-<!-- Including masochism effect for all pain NG v2.7 -->
-	<<if $args[0] gte 0 or $args[0] lt 0>>
-		<<if $masochism gte 100>>
-			<<set $pain += (($args[0] * (1 - ($masochism / 1200)) * (1 - ($sciencetrait / 10))) * 4)>>
-			<<set _arousal to (($args[0] * (0 + ($masochism / 24))) * 4)>>
-			<<arousal _arousal>>
-			<<set $arousalmasochism += ($args[0] * (0 + ($masochism / 14)))>>
-		<<else>>
-		<<set $pain += ($args[0] * 4)>>
+	<<set _pain to $args[0] * 4>>
+	<!-- apply science reduction -->
+	<<if _pain gte 0>>
+		<<set _pain *= 1 - ($sciencetrait / 10)>>
+	<</if>>
+	<!-- Including masochism effect for all pain NG v2.7 -->
+	<<if $masochism gte 100>>
+		<<set _pain *= 1 - $masochism / 1200>>
+		<<set _arousal to $args[0] * $masochism / 6>>
+		<<if _arousal gte 0>>
+			<<arousal _arousal "maso">>
 		<</if>>
 	<</if>>
+	<<set $pain += _pain>>
 <</widget>>
 
 <<widget "masopain">>
@@ -674,5 +679,29 @@
 <<widget "locker_suspicion">>
 <<if $args[0]>>
 	<<set $locker_suspicion += $args[0]>>
+<</if>>
+<</widget>>
+
+<<widget "alcohol">>
+<<if $args[0] and $statFreeze isnot true>>
+	<<if $backgroundTraits.includes("plantlover")>>
+		<<set _drunk_mod to 1.5>>
+	<<else>>
+		<<set _drunk_mod to 1>>
+	<</if>>
+	<<set $drunk += Math.floor($args[0] * _drunk_mod)>>
+	<<set $drunk to Math.clamp($drunk, 0, 1000)>>
+<</if>>
+<</widget>>
+
+<<widget "drugs">>
+<<if $args[0] and $statFreeze isnot true>>
+	<<if $backgroundTraits.includes("plantlover")>>
+		<<set _drugged_mod to 1.5>>
+	<<else>>
+		<<set _drugged_mod to 1>>
+	<</if>>
+	<<set $drugged += Math.floor($args[0] * _drugged_mod)>>
+	<<set $drugged to Math.clamp($drugged, 0, 1000)>>
 <</if>>
 <</widget>>
