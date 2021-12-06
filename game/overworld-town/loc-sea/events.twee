@@ -954,10 +954,10 @@ You've pushed yourself too much.
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Sea Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Sea Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Sea Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Sea Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

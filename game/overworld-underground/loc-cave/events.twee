@@ -234,10 +234,10 @@ Your voice echoes through the cave. The eyes wink and shut.
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Beach Cave Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Beach Cave Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Beach Cave Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Beach Cave Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

@@ -383,10 +383,10 @@ You drop into the water, and wade through. The creatures dart towards you as you
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Moor Box Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Moor Box Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Moor Box Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Moor Box Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

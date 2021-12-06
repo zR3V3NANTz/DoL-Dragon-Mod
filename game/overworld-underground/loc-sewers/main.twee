@@ -929,10 +929,10 @@ You've read about the old sewers beneath the storm drains. They haven't been use
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Drain Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Drain Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Drain Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Drain Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

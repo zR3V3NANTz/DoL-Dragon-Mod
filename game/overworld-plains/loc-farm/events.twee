@@ -283,10 +283,10 @@ You gasp for air. "Be careful of those," <<he>> says. "They crawl in from the mo
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Farm Yard Struggle Finish]]>><</link>>
+	<span id="next"><<link [[Next|Farm Yard Struggle Finish]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Farm Yard Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Farm Yard Struggle]]>><</link>></span>
 	<br>
 <</if>>
 
@@ -2393,10 +2393,10 @@ You stand still, and allow the creature to latch onto your face. <<deviancy4>>
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Farm Tending Struggle Finish]]>><</link>>
+	<span id="next"><<link [[Next|Farm Tending Struggle Finish]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Farm Tending Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Farm Tending Struggle]]>><</link>></span>
 	<br>
 <</if>>
 
