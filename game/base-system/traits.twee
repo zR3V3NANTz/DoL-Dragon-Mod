@@ -577,17 +577,6 @@
 	<br>
 <</if>>
 
-<<if $syndromedragon gte 1>>
-	Stockholm Syndrome:
-	<<if $hallucinations gte 2 or $bestialitydisable is "t">>
-		Dragon man
-	<<else>>
-		Dragon
-	<</if>>
-	- <span class="green">It must be lonely after all this time.</span>
-	<br>
-<</if>>
-
 <<if $acceptance_penis_tiny gte 1000 and $penissize lte 0>>
 	<span class="green">Acceptance: Tiny Penis</span> - You're proud of your tiny penis.
 	<br>
