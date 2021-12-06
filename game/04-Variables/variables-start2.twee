@@ -240,6 +240,13 @@
 	sepia:{primary:1, secondary:1}
 }>>
 
+<<set $combatTrain to {
+	length: 0,
+	generateInit: 1,
+	beastTypes: [],
+	numberPerTrain: [],
+}>>
+
 <<set $kylar to {}>>
 <<set $kylar.raped to 0>>
 <<set $kylar.riddle to 0>>
