@@ -1290,12 +1290,8 @@
 	<<set $wear_hands to "none">>
 <</if>>
 
-<<if $objectVersion.updateClothes lt 28 or $objectVersion.updateClothes is undefined>>
-	<<updateClothes>>
-	<<set $objectVersion.updateClothes to 28>>
-	<!--If you have added any `colour_combat` or `accessory_colour_combat` to clothes that need their `colour` or `accessory_colour`, this will clear them.
-	Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
-<</if>>
+<!-- updateClothes was moved to <<backcomp>> at the bottom of this file -->
+
 <<if $objectVersion.wardrobes lt 3 or $objectVersion.wardrobes is undefined>>
 	<<wardrobesUpdate>>
 	<<set $objectVersion.wardrobes to 3>>
@@ -1423,11 +1419,7 @@
 	<<set $closinghour to 21>>
 <</if>>
 
-<<if $objectVersion.specialClothes lt 5 or $objectVersion.specialClothes is undefined>>
-	<<specialClothesSetup>>
-	<<specialClothesUpdate>>
-	<<set $objectVersion.specialClothes to 5>>
-<</if>>
+<!-- specialClothesSetup was moved to <<backComp>> -->
 
 <<if $objectVersion.uncomfortable lt 2 or $objectVersion.uncomfortable is undefined>>
 	<<if $uncomfortable is undefined>>
@@ -1544,11 +1536,7 @@
 	<<set $tiredness to 0>>
 <</if>>
 
-<<if $objectVersion.museumAntiques lt 7 or $objectVersion.museumAntiques is undefined>>
-	/*Moved undefined checks for new antiques to the widget below*/
-	<<updateMuseumAntiques>>
-	<<set $objectVersion.museumAntiques to 7>>
-<</if>>
+<!-- updateMuseumAntiques was moved to <<backComp>> -->
 
 <<if $objectVersion.specialClothesEffectsSetup lt 1 or $objectVersion.specialClothesEffectsSetup is undefined>>
 	<<specialClothesEffectsSetup>>
@@ -2583,94 +2571,116 @@
 	<<set $plantdisable to "f">>
 <</if>>
 
+<!-- Makes sure $kennel_treats aren't strings due to bug. -->
+<<if typeof $kennel_treats isnot "number">>
+	<<set $kennel_treats to 0>>
+<</if>>
+<<if $bodywritingLvl is undefined>>
+	<<set $bodywritingLvl to ($bodywritingdisable is "f" ? 3 : 0)>>
+<</if>>
+
+/* Start of Target variables */
+<<if $npcDAP isnot undefined>>
+	<<set $anustarget to $npcDAP[0]>>
+	<<set $anusdoubletarget to $npcDAP[1]>>
+	<<unset $npcDAP>>
+<</if>>
+
+<<if $targetYourself is undefined>>
+	<<set $targetYourself to false>>
+<</if>>
+
+<<if $NPCList isnot undefined and $NPCList[0].active is undefined>>
+	<<for _i = 0; _i < $NPCList.length; _i++>>
+		<<set $NPCList[_i].active to 0>>
+	<</for>>
+	<<if $combat is 1>>
+		<<for _i = 0; _i < $enemyno; _i++>>
+			<<set $NPCList[_i].active to "active">>
+			<<if $NPCList[_i].type is 0>>
+				<<set $NPCList[_i].type to "human">>
+			<</if>>
+			<<set $NPCList[_i].healthmax to $NPCList[_i].health>>
+		<</for>>
+	<</if>>
+<</if>>
+
+<<if $breastuse isnot undefined and $breastuse isnot 0>>
+	<<set $chestuse to $breastuse>>
+	<<unset $breastuse>>
+<</if>>
+
+<<if $machine isnot undefined and $machine.number lte 0>>
+	<<unset $machine>>
+<<elseif $enemytype isnot "machine">>
+	<<unset $machine>>
+<<elseif $combat isnot 1>>
+	<<unset $machine>>
+<</if>>
+/* End of Target variables */
+
+<!-- remove duplicates from the hints list -->
+<<if $objectVersion.museumAntiques lt 8>>
+	<<set $objectVersion.museumAntiques to 8>>
+	<<set _newlist to []>>
+	<!-- run in reverse to preserve only most recently added entries -->
+	<<for _i = $museumAntiqueJournalHints.length - 1; _i gte 0; _i-->>
+		<<if $museumAntiques.antiques[$museumAntiqueJournalHints[_i]] is "notFound">>
+			<<set _newlist.pushUnique($museumAntiqueJournalHints[_i])>>
+		<</if>>
+	<</for>>
+	<<set $museumAntiqueJournalHints to clone(_newlist).reverse()>>
+<</if>>
+
+<<if $stealtarget is undefined>>
+	<<if $combat is 1 and $stealstate is 3>>
+		<<set $stealtarget to "012345">>
+	<<else>>
+		<<set $stealtarget to "">>
+	<</if>>
+<</if>>
+
+<<if $stealdifficulty is undefined>>
+	<<set $stealdifficulty to 1>>
+<</if>>
+
+<<if $stealstate isnot undefined>>
+	<<set $stealstateleft to $stealstate>>
+	<<set $stealstateright to $stealstate>>
+	<<unset $stealstate>>
+<</if>>
+
 <<pregnancyVar>>
 <</widget>>
 
 <<widget "backComp">>
-	<<if _version lte 30408>>/* for versions <= 0.3.4.8, run old version handler */
+	<<if _version lte 30408>>/* DO NOT INCREMENT */
+	/* 0.3.4.8 is the last version that should need the old vvu */
+	/* for versions <= 0.3.4.8, run old version handler */
 		<<variablesVersionUpdate>>
 	<</if>>
 	/* * * * * * * * * * * * * * * * * * * * * * *
-	* NEW BACKWARDS COMPATIBILITY CODE GOES HERE
+	* new backwards compatibility code goes here
 	*/
 	<<set $runWardrobeSanityChecker to true>>
 
-	<!-- Makes sure $kennel_treats aren't strings due to bug. -->
-	<<if typeof $kennel_treats isnot "number">>
-		<<set $kennel_treats to 0>>
-	<</if>>
-	<<if $bodywritingLvl is undefined>>
-		<<set $bodywritingLvl to ($bodywritingdisable is "f" ? 3 : 0)>>
-	<</if>>
-	
-	/* Start of Target variables */
-	<<if $npcDAP isnot undefined>>
-		<<set $anustarget to $npcDAP[0]>>
-		<<set $anusdoubletarget to $npcDAP[1]>>
-		<<unset $npcDAP>>
+	<<if $objectVersion.updateClothes lt 28 or $objectVersion.updateClothes is undefined>>
+		<<updateClothes>>
+		<<set $objectVersion.updateClothes to 28>>
+		<!--If you have added any `colour_combat` or `accessory_colour_combat` to clothes that need their `colour` or `accessory_colour`, this will clear them.
+		Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
 	<</if>>
 
-	<<if $targetYourself is undefined>>
-		<<set $targetYourself to false>>
+	<<if $objectVersion.specialClothes lt 5 or $objectVersion.specialClothes is undefined>>
+		<<specialClothesSetup>>
+		<<specialClothesUpdate>>
+		<<set $objectVersion.specialClothes to 5>>
 	<</if>>
 
-	<<if $NPCList isnot undefined and $NPCList[0].active is undefined>>
-		<<for _i = 0; _i < $NPCList.length; _i++>>
-			<<set $NPCList[_i].active to 0>>
-		<</for>>
-		<<if $combat is 1>>
-			<<for _i = 0; _i < $enemyno; _i++>>
-				<<set $NPCList[_i].active to "active">>
-				<<if $NPCList[_i].type is 0>>
-					<<set $NPCList[_i].type to "human">>
-				<</if>>
-				<<set $NPCList[_i].healthmax to $NPCList[_i].health>>
-			<</for>>
-		<</if>>
-	<</if>>
-	
-	<<if $breastuse isnot undefined and $breastuse isnot 0>>
-		<<set $chestuse to $breastuse>>
-		<<unset $breastuse>>
+	<<if $objectVersion.museumAntiques lt 7 or $objectVersion.museumAntiques is undefined>>
+		/*Moved undefined checks for new antiques to the widget below*/
+		<<updateMuseumAntiques>>
+		<<set $objectVersion.museumAntiques to 7>>
 	<</if>>
 
-	<<if $machine isnot undefined and $machine.number lte 0>>
-		<<unset $machine>>
-	<<elseif $enemytype isnot "machine">>
-		<<unset $machine>>
-	<<elseif $combat isnot 1>>
-		<<unset $machine>>
-	<</if>>
-	/* End of Target variables */
-
-	<!-- remove duplicates from the hints list -->
-	<<if $objectVersion.museumAntiques lt 8>>
-		<<set $objectVersion.museumAntiques to 8>>
-		<<set _newlist to []>>
-		<!-- run in reverse to preserve only most recently added entries -->
-		<<for _i = $museumAntiqueJournalHints.length - 1; _i gte 0; _i-->>
-			<<if $museumAntiques.antiques[$museumAntiqueJournalHints[_i]] is "notFound">>
-				<<set _newlist.pushUnique($museumAntiqueJournalHints[_i])>>
-			<</if>>
-		<</for>>
-		<<set $museumAntiqueJournalHints to clone(_newlist).reverse()>>
-	<</if>>
-
-	<<if $stealtarget is undefined>>
-		<<if $combat is 1 and $stealstate is 3>>
-			<<set $stealtarget to "012345">>
-		<<else>>
-			<<set $stealtarget to "">>
-		<</if>>
-	<</if>>
-
-	<<if $stealdifficulty is undefined>>
-		<<set $stealdifficulty to 1>>
-	<</if>>
-
-	<<if $stealstate isnot undefined>>
-		<<set $stealstateleft to $stealstate>>
-		<<set $stealstateright to $stealstate>>
-		<<unset $stealstate>>
-	<</if>>
 <</widget>>
