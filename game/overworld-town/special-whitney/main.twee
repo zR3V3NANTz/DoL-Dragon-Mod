@@ -8,9 +8,9 @@ Half an hour passes before a <<generatey1>><<person1>><<person>> unwittingly fre
 <<if $submissive gte 1150>>
 	You scurry past <<him>> without looking.
 <<elseif $submissive lte 850>>
-	"Took long enough," you say, leaving them dumbstruck.
+	"Took long enough," you say, leaving <<him>> dumbstruck.
 <<else>>
-	"Thanks," you say as you hurry past them, leaving them dumbstruck.
+	"Thanks," you say as you hurry past <<him>>, leaving <<him>> dumbstruck.
 <</if>>
 <br><br>
 <<clotheson>>
@@ -2073,7 +2073,7 @@ You watch Whitney undress. In mere seconds <<hes>> already completely exposed. Y
 :: Bully Rob Reversal 2
 <<endevent>>
 <<generate1>><<person1>>
-With Whitney at the ready, you move out of the alleyway and onto the main street. You look up and down the road, trying to find an easy target to fleece. A short while passes, and you manage to find your mark. A <<person>> walking down your side of the street. You wait until <<hes>> close, then gesture to Whitney. <<person1>><<He>> jumps into the open.
+With Whitney at the ready, you move out of the alleyway and onto the main street. You look up and down the road, trying to find an easy target to fleece. A short while passes, and you manage to find your mark. A <<person>> walking down your side of the street. You wait until <<hes>> close, then gesture to Whitney. <<nnpc_He "Whitney">> jumps into the open.
 <br><br>
 
 <<if $rng gte 80>>

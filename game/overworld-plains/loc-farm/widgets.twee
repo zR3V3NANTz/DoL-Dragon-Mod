@@ -2765,7 +2765,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 		<br><br>
 	<</if>>
 <<elseif $field_damaged is 1>>
-	The farm was attacked while you were gone, <span class="purple">and a farm torched</span> before the defenders drove them off.<<gtrauma>><<trauma 6>>
+	The farm was attacked while you were gone, <span class="purple">and a field torched</span> before the defenders drove them off.<<gtrauma>><<trauma 6>>
 	<br><br>
 <<elseif $fields_damaged is 9>>
 	The farm was attacked while you were gone, the defenders defeated, <span class="red">and all the fields torched.</span><<gggtrauma>><<trauma 24>>

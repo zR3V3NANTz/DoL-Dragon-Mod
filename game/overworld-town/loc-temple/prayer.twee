@@ -257,7 +257,7 @@ You sit on the cushion, and pray. The incense makes you feel light and dizzy.
 				and <<nnpc_his "Avery">> attitude when you disappoint him. You clutch your arm.
 				<<ltrauma>><<gstress>><<trauma -6>><<stress 6>>
 			<<else>>
-				and the dates <<nnpc_hes "Avery">> taken you on. <<nnpc_he "Avery">> treats you well.
+				and the dates <<nnpc_hes "Avery">> taken you on. <<nnpc_He "Avery">> treats you well.
 				<<ltrauma>><<lstress>><<trauma -6>><<stress -6>>
 			<</if>>
 		<<elseif $awareness gte 800>>

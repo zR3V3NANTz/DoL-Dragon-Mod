@@ -703,7 +703,7 @@ Soon, you both have flower crowns ready. <<if currentSkillValue('tending') lt 20
 
 <br><br>
 <<if $tendingSuccess>>
-	"I love it," Robin says, <span class="green">smiling beneath the wreath of flowers.</span>
+	"I love it," Robin says, <span class="green">smiling beneath the wreath of flowers.</span><<glove>><<npcincr Robin love 1>>
 	<br><br>
 <<else>>
 	"I love it," Robin says. <<Hes>> barely finished speaking when the <span class="red">the crown on <<his>> head unravels,</span> and it falls to the ground. <<He>> smiles. "It's okay! I still love it. They can be tricky to make, but you'll get it with practice."<<glove>><<npcincr Robin love 1>><<gdom>><<npcincr Robin dom 1>>

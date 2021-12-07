@@ -609,6 +609,7 @@ The <<person3>><<person>> looks serious. "You know I would never let that happen
 <</if>>
 <<tearful>> you rise to your feet.
 <br><br>
+<<clotheson>>
 <<endcombat>>
 <<destinationeventend>>
 
@@ -628,6 +629,7 @@ The <<person3>><<person>> looks serious. "You know I would never let that happen
 	"You lost <<phim>>, you weak, slow idiots! What you gonna do now?"
 	<br><br>
 <</if>>
+<<clotheson>>
 <<endcombat>>
 <<destinationeventend>>
 

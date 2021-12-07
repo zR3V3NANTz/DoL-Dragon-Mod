@@ -572,13 +572,13 @@ You peek through the gap.
 	A <<person>> is using a towel to dry.
 
 	<<if $NPCList[0].penis isnot "none">>
-		<<if $NPCList[0].gender is "f">>
+		<<if $pronoun is "f">>
 			<<He>> rubs <<his>> <span class="lewd">exposed $NPCList[0].breastsdesc and $NPCList[0].penisdesc</span> with the fabric, unaware of your presence.
 			<<else>>
 			<<He>> rubs <<his>> <span class="lewd">exposed $NPCList[0].penisdesc</span> with the fabric, unaware of your presence.
 		<</if>>
 	<<else>>
-		<<if $NPCList[0].gender is "f">>
+		<<if $pronoun is "f">>
 			<<He>> rubs <<his>> <span class="lewd">exposed $NPCList[0].breastsdesc and pussy</span> with the fabric, unaware of your presence.
 			<<else>>
 			<<He>> rubs <<his>> <span class="lewd">exposed pussy,</span> unaware of your presence.
@@ -767,7 +767,7 @@ The <<person1>><<person>> gapes at you. "I couldn't do that," <<he>> says.
 <br><br>
 
 <<if $submissive gte 1150>>
-	"But <<person2>><<he>> might think you don't like <<him>>." you add.
+	"But <<person2>><<he>> might think you don't like <<him>>," you add.
 	<br><br>
 
 	The <<person1>><<person>> hesitates a moment. Then <<he>> clenches <<his>> fists, stands, and marches over. The <<person2>><<person>> and <<his>> friends stop talking and face the newcomer. You can't hear what <<person1>><<hes>> saying, but the <<person2>><<person>> blushes, grabs the <<person1>><<persons>> arm, and together they run from the room.
