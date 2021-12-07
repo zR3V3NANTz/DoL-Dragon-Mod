@@ -118,6 +118,52 @@
 	<<set $submissive -= 20>>
 <</if>>
 
+<<transformationAlteration>>
+
+<<if $cat gt 0 or $wolfgirl gt 0 or $cow gt 0 or $harpy gt 0>>
+	<<set $physicalTransform to 1>>
+<<else>>
+	<<set $physicalTransform to 0>>
+<</if>>
+<<if $physicalTransform is 1 or $specialTransform is 1>>
+	<<if $harpy gte 6 and ($angel gte 6 or $fallenangel gte 2 or $demon gte 6)>>
+		<<if $transformationParts.bird.wings is "hidden" and ($transformationParts.demon.wings is "hidden" or $transformationParts.angel.wings is "hidden" or $transformationParts.fallenAngel.wings is "hidden")>>
+		<<else>>
+			<<set _excludeWings to true>>
+		<</if>>
+	<</if>>
+	<<set _keys to Object.keys($transformationParts)>>
+	<<if $panicattacks gte 2>>
+		<<for _i to 0; _i lt _keys.length; _i++>>
+			<<set _key to _keys[_i]>>
+			<<for _label, _value range $transformationParts[_key]>>
+				<<if _value is "hidden" and _label isnot "pubes" and _label isnot "pits" and _label isnot "cheeks" and !(_label is "wings" and _excludeWings is true)>>
+					<<set $transformationParts[clone(_key)][clone(_label)] to "default">>
+					<<set _hidingFailed to true>>
+				<</if>>
+			<</for>>
+		<</for>>
+		<<if _hidingFailed>>
+			<span class="red">Your mental state is too fragile to continue hiding your inner self.</span>
+		<</if>>
+	<<else>>
+		<<for _i to 0; _i lt _keys.length; _i++>>
+			<<set _key to _keys[_i]>>
+			<<for _label, _value range $transformationParts[_key]>>
+				<<if _value is "hidden" and _label isnot "pubes" and _label isnot "pits" and _label isnot "cheeks" and !(_label is "wings" and _excludeWings is true)>>
+					<<trauma 15>>
+					<<set _hiddenTrauma to true>>
+				<</if>>
+			<</for>>
+		<</for>>
+		<<if _hiddenTrauma is true>>
+			<span class="red">Hiding your inner self takes a toll on your mental state.</span>
+		<</if>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "transformationAlteration">>
 <<switch $wolfgirl>>
 	<<case 0>>
 		<<if $wolfbuild gte 5 and $transformdisable is "f" and $physicalTransform isnot 1>>
@@ -599,48 +645,6 @@
 			<br><br>
 		<</if>>
 <</switch>>
-
-<<if $cat gt 0 or $wolfgirl gt 0 or $cow gt 0 or $harpy gt 0>>
-	<<set $physicalTransform to 1>>
-<<else>>
-	<<set $physicalTransform to 0>>
-<</if>>
-<<if $physicalTransform is 1 or $specialTransform is 1>>
-	<<if $harpy gte 6 and ($angel gte 6 or $fallenangel gte 2 or $demon gte 6)>>
-		<<if $transformationParts.bird.wings is "hidden" and ($transformationParts.demon.wings is "hidden" or $transformationParts.angel.wings is "hidden" or $transformationParts.fallenAngel.wings is "hidden")>>
-		<<else>>
-			<<set _excludeWings to true>>
-		<</if>>
-	<</if>>
-	<<set _keys to Object.keys($transformationParts)>>
-	<<if $panicattacks gte 2>>
-		<<for _i to 0; _i lt _keys.length; _i++>>
-			<<set _key to _keys[_i]>>
-			<<for _label, _value range $transformationParts[_key]>>
-				<<if _value is "hidden" and _label isnot "pubes" and _label isnot "pits" and _label isnot "cheeks" and !(_label is "wings" and _excludeWings is true)>>
-					<<set $transformationParts[clone(_key)][clone(_label)] to "default">>
-					<<set _hidingFailed to true>>
-				<</if>>
-			<</for>>
-		<</for>>
-		<<if _hidingFailed>>
-			<span class="red">Your mental state is too fragile to continue hiding your inner self.</span>
-		<</if>>
-	<<else>>
-		<<for _i to 0; _i lt _keys.length; _i++>>
-			<<set _key to _keys[_i]>>
-			<<for _label, _value range $transformationParts[_key]>>
-				<<if _value is "hidden" and _label isnot "pubes" and _label isnot "pits" and _label isnot "cheeks" and !(_label is "wings" and _excludeWings is true)>>
-					<<trauma 15>>
-					<<set _hiddenTrauma to true>>
-				<</if>>
-			<</for>>
-		<</for>>
-		<<if _hiddenTrauma is true>>
-			<span class="red">Hiding your inner self takes a toll on your mental state.</span>
-		<</if>>
-	<</if>>
-<</if>>
 <</widget>>
 
 <<widget "hirsuteHideCheck">>

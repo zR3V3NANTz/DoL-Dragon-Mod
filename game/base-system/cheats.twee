@@ -1532,32 +1532,32 @@ Mouth slime: <span id="statsmouthgoo"><<print Math.trunc($player.bodyliquid.mout
 |
 <br><br>
 
-<u>Transformations</u> - <i>It can take several days for the full effect to occur. Only one transformation at a time.</i>
+<u>Transformations</u> - <i>Only one animal and one divine transformation at a time.</i>
 <br>
 
-Wolf (30 needed for full transformation): <<link "<">><<set $wolfbuild -= 5>><<clamp>><<replace "#statswolfbuild">><<print Math.trunc($wolfbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+Wolf (30 needed for full transformation): <<link "<">><<set $wolfbuild -= 5>><<transformationAlteration>><<clamp>><<replace "#statswolfbuild">><<print Math.trunc($wolfbuild)>><</replace>> <<updatesidebarimg>><</link>> |
 <span id="statswolfbuild"><<print Math.trunc($wolfbuild)>></span>
- | <<link ">">><<set $wolfbuild += 5>><<clamp>><<replace "#statswolfbuild">><<print Math.trunc($wolfbuild)>><</replace>> <<updatesidebarimg>><</link>>
+ | <<link ">">><<set $wolfbuild += 5>><<transformationAlteration>><<clamp>><<replace "#statswolfbuild">><<print Math.trunc($wolfbuild)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
-Angel (50 needed for full transformation): <<link "<">><<set $angelbuild -= 5>><<clamp>><<replace "#statsangelbuild">><<print Math.trunc($angelbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+Angel (50 needed for full transformation): <<link "<">><<set $angelbuild -= 5>><<transformationAlteration>><<clamp>><<replace "#statsangelbuild">><<print Math.trunc($angelbuild)>><</replace>> <<updatesidebarimg>><</link>> |
 <span id="statsangelbuild"><<print Math.trunc($angelbuild)>></span>
- | <<link ">">><<set $angelbuild += 5>><<clamp>><<replace "#statsangelbuild">><<print Math.trunc($angelbuild)>><</replace>> <<updatesidebarimg>><</link>>
+ | <<link ">">><<set $angelbuild += 5>><<transformationAlteration>><<clamp>><<replace "#statsangelbuild">><<print Math.trunc($angelbuild)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
-Demon (30 needed for full transformation): <<link "<">><<set $demonbuild -= 5>><<clamp>><<replace "#statsdemonbuild">><<print Math.trunc($demonbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+Demon (30 needed for full transformation): <<link "<">><<set $demonbuild -= 5>><<transformationAlteration>><<clamp>><<replace "#statsdemonbuild">><<print Math.trunc($demonbuild)>><</replace>> <<updatesidebarimg>><</link>> |
 <span id="statsdemonbuild"><<print Math.trunc($demonbuild)>></span>
- | <<link ">">><<set $demonbuild += 5>><<clamp>><<replace "#statsdemonbuild">><<print Math.trunc($demonbuild)>><</replace>> <<updatesidebarimg>><</link>>
+ | <<link ">">><<set $demonbuild += 5>><<transformationAlteration>><<clamp>><<replace "#statsdemonbuild">><<print Math.trunc($demonbuild)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
-Cat (50 needed for full transformation): <<link "<">><<set $catbuild -= 5>><<clamp>><<replace "#statscatbuild">><<print Math.trunc($catbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+Cat (50 needed for full transformation): <<link "<">><<set $catbuild -= 5>><<transformationAlteration>><<clamp>><<replace "#statscatbuild">><<print Math.trunc($catbuild)>><</replace>> <<updatesidebarimg>><</link>> |
 <span id="statscatbuild"><<print Math.trunc($catbuild)>></span>
- | <<link ">">><<set $catbuild += 5>><<clamp>><<replace "#statscatbuild">><<print Math.trunc($catbuild)>><</replace>> <<updatesidebarimg>><</link>>
+ | <<link ">">><<set $catbuild += 5>><<transformationAlteration>><<clamp>><<replace "#statscatbuild">><<print Math.trunc($catbuild)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
-Cow (30 needed for full transformation): <<link "<">><<set $cowbuild -= 5>><<clamp>><<replace "#statscowbuild">><<print Math.trunc($cowbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+Cow (30 needed for full transformation): <<link "<">><<set $cowbuild -= 5>><<transformationAlteration>><<clamp>><<replace "#statscowbuild">><<print Math.trunc($cowbuild)>><</replace>> <<updatesidebarimg>><</link>> |
 <span id="statscowbuild"><<print Math.trunc($cowbuild)>></span>
- | <<link ">">><<set $cowbuild += 5>><<clamp>><<replace "#statscowbuild">><<print Math.trunc($cowbuild)>><</replace>> <<updatesidebarimg>><</link>>
+ | <<link ">">><<set $cowbuild += 5>><<transformationAlteration>><<clamp>><<replace "#statscowbuild">><<print Math.trunc($cowbuild)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
-Bird (30 needed for full transformation): <<link "<">><<set $birdbuild -= 5>><<clamp>><<replace "#statsbirdbuild">><<print Math.trunc($birdbuild)>><</replace>> <<updatesidebarimg>><</link>> |
+Bird (30 needed for full transformation): <<link "<">><<set $birdbuild -= 5>><<transformationAlteration>><<clamp>><<replace "#statsbirdbuild">><<print Math.trunc($birdbuild)>><</replace>> <<updatesidebarimg>><</link>> |
 <span id="statsbirdbuild"><<print Math.trunc($birdbuild)>></span>
- | <<link ">">><<set $birdbuild += 5>><<clamp>><<replace "#statsbirdbuild">><<print Math.trunc($birdbuild)>><</replace>> <<updatesidebarimg>><</link>>
+ | <<link ">">><<set $birdbuild += 5>><<transformationAlteration>><<clamp>><<replace "#statsbirdbuild">><<print Math.trunc($birdbuild)>><</replace>> <<updatesidebarimg>><</link>>
 <br>
 <</widget>>
 
