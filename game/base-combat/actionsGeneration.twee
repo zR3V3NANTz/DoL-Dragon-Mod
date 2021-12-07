@@ -2434,7 +2434,7 @@
 			<</if>>
 		<</if>>
 	<</if>>
-	<<if $swarm isnot undefined>>
+	<<if $swarm and $swarm.name>>
 		<<set _swarmsteady to $swarm["steady"].toUpperFirst()>>
 		<<set _swarmamounts to $swarm.amount>>
 	<</if>>

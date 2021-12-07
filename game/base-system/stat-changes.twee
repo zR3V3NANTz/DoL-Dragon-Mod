@@ -295,7 +295,7 @@
 	<<set _pain to $args[0] * 4>>
 	<!-- apply science reduction -->
 	<<if _pain gte 0>>
-		_pain *= 1 - ($sciencetrait / 10)
+		<<set _pain *= 1 - ($sciencetrait / 10)>>
 	<</if>>
 	<!-- Including masochism effect for all pain NG v2.7 -->
 	<<if $masochism gte 100>>
