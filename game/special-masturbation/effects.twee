@@ -872,7 +872,7 @@
 <</if>>
 
 <<if $mouthaction is "mpenisflowerlick">>
-	<<set $mouthactiondefault to "mpenisflowerlick">><<set $mouthaction to 0>><<set $mouth to "mpenisflowerlick">><<arousal 200>><<set $drugged += 10>><<set $moorPhallusPlant to 2>>
+	<<set $mouthactiondefault to "mpenisflowerlick">><<set $mouthaction to 0>><<set $mouth to "mpenisflowerlick">><<arousal 200>><<drugs 10>><<set $moorPhallusPlant to 2>>
 	<<print either(
 		"You almost take the phallus plant into your mouth, but suddenly feel apprehensive.",
 		"You lick the phallus plant's tip and swallow the sweet liquid.",
@@ -887,7 +887,7 @@
 <</if>>
 
 <<if $mouthaction is "mpenisflowertakein">>
-	<<set $mouthactiondefault to "mpenisflowersuck">><<set $mouthaction to 0>><<set $mouth to "mpenisflowersuck">><<arousal 300>><<set $drugged += 10>>
+	<<set $mouthactiondefault to "mpenisflowersuck">><<set $mouthaction to 0>><<set $mouth to "mpenisflowersuck">><<arousal 300>><<drugs 10>>
 	<<if $player.virginity.oral is true>><<takeVirginity "phallus plant" "oral">><</if>>
 	You suck on the plant. It tastes very sweet, and you feel yourself heating up.
 <</if>>
@@ -898,7 +898,7 @@
 <</if>>
 
 <<if $mouthaction is "mpenisflowersuck">>
-	<<set $mouthactiondefault to "mpenisflowersuck">><<set $mouthaction to 0>><<arousal 500>><<set $drugged += 10>>
+	<<set $mouthactiondefault to "mpenisflowersuck">><<set $mouthaction to 0>><<arousal 500>><<drugs 10>>
 	<<if $arousal gte ($arousalmax / 5) * 4>>
 		You shiver as you drink down the fluid while sucking and moving your head back and forward.
 	<<elseif $arousal gte ($arousalmax / 5) * 3>>
@@ -909,7 +909,7 @@
 <</if>>
 
 <<if $mouthaction is "mpenisflowersuckstop">>
-	<<set $mouthactiondefault to "mpenisflowersuck">><<set $mouthaction to 0>><<arousal 300>><<set $drugged += 10>>
+	<<set $mouthactiondefault to "mpenisflowersuck">><<set $mouthaction to 0>><<arousal 300>><<drugs 10>>
 	<span class="red">Your head keeps bobbing up and down, sucking on the phallus plant. Try as you might, you just can't will yourself to stop.</span>
 <</if>>
 
@@ -952,7 +952,7 @@
 <</if>>
 
 <<if $vaginaaction is "mpenisflowerbounce">>
-	<<set $vaginaactiondefault to "mpenisflowerbounce">><<set $vaginaaction to 0>><<arousal 500>><<set $drugged += 10>>
+	<<set $vaginaactiondefault to "mpenisflowerbounce">><<set $vaginaaction to 0>><<arousal 500>><<drugs 10>>
 	<<if $arousal gte ($arousalmax / 5) * 4>>
 		You hungrily ride the plant, rubbing it as quickly as you can. The sensation threatens to drive you mad.
 	<<elseif $arousal gte ($arousalmax / 5) * 3>>
@@ -963,7 +963,7 @@
 <</if>>
 
 <<if $vaginaaction is "mpenisflowerpenetratestop">>
-	<<set $vaginaactiondefault to "mpenisflowerbounce">><<set $vaginaaction to 0>><<arousal 300>><<set $drugged += 10>>
+	<<set $vaginaactiondefault to "mpenisflowerbounce">><<set $vaginaaction to 0>><<arousal 300>><<drugs 10>>
 	<span class="red">Your legs fail to lift you off of the plant, as if your body isn't obeying you.</span>
 <</if>>
 
@@ -1002,7 +1002,7 @@
 <</if>>
 
 <<if $anusaction is "mpenisflowerbounce">>
-	<<set $anusactiondefault to "mpenisflowerbounce">><<set $anusaction to 0>><<arousal 500>><<set $drugged += 10>>
+	<<set $anusactiondefault to "mpenisflowerbounce">><<set $anusaction to 0>><<arousal 500>><<drugs 10>>
 	<<if $arousal gte ($arousalmax / 5) * 4>>
 		You roughly ride the plant, rubbing it as quickly as you can. It's unlike anything you've felt before.
 	<<elseif $arousal gte ($arousalmax / 5) * 3>>
@@ -1013,7 +1013,7 @@
 <</if>>
 
 <<if $anusaction is "mpenisflowerpenetratestop">>
-	<<set $anusactiondefault to "mpenisflowerbounce">><<set $anusaction to 0>><<arousal 300>><<set $drugged += 10>>
+	<<set $anusactiondefault to "mpenisflowerbounce">><<set $anusaction to 0>><<arousal 300>><<drugs 10>>
 	<span class="red">Your legs fail to lift you off of the plant, as if your body isn't obeying you.</span>
 <</if>>
 

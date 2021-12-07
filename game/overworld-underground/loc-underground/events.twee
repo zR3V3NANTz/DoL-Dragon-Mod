@@ -699,7 +699,7 @@ The cool night air blows against your skin.
 It looks like you're in a forest clearing.
 <br><br>
 
-<<if $rng gte 51 and $plantdisable is "f" and $tentacledisable is "f" and $hallucinations gte 2>>
+<<if $rng gte 51 and $plantdisable is "f" and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 	<<generate1>><<generate2>><<generatePlant3>>
 	You see a <<person2>><<person>> and a <<person3>><<person "normal">> talking up ahead, with a <<person1>><<person>> nearby smoking while watching the door. The <<person2>><<person>> cuts <<himself>> off as you approach, gesturing to you. "See, <<pshes>> right here. We upheld our end."
 	<br><br>

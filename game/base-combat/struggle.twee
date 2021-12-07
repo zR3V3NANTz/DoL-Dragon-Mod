@@ -1801,15 +1801,13 @@ and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined) and $com
 <<widget "struggle_fluid">>
 	<<if ["mouth", "vagina", "anus"].includes($args[0])>>
 		<<if $struggle[$args[0]].creature is "lurker" or $struggle.mouth.creature is "slime">>
-			<<set $drugged += 25>>
+			<<drugs 25>>
 		<<elseif $struggle[$args[0]].creature is "pale slime">>
-			<<set $drugged += 50>>
+			<<drugs 50>>
 			<<set $hallucinogen += 40>>
 		<</if>>
 	<</if>>
 <</widget>>
-
-
 
 <<widget "struggle_clothes">>
 

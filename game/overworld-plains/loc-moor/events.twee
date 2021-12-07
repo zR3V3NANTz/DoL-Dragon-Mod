@@ -1762,7 +1762,7 @@ A heat travels down your spine, resting in your loins. You're filled with a desp
 	<br><br>
 
 	<<if $tentacledisable is "f">>
-		<<if $plantdisable is "f" and $hallucinations gte 2 and $rng gte 76>>
+		<<if $plantdisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover")) and $rng gte 76>>
 			<<generatePlant1>><<person1>>
 			<span class="red">Something snags your ankle.</span> Vines whip around your waist and hold you still, and a <<person>> walks up to you. <<Hes>> breathing heavily, and <<his>> hair, adorned with <<plant_details>>, is messed and sweaty.
 			<br><br>
@@ -1771,7 +1771,7 @@ A heat travels down your spine, resting in your loins. You're filled with a desp
 			<br><br>
 
 			<<link [[Next|Moor Plant Sex]]>><<set $molestationstart to 1>><<set $phase to 0>><</link>>
-		<<elseif $hallucinations gte 2>>
+		<<elseif $hallucinations gte 2 or $backgroundTraits.includes("plantlover")>>
 			<span class="red">Something snags your ankle.</span> Roots erupt from the base of the flower. They whip around your waist, and drag you back.
 			<br><br>
 
@@ -1847,7 +1847,7 @@ A heat travels down your spine, resting in your loins. You're filled with a desp
 	<br><br>
 
 	<<if $tentacledisable is "f">>
-		<<if $plantdisable is "f" and $hallucinations gte 2 and $rng gte 76>>
+		<<if $plantdisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover")) and $rng gte 76>>
 			<<generatePlant1>><<person1>>
 			<span class="red">Something snags your ankle.</span> Vines whip around your waist and hold you still, and a <<person>> walks up to you. <<Hes>> breathing heavily, and <<his>> hair, adorned with <<plant_details>>, is messed and sweaty.
 			<br><br>
@@ -1856,7 +1856,7 @@ A heat travels down your spine, resting in your loins. You're filled with a desp
 			<br><br>
 
 			<<link [[Next|Moor Plant Sex]]>><<set $molestationstart to 1>><<set $phase to 0>><</link>>
-		<<elseif $hallucinations gte 2>>
+		<<elseif $hallucinations gte 2 or $backgroundTraits.includes("plantlover")>>
 			<span class="red">Something snags your ankle.</span> Roots erupt from the base of the flower. They whip around your waist, and drag you back.
 			<br><br>
 
@@ -1913,9 +1913,9 @@ You try to ignore the sweet scent,
 	<br><br>
 
 	<<if $moorFlower is "flower">>
-		<<link [[Investigate|Moor Flower]]>><<arousal 600>><<set $drugged += 60>><</link>><<garousal>>
+		<<link [[Investigate|Moor Flower]]>><<arousal 600>><<drugs 60>><</link>><<garousal>>
 	<<else>>
-		<<link [[Investigate|Moor Phallus Plant]]>><<arousal 600>><<set $drugged += 60>><</link>><<garousal>>
+		<<link [[Investigate|Moor Phallus Plant]]>><<arousal 600>><<drugs 60>><</link>><<garousal>>
 	<</if>>
 	<br>
 <</if>>

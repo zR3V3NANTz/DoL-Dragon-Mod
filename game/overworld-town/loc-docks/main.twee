@@ -1193,7 +1193,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 		<br><br>
 	<</if>>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 180>><</link>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 180>><</link>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1209,7 +1209,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 	The <<person3>>bartender returns, holding two more glasses. "Vodka," <<he>> says. "But stronger than you're used to, I reckon."
 	<br><br>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 180>><</link>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 180>><</link>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1228,7 +1228,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 	The <<person1>><<person>> sways slightly as <<he>> takes the drink.
 	<br><br>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 120>><<set $hallucinogen += 120>><</link>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 120>><<set $hallucinogen += 120>><</link>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1241,7 +1241,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 	The bartender returns with another two glasses. The liquid is bright and colourful. "Local special," <<he>> smiles. "Not on the menu."
 	<br><br>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 120>><<set $drugged += 120>><<arousal 1800>><</link>><<ggarousal>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 120>><<drugs 120>><<arousal 1800>><</link>><<ggarousal>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1757,7 +1757,7 @@ Your colleagues reach for the money, but you snatch it away from them. You remin
 <br><br>
 
 You and your colleagues enjoy your free drinks and leave in an elevated mood.
-<<set $drunk += 60>><<lstress>><<stress -6>>
+<<alcohol 60>><<lstress>><<stress -6>>
 <br><br>
 
 <<dockpuboptions>>
@@ -1769,7 +1769,7 @@ You let your colleagues have their share. You've gained <<moneyGain 60>>.
 <br><br>
 
 You and your colleagues enjoy your free drinks and leave in an elevated mood.
-<<set $drunk += 60>><<lstress>><<stress -6>>
+<<alcohol 60>><<lstress>><<stress -6>>
 <br><br>
 
 <<dockpuboptions>>

@@ -1135,7 +1135,7 @@ You chat with other members of the cafe's staff. You recognise many, but there a
 <<set $outside to 0>><<set $location to "cafe">><<effects>>
 
 You grab a glass of champagne from a passing <<if $rng gte 51>>waiter<<else>>waitress<</if>>, and explore the new cafe. You find a quiet spot on a second floor balcony, overlooking the sea. You sit down and relax.
-<<set $drunk += 60>>
+<<alcohol 60>>
 <br><br>
 
 Despite being secluded, several people stop by to chat.

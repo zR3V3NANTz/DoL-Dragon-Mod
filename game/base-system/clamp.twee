@@ -50,6 +50,7 @@
 <<set $semen_amount = Math.clamp($semen_amount, 0, $semen_volume)>>
 <<set $milk_amount = Math.clamp($milk_amount, 0, $milk_volume)>>
 <<set $lactation_pressure = Math.clamp($lactation_pressure, 0, 100)>>
+<<set $nectar_addiction = Math.clamp($nectar_addiction, 0, 200)>>
 
 <<set $hygiene = Math.clamp($hygiene, 0, 2000)>>
 <<set $arousal = Math.clamp($arousal, 0, $arousalmax)>>

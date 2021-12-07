@@ -361,7 +361,7 @@ You listen for voices above, but can't hear a thing. You smell something, howeve
 
 <<set $rut_entry to "punish">>
 
-<<link [[Inhale|Prison Rut Inhale]]>><<set $rut to 0>><<endevent>><<arousal 5000>><<set $drugged += 300>><<stress -120>><</link>><<gggarousal>><<lllstress>>
+<<link [[Inhale|Prison Rut Inhale]]>><<set $rut to 0>><<endevent>><<arousal 5000>><<drugs 300>><<stress -120>><</link>><<gggarousal>><<lllstress>>
 <br>
 <<link [[Ignore|Prison Rut]]>><<set $rut to 0>><<endevent>><</link>>
 <br>

@@ -2683,4 +2683,10 @@
 		<<set $objectVersion.museumAntiques to 7>>
 	<</if>>
 
+	<!--Tracking for the Plant Lover trait-->
+	<<if $nectar_addiction is undefined>>
+		<<set $nectar_addiction to 0>>
+		<<set $nectar_timer to 0>>
+	<</if>>
+
 <</widget>>

@@ -731,7 +731,7 @@ Harper steps towards you, but you back away.
 <<effects>>
 
 Harper pours the liquid down your throat. It's even sweeter than it smells, and sticky. A warm feeling spreads from your abdomen, permeating your body until it reaches the tips of your fingers and toes.
-<<set $drugged += 360>><<arousal 1200>><<ggarousal>>
+<<drugs 360>><<arousal 1200>><<ggarousal>>
 <br><br>
 <<endevent>><<npc Harper>><<person1>><<set $phase to 0>>
 
@@ -745,7 +745,7 @@ Harper takes your hand and leads you into the middle of the room. <<His>> touch,
 <<effects>>
 
 Harper pours the liquid into your mouth. It's even sweeter than it smells, and sticky. You hold it in your mouth, refusing to swallow. It isn't easy. Even there the liquid seeps into you, making you flush with an unnatural warmth.
-<<set $drugged += 180>><<arousal 600>>
+<<drugs 180>><<arousal 600>>
 <br><br>
 <<endevent>><<npc Harper>><<person1>>
 
@@ -756,7 +756,7 @@ Harper pours the liquid into your mouth. It's even sweeter than it smells, and s
 	<br><br>
 <<else>><<set $phase to 0>>
 	Harper takes your hand and leads you into the middle of the room. <<His>> touch, even on such a mundane part of your body, sends a shiver down your spine. Your throat quivers, <span class="red">and you can't stop yourself from swallowing.</span>
-	<<set $drugged += 180>><<arousal 600>><<garousal>>
+	<<drugs 180>><<arousal 600>><<garousal>>
 	<br><br>
 	The doctor grasps your arms and holds them behind your body. The audience lean forward in their seats.
 	<br><br>
@@ -1635,7 +1635,7 @@ Tranquility invades your mind. You wonder at how lucky you are, a simple <<if $p
 	You start munching on the grass, and while you feel what feels like a small tube enter your anus, followed by some cold liquid entering, it doesn't bother you.
 	<<purity -3>><<internalejac>><<creampie "self" "anus">><<set $hunger -= 200>><<set $thirst -= 200>><<set $hygiene += 1000>><<set $player.bodyliquid.anus.semen += 3>><<set $player.bodyliquid.anus.goo += 1>>
 <</if>>
-<<set $drugged += 45>><<arousal 150>>
+<<drugs 45>><<arousal 150>>
 
 The doctor continues to speak in that soothing tone, extolling the virtues of your place in the world.
 <br><br>

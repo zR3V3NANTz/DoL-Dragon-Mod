@@ -110,7 +110,7 @@ Grabbing a knife, you and Eden sit at opposite ends of the dining table. You dec
 
 Using your knife, you whittle away at the surface of the pumpkin.
 
-<<if $tending gte 150>>
+<<if currentSkillValue('tending') gte 150>>
 	<<if $phase is 0>>
 		It takes a while, but the finishing result looks rather scary.
 	<<elseif $phase is 1>>
@@ -153,7 +153,7 @@ Eden turns <<his>> head to face you. "If pumpkins are cute, maybe I should start
 After a while, Eden drops <<his>> knife and walks over to you, evaluating your carving.
 <br><br>
 
-<<if $tending gte 150>>
+<<if currentSkillValue('tending') gte 150>>
 	<<if $phase is 0>>
 		"Wow, that's scary," <<he>> says. <<He>> looks impressed.
 	<<elseif $phase is 1>>

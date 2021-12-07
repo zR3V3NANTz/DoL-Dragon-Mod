@@ -231,7 +231,7 @@ A terrible warmth spreads from chest. Your skin yearns to be touched. It spreads
 :: Estate Stone Aphrodisiac Resist
 <<effects>>
 
-<<set $drugged += 300>><<arousal 3000>>
+<<drugs 300>><<arousal 3000>>
 <<if $willpowerSuccess>>
 	You feel your mind slip, <span class="green">but you manage to keep yourself together.</span>
 	<<if $submissive gte 1150>>

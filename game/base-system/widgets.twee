@@ -1010,11 +1010,19 @@
 		<<set _temp *= 1.1>>
 	<</if>>
 	<<set $physique += 10 * _temp>><<set $physiqueuse += _temp>>
-	<<if $combat isnot 1>>
-		<span class="gold"> You get a good workout.</span>
-	<<else>>
-		<span class="gold"> It invigorates you.</span>
-	<</if>>
+	<<if $args[1]>>
+		<<if $args[1] isnot "noMessage">>
+			<<if ($combat is 1 and $args[1] isnot "workout") or $args[1] is "invig">>
+				<span class="gold"> It invigorates you.</span>
+			<<else>>
+				<span class="gold"> You get a good workout.</span>
+			<</if>>
+		<</if>>
+    <<elseif $combat is 1>>
+        <span class="gold"> It invigorates you.</span>
+    <<else>>
+        <span class="gold"> You get a good workout.</span>
+    <</if>>
 <</if>>
 <</widget>>
 
@@ -2833,10 +2841,10 @@ or $args[0] is "force">>
 	<<set _arousal += $pass * 10>>
 <</if>>
 <<if $parasite.left_ear.name is "slime" and random(1, 100) gte 90>>
-	<<set $drugged += $pass>>
+	<<drugs $pass>>
 <</if>>
 <<if $parasite.right_ear.name is "slime" and random(1, 100) gte 90>>
-	<<set $drugged += $pass>>
+	<<drugs $pass>>
 <</if>>
 <<arousal _arousal>>
 <</widget>>
@@ -4092,15 +4100,27 @@ __Map__<br>
 <</widget>>
 
 <<widget "nectarfed">>
-<<set $nectar_drank_stat += (Math.ceil($args[0] / 10) + random(0,2))>>
+<<set _nectarGain to 0>>
+<<set _nectarGain += (Math.ceil($args[0] / 10) + random(0,2))>>
+<<set $nectar_drank_stat += _nectarGain>>
+<<set $nectar_addiction += _nectarGain>>
 <<if $args[0] gte 11>>
 	<<purity -1>>
 <</if>>
 <<set $hunger -= ($args[0] * 5)>><<set $thirst -= ($args[0] * 5)>>
-<<set $drugged += $args[0]>><<set $arousal += $args[0]>>
+<<drugs $args[0]>><<set $arousal += $args[0]>>
 <<if $ejaculating is 1>>
 	<<set $drunk += ($args[0] * 3)>>
 	<<set $player.bodyliquid.mouth.goo += 1>>
+<</if>>
+<<if $backgroundTraits.includes("plantlover")>>
+	<<if $nectar_timer lte 14>>
+		<span class="green">You feel an overwhelming sense of relief.</span> <<stress -12>><<llstress>><<pain -4>><<lpain>>
+	<<else>>
+		<<set _nectarStress to (-1 * _nectarGain)>>
+		<<physique 1 "invig">><<stress _nectarStress>><<lstress>>
+	<</if>>
+	<<set $nectar_timer to 21>>
 <</if>>
 <</widget>>
 

@@ -416,7 +416,7 @@ There's a strange purple fruit on the label.
 	You're sure Kylar knows that as well.
 	<br><br>
 
-	<<link [[Drink it anyway|Kylar Halloween Known Drink]]>><<set $drunk += 60>><<set $drugged += 60>><<set $hallucinogen += 60>><</link>>
+	<<link [[Drink it anyway|Kylar Halloween Known Drink]]>><<alcohol 60>><<drugs 60>><<set $hallucinogen += 60>><</link>>
 	<br>
 	<<link [[Refuse|Kylar Halloween Unknown Refuse]]>><<set $phase to 1>><</link>>
 	<br>
@@ -426,7 +426,7 @@ There's a strange purple fruit on the label.
 	It looks familiar, <span class="red">but you can't place it.</span> It smells sweet.
 	<br><br>
 
-	<<link [[Drink|Kylar Halloween Unknown Drink]]>><<set $drunk += 60>><<set $drugged += 60>><<set $hallucinogen += 60>><</link>>
+	<<link [[Drink|Kylar Halloween Unknown Drink]]>><<alcohol 60>><<drugs 60>><<set $hallucinogen += 60>><</link>>
 	<br>
 	<<link [[Refuse|Kylar Halloween Unknown Refuse]]>><<set $phase to 0>><<npcincr Kylar love -1>><</link>><<llove>>
 	<br>

@@ -416,7 +416,7 @@ You are in the old sewers. The walls and floor here are covered in fungus. Some 
 You squeeze between the mushrooms and grasp the object. Even up close you've no clue what it is. A cucumber ornament?
 <br><br>
 You squeeze out of the mushroom forest and sneeze. You feel warm.
-<<set $drugged += 360>><<garousal>><<arousal 600>>
+<<drugs 360>><<garousal>><<arousal 600>>
 <br><br>
 <<link [[Next|Sewers Shrooms]]>><</link>>
 <br>

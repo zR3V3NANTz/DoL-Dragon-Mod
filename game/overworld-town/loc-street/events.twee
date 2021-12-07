@@ -5397,7 +5397,7 @@ You lift the box.
 	<br>
 <<elseif $rng gte 41>>
 	You flick open the latch. <span class="pink">A purple mist</span> spews from the opening, making you sneeze and drop the box. You feel warm.
-	<<set $drugged += 120>><<garousal>><<arousal 1000>>
+	<<drugs 120>><<garousal>><<arousal 1000>>
 	<br><br>
 
 	<<destinationeventend>>
@@ -8684,14 +8684,14 @@ They seem pleased by your display, but you can tell by the look in their eyes th
 You close your eyes and take slow, deep breaths. Soon enough, you fall unconscious.
 <br><br>
 
-<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<set $drugged += 240>><<garousal>><<arousal 1000>><</link>>
+<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<drugs 240>><<garousal>><<arousal 1000>><</link>>
 <br>
 
 :: Street Kidnap Struggle
 <<set $outside to 1>><<effects>>
 
 <<if $physiqueSuccess>>
-	<<set $drugged += 20>>
+	<<drugs 20>>
 	<span class="green">You break loose, gulping down breaths of fresh air.</span> You try to run away, but you wind up tripping. Your body feels heavy and sluggish, but you persevere, get up and keep running.
 	<br><br>
 	
@@ -8704,7 +8704,7 @@ You close your eyes and take slow, deep breaths. Soon enough, you fall unconscio
 	You start hyperventilating and try to struggle free, <span class="red">but your movements start to feel sluggish.</span> Your vision begins to darken. Soon enough, you fall unconscious.
 	<br><br>
 	
-	<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<set $drugged += 240>><<garousal>><<arousal 1000>><</link>>
+	<<link [[Next|Street Kidnap Wake]]>><<pass 20>><<drugs 240>><<garousal>><<arousal 1000>><</link>>
 	<br>
 <</if>>
 

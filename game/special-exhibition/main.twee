@@ -1014,7 +1014,7 @@ A <<person2>><<personsimple>> laughs in response. "I prefer sticking to traditio
 <br><br>
 
 A hand reaches into the barrel, and leaves a metal hose. It spews a pink, sweet-smelling liquid. It splashes over your skin, building feelings of lewd warmth where it touches. The smell goes to your head, soothing but making you light-headed.
-<<garousal>><<arousal 600>><<set $drugged += 60>><<if $pain gte 1>><<lpain>><<set $pain to 0>><</if>>
+<<garousal>><<arousal 600>><<drugs 60>><<if $pain gte 1>><<lpain>><<set $pain to 0>><</if>>
 <br><br>
 Fantasies intrude unbidden, and you think about what the pair would do to you should they find you. You barely manage to suppress a moan. You realise how dangerous making any noise could be, but the barrel keeps filling. Perhaps the pair will leave if you can tough it out long enough.
 <br><br>
@@ -1076,7 +1076,7 @@ Fantasies intrude unbidden, and you think about what the pair would do to you sh
 	<<else>>
 		"Shift's over anyway." The pink fluid almost engulfs you completely. You point your nose up in order to breathe.
 	<</if>>
-	<<set $phase += 1>><<set $drugged += 60>>
+	<<set $phase += 1>><<drugs 60>>
 	<br><br>
 	<<if $arousal gte ($arousalmax / 5) * 4>>
 		<span class="red">The liquid seeps into your skin, confusing your senses and assaulting your mind with thoughts of unspeakable lust. You're on the verge of climax.</span>

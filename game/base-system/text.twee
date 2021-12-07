@@ -3675,12 +3675,13 @@ You can't help but be conscious of your <<nudity>>.
 <</silently>>_text_output<</widget>>
 
 <<widget "tendingtext">>
-<<if $tending gte 0 and $tending lt 200>><span class="pink">awkwardly</span>
-<<elseif $tending gte 200 and $tending lt 400>><span class="purple">cautiously</span>
-<<elseif $tending gte 400 and $tending lt 600>><span class="blue">rhythmically</span>
-<<elseif $tending gte 600 and $tending lt 800>><span class="lblue">smoothly</span>
-<<elseif $tending gte 800 and $tending lt 1000>><span class="teal">skilfully</span>
-<<elseif $tending gte 1000>><span class="green">expertly</span><</if>>
+<<if currentSkillValue('tending') gte 0 and currentSkillValue('tending') lt 200>><span class="pink">awkwardly</span>
+<<elseif currentSkillValue('tending') gte 200 and currentSkillValue('tending') lt 400>><span class="purple">cautiously</span>
+<<elseif currentSkillValue('tending') gte 400 and currentSkillValue('tending') lt 600>><span class="blue">rhythmically</span>
+<<elseif currentSkillValue('tending') gte 600 and currentSkillValue('tending') lt 800>><span class="lblue">smoothly</span>
+<<elseif currentSkillValue('tending') gte 800 and currentSkillValue('tending') lt 1000>><span class="teal">skilfully</span>
+<<elseif currentSkillValue('tending') gte 1000 and currentSkillValue('tending') lt 1200>><span class="green">expertly</span>
+<<elseif currentSkillValue('tending') gte 1200>><span class="gold">effortlessly</span><</if>>
 <</widget>>
 
 <<widget "nervously">><<silently>>
@@ -5277,13 +5278,15 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "tending_text">>
-<<if $tending gte 800>>
+<<if currentSkillValue('tending') gte 1200>>
+	<span class="gold">You're incredible at this.</span>
+<<elseif currentSkillValue('tending') gte 800>>
 	<span class="green">You're great at this.</span>
-<<elseif $tending gte 600>>
+<<elseif currentSkillValue('tending') gte 600>>
 	<span class="teal">You're good at this.</span>
-<<elseif $tending gte 400>>
+<<elseif currentSkillValue('tending') gte 400>>
 	<span class="lblue">You're okay at this.</span>
-<<elseif $tending gte 200>>
+<<elseif currentSkillValue('tending') gte 200>>
 	<span class="blue">You're getting the hang of this.</span>
 <<else>>
 	<span class="purple">You muddle through.</span>

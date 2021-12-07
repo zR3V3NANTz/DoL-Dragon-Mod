@@ -655,6 +655,16 @@
 			<span class="gold">You've gained the "Cum Dump" trait.</span>
 		<</if>>
 	<</if>>
+	<<if $nectarmessage is "traitGain">><<unset $nectarmessage>>
+		<span class="purple">You find yourself craving more sweet nectar. You've gained the <<if $submissive lte 850>>"Dendrophile"<<else>>"Plant Lover"<</if>> and</span> <span class="red">"Nectar Addict"</span> <span class="purple">traits.</span>
+	<</if>>
+	<<if $nectarmessage is "traitLost">><<unset $nectarmessage>>
+		<span class="lblue">The cravings for nectar finally subside. You've lost the <<if $submissive lte 850>>"Dendrophile"<<else>>"Plant Lover"<</if>> and</span> <span class="red">"Nectar Addict"</span> <span class="lblue">traits.</span>
+	<</if>>
+	<<if $nectarmessage is "withdrawals">><<unset $nectarmessage>>
+		<span class="red">Your body craves nectar, and has begun to suffer from withdrawals.</span> <<stress 12>><<ggstress>><<trauma 12>><<ggtrauma>><<physique_loss 4>><<lphysique>>
+		<br>
+	<</if>>
 	<<if $prof_spray_message is 1>>
 		<<unset $prof_spray_message>>
 		<span class="green">Your spray was accurate. You didn't need to use a full cartridge, saving ammo.</span>

@@ -348,7 +348,7 @@ These still require Fertilise
 <<link [[Arousal zero|$passage]]>><<arousal 0>><</link>>
 <br>
 
-<<link [[Booze|$passage]]>><<set $drunk += 60>><</link>>
+<<link [[Booze|$passage]]>><<alcohol 60>><</link>>
 <br>
 <<link [[Drugged|$passage]]>><<set $drugged += 600>><</link>>
 <br>

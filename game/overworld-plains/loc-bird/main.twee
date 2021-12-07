@@ -911,7 +911,7 @@ You kneel beside the trap door. The wood is ancient, but dry and preserved. You 
 <<else>>
 	You close your eyes as you take a bite, and pretend you're eating something more palatable. It's chewy, but doesn't taste of much at all.
 <</if>>
-It fills you with a strange warmth.<<set $drugged += 60>>
+It fills you with a strange warmth.<<drugs 60>>
 <br><br>
 
 <i><<bHe>> will be more likely to bring you lurkers in the future, rather than other items.</i>
@@ -2298,7 +2298,7 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 				but resumes <<bhis>> song anyways.
 			<<case 6>>
 				You see a person in the distance, completely naked.
-				<<if $hallucinations gte 2 and $tentacledisable is "f" and $monsterchance gte 1>>
+				<<if $tentacledisable is "f" and $plantdisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 					<<Plant_details>> are scattered throughout their hair, and writhing vines surround them. At first, you think they're being attacked, but they seem to be in control of them.
 					<br><br>
 					<<if $monster is 1>>

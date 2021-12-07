@@ -336,7 +336,7 @@ You take a basket into the woodland, and search the boughs and floor for ripe ed
 	You smell a mesmerising sweetness. It leads you to a strange purple flower.
 	<br><br>
 
-	<<link [[Pick|Farm Woodland Harvest]]>><<set $drugged += 60>><</link>><<garousal>>
+	<<link [[Pick|Farm Woodland Harvest]]>><<drugs 60>><</link>><<garousal>>
 	<br>
 	<<link [[Ignore|Farm Woodland]]>><</link>>
 	<br>

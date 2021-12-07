@@ -1029,6 +1029,21 @@ Asphyxiophilia: <span id="statschoke">$choketrait</span> |
 <</link>>
 <br>
 
+Plant Lover: <span id="statsplantlover"><<print $backgroundTraits.includes("plantlover")>></span> |
+<<link "Change">>
+	<<if !$backgroundTraits.includes("plantlover")>>
+		<<set $backgroundTraits.pushUnique("plantlover")>>
+		<<set $nectar_addiction to 200>>
+		<<set $nectar_timer to 21>>
+	<<else>>
+		<<set $backgroundTraits.delete("plantlover")>>
+		<<set $nectar_addiction to 0>>
+		<<set $nectar_timer to 0>>
+	<</if>>
+	<<replace "#statsplantlover">><<print $backgroundTraits.includes("plantlover")>><</replace>>
+<</link>>
+<br>
+
 <</widget>>
 
 <<widget "cheats-characterVisual">>

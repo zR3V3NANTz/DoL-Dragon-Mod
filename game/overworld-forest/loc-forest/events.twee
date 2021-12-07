@@ -1035,7 +1035,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 				<br><br>
 				<<link [[Next|Forest Pale Slime Struggle]]>><<set $struggle_start to 1>><<set $phase to 1>><</link>>
 			<<else>>
-				It violently tugs on your leg, attempting to pull you back into the river! You barely manage to pull away. You look back to see a pale figure dissappear behind a tree. <<trauma 12>><<pain 6>><<stress 12>><<gtrauma>><<gpain>><<gstress>>
+				It violently tugs on your leg, attempting to pull you back into the river! You barely manage to pull away. You look back to see a pale figure disappear behind a tree. <<trauma 12>><<pain 6>><<stress 12>><<gtrauma>><<gpain>><<gstress>>
 				<br><br>
 				<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 			<</if>>
@@ -1068,7 +1068,7 @@ You soon arrive at a log cabin. Inside is a single, spartan room. <<He>> drops y
 				<br><br>
 				<<link [[Next|Forest Pale Slime Struggle]]>><<set $forest += 20>><<set $struggle_start to 1>><<set $phase to 2>><</link>>
 			<<else>>
-				It violently tugs on your leg, attempting to pull you back into the river! You barely manage to pull away. You look back to see a pale figure dissappear behind a tree. <<trauma 12>><<pain 6>><<stress 12>><<gtrauma>><<gpain>><<gstress>>
+				It violently tugs on your leg, attempting to pull you back into the river! You barely manage to pull away. You look back to see a pale figure disappear behind a tree. <<trauma 12>><<pain 6>><<stress 12>><<gtrauma>><<gpain>><<gstress>>
 				<br><br>
 				<<link [[Next|Forest]]>><<set $forest += 20>><</link>>
 			<</if>>
@@ -2996,7 +2996,7 @@ The fall jolts you to your senses. You land in a thick mucus that sticks to your
 :: Forest Pitcher Resist
 <<effects>>
 
-<<drench goo 2 outside>><<set $drugged += 180>>
+<<drench goo 2 outside>><<drugs 180>>
 
 Multiple tentacles wrap around your wrists and ankles as you lie, lightheaded, in the goo. You struggle, but can't put up much of a fight as you are lifted into the air.
 <br><br>
@@ -3058,7 +3058,7 @@ The walls close in, squeezing you. You're pushed upwards by the pressure. You sl
 :: Forest Pitcher Endure
 <<effects>>
 
-<<drench goo 2 outside>><<set $drugged += 180>>
+<<drench goo 2 outside>><<drugs 180>>
 
 Any thought of danger passes as the warm slime envelops you.
 
@@ -3261,7 +3261,7 @@ You search the short trees for saleable lemons.
 	<<earnFeat "In Red Light">>
 	<br><br>
 
-	You feel strangely heated.<<set $drugged += 60>><<arousal 600>><<garousal>>
+	You feel strangely heated.<<drugs 60>><<arousal 600>><<garousal>>
 	<br><br>
 
 	<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
