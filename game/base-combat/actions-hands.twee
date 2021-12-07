@@ -1644,6 +1644,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 	<</if>>
 
 	<<switch $_npcHand>>
+		<<case "none">>
 		<<case "spank">> <<combat-spank $_hand>>
 		<<case "arms">> <<combat-hand-on-arms $_hand>>
 		<<case "leftarm">> <<combat-hand-on-one-arm $_hand "left">>
@@ -1654,6 +1655,7 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<<case "penis">> <<combat-hand-on-penis $_hand>>
 		<<case "anusentrance">> <<combat-hand-on-anusentrance $_hand>>
 		<<case "anus">> <<combat-hand-on-anus $_hand>>
+		<<case "throat">> <<combat-hand-on-throat $_hand>>
 		<<case "mouth">> <<combat-hand-on-mouth $_hand>>
 		<<case "genitals">> <<combat-hand-on-chastity $_hand>>
 		<<case "underclothes">> <<combat-hand-on-underclothes $_hand>>

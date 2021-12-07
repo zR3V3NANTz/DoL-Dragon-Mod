@@ -1183,7 +1183,7 @@ You aren't promiscuous or deviant enough to take up any of the offers.
 <<elseif $brothelshowdata.type is "pig">>
 	You agree to fuck a pig on stage. "You're a dirty one," <<he>> says as <<he>> stands up. "This is going to draw them in.
 <<elseif $brothelshowdata.type is "swarm">>
-	You agree to be submerged in a terrarium filled with small creatures on stage. "You're a kinky one," <<he>> says as <<he>> stands up. "I like that, and I'm sure the audience will like it too".
+	You agree to be submerged in a terrarium filled with small creatures on stage. "You're a kinky one," <<he>> says as <<he>> stands up. "I like that, and I'm sure the audience will like it too.
 <<elseif $brothelshowdata.type is "machine">>
 	You agree to use the repaired sex machine. Briar claps <<his>> hands together. "Excellent.
 <<elseif $brothelshowdata.type is "horse">>

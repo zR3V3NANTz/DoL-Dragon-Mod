@@ -392,16 +392,20 @@ Second arg: tool */
 <<case 7>>
 	<<add_bodywriting $args[0] hit_me $args[1]>>
 <<case 8>>
-	<<if $cbchance lt 100 or $dgchance gte 1>>
+	<<if ($cbchance lt 100 or $dgchance gte 1) and !$player.penisExist>>
 		<<add_bodywriting $args[0] cum_rag $args[1]>>
-	<<else>>
+	<<elseif ($dgchance lt 100 or $cbchance gte 1) and $player.penisExist>>
 		<<add_bodywriting $args[0] walking_dildo $args[1]>>
+	<<else>>
+		<<add_bodywriting $args[0] free_use $args[1]>>
 	<</if>>
 <<case 9>>
-	<<if $dgchance lt 100 or $cbchance gte 1>>
+	<<if ($dgchance lt 100 or $cbchance gte 1) and $player.penisExist>>
 		<<add_bodywriting $args[0] walking_dildo $args[1]>>
-	<<else>>
+	<<elseif ($cbchance lt 100 or $dgchance gte 1) and !$player.penisExist>>
 		<<add_bodywriting $args[0] cum_rag $args[1]>>
+	<<else>>
+		<<add_bodywriting $args[0] free_use $args[1]>>
 	<</if>>
 <<case 10>>
 	<<add_bodywriting $args[0] rape_bait $args[1]>>

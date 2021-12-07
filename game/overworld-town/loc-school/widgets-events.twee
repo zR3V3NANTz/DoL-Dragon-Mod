@@ -786,7 +786,7 @@ Other students ignore what is happening, or watch in amusement.
 		<br>
 		<<elseif $rng gte 81 and $player.gender_appearance is "f" and $player.perceived_breastsize gte 3>>
 			<<generates1>><<person1>>Footsteps approach from behind. Before you can turn, someone runs into you, almost pushing you over. Fingers grope at your back.
-			<<if $worn.under_upper.type.includes("naked")>>
+			<<if $worn.under_upper.type.includes("naked") or $worn.under_upper.type.includes("sticky")>>
 			"I can't find a strap," The <<person>> responsible exclaims. "She's not wearing a bra or anything." <<He>> runs back to <<his>> giggling friends. Your cheeks flush.
 			<<gpain>><<pain 1>><<trauma 6>><<stress 6>><<gtrauma>><<gstress>><<fameexhibitionism 3>>
 			<br><br>

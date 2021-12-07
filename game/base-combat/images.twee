@@ -1491,7 +1491,7 @@ and _stanceCheck isnot "top">>
 					<<set _penetrator = "close/" + _position + "/vaginaentrancebeast.png">>
 				<</if>>
 			<<else>>
-				<<if $NPCList[$anustarget].skincolour is "black">>
+				<<if $NPCList[$vaginatarget].skincolour is "black">>
 					<<set _penetrator = "black/vaginaentrance.png">>
 				<<else>>
 					<<set _penetrator = "close/" + _position + "/vaginaentrance.png">>

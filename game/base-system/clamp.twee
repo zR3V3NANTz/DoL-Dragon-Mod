@@ -4,7 +4,7 @@
 <<if $trauma gte $traumamax>>
 	<<set $beauty -= (($trauma - $traumamax) / 5)>>
 <</if>>
-<<if $innocencestate is 1>>
+<<if $innocencestate is 1 and $trauma gt 0>>
 	<<set $innocencetrauma += $trauma>>
 	<<set $trauma to 0>>
 <</if>>

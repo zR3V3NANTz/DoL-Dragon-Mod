@@ -426,7 +426,7 @@
 <</widget>>
 
 <<widget "effectspenisvaginafuck">>
-<<if $penisaction is "penisvaginafuck" and $penissize gte 0 or ($arousal gte $arousalmax * (3 / 4))>>
+<<if $penisaction is "penisvaginafuck" and ($penissize gte 0 or $arousal gte $arousalmax * (3 / 4))>>
 	<<personselect $penistarget>>
 	<<set $penisaction to 0>><<submission 20 $penistarget>><<penileskilluse>><<combatpromiscuity5>>
 	<<if random(0,1) is 1 or ($penisWetness + ($penileskill / 10)) gte ($penissize * 15) + random(1, 40)>>
