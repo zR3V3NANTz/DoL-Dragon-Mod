@@ -1007,7 +1007,8 @@ You take cover in a bus shelter, just as a bus rounds the corner. It slows down 
 
 		Their car speeds up as they
 		<<if $rng4 lte 20>>
-		spot an unwary pickpocket girl.
+		<<generateyv1>>
+		spot an unwary pickpocket <<personsimple>>.
 		<br>
 		You hear some shouts as
 		<<elseif $rng4 lte 40>>
@@ -1015,9 +1016,10 @@ You take cover in a bus shelter, just as a bus rounds the corner. It slows down 
 		<br>
 		You see one of them lumbering out of the car as
 		<<elseif $rng4 lte 60>>
-		spot a passed out hooker.
+		<<generateyv1>>
+		spot a passed out <<if $pronoun is "m">>escort<<else>>hooker<</if>>.
 		<br>
-		You can see them lifting the girl into the back of their car as
+		You can see them lifting the <<personsimple>> into the back of their car as
 		<<elseif $rng4 lte 80>>
 		spot a gang of boisterous street urchins.
 		<br>

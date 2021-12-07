@@ -1131,22 +1131,28 @@ You are in the main hall of the orphanage.
 <<elseif $baileyReunionScene is "dungeon">>
 	<<npc Bailey>><<person1>>
 	<<unset $baileyReunionScene>>
-	
-	Bailey leans against a wall. A missing person’s poster with a picture of you on it is pinned next to <<him>>.
+
+	<<if $home_gone gte 24>>
+		Bailey leans against a wall. A missing person's poster with a picture of you on it is pinned next to <<him>>.
+		<br><br>
+
+		"You took your time getting back. I'm glad you're alright." <<He>> smirks. "Hope you enjoyed your vacation."
+		<br><br>
+
+		<<He>> pushes <<himself>> off the wall, tearing down the poster and crumpling it up.
+	<<else>>
+		A snide voice greets you on your way inside. "You're a slippery little shit, aren't you?" It's Bailey. <<Hes>> leaning against the wall, musing at you. "I'm glad you're alright."
+		<br><br>
+
+		<<He>> pushes <<himself>> off the wall and prowls towards you.
+	<</if>>
 	<br><br>
-	
-	"You took your time getting back. I’m glad you’re alright." <<He>> smirks. "Hope you enjoyed your vacation."
-	<br><br>
-	
-	<<He>> pushes <<himself>> off the wall, tearing down the poster and crumpling it up.
-	<br><br>
-	
 	<<if $renttime lte 0>>
-		"Pay your dues next time so we won’t have to go through this again. Speaking of which..." <<He>> holds out <<his>> hand.
+		"Pay your dues next time so we won't have to go through this again. Speaking of which..." <<He>> holds out <<his>> hand.
 		<<endevent>>
 		<<rentdue>>
 	<<else>>
-		"Pay your dues next time so we won’t have to go through this again," <<he>> says before pinching your cheek painfully.<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
+		"Pay your dues next time so we won't have to go through this again," <<he>> says before pinching your cheek painfully.<<stress 6>><<trauma 6>><<gstress>><<gtrauma>>
 		<br><br>
 		
 		Bailey walks back into <<his>> office. You rub your cheek as you trudge to your bedroom.

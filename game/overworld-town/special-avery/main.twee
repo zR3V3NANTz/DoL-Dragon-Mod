@@ -613,7 +613,7 @@ You are snapped out of your reverie by a click from the door. Your heart begins 
 <<arousal 4000>>
 <<if $arousal gte $arousalmax>>
 	<<orgasm>>
-	You moan as Avery finally separates from you, leaving your tongue to helplessly lull out of your mouth. <<He>> looks proud of <<himself>>. <<set $endear += 20>><<ggendear>>
+	You moan as Avery finally separates from you, leaving your tongue to helplessly loll out of your mouth. <<He>> looks proud of <<himself>>. <<set $endear += 20>><<ggendear>>
 <<else>>
 	After some time, Avery pulls away from you, giving you another smile.
 <</if>>

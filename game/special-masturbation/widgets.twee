@@ -122,10 +122,19 @@
 	<<set $mouth to 0>>
 	<<set $mouthactiondefault to "mrest">>
 	<<set $mouthaction to 0>>
-	<<set $penisuse to 0>>
+	<<switch $player.gender>>
+		<<case "f">>
+			<<set $vaginause to 0>>
+			<<set $penisuse to "none">>
+		<<case "m">>
+			<<set $penisuse to 0>>
+			<<set $vaginause to "none">>
+		<<case "h">>
+			<<set $vaginause to 0>>
+			<<set $penisuse to 0>>
+	<</switch>>
 	<<set $vaginaactiondefault to "mrest">>
 	<<set $vaginaaction to 0>>
-	<<set $vaginause to 0>>
 	<<set $anusactiondefault to "mrest">>
 	<<set $anusaction to 0>>
 	<<set $anususe to 0>>
