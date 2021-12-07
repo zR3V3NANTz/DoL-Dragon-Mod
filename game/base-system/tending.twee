@@ -217,7 +217,7 @@ here. <<if $fertiliser.current gt 0 or $fertiliser.used gt 0>>You have <<number 
 						<<set $plots[$args[0]][_tending_temp].quality++>>
 						<<if $backgroundTraits.includes("greenthumb") is false>>
 							<<if $plots[$args[0]][_tending_temp].baseQuality is undefined>>
-								<<set $plots[$args[0]][_tending_temp].baseQuality to clone($plots[$args[0]][_tending_temp].quality)>>
+								<<set $plots[$args[0]][_tending_temp].baseQuality to clone($plots[$args[0]][_tending_temp].quality - 1)>>
 							<</if>>
 							<<set $plots[$args[0]][_tending_temp].fertiliserDecay to 2>>
 							<<if $plots[$args[0]][_tending_temp].size isnot "large">>

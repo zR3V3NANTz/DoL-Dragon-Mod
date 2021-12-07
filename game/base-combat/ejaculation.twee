@@ -1682,18 +1682,18 @@
 		<<if $audiencepresent gte 1>>
 			The audience enjoy the show.
 			<<print either(
-				"I can't believe it. Bred by a pig.",
-				"I bet <<pshe>> loves getting pig-fucked like this."
+				`"I can't believe it. Bred by a pig."`,
+				`"I bet <<pshe>> loves getting pig-fucked like this."`
 			)>>
 			<br>
 			<<print either(
-				"What a filthy slut.",
-				"Getting what a slut deserves."
+				`"What a filthy slut."`,
+				`"Getting what a slut deserves."`
 			)>>
 			<br>
 			<<print either(
-				"I wonder how pig cock feels.",
-				"This <<bitch>> would fuck the whole sty."
+				`"I wonder how pig cock feels."`,
+				`"This <<bitch>> would fuck the whole sty."`
 			)>>
 			<br>
 		<</if>>
@@ -1783,18 +1783,18 @@
 		<<if $audiencepresent gte 1>>
 			The audience enjoy the show.
 			<<print either(
-				"I can't believe it. Bred by a pig.",
-				"I bet <<pshe>> loves getting pig-fucked like this."
+				`"I can't believe it. Bred by a pig."`,
+				`"I bet <<pshe>> loves getting pig-fucked like this."`
 			)>>
 			<br>
 			<<print either(
-				"What a filthy slut.",
-				"Getting what a slut deserves."
+				`"What a filthy slut."`,
+				`"Getting what a slut deserves."`
 			)>>
 			<br>
 			<<print either(
-				"I wonder how pig cock feels.",
-				"This <<bitch>> would fuck the whole sty."
+				`"I wonder how pig cock feels."`,
+				`"This <<bitch>> would fuck the whole sty."`
 			)>>
 			<br>
 		<</if>>

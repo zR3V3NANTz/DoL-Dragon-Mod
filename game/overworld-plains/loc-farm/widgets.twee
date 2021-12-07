@@ -2538,7 +2538,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 	<<set _owed to ($farm.tower_guard_wage * $farm.tower_guard_unpaid)>>
 	You owe <<him>> <<printmoney _owed>> in wages.
 	<br>
-	<<if $money gte $farm.tower_guard_wage>>
+	<<if $money gte _owed>>
 		<<link [[Pay|Farm Tower Pay]]>><<set $money -= _owed>><<set $NPCList[0].trust += 1>><<farm_guard_paid>><</link>><<gtrust>> | <span class="green">+ Security skill</span> | <span class="red"> + Wage</span>
 		<br>
 	<</if>>

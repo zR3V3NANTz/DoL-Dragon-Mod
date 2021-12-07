@@ -74,12 +74,12 @@
 				<</if>>
 			<<elseif $penisuse is "otheranus">>
 				<<for $_i = 0; $_i lt $enemynomax; $_i++>>
-					<<if $NPCList[$_i].penis is "otheranus">>
+					<<if $NPCList[$_i].penis is "otheranus" or $NPCList[$_i].vagina is "otheranus">>
 						<<personselect $_i>>
 						<<penileejacstat>>
 						<span class="pink">You are overcome by sensation and ejaculate deep into <<his>> bowels.</span>
 						<<purity -1>><<internalejac>><<creampie "npc" "anus">>
-					<<elseif $NPCList[$_i].penis is "otheranusimminent" or $NPCList[$_i].penis is "otheranusentrance">>
+					<<elseif $NPCList[$_i].penis is "otheranusimminent" or $NPCList[$_i].penis is "otheranusentrance" or $NPCList[$_i].vagina is "otheranusimminent" or $NPCList[$_i].vagina is "otheranusentrance">>
 						<<personselect $_i>>
 						<span class="pink">You are overcome by sensation and ejaculate on <<his>> ass.</span>
 					<</if>>
