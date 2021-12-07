@@ -326,7 +326,7 @@
 <<set _leftaction to {}>>
 <<switch _leftOptions>>
 <<case "free" "struggle">>
-	<<set _leftaction["Keep right arm still"] to "rest">>
+	<<set _leftaction["Keep left arm still"] to "rest">>
 	<<if _lurker_net_possible is true>>
 		<<set _leftaction["Hurl net"] to "capture">>
 	<</if>>
