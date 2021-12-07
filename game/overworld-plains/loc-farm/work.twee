@@ -1849,15 +1849,19 @@ The milking machine works fast, and soon finishes gathering fluid. You release t
 <<deviancy1>>
 
 You <<tendingtext>> squeeze and rub.
-<<if $tending gte 1000>>
+<<if currentSkillValue('tending') gte 1500>>
+	<<farm_count 3>><<pass 3>> Three minutes later
+<<elseif currentSkillValue('tending') gte 1200>>
+	<<farm_count 4>><<pass 4>> Four minutes later
+<<elseif currentSkillValue('tending') gte 1000>>
 	<<farm_count 5>><<pass 5>> Five minutes later
-<<elseif $tending gte 800>>
+<<elseif currentSkillValue('tending') gte 800>>
 	<<farm_count 10>><<pass 10>> Ten minutes later
-<<elseif $tending gte 600>>
+<<elseif currentSkillValue('tending') gte 600>>
 	<<farm_count 15>><<pass 15>> Fifteen minutes later
-<<elseif $tending gte 400>>
+<<elseif currentSkillValue('tending') gte 400>>
 	<<farm_count 20>><<pass 20>> Twenty minutes later
-<<elseif $tending gte 200>>
+<<elseif currentSkillValue('tending') gte 200>>
 	<<farm_count 25>><<pass 25>> Twenty-five minutes later
 <<else>>
 	<<farm_count 30>><<pass 30>> Thirty minutes later
@@ -2068,7 +2072,7 @@ You sneak up to the shed, and push the door open.
 		You water the crops.
 	<</if>>
 <</if>>
-<<if $tending gte 200>>
+<<if currentSkillValue('tending') gte 200>>
 	You also examine them for pests and signs of disease.
 <<else>>
 	You also examine the crops for pests.
@@ -2115,7 +2119,7 @@ You sneak up to the shed, and push the door open.
 		You help Alex water the crops.
 	<</if>>
 <</if>>
-<<if $tending gte 200>>
+<<if currentSkillValue('tending') gte 200>>
 	You also examine them for pests and signs of disease.
 <<else>>
 	You also examine them for pests.
@@ -2323,7 +2327,7 @@ You sit and lean against the tree.
 	<</if>>
 	<br><br>
 
-	<<link [[Drink|Farm Rest Drink]]>><<set $drunk += 120>><<stress -6>><<npcincr Alex love 1>><</link>><<glove>><<lstress>>
+	<<link [[Drink|Farm Rest Drink]]>><<alcohol 120>><<stress -6>><<npcincr Alex love 1>><</link>><<glove>><<lstress>>
 	<br>
 	<<link [[Refuse|Farm Rest Refuse]]>><</link>>
 	<br>

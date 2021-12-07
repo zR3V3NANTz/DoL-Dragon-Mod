@@ -122,9 +122,14 @@
 		<<set $player.gender_posture to "f">>
 	<<else>>
 		<<set $player.gender_posture to "n">>
+		<<set $background to "waif">>
 	<</if>>
 <<elseif $background is "greenthumb">>
+	/* Leaving this here in case we ever turn Green Thumb back into a background. Can't be set to the background variable in cyrrent state. */
 	<<set $tending += 200>>
+<<elseif $background is "plantlover">>
+	<<set $nectar_addiction to 200>>
+	<<set $nectar_timer to 21>>
 <</if>>
 <<set $backgroundTraits to [$background]>>
 
@@ -267,6 +272,9 @@
 
 <<if $fertiliser is undefined>>
 	<<set $fertiliser to {current:0,used:0}>>
+	<<if $backgroundTraits.includes("greenthumb")>>
+		<<set $fertiliser.current++>>
+	<</if>>
 <</if>>
 
 <<set $actionDefaults = DefaultActions.setDefaults()>>

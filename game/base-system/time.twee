@@ -716,6 +716,27 @@
 		<</if>>
 	<</if>>
 
+	<<set $nectar_addiction -= 5>>
+	<<if $backgroundTraits.includes("plantlover")>>
+		<<set $nectar_timer-->>
+		<<if $nectar_timer lte 0>>
+			<<set $backgroundTraits.delete("plantlover")>>
+			<<set $effectsmessage to 1>>
+			<<set $nectarmessage to "traitLost">>
+			<<set $nectar_addiction to 0>>
+		<<elseif $nectar_timer lte 14>>
+			<<set $effectsmessage to 1>>
+			<<set $nectarmessage to "withdrawals">>
+		<</if>>
+	<<else>>
+		<<if $nectar_addiction gte 150>>
+			<<set $backgroundTraits.pushUnique("plantlover")>>
+			<<set $effectsmessage to 1>>
+			<<set $nectarmessage to "traitGain">>
+			<<set $nectar_timer to 21>>
+		<</if>>
+	<</if>>
+
 	<<if $purity lte 0>>
 		<<if $fallenangel gte 2>>
 			<<set $demonbuild to 30>>

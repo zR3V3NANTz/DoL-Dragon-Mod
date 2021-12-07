@@ -205,7 +205,7 @@
 	<<settingsExit>>
 </div>
 <</if>>
-<br><br>
+<br><br><br>
 <</widget>>
 
 <<widget "settingsExit">>
@@ -562,27 +562,31 @@ Values above 5 can lead to errors when creating new saves! Make sure you know wh
 
 	<span class="gold">Background</span>
 	<br>
-	<label>Waif <<radiobutton "$background" "waif" autocheck>> - No special advantages or disadvantages. <i>Recommended for beginners.</i></label>
+	<label><span class="green">Waif</span> <<radiobutton "$background" "waif" autocheck>> - No special advantages or disadvantages. <i>Recommended for beginners.</i></label>
 	<br>
-	<label>Nerd <<radiobutton "$background" "nerd" autocheck>> - Good at school. Picked on. <span class="red">(This will prevent Unsocial Moth feat from being earned)</span></label>
+	<label><span class="teal">Nerd</span> <<radiobutton "$background" "nerd" autocheck>> - Good at school. Picked on. <span class="red">(This will prevent Unsocial Moth feat from being earned)</span></label>
 	<br>
-	<label>Athlete <<radiobutton "$background" "athlete" autocheck>> - Physically capable. Grades have suffered.</label>
+	<label><span class="teal">Athlete</span> <<radiobutton "$background" "athlete" autocheck>> - Physically capable. Grades have suffered.</label>
 	<br>
-	<label>Delinquent <<radiobutton "$background" "delinquent" autocheck>> - Your antics have made you popular with other students. Less so with the teachers.</label>
+	<label><span class="teal">Delinquent</span> <<radiobutton "$background" "delinquent" autocheck>> - Your antics have made you popular with other students. Less so with the teachers.</label>
 	<br>
-	<label>Promiscuous <<radiobutton "$background" "promiscuous" autocheck>> - You've experimented sexually.</label>
+	<label><span class="blue">Promiscuous</span> <<radiobutton "$background" "promiscuous" autocheck>> - You've experimented sexually.</label>
 	<br>
-	<label>Exhibitionist <<radiobutton "$background" "exhibitionist" autocheck>> - You have an affinity for exposing yourself in public places.</label>
+	<label><span class="blue">Exhibitionist</span> <<radiobutton "$background" "exhibitionist" autocheck>> - You have an affinity for exposing yourself in public places.</label>
 	<br>
-	<label>Deviant <<radiobutton "$background" "deviant" autocheck>> - You <i>really</i> like animals.</label>
+	<label><span class="blue">Deviant</span> <<radiobutton "$background" "deviant" autocheck>> - You <i>really</i> like animals.</label>
 	<br>
-	<label>Beautiful <<radiobutton "$background" "beautiful" autocheck>> - You turn heads. <i>Not recommended for beginners.</i></label>
+	<label><span class="lewd">Beautiful</span> <<radiobutton "$background" "beautiful" autocheck>> - You turn heads. <i>Not recommended for beginners.</i></label>
 	<br>
-	<label>Crossdresser <<radiobutton "$background" "crossdresser" autocheck>> - You've taken a liking to the clothing of the opposite sex. Does nothing for hermaphrodites.</label>
+	<label><span class="lewd">Crossdresser</span> <<radiobutton "$background" "crossdresser" autocheck>> - You've taken a liking to the clothing of the opposite sex. Does nothing for hermaphrodites.</label>
 	<br>
-	<label>Lustful <<radiobutton "$background" "lustful" autocheck>> - Arousal increases over time, and needs to be managed.</label>
+	<label><span class="lewd">Lustful</span> <<radiobutton "$background" "lustful" autocheck>> - Arousal increases over time, and needs to be managed.</label>
+	/*<br>
+	<label>Green Thumb <<radiobutton "$background" "greenthumb" autocheck>> - More bountiful crops and no decay when using fertiliser. Start with ne unit of fertiliser.</label>*/
 	<br>
-	<label>Green Thumb <<radiobutton "$background" "greenthumb" autocheck>> - Increased starting tending, more bountiful crops and no decay when using fertiliser.</label>
+	<label><mouse class="tooltip lewd">Dendrophile <<radiobutton "$background" "plantlover" autocheck>> - Plants are everything to you.<span class="green">You're addicted to nectar. You're more vulnerable to aphrodisiacs and alcohol. Plantpeople and plant-based tentacles no longer require hallucinations to encounter. You get a bonus to Tending, as your Trauma increases.</span></mouse>
+	</label>
+	<br>
 
 <</widget>>
 

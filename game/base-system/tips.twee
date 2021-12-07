@@ -176,6 +176,7 @@
 
 		<<set setup.tips.plantpeople to [
 			"There are rumours of people in the forest and moor who are as much plant as they are person. Supposedly, their nectar is a potent aphrodisiac.",
+			"The nectar of some wild flora is known to be dangerously addictive."
 		]>>
 	<</if>>
 	<<generateTipsList>>

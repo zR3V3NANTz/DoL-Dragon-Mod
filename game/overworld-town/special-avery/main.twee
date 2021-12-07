@@ -693,7 +693,7 @@ When the two of you finish eating, <<person1>><<he>> raises the bottle with a sm
 <br><br>
 
 
-<<link [[Accept|Avery Hotel Drink]]>><<endevent>><<set $phase to 0>><<set $drunk += 160>><<set $drugged += 220>><<npcincr Avery love 1>><</link>><<glove>><<garousal>>
+<<link [[Accept|Avery Hotel Drink]]>><<endevent>><<set $phase to 0>><<alcohol 160>><<drugs 220>><<npcincr Avery love 1>><</link>><<glove>><<garousal>>
 <br>
 <<link [[Decline|Avery Hotel Drink]]>><<endevent>><<set $phase to 1>><</link>>
 <br>
@@ -1148,7 +1148,7 @@ You take Avery by the hand, and <<he>> pulls you from the hot tub. <<He>> helps 
 <<He>> uncorks the bottle, taking a brief sip of it, before handing it to you. "It'll help. I promise."
 <br><br>
 
-<<link [[Accept|Avery Hotel Trauma Drink]]>><<set $drunk += 260>><<trauma -24>><<stress -24>><<awareness -5>><</link>><<lllstress>><<llltrauma>><<llawareness>>
+<<link [[Accept|Avery Hotel Trauma Drink]]>><<alcohol 260>><<trauma -24>><<stress -24>><<awareness -5>><</link>><<lllstress>><<llltrauma>><<llawareness>>
 <br>
 <<link [[Decline|Avery Hotel 5]]>><<endevent>><<set $phase to 3>><</link>>
 <br>
@@ -1686,7 +1686,7 @@ You practically hang off Avery's arm. You laugh at <<his>> jokes, and the jokes 
 A servant offers you a drink. Avery nods at you.
 <br><br>
 
-<<link [[Drink|Avery Party Drink]]>><<set $drunk += 120>><<set $endear += 10>><</link>><<gendear>>
+<<link [[Drink|Avery Party Drink]]>><<alcohol 120>><<set $endear += 10>><</link>><<gendear>>
 <br>
 <<link [[Refuse|Avery Party Drink Refuse]]>><</link>><<set $endear -= 5>><<lendear>>
 <br>
@@ -1700,7 +1700,7 @@ You do your best to be polite. You speak when addressed directly. You responses 
 A servant offers you a drink. Avery nods at you.
 <br><br>
 
-<<link [[Drink|Avery Party Drink]]>><<set $drunk += 120>><<set $endear += 10>><</link>><<gendear>>
+<<link [[Drink|Avery Party Drink]]>><<alcohol 120>><<set $endear += 10>><</link>><<gendear>>
 <br>
 <<link [[Refuse|Avery Party Drink Refuse]]>><</link>><<set $endear -= 5>><<lendear>>
 <br>
@@ -1714,7 +1714,7 @@ You ignore their conversations, as if beneath you. You give only curt responses 
 A servant offers you a drink. Avery nods at you.
 <br><br>
 
-<<link [[Drink|Avery Party Drink]]>><<set $drunk += 120>><<set $endear += 10>><</link>><<gendear>>
+<<link [[Drink|Avery Party Drink]]>><<alcohol 120>><<set $endear += 10>><</link>><<gendear>>
 <br>
 <<link [[Refuse|Avery Party Drink Refuse]]>><</link>><<set $endear -= 5>><<lendear>>
 <br>
@@ -2408,7 +2408,7 @@ When <<he>> returns <<he>> isn't carrying a menu, though, but a bottle of wine. 
 
 <<person1>>
 
-<<link [[Drink Avery's preferred wine|Avery Date Wine]]>><<set $drunk += 120>><<set $drugged += 180>><<set $endear += 10>><<npcincr Avery love 1>><</link>><<glove>><<gendear>><<garousal>>
+<<link [[Drink Avery's preferred wine|Avery Date Wine]]>><<alcohol 120>><<drugs 180>><<set $endear += 10>><<npcincr Avery love 1>><</link>><<glove>><<gendear>><<garousal>>
 <br>
 <<link [[Let them pour, but don't drink it|Avery Date No Wine]]>><</link>>
 <br>

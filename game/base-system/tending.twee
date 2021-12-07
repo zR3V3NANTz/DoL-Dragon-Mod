@@ -139,19 +139,25 @@ here. <<if $fertiliser.current gt 0 or $fertiliser.used gt 0>>You have <<number 
 		<<else>>
 			The soil is ready for tilling.
 			<br>
-			<<if $tending gte 1000>>
+			<<if currentSkillValue('tending') gte 1500>>
+				<<set _baseTime to 3>>
+				<<set _baseTiredsness to 1>>
+			<<elseif currentSkillValue('tending') gte 1200>>
+				<<set _baseTime to 4>>
+				<<set _baseTiredsness to 1>>
+			<<elseif currentSkillValue('tending') gte 1000>>
 				<<set _baseTime to 5>>
 				<<set _baseTiredsness to 1>>
-			<<elseif $tending gte 800>>
+			<<elseif currentSkillValue('tending') gte 800>>
 				<<set _baseTime to 10>>
 				<<set _baseTiredsness to 2>>
-			<<elseif $tending gte 600>>
+			<<elseif currentSkillValue('tending') gte 600>>
 				<<set _baseTime to 15>>
 				<<set _baseTiredsness to 3>>
-			<<elseif $tending gte 400>>
+			<<elseif currentSkillValue('tending') gte 400>>
 				<<set _baseTime to 20>>
 				<<set _baseTiredsness to 4>>
-			<<elseif $tending gte 200>>
+			<<elseif currentSkillValue('tending') gte 200>>
 				<<set _baseTime to 25>>
 				<<set _baseTiredsness to 5>>
 			<<else>>
@@ -383,11 +389,11 @@ here. <<if $fertiliser.current gt 0 or $fertiliser.used gt 0>>You have <<number 
 	<<set $plants[$args[0]].amount to 0>>
 <</if>>
 <<if $args[1] is "small">>
-	<<set _tending_amount to random(10, ($tending / 20) + 10)>>
+	<<set _tending_amount to random(10, (currentSkillValue('tending') / 20) + 10)>>
 <<elseif $args[1] is "medium">>
-	<<set _tending_amount to random(10, ($tending / 10) + 20)>>
+	<<set _tending_amount to random(10, (currentSkillValue('tending') / 10) + 20)>>
 <<else>>
-	<<set _tending_amount to random(10, ($tending / 2) + 50)>>
+	<<set _tending_amount to random(10, (currentSkillValue('tending') / 2) + 50)>>
 <</if>>
 <<set _tending_amount *= clone(setup.plants[$args[0]].multiplier)>>
 <<if $args[2] gte 4>>
@@ -431,7 +437,7 @@ You harvest <<number _tending_amount>> <<print setup.plants[$args[0]].plural>>.
 <</if>>
 
 <<if !setup.plants[$args[0]].special.includes("large")>>
-	<<set _tending_amount *= (1 + ($tending / 1000))>>
+	<<set _tending_amount *= (1 + (currentSkillValue('tending') / 1000))>>
 <</if>>
 <<if $backgroundTraits.includes("greenthumb")>>
 	<<set _tending_amount *= 1.2>>

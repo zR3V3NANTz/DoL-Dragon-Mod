@@ -493,7 +493,7 @@ window.settingsObjects = function (type) {
 				hairselect: { strings: ["red", "jetblack", "black", "brown", "softbrown", "lightbrown", "burntorange", "blond", "softblond", "platinumblond", "ashyblond", "strawberryblond", "ginger", "random"] },
 				hairlength: { min: 0, max: 400, decimals: 0 },
 				awareselect: { strings: ["innocent", "knowledgeable"] },
-				background: { strings: ["waif", "nerd", "athlete", "delinquent", "promiscuous", "exhibitionist", "deviant", "beautiful", "crossdresser", "lustful", "greenthumb"] },
+				background: { strings: ["waif", "nerd", "athlete", "delinquent", "promiscuous", "exhibitionist", "deviant", "beautiful", "crossdresser", "lustful", "greenthumb", "plantlover"] },
 				gamemode: { strings: ["normal", "soft", "hard"] },
 				player: {
 					gender: { strings: ["m", "f", "h"] },

@@ -236,7 +236,7 @@ The gate shudders open, and a lorry rumbles out, on its way to collect your prod
 		<<if !setup.plants[_label].season.includes($season)>>
 			<<set _quantity to Math.floor(_quantity * 0.9)>>
 		<</if>>
-		<<set _rng to 800 + Math.floor($tending / 5)>>
+		<<set _rng to 800 + Math.floor(currentSkillValue('tending') / 5)>>
 		<<set _quantity to Math.floor(_quantity * (random(_rng,_rng + 400)/1000))>>
 		<<if _value lt _quantity>>
 			<<set _quantity to _value>>

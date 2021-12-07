@@ -958,3 +958,22 @@ Config.navigation.override = function (dest) {
 			return dest;
 	}
 }
+
+window.currentSkillValue = function(skill){
+    let result = V[skill];
+    if(!result) {
+        console.log(`currentSkillValue - skill '${skill}' unknown`);
+        return 0;
+    };
+    if(['skulduggery','physique','danceskill','swimmingskill','athletics','willpower','tending','english'].includes(skill) && V.moorLuck > 0){
+        result = Math.floor(result * (1 + (V.moorLuck / 100)));
+    }
+    switch(skill){
+        case 'tending':
+            if(V.backgroundTraits.includes("plantlover")){
+                result = Math.floor(result * (1 + (V.trauma / (V.traumamax * 2))));
+            }
+        break;
+    }
+    return result;
+}

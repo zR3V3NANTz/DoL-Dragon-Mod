@@ -525,7 +525,7 @@ You continue cleaning the room, unbothered by all the eyes on your <<lewdness>>.
 <<set $outside to 0>><<set $location to "asylum">><<asylumeffects>><<effects>><<rngWraith 2>>
 The compartment clangs shut. A dim light fills the interior, though you can't see the source. "Are you comfortable in there?" asks Harper's muffled voice. "I'm turning it on." The light becomes more intense. Small holes open on the top and sides of the chamber. A pink mist flows out. It smells sweet. You feel warm.
 <br><br>
-<<set $drugged += 180>>
+<<drugs 180>>
 Several dozen tendrils emerge next. They snake over your body, writhing against your skin,
 <<if $worn.upper.name isnot "naked">>
 	beneath your $worn.upper.name,

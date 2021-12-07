@@ -618,7 +618,7 @@ The creature loses interest in you, and disappears into the pink liquid. <<tearf
 
 <<set $outside to 0>><<set $location to "compound">><<effects>>
 You walk deeper into the building. The entrance is swallowed behind you. You make your way through a maze of pipes and machinery of unknown use. The smoke starts to make you feel warm.
-<<set $drugged += 60>>
+<<drugs 60>>
 <br><br>
 You come to a plinth with a purple crystal sat atop it. It looks valuable.
 <<if $trash_key isnot 1>>Beside it is a large discoloured key.<</if>>

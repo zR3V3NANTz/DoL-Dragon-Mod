@@ -1261,7 +1261,7 @@ You hear Whitney's voice behind you. "You sure showed them." Your hands<<if $fee
 <<if $phase is 0>>
 You sip the drink. It's very sweet. You feel light-headed within moments.
 <br><br>
-<<set $drunk += 120>>
+<<alcohol 120>>
 <</if>>
 
 <<He>> sips <<his>> drink and stares at you. "Why don't you come over here? Sit on my lap."

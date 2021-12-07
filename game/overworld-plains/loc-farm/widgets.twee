@@ -1139,7 +1139,7 @@
 <</widget>>
 
 <<widget "farm_brush">>
-<<if $tending gte 600>>
+<<if currentSkillValue('tending') gte 600>>
 	You brush <<farm_his horse>> fur. There's a lot to cover, <span class="green">but you can tell where the <<farm_text horse>> really needs it</span>. <<farm_He horse>> enjoys the attention.
 	<br><br>
 
@@ -1872,7 +1872,7 @@
 		<<destination_farm>>
 	<</if>>
 <<elseif $rng is 2>>
-	<<if $hallucinations gte 2 and $tentacledisable is "f" and random(1, 2) is 2>>
+	<<if $tentacledisable is "f" and random(1, 2) is 2 and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 		Something twists around your ankle, making you fall. You land on a pile of <<if $weather is "rain" or $weather is "snow">>mud<<else>>dirt<</if>>. You look behind, and see a thick shoot wrapping around your leg. Another emerges from the hedge, and grasps your other ankle.<<gpain>><<gstress>><<pain 4>><<stress 6>>
 		<br><br>
 

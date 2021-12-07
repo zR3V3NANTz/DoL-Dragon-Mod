@@ -1620,7 +1620,7 @@ You get on your hands and knees and start tugging up weeds at their roots. Some 
 <br><br>
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if $danger gte (9900 - $allure)>>
-	<<if $rng gte 51 and $tentacledisable is "f" and $hallucinations gte 2>>
+	<<if $rng gte 51 and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 		The vines around you animate into life. You try to stand but they wrap around your wrists, forcing you to remain on your knees.
 		<br><br>
 		<<link [[Struggle|Clearing Weeding Tentacles]]>><<set $molestationstart to 1>><</link>>
@@ -2184,14 +2184,14 @@ Though you've no doubt you'd have more luck finding mushrooms in the forest prop
 		<<link [[Next|Eden Clearing]]>><<endevent>><</link>>
 		<br>
 		<<elseif $rng gte 41>>
-		<<set $drugged += 120>>
+		<<drugs 120>>
 		After an hour you realise you've gathered quite a haul. Eden should be happy, but you feel light-headed. You hope all the mushrooms you gathered are safe.
 		<br><br>
 
 		<<link [[Next|Eden Clearing]]>><<endevent>><</link>>
 		<br>
 		<<else>>
-		<<set $drunk += 120>>
+		<<alcohol 120>>
 		After an hour you've gathered quite a haul. Eden should be happy, but you feel a strange warmth. You hope all the mushrooms you gathered are safe.
 		<br><br>
 
@@ -3561,7 +3561,7 @@ Eden seems amused by your stubbornness, letting out a breathy chuckle.
 :: Eden Wounds Finish
 <<effects>>
 
-<<if $tending gte 150>>
+<<if currentSkillValue('tending') gte 150>>
 	You skillfully wrap up <<his>> wounds. Eden looks impressed by your handiwork.
 <<else>>
 	You carefully wrap up <<his>> wounds, but the bandages end up loose in some places and too tight in others. Eden seems to appreciate your efforts regardless.

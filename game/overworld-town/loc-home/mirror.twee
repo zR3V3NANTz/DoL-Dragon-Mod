@@ -37,7 +37,7 @@ it nudges your lips. It's kissing you. <<takeKissVirginity "Eerie Mirror Tentacl
 A pink liquid drips from the tip.
 <br><br>
 <<if $deviancy gte 15>>
-	<<link [[Lick|Eerie Mirror 4]]>><</link>><<set $drugged += 60>><<deviant2>>
+	<<link [[Lick|Eerie Mirror 4]]>><</link>><<drugs 60>><<deviant2>>
 	<br>
 <</if>>
 <<link [[Step away|Eerie Mirror Stop]]>><</link>>
@@ -52,7 +52,7 @@ spread down your mouth and throat.
 Several other tentacles form from the light. They dance closer.
 <br><br>
 <<if $deviancy gte 15>>
-	<<link [[Lick|Eerie Mirror 5]]>><<set $drugged += 60>><</link>><<deviant2>>
+	<<link [[Lick|Eerie Mirror 5]]>><<drugs 60>><</link>><<deviant2>>
 	<br>
 <</if>>
 <<link [[Step away|Eerie Mirror Stop]]>><</link>>
@@ -120,7 +120,7 @@ and hips while wiggling closer to your <<genitals>>.
 	<<tentaclestart 10 15>>
 	<<set $mouthstate to "tentacledeep">><<set $mouthuse to "tentacle">><<set $tentacles[0].shaft to "shoulders">><<set $tentacles[0].head to "mouthdeep">><<set $mouthtarget to "tentacles">>
 <</if>>
-<span class="lewd">A red mist is coming from the mirror, and it's making you feel funny.</span><<set $drugged++>>
+<span class="lewd">A red mist is coming from the mirror, and it's making you feel funny.</span><<drugs 1>>
 <br>
 <<statetentacles>>
 

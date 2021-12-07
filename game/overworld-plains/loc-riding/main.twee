@@ -941,7 +941,7 @@ You reach up, and manage to snag one off the branch. Greens and purples blend to
 "Don't eat the fruit," Remy says from further up the procession. "It's toxic without preparation."
 <br><br>
 
-<<link [[Eat it anyway|Riding School Lesson Eat]]>><<def 1>><<set $drugged += 60>><<stress -6>><</link>><<garousal>><<lstress>>
+<<link [[Eat it anyway|Riding School Lesson Eat]]>><<def 1>><<drugs 60>><<stress -6>><</link>><<garousal>><<lstress>>
 <br>
 <<link [[Throw it away|Riding School Lesson]]>><</link>>
 <br>

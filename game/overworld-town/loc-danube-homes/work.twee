@@ -1072,7 +1072,7 @@ You are led to the sprawling back garden, the extent of which is concealed by se
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure)>>
 		<<set $rng to random(1, 100)>>
-		<<if $rng gte 81 and $hallucinations gte 2 and $tentacledisable is "f">>
+		<<if $rng gte 81 and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 
 			<<pass 2 hours>>
 			You work at it for two hours, and barely seem to make a dent. It's almost as if the weeds grow back as fast as you remove them. You reach in to try to remove a large shrub at its roots, but your hand gets stuck. You try to free it with your other hand, but that gets stuck too. Green tendrils emerge, animated by some force.

@@ -62,7 +62,7 @@ You chat with Eden over the meal, attempting to lighten the mood. <<He>>'s as qu
 
 	You accept, and <<he>> pours a glass for you. The smooth taste of the drink compliments your meal perfectly.
 	<br><br>
-	<<set $drunk += 120>>
+	<<alcohol 120>>
 
 <<elseif $phase is 2>>
 

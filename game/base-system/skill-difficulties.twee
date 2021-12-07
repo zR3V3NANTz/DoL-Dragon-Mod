@@ -661,23 +661,19 @@ and $worn.upper.type.includesAny("swim", "naked")and $worn.lower.type.includesAn
 <<widget "tendingdifficulty">>
 <<set _tendingdifficultymin to ($args[0] ? $args[0] : 1)>>
 <<set _tendingdifficultymax to ($args[1] ? $args[1] : 1000)>>
-<<set _tending to clone($tending)>>
-<<if $moorLuck gt 0>>
-	<<set _tending to Math.floor(_tending * (1 + ($moorLuck / 100)))>>
-<</if>>
 <<if $args[2] is undefined>>
 	<<if $checkstyle is "skillname">>
 		| <span class="orange">Tending</span>
 	<<else>>
 		| <span class="orange">Tending</span>:
-		<<set _difficulty to Math.round(Math.clamp(_tending - _tendingdifficultymin, 0, _tendingdifficultymax) / (_tendingdifficultymax - _tendingdifficultymin) * 100)>>
+		<<set _difficulty to Math.round(Math.clamp(currentSkillValue('tending') - _tendingdifficultymin, 0, _tendingdifficultymax) / (_tendingdifficultymax - _tendingdifficultymin) * 100)>>
 		<<if _difficulty gt 100>>
 			<<set _difficulty to 100>>
 		<</if>>
 		<<skillDifficultyText _difficulty>>
 	<</if>>
 <</if>>
-<<if _tending gte random(_tendingdifficultymin, _tendingdifficultymax)>>
+<<if currentSkillValue('tending') gte random(_tendingdifficultymin, _tendingdifficultymax)>>
 	<<set $tendingSuccess to 1>>
 <<else>>
 	<<set $tendingSuccess to 0>>

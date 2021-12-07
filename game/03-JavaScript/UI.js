@@ -442,6 +442,7 @@ window.settingsPCGenderUpdate = function () {
 	let updateButtonsActive = () => {
 		jQuery('[id*=radiobutton-penissize]').prop("disabled", V.player.gender == "f");
 		jQuery('[id*=radiobutton-playerballsexist]').prop("disabled", V.player.gender !== "h");
+		jQuery('[id*=radiobutton-background-8]').prop("disabled", V.player.gender == "h");
 	};
 
 	jQuery(document).ready(() => {

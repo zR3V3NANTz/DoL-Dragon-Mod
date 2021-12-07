@@ -600,7 +600,7 @@
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
 
-<<set $drugged += 120>>
+<<drugs 120>>
 
 <<combatinit>>
 <</widget>>

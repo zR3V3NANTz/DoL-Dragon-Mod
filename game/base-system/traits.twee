@@ -48,6 +48,19 @@
 	<span class="green">Green Thumb</span> - More bountiful crops and no decay when using fertiliser.
 	<br>
 <</if>>
+
+<<if $backgroundTraits.includes("plantlover")>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Dendrophile</span>
+	<<else>>
+		<span class="lewd">Plant Lover</span>
+	<</if>>
+	- Plants are everything to you. Plantpeople and plant-based tentacles no longer require hallucinations to encounter. You get a bonus to tending, as your trauma increases.
+	<br>
+	<span class="red">Nectar Addict</span> - You're more vulnerable to aphrodisiacs and alcohol. You draw nourishment from nectar. Drinking it invigorates your body, improving physique and reducing stress. Failing to consume nectar for an extended period will take its toll on your body, and eventually cause this trait and the <<if $submissive lte 850>><span class="lewd">Dendrophile</span><<else>><span class="lewd">Plant Lover</span><</if>> trait to dissappear.
+	<br>
+<</if>>
+
 <<if $pregnancyStats isnot undefined>>
 	<<switch $pregnancyStats.mother>>
 		<<case 1>><span class="lewd">First Time Mother</span> - You have given birth to your first child.

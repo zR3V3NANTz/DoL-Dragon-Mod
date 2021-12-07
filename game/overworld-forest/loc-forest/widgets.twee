@@ -329,7 +329,7 @@ Go towards town
 		<<addevent "forestsnake" 0.33>>
 	<</if>>
 	<<addevent "forestbear">>
-	<<if $hallucinations gte 2 and $tentacledisable is "f" and $voredisable is "f">>
+	<<if $tentacledisable is "f" and $voredisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 		<<addinlineevent "deepforest_slimecontrol">>
 			You walk through a dense thicket. The air is thick with pollen, but you don't see any flowers. You begin to feel lightheaded, and steady yourself against a trunk. A white haze lingers in the air.
 			<br><br>
@@ -341,14 +341,14 @@ Go towards town
 				<<link [[Defy|Forest Pitcher Slime Defy]]>><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><<set $submissive -= 1>><</link>><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>>
 				<br>
 			<<else>>
-				<<link [[Steady yourself until the feeling subsides (0:30)|Forest Pitcher Wait]]>><<pass 30>><<arousal 1200>><<set $drugged += 30>><</link>><<ggarousal>>
+				<<link [[Steady yourself until the feeling subsides (0:30)|Forest Pitcher Wait]]>><<pass 30>><<arousal 1200>><<drugs 30>><</link>><<ggarousal>>
 				<br>
 				<<link [[Continue|Forest Pitcher Ignore]]>><</link>><<willpowerdifficulty 1 $willpowermax>>
 				<br>
 			<</if>>
 		<</addinlineevent>>
 	<</if>>
-	<<if $hallucinations gte 2 and $tentacledisable is "f">>
+	<<if $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 		<<addinlineevent>>
 			Something grabs your ankle, causing you to trip and fall. You look back, and see a tree root coiling round you. Several others snake through the undergrowth.
 			<br><br>
@@ -370,7 +370,7 @@ Go towards town
 
 		<<link [[Next|Forest]]>><<set $eventskip to 1>><</link>>
 	<</addinlineevent>>
-<<if $plantdisable is "f" and $tentacledisable is "f" and $hallucinations gte 2>>
+<<if $plantdisable is "f" and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 	<<addevent "forestplantkiss">>
 <</if>>
 <<addevent "forestrock">>
@@ -450,7 +450,7 @@ Go towards town
 			You hear a gentle buzz up ahead. A large beehive hangs from a tree. Workers fly in and out in a quest for pollen. The honey would be valuable.
 			<br><br>
 
-			<<if $tending gte 800>>
+			<<if currentSkillValue('tending') gte 800>>
 				<<link [[Harvest honeycomb (0:20)|Forest Honey Pick]]>><<pass 20>><</link>><<tendingdifficulty 800 1100>>
 				<br>
 			<<else>>
@@ -910,7 +910,7 @@ The Black Wolf walks up to you and <<if $monster is 1>>kneels<<else>>turns<</if>
 	<<set $danger to random(1, 10000)>>
 	<<if $danger gte (9900 - $allure)>>
 
-		<<if $rng gte 71 and $forest gte 21 and $plantdisable is "f" and $tentacledisable is "f" and $hallucinations gte 2>>
+		<<if $rng gte 71 and $forest gte 21 and $plantdisable is "f" and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 			<<link [[Everything fades to black...|Forest Plant Passout]]>><</link>>
 		<<else>>
 			<<foresthunt>>
@@ -970,14 +970,14 @@ You find a cluster of edible mushrooms growing at the base of a <<if _forest_shr
 		<<link [[Take for science project|Forest Science Shroom]]>><<set $phase to 1>><</link>>
 		<br>
 	<</if>>
-	<<if $tending gte 300>>
+	<<if currentSkillValue('tending') gte 300>>
 		<<link [[Search for saleable specimens (0:20)|Forest Mushrooms2 Pick]]>><<pass 20>><</link>><<tendingdifficulty 300 600>>
 		<br>
 	<<else>>
 		<span class="blue">You need a higher tending skill to pick saleable mushrooms.</span>
 		<br>
 	<</if>>
-	<<link [[Eat one|Forest Mushrooms2]]>><<set $drunk += 60>><<arousal 3000>><<trauma -3>><<transform wolf 3>><</link>><<garousal>><<ltrauma>>
+	<<link [[Eat one|Forest Mushrooms2]]>><<alcohol 60>><<arousal 3000>><<trauma -3>><<transform wolf 3>><</link>><<garousal>><<ltrauma>>
 	<br>
 <</if>>
 <br>
@@ -1042,7 +1042,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 				<br>
 			<</if>>
 		<</if>>
-		<<if $tending gte 100>>
+		<<if currentSkillValue('tending') gte 100>>
 			<<link [[Pick lilies (0:20)|Forest Lily Pick]]>><<pass 20>><</link>><<tendingdifficulty 100 400>>
 			<br>
 		<<else>>
@@ -1064,7 +1064,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 				<br>
 			<</if>>
 		<</if>>
-		<<if $tending gte 200>>
+		<<if currentSkillValue('tending') gte 200>>
 			<<link [[Pick red roses (0:20)|Forest Red Rose Pick]]>><<pass 20>><</link>><<tendingdifficulty 200 500>>
 			<br>
 		<<else>>
@@ -1073,7 +1073,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 		<</if>>
 		<br>
 	<<else>>
-		<<if $tending gte 100>>
+		<<if currentSkillValue('tending') gte 100>>
 			<<link [[Pick pears (0:20)|Forest Pear Pick]]>><<pass 20>><</link>><<tendingdifficulty 100 400>>
 			<br>
 		<<else>>
@@ -1092,7 +1092,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 				<br>
 			<</if>>
 		<</if>>
-		<<if $tending gte 300>>
+		<<if currentSkillValue('tending') gte 300>>
 			<<link [[Pick orchids (0:20)|Forest Orchid Pick]]>><<pass 20>><</link>><<tendingdifficulty 300 600>>
 			<br>
 		<<else>>
@@ -1100,7 +1100,7 @@ or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
 			<br>
 		<</if>>
 	<<else>>
-		<<if $tending gte 200>>
+		<<if currentSkillValue('tending') gte 200>>
 			<<if $moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6>>
 				<<link [[Pick lemons (0:20)|Forest Blood Lemon Pick]]>><<pass 20>><</link>><<tendingdifficulty 200 500>>
 				<br>

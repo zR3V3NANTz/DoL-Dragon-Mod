@@ -208,7 +208,7 @@ You've pushed yourself too much.
 <<set $outside to 0>><<effects>>
 
 <<if $phase is 0>><<set $phase to 1>>
-<<set $drugged += 180>>
+<<drugs 180>>
 <<lowerruined>>
 <<upperruined>>
 <<underruined>>
