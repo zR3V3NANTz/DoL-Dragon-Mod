@@ -3732,7 +3732,7 @@ You lean forward and kiss the <<person "normal">>, and <<he>> smiles against you
 :: Forest Plant Seduce
 <<location "forest">><<effects>>
 
-"Leaving so soon?" you ask, batting your eyes. The <<person>> turns back. "I could give you so much more than just a kiss. Show me what those vines can do<<else>>Come and get me."
+"Leaving so soon?" you ask, batting your eyes. The <<person>> turns back. "I could give you so much more than just a kiss. <<if $tentacledisable is "f">>Show me what those vines can do<<else>>Come and get me<</if>>."
 <br><br>
 
 <<set $seductiondifficulty to 0>>

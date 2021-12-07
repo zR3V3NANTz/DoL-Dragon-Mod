@@ -2577,7 +2577,7 @@ The pair make you keep their drinks full, and fetch snacks from the kitchen on d
 
 <<if $footdisable is "f">>
 	The <<person2>><<person>> gestures at <<his>> glass. This time, when you bend over to fill it, <<he>> kicks your bottom, knocking you to your knees. A weight presses against your back before you can stand up. Then another. "I need a new footstool," <<he>> says. "Best stay still. Footstools don't move."
-	<<gtrauma>><<gstress>><<pain>><<trauma 6>><<stress 6>><<pain 6>>
+	<<gtrauma>><<gstress>><<gpain>><<trauma 6>><<stress 6>><<pain 6>>
 	<br><br>
 	<<link [[Endure|Sold Work Foot]]>><<pass 60>><<sub 1>><<trauma 6>><<stress 6>><<arousal 4000>><</link>><<gtrauma>><<gstress>><<ggarousal>>
 	<br>

@@ -200,7 +200,7 @@
 	<<link [[Watch them leave|Wolf Cave Hunt Leave]]>><</link>>
 	<br>
 
-<<elseif$wolfstate is "cave" and $wolfpackleader is 1 and $wolfpackharmony lte random(0,10) and $wolfpackferocity gte random(11,20) and $wolfchallengetimer lte 0>>
+<<elseif $wolfstate is "cave" and $wolfpackleader is 1 and $wolfpackharmony lte random(0,10) and $wolfpackferocity gte random(11,20) and $wolfchallengetimer lte 0>>
 	<<set $wolfchallengetimer to 14>><<npc "Black Wolf">>
 	You hear a loud bark behind you. You turn to face the Black Wolf, who stands firmly and bares <<bhis>> teeth to you.
 	<<if $monster is 1>>
