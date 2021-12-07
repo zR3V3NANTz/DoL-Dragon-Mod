@@ -889,8 +889,9 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 
 <<widget "combatinit">>
 <<if $consensual is 1>>
-<<set $controlstart to $control>>
+	<<set $controlstart to $control>>
 <</if>>
+<<set $arousalmasochism to 0>>
 
 <<set $combatgoal to 0>>
 

@@ -1216,7 +1216,7 @@
 			<<if $npcSub and $NPCList[$righttarget].fullDescription is "Sydney">>
 				<span class="lblue">You <<handtext>> undress $NPCList[$righttarget].pronouns.him.</span> <<sydneyExpose>>
 			<<else>>
-				<span class="lblue">You <<handtext>> undress $NPCList[_$righttargetj].pronouns.him, revealing <<his>> pussy<<if $NPCList[$righttarget].chastity.vagina.includes("chastity")>> behind a $NPCList[$righttarget].chastity.vagina<</if>>.</span>
+				<span class="lblue">You <<handtext>> undress $NPCList[$righttarget].pronouns.him, revealing <<his>> pussy<<if $NPCList[$righttarget].chastity.vagina.includes("chastity")>> behind a $NPCList[$righttarget].chastity.vagina<</if>>.</span>
 			<</if>>
 			<<set $NPCList[$righttarget].vagina to 0>>
 		<</if>>
@@ -1578,7 +1578,7 @@
 	<</if>>
 
 	<<if $feetaction is "hobble">>
-		<<set $feetaction to 0>><<set $feetactiondefaul to "hobble">>
+		<<set $feetaction to 0>><<set $feetactiondefault to "hobble">>
 		<<if $leftleg is "bound" or $rightleg is "bound">>
 			You hobble as fast as your bound legs will allow,
 		<<else>>
@@ -2687,7 +2687,7 @@
 						<</if>>
 					<</if>>
 					<<if $anusstate is "entrance" or $anusstate is "imminent">>
-						<<if ($NPCList[$anustarget].penis is "anusentrance" or $NPCList[_$anustargetj].penis is "anusimminent") and $NPCList[$anustarget].condom is false>>
+						<<if ($NPCList[$anustarget].penis is "anusentrance" or $NPCList[$anustarget].penis is "anusimminent") and $NPCList[$anustarget].condom is false>>
 							<<personselect $anustarget>>
 							<span class="green">The <<person>> slips a condom onto <<his>> penis.</span>
 							<<equipCondom $anustarget>>

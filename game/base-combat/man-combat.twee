@@ -5042,7 +5042,7 @@
 			<<neutral 5 _n>><<set $vaginause to "penis">><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginastate to "entrance">><<set $speechvaginaentrance to 1>><<set $vaginatarget to _n>>
 			<<set $NPCList[_n].location.genitals = "genitals">>
 		
-		<<elseif $player.vaginaExist and $vaginaldisable is "f" and ($awareness lt 300 ? random(0,1) is 0 : random(0,3) isnot 0) and $anususe isnot "penisdouble" and $vaginause is "penis" and $vaginause isnot "penisdouble" and $NPCList[_n].penissize gte 2 and $NPCList[$vaginatarget].penissize gte 2>>
+		<<elseif $player.vaginaExist and $vaginaldoubledisable is "f" and ($awareness lt 300 ? random(0,1) is 0 : random(0,3) isnot 0) and $anususe isnot "penisdouble" and $vaginause is "penis" and $vaginause isnot "penisdouble" and $NPCList[_n].penissize gte 2 and $NPCList[$vaginatarget].penissize gte 2>>
 			/* level 4 awareness( $awareness gt 300) should make this more common
 			This action requires both NPCs to have a minimum penis size to initiate */
 			<!--
