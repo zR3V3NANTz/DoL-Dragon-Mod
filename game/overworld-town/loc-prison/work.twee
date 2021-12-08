@@ -1769,6 +1769,9 @@ You take the <<person>> by the hand, and lead <<him>> into the prison block. Oth
 	<<ejaculation>>
 	The <<person>> leans back, a relieved look on <<his>> face. "I needed that," <<he>> says. "Not enough sluts in here."<<ghope>><<prison_hope 1>>
 	<br><br>
+    <<set _rng to random(7, 15)>>
+     "Here," <<he>> says, rummaging around <<his>> cell. <span class="green">He grabs a small brown bag and throws it to you.</span> <<prison_teeth _rng>><<prison_teeth_text _rng>>
+    <br><br>
 	<<tearful>> you leave the cell.
 	<br><br>
 	<<clotheson>>
@@ -1776,7 +1779,7 @@ You take the <<person>> by the hand, and lead <<him>> into the prison block. Oth
 	<<link [[Next|Prison Block]]>><</link>>
     <br>
 <<elseif $enemyhealth lte 0>>
-	The holds a bedsheet between <<him>> and you, as if that would offer protection. "Fuck," <<he>> says. "I get it. Just leave me alone okay?"<<grespect>><<prison_inmates 1>>
+	The <<person>> holds a bedsheet between <<him>> and you, as if that would offer protection. "Fuck," <<he>> says. "I get it. Just leave me alone okay?"<<grespect>><<prison_inmates 1>>
 	<br><br>
 	<<tearful>> you leave the cell.
 	<br><br>
@@ -1822,7 +1825,7 @@ You take the <<person>> by the hand, and lead <<him>> into the prison block. Oth
 <<effects>>
 
 <<generate1>><<person1>><<generate2>><<generate3>><<generate4>><<generate5>><<generate6>>
-You strut toward a group of chatting inmates, your tail flicking just so. You draw them into your eyes, and drown them there.
+You strut toward a group of chatting inmates, your <<if $transformationParts.demon.tail isnot "hidden">>tail flicking<<else>><<bottom>> thrusting<</if>> just so. You draw them into your eyes, and drown them there.
 <br><br>
 You walk by, towards the prison block. They follow behind. You know they won't be able to hold back long.
 <br><br>
