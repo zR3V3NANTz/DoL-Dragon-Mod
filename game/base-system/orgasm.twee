@@ -478,7 +478,7 @@
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "boyChangingRoom">>
-			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+			<<if $changingroomstate is "empty">>
 				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
 			<<elseif $player.gender_appearance is "f">>
 				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
@@ -488,7 +488,7 @@
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "girlChangingRoom">>
-			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+			<<if $changingroomstate is "empty">>
 				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
 			<<elseif $player.gender_appearance is "m">>
 				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
