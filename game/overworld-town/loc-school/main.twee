@@ -2308,7 +2308,7 @@ You walk along the fence, searching for the underwear-obsessed <<person>>. You f
 <<effects>>
 
 <<if $panties_held gte 100>>
-	It'll take too long to push all this underwear through the fence, so you hurl it over the top in bundles. The <<person>> faces up as the clothing rains on <<him>>, eyes shut in contentment."
+	It'll take too long to push all this underwear through the fence, so you hurl it over the top in bundles. The <<person>> faces up as the clothing rains on <<him>>, eyes shut in contentment.
 	<br><br>
 	"Thank you," <<he>> says. "Here."
 <<elseif $panties_held gte 20>>

@@ -2411,7 +2411,6 @@ You carry the feed to the field. Some of the younger <<farm_text_many dog>> beg 
 <br><br>
 <<set $danger to random(1, 10000)>>
 <!-- Modified for Monster People -->
-<< and ($bestialitydisable is "f" or $farm_work.dog.monster is true)>>
 <<if $danger gte (9900 - $allure) and $farm.beasts.dogs lte -20 and ($bestialitydisable is "f" or $farm_work.dog.monster is true)>>
 	You leave the <<farm_text_many dog>> to feed, but hear footsteps approach as you walk from the field.
 	<<if $farm_work.dog.monster is true>>

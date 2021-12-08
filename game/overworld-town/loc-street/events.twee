@@ -2629,7 +2629,7 @@ You wake up by the side of the road, leaning against a wall. A <<generate1>><<pe
 
 <<set $outside to 1>><<effects>>
 You follow the <<beasttype>> down the alley. <<bHe>> rounds a corner.
-<<if $rng gte 99 and ($monster is 1 or $bestialitydisable if "f")>><!-- Modified for Beast People -->
+<<if $rng gte 99 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 	You find <<bhim>> stood in the middle of the alley, looking at you. You hear a growl to your right and left. You're surrounded.
 	<br><br>
 	<<beastNEWinit 2 dog>>
