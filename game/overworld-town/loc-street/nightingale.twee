@@ -40,14 +40,14 @@ You are on Nightingale Street. It is dominated by the civic hospital but there a
 		<br>
 		<<if $exposed lte 0>>
 			<<if $chef_state is 4>>
-				<<link [[Photography studio (3:00)|Photography Chef]]>><</link>>
+				<<photographystudioicon>><<link [[Photography studio (3:00)|Photography Chef]]>><</link>>
 				<br>
 			<<elseif $daystate is "day">>
 				<<if $photo_known is 1>>
-					<<link [[Photography studio|Photo Entrance]]>><</link>>
+					<<photographystudioicon>><<link [[Photography studio|Photo Entrance]]>><<pass 1>><</link>>
 					<br>
 				<<elseif $photo_known gte 2>>
-					<<link [[Photography Studio|Photo]]>><</link>>
+					<<photographystudioicon>><<link [[Photography Studio|Photo]]>><<pass 1>><</link>>
 					<br>
 				<</if>>
 			<</if>>

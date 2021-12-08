@@ -434,10 +434,12 @@
 			<<submission 2 $vaginatarget $vaginadoubletarget>><<set $vaginause to "penisdouble">><<set $NPCList[$vaginadoubletarget].penis to "vaginadoubleentrance">><<set $vaginastate to "doubleentrance">>
 			<<if $NPCList[$vaginatarget].penis is "vaginaimminent">>
 				<<set $NPCList[$vaginatarget].penis is "vaginadoubleimminent">>
+				<<set $vaginastate to "doubleimminent">>
 			<<elseif $NPCList[$vaginatarget].penis is "vaginaentrance">>
 				<<set $NPCList[$vaginatarget].penis is "vaginadoubleentrance">>
 			<<else>>
 				<<set $NPCList[$vaginatarget].penis is "vaginadouble">>
+				<<set $vaginastate to "doublepenetrated">>
 			<</if>>
 			
 			<<if $leftarm is "vagina">>
