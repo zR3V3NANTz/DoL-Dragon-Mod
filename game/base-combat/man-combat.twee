@@ -5060,7 +5060,7 @@
 			<span class="blue"><<He>> moves <<his>> $NPCList[_n].penisdesc between your legs, joining the other cock in front of your <<pussy>>.</span>
 			<<neutral 5>><<set $vaginause to "penisdouble">><<set $NPCList[_n].penis to "vaginadoubleentrance">><<if $vaginastate isnot "doublepenetration" and $vaginastate isnot "doubleimminent">><<set $vaginastate to "doubleentrance">><</if>><<set $speechvaginaentrance to 1>>
 			<<set $NPCList[_n].location.genitals = "genitals">>
-			<<set $vaginadoubletarget to "_n">>
+			<<set $vaginadoubletarget to _n>>
 			<<if $NPCList[$vaginatarget].penis is "vagina">>
 				<<set $NPCList[$vaginatarget].penis to "vaginadouble">>
 			<<elseif $NPCList[$vaginatarget].penis is "vaginaimminent">>
