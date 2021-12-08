@@ -2922,10 +2922,13 @@
 		<<set $anusdoubletarget to $vaginatarget>>
 		<<if $NPCList[$anustarget].penis is "anus">>
 			<<set $NPCList[$anustarget].penis to "anusdouble">>
+			<<set $anusstate to "doublepenetrated">>
 		<<elseif $NPCList[$anustarget].penis is "anusimminent">>
 			<<set $NPCList[$anustarget].penis to "anusdoubleimminent">>
+			<<set $anusstate to "doubleimminent">>
 		<<elseif $NPCList[$anustarget].penis is "anusentrance">>
 			<<set $NPCList[$anustarget].penis to "anusdoubleentrance">>
+			<<set $anusstate to "doubleentrance">>
 		<<elseif $NPCList[$anustarget].penis is "cheeks">>
 			<<set $NPCList[$anustarget].penis to "anusentrance">>
 			<<set $bottomuse to 0>> /* Issues with ass cheeks likely stem from this culprit right here */

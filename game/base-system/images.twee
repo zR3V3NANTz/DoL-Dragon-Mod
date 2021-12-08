@@ -1099,6 +1099,12 @@
 	<</if>>
 <</widget>>
 
+<<widget "photographystudioicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/camera.png">
+	<</if>>
+<</widget>>
+
 <<widget "ind">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/indent.png">

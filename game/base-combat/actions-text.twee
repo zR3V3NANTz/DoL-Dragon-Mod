@@ -193,6 +193,7 @@
 			<</if>>
 		<</if>>
 	<</if>>
+	<<set $penisstate to "otherpenis">>
 <</widget>>
 
 <<widget "actionsothermouthpenisthrust">>
@@ -4444,6 +4445,7 @@ _otheraction _youraction
 		You <<peniletext>> press back against the penis.
 	<</if>>
 <</if>>
+<<set $penisstate to "otherpenis">>
 <</widget>>
 
 <<widget "actionsclitrub">>
