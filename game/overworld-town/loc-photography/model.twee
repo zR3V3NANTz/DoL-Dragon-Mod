@@ -308,7 +308,7 @@ Many of the shots seem awfully focused on your <<bottom>>.
 
 
 <<if $photo.evidence gte 1 and $photo.refused gte 1 and $enemyno gte 1>>
-    <<set $photo.refused to 0>>
+    
     "Almost done," <<he>> says. "Need something from my office. I'll be right back." <<nnpc_He "Niki">> leaves the room, taking the smaller camera with <<nnpc_him "Niki">>, but leaving the tripod.
     <br><br>
     

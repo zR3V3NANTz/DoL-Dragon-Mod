@@ -102,37 +102,58 @@ Niki nods. "You know where I am if you change your mind."
 :: Photo
 <<set $outside to 0>><<effects>>
 
-<<npc Niki>><<person1>>
-You are in the photo studio on Nightingale Street. Niki sits behind a desk, staring at a computer screen. Pictures of
+<<if $photo.niki_event is undefined and $NPCName[$NPCNameList.indexOf("Niki")].love gte 10 and $brothelintro gte 1>>
+	<<set $photo.niki_event to 1>>
+	<<npc Briar>><<person1>>
+	<<if $pronoun is "m">>
+		A <<personsimple>> in a revealing blue suit brushes past you on the way in. 
+	<<else>>
+		A <<personsimple>> in a revealing red gown brushes past you on the way in.
+	<</if>>
+	It's Briar.
+	<br><br>
+	"Not surprised to see you here," <<he>> says, leaning against the door frame to regard you. Niki looks up from <<nnpc_his "Niki">> desk, wearing a frown. Briar laughs. "Don't you worry. See you next week."
+	<br><br>
 
-<<if $malevictimchance gte 100>>
-	men
-<<elseif $malevictimchance lte 0>>
-	women
-<<else>>
-	men and women
-<</if>>
-cover the wall behind <<him>>, most of them suggestive, but all tasteful.
-<br><br>
-<<if $photo.shoot is 1>>
-	<span class="blue">You've already worked as a model this week.</span>
-	<br>
-<<else>>
-	<<link [[Model (3:00)|Photo Model]]>><<set $photo.shoot to 1>><</link>><<exhibitionist1>>
-	<br>
-<</if>>
-/*
-<<link [[Ask for other work|Photo Ask]]>><</link>>
-<br>
-<<if $photo.silly is "done">>
-	<<link [[Get paid for the silly outfit job|Photo Street Paid]]>><<set $photo.silly to "paid">><</link>>
-	<br>
-<</if>>
-*/
-<<link [[Leave|Nightingale Street]]>><<endevent>><</link>>
-<br>
+	Briar continues on <<his>> way.
+	<br><br>
 
-<<set $niki_seen to "photo">>
+	<<link [[Next|Photo]]>><<endevent>><</link>>
+	<br>
+<<else>>
+	<<npc Niki>><<person1>>
+	You are in the photo studio on Nightingale Street. Niki sits behind a desk, staring at a computer screen. Pictures of
+
+	<<if $malevictimchance gte 100>>
+		men
+	<<elseif $malevictimchance lte 0>>
+		women
+	<<else>>
+		men and women
+	<</if>>
+	cover the wall behind <<him>>, most of them suggestive, but all tasteful.
+	<br><br>
+
+	<<if $photo.shoot is 1>>
+		<span class="blue">You've already worked as a model this week.</span>
+		<br>
+	<<else>>
+		<<link [[Model (3:00)|Photo Model]]>><<set $photo.shoot to 1>><</link>><<exhibitionist1>>
+		<br>
+	<</if>>
+	/*
+	<<link [[Ask for other work|Photo Ask]]>><</link>>
+	<br>
+	<<if $photo.silly is "done">>
+		<<link [[Get paid for the silly outfit job|Photo Street Paid]]>><<set $photo.silly to "paid">><</link>>
+		<br>
+	<</if>>
+	*/
+	<<link [[Leave|Nightingale Street]]>><<endevent>><</link>>
+	<br>
+
+	<<set $niki_seen to "photo">>
+<</if>>
 
 :: Photo Ask
 <<effects>>

@@ -1099,9 +1099,27 @@
 	<</if>>
 <</widget>>
 
+<<widget "fishtankicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/fish_tank.png">
+	<</if>>
+<</widget>>
+
 <<widget "photographystudioicon">>
 	<<if $images is 1>>
 		<img id="icon" src="img/misc/icon/camera.png">
+	<</if>>
+<</widget>>
+
+<<widget "fishtankicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/fish_tank.png">
+	<</if>>
+<</widget>>
+
+<<widget "officeicon">>
+	<<if $images is 1>>
+		<img id="icon" src="img/misc/icon/office.png">
 	<</if>>
 <</widget>>
 
