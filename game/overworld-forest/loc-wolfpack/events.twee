@@ -819,8 +819,10 @@ One of the hunters, a <<beasttype>>,
 	<<elseif $wolfpackharmony gte 10>>
 		The <<beasttype>> lets out a satisfied chuff and nudges you with <<bhis>> <<if $monster is 1>>hand<<else>>nose<</if>>. <<bHis>> tail wags affectionately.
 		<br><br>
-		<<link [[Reward|Wolf Cave Spar Sex]]>><<set $sexstart to 1>><<set $phase to 2>><<sub 1>><</link>>
-		<br>
+		<<if $deviancy gte 35>>
+			<<link [[Reward|Wolf Cave Spar Sex]]>><<set $sexstart to 1>><<set $phase to 2>><<sub 1>><</link>><<deviant3>>
+			<br>
+		<</if>>
 		<<link [[Take a breather (0:05)|Wolf Cave Clearing]]>><<endevent>><<pass 5>><</link>>
 	<<else>>
 		The <<beasttype>> lets out a satisfied chuff and returns to <<bhis>> resting spot.

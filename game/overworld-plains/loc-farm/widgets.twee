@@ -2837,7 +2837,7 @@ Weekly wage: <<printmoney $farm.tower_guard_wage>>
 			Searchlights are being affixed atop the watchtower.
 		<<case "kennel 1">>
 			A guard dog training facility is being contructed.
-		<<case "barn 1">>
+		<<case "barn 1" "barn 2">>
 			The barn is being expanded.
 		<<case "woodland 1" "woodland 2" "woodland 3">>
 			A fence is being built around the nearby woodland.
