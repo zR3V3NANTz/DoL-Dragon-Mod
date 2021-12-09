@@ -2660,9 +2660,9 @@ You follow the <<beasttype>> down the alley. <<bHe>> rounds a corner.
 		You look further but there's no identification.
 	<</if>>
 	<<if $monster is 1>>
-		The <<beasttype>> barks happily.
-	<<else>>
 		"I'm glad to help," the <<beasttype>> says.
+	<<else>>
+		The <<beasttype>> barks happily.
 	<</if>>
 	<br><br>
 	<<if $deviancy gte 15 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
