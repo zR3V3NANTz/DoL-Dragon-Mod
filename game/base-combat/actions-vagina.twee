@@ -322,25 +322,30 @@
 
 <<widget "effectsvaginatopenis">>
 <<if $vaginaaction is "vaginatopenis">>
+	<<personselect $vaginatarget>>
 	<<set $vaginaaction to 0>><<submission 10 $vaginatarget>><<vaginalskilluse>><<combatpromiscuity5>>
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<submission 2 $vaginatarget>><<set $vaginause to "penis">><<set $NPCList[$vaginatarget].penis to "vaginaentrance">><<set $vaginastate to "entrance">><<set $vaginaactiondefault to "penistease">>
-		<<if $leftarm is "vagina">>
-			<<set $leftarm to 0>>
+		<<if $NPCList[$vaginatarget].penis is 0>>
+			<<submission 2 $vaginatarget>><<set $vaginause to "penis">><<set $NPCList[$vaginatarget].penis to "vaginaentrance">><<set $vaginastate to "entrance">><<set $vaginaactiondefault to "penistease">>
+			<<if $leftarm is "vagina">>
+				<<set $leftarm to 0>>
+			<</if>>
+			<<if $rightarm is "vagina">>
+				<<set $rightarm to 0>>
+			<</if>>
+			<<if $condomUse is false>>
+			<<elseif ($condomUse is true or (random(0,100) lt $condomautochance and $npcCondoms isnot undefined)) and $NPCList[$vaginatarget].condom is false>>
+				<<equipCondom $vaginatarget>>
+				<span class="green"><<He>> slips a condom on <<his>> penis.</span>
+			<</if>>
+			<span class="lblue">You straddle <<combatperson>> and kiss <<his>> $NPCList[$vaginatarget].penisdesc with your <<pussy>><<if $NPCList[$vaginatarget].chastity.penis.includes("chastity")>> through <<his>> $NPCList[$vaginatarget].chastity.penis<</if>>.</span>
+			<<if $enemytype is "beast">><<set $NPCList[$vaginatarget].stance to "top">><</if>>
+			<<set $NPCList[$vaginatarget].location.genitals to "genitals">>
+		<<else>>
+			<span class="blue">You try to straddle <<combatpersons>> $NPCList[$vaginatarget].penisdesc, but the phallus is already occupied.</span><<set $vaginaactiondefault to "vaginatopenis">>
 		<</if>>
-		<<if $rightarm is "vagina">>
-			<<set $rightarm to 0>>
-		<</if>>
-		<<if $condomUse is false>>
-		<<elseif ($condomUse is true or (random(0,100) lt $condomautochance and $npcCondoms isnot undefined)) and $NPCList[$vaginatarget].condom is false>>
-			<<equipCondom $vaginatarget>>
-			<span class="green"><<He>> slips a condom on <<his>> penis.</span>
-		<</if>>
-		<span class="lblue">You straddle <<personselect $vaginatarget>><<combatperson>> and kiss <<his>> $NPCList[$vaginatarget].penisdesc with your <<pussy>><<if $NPCList[$vaginatarget].chastity.penis.includes("chastity")>> through <<his>> $NPCList[$vaginatarget].chastity.penis<</if>>.</span>
-		<<if $enemytype is "beast">><<set $NPCList[$vaginatarget].stance to "top">><</if>>
-		<<set $NPCList[$vaginatarget].location.genitals to "genitals">>
 	<<else>>
-		<span class="blue">You try to straddle <<personselect $vaginatarget>><<combatperson>> but <<ohe>> pushes you off.</span><<set $vaginaactiondefault to "vaginatopenis">>
+		<span class="blue">You try to straddle <<combatperson>> but <<ohe>> pushes you off.</span><<set $vaginaactiondefault to "vaginatopenis">>
 	<</if>>
 <</if>>
 
@@ -348,20 +353,25 @@
 
 <<widget "effectsvaginatovagina">>
 <<if $vaginaaction is "vaginatovagina">>
+	<<personselect $vaginatarget>>
 	<<set $vaginaaction to 0>><<submission 5 $vaginatarget>><<vaginalskilluse>><<combatpromiscuity5>>
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<set $vaginause to "othervagina">><<set $vaginastate to "othervaginaentrance">><<set $NPCList[$vaginatarget].vagina to "vaginaentrance">><<submission 5 $vaginatarget>><<set $vaginaactiondefault to "othervaginarub">>
-		<<if $leftarm is "vagina">>
-			<<set $leftarm to 0>>
+		<<if $NPCList[$vaginatarget].vagina is 0>>
+			<<set $vaginause to "othervagina">><<set $vaginastate to "othervaginaentrance">><<set $NPCList[$vaginatarget].vagina to "vaginaentrance">><<submission 5 $vaginatarget>><<set $vaginaactiondefault to "othervaginarub">>
+			<<if $leftarm is "vagina">>
+				<<set $leftarm to 0>>
+			<</if>>
+			<<if $rightarm is "vagina">>
+				<<set $rightarm to 0>>
+			<</if>>
+			<span class="lblue">You kiss <<combatperson>>'s pussy with your own<<if $NPCList[$vaginatarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$vaginatarget].chastity.vagina<</if>>.</span>
+			<<if $enemytype is "beast">><<set $NPCList[$vaginatarget].stance to "top">><</if>>
+			<<set $NPCList[$vaginatarget].location.genitals to "genitals">>
+		<<else>>
+			<span class="blue">You try to move your <<pussy>> nearer <<combatpersons>>, but the entrance is already occupied.</span><<set $vaginaactiondefault to "vaginatovagina">>
 		<</if>>
-		<<if $rightarm is "vagina">>
-			<<set $rightarm to 0>>
-		<</if>>
-		<span class="lblue">You kiss <<personselect $vaginatarget>><<combatperson>>'s pussy with your own<<if $NPCList[$vaginatarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$vaginatarget].chastity.vagina<</if>>.</span>
-		<<if $enemytype is "beast">><<set $NPCList[$vaginatarget].stance to "top">><</if>>
-		<<set $NPCList[$vaginatarget].location.genitals to "genitals">>
 	<<else>>
-		<span class="blue">You try to move your <<pussy>> nearer <<personselect $vaginatarget>><<combatperson>>'s, but <<ohe>> pushes you off.</span><<set $vaginaactiondefault to "vaginatovagina">>
+		<span class="blue">You try to move your <<pussy>> nearer <<combatpersons>>, but <<ohe>> pushes you off.</span><<set $vaginaactiondefault to "vaginatovagina">>
 	<</if>>
 <</if>>
 <</widget>>

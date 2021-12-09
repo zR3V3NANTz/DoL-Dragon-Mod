@@ -666,7 +666,7 @@
 			<<set $leftactiondefault to "leftclit">><<set $NPCList[$lefttarget].vagina to "leftarm">><<set $leftarm to "othervagina">><<personselect $lefttarget>>
 			<span class="lblue">You <<handtext>> grab <<hisselect $lefttarget>> pussy<<if $NPCList[$lefttarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$lefttarget].chastity.vagina<</if>> with your left hand.</span>
 		<<else>>
-			<span class="blue">You try to grab <<hisselect $lefttarget>> pussy with your left hand, but they're already occupied.</span>
+			<span class="blue">You try to grab <<hisselect $lefttarget>> pussy with your left hand, but the entrance is already occupied.</span>
 		<</if>>
 	<<else>>
 		You try to grab <<hisselect $lefttarget>> pussy with your left hand, but <<he>> moves it away.
@@ -681,7 +681,7 @@
 			<<set $rightactiondefault to "rightclit">><<set $NPCList[$righttarget].vagina to "rightarm">><<set $rightarm to "othervagina">><<personselect $righttarget>>
 			<span class="lblue">You <<handtext>> grab <<hisselect $righttarget>> pussy<<if $NPCList[$righttarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$righttarget].chastity.vagina<</if>> with your right hand.</span>
 		<<else>>
-			<span class="blue">You try to grab <<hisselect $righttarget>> pussy with your left hand, but they're already occupied.</span>
+			<span class="blue">You try to grab <<hisselect $righttarget>> pussy with your left hand, but the entrance is already occupied.</span>
 		<</if>>
 	<<else>>
 		You try to grab <<hisselect $righttarget>> pussy with your right hand, but <<he>> moves it away.
@@ -1339,7 +1339,7 @@
 			<<set $feetactiondefault to "grabrub">><<set $NPCList[$feettarget].penis to "feet">><<set $feetuse to "penis">><<feetstat>><<feetskilluse>>
 			<span class="lblue">You <<feettext>> <<if $NPCList[$feettarget].chastity.penis.includes("chastity")>>rub your foot on <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc through <<hisselect $feettarget>> $NPCList[$feettarget].chastity.penis<<else>>grab <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc between your feet<</if>>.</span>
 		<<else>>
-			<span class="blue">You try go grab <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc with your feet, but the phallus is already occupied.</span>
+			<span class="blue">You try to grab <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc with your feet, but the phallus is already occupied.</span>
 		<</if>>
 	<<else>>
 		You clumsily try to grab <<hisselect $feettarget>> penis between your feet, but fail.
@@ -1401,7 +1401,7 @@
 		<<if $NPCList[$feettarget].vagina is 0>>
 			<<set $feetactiondefault to "vaginagrabrub">><<set $feetuse to "othervagina">><<set $NPCList[$feettarget].vagina to "feet">><<feetstat>><span class="lblue">You <<feettext>> press your feet against <<hisselect $feettarget>> pussy<<if $NPCList[$feettarget].chastity.vagina.includes("chastity")>> through <<hisselect $feettarget>> $NPCList[$feettarget].chastity.vagina<</if>>.</span>
 		<<else>>
-			<span class="blue">You to try press your feet against <<hisselect $feettarget>> pussy, but they're already occupied.</span>
+			<span class="blue">You to try press your feet against <<hisselect $feettarget>> pussy, but the entrance is already occupied.</span>
 		<</if>>
 	<<else>>
 		You try to keep <<hisselect $feettarget>> pussy away with your feet, but <<he>> moves it away.
@@ -1833,7 +1833,7 @@
 			<<if $enemytype is "beast">><<set $NPCList[$mouthtarget].stance to "topface">><</if>><<set $mouthactiondefault to "vaginalick">>
 			<<set $NPCList[$mouthtarget].location.genitals to "head">>
 		<<else>>
-			<span class="blue">You try to move your mouth to <<hisselect $mouthtarget>> <<npcVagina $mouthtarget>>, but they're already occupied.</span>
+			<span class="blue">You try to move your mouth to <<hisselect $mouthtarget>> <<npcVagina $mouthtarget>>, but the entrance is already occupied.</span>
 		<</if>>
 	<<else>>
 		You try to move into a position where your mouth can eat <<hisselect $mouthtarget>> pussy, but <<he>> has other ideas.
@@ -1881,20 +1881,24 @@
 <</if>>
 
 <<if $mouthaction is "movetochest">>
-	<<set $mouthaction to 0>><<meek 1 $mouthtarget>><<set $mouthactiondefault to "breastclosed">><<combatpromiscuity3>>
+	<<set $mouthaction to 0>><<meek 1 $mouthtarget>><<set $mouthactiondefault to "movetochest">><<combatpromiscuity3>>
 	<<if $breastbitten is 1>>
 		<<He>> smacks your head away from <<his>> chest.
 		<<violence 5>>
 	<<elseif (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
-		<<set $mouthactiondefault to "breastlick">>
-		<span class="lblue">You <<oraltext>> move your mouth to <<hisselect $mouthtarget>> $NPCList[$mouthtarget].breastsdesc.</span>
-		<<if $NPCList[$mouthtarget].type is "plant" and $NPCList[$mouthtarget].pronoun is "f" and $breastfeedingdisable is "f">>
-			<span class="purple">It carries a sweet scent.</span>
-		<<elseif $NPCList[$mouthtarget].lactation is 1 and $breastfeedingdisable is "f">>
-			<span class="purple">It carries a scent of milk.</span>
+		<<if $NPCList[$mouthtarget].chest is 0>>
+			<<set $mouthactiondefault to "breastlick">>
+			<span class="lblue">You <<oraltext>> move your mouth to <<hisselect $mouthtarget>> $NPCList[$mouthtarget].breastsdesc.</span>
+			<<if $NPCList[$mouthtarget].type is "plant" and $NPCList[$mouthtarget].pronoun is "f" and $breastfeedingdisable is "f">>
+				<span class="purple">It carries a sweet scent.</span>
+			<<elseif $NPCList[$mouthtarget].lactation is 1 and $breastfeedingdisable is "f">>
+				<span class="purple">It carries a scent of milk.</span>
+			<</if>>
+			<<set $NPCList[$mouthtarget].chest to "mouthentrance">><<set $mouthstate to "breasts">><<set $mouthuse to "breasts">><<set $head to "breasts">><<oralskilluse>>
+			<<set $NPCList[$mouthtarget].location.head to "head">>
+		<<else>>
+			<span class="blue">You try to move your mouth to <<someones $mouthtarget>> chest, but the place is already occupied.</span><<oralskilluse>>
 		<</if>>
-		<<set $NPCList[$mouthtarget].chest to "mouthentrance">><<set $mouthstate to "breasts">><<set $mouthuse to "breasts">><<set $head to "breasts">><<oralskilluse>>
-		<<set $NPCList[$mouthtarget].location.head to "head">>
 	<<else>>
 		You try to move your mouth to <<someones $mouthtarget>> chest, but <<he>> has other ideas.
 		<<oralskilluse>>
