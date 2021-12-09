@@ -296,13 +296,13 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<submission 2 $anustarget $anusdoubletarget>><<set $anususe to "penisdouble">><<set $NPCList[$anusdoubletarget].penis to "anusdoubleentrance">><<set $anusstate to "doubleentrance">>
 		<<if $NPCList[$anustarget].penis is "anusimminent">>
-			<<set $NPCList[$anustarget].penis is "anusdoubleimminent">>
+			<<set $NPCList[$anustarget].penis to "anusdoubleimminent">>
 			<<set $anusstate to "doubleimminent">>
 		<<elseif $NPCList[$anustarget].penis is "anusentrance">>
-			<<set $NPCList[$anustarget].penis is "anusdoubleentrance">>
+			<<set $NPCList[$anustarget].penis to "anusdoubleentrance">>
 			<<set $anusstate to "doubleentrance">>
 		<<else>>
-			<<set $NPCList[$anustarget].penis is "anusdouble">>
+			<<set $NPCList[$anustarget].penis to "anusdouble">>
 			<<set $anusstate to "doublepenetrated">>
 		<</if>>
 		<<if $leftarm is "anus">>
