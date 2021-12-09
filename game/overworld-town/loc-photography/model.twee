@@ -642,7 +642,10 @@ Niki returns, carrying a stool ahead of <<nnpc_him "Niki">>. You use it as a pro
     <<set $photo.evidence to 1>>
     You step behind the screen, and remove the $worn.upper.name. Before you can dress however, <span class="purple">you hear a creek,</span> and the screen collapses, <span class="pink">exposing you to the room.</span><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
     <br><br>
-    <<upperruined>><<lowerruined>><<underruined>>
+    <<set $worn.upper to clone(setup.clothes.upper[0])>>
+	<<set $worn.lower to clone(setup.clothes.lower[0])>>
+	<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+	<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
     <<if $enemyno gte 2>>
         A cheer goes up from the still-seated audience. The light on the tripod camera is still green. <<covered>>
     <<elseif $enemyno gte 1>>
@@ -709,7 +712,7 @@ Money in hand, you leave the studio.
 <<else>>
     <<flaunting>> you pull off your $worn.upper.name, freeing your <<breasts>>.
 <</if>>
-<<upperruined>>
+<<set $worn.upper to clone(setup.clothes.upper[0])>>
 <<if $phase is 1>>
     <br><br>
 <<else>>
@@ -779,7 +782,7 @@ You pull the $worn.lower.name down your legs. "Wait," Niki says. "Hold that pose
 <<else>>
     <<exhibitionism4>>
 <</if>>
-<<lowerruined>>
+<<set $worn.lower to clone(setup.clothes.lower[0])>>
 
 Niki circles you, and asks you to arch your back with your hands between your thighs. Then to sit back on the stool with one leg crossed over the other. Then to lean against the stool with your <<bottom>> stuck out.
 
@@ -874,7 +877,8 @@ Niki's camera clicks and flashes as you peel your $worn.under_lower.name down yo
 <<fameexhibitionism 10>>
 <<set $photo.money += 500>>
 <<set $photo.nude_footage to 1>>
-<<underruined>>
+<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
 
 You turn to let Niki snap you from different angles. <<nnpc_He "Niki">> moves fast now. Sweat soon glistens on <<nnpc_his "Niki">> forehead, lit by the white lights above.
 <br><br>

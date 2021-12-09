@@ -357,6 +357,8 @@
 		<</if>>
 		<<if _liquid_collection_text.length gte 3>>
 			<span class="gold">You've gathered _liquid_collection_text[0], _liquid_collection_text[1], and _liquid_collection_text[2].</span>
+		<<elseif _liquid_collection_text.length is 0>>
+			<span class="purple">You've failed to gather anything.</span>
 		<<else>>
 			<span class="gold">You've gathered <<print _liquid_collection_text.join(" and ")>>.</span>
 		<</if>>
