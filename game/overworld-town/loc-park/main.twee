@@ -1033,7 +1033,7 @@ You sit on the toilet, and wait.
 <<elseif $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 
-	<<if $player.gender is $player.gender_appearance and $toiletsmistake is 1>><<unset $toiletsmistake>>
+	<<if $player.gender is $player.gender_appearance and $toiletsmistake is 1>>
 		"This is your fault for looking like <<if $player.gender_appearance is "f">>a boy<<else>>a girl<</if>>." <<He>> shoves you out the door.
 		<br><br>
 	<<else>>
@@ -1057,6 +1057,7 @@ You sit on the toilet, and wait.
 	<<clotheson>>
 	<<endcombat>>
 <</if>>
+<<unset $toiletsmistake>>
 <<set $eventskip to 1>>
 <<parkquick>>
 

@@ -3803,22 +3803,24 @@
 				)>>
 				<<sex 1 _n>><<bruise face>><<bruise face>>
 
-				<<if $oxygen gte 900>>
-					<span class="blue">You struggle for breath.</span>
-					<<violence 3>>
-				<<elseif $oxygen gte 600>>
-					<span class="purple">You can't breathe!</span>
-					<<violence 5>>
-				<<elseif $oxygen gte 300>>
-					<span class="pink">You feel light-headed.</span>
-					<<violence 10>>
-				<<elseif $oxygen gte 1>>
-					<span class="pink">You see stars.</span>
-					<<violence 20>>
-				<<else>>
-					<span class="red">You are suffocating.</span>
-					<<violence 50>>
-					<<suffocatepass>>
+				<<if $suffocationPhase isnot 2>>
+					<<if $oxygen gte 900>>
+						<span class="blue">You struggle for breath.</span>
+						<<violence 3>>
+					<<elseif $oxygen gte 600>>
+						<span class="purple">You can't breathe!</span>
+						<<violence 5>>
+					<<elseif $oxygen gte 300>>
+						<span class="pink">You feel light-headed.</span>
+						<<violence 10>>
+					<<elseif $oxygen gte 1>>
+						<span class="pink">You see stars.</span>
+						<<violence 20>>
+					<<else>>
+						<span class="red">You are suffocating.</span>
+						<<violence 50>>
+						<<suffocatepass>>
+					<</if>>
 				<</if>>
 
 			<<elseif $oxygen lte 900>>
@@ -5591,7 +5593,7 @@
 
 <<widget "suffocatepass">>
 <<set $suffocating = Math.clamp($suffocating + ($args[0] or 1), 0, 10)>>
-<<if $suffocating gte 2>><span class="red"> You're about to lose consciousness.</span><</if>>
+<<if $suffocating gte 2 and $suffocationPhase isnot 2>><span class="red"> You're about to lose consciousness.</span><</if>>
 <!-- Lose consciousness if it has been 20+ seconds since PC ran out of air -->
 <<if $suffocating gte 3 and $suffocated isnot 1>>
 	<<set $previousPassage = $passage>>
