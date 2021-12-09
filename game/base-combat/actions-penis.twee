@@ -363,28 +363,31 @@
 	<<personselect $penistarget>>
 	<<set $penisaction to 0>><<submission 10 $penistarget>><<penileskilluse>><<combatpromiscuity5>>
 	<<if (($enemyarousalmax / ($enemyarousal + 1)) * 100) + ($enemytrust * 10) + $penileskill + ($rng * 10) gte (1000 + $enemyanger)>>
-		<<set $_target to $NPCList[$penistarget]>>
-		<<set $_target.vagina to "penisentrance">>
-		<<submission 2>>
-		<<set $penisuse to "othervagina">><<set $penisstate to "entrance">>
-		<<if $leftarm is "coverpenis">>
-			<<set $leftarm to 0>>
-		<</if>>
-		<<if $rightarm is "coverpenis">>
-			<<set $rightarm to 0>>
-		<</if>>
+		<<if $NPCList[$penistarget].vagina is 0>>
+			<<set $_target to $NPCList[$penistarget]>>
+			<<set $_target.vagina to "penisentrance">>
+			<<submission 2>>
+			<<set $penisuse to "othervagina">><<set $penisstate to "entrance">>
+			<<if $leftarm is "coverpenis">>
+				<<set $leftarm to 0>>
+			<</if>>
+			<<if $rightarm is "coverpenis">>
+				<<set $rightarm to 0>>
+			<</if>>
 
-		<span class="lblue">You press your <<penis>> against <<combatpersons>> <<npcVagina $penistarget>>.</span>
-		<<if $condomUse is false>>
-		<<elseif $condomUse is true and !$player.condom and $parasite.penis.name is undefined>>
-			<<equipCondom>>
-			<span class="green"><<He>> slips a condom on your <<penis>>.</span>
+			<span class="lblue">You press your <<penis>> against <<combatpersons>> <<npcVagina $penistarget>>.</span>
+			<<if $condomUse is false>>
+			<<elseif $condomUse is true and !$player.condom and $parasite.penis.name is undefined>>
+				<<equipCondom>>
+				<span class="green"><<He>> slips a condom on your <<penis>>.</span>
+			<</if>>
+			<<if $enemytype is "beast">><<set $_target.stance to "top">><</if>>
+			<<set $_target.location.genitals to "genitals">>
+		<<else>>
+			<span class="blue">You try to press your <<penis>> against <<combatpersons>> <<npcVagina $penistarget>>, but the entrance is already occupied.</span><<set $penisactiondefault to "penistovagina">>
 		<</if>>
-		<<if $enemytype is "beast">><<set $_target.stance to "top">><</if>>
-		<<set $_target.location.genitals to "genitals">>
 	<<else>>
-		<span class="blue">You try to press your <<penis>> against <<combatpersons>> <<npcVagina $penistarget>> but <<he>> pushes you away.</span>
-		<<set $penisactiondefault to "penistovagina">>
+		<span class="blue">You try to press your <<penis>> against <<combatpersons>> <<npcVagina $penistarget>> but <<he>> pushes you away.</span><<set $penisactiondefault to "penistovagina">>
 	<</if>>
 <</if>>
 <</widget>>
@@ -394,25 +397,35 @@
 	<<personselect $penistarget>>
 	<<set $penisaction to 0>><<submission 10 $penistarget>><<penileskilluse>><<combatpromiscuity5>>
 	<<if (($enemyarousalmax / ($enemyarousal + 1)) * 100) + ($enemytrust * 10) + $penileskill + ($rng * 10) gte (1000 + $enemyanger)>>
-		<<set $_target to $NPCList[$penistarget]>>
-		<<if $_target.vagina isnot "none">>
-			<<set $_target.vagina to "otheranusentrance">>
-		<</if>>
-		<<if $_target.penis isnot "none">>
-			<<set $_target.penis to "otheranusentrance">>
-		<</if>>
-		<<submission 2 $penistarget>>
-		<<set $penisuse to "otheranus">><<set $penisstate to "otheranusentrance">><<set $penisactiondefault to "otheranustease">>
-		<<if $leftarm is "coverpenis">>
-			<<set $leftarm to 0>>
-		<</if>>
-		<<if $rightarm is "coverpenis">>
-			<<set $rightarm to 0>>
-		<</if>>
+		<<if ($NPCList[$penistarget].vagina is 0 or $NPCList[$penistarget].vagina is "none") and ($NPCList[$penistarget].penis is 0 or $NPCList[$penistarget].penis is "none")>>
+			<<set $_target to $NPCList[$penistarget]>>
+			<<if $_target.vagina isnot "none">>
+				<<set $_target.vagina to "otheranusentrance">>
+			<</if>>
+			<<if $_target.penis isnot "none">>
+				<<set $_target.penis to "otheranusentrance">>
+			<</if>>
+			<<submission 2 $penistarget>>
+			<<set $penisuse to "otheranus">><<set $penisstate to "otheranusentrance">><<set $penisactiondefault to "otheranustease">>
+			<<if $leftarm is "coverpenis">>
+				<<set $leftarm to 0>>
+			<</if>>
+			<<if $rightarm is "coverpenis">>
+				<<set $rightarm to 0>>
+			<</if>>
 
-		<span class="lblue">You press your <<penis>> against <<combatpersons>> ass.</span>
-		<<if $enemytype is "beast">><<set $_target.stance to "top">><</if>>
-		<<set $_target.location.genitals to "genitals">>
+			<span class="lblue">You press your <<penis>> against <<combatpersons>> ass.</span>
+			<<if $enemytype is "beast">><<set $_target.stance to "top">><</if>>
+			<<set $_target.location.genitals to "genitals">>
+		<<else>>
+			<span class="blue">You try to press your <<penis>> against <<combatpersons>> <<npcAnus $penistarget>>, but your position won't let you.</span>
+			<<set $penisactiondefault to "penistoanus">>
+			<<if $condomUse is false>>
+			<<elseif $condomUse is true and !$player.condom and $parasite.penis.name is undefined>>
+				<<equipCondom>>
+				<span class="green"><<He>> slips a condom on your <<penis>>.</span>
+			<</if>>
+		<</if>>
 	<<else>>
 		<span class="blue">You try to press your <<penis>> against <<combatpersons>> <<npcAnus $penistarget>> but <<he>> pushes you away.</span>
 		<<set $penisactiondefault to "penistoanus">>
@@ -494,23 +507,26 @@
 	<<personselect $penistarget>>
 	<<set $penisaction to 0>><<submission 5 $penistarget>><<penileskilluse>><<combatpromiscuity5>>
 	<<if (($enemyarousalmax / ($enemyarousal + 1)) * 100) + ($enemytrust * 10) + $penileskill + ($rng * 10) gte (1000 + $enemyanger)>>
-		<<set $_target to $NPCList[$penistarget]>>
-		<<submission 5 $penistarget>><<set $penisuse to "otherpenis">><<set $penisstate to "otherpenisentrance">>
-		<<set $_target.penis to "penisentrance">><<set $penisactiondefault to "otherpenisrub">>
-		<<if $leftarm is "penis">>
-			<<set $leftarm to 0>>
+		<<if $NPCList[$penistarget].penis is 0>>
+			<<set $_target to $NPCList[$penistarget]>>
+			<<submission 5 $penistarget>><<set $penisuse to "otherpenis">><<set $penisstate to "otherpenisentrance">>
+			<<set $_target.penis to "penisentrance">><<set $penisactiondefault to "otherpenisrub">>
+			<<if $leftarm is "coverpenis">>
+				<<set $leftarm to 0>>
+			<</if>>
+			<<if $rightarm is "coverpenis">>
+				<<set $rightarm to 0>>
+			<</if>>
+			<span class="lblue">You caress <<combatpersons>> <<npcPenisSimple $penistarget>> with your penis<<if $worn.genitals.type.includes("chastity")>>, through your $worn.genitals.name<</if>>.</span>
+			<<if $enemytype is "beast">>
+				<<set $_target.stance to "top">>
+			<</if>>
+			<<set $_target.location.genitals to "genitals">>
+		<<else>>
+			<span class="blue">You try to press your <<penis>> against <<combatpersons>> <<npcPenisSimple $penistarget>>, but the phallus is already occupied.</span><<set $penisactiondefault to "penistopenis">>
 		<</if>>
-		<<if $rightarm is "penis">>
-			<<set $rightarm to 0>>
-		<</if>>
-		<span class="lblue">You caress <<combatpersons>> <<npcPenisSimple $penistarget>> with your penis<<if $worn.genitals.type.includes("chastity")>>, through your $worn.genitals.name<</if>>.</span>
-		<<if $enemytype is "beast">>
-			<<set $_target.stance to "top">>
-		<</if>>
-		<<set $_target.location.genitals to "genitals">>
 	<<else>>
-		<span class="blue">You try to move your <<penis>> nearer <<combatpersons>> <<npcPenisSimple $penistarget>>, but <<ohe>> pushes you off.</span>
-		<<set $penisactiondefault to "penistopenis">>
+		<span class="blue">You try to move your <<penis>> nearer <<combatpersons>> <<npcPenisSimple $penistarget>>, but <<ohe>> pushes you off.</span><<set $penisactiondefault to "penistopenis">>
 	<</if>>
 <</if>>
 <</widget>>
