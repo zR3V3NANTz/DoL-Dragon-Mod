@@ -563,6 +563,18 @@ alternative way to write that:
 <<set $NPCList[_npcno].anus to 0>>/* is not actually used anywhere */
 <<set $NPCList[_npcno].chest to 0>>
 
+<<switch _nam>>
+<<case "Eden" "Black Wolf" "Great Hawk">>
+	<<set $NPCList[_npcno].health to 600>>
+	<<set $NPCList[_npcno].healthmax to 600>>
+<<case "Bailey">>
+	<<set $NPCList[_npcno].health to 400>>
+	<<set $NPCList[_npcno].healthmax to 400>>
+<<default>>
+	<<set $NPCList[_npcno].health to 200>>
+	<<set $NPCList[_npcno].healthmax to 200>>
+<</switch>>
+
 <<set $NPCList[_npcno].breastsize to $NPCName[_i].breastsize>>
 <<set $NPCList[_npcno].breastsdesc to $NPCName[_i].breastsdesc>>
 <<set $NPCList[_npcno].breastdesc to $NPCName[_i].breastdesc>>

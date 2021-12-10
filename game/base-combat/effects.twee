@@ -630,7 +630,7 @@
 	<<else>>
 		<<set $leftarm to 0>><<set $leftactiondefault to "leftplay">>
 		<<set $NPCList[$lefttarget].vagina to 0>><<personselect $lefttarget>>
-		<span class="blue">You stroke <<his>> clit, but <<he>>
+		<span class="blue">You stroke <<hisselect $lefttarget>> clit, but <<he>>
 		<<if $enemytype isnot "beast">>slaps your hand away<<else>>shifts way from you and growls<</if>>.</span>
 	<</if>>
 <</if>>
@@ -641,11 +641,11 @@
 		<<actionsclitstroke $righttarget>><<submission 10 $righttarget>><<set $speechhandjobvagina to 1>>
 	<<else>><<set $rightarm to 0>><<set $rightactiondefault to "rightplay">>
 		<<set $NPCList[$righttarget].vagina to 0>><<personselect $righttarget>>
+<<<<<<< HEAD
 		<span class="blue">You stroke <<his>> clit, but <<he>>
-		<<if $enemytype isnot "beast">>slaps your hand away<<else>>shifts way from you and growls<</if>>.</span>
-	<</if>>
+=======
+		<span class="blue">You stroke <<hisselect $righttarget>> clit, but <<he>>
 <</if>>
-
 <<if $leftaction is "leftothervaginastop">>
 	<<set $leftaction to 0>><<set $leftactiondefault to "leftothervaginastop">>
 	<<set $NPCList[$lefttarget].vagina to 0>><<set $leftarm to 0>>
@@ -664,9 +664,15 @@
 		<<submission 1 $lefttarget>><<handstat>>
 		<<if $NPCList[$lefttarget].vagina is 0>>
 			<<set $leftactiondefault to "leftclit">><<set $NPCList[$lefttarget].vagina to "leftarm">><<set $leftarm to "othervagina">><<personselect $lefttarget>>
+<<<<<<< HEAD
 			<span class="lblue">You <<handtext>> grab <<his>> pussy<<if $NPCList[$lefttarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$lefttarget].chastity.vagina<</if>> with your left hand.</span>
 		<<else>>
 			<span class="blue">You try to grab <<hisselect $lefttarget>> pussy with your left hand, but they're already occupied.</span>
+=======
+			<span class="lblue">You <<handtext>> grab <<hisselect $lefttarget>> pussy<<if $NPCList[$lefttarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$lefttarget].chastity.vagina<</if>> with your left hand.</span>
+		<<else>>
+			<span class="blue">You try to grab <<hisselect $lefttarget>> pussy with your left hand, but the entrance is already occupied.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<<else>>
 		You try to grab <<hisselect $lefttarget>> pussy with your left hand, but <<he>> moves it away.
@@ -679,9 +685,15 @@
 		<<submission 1 $righttarget>><<handstat>>
 		<<if $NPCList[$righttarget].vagina is 0>>
 			<<set $rightactiondefault to "rightclit">><<set $NPCList[$righttarget].vagina to "rightarm">><<set $rightarm to "othervagina">><<personselect $righttarget>>
+<<<<<<< HEAD
 			<span class="lblue">You <<handtext>> grab <<his>> pussy<<if $NPCList[$righttarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$righttarget].chastity.vagina<</if>> with your right hand.</span>
 		<<else>>
 			<span class="blue">You try to grab <<hisselect $righttarget>> pussy with your left hand, but they're already occupied.</span>
+=======
+			<span class="lblue">You <<handtext>> grab <<hisselect $righttarget>> pussy<<if $NPCList[$righttarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$righttarget].chastity.vagina<</if>> with your right hand.</span>
+		<<else>>
+			<span class="blue">You try to grab <<hisselect $righttarget>> pussy with your left hand, but the entrance is already occupied.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<<else>>
 		You try to grab <<hisselect $righttarget>> pussy with your right hand, but <<he>> moves it away.
@@ -1339,7 +1351,11 @@
 			<<set $feetactiondefault to "grabrub">><<set $NPCList[$feettarget].penis to "feet">><<set $feetuse to "penis">><<feetstat>><<feetskilluse>>
 			<span class="lblue">You <<feettext>> <<if $NPCList[$feettarget].chastity.penis.includes("chastity")>>rub your foot on <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc through <<hisselect $feettarget>> $NPCList[$feettarget].chastity.penis<<else>>grab <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc between your feet<</if>>.</span>
 		<<else>>
+<<<<<<< HEAD
 			<span class="blue">You try go grab <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc with your feet, but the phallus is already occupied.</span>
+=======
+			<span class="blue">You try to grab <<hisselect $feettarget>> $NPCList[$feettarget].penisdesc with your feet, but the phallus is already occupied.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<<else>>
 		You clumsily try to grab <<hisselect $feettarget>> penis between your feet, but fail.
@@ -1387,7 +1403,11 @@
 		<<actionsgrabrub $feettarget>><<submission 2 $feettarget>>
 	<<else>>
 		<<set $feetactiondefault to "grab">><<personselect $feettarget>>
+<<<<<<< HEAD
 		<span class="blue">You try to rub <<his>> penis between your feet, but <<he>> moves away.</span>
+=======
+		<span class="blue">You try to rub <<hisselect $feettarget>> penis between your feet, but <<he>> moves away.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $feetuse to 0>><<set $NPCList[$feettarget].penis to 0>><<set $NPCList[$feettarget].location.genitals to 0>>
 	<</if>>
 <</if>>
@@ -1401,7 +1421,11 @@
 		<<if $NPCList[$feettarget].vagina is 0>>
 			<<set $feetactiondefault to "vaginagrabrub">><<set $feetuse to "othervagina">><<set $NPCList[$feettarget].vagina to "feet">><<feetstat>><span class="lblue">You <<feettext>> press your feet against <<hisselect $feettarget>> pussy<<if $NPCList[$feettarget].chastity.vagina.includes("chastity")>> through <<hisselect $feettarget>> $NPCList[$feettarget].chastity.vagina<</if>>.</span>
 		<<else>>
+<<<<<<< HEAD
 			<span class="blue">You to try press your feet against <<hisselect $feettarget>> pussy, but they're already occupied.</span>
+=======
+			<span class="blue">You to try press your feet against <<hisselect $feettarget>> pussy, but the entrance is already occupied.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<<else>>
 		You try to keep <<hisselect $feettarget>> pussy away with your feet, but <<he>> moves it away.
@@ -1416,7 +1440,11 @@
 		<<actionsfeetpussy $feettarget>><<submission 2 $feettarget>>
 	<<else>>
 		<<set $feetactiondefault to "vaginagrab">><<personselect $feettarget>>
+<<<<<<< HEAD
 		<span class="blue">You try to keep <<his>> pussy away with your feet, but <<he>> moves away.</span>
+=======
+		<span class="blue">You try to keep <<hisselect $feettarget>> pussy away with your feet, but <<he>> moves away.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $feetuse to 0>><<set $NPCList[$feettarget].vagina to 0>>
 	<</if>>
 <</if>>
@@ -1833,7 +1861,11 @@
 			<<if $enemytype is "beast">><<set $NPCList[$mouthtarget].stance to "topface">><</if>><<set $mouthactiondefault to "vaginalick">>
 			<<set $NPCList[$mouthtarget].location.genitals to "head">>
 		<<else>>
+<<<<<<< HEAD
 			<span class="blue">You try to move your mouth to <<hisselect $mouthtarget>> <<npcVagina $mouthtarget>>, but they're already occupied.</span>
+=======
+			<span class="blue">You try to move your mouth to <<hisselect $mouthtarget>> <<npcVagina $mouthtarget>>, but the entrance is already occupied.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<<else>>
 		You try to move into a position where your mouth can eat <<hisselect $mouthtarget>> pussy, but <<he>> has other ideas.
@@ -1881,11 +1913,16 @@
 <</if>>
 
 <<if $mouthaction is "movetochest">>
+<<<<<<< HEAD
 	<<set $mouthaction to 0>><<meek 1 $mouthtarget>><<set $mouthactiondefault to "breastclosed">><<combatpromiscuity3>>
+=======
+	<<set $mouthaction to 0>><<meek 1 $mouthtarget>><<set $mouthactiondefault to "movetochest">><<combatpromiscuity3>>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<<if $breastbitten is 1>>
 		<<He>> smacks your head away from <<his>> chest.
 		<<violence 5>>
 	<<elseif (1000 - ($rng * 10) - ($enemytrust * 10) - $oralskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+<<<<<<< HEAD
 		<<set $mouthactiondefault to "breastlick">>
 		<span class="lblue">You <<oraltext>> move your mouth to <<hisselect $mouthtarget>> $NPCList[$mouthtarget].breastsdesc.</span>
 		<<if $NPCList[$mouthtarget].type is "plant" and $NPCList[$mouthtarget].pronoun is "f" and $breastfeedingdisable is "f">>
@@ -1895,6 +1932,21 @@
 		<</if>>
 		<<set $NPCList[$mouthtarget].chest to "mouthentrance">><<set $mouthstate to "breasts">><<set $mouthuse to "breasts">><<set $head to "breasts">><<oralskilluse>>
 		<<set $NPCList[$mouthtarget].location.head to "head">>
+=======
+		<<if $NPCList[$mouthtarget].chest is 0>>
+			<<set $mouthactiondefault to "breastlick">>
+			<span class="lblue">You <<oraltext>> move your mouth to <<hisselect $mouthtarget>> $NPCList[$mouthtarget].breastsdesc.</span>
+			<<if $NPCList[$mouthtarget].type is "plant" and $NPCList[$mouthtarget].pronoun is "f" and $breastfeedingdisable is "f">>
+				<span class="purple">It carries a sweet scent.</span>
+			<<elseif $NPCList[$mouthtarget].lactation is 1 and $breastfeedingdisable is "f">>
+				<span class="purple">It carries a scent of milk.</span>
+			<</if>>
+			<<set $NPCList[$mouthtarget].chest to "mouthentrance">><<set $mouthstate to "breasts">><<set $mouthuse to "breasts">><<set $head to "breasts">><<oralskilluse>>
+			<<set $NPCList[$mouthtarget].location.head to "head">>
+		<<else>>
+			<span class="blue">You try to move your mouth to <<someones $mouthtarget>> chest, but the place is already occupied.</span><<oralskilluse>>
+		<</if>>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<<else>>
 		You try to move your mouth to <<someones $mouthtarget>> chest, but <<he>> has other ideas.
 		<<oralskilluse>>
@@ -1905,7 +1957,11 @@
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "breastbite">><<personselect $mouthtarget>>
 	You bite down on the nipple, <<he>> <<if $enemytype is "man">>yelps<<elseif $enemytype is "beast">>growls<<else>>shrieks<</if>> and recoils in agony.
 	<<defiance 20 $mouthtarget>><<attackstat>><<set $mouthuse to 0>><<set $breastbitten to 1>><<set $mouthstate to 0>>
+<<<<<<< HEAD
 	<<if $wolfgirl gte 2 or $cat gte 2  or $dragon gte 2>>
+=======
+	<<if $wolfgirl gte 2 or $cat gte 2>>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<defiance 40 $mouthtarget>>
 		You lick your fangs clean.
 	<</if>>
@@ -2118,6 +2174,7 @@
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "bite">><<personselect $mouthtarget>>
 	You bite down on the penis, <<he>> <<if $enemytype is "man">>yelps<<elseif $enemytype is "beast">>growls<<else>>shrieks<</if>> and recoils in agony.
 	<<defiance 20 $mouthtarget>><<attackstat>><<control 15>><<set $mouthuse to 0>><<set $penisbitten to 1>><<set $mouthstate to 0>>
+<<<<<<< HEAD
 	<<if $wolfgirl gte 2 or $cat gte 2 or $dragon gte 2>>
 		<<defiance 20 $mouthtarget>><<defiance 20 $mouthtarget>>
 		You lick your fangs clean.
@@ -2134,6 +2191,24 @@
 		You lick your fangs clean.
 	<</if>>
 	<<set $NPCList[ $mouthtarget].vagina to 0>><<set $NPCList[ $mouthtarget].location.genitals to 0>>
+=======
+	<<if $wolfgirl gte 2 or $cat gte 2>>
+		<<defiance 20 $mouthtarget>><<defiance 20 $mouthtarget>>
+		You lick your fangs clean.
+	<</if>>
+	<<set $NPCList[$mouthtarget].penis to 0>><<set $NPCList[$mouthtarget].location.genitals to 0>>
+<</if>>
+
+<<if $mouthaction is "bitepussy">>
+	<<set $mouthaction to 0>><<set $mouthactiondefault to "bitepussy">>
+	You bite down on <<hisselect $mouthtarget>> labia. <<He>> <<if $enemytype is "man">>yelps<<elseif $enemytype is "beast">>growls<<else>>shrieks<</if>> and recoils in agony.
+	<<defiance 20>><<attackstat>><<control 15>><<set $mouthuse to 0>><<set $penisbitten to 1>><<set $mouthstate to 0>><<set $speechhit to 1>>
+	<<if $wolfgirl gte 2 or $cat gte 2>>
+		<<defiance 40 $mouthtarget>>
+		You lick your fangs clean.
+	<</if>>
+	<<set $NPCList[$mouthtarget].vagina to 0>><<set $NPCList[$mouthtarget].location.genitals to 0>>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 <</if>>
 
 <<if $mouthaction is "vaginalick">>
@@ -2189,7 +2264,11 @@
 <<if $mouthaction is "handbite">>
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "handbite">>
 	<<actionshandbite $mouthtarget>>
+<<<<<<< HEAD
 	<<if $wolfgirl gte 2 or $cat gte 2 or $dragon gte 2>>
+=======
+	<<if $wolfgirl gte 2 or $cat gte 2>>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<defiance 6 $mouthtarget>>
 	<<else>>
 		<<defiance 2 $mouthtarget>>
@@ -2224,7 +2303,11 @@
 	<<if $cow gte 2 and $demon gte 2>>
 		<<defiance 10 $mouthtarget>><<defiance 10 $mouthtarget>>
 	<</if>>
+<<<<<<< HEAD
 	<<if $demon gte 2 or $dragon gte 3>>
+=======
+	<<if $demon gte 2>>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<defiance 10 $mouthtarget>>
 		You rub your horns.
 	<</if>>
@@ -2252,10 +2335,17 @@
 		<<set $chestactiondefault to "rub">><<set $chestuse to "penis">><<cheststat>><<set $mouthstate to 0>><<set $mouthuse to 0>><<set $mouthactiondefault to "peniskiss">>
 		<<set $NPCList[$mouthtarget].penis to "chest">><<personselect $mouthtarget>><<set $chesttarget to $mouthtarget>>
 		<<if $breastcup is "none">>
+<<<<<<< HEAD
 			<span class="lblue">You <<chesttext>> squeeze your <<breasts>> together as best you can and try to grab <<his>> $NPCList[$mouthtarget].penisdesc between them.
 			Your breasts are too small for it to be effective, but your cute attempt succeeds in charming <<him>>.</span> <<He>> rubs <<his>> penis against your chest.
 		<<else>>
 			<span class="lblue">You <<chesttext>> grab <<his>> $NPCList[$mouthtarget].penisdesc between your <<breasts>>.</span>
+=======
+			<span class="lblue">You <<chesttext>> squeeze your <<breasts>> together as best you can and try to grab <<hisselect $mouthtarget>> $NPCList[$mouthtarget].penisdesc between them.
+			Your breasts are too small for it to be effective, but your cute attempt succeeds in charming <<him>>.</span> <<He>> rubs <<his>> penis against your chest.
+		<<else>>
+			<span class="lblue">You <<chesttext>> grab <<hisselect $mouthtarget>> $NPCList[$mouthtarget].penisdesc between your <<breasts>>.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<<else>>
 		<<if $breastsize is 0>>
@@ -2813,7 +2903,11 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $thighskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<set $thighactiondefault to "rub">>
 		<<personselect $vaginatarget>>
+<<<<<<< HEAD
 		<span class="lblue">You <<thightext>> grab <<his>> $NPCList[$vaginatarget].penisdesc between your thighs.</span>
+=======
+		<span class="lblue">You <<thightext>> grab <<hisselect $vaginatarget>> $NPCList[$vaginatarget].penisdesc between your thighs.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $NPCList[$vaginatarget].penis to "thighs">><<set $thightarget to $vaginatarget>>
 		<<set $vaginause to 0>><<set $thighuse to "penis">><<thighstat>><<sex 5 $vaginatarget>><<set $vaginastate to 0>>
 	<<else>>
@@ -2882,6 +2976,7 @@
 	<<else>>
 		<<set $vaginaaction to 0>><<meek 5>><<analskilluse>><<set $vaginaactiondefault to "penisanusdvp">>
 		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+<<<<<<< HEAD
 
 			<<set _npcA to ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" ? $vaginatarget : $vaginadoubletarget)>>
 			<<set _npcB to ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" ? $vaginadoubletarget : $vaginatarget)>>
@@ -2985,6 +3080,114 @@
 	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "tribtake">><<actionstribtake $vaginatarget>>
 <</if>>
 
+=======
+
+			<<set _npcA to ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" ? $vaginatarget : $vaginadoubletarget)>>
+			<<set _npcB to ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" ? $vaginadoubletarget : $vaginatarget)>>
+
+			<<if $NPCList[_npcB].penis is "vaginadouble">>
+				<<set $NPCList[_npcB].penis to "vagina">>
+				<<set $vaginastate to "penetrated">>
+			<<elseif $NPCList[_npcB].penis is "vaginadoubleimminent">>
+				<<set $NPCList[_npcB].penis to "vaginaimminent">>
+				<<set $vaginastate to "imminent">>
+			<<elseif $NPCList[_npcB].penis is "vaginadoubleentrance">>
+				<<set $NPCList[_npcB].penis to "vaginaentrance">>
+				<<set $vaginastate to "entrance">>
+			<</if>>
+			<<personselect _npcA>>
+			<span class="blue">You give your <<bottom>> a little wiggle, <<combatperson>> responds to the provocation and moves <<his>> penis in front of your butt.</span>
+			<<if $NPCList[_npcA].type is "plant" and $NPCList[_npcA].penissize gte 4>>
+				<span class="red">Something about it scares you.</span>
+			<</if>>
+			<<submission 2>><<set $anususe to "penis">><<set $NPCList[_npcA].penis to "anusentrance">><<set $vaginause to "penis">><<set $anusstate to "entrance">>
+
+		<<else>>
+			You give your <<bottom>> a little wiggle, but you just receive a slap.
+			<<violence 2>><<hitstat>><<bruise bottom>>
+		<</if>>
+	<</if>>
+<</if>>
+
+<<set $rng to random(1, 100)>>
+<<if $vaginaaction is "penisanusdouble">>
+	<<set $vaginaaction to 0>><<meek 5 $vaginatarget>><<analskilluse>>
+	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $analskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+		<<personselect $vaginatarget>><<set $vaginaactiondefault to "rest">>
+		<span class="blue">You give your <<bottom>> a little wiggle, <<combatperson>> responds to the provocation and moves <<his>> penis to join the phallus in front of your butt.</span>
+		<<submission 2 $vaginatarget>>
+		<<set $anususe to "penisdouble">><<set $anusstate to "doubleentrance">><<set $vaginause to 0>><<set $vaginastate to 0>>
+		<<set $NPCList[$vaginatarget].penis to "anusdoubleentrance">>
+		<<set $anusdoubletarget to $vaginatarget>>
+		<<if $NPCList[$anustarget].penis is "anus">>
+			<<set $NPCList[$anustarget].penis to "anusdouble">>
+			<<set $anusstate to "doublepenetrated">>
+		<<elseif $NPCList[$anustarget].penis is "anusimminent">>
+			<<set $NPCList[$anustarget].penis to "anusdoubleimminent">>
+			<<set $anusstate to "doubleimminent">>
+		<<elseif $NPCList[$anustarget].penis is "anusentrance">>
+			<<set $NPCList[$anustarget].penis to "anusdoubleentrance">>
+			<<set $anusstate to "doubleentrance">>
+		<<elseif $NPCList[$anustarget].penis is "cheeks">>
+			<<set $NPCList[$anustarget].penis to "anusentrance">>
+			<<set $bottomuse to 0>> /* Issues with ass cheeks likely stem from this culprit right here */
+		<</if>>
+		<<set $NPCList[$anustarget].location.genitals to "genitals">>
+	<<else>>
+		You give your <<bottom>> a little wiggle, but you just receive a slap.
+		<<violence 2>><<hitstat>><<bruise bottom>><<set $vaginaactiondefault to "penisanusdouble">>
+	<</if>>
+<</if>>
+
+<<if $vaginaaction is "penistease">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "penistease">><<actionspenistip $vaginatarget>><<sex 5 $vaginatarget>><<vaginalskilluse>>
+<</if>>
+
+<<if $vaginaaction is "penisdoubletease">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "penistease">><<actionspenisdoubletip>><<sex 5>><<vaginalskilluse>>
+<</if>>
+
+<<if $vaginaaction is "doublecooperate">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "doublecooperate">><<actionspenisdoubleride>><<submission 20>><<vaginalskilluse>>
+<</if>>
+
+<<if $vaginaaction is "penisDoubleEdging">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "penisDoubleEdging">><<actionspenisdoubleedging>><<submission 5>><<sexControl 5 $vaginalskill>><<vaginalskilluse>><<combatpromiscuity4>>
+<</if>>
+
+<<if $vaginaaction is "doubletake">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "doubletake">><<actionspenisdoubletake>>
+<</if>>
+
+<<if $vaginaaction is "rub">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "rub">><<actionspenisrub $vaginatarget>><<sex 10 $vaginatarget>><<vaginalskilluse>>
+<</if>>
+
+<<if $vaginaaction is "cooperate">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "cooperate">><<actionspenisride $vaginatarget>><<submission 20 $vaginatarget>><<vaginalskilluse>>
+<</if>>
+
+<<if $vaginaaction is "penisEdging">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "penisEdging">><<actionspenisedging $vaginatarget>><<submission 5 $vaginatarget>><<sexControl 5 $vaginalskill $vaginatarget>><<vaginalskilluse>><<combatpromiscuity4>>
+<</if>>
+
+<<if $vaginaaction is "take">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "take">><<actionspenistake $vaginatarget>>
+<</if>>
+
+<<if $vaginaaction is "tribtease">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "tribtease">><<actionstribtease $vaginatarget>><<sex 10 $vaginatarget>><<vaginalskilluse>>
+<</if>>
+
+<<if $vaginaaction is "tribcooperate">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "tribcooperate">><<actionstribcooperate $vaginatarget>><<submission 20 $vaginatarget>><<vaginalskilluse>>
+<</if>>
+
+<<if $vaginaaction is "tribtake">>
+	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "tribtake">><<actionstribtake $vaginatarget>>
+<</if>>
+
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 <<if $vaginaaction is "tribrest">>
 	<<set $vaginaaction to 0>><<set $vaginaactiondefault to "rest">>
 <</if>>
@@ -3068,7 +3271,11 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $thighskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<set $thighactiondefault to "othermouthrub">>
 		<<personselect $vaginatarget>>
+<<<<<<< HEAD
 		<span class="lblue">You <<thightext>> press your thigh against <<his>> mouth.</span>
+=======
+		<span class="lblue">You <<thightext>> press your thigh against <<hisselect $vaginatarget>> mouth.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $NPCList[$vaginatarget].mouth to "thigh">><<set $vaginause to 0>><<thighstat>><<neutral 5 $vaginatarget>><<set $vaginastate to 0>><<set $thighuse to "mouth">>
 	<<else>>
 		You try to keep the mouth menacing your <<pussy>> at bay by pressing your thigh against it, but <<theowner>> has other ideas.
@@ -3123,7 +3330,11 @@
 		<<set $cheekactiondefault to "rub">>
 		<<personselect $anustarget>>
 		<<set $NPCList[$anustarget].penis to "cheeks">><<bottomstat>><<submission 2 $anustarget>><<set $bottomuse to "penis">><<set $anususe to "penis">><<set $anusstate to "cheeks">>
+<<<<<<< HEAD
 		<span class="lblue">You <<bottomtext>> grab <<his>> $NPCList[$anustarget].penisdesc between your butt cheeks.</span>
+=======
+		<span class="lblue">You <<bottomtext>> grab <<hisselect $anustarget>> $NPCList[$anustarget].penisdesc between your butt cheeks.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<<else>>
 		You try to grab <<hisselect $anustarget>> penis between your cheeks, but <<he>> isn't interested.
 	<</if>>
@@ -3139,6 +3350,7 @@
 			<<set $anusaction to "penispussydouble">>
 		<<else>>
 			You spread your thighs, but fail to garner further interest.
+<<<<<<< HEAD
 		<</if>>
 	<<elseif $vaginastate isnot 0 and $vaginastate.includes("double")>>
 		You spread your thighs, but just receive a slap. "Settle down, <<bitch>>."
@@ -3152,6 +3364,21 @@
 		<<else>>
 			You spread your thighs, but fail to garner interest.
 		<</if>>
+=======
+		<</if>>
+	<<elseif $vaginastate isnot 0 and $vaginastate.includes("double")>>
+		You spread your thighs, but just receive a slap. "Settle down, <<bitch>>."
+		<<violence 2>><<hitstat>><<bruise bottom>>
+	<<else>>
+		<<set $anusaction to 0>><<meek 10 $anustarget>><<analskilluse>><<set $anusactiondefault to "penispussy">>
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<personselect $anustarget>>
+			<<submission 2 $anustarget>><<set $vaginause to "penis">><<set $NPCList[$anustarget].penis to "vaginaentrance">><<set $anususe to 0>><<set $vaginastate to "entrance">><<set $anusstate to 0>>
+			<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
+		<<else>>
+			You spread your thighs, but fail to garner interest.
+		<</if>>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<</if>>
 <</if>>
 
@@ -3244,7 +3471,11 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $bottomskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<set $cheekactiondefault to "othermouthrub">>
 		<<personselect $anustarget>>
+<<<<<<< HEAD
 		<span class="lblue">You <<bottomtext>> press your <<bottom>> against <<his>> mouth.</span>
+=======
+		<span class="lblue">You <<bottomtext>> press your <<bottom>> against <<hisselect $anustarget>> mouth.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $NPCList[$anustarget].mouth to "bottom">><<set $anususe to 0>><<bottomstat>><<neutral 5 $anustarget>><<set $anusstate to 0>><<set $bottomuse to "mouth">>
 	<<else>>
 		You try to keep the mouth menacing your anus at bay by pressing your <<bottom>> against it, but <<theowner>> has other ideas.
@@ -3388,7 +3619,11 @@
 	<<else>><<set $cheekactiondefault to "cheeks">>
 		<<personselect $anustarget>>
 		<<set $NPCList[$anustarget].penis to "anusentrance">><<set $bottomuse to 0>><<set $anusstate to "entrance">>
+<<<<<<< HEAD
 		<span class="blue">You try to rub <<his>> penis between your cheeks, but <<he>> is not interested.</span>
+=======
+		<span class="blue">You try to rub <<hisselect $anustarget>> penis between your cheeks, but <<he>> is not interested.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<</if>>
 <</if>>
 
@@ -3402,7 +3637,11 @@
 	<<set $cheekaction to 0>><<set $cheekactiondefault to "stop">>
 	<<personselect $anustarget>>
 	<<set $NPCList[$anustarget].penis to "anusentrance">><<set $bottomuse to 0>><<set $anusstate to "entrance">>
+<<<<<<< HEAD
 	<span class="blue">You stop holding <<his>> penis between your cheeks. <<He>> angles <<his>> $NPCList[$anustarget].penisdesc toward your anus.</span>
+=======
+	<span class="blue">You stop holding <<hisselect $anustarget>> penis between your cheeks. <<He>> angles <<his>> $NPCList[$anustarget].penisdesc toward your anus.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 <</if>>
 
 <<if $cheekaction is "othermouthrub" or $anusaction is "otherMouthAnusRub">>
@@ -3414,7 +3653,11 @@
 		<<if $anususe is 0>>
 			<<set $anususe to "othermouth">><<set $anusstate to "othermouthentrance">><<set $anusactiondefault to "bottombay">><<set $bottomuse to 0>>
 			<<personselect $anustarget>><<set $NPCList[$anustarget].mouth to "anusentrance">>
+<<<<<<< HEAD
 			<span class="blue">You press your <<bottom>> against <<his>> mouth, but instead <<he>> moves <<his>> head between your cheeks.</span>
+=======
+			<span class="blue">You press your <<bottom>> against <<hisselect $anustarget>> mouth, but instead <<he>> moves <<his>> head between your cheeks.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<else>>
 			<<if $NPCList[$anustarget].penis is "othermouth">>
 				<<set $NPCList[$anustarget].penis to 0>>
@@ -3422,7 +3665,11 @@
 			<<if $NPCList[$anustarget].vagina is "othermouth">>
 				<<set $NPCList[$anustarget].vagina to 0>>
 			<</if>>
+<<<<<<< HEAD
 			<span class="lblue">You press your <<bottom>> against <<his1>> mouth, but <<he>> moves <<his>> head away from you.</span>
+=======
+			<span class="lblue">You press your <<bottom>> against <<hisselect $anustarget>> mouth, but <<he>> moves <<his>> head away from you.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 			<<set $NPCList[$anustarget].mouth to 0>><<set $bottomuse to 0>><<set $NPCList[$anustarget].location.head to 0>>
 		<</if>>
 	<</if>>
@@ -3432,17 +3679,30 @@
 	<<set $cheekaction to 0>><<set $cheekactiondefault to "stop">><<set $bottomuse to 0>>
 	<<if $anususe is 0>>
 		<<personselect $anustarget>><<set $NPCList[$anustarget].mouth to "anusentrance">><<set $anusstate to "othermouthentrance">><<set $anususe to "othermouth">>
+<<<<<<< HEAD
 		<span class="blue">You stop pressing your <<bottom>> against <<his>> mouth.</span>
+=======
+		<span class="blue">You stop pressing your <<bottom>> against <<hisselect $anustarget>> mouth.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<<else>>
 		<<personselect $anustarget>>
 		<<if $NPCList[$anustarget].penis is "othermouth">>
 			<<set $NPCList[$anustarget].penis to 0>>
+<<<<<<< HEAD
 		<</if>>
 		<<if $NPCList[$anustarget].vagina is "othermouth">>
 			<<set $NPCList[$anustarget].vagina to 0>>
 		<</if>>
 		<<set $NPCList[$anustarget].mouth to 0>><<set $NPCList[$anustarget].location.head to 0>>
 		<span class="blue">You stop pressing your <<bottom>> against <<his>> mouth.</span>
+=======
+		<</if>>
+		<<if $NPCList[$anustarget].vagina is "othermouth">>
+			<<set $NPCList[$anustarget].vagina to 0>>
+		<</if>>
+		<<set $NPCList[$anustarget].mouth to 0>><<set $NPCList[$anustarget].location.head to 0>>
+		<span class="blue">You stop pressing your <<bottom>> against <<hisselect $anustarget>> mouth.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<</if>>
 <</if>>
 
@@ -3467,18 +3727,30 @@
 		<<if $vaginause is 0>><<set $vaginause to "penis">>
 			<<personselect $thightarget>>
 			<<set $NPCList[$thightarget].penis to "vaginaentrance">><<set $vaginastate to "entrance">>
+<<<<<<< HEAD
 			<span class="blue">You try to hold <<his>> penis between your thighs, but <<he>> instead angles it towards your <<genitals>>.</span>
 		<<else>>
 			<<personselect $thightarget>>
 			<<set $NPCList[$thightarget].penis to 0>><<set $NPCList[$thightarget].location.genitals to 0>>
 			<span class="blue">You try to hold <<his>> penis between your thighs, but <<he>> moves it away.</span>
+=======
+			<span class="blue">You try to hold <<hisselect $thightarget>> penis between your thighs, but <<he>> instead angles it towards your <<genitals>>.</span>
+		<<else>>
+			<<personselect $thightarget>>
+			<<set $NPCList[$thightarget].penis to 0>><<set $NPCList[$thightarget].location.genitals to 0>>
+			<span class="blue">You try to hold <<hisselect $thightarget>> penis between your thighs, but <<he>> moves it away.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<</if>>
 <</if>>
 
 <<if $thighaction is "stop">>
 	<<set $thighaction to 0>><<set $thighactiondefault to "stop">>
+<<<<<<< HEAD
 	You stop holding <<his>> penis between your thighs.
+=======
+	You stop holding <<hisselect $thightarget>> penis between your thighs.
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<<set $thighuse to 0>>
 	<<if $vaginause is 0>>
 		<<personselect $thightarget>>
@@ -3499,12 +3771,20 @@
 			<<set $penisuse to "othermouth">><<set $penisstate to "othermouthentrance">><<set $penisactiondefault to "thighbay">><<set $thighuse to 0>>
 			<<personselect $thightarget>>
 			<<set $NPCList[$thightarget].mouth to "penisentrance">>
+<<<<<<< HEAD
 			<span class="blue">You press your thigh against <<his>> mouth, but <<he>> would prefer the main course and moves <<his>> head closer to your <<penis>>.</span>
+=======
+			<span class="blue">You press your thigh against <<hisselect $thightarget>> mouth, but <<he>> would prefer the main course and moves <<his>> head closer to your <<penis>>.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<elseif $vaginause is 0>>
 			<<set $vaginause to "othermouth">><<set $vaginastate to "othermouthentrance">><<set $vaginaactiondefault to "thighbay">><<set $thighuse to 0>>
 			<<personselect $thightarget>>
 			<<set $NPCList[$thightarget].mouth to "vaginaentrance">>
+<<<<<<< HEAD
 			<span class="blue">You press your thigh against <<his>> mouth, but <<he>> would prefer the main course and moves <<his>> head closer to your <<pussy>>.</span>
+=======
+			<span class="blue">You press your thigh against <<hisselect $thightarget>> mouth, but <<he>> would prefer the main course and moves <<his>> head closer to your <<pussy>>.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<else>>
 			<<personselect $thightarget>>
 			<<if $NPCList[$thightarget].penis is "othermouth">>
@@ -3513,7 +3793,11 @@
 			<<if $NPCList[$thightarget].vagina is "othermouth">>
 				<<set $NPCList[$thightarget].vagina to 0>>
 			<</if>>
+<<<<<<< HEAD
 			<span class="lblue">You press your thigh against <<his>> mouth, but <<he>> moves <<his>> head away from you.</span>
+=======
+			<span class="lblue">You press your thigh against <<hisselect $thightarget>> mouth, but <<he>> moves <<his>> head away from you.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 			<<set $NPCList[$thightarget].mouth to 0>><<set $thighuse to 0>><<set $NPCList[$thightarget].location.head to 0>>
 		<</if>>
 	<</if>>
@@ -3523,10 +3807,17 @@
 	<<set $thighaction to 0>><<set $thighactiondefault to "stop">><<set $thighuse to 0>>
 	<<if $penisuse is 0 and (!$player.vaginaExist or $vaginause isnot 0 or random(0,100) gte 50)>>
 		<<personselect $thightarget>><<set $NPCList[$thightarget].mouth to "penisentrance">><<set $penisstate to "othermouthentrance">><<set $penisuse to "othermouth">>
+<<<<<<< HEAD
 		<span class="blue">You stop pressing your thigh against <<his>> mouth.</span>
 	<<elseif $vaginause is 0>>
 		<<personselect $thightarget>><<set $NPCList[$thightarget].mouth to "vaginaentrance">><<set $vaginastate to "othermouthentrance">><<set $vaginause to "othermouth">>
 		<span class="blue">You stop pressing your thigh against <<his>> mouth.</span>
+=======
+		<span class="blue">You stop pressing your thigh against <<hisselect $thightarget>> mouth.</span>
+	<<elseif $vaginause is 0>>
+		<<personselect $thightarget>><<set $NPCList[$thightarget].mouth to "vaginaentrance">><<set $vaginastate to "othermouthentrance">><<set $vaginause to "othermouth">>
+		<span class="blue">You stop pressing your thigh against <<hisselect $thightarget>> mouth.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<<else>>
 		<<personselect $thightarget>>
 		<<if $NPCList[$thightarget].penis is "othermouth">>
@@ -3536,7 +3827,11 @@
 			<<set $NPCList[$thightarget].vagina to 0>>
 		<</if>>
 		<<set $NPCList[$thightarget].mouth to 0>><<set $NPCList[$thightarget].location.head to 0>>
+<<<<<<< HEAD
 		<span class="blue">You stop pressing your thigh against <<his>> mouth.</span>
+=======
+		<span class="blue">You stop pressing your thigh against <<hisselect $thightarget>> mouth.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<</if>>
 <</if>>
 
@@ -3575,7 +3870,11 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $penileskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<set $penisactiondefault to "rub">>
 		<<personselect $penistarget>>
+<<<<<<< HEAD
 		<span class="lblue">You <<peniletext>> press your penis against <<his>> clit.</span>
+=======
+		<span class="lblue">You <<peniletext>> press your penis against <<hisselect $penistarget>> clit.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $NPCList[$penistarget].vagina to "frot">><<set $penisuse to "clit">><<sex 5 $penistarget>><<set $penisstate to "clit">>
 	<<else>>
 		You try to keep the vagina menacing your <<penis>> at bay by rubbing against the clit, but <<theowner>> has other ideas.
@@ -3616,7 +3915,11 @@
 		<<set $penisuse to "othervagina">><<set $penisstate to "entrance">>
 		<<personselect $penistarget>>
 		<<set $NPCList[$penistarget].vagina to "penisentrance">>
+<<<<<<< HEAD
 		<span class="blue">You rub your <<penis>> against <<his>> clit, but <<he>> would prefer the main course and moves <<his>> labia closer to your tip.</span>
+=======
+		<span class="blue">You rub your <<penis>> against <<hisselect $penistarget>> clit, but <<he>> would prefer the main course and moves <<his>> labia closer to your tip.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<</if>>
 <</if>>
 
@@ -3624,7 +3927,11 @@
 	<<set $penisaction to 0>><<set $penisactiondefault to "stop">>
 	<<personselect $penistarget>>
 	<<set $NPCList[$penistarget].vagina to "penisentrance">><<set $penisstate to "entrance">><<set $penisuse to "othervagina">>
+<<<<<<< HEAD
 	<span class="blue">You stop rubbing <<his>> clit with your <<penis>>.</span>
+=======
+	<span class="blue">You stop rubbing <<hisselect $penistarget>> clit with your <<penis>>.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 <</if>>
 
 <<if $penisaction is "tease">>
@@ -3692,7 +3999,11 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $thighskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<set $thighactiondefault to "othermouthrub">>
 		<<personselect $penistarget>>
+<<<<<<< HEAD
 		<span class="lblue">You <<thightext>> press your thigh against <<his>> mouth.</span>
+=======
+		<span class="lblue">You <<thightext>> press your thigh against <<hisselect $penistarget>> mouth.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $NPCList[$penistarget].mouth to "thigh">><<set $penisuse to 0>><<thighstat>><<neutral 5 $penistarget>><<set $penisstate to 0>><<set $thighuse to "mouth">>
 	<<else>>
 		You try to keep the mouth menacing your <<penis>> at bay by pressing your thigh against it, but <<theowner>> has other ideas.
@@ -3724,11 +4035,19 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $penileskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<set $penisactiondefault to "otheranusrub">><<personselect $penistarget>>
 		<<if $NPCList[$penistarget].vagina is "otheranusentrance">>
+<<<<<<< HEAD
 			<span class="lblue">You <<peniletext>> point your <<penis>> away from <<his>> anus, rubbing between <<his>> cheeks.</span>
 			<<set $NPCList[$penistarget].vagina to "otheranusfrot">><<set $penisuse to "otheranusrub">><<sex 5 $penistarget>><<set $penisstate to "otheranusrub">>
 		<</if>>
 		<<if $NPCList[$penistarget].penis is "otheranusentrance">>
 			<span class="lblue">You <<peniletext>> point your <<penis>> away from <<his>> anus, rubbing between <<his>> cheeks.</span>
+=======
+			<span class="lblue">You <<peniletext>> point your <<penis>> away from <<hisselect $penistarget>> anus, rubbing between <<his>> cheeks.</span>
+			<<set $NPCList[$penistarget].vagina to "otheranusfrot">><<set $penisuse to "otheranusrub">><<sex 5 $penistarget>><<set $penisstate to "otheranusrub">>
+		<</if>>
+		<<if $NPCList[$penistarget].penis is "otheranusentrance">>
+			<span class="lblue">You <<peniletext>> point your <<penis>> away from <<hisselect $penistarget>> anus, rubbing between <<his>> cheeks.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 			<<set $NPCList[$penistarget].penis to "otheranusfrot">><<set $penisuse to "otheranusrub">><<sex 5 $penistarget>><<set $penisstate to "otheranusrub">>
 		<</if>>
 	<<else>>
@@ -3747,11 +4066,19 @@
 		<<personselect $penistarget>>
 		<<if $NPCList[$penistarget].vagina is "otheranusfrot">>
 			<<set $NPCList[$penistarget].vagina to "otheranusentrance">>
+<<<<<<< HEAD
 			<span class="blue">You rub your penis between <<his>> cheeks, but <<he>> would prefer the main course and presses <<his>> anus against your tip.</span>
 		<</if>>
 		<<if $NPCList[$penistarget].penis is "otheranusfrot">>
 			<<set $NPCList[$penistarget].penis to "otheranusentrance">>
 			<span class="blue">You rub your penis between <<his>> cheeks, but <<he>> would prefer the main course and presses <<his>> anus against your tip.</span>
+=======
+			<span class="blue">You rub your penis between <<hisselect $penistarget>> cheeks, but <<he>> would prefer the main course and presses <<his>> anus against your tip.</span>
+		<</if>>
+		<<if $NPCList[$penistarget].penis is "otheranusfrot">>
+			<<set $NPCList[$penistarget].penis to "otheranusentrance">>
+			<span class="blue">You rub your penis between <<hisselect $penistarget>> cheeks, but <<he>> would prefer the main course and presses <<his>> anus against your tip.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<</if>>
 <</if>>
@@ -3761,11 +4088,19 @@
 	<<personselect $penistarget>>
 	<<if $NPCList[$penistarget].vagina is "otheranusfrot">>
 		<<set $NPCList[$penistarget].vagina to "otheranusentrance">><<set $penisstate to "otheranusentrance">><<set $penisuse to "otheranus">>
+<<<<<<< HEAD
 		<span class="blue">You stop rubbing your <<penis>> between <<his>> cheeks.</span>
 	<</if>>
 	<<if $NPCList[$penistarget].penis is "otheranusfrot">>
 		<<set $NPCList[$penistarget].penis to "otheranusentrance">><<set $penisstate to "otheranusentrance">><<set $penisuse to "otheranus">>
 		<span class="blue">You stop rubbing your <<penis>> between <<his>> cheeks.</span>
+=======
+		<span class="blue">You stop rubbing your <<penis>> between <<hisselect $penistarget>> cheeks.</span>
+	<</if>>
+	<<if $NPCList[$penistarget].penis is "otheranusfrot">>
+		<<set $NPCList[$penistarget].penis to "otheranusentrance">><<set $penisstate to "otheranusentrance">><<set $penisuse to "otheranus">>
+		<span class="blue">You stop rubbing your <<penis>> between <<hisselect $penistarget>> cheeks.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<</if>>
 <</if>>
 
@@ -3801,7 +4136,11 @@
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $thighskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<set $thighactiondefault to "rub">>
 		<<personselect $penistarget>>
+<<<<<<< HEAD
 		<span class="lblue">You <<thightext>> grab <<his>> $NPCList[$penistarget].penisdesc between your thighs.</span>
+=======
+		<span class="lblue">You <<thightext>> grab <<hisselect $penistarget>> $NPCList[$penistarget].penisdesc between your thighs.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<set $NPCList[$penistarget].penis to "thighs">><<set $thightarget to $penistarget>>
 		<<set $penisuse to 0>><<set $thighuse to "penis">><<thighstat>><<sex 5 $penistarget>><<set $penisstate to 0>>
 	<<else>>
@@ -3840,9 +4179,15 @@
 	<<set $chestaction to 0>><<set $chestactiondefault to "rub">>
 	<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $chestskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 		<<if $breastsize is 0>>
+<<<<<<< HEAD
 			You <<chesttext>> rub your <<breasts>> against <<his>> penis.
 		<<else>>
 			You <<chesttext>> rub <<his>> penis between your <<breasts>>.
+=======
+			You <<chesttext>> rub your <<breasts>> against <<hisselect $chesttarget>> penis.
+		<<else>>
+			You <<chesttext>> rub <<hisselect $chesttarget>> penis between your <<breasts>>.
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 		<<submission 3 $chesttarget>><<chestskilluse>><<cheststat>>
 	<<else>>
@@ -3850,15 +4195,23 @@
 		<<if $mouthuse is 0>>
 			<<set $mouthactiondefault to "grasp">><<set $mouthstate to "entrance">><<set $mouthuse to "penis">>
 			<<set $NPCList[$chesttarget].penis to "mouthentrance">>
+<<<<<<< HEAD
 			<span class="purple">You try to rub your <<breasts>> against <<his>> $NPCList[$chesttarget].penisdesc, but <<he>> moves <<his>> penis to your mouth.</span>
 		<<else>>
 			<<set $NPCList[$chesttarget].penis to 0>>
 			<span class="blue">You try to rub your <<breasts>> against <<his>> penis, but <<he>> pulls away.</span>
+=======
+			<span class="purple">You try to rub your <<breasts>> against <<hisselect $chesttarget>> $NPCList[$chesttarget].penisdesc, but <<he>> moves <<his>> penis to your mouth.</span>
+		<<else>>
+			<<set $NPCList[$chesttarget].penis to 0>>
+			<span class="blue">You try to rub your <<breasts>> against <<hisselect $chesttarget>> penis, but <<he>> pulls away.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<</if>>
 	<</if>>
 <</if>>
 
 <<if $chestaction is "stop">>
+<<<<<<< HEAD
 	<<set $chestuse to 0>><<set $chestaction to 0>><<personselect $chesttarget>>
 	<<if $mouthuse is 0>>
 		<<set $mouthactiondefault to "grasp">><<set $mouthstate to "entrance">><<set $mouthuse to "penis">>
@@ -3867,6 +4220,16 @@
 	<<else>>
 		<<set $NPCList[$chesttarget].penis to 0>>
 		<span class="blue">As you stop rubbing <<he>> pulls away.</span>
+=======
+	<<set $chestuse to 0>><<set $chestaction to 0>><<personselect $chesttarget>><<personselect $chesttarget>>
+	<<if $mouthuse is 0>>
+		<<set $mouthactiondefault to "grasp">><<set $mouthstate to "entrance">><<set $mouthuse to "penis">>
+		<<set $NPCList[$chesttarget].penis to "mouthentrance">>
+		<span class="purple">As you stop rubbing, <<combatperson>> moves <<his>> penis to your mouth.</span>
+	<<else>>
+		<<set $NPCList[$chesttarget].penis to 0>>
+		<span class="blue">As you stop rubbing, <<combatperson>> pulls away.</span>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 	<</if>>
 <</if>>
 

@@ -1417,6 +1417,8 @@ You can feel <<his>> breath, now stabilised and calm, against your skin.
 :: Kylar Orphanage Bed
 <<effects>>
 
+<<endevent>>
+
 You snuggle under the covers with Kylar.
 <<if $wraith and $wraith.state isnot "" and $wraithPrison and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
 	You feel anxious, and your eyes dart over to the mirror.

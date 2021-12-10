@@ -490,10 +490,15 @@
 						and
 					<</if>>
 				<</for>>
-				<<if $wardrobes[$_label]>>
-					signals for a replacement to the <<print $wardrobes[$_label].name>>.
+				<<if $_value.length gte 2>>
+					signal
 				<<else>>
-					signals for a replacement. (Likely One-off update error, no need to report unless seen multiple times in the same save) <<if Array.isArray($rebuy_success)>><<print JSON.stringify($rebuy_success)>><</if>>
+					signals
+				<</if>>
+				<<if $wardrobes[$_label]>>
+					for a replacement to the <<print $wardrobes[$_label].name>>.
+				<<else>>
+					for a replacement. (Likely One-off update error, no need to report unless seen multiple times in the same save) <<if Array.isArray($rebuy_success)>><<print JSON.stringify($rebuy_success)>><</if>>
 				<</if>>
 			<</for>>
 		</span>
@@ -507,7 +512,12 @@
 				and
 			<</if>>
 		<</for>>
-		signals for a replacement, but you don't have enough money.</span>
+		<<if $rebuy_failure.length gte 2>>
+			signal
+		<<else>>
+			signals
+		<</if>>
+		for a replacement, but you don't have enough money.</span>
 		<<set $rebuy_failure to []>>
 	<</if>>
 	<<if $masochism_message is "up 1">><<unset $masochism_message>>

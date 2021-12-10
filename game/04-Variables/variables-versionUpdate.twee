@@ -2614,6 +2614,7 @@
 	<<set $chestuse to $breastuse>>
 	<<unset $breastuse>>
 <</if>>
+<<<<<<< HEAD
 
 <<if $machine isnot undefined and $machine.number lte 0>>
 	<<unset $machine>>
@@ -2624,6 +2625,18 @@
 <</if>>
 /* End of Target variables */
 
+=======
+
+<<if $machine isnot undefined and $machine.number lte 0>>
+	<<unset $machine>>
+<<elseif $enemytype isnot "machine">>
+	<<unset $machine>>
+<<elseif $combat isnot 1>>
+	<<unset $machine>>
+<</if>>
+/* End of Target variables */
+
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 <!-- remove duplicates from the hints list -->
 <<if $objectVersion.museumAntiques lt 8>>
 	<<set $objectVersion.museumAntiques to 8>>
@@ -2694,7 +2707,6 @@
 		<<set $nectar_timer to 0>>
 	<</if>>
 
-		<<set $hypnotised to 0>>
 	<<if $hypnotised is undefined>>
 		<<set $hypnotised to 0>>
 		<<set $famemodel to 0>>

@@ -462,7 +462,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<<else>>
 			and<<if _tentacle.shaft is "breasts">> <<slithers>><</if>> between your thighs <span class="blue">where the tip opens as it <<slithers>> toward your <<penis>>.</span>
 		<</if>>
-		<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">><<set $thighuse to 0>><<set $penistarget to "tentacles">>
+		<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">><<set $thighuse to 0>><<set $penistarget to "tentacles">><<set $tentaclePenis to _tentacle.fullDesc>>
 	<</if>>
 	<br>
 <</if>>
@@ -550,7 +550,7 @@ The _tentacle.fullDesc writhes between your feet.
 		<<if $player.penisExist and $penisuse is 0 and $nopenile is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<penis>>.</span>
 			<<neutralgenitals 2>>
-			<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">><<set $penistarget to "tentacles">>
+			<<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set _tentacle.head to "penisentrance">><<set $penistarget to "tentacles">><<set $tentaclePenis to _tentacle.fullDesc>>
 		<<else>>
 			<<tentacleadvdefault _tentacle>>
 		<</if>>
@@ -562,7 +562,7 @@ The _tentacle.fullDesc writhes between your feet.
 			<<else>>
 				<<underslither>> <span class="blue">where it <<slithers>> between your thighs and against your tummy and <<penis>>.</span>
 			<</if>>
-			<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<sex 3>><<thighstat>><<set $penistarget to "tentacles">>
+			<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set _tentacle.head to "penisrub">><<sex 3>><<thighstat>><<set $penistarget to "tentacles">><<set $tentaclePenis to _tentacle.fullDesc>>
 		<<elseif $player.vaginaExist and $vaginause is 0 and random(0,100) gte 50>>
 			<<if _tentacle.shaft is "thighs">>
 				<<underslither>> <span class="blue">where it <<slithers>> against your tummy and <<pussy>>.</span>

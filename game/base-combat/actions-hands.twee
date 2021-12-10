@@ -1644,7 +1644,11 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 	<</if>>
 
 	<<switch $_npcHand>>
+<<<<<<< HEAD
 		<<case "none">>
+=======
+		<<case "none" "idle">>
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<case "spank">> <<combat-spank $_hand>>
 		<<case "arms">> <<combat-hand-on-arms $_hand>>
 		<<case "leftarm">> <<combat-hand-on-one-arm $_hand "left">>
@@ -1675,8 +1679,11 @@ $NPCList[5].lefthand is "pen" or $NPCList[5].righthand is "pen">>
 		<<case "socks">> <<combat-hand-on-socks $_hand>>
 		<<case "shackle_imminent">> <<combat-hand-on-shackle $_hand>>
 		<<case "shackle_entrance">> <<combat-hand-on-shackle-imminent $_hand>>
+<<<<<<< HEAD
 +		<<case "throat">> <<combat-hand-on-throat $_hand>>
 +		<<case "none">> <<combat-set-hand-start $_hand>>
+=======
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
 		<<case 0>> <<combat-set-hand-start $_hand>>
 		<<default>> <<run console.error("NPC hand action unaccounted for! Hand: " + $hand + " Value: " + $_npcHand)>> <<run throw new Error("NPC hand action unaccounted for! Hand: " + $hand + " Value: " + $_npcHand)>>
 	<</switch>>

@@ -215,7 +215,8 @@ You look more closely at the apron. It's such a slight thing it would be little 
 	<</if>>
 <<elseif $phase is 6>>
 	<<if $rng gte 1>>
-		<<if $schoolday is 1 and !["first","second","third","lunch","fourth","fifth"].includes($schoolstate)>>
+		<<schooleffects>>
+		<<if !["first","second","third","lunch","fourth","fifth"].includes($schoolstate)>>
 			<<set $rng1 to random(1, 4)>>
 			<<He>> looks at you with interest. "Our <<person1>><<daughter>> is preparing for a
 			<<if $rng1 is 1>>science<<elseif $rng1 is 2>>maths<<elseif $rng1 is 3>>English<<elseif $rng1 is 4>>history<</if>>
