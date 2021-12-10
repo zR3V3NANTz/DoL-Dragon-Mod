@@ -1,0 +1,626 @@
+:: Wolf Cave
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>><<getTarget true>>
+
+<<set $wolfpackharmony = Math.clamp($wolfpackharmony, 0, 20)>>
+<<set $wolfpackferocity = Math.clamp($wolfpackferocity, 0, 20)>><<set $bus to "wolfcave">>
+You are in the wolf cave. The ceiling hangs low. There's a breeze blowing from the back.
+<<if $exposed gte 1>>
+	The <<wolf_cave_plural>> don't care, but being exposed is embarrassing regardless.
+<</if>>
+<<storeon "wolfcave" "check">>
+<<if _store_check is 1>>
+	Your clothes are tucked away behind a rock.
+<</if>>
+<<if $wolfstate is "hunt">>
+	Most of the pack is out hunting.
+<<else>>
+	<<if $weather is "rain">>
+		The pack shelters from the rain.
+	<<elseif $weather is "snow">>
+		The pack shelters from the snow.
+	<<else>>
+		The pack rests.
+	<</if>>
+	<<wolfcavestate>>
+<</if>>
+<br><br>
+<<if $wolfevent gte 1 and !$possessed>>
+	<<set $wolfevent to 0>>
+	<<wolfcaveselect>>
+<<else>>
+	<<if !$possessed>>
+		<<storeactions "wolfcave">>
+	<<else>>
+		<<if $leftarm is "bound" or $rightarm is "bound" or $feetuse is "bound">>
+			You stare down at your bindings. You pull, and they fall apart, unable to hold against you.
+			<br><br>
+			<<unbind>>
+		<</if>>
+	<</if>>
+	<<if $wolfcavedig gte 13>>
+		<<link [[Go down the hole|Forest Wolf Cave Hole]]>><</link>>
+	<<elseif $wolfcavedig gte 12 and $physiquesize lte 12000>>
+		<<link [[Go down the hole|Forest Wolf Cave Hole]]>><</link>><<small_text>>
+	<<elseif $wolfcavedig gte 11 and $physiquesize lte 10000>>
+		<<link [[Go down the hole|Forest Wolf Cave Hole]]>><</link>><<small_text>>
+	<<elseif $wolfcavedig gte 10 and $physiquesize lte 6000>>
+		<<link [[Go down the hole|Forest Wolf Cave Hole]]>><</link>><<small_text>>
+	<<elseif $wolfcavedig gte 1>>
+		<<link [[Dig at the back of the cave (1:00)|Forest Wolf Cave Dig]]>><<pass 1 hour>><<set $wolfcavedig += 1>><</link>>
+	<<else>>
+		<<link [[Examine the back of the cave|Forest Wolf Cave Examine]]>><<set $wolfcavedig to 1>><</link>>
+	<</if>>
+	<br>
+	<<if $leftarm is "bound" or $rightarm is "bound" or $feetuse is "bound">>
+		<<link [[Cut your binds|Wolf Cave Unbind]]>><</link>>
+		<br>
+	<</if>>
+	<!-- Modified for monster people -->
+	<<if $bestialitydisable is "f" and $breastfeedingdisable is "f" and $lactating is 1 and $deviancy gte 35 and ($monsterchance lt 100 or ($monsterhallucinations is "t" and $hallucinations is 0))>>
+		<<if $wolfcavebreast is 3>>
+			<span class="blue">The pups are full of milk.</span>
+		<<else>>
+			<<link [[Breastfeed the pups (0:05)|Wolf Cave Breastfeed]]>><<set $phase to 0>><</link>><<deviant3>>
+		<</if>>
+		<br>
+	<</if>>
+	<<getChildrenIds $location>>
+	<<if _childrenIds.length gt 0>>
+		<<link [[Check on your children|Childrens Home]]>><<set $exitPassage to $passage>><</link>>
+		<br>
+	<</if>>
+	<<link [[Sleep|Wolf Cave Bed]]>><</link>>
+	<br>
+	<<if $nextPassageCheck is "Wolf Cave Clearing">>
+		<span class="nextLink"><<link [[Go outside|Wolf Cave Clearing]]>><</link>></span>
+	<<else>>
+		<<link [[Go outside|Wolf Cave Clearing]]>><</link>>
+	<</if>>
+	<br><br>
+	<<link [[Settings|Wolf Cave Settings]]>><</link>>
+	<br>
+	<<attitudesControlCheck>>
+	<<if $attitudesControl.showGoldLink is true>>
+		<span class="goldLink"><<link [[Attitudes]]>><<set $attitudesExitPassage to $passage>><</link>> </span><span class="red">!!</span>
+	<<else>>
+		<<link [[Attitudes]]>><<set $attitudesExitPassage to $passage>><</link>>
+	<</if>>
+	<br><br><br>
+<</if>>
+<<storecleanup>>
+
+:: Wolf Cave Clearing
+<<set $outside to 1>><<set $location to "wolf_cave">><<effects>><<getTarget true>>
+
+<<set $wolfpackharmony = Math.clamp($wolfpackharmony, 0, 20)>>
+<<set $wolfpackferocity = Math.clamp($wolfpackferocity, 0, 20)>><<set $bus to "wolfcaveclearing">>
+You are in the clearing outside the wolf cave. A stream runs by.
+<<if $exposed gte 1>>
+	The <<wolf_cave_plural>> don't care, but being exposed is embarrassing regardless.
+<</if>>
+
+<<if $nextPassageCheck is "Wolf Cave Wash">>
+	A <<beastNEWinit 1 wolf>><<beasttype>><<endevent>> walks up to you curiously. A few others keep their distance.
+<<elseif $nextPassageCheck is "Forest">>
+	The <<wolf_cave_plural>> bark at you, attempting to circle you.
+<<elseif $wolfstate is "hunt">>
+	Most of the pack is out hunting.
+<<else>>
+	<<if $weather is "rain">>
+		The pack shelters from the rain.
+	<<elseif $weather is "snow">>
+		The pack shelters from the snow.
+	<<else>>
+		The pack rests.
+	<</if>>
+	<<wolfcavestate>>
+<</if>>
+<br><br>
+<<if $foresthunt gte 1>>
+	<span class="lblue">You're safe at the cave. Whatever was hunting you will have given up.</span>
+	<br><br>
+	<<set $foresthunt to 0>>
+<</if>>
+<<if $wolfpatrolsent gte 3>>
+	<<unset $wolfpatrolsent>><<npc "Black Wolf">>
+	The Black Wolf approaches you. There are no wounds on <<bhis>> body, and nothing in <<bhis>> jaws.
+	<<if $monster is 1>>
+		"It was nothing," <<bhe>> grunts out. "No intruder."
+	<<else>>
+		There must have been nothing, when you <<if $wolfpackleader is 1>>sent <<bhim>><<else>>watched <<bhim>> leave<</if>> to investigate.
+	<</if>>
+	<<bHe>> seems almost disappointed.
+	<<endevent>>
+<</if>>
+<<if $wolfevent gte 1 and !$possessed>><<set $wolfevent to 0>>
+	<<wolfcaveselect>>
+<<else>>
+	<<link [[Play (1:00)|Wolf Cave Play]]>><<stress -12>><<pass 1 hour>><</link>><<lstress>>
+	<br>
+	<<if $nextPassageCheck is "Wolf Cave Wash">>
+		<span class="nextLink"><<link [[Water.|Wolf Cave Wash]]>><</link>></span>
+	<<else>>
+		<<link [[Wash in the stream (0:20)|Wolf Cave Wash]]>><<pass 20>><</link>>
+	<</if>>
+	<br>
+	<<if $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1
+	or $worn.upper.exposed gte 2 and $underupperwetstage gte 3
+	or $upperwetstage gte 3 and $worn.under_upper.exposed gte 1
+	or $upperwetstage gte 3 and $underupperwetstage gte 3>>
+		<<link [[Make a top out of plants and twigs (0:20)|Wolf Cave Plant]]>><<set $phase to 1>><<pass 20>><</link>>
+		<br>
+	<</if>>
+	<<if $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1
+	or $worn.lower.exposed gte 2 and $underlowerwetstage gte 3
+	or $lowerwetstage gte 3 and $worn.under_lower.exposed gte 1
+	or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
+		<<link [[Make a skirt out of plants and twigs (0:20)|Wolf Cave Plant]]>><<set $phase to 2>><<pass 20>><</link>>
+		<br>
+	<</if>>
+	<br>
+	The soil near the stream looks good, yet is almost free of wild plants.
+	<br>
+	<<link [[Examine|Wolf Cave Plots]]>><</link>>
+	<br>
+	<<pregnancyTest "Wolf Cave Clearing">>
+	<br>
+	<<if $wolfstate is "cave" and $daystate isnot "night">>
+		You see the Black Wolf resting by a rock, overlooking the cave and its surroundings.
+		<br>
+		<<link [[Approach|Wolf Relax]]>><<npc "Black Wolf">><<set $phase to 1>><</link>>
+		<br><br>
+	<<elseif $wolfcavepatrol is 1 and $wolfcavepatrolchance is 1 and $daystate is "night">>
+		The Black Wolf rests away from the pack, occasionally surveying passing members before <<nnpc_his "Black Wolf">> attention returns to the treeline. <span class="blue"><<nnpc_He "Black Wolf">> looks agitated.</span>
+		<br>
+		<<link [[Approach|Wolf Patrol Intro]]>><<npc "Black Wolf">><</link>>
+		<br><br>
+	<</if>>
+	<<if $wolfstate is "cave" and $daystate isnot "night" and !["rain","snow"].includes($weather)>>
+		Some of the stronger <<wolf_cave_plural>> lay around the clearing, waiting for a hunt. They look bored.
+		<br>
+		<<link [[Challenge the hunters (0:20)|Wolf Cave Spar]]>><</link>><<gtiredness>><<gphysique>><<lstress>>
+		<br><br>
+	<</if>>
+	<<link [[Go inside|Wolf Cave]]>><</link>>
+	<br><br>
+	<<if $nextPassageCheck is "Forest">>
+		<span class="nextLink"><<foresticon>><<link [[Leave.|Forest]]>><<pass 10>><<set $eventskip to 1>><<set $forest to 60>><</link>></span>
+	<<else>>
+		<<foresticon>><<link [[Walk into the forest (0:10)|Forest]]>><<pass 10>><<set $eventskip to 1>><<set $forest to 60>><</link>>
+	<</if>>
+	<br>
+<</if>>
+
+:: Wolf Cave Plots
+<<effects>>
+
+<<plot_effects>>
+
+<<if $wolf_plot_intro is 1>><<unset $wolf_plot_intro>>
+	<<plots_init wolf 3 earth 2 medium>>
+<</if>>
+
+<<display_plot wolf>>
+
+<br>
+
+<<link [[Leave|Wolf Cave Clearing]]>><</link>>
+<br>
+
+<<unset $event_trigger>>
+
+:: Wolf Cave Returned
+
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
+<<pass 30>>
+<<npc "Black Wolf">>
+The Black Wolf runs through the forest, all the way back to the cave. <<bHe>> dumps you at the back and gives a warning growl before turning away.
+<<if $monster is 1>>
+	"Stay. You belong to pack."
+<</if>>
+<br><br>
+<<link [[Next|Wolf Cave]]>><<clotheson>><<endevent>><</link>>
+<br>
+
+:: Wolf Cave Unbind
+
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
+You rub your binds against a sharp rock and they soon come loose.
+<br><br>
+<<unbind>>
+<<link [[Next|Wolf Cave]]>><</link>>
+<br>
+
+:: Wolf Cave Bed
+
+<<effects>>
+<<if $wolfpackharmony gte 10>>
+	<<beastNEWinit 1 wolf>>
+	<<if $rng gte 51>>
+		<<if $wolfstate is "hunt">>
+			You find an empty spot to lie on and close your eyes. As you lay there, you feel warm and fuzzy little bodies moving all around you. It looks like the puppies saw you going to bed and felt safer staying with you as long as the adults of the pack are gone. One of them licks your face before resting <<bhis>> head inside your hair.
+			<br><br>
+			You won't be cold tonight, and they won't be alone. <<lstress>><<ltrauma>><<stress -10>><<trauma -10>>
+		<<else>>
+			You find an empty spot to lie on and close your eyes. As you lay there, you feel a wall of fur moving all around you. It looks like the <<wolf_cave_plural>> saw you going to bed and got sleepy themselves. One of them nuzzles <<bhis>> head under your arm.
+			<br><br>
+			You won't be cold tonight. <<lstress>><<ltrauma>><<stress -6>><<trauma -6>>
+		<</if>>
+		<<set $wolfbed to 1>>
+	<<else>>
+		You snuggle beside a <<beasttype>> for warmth and close your eyes.
+	<</if>>
+	<<endevent>>
+<<else>>
+	You find an empty spot to lie on and close your eyes.
+<</if>>
+<br><br>
+<<if $sleeptrouble is 1 and $controlled is 0>>
+	<<link [[Sleep for 10 hours|Wolf Cave Sleep]]>><<set $sleephour to 10>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 10>>)<<ltiredness>>
+	<br>
+	<<link [[Sleep for 9 hours|Wolf Cave Sleep]]>><<set $sleephour to 9>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 9>>)<<ltiredness>>
+	<br>
+<</if>>
+<<link [[Sleep for 8 hours|Wolf Cave Sleep]]>><<set $sleephour to 8>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 8>>)<<ltiredness>>
+<br>
+<<link [[Sleep for 7 hours|Wolf Cave Sleep]]>><<set $sleephour to 7>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 7>>)<<ltiredness>>
+<br>
+<<link [[Sleep for 6 hours|Wolf Cave Sleep]]>><<set $sleephour to 6>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 6>>)<<ltiredness>>
+<br>
+<<link [[Sleep for 5 hours|Wolf Cave Sleep]]>><<set $sleephour to 5>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 5>>)<<ltiredness>>
+<br>
+<<link [[Sleep for 4 hours|Wolf Cave Sleep]]>><<set $sleephour to 4>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 4>>)<<ltiredness>>
+<br>
+<<link [[Sleep for 3 hours|Wolf Cave Sleep]]>><<set $sleephour to 3>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 3>>)<<ltiredness>>
+<br>
+<<link [[Sleep for 2 hours|Wolf Cave Sleep]]>><<set $sleephour to 2>><<set $saveDetails.auto.count++>><</link>> (<<timeAfterXHours 2>>)<<ltiredness>>
+<br>
+<<link [[Sleep for 1 hour|Wolf Cave Sleep]]>><<set $sleephour to 1>><<set $saveDetails.auto.count++>><</link>> &#8194;(<<timeAfterXHours 1>>)<<ltiredness>>
+<br>
+<<link [[Just sleep|Wolf Cave Sleep]]>><<set $sleephour to -1>><<set $saveDetails.auto.count++>><</link>> (??:??)<<ltiredness>>
+<br><br>
+<<link [[Climb out of bed|Wolf Cave]]>><<set $wolfbed to 0>><</link>>
+<br><br>
+
+:: Wolf Cave Settings
+<<set $settingsExitPassage to "Wolf Cave">>
+<<settings>>
+
+:: Wolf Cave Descent
+
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
+You sit on the edge and try to lower yourself down, but the rock gives way and you fall into dark water.
+<br><br>
+<<link [[Next|Underground Lake]]>><</link>>
+<br>
+
+:: Wolf Cave Sleep
+<<if !_preventUpdate and !$autosavedisabled>>
+	<<run Save.autosave.save(null, {"saveId":$saveId, "saveName":$saveName})>>
+	<<run setSaveDetail("autosave",{"saveId":$saveId,"saveName":$saveName})>>
+<</if>>
+<<sleep>><<effects>>
+<<if $wraith and $wraith.nightmare is 2 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>>
+	<<set $schoolwake to 0>>
+	<<sleepeffects>>
+	You dream of a beautiful figure, cloaked in white, standing under the red moon. It has its arms spread out to you in a welcoming gesture. You can feel its gaze boring into your mind as you step closer.
+	<br><br>
+	It's surrounded by trees, all bending inwards, and floating above a lake. Everything moves around you, and you find yourself hanging above a large ruin. You can't breathe.
+	<br><br>
+	You slowly open your eyes, and sluggishly stand<<if $wolfbed is 1>>, extracting yourself from the <<wolf_cave_plural>> surrounding you<</if>>. Your ears are ringing.
+	<br><br>
+	<<set $possessed to true>><<set $wraith.exit to "wolf_cave">><<set $controlSaved to $control>><<set $control to 0>>
+	<span class="nextLink"><<link [[Walk.|Wolf Cave]]>><</link>></span>
+	<br>
+<<else>>
+	<<wakingEffects $sleepHoursTotal>>
+	<<if ["dryheaving","nausea"].includes(_wakingEffect)>>
+		You slept soundly, but now feel a little rough. <<stress 5>><<gstress>>
+		<br><br>
+	<<elseif $nightmares gte 1 and $controlled is 0>>
+		You dream you are being hunted by something <<if $wraith and $wraith.state is "haunt" and $rng lte 25>>pale<<else>>dark<</if>> and terrible.
+	<<else>>
+		<<if $specialClothesEffects.bimboTotal gte random(100,1000) or $arousal gte ($arousalmax / 10) * 9>>
+			Your sleep is plagued by dirty dreams.
+			<<arousal `$specialClothesEffects.bimboTotal / 10 * $sleepHoursTotal`>>
+			<<arousal `100 * $sleepHoursTotal`>>
+			<<if $arousal gte $arousalmax>>
+				They push you over the edge.
+				<<orgasm>>
+			<<else>>
+				<br><br>
+			<</if>>
+		<<else>>
+			You sleep soundly.
+		<</if>>
+	<</if>>
+	<<sleepeffects>>
+	<<if $schoolwake is 1>>
+		<<set $schoolwake to 0>>
+		<<beastNEWinit 1 wolf>>
+		You wake up to something mounting you.
+		<br><br>
+		<<link [[Let it happen|Wolf Cave Sleep Sex]]>><<set $sexstart to 1>><</link>><<deviant1>>
+		<br>
+		<<link [[Push away|Wolf Cave Sleep Push]]>><</link>>
+	<<elseif $wolfbed is 1>>
+		Your sleeping companions get up before you do and go on with the day. You don't feel them moving, and they do not wake you.
+		<br><br>
+		<<link [[Get up|Wolf Cave]]>><</link>>
+	<<else>>
+		<br><br>
+		<<link [[Get up|Wolf Cave]]>><</link>>
+	<</if>>
+<</if>>
+<<set $wolfbed to 0>>
+
+:: Wolf Cave Sleep Sex
+
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<beastCombatInit>>
+	You shift your body to make things easier for the horny <<beasttype>>.
+	<<deviancy1>><<set $enemytrust -= 20>>
+	<<if $wolfpackharmony gte 1>>
+		<<enable_rescue>>
+	<</if>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<beastCombatInit>>
+	<<set $enemytrust -= 40>>
+	<<if $wolfpackharmony gte 1>>
+		<<enable_rescue>>
+	<</if>>
+<</if>>
+<<effects>>
+<<effectsman>>
+<<if $alarm is 1 and $rescue is 0>>
+	<<set $alarm to 0>>
+	<span class="red">The <<beastsplural>> are too busy thinking about themselves to help you.</span>
+	<br><br>
+<</if>>
+<br>
+<<beast $enemyno>>
+<br><br>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $rescue is 1 and $alarm is 1>>
+	<span id="next"><<link [[Next|Wolf Cave Sleep Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $finish is 1>>
+	<span id="next"><<link [[Next|Wolf Cave Sleep Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Wolf Cave Sleep Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Wolf Cave Sleep Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Wolf Cave Sleep Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Wolf Cave Sleep Push
+
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
+You shove the <<beasttype>> away from you.
+<<lharmony>>
+<br><br>
+<<if $wolfpackferocity lte 19>>
+	<<bHe>> leaves you in peace. <<endevent>>
+	<br><br>
+	<<link [[Back to sleep|Wolf Cave Bed]]>><</link>>
+	<br>
+	<<link [[Get up|Wolf Cave]]>><</link>>
+	<br>
+<<else>>
+	<<bHe>> growls and tries to force <<bhimself>> on you!
+	<br><br>
+	<<link [[Next|Wolf Cave Sleep Sex]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<</if>>
+
+:: Wolf Cave Sleep Sex Finish
+
+<<set $outside to 1>><<set $location to "wolf_cave">><<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<beastejaculation>><<wolfpacktrust>>
+	<br>
+	The <<beasttype>> yawns and lies down.
+	<br><br>
+	<<tearful>> you try to find a comfy position again.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<<elseif $enemyhealth lte 0>>
+	The <<beasttype>> limps away from you.
+	<br><br>
+	<<tearful>> you try to find a comfy position again.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<<elseif $rescue is 1 and $alarm is 1>>
+	<<set $rescued += 1>>
+	The other <<beastsplural>> growl at the <<beasttype>> assaulting you. <<bHe>> growls back at first, but then backs down and leaves you alone.
+	<<lharmony>>
+	<br><br>
+	<<tearful>> you try to find a comfy position again.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<<else>>
+	The <<beasttype>> yawns and lies down.
+	<br><br>
+	<<tearful>> you try to find a comfy position again.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<</if>>
+<<link [[Next|Wolf Cave Bed]]>><</link>>
+<br>
+
+:: Wolf Cave Play
+<<beastNEWinit 1 wolf>>
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
+<<if $rng gte 51>>
+	You play fight with one of the younger <<beastsplural>>. <<bHe>> jumps and grabs your arm in <<bhis>> mouth, but doesn't bite down hard, until <<bhe>> manages to pull you to the ground. <<bHe>> sniffs your groin.
+	<br><br>
+	<<link [[Let it continue|Wolf Cave Play Sex]]>><<set $sexstart to 1>><</link>><<deviant1>>
+	<br>
+	<<link [[Push it away|Wolf Cave Clearing]]>><<endevent>><</link>>
+	<br>
+<<else>>
+	You play something similar to hide-and-seek with the younger <<beastsplural>>. They're hesitant to stray too far from the cave, but there are many hiding places nearby. Their sense of smell gives them an advantage and they're quick to find you every time, but it's fun.
+	<br><br>
+	<<link [[Next|Wolf Cave Clearing]]>><<endevent>><</link>>
+	<br>
+<</if>>
+
+:: Wolf Cave Wash
+
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
+You wash in the stream. The water is cold but clean.
+<br><br>
+<<wash>>
+<<link [[Next|Wolf Cave Clearing]]>><</link>>
+<br>
+
+:: Wolf Cave Play Sex
+
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<beastCombatInit>>
+	The <<beasttype>> becomes more bold.
+	<<deviancy1>><<set $enemytrust -= 20>>
+	<<if $wolfpackharmony gte 1>>
+		<<enable_rescue>>
+	<</if>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<beastCombatInit>>
+	<<set $enemytrust -= 40>>
+	<<if $wolfpackharmony gte 1>>
+		<<enable_rescue>>
+	<</if>>
+<</if>>
+<<effects>>
+<<effectsman>>
+<<if $alarm is 1 and $rescue is 0>>
+	<<set $alarm to 0>>
+	<span class="red">The <<beastsplural>> are too busy thinking about themselves to help you.</span>
+	<br><br>
+<</if>>
+<br>
+<<beast $enemyno>>
+<br><br>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $rescue is 1 and $alarm is 1>>
+	<span id="next"><<link [[Next|Wolf Cave Play Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $finish is 1>>
+	<span id="next"><<link [[Next|Wolf Cave Play Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Wolf Cave Play Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Wolf Cave Play Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Wolf Cave Play Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Wolf Cave Play Sex Finish
+
+<<set $outside to 1>><<set $location to "wolf_cave">><<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<beastejaculation>><<wolfpacktrust>>
+	<br>
+	The <<beasttype>> yawns and lies down.
+	<br><br>
+	<<tearful>> you climb to your feet.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<<elseif $enemyhealth lte 0>>
+	The <<beasttype>> limps away from you.
+	<br><br>
+	<<tearful>> you climb to your feet.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<<elseif $rescue is 1 and $alarm is 1>>
+	<<set $rescued += 1>>
+	The other <<beastsplural>> growl at the wolf assaulting you. <<bhe>> growls back at first, but then backs down and leaves you alone.
+	<<lharmony>>
+	<br><br>
+	<<tearful>> you climb to your feet.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<<else>>
+	The <<beasttype>> yawns and lies down.
+	<br><br>
+	<<tearful>> you climb to your feet.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+<</if>>
+<<link [[Next|Wolf Cave Clearing]]>><</link>>
+<br>
+
+:: Wolf Cave Breastfeed
+<<set $outside to 0>><<set $location to "wolf_cave">><<effects>>
+
+<<if $phase is 1>>
+	You enourage the less assertive wolves to suckle too.
+<<else>>
+	<<if $worn.upper.exposed lte 0 or $worn.under_upper.exposed lte 0>>
+		<<upperstrip>><<underupperstrip>>You bare your <<breasts>> and encourage the wolf pups to suckle.
+	<<else>>
+		You encourage the wolf pups to suckle.
+	<</if>>
+<</if>>
+<<pass 5>>
+<<if $milk_amount gte 1>>
+	<<if $wolfcavebreast is undefined>>
+		<<set $wolfcavebreast to 1>>
+	<<else>>
+		<<set $wolfcavebreast += 1>>
+	<</if>>
+
+	The wolves sniff at your milk. One takes over each nipple, teasing more from you with clumsy licks. <<deviancy3>>
+
+	<<if $wolfcavebreast is 3>>
+		The last of the pups are satisfied. They curl up to nap.
+		<<gharmony>>
+	<<else>>
+		Other wolves jostle for a turn.
+	<</if>>
+	<br><br>
+	<<transform wolf 1>>
+	<<breastfeed>><<breastfeed>>
+	<<if $wolfcavebreast isnot 3>>
+		<<link [[Continue feeding (0:05)|Wolf Cave Breastfeed]]>><<set $phase to 1>><</link>><<deviant3>>
+		<br>
+	<</if>>
+	<<link [[Stop|Wolf Cave]]>><<clotheson>><<set $phase to 0>><</link>>
+	<br>
+<<else>>
+
+	No milk will leak from your nipples. <span class="pink">You've run out.</span> The wolves get bitey in frustration.
+	<<gpain>><<pain 6>><<milkvolume 1>>
+	<br><br>
+
+	<<link [[Next|Wolf Cave]]>><<clotheson>><<set $phase to 0>><</link>>
+	<br>
+<</if>>
