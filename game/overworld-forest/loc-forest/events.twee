@@ -3703,9 +3703,9 @@ The slimes disappear into the river. <<tearful>> you look around frantically.
 You lean forward and kiss the <<person "normal">>, and <<he>> smiles against your mouth. <span class="lewd"><<His>> lips are sticky, and taste very sweet.</span>
 <<takeKissVirginity $NPCList[0].fullDescription "consensual">><<promiscuity1>>
 <<if $rng gte 81>>
-	<<He>> suddenly thrusts <<his>> tongue into your mouth. Something drips into your mouth, and your taste buds are assaulted by a dizzyingly sweet flavor.
-	<<nectarfed 10>><br>
-	Your mind gets foggy, and you barely notice <<him>> pushing you to the ground. <span class="purple">The vines behind <<him>> writhe to life, slithering behind <<him>>.</span>
+    <<He>> suddenly thrusts <<his>> tongue into your mouth. Something drips into your mouth, and your taste buds are assaulted by a dizzyingly sweet flavor.
+    <<nectarfed 10>><br>
+    Your mind gets foggy, and you barely notice <<him>> pushing you to the ground. <span class="purple">The vines behind <<him>> writhe to life, slithering behind <<him>>.</span>
 	<br><br>
 
 	"Thanks for that," the <<person>> whispers, lowering <<himself>> to lie on top of you. "Now I think I'll take a bit more than a kiss."

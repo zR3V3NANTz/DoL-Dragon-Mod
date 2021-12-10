@@ -645,7 +645,6 @@
 		<<if $enemytype isnot "beast">>slaps your hand away<<else>>shifts way from you and growls<</if>>.</span>
 	<</if>>
 <</if>>
-
 <<if $leftaction is "leftothervaginastop">>
 	<<set $leftaction to 0>><<set $leftactiondefault to "leftothervaginastop">>
 	<<set $NPCList[$lefttarget].vagina to 0>><<set $leftarm to 0>>
@@ -664,6 +663,7 @@
 		<<submission 1 $lefttarget>><<handstat>>
 		<<if $NPCList[$lefttarget].vagina is 0>>
 			<<set $leftactiondefault to "leftclit">><<set $NPCList[$lefttarget].vagina to "leftarm">><<set $leftarm to "othervagina">><<personselect $lefttarget>>
+
 			<span class="lblue">You <<handtext>> grab <<hisselect $lefttarget>> pussy<<if $NPCList[$lefttarget].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[$lefttarget].chastity.vagina<</if>> with your left hand.</span>
 		<<else>>
 			<span class="blue">You try to grab <<hisselect $lefttarget>> pussy with your left hand, but the entrance is already occupied.</span>
@@ -2133,7 +2133,7 @@
 	<<set $mouthaction to 0>><<set $mouthactiondefault to "bitepussy">>
 	You bite down on <<hisselect $mouthtarget>> labia. <<He>> <<if $enemytype is "man">>yelps<<elseif $enemytype is "beast">>growls<<else>>shrieks<</if>> and recoils in agony.
 	<<defiance 20>><<attackstat>><<control 15>><<set $mouthuse to 0>><<set $penisbitten to 1>><<set $mouthstate to 0>><<set $speechhit to 1>>
-	<<if $wolfgirl gte 2 or $cat gte 2>>
+	<<if $wolfgirl gte 2 or $cat gte 2 or $dragon gte 2>>
 		<<defiance 40 $mouthtarget>>
 		You lick your fangs clean.
 	<</if>>
@@ -3160,7 +3160,19 @@
 			You spread your thighs, but fail to garner interest.
 		<</if>>
 	<</if>>
-<</if>>
+	<<elseif $vaginastate isnot 0 and $vaginastate.includes("double")>>
+		You spread your thighs, but just receive a slap. "Settle down, <<bitch>>."
+		<<violence 2>><<hitstat>><<bruise bottom>>
+	<<else>>
+		<<set $anusaction to 0>><<meek 10 $anustarget>><<analskilluse>><<set $anusactiondefault to "penispussy">>
+		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
+			<<personselect $anustarget>>
+			<<submission 2 $anustarget>><<set $vaginause to "penis">><<set $NPCList[$anustarget].penis to "vaginaentrance">><<set $anususe to 0>><<set $vaginastate to "entrance">><<set $anusstate to 0>>
+			<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
+		<<else>>
+			You spread your thighs, but fail to garner interest.
+		<</if>>
+	<</if>>
 
 <<if $anusaction is "penispussydap">>
 	<!-- Check the player is not attempting to straddle and offer pussy at the same time. If so, switch to double or fail correctly -->
@@ -3474,6 +3486,10 @@
 		<<if $vaginause is 0>><<set $vaginause to "penis">>
 			<<personselect $thightarget>>
 			<<set $NPCList[$thightarget].penis to "vaginaentrance">><<set $vaginastate to "entrance">>
+			<span class="blue">You try to hold <<his>> penis between your thighs, but <<he>> instead angles it towards your <<genitals>>.</span>
+		<<else>>
+			<<personselect $thightarget>>
+			<<set $NPCList[$thightarget].penis to 0>><<set $NPCList[$thightarget].location.genitals to 0>>
 			<span class="blue">You try to hold <<hisselect $thightarget>> penis between your thighs, but <<he>> instead angles it towards your <<genitals>>.</span>
 		<<else>>
 			<<personselect $thightarget>>
@@ -3754,6 +3770,10 @@
 		<<personselect $penistarget>>
 		<<if $NPCList[$penistarget].vagina is "otheranusfrot">>
 			<<set $NPCList[$penistarget].vagina to "otheranusentrance">>
+			<span class="blue">You rub your penis between <<his>> cheeks, but <<he>> would prefer the main course and presses <<his>> anus against your tip.</span>
+		<</if>>
+		<<if $NPCList[$penistarget].penis is "otheranusfrot">>
+			<<set $NPCList[$penistarget].penis to "otheranusentrance">>
 			<span class="blue">You rub your penis between <<hisselect $penistarget>> cheeks, but <<he>> would prefer the main course and presses <<his>> anus against your tip.</span>
 		<</if>>
 		<<if $NPCList[$penistarget].penis is "otheranusfrot">>
