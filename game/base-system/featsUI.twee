@@ -154,6 +154,10 @@ Filter by:
 <<set _upgradeName to _upgradeNames[_upgradeNameID]>>
 <<link Previous>>
 	<<set _upgradeNameID-->>
+	<<if $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden>>
+		<<for _upgradeNameID; $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden; _upgradeNameID-->>
+		<</for>>
+	<</if>>
 	<<if _upgradeNameID lt 0>>
 		<<set _upgradeNameID to _upgradeNames.length - 1>>
 	<</if>>
@@ -162,6 +166,10 @@ Filter by:
 <</link>> |
 <<link Next>>
 	<<set _upgradeNameID++>>
+	<<if $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden>>
+		<<for _upgradeNameID; $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden; _upgradeNameID++>>
+		<</for>>
+	<</if>>
 	<<if _upgradeNameID gte _upgradeNames.length>>
 		<<set _upgradeNameID to 0>>
 	<</if>>

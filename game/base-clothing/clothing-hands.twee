@@ -300,7 +300,7 @@
 	plural: 1,
 	colour: 0,
 	colour_options: [],
-	type: ["stealth", "normal"],
+	type: ["stealthy", "normal"],
 	gender: "n",
 	warmth: 1,
 	cost: 100000,

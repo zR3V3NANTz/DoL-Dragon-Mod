@@ -543,6 +543,7 @@ window.settingsObjects = function (type) {
 				transformdisable: { boolLetter: true, bool: true },
 				transformdisabledivine: { boolLetter: true, bool: true },
 				hirsutedisable: { boolLetter: true, bool: true },
+				pbdisable: { boolLetter: true, bool: true },
 				breastfeedingdisable: { boolLetter: true, bool: true },
 				analpregdisable: { boolLetter: true, bool: true },
 				watersportsdisable: { boolLetter: true, bool: true },

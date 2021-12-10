@@ -307,6 +307,10 @@ Renderer.CanvasModels["main"] = {
 			"bird_malar_type": "disabled",
 			"bird_plumage_type": "disabled",
 			"bird_pubes_type": "disabled",
+			"dragon_wings_type": "disabled",
+			"dragon_tail_type": "disabled",
+			"dragon_horns_type": "disabled",
+			"dragon_eyes_type": "disabled",
 			// body writings
 			"writing_forehead": "",
 			"writing_left_cheek": "",

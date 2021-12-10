@@ -19,6 +19,7 @@
 <</widget>>
 <<widget "seductiondifficulty">><<silently>>
 <<if $checkstyle is "skillname">>
+	<<set _text_output to "">>
 <<elseif $combat is 1>>
 	<<if $args[0] is true>>
 		<<if (990 - ($enemytrust * 10) - $seductionskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>

@@ -1431,7 +1431,7 @@ and _stanceCheck isnot "top">>
 			<<set _penetrator = "close/" + _position + "/vaginatentacleentrance.png">>
 
 		<<elseif $vaginastate is "penetrated" or $vaginastate is "doublepenetrated">>
-			<<if ($enemytype is "beast" and $NPCList[_na].penissize gte 5) or $vaginastate is "doublepenetrated">>
+			<<if ($enemytype is "beast" and $NPCList[_na].penissize gte 5) or ($vaginastate is "doublepenetrated" and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
 				<<set _vagina = _img.vaginapenetratebig>>
 			<<else>>
 				<<set _vagina = _img.vaginapenetrate>>
@@ -1448,7 +1448,7 @@ and _stanceCheck isnot "top">>
 				<<else>>
 					<<set _penetrator = "close/" + _position + "/vaginapenetratedbeast.png">>
 				<</if>>
-			<<elseif $vaginastate is "doublepenetrated">>
+			<<elseif $vaginastate is "doublepenetrated" and $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
 				<<if $NPCList[$vaginatarget].skincolour is "black">>
 					<<set _penetrator = "black/vaginapenetratedouble.png">>
 				<<else>>
@@ -1578,7 +1578,7 @@ and _stanceCheck isnot "top">>
 		<<set _image = 'close/' + _position + '/anustentacleentrance.png'>>
 	<<elseif $anusstate is "tentacleimminent">>
 		<<set _image = 'close/' + _position + '/anustentacleentrance.png'>>
-	<<elseif $anusstate is "penetrated">>
+	<<elseif $anusstate is "penetrated" or $anusstate is "doublepenetrated">>
 		<<set _penetrated = true>>
 		<<if $enemytype is "machine">>
 			<<set _image = 'machine/anal/' + _position + '/penetrated_close.png'>>
@@ -1587,6 +1587,12 @@ and _stanceCheck isnot "top">>
 				<<set _image = 'close/beast/anuspenetratedhorse.png'>>
 			<<else>>
 				<<set _image = 'close/' + _position + '/anuspenetratedbeast.png'>>
+			<</if>>
+		<<elseif $anusstate is "doublepenetrated" and $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+			<<if $NPCList[$anustarget].skincolour is "black">>
+				<<set _image = "black/anuspenetratedoubleblack.png">>
+			<<else>>
+				<<set _image = 'close/' + _position + '/anuspenetratedoubleclose.png'>>
 			<</if>>
 		<<else>>
 			<<if $NPCList[$anustarget].skincolour is "black">>

@@ -53,6 +53,29 @@
 		<<set $anusstate to 0>><<set $anususe to 0>>
 	<</if>>
 <</if>>
+<<if $NPCList[_i].penis is "vaginadouble" or $NPCList[_i].penis is "vaginadoubleimminent" or $NPCList[_i].penis is "vaginadoubleentrance">>
+	<<set _otherNPCindex to "f">>
+	<<if _i is $vaginatarget>>
+		<<set _otherNPCindex to $vaginadoubletarget>>
+	<<else>>
+		<<set _otherNPCindex to $vaginatarget>>
+	<</if>>
+	<<if _otherNPCindex isnot "f" and $NPCList[_otherNPCindex].penis isnot 0 and $NPCList[_otherNPCindex].penis.includes("double")>>
+		<<switch $NPCList[_otherNPCindex].penis>>
+			<<case "vaginadouble">>
+				<<set $NPCList[_otherNPCindex].penis to "vagina">>
+				<<set $vaginastate to "penetrated">><<set $vaginause to "penis">>
+			<<case "vaginadoubleentrance">>
+				<<set $NPCList[_otherNPCindex].penis to "vaginaentrance">>
+				<<set $vaginastate to "entrance">><<set $vaginause to "penis">>
+			<<case "vaginadoubleimminent">>
+				<<set $NPCList[_otherNPCindex].penis to "vaginaimminent">>
+				<<set $vaginastate to "imminent">><<set $vaginause to "penis">>
+		<</switch>>
+	<<else>>
+		<<set $vaginastate to 0>><<set $vaginause to 0>>
+	<</if>>
+<</if>>
 
 <!-- PC penis in NPC -->
 <<if $NPCList[_i].vagina is "penis" or $NPCList[_i].vagina is "penisimminent" or $NPCList[_i].vagina is "penisentrance">>
