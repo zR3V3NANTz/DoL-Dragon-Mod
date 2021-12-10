@@ -631,7 +631,7 @@
 <<if $NPCList[_n].penis is "penisentrance">>
 	<<if $rng gte 51>>
 		<span class="purple"><<bHe>> caresses your <<penis>> with <<bhis>> own, hinting at what's to come.</span>
-		<<sex 10>><<set $NPCList[_n].penis to "penisimminent">><<set $vaginastate to "otherpenisimminent">>
+		<<sex 10>><<set $NPCList[_n].penis to "penisimminent">><<set $penisstate to "otherpenisimminent">>
 	<<else>>
 		<<bHe>> hovers <<bhis>> $NPCList[_n].penisdesc close to your <<penis>>.
 		<<sex 5>>

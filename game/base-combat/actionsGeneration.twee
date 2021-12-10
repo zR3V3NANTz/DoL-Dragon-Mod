@@ -262,7 +262,7 @@
 	<</if>>
 <<case "penis">>
 	<<set _leftOptions to "penis">>
-	<span @class="($lastOptions.left isnot _leftOptions or _leftGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "leftarm">><<set $lefttarget to _j>>Your left hand is <<if $NPCList[_j].chastity.penis.includes("chastity")>>teasing<<else>>holding<</if>> <<his>> $NPCList[_j].penisdesc<<if $NPCList[_j].chastity.penis.includes("chastity")>> through <<his>> $NPCList[_j].chastity.penis<</if>>.</span>
+	<span @class="($lastOptions.left isnot _leftOptions or _leftGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "leftarm">><<set $lefttarget to _j>>Your left hand is <<if $NPCList[_j].chastity.penis.includes("chastity")>>teasing<<else>>holding<</if>> <<combatpersons>> $NPCList[_j].penisdesc<<if $NPCList[_j].chastity.penis.includes("chastity")>> through <<his>> $NPCList[_j].chastity.penis<</if>>.</span>
 <<case "grappled">>
 	<<if $orgasmdown gte 1>>
 		<<set _leftOptions to "bothBound">>
@@ -290,7 +290,7 @@
 	<</if>>
 <<case "othervagina">>
 	<<set _leftOptions to "pussy">>
-	<span @class="($lastOptions.left isnot _leftOptions or _leftGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "leftarm">><<set $lefttarget to _j>>Your left hand is <<if $NPCList[_j].chastity.vagina.includes("chastity")>>teasing<<else>>stroking<</if>> <<his>> pussy<<if $NPCList[_j].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[_j].chastity.vagina<</if>>.</span>
+	<span @class="($lastOptions.left isnot _leftOptions or _leftGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "leftarm">><<set $lefttarget to _j>>Your left hand is <<if $NPCList[_j].chastity.vagina.includes("chastity")>>teasing<<else>>stroking<</if>> <<combatpersons>> pussy<<if $NPCList[_j].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[_j].chastity.vagina<</if>>.</span>
 <<case "vagina">>
 	<<set _leftOptions to "coverVagina">>
 	<span @class="($lastOptions.left isnot _leftOptions or _leftGold is true ?'gold':'')">Your left hand is protecting your <<pussy>>.</span>
@@ -471,7 +471,7 @@
 	<</if>>
 <<case "penis">>
 	<<set _rightOptions to "penis">>
-	<span @class="($lastOptions.right isnot _rightOptions or _rightGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "rightarm">><<set $righttarget to _j>>Your right hand is <<if $NPCList[_j].chastity.penis.includes("chastity")>>teasing<<else>>holding<</if>> <<his>> $NPCList[_j].penisdesc<<if $NPCList[_j].chastity.penis.includes("chastity")>> through <<his>> $NPCList[_j].chastity.penis<</if>>.</span>
+	<span @class="($lastOptions.right isnot _rightOptions or _rightGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "rightarm">><<set $righttarget to _j>>Your right hand is <<if $NPCList[_j].chastity.penis.includes("chastity")>>teasing<<else>>holding<</if>> <<combatpersons>> $NPCList[_j].penisdesc<<if $NPCList[_j].chastity.penis.includes("chastity")>> through <<his>> $NPCList[_j].chastity.penis<</if>>.</span>
 <<case "grappled">>
 	<<if $orgasmdown gte 1>>
 		<<set _rightOptions to "bothBound">>
@@ -499,7 +499,7 @@
 	<</if>>
 <<case "othervagina">>
 	<<set _rightOptions to "pussy">>
-	<span @class="($lastOptions.right isnot _rightOptions or _rightGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "rightarm">><<set $righttarget to _j>>Your right hand is <<if $NPCList[_j].chastity.vagina.includes("chastity")>>teasing<<else>>stroking<</if>> <<his>> pussy<<if $NPCList[_j].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[_j].chastity.vagina<</if>>.</span>
+	<span @class="($lastOptions.right isnot _rightOptions or _rightGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "rightarm">><<set $righttarget to _j>>Your right hand is <<if $NPCList[_j].chastity.vagina.includes("chastity")>>teasing<<else>>stroking<</if>> <<combatpersons>> pussy<<if $NPCList[_j].chastity.vagina.includes("chastity")>> through <<his>> $NPCList[_j].chastity.vagina<</if>>.</span>
 <<case "vagina">>
 	<<set _rightOptions to "coverVagina">>
 	<span @class="($lastOptions.right isnot _rightOptions or _rightGold is true ?'gold':'')">Your right hand is protecting your <<pussy>>.</span>
@@ -689,10 +689,10 @@
 		<</if>>
 	<<case "penis">>
 		<<set _feetOptions to "penis">>
-		<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "feet">><<set $feettarget to _j>>Your feet are <<if $NPCList[_j].chastity.penis.includes("chastity")>>pressed against<<else>>holding<</if>> <<his>> <<npcPenis _j>>.</span>
+		<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "feet">><<set $feettarget to _j>>Your feet are <<if $NPCList[_j].chastity.penis.includes("chastity")>>pressed against<<else>>holding<</if>> <<combatpersons>> <<npcPenis _j>>.</span>
 	<<case "othervagina">>
 		<<set _feetOptions to "othervagina">>
-		<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "feet">><<set $feettarget to _j>>Your feet are <<if $NPCList[_j].chastity.vagina.includes("chastity")>>pressed against<<else>>holding back<</if>> <<his>> <<npcVagina _j>>.</span>
+		<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "feet">><<set $feettarget to _j>>Your feet are <<if $NPCList[_j].chastity.vagina.includes("chastity")>>pressed against<<else>>holding back<</if>> <<combatpersons>> <<npcVagina _j>>.</span>
 	<<case "bound">>
 		<<set _feetOptions to "bound">>
 		<span @class="($lastOptions.feet isnot _feetOptions or _feetGold is true ?'gold':'')">Your legs are bound.</span>
@@ -846,20 +846,20 @@
 		<</if>>
 	<<case "othervagina">>
 		<<set _mouthOptions to "othervagina">><<selectNpcWithPartInPosition "vagina" "mouth">><<set $mouthtarget to _j>>
-		<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<His>> pussy presses against your lips.</span>
+		<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<combatPerson>>'s pussy presses against your lips.</span>
 	<<case "kiss">>
 		<<set _mouthOptions to "kiss">>
 		<<switch $mouthstate>>
 			<<case "kissentrance">>
 				<<selectNpcWithPartInPosition "mouth" "kissentrance">><<set $mouthtarget to _j>>
-				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is about to be pressed by another's.</span>
+				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is about to be pressed by <<combatpersons>>.</span>
 				<<if $player.virginity.kiss is true>><span class="red">Your first kiss is about to be taken.</span><</if>>
 			<<case "kissimminent">>
 				<<selectNpcWithPartInPosition "mouth" "kissimminent">><<set $mouthtarget to _j>>
-				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is pressed by another's.</span>
+				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is pressed by <<combatpersons>>.</span>
 			<<case "kiss">>
 				<<selectNpcWithPartInPosition "mouth" "kiss">><<set $mouthtarget to _j>>
-				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is engulfed by another's.</span>
+				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is engulfed by <<combatpersons>>.</span>
 		<</switch>>
 	<<case "facesit">>
 		<<switch $mouthstate>>
@@ -880,13 +880,13 @@
 		<<switch $mouthstate>>
 		<<case "entrance">>
 			<<set _mouthOptions to "penisEntrance">>
-			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "mouthentrance">><<set $mouthtarget to _j>><<His>> <<npcPenis _j>> hovers in front of your mouth.</span>
+			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "mouthentrance">><<set $mouthtarget to _j>><<combatPerson>>'s <<npcPenis _j>> hovers in front of your mouth.</span>
 		<<case "imminent">>
 			<<set _mouthOptions to "penisImminent">>
-			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "mouthimminent">><<set $mouthtarget to _j>><<His>> <<npcPenis _j>> presses against your lips.</span>
+			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "mouthimminent">><<set $mouthtarget to _j>><<combatPerson>>'s <<npcPenis _j>> presses against your lips.</span>
 		<<case "penetrated">>
 			<<set _mouthOptions to "penisPenetrated">>
-			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "mouth">><<set $mouthtarget to _j>><<His>> <<npcPenis _j>> penetrates your mouth.</span>
+			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "mouth">><<set $mouthtarget to _j>><<combatPerson>>'s <<npcPenis _j>> penetrates your mouth.</span>
 		<<case "gagged">>
 			<<set _mouthOptions to "gagged">>
 			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is helplessly gagged.</span>
@@ -898,7 +898,7 @@
 			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<nippleFlavorText>></span><<set $mouthtarget to _j>>
 		<<case "otheranus">>
 			<<set _mouthOptions to "otheranus">><<selectNpcWithPartInPosition "penis" "mouthotheranus">><<set $mouthtarget to _j>>
-			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<His>> ass presses against your lips.</span>
+			<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')"><<combatPerson>>'s ass presses against your lips.</span>
 		<<default>>
 			<<if $mouthuse is "righthand" or $mouthuse is "lefthand">>
 				<<set _mouthOptions to $mouthuse>>
@@ -907,7 +907,7 @@
 				<<else>>
 					<<selectNpcWithPartInPosition "lefthand" "mouth">>
 				<</if>><<set $mouthtarget to _j>>
-				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is blocked by <<his>> hand, muffling any noise you make.</span>
+				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is blocked by <<combatpersons>> hand, muffling any noise you make.</span>
 			<<else>>
 				<<set _mouthOptions to "blocked">>
 				<span @class="($lastOptions.mouth isnot _mouthOptions or _mouthGold is true ?'gold':'')">Your mouth is blocked, muffling any noise you make.</span>
@@ -1088,37 +1088,37 @@
 		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')">You feel breath on your <<penis>>.</span>
 	<<case "othermouthimminent">>
 		<<set _penisOptions to "mouthImminent">><<selectNpcWithPartInPosition "mouth" "penisimminent">><<set $penistarget to _j>>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> lips press against the tip of your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<combatPerson>>'s lips press against the tip of your <<penis>>.</span>
 	<<case "othermouth">>
 		<<set _penisOptions to "mouthPenetration">><<selectNpcWithPartInPosition "mouth" "penis">><<set $penistarget to _j>>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> mouth envelops your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<combatPerson>>'s mouth envelops your <<penis>>.</span>
 	<<case "entrance">>
 		<<set _penisOptions to "pussyEntrance">>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "penisentrance">><<set $penistarget to _j>><<His>> <<npcVagina _j>> hovers near your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "penisentrance">><<set $penistarget to _j>><<combatPerson>>'s <<npcVagina _j>> hovers near your <<penis>>.</span>
 	<<case "imminent">>
 		<<set _penisOptions to "pussyImminent">>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "penisimminent">><<set $penistarget to _j>><<His>> <<npcVagina _j>> presses against your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "vagina" "penisimminent">><<set $penistarget to _j>><<combatPerson>>'s <<npcVagina _j>> presses against your <<penis>>.</span>
 	<<case "penetrated">>
 		<<set _penisOptions to "pussyPenetration">><<selectNpcWithPartInPosition "vagina" "penis">><<set $penistarget to _j>>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> vagina envelops your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<combatPerson>>'s vagina envelops your <<penis>>.</span>
 	<<case "otheranusentrance">>
 		<<set _penisOptions to "anusEntrance">>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPositionAnus "otheranusentrance">><<set $penistarget to _j>><<His>> <<npcAnus _j>> hovers near your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPositionAnus "otheranusentrance">><<set $penistarget to _j>><<combatPerson>>'s <<npcAnus _j>> hovers near your <<penis>>.</span>
 	<<case "otheranusimminent">>
 		<<set _penisOptions to "anusImminent">>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPositionAnus "otheranusimminent">><<set $penistarget to _j>><<His>> <<npcAnus _j>> presses against your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPositionAnus "otheranusimminent">><<set $penistarget to _j>><<combatPerson>>'s <<npcAnus _j>> presses against your <<penis>>.</span>
 	<<case "otheranus">>
 		<<set _penisOptions to "anusPenetration">><<selectNpcWithPartInPositionAnus "otheranus">><<set $penistarget to _j>>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<His>> ass envelops your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<combatPerson>>'s ass envelops your <<penis>>.</span>
 	<<case "otherpenisentrance">>
 		<<set _penisOptions to "penisEntrance">>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penisentrance">><<set $penistarget to _j>><<His>> <<npcPenisSimple $penistarget>> hovers near your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penisentrance">><<set $penistarget to _j>><<combatPerson>>'s <<npcPenisSimple $penistarget>> hovers near your <<penis>>.</span>
 	<<case "otherpenisimminent">>
 		<<set _penisOptions to "penisImminent">>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penisimminent">><<set $penistarget to _j>><<His>> <<npcPenisSimple $penistarget>> threatens your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penisimminent">><<set $penistarget to _j>><<combatPerson>>'s <<npcPenisSimple $penistarget>> threatens your <<penis>>.</span>
 	<<case "otherpenis">>
 		<<set _penisOptions to "penisPenetration">>
-		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penis">><<set $penistarget to _j>><<His>> <<npcPenisSimple $penistarget>> presses against your <<penis>>.</span>
+		<span @class="($lastOptions.penis isnot _penisOptions or _penisGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "penis">><<set $penistarget to _j>><<combatPerson>>'s <<npcPenisSimple $penistarget>> presses against your <<penis>>.</span>
 	<<case "tentacleentrance" "tentacleimminent" "tentacle" "tentacledeep" "tentaclerub">>
 		<<set $_changetype to true>><<penisActionInitTentacle>>
 	<<case "struggle" "struggle_pen">>
@@ -1280,13 +1280,13 @@
 		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">You feel breath on your <<pussy>>.</span>
 	<<case "othermouthimminent">>
 		<<set _vaginaOptions to "mouthImminent">><<selectNpcWithPartInPosition "mouth" "vaginaimminent">><<set $vaginatarget to _j>>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<His>> lips press against your labia.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<combatPerson>>'s lips press against your labia.</span>
 	<<case "othermouth">>
 		<<set _vaginaOptions to "mouthPenetrated">><<selectNpcWithPartInPosition "mouth" "vagina">><<set $vaginatarget to _j>>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<His>> tongue penetrates your <<pussy>>.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<combatPerson>>'s tongue penetrates your <<pussy>>.</span>
 	<<case "entrance">>
 		<<set _vaginaOptions to "penisEntrance">>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vaginaentrance">><<set $vaginatarget to _j>><<His>> <<npcPenis _j>> hovers near your <<pussy>>.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vaginaentrance">><<set $vaginatarget to _j>><<combatPerson>>'s <<npcPenis _j>> hovers near your <<pussy>>.</span>
 		<<if $vaginaldoubledisable is "f">>
 			<<getDoubleTargetList>>
 		<</if>>
@@ -1303,7 +1303,7 @@
 		<</if>>
 	<<case "imminent">>
 		<<set _vaginaOptions to "penisImminent">>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vaginaimminent">><<set $vaginatarget to _j>><<His>> <<npcPenis _j>> presses against your <<pussy>>.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vaginaimminent">><<set $vaginatarget to _j>><<combatPerson>>'s <<npcPenis _j>> presses against your <<pussy>>.</span>
 		<<if $vaginaldoubledisable is "f">>
 			<<getDoubleTargetList>>
 		<</if>>
@@ -1320,7 +1320,7 @@
 		<</if>>
 	<<case "penetrated">>
 		<<set _vaginaOptions to "penisPenetrated">>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vagina">><<set $vaginatarget to _j>><<His>> <<npcPenis _j>> penetrates your <<pussy>>.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vagina">><<set $vaginatarget to _j>><<combatPerson>>'s <<npcPenis _j>> penetrates your <<pussy>>.</span>
 		<<if $vaginaldoubledisable is "f">>
 			<<getDoubleTargetList>>
 		<</if>>
@@ -1337,20 +1337,20 @@
 		<</if>>
 	<<case "othervaginaentrance">>
 		<<set _vaginaOptions to "vaginaEntrance">><<selectNpcWithPartInPosition "vagina" "vaginaentrance">><<set $vaginatarget to _j>>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<His>> pussy hovers near yours.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<combatPerson>>'s pussy hovers near yours.</span>
 	<<case "othervaginaimminent">>
 		<<set _vaginaOptions to "vaginaImminent">><<selectNpcWithPartInPosition "vagina" "vaginaimminent">><<set $vaginatarget to _j>>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<His>> pussy threatens yours.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<combatPerson>>'s pussy threatens yours.</span>
 	<<case "othervagina">>
 		<<set _vaginaOptions to "vaginaPenetrated">><<selectNpcWithPartInPosition "vagina" "vagina">><<set $vaginatarget to _j>>
-		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<His>> pussy presses against yours.</span>
+		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<combatPerson>>'s pussy presses against yours.</span>
 	<<case "doubleentrance">>
 			<<set _vaginaOptions to "penisDoubleEntrance">>
 				<<if $NPCList[$vaginatarget].penis is "vaginadoubleentrance" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleentrance">>
 					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks hover near your <<pussy>>.</span>
 				<<elseif ($NPCList[$vaginatarget].penis is "anusdouble" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleentrance") or ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
 					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
-					<<selectNpcWithPartInPosition "penis" "vagina">><<His>> penis penetrates your vagina while the other penis hovers nearby.
+					<<selectNpcWithPartInPosition "penis" "vagina">><<combatPerson>>'s penis penetrates your vagina while the other penis hovers nearby.
 					</span>
 				<<else>>
 					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks hover near your <<pussy>>.</span>
@@ -1361,7 +1361,7 @@
 					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks press against your anus.</span>
 				<<elseif ($NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleimminent") or ($NPCList[$vaginatarget].penis is "vaginadoubleimminent" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
 					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
-					<<selectNpcWithPartInPosition "penis" "vagina">><<His>> penis penetrates your vagina while the other penis presses against the flange.
+					<<selectNpcWithPartInPosition "penis" "vagina">><<combatPerson>>'s penis penetrates your vagina while the other penis presses against the flange.
 					</span>
 				<<else>>
 					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks press against your vagina.</span>
@@ -1371,7 +1371,7 @@
 			<<if $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
 				<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks penetrate your vagina.</span>
 			<<else>>
-				<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vagina">><<His>> cock penetrates your vagina while the other hovers nearby.</span>
+				<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vagina">><<combatPerson>>'s cock penetrates your vagina while the other hovers nearby.</span>
 			<</if>>
 	<<case "tentacleentrance" "tentacleimminent" "tentacle" "tentacledeep" "tentaclerub">>
 		<<set $_changetype to true>><<vaginaActionInitTentacle>>
@@ -1498,10 +1498,10 @@
 <<if $dissociation lte 1 and $orgasmdown lte 0 and ($pain lt 100 or $willpowerpain is undefined)>>
 	<<if $bottomuse is "mouth">>
 		<<set _anusOptions to "faceAgainstAnus">><<selectNpcWithPartInPosition "mouth" "bottom">><<set $anustarget to _j>>
-		<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">You press your <<bottom>> against <<his>> face.</span>
+		<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">You press your <<bottom>> against <<combatpersons>> face.</span>
 	<<elseif $bottomuse is "penis">>
 		<<set _anusOptions to "penisAgainstAnus">>
-		<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "cheeks">><<set $anustarget to _j>>You hold <<his>> <<npcPenis _j>> between your buttocks.</span>
+		<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "cheeks">><<set $anustarget to _j>>You hold <<combatpersons>> <<npcPenis _j>> between your buttocks.</span>
 	<<else>>
 		<<switch $anusstate>>
 		<<case 0>>
@@ -1529,13 +1529,13 @@
 			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">You feel breath on your <<bottom>>.</span>
 		<<case "othermouthimminent">>
 			<<set _anusOptions to "mouthImminent">><<selectNpcWithPartInPosition "mouth" "anusimminent">><<set $anustarget to _j>>
-			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<His>> lips press against your anus.</span>
+			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<combatPerson>>'s lips press against your anus.</span>
 		<<case "othermouth">>
 			<<set _anusOptions to "mouthPenetration">><<selectNpcWithPartInPosition "mouth" "anus">><<set $anustarget to _j>>
-			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<His>> tongue penetrates your <<bottom>>.</span>
+			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<combatPerson>>'s tongue penetrates your <<bottom>>.</span>
 		<<case "entrance">>
 			<<set _anusOptions to "penisEntrance">>
-			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anusentrance">><<set $anustarget to _j>><<His>> <<npcPenis _j>> hovers near your <<bottom>>.</span>
+			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anusentrance">><<set $anustarget to _j>><<combatPerson>>'s <<npcPenis _j>> hovers near your <<bottom>>.</span>
 			<<if $analdoubledisable is "f">>
 				<<getDoubleTargetList>>
 			<</if>>
@@ -1552,10 +1552,10 @@
 			<</if>>
 		<<case "imminent">>
 			<<set _anusOptions to "penisImminent">>
-			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anusimminent">><<set $anustarget to _j>><<His>> <<npcPenis _j>> presses against your anus.</span>
+			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anusimminent">><<set $anustarget to _j>><<combatPerson>>'s <<npcPenis _j>> presses against your anus.</span>
 		<<case "penetrated">>
 			<<set _anusOptions to "penisPenetration">>
-			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anus">><<set $anustarget to _j>><<His>> penis penetrates your anus.</span>
+			<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anus">><<set $anustarget to _j>><<combatPerson>>'s penis penetrates your anus.</span>
 			<<if $analdoubledisable is "f">>
 				<<getDoubleTargetList>>
 			<</if>>
@@ -1576,7 +1576,7 @@
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks hover near your <<bottom>>.</span>
 			<<elseif ($NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdoubleentrance") or ($NPCList[$anustarget].penis is "anusdoubleentrance" and $NPCList[$anusdoubletarget].penis is "anusdouble")>>
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">
-				<<selectNpcWithPartInPosition "penis" "anusdouble">><<His>> penis penetrates your anus while the other penis hovers nearby.
+				<<selectNpcWithPartInPosition "penis" "anusdouble">><<combatPerson>>'s penis penetrates your anus while the other penis hovers nearby.
 				</span>
 			<<else>>
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks hover near your <<bottom>>.</span>
@@ -1587,7 +1587,7 @@
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks press against your anus.</span>
 			<<elseif ($NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdoubleimminent") or ($NPCList[$anustarget].penis is "anusdoubleimminent" and $NPCList[$anusdoubletarget].penis is "anusdouble")>>
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">
-				<<selectNpcWithPartInPosition "penis" "anusdouble">><<His>> penis penetrates your anus while the other penis presses against the entrance.
+				<<selectNpcWithPartInPosition "penis" "anusdouble">><<combatPerson>>'s penis penetrates your anus while the other penis presses against the entrance.
 				</span>
 			<<else>>
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks press against your anus.</span>
@@ -1597,7 +1597,7 @@
 			<<if $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
 				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')">Their cocks penetrate your anus.</span>
 			<<else>>
-				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anus">><<His>> cock penetrates your anus while the other hovers nearby.</span>
+				<span @class="($lastOptions.anus isnot _anusOptions or _anusGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "anus">><<combatPerson>>'s cock penetrates your anus while the other hovers nearby.</span>
 			<</if>>
 		<<case "tentacleentrance" "tentacleimminent" "tentacle" "tentacledeep" "tentaclerub">>
 			<<set $_changetype to true>><<anusActionInitTentacle>>
@@ -1716,7 +1716,7 @@
 	<<switch $chestuse>>
 	<<case "penis">>
 		<<set _chestOptions to "penis">><<selectNpcWithPartInPosition "penis" "chest">><<set $chesttarget to _j>>
-		<span @class="($lastOptions.chest isnot _chestOptions ?'gold':'')"><<His>> penis rests <<print ($breastsize is 0 ?"against":"between")>> your <<breasts>>.</span>
+		<span @class="($lastOptions.chest isnot _chestOptions ?'gold':'')"><<combatPerson>>'s penis rests <<print ($breastsize is 0 ?"against":"between")>> your <<breasts>>.</span>
 	<<case "tentaclerub">>
 		<<set $_changetype to true>><<chestActionInitTentacle>>
 	<</switch>>
@@ -1778,10 +1778,10 @@
 		<<switch $thighuse>>
 		<<case "mouth">>
 			<<set _thighOptions to "mouth">><<selectNpcWithPartInPosition "mouth" "thigh">><<set $thightarget to _j>>
-			<span @class="($lastOptions.thigh isnot _thighOptions ?'gold':'')">You press your thigh against <<his>> mouth.</span>
+			<span @class="($lastOptions.thigh isnot _thighOptions ?'gold':'')">You press your thigh against <<combatpersons>> mouth.</span>
 		<<case "penis">>
 			<<set _thighOptions to "penis">><<selectNpcWithPartInPosition "penis" "thighs">><<set $thightarget to _j>>
-			<span @class="($lastOptions.thigh isnot _thighOptions ?'gold':'')">You hold <<his>> penis between your thighs.</span>
+			<span @class="($lastOptions.thigh isnot _thighOptions ?'gold':'')">You hold <<combatpersons>> penis between your thighs.</span>
 		<</switch>>
 
 		<<thighactions>>

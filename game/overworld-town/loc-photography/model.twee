@@ -25,7 +25,7 @@ You find two outfits behind the screen.
     <<set $photo_upper_f_index to 7>>
     <<set $photo_lower_f_index to 0>>
 <<elseif _rng is 3>>
-    There's an ballgown,
+    There's a ballgown,
     <<set $photo_upper_f_index to 9>>
     <<set $photo_lower_f_index to 0>>
 <<elseif _rng is 4>>
@@ -271,7 +271,7 @@ You put on the $worn.upper.name, and emerge from behind the screen.
 <<nnpc_He "Niki">> circles you as you hold each pose, sometimes crouching, snapping pictures from different angles.
 <br><br>
 
-Many of the shots seem awfully focused on your <<bottom>>
+Many of the shots seem awfully focused on your <<bottom>>.
 <br><br>
 
 <<link [[Remain professional|Photo Model 4]]>><<set $phase to 0>><</link>>
@@ -308,7 +308,7 @@ Many of the shots seem awfully focused on your <<bottom>>
 
 
 <<if $photo.evidence gte 1 and $photo.refused gte 1 and $enemyno gte 1>>
-    <<set $photo.refused to 0>>
+    
     "Almost done," <<he>> says. "Need something from my office. I'll be right back." <<nnpc_He "Niki">> leaves the room, taking the smaller camera with <<nnpc_him "Niki">>, but leaving the tripod.
     <br><br>
     
@@ -356,7 +356,7 @@ With Niki gone, the <<person>> walks to the tripod camera, and fishes <<his>> ph
 <</if>>
 <br><br>
 <<if $enemyno gte 3>>
-    The rest of the audience join <<him>>, crowding to peer over <<his>> shoulder.
+    The rest of the audience joins <<him>>, crowding to peer over <<his>> shoulder.
 <<elseif $enemyno is 2>>
     The other member of the audience, a <<person2>><<person>>, rushes over. "Let me see."
 <</if>>
@@ -642,7 +642,10 @@ Niki returns, carrying a stool ahead of <<nnpc_him "Niki">>. You use it as a pro
     <<set $photo.evidence to 1>>
     You step behind the screen, and remove the $worn.upper.name. Before you can dress however, <span class="purple">you hear a creek,</span> and the screen collapses, <span class="pink">exposing you to the room.</span><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
     <br><br>
-    <<upperruined>><<lowerruined>><<underruined>>
+    <<set $worn.upper to clone(setup.clothes.upper[0])>>
+	<<set $worn.lower to clone(setup.clothes.lower[0])>>
+	<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+	<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
     <<if $enemyno gte 2>>
         A cheer goes up from the still-seated audience. The light on the tripod camera is still green. <<covered>>
     <<elseif $enemyno gte 1>>
@@ -681,7 +684,7 @@ Niki returns, carrying a stool ahead of <<nnpc_him "Niki">>. You use it as a pro
 <<famemodel 20 pic>>
 You're still blushing when you emerge, now dressed, to find Niki counting out your cash.
 <<if $enemyno gte 2>>
-    The audience leer at you, but you do your best to ignore them.
+    The audience leers at you, but you do your best to ignore them.
 <<elseif $enemyno is 1>>
     The <<person>> leers at you, but you do your best to ignore <<him>>.
 <</if>>
@@ -709,7 +712,7 @@ Money in hand, you leave the studio.
 <<else>>
     <<flaunting>> you pull off your $worn.upper.name, freeing your <<breasts>>.
 <</if>>
-<<upperruined>>
+<<set $worn.upper to clone(setup.clothes.upper[0])>>
 <<if $phase is 1>>
     <br><br>
 <<else>>
@@ -717,13 +720,13 @@ Money in hand, you leave the studio.
 <</if>>
 
 <<if $enemyno gte 2>>
-    The audience watch as you strike another pose, now with your chest bare.
+    The audience watches as you strike another pose, now with your chest bare.
 <<elseif $enemyno gte 1>>
     The <<person>> watches as you strike another pose, now with your chest bare.
 <<else>>
     You strike another pose, now with your chest bare.
 <</if>>
-Niki takes more pictures, focusing your your chest and face. You feel your cheeks flush.
+Niki takes more pictures, focusing your chest and face. <<He>> remains entirely professional. You feel your cheeks flush.
 <br><br>
 
 <<link [[Next|Photo Model Topless 2]]>><</link>>
@@ -732,7 +735,7 @@ Niki takes more pictures, focusing your your chest and face. You feel your cheek
 :: Photo Model Topless 2
 <<effects>>
 
-Niki pauses. "We could wrap it up here," <<nnpc_he "Niki">> says. "But if you're down for shots in your underwear, I'll throw in another <span class="gold">£400</span>.
+Niki pauses. "We could wrap it up here," <<nnpc_he "Niki">> says. "But if you're down for shots in your underwear, I'll throw in another <span class="gold">£400</span>."
 <br><br>
 
 <<if $enemyno gte 2>>
@@ -779,12 +782,12 @@ You pull the $worn.lower.name down your legs. "Wait," Niki says. "Hold that pose
 <<else>>
     <<exhibitionism4>>
 <</if>>
-<<lowerruined>>
+<<set $worn.lower to clone(setup.clothes.lower[0])>>
 
 Niki circles you, and asks you to arch your back with your hands between your thighs. Then to sit back on the stool with one leg crossed over the other. Then to lean against the stool with your <<bottom>> stuck out.
 
 <<if $enemyno gte 2>>
-    The audience watch with barely-contained lust.
+    The audience watches with barely-contained lust.
 <<elseif $enemyno gte 1>>
     The <<person>> watches with barely-contained lust.
 <</if>>
@@ -805,14 +808,15 @@ Niki circles you, and asks you to arch your back with your hands between your th
 :: Photo Model Undies 2
 <<effects>>
 
-Niki examines the footage. "Could I tempt you to remove those $worn.under_lower.name?" <<he>> asks without looking. "There'll be an extra <span class="gold">£500</span> in it."
+Niki examines the footage. "Could I tempt you to remove those $worn.under_lower.name?" <<nnpc_he "Niki">> asks without looking. "There'll be an extra <span class="gold">£500</span> in it."
 <br><br>
 <<if $enemyno gte 2>>
-    The audience sit on the edge of their seats.
+    The members of the audience sit on the edge of their seats.
+    <br><br>
 <<elseif $enemyno is 1>>
     The <<person>> sits on the edge of <<his>> seat.
+    <br><br>
 <</if>>
-<br><br>
 
 <<if $photo.blackmail is 1>>
     That doesn't sound any better than the evidence the <<person>> is using to blackmail you.
@@ -873,7 +877,8 @@ Niki's camera clicks and flashes as you peel your $worn.under_lower.name down yo
 <<fameexhibitionism 10>>
 <<set $photo.money += 500>>
 <<set $photo.nude_footage to 1>>
-<<underruined>>
+<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
 
 You turn to let Niki snap you from different angles. <<nnpc_He "Niki">> moves fast now. Sweat soon glistens on <<nnpc_his "Niki">> forehead, lit by the white lights above.
 <br><br>
@@ -890,9 +895,9 @@ At last, Niki sighs and steps away. "Thank you," <<nnpc_he "Niki">> pants. "You 
 
 Niki closes the thick door behind <<nnpc_him "Niki">>.
 <<if $enemyno gte 3>>
-    The audience watch the door a moment, <span class="pink">then rise to to their feet and walk towards you.</span>
+    The audience watches the door a moment, <span class="pink">then rise to their feet and walk towards you.</span>
 <<else>>
-    The <<person>> and <<person2>><<person>> watch the door a moment, <span class="pink">then rise to to their feet and walk towards you.</span>
+    The <<person>> and <<person2>><<person>> watch the door a moment, <span class="pink">then rise to their feet and walk towards you.</span>
 <</if>>
 <br><br>
 

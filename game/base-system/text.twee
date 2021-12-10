@@ -309,16 +309,16 @@
 <</if>>
 <</silently>>_text_output<</widget>>
 
-<<widget "their">><<silently>>
+<<widget "their">>
 <<if $args[0] isnot undefined>>
 	<<set $_target to $args[0]>>
 	<<hisselect $_target>>
 <<elseif $enemyno gte 2 and $enemytype is "man">>
-	<<set _text_output to "their">>
+	their
 <<else>>
 	<<his>>
 <</if>>
-<</silently>>_text_output<</widget>>
+<</widget>>
 
 <<widget "ohe">><<silently>>
 <<if $enemytype is "beast">>

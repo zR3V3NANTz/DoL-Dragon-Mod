@@ -130,6 +130,7 @@
 	<<set $mirrortentacles to 0>>
 	<<set $massattended to 0>>
 	<<set $dockexhibitionism to 0>>
+	<<set $brothel_rivalry_timer -= 1>>
 	<<if $museuminterest gte 60>>
 		<<set $museuminterest -= 3>>
 	<</if>>

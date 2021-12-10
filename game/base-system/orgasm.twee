@@ -357,6 +357,8 @@
 		<</if>>
 		<<if _liquid_collection_text.length gte 3>>
 			<span class="gold">You've gathered _liquid_collection_text[0], _liquid_collection_text[1], and _liquid_collection_text[2].</span>
+		<<elseif _liquid_collection_text.length is 0>>
+			<span class="purple">You've failed to gather anything.</span>
 		<<else>>
 			<span class="gold">You've gathered <<print _liquid_collection_text.join(" and ")>>.</span>
 		<</if>>
@@ -444,11 +446,11 @@
 				<<npcincr Kylar lust 1>><<glust>>
 				<br><br>
 			<<elseif $schoolstate is "fourth" and $robinhistory is "seat">>
-				Robin politely tries to look away, but still can't avoid to peek.
+				Robin politely tries to look away, but still can't avoid a peek.
 				<<npcincr Robin lust 1>><<glust>>
 				<br><br>
 			<</if>>
-			You manage to keep yourself from moaning, but your spasms denounce your climax to the students around you. A few whispers start to run down the classroom, but are quickly shut down by <<print _teacher>>. <<He>> doesn't seem to know the reason, but understands that you are the talk of the class.
+			You manage to keep yourself from moaning, but your spasms denounce your climax to the students around you. A few whispers start to run down the classroom, but are quickly shut down by <<print _teacher>>. <<nnpc_He _teacher>> doesn't seem to know the reason, but understands that you are the talk of the class.
 			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>><<detention 1>><<gdelinquency>>
 		<<case "swimClassroom">>
 			You manage to keep quiet, so as to not draw Mason's attention. However, your spasms denounce your climax to the students around you. A few whispers start to run down the pool. <<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
@@ -478,7 +480,7 @@
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "boyChangingRoom">>
-			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+			<<if $changingroomstate is "empty">>
 				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
 			<<elseif $player.gender_appearance is "f">>
 				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
@@ -488,7 +490,7 @@
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "girlChangingRoom">>
-			<<if ["early","late","earlynoschool","latenoschool","daynoschool"].includes($schoolstate)>>
+			<<if $changingroomstate is "empty">>
 				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
 			<<elseif $player.gender_appearance is "m">>
 				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
@@ -501,7 +503,7 @@
 			<<if $daystate is "night">>
 				<<set $_quiet to "police station">>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in climax draws the attention of those in the police station. Their reaction is mixed. Some citizens filing a complaint avoid looking. Some more sketchi individuals loudly cheer you on. As you regain control of yourself, you see two officers coming in your direction. Face red, you decide it's best to flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of those in the police station. Their reaction is mixed. Some citizens filing a complaint avoid looking. Some more sketchy individuals loudly cheer you on. As you regain control of yourself, you see two officers coming in your direction. Face red, you decide it's best to flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "danceStudio">>

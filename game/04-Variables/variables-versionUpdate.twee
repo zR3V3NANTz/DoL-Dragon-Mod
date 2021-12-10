@@ -2694,7 +2694,6 @@
 		<<set $nectar_timer to 0>>
 	<</if>>
 
-		<<set $hypnotised to 0>>
 	<<if $hypnotised is undefined>>
 		<<set $hypnotised to 0>>
 		<<set $famemodel to 0>>

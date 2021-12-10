@@ -1257,7 +1257,7 @@ You are in the main hall of the orphanage.
 	<</if>>
 	<<gardenicon>><<link [[Garden (0:01)|Garden]]>><<pass 1>><</link>>
 	<br><br>
-	<<ind>><<link [[Bailey's office (0:01)|Bailey's Office]]>><<pass 1>><</link>>
+	<<officeicon>><<link [[Bailey's office (0:01)|Bailey's Office]]>><<pass 1>><</link>>
 	<br>
 	<<if $hour gte 18 and $hour lte 20 and $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40 and $robinmissing isnot 1 and !$robinTraumaVisit>>
 		<<bedroomicon>><<link [[Bedroom (0:01)|Robin Trauma Visit]]>><<set $phase to 0>><<pass 1>><</link>>

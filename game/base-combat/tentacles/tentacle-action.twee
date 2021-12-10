@@ -292,7 +292,7 @@
 		<<else>>
 			and between your thighs, <span class="blue">where the tip opens as it <<slithers>> toward your <<penis>>.</span>
 		<</if>>
-		<<neutralgenitals 3>><<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set $tentacles[$tentacleindex].head to "penisentrance">><<set $thighuse to 0>><<set $penistarget to "tentacles">>
+		<<neutralgenitals 3>><<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set $tentacles[$tentacleindex].head to "penisentrance">><<set $thighuse to 0>><<set $penistarget to "tentacles">><<set $tentaclePenis to _tentacle.fullDesc>>
 	<</if>>
 <</if>>
 <<set $rng to random(1, 100)>>
@@ -353,7 +353,7 @@
 	<<elseif $rng lte 70>>
 		<<if $player.penisExist and $penisuse is 0>>
 			<<underslither>> <span class="blue">and <<slithers>> toward your <<penis>>.</span>
-			<<neutralgenitals 2>><<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set $tentacles[$tentacleindex].head to "penisentrance">><<set $penistarget to "tentacles">>
+			<<neutralgenitals 2>><<set $penisuse to "tentacle">><<set $penisstate to "tentacleentrance">><<set $tentacles[$tentacleindex].head to "penisentrance">><<set $penistarget to "tentacles">><<set $tentaclePenis to _tentacle.fullDesc>>
 		<<else>>
 			<<tentacledefault>>
 		<</if>>
@@ -365,7 +365,7 @@
 				<<else>>
 					<<underslither>> <span class="blue">where it <<slithers>> between your thighs and against your tummy and <<penis>>.</span>
 				<</if>>
-				<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set $tentacles[$tentacleindex].head to "penisrub">><<sex 3>><<thighstat>><<set $penistarget to "tentacles">>
+				<<set $penisuse to "tentaclerub">><<set $thighuse to "tentaclerub">><<set $tentacles[$tentacleindex].head to "penisrub">><<sex 3>><<thighstat>><<set $penistarget to "tentacles">><<set $tentaclePenis to _tentacle.fullDesc>>
 			<<elseif $player.vaginaExist and $vaginause is 0>>
 				<<if $tentacles[$tentacleindex].shaft is "thighs">>
 					<<underslither>> <span class="blue">where it <<slithers>> against your tummy and <<pussy>>.</span>
