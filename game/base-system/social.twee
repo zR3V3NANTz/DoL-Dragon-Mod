@@ -436,8 +436,10 @@
 
 	The townsfolk know you as <span class="teal"><<overworld_nickname>>.</span> Those in the criminal underworld call you <span class="pink"><<underworld_nickname>>.</span>
 
-	<<if $syndromewolves is 1>>
+	<<if $syndromewolves is 1 or $dockwork gte 2>>
 		<h4>Other</h4>
+	<</if>>
+	<<if $syndromewolves is 1>>
 		<div id="other-relation-blocks">
 				Wolf pack harmony: <img id="statbar" src="img/ui/wolfharmony.png">
 				<div class="meter">
@@ -453,6 +455,23 @@
 		</div>
 	<</if>>
 
+	<<if $dockwork gte 2>>
+		<div id="other-relation-blocks">
+				Docks: 
+				<<set $dockstatus = Math.clamp($dockstatus, 0, 100)>>
+				<<if $dockstatus gte 100>>
+					<span class="green">The other workers respect you.</span>
+				<<elseif $dockstatus gte 80>>
+					<span class="teal">The other workers accept you.</span>
+				<<elseif $dockstatus gte 30>>
+					<span class="lblue">The other workers tolerate you.</span>
+				<<elseif $dockstatus gte 10>>
+					<span class="blue">The other workers view you with suspicion.</span>
+				<<else>>
+					<span class="purple">The other workers view you with contempt.</span>
+				<</if>>
+		</div>
+	<</if>>
 
 </div>
 <br>
