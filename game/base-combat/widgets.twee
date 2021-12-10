@@ -17,6 +17,8 @@
 				<<case "Great Hawk">><<earnFeat "Great Hawk the Terror">>
 				<<case "Wren">><<earnFeat "Wren the Sly">>
 				<<case "Black Wolf">><<earnFeat "Great Wolf the Alpha">>
+				<<case "Harper">><<earnFeat "Harper the Hypnotist">>
+				<<case "Morgan">><<earnFeat "Morgan the Lost">>
 			<</switch>>
 		<</if>>
 		<<if $args[0] isnot undefined and $args[0] isnot 0>>
@@ -249,7 +251,7 @@
 <<widget "selectNpcWithPartInPosition">>
 	<<if $args[0] and $args[1]>>
 		<<unset _npc>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
+		<<for _j = 0; _j lt $enemynomax; _j++>>
 			<<if $NPCList[_j][$args[0]] is $args[1]>>
 				<<personselect _j>>
 				<<set _npc to $NPCList[_j]>>
@@ -262,7 +264,7 @@
 <<widget "selectNpcWithPartInPositionAnus">>
 	<<if $args[0]>>
 		<<unset _npc>>
-		<<for _j = 0; _j lt $enemyno; _j++>>
+		<<for _j = 0; _j lt $enemynomax; _j++>>
 			<<if $NPCList[_j].penis is $args[0] or $NPCList[_j].vagina is $args[0]>>
 				<<personselect _j>>
 				<<set _npc to $NPCList[_j]>>

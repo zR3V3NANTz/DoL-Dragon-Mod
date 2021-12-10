@@ -350,7 +350,7 @@ The teenagers are happy to have a sixth player, particularly the <<person1>><<pe
 		<<if $eventcheck gte (9900 - ($allure))>>
 			<<generatey1>><<person1>>A <<person>> sits next to you and offers you a beverage.
 			<br><br>
-			<<link [[Drink (0:10)|Beach Party Chat]]>><<pass 10>><<stress -2>><<set $drunk += 60>><<set $phase to 1>><<status 1>><</link>><<gcool>><<lstress>>
+			<<link [[Drink (0:10)|Beach Party Chat]]>><<pass 10>><<stress -2>><<alcohol 60>><<set $phase to 1>><<status 1>><</link>><<gcool>><<lstress>>
 			<br>
 			<<link [[Just talk (0:10)|Beach Party Chat]]>><<pass 10>><<stress -2>><<set $phase to 1>><<status 1>><</link>><<gcool>><<lstress>>
 			<br>
@@ -367,7 +367,7 @@ The teenagers are happy to have a sixth player, particularly the <<person1>><<pe
 	<<if $rng gte 21>>
 		You enjoy talking with the <<person>>. <<He>> <<admires>> your body when <<he>> thinks you aren't looking.
 		<br><br>
-		<<link [[Drink (0:10)|Beach Party Chat]]>><<pass 10>><<stress -2>><<set $drunk += 60>><<set $phase to 1>><<status 1>><</link>><<gcool>><<lstress>>
+		<<link [[Drink (0:10)|Beach Party Chat]]>><<pass 10>><<stress -2>><<alcohol 60>><<set $phase to 1>><<status 1>><</link>><<gcool>><<lstress>>
 		<br>
 		<<link [[Just talk (0:10)|Beach Party Chat]]>><<pass 10>><<stress -2>><<set $phase to 1>><<status 1>><</link>><<gcool>><<lstress>>
 		<br>
@@ -627,8 +627,7 @@ The <<person>> leaves you. <<He>> looks dejected.
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -1031,8 +1030,7 @@ The <<person>> tries to keep <<his>> camera steady, barely managing to control <
 <<effects>>
 <<effectsman>><<man>>
 
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 
 <<stateman>>
 <br><br>

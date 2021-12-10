@@ -144,7 +144,9 @@ Filter by:
 /*Have to do this due to the `????` names*/
 <<set _listbox to '<<listbox "_upgradeNameID" autoselect>>'>>
 <<for $_i to 0; $_i lt _upgradeNames.length; $_i++>>
-	<<set _listbox += '<<option _visibleUpgradeNames[' + $_i + '] _visibleUpgradeIDs[' + $_i + ']>>'>>
+	<<if !$featsBoosts.upgradeDetails[_upgradeNames[$_i]].hidden>>
+		<<set _listbox += '<<option _visibleUpgradeNames[' + $_i + '] _visibleUpgradeIDs[' + $_i + ']>>'>>
+	<</if>>
 <</for>>
 <<set _listbox += '<</listbox>> |'>>
 <<print _listbox>>
@@ -152,6 +154,10 @@ Filter by:
 <<set _upgradeName to _upgradeNames[_upgradeNameID]>>
 <<link Previous>>
 	<<set _upgradeNameID-->>
+	<<if $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden>>
+		<<for _upgradeNameID; $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden; _upgradeNameID-->>
+		<</for>>
+	<</if>>
 	<<if _upgradeNameID lt 0>>
 		<<set _upgradeNameID to _upgradeNames.length - 1>>
 	<</if>>
@@ -160,6 +166,10 @@ Filter by:
 <</link>> |
 <<link Next>>
 	<<set _upgradeNameID++>>
+	<<if $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden>>
+		<<for _upgradeNameID; $featsBoosts.upgradeDetails[_upgradeNames[_upgradeNameID]].hidden; _upgradeNameID++>>
+		<</for>>
+	<</if>>
 	<<if _upgradeNameID gte _upgradeNames.length>>
 		<<set _upgradeNameID to 0>>
 	<</if>>
@@ -342,6 +352,24 @@ Filter by:
 		<<link "Increase by 5">><<print "<<updateFeatsPointsMenu _type " + (5 * _multi) +">>">><</link>>
 	<<else>>
 		Increase by 5
+	<</if>>
+	<<if _type is "tending">>
+		<br><br>
+		<span class="green">Green Thumb</span> - More bountiful crops and no decay when using fertiliser. Start with one fertiliser.
+		<br>
+		<span class="gold">VrelCoin cost:</span> <<print "$featsBoosts.upgradeDetails.greenThumb.cost">><br>
+		<span class="gold">Upgrades:</span> <<print $featsBoosts.upgrades.greenThumb / $featsBoosts.upgradeDetails.greenThumb.cost>>/<<print $featsBoosts.upgradeDetails.greenThumb.limit / $featsBoosts.upgradeDetails.greenThumb.cost>>
+		<br>
+		<<if $feats.allSaves.points - $featsBoosts.pointsUsed gte $featsBoosts.upgradeDetails.greenThumb.cost and !$featsBoosts.upgrades.greenThumb>>
+			<<link "Start with this trait">><<print "<<updateFeatsPointsMenu greenThumb $featsBoosts.upgradeDetails.greenThumb.cost>>">><</link>> |
+		<<else>>
+			Start with this trait |
+		<</if>>
+		<<if $featsBoosts.upgrades.greenThumb>>
+			<<link "Remove this trait">><<print "<<updateFeatsPointsMenu greenThumb " + (-1 * $featsBoosts.upgradeDetails.greenThumb.cost) + ">>">><</link>> |
+		<<else>>
+			Remove this trait |
+		<</if>>
 	<</if>>
 <</capture>>
 <</widget>>

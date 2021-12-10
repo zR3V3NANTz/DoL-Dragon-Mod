@@ -86,18 +86,10 @@
 		<</switch>>
 	<</if>>
 	<<if $awarelevel gte 2 and $enemytype is "man">>
-		<<if $enemyno gte 1>>
-			<<if $consensual is 1>>
-				<<set _mouthaction["Tease their "] to "mock">>
-			<<else>>
-				<<set _mouthaction["Mock their "] to "mock">>
-			<</if>>
+		<<if $consensual is 1>>
+			<<set _mouthaction["Tease " + $NPCList[$mouthtarget].pronouns.his] to "mock">>
 		<<else>>
-			<<if $consensual is 1>>
-				<<set _mouthaction["Tease " + $NPCList[0].pronouns.his] to "mock">>
-			<<else>>
-				<<set _mouthaction["Mock " + $NPCList[0].pronouns.his] to "mock">>
-			<</if>>
+			<<set _mouthaction["Mock " + $NPCList[$mouthtarget].pronouns.his] to "mock">>
 		<</if>>
 	<</if>>
 <</if>>

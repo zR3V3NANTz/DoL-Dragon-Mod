@@ -78,7 +78,7 @@ You sit near the <<person>> and smile at <<him>>.
 		You can't bring yourself to drink while you know you’re with child.
 		<br>
 	<<else>>
-		<<link [[Accept (0:20)|Pub Drink]]>><<set $drunk += 200>><<pass 20>><<set $pubdrink to 2000>><</link>> | <span class="red">+ + Alcohol</span>
+		<<link [[Accept (0:20)|Pub Drink]]>><<alcohol 200>><<pass 20>><<set $pubdrink to 2000>><</link>> | <span class="red">+ + Alcohol</span>
 		<br>
 	<</if>>
 	<<link [[Say goodbye|Pub]]>><<endevent>><</link>>
@@ -250,7 +250,7 @@ You lean over and whisper something into the <<persons>> ear.
 		<<He>> laughs. "You're an interesting one. I think you need another drink."
 		<br><br>
 
-		<<link [[Accept (0:20)|Pub Drink]]>><<set $drunk += 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
+		<<link [[Accept (0:20)|Pub Drink]]>><<alcohol 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
 		<br>
 		<<link [[Refuse|Pub]]>><<endevent>><</link>>
 		<br>
@@ -450,7 +450,7 @@ You lean over and whisper something into the <<persons>> ear.
 			<<link [[Seduce (0:01)|Pub Seduce]]>><<pass 1>><</link>><<promiscuous2>>
 			<br>
 		<</if>>
-		<<link [[Accept (0:20)|Pub Drink]]>><<set $drunk += 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
+		<<link [[Accept (0:20)|Pub Drink]]>><<alcohol 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
 		<br>
 		<<link [[Say goodbye|Pub]]>><<endevent>><</link>>
 		<br>
@@ -464,7 +464,7 @@ You lean over and whisper something into the <<persons>> ear.
 		<<link [[Seduce (0:01)|Pub Seduce]]>><<pass 1>><</link>><<promiscuous2>>
 		<br>
 		<</if>>
-		<<link [[Accept (0:20)|Pub Drink]]>><<set $drunk += 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
+		<<link [[Accept (0:20)|Pub Drink]]>><<alcohol 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
 		<br>
 		<<link [[Say goodbye|Pub]]>><<endevent>><</link>>
 		<br>
@@ -477,7 +477,7 @@ You lean over and whisper something into the <<persons>> ear.
 			<<link [[Seduce (0:01)|Pub Seduce]]>><<pass 1>><</link>><<promiscuous2>>
 			<br>
 		<</if>>
-		<<link [[Accept (0:20)|Pub Drink]]>><<set $drunk += 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
+		<<link [[Accept (0:20)|Pub Drink]]>><<alcohol 200>><<pass 20>><<set $pubdrink += 2000>><</link>> | <span class="red">+ + Alcohol</span>
 		<br>
 		<<link [[Say goodbye|Pub]]>><<endevent>><</link>>
 		<br>
@@ -853,19 +853,24 @@ You knock <<him>> into the stall door, which <<he>> crashes through. <<tearful>>
 	<br>
 
 	<<else>>
-		<<if $wraith and $wraith.state is "haunt" and (($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) or $rng is 50)>>
+		<<rngWraith>>
+		<<if $wraith and _wraithEvent and $wraith.state is "haunt">>
 			You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
 			<br><br>
 
-			<<link [[Eat the pill|Pub Wraith Mimic Hallucinogen]]>><<set $hallucinogen += 240>><<set $drugged += 180>><</link>>
+			<<link [[Eat the pill|Pub Wraith Mimic Hallucinogen]]>><<set $hallucinogen += 240>><<drugs 180>><</link>>
 			<br>
-			<<link [[Refuse|Pub Wraith Mimic Refuse]]>><</link>>
+			<<if $hallucinations gte 1>>
+				<<link [[Refuse|Pub Wraith Mimic Refuse]]>><</link>>
+			<<else>>
+				<<link [[Refuse|Pub Pill Refuse]]>><</link>>
+			<</if>>
 			<br>		
 		<<elseif $cow isnot 6 or random(1, 2) is 2>>
 			You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
 			<br><br>
 
-			<<link [[Eat the pill|Pub Pill]]>><<set $drugged += 180>><</link>>
+			<<link [[Eat the pill|Pub Pill]]>><<drugs 180>><</link>>
 			<br>
 			<<link [[Refuse|Pub Pill Refuse]]>><</link>>
 			<br>
@@ -873,26 +878,29 @@ You knock <<him>> into the stall door, which <<he>> crashes through. <<tearful>>
 			You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a white pill. "You'll like it. I promise."
 			<br><br>
 
-			<<link [[Eat the pill|Pub White Pill]]>><<set $drugged += 180>><</link>>
+			<<link [[Eat the pill|Pub White Pill]]>><<drugs 180>><</link>>
 			<br>
 			<<link [[Refuse|Pub White Pill Refuse]]>><</link>>
 			<br>
 		<</if>>
 	<</if>>
 <<else>>
-	<<if $wraith and $wraith.state is "haunt" and (($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6) or $rng lte 2)>>
+	<<rngWraith>>
+	<<if $wraith and _wraithEvent and $wraith.state is "haunt">>
 		You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
 		<br><br>
 
-		<<link [[Eat the pill|Pub Wraith Mimic Hallucinogen]]>><<set $drugged += 180>><<set $hallucinogen += 240>><</link>>
-		<br>
-		<<link [[Refuse|Pub Wraith Mimic Refuse]]>><</link>>
+		<<if $hallucinations gte 1>>
+			<<link [[Refuse|Pub Wraith Mimic Refuse]]>><</link>>
+		<<else>>
+			<<link [[Refuse|Pub Pill Refuse]]>><</link>>
+		<</if>>
 		<br>
 	<<elseif $cow isnot 6 or random(1, 2) is 2>>
 		You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a pink pill. "You'll like it. I promise."
 		<br><br>
 
-		<<link [[Eat the pill|Pub Pill]]>><<set $drugged += 180>><</link>>
+		<<link [[Eat the pill|Pub Pill]]>><<drugs 180>><</link>>
 		<br>
 		<<link [[Refuse|Pub Pill Refuse]]>><</link>>
 		<br>
@@ -900,7 +908,7 @@ You knock <<him>> into the stall door, which <<he>> crashes through. <<tearful>>
 		You disappear with <<him>> into the forest. Shortly after <<he>> turns to you. "I always loved this forest," <<he>> says. "I have something for you." <<He>> holds out <<his>> hand, showing you a white pill. "You'll like it. I promise."
 		<br><br>
 
-		<<link [[Eat the pill|Pub White Pill]]>><<set $drugged += 180>><</link>>
+		<<link [[Eat the pill|Pub White Pill]]>><<drugs 180>><</link>>
 		<br>
 		<<link [[Refuse|Pub White Pill Refuse]]>><</link>>
 		<br>

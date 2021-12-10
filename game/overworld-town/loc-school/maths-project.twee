@@ -273,7 +273,7 @@ You take the stimulant, sit down, and get to work.
 <br><br>
 <<if $mathsstimused is 2 or $mathsstimused gte 4 and $rng gte 75>>
 	You sit back and admire your work. You feel a strange heat just beneath your skin. It grows and spreads through your body, concentrated on your loins. Lewd fantasies force themselves into your mind. Within moments, your cheeks are flushed and you find yourself squirming with desire. That dose must have been contaminated by a concentrated aphrodisiac.
-	<<gggarousal>><<arousal 10000>><<set $drugged += 500>>
+	<<gggarousal>><<arousal 10000>><<drugs 500>>
 	<br><br>
 	Your hands wander between your legs in an instinctive attempt to satisfy your burning desire. But the stimulation from touching yourself is too strong to bear. The pleasure shoots through you, painfully intense. Your hands recoil, and your whole body convulses as your vision whites out. The aftershocks leave you trembling. There's no way you'll be able to use your hands to comfort yourself.
 	<br><br>
@@ -307,7 +307,7 @@ You take the stimulant, sit down, and get to work.
 	<<set $mathsstimrobin to 1>>
 	<<npc Robin>><<person1>>
 	You sit back and admire your work. You feel a strange heat just beneath your skin. Your visions blurs, and everything fades to black.
-	<<ggarousal>><<arousal 1800>><<set $drugged += 120>><<set $hallucinogen += 120>>
+	<<ggarousal>><<arousal 1800>><<drugs 120>><<set $hallucinogen += 120>>
 	<br><br>
 	You awaken to someone shaking your arm. You're still in your room, lying on your bed. Robin sits beside you, frowning.
 	<br><br>
@@ -323,7 +323,7 @@ You take the stimulant, sit down, and get to work.
 	<br>
 <<else>>
 	You sit back and admire your work. You feel a strange heat just beneath your skin.
-	<<ggarousal>><<arousal 1800>><<set $drugged += 120>><<set $hallucinogen += 120>>
+	<<ggarousal>><<arousal 1800>><<drugs 120>><<set $hallucinogen += 120>>
 	<br><br>
 	<<if $mathsproject is "ongoing">>
 		<<link [[Next|Maths Project]]>><</link>>
@@ -879,7 +879,7 @@ Inside is a table covered with cider cans and playing cards. As if a game were i
 
 	<<if $pain gt 90>>
 		"<<pShes>> gonna pass out," you hear someone say. "Give <<phim>> a dose." A hand yanks your head back by your hair, and another forces a pink pill into your mouth.
-		<<garousal>><<lpain>><<set $drugged += 60>><<set $pain to 90>>
+		<<garousal>><<lpain>><<drugs 60>><<set $pain to 90>>
 		<br><br>
 	<</if>>
 <</if>>

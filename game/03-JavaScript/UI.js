@@ -323,29 +323,24 @@ window.settingsAsphyxiation = function () {
 			case 0:
 				text = "Don't touch my neck!"; break;
 			case 1:
-				text = "NPCs may <span class='blue' style='margin-left: unset; min-width: unset;'>grab</span> you by the neck. Doesn't impede breathing."; break;
+				text = "NPCs may <span class='blue inline-colour'>grab</span> you by the neck. Doesn't impede breathing."; break;
 			case 2:
-				text = "NPCs may try to <span class='purple' style='margin-left: unset; min-width: unset;'>choke</span> you during consensual intercourse."; break;
+				text = "NPCs may try to <span class='purple inline-colour'>choke</span> you during consensual intercourse."; break;
 			case 3:
-				text = "NPCs may try to <span class='red' style='margin-left: unset; min-width: unset;'>strangle</span> you during non-consensual intercourse."; break;
+				text = "NPCs may try to <span class='red inline-colour'>strangle</span> you during non-consensual intercourse."; break;
 			case 4:
-				text = "NPCs will <span class='red' style='margin-left: unset; min-width: unset;'>often</span> try to <span class='red' style='margin-left: unset; min-width: unset;'>strangle</span> you during non-consensual intercourse."; break;
+				text = "NPCs will <span class='red inline-colour'>often</span> try to <span class='red inline-colour'>strangle</span> you during non-consensual intercourse."; break;
 
 			default:
 				text = "Error: bad value: " + val;
 				val = 0;
 		}
-		jQuery('#numberslider-value-asphyxialvl').text('').append(text).addClass('small-description')
-												 .css('text-align', 'left')
-												 .css('margin-left', '-7em');
+		jQuery('#numberslider-value-asphyxialvl').text('').append(text).addClass('small-description');
 	};
+	
 	jQuery(document).ready(() => {
 		updateText();
-		jQuery('#numberslider-input-asphyxialvl').on('input change', function (e) { updateText(); })
-												 .css('width', '83%')
-												 .css('min-height', 'unset')
-												 .css('height', '0.75em')
-												 .css('margin-left', '1em');
+		jQuery('#numberslider-input-asphyxialvl').on('input change', function (e) { updateText(); });
 	});
 }
 
@@ -355,27 +350,54 @@ window.settingsNudeGenderAppearance = function () {
 		let text = null;
 		switch (val) {
 			case 0:
-				text = "NPCs will <span class='blue' style='margin-left: unset; min-width: unset;'>ignore</span> your genitals when perceiving your gender."; break;
+				text = "NPCs will <span class='blue inline-colour'>ignore</span> your genitals when perceiving your gender."; break;
 			case 1:
-				text = "NPCs will <span class='purple' style='margin-left: unset; min-width: unset;'>consider</span> your genitals when perceiving your gender."; break;
+				text = "NPCs will <span class='purple inline-colour'>consider</span> your genitals when perceiving your gender."; break;
 			case 2:
-				text = "NPCs will <span class='red' style='margin-left: unset; min-width: unset;'>judge</span> your gender based on your genitals."; break;
+				text = "NPCs will <span class='red inline-colour'>judge</span> your gender based on your genitals."; break;
 
 			default:
 				text = "Error: bad value: " + val;
 				val = 0;
 		}
 		jQuery('#numberslider-value-nudegenderdc').text('').append(text).addClass('small-description')
-												 .css('text-align', 'left')
-												 .css('margin-left', '1em');
+		                                          .css('margin-left', '1em');
 	};
+
 	jQuery(document).ready(() => {
 		updateText();
 		jQuery('#numberslider-input-nudegenderdc').on('input change', function (e) { updateText(); })
-												 .css('width', '100%')
-												 .css('min-height', 'unset')
-												 .css('height', '0.75em')
-												 .css('margin-left', '1em');
+		                                          .css('width', '100%');
+	});
+}
+
+window.settingsBodywriting = function () {
+	let updateText = () => {
+		let val = V.bodywritingLvl;
+		let text = null;
+		switch (val) {
+			case 0:
+				text = "NPCs may <span class='green inline-colour'>not</span> write on you."; break;
+			case 1:
+				text = "NPCs may <span class='blue inline-colour'>ask</span> to write on you."; break;
+			case 2:
+				text = "NPCs may <span class='purple inline-colour'>forcibly</span> write on you."; break;
+			case 3:
+				text = "NPCs may <span class='red inline-colour'>forcibly</span> write on and <span class='red inline-colour'>tattoo</span> you."; break;
+			default:
+				text = "Error: bad value: " + val;
+				val = 0;
+		}
+		// delete the below code when $bodywritingdisable is fully replaced by $bodywritingLvl
+		V.bodywritingdisable = "f";
+		if (val == 0) V.bodywritingdisable = "t";
+
+		jQuery('#numberslider-value-bodywritinglvl').text('').append(text).addClass('small-description');
+	};
+
+	jQuery(document).ready(() => {
+		updateText();
+		jQuery('#numberslider-input-bodywritinglvl').on('input change', function (e) { updateText(); });
 	});
 }
 
@@ -420,10 +442,22 @@ window.settingsPCGenderUpdate = function () {
 	let updateButtonsActive = () => {
 		jQuery('[id*=radiobutton-penissize]').prop("disabled", V.player.gender == "f");
 		jQuery('[id*=radiobutton-playerballsexist]').prop("disabled", V.player.gender !== "h");
+		jQuery('[id*=radiobutton-background-8]').prop("disabled", V.player.gender == "h");
 	};
 
 	jQuery(document).ready(() => {
 		updateButtonsActive();
 		jQuery('.playergender [id*=radiobutton-playergender]').on('change', function (e) { updateButtonsActive(); });
 	});
+}
+
+window.settingsDoubleAnalToggleGreyOut = function() {
+    let updateButtonsActive = () => {
+        jQuery('[id*=checkbox-analdoubledisable]').prop("disabled", V.analdisable == "t");
+    };
+
+    jQuery(document).ready(() => {
+        updateButtonsActive();
+        jQuery('[id*=checkbox-analdisable]').on('change', function (e) { updateButtonsActive(); });
+    });
 }

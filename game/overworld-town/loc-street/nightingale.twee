@@ -36,11 +36,21 @@ You are on Nightingale Street. It is dominated by the civic hospital but there a
 		<</if>>
 		Places of interest
 		<br>
-		<<link [[Hospital (0:01)->Hospital front]]>><<pass 1>><</link>>
+		<<hospitalicon>><<link [[Hospital (0:01)->Hospital front]]>><<pass 1>><</link>>
 		<br>
-		<<if $chef_state is 4 and $exposed lte 0>>
-			<<link [[Photography studio (3:00)|Photography Chef]]>><</link>>
-			<br>
+		<<if $exposed lte 0>>
+			<<if $chef_state is 4>>
+				<<photographystudioicon>><<link [[Photography studio (3:00)|Photography Chef]]>><</link>>
+				<br>
+			<<elseif $daystate is "day">>
+				<<if $photo_known is 1>>
+					<<photographystudioicon>><<link [[Photography studio|Photo Entrance]]>><<pass 1>><</link>>
+					<br>
+				<<elseif $photo_known gte 2>>
+					<<photographystudioicon>><<link [[Photography Studio|Photo]]>><<pass 1>><</link>>
+					<br>
+				<</if>>
+			<</if>>
 		<</if>>
 		<<if $nextPassageCheck is "Forest">>
 			<span class="nextLink"><<foresticon>><<link [[Forest.|Forest]]>><</link>></span>

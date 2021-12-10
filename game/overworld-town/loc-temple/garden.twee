@@ -45,13 +45,17 @@ The garden looks <span class="red">wild,</span> barely a garden at all. The hedg
 			<br>
 		<<elseif $temple_garden lt 100>>
 			<<link [[Work in the garden (1:00)|Temple Garden Work]]>>
-			<<if $tending gte 800>>
+			<<if currentSkillValue('tending') gte 1500>>
+				<<set $temple_garden += 9>>
+			<<elseif currentSkillValue('tending') gte 1200>>
+				<<set $temple_garden += 8>>
+			<<elseif currentSkillValue('tending') gte 800>>
 				<<set $temple_garden += 7>>
-			<<elseif $tending gte 600>>
+			<<elseif currentSkillValue('tending') gte 600>>
 				<<set $temple_garden += 6>>
-			<<elseif $tending gte 400>>
+			<<elseif currentSkillValue('tending') gte 400>>
 				<<set $temple_garden += 5>>
-			<<elseif $tending gte 200>>
+			<<elseif currentSkillValue('tending') gte 200>>
 				<<set $temple_garden += 4>>
 			<<else>>
 				<<set $temple_garden += 3>>
@@ -78,7 +82,7 @@ The garden looks <span class="red">wild,</span> barely a garden at all. The hedg
 <<if $rng gte 81>>
 You ask a priest what work needs doing around the garden. You're asked to trim a row of hedges. You take a pair of shears and get to work.
 <br><br>
-	<<if $danger gte (9900 - $allure) and $tentacledisable is "f" and $hallucinations gte 2>>
+	<<if $danger gte (9900 - $allure) and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 		<<tending_text>> It's hard going, but you neaten things up a great deal. <<physique 6>>
 		<br><br>
 		You're reaching in to cut a rogue branch when your wrist gets stuck. You reach your other hand in to help free yourself, and that gets stuck too. You feel something wrap around both ankles. A force pulls you off your feet and into the hedge.
@@ -97,10 +101,10 @@ You ask a priest what work needs doing around the garden. You're asked to trim a
 		<br>
 	<</if>>
 <<elseif $rng gte 61>>
-You ask a priest what work needs doing around the garden. You're asked to deweed the flower beds. You drop to your knees and get to work.
-<br><br>
-	<<if $danger gte (9900 - $allure)>><!-- Modified for Beast People -->
+	You ask a priest what work needs doing around the garden. You're asked to deweed the flower beds. You drop to your knees and get to work.
+	<br><br>
 	<<beastNEWinit 1 wolf>>
+	<<if $danger gte (9900 - $allure) and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 		<<tending_text>> Your hands get dirty, and beads of sweat slip down your cheek, but the flowers have lots more space when you're done. <<physique 6>>
 		<br><br>
 			<<if $syndromewolves is 1>>
@@ -125,7 +129,7 @@ You ask a priest what work needs doing around the garden. You're asked to deweed
 		<<tending_text>> Your hands get dirty, and beads of sweat slip down your cheek, but the flowers have lots more space when you're done. <<physique 6>>
 		<br><br>
 
-		<<link [[Next|Temple Garden]]>><</link>>
+		<<link [[Next|Temple Garden]]>><<endevent>><</link>>
 		<br>
 	<</if>>
 <<elseif $rng gte 41>>
@@ -227,10 +231,10 @@ You find <<him>> tending to a row of trellises, each bearing a vibrant bine of h
 	<br><br>
 
 	<<if $danger gte (9900 - $allure) and $grace lt 0 or $danger gte (9900 - $allure) and random(1, 10) is 10>>
-		<<link [[Drink|Temple Drink Drugged]]>><<set $drunk += 180>><<set $drugged += 180>><</link>>
+		<<link [[Drink|Temple Drink Drugged]]>><<alcohol 180>><<drugs 180>><</link>>
 		<br>
 	<<else>>
-		<<link [[Drink|Temple Drink]]>><<set $drunk += 180>><</link>>
+		<<link [[Drink|Temple Drink]]>><<alcohol 180>><</link>>
 		<br>
 	<</if>>
 	<<link [[Refuse|Temple Drink Refuse]]>><<grace -1 monk>><</link>><<lgrace monk>>
@@ -615,7 +619,6 @@ You hear muffled laughter, then a grinding sound. "I said it was a dead end <<gi
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -837,8 +840,8 @@ You keep low as you move between hedges, peeking around each corner before makin
 <</if>>
 <br><br>
 <<set $rng to random(1, 100)>>
-<<if $rng gte 51>><!-- Modified for Beast People -->
-	<<beastNEWinit 1 wolf>>
+<<beastNEWinit 1 wolf>>
+<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 	You hear something behind you.
 	<<if $syndromewolves is 1>>
 		A <<beasttype>> emerges from beneath a hedge, a bundle of cloth in its maw.
@@ -857,6 +860,7 @@ You keep low as you move between hedges, peeking around each corner before makin
 		<br>
 	<</if>>
 <<else>>
+	<<endevent>>
 	<<generate1>><<generate2>>
 	You see a nun's habit hanging on a line <<if $weather is "rain">>that's been shifted out of the rain in haste<<elseif $weather is "snow">>that's been shifted out of the snow in haste<<else>>above a bed of flowers<</if>>. There are some towels on the same line. The towels are closer. A <<person1>><<person>> and <<person2>><<person>>, each wearing a habit, are tending to a flower bed nearby. Their backs are turned.
 	<br><br>

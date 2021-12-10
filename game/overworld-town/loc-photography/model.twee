@@ -1,0 +1,1050 @@
+:: Photo Model
+<<effects>>
+
+You follow Niki up a flight of steps, into a large room dominated by a white screen. Several lights and a single camera wait.
+<br><br>
+
+<<set $photo.money to 450>>
+
+
+"Clothes are over there," Niki says, pointing at a screen near the corner.
+
+<<if $worn.face.type.includes("mask")>>
+    "I'd recommend removing the mask. Earning a reputation might open new opportunities for you."
+<</if>>
+<br><br>
+
+You find two outfits behind the screen.
+<<set _rng to random(1, 9)>>
+<<if _rng is 1>>
+    There's a sundress, 
+    <<set $photo_upper_f_index to 1>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 2>>
+    There's an evening gown,
+    <<set $photo_upper_f_index to 7>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 3>>
+    There's a ballgown,
+    <<set $photo_upper_f_index to 9>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 4>>
+    There's a kimono,
+    <<set $photo_upper_f_index to 10>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 5>>
+    There's a mini kimono,
+    <<set $photo_upper_f_index to 11>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 6>>
+    There's a gingham dress,
+    <<set $photo_upper_f_index to 38>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 7>>
+    There's a cheongsam,
+    <<set $photo_upper_f_index to 46>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 8>>
+    There's a short cheongsam dress,
+    <<set $photo_upper_f_index to 47>>
+    <<set $photo_lower_f_index to 0>>
+<<elseif _rng is 9>>
+    There's a keyhole dress,
+    <<set $photo_upper_f_index to 84>>
+    <<set $photo_lower_f_index to 0>>
+<</if>>
+and a
+<<set _rng to random(1, 5)>>
+<<if _rng is 1>>
+    tuxedo.
+    <<set $photo_upper_m_index to 15>>
+    <<set $photo_lower_m_index to 16>>
+<<elseif _rng is 2>>
+    black leather jacket.
+    <<set $photo_upper_m_index to 40>>
+    <<set $photo_lower_m_index to 23>>
+<<elseif _rng is 3>>
+    brown leather jacket.
+    <<set $photo_upper_m_index to 41>>
+    <<set $photo_lower_m_index to 23>>
+<<elseif _rng is 4>>
+    dress shirt.
+    <<set $photo_upper_m_index to 37>>
+    <<set $photo_lower_m_index to 23>>
+<<elseif _rng is 5>>
+    karate outfit.
+    <<set $photo_upper_m_index to 55>>
+    <<set $photo_lower_m_index to 50>>
+<</if>>
+<br><br>
+
+There's also a pair of lace panties, and a pair of briefs.
+<<set $photo_under_f_index to 3>>
+<<set $photo_under_m_index to 4>>
+<<exhibitionism1>>
+
+<<if $worn.face.type.includes("mask")>>
+    <<link [[Keep mask on and wear the feminine outfit|Photo Model 2]]>>
+        <<undressKeepFace "photo">>
+        <<set $photo_upper_index to $photo_upper_f_index>>
+        <<set $photo_lower_index to $photo_lower_f_index>>
+        <<set $photo_under_index to $photo_under_f_index>>
+        <<underlowerwear $photo_under_index>>
+        <<lowerwear $photo_lower_index>>
+        <<upperwear $photo_upper_index>>
+    <</link>>
+    <br>
+    <<link [[Keep mask on and wear the masculine outfit|Photo Model 2]]>>
+        <<undressKeepFace "photo">>
+        <<set $photo_upper_index to $photo_upper_m_index>>
+        <<set $photo_lower_index to $photo_lower_m_index>>
+        <<set $photo_under_index to $photo_under_m_index>>
+        <<underlowerwear $photo_under_index>>
+        <<lowerwear $photo_lower_index>>
+        <<upperwear $photo_upper_index>>
+    <</link>>
+    <br><br>
+
+    <<link [[Strip everything and wear the feminine outfit|Photo Model 2]]>>
+        <<undress "photo">>
+        <<set $photo_upper_index to $photo_upper_f_index>>
+        <<set $photo_lower_index to $photo_lower_f_index>>
+        <<set $photo_under_index to $photo_under_f_index>>
+        <<underlowerwear $photo_under_index>>
+        <<lowerwear $photo_lower_index>>
+        <<upperwear $photo_upper_index>>
+    <</link>>
+    <br>
+    <<link [[Strip everything and wear the masculine outfit|Photo Model 2]]>>
+        <<undress "photo">>
+        <<set $photo_upper_index to $photo_upper_m_index>>
+        <<set $photo_lower_index to $photo_lower_m_index>>
+        <<set $photo_under_index to $photo_under_m_index>>
+        <<underlowerwear $photo_under_index>>
+        <<lowerwear $photo_lower_index>>
+        <<upperwear $photo_upper_index>>
+    <</link>>
+    <br><br>
+<<else>>
+    <<link [[Wear the feminine outfit|Photo Model 2]]>>
+        <<undress "photo">>
+        <<set $photo_upper_index to $photo_upper_f_index>>
+        <<set $photo_lower_index to $photo_lower_f_index>>
+        <<set $photo_under_index to $photo_under_f_index>>
+        <<underlowerwear $photo_under_index>>
+        <<lowerwear $photo_lower_index>>
+        <<upperwear $photo_upper_index>>
+    <</link>>
+    <br>
+    <<link [[Wear the masculine outfit|Photo Model 2]]>>
+        <<undress "photo">>
+        <<set $photo_upper_index to $photo_upper_m_index>>
+        <<set $photo_lower_index to $photo_lower_m_index>>
+        <<set $photo_under_index to $photo_under_m_index>>
+        <<underlowerwear $photo_under_index>>
+        <<lowerwear $photo_lower_index>>
+        <<upperwear $photo_upper_index>>
+    <</link>>
+    <br><br>
+<</if>>
+
+:: Photo Model 2
+<<effects>>
+<<endevent>>
+You put on the $worn.upper.name, and emerge from behind the screen.
+<<if random(1, 2) is 2 and $famemodel gte 100>>
+    <<if $photo.fame_stage gte 11>>
+        <<set $photo.fame_stage to 12>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>><<generate4>><<generate5>><<generate6>>
+         <<person1>>Six <<people>> sit to one side once again, watching you. One of them, a <<person>>, licks <<his>> lips.
+    <<elseif $photo.fame_stage is 10 and $famemodel gte 600>>
+        <<set $photo.fame_stage to 11>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>><<generate4>><<generate5>><<generate6>>
+         <<person1>>Six <<people>> sit to one side, watching you. One of them, a <<person>>, chats with the <<person2>><<person>> beside <<person1>><<him>>, but watches you all the while.
+    <<elseif $photo.fame_stage is 9>>
+        <<set $photo.fame_stage to 10>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>><<generate4>><<generate5>>
+         <<person1>>Five <<people>> sit to one side once again, chatting. One of them, a <<person>>, watches you without breaking conversation.
+    <<elseif $photo.fame_stage is 8 and $famemodel gte 500>>
+        <<set $photo.fame_stage to 9>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>><<generate4>><<generate5>>
+         <<person1>>Five <<people>> sit to one side, chatting. One of them, a <<person>>, watches you without breaking conversation.
+    <<elseif $photo.fame_stage is 7>>
+        <<set $photo.fame_stage to 8>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>><<generate4>>
+         <<person1>>Four <<people>> sit to one side once again, watching you. One of them, a <<person>>, sips from a glass of wine.
+    <<elseif $photo.fame_stage is 6 and $famemodel gte 400>>
+        <<set $photo.fame_stage to 7>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>><<generate4>>
+         <<person1>>Four <<people>> sit to one side, watching you. One, a <<person>>, combs <<his>> hair while staring at your <<bottom>>.
+    <<elseif $photo.fame_stage is 5>>
+        <<set $photo.fame_stage to 6>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>>
+         <<person1>>Three <<people>> sit to one side once again, watching you. One, a <<person>>, openly leers.
+    <<elseif $photo.fame_stage is 4 and $famemodel gte 300>>
+        <<set $photo.fame_stage to 5>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>><<generate3>>
+        <<person1>>Three <<people>> sit to one side, watching you. The <<person>> sitting in the middle grins.
+    <<elseif $photo.fame_stage is 3>>
+        <<set $photo.fame_stage to 4>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>>
+        A <<person1>><<person>> and <<person2>><<person>> sit to one side of the studio, chatting as they watch you.<<person1>>
+    <<elseif $photo.fame_stage is 2 and $famemodel gte 200>>
+        <<set $photo.fame_stage to 3>>
+        <<set $photo.money += 50>>
+        <<generate1>><<generate2>>
+        A <<person1>><<person>> and <<person2>><<person>> sit to one side of the studio, chatting. They stop and look at you, their eyes flicking over your body.<<person1>>
+    <<elseif $photo.fame_stage is 1>>
+        <<set $photo.fame_stage to 2>>
+        <<set $photo.money += 50>>
+        <<generate1>>
+        There's a <<person1>><<person>> sat to one side of the studio. <<He>> grins at you.
+    <<else>>
+        <<set $photo.fame_stage to 1>>
+        <<set $photo.money += 50>>
+        <<generate1>>
+        You're surprised by a <<person1>><<person>> sat to one side of the studio. Niki follows your eyes. "Photoshoots are sometimes observed by others in the industry," <<nnpc_he "Niki">> says. "It's normal. You get an extra <span class="gold">£50</span> per person. There'll be more interest as you become better known."
+        <br><br>
+
+        The <<person>> grins at you.
+    <</if>>
+        <br><br>
+
+    <<link [[Continue with audience|Photo Model 3]]>><</link>>
+    <br>
+    <<link [[Refuse an audience|Photo Model Refuse]]>><<npcincr Niki love -1>><</link>><<llove>>
+    <br>
+<<else>>
+    You find Niki adjusting a tripod camera. "Almost ready." <<nnpc_He "Niki">> glances at your outfit. "There." <<nnpc_He "Niki">> steps away from the tripod, and lifts another camera from a table.
+    <br><br>
+
+    <<nnpc_He "Niki">> readies the camera, and asks you to pose.
+    <br><br>
+
+    <<link [[Follow instruction|Photo Model 3]]>><<set $phase to 0>><</link>>
+    <br>
+    <<link [[Add your own flair|Photo Model 3]]>><<set $phase to 1>><</link>>
+    <br>
+<</if>>
+
+:: Photo Model Refuse
+<<effects>>
+
+<<if $submissive gte 1150>>
+    "I-I'm sorry," you say. "But I won't do this with an audience."
+<<elseif $submissive lte 850>>
+    "I don't trust this," you say. "I'm not playing along."
+<<else>>
+    "I'm not comfortable with an audience," you say.
+<</if>>
+<br><br>
+
+<<if $enemyno gte 2>>
+    Niki nods, and points at the door. No one complains as they traipse out.
+<<else>>
+    Niki nods, and points at the door. The <<person>> complains, but doesn't argue as <<he>> traipses out.
+<</if>>
+<br><br>
+
+<<link [[Next|Photo Model 3]]>><<endevent>><</link>>
+<br>
+
+:: Photo Model 3
+<<effects>>
+
+<<if $phase is 0>>
+    You follow Niki's instructions to the letter.
+<<elseif $phase is 1>>
+    You take Niki's instructions as a guideline, and do your own thing when the urge strikes you. Niki seems neither impressed nor bothered.
+<<else>>
+    Niki gives you instructions.
+<</if>>
+<<nnpc_He "Niki">> circles you as you hold each pose, sometimes crouching, snapping pictures from different angles.
+<br><br>
+
+Many of the shots seem awfully focused on your <<bottom>>.
+<br><br>
+
+<<link [[Remain professional|Photo Model 4]]>><<set $phase to 0>><</link>>
+<br>
+<<link [[Complain|Photo Model 4]]>><<def 1>><<set $phase to 1>><</link>>
+<br>
+<<if $exhibitionism gte 15>>
+    <<link [[Flaunt|Photo Model 4]]>><<set $phase to 2>><</link>><<exhibitionist2>>
+<</if>>
+<br>
+
+:: Photo Model 4
+<<effects>>
+
+<<if $phase is 0>>
+    You endure it. This is just something you'll have to put up with. Niki continues snapping away.
+    <br><br>
+<<elseif $phase is 1>>
+    <<if $submissive gte 1150>>
+        "P-please," you say. "Not so lewd."
+    <<elseif $submissive lte 850>>
+        "I'm modelling these clothes," you say. "Not my ass."
+    <<else>>
+        "I'm not comfortable with shots like that," you say.
+    <</if>>
+    <br><br>
+    Niki doesn't respond, but doesn't take a close up picture of your <<bottom>> again.
+    <br><br>
+<<elseif $phase is 2>>
+    You stick your <<bottom>> out. Niki takes it in stride, and snaps away.
+    <<exhibitionism2>>
+<</if>>
+
+
+
+<<if $photo.evidence gte 1 and $photo.refused gte 1 and $enemyno gte 1>>
+    
+    "Almost done," <<he>> says. "Need something from my office. I'll be right back." <<nnpc_He "Niki">> leaves the room, taking the smaller camera with <<nnpc_him "Niki">>, but leaving the tripod.
+    <br><br>
+    
+    <<link [[Next|Photo Model Blackmail]]>><<pass 180>><<tiredness 18>><</link>>
+    <br>
+<<else>>
+    It's tiring work. Niki brings out a stool at one point, but holding the strange poses as you "sit" on it provides little relief.
+    <br><br>
+
+    <<link [[Next|Photo Model 5]]>><<pass 180>><<tiredness 18>><</link>>
+    <br>
+<</if>>
+
+:: Photo Model Blackmail
+<<effects>>
+
+With Niki gone, the <<person>> walks to the tripod camera, and fishes <<his>> phone from <<his>> pocket. "What do we have here?" <<he>> says, plugging one end of a cable into the camera, and the other into <<his>> phone.
+<br><br>
+
+<<link [[Protest|Photo Model Blackmail 2]]>><<def 1>><<set $phase to 1>><</link>>
+<br>
+<<link [[Remain Silent|Photo Model Blackmail 2]]>><<set $phase to 0>><</link>>
+<br>
+
+:: Photo Model Blackmail 2
+<<effects>>
+
+<<if $phase is 1>>
+    <<if $submissive gte 1150>>
+        "I-I don't think you're supposed to touch that," you say.
+    <<elseif $submissive lte 850>>
+        "Get your mitts off," you say.
+    <<else>>
+        "You're not meant to touch that," you say.
+    <</if>>
+    <br><br>
+    "Can't blame a <<personsimple>> for being curious," <<he>> replies. 
+<<else>>
+    You remain silent as the <<person>> continues. "What do we have here," <<he>> says.
+<</if>>
+<<if $photo.evidence is 2>>
+    A grin lights up <<his>> face. <span class="pink">"There's a clip here, of this slut getting gangbanged!"</span>
+<<elseif $photo.evidence is 1>>
+    A grin lights up <<his>> face. <span class="purple">"There's an interesting clip here. The screen falls while you're getting changed!"</span>
+<</if>>
+<br><br>
+<<if $enemyno gte 3>>
+    The rest of the audience joins <<him>>, crowding to peer over <<his>> shoulder.
+<<elseif $enemyno is 2>>
+    The other member of the audience, a <<person2>><<person>>, rushes over. "Let me see."
+<</if>>
+<br><br>
+
+The <<person>> looks up at you. "I know your type. Such a tease. Well, here's what's gonna happen. <span class="purple">You're gonna do whatever Niki asks of you.</span> <span class="pink">If you don't, I'm uploading this footage.</span> You go to the nearby school right? I'll post it where your friends will be sure to see it. Got it?"
+<br><br>
+
+<<if $enemeyno is 6>>
+    You could try to stop <<him>>, but <<he>> has five people helping.
+<<elseif $enemyno is 5>>
+    You could try to stop <<him>>, but <<he>> has four people helping.
+<<elseif $enemyno is 4>>
+    You could try to stop <<him>>, but <<he>> has three people helping.
+<<elseif $enemeyno is 3>>
+    You could try to stop <<him>>, but <<he>> has two people helping.
+<<elseif $enemyno is 2>>
+    You could try to stop <<him>>, but <<he>> has help.
+<<else>>
+    You could try to stop <<him>>.
+<</if>>
+<br><br>
+
+<<link [[Nod|Photo Model Blackmail 3]]>><<def 1>><<set $phase to 0>><</link>>
+<br>
+<<link [[Plead|Photo Model Blackmail 3]]>><<sub 1>><<set $phase to 1>><</link>>
+<br>
+<<link [[Remain silent|Photo Model Blackmail 3]]>><<set $phase to 2>><</link>>
+<br>
+<<link [[Fight|Photo Model Blackmail Attack]]>><<def 1>><</link>>
+<br>
+
+
+:: Photo Model Blackmail Attack
+<<effects>>
+You rush at the <<person>>, and whack the phone out of <<his>> hand. <<He>> rolls up <<his>> sleeves.
+<br><br>
+
+<<link [[Next|Photo Model Blackmail Fight]]>><<set $fightstart to 1>><</link>>
+<br>
+
+:: Photo Model Blackmail Fight
+<<if $fightstart is 1>>
+	<<set $fightstart to 0>>
+
+	<<neutral 1>>
+
+	<<maninit>>
+	<<set $enemytrust -= 100>>
+	<<set $enemyanger += 200>>
+	<<npcidlegenitals>>
+    <<enable_rescue>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Photo Model Blackmail Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Photo Model Blackmail Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	<span id="next"><<link [[Next|Photo Model Blackmail Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+    <span id="next"><<link [[Next|Photo Model Blackmail Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Photo Model Blackmail Fight]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Photo Model Blackmail Fight Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	<<tearful>> you snatch the phone while they're distracted. You delete the footage just as Niki returns. <<nnpc_He "Niki">> observes the scene, the
+    <<if $enemyno gte 2>>
+        <<people>>
+    <<else>>
+        <<person>>
+    <</if>>
+    lying on the ground beside the fallen camera.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+    
+    "Out," <<nnpc_he "Niki">> says. "No disrupting the shoot. That was the only rule."
+    <br><br>
+
+    You hand the <<person>> <<his>> phone as <<he>> passes,
+    <<if $submissive gte 1150>>
+        though you can't make eye contact.
+    <<else>>
+        and resist sticking out your tongue.
+    <</if>>
+    <br><br>
+
+<<elseif $enemyhealth lte 0>>
+	<<tearful>> you snatch the phone from the <<persons>> grasp. You delete the footage just as Niki returns. <<nnpc_He "Niki">> observes the scene, the
+    <<if $enemyno gte 2>>
+        <<people>>
+    <<else>>
+        <<person>>
+    <</if>>
+    lying on the ground beside the fallen camera.
+	<br><br>
+	 "Out," <<nnpc_he "Niki">> says. "No disrupting the shoot. That was the only rule."
+    <br><br>
+
+    You hand the <<person>> <<his>> phone as <<he>> passes,
+    <<if $submissive gte 1150>>
+        though you can't make eye contact.
+    <<else>>
+        and resist sticking out your tongue.
+    <</if>>
+    <br><br>
+    <<clotheson>>
+    <<endcombat>>
+
+<<elseif $rescue is 1 and $alarm is 1>>
+    
+    The door swings open, and Niki steps in. The <<person>> backs away from you, but keeps hold of <<his>> phone. <<nnpc_He "Niki">> observes the scene, and the fallen camera.
+    <br><br>
+    "Out," <<nnpc_he "Niki">> says. "No disrupting the shoot. That was the only rule."
+    <br><br>
+
+    The <<person>> does as asked, <span class="pink">but <<he>> still has the footage.</span> <<photo_evidence_upload>>
+    <br><br>
+
+    <<clotheson>>
+    <<endcombat>>
+<<else>>
+    
+	You fall to the ground, too hurt to continue fighting. The <<person>> stands over you, holding the phone. <<photo_evidence_upload>>
+	<br><br>
+	Niki returns, and observes you lying on the floor beside the camera.  "Out," <<nnpc_he "Niki">> says to the <<person>>. "No disrupting the shoot. That was the only rule."
+    <br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+
+	
+<</if>>
+<<link [[Next|Photo Model Blackmail Fight End]]>><</link>>
+<br>
+<<set $photo.blackmail to 0>>
+
+:: Photo Model Blackmail Fight End
+<<effects>>
+
+"I'm sorry," Niki says, helping you to your feet.
+
+<<if $exposed gte 1>>
+    <<nnpc_He "Niki">> observes your state of dress, and averts <<nnpc_his "Niki">> eyes. "We have spare. If you want to continue with the shoot. No pressure."
+<<else>>
+    "We can continue the shoot, or not. No pressure."
+<</if>>
+<br><br>
+
+<<link [[Continue|Photo Model Continue]]>><</link>>
+<br>
+<<link [[Stop|Photo Model Stop]]>><</link>>
+<br>
+
+
+:: Photo Model Continue
+<<effects>>
+
+<<underlowerwear $photo_under_index>>
+<<lowerwear $photo_lower_index>>
+<<upperwear $photo_upper_index>>
+You get dressed behind the screen, and emerge to find the camera righted, and Niki ready.
+<br><br>
+
+<<link [[Next|Photo Model 5]]>><</link>>
+<br>
+
+
+:: Photo Model Stop
+<<effects>>
+
+<<storeon "photo">>
+<<famemodel 20 pic>>
+You get dressed behind the screen, and emerge to find Niki counting out your cash. You make <<moneyGain $photo.money>>.
+<br><br>
+"You did well," <<nnpc_he "Niki">> says. "I'd like to do another shoot next week."
+<br><br>
+
+Money in hand, you leave the studio.
+<br><br>
+
+<<link [[Next|Nightingale Street]]>><<photo_end>><<set $eventskip to 1>><<endevent>><</link>>
+<br>
+
+:: Photo Model Blackmail 3
+<<effects>>
+<<set $photo.blackmail to $photo.evidence>>
+<<if $phase is 2>>
+    You remain silent. The <<person>> opens <<his>> mouth, but is interrupted by a bang outside.
+<<elseif $phase is 1>>
+    <<if $submissive gte 1150>>
+        "P-please don't," you say.
+    <<elseif $submissive lte 850>>
+        "Don't do this," you say.
+    <<else>>
+        "Please don't," you say.
+    <</if>>
+    <br><br>
+    The <<person>> snorts a dismissive laugh, but is interrupted by a bang outside.
+<<else>>
+    You nod. The <<person>> opens <<his>> mouth, but is interrupted by a bang outside.
+<</if>>
+<<He>> hastens back to <<his>> chair, phone in hand.
+<br><br>
+
+Niki returns, carrying a stool ahead of <<nnpc_him "Niki">>. You use it as a prop, sitting in awkward poses, as the <<persons>> words weigh on your mind.
+<br><br>
+
+<<link [[Next|Photo Model 5]]>><</link>>
+<br>
+
+
+:: Photo Model 5
+<<effects>>
+
+"Almost done," Niki says at last. <<nnpc_He "Niki">> adjusts the lighting. "Some topless shots would be good. I'd double your fee. So it'd be <span class="gold">£<<print $photo.money * 2>>.</span>"
+<br><br>
+
+<<if $enemyno gte 2>>
+    <<if $photo.blackmail gte 1>>
+        <span class="pink">The seated <<person>> leans forward in <<his>> chair, holding <<his>> phone and looking you right in the eyes.</span>
+    <<else>>
+        The seated <<person>> leans forward in <<his>> chair, and the <<person2>><<person>> licks <<his>> lips.<<person1>>
+    <</if>>
+    <br><br>
+<<elseif $enemyno is 1>>
+    <<if $photo.blackmail gte 1>>
+        <span class="pink">The seated <<person>> leans forward in <<his>> chair, holding <<his>> phone and looking you right in the eyes.</span>
+    <<else>>
+        The seated <<person>> leans forward in <<his>> chair.
+    <</if>>
+    <br><br>
+<</if>>
+
+<<link [[Refuse|Photo Model Topless Refuse]]>><<set $photo.refused += 1>><</link>>
+<br>
+<<if $exhibitionism gte 55>>
+    <<link [[Accept|Photo Model Topless]]>><<npcincr Niki love 1>><<set $phase to 0>><</link>><<exhibitionist4>><<glove>>
+    <br>
+<<elseif $uncomfortable.prostituting is false>>
+    <<link [[Accept|Photo Model Topless]]>><<set $desperateaction to 1>><<npcincr Niki love 1>><<set $phase to 0>><</link>><<exhibitionist4>><<glove>>
+    <br>
+<<elseif $photo.blackmail gte 1>>
+    <<link [[Accept|Photo Model Topless]]>><<trauma 12>><<stress 12>><<set $phase to 1>><</link>><<ggtrauma>><<ggstress>>
+    <br>
+<<else>>
+    <span class="blue">You're not lewd or desperate enough for that.</span>
+    <br>
+<</if>>
+
+
+:: Photo Model Topless Refuse
+<<effects>>
+
+<<if $submissive gte 1150>>
+    "I-I'm sorry," you say. "I'm not comfortable with that."
+<<elseif $submissive lte 850>>
+    "Not interested," you say.
+<<else>>
+    "I'm not comfortable with that," you say.
+<</if>>
+<<if $enemyno gte 1 and $photo.blackmail gte 1>>
+    The <<person>> shakes <<his>> head. <<photo_evidence_upload>>
+<</if>>
+<br><br>
+<<if $photo.refused gte 2>>
+    Niki nods, and wraps up the photoshoot without another word.
+    <br><br>
+    <<set $photo.refused to 0>>
+    <<exposure>>
+    <<set $photo.evidence to 1>>
+    You step behind the screen, and remove the $worn.upper.name. Before you can dress however, <span class="purple">you hear a creek,</span> and the screen collapses, <span class="pink">exposing you to the room.</span><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+    <br><br>
+    <<set $worn.upper to clone(setup.clothes.upper[0])>>
+	<<set $worn.lower to clone(setup.clothes.lower[0])>>
+	<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+	<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
+    <<if $enemyno gte 2>>
+        A cheer goes up from the still-seated audience. The light on the tripod camera is still green. <<covered>>
+    <<elseif $enemyno gte 1>>
+        The still-seated <<person>> cheers. The light on the tripod camera is still green. <<covered>>
+    <<else>>
+        The light on the tripod camera is still green. <<covered>>
+    <</if>>
+    <br><br>
+    Niki covers <<nnpc_his "Niki">> eyes and rushes over. <<nnpc_He "Niki">> lifts the fallen screen, separating you from the rest of the room once more. <<nnpc_He "Niki">> apologises from the other side.
+    <br><br>
+
+    <<link [[Next|Photo Model Topless End]]>><</link>>
+    <br>
+<<else>>
+    Niki nods, and wraps up the photoshoot without another word.
+    <br><br>
+    <<storeon "photo">>
+    <<famemodel 20 pic>>
+    You get dressed behind the screen, and emerge to find Niki counting out your cash. You make <<moneyGain $photo.money>>.
+    <br><br>
+    "You did well," <<nnpc_he "Niki">> says. "I'd like to do another shoot next week."
+    <br><br>
+
+    Money in hand, you leave the studio.
+    <br><br>
+
+    <<link [[Next|Nightingale Street]]>><<photo_end>><<set $eventskip to 1>><<endevent>><</link>>
+    <br>
+<</if>>
+
+
+:: Photo Model Topless End
+<<effects>>
+
+<<storeon "photo">>
+<<famemodel 20 pic>>
+You're still blushing when you emerge, now dressed, to find Niki counting out your cash.
+<<if $enemyno gte 2>>
+    The audience leers at you, but you do your best to ignore them.
+<<elseif $enemyno is 1>>
+    The <<person>> leers at you, but you do your best to ignore <<him>>.
+<</if>>
+You make <<moneyGain $photo.money>>.
+<br><br>
+"You did well," <<nnpc_he "Niki">> says. "I'd like to do another shoot next week."
+<br><br>
+
+Money in hand, you leave the studio.
+<br><br>
+
+<<link [[Next|Nightingale Street]]>><<photo_end>><<set $eventskip to 1>><<endevent>><</link>>
+<br>
+
+:: Photo Model Topless
+<<effects>>
+
+<<set $photo.money *= 2>>
+<<famemodel 10 vid>>
+<<fameexhibitionism 10 vid>>
+<<if $worn.upper.strap is 1>>
+    <<flaunting>> you untie the strap behind your neck. The fabric covering your chest falls, freeing your <<breasts>>.
+<<elseif $worn.upper.set is $worn.lower.set>>
+    <<flaunting>> you pull down your $worn.upper.name, freeing your <<breasts>>.
+<<else>>
+    <<flaunting>> you pull off your $worn.upper.name, freeing your <<breasts>>.
+<</if>>
+<<set $worn.upper to clone(setup.clothes.upper[0])>>
+<<if $phase is 1>>
+    <br><br>
+<<else>>
+    <<exhibitionism4>>
+<</if>>
+
+<<if $enemyno gte 2>>
+    The audience watches as you strike another pose, now with your chest bare.
+<<elseif $enemyno gte 1>>
+    The <<person>> watches as you strike another pose, now with your chest bare.
+<<else>>
+    You strike another pose, now with your chest bare.
+<</if>>
+Niki takes more pictures, focusing your chest and face. <<He>> remains entirely professional. You feel your cheeks flush.
+<br><br>
+
+<<link [[Next|Photo Model Topless 2]]>><</link>>
+<br>
+
+:: Photo Model Topless 2
+<<effects>>
+
+Niki pauses. "We could wrap it up here," <<nnpc_he "Niki">> says. "But if you're down for shots in your underwear, I'll throw in another <span class="gold">£400</span>."
+<br><br>
+
+<<if $enemyno gte 2>>
+    <<if $photo.blackmail gte 1>>
+        <span class="pink">The seated <<person>> still stares at you, holding <<his>> phone, <<his>> thumb ready to upload the evidence.</span>
+    <<else>>
+        The seated <<person>> leans forward in <<his>> chair, and the <<person2>><<person>> licks <<his>> lips.<<person1>>
+    <</if>>
+    <br><br>
+<<elseif $enemyno is 1>>
+    <<if $photo.blackmail gte 1>>
+        <span class="pink">The seated <<person>> still stares at you, holding <<his>> phone, <<his>> thumb ready to upload the evidence.</span>
+    <<else>>
+        The seated <<person>> leans forward in <<his>> chair.
+    <</if>>
+    <br><br>
+<</if>>
+
+<<link [[Refuse|Photo Model Topless Refuse]]>><<set $photo.refused += 1>><</link>>
+<br>
+<<if $exhibitionism gte 55>>
+    <<link [[Accept|Photo Model Undies]]>><<npcincr Niki love 1>><<set $phase to 0>><</link>><<exhibitionist4>><<glove>>
+    <br>
+<<elseif $uncomfortable.prostituting is false>>
+    <<link [[Accept|Photo Model Undies]]>><<set $desperateaction to 1>><<npcincr Niki love 1>><<set $phase to 0>><</link>><<exhibitionist4>><<glove>>
+    <br>
+<<elseif $photo.blackmail gte 1>>
+    <<link [[Accept|Photo Model Undies]]>><<trauma 12>><<stress 12>><<set $phase to 1>><</link>><<ggtrauma>><<ggstress>>
+    <br>
+<<else>>
+    <span class="blue">You're not lewd or desperate enough for that.</span>
+    <br>
+<</if>>
+
+:: Photo Model Undies
+<<effects>>
+
+<<set $photo.money += 400>>
+<<famemodel 10 vid>>
+<<fameexhibitionism 10 vid>>
+You pull the $worn.lower.name down your legs. "Wait," Niki says. "Hold that pose." Niki takes several shots from various angles, then you pull the fabric the rest of the way, leaving you in just the $worn.under_lower.name.
+<<if $phase is 1>>
+    <br><br>
+<<else>>
+    <<exhibitionism4>>
+<</if>>
+<<set $worn.lower to clone(setup.clothes.lower[0])>>
+
+Niki circles you, and asks you to arch your back with your hands between your thighs. Then to sit back on the stool with one leg crossed over the other. Then to lean against the stool with your <<bottom>> stuck out.
+
+<<if $enemyno gte 2>>
+    The audience watches with barely-contained lust.
+<<elseif $enemyno gte 1>>
+    The <<person>> watches with barely-contained lust.
+<</if>>
+<br><br>
+
+<<if $photo.evidence gte 1 and $photo.refused gte 1 and $enemyno gte 2>>
+    <<set $photo.refused to 0>>
+    "Almost done," <<he>> says. "Need something from my office. I'll be right back." <<nnpc_He "Niki">> leaves the room, taking the smaller camera with <<nnpc_him "Niki">>, but leaving the tripod.
+    <br><br>
+    
+    <<link [[Next|Photo Model Assault]]>><<pass 180>><<tiredness 18>><</link>>
+    <br>
+<<else>>
+    <<link [[Next|Photo Model Undies 2]]>><</link>>
+    <br>
+<</if>>
+
+:: Photo Model Undies 2
+<<effects>>
+
+Niki examines the footage. "Could I tempt you to remove those $worn.under_lower.name?" <<nnpc_he "Niki">> asks without looking. "There'll be an extra <span class="gold">£500</span> in it."
+<br><br>
+<<if $enemyno gte 2>>
+    The members of the audience sit on the edge of their seats.
+    <br><br>
+<<elseif $enemyno is 1>>
+    The <<person>> sits on the edge of <<his>> seat.
+    <br><br>
+<</if>>
+
+<<if $photo.blackmail is 1>>
+    That doesn't sound any better than the evidence the <<person>> is using to blackmail you.
+    <br><br>
+<<elseif $photo.blackmail is 2>>
+    The <<person>>, sitting behind Niki, turns <<his>> phone to face you. <span class="pink">You look away from the footage.</span><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+    <br><br>
+<</if>>
+
+<<link [[Refuse|Photo Model Topless Refuse]]>><<set $photo.refused += 1>><</link>>
+<br>
+<<if $exhibitionism gte 55>>
+    <<link [[Accept|Photo Model Nude]]>><<npcincr Niki love 1>><<set $phase to 0>><</link>><<exhibitionist5>><<glove>>
+    <br>
+<<elseif $uncomfortable.prostituting is false>>
+    <<link [[Accept|Photo Model Nude]]>><<set $desperateaction to 1>><<npcincr Niki love 1>><<set $phase to 0>><</link>><<exhibitionist5>><<glove>>
+    <br>
+<<elseif $photo.blackmail gte 1>>
+    <<link [[Accept|Photo Model Nude]]>><<trauma 12>><<stress 12>><<set $phase to 1>><</link>><<ggtrauma>><<ggstress>>
+    <br>
+<<else>>
+    <span class="blue">You're not lewd or desperate enough for that.</span>
+    <br>
+<</if>>
+
+
+
+:: Photo Model Nude
+<<effects>>
+
+Niki's camera clicks and flashes as you peel your $worn.under_lower.name down your legs, exposing your <<genitals>>. You take your time, and stop to pose with the fabric around your ankles before kicking them away.
+
+<<if $enemyno gte 2>>
+    The <<person>>
+    <<if $pronoun is "f">>
+        lifts <<his>> skirt,
+    <<else>>
+        unzips <<his>> fly,
+    <</if>>
+     but the <<person2>><<person>> sat beside catches <<person1>><<him>>, and nods at Niki's back.
+<<elseif $enemyno is 1>>
+    The <<person>> starts to
+    <<if $pronoun is "f">>
+        lift <<his>> skirt,
+    <<else>>
+        unzip <<his>> fly,
+    <</if>>
+    then catches <<himself>>, and throws a nervous glance at Niki's back.
+<</if>>
+
+
+<<if $phase is 1>>
+    <br><br>
+<<else>>
+    <<exhibitionism5>>
+<</if>>
+<<famemodel 10>>
+<<fameexhibitionism 10>>
+<<set $photo.money += 500>>
+<<set $photo.nude_footage to 1>>
+<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
+
+You turn to let Niki snap you from different angles. <<nnpc_He "Niki">> moves fast now. Sweat soon glistens on <<nnpc_his "Niki">> forehead, lit by the white lights above.
+<br><br>
+
+At last, Niki sighs and steps away. "Thank you," <<nnpc_he "Niki">> pants. "You can get dressed now." You walk behind the screen.
+<br><br>
+
+<<link [[Next|Photo Model Topless End]]>><</link>>
+<br>
+
+
+:: Photo Model Assault
+<<effects>>
+
+Niki closes the thick door behind <<nnpc_him "Niki">>.
+<<if $enemyno gte 3>>
+    The audience watches the door a moment, <span class="pink">then rise to their feet and walk towards you.</span>
+<<else>>
+    The <<person>> and <<person2>><<person>> watch the door a moment, <span class="pink">then rise to their feet and walk towards you.</span>
+<</if>>
+<br><br>
+
+"How's about we have a shoot of our own?" the <<person1>><<person>> says, stepping around you and leering at your body. <<covered>>
+<br>
+The <<person2>><<person>> examines the tripod camera up close. "It's on."
+<br>
+"So you gonna make this easy on yourself or what?" the <<person>> asks. <<He>> grasps your shoulders from behind, and runs <<his>> nose over your neck.
+<br><br>
+
+<<link [[Fight|Photo Model Assault Attack]]>><<def 1>><</link>>
+<br>
+<<link [[Threaten|Photo Model Assault Threaten]]>><<def 1>><</link>><<englishdifficulty 1 `500 * $enemyno`>>
+<br>
+<<link [[Plead|Photo Model Assault Plead]]>><</link>>
+<br>
+
+:: Photo Model Assault Plead
+<<effects>>
+
+<<if $submissive gte 1150>>
+    "Pl-please don't," you say. "I'm only here because I need the money."
+<<elseif $submissive lte 850>>
+    "Get your mitts off," you say. "I'm getting paid to model, not to get groped."
+<<else>>
+    "I'm here because I need the money," you say. "Please don't make this worse for me."
+<</if>>
+<br><br>
+
+"Oh, you'll get paid," the <<person>> says. "A vid of a <<girl>> as cute as you getting fucked will go viral."
+<br><br>
+
+<<link [[Next|Photo Model Blackmail Rape]]>><<set $molestationstart to 1>><</link>>
+<br>
+
+
+
+:: Photo Model Assault Threaten
+<<effects>>
+
+<<if $submissive gte 1150>>
+    "D-don't hurt me," you say. "Or Niki will be mad."
+<<elseif $submissive lte 850>>
+    "I'll fuck you up," you say. "And Niki will join me."
+<<else>>
+    "Niki won't be happy," you warn.
+<</if>>
+<br><br>
+<<if $englishSuccess>>
+    The <<person>> glances at the door, <span class="green">then releases you.</span> "Niki won't always be around to protect you," <<he>> says, slapping your <<bottom>> and <<he>> returns to <<his>> seat.
+    <br><br>
+
+    Niki returns a few moments later, and walks to the tripod camera.
+    <br><br>
+    
+    <<link [[Next|Photo Model Undies 2]]>><</link>>
+    <br>
+<<else>>
+    <span class="red">The <<person>> barks a laugh</span>
+    <<if $enemyno gte 3>>
+        as the others draw closer.
+    <<else>>
+        as the <<person2>><<person>> draws closer.
+    <</if>>
+    <br><br>
+
+    <<link [[Next|Photo Model Blackmail Rape]]>><<set $molestationstart to 1>><</link>>
+    <br>
+<</if>>
+
+
+:: Photo Model Assault Attack
+<<effects>>
+
+You shake off the <<person>>, and throw a punch. <<He>> staggers away, and rolls up <<his>> sleeves.
+<br><br>
+
+<<link [[Next|Photo Model Blackmail Rape]]>><<set $fightstart to 1>><</link>>
+<br>
+
+:: Photo Model Blackmail Rape
+<<if $fightstart is 1>>
+	<<set $fightstart to 0>>
+
+	<<neutral 1>>
+
+	<<maninit>>
+	<<set $enemytrust -= 50>>
+	<<set $enemyanger += 100>>
+    <<set $enemyhealth -= 150>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+
+	<<maninit>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+	
+The light of the camera blinks as it records the scene.
+<br><br>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Photo Model Blackmail Rape Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Photo Model Blackmail Rape Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Photo Model Blackmail Rape]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Photo Model Blackmail Rape Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+    <<set $photo.evidence to 2>>
+    You hear a bang outside. Your assailants scramble back to their seats, leaving you to struggle to you feet.
+	<br><br>
+	Niki enters, but stops halfway through the door. <<nnpc_He "Niki">> takes in your disheveled state, then glares at the <<person>>.
+	<br><br>
+    "Out," <<nnpc_he "Niki">> says. The <<person>> opens <<his>> mouth to argue, but Niki cuts <<him>> off. "Get out."
+    <br><br>
+	<<clotheson>>
+	<<endcombat>>
+	
+    "Sorry," Niki continues once you're alone with <<him>>. "Let's wrap things up here." You walk behind the screen to dress as Niki dismantles the set.
+    <br><br>
+<<else>>
+	The <<person>> trips away from you, knocking over the tripod camera, just as the door swings open. Niki stops halfway through, and observes the carnage.
+    <br><br>
+    "Out," <<nnpc_he "Niki">> says. The <<person>> opens <<his>> mouth to argue, but Niki cuts <<him>> off. "Get out."
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	
+    "Sorry," Niki continues once you're alone with <<him>>. "Let's wrap things up here." You walk behind the screen to dress as Niki dismantles the set.
+    <br><br>
+	
+<</if>>
+
+<<link [[Next|Photo Model Topless End]]>><</link>>
+<br>

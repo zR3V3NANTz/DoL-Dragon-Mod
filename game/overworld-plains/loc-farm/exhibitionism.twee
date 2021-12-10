@@ -310,7 +310,7 @@ You call to the <<personsimple>> as <<he>> walks round the bend. <<He>> looks at
 You're trapped in the back of the lorry. You try to stand, but lurch as the vehicle springs into motion.
 <br><br>
 /*$bestialitydisable*/
-<<beastNEWinit 6 pig>>
+<<beastNEWinit 2 pig>>
 A <<beasttype>> takes advantage of your vulnerability, and jumps on top.
 <br><br>
 
@@ -524,7 +524,7 @@ Once clad they push you around the lorry, onto the street beyond, and close the 
 The branches tear as you push inside. They close behind you, sealing you from view. You hear the car drive by.
 <br><br>
 
-<<if $hallucinations gte 2 and random(1, 2) is 2>>
+<<if ($hallucinations gte 2 or $backgroundTraits.includes("plantlover")) and random(1, 2) is 2>>
 	You wait a few moments, then push towards the road. <span class="red">You feel a clamp around your ankle.</span> Then the other. From within the hedge, shoots close in around you.
 	<br><br>
 
@@ -571,6 +571,7 @@ The branches tear as you push inside. They close behind you, sealing you from vi
 	<<molested>>
 	<<controlloss>>
 
+	<<set _randomtentacles to random(6, 10)>>
 	<<tentaclestart _randomtentacles 10 "shoot" "vine" true>>
 
 <</if>>

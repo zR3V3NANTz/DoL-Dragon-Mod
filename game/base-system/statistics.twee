@@ -201,8 +201,10 @@ Fluid forcibly milked: $fluid_forced_stat mL
 	<br>
 	Pepper spray used: $spraystat
 	<br>
-	Practise shots fired with Eden: $stat_shoot
-	<br>
+	<<if $NPCName[$NPCNameList.indexOf("Eden")].init>>
+		Practise shots fired with Eden: $stat_shoot
+		<br>
+	<</if>>
 	Machines disabled: $machine_stat
 	<br>
 	Lurkers captured: $stat_lurkers_captured
@@ -314,6 +316,8 @@ Sentenced with community service: $stat_police.community
 Sentenced with the pillory:	$stat_police.pillory
 <br>
 Days in prison: $stat_police.prison
+<br>
+Hypnotised: $hypnotised
 <br>
 
 <br><br>
@@ -511,6 +515,8 @@ __Save Game Details__
 	Business fame: <<print Math.trunc($famebusiness)>>
 	<br>
 	Socialite fame: <<print Math.trunc($famesocial)>>
+	<br>
+	Model fame: <<print Math.trunc($famemodel)>>
 	<br>
 	<br>
 

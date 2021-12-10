@@ -48,9 +48,9 @@
 		<<link [[Sneak behind the school (0:05)|School Rear Playground]]>><<pass 5>><</link>>
 		<br>
 	<<else>>
-		<<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
+		<<entranceicon>><<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
 		<br>
-		<<link [[Rear playground (0:02)|School Rear Playground]]>><<pass 2>><</link>>
+		<<playgroundicon>><<link [[Rear playground (0:02)|School Rear Playground]]>><<pass 2>><</link>>
 		<br><br>
 		<<if $schoolstate is "afternoon" and $detention gte 1 and $detentionattended isnot 1 and $headnodetention isnot 1 and $pillory_tenant.special.name isnot "Leighton">>
 			<<link [[Leave the school|School Leave Stop]]>><</link>>
@@ -59,10 +59,10 @@
 			<<link [[Leave the school|School Leave Whitney]]>><</link>>
 			<br>
 		<<elseif $schoolday is 1 and $hour gte 7 and $hour lte 16>>
-			<<link [[Leave the school (0:01)|Oxford Street]]>><<pass 1>><</link>>
+			<<ind>><<link [[Leave the school (0:01)|Oxford Street]]>><<pass 1>><</link>>
 			<br>
 		<<else>>
-			<<link [[Leave the school|School Gate Exit]]>><</link>>
+			<<ind>><<link [[Leave the school|School Gate Exit]]>><</link>>
 			<br>
 		<</if>>
 	<</if>>
@@ -129,11 +129,11 @@
 				<<link [[Look for the underwear thief (0:10)|School Panty]]>><<pass 10>><</link>>
 				<br>
 			<</if>>
-			<<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
+			<<entranceicon>><<link [[Enter the school (0:01)|Hallways]]>><<pass 1>><</link>>
 			<br>
-			<<link [[Front playground (0:02)|School Front Playground]]>><<pass 2>><</link>>
+			<<playgroundicon>><<link [[Front playground (0:02)|School Front Playground]]>><<pass 2>><</link>>
 			<br><br>
-			<<link [[Climb over the fence to the industrial district (0:02)|School Rear Fence Exit]]>><<pass 2>><</link>>
+			<<ind>><<link [[Climb over the fence to the industrial district (0:02)|School Rear Fence Exit]]>><<pass 2>><</link>>
 			<br>
 		<</if>>
 
@@ -218,11 +218,11 @@ The school gate is shut and sealed by a sturdy padlock.
 
 <<if $changingroomstate isnot "empty" and $player.gender_appearance isnot $player.gender>>
 	<<if $player.gender_appearance is "m">>
-		<<link [[Wait for the girls to leave (0:05)|School Pool Entrance]]>><<pass 5>><</link>>
+		<<link [[Wait for the girls to leave (0:06)|School Pool Entrance]]>><<pass 6>><</link>>
 		<br><br>
 	<</if>>
 	<<if $player.gender_appearance is "f">>
-		<<link [[Wait for the boys to leave (0:05)|School Pool Entrance]]>><<pass 5>><</link>>
+		<<link [[Wait for the boys to leave (0:06)|School Pool Entrance]]>><<pass 6>><</link>>
 		<br><br>
 	<</if>>
 <</if>>
@@ -562,6 +562,8 @@ You haul yourself over the fence and drop down on the other side.
 	<<pregnancyWatersBrokenPassout "school">>
 <<elseif _sydney_location is "library" and ($NPCName[$NPCNameList.indexOf("Sydney")].init isnot 1 or ($sydneySeen and !$sydneySeen.includes("libRescue")) or $rng gte 20)>>
 	<<pass 1 hour>>
+	You remain unconscious for a time. You hear a short gasp, and feel yourself being lifted before slipping back into unconsciousness.
+	<br><br>
 	<<trauma 6>><<set $stress -= 2000>>
 	<<link [[Next|Sydney Library Rescue]]>><</link>>
 <<else>>
@@ -713,7 +715,7 @@ A minute passes before a <<generatey1>><<generatey2>><<person1>><<person>> and <
 
 			This leaves you powerless to stop the <<person1>><<person>>'s penis from pressing insistently against your mouth.
 			<<set $NPCList[0].penis to "mouthentrance">><<set $NPCList[0].location.genitals = "head">>
-			<<set $mouthuse to "penis">><<set $mouthstate to "entrance">>
+			<<set $mouthuse to "penis">><<set $mouthstate to "entrance">><<set $mouthtarget to 0>>
 		<<else>>
 			The <<person>> bends down, covering your mouth with <<his>> hand. <<He>> straddles your face, and begins lowering <<himself>>, so that <<he>> is kneeling above your face,
 			with <<his>> knees holding your face upwards, looking up under <<his>> skirt. <<He>> lifts up <<his>> skirt, revealing <<his>> moist pussy. You know what's coming.
@@ -727,7 +729,7 @@ A minute passes before a <<generatey1>><<generatey2>><<person1>><<person>> and <
 			You are powerless to stop the <<person1>><<person>>. You watch as <<his>> pussy draws closer and closer.
 			<<He>> removes <<his>> hand from over your mouth, only for it to be replaced by <<his>> wet pussy as <<he>> sits on your face.
 			<<set $NPCList[0].vagina to "facesit">><<set $NPCList[_n].location.genitals = "head">>
-			<<set $mouthuse to "facesit">><<set $mouthstate to "vagina">>
+			<<set $mouthuse to "facesit">><<set $mouthstate to "vagina">><<set $mouthtarget to 0>>
 		<</if>>
 
 		<<if random(1) is 0>>
@@ -746,7 +748,6 @@ A minute passes before a <<generatey1>><<generatey2>><<person1>><<person>> and <
 <<effects>>
 
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -777,7 +778,6 @@ You awaken in the science classroom, bent over a desk. Straps tie down your arms
 <<effects>>
 
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -969,10 +969,10 @@ There's a shaft hidden beneath the rubber flooring that should lead to the town'
 You enter the username and password you discovered in the note and log into Leighton's computer. You find nothing at first, just boring spreadsheets, until you find a folder simply titled "D".
 <br><br>
 
-<<npc Darryl>><<person1>>It contains thousands of images of a <<nnpc_gendery "Darryl">> with black hair in various states of undress. <<He>> looks distressed in some of the pictures but <<his>> expression is blank in others. The pictures are arranged in order of date and appear to be from several years ago. Whatever was happening went on for many months.
+It contains thousands of images of a <<nnpc_gendery "Darryl">> with black hair in various states of undress. <<nnpc_He "Darryl">> looks distressed in some of the pictures but <<nnpc_his "Darryl">> expression is blank in others. The pictures are arranged in order of date and appear to be from several years ago. Whatever was happening went on for many months.
 <br><br>
 
-Leighton makes an appearance in the later pictures, sometimes posing with <<him>>, but other times groping and fondling. From <<his>> outfit, it looks like <<he>> was a student here.
+Leighton makes an appearance in the later pictures, sometimes posing with <<nnpc_him "Darryl">>, but other times groping and fondling. From <<nnpc_his "Darryl">> outfit, it looks like <<nnpc_he "Darryl">> was a student here.
 <br><br>
 
 <<link [[Copy to flash drive|Head's Computer Flash]]>><</link>>
@@ -2031,6 +2031,232 @@ You cover yourself, and leave them staring in awe.
 <<endevent>>
 <<playground>>
 
+:: Playground Hypnosis Offer
+<<effects>>
+
+"I was wondering," you say, the words forming on their own. "Could I-" you bite your lip. "Could we have some private time?" You nod at the bike shed.
+<br><br>
+
+The <<person>> stammers an incoherent response, so you take <<his>> hand and pull <<him>> behind the shed.
+<br><br>
+
+<<link [[Next|Playground Hypnosis Sex]]>><<set $sexstart to 1>><</link>>
+<br>
+
+:: Playground Hypnosis Sex
+
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+
+	<<maninit>>
+	<<set $enemytrust += 100>>
+	<<enable_rescue>>
+<</if>>
+<<effects>>
+<<effectsman>><<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $finish is 1>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Playground Hypnosis Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Playground Hypnosis Sex Finish
+
+<<set $outside to 0>><<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	The <<person>> leans against the wall, and slumps to the ground.
+	<br><br>
+	<<tearful>> you saunter away. You're not quite sure what happened, but you feel better.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<<elseif $enemyhealth lte 0>>
+	You shove the <<person>> away from you. <<He>> hits the wall, and slumps to the ground.
+	<br><br>
+	<<tearful>> you run. You're not quite sure what happened.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<<elseif $alarm is 1 and $rescue is 1>><<set $rescued += 1>>
+	<<generatey2>><<generatey3>><<person2>>
+	A <<person>> and <<person3>><<person>> arrive to investigate. They gawk when they see you and the <<person1>><<person>>, and it's enough to send <<him>> running.
+	<br><br>
+
+	<<covered>> <<tearful>> you run to safety. You're not quite sure what happened.
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<<else>>
+	The <<person>> backs away from you. "D-did I do something wrong?" <<he>> asks. <<tearful>> you run. You're not quite sure what happened yourself.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<playground>>
+<</if>>
+
+:: Playground Hypnosis Resist
+<<effects>>
+
+<<if $willpowerSuccess>>
+	You ignore the urging voice.
+	<<if $submissive gte 1150>>
+		"S-sorry to bother you," you say. "I was daydreaming."
+	<<elseif $submissive lte 850>>
+		"What you looking at?" you ask.
+	<<else>>
+		"Sorry to bother you," you say. "I was daydreaming."
+	<</if>>
+	You walk away from the <<person>> before <<he>> responds.
+	<br><br>	
+<<else>>
+	You try to ignore the urging voice, <span class="red">but it's a struggle.</span> You manage to tear yourself away from the <<person>> before you say anything, and almost stumble as you escape.
+	<br><br>
+
+	You hide around the corner, and the coercive feelings dissipate. Your strange behaviour was noticed by others.<<lcool>><<status -10>><<gtrauma>><<trauma 6>><<gstress>><<stress 6>>
+	<br><br>
+<</if>>
+
+<<endevent>>
+<<playground>>
+
+
+:: Playground Footage Ignore
+<<effects>>
+
+You ignore them. Whatever it is, you don't want to know.
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+:: Playground Nude Footage Investigate
+<<effects>>
+
+You approach the pair.
+
+<<if $submissive gte 1150>>
+	"P-people keep looking at me funny," you say. "Why?"
+<<elseif $submissive lte 850>>
+	"What's so funny?" you ask.
+<<else>>
+	"Why are people looking at me funny?" you ask.
+<</if>>
+<br><br>
+
+The <<person2>><<person>> and <<person3>><<person>> look at each other, then the <<person2>><<person>> shows you <<his>> phone. A short clip plays. <span class="pink">Of you, naked,</span> in what looks like Niki's studio.
+<br><br>
+
+You're aware of all the other students looking at their phones. How many of them are watching you?
+<br><br>
+
+<<link [[Walk away|Playground Footage Walk]]>><<status -10>><</link>><<lcool>>
+<br>
+<<if $exhibitionism gte 75>>
+	<<link [[Own it|Playground Nude Footage Own]]>><</link>><<exhibitionist5>>
+	<br>
+<</if>>
+
+:: Playground Assault Footage Investigate
+<<effects>>
+
+You approach the pair.
+
+<<if $submissive gte 1150>>
+	"P-people keep looking at me funny," you say. "Why?"
+<<elseif $submissive lte 850>>
+	"What's so funny?" you ask.
+<<else>>
+	"Why are people looking at me funny?" you ask.
+<</if>>
+<br><br>
+
+The <<person2>><<person>> and <<person3>><<person>> look at each other, then the <<person2>><<person>> shows you <<his>> phone. A short clip plays. <span class="pink">Of you, getting gangbanged,</span> in what looks like Niki's studio.
+<br><br>
+
+You're aware of all the other students looking at their phones. How many of them are watching you?
+<br><br>
+
+<<link [[Walk away|Playground Footage Walk]]>><<status -20>><</link>><<llcool>>
+<br>
+<<if $promiscuity gte 75>>
+	<<link [[Own it|Playground Assault Footage Own]]>><</link>><<promiscuous5>>
+	<br>
+<</if>>
+
+
+:: Playground Nude Footage Own
+<<effects>>
+
+You snatch the phone away, and climb atop a nearby table. "Hey!" you shout. "Everyone!" Heads turn. Some look surprised or bemused, but others bear knowing looks.
+<br><br>
+
+"You wanna see me naked? You let the sentence hang a moment. "You can." You look down at the phone, and read the website address aloud.
+<<famemodel 20>>
+<<fameexhibitionism 20>>
+<<exhibitionism5>>
+
+You feel cathartic as you step down from the table.
+<<if $pain gte 20>>
+	Though you're still crying.
+<</if>>
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+:: Playground Assault Footage Own
+<<effects>>
+
+You snatch the phone away, and climb atop a nearby table. "Hey!" you shout. "Everyone!" Heads turn. Some look surprised or bemused, but others bear knowing looks.
+<br><br>
+
+"You wanna see me getting fucked from all sides?" You let the sentence hang a moment. "You can." You look down at the phone, and read the website address aloud.
+<<famemodel 20>>
+<<famerape 20>>
+<<promiscuity5>>
+
+You feel cathartic as you step down from the table.
+<<if $pain gte 20>>
+	Though you're still crying.
+<</if>>
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+
+:: Playground Footage Walk
+<<effects>>
+
+You try to ignore the sinking feeling in your chest as you walk away.
+<<if $pain gte 20>>
+	You can't help but cry.
+<<else>>
+	You feel like crying.
+<</if>>
+<br><br>
+
+<<endevent>>
+<<playground>>
+
+
 :: Events Panty Accept
 <<effects>>
 
@@ -2084,7 +2310,7 @@ You walk along the fence, searching for the underwear-obsessed <<person>>. You f
 <<effects>>
 
 <<if $panties_held gte 100>>
-	It'll take too long to push all this underwear through the fence, so you hurl it over the top in bundles. The <<person>> faces up as the clothing rains on <<him>>, eyes shut in contentment."
+	It'll take too long to push all this underwear through the fence, so you hurl it over the top in bundles. The <<person>> faces up as the clothing rains on <<him>>, eyes shut in contentment.
 	<br><br>
 	"Thank you," <<he>> says. "Here."
 <<elseif $panties_held gte 20>>

@@ -115,7 +115,7 @@
 		<br><br>
 		"Yes," the <<person>> says. "I will enjoy it."
 		<br><br>
-		<<link [[Obey|Asylum Hypnosis Oral]]>><<set $sexstart to 1>><<npcincr Harper dom 5>><<control 25>><<stress -12>><<awareness -10>><<suspicion -5>><</link>><<ggcontrol>><<llsuspicion>><<llawareness>><<lstress>>
+		<<link [[Obey|Asylum Hypnosis Oral]]>><<hypnotised 1>><<set $sexstart to 1>><<npcincr Harper dom 5>><<control 25>><<stress -12>><<awareness -10>><<suspicion -5>><</link>><<ggcontrol>><<llsuspicion>><<llawareness>><<lstress>>
 		<br>
 		<<link [[Resist|Asylum Hypnosis Resist]]>><<stress 6>><<suspicion 5>><<npcincr Harper dom -5>><</link>><<ggsuspicion>><<ggstress>>
 		<br>
@@ -130,7 +130,7 @@
 		<br><br>
 		"Good," The doctor says. "I want you to take off your clothes. We're going for a walk."
 		<br><br>
-		<<link [[Obey|Asylum Hypnosis Exhibitionism]]>><<npcincr Harper dom 5>><<control 25>><<stress -12>><<awareness -10>><<suspicion -5>><</link>><<ggcontrol>><<llsuspicion>><<llawareness>><<lstress>>
+		<<link [[Obey|Asylum Hypnosis Exhibitionism]]>><<hypnotised 1>><<npcincr Harper dom 5>><<control 25>><<stress -12>><<awareness -10>><<suspicion -5>><</link>><<ggcontrol>><<llsuspicion>><<llawareness>><<lstress>>
 		<br>
 		<<link [[Resist|Asylum Hypnosis Resist]]>><<stress 6>><<suspicion 5>><<npcincr Harper dom -5>><</link>><<ggsuspicion>><<ggstress>>
 		<br>
@@ -155,18 +155,29 @@
 		This continues for several minutes. Harper somehow picks up on whenever one of your minds starts to wander, and brings you back to focus. You feel something shift in your consciousness as you enter a trance.
 		<br><br>
 		<<beastNEWinit 1 dog>>
-		<<if $monster is 1>>
-			"Good," The doctor says. "Bring <<bhim>> in." A group of orderlies enter. One holds a <<beasttype>> on a leash, who appears to be panting heavily. <<bHis>> nude body is on full display. <<bHe>> strains to reach you. Harper turns to you. "We found <<bhim>> up near those farms," <<nnpc_he "Harper">> says. "<<bHe>>'s been misbehaving, and could use some "personal" attention. From a bitch in heat, more specifically. You can't wait to be bred." You feel an urge to bark.
-			<br><br>
-		<<else>>
-			"Good," The doctor says. "Bring it in." A group of orderlies enter. One holds a dog on a leash. It strains to reach you. Harper turns to you. "You're a bitch in heat. You can't wait to be bred." You feel an urge to bark.
-			<br><br>
-		<</if>>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			<<if $monster is 1>>
+				"Good," The doctor says. "Bring <<bhim>> in." A group of orderlies enter. One holds a <<beasttype>> on a leash, who appears to be panting heavily. <<bHis>> nude body is on full display. <<bHe>> strains to reach you. Harper turns to you. "We found <<bhim>> up near those farms," <<nnpc_he "Harper">> says. "<<bHe>>'s been misbehaving, and could use some "personal" attention. From a bitch in heat, more specifically. You can't wait to be bred." You feel an urge to bark.
+				<br><br>
+			<<else>>
+				"Good," The doctor says. "Bring it in." A group of orderlies enter. One holds a dog on a leash. It strains to reach you. Harper turns to you. "You're a bitch in heat. You can't wait to be bred." You feel an urge to bark.
+				<br><br>
+			<</if>>
 
-		<<link [[Present yourself to the dog|Asylum Hypnosis Dog]]>><<set $sexstart to 1>><<npcincr Harper dom 5>><<control 25>><<stress -12>><<awareness -10>><<suspicion -5>><</link>><<ggcontrol>><<llsuspicion>><<llawareness>><<lstress>>
-		<br>
-		<<link [[Resist|Asylum Hypnosis Dog Resist]]>><<stress 6>><<suspicion 5>><<npcincr Harper dom -5>><</link>><<ggsuspicion>><<ggstress>>
-		<br>
+			<<link [[Present yourself|Asylum Hypnosis Dog]]>><<hypnotised 1>><<set $sexstart to 1>><<npcincr Harper dom 5>><<control 25>><<stress -12>><<awareness -10>><<suspicion -5>><</link>><<ggcontrol>><<llsuspicion>><<llawareness>><<lstress>>
+			<br>
+			<<link [[Resist|Asylum Hypnosis Dog Resist]]>><<stress 6>><<suspicion 5>><<npcincr Harper dom -5>><</link>><<ggsuspicion>><<ggstress>>
+			<br>
+		<<else>>
+			<<endevent>>
+			<<npc Harper>><<person1>>
+			"Good," The doctor says. "I want you to take off your clothes. We're going for a walk."
+			<br><br>
+			<<link [[Obey|Asylum Hypnosis Exhibitionism]]>><<hypnotised 1>><<npcincr Harper dom 5>><<control 25>><<stress -12>><<awareness -10>><<suspicion -5>><</link>><<ggcontrol>><<llsuspicion>><<llawareness>><<lstress>>
+			<br>
+			<<link [[Resist|Asylum Hypnosis Resist]]>><<stress 6>><<suspicion 5>><<npcincr Harper dom -5>><</link>><<ggsuspicion>><<ggstress>>
+			<br>
+		<</if>>
 	<<else>>
 		<<npc Harper>><<person1>><<generate2>><<generate3>>
 		You enter Doctor Harper's office. <<He>> sits behind <<his>> desk. A <<person2>><<person>> and <<person3>><<person>> sit in front of <<him>>, both in white coats. They turn to regard you.
@@ -273,44 +284,44 @@ Harper stares at you across the desk. "In your sleep you talk about being attack
 	<</if>>
 <br><br>
 
-<<if $asylumdistracted is 1>>
-<<link [[Attack|Asylum Fight]]>><<suspicion 15>><<trauma -6>><<stress -6>><<set $fightstart to 1>><</link>><<gggsuspicion>><<gggsuspicion>><<ltrauma>><<lstress>>
-<br>
-<<else>>
-<<link [[Attack|Asylum Punish]]>><<suspicion 15>><<trauma -6>><<stress -6>><</link>><<gggsuspicion>><<ltrauma>><<lstress>>
-<br>
-<</if>>
-<<if $asylumkeycard isnot 1 and $leftarm isnot "bound" and $rightarm isnot "bound">>
-<<set $skulduggerydifficulty to 900 + (20 * $suspicion)>>
-<<link [[Steal keycard|Asylum Keycard]]>><</link>><<skulduggerydifficulty>> <i>This will be easier with low suspicion.</i>
-<br>
-<</if>>
-<<link [[Insist that isn't true|Asylum Beast Meek]]>><<awareness -1>><<stress 3>><</link>><<lawareness>><<gstress>>
-<br>
-<<link [[Say you aren't sure|Asylum Beast Sub]]>><<trauma -6>><<suspicion -5>><<awareness -10>><</link>><<llsuspicion>><<llawareness>><<ltrauma>>
-<br>
+	<<if $asylumdistracted is 1>>
+		<<link [[Attack|Asylum Fight]]>><<suspicion 15>><<trauma -6>><<stress -6>><<set $fightstart to 1>><</link>><<gggsuspicion>><<gggsuspicion>><<ltrauma>><<lstress>>
+		<br>
+	<<else>>
+		<<link [[Attack|Asylum Punish]]>><<suspicion 15>><<trauma -6>><<stress -6>><</link>><<gggsuspicion>><<ltrauma>><<lstress>>
+		<br>
+	<</if>>
+	<<if $asylumkeycard isnot 1 and $leftarm isnot "bound" and $rightarm isnot "bound">>
+		<<set $skulduggerydifficulty to 900 + (20 * $suspicion)>>
+		<<link [[Steal keycard|Asylum Keycard]]>><</link>><<skulduggerydifficulty>> <i>This will be easier with low suspicion.</i>
+		<br>
+	<</if>>
+	<<link [[Insist that isn't true|Asylum Beast Meek]]>><<awareness -1>><<stress 3>><</link>><<lawareness>><<gstress>>
+	<br>
+	<<link [[Say you aren't sure|Asylum Beast Sub]]>><<trauma -6>><<suspicion -5>><<awareness -10>><</link>><<llsuspicion>><<llawareness>><<ltrauma>>
+	<br>
 
 <<elseif $asylumassessmentprogress lte 3>>
-<<set $asylumassessmentprogress += 1>>
-Harper stares at you across the desk. "There are marks on your body," <<he>> says. "You did this to yourself, didn't you."
-<br><br>
+	<<set $asylumassessmentprogress += 1>>
+	Harper stares at you across the desk. "There are marks on your body," <<he>> says. "You did this to yourself, didn't you."
+	<br><br>
 
-<<if $asylumdistracted is 1>>
-<<link [[Attack|Asylum Fight]]>><<suspicion 15>><<trauma -6>><<stress -6>><<set $fightstart to 1>><</link>><<gggsuspicion>><<gggsuspicion>><<ltrauma>><<lstress>>
-<br>
-<<else>>
-<<link [[Attack|Asylum Punish]]>><<suspicion 15>><<trauma -6>><<stress -6>><</link>><<gggsuspicion>><<ltrauma>><<lstress>>
-<br>
-<</if>>
-<<if $asylumkeycard isnot 1 and $leftarm isnot "bound" and $rightarm isnot "bound">>
-<<set $skulduggerydifficulty to 900 + (20 * $suspicion)>>
-<<link [[Steal keycard|Asylum Keycard]]>><</link>><<skulduggerydifficulty>> <i>This will be easier with low suspicion.</i>
-<br>
-<</if>>
-<<link [[Insist that isn't true|Asylum Hurt Meek]]>><<awareness -1>><<stress 3>><</link>><<lawareness>><<gstress>>
-<br>
-<<link [[Say you aren't sure|Asylum Hurt Sub]]>><<trauma -6>><<suspicion -5>><<awareness -10>><</link>><<llsuspicion>><<llawareness>><<ltrauma>>
-<br>
+	<<if $asylumdistracted is 1>>
+		<<link [[Attack|Asylum Fight]]>><<suspicion 15>><<trauma -6>><<stress -6>><<set $fightstart to 1>><</link>><<gggsuspicion>><<gggsuspicion>><<ltrauma>><<lstress>>
+		<br>
+	<<else>>
+		<<link [[Attack|Asylum Punish]]>><<suspicion 15>><<trauma -6>><<stress -6>><</link>><<gggsuspicion>><<ltrauma>><<lstress>>
+		<br>
+	<</if>>
+	<<if $asylumkeycard isnot 1 and $leftarm isnot "bound" and $rightarm isnot "bound">>
+		<<set $skulduggerydifficulty to 900 + (20 * $suspicion)>>
+		<<link [[Steal keycard|Asylum Keycard]]>><</link>><<skulduggerydifficulty>> <i>This will be easier with low suspicion.</i>
+		<br>
+	<</if>>
+	<<link [[Insist that isn't true|Asylum Hurt Meek]]>><<awareness -1>><<stress 3>><</link>><<lawareness>><<gstress>>
+	<br>
+	<<link [[Say you aren't sure|Asylum Hurt Sub]]>><<trauma -6>><<suspicion -5>><<awareness -10>><</link>><<llsuspicion>><<llawareness>><<ltrauma>>
+	<br>
 
 <<else>>
 <<set $asylumassessmentprogress to 0>>
@@ -418,13 +429,13 @@ The room is tiny. There's just enough space to sit. You wait in total silence.
 
 <<widget "asylumoptions">>
 <<if $leftarm is "bound" or $rightarm is "bound" and $asylumbound lte 0>>
-	<<He>> looks at your bindings. "I think you've earned a release," <<he>> says as <<he>> crouches and unties them, before removing it completely.<<unbind>><<exposure>> <<He>> covers you with a towel.
-	<<towelup>><<exposure>>
+	<<He>> looks at your bindings. "I think you've earned a release," <<he>> says as <<he>> crouches and unties them, before removing it completely.<<unbind>><<exposure>> <<He>> covers you with a gown.
+	<<upperwear 87>><<exposure>>
 	<br><br>
 <</if>>
 <<if $exposed gte 1>>
-	<<He>> steps back to regard you. <<covered>> "You can't see the doctor dressed like that," <<he>> says. <<He>> wraps some towels around you.
-	<<towelup>>
+	<<He>> steps back to regard you. <<covered>> "You can't see the doctor dressed like that," <<he>> says. <<He>> covers you with a gown.
+	<<upperwear 87>><<exposure>>
 	<br><br>
 <</if>>
 <</widget>>

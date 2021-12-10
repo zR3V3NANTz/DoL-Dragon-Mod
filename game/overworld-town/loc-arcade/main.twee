@@ -28,6 +28,9 @@ The games and gambling machines lie silent.
 <<if $stress gte $stressmax>>
 <<passoutarcade>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "arcade">>
+	<</if>>
 	<<if $hour is 21>>
 	It's closing time. Security is herding everyone outside. <<if $exposed gte 1>>Panic swells within you as you realise how exposed you'll be should security find you in this state of dress.<</if>>
 	<br><br>
@@ -46,6 +49,9 @@ The games and gambling machines lie silent.
 		<<elseif $exposed gte 1>>
 		You hide beneath a pinball machine to protect your dignity.
 		<br><br>
+		<</if>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "arcade">>
 		<</if>>
 		<<if $money gte 500 and ($daystate is "day" or $daystate is "dusk") and $exposed lte 0>>
 			<<link [[Play (£5 0:20)|Arcade Play]]>><<set $money -= 500>><<pass 20>><<stress -2>><</link>><<lstress>>
@@ -881,14 +887,14 @@ You are playing Tenyclus. You find your emotions and responses much more intense
 			You smell something strange, but you choose to ignore it and continue playing. You feel as if the game is sucking you in, and just before you're about to reach a new high score, <span class = "red">a splash of water hits you in the face.</span>
 			<br><br>
 
-			You look around for the culprit, but notice you're standing in neck deep water on the beach. Your head feels fuzzy. <<set $hallucinogen += 20>><<set $drugged += 20>>
+			You look around for the culprit, but notice you're standing in neck deep water on the beach. Your head feels fuzzy. <<set $hallucinogen += 20>><<drugs 20>>
 			<br><br>
 			<<water>><<effects>>
 
 			<<link [[Next|Sea Beach]]>><<endevent>><<set $eventskip to 1>><</link>>
 			<br>
 		<<case 6>>
-			A strange smell covers the air, just like last time. You look down and a swerve of sweet pink mist emerges from the machine. <<set $hallucinogen += 180>><<set $drugged += 180>><<garousal>><<arousal 200>>
+			A strange smell covers the air, just like last time. You look down and a swerve of sweet pink mist emerges from the machine. <<set $hallucinogen += 180>><<drugs 180>><<garousal>><<arousal 200>>
 			<br><br>
 
 			It creeps up to your face, and you feel yourself heating up with arousal. While you're distracted, a mass of writhing tentacles reach out from the screen. They coil around your arms, trapping them.
@@ -925,8 +931,8 @@ You are playing Tenyclus. You find your emotions and responses much more intense
 	<<controlloss>>
 	<<molested>>
 	<<tentaclestart 8 15>>
-	<<leftarmtentacledisable>><<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">><<set $leftarmstate to 0>>
-	<<rightarmtentacledisable>><<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">><<set $rightarmstate to 0>>
+	<<leftarmtentacledisable>><<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $leftarmstate to 0>><<set $lefttarget to "tentacles">>
+	<<rightarmtentacledisable>><<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $rightarmstate to 0>><<set $righttarget to "tentacles">>
 <</if>>
 <<effects>>
 <<effectstentacles>>
@@ -974,7 +980,6 @@ They begin to remove your clothes, before grabbing you by the shoulder and pulli
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>

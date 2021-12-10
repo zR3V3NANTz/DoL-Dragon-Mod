@@ -456,7 +456,7 @@ You are in the asylum, deep in the forest. The building is over a century old, a
 	<br>
 <<else>>
 	<<if $exposed gte 1>>
-		<<link [[Ask for towels|Asylum Towels]]>><<trauma 6>><<stress 3>><<suspicion 1>><</link>><<gsuspicion>><<gtrauma>><<gstress>>
+		<<link [[Ask for clothes|Asylum Towels]]>><<trauma 6>><<stress 3>><<suspicion 1>><</link>><<gsuspicion>><<gtrauma>><<gstress>>
 		<br>
 	<</if>>
 	<<if $edendistract is 1>>
@@ -580,38 +580,38 @@ You ask for help distracting the orderlies. You have trouble finding anyone who 
 You sneak to a nurse. "Excuse me," you say.
 <<if ($beauty gte ($beautymax / 3) * 2) and _towel lte 3>> /* 1 in 5 to skip beauty*/
 	<<if _towel is 0>> /*1 in 4 chance*/
-		<<He>> turns, and smiles with open lust when <<he>> sees you. <<covered>> "Can I have some towels please?"
+		<<He>> turns, and smiles with open lust when <<he>> sees you. <<covered>> "Can I have some clothes please?"
 		<br><br>
 		"Nah, you're hot," <<he>> pulls out a phone. "I wanna watch you go and ask someone else."
 		<<fameexhibitionism 2 pic>>
 	<<else>>
-		<<He>> turns, and smiles with open lust when <<he>> sees you. <<covered>> "Can I have some towels please?"
+		<<He>> turns, and smiles with open lust when <<he>> sees you. <<covered>> "Can I have some clothes please?"
 		<br><br>
 		"Seems like a shame, but sure," <<he>> nods, and wraps some around you.
-		<<towelup>><<fameexhibitionism 1>>
+		<<upperwear 87>><<fameexhibitionism 1>>
 	<</if>>
 <<elseif $penissize gte 3>>
-	<<He>> turns, and smiles when <<he>> sees you. <<covered>> "Can I have some towels please?"
+	<<He>> turns, and smiles when <<he>> sees you. <<covered>> "Can I have some clothes please?"
 	<br><br>
 	"One moment," <<he>> says. <<He>> pulls out a phone and takes a quick photo of your <<genitals>>.
-	<<He>> nods at the screen, and then wraps the towels around you. "Seems like a damn shame to cover that up."
-	<<towelup>><<fameexhibitionism 2 pic>>
+	<<He>> nods at the screen, and then chucks a bundle of fabric at you. "Seems like a damn shame to cover that up."
+	<<upperwear 87>><<fameexhibitionism 2 pic>>
 <<elseif $breastsize gte 7>>
-	<<He>> turns, and smiles when <<he>> sees you. <<covered>> "Can I have some towels please?"
+	<<He>> turns, and smiles when <<he>> sees you. <<covered>> "Can I have some clothes please?"
 	<br><br>
 	"One moment," <<he>> says. <<He>> pulls out a phone and takes a quick photo of your <<breasts>>.
-	<<He>> nods at the screen, and then wraps the towels around you. "Seems like a damn shame to cover those up."
-	<<towelup>><<fameexhibitionism 2 pic>>
+	<<He>> nods at the screen, and then chucks a bundle of fabric at you. "Seems like a damn shame to cover those up."
+	<<upperwear 87>><<fameexhibitionism 2 pic>>
 <<elseif _towel gte 2>>
-	<<He>> turns, and seems completely unphased when <<he>> sees you. <<covered>> "Can I have some towels please?"
+	<<He>> turns, and seems completely unphased when <<he>> sees you. <<covered>> "Can I have some clothes please?"
 	<br><br>
-	<<He>> nods, and wraps some around you.
-	<<towelup>><<fameexhibitionism 1>>
+	<<He>> nods, and gives you a patient gown.
+	<<upperwear 87>><<fameexhibitionism 1>>
 <<else>>
-	<<He>> turns, and puts a hand to <<his>> mouth to conceal laughter when <<he>> sees you. <<covered>> "Can I have some towels please?"
+	<<He>> turns, and puts a hand to <<his>> mouth to conceal laughter when <<he>> sees you. <<covered>> "Can I have some clothes please?"
 	<br><br>
-	<<He>> nods, and wraps some around you.
-	<<towelup>><<fameexhibitionism 1>>
+	<<He>> nods, and gives you a patient gown.
+	<<upperwear 87>><<fameexhibitionism 1>>
 <</if>><br><br><<unset _towel>>
 <<link [[Next|Asylum]]>><<endevent>><</link>>
 <br>
@@ -1838,8 +1838,6 @@ You lean closer to the <<person>>. "There are a lot of quiet places here," you w
 <<effects>>
 <<effectsman>><<man>>
 
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
-
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -1997,7 +1995,7 @@ Each patient is given a bed of soil to work as they please. Many are untended, b
 <<elseif $rng % 4 == 0 and $o_long_and_beautiful gte 1 and $o_long_and_beautiful lte 7>>/*1 in 4 chance if in right stage*/
 	<<if $o_long_and_beautiful lt 9>><<set $o_long_and_beautiful += 1>><</if>><br>
 	A girl with long, messy, matted hair seems to be watching from a plot nearby.
-	<<if $tending gte 600>>She might be impressed by your tending skills. It's hard to tell.<<if $o_long_and_beautiful lt 9>><<set $o_long_and_beautiful += 1>><</if>><</if>>
+	<<if currentSkillValue('tending') gte 600>>She might be impressed by your tending skills. It's hard to tell.<<if $o_long_and_beautiful lt 9>><<set $o_long_and_beautiful += 1>><</if>><</if>>
 <</if>>
 <br>
 
@@ -2469,7 +2467,7 @@ will be very angry and it will set back your progress. This should be kept secre
 	<</if>>
 <<else>>
 	The <<person2>><<person>> removes the straightjacket.
-	<<unbind>><<exposure>><<towelup>>
+	<<unbind>><<exposure>><<upperwear 87>>
 <</if>><br><br>
 
 <<if $NPCList[3].description is "long-haired">>

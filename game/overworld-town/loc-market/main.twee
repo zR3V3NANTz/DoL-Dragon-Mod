@@ -42,7 +42,7 @@ You enter the small office responsible for the Connudatus market. A <<generate1>
 <br><br>
 
 <<for _r to 0; _r lt 4; _r++>>
-	<<if $attractiveness + $famebusiness + $tending + ($plant_inventory.length * 100) + ($stall_rejected * 10) gte random(1, 10000)>>
+	<<if $attractiveness + $famebusiness + currentSkillValue('tending') + ($plant_inventory.length * 100) + ($stall_rejected * 10) gte random(1, 10000)>>
 		<<set _stall_attention to 1>>
 	<</if>>
 <</for>>
@@ -118,7 +118,7 @@ You enter the small office responsible for the Connudatus market. A <<generate1>
 <<masturbationeffects>>
 <<masturbationactions>>
 
-<<if $attractiveness + $famebusiness + $tending + ($stall_rejected * 10) gte random(1, 300000)>>
+<<if $attractiveness + $famebusiness + currentSkillValue('tending') + ($stall_rejected * 10) gte random(1, 300000)>>
 	<<link [[Continue|Stall Masturbation Finish]]>><<set $phase to 1>><</link>><<nexttext>>
 	<br>
 <<else>>

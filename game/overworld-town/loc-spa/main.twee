@@ -31,6 +31,9 @@ per session. Price may change with the season."
 
 	<<passoutshop>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "spa">>
+	<</if>>
 	<<if $hour is $closinghour>>
 		It's closing time. The receptionist is herding everyone outside.<<if $exposed gte 1>>Panic swells within you as you realise how exposed you'll be should you be found in this state of dress.<</if>>
 		<br>

@@ -39,7 +39,6 @@
 <<set $stresssaved to $stress>>
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
-<<set $enemynomax to $enemyno>>
 
 <<set $combattype to "gang">>
 
@@ -95,7 +94,6 @@
 <<set $stresssaved to $stress>>
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
-<<set $enemynomax to $enemyno>>
 
 <!-- NG This means if Beast 1 is a monster, they are all monsters -->
 <!-- This should be fixed globally later -->
@@ -182,7 +180,6 @@
 <<set $enemyhealth6 to $enemyhealthmax>>
 <<set $enemytrust6 to $enemytrust>>
 
-<<set $npcDAP to []>>
 
 <<combatinit>>
 <</widget>>
@@ -206,14 +203,38 @@
 	<span class="red">ERROR: beastNEWinit unknown type</span>
 <</if>>
 
-<<for _xx = 1; _xx < _nn+1; _xx++>>
-	<<generateBEAST _xx _tpe _gnn _beast_genitals _beast_monster>>
+<!-- Jimmy: Loops over _nn (How many beasts you plan to initiate) 
+			Then loops over the NPCList, currently size of 6.
+			If a slot does not define .type (WIP: Plan to make this standard),
+			generate the beast in that slot ID and break the NPCList loop.
+		Variables:
+			$_i is the current iteration of how many beasts to generate.
+			$_j is the NPCList slot index that is being selected for insertion.
+-->
+<<set $_j to 0>>
+<!-- Loop from 0 to the number of beasts to create. -->
+<<for $_i = 0; $_i < _nn; $_i++>>
+	<!-- Attempt to insert each NPC into a slot of NPCList -->
+	<<for $_j = $_j; $_j < 6; $_j++>>
+		<<if $NPCList[$_j].type is undefined>>
+			<<set $_j += 1>>
+			<<generateBEAST $_j _tpe _gnn _beast_genitals _beast_monster>>
+			<<break>>
+		<</if>>
+	<</for>>
 <</for>>
 
-<<set $enemytype to "beast">>
+<!-- Jimmy: Old iterator code.
+			This was replaced with above because people could insert NPCs before beasts at higher positions.
+			Typically because the beast has to be by itself in encounter combat (For now)
+<<set _offset to $enemyno + 1>>
+<<for _xx = _offset; _xx < _nn + _offset; _xx++>>
+	<<generateBEAST _xx _tpe _gnn _beast_genitals _beast_monster>>
+<</for>>
+<<unset _offset>> 
+-->
 
-<<set $enemyno to _nn>>
-<<set $enemynomax to _nn>>
+<<set $enemytype to "beast">>
 
 <!-- NG This means if Beast 1 is a monster, they are all monsters -->
 <!-- This should be fixed globally later -->
@@ -259,7 +280,6 @@
 <<set $stresssaved to $stress>>
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
-<<set $enemynomax to $enemyno>>
 
 <!-- NG This means if Beast 1 is a monster, they are all monsters -->
 <!-- This should be fixed globally later -->
@@ -580,7 +600,7 @@
 <<set $traumagain to 0>>
 <<set $stressgain to 0>>
 
-<<set $drugged += 120>>
+<<drugs 120>>
 
 <<combatinit>>
 <</widget>>
@@ -594,7 +614,7 @@
 <<set $combat to 1>>
 <<set $enemyarousalmax to 1000>>
 <<set $enemyangermax to 200>>
-<<set $enemyhealthmax to $NPCList[0].health>>
+<<set $enemyhealthmax to $NPCList[0].healthmax>>
 <<set $enemytrust to 0>>
 <<if $dissociation gte 1>>
 <<set $enemytrust -= 40>>
@@ -869,8 +889,9 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 
 <<widget "combatinit">>
 <<if $consensual is 1>>
-<<set $controlstart to $control>>
+	<<set $controlstart to $control>>
 <</if>>
+<<set $arousalmasochism to 0>>
 
 <<set $combatgoal to 0>>
 
@@ -892,6 +913,8 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<else>>
   <<crossdressing_check>>
 <</if>>
+
+<<set $enemynomax to $enemyno>>
 
 <<if $enemytype is "beast">>
 	<<if $NPCList[0].penis is "none" and $player.penisExist>>
@@ -919,6 +942,12 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 	<</if>>
 <</if>>
 
+<<for _i to 0; _i lt $enemynomax; _i++>>
+	<<if $NPCList[_i].stance isnot "defeated">>
+		<<set $NPCList[_i].active to "active">>
+	<</if>>
+<</for>>
+
 <<if $slimeEvent is "have sex with someone" or $slimeEvent is "have sex with someone or something">>
 	<<unset $slimeEvent>>
 <</if>>
@@ -936,6 +965,25 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 <<wetnessCalculate>>
 <</widget>>
 
+<<widget "inactiveNPC">>
+/* How to use:
+* Call this widget as <<inactiveNPC _n>> where _n is any number between 0 and 5, and is an active NPC.
+* This will prevent said NPC from entering combat, , reduce the overall max health by said NPC's max health, and reduce $enemyno by 1.
+* Reducing $enemyno is important because of the single-damage formula.
+* Can be expanded into arousal as well.
+* Why use this?
+* When an active NPC is not supposed to be present in combat but still active. E.g. the NPC is in the audience.
+*/
+<<if $args[0]>>
+	<<set $NPCList[$args[0]].active to "inactive">>
+	<<set $enemyhealthmax -= $NPCList[$args[0]].healthmax>>
+	<<set $enemyarousalmax -= $enemyarousalmax/$enemyno>>
+	<<set $enemyno-->>
+<<else>>
+	<span class="red">inactiveNPC ERROR: No index specified.</span>
+<</if>>
+<</widget>>
+
 <<widget "man">>
 
 <<if $finish isnot 1>>
@@ -948,43 +996,19 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 	<</if>>
 <</if>>
 <div @class="($debugLines ? 'debugLines-combat' : '')">
-	<<if $enemyno gte 1>>
-		<br>
-		<<man-combat 1>>
-		<<if $position isnot "stalk" and !$breakIgnore>>
-			<br><br>
+	<br>
+	<<for _mancombatcontrol = 0; _mancombatcontrol lt $enemynomax; _mancombatcontrol++>>
+		<<if $NPCList[_mancombatcontrol].active is "active" and $NPCList[_mancombatcontrol].stance isnot "defeated">>
+			<<man-combat _mancombatcontrol>>
+			<<if $position isnot "stalk" and !$breakIgnore>>
+				<br><br>
+			<</if>>
+		<<elseif $debug is 1 and $NPCList[_mancombatcontrol].active isnot "active">>
+			<br>Debug Message:<br>NPC _mancombatcontrol, $NPCList[_mancombatcontrol].fullDescription is not active.<br>
+		<<elseif $debug is 1 and $NPCList[_mancombatcontrol].stance is "defeated">>
+			<br>Debug Message:<br>NPC _mancombatcontrol, $NPCList[_mancombatcontrol].fullDescription is defeated.<br>
 		<</if>>
-	<</if>>
-	<<if $enemyno gte 2>>
-	<<man-combat 2>>
-		<<if $position isnot "stalk" and !$breakIgnore>>
-			<br><br>
-		<</if>>
-	<</if>>
-	<<if $enemyno gte 3>>
-		<<man-combat 3>>
-		<<if $position isnot "stalk" and !$breakIgnore>>
-			<br><br>
-		<</if>>
-	<</if>>
-	<<if $enemyno gte 4>>
-		<<man-combat 4>>
-		<<if $position isnot "stalk" and !$breakIgnore>>
-			<br><br>
-		<</if>>
-	<</if>>
-	<<if $enemyno gte 5>>
-		<<man-combat 5>>
-		<<if $position isnot "stalk" and !$breakIgnore>>
-			<br><br>
-		<</if>>
-	<</if>>
-	<<if $enemyno gte 6>>
-		<<man-combat 6>>
-		<<if $position isnot "stalk" and !$breakIgnore>>
-			<br><br>
-		<</if>>
-	<</if>>
+	<</for>>
 </div>
 <</if>>
 <<if $enemyarousal lt $enemyarousalmax>>
@@ -992,7 +1016,7 @@ otherwise there's no easy way of stopping NPC from shoving their stuff in PC's f
 	<<unset $condomAnalImg>>
 	<<unset $condomPlayerPenisImg>>
 <</if>>
-<<for $_j = $enemyno-1; $_j gte _end; $_j-->>
+<<for $_j = $enemynomax-1; $_j gte _end; $_j-->>
 	<<if ["vaginaentrance","vaginaimminent","vagina"].includes($NPCList[$_j].penis) and $NPCList[$_j].condom isnot false>>
 		<<if $NPCList[$_j].condom.damaged is false>>
 			<<set $condomVaginalImg to true>>

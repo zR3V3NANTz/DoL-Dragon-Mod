@@ -1,8 +1,7 @@
 :: Widgets Plant Objects [widget]
 <<widget "init_plant_objects">>
 
-<<set setup.plants to {
-
+<<set _plants to {
 	red_rose: {
 		index: 0,
 		name: "red_rose",
@@ -464,8 +463,20 @@
 		special: [],
 		season: ["spring","autumn"]
 		}
-
 }>>
+
+<!-- Jimmy: Sorts all plants alphabetically after their initialisation into _plants. 
+			This is so Object.values/keys will read them based on their alphabetical key order.
+			Yet allows extras to be added easily based on .index being available and ordered above.
+-->
+<<run
+	let sorted = Object.keys(_plants).sort();
+	setup.plants = {};
+	sorted.forEach(s => {
+		setup.plants[s] = _plants[s];
+	});
+	delete _plants;
+>>
 
 <<set setup.plot_base to {
 

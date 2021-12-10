@@ -1,64 +1,54 @@
 :: Leighton Private
 <<set $outside to 0>><<effects>>
-<<npc Leighton>><<person1>>
-<<if $headblackmailed is 1 and $rng gte 61>><!-- Modified for Monster People -->
+	<<endevent>>
+	<<npc Leighton>><<person1>>
+	You lead Leighton behind the stage. You're looking for an unoccupied room when <<he>> grasps your arm. "This one," <<he>> says, gesturing to a closed door. You open it.
+	<<endevent>>
+	<<beastNEWinit 1 dog>>
+	<<promiscuity3>>
+<<if $headblackmailed is 1 and $rng gte 61 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Monster People -->
+	A tripod camera stands in the corner. Beside it, chained to the wall, sits a <<beasttype 0>>. <<bHe 0>> growls. <<if $monster is 1>><<bHe 0>>'s completely naked, but doesn't seem to care. "Let me go! I want to have fun too!"<</if>>
+	<br><br>
 
-You lead Leighton behind the stage. You're looking for an unoccupied room when <<he>> grasps your arm. "This one," <<he>> says, gesturing to a closed door. You open it.
-<<promiscuity3>>
-<br><br>
+	Leighton takes a seat and grasps the chain. An empty glass sits on a nearby table, next to an open bottle of wine. "Right," the headteacher says. "Whenever you're ready."
+	<br><br>
 
-<<endevent>>
-<<beastNEWinit 1 dog>>
-A tripod camera stands in the corner. Beside it, chained to the wall, sits a <<beasttype 0>>. <<bHe 0>> growls. <<if $monster is 1>><<bHe 0>>'s completely naked, but doesn't seem to care. "Let me go! I want to have fun too!"<</if>>
-<br><br>
-
-Leighton takes a seat and grasps the chain. An empty glass sits on a nearby table, next to an open bottle of wine. "Right," the headteacher says. "Whenever you're ready."
-<br><br>
-
-<<if $deviancy gte 55>>
-<<link [[Perform|Leighton Club Blackmail Beast]]>><</link>><<deviant4>>
-<br><br>
-<</if>>
-<<link [[Refuse|Leighton Club Blackmail Beast Refuse]]>><</link>>
-<br><br>
+	<<if $deviancy gte 55>>
+	<<link [[Perform|Leighton Club Blackmail Beast]]>><</link>><<deviant4>>
+	<br><br>
+	<</if>>
+	<<link [[Refuse|Leighton Club Blackmail Beast Refuse]]>><</link>>
+	<br><br>
 
 <<elseif $headblackmailed is 1 and $rng gte 21>>
-You lead Leighton behind the stage. You're looking for an unoccupied room when <<he>> grasps your arm. "This one," <<he>> says, gesturing to a closed door. You open it.
-<<promiscuity3>>
-<br><br>
+	<<endevent>><<generatey1>><<generatey2>><<person1>>
+	There's someone already inside, sat on the sofa with <<his>> eyes fixed on the ground. <<He>> looks up. <<Hes>> a <<person>> you recognise from school. <<person2>>A <<person>> sits next <<person1>>to <<him>>, gazing at a wall. A tripod camera stands in the corner.
+	<br><br>
 
-<<endevent>><<generatey1>><<generatey2>><<person1>>
-There's someone already inside, sat on the sofa with <<his>> eyes fixed on the ground. <<He>> looks up. <<Hes>> a <<person>> you recognise from school. <<person2>>A <<person>> sits next <<person1>>to <<him>>, gazing at a wall. A tripod camera stands in the corner.
-<br><br>
+	Leighton takes a seat, and rests one leg on the other. An empty glass sits on a nearby table, next to an open bottle of wine. "Right," the headteacher says. "Whenever you're ready."
+	<br><br>
 
-Leighton takes a seat, and rests one leg on the other. An empty glass sits on a nearby table, next to an open bottle of wine. "Right," the headteacher says. "Whenever you're ready."
-<br><br>
-
-<<link [[Perform|Leighton Club Blackmail]]>><</link>>
-<br>
-<<link [[Refuse|Leighton Club Blackmail Refuse]]>><</link>>
-<br>
+	<<link [[Perform|Leighton Club Blackmail]]>><</link>>
+	<br>
+	<<link [[Refuse|Leighton Club Blackmail Refuse]]>><</link>>
+	<br>
 
 <<else>>
-You lead Leighton behind the stage. You're looking for an unoccupied room when <<he>> grasps your arm. "This one," <<he>> says, gesturing to a closed door. You open it.
-<<promiscuity3>>
-<br><br>
+	<<endevent>><<generatey1>><<person1>>
+	There's someone already inside, sat on the sofa with <<his>> eyes fixed on the ground. <<He>> looks up. <<Hes>> a <<person>> you recognise from school.
+	<br><br>
 
-<<endevent>><<generatey1>><<person1>>
-There's someone already inside, sat on the sofa with <<his>> eyes fixed on the ground. <<He>> looks up. <<Hes>> a <<person>> you recognise from school.
-<br><br>
+	Leighton takes a seat, and rests one leg on the other. An empty glass sits on a nearby table, next to an open bottle of wine. "Right," the headteacher says. "Whenever you're ready."
+	<br><br>
 
-Leighton takes a seat, and rests one leg on the other. An empty glass sits on a nearby table, next to an open bottle of wine. "Right," the headteacher says. "Whenever you're ready."
-<br><br>
-
-<<link [[Perform|Leighton Private 2]]>><</link>>
-<br>
-	<<if $promiscuity gte 55>>
-	<<link [[Ask Leighton to join|Leighton Private 2 Join]]>><<promiscuous4>><</link>>
+	<<link [[Perform|Leighton Private 2]]>><</link>>
 	<br>
-	<</if>>
-<<link [[Refuse|Leighton Private 2 Refuse]]>><</link>>
-<br>
+		<<if $promiscuity gte 55>>
+		<<link [[Ask Leighton to join|Leighton Private 2 Join]]>><<promiscuous4>><</link>>
+		<br>
+		<</if>>
+	<<link [[Refuse|Leighton Private 2 Refuse]]>><</link>>
+	<br>
 <</if>>
 
 :: Leighton Club Blackmail

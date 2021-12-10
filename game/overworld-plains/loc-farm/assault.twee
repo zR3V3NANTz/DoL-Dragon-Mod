@@ -1237,7 +1237,7 @@ You march into the open.
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		Remy's thugs are too dazed and exhausted to continue, <span class="green">and stagger from the field.</span>
 	<<else>>
 		The <<person1>><<person>> is too dazed and exhausted to continue, <span class="green">and staggers from the field.</span>
@@ -1256,7 +1256,7 @@ You march into the open.
 		<</if>>
 	<</for>>
 <<elseif $enemyhealth lte 0>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		<span class="green">Remy's thugs flee the field,</span> throwing worried glances over their shoulders to make sure you're not pursuing.
 	<<else>>
 		<span class="green">The <<person1>><<person>> flees the field,</span> throwing worried glances over <<his>> shoulder to make sure you're not pursing.
@@ -1330,7 +1330,7 @@ You march into the open.
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	"You'll go far," the <<person1>><<person>> mutters.
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		Bailey's thugs are too dazed and exhausted to continue, <span class="green">and stagger from the field.</span>
 	<<else>>
 		<<Hes>> too dazed and exhausted to continue, <span class="green">and staggers from the field.</span>
@@ -1350,7 +1350,7 @@ You march into the open.
 	<</for>>
 <<elseif $enemyhealth lte 0>>
 	"Shit," the <<person1>><<person>> says. "Bailey's not gonna be happy."
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		<span class="green">Bailey's thugs flee the field,</span> disappearing into the night.
 	<<else>>
 		<span class="green"><<He>> flees the field,</span> disappearing into the night.
@@ -1661,7 +1661,7 @@ You hear Alex fighting the other intruder.
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		Remy's thugs are too dazed and exhausted to continue. <span class="green">They stagger from the field.</span>
 	<<else>>
 		The <<person1>><<person>> is too dazed and exhausted to continue. <span class="green"><<He>> staggers from the field.</span>
@@ -1682,7 +1682,7 @@ You hear Alex fighting the other intruder.
 		<</if>>
 	<</for>>
 <<elseif $enemyhealth lte 0>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		<span class="green">Remy's thugs flee the field,</span> throwing worried glances over their shoulders to make sure you're not pursuing.
 	<<else>>
 		<span class="green">The <<person1>><<person>> flees the field,</span> throwing worried glances over <<his>> shoulder to make sure you're not pursing.
@@ -1767,7 +1767,7 @@ You hear Alex fighting the other intruder.
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
 	"You'll go far," the <<person1>><<person>> mutters.
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		Bailey's thugs are too dazed and exhausted to continue, <span class="green">and stagger from the field.</span>
 	<<else>>
 		<<Hes>> too dazed and exhausted to continue, <span class="green">and staggers from the field.</span>
@@ -1791,7 +1791,7 @@ You hear Alex fighting the other intruder.
 	<</for>>
 <<elseif $enemyhealth lte 0>>
 	"Shit," the <<person1>><<person>> says. "Bailey's not gonna be happy."
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		<span class="green">Bailey's thugs flee the field,</span> disappearing into the night.
 	<<else>>
 		<span class="green"><<He>> flees the field,</span> disappearing into the night.
@@ -1799,7 +1799,7 @@ You hear Alex fighting the other intruder.
 	<br><br>
 	<<endcombat>>
 	<<clotheson>>
-	<<npc Alex>><<person1>>
+	<<npc Alex>><<person1>><<generate2>>
 	<<tearful>> you rush to Alex's side. You find <<him>> wrestling with the remaining intruder, a <<person2>><<person>>. The intruder has the upper hand, until you smack <<him>> over the head from behind.<<person1>><<npcincr Alex dom 1>>
 	<br><br>
 	"You showed em," Alex says as you help <<him>> to <<his>> feet.
@@ -1951,7 +1951,7 @@ $farm.tower_guard fights nearby.
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		The thugs stagger away from you. They need a breather, but look ready to continue fighting. Until $farm.tower_guard sends <<his>> colleague plummeting from the tower. They turn and run down the stairs.
 	<<else>>
 		<<He>> staggers away from you. <<He>> needs a breather, but looks ready to continue fighting. Until $farm.tower_guard sends <<his>> colleague plummeting from the tower. <<He>> turns and runs down the stairs.
@@ -1987,7 +1987,7 @@ $farm.tower_guard fights nearby.
 	<<set $farm_assault.tower to "manned">>
 
 <<elseif $enemyhealth lte 0>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		You smack the <<person1>><<person>> from the tower. $farm.tower_guard's opponent follows suit. The <<person2>><<person>> turns and runs, almost falling down the stairs.
 	<<else>>
 		You smack the <<person1>><<person>> from the tower. $farm.tower_guard's opponent follows suit.
@@ -2024,7 +2024,7 @@ $farm.tower_guard fights nearby.
 
 <<else>>
 	You fall against the railing, too hurt to continue fighting.
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		The thugs turn their attention to $farm.tower_guard, and rush to their colleague's aid.
 	<<else>>
 		The <<person1>><<person>> turns <<his>> attention to $farm.tower_guard, and rushes to <<his>> colleague's aid.
@@ -2132,7 +2132,7 @@ $farm.tower_guard fights nearby.
 <<effects>>
 <<if $enemyarousal gte $enemyarousalmax>>
 	<<ejaculation>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		The thugs stagger away from you. They need a breather, but look ready to continue fighting. Until $farm.tower_guard sends <<his>> colleague plummeting from the tower. They turn and run down the stairs.
 	<<else>>
 		<<He>> staggers away from you. <<He>> needs a breather, but looks ready to continue fighting. Until $farm.tower_guard sends <<his>> colleague plummeting from the tower. <<He>> turns and runs down the stairs.
@@ -2168,7 +2168,7 @@ $farm.tower_guard fights nearby.
 	<<set $farm_assault.tower to "manned">>
 
 <<elseif $enemyhealth lte 0>>
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		You smack the <<person1>><<person>> from the tower. $farm.tower_guard's opponent follows suit. The <<person2>><<person>> smirks, before turning and running down the stairs.
 	<<else>>
 		You smack the <<person1>><<person>> from the tower. $farm.tower_guard's opponent follows suit.
@@ -2205,7 +2205,7 @@ $farm.tower_guard fights nearby.
 
 <<else>>
 	You fall against the railing, too hurt to continue fighting.
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		The thugs turn their attention to $farm.tower_guard, and rush to their colleague's aid.
 	<<else>>
 		The <<person1>><<person>> turns <<his>> attention to $farm.tower_guard, and rushes to <<his>> colleague's aid.
@@ -2273,7 +2273,7 @@ You move as fast as you think you can get away with. $farm.tower_guard tries to 
 <<if $skulduggerysuccess is 1>>
 
 	<span class="green">You make it right up to a <<person>>, and shove.</span> <<He>> cries out in surprise as <<he>> flips over the railing, plummeting from the tower.
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		<<His>> colleagues turn in surprise. $farm.tower_guard seizes the opening, and smacks a <<person2>><<person>> in the face. <<He>> staggers back, then trips and tumbles down the stairs.
 		<br><br>
 
@@ -2341,7 +2341,7 @@ You move as fast as you think you can get away with. $farm.tower_guard tries to 
 <<if $skulduggerysuccess is 1>>
 
 	<span class="green">You make it right up to a <<person>>, and shove.</span> <<He>> cries out in surprise as <<he>> flips over the railing, plummeting from the tower.
-	<<if $enemyno gte 2>>
+	<<if $enemynomax gte 2>>
 		<<His>> colleagues turn in surprise. $farm.tower_guard seizes the opening, and smacks a <<person2>><<person>> in the face. <<He>> staggers back, then trips and tumbles down the stairs.
 		<br><br>
 

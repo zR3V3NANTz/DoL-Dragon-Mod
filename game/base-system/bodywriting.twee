@@ -108,7 +108,7 @@
 <</for>>
 
 <<if $args[0] is "left">>
-	<<for _bwn to 0; _bwn lt $enemyno; _bwn++>>
+	<<for _bwn to 0; _bwn lt $enemynomax; _bwn++>>
 		<<if _n isnot _bwn and ($NPCList[_bwn].lefthand is "pen" + "_" + _bodypart or $NPCList[_bwn].righthand is "pen" + "_" + _bodypart)>>
 			<<He>> tries to scrawl on your <<bodypart _bodypart>> with <<his>> <<print $NPCList[_n].lefttool>>, <span class="blue">but <<his>> colleague shoves <<him>> out of the way.</span>
 			<<set $NPCList[_n].lefthand to 0>>
@@ -117,7 +117,7 @@
 		<</if>>
 	<</for>>
 <<else>>
-	<<for _bwn to 0; _bwn lt $enemyno; _bwn++>>
+	<<for _bwn to 0; _bwn lt $enemynomax; _bwn++>>
 		<<if _n isnot _bwn and ($NPCList[_bwn].lefthand is "pen" + "_" + _bodypart or $NPCList[_bwn].righthand is "pen" + "_" + _bodypart)>>
 			<<He>> tries to scrawl on your <<bodypart _bodypart>> with <<his>> <<print $NPCList[_n].righttool>>, <span class="blue">but <<his>> colleague shoves <<him>> out of the way.</span>
 			<<set $NPCList[_n].righthand to 0>>
@@ -392,16 +392,20 @@ Second arg: tool */
 <<case 7>>
 	<<add_bodywriting $args[0] hit_me $args[1]>>
 <<case 8>>
-	<<if $cbchance lt 100 or $dgchance gte 1>>
+	<<if ($cbchance lt 100 or $dgchance gte 1) and !$player.penisExist>>
 		<<add_bodywriting $args[0] cum_rag $args[1]>>
-	<<else>>
+	<<elseif ($dgchance lt 100 or $cbchance gte 1) and $player.penisExist>>
 		<<add_bodywriting $args[0] walking_dildo $args[1]>>
+	<<else>>
+		<<add_bodywriting $args[0] free_use $args[1]>>
 	<</if>>
 <<case 9>>
-	<<if $dgchance lt 100 or $cbchance gte 1>>
+	<<if ($dgchance lt 100 or $cbchance gte 1) and $player.penisExist>>
 		<<add_bodywriting $args[0] walking_dildo $args[1]>>
-	<<else>>
+	<<elseif ($cbchance lt 100 or $dgchance gte 1) and !$player.penisExist>>
 		<<add_bodywriting $args[0] cum_rag $args[1]>>
+	<<else>>
+		<<add_bodywriting $args[0] free_use $args[1]>>
 	<</if>>
 <<case 10>>
 	<<add_bodywriting $args[0] rape_bait $args[1]>>
@@ -468,7 +472,7 @@ Second arg: tool */
 
 <<widget "bodywriting_npc_normal">>
 <<set _bigdick to 0>>
-<<for _nx to 0; _nx lt $enemyno; _nx++>>
+<<for _nx to 0; _nx lt $enemynomax; _nx++>>
 	<<if $NPCList[_nx].penissize gte 3>>
 		<<set _bigdick to 1>>
 	<</if>>
@@ -908,7 +912,7 @@ Second arg: tool */
 <<if $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and ($position isnot "wall" or $walltype is "front")>>
 	<<if $NPCList[_n].penis is 0 and $mouthuse is 0>>
 		<<He>> follows the arrow's instruction, <span class="blue">and positions <<his>> $NPCList[_n].penisdesc in front of your mouth.</span>
-		<<neutral 5>><<set $mouthuse to "penis">><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthstate to "entrance">><<set $speechmouthentrance to 1>>
+		<<neutral 5>><<set $mouthuse to "penis">><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthstate to "entrance">><<set $speechmouthentrance to 1>><<set $mouthtarget to _n>>
 		<<set $NPCList[_n].location.genitals to "head">>
 	<<elseif $NPCList[_n].vagina is 0 and $mouthuse is 0>>
 		<<He>> follows the arrow's instruction.
@@ -933,11 +937,11 @@ Second arg: tool */
 				)>>
 			<</if>>
 			</span>
-			<<submission 5>><<set $NPCList[_n].vagina to "facesit">><<set $mouthuse to "facesit">><<set $mouthstate to "vagina">>
+			<<submission 5>><<set $NPCList[_n].vagina to "facesit">><<set $mouthuse to "facesit">><<set $mouthstate to "vagina">><<set $mouthtarget to _n>>
 			<<set $speechfacesit to 1>><<set $NPCList[_n].location.genitals = "head">>
 		<<else>>
 			<span class="purple"><<He>> wraps <<his>> legs around your head and presses <<his>> pussy against your mouth.</span>
-			<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[_n].vagina to "mouth">><<set $mouthstate to "othervagina">><<violence 3>><<bruise face>><<set $speechvaginamouth to 1>>
+			<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[_n].vagina to "mouth">><<set $mouthstate to "othervagina">><<violence 3>><<bruise face>><<set $speechvaginamouth to 1>><<set $mouthtarget to _n>>
 			<<set $NPCList[_n].location.genitals to "head">>
 		<</if>>
 	<</if>>
@@ -948,14 +952,14 @@ Second arg: tool */
 			<span class="green">Something about it scares you.</span>
 		<</if>>
 		<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $speechanusentrance to 1>>
-		<<set $NPCList[_n].location.genitals to "genitals">>
+		<<set $NPCList[_n].location.genitals to "genitals">><<set $anustarget to _n>>
 	<</if>>
 <<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals">>
 	<<if $player.vaginaExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
 		<<He>> follows the arrow's instruction, <span class="blue">and moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your <<pussy>>.</span>
-		<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
+		<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">><<set $vaginatarget to _n>>
 	<<elseif $player.penisExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
-		<<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">>
+		<<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">><<set $penistarget to _n>>
 		<<He>> follows the arrow's instruction, <span class="blue">and straddles you, <<his>> pussy hovering close to your <<penis>>.</span>
 		<<set $NPCList[_n].location.genitals to "genitals">>
 	<</if>>
@@ -1497,24 +1501,24 @@ Second arg: tool */
 			"Reserved for me," <<he>> says lovingly as <<he>>
 			<<if $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and $NPCList[_n].penis is 0 and $mouthuse is 0>>
 				<span class="blue">positions <<his>> $NPCList[_n].penisdesc in front of your mouth</span>.
-				<<neutral 5>><<set $mouthuse to "penis">><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthstate to "entrance">><<set $NPCList[_n].location.genitals to "head">>
+				<<neutral 5>><<set $mouthuse to "penis">><<set $NPCList[_n].penis to "mouthentrance">><<set $mouthstate to "entrance">><<set $NPCList[_n].location.genitals to "head">><<set $mouthtarget to _n>>
 			<<elseif $args[0] is "left_cheek" or $args[0] is "right_cheek" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "head" and $NPCList[_n].vagina is 0 and $mouthuse is 0>>
 				<<if random(4) is 0>>
 					gently rolls you onto your back and <span class="purple">straddles your face, lowering <<his>> pussy down onto your mouth</span>.
-					<<submission 5>><<set $NPCList[_n].vagina to "facesit">><<set $mouthuse to "facesit">><<set $mouthstate to "vagina">><<set $position to "missionary">>
+					<<submission 5>><<set $NPCList[_n].vagina to "facesit">><<set $mouthuse to "facesit">><<set $mouthstate to "vagina">><<set $position to "missionary">><<set $mouthtarget to _n>>
 				<<else>>
 					<span class="blue">wraps <<his>> legs around your head, pressing <<his>> pussy against your mouth</span>.
-					<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[_n].vagina to "mouth">><<set $mouthstate to "othervagina">>
+					<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[_n].vagina to "mouth">><<set $mouthstate to "othervagina">><<set $mouthtarget to _n>>
 				<</if>>
 			<<elseif $args[0] is "back" or $args[0] is "right_bottom" or $args[0] is "left_bottom" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $worn.lower.anus_exposed gte 1 and $worn.under_lower.anus_exposed gte 1 and $NPCList[0].penis is 0 and $anususe is 0>>
 				<span class="blue">positions <<his>> penis in front of your <<bottom>></span>.
-				<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">>
+				<<neutral 5>><<set $anususe to "penis">><<set $NPCList[_n].penis to "anusentrance">><<set $anusstate to "entrance">><<set $anustarget to _n>>
 			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $player.vaginaExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].penis is 0 and $vaginause is 0>>
 				<span class="blue">moves between your legs, positioning <<his>> $NPCList[_n].penisdesc in front of your pussy</span>.
-				<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
+				<<neutral 5>><<set $NPCList[_n].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">><<set $vaginatarget to _n>>
 			<<elseif $args[0] is "pubic" or $args[0] is "left_thigh" or $args[0] is "right_thigh" and $NPCList[_n].location.genitals is 0 and $NPCList[_n].location.head isnot "genitals" and $player.penisExist and $worn.lower.vagina_exposed gte 1 and $worn.under_lower.vagina_exposed gte 1 and $NPCList[0].vagina is 0 and $penisuse is 0>>
 				<span class="blue">straddles you, <<his>> pussy hovering close to your <<penis>></span>.
-				<<neutral 5>><<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">>
+				<<neutral 5>><<set $penisuse to "othervagina">><<set $NPCList[_n].vagina to "penisentrance">><<set $penisstate to "entrance">><<set $NPCList[_n].location.genitals to "genitals">><<set $penistarget to _n>>
 			<<else>>
 				smiles at you.
 			<</if>>

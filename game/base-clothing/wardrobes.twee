@@ -270,17 +270,19 @@
 				<<set $worn[clone(_labelWW)] to clone(_selectedWardrobe[clone(_labelWW)][clone(_valueWW)])>>
 				<<set $worn[clone(_labelWW)].lastTaken to clone($wardrobe_location)>>
 				<<set _selectedWardrobe[_labelWW].deleteAt(_valueWW)>>
+				<<resetClothingState _labelWW>>
 			<</for>>
 		<</if>>
 		<<set $worn[_equip[_ie]] to clone(_selectedWardrobe[_equip[_ie]][_wearId])>>
 		<<set $worn[_equip[_ie]].lastTaken to clone($wardrobe_location)>>
+		<<resetClothingState _equip[_ie]>>
 		You put on the <<print _selectedWardrobe[_equip[_ie]][_wearId].name>>.
 		<<set _selectedWardrobe[_equip[_ie]].deleteAt(_wearId)>>
 		<br><br>
 	<</if>>
 <</for>>
 <<if $wear is "dry">><<set $wear to 0>>
-	<<set $upperwet to 0>><<set $lowerwet to 0>><<set $underlowerwet to 0>><<set $underupperwet to 0>>
+	<<set $upperwet to 0>><<set $lowerwet to 0>><<set $underlowerwet to 0>><<set $underupperwet to 0>><<set $upperwetstage to 0>><<set $lowerwetstage to 0>>
 	You squeeze the water from your clothes.
 	<<effectswater>>
 	<br><br>
@@ -316,13 +318,17 @@
 </div>
 <br>
 <<if $upperwet gte 1 or $lowerwet gte 1 or $underlowerwet gte 1 or $underupperwet gte 1>>
+	<div class="wardrobe-dry">
 	<<link "Dry your clothes">>
 		<<set $wear to "dry">>
 		<<updatewardrobe>>
+		<<if $upperwet lt 1 and $lowerwet lt 1 and $underlowerwet lt 1 and $underupperwet lt 1>>
+			<<remove ".wardrobe-dry">>
+		<</if>>
 	<</link>>
 	<br>
+	</div>
 <</if>>
-
 <div class="wardrobe-action">
 	<<link "Strip all">>
 		<<set $wear to "strip">>
@@ -541,7 +547,7 @@ Type: <label>Everyday <<radiobutton "$outfit_type" 0 checked>></label> | <label>
 		<<if $outfit_name is "" or $outfit_name is "Custom">><<print '<<set $outfit_name to "Custom ' + $outfit.length + '">>'>><</if>>
 		<<set $outfit.last().name to $outfit_name>>
 		<<if $outfit_type>>
-			<<set $outfit.last().type.push($outfit_type)>>
+			<<set $outfit.last().type[0] to $outfit_type>>
 		<</if>>
 
 		<<if _saveColor>>
@@ -1428,7 +1434,7 @@ Comfortable warmth range: <<print ($chill + 1)>> - <<print Math.trunc(($chill * 
 				<</if>>
 			<</if>>
 		<<case "Prison Wardrobe">>
-			<<link [[Close|Prison Cell]]>><</link>>
+			<<link [[Close|Prison Cell]]>><<unset $saveColor>><<unset $wardrobeRepeat>><<unset $tempDisable>><<set $delete_outfit to "none">><<unset $forceWardrobeLocation>><</link>>
 	<</switch>>
 <</widget>>
 

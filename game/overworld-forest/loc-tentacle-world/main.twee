@@ -212,7 +212,7 @@ Overwhelmed with unending orgasms, you eventually crash into unconsciousness.
 <<if $tentacleorgasmignore is undefined>><<set $tentacleorgasmignore to 0>><</if>>
 You are on the tentacle plains. Tendrils growing from the ground strain to reach your <<genitals>>, caressing your thighs and
 whatever else they can reach. The air is sweet.
-<<set $drugged += 10>><<ggarousal>><<arousal 1200>>
+<<drugs 10>><<ggarousal>><<arousal 1200>>
 <br><br>
 <<if $phase is 1>>
 	You walk north.
@@ -579,7 +579,7 @@ You drop to all fours, and they begin slithering up your legs.
 		displace your $worn.under_lower.name.<<underlowerstrip>>
 	<</if>>
 <</if>>
-<<set $penisuse to "tentacle">>
+<<set $penisuse to "tentacle">><<set $tentaclePenis to "tentacle">>
 <<set _tentacles_semen to ($semen_amount / 2)>>
 You wiggle your <<bottom>>, drawing attention to your <<penis>>. The response is almost immediate. A tentacle latches on to you, and begins sucking.
 <br><br>

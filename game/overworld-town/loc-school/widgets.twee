@@ -403,7 +403,7 @@ Sirris asks everyone to group up into pairs.
 		<<awarenessup 100 1>>
 		<br><br>
 		The classroom has a laid-back atmosphere. Some students watch, but few with any real interest and many carry on chatting throughout.
-		<<if pregnancyBellyVisible()>>You're contantly reminded of the situation you're currently in, and the precious life inside of you.<<lstress>><<stress -10>><</if>>
+		<<if pregnancyBellyVisible()>>You're constantly reminded of the situation you're currently in, and the precious life inside of you.<<lstress>><<stress -10>><</if>>
 	<</if>>
 	<br><br>
 	<<link [[Next|Science Lesson]]>><<endevent>><</link>>
@@ -1209,41 +1209,44 @@ Kylar sits back down and smiles, oblivious to the embarrassment <<he>> caused.
 <br>
 
 <<elseif $rng gte 61>>
-  <<if $english gte 500>>
-  <<npc Doren>><<person1>>Doren approaches your desk. "I think you've sussed this material, so while the rest of the class works, I've got a message I need delivered to the caretaker's outbuilding." <<He>> hands you a note containing a list of theatre props. "Just slip it beneath the door."
-  <br><br>
-  <<endevent>>
+	<<if $english gte 500>>
+	<<npc Doren>><<person1>>Doren approaches your desk. "I think you've sussed this material, so while the rest of the class works, I've got a message I need delivered to the caretaker's outbuilding." <<He>> hands you a note containing a list of theatre props. "Just slip it beneath the door."
+	<br><br>
+	<<endevent>>
 
 	<<if $outbuildingvisited is 1>>
-	You arrive at the outbuilding where the <<print $outbuildingBeast>> attacked you. Were you to take your time and be careful, you could avoid another such encounter. You would miss some of the lesson though.
-	<br><br>
+		You arrive at the outbuilding where the <<print $outbuildingBeast>> attacked you. Were you to take your time and be careful, you could avoid another such encounter. You would miss some of the lesson though.
+		<br><br>
 
-	<<link [[Be careful|English Outbuilding]]>><<set $phase to 0>><<detention 1>><</link>><<gdelinquency>>
-	<br>
-	<<link [[Risk it|English Outbuilding]]>><<set $phase to 1>><</link>>
-	<br>
+		<<link [[Be careful|English Outbuilding]]>><<set $phase to 0>><<detention 1>><</link>><<gdelinquency>>
+		<br>
+		<<link [[Risk it|English Outbuilding]]>><<set $phase to 1>><</link>>
+		<br>
 	<<else>><<set $outbuildingvisited to 1>>
-	<<beastNEWinit 1 dog>><<set $outbuildingBeast to $NPCList[0].type>>
-	You head to the outbuilding behind the school and slip the note beneath the door as instructed. As you turn however, you find a <<beasttype>> baring its teeth and advancing on you.
-	<br><br>
-	  <!-- Modified for Beast People -->
-	  <!-- You manage to flee back to the classroom, though not unscathed.<<beastescape>>
-	  <br><br>
-	  <<integritycheck>><<towelup>>
+		<<beastNEWinit 1 dog>><<set $outbuildingBeast to $NPCList[0].type>>
+		You head to the outbuilding behind the school and slip the note beneath the door as instructed. As you turn however, you find a <<beasttype>> baring its teeth and advancing on you.
+		<br><br>
+		
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			<<link [[Next|English Outbuilding Molestation]]>><<set $molestationstart to 1>><</link>>
+			<br>
+		<<else>>
+			You manage to flee back to the classroom, though not unscathed.<<beastescape>>
+			<br><br>
+			<<integritycheck>><<towelup>>
 
-	  <<link [[Next|English Lesson]]>><</link>>
-	  -->
-	  <<link [[Next|English Outbuilding Molestation]]>><<set $molestationstart to 1>><</link>>
-	  <br>
+			<<link [[Next|English Lesson]]>><<endevent>><</link>>
+		<</if>>
+		<!-- Modified for Beast People -->
 	<</if>>
 
-  <<else>>
-  Doren takes a special interest in your progress, and doesn't give you a chance to relax.
-  <<gstress>><<genglish>><<stress 2>><<englishskill>>
-  <br><br>
+	<<else>>
+		Doren takes a special interest in your progress, and doesn't give you a chance to relax.
+		<<gstress>><<genglish>><<stress 2>><<englishskill>>
+		<br><br>
 
-  <<link [[Next|English Lesson]]>><</link>>
-  <</if>>
+		<<link [[Next|English Lesson]]>><</link>>
+	<</if>>
 
 <<elseif $rng gte 41>>
   <<if $delinquency gte 400>>
@@ -1537,7 +1540,7 @@ Doren asks you to demonstrate your grammar on the whiteboard. As you walk to the
 	<<npc Robin>><<generatey2>><<person2>>
 	A paper airplane flies across the room, hitting Winter in the back.
 	<br><br>
-	"<<person1>>It was <<him>>," says a <<person2>><<person>>, pointing at Robin.
+	<<person1>>"It was <<him>>," says a <<person2>><<person>>, pointing at Robin.
 	<br><br>
 	<<if random(1, 2) is 2>>
 		Winter glares at Robin. "Out. Now."

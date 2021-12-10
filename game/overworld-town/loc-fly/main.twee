@@ -42,6 +42,6 @@ You spread your wings.
     <<chickenicon>><<link [[Great Hawk Tower (0:45)|Bird Tower]]>><<pass 45>><</link>><br>
 <</if>>
 <<if $dragon gte 6>>
-    <<dragonwingsicon>><<link [[Lost Grove (0:45)|Dragon Grove]]>><<pass 45>><</link>><br>
+    <<dragonwingsicon>><<link [[Lost Grove (0:45)|Lost Grove]]>><<pass 45>><</link>><br>
 <</if>>
 <br>

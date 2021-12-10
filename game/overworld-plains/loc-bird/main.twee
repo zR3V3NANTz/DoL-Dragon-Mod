@@ -911,7 +911,7 @@ You kneel beside the trap door. The wood is ancient, but dry and preserved. You 
 <<else>>
 	You close your eyes as you take a bite, and pretend you're eating something more palatable. It's chewy, but doesn't taste of much at all.
 <</if>>
-It fills you with a strange warmth.<<set $drugged += 60>>
+It fills you with a strange warmth.<<drugs 60>>
 <br><br>
 
 <i><<bHe>> will be more likely to bring you lurkers in the future, rather than other items.</i>
@@ -967,7 +967,7 @@ You remain still.
 <<if $monster is 1>>
 	<<bHis>> feathers lay flat as <<bhis>> wings hang limp. "Will find better meat next hunt." <<bHe>> lifts the lurker, and walks away with it.
 <<else>>
-	The <<beasttype>>'s feathers lay flat. <<bHe>> lifts the lurker, and hops away with it.
+	The <<beasttype>>'s feathers lay flat. <<bhe>> lifts the lurker, and hops away with it.
 <</if>>
 <br><br>
 
@@ -1015,7 +1015,7 @@ You remain still.
 <<if $monster is 1>>
 	<<bHis>> wings hang limp as <<bhe>> frowns. "I'm sorry. Value of landbound trinkets is hard to understand. Will bring something more shiny next time."
 <<else>>
-	The <<beasttype>>'s feathers lay flat, and <<bHe>> hops away.
+	The <<beasttype>>'s feathers lay flat, and <<bhe>> hops away.
 <</if>>
 <br><br>
 
@@ -1032,7 +1032,7 @@ You remain still.
 <<if $monster is 1>>
 	<<bHis>> wings hang limp. "Will bring something more shiny to impress you. Next time."
 <<else>>
-	The <<beasttype>>'s feathers lay flat, and <<bHe>> hops away.
+	The <<beasttype>>'s feathers lay flat, and <<bhe>> hops away.
 <</if>>
 <br><br>
 
@@ -1395,6 +1395,9 @@ You don't move.
 	You lie on the nest. It's hard to get comfortable.
 <</if>>
 <<endevent>>
+<<if $wraith and $wraith.state isnot "" and $wraithPrison and $bird.mirror is 1 and ($moonstate is "evening" and $hour gte 11 or $moonstate is "morning" and $hour lt 6)>>
+	You feel anxious, and your eyes dart over to the mirror.
+<</if>>
 <br><br>
 
 <<if $syndromebird is 1 and $bird.activity is "sleep" and $bird.state is "home" and $bird.satisfied isnot true>>
@@ -2295,7 +2298,7 @@ The <<beasttype>> shakes <<bhis>> feathers, and lets you stroke <<bhis>> wings.
 				but resumes <<bhis>> song anyways.
 			<<case 6>>
 				You see a person in the distance, completely naked.
-				<<if $hallucinations gte 2 and $tentacledisable is "f" and $monsterchance gte 1>>
+				<<if $tentacledisable is "f" and $plantdisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 					<<Plant_details>> are scattered throughout their hair, and writhing vines surround them. At first, you think they're being attacked, but they seem to be in control of them.
 					<br><br>
 					<<if $monster is 1>>

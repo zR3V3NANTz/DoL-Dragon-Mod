@@ -94,7 +94,7 @@ Passage: <<print $passage>>
 <br>
 <<link [[Strip all|$passage]]>><<undress "wardrobe">><</link>>
 <br>
-<<link [[Pass 1 minute|$passage]]>><<pass 1>><<set $tentacledisable to "t">><</link>>
+<<link [[Pass 1 minute|$passage]]>><<pass 1>><</link>>
 <br>
 <<link [[Pass 15 minutes|$passage]]>><<pass 15>><</link>>
 <br>
@@ -348,7 +348,7 @@ These still require Fertilise
 <<link [[Arousal zero|$passage]]>><<arousal 0>><</link>>
 <br>
 
-<<link [[Booze|$passage]]>><<set $drunk += 60>><</link>>
+<<link [[Booze|$passage]]>><<alcohol 60>><</link>>
 <br>
 <<link [[Drugged|$passage]]>><<set $drugged += 600>><</link>>
 <br>

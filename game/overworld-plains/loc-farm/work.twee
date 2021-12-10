@@ -55,7 +55,7 @@ You are on Alex's farm. A rustic farmhouse overlooks a yard and chicken coop. Ot
 <</if>>
 <br><br>
 
-<<if $exposed gte 2 and $uncomfortable.nude is true or $exposed is 1 and $uncomfortable.underwear is true>>
+<<if ($exposed gte 2 and $uncomfortable.nude is true) or ($exposed is 1 and $uncomfortable.underwear is true)>>
 	<<if $farm.build_timer gte 1 and $hour gte 6>>
 		You sneak across the farm, keeping your <<lewdness>> covered as best you can. You hope you aren't spotted by the workers.
 	<<else>>
@@ -615,6 +615,9 @@ You are on Alex's farm. A rustic farmhouse overlooks a yard and chicken coop. Ot
 		<<set $farm_event to 1>>
 		<<eventsfarm>>
 	<<else>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasmLocation "alexFarmWork">>
+		<</if>>
 		<<if $farm_stage gte 7>>
 			<<link [[Cottage (0:01)|Farm Cottage]]>><<pass 1>><</link>>
 			<br>
@@ -977,7 +980,8 @@ You release the chickens from their coop, then enter to clean up. It's large eno
 <<set $danger to random(1, 10000)>>
 <<if $danger gte (9900 - $allure)>>
 	<!-- Modified for Beast People -->
-		<<farm_gen dog>>
+	<<farm_gen dog>>
+	<<if $monster is 1 or $bestialitydisable is "f">>
 		<<if $farm_work.dog.monster is true>>
 			<<beastNEWinit 1 dog $farm_work.dog.gender $farm_work.dog.genitals monster>>
 		<<else>>
@@ -995,11 +999,13 @@ You release the chickens from their coop, then enter to clean up. It's large eno
 		<</if>>
 		<<link [[Next|Farm Coop Rape]]>><<set $molestationstart to 1>><</link>>
 		<br>
-		<!-- You hear a click behind you. The wind blew the door shut. It's stuck. You manage to pull it open, but not beforew worrying that you'll need to call for help.<<stress 6>><<gstress>> -->
-		<!-- <br><br> -->
+	<<else>>
+		You hear a click behind you. The wind blew the door shut. It's stuck. You manage to pull it open, but not beforew worrying that you'll need to call for help.<<stress 6>><<gstress>>
+		<br><br>
 
-		<!-- <<link [[Next|Farm Work]]>><</link>> -->
-		<!-- <br> -->
+		<<link [[Next|Farm Work]]>><<endevent>><</link>>
+		<br>
+	<</if>>
 <<else>>
 
 	<<link [[Next|Farm Work]]>><</link>>
@@ -1109,28 +1115,31 @@ You enter the sty, and release the <<farm_text_many pig>>. They walk down the ai
 <<set $danger to random(1, 10000)>>
 <<if $danger gte (9900 - $allure)>>
 <!-- Modified for monster people -->
-	<<if $farm_work.pig.monster is true>>
-		The last grasps your hair, and tries to force you to the ground.
-	<<else>>
-		The last rears on its hind legs, and tries to force you to the ground.
-	<</if>>
-	<br><br>
+	<<if $bestialitydisable is "f" or $farm_work.pig.monster is true>>
+		<<if $farm_work.pig.monster is true>>
+			The last grasps your hair, and tries to force you to the ground.
+		<<else>>
+			The last rears on its hind legs, and tries to force you to the ground.
+		<</if>>
+		<br><br>
 
-	<<link [[Scold|Farm Pigs Scold]]>><</link>><<tendingdifficulty 1 600>>
-	<br>
-	<<link [[Shove away|Farm Pigs Shove]]>><</link>><<physiquedifficulty 1 12000>>
-	<br>
-	<<link [[Endure|Farm Pigs Endure]]>><<trauma 6>><<stress 6>><<farm_pigs -1>><</link>><<lrespect>>
-	<br>
-	<<if $deviancy gte 35>>
-		<<link [[Give it a hand|Farm Pigs Hand]]>><<set $sexstart to 1>><</link>><<deviant3>>
+		<<link [[Scold|Farm Pigs Scold]]>><</link>><<tendingdifficulty 1 600>>
+		<br>
+		<<link [[Shove away|Farm Pigs Shove]]>><</link>><<physiquedifficulty 1 12000>>
+		<br>
+		<<link [[Endure|Farm Pigs Endure]]>><<trauma 6>><<stress 6>><<farm_pigs -1>><</link>><<lrespect>>
+		<br>
+		<<if $deviancy gte 35>>
+			<<link [[Give it a hand|Farm Pigs Hand]]>><<set $sexstart to 1>><</link>><<deviant3>>
+			<br>
+		<</if>>
+	<<else>>
+		The <<farm_text_many pig>> seem agitated. It's a little scary.<<gstress>>
+		<br><br>
+
+		<<link [[Next|Farm Work]]>><</link>>
 		<br>
 	<</if>>
-	<!-- The <<farm_text_many pig>> seem agitated. It's a little scary.<<gstress>> -->
-	<!-- <br><br> -->
-
-	<!-- <<link [[Next|Farm Work]]>><</link>> -->
-	<!-- <br> -->
 <<else>>
 
 	<<link [[Next|Farm Work]]>><</link>>
@@ -1205,7 +1214,7 @@ You empty the buckets in the troughs.
 <br><br>
 
 <<set $danger to random(1, 10000)>>
-<<if $danger gte (9900 - $allure) and $worn.lower.name isnot "naked">>
+<<if $danger gte (9900 - $allure) and $worn.lower.name isnot "naked" and ($bestialitydisable is "f" or $farm_work.pig.monster is true)>>
 <!-- Modified for Monster People -->
 	<<if $farm.beasts.pigs lte -20 and $rng gte 51>>
 		<<if $farm_work.pig.monster is true>>
@@ -1245,7 +1254,7 @@ You empty the buckets in the troughs.
 
 You herd the <<farm_text_many pig>> back into the sty. Some of them seem reluctant to move, and need cajoling.
 <<set $danger to random(1, 10000)>>
-<<if $danger gte (9900 - $allure)>>
+<<if $danger gte (9900 - $allure) and ($bestialitydisable is "f" or $farm_work.pig.monster is true)>>
 <!-- Modified for Monster People -->
 		<<if $farm_work.pig.monster is true>>
 			You manage to get the last to stand. You're leading <<farm_him pig>> inside when <<farm_he pig>> grasps your arms and tries to force you to the ground.
@@ -1293,6 +1302,7 @@ You open each stall, releasing the <<farm_text_many horse>> within. They know wh
 <<set $danger to random(1, 10000)>>
 <<if $danger gte (9900 - $allure) and $horsedisable is "f">>
 <!-- Modified for Monster People -->
+	<<if $bestialitydisable is "f" or $farm_work.pig.monster is true>>
 		Most run by, eager to stretch their legs, but a couple hang back.
 		<<if $farm_work.horse.monster is true>>
 			One of them steps in front of you, and pushes you away from the gate. "We don't appreciate being penned up," <<farm_he horse>> says as a pair of powerful hands grasp your shoulders from behind. "How's about you give us a little something by way of apology?"
@@ -1322,11 +1332,13 @@ You open each stall, releasing the <<farm_text_many horse>> within. They know wh
 			<<link [[Endure|Farm Horses Endure]]>><<trauma 6>><<stress 6>><</link>><<gtrauma>><<gstress>>
 			<br>
 		<</if>>
-		<!-- They run by, eager to stretch their legs. One jostles you as it passes, knocking you to the ground.<<gpain>><<pain 4>><<gstress>><<stress 6>>
-		<!-- <br><br> -->
+	<<else>>
+		They run by, eager to stretch their legs. One jostles you as it passes, knocking you to the ground.<<gpain>><<pain 4>><<gstress>><<stress 6>>
+		<br><br>
 
-		<!-- <<link [[Next|Farm Work]]>><</link>> -->
-		<!-- <br> -->
+		<<link [[Next|Farm Work]]>><</link>>
+		<br>
+	<</if>>
 <<else>>
 	They run by, eager to stretch their legs.
 	<br><br>
@@ -1359,7 +1371,7 @@ You open each stall, releasing the <<farm_text_many horse>> within. They know wh
 	<<link [[Chase|Farm Horses Chase]]>><<tiredness 2>><</link>><<athleticsdifficulty 1 1000>><<gtiredness>>
 	<br>
 	<!-- Modified for Monster People -->
-	<<if $deviancy gte 15 and $horsedisable is "f">>
+	<<if $deviancy gte 15 and $horsedisable is "f" and ($bestialitydisable is "f" or $farm_work.horse.monster is true)>>
 		<<link [[Seduce|Farm Horses Seduce]]>><</link>><<deviant2>>
 		<br>
 	<</if>>
@@ -1637,7 +1649,7 @@ You call the <<farm_text_many horse>>, and lead them from the field. They seem h
 	<<link [[Call Alex|Farm Horses In Alex]]>><<npcincr Alex dom 1>><<farm_horses -1>><</link>><<lrespect>><<gdom "Alex">>
 	<br>
 	<!-- Modified for Monster People -->
-	<<if $deviancy gte 15 and $horsedisable is "f">>
+	<<if $deviancy gte 15 and $horsedisable is "f" and ($bestialitydisable is "f" or $farm_work.horse.monster is true)>>
 		<<link [[Seduce|Farm Horses In Seduce]]>><</link>><<deviant2>>
 	<</if>>
 	<br>
@@ -1722,6 +1734,8 @@ You enter the cattle barn.
 You lead the <<farm_text_many cattle>> into the barn, and strap them into the machine.
 
 <!-- Modified for Monster People -->
+
+<<if $bestialitydisable is "f" or $farm_work.cattle.monster is true>>
 	<<if $cattle_milked lte 6>>
 		<<if $farm_work.cattle.monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 			<<if $farm_work.cattle.gender_plural is "m">>
@@ -1801,7 +1815,9 @@ You lead the <<farm_text_many cattle>> into the barn, and strap them into the ma
 			<</if>>
 		<</if>>
 	<</if>>
-<!-- The cattle moo in anticipation. -->
+<<else>>
+	The cattle moo in anticipation.
+<</if>>
 
 <br><br>
 The milking machine works fast, and soon finishes gathering fluid. You release the <<farm_text_many cattle>>, and they trot away.
@@ -1846,15 +1862,19 @@ The milking machine works fast, and soon finishes gathering fluid. You release t
 <<deviancy1>>
 
 You <<tendingtext>> squeeze and rub.
-<<if $tending gte 1000>>
+<<if currentSkillValue('tending') gte 1500>>
+	<<farm_count 3>><<pass 3>> Three minutes later
+<<elseif currentSkillValue('tending') gte 1200>>
+	<<farm_count 4>><<pass 4>> Four minutes later
+<<elseif currentSkillValue('tending') gte 1000>>
 	<<farm_count 5>><<pass 5>> Five minutes later
-<<elseif $tending gte 800>>
+<<elseif currentSkillValue('tending') gte 800>>
 	<<farm_count 10>><<pass 10>> Ten minutes later
-<<elseif $tending gte 600>>
+<<elseif currentSkillValue('tending') gte 600>>
 	<<farm_count 15>><<pass 15>> Fifteen minutes later
-<<elseif $tending gte 400>>
+<<elseif currentSkillValue('tending') gte 400>>
 	<<farm_count 20>><<pass 20>> Twenty minutes later
-<<elseif $tending gte 200>>
+<<elseif currentSkillValue('tending') gte 200>>
 	<<farm_count 25>><<pass 25>> Twenty-five minutes later
 <<else>>
 	<<farm_count 30>><<pass 30>> Thirty minutes later
@@ -2065,7 +2085,7 @@ You sneak up to the shed, and push the door open.
 		You water the crops.
 	<</if>>
 <</if>>
-<<if $tending gte 200>>
+<<if currentSkillValue('tending') gte 200>>
 	You also examine them for pests and signs of disease.
 <<else>>
 	You also examine the crops for pests.
@@ -2077,6 +2097,9 @@ You sneak up to the shed, and push the door open.
 	It's hard work, but you make progress.
 <</if>>
 <br><br>
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "alexFarmTendingAlone">>
+<</if>>
 
 
 <<set $danger to random(1, 10000)>>
@@ -2109,7 +2132,7 @@ You sneak up to the shed, and push the door open.
 		You help Alex water the crops.
 	<</if>>
 <</if>>
-<<if $tending gte 200>>
+<<if currentSkillValue('tending') gte 200>>
 	You also examine them for pests and signs of disease.
 <<else>>
 	You also examine them for pests.
@@ -2121,6 +2144,9 @@ You sneak up to the shed, and push the door open.
 	It's hard work, but you make progress.
 <</if>>
 <br><br>
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "alexFarmTending">>
+<</if>>
 
 <<set $danger to random(1, 10000)>>
 <<if $danger gte (9900 - $allure)>>
@@ -2160,6 +2186,9 @@ You sneak up to the shed, and push the door open.
 	You make good progress, <span class="green">and remove the last of the weeds!</span>
 <</if>>
 <br><br>
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "alexFarmTending">>
+<</if>>
 
 <<set $danger to random(1, 10000)>>
 <<if $danger gte (9900 - $allure)>>
@@ -2208,6 +2237,9 @@ You sneak up to the shed, and push the door open.
 	You make good progress, <span class="green">and remove the last of the weeds!</span>
 <</if>>
 <br><br>
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "alexFarmTendingAlone">>
+<</if>>
 
 <<set $danger to random(1, 10000)>>
 <<if $danger gte (9900 - $allure * 1.5)>>
@@ -2308,7 +2340,7 @@ You sit and lean against the tree.
 	<</if>>
 	<br><br>
 
-	<<link [[Drink|Farm Rest Drink]]>><<set $drunk += 120>><<stress -6>><<npcincr Alex love 1>><</link>><<glove>><<lstress>>
+	<<link [[Drink|Farm Rest Drink]]>><<alcohol 120>><<stress -6>><<npcincr Alex love 1>><</link>><<glove>><<lstress>>
 	<br>
 	<<link [[Refuse|Farm Rest Refuse]]>><</link>>
 	<br>
@@ -2379,7 +2411,7 @@ You carry the feed to the field. Some of the younger <<farm_text_many dog>> beg 
 <br><br>
 <<set $danger to random(1, 10000)>>
 <!-- Modified for Monster People -->
-<<if $danger gte (9900 - $allure) and $farm.beasts.dogs lte -20>>
+<<if $danger gte (9900 - $allure) and $farm.beasts.dogs lte -20 and ($bestialitydisable is "f" or $farm_work.dog.monster is true)>>
 	You leave the <<farm_text_many dog>> to feed, but hear footsteps approach as you walk from the field.
 	<<if $farm_work.dog.monster is true>>
 		Before you can turn, a pair of hands land on your shoulders. A weight forces you to the ground.
@@ -2391,7 +2423,7 @@ You carry the feed to the field. Some of the younger <<farm_text_many dog>> beg 
 	<<link [[Next|Farm Dogs Rape]]>><<set $molestationstart to 1>><</link>>
 	<br>
 <!-- Modified for Monster People -->
-<<elseif ($danger gte (9900 - $allure) or $farm.beasts.dogs lte -5)>>
+<<elseif ($danger gte (9900 - $allure) or $farm.beasts.dogs lte -5) and ($bestialitydisable is "f" or $farm_work.dog.monster is true)>>
 	You leave the <<farm_text_many dog>> to feed, but hear footsteps approach as you walk from the field.
 	<<if $farm_work.dog.monster is true>>
 		A <<farm_text dog>> wraps <<farm_his dog>> arms around your neck, and humps <<farm_his dog>> pelvis against you.
@@ -2570,20 +2602,20 @@ The machine continues its devilish work, sucking with more intensity. You feel a
 	You remove the suction tube with a shaking hand, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <<elseif $farm.milking.caught is true and $farm.milking.alexNightEvent is false>>
 	<<set $farm.milking.alexNightEvent to true>>
 	<<set $farm.milking.dayMilking to true>>
 	As you remove the suction tubes with shaking hands.
 	<<deviancy2>>
-	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<endcombat>><<endevent>><</link>>
+	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<machine_end>><<endevent>><</link>>
 	<br>
 <<else>>
 	You remove the suction tubes with shaking hands, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <</if>>
 
@@ -2691,20 +2723,20 @@ You remain on your hands and knees as the machine milks you again and again, suc
 	You remove the suction tube with a shaking hand, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Cattle Milk]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <<elseif $farm.milking.caught is true and $farm.milking.alexNightEvent is false>>
 	<<set $farm.milking.alexNightEvent to true>>
 	<<set $farm.milking.dayMilking to true>>
 	As you remove the suction tube with a shaking hand.
 	<<deviancy2>>
-	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<endcombat>><<endevent>><</link>>
+	<<link [[Next|Farm Barn Caught]]>><<pass 30>><<machine_end>><<endevent>><</link>>
 	<br>
 <<else>>
 	You remove the suction tube with a shaking hand, and rise to your feet.
 	<<deviancy2>>
 
-	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<endcombat>><</link>>
+	<<link [[Next|Farm Barn]]>><<pass 30>><<clotheson>><<machine_end>><</link>>
 	<br>
 <</if>>
 

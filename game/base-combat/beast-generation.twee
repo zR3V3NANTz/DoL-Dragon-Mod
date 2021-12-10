@@ -5,11 +5,7 @@
 <!-- Example: <<generateBEAST 2 wolf f>> would generate NPC 2 as female wolf -->
 
 <!-- Checks if endevent was properly used after the last event -->
-<<if $enemyno gte 1 and $args[0] is 1>>
-	<<set $endeventerror to $lastgenerated>>
-	<<endevent phaseless>>
-<</if>>
-<<set $lastgenerated to $passage>>
+<<checkEventNPC `$args[0] - 1`>>
 
 <<set _n to $args[0]-1>>
 <<set _type to $args[1]>>
@@ -53,8 +49,7 @@
 
 <<beastattribute _n _type>>
 
-
-
+<<pushEventNPC _n>>
 <</widget>>
 
 <<widget "beastattribute">>
@@ -97,7 +92,8 @@
 <<set _ps to [2,2,2,3,2,2,3,3,2,5,2,2,5]>>
 
 <<set _i to $BeastList.indexOf(_type)>>
-<<set $NPCList[_n].health to _h[_i]>>
+<<set $NPCList[_n].healthmax to _h[_i]>>
+<<set $NPCList[_n].health to $NPCList[_n].healthmax>>
 <<set $NPCList[_n].description to _d[_i]>>
 <<set $NPCList[_n].type to _t[_i]>>
 /% <<set $NPCList[_n].claws to _cla[_i]>> %/
@@ -119,9 +115,9 @@
 <</if>>
 
 <!-- Set hallucination creatures to always be monsters. Shadow types could be .monster = "shadow" -->
-<<if $NPCList[_n].type is "creature">>
+<<if $NPCList[_n].type is "creature" and !_tower_creature>>
 	<<set $NPCList[_n].monster to "monster">>
-<<elseif ($monsterchance gte $rng and $hallucinations gte 1) or ($monsterchance gte $rng and $monsterhallucinations is "f") or (_beast_monster is "monster") or ($bestialitydisable is "t")>>
+<<elseif ($monsterchance gte $rng and $hallucinations gte 1) or ($monsterchance gte $rng and $monsterhallucinations is "f") or (_beast_monster is "monster") or ($bestialitydisable is "t" and $NPCList[0].monster is "monster")>>
 	<<set $NPCList[_n].monster to "monster">>
 	<<if $NPCList[_n].type is "horse">>
 		<<set $NPCList[_n].type to "centaur">>

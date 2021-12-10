@@ -390,6 +390,7 @@
 			<<set _kindnessFameConfig =			{ currentValue: $famegood,			preText: 'Kindness:',		flavorText: 'do-gooder',	states: _inverseFameStates }>>
 			<<set _businessFameConfig =			{ currentValue: $famebusiness,		preText: 'Business:',		flavorText: 'entrepreneur',	states: _inverseFameStates }>>
 			<<set _socialFameConfig =			{ currentValue: $famesocial,		preText: 'Socialite:',		flavorText: 'schmoozer',	states: _inverseFameStates }>>
+			<<set _modelFameConfig =			{ currentValue: $famemodel,		preText: 'Modelling:',		flavorText: 'show off',	states: _inverseFameStates }>>
 			<<set _overallFameConfig =			{ currentValue: $fame,				preText: 'Overall:',		flavorText: '', states: [
 				{ requiredValue: 0,		color: 'green',		description: ' Unknown'},
 				{ requiredValue: 100,	color: 'teal',		description: ' Obscure'},
@@ -410,6 +411,7 @@
 			<<set _kindnessFameBoxConfig =		{ description : '<<relation-text _kindnessFameConfig>>' }>>
 			<<set _businessFameBoxConfig =		{ description : '<<relation-text _businessFameConfig>>' }>>
 			<<set _socialFameBoxConfig =		{ description : '<<relation-text _socialFameConfig>>' }>>
+			<<set _modelFameBoxConfig =			{ description : '<<relation-text _modelFameConfig>>' }>>
 			<<set _overallFameBoxConfig =		{ description : '<<relation-text _overallFameConfig>>' }>>
 		<</silently>>
 
@@ -418,6 +420,9 @@
 		<<relation-box-simple _rapeFameBoxConfig>>
 		<<relation-box-simple _bestialityFameBoxConfig>>
 		<<relation-box-simple _exhibitionismFameBoxConfig>>
+		<<if $famemodel gte 1>>
+			<<relation-box-simple _modelFameBoxConfig>>
+		<</if>>
 		/*ToDo: Pregnancy, remove check to properly enable*/
 		<<if $pregnancyTesting>>
 			<<relation-box-simple _pregnancyFameBoxConfig>>

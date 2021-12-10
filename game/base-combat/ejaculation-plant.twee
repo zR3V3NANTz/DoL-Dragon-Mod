@@ -44,7 +44,7 @@
 		<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<nectarfed 20>>
 	<<elseif $NPCList[_nn].vagina is "leftarm" or $NPCList[_nn].vagina is "rightarm">>
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
-			<<He>> grasps your arm with one hand and the back of your head with the other, moaning into your moath as <<he>> convulses on your hand.
+			<<He>> grasps your arm with one hand and the back of your head with the other, moaning into your mouth as <<he>> convulses on your hand.
 		<<else>>
 			<<switch random(1, 5)>>
 				<<case 1 2>>

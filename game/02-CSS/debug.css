@@ -41,3 +41,45 @@
 	margin: 3px 0;
 	word-wrap: break-word;
 }
+
+.debug-event-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.debug-event-item {
+    margin: 0.15rem;
+	padding: 0.15rem;
+	min-height: 6rem;
+    flex-basis: 16rem;
+    flex-grow: 1;
+}
+
+.debug-event-empty {
+	background: repeating-linear-gradient(
+		45deg,
+		#222,
+		#222 10px,
+		#444 10px,
+		#444 20px
+	);
+	color: gray;
+}
+
+.debug-event-success {
+    border: solid 1px rgba(50, 200, 50, 0.5);
+}
+
+.debug-event-warning {
+    border: solid 1px rgba(200, 200, 50, 0.5);
+}
+
+.debug-event-error {
+    border: solid 1px rgba(200, 50, 50, 0.5);
+}
+
+.debug-event-item hr {
+	margin: 0rem;
+}

@@ -187,13 +187,13 @@ You brace yourself. You stagger as the slug collides with your chest. You manage
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Beach Slug Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Beach Slug Struggle End]]>><</link>></span>
 	<br>
 <<elseif $pursuit gte 3>>
-	<<link [[Next|Beach Slug Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Beach Slug Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Beach Slug Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Beach Slug Struggle]]>><</link>></span>
 	<br>
 <</if>>
 
@@ -423,7 +423,7 @@ The creature rises behind you. A gargantuan slug, larger than a horse. <span cla
 	<<voreeffects>><<effectstentacles>>
 	<<vore>><<tentacles>>
 	<<statetentacles>>
-	<<voreactions>><<actionstentacles>>
+	<<actionsvorentacles>>
 <<else>>
 	<<voreeffects>>
 	<<vore>>

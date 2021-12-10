@@ -8,13 +8,21 @@ You are in the strip club on Connudatus Street. <<if $daystate isnot "day" and $
 <<if $stress gte $stressmax>>
 	<<passoutshop>>
 <<else>>
-
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "stripClub">>
+<</if>>
 <<if $hour is 6>>
 
 	It's closing time. Security is herding everyone outside. <<if $exposed gte 1>>One hands you some towels.<<towelup>><</if>>
 	<br><br>
 
-	[[Leave|Connudatus Street]]
+	<<if $brothel_rivalry isnot undefined and $brothel_rivalry_timer lte 0>>
+		[[Leave|Strip Club Goon]]
+		<br>
+	<<else>>
+		[[Leave|Connudatus Street]]
+		<br>
+	<</if>>
 
 <<elseif $daystate isnot "night" and $daystate isnot "dusk">>
 	You are alone in the empty club.
@@ -94,6 +102,9 @@ You are in the strip club on Connudatus Street. <<if $daystate isnot "day" and $
 
 <<if $stripclubfailed is 1>>
 [[Leave|Strip Club Proposition]]
+<br>
+<<elseif $brothel_rivalry isnot undefined and $brothel_rivalry_timer lte 0>>
+[[Leave|Strip Club Goon]]
 <br>
 <<elseif $stripclubintro isnot 1>>
 [[Leave|Connudatus Street]]
@@ -494,6 +505,7 @@ Some patrons eye you up, but they're mostly distracted by the dancers. <<tiprece
 <br><br>
 
 <<link [[Next|Strip Club]]>><<endevent>><<pass 30>><</link>>
+
 
 <<elseif $rng gte 11>>
 
@@ -1032,3 +1044,156 @@ The bouncers lead you into the safety of the club.
 <<link [[Next|Strip Club]]>><<endevent>><</link>>
 <br>
 
+:: Strip Club Goon
+<<effects>>
+<<set $brothel_rivalry_timer to 7>>
+
+<<generate1>><<person1>>
+You leave the club, but don't get far. You're accosted by a <<person>>, who steps out of an alley.
+<br><br>
+
+<<if $rng gte 67>>
+	"Don't piss yourself," <<he>> says. "Briar sent me. <<nnpc_He "Briar">> wants the details."
+<<elseif $rng gte 33>>
+	"Easy there," <<he>> says. "Briar sent me. Says you had an arrangement."
+<<else>>
+	"Just here for information," <<he>> says. "Briar's information."
+<</if>>
+<br><br>
+<<He>> wants information on Darryl's security and clientele.
+<br><br>
+
+<<link [[Give accurate information|Strip Club Goon Accurate]]>><<npcincr Briar love 1>><</link>> | <span class="green"> + Briar's love</span>
+<br>
+<<set $skulduggerydifficulty to 500>>
+<<link [[Exaggerate Darryl's power|Strip Club Goon Exaggerate]]>><<set $skulduggerydifficulty to 500>><</link>><<skulduggerydifficulty>>
+<br>
+<<set $skulduggerydifficulty to 200>>
+<<link [[Underplay Darryl's power|Strip Club Goon Underplay]]>><<set $skulduggerydifficulty to 200>><</link>><<skulduggerydifficulty>>
+<br>
+
+:: Strip Club Goon Accurate
+<<effects>>
+
+You give the <<person>> an accurate rundown. How many security, how many clientele, how wealthy they are, and altogether how much control Darryl seems to have. As best you can determine, at least.
+<<set $brothel_rivalry += 1>>
+<br><br>
+
+The <<person>> seems satisfied. "Thanks. Briar will be pleased." <<He>> slips into an alley.
+<br><br>
+
+<<link [[Next|Connudatus Street]]>><<set $eventskip to 1>><<endevent>><</link>>
+<br>
+
+:: Strip Club Goon Exaggerate
+<<effects>>
+
+
+You give the <<person>> a rundown, but exaggerate the number of security, and the wealth of the clientele.
+<br><br>
+
+<<skulduggerycheck>>
+<<if $skulduggerysuccess is 1>>
+
+	<span class="green"><<He>> seems to buy it.</span>
+	<<if $rng gte 81>>
+		"The prince? I'll let Briar know."
+	<<elseif $rng gte 61>>
+		"A shiekh? I wouldn't have guessed."
+	<<elseif $rng gte 41>>
+		"Ex-military you say? And I'm the one who has to tell Briar. Fuck."
+	<<elseif $rng gte 21>>
+		"Security sounds nasty. Better for Briar to know before... nevermind."
+	<<else>>
+		"I suppose the nights are busy here. I'll inform Briar."
+	<</if>>
+	<<He>> slips into an alley.
+	 | <span class="green"> + Briar's love</span>
+	<<npcincr Briar love 1>>
+	<<set $brothel_rivalry -= 2>>
+	<br><br>
+
+	<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+	<<else>>
+		<span class="blue">That was too easy. You didn't learn anything.</span>
+		<br><br>
+	<</if>>
+
+	<<link [[Next|Connudatus Street]]>><<set $eventskip to 1>><<endevent>><</link>>
+	<br>
+
+<<else>>
+
+	<<He>> smirks. <span class="red">You don't think <<he>> buys it.</span>
+	"I'll let Briar know," <<he>> says, before slipping into an alley. | <span class="red"> - Briar's love</span>
+	<br><br>
+	<<npcincr Briar love 1>>
+	<<set $brothel_rivalry += 2>>
+	<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+	<<else>>
+		<span class="blue">That was too easy. You didn't learn anything.</span>
+		<br><br>
+	<</if>>
+
+	<<link [[Next|Connudatus Street]]>><<set $eventskip to 1>><<endevent>><</link>>
+	<br>
+
+<</if>>
+
+:: Strip Club Goon Underplay
+<<effects>>
+
+
+You give the <<person>> a rundown of Darryl's clientele and security, but play down the numbers.
+<br><br>
+
+<<skulduggerycheck>>
+<<if $skulduggerysuccess is 1>>
+	<span class="green"><<He>> seems to buy it.</span>
+	<<if $rng gte 81>>
+		"Interesting. Briar will be happy to hear it."
+	<<elseif $rng gte 61>>
+		"So few? I wonder if... nevermind."
+	<<elseif $rng gte 41>>
+		"It's a wonder they haven't been robbed. Perhaps that will change."
+	<<elseif $rng gte 21>>
+		"I think Briar will be glad to know."
+	<<else>>
+		"Briar's more dominant than I thought."
+	<</if>>
+	<<He>> slips into an alley.
+	 | <span class="green"> + Briar's love</span>
+	<<npcincr Briar love 1>>
+	<<set $brothel_rivalry -= 1>>
+	<br><br>
+
+	<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+	<<else>>
+		<span class="blue">That was too easy. You didn't learn anything.</span>
+		<br><br>
+	<</if>>
+
+	<<link [[Next|Connudatus Street]]>><<set $eventskip to 1>><<endevent>><</link>>
+	<br>
+
+<<else>>
+
+	<<He>> smirks. <span class="red">You don't think <<he>> buys it.</span>
+	"I'll let Briar know," <<he>> says, before slipping into an alley. | <span class="red"> - Briar's love</span>
+	<br><br>
+	<<npcincr Briar love 1>>
+	<<set $brothel_rivalry += 2>>
+	<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+	<<else>>
+		<span class="blue">That was too easy. You didn't learn anything.</span>
+		<br><br>
+	<</if>>
+
+	<<link [[Next|Connudatus Street]]>><<set $eventskip to 1>><<endevent>><</link>>
+	<br>
+
+<</if>>

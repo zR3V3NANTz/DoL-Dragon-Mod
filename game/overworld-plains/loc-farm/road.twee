@@ -37,6 +37,9 @@
 		<<hitchhike>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "countryside">>
+	<</if>>
 	<<if $exposed lte 0>>
 		<<ind>><<link [[Hitchhike (0:15)|Farm Hitchhike]]>><<pass 15>><</link>>
 		<br>
@@ -87,6 +90,9 @@
 		<<hitchhike>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "countryside">>
+	<</if>>
 	<<if $exposed lte 0>>
 		<<ind>><<link [[Hitchhike (0:15)|Farm Hitchhike]]>><<pass 15>><</link>>
 		<br>
@@ -126,6 +132,9 @@
 		<<hitchhike>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "countryside">>
+	<</if>>
 	<<if $exposed lte 0>>
 		<<ind>><<link [[Hitchhike (0:15)|Farm Hitchhike]]>><<pass 15>><</link>>
 		<br>
@@ -176,6 +185,9 @@
 		<<hitchhike>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "countryside">>
+	<</if>>
 	<<if $exposed lte 0>>
 		<<ind>><<link [[Hitchhike (0:15)|Farm Hitchhike]]>><<pass 15>><</link>>
 		<br>
@@ -215,6 +227,9 @@
 		<<hitchhike>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "countryside">>
+	<</if>>
 	<<if $exposed lte 0>>
 		<<ind>><<link [[Hitchhike (0:15)|Farm Hitchhike]]>><<pass 15>><</link>>
 		<br>
@@ -269,6 +284,9 @@
 		<<hitchhike>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "countryside">>
+	<</if>>
 	<<if $exposed lte 0>>
 		<<ind>><<link [[Hitchhike (0:15)|Farm Hitchhike]]>><<pass 15>><</link>>
 		<br>

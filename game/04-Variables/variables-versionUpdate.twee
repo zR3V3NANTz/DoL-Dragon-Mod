@@ -84,7 +84,7 @@
 	<<givestartclothing>>
 <</if>>
 
-<<if $outfit_update is undefined or $outfit_update lt 2>><<set $outfit_update to 2>>
+<<if $outfit_update is undefined or $outfit_update lt 3>><<set $outfit_update to 3>>
 	<<for _i to 0; _i lt $outfit.length; _i++>>
 		<<if $outfit[_i].colors is undefined>>
 			<<set $outfit[_i].colors to false>>
@@ -93,6 +93,10 @@
 			<<set $outfit[_i].over_upper to "naked">>
 			<<set $outfit[_i].over_lower to "naked">>
 			<<set $outfit[_i].over_head to "naked">>
+		<</if>>
+		<<if $outfit[_i].type[1]>>
+			<<set $outfit[_i].type[0] to $outfit[_i].type[1]>>
+			<<set $outfit[_i].type.deleteAt(1)>>
 		<</if>>
 	<</for>>
 <</if>>
@@ -108,7 +112,8 @@
 	<<updateNewNamedNpcs>>
 <</if>>
 
-<<clothing_data>> /*Keeps clothing data up to date with new and changed items*/
+/* <<clothing_data>> Keeps clothing data up to date with new and changed items */
+/* unnecessary because it is run in variables-static every time game is loaded */
 
 <<if $npcListVersion isnot 1>>
 	<<npcList>>
@@ -1285,15 +1290,11 @@
 	<<set $wear_hands to "none">>
 <</if>>
 
-<<if $objectVersion.updateClothes lt 28 or $objectVersion.updateClothes is undefined>>
-	<<updateClothes>>
-	<<set $objectVersion.updateClothes to 28>>
-	<!--If you have added any `colour_combat` or `accessory_colour_combat` to clothes that need their `colour` or `accessory_colour`, this will clear them.
-	Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
-<</if>>
-<<if $objectVersion.wardrobes lt 2 or $objectVersion.wardrobes is undefined>>
+<!-- updateClothes was moved to <<backcomp>> at the bottom of this file -->
+
+<<if $objectVersion.wardrobes lt 4 or $objectVersion.wardrobes is undefined>>
 	<<wardrobesUpdate>>
-	<<set $objectVersion.wardrobes to 2>>
+	<<set $objectVersion.wardrobes to 4>>
 <</if>>
 
 <<if $mathsprojectwon is 1>>
@@ -1418,11 +1419,7 @@
 	<<set $closinghour to 21>>
 <</if>>
 
-<<if $objectVersion.specialClothes lt 5 or $objectVersion.specialClothes is undefined>>
-	<<specialClothesSetup>>
-	<<specialClothesUpdate>>
-	<<set $objectVersion.specialClothes to 5>>
-<</if>>
+<!-- specialClothesSetup was moved to <<backComp>> -->
 
 <<if $objectVersion.uncomfortable lt 2 or $objectVersion.uncomfortable is undefined>>
 	<<if $uncomfortable is undefined>>
@@ -1539,11 +1536,7 @@
 	<<set $tiredness to 0>>
 <</if>>
 
-<<if $objectVersion.museumAntiques lt 7 or $objectVersion.museumAntiques is undefined>>
-	/*Moved undefined checks for new antiques to the widget below*/
-	<<updateMuseumAntiques>>
-	<<set $objectVersion.museumAntiques to 7>>
-<</if>>
+<!-- updateMuseumAntiques was moved to <<backComp>> -->
 
 <<if $objectVersion.specialClothesEffectsSetup lt 1 or $objectVersion.specialClothesEffectsSetup is undefined>>
 	<<specialClothesEffectsSetup>>
@@ -1561,7 +1554,10 @@
 	<<resetLastOptions>>
 <</if>>
 
-<<generateNPCNameHairAndEyeColors>>
+<<set $_npcHairEyeNeedsGenerating to $NPCName.some(n => !(n.eyeColour || n.hairColour))>>
+<<if $_npcHairEyeNeedsGenerating>>
+	<<generateNPCNameHairAndEyeColors>>
+<</if>>
 
 <<if $stat_shoot is undefined>>
 	<<set $stat_shoot to 0>>
@@ -2116,6 +2112,14 @@
 	<<set $analingusdisablereceiving to $analdisable>>
 <</if>>
 
+<<if $analdoubledisable is undefined >>
+	<<set $analdoubledisable to $analdisable>>
+<</if>>
+
+<<if $vaginaldoubledisable is undefined>>
+	<<set $vaginaldoubledisable to "f">>
+<</if>>
+
 <<if $rentmod is undefined>>
 	<<set $rentmod to 1>>
 <<elseif $rentmod gt 3>>
@@ -2180,13 +2184,13 @@
 			<<case "Sydney">>
 				/* Has all virginities + temple virginity. */
 				<<set $NPCName[_i].virginity to {anal:true, oral:true, penile:true, vaginal:true, temple:true, handholding:true, kiss:true}>>
-			<<case "Robin" "Kylar">>
+			<<case "Robin" "Kylar" "Great Hawk">>
 				/* Has all virginities. */
 				<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
 			<<case "Jordan">>
 				/* Has anal, oral, penile/vaginal, and kiss virginities. Missing handholding. */
 				<<set $NPCName[_i].virginity.handholding to false>>
-			<<case "Black Wolf" "Great Hawk">>
+			<<case "Black Wolf">>
 				/* Has anal, oral, kiss, and handholding virginities. Missing penile/vaginal. */
 				<<set $NPCName[_i].virginity.penile to false>>
 				<<set $NPCName[_i].virginity.vaginal to false>>				
@@ -2226,6 +2230,11 @@
 		<</switch>>
 	<</for>>
 	<<set $templePromised to "">>
+<</if>>
+
+<<if $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.penile is false>>
+	<<set $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.penile to true>>
+	<<set $NPCName[$NPCNameList.indexOf("Great Hawk")].virginity.vaginal to true>>
 <</if>>
 
 <<if $perNPCFix isnot 2>>
@@ -2533,11 +2542,6 @@
 	<<unset $event>>
 <</if>>
 
-<<if $wraith and !$wraith.state>>
-	<<unset $wraith>>
-	<<checkWraith>>
-<</if>>
-
 <<if $multipleWardrobes is undefined>>
 	<<set $multipleWardrobes to "isolated">>
 <</if>>
@@ -2572,17 +2576,143 @@
 	<<set $plantdisable to "f">>
 <</if>>
 
+<!-- Makes sure $kennel_treats aren't strings due to bug. -->
+<<if typeof $kennel_treats isnot "number">>
+	<<set $kennel_treats to 0>>
+<</if>>
+<<if $bodywritingLvl is undefined>>
+	<<set $bodywritingLvl to ($bodywritingdisable is "f" ? 3 : 0)>>
+<</if>>
+
+/* Start of Target variables */
+<<if $npcDAP isnot undefined>>
+	<<set $anustarget to $npcDAP[0]>>
+	<<set $anusdoubletarget to $npcDAP[1]>>
+	<<unset $npcDAP>>
+<</if>>
+
+<<if $targetYourself is undefined>>
+	<<set $targetYourself to false>>
+<</if>>
+
+<<if $NPCList isnot undefined and $NPCList[0].active is undefined>>
+	<<for _i = 0; _i < $NPCList.length; _i++>>
+		<<set $NPCList[_i].active to 0>>
+	<</for>>
+	<<if $combat is 1>>
+		<<for _i = 0; _i < $enemyno; _i++>>
+			<<set $NPCList[_i].active to "active">>
+			<<if $NPCList[_i].type is 0>>
+				<<set $NPCList[_i].type to "human">>
+			<</if>>
+			<<set $NPCList[_i].healthmax to $NPCList[_i].health>>
+		<</for>>
+	<</if>>
+<</if>>
+
+<<if $breastuse isnot undefined and $breastuse isnot 0>>
+	<<set $chestuse to $breastuse>>
+	<<unset $breastuse>>
+<</if>>
+<<<<<<< HEAD
+
+<<if $machine isnot undefined and $machine.number lte 0>>
+	<<unset $machine>>
+<<elseif $enemytype isnot "machine">>
+	<<unset $machine>>
+<<elseif $combat isnot 1>>
+	<<unset $machine>>
+<</if>>
+/* End of Target variables */
+
+=======
+
+<<if $machine isnot undefined and $machine.number lte 0>>
+	<<unset $machine>>
+<<elseif $enemytype isnot "machine">>
+	<<unset $machine>>
+<<elseif $combat isnot 1>>
+	<<unset $machine>>
+<</if>>
+/* End of Target variables */
+
+>>>>>>> f3e78778efc957768ee09bab503acec275d7f92a
+<!-- remove duplicates from the hints list -->
+<<if $objectVersion.museumAntiques lt 8>>
+	<<set $objectVersion.museumAntiques to 8>>
+	<<set _newlist to []>>
+	<!-- run in reverse to preserve only most recently added entries -->
+	<<for _i = $museumAntiqueJournalHints.length - 1; _i gte 0; _i-->>
+		<<if $museumAntiques.antiques[$museumAntiqueJournalHints[_i]] is "notFound">>
+			<<set _newlist.pushUnique($museumAntiqueJournalHints[_i])>>
+		<</if>>
+	<</for>>
+	<<set $museumAntiqueJournalHints to clone(_newlist).reverse()>>
+<</if>>
+
+<<if $stealtarget is undefined>>
+	<<if $combat is 1 and $stealstate is 3>>
+		<<set $stealtarget to "012345">>
+	<<else>>
+		<<set $stealtarget to "">>
+	<</if>>
+<</if>>
+
+<<if $stealdifficulty is undefined>>
+	<<set $stealdifficulty to 1>>
+<</if>>
+
+<<if $stealstate isnot undefined>>
+	<<set $stealstateleft to $stealstate>>
+	<<set $stealstateright to $stealstate>>
+	<<unset $stealstate>>
+<</if>>
+
 <<pregnancyVar>>
 <</widget>>
 
-
-
 <<widget "backComp">>
-	<<if _version lte 30408>>/* for versions <= 0.3.4.8, run old version handler */
+	<<if _version lte 30408>>/* DO NOT INCREMENT */
+	/* 0.3.4.8 is the last version that should need the old vvu */
+	/* for versions <= 0.3.4.8, run old version handler */
 		<<variablesVersionUpdate>>
 	<</if>>
-/* * * * * * * * * * * * * * * * * * * * * * *
- * NEW BACKWARDS COMPATIBILITY CODE GOES HERE
- */
+	/* * * * * * * * * * * * * * * * * * * * * * *
+	* new backwards compatibility code goes here
+	*/
 	<<set $runWardrobeSanityChecker to true>>
+
+	<<if $objectVersion.updateClothes lt 28 or $objectVersion.updateClothes is undefined>>
+		<<updateClothes>>
+		<<set $objectVersion.updateClothes to 28>>
+		<!--If you have added any `colour_combat` or `accessory_colour_combat` to clothes that need their `colour` or `accessory_colour`, this will clear them.
+		Remove `colour_combat` or `accessory_colour_combat` where this is the case, they are independant so `colour_combat` will only clear `colour`-->
+	<</if>>
+
+	<<if $objectVersion.specialClothes lt 6 or $objectVersion.specialClothes is undefined>>
+		<<specialClothesSetup>>
+		<<specialClothesUpdate>>
+		<<set $objectVersion.specialClothes to 6>>
+	<</if>>
+
+	<<if $objectVersion.museumAntiques lt 7 or $objectVersion.museumAntiques is undefined>>
+		/*Moved undefined checks for new antiques to the widget below*/
+		<<updateMuseumAntiques>>
+		<<set $objectVersion.museumAntiques to 7>>
+	<</if>>
+
+	<!--Tracking for the Plant Lover trait-->
+	<<if $nectar_addiction is undefined>>
+		<<set $nectar_addiction to 0>>
+		<<set $nectar_timer to 0>>
+	<</if>>
+
+	<<if $hypnotised is undefined>>
+		<<set $hypnotised to 0>>
+		<<set $famemodel to 0>>
+	<</if>>
+	<<if $chef_state gte 5 and $photo_known is undefined>>
+		<<set $photo_known to 1>>
+	<</if>>
+
 <</widget>>

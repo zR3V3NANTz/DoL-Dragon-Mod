@@ -59,6 +59,16 @@ You are on Connudatus Street. The numerous clubs, bars and restaurants make it t
 	<</if>>
 	<<link [[Next|Connudatus VIP Rape]]>><<set $molestationstart to 1>><</link>>
 	<br>
+<<elseif $brothel_rivalry is undefined and $NPCName[$NPCNameList.indexOf("Darryl")].love gte 10>>
+	
+	A car screeches to a halt in front of you. A door swings open, <span class="pink">and a strong pair of arms pull you in.</span>
+	<br><br>
+
+	<<link [[Next|Connudatus Briar Abduct]]>><<set $brothel_rivalry to 1>><<set $brothel_rivalry_timer to 7>><</link>>
+	<br>
+
+
+	
 <<else>>
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
@@ -96,6 +106,7 @@ You are on Connudatus Street. The numerous clubs, bars and restaurants make it t
 				<br>
 			<<else>>
 				<span class="blue">You could rent a stall here if you had the money.</span>
+				<br>
 			<</if>>
 		<<elseif $stall_rented is 1 and $daystate isnot "night" and $exposed lte 0>>
 			<<link [[Attend your stall (0:20)|Stall]]>><<pass 20>><</link>>
@@ -265,3 +276,30 @@ The <<person>> stomps out <<his>> cigarette and starts to walk. "You live at the
 <<link [[Next|Orphanage]]>><</link>>
 <br>
 
+:: Connudatus Briar Abduct
+<<set $outside to 0>><<effects>>
+<<npc Briar>><<generate2>><<generate3>><<person1>>
+<<pass 5>>
+The car lurches into motion before you can get your bearings. "Darling," says a familiar voice. "Do calm down." It's Briar. <<He>> sits opposite. A <<person2>><<person>> and <<person3>><<person>> sit either side of you.
+<br><br>
+
+"I hear you've met my... colleague, Darryl," <<person1>>Briar continues. <<He>> lounges across three seats. "I do worry about <<nnpc_him "Darryl">>. Could I ask a favour of you? Keep an eye on the people around <<nnpc_him "Darryl">>. The security, the clientele, that sort of thing. It would ease my mind."
+<br><br>
+
+The car pulls to a stop. You're on Domus Street. The <<person2>><<person>> opens a door. "This your home? How cozy. Have a good
+<<if $daystate is "day">>
+	day."
+<<elseif $daystate is "night">>
+	night."
+<<elseif $daystate is "dusk">>
+	evening."
+<<else>>
+	morning."
+<</if>>
+<br><br>
+
+You leave the car, and it drives away.
+<br><br>
+
+<<link [[Next|Domus Street]]>><<endevent>><</link>>
+<br>

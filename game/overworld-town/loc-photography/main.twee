@@ -1,6 +1,219 @@
+:: Photo Entrance
+<<effects>>
+
+You approach the photography studio, a tall old building opposite the hospital. There's a short flight of steps leading up to the door. "Niki's photo studio. Models wanted."
+<br><br>
+
+<<link [[Knock|Photo Intro]]>><</link>>
+<br>
+<<link [[Leave|Nightingale Street]]>><</link>>
+<br>
+
+:: Photo Intro
+<<effects>>
+<<set $photo_known to 2>>
+<<set $photo to {}>>
+<<set $photo.refused to 0>>
+<<npc Niki>><<person1>>
+
+You lift the heavy knocker, and let it fall against the door. You wait a minute, then reach to knock again. The door swings open first. A young <<nnpc_gender "Niki">> stands there, a white stick poking out of <<his>> mouth. It's Niki.
+<br><br>
+
+<<if $submissive gte 1150>>
+	"A-are you looking for models?" you ask.
+<<elseif $submissive lte 850>>
+	"You're looking for models," you say. "Got any work?"
+<<else>>
+	"I'm looking for work," you say.
+<</if>>
+<br><br>
+
+Niki opens the door the rest of the way. "Come in."
+<br><br>
+
+<<set $niki_seen to "photo">>
+
+<<link [[Enter|Photo Intro 2]]>><</link>>
+<br>
+
+:: Photo Intro 2
+<<effects>>
+
+You follow Niki into the more modern interior, past a flight of stairs, and into a room with a desk and computer. Niki sits behind it. Pictures of
+
+<<if $malevictimchance gte 100>>
+	men
+<<elseif $malevictimchance lte 0>>
+	women
+<<else>>
+	men and women
+<</if>>
+cover the wall behind <<him>>, most of them suggestive, but all tasteful. <<He>> points at a chair behind you, and you take a seat.
+<br><br>
+
+"Studio's upstairs," <<he>> says, removing the white stick from <<his>> mouth and flicking it into a bin. "A photoshoot takes three hours. You get paid upfront. <span class="gold">£450</span> per shoot." <<He>> gestures at the wall behind <<him>>. "This is the sort of thing we do."
+<br><br>
+
+<<He>> pulls a lollipop from <<his>> pocket, and sticks it in <<his>> mouth. "One shoot a week. What do you think?"
+<br><br>
+
+<<link [[Accept|Photo Accept]]>><<npcincr Niki love 1>><</link>><<glove>>
+<br>
+<<link [[Refuse|Photo Refuse]]>><</link>>
+<br>
+
+:: Photo Accept
+<<effects>>
+
+<<if $submissive gte 1150>>
+	"O-okay," you say. "I need the money."
+<<elseif $submissive lte 850>>
+	"Sounds good," you say. "I could use the money."
+<<else>>
+	"Okay," you say. "I do need the money."
+<</if>>
+<br><br>
+
+Niki nods. "Let me know when you're ready to start."
+<br><br>
+
+<<link [[Next|Photo]]>><<endevent>><</link>>
+<br>
+
+:: Photo Refuse
+<<effects>>
+
+<<if $submissive gte 1150>>
+	"I-I don't like people looking," you say. "Sorry."
+<<elseif $submissive lte 850>>
+	"I don't like the thought of old pervs looking at me," you say.
+<<else>>
+	"I don't think that's for me," you say. "Sorry."
+<</if>>
+<br><br>
+
+Niki nods. "You know where I am if you change your mind."
+<br><br>
+
+
+<<link [[Next|Nightingale Street]]>><<endevent>><</link>>
+<br>
+
+:: Photo
+<<set $outside to 0>><<effects>>
+
+<<if $photo.niki_event is undefined and $NPCName[$NPCNameList.indexOf("Niki")].love gte 10 and $brothelintro gte 1>>
+	<<set $photo.niki_event to 1>>
+	<<npc Briar>><<person1>>
+	<<if $pronoun is "m">>
+		A <<personsimple>> in a revealing blue suit brushes past you on the way in. 
+	<<else>>
+		A <<personsimple>> in a revealing red gown brushes past you on the way in.
+	<</if>>
+	It's Briar.
+	<br><br>
+	"Not surprised to see you here," <<he>> says, leaning against the door frame to regard you. Niki looks up from <<nnpc_his "Niki">> desk, wearing a frown. Briar laughs. "Don't you worry. See you next week."
+	<br><br>
+
+	Briar continues on <<his>> way.
+	<br><br>
+
+	<<link [[Next|Photo]]>><<endevent>><</link>>
+	<br>
+<<else>>
+	<<npc Niki>><<person1>>
+	You are in the photo studio on Nightingale Street. Niki sits behind a desk, staring at a computer screen. Pictures of
+
+	<<if $malevictimchance gte 100>>
+		men
+	<<elseif $malevictimchance lte 0>>
+		women
+	<<else>>
+		men and women
+	<</if>>
+	cover the wall behind <<him>>, most of them suggestive, but all tasteful.
+	<br><br>
+
+	<<if $photo.shoot is 1>>
+		<span class="blue">You've already worked as a model this week.</span>
+		<br>
+	<<else>>
+		<<link [[Model (3:00)|Photo Model]]>><<set $photo.shoot to 1>><</link>><<exhibitionist1>>
+		<br>
+	<</if>>
+	/*
+	<<link [[Ask for other work|Photo Ask]]>><</link>>
+	<br>
+	<<if $photo.silly is "done">>
+		<<link [[Get paid for the silly outfit job|Photo Street Paid]]>><<set $photo.silly to "paid">><</link>>
+		<br>
+	<</if>>
+	*/
+	<<link [[Leave|Nightingale Street]]>><<endevent>><</link>>
+	<br>
+
+	<<set $niki_seen to "photo">>
+<</if>>
+
+:: Photo Ask
+<<effects>>
+
+Niki nods, and stares at <<his>> screen a moment longer.
+<br><br>
+
+<<if !$photo.silly>>
+	<<set _work_available to true>>
+	"Business owner needs someone to stand outside their shop in a silly outfit. Not glamorous, but it pays <span class="gold">£100.</span> Everyone starts somewhere."
+	<br><br>
+<</if>>
+
+<<if !_work_available>>
+	<<if $fame lt 3000>>
+		<<He>> shakes <<his>> head. "Nothing for you," <<he>> says. <span class="purple">"Maybe if you were known better."</span>
+	<<else>>
+		<<He>> shakes <<his>> head. "Nothing," <<he>> says. "Come back next week."
+	<</if>>
+	<br><br>
+<<else>>
+	"Jobs takes a few hours."
+	<br><br>
+<</if>>
+
+<<if !$photo.silly>>
+	<<link [[Accept silly outfit job|Photo Silly]]>><<set $photo.silly to "accepted">><</link>>
+	<br>
+<</if>>
+
+<<link [[Leave|Nightingale Street]]>><<endevent>><</link>>
+<br>
+
+:: Photo Silly Paid
+<<effects>>
+
+Niki throws you a small bundle of notes. You make <<moneyGain 100>>.
+<br><br>
+
+<<link [[Ask for work|Photo Ask]]>><</link>>
+<br>
+<<link [[Leave|Nightingale Street]]>><<endevent>><</link>>
+<br>
+
+:: Photo Silly
+<<effects>>
+
+Niki nods. "Shop's on the High Street." <<He>> hands you the business card with the address. "Come back after for your pay."
+<br><br>
+
+<<link [[Ask for work|Photo Ask]]>><</link>>
+<br>
+<<link [[Leave|Nightingale Street]]>><<endevent>><</link>>
+<br>
+
 :: Photography Chef
 <<set $outside to 0>><<set $location to "town">><<effects>>
-
+<<if $photo_known is undefined>>
+	<<set $photo_known to 1>>
+<</if>>
 <<npc Niki>><<person1>>You approach the address given by Sam. It's an old building opposite the hospital. You're lifting your hand to knock when the door swings open.
 
 A young <<nnpc_gender "Niki">> stands there, a white stick poking out of <<his>> mouth. <<He>> stares at you, waiting.
@@ -22,7 +235,7 @@ A young <<nnpc_gender "Niki">> stands there, a white stick poking out of <<his>>
 	You recognise <<him>>. It's Niki, the photographer from the farm. You freeze on the spot. Niki stares at you, then removes the stick from <<his>> mouth and flicks it onto the street. "Studio's ready." <<He>> pauses. "I'm glad you're okay."
 	<br><br>
 <<else>>
-	You recognise <<him>>. It's Niki, the photographer. Niki nods at you. "Thought the description sounded familiar." <<He>> removes the stick from <<his>> mouth and flicks it onto the street. "Studio's ready."
+	It's Niki, the photographer. <<He>> regards you. "Thought the description sounded familiar." <<He>> removes the stick from <<his>> mouth and flicks it onto the street. "Studio's ready."
 	<br><br>
 <</if>>
 <<set $niki_seen to "chef">>
@@ -36,7 +249,11 @@ A young <<nnpc_gender "Niki">> stands there, a white stick poking out of <<his>>
 The interior is more modern. You follow Niki up a flight of stairs, and enter a large room dominated by a white screen. Several lights and a single camera wait.
 <br><br>
 
-"You done this before?" Niki asks, fiddling with the camera. <<He>> has another white stick in <<his>> mouth. You shake your head. <<He>> nods without looking at you. "Clothes are over there. Should be done in a few hours."
+<<if $photo_known is 1>>
+	"You done this before?" Niki asks, fiddling with the camera. <<He>> has another white stick in <<his>> mouth. You shake your head. <<He>> nods without looking at you. "Clothes are over there. Should be done in a few hours."
+<<else>>
+	"Were you told the details?" Niki asks, fiddling with the camera. <<He>> has another white stick in <<his>> mouth. You shake your head. <<He>> nods without looking at you. "Clothes are over there. Should be done in a few hours."
+<</if>>
 <br><br>
 
 You walk behind a screen, and find a chef's apron and hat. You put them on.
@@ -244,7 +461,11 @@ You end up on the floor, with the pot on your head, covered head-to-toe in stick
 :: Photography Chef 7
 
 <<set $outside to 0>><<set $location to "town">><<effects>>
-"Done," Niki says, sticking another lollipop in <<his>> mouth. "It was a pleasure working with you. Give Sam my regards."
+<<if $photo_known is 1>>
+	"Done," Niki says, sticking another lollipop in <<his>> mouth. "It was a pleasure working with you. You have talent. <span class="gold">Drop by if you're looking for work.</span> Give Sam my regards."
+<<else>>
+	"Done," Niki says, sticking another lollipop in <<his>> mouth. "It was a pleasure working with you. Give Sam my regards."
+<</if>>
 <br><br>
 <<if $chef_picture is "lewd">>
 	You pass <<him>> on the way to the exit. <<He>> wrinkles <<his>> nose and frowns.
@@ -257,3 +478,29 @@ You end up on the floor, with the pot on your head, covered head-to-toe in stick
 <<set $chef_state to 5>>
 <<link [[Walk out onto the street|Nightingale Street]]>><<set $eventskip to 1>><</link>>
 <br>
+
+
+:: Photo Street Stop
+<<effects>>
+
+<span class="gold">"The name's Niki,"</span> <<he>> continues, stopping beside you. "I'm a photographer. Have you considered working as a model? Pays well, and you have the looks."
+<br><br>
+
+<<He>> removes the white stick from <<his>> mouth, and flicks it into the road. <span class="gold">"I run a studio on Nightingale Street,"</span> <<he>> continues. "Drop by sometime." <<He>> drives away.
+<br><br>
+
+<<endevent>>
+<<destinationeventend>>
+
+
+:: Photo Street Hasten
+<<effects>>
+
+You hasten your steps to escape the pervert. "Hold up," <<he>> says, speeding up to keep pace. "I'll be quick. <span class="gold">The name's Niki. I run a photography studio on Nightingale Street.</span> Drop by sometime if you need work."
+<br><br>
+
+You dart into an alley, leaving <<him>> to drive away.
+<br><br>
+
+<<endevent>>
+<<destinationeventend>>

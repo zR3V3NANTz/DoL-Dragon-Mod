@@ -297,7 +297,7 @@ You look over your shoulder to make sure you aren't being watched, then hoist yo
 			<<link [[Say you're finished|Garden Robin Finished]]>><</link>>
 			<br>
 		<</if>>
-	<<elseif $rng gte 31 and $hallucinations gte 2>>
+	<<elseif $rng gte 31 and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 		Something brushes against your leg. You shake it off, assuming it an insect, but it happens again. You look down, and see a stem curling around your ankle.
 		<br><br>
 
@@ -307,7 +307,7 @@ You look over your shoulder to make sure you aren't being watched, then hoist yo
 		<br>
 	<<else>>
 		<<set $hallucinogen += 60>>
-		A strange scent rises from the plants as you water. You feel lightheaded.
+		A strange scent rises from the plants as you water. You feel lightheaded. <<ghallucinogens>><<if $backgroundTraits.includes("plantlover")>><<arousal 6>><<garousal>><</if>>
 		<br><br>
 
 		<<link [[Next|Garden Flowers]]>><</link>>
@@ -446,7 +446,7 @@ You grab hold of a low branch and begin climbing the tree. You feel more exposed
 
 <<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 <<if $danger gte (9900 - $allure) and $eventskip is 0>>
-	<<if $rng gte 51 and $hallucinations gte 2 and $tentacledisable is "f">>
+	<<if $rng gte 51 and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 		You're making sure your legs are secure when the branches jerk to life. Shoots bend towards you and entangle you, until you're surrounded and trapped.
 		<br><br>
 
@@ -699,11 +699,11 @@ A few minutes pass, until an argument breaks out inside the orphanage. Robin loo
 You sit on the grass beside Robin, and rummage among the wild flowers for suitable specimens. Robin watches a moment, then gasps in excitement. <<He>> joins in. "I'm making one for you too."
 <br><br>
 
-Soon, you both have flower crowns ready. <<if $tending lt 200>>Yours looks rougher than Robin's, but <<he>> doesn't seem to mind.<</if>> <<He>> reaches atop your head, and places the crown <<he>> made upon it. You place yours atop <<his>> head in turn.
+Soon, you both have flower crowns ready. <<if currentSkillValue('tending') lt 200>>Yours looks rougher than Robin's, but <<he>> doesn't seem to mind.<</if>> <<He>> reaches atop your head, and places the crown <<he>> made upon it. You place yours atop <<his>> head in turn.
 
 <br><br>
 <<if $tendingSuccess>>
-	"I love it," Robin says, <span class="green">smiling beneath the wreath of flowers.</span>
+	"I love it," Robin says, <span class="green">smiling beneath the wreath of flowers.</span><<glove>><<npcincr Robin love 1>>
 	<br><br>
 <<else>>
 	"I love it," Robin says. <<Hes>> barely finished speaking when the <span class="red">the crown on <<his>> head unravels,</span> and it falls to the ground. <<He>> smiles. "It's okay! I still love it. They can be tricky to make, but you'll get it with practice."<<glove>><<npcincr Robin love 1>><<gdom>><<npcincr Robin dom 1>>
@@ -815,7 +815,7 @@ You wrap your arms around Robin. <<He>> rests <<his>> head on your shoulder, and
 	You stick out your tongue, and lick the tip. The pink fluid is sticky, and so, so sweet.<<deviancy1>>
 
 	An unnatural warmth spreads from your mouth, journeying to the base of your tongue, down your neck and throughout your body.
-	<<gggarousal>><<arousal 2000>><<set $drugged += 180>>
+	<<gggarousal>><<arousal 2000>><<drugs 180>>
 	<br><br>
 
 	<<link [[Next|Garden Flowers]]>><<endevent>><</link>>
@@ -834,7 +834,7 @@ You wrap your arms around Robin. <<He>> rests <<his>> head on your shoulder, and
 	<br><br>
 
 	The world spins, and you stagger to the ground. You laugh, suddenly giddy, as you rise again to your feet.
-	<<set $drunk += 180>>
+	<<alcohol 180>>
 	<br><br>
 
 	<<link [[Next|Garden Flowers]]>><<endevent>><</link>>

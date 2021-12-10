@@ -604,10 +604,10 @@ Macro.add('canvasModelEditor', {
 
 						optionCategory("Hair"),
 						selectOption("hair_colour", hairColourOptions),
-						selectOption("hair_sides_type", ["", "default", "braid left", "braid right", "flat ponytail", "loose", "messy", "pigtails", "ponytail", "short", "side tail left", "side tail right", "straight", "swept left", "twin braids", "twintails", "curl"]),
+						selectOption("hair_sides_type", ["", "default", "braid left", "braid right", "flat ponytail", "loose", "messy", "pigtails", "ponytail", "short", "side tail left", "side tail right", "straight", "swept left", "twin braids", "twintails", "curl", "neat"]),
 						selectOption("hair_sides_length", ["short", "shoulder", "chest", "navel", "thighs", "feet"]),
 						selectOption("hair_sides_position", ["front", "back"]),
-						selectOption("hair_fringe_type", ["", "default", "thin flaps", "wide flaps", "hime", "loose", "messy", "overgrown", "ringlets", "split", "straight", "swept left", "back", "parted", "flat", "quiff", "straight curl", "ringlet curl"]),
+						selectOption("hair_fringe_type", ["", "default", "thin flaps", "wide flaps", "hime", "loose", "messy", "overgrown", "ringlets", "split", "straight", "swept left", "back", "parted", "flat", "quiff", "straight curl", "ringlet curl", "curtain"]),
 						selectOption("hair_fringe_length", ["short", "shoulder", "chest", "navel", "thighs", "feet"]),
 						selectOption("brows_colour", xhairColourOptions),
 						selectOption("pbhair_colour", xhairColourOptions),

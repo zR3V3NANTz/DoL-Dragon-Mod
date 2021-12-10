@@ -83,6 +83,9 @@
 		<<eventsmoorlow>>
 	<</if>>
 <<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "moor">>
+	<</if>>
 	<<if $moor gte 100>>
 		<<link [[Enter the castle (0:10)|Castle]]>><<pass 10>><</link>>
 		<br><br>
@@ -393,10 +396,10 @@ You drop into the water, and wade through. The creatures dart towards you as you
 
 
 <<if $struggle.done gte $struggle.number>>
-	<<link [[Next|Moor Box Struggle End]]>><</link>>
+	<span id="next"><<link [[Next|Moor Box Struggle End]]>><</link>></span>
 	<br>
 <<else>>
-	<<link [[Next|Moor Box Struggle]]>><</link>>
+	<span id="next"><<link [[Next|Moor Box Struggle]]>><</link>></span>
 	<br>
 <</if>>
 

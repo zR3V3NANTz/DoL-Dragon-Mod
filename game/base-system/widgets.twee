@@ -613,13 +613,41 @@
 		<<set $stress -= 10 * _defiance>>
 		<<combattrauma _negargs>>
 		<<set $enemyanger += 5 * _defiance>>
-		<<set $enemyhealth -= (2 * _defiance * ($physique / 4000))>>
 		<<set $submissive -= 1>>
 		<<set $enemytrust -= 4>>
 		<<set _defiance_arousal to (_defiance * ($sadism / 40))>>
 		<<arousal _defiance_arousal>>
 		<<if $arousal gte ($arousalmax * 0.8)>>
 			<<sadism $args[0]>>
+		<</if>>
+		<<set _thedamage to (2 * _defiance * ($physique / 4000))>>
+		<<set $enemyhealth -= _thedamage>>
+		<<if $args[1] isnot undefined>>
+			<<if $args[2] isnot undefined>>
+				<<set $NPCList[$args[1]].health -= (_thedamage/2)>>
+				<<set $NPCList[$args[2]].health -= (_thedamage/2)>>
+				<<if $enemyno gte 2>>
+					<<npcdamage $args[1]>>
+					<<npcdamage $args[2]>>
+				<</if>>
+			<<else>>
+				<<set $NPCList[$args[1]].health -= _thedamage>>
+				<<if $enemyno gte 2>>
+					<<npcdamage $args[1]>>
+				<</if>>
+			<</if>>
+			<<if $newtarget isnot undefined>>
+				<<setnewtarget>>
+			<</if>>
+		<<else>>
+			<<for _npctodamage to 0; _npctodamage lt $enemynomax; _npctodamage++>>
+				<<if $NPCList[_npctodamage].active is "active" and $NPCList[_npctodamage].stance isnot "defeated">>
+					<<set $NPCList[_npctodamage].health -= (_thedamage/$enemyno)>>/* Divide damage by all current active enemies. */
+					<<if $enemyno gte 2>>
+						<<npcdamage _npctodamage>>
+					<</if>>
+				<</if>>
+			<</for>>
 		<</if>>
 	<</if>>
 <</widget>>
@@ -982,11 +1010,19 @@
 		<<set _temp *= 1.1>>
 	<</if>>
 	<<set $physique += 10 * _temp>><<set $physiqueuse += _temp>>
-	<<if $combat isnot 1>>
-		<span class="gold"> You get a good workout.</span>
-	<<else>>
-		<span class="gold"> It invigorates you.</span>
-	<</if>>
+	<<if $args[1]>>
+		<<if $args[1] isnot "noMessage">>
+			<<if ($combat is 1 and $args[1] isnot "workout") or $args[1] is "invig">>
+				<span class="gold"> It invigorates you.</span>
+			<<else>>
+				<span class="gold"> You get a good workout.</span>
+			<</if>>
+		<</if>>
+    <<elseif $combat is 1>>
+        <span class="gold"> It invigorates you.</span>
+    <<else>>
+        <span class="gold"> You get a good workout.</span>
+    <</if>>
 <</if>>
 <</widget>>
 
@@ -1608,7 +1644,7 @@
 <<if $rapeavoid is 1 and $consensual is 0 and $gamemode isnot "soft">>
 <<set $rapeavoid to 0>><<set $rapestat += 1>>
 	<<if $enemytype is "man" and !($npc.length is 1 and $npc[0] is "Eden")>>
-		<<famerape $enemyno>>
+		<<famerape $enemynomax>>
 	<</if>>
 	<<if $awareness lte 200>>
 	<<awareness 5>>
@@ -1633,7 +1669,7 @@
 <<elseif $sexavoid is 1 and $consensual is 1>>
 <<set $sexavoid to 0>>
 	<<if $enemytype is "man" and !($npc.length is 1 and $npc[0] is "Eden")>>
-		<<famesex $enemyno>>
+		<<famesex $enemynomax>>
 	<</if>>
 <<controlloss>>
 <</if>>
@@ -1802,7 +1838,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/poolday.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfillday.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfillday.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templeday.png'">
 		<<case strip_club>>
@@ -1941,7 +1977,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/poolnight.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfillnight.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfillnight.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templenight.png'">
 		<<case strip_club>>
@@ -2090,7 +2126,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/pooldawn.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldawn.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldawn.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templedawn.png'">
 		<<case strip_club>>
@@ -2219,7 +2255,7 @@
 		<<case pool>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/pooldusk.gif'">
 		<<case landfill>>
-		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldusk.gif'">
+		<img id="location" @src="'img/misc/' + _weather_display + '/landfilldusk.png'">
 		<<case temple>>
 		<img id="location" @src="'img/misc/' + _weather_display + '/templedusk.png'">
 		<<case strip_club>>
@@ -2805,10 +2841,10 @@ or $args[0] is "force">>
 	<<set _arousal += $pass * 10>>
 <</if>>
 <<if $parasite.left_ear.name is "slime" and random(1, 100) gte 90>>
-	<<set $drugged += $pass>>
+	<<drugs $pass>>
 <</if>>
 <<if $parasite.right_ear.name is "slime" and random(1, 100) gte 90>>
-	<<set $drugged += $pass>>
+	<<drugs $pass>>
 <</if>>
 <<arousal _arousal>>
 <</widget>>
@@ -3993,7 +4029,7 @@ __Map__<br>
 <</widget>>
 
 <<widget "willpowerpain">>
-	<<if $pain gte 100 and $willpowerpain is undefined>>
+	<<if $pain gte 100 and $willpowerpain is undefined and _willpowerpainchecked isnot true>>
 		<<if ($willpower / 10) gte (($pain - 100) + random(1, 100))>>
 			<span class="green">The pain threatens to overwhelm, but you endure it.</span>
 			<<gwillpower>><<willpower 1>>
@@ -4006,11 +4042,12 @@ __Map__<br>
 			<<ggwillpower>><<willpower 5>><<set $willpowerpain to 0>>
 			<br>
 		<</if>>
+	<<set _willpowerpainchecked to true>>
 	<</if>>
 <</widget>>
 
 <<widget "willpowerorgasm">>
-	<<if $orgasmdown gte 1>>
+	<<if $orgasmdown gte 1 and _willpowerorgasmchecked isnot true>>
 		<<if ($willpower / 10) gte (($orgasmdown * 30) + random(1, 80))>>
 			<span class="green">You endure the orgasmic shivers running through you.</span>
 			<<gwillpower>><<willpower 1>><<set $orgasmdown to 0>>
@@ -4023,6 +4060,7 @@ __Map__<br>
 			<<gwillpower>><<willpower 1>>
 			<br>
 		<</if>>
+	<<set _willpowerorgasmchecked to true>>
 	<</if>>
 <</widget>>
 
@@ -4076,15 +4114,27 @@ __Map__<br>
 <</widget>>
 
 <<widget "nectarfed">>
-<<set $nectar_drank_stat += (Math.ceil($args[0] / 10) + random(0,2))>>
+<<set _nectarGain to 0>>
+<<set _nectarGain += (Math.ceil($args[0] / 10) + random(0,2))>>
+<<set $nectar_drank_stat += _nectarGain>>
+<<set $nectar_addiction += _nectarGain>>
 <<if $args[0] gte 11>>
 	<<purity -1>>
 <</if>>
 <<set $hunger -= ($args[0] * 5)>><<set $thirst -= ($args[0] * 5)>>
-<<set $drugged += $args[0]>><<set $arousal += $args[0]>>
+<<drugs $args[0]>><<set $arousal += $args[0]>>
 <<if $ejaculating is 1>>
 	<<set $drunk += ($args[0] * 3)>>
 	<<set $player.bodyliquid.mouth.goo += 1>>
+<</if>>
+<<if $backgroundTraits.includes("plantlover")>>
+	<<if $nectar_timer lte 14>>
+		<span class="green">You feel an overwhelming sense of relief.</span> <<stress -12>><<llstress>><<pain -4>><<lpain>>
+	<<else>>
+		<<set _nectarStress to (-1 * _nectarGain)>>
+		<<physique 1 "invig">><<stress _nectarStress>><<lstress>>
+	<</if>>
+	<<set $nectar_timer to 21>>
 <</if>>
 <</widget>>
 
@@ -5119,5 +5169,11 @@ __Map__<br>
 <<widget "enable_rescue">>
 <<if $drugged lte 0>>
 	<<set $rescue to 1>>
+<</if>>
+<</widget>>
+
+<<widget "hypnotised">>
+<<if $args[0]>>
+	<<set $hypnotised += $args[0]>>
 <</if>>
 <</widget>>

@@ -5,7 +5,6 @@
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<beastNEWinit 2 wolf>>
 	<<beastCombatInit>>
 	<<beastTrainGenerate>>
 
@@ -38,7 +37,7 @@
 You run down the corridor. As you reach the door you hear a sharp buzz and the sound of grinding metal.
 <<beastNEWinit 6 wolf>>
 
-<<if $rng gte 81>>
+<<if $rng gte 81 or ($monster isnot 1 and $bestialitydisable is "t")>>
 	You pull on the handle, and the door aches open. You dash through and shut it behind you, seeing a number of <<beastsplural>> bounding down the corridor as you do.
 	<br><br>
 
@@ -60,13 +59,23 @@ You run down the corridor. As you reach the door you hear a sharp buzz and the s
 :: Abduction Hospital Hole
 <<effects>>
 
+
+<<beastNEWinit 6 wolf>>
 <<if $physiquesize lte 6000>>
 	Dropping to your hands and knees, you squeeze through the gap. It's a tight fit, but your small frame proves an advantage.<<small_text>>
 	<br><br>
 	<<set $stripintegrity to 10>><<set $stripobject to "steel wire">><<stripobject>>
 	You see light penetrating the ceiling up ahead. After a short journey, you find a manhole leading outside.
 	<br><br>
-
+	<<endevent>>
+	<<commercialquick>>
+<<elseif $monster isnot 1 and $bestialitydisable is "t">>
+	Dropping to your hands and knees, you squeeze through the gap. It's a tight fit, but you're able to fit.
+	<br><br>
+	<<set $stripintegrity to 10>><<set $stripobject to "steel wire">><<stripobject>>
+	You see light penetrating the ceiling up ahead. After a short journey, you find a manhole leading outside.
+	<br><br>
+	<<endevent>>
 	<<commercialquick>>
 <<else>>
 	Dropping to your hands and knees, you squeeze through the gap. It goes well at first, you manage to get your stomach through before becoming stuck. You hear a sharp buzz and the sound of grinding metal as you try to pull out, but you're stuck tight. Something pokes your rear!
@@ -221,7 +230,6 @@ You run down the corridor. As you reach the door you hear a sharp buzz and the s
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<beastNEWinit 6 wolf>>
 	<<beastCombatInit>>
 	<<beastTrainGenerate>>
 	<<set $position to "wall">><<set $leftarm to "bound">><<set $rightarm to "bound">><<set $head to "bound">>

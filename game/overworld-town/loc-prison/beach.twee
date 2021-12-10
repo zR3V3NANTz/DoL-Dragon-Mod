@@ -89,6 +89,7 @@ You are on the secret beach outside the prison. The waves are violent.
             <<link [[Tunnel to cell (0:05)|Prison Tunnel Edge]]>><<pass 5>><<set $phase to 1>><<set $location to "prison">><</link>>
             <br>
         <</if>>
+        <<prison_map beach>>
     <</if>>
 <</if>>
 

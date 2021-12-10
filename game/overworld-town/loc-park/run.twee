@@ -74,7 +74,7 @@
 				You're no hero and it's not like you could help if you wanted.
 				<br><br>
 				You run.
-				<br>
+				<br><br>
 				It was probably nothing anyway. Just someone trying to scare you. That's all it was.
 			<</if>>
 		<</if>>
@@ -275,7 +275,6 @@ You hold your hand out.
 <<effects>>
 
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>

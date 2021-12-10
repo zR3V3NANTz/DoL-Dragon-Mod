@@ -20,7 +20,21 @@
 <<set _container to $container.home>><<set _pregnancy to $sexStats.anus.pregnancy>>
 You are in the pet shop. <<if $daystate is "night">>Most of the animals are sleeping at the moment<<else>>A handful of the small animals turn to look in your direction<</if>>. They all look cute but you doubt Bailey will let you keep any.
 <br><br>
-<<if $seenPets isnot true and $daystate isnot "night">>
+<<if $seenPets isnot true and $daystate isnot "night" and $famebestiality gte 200 and $bestialitydisable is "f" and ($monsterchance lt 100 or $monsterhallucinations is "t")>>
+	<<set $seenPets to true>><<generate1>><<person1>>
+	<<if $famebestiality gte 600>>
+		A <<person>> confronts you as you walk into the store. <<He>>'s wearing a nametag and the uniform of the place. <<His>> tone is polite, but firm.
+		"Those animals are under my responsibility, and I don't want you to touch them in any way. If you're not here to buy something, please leave." <<stress 12>><<ggstress>>
+		<br><br>
+	<<elseif $famebestiality gte 400>>
+		One of the workers has taken to following your every step. You can't evade <<his>> wary gaze. <<stress 6>><<gstress>>
+		<br><br>
+	<<else>>
+		The shopkeepers keep a close eye on you every time you get close to the animals. You're not sure why.
+		<br><br>  
+	<</if>>
+	<<endevent>>
+<<elseif $seenPets isnot true and $daystate isnot "night">>
 	<<set $seenPets to true>><<stress -10>>
 	<br>
 	You have a look around the shop, and pet some of the cats and dogs.

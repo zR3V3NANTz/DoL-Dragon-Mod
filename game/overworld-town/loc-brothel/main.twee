@@ -46,6 +46,10 @@ You are in the brothel. Several stages dot the crowded room. The staff look flus
 	<br><br>
 <</if>>
 
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "brothel">>
+<</if>>
+
 <<if $brotheljob is 1 and $fameprostitution gte 30 and not $brothelshowdata.intro>>
 	<<generate1>><<person1>>The <<person>> guarding the door rests a hand on your shoulder. <span class="gold">"Boss wants to see you."</span><<endevent>>
 	<br><br>
@@ -304,9 +308,9 @@ I'd like to offer you work looking after our guests. You saw how it works on the
 	<<if $corruptionDancing is 2>>
 		The slime wants you to have fun with more than an individual.
 	<<elseif $promiscuity gte 35>>
-		<<link [[Private room|Brothel Private]]>><<set $phase to 0>><<set $enemyno to 1>><<unset $corruptionDancing>><</link>><<promiscuous3>>
+		<<link [[Private room|Brothel Private]]>><<set $phase to 0>><<set $enemyno to 1>><<set $enemynomax to 1>><<unset $corruptionDancing>><</link>><<promiscuous3>>
 	<<elseif $promiscuity lte 34 and $uncomfortable.prostituting is false>>
-		<<link [[Private room|Brothel Private]]>><<set $phase to 0>><<set $enemyno to 1>><<unset $corruptionDancing>><<set $desperateaction to 1>><</link>><<promiscuous3>>
+		<<link [[Private room|Brothel Private]]>><<set $phase to 0>><<set $enemyno to 1>><<set $enemynomax to 1>><<unset $corruptionDancing>><<set $desperateaction to 1>><</link>><<promiscuous3>>
 		<br>
 	<</if>>
 <<elseif $danceevent is "rape">>
@@ -737,7 +741,7 @@ After <<his>> thirty minutes are up, <<he>> pays you the agreed fee and thanks y
 
 :: Brothel Private Sex Finish
 <<set $outside to 0>><<set $location to "brothel">><<effects>>
-<<if $stealstate is 3>><<set $brothel_thief += 1>><</if>>
+<<if $stealtarget isnot "">><<set $brothel_thief += 1>><</if>>
 <<if $consensual is 1>>
 
 	<<if $enemyarousal gte $enemyarousalmax>>
@@ -817,8 +821,7 @@ After <<his>> thirty minutes are up, <<he>> pays you the agreed fee and thanks y
 <</if>>
 <<effects>>
 <<effectsman>><<man>>
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -1124,7 +1127,7 @@ The <<person>> recoils from the hole. You hear <<him>> shout at someone, then si
 <<if $bestialitydisable is "f">>
 "Or," <<he>> says, "we could get a pig in from one of the local farms. Then you do nasty things with it for the audience's amusement. I don't know how many would be into it, but it would get tongues flapping. Which is what we want. You'll get £1500 for that."
 <br><br>
-<<else>>
+<<elseif $monsterchance gte 1>>
 "Or," <<he>> says, "we could get a pig person in from one of the local farms. Then you do nasty things with it for the audience's amusement. I don't know how many would be into it, but it would get tongues flapping. Which is what we want. You'll get £1500 for that."
 <br><br>
 <</if>>
@@ -1155,7 +1158,7 @@ You aren't promiscuous or deviant enough to take up any of the offers.
 	<br>
 <</if>>
 <!-- Modified for Monster People -->
-<<if $deviancy gte 75>>
+<<if $deviancy gte 75 and ($bestialitydisable is "f")>>
 	<<link [[Pig|Briar's Office Show 2]]>><<acceptbrothelshow "pig">><</link>><<deviant5>>
 	<br>
 	<<if $farm_stage gte 7 and $farm.steed>>
@@ -1180,7 +1183,7 @@ You aren't promiscuous or deviant enough to take up any of the offers.
 <<elseif $brothelshowdata.type is "pig">>
 	You agree to fuck a pig on stage. "You're a dirty one," <<he>> says as <<he>> stands up. "This is going to draw them in.
 <<elseif $brothelshowdata.type is "swarm">>
-	You agree to be submerged in a terrarium filled with small creatures on stage. "You're a kinky one," <<he>> says as <<he>> stands up. "I like that, and I'm sure the audience will like it too".
+	You agree to be submerged in a terrarium filled with small creatures on stage. "You're a kinky one," <<he>> says as <<he>> stands up. "I like that, and I'm sure the audience will like it too.
 <<elseif $brothelshowdata.type is "machine">>
 	You agree to use the repaired sex machine. Briar claps <<his>> hands together. "Excellent.
 <<elseif $brothelshowdata.type is "horse">>
@@ -1471,8 +1474,7 @@ Briar bows to the audience. "Thank you, thank you," <<he>> says. "And now my fri
 
 <<effectsman>><<man>>
 
-<<audience>><!-- Added NPCDamage -->
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
+<<audience>>
 
 <<stateman>>
 <br><br>
@@ -1854,7 +1856,7 @@ The police push you against the wall, pinning your arms. "They wanted to raid me
 <br><br>
 Armlocked, the police drag you deeper into the brothel. Briar strolls alongside. "Raids cost a lot," Briar goes on. "Not just money either. Reputation. I was still ready to protect you. I look out for mine. I was ready to take the hit."
 <br><br>
-"Until," Briar growls. "I heard you've been stealing from my customers. Hurting the reputation of my establishment. Driving away my custom."
+"Until," Briar growls. "I heard you've been stealing from my customers. Hurting the reputation of my establishment. Driving away my customers."
 <br><br>
 <<npc Briar>><<person1>>
 Briar throws open a secluded delivery door in the rear, well out of sight of customers. <<He>> leads the police out. An unmarked car awaits you.

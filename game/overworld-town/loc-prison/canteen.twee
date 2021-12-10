@@ -1,7 +1,7 @@
 :: Prison Canteen
 <<set $bus to "canteen">><<set $outside to 0>><<effects>><<effects_prison>>
 
-You are in the canteen. Rows of table fill the large room. The ceiling hangs low enough that taller inmates can't stand upright, giving it a claustrophobic feel despite its length and breadth.
+You are in the canteen. Rows of tables fill the large room. The ceiling hangs low enough that taller inmates can't stand upright, giving it a claustrophobic feel despite its length and breadth.
 <<if $prison.schedule is "wake" or $prison.schedule is "lunch" or $prison.schedule is "dinner">>
     Inmates queue for their grub. <<generate_methodical_guard 0>><<methodical_guard 0 cap>> stands in the corner, flipping through the pages of a book.
 <<elseif $prison.schedule is "work">>
@@ -47,6 +47,7 @@ You are in the canteen. Rows of table fill the large room. The ceiling hangs low
                 <br><br>
                 <<link [[Leave|Prison Yard]]>><</link>>
                 <br>
+                <<prison_map canteen>>
             <</if>>
         <</if>>
         <<set $eventskip to 0>>
@@ -58,25 +59,129 @@ You are in the canteen. Rows of table fill the large room. The ceiling hangs low
 <<effects>>
 <<pass 1>><<advancetohour>>
 
-You queue with the other prisoners, and receive a bowl full of sloppy porridge.
-<br><br>
 
-You look for a free seat.
-<<if $prison.protection is "scarred">>
-    <<generate_scarred_inmate 0>><<scarred_inmate 0 cap>><<person1>> asks you to sit on <<his>> lap.
+<<if $leftarm is "bound" and $rightarm is "bound">>
+    <<generate1>><<person1>>
+    You queue with the other prisoners. The <<person>> behind the counter fills a bowl full of sloppy porridge, and rests it on your head.
+    <<if $worn.face.type.includes("gag")>>
+        There's a straw included, which you might be able to winkle past your gag.
+    <</if>>
+    <br><br>
+    <<endevent>>
+    <<if $worn.face.type.includes("gag")>>
+        <span class="blue">You'd be able to ask for help, if not for your gag.</span>
+        <br>
+    <<else>>
+        <<link [[Ask someone for help|Prison Breakfast Help]]>><<prison_inmates -1>><</link>><<lrespect>>
+        <br>
+    <</if>>
+    <<link [[Carefully find a seat|Prison Breakfast Careful]]>><</link>><<dancedifficulty 1 600>>
+    <br>
+<<else>>
+    You queue with the other prisoners, and receive a bowl full of sloppy porridge.
+    <<if $worn.face.type.includes("gag")>>
+        There's a straw included, which you might be able to winkle past your gag.
+    <</if>>
     <br><br>
 
-    <<link [[Sit on lap|Prison Breakfast Scarred]]>><<prison_rep scarred 1>><<prison_attention 1>><</link>><<glove>><<gattention>>
-    <br>
-    <<link [[Refuse|Prison Breakfast Scarred Refuse]]>><<prison_inmates 1>><</link>><<grespect>>
+    You look for a free seat.
+    <<if $prison.protection is "scarred">>
+        <<generate_scarred_inmate 0>><<scarred_inmate 0 cap>><<person1>> asks you to sit on <<his>> lap.
+        <br><br>
+
+        <<link [[Sit on lap|Prison Breakfast Scarred]]>><<prison_rep scarred 1>><<prison_attention 1>><</link>><<glove>><<gattention>>
+        <br>
+        <<link [[Refuse|Prison Breakfast Scarred Refuse]]>><<prison_inmates 1>><</link>><<grespect>>
+    <<else>>
+        <br><br>
+
+        <<link [[Next|Prison Breakfast Prayer]]>><</link>>
+        <br>
+    <</if>>
+<</if>>
+
+:: Prison Breakfast Help
+<<effects>>
+
+<<generate1>><<person1>>
+<<if $submissive gte 1150>>
+    "C-could someone help me?" you ask. "Please?"
+<<elseif $submissive lte 850>>
+    "Someone gimme a hand," you say.
 <<else>>
+    "Could someone give me a hand," you say.
+<</if>>
+<br><br>
+
+A <<person>> takes the bowl from your head. "Sure darling," <<he>> smacks your <<bottom>>. "Get moving."
+<br><br>
+
+<<He>> feeds you by hand while the other inmates watch. They look amused.
+<br><br>
+
+<<link [[Next|Prison Breakfast Prayer]]>><<endevent>><</link>>
+<br>
+
+:: Prison Breakfast Careful
+<<effects>>
+
+<<if $danceSuccess>>
+    You walk to a free seat. A couple of inmates stick out their legs, <span class="green">but you step over them without losing balance.</span>
     <br><br>
 
     <<link [[Next|Prison Breakfast Prayer]]>><</link>>
     <br>
+<<else>>
+    You walk towards a free seat. An inmate sticks out a leg, <span class="red">tripping you.</span> Your bowl clatters against the ground, spilling food everywhere.
+    <br><br>
+
+    <<if $worn.face.type.includes("gag")>>
+        <<generate_veteran_guard 0>><<person1>>
+        You hear the stomp of boots. Before you can stand, <<veteran_guard 0>> presses <<his>> foot against your back. "Dirtying our nice clean floor?" <<he>> says. "I won't have it."
+        <br><br>
+
+        <<link [[Next|Prison Breakfast Lick Refuse]]>><<set $phase to 1>><</link>>
+        <br>
+    <<else>>
+        <<generate_veteran_guard 0>><<person1>>
+        You hear the stomp of boots. Before you can stand, <<veteran_guard 0>> presses <<his>> foot against your back. "Dirtying our nice clean floor?" <<he>> says. "I won't have it. Lick it up. All of it."
+        <br><br>
+
+        <<link [[Lick|Prison Breakfast Lick]]>><<prison_inmates -3>><<trauma 6>><</link>><<llrespect>><<gtrauma>>
+        <br>
+        <<link [[Refuse|Prison Breakfast Lick Refuse]]>><<prison_inmates 3>><<pain 8>><<trauma 12>><<stress 12>><<prison_guards -1>><</link>><<ggpain>><<ggtrauma>><<ggstress>><<gsuspicion>><<ggrespect>>
+        <br><br>
+    <</if>>
 <</if>>
 
 
+
+:: Prison Breakfast Lick
+<<effects>>
+
+You can feel the other inmates watching. <<veteran_guard 0 cap>> doesn't remove <<his>> boot until you've licked up the entire spillage. "Good," <<he>> says. "Now sit down."
+<br><br>
+
+<<link [[Next|Prison Breakfast Prayer]]>><<endevent>><</link>>
+<br>
+
+
+:: Prison Breakfast Lick Refuse
+<<effects>>
+
+<<generate_methodical_guard 1>>
+
+<<veteran_guard 0 cap>> removes <<his>> boot, only to smack you back against the ground with <<his>> baton. You curl up as best you can with your arms bound, as <<he>> delivers blow after blow.<<if $phase is 1>><<prison_inmates 3>><<pain 8>><<trauma 12>><<stress 12>><<prison_guards -1>><<ggpain>><<ggtrauma>><<ggstress>><<gsuspicion>><<ggrespect>><</if>>
+<br><br>
+
+"That's enough," cuts in <<methodical_guard 1>>. "I'm not delaying prayer for this."
+<br><br>
+
+<<veteran_guard 0 cap>> backs away from you. <<tearful>> you rise to your feet, and find a seat.
+<br><br>
+
+<<link [[Next|Prison Breakfast Prayer]]>><<endevent>><</link>>
+<br>
 
 :: Prison Breakfast Scarred
 <<effects>>
@@ -231,23 +336,44 @@ You're too hurt to resist as <<methodical_guard 0>> cuffs you, and drags you fro
 :: Prison Lunch
 <<effects>>
 <<pass 1>><<advancetohour>>
-
-You queue with the other prisoners, and receive a bowl of potato soup.
-<br><br>
-
-You look for a free seat.
-<<if $prison.protection is "tattooed">>
-    <<generate_tattooed_inmate 0>><<tattooed_inmate 0 cap>><<person1>> steps in your way. "My <<girl>>'s not sitting alone," <<he>> says, grabbing your arm.
+<<if $leftarm is "bound" and $rightarm is "bound">>
+    <<generate1>><<person1>>
+    You queue with the other prisoners. The <<person>> behind the counter fills a bowl full of sloppy potatoe soup, and rests it on your head.
+    <<if $worn.face.type.includes("gag")>>
+        There's a straw included, which you might be able to winkle past your gag.
+    <</if>>
     <br><br>
-
-    <<link [[Comply|Prison Lunch Tattooed]]>><<prison_rep tattooed 1>><<prison_attention 1>><</link>><<glove>><<gattention>>
+    <<endevent>>
+    <<if $worn.face.type.includes("gag")>>
+        <span class="blue">You'd be able to ask for help, if not for your gag.</span>
+        <br>
+    <<else>>
+        <<link [[Ask someone for help|Prison Breakfast Help]]>><<prison_inmates -1>><</link>><<lrespect>>
+        <br>
+    <</if>>
+    <<link [[Carefully find a seat|Prison Breakfast Careful]]>><</link>><<dancedifficulty 1 600>>
     <br>
-    <<link [[Refuse|Prison Lunch Tattooed Refuse]]>><<prison_inmates 1>><</link>><<grespect>>
 <<else>>
-    <br><br>
+        You queue with the other prisoners, and receive a bowl of potato soup.
+        <<if $worn.face.type.includes("gag")>>
+            There's a straw included, which you might be able to winkle past your gag.
+        <</if>>
+        <br><br>
 
-    <<link [[Next|Prison Breakfast Prayer]]>><<endevent>><</link>>
-    <br>
+    You look for a free seat.
+    <<if $prison.protection is "tattooed">>
+        <<generate_tattooed_inmate 0>><<tattooed_inmate 0 cap>><<person1>> steps in your way. "My <<girl>>'s not sitting alone," <<he>> says, grabbing your arm.
+        <br><br>
+
+        <<link [[Comply|Prison Lunch Tattooed]]>><<prison_rep tattooed 1>><<prison_attention 1>><</link>><<glove>><<gattention>>
+        <br>
+        <<link [[Refuse|Prison Lunch Tattooed Refuse]]>><<prison_inmates 1>><</link>><<grespect>>
+    <<else>>
+        <br><br>
+
+        <<link [[Next|Prison Breakfast Prayer]]>><<endevent>><</link>>
+        <br>
+    <</if>>
 <</if>>
 
 :: Prison Lunch Tattooed
@@ -292,46 +418,67 @@ You find somewhere to sit, and eat your soup.
 :: Prison Dinner
 <<effects>>
 <<pass 1>><<advancetohour>>
-
-You queue with the other prisoners, and receive a slab of meat and a ladle-full of mixed vegetables.
-<br><br>
-<<if $prison.kylar is "active">>
-    Kylar appears behind you, following close.
-    <br><br>
-    <<npc Kylar>><<person1>>
-    <<link [["Let " + $NPCList[0].pronouns.him + " sit beside you"|Prison Dinner Kylar]]>><<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<prison_inmates -1>><</link>><<lrespect>><<glove>><<lksuspicion>>
-    <br>
-    <<link [[Insist on sitting alone|Prison Dinner Kylar Refuse]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><<prison_inmates 1>><</link>><<llove>><<gksuspicion>><<grespect>>
-    <br>
-<<elseif $rng gte 81>>
-    You find a seat, and eat your meal.
-    <br><br>
+<<if $leftarm is "bound" and $rightarm is "bound">>
     <<generate1>><<person1>>
-    "Hey <<girl>>," says the <<person>> opposite. <<He>> rests <<his>> elbow on the table. "Wrestle?"
-    <br><br>
-
-    <<if $leftarm is "bound" and $rightarm is "bound">>
-        <span class="blue">You can't wrestle with your arms bound.</span>
-    <<else>>
-        <<link [[Wrestle|Prison Dinner Wrestle]]>><</link>><<physiquedifficulty 2000 16000>>
+    You queue with the other prisoners. The <<person>> behind the counter fills a bowl full of mixed vegetable soup and diced meat. <<He>> rests it on your head.
+    <<if $worn.face.type.includes("gag")>>
+        There's a straw included, which you might be able to winkle past your gag. Good for the soup, at least.
     <</if>>
-    <br>
-    <<link [[Decline|Prison Dinner Wrestle Decline]]>><<prison_inmates -1>><</link>><<lrespect>>
-    <br>
-<<elseif $rng gte 61>>
-    <<generate1>><<person1>>
-    "Oi," says a <<person>>, slamming <<his>> tray beside you. "This is my seat."
     <br><br>
-
-    <<link [[Threaten|Prison Dinner Threaten]]>><<prison_inmates 1>><</link>><<grespect>>
-    <br>
-    <<link [[Move|Prison Dinner Move]]>><<prison_inmates -1>><</link>><<lrespect>>
+    <<endevent>>
+    <<if $worn.face.type.includes("gag")>>
+        <span class="blue">You'd be able to ask for help, if not for your gag.</span>
+        <br>
+    <<else>>
+        <<link [[Ask someone for help|Prison Breakfast Help]]>><<prison_inmates -1>><</link>><<lrespect>>
+        <br>
+    <</if>>
+    <<link [[Carefully find a seat|Prison Breakfast Careful]]>><</link>><<dancedifficulty 1 600>>
     <br>
 <<else>>
-    No one pays you much mind.
+    You queue with the other prisoners, and receive a slab of meat and a ladle-full of mixed vegetable soup.
+    <<if $worn.face.type.includes("gag")>>
+        There's a straw included, which you might be able to winkle past your gag. Good for the soup, at least.
+    <</if>>
     <br><br>
-    <<link [[Next|Prison Breakfast Prayer]]>><</link>>
-    <br>
+    <<if $prison.kylar is "active">>
+        Kylar appears behind you, following close.
+        <br><br>
+        <<npc Kylar>><<person1>>
+        <<link [["Let " + $NPCList[0].pronouns.him + " sit beside you"|Prison Dinner Kylar]]>><<npcincr Kylar love 1>><<npcincr Kylar rage -1>><<prison_inmates -1>><</link>><<lrespect>><<glove>><<lksuspicion>>
+        <br>
+        <<link [[Insist on sitting alone|Prison Dinner Kylar Refuse]]>><<npcincr Kylar love -1>><<npcincr Kylar rage 1>><<prison_inmates 1>><</link>><<llove>><<gksuspicion>><<grespect>>
+        <br>
+    <<elseif $rng gte 81>>
+        You find a seat, and eat your meal.
+        <br><br>
+        <<generate1>><<person1>>
+        "Hey <<girl>>," says the <<person>> opposite. <<He>> rests <<his>> elbow on the table. "Wrestle?"
+        <br><br>
+
+        <<if $leftarm is "bound" and $rightarm is "bound">>
+            <span class="blue">You can't wrestle with your arms bound.</span>
+        <<else>>
+            <<link [[Wrestle|Prison Dinner Wrestle]]>><</link>><<physiquedifficulty 2000 16000>>
+        <</if>>
+        <br>
+        <<link [[Decline|Prison Dinner Wrestle Decline]]>><<prison_inmates -1>><</link>><<lrespect>>
+        <br>
+    <<elseif $rng gte 61>>
+        <<generate1>><<person1>>
+        "Oi," says a <<person>>, slamming <<his>> tray beside you. "This is my seat."
+        <br><br>
+
+        <<link [[Threaten|Prison Dinner Threaten]]>><<prison_inmates 1>><</link>><<grespect>>
+        <br>
+        <<link [[Move|Prison Dinner Move]]>><<prison_inmates -1>><</link>><<lrespect>>
+        <br>
+    <<else>>
+        No one pays you much mind.
+        <br><br>
+        <<link [[Next|Prison Breakfast Prayer]]>><</link>>
+        <br>
+    <</if>>
 <</if>>
 
 :: Prison Dinner Kylar

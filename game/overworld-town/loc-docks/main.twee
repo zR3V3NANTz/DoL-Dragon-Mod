@@ -12,6 +12,9 @@ You are on the docks.
 <<elseif $daystate is "dusk">>
 	The last ships are leaving, while others remain moored for the night.
 <</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "docks">>
+<</if>>
 <br><br>
 <<if $dockwork is 2 and $hour is 7 and $schoolday is 1>>
 	Dockers arrive for work. They won't let you join them on a school day.
@@ -165,6 +168,9 @@ You pass security and report to a manager for work. <<dockstatustext>>
 :: Docks Work
 <<set $outside to 0>><<set $location to "docks">><<dockeffects>><<effects>>
 
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "docks">>
+<</if>>
 <<if $phase is 0>>
 
 	You work hard. It's tiring.
@@ -248,7 +254,6 @@ You swim back to shore. "<<pShe>> capsized it on purpose!" the <<person>> says t
 <<effects>>
 
 <<effectsman>><<man>>
-<<if $enemyhealth gt 0>><<npcdamage>><</if>>
 <<stateman>>
 <br><br>
 <<actionsman>>
@@ -891,7 +896,7 @@ The <<person2>><<person>> shakes <<his>> head. "That wasn't agreed." <<He>> open
 The <<person1>><<person>> sighs, but doesn't protest. <<He>> pulls the board away from you. Their eyes feast on your <<lewdness>>.
 <br><br>
 
-<<link [[Next|Passout Docks Rape]]>><<set $enemyno to 1>><<set $molestationstart to 1>><</link>>
+<<link [[Next|Passout Docks Rape]]>><<set $enemyno to 1>><<set $enemynomax to 1>><<set $molestationstart to 1>><</link>>
 <br>
 
 :: Passout Docks Rape
@@ -1188,7 +1193,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 		<br><br>
 	<</if>>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 180>><</link>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 180>><</link>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1204,7 +1209,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 	The <<person3>>bartender returns, holding two more glasses. "Vodka," <<he>> says. "But stronger than you're used to, I reckon."
 	<br><br>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 180>><</link>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 180>><</link>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1223,7 +1228,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 	The <<person1>><<person>> sways slightly as <<he>> takes the drink.
 	<br><br>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 120>><<set $hallucinogen += 120>><</link>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 120>><<set $hallucinogen += 120>><</link>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1236,7 +1241,7 @@ You ignore the flirters, finish your drink and leave with your colleagues.
 	The bartender returns with another two glasses. The liquid is bright and colourful. "Local special," <<he>> smiles. "Not on the menu."
 	<br><br>
 
-	<<link [[Drink|Docks Pub Crawl Contest]]>><<set $drunk += 120>><<set $drugged += 120>><<arousal 1800>><</link>><<ggarousal>>
+	<<link [[Drink|Docks Pub Crawl Contest]]>><<alcohol 120>><<drugs 120>><<arousal 1800>><</link>><<ggarousal>>
 	<br>
 	<<link [[Stop|Docks Pub Crawl Contest Stop]]>><<dockstatus -1>><</link>><<lcool>>
 	<br>
@@ -1752,7 +1757,7 @@ Your colleagues reach for the money, but you snatch it away from them. You remin
 <br><br>
 
 You and your colleagues enjoy your free drinks and leave in an elevated mood.
-<<set $drunk += 60>><<lstress>><<stress -6>>
+<<alcohol 60>><<lstress>><<stress -6>>
 <br><br>
 
 <<dockpuboptions>>
@@ -1764,7 +1769,7 @@ You let your colleagues have their share. You've gained <<moneyGain 60>>.
 <br><br>
 
 You and your colleagues enjoy your free drinks and leave in an elevated mood.
-<<set $drunk += 60>><<lstress>><<stress -6>>
+<<alcohol 60>><<lstress>><<stress -6>>
 <br><br>
 
 <<dockpuboptions>>

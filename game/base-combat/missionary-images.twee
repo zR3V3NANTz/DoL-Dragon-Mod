@@ -4,7 +4,7 @@
 <<set _filters to $skinColor.current>>
 <<set _img to setup.tanImg.missionary[$skinColor.tanImgEnabled]>>
 <<set _disabled to ["disabled","hidden"]>>
-<<set _xx to $enemyno-1>>
+<<set _xx to $enemynomax-1>>
 <<if _xx is -1>>
 	<<set _stanceCheck to 0>>
 <<else>>
@@ -43,7 +43,7 @@
 <img class="layer-sexpenis anim-idle-4f-slow" src="img/sex/missionary/activevaginalmouth.png">
 <</if>>
 
-<<if $vaginastate is "imminent">>
+<<if $vaginastate is "imminent" or $vaginastate is "doubleimminent">>
 	<<if $enemytype is "machine">>
 		<img class="layer-sexpenis anim-idle-2f-slow" src="img/sex/machine/vaginal/missionary/entrance.png">
 	<<elseif $enemytype isnot "beast">>
@@ -51,7 +51,7 @@
 	<</if>>
 <</if>>
 
-<<if $vaginastate is "entrance">>
+<<if $vaginastate is "entrance" or $vaginastate is "doubleentrance">>
 	<<if $enemytype is "machine">>
 		<img class="layer-sexpenis anim-idle-2f-slow" src="img/sex/machine/vaginal/missionary/entrance.png">
 	<<elseif $enemytype isnot "beast">>
@@ -71,7 +71,7 @@
 <img class="layer-sexpenis anim-idle-4f-slow" src="img/sex/missionary/activeanalmouth.png">
 <</if>>
 
-<<if $anusstate is "imminent">>
+<<if $anusstate is "imminent" or $anusstate is "doubleimminent">>
 	<<if $enemytype is "machine">>
 		<img class="layer-sexpenis anim-idle-2f-slow" src="img/sex/machine/anal/missionary/entrance.png">
 	<<elseif $enemytype isnot "beast">>
@@ -79,7 +79,7 @@
 	<</if>>
 <</if>>
 
-<<if $anusstate is "entrance">>
+<<if $anusstate is "entrance" or $anusstate is "doubleentrance">>
 	<<if $enemytype is "machine">>
 		<img class="layer-sexpenis anim-idle-2f-slow" src="img/sex/machine/anal/missionary/entrance.png">
 	<<elseif $enemytype isnot "beast">>
@@ -406,7 +406,7 @@ Same as above, but with eyelashes.
 
 <<if $machine>>
 	<<if $machine.arm_chains>>
-		<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+		<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 			<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms_bound.png">
 		<<else>>
 			<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms.png">
@@ -425,7 +425,7 @@ Same as above, but with eyelashes.
 	<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/neck.png">
 <</if>>
 <<if $prop.includes("arm_shackle")>>
-	<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+	<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 		<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms_bound.png">
 	<<else>>
 		<img class="layer-apparatus anim-idle-2f" src="img/sex/prop/shackles/missionary/arms.png">
@@ -630,7 +630,7 @@ Same as above, but with eyelashes.
 	<<elseif $enemytype isnot "beast">>
 		<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activevaginal.png">
 		<<if $silhouettedisable is "f">>
-			<<if $penisstate is "penetrated" or $penisstate is "otheranus" or $mouthstate is "penetrated">>
+			<<if ($penisstate is "penetrated" or $penisstate is "otheranus" or $mouthstate is "penetrated") and $anusstate isnot "doublepenetrated">>
 				<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activevaginalalt.png">
 			<<else>>
 				<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activevaginal.png">
@@ -667,8 +667,60 @@ Same as above, but with eyelashes.
 	<</if>>
 <</if>>
 
+/* DADV */
+<<if $anusstate is "doublepenetrated">>
+	<<if $NPCList[$anustarget].penis is "anusdouble" and $NPCList[$anusdoubletarget].penis is "anusdouble">>
+		<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activeanaldoublemissionary.png">
+		<<if $silhouettedisable is "f">>
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activeanal.png">
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activemissionarydouble.png">
+		<</if>>
+	<<else>>
+		<<if $silhouettedisable is "f">>
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activeanal.png">
+		<<else>>
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activeanal.png">
+		<</if>>
+	<</if>>
+	<<if $enemyarousal gte $enemyarousalmax>>
+		<<if $condomAnalImg>>
+		<<else>>
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activeanalcum.png">
+		<</if>>
+	<</if>>
+<</if>>
+<<if $vaginastate is "doublepenetrated">>
+		<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activevaginal.png">
+	<<if $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
+		<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activevaginaldouble.png">
+		<<if $silhouettedisable is "f">>
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activevaginaldouble.png">
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activemissionarydouble.png">
+		<</if>>
+	<<else>>
+		<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activevaginal.png">
+		<<if $silhouettedisable is "f">>
+			<<if $penisstate is "penetrated" or $penisstate is "otheranus" or $mouthstate is "penetrated">>
+				<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activevaginalalt.png">
+			<<else>>
+				<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/shadow/activevaginal.png">
+			<</if>>
+		<</if>>
+	<</if>>
+	<<if $enemyarousal gte $enemyarousalmax>>
+		<<if $condomVaginalImg>>
+		<<else>>
+			<img @class="'layer-sextears anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activevaginalcum.png">
+		<</if>>
+	<</if>>
+<</if>>
+
 <<if $penisstate is "othermouth">>
 	<img @class="'layer-sexhair anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activepenile.png">
+<</if>>
+
+<<if $penisstate is "otherpenis">>
+	<img @class="'layer-sexhair anim-doggy-4f-'+_animspeed" src="img/sex/missionary/active/body/activefencing.png">
 <</if>>
 
 <<if $penisstate is "penetrated" and $enemytype isnot "beast" or $penisstate is "otheranus" and $enemytype isnot "beast">>
@@ -832,7 +884,7 @@ Same as above, but with eyelashes.
 
 <<if $machine>>
 	<<if $machine.arm_chains>>
-		<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+		<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 			<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms_bound.png">
 		<<else>>
 			<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms.png">
@@ -852,7 +904,7 @@ Same as above, but with eyelashes.
 	<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/neck.png">
 <</if>>
 <<if $prop.includes("arm_shackle")>>
-	<<if $leftarm is "grappled" or $leftarm is "bound" or $rightarm is "grappled" or $rightarm is "bound">>
+	<<if $leftarm is "mechgrappled" or $leftarm is "bound" or $rightarm is "mechgrappled" or $rightarm is "bound">>
 		<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms_bound.png">
 	<<else>>
 		<img @class="'layer-apparatus anim-doggy-4f-'+_animspeed" src="img/sex/prop/shackles/missionary/arms.png">

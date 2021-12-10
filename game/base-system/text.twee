@@ -288,55 +288,37 @@
 
 
 <<widget "someones">><<silently>>
-/* Take target into consideration. Pre-set _target and use it instead.
-	<<if _target isnot undefined>>
-		<<hisselect _target>>
-	<<else>>
-		<<his>>
-	<</if>>
- */
-<<if $enemyno gte 2 and $enemytype is "man">>
-	<<set $rng to random(1, $enemyno)>>
-	<<if $rng is 1>>
-		<<his1>>
-	<<elseif $rng is 2>>
-		<<his2>>
-	<<elseif $rng is 3>>
-		<<his3>>
-	<<elseif $rng is 4>>
-		<<his4>>
-	<<elseif $rng is 5>>
-		<<his5>>
-	<<elseif $rng is 6>>
-		<<his6>>
-	<</if>>
+<<if $args[0] is "two">>
+	<<set _text_output to "their">>
+<<elseif $args[0] isnot undefined>>
+	<<set $_target to $args[0]>>
+	<<hisselect $_target>>
 <<else>>
 	<<his>>
 <</if>>
 <</silently>>_text_output<</widget>>
 
 <<widget "someone">><<silently>>
-/* Same as above
-	<<if _target isnot undefined>>
-		<<personselect _target>>
-	<<else>>
-		<<him>>
-	<</if>>
- */
-<<if $enemyno gte 2 and $enemytype is "man">>
-	<<set _text_output to "someone">>
+<<if $args[0] is "two">>
+	<<set _text_output to "them">>
+<<elseif $args[0] isnot undefined>>
+	<<set $_target to $args[0]>>
+	<<personselect $_target>><<him>>
 <<else>>
 	<<him>>
 <</if>>
 <</silently>>_text_output<</widget>>
 
-<<widget "their">><<silently>>
-<<if $enemyno gte 2 and $enemytype is "man">>
-	<<set _text_output to "their">>
+<<widget "their">>
+<<if $args[0] isnot undefined>>
+	<<set $_target to $args[0]>>
+	<<hisselect $_target>>
+<<elseif $enemyno gte 2 and $enemytype is "man">>
+	their
 <<else>>
 	<<his>>
 <</if>>
-<</silently>>_text_output<</widget>>
+<</widget>>
 
 <<widget "ohe">><<silently>>
 <<if $enemytype is "beast">>
@@ -476,6 +458,30 @@
 	<<bhimself $args[0]>>
 <<else>>
 	<<bhimself>>
+<</if>>
+<<set _text_output to _text_output.toLocaleUpperFirst()>>
+<</silently>><<print _text_output>><</widget>>
+
+<<widget "bhes">><<silently>>
+<<if typeof $args[0] is "number">>
+	<<set _na to $args[0]>>
+<<elseif $enemyno gte 0>>
+	<<set _na to $enemyno-1>>
+<<else>>
+	<<set _na to 0>>
+<</if>>
+<<if $NPCList[_na].monster is "monster">>
+	<<set _text_output to ($NPCList[_na].pronoun is "m" ? "he's" : "she's")>>
+<<else>>
+	<<set _text_output to "it's">>
+<</if>>
+<</silently>>_text_output<</widget>>
+
+<<widget "bHes">><<silently>>
+<<if typeof $args[0] is "number">>
+	<<bhes $args[0]>>
+<<else>>
+	<<bhes>>
 <</if>>
 <<set _text_output to _text_output.toLocaleUpperFirst()>>
 <</silently>><<print _text_output>><</widget>>
@@ -1238,9 +1244,9 @@ in dev alternative to current "breasts" widget
 
 <<widget "combatperson">><<silently>>
 <<if $npc_named is 1>>
-	<<set _text_output to $NPCList[_j].fullDescription>>
+	<<set _text_output to $NPCList[$index].fullDescription>>
 <<elseif $enemytype is "beast">>
-	<<set _text_output to "the " + $NPCList[_j].type>>
+	<<set _text_output to "the " + $NPCList[$index].type>>
 <<elseif $role isnot "normal">>
 	<<set _text_output to $description + " " + $role>>
 <<elseif $npcadult is 1>>
@@ -1252,7 +1258,7 @@ in dev alternative to current "breasts" widget
 		<<set _text_output to "the " + $description>>
 	<</if>>
 <<else>>
-	<<set _text_output to "the " + $NPCList[_j].fullDescription>>
+	<<set _text_output to "the " + $NPCList[$index].fullDescription>>
 <</if>><</silently>><<print _text_output>><</widget>>
 
 <<widget "combatpersons">><<silently>>
@@ -2304,7 +2310,7 @@ in dev alternative to current "breasts" widget
 <<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
 	<span class="lblue">- Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-	<span class="purple">- $args[0]'s Dominance</span>
+	<span class="lblue">- $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
 	<span class="lblue">- $npc[0]'s Dominance</span>
 <<else>>
@@ -2316,7 +2322,7 @@ in dev alternative to current "breasts" widget
 <<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
 	<span class="lblue">- - Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-	<span class="purple">- - $args[0]'s Dominance</span>
+	<span class="lblue">- - $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
 	<span class="lblue">- - $npc[0]'s Dominance</span>
 <<else>>
@@ -2328,7 +2334,7 @@ in dev alternative to current "breasts" widget
 <<if ($npc.includes("Robin") and $args[0] is undefined) or $args[0] is "Robin">>
 	<span class="lblue">- - - Robin's Confidence</span>
 <<elseif $args[0] isnot undefined>>
-	<span class="purple">- - - $args[0]'s Dominance</span>
+	<span class="lblue">- - - $args[0]'s Dominance</span>
 <<elseif $npc.length isnot 0>>
 	<span class="lblue">- - - $npc[0]'s Dominance</span>
 <<else>>
@@ -3669,12 +3675,13 @@ You can't help but be conscious of your <<nudity>>.
 <</silently>>_text_output<</widget>>
 
 <<widget "tendingtext">>
-<<if $tending gte 0 and $tending lt 200>><span class="pink">awkwardly</span>
-<<elseif $tending gte 200 and $tending lt 400>><span class="purple">cautiously</span>
-<<elseif $tending gte 400 and $tending lt 600>><span class="blue">rhythmically</span>
-<<elseif $tending gte 600 and $tending lt 800>><span class="lblue">smoothly</span>
-<<elseif $tending gte 800 and $tending lt 1000>><span class="teal">skilfully</span>
-<<elseif $tending gte 1000>><span class="green">expertly</span><</if>>
+<<if currentSkillValue('tending') gte 0 and currentSkillValue('tending') lt 200>><span class="pink">awkwardly</span>
+<<elseif currentSkillValue('tending') gte 200 and currentSkillValue('tending') lt 400>><span class="purple">cautiously</span>
+<<elseif currentSkillValue('tending') gte 400 and currentSkillValue('tending') lt 600>><span class="blue">rhythmically</span>
+<<elseif currentSkillValue('tending') gte 600 and currentSkillValue('tending') lt 800>><span class="lblue">smoothly</span>
+<<elseif currentSkillValue('tending') gte 800 and currentSkillValue('tending') lt 1000>><span class="teal">skilfully</span>
+<<elseif currentSkillValue('tending') gte 1000 and currentSkillValue('tending') lt 1200>><span class="green">expertly</span>
+<<elseif currentSkillValue('tending') gte 1200>><span class="gold">effortlessly</span><</if>>
 <</widget>>
 
 <<widget "nervously">><<silently>>
@@ -3777,23 +3784,27 @@ School finishes on the first Monday of December.
 <<undertop>>
 <<set _undertop to _text_output>>
 <<if $worn.under_lower.exposed gte 1 and $worn.lower.exposed gte 2 and $worn.upper.exposed lte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed _genitals</span>">>
+	<<set _text_output to '<span class="lewd">exposed _genitals</span>'>>
 <<elseif $worn.under_lower.exposed lte 0 and $worn.lower.exposed gte 2 and $worn.upper.exposed lte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed $worn.under_lower.name</span>">>
+	<<set _text_output to '<span class="lewd">exposed $worn.under_lower.name</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed lte 1 and $player.gender_appearance is "m" and $player.gender is "m">>
-	<<set _text_output to "<span class=\"lewd\">lewdness</span>">>
+	<<set _text_output to '<span class="lewd">lewdness</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed lte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed _undertop</span>">>
+	<<set _text_output to '<span class="lewd">exposed _undertop</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed gte 2 and $worn.under_lower.exposed lte 0 and $player.gender_appearance is "m" and $player.gender is "m">>
-	<<set _text_output to "<span class=\"lewd\">exposed $worn.under_lower.name</span>">>
+	<<set _text_output to '<span class="lewd">exposed $worn.under_lower.name</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed gte 2 and $worn.under_lower.exposed lte 0>>
-	<<set _text_output to "<span class=\"lewd\">exposed _undertop and $worn.under_lower.name</span>">>
+	<<set _text_output to '<span class="lewd">exposed _undertop and $worn.under_lower.name</span>'>>
 <<elseif $worn.under_lower.exposed gte 1 and $worn.lower.exposed gte 2 and $player.gender_appearance is "m" and $player.gender is "m">>
-	<<set _text_output to "<span class=\"lewd\">exposed _genitals</span>">>
+	<<set _text_output to '<span class="lewd">exposed _genitals</span>'>>
 <<elseif $worn.upper.exposed gte 2 and $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1>>
-	<<set _text_output to "<span class=\"lewd\">exposed _undertop and _genitals</span>">>
+	<<if $player.penisExist and $player.vaginaExist>>
+		<<set _text_output to '<span class="lewd">exposed _undertop, _genitals</span>'>>
+	<<else>>
+		<<set _text_output to '<span class="lewd">exposed _undertop and _genitals</span>'>>
+	<</if>>
 <<else>>
-	<<set _text_output to "<span class=\"lewd\">lewdness</span>">>
+	<<set _text_output to '<span class="lewd">lewdness</span>'>>
 <</if>>
 <</silently>>_text_output<</widget>>
 
@@ -5046,7 +5057,7 @@ School finishes on the first Monday of December.
 
 <<widget "handholdingvirginitywarning">>
 	<<if $player.virginity.handholding is true>>
-		<span class="red">This action will take your handholding virginity.</span>
+		| <span class="red">This action will take your handholding virginity.</span>
 	<</if>>
 <</widget>>
 
@@ -5268,13 +5279,15 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "tending_text">>
-<<if $tending gte 800>>
+<<if currentSkillValue('tending') gte 1200>>
+	<span class="gold">You're incredible at this.</span>
+<<elseif currentSkillValue('tending') gte 800>>
 	<span class="green">You're great at this.</span>
-<<elseif $tending gte 600>>
+<<elseif currentSkillValue('tending') gte 600>>
 	<span class="teal">You're good at this.</span>
-<<elseif $tending gte 400>>
+<<elseif currentSkillValue('tending') gte 400>>
 	<span class="lblue">You're okay at this.</span>
-<<elseif $tending gte 200>>
+<<elseif currentSkillValue('tending') gte 200>>
 	<span class="blue">You're getting the hang of this.</span>
 <<else>>
 	<span class="purple">You muddle through.</span>
@@ -5611,7 +5624,7 @@ a teacher
 
 <<widget "monster_passage">>
 <<if _monster_passage is undefined>>
-	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+	<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 		<<if $malechance gte 100>>
 			<<set _monster_passage to "m">>
 		<<elseif $malechance lte 0>>
@@ -5627,13 +5640,13 @@ a teacher
 
 <<widget "farm_text_many">>
 <<if $args[0] is "horse">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set _text_output to "centaurs">>
 	<<else>>
 		<<set _text_output to "horses">>
 	<</if>>
 <<elseif $args[0] is "pig">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender_plural is "m">>
 			<<set _text_output to "pigboys">>
 		<<elseif $farm_work[$args[0]].gender_plural is "f">>
@@ -5645,7 +5658,7 @@ a teacher
 		<<set _text_output to "pigs">>
 	<</if>>
 <<elseif $args[0] is "dog">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender_plural is "m">>
 			<<set _text_output to "dogboys">>
 		<<elseif $farm_work[$args[0]].gender_plural is "f">>
@@ -5657,7 +5670,7 @@ a teacher
 		<<set _text_output to "dogs">>
 	<</if>>
 <<else>>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender_plural is "m">>
 			<<set _text_output to "bullboys">>
 		<<elseif $farm_work[$args[0]].gender_plural is "f">>
@@ -5674,13 +5687,13 @@ a teacher
 
 <<widget "farm_text">>
 <<if $args[0] is "horse">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<set _text_output to "centaur">>
 	<<else>>
 		<<set _text_output to "horse">>
 	<</if>>
 <<elseif $args[0] is "pig">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender is "m">>
 			<<set _text_output to "pigboy">>
 		<<else>>
@@ -5690,7 +5703,7 @@ a teacher
 		<<set _text_output to "pig">>
 	<</if>>
 <<elseif $args[0] is "dog">>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender is "m">>
 			<<set _text_output to "dogboy">>
 		<<else>>
@@ -5700,7 +5713,7 @@ a teacher
 		<<set _text_output to "dog">>
 	<</if>>
 <<else>>
-	<<if $farm_work[$args[0]].monster_roll is true and (($hallucinations gte 1 or $monsterhallucinations is "f") or $bestialitydisable is "t")>>
+	<<if $farm_work[$args[0]].monster_roll is true and ($hallucinations gte 1 or $monsterhallucinations is "f")>>
 		<<if $farm_work[$args[0]].gender is "m">>
 			<<set _text_output to "bullboy">>
 		<<else>>
@@ -6058,32 +6071,27 @@ $worn.genitals.name
 
 
 <<widget "npcPenis">>
-<<if !$args[0]>>
-	<<set _npcGen to 0>>
-<<else>>
-	<<set _npcGen to $args[0]>>
-<</if>>
-<<if $NPCList[_npcGen].chastity.penis is "chastity cage">>
+<<set $_npcGen to ($args[0] ? $args[0] : 0)>>
+<<if $NPCList[$_npcGen].chastity.penis is "chastity cage">>
 	<<set _text_output to "caged penis">>
-<<elseif $NPCList[_npcGen].chastity.penis.includes("chastity")>>
-	<<set _text_output to $NPCList[_npcGen].chastity.penis>>
+<<elseif $NPCList[$_npcGen].chastity.penis.includes("chastity")>>
+	<<set _text_output to $NPCList[$_npcGen].chastity.penis>>
 <<else>>
-	<<set _text_output to $NPCList[_npcGen].penisdesc>>
+	<<set _text_output to $NPCList[$_npcGen].penisdesc>>
 <</if>>
 <<print _text_output>>
 <</widget>>
 
 <<widget "npcPenisSimple">>
-	<<if !$args[0]>>
-		<<set _npcGen to 0>>
-	<<else>>
-		<<set _npcGen to $args[0]>>
+	<<if $enemynomax is 1>>
+		<<set $args[0] to 0>>
 	<</if>>
-	<<if $NPCList[_npcGen].chastity.penis is "chastity cage">>
+	<<set $_npcGen to ($args[0] ? $args[0] : 0)>>
+	<<if $NPCList[$_npcGen].chastity.penis is "chastity cage">>
 		<<set _text_output to "caged penis">>
-	<<elseif $NPCList[_npcGen].chastity.penis.includes("chastity")>>
-		<<set _text_output to $NPCList[_npcGen].chastity.penis>>
-	<<elseif $NPCList[_npcGen].penisdesc.includes("strap-on")>>
+	<<elseif $NPCList[$_npcGen].chastity.penis.includes("chastity")>>
+		<<set _text_output to $NPCList[$_npcGen].chastity.penis>>
+	<<elseif $NPCList[$_npcGen].penisdesc.includes("strap-on")>>
 		<<set _text_output to "strap-on cock">>
 	<<else>>
 		<<set _text_output to either("penis","cock","shaft")>>
@@ -6310,3 +6318,14 @@ $worn.genitals.name
 <<widget "Plant_details">><<silently>>
 <<plant_details $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
 <</silently>><<print _text_output>><</widget>>
+
+<<widget "tower_creature_text">>
+	<<silently>>
+	<<if $NPCList[0].monster is "monster">>
+		<<set _text_output to "horned " + ($NPCList[0].gender is "m" ? "boy" : "girl")>>
+	<<else>>
+		<<set _text_output to either("creature","monster","beast")>>
+	<</if>>
+	<</silently>>
+	<<print _text_output>>
+<</widget>>

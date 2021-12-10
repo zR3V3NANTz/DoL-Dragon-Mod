@@ -693,15 +693,17 @@ Your fame for business is contributing
 	<span class="pink">little,</span>
 <</if>>
 and your tending skill is contributing
-<<if $tending gte 1000>>
+<<if currentSkillValue('tending') gte 1200>>
+	<span class="gold">immensely.</span>
+<<elseif currentSkillValue('tending') gte 1000>>
 	<span class="green">a great deal.</span>
-<<elseif $tending gte 800>>
+<<elseif currentSkillValue('tending') gte 800>>
 	<span class="teal">a lot.</span>
-<<elseif $tending gte 600>>
+<<elseif currentSkillValue('tending') gte 600>>
 	<span class="lblue">a decent amount.</span>
-<<elseif $tending gte 400>>
+<<elseif currentSkillValue('tending') gte 400>>
 	<span class="blue">somewhat.</span>
-<<elseif $tending gte 200>>
+<<elseif currentSkillValue('tending') gte 200>>
 	<span class="purple">a bit.</span>
 <<else>>
 	<span class="pink">little.</span>

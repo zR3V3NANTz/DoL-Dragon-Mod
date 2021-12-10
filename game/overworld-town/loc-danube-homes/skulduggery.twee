@@ -43,18 +43,23 @@ You sneak around the mansion and look for anything of value.
 			"Intruder! Masters won't be pleased." <<bHe>> flicks <<bhis>> tail.
 		<</if>>
 		<br><br>
-		<<if $cat gte 6>>
-			<<link [[Meow|Danube House Meow]]>><</link>><<cat>>
+		<<if $monster is 1 or $bestialitydisable is "f">>
+			<<if $cat gte 6>>
+				<<link [[Meow|Danube House Meow]]>><</link>><<cat>>
+				<br>
+			<</if>>
+			<<if $deviancy gte 15>>
+				<<link [[Try to calm it|Danube House Cat]]>><<set $sexstart to 1>><<generate2>><</link>><<deviant2>>
+				<br>
+			<</if>>
+			<<link [[Fight|Danube House Cat]]>><<set $molestationstart to 1>><<generate2>><<set $phase to 0>><</link>>
 			<br>
+			<<link [[Run|Danube House Run]]>><</link>><<athleticsdifficulty>>
+			<br><br>
+		<<else>>
+			<<link [[Run|Danube House Run]]>><<set $athleticsSuccess to true>><</link>>
+			<br><br>
 		<</if>>
-		<<if $deviancy gte 15>>
-			<<link [[Try to calm it|Danube House Cat]]>><<set $sexstart to 1>><<generate2>><</link>><<deviant2>>
-			<br>
-		<</if>>
-		<<link [[Fight|Danube House Cat]]>><<set $molestationstart to 1>><<generate2>><<set $phase to 0>><</link>>
-		<br>
-		<<link [[Run|Danube House Run]]>><</link>><<athleticsdifficulty>>
-		<br><br>
 		<!-- A pair of yellow eyes pierce the darkness, and a large cat emerges. It prepares to pounce.
 		<br><br>
 		You flee out the house, the cat following. It doesn't chase you beyond the front door, content to watch you from the door.<<beastescape>>
@@ -315,6 +320,7 @@ With a little luck, they will take a while to notice you were ever there.
 <<if $molestationstart is 1>>
 	<<set $molestationstart to 0>>
 	<<set $enemyno to 1>>
+	<<set $enemynomax to 1>>
 	<<controlloss>>
 	<<violence 1>>
 	<<neutral 1>>
@@ -336,6 +342,7 @@ With a little luck, they will take a while to notice you were ever there.
 <<elseif $sexstart is 1>>
 	<<set $sexstart to 0>>
 	<<set $enemyno to 1>>
+	<<set $enemynomax to 1>>
 	<<consensual>>
 	<<set $consensual to 1>>
 	<<neutral 1>>

@@ -346,7 +346,7 @@ You hold your necklace. <<stress -6>><<trauma -6>><<lstress>><<ltrauma>>
 <br><br>
 You're placed on the large plinth, facing upwards. The ceiling extends up into sheer nothingness, and a faint red glow emanates from the floor. You hear whispers all around you. You can't tell which ones are from the black-robed figures.
 <br><br>
-You expect to be restrained, and clutch your necklace to your chest with both hands. However, you instead find all of your limbs immobilized by an invisible force. Candles are lit all around you.
+You expect to be restrained, and clutch your necklace to your chest with both hands. However, you instead find all of your limbs immobilised by an invisible force. Candles are lit all around you.
 <br><br>
 You listen to the figures chant louder and louder. Your gaze is fixed on the expanse of darkness above, unable to look away. You're barely staying conscious. Tears begin to stream from your eyes. You wonder, you pray, that any of the others escaped, and didn't meet your fate.
 <br><br>
@@ -746,19 +746,23 @@ The feeling of dread rapidly fades. <span class="blue"><i>You're safe until the 
 <<set $player.sex to $per_npc.wraith.gender>>
 <<if $player.sex is "f">>
 	<<set $vaginastate to 0>>
+	<<set $vaginause to 0>>
 	<<set $player.vaginaExist to true>>
 	<<set $player.penisExist to false>>
 	<<set $player.ballsExist to false>>
 <<elseif $player.sex is "m">>
 	<<set $penisstate to 0>>
+	<<set $penisusue to 0>>
 	<<set $player.vaginaExist to false>>
 	<<set $player.penisExist to true>>
 	<<set $player.ballsExist to true>>
 <<else>>
 	<<set $vaginastate to 0>>
+	<<set $vaginause to 0>>
 	<<set $penisstate to 0>>
+	<<set $penisuse to 0>>
 	<<set $player.vaginaExist to true>>
-	<<set $player.penisExist to false>>
+	<<set $player.penisExist to true>>
 	<<set $player.ballsExist to false>>
 <</if>>
 <<for _bodypart range setup.bodyliquid.bodyparts>>
@@ -855,10 +859,14 @@ The feeling of dread rapidly fades. <span class="blue"><i>You're safe until the 
 <<if !$player.vaginaExist>>
 	<<set $player.bodyliquid.vaginaoutside.semen to 0>>
 	<<set $player.bodyliquid.vaginaoutside.goo to 0>>
+	<<set $vaginastate to "none">>
+	<<set $vaginause to "none">>
 <</if>>
 <<if !$player.penisExist>>
 	<<set $player.bodyliquid.penis.semen to 0>>
 	<<set $player.bodyliquid.penis.goo to 0>>
+	<<set $penisstate to "none">>
+	<<set $penisuse to "none">>
 <</if>>
 <<unset $statFreeze>>
 <<set $eyecolour to $real_eyecolour>>

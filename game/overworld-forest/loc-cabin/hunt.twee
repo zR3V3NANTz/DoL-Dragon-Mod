@@ -122,42 +122,59 @@ You sneak over to the bush, careful not to disturb a single twig. Once there you
 
 		<<if $rng gte 81 and $bestialitydisable is "f" and $voredisable is "f">>
 
-		You round a tree and come face to face with a pair of eyes, hovering just inches from your face. All strength drains from your muscles, and you collapse to the ground. The snake slithers onto the forest floor.
-		<<set $trance to 1>>
-		<br><br>
+			You round a tree and come face to face with a pair of eyes, hovering just inches from your face. All strength drains from your muscles, and you collapse to the ground. The snake slithers onto the forest floor.
+			<<set $trance to 1>>
+			<br><br>
 
-		<<link [[Next|Eden Hunt Snake]]>><<set $molestationstart to 1>><</link>>
-		<br>
-
-		<!-- Modified for monster people -->
-		<<elseif $rng gte 41>>
-		<<beastNEWinit 1 wolf>>
-		A <<beasttype>> emerges from between the trees, teeth bared.
-		<<if $monster is 1>>
-			<<bHis>> gaze meets yours. "Hush hush, prey. Hunter won't save you."
-		<</if>>
-		Eden would hear your screams from here, but won't be happy with you.
-		<br><br>
-
-			<<link [[Next|Eden Hunt Wolf]]>><<set $molestationstart to 1>><</link>>
+			<<link [[Next|Eden Hunt Snake]]>><<set $molestationstart to 1>><</link>>
 			<br>
 
+			<!-- Modified for monster people -->
+		<<elseif $rng gte 41>>
+			<<beastNEWinit 1 wolf>>
+			<<if $monster is 1 or $bestialitydisable is "f">>
+				A <<beasttype>> emerges from between the trees, teeth bared.
+				<<if $monster is 1>>
+					<<bHis>> gaze meets yours. "Hush hush, prey. Hunter won't save you."
+				<</if>>
+				Eden would hear your screams from here, but won't be happy with you.
+				<br><br>
+
+				<<link [[Next|Eden Hunt Wolf]]>><<set $molestationstart to 1>><</link>>
+				<br>
+			<<else>>
+				<<endevent>>
+				<<generate1>><<generate2>>Something presses against your back. "What have we here?" the <<person1>><<person>> says. <<Hes>> holding a gun to your back.
+				<br><br>
+
+				A <<person2>><<person>> puts a hand on your shoulder, "Turn around <<girl>>. Now, what's a little thing like you doing all alone in the forest?"
+				<br><br>
+
+				<<person1>>"It's dangerous out here," the <<person>> interjects. "But it's okay, we can keep you safe." <<He>> grabs your <<bottom>> and pulls you closer.
+				<br><br>
+
+				Eden would hear your screams from here, but won't be happy with you.
+				<br><br>
+
+				<<link [[Next|Eden Hunt Molestation]]>><<set $molestationstart to 1>><</link>>
+				<br>
+			<</if>>
 		<<else>>
 
-		<<generate1>><<generate2>>Something presses against your back. "What have we here?" the <<person1>><<person>> says. <<Hes>> holding a gun to your back.
-		<br><br>
+			<<generate1>><<generate2>>Something presses against your back. "What have we here?" the <<person1>><<person>> says. <<Hes>> holding a gun to your back.
+			<br><br>
 
-		A <<person2>><<person>> puts a hand on your shoulder, "Turn around <<girl>>. Now, what's a little thing like you doing all alone in the forest?"
-		<br><br>
+			A <<person2>><<person>> puts a hand on your shoulder, "Turn around <<girl>>. Now, what's a little thing like you doing all alone in the forest?"
+			<br><br>
 
-		<<person1>>"It's dangerous out here," the <<person>> interjects. "But it's okay, we can keep you safe." <<He>> grabs your <<bottom>> and pulls you closer.
-		<br><br>
+			<<person1>>"It's dangerous out here," the <<person>> interjects. "But it's okay, we can keep you safe." <<He>> grabs your <<bottom>> and pulls you closer.
+			<br><br>
 
-		Eden would hear your screams from here, but won't be happy with you.
-		<br><br>
+			Eden would hear your screams from here, but won't be happy with you.
+			<br><br>
 
-		<<link [[Next|Eden Hunt Molestation]]>><<set $molestationstart to 1>><</link>>
-		<br>
+			<<link [[Next|Eden Hunt Molestation]]>><<set $molestationstart to 1>><</link>>
+			<br>
 
 		<</if>>
 

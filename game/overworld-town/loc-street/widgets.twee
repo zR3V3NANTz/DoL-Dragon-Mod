@@ -391,12 +391,17 @@ You move from shadow to shadow, dashing through patches of light as quickly as y
 You hear a growl from a nearby alley and instinctively freeze in place. You regain control as a shaggy black <<beasttype>> emerges from the darkness, teeth bared.
 <br><br>
 
-<<link [[Run|StreetEx3]]>><<set $phase to 0>><</link>><<athleticsdifficulty 1 600>>
-<br>
+<<if $monster is 1 or $bestialitydisable is "f">>
+	<<link [[Run|StreetEx3]]>><<set $phase to 0>><</link>><<athleticsdifficulty 1 600>>
+	<br>
 
-<!-- Modified for Beast People -->
-<<link [[Try to befriend it|StreetEx3]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
-<br>
+	<!-- Modified for Beast People -->
+	<<link [[Try to befriend it|StreetEx3]]>><<set $molestationstart to 1>><<set $phase to 1>><</link>>
+	<br>
+<<else>>
+	<<link [[Run|StreetEx3]]>><<set $phase to 0>><<set $athleticsSuccess to true>><</link>>
+	<br>
+<</if>>
 <br>
 
 <</widget>>
@@ -814,43 +819,55 @@ A <<generates1>><<person1>><<person>> leans out of a passing car and hurls a lar
 <<widget "streetnight1">>
 <!-- Modified for Beast People -->
 <<beastNEWinit 3 dog>>
-<!--
+<<if $monster is 1 or $bestialitydisable is "f">>
+	Your journey is interrupted by a savage growl emerging from the darkness. You turn to avoid it, only to face a pair of glowing eyes. You're surrounded.
+	<br><br>
+	<<link [[Next|Street Dogs]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
 	Your journey is interrupted by a savage growl emerging from the darkness. You turn to avoid it, only to face an approaching pair of glowing eyes. You're surrounded.
 	<br><br>
 
 	You manage to get away, but not without injury.
 	<<beastescape>>
 	<br><br>
-
+	<<endevent>>
 	<<destinationeventend>>
-	-->
-	Your journey is interrupted by a savage growl emerging from the darkness. You turn to avoid it, only to face a pair of glowing eyes. You're surrounded.
-	<br><br>
-	<<link [[Next|Street Dogs]]>><<set $molestationstart to 1>><</link>>
-	<br>
+<</if>>
 <</widget>>
 
 <<widget "streetnight2">>
-
-You hear something land behind you, followed by a low growl. You turn, and face a pair of glowing yellow eyes. It steps into the light of a streetlamp, revealing a pair of horns atop a hairless, scaled head. It opens its colossal maw, and leaps toward you.
-<br><br>
-
-<<if $bestialitydisable is "f">>
-
-<<link [[Next|Street Monster]]>><<set $molestationstart to 1>><</link>>
-<br>
-
+<<if $tower_creature_intro gte 1>>
+	<<loadNPC 0 tower_creature>>
 <<else>>
+	<<set $tower_creature_intro to 1>>
+	<<set _tower_creature to true>>
+	<<beastNEWinit 1 creature>>
+	<<if $NPCList[0].monster is "monster">>
+		<<set $NPCList[0].fullDescription to "horned " + ($NPCList[0].gender is "m" ? "boy" : "girl")>>
+		<<set $NPCList[0].type to "horned " + ($NPCList[0].gender is "m" ? "boy" : "girl")>>
+	<</if>>
+	<<saveNPC 0 tower_creature>>
+<</if>>
+<<if $NPCList[0].monster is "monster" is 1 or $bestialitydisable is "f">>
+	You hear something land behind you, followed by a low growl. You turn, and face a pair of glowing yellow eyes. <<bHe>> steps into the light of a streetlamp, revealing a pair of horns
 
-	You run through the empty streets and alleys, rounding each corner in a bid to escape. The beast keeps up, moving in great leaps.
+	<<if $NPCList[0].monster is "monster">>
+		that split <<bhis>> messy hair. <<bHe>> flashes a sharp-toothed, menacing grin before leaping toward you.
+	<<else>>
+		atop a hairless, scaled head. It opens its colossal maw, and leaps toward you.
+	<</if>>
 	<br><br>
 
-	You manage to escape, but not without injury.<<beastescape>>
-
+	<<link [[Stand your ground|Street Monster]]>><<set $molestationstart to 1>><</link>>
+	<br>
+	<<link [[Run|Street Monster Run]]>><</link>><<athleticsdifficulty 400 1400>>
+	<br>
+<<else>>
+	You hear something land behind you, followed by a low growl. You run in a panic, until you trip and fall. Nothing follows.<<beastescape>>
 	<br><br>
-
+	<<endevent>>
 	<<destinationeventend>>
-
 <</if>>
 <</widget>>
 
@@ -1002,7 +1019,8 @@ You take cover in a bus shelter, just as a bus rounds the corner. It slows down 
 
 		Their car speeds up as they
 		<<if $rng4 lte 20>>
-		spot an unwary pickpocket girl.
+		<<generateyv1>>
+		spot an unwary pickpocket <<personsimple>>.
 		<br>
 		You hear some shouts as
 		<<elseif $rng4 lte 40>>
@@ -1010,9 +1028,10 @@ You take cover in a bus shelter, just as a bus rounds the corner. It slows down 
 		<br>
 		You see one of them lumbering out of the car as
 		<<elseif $rng4 lte 60>>
-		spot a passed out hooker.
+		<<generateyv1>>
+		spot a passed out <<if $pronoun is "m">>escort<<else>>hooker<</if>>.
 		<br>
-		You can see them lifting the girl into the back of their car as
+		You can see them lifting the <<personsimple>> into the back of their car as
 		<<elseif $rng4 lte 80>>
 		spot a gang of boisterous street urchins.
 		<br>
@@ -1169,9 +1188,9 @@ You take cover in a bus shelter, just as a bus rounds the corner. It slows down 
 			"Relax," <<He>> whispers next to your ear quietly. "We know what you've been up to,
 
 			<<if $crime gte 1000>>
-				and we can arrest you whenever we feel like. But we're not here for that. Not right now. Be smart kid and just play along. You might even enjoy it."
+				and we can arrest you whenever we feel like. But we're not here for that. Not right now. Be smart and just play along. You might even enjoy it."
 			<<else>>
-				and you know we can't prove it. But we're still cops, and we know who you are. We can make your life difficult. Just be smart and play along, kid."
+				and you know we can't prove it. But we're still cops, and we know who you are. We can make your life difficult. Just be smart and play along."
 			<</if>>
 			<br>
 			<<He>> pats your shoulder and steps back.
@@ -1466,11 +1485,11 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 	<</if>>
 
 <<elseif _kylarStatus.includes("LoveLust")>>
-	<<set $kylarwatchedtimer to 0>>
+	<<set $kylarwatchedtimer to 0>><<rngWraith 2 "night">>
 
 	<<npc Kylar>><<person1>>Something tugs your arm. It's Kylar. "H-hi," <<he>> gulps. <<He>> tries to pull you toward a dark alley. "We need privacy. I need you to do things to me."
 	<br><br>
-	<<if $wraith and ($wraith.state is "haunt") and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6 or $hallucinations gte 2 and $rng gte 90)>>
+	<<if $wraith and _wraithEvent and ($wraith.state is "haunt" or $wraith.offspring is "dead")>>
 		<<set $wraith.mimic to "Kylar">><<set $wraith.exit to "town">>
 		<<link [[Go with Kylar|Wraith Mimic Fight]]>><<set $sexstart to 1>><</link>><<promiscuous1>><<gglove>><<llksuspicion>>
 		<br>
@@ -1708,10 +1727,11 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 
 <<widget "streetcollared">>
 
+
 	<<if $daystate is "night">>
 		<<set $rng to random(1, 100)>>
-		<<if $rng gte 51>><!-- Modified for Beast People -->
-			<<beastNEWinit 1 dog>>
+		<<beastNEWinit 1 dog>>
+		<<if $rng gte 51 and ($monster is 1 or $bestialitydisable is "f")>><!-- Modified for Beast People -->
 			<<generate2>><<generate3>><<person2>>A <<person>> and <<person3>><<person>> approach you. The <<person>> holds a <<beasttype 0>> on a leash. "Perfect. We've been looking for a bitch like you for our pet here. You'll get on your knees if you know what's good for you," <<he>> says as the <<person2>><<person>> grabs your collar.
 			<br><br>
 
@@ -1720,6 +1740,7 @@ You stumble in your heels and fall forwards. As your face approaches the ground,
 			<<link [[Refuse|Street Collar Molestation]]>><<set $molestationstart to 1>><<set $submissive -= 1>><<set $phase to 1>><</link>>
 			<br>
 		<<else>>
+			<<endevent>>
 			<<generate1>><<generate2>>A <<person1>><<person>> emerges from the darkness to grab the collar around your neck as a <<person2>><<person>> starts groping your <<bottom>>. "What do we have here?" says the <<person1>><<person>>. "A collared slut, alone out in the open. There's only one thing you're good for."
 			<br><br>
 
@@ -1906,6 +1927,45 @@ You spot a hooded figure skulking under a streetlamp.
 	<<endevent>>
 	<<destinationeventend>>
 <</if>>
+<</widget>>
+
+<<widget "streetorphancookie">>
+<<generatey1>><<generate2>><<person1>><<set $rng to random(1, 100)>>
+You smell freshly baked pastries, and hear a knock on a nearby door. You recognise a <<personsimple>> from the orphanage standing in front of one of the houses while carrying a box full of cookies.
+<br><br>
+
+<<if $loft_river>>
+	You expect that <<he>> made good use of the installations in the loft to bake them.
+	<br><br>
+
+	<<if $rng gte 51>>
+		After a brief exchange, the owner of the house hands out a small stack of bills to the <<personsimple>>. <<He>> beams, thanking the homeowner before moving on to the next house. <<stress -12>><<llstress>><<hope 1>><<ghope>>
+	<<else>>
+		<<if $bus is "domus">>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before saying something that makes the <<person1>><<personsimple>> blush. <<He>> quickly backs up, and moves on to the next house without looking back.<<if $awareness gte 200>> You expect that <<he>> was propositioned, and refused.<</if>> You find <<his>> stubbornness inspiring. <<stress -6>><<lstress>>
+		<<else>>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before holding out a large stack of bills. The <<person1>><<personsimple>> looks shocked. Even from here, you can tell it's a lot of money. <<He>> hands the entire box over to the <<person2>><<person>>, says <<person1>><<his>> thanks, and rushes back towards the orphanage with a look of pure joy. You expect <<hes>> off to bake more. <<stress -12>><<llstress>><<ghope>><<hope 2>>
+		<</if>>
+	<</if>>
+
+<<else>>
+	You wonder how <<he>> managed to bake them, given the miserable equipment at home.
+	<br><br>
+
+	<<if $rng gte 51>>
+		After a brief but stormy exchange, the owner of the house slams the door in <<his>> face. Still, the <<personsimple>> doesn't seem to relent in <<his>> efforts, and moves on to the next house. You find <<his>> stubbornness inspiring. <<stress -6>><<lstress>>
+	<<else>>
+		<<if $bus is "domus">>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before saying something that makes the <<person1>><<personsimple>> blush. <<He>> quickly backs up, and moves on to the next house without looking back.<<if $awareness gte 200>> You expect that <<he>> was propositioned, and refused.<</if>> You find <<his>> stubbornness inspiring. <<stress -6>><<lstress>>
+		<<else>>
+			The owner of the home, a <<person2>><<person>>, inspects <<him>> briefly, before holding out a large stack of bills. The <<person1>><<personsimple>> looks shocked, and the <<person2>><<person>> motions for <<person1>><<him>> to enter the house. <<He>> hesitates, but looks down at the money. Even from here, you can tell it's a lot. With a flushed face, <<he>> enters. <<gtrauma>><<trauma 3>><<lhope>><<hope -1>><<greb>><<reb 1>>
+		<</if>>
+	<</if>>
+<</if>>
+<br><br>
+
+<<endevent>>
+<<destinationeventend>>
 <</widget>>
 
 :: Widget Passout Street [widget]
@@ -2661,8 +2721,12 @@ You find a quiet place and open the <<wallet>>.
 	<<elseif $NPCName[$NPCNameList.indexOf("Avery")].state isnot "dismissed" and $averyseen isnot 1 and $weekday is 7 and $daystate is "day" and ($scienceproject is "won" or $scienceproject is "done" or $NPCName[$NPCNameList.indexOf("Avery")].init is 1)>>
 		<<set $averyseen to 1>>
 		<<streetavery>>
+	<<elseif $fame gte 3000 and $photo_known is undefined>>
+		<<set $photo_known to 1>>
+		<<street_niki>>
+		<<set $niki_seen to "street">>
 	<<elseif $rng gte 52>>
-		<<set $dangerevent to random(1, 180)>>
+		<<set $dangerevent to random(1, 190)>>
 		<<if $dangerevent lte 10>>
 			<<if $exhibitionismrun is undefined and $exhibitionismrunon isnot 1 and $days gte 8>>
 				<<streetexoffer>>
@@ -2781,6 +2845,12 @@ You find a quiet place and open the <<wallet>>.
 			<<bodywriting_exposure_check true>>
 			<<if _bodywriting_exposed is 1 and $skin[_bodypart].special is "criminal">>
 				<<streetcriminalbodywriting>>
+			<<else>>
+				<<eventsstreetday>>
+			<</if>>
+		<<elseif $dangerevent lte 190>>
+			<<if $bus is "domus" or $bus is "danube">>
+				<<streetorphancookie>>
 			<<else>>
 				<<eventsstreetday>>
 			<</if>>

@@ -215,16 +215,27 @@ You look more closely at the apron. It's such a slight thing it would be little 
 	<</if>>
 <<elseif $phase is 6>>
 	<<if $rng gte 1>>
-	<<set $rng1 to random(1, 4)>>
-	<<He>> looks at you with interest. "Our <<person1>><<daughter>> is preparing for a
-	<<if $rng1 is 1>>science<<elseif $rng1 is 2>>maths<<elseif $rng1 is 3>>English<<elseif $rng1 is 4>>history<</if>>
-	exam. Perhaps you could tutor <<him>> for an hour? We'll pay between £10 and £100. Depends how good you are."
-	<br><br>
+		<<schooleffects>>
+		<<if !["first","second","third","lunch","fourth","fifth"].includes($schoolstate)>>
+			<<set $rng1 to random(1, 4)>>
+			<<He>> looks at you with interest. "Our <<person1>><<daughter>> is preparing for a
+			<<if $rng1 is 1>>science<<elseif $rng1 is 2>>maths<<elseif $rng1 is 3>>English<<elseif $rng1 is 4>>history<</if>>
+			exam. Perhaps you could tutor <<him>> for an hour? We'll pay between £10 and £100. Depends how good you are."
+			<br><br>
 
-	<<link [[Accept (1:00)|Danube Tutor]]>><</link>>
-	<br>
-	<<link [[Refuse|Danube Street]]>><<endevent>><</link>>
-	<br>
+			<<link [[Accept (1:00)|Danube Tutor]]>><</link>>
+			<br>
+			<<link [[Refuse|Danube Street]]>><<endevent>><</link>>
+			<br>
+		<<else>>
+			"I'm interested in a tutor, but I'm afraid my <<person1>><<daughter>> is in school at the moment." <<person2>><<He>> pauses and looks you over. "Shouldn't you be in school yourself?" <<gstress>><<stress 2>>
+			<br><br>
+			
+			<<link [[Try another house|Danube House Knock]]>><<endevent>><</link>>
+			<br>
+			<<link [[Stop|Danube Street]]>><<endevent>><</link>>
+			<br>
+		<</if>>
 
 	<<else>>
 
@@ -497,7 +508,7 @@ You return to the pantry and put your clothes back on.
 <<neutral 1>>
 <<molested>>
 
-<<set $enemyno to 1>><<maninit>>
+<<set $enemyno to 1>><<set $enemynomax to 1>><<maninit>>
 
 <<set $NPCList[1].penis to "none">>
 <<set $NPCList[1].lefthand to "none">>
@@ -1022,17 +1033,16 @@ You are led to the sprawling back garden, the extent of which is concealed by se
 	... Wait. What? What's going on with your <<if $leftarm is "bound" or $rightarm is "bound">>arms<</if>><<if ($leftarm is "bound" or $rightarm is "bound") and $feetuse is "bound">> and <</if>><<if $feetuse is "bound">>legs<</if>>? Are they tied up?"
 	<br><br>
 	<<He>> <<if $rightarm is "bound" or $leftarm is "bound">>spins you around to look at your bound arms<<elseif $feetuse is "bound">>crouches to look at your bound legs<</if>> and
-	<<if $rng gte 25>> <!-- Modified for Beast People -->
-		<<set $NPCList[1] to clone($NPCList[0])>>
-		<<clearsinglenpc 0>>
-		<<generate3>>
-		<<beastNEWinit 1 dog>>
+
+	<<set $NPCList[1] to clone($NPCList[0])>>
+	<<clearsinglenpc 0>>
+	<<generate3>>
+	<<beastNEWinit 1 dog>>
+	<<if $rng gte 25 and ($monster is 1 or $bestialitydisable is "f")>> <!-- Modified for Beast People -->
 		growls with irritation. "Is this a joke to you? Wasting my time? What work can you do like that?"
 		<br><br>
 
-		<<person2>><<He>> grabs your shoulder and marches you toward the exit. <<He>> stops when a <<person3>><<person>> appears at the side door. <<He>> beckons the <<person2>><<person>> over, and they exchange a few whispered words.
-		<br>
-		The <<person>> grabs your shoulder, and leads you back into the garden.
+		<<person2>><<He>> grabs your shoulder and marches you toward the exit. <<He>> stops when a <<person3>><<person>> appears at the side door. <<He>> beckons the <<person2>><<person>> over, and they exchange a few whispered words. <<He>> turns you back to the garden
 		<br><br>
 
 		"Since you're being paid to work, the <<if $NPCList[2].pronoun is "m">>Lord<<else>>Lady<</if>> of the House has thought of one job you're perfectly equipped for."
@@ -1050,7 +1060,7 @@ You are led to the sprawling back garden, the extent of which is concealed by se
 		<<unbind>>
 		"I don't know what's wrong with young people nowadays. As I was saying..."
 		<br><br>
-		<<link [[Continue|Danube Garden]]>><</link>>
+		<<link [[Continue|Danube Garden]]>><<endevent>><</link>>
 		<br>
 	<</if>>
 <<else>>
@@ -1062,7 +1072,7 @@ You are led to the sprawling back garden, the extent of which is concealed by se
 	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
 	<<if $danger gte (9900 - $allure)>>
 		<<set $rng to random(1, 100)>>
-		<<if $rng gte 81 and $hallucinations gte 2 and $tentacledisable is "f">>
+		<<if $rng gte 81 and $tentacledisable is "f" and ($hallucinations gte 2 or $backgroundTraits.includes("plantlover"))>>
 
 			<<pass 2 hours>>
 			You work at it for two hours, and barely seem to make a dent. It's almost as if the weeds grow back as fast as you remove them. You reach in to try to remove a large shrub at its roots, but your hand gets stuck. You try to free it with your other hand, but that gets stuck too. Green tendrils emerge, animated by some force.
@@ -1077,11 +1087,26 @@ You are led to the sprawling back garden, the extent of which is concealed by se
 
 			<<pass 2 hours>>
 			<<beastNEWinit 1 dog>>
-			You work at it for two hours, and barely seem to make a dent. It's almost as if the weeds grow back as fast as you remove them. You're reaching in to remove a large shrub at its roots when something prods your <<bottom>>. You turn to look, but <<bhe>> has already mounted you.
-			<br><br>
+			<<if $monster is 1 or $bestialitydisable is "f">>
+				You work at it for two hours, and barely seem to make a dent. It's almost as if the weeds grow back as fast as you remove them. You're reaching in to remove a large shrub at its roots when something prods your <<bottom>>. You turn to look, but <<bhe>> has already mounted you.
+				<br><br>
 
-			<<link [[Next|Danube Dog]]>><<set $molestationstart to 1>><</link>>
-			<br>
+				<<link [[Next|Danube Dog]]>><<set $molestationstart to 1>><</link>>
+				<br>
+			<<else>>
+				<<pass 2 hours>>
+				You work at it for two hours, and barely seem to make a dent. It's almost as if the weeds grow back as fast as you remove them. You notice movement above, and see a <<person2>><<person>> at the window, watching you. It's pretty creepy.
+				<<gstress>><<stress 6>>
+				<br><br>
+
+				<<pass 2 hours>>
+				Over the next two hours you barely seem to make a dent. It's almost as if the weeds grow back as fast as you remove them. Regardless, the <<person1>><<person>> seems satisfied, and hands you <<moneyGain 50>>.
+				<<physique 6>>
+				<br><br>
+
+				<<link [[Next|Danube Street]]>><<endevent>><</link>>
+				<br>
+			<</if>>
 
 		<<else>>
 
@@ -1150,8 +1175,8 @@ You hum a gentle tune.
 <<controlloss>>
 
 <<tentaclestart 6 15 "root" "vine" true>>
-<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "grappled">>
-<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "grappled">>
+<<set $tentacles[0].shaft to "leftarm">><<set $leftarm to "tentgrappled">><<set $lefttarget to "tentacles">>
+<<set $tentacles[1].shaft to "rightarm">><<set $rightarm to "tentgrappled">><<set $righttarget to "tentacles">>
 
 <</if>>
 

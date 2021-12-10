@@ -43,6 +43,7 @@ You look around the museum. The pedestals are grooved, as if awaiting specific o
 		<<if $museumAntiqueJournalHints is undefined>>
 			<<set $museumAntiqueJournalHints to []>>
 		<</if>>
+		<<run $museumAntiqueJournalHints.delete($winterHint)>>
 		<<run $museumAntiqueJournalHints.push($winterHint)>>
 		<br>
 	<</if>>

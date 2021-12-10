@@ -1039,11 +1039,15 @@
 				<<else>>
 					<<set $rng to random(1, 100)>>
 					<<if $rng gte 76>>
-						"I wonder what <<pher>> $worn.under_lower.name <<if $worn.under_upper.plural is 1>>smells<<else>>smell<</if>> like."
+						"I wonder what <<pher>> $worn.under_lower.name <<if $worn.under_lower.plural is 1>>smells<<else>>smell<</if>> like."
 					<<elseif $rng gte 51>>
 						"Hey <<bitch>>, chuck us your $worn.under_lower.name."
 					<<elseif $rng gte 26>>
-						"<<if $worn.under_upper.plural is 1>>Those<<else>>That<</if>> $worn.under_lower.name <<if $worn.under_upper.plural is 1>>don't<<else>>doesn't<</if>> conceal much."
+						<<if $worn.under_lower.plural is 1>>
+							"Those $worn.under_lower.name don't conceal much."
+						<<else>>
+							"That $worn.under_lower.name doesn't conceal much."
+						<</if>>
 					<<else>>
 						"<<pShes>> so exposed, I love it."
 					<</if>>

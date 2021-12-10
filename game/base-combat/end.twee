@@ -4,7 +4,7 @@
 
 <<if $enemyhealth lte 0>>
 	<<if $enemytype is "man">>
-		<<famescrap $enemyno>>
+		<<famescrap $enemynomax>>
 	<</if>>
 	<<if $audiencepresent is 1>>
 		<<famescrap 10>>
@@ -212,9 +212,10 @@
 <<unset $vaginafucked>>
 <<unset $anusfucked>>
 <<set $speechdisable to 0>>
-<<unset $stealstate>>
+<<unset $stealstateleft>>
+<<unset $stealstateright>>
 <<unset $position_lock>>
-<<set $npcDAP to []>>
+
 
 <<set $leftactiondefault to $leftaction>>
 <<set $rightactiondefault to $rightaction>>
@@ -241,6 +242,24 @@
 <<set $chestaction to 0>>
 <<set $mockaction to "none">>
 <<set $bodyaction to 0>>
+<<set $stealdifficulty to 1>>
+
+<<set $lefttarget to 0>>
+<<set $righttarget to 0>>
+<<set $feettarget to 0>>
+<<set $mouthtarget to 0>>
+<<if $player.penisExist>>
+<<set $penistarget to 0>>
+<</if>>
+<<if $player.vaginaExist>>
+<<set $vaginatarget to 0>>
+<<unset $vaginadoubletarget>>
+<</if>>
+<<set $anustarget to 0>>
+<<unset $anusdoubletarget>>
+<<set $chesttarget to 0>>
+<<set $thightarget to 0>>
+<<set $stealtarget to "">>
 
 <<set $carryblock to 0>>
 
@@ -296,7 +315,6 @@
 
 <<set $leftleg to 0>>
 <<set $rightleg to 0>>
-<<set $breastuse to 0>>
 <<set $leftnipple to 0>>
 <<set $rightnipple to 0>>
 <<set $leftarmstate to 0>>
@@ -428,7 +446,7 @@
 
 <<for _i = 0; _i < $NPCList.length; _i++>>
 	<<set $NPCList[_i] to {
-		"chastity": {},
+		"chastity": { penis: "", vagina: "", anus: "" },
 		"location": {},
 		"skills": {},
 		"pronouns": {},
@@ -441,6 +459,7 @@
 <<set $beastgenderoverride to 0>>
 
 <<set $enemyno to 0>>
+<<set $enemynomax to 0>>
 
 <<set $combattype to 0>>
 <!-- Clear the arrays but don't unset them. -->
@@ -467,54 +486,25 @@
 <</if>>
 
 <<set _i to $args[0]>>
-<<set $NPCList[_i].lefthand to "none">>
-<<set $NPCList[_i].righthand to "none">>
-<<set $NPCList[_i].penis to "none">>
-<<set $NPCList[_i].vagina to "none">>
-<<set $NPCList[_i].mouth to "none">>
-<<set $NPCList[_i].chest to "none">>
-<<set $NPCList[_i].gender to 0>>
-<<set $NPCList[_i].pronoun to 0>>
-<<set $NPCList[_i].description to 0>>
-<<set $NPCList[_i].fullDescription to 0>>
-<<set $NPCList[_i].insecurity to 0>>
-<<set $NPCList[_i].lactation to 0>>
-<<set $NPCList[_i].intro to 0>>
-<<set $NPCList[_i].speechanusescape to 0>>
-<<set $NPCList[_i].speechpenisescape to 0>>
-<<set $NPCList[_i].speechvaginaescape to 0>>
-<<set $NPCList[_i].type to 0>>
-<<set $NPCList[_i].stance to 0>>
-<<set $NPCList[_i].monster to 0>>
-/* multiple orgasms code needs work
-<<set $NPCList[_i].maxOrgasms to 1>>
-<<set $NPCList[_i].orgasms to 0>> */
-<<set $NPCList[_i].paid to 0>>
-<<set $NPCList[_i].name_known to 0>>
-<<if _i < 1>>
-	<<set $NPCList[_i].breastsize to 3>>
-	<<set $NPCList[_i].breastsdesc to "breasts">>
-	<<set $NPCList[_i].breastdesc to "breast">>
-	<<set $NPCList[_i].penisdesc to "penis">>
-	<<set $NPCList[_i].penissize to 2>>
-	<<set $NPCList[_i].health to 200>><!-- This is set for compatibility elsewhere if needed, v2.2.0... -->
-<<else>>
-	<<set $NPCList[_i].breastsize to 0>>
-	<<set $NPCList[_i].breastsdesc to 0>>
-	<<set $NPCList[_i].breastdesc to 0>>
-	<<set $NPCList[_i].penisdesc to 0>>
-	<<set $NPCList[_i].penissize to 0>>
-	<<set $NPCList[_i].health to 0>>
-<</if>>
+<<set $NPCList[_i] to {
+	"chastity": { penis: "", vagina: "", anus: "" },
+	"location": {},
+	"skills": {},
+	"pronouns": {},
+	"traits": []
+}>>
 <<if $enemyno gt 0>>
 	<<set $enemyno -= 1>>
+	<<set $enemynomax -= 1>>
 <</if>>
 <<if $endeventerror is undefined>>
-	<<set $event.splice($eventslot.indexOf(_ii), 1)>>
-	<<set $eventslot.splice($eventslot.indexOf(_ii), 1)>>
-	<<set $eventtime.splice($eventslot.indexOf(_ii), 1)>>
+	<<if $eventslot.indexOf(_i) isnot -1>>
+		<<set $event.splice($eventslot.indexOf(_i), 1)>>
+		<<set $eventtime.splice($eventslot.indexOf(_i), 1)>>
+		<<set $eventslot.splice($eventslot.indexOf(_i), 1)>>
+	<</if>>
 <</if>>
-<<if $enemyno is 0>>
+<<if $enemynomax is 0>>
 	<<set $pronoun to 0>>
 	<<if $endeventerror is undefined>>
 		<<unset $event>>
@@ -563,7 +553,7 @@
 <<unset $tip_add>>
 <<unset $monster>>
 <<set $enemyno to 0>>
-<<set $enemynomax to 1>>
+<<set $enemynomax to 0>>
 <<unset $noFinish>>
 <<unset $promiscuityIgnore>>
 <<unset $npcSub>>

@@ -38,7 +38,7 @@
 
 <!-- Modified for Monster People -->
 <<widget "livestock_cows">>
-<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f") or ($bestialitydisable is "t")>>
+<<if ($monsterchance gte 1 and $hallucinations gte 1) or ($monsterchance gte 1 and $monsterhallucinations is "f")>>
 	<<if $malechance is 0>>
 		<<set _text_output to "cowgirls">>
 	<<elseif $malechance is 100>>

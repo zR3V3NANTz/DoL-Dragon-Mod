@@ -16,12 +16,21 @@
 <</widget>>
 
 <<widget "loadNPC">>
+<!-- Checks if endevent was properly used after the last event -->
+<<checkEventNPC $args[0]>>
 /*First argument is the NPClist you want the NPC to fill. Second argument is the string you want to load, as saved with saveNPC.*/
 <<if $args[0] gte 0 and $args[1]>>
 	<<set _temp1 to $args[1]>>
 	<<set _temp0 to $args[0]>>
 	<<set $NPCList[_temp0] to clone($per_npc[_temp1])>>
 	<<if $enemyno lt 6>><<set $enemyno += 1>><</if>>
+	<<if $NPCList[_temp0].monster is "monster">>
+		<<set $monster to 1>>
+	<<else>>
+		<<set $monster to 0>>
+	<</if>>
+	<<pushEventNPC $args[0]>>
+	<<set $enemynomax to $enemyno>>
 <</if>>
 <</widget>>
 
@@ -31,11 +40,11 @@
 	<<set _temp0 to $args[0]>>
 	/*Adds name back into name pool */
 	<<if $per_npc[_temp0].pronoun is "f">>
-		<<set $NPC_names_f.push($per_npc[_temp0].name)>>
+		<<set $NPC_names_f.pushUnique($per_npc[_temp0].name)>>
 	<<else>>
-		<<set $NPC_names_m.push($per_npc[_temp0].name)>>
+		<<set $NPC_names_m.pushUnique($per_npc[_temp0].name)>>
 	<</if>>
-	<<set $per_npc[_temp0] to undefined>>
+	<<run delete $per_npc[_temp0]>>
 <</if>>
 <</widget>>
 

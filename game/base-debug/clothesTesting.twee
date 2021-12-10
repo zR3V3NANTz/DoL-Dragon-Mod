@@ -524,7 +524,7 @@ Yellowish:
 <br>
 <<set _hairTypeByName to {"Default": "default", "Braid left": "braid left", "Braid right": "braid right", "Flat ponytail": "flat ponytail",
 "Loose": "loose", "Messy": "messy", "Pigtails": "pigtails", "Ponytail": "ponytail", "Short": "short", "Side tail left": "side tail left",
-"Side tail right": "side tail right", "Straight": "straight", "Swept left": "swept left", "Twin braids": "twin braids", "Twintails": "twintails", "Curl": "curl"}>>
+"Side tail right": "side tail right", "Straight": "straight", "Swept left": "swept left", "Twin braids": "twin braids", "Twintails": "twintails", "Curl": "curl", "Neat": "neat"}>>
 <<set _keys to Object.keys(_hairTypeByName)>>
 <<for _i to 0; _i lt _keys.length; _i++>>
 	<label>
@@ -537,7 +537,7 @@ Yellowish:
 <span class="gold">Fringe Type</span>
 <br>
 <<set _fringeTypeByName to {"Default": "default", "Thin flaps": "thin flaps", "Wide flaps": "wide flaps", "Hime": "hime", "Loose": "loose", "Messy": "messy", "Overgrown": "overgrown",
-"Ringlets": "ringlets", "Split": "split", "Straight": "straight", "Swept left": "swept left", "Back": "back", "Parted": "parted", "Flat": "flat", "Quiff": "quiff", "Straight curl": "straight curl", "Ringlet curl": "ringlet curl"}>>
+"Ringlets": "ringlets", "Split": "split", "Straight": "straight", "Swept left": "swept left", "Back": "back", "Parted": "parted", "Flat": "flat", "Quiff": "quiff", "Straight curl": "straight curl", "Ringlet curl": "ringlet curl", "Curtain": "curtain"}>>
 <<set _keys to Object.keys(_fringeTypeByName)>>
 <<for _i to 0; _i lt _keys.length; _i++>>
 	<label>

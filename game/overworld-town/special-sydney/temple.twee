@@ -1107,7 +1107,7 @@ With shaking hands, Sydney inserts the key into <<his>> chastity belt. It drops 
 <br>
 
 :: Sydney Temple Prayer Room
-<<effects>>
+<<set $combat to 0>><<effects>>
 <<endevent>><<npc "Sydney">><<person1>>
 <<defileSacredGround>>
 Sydney leads the way, and you follow behind, making sure the secret door shuts quietly behind you. You don't have to crawl long before <<he>> reaches another door. <<He>> pushes it open and drops down, and you drop soon after.
@@ -1195,7 +1195,7 @@ You find yourself in a small hexagonal room, the edges ringed with steps leading
 		<br><br>
 		A phantom howl fills the room as it comes back into focus around you. You feel your consciousness slipping, and your body gives in to exhaustion.
 		<br><br>
-		<<link [[Forever, as one...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
+		<<link [[Forever, As One...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
 	<<elseif $loveDrunk gte 3 and $worn.genitals.type.includes("chastity")>>
 		Sydney lets out a feral growl, pinning you to the cushion. "Why?!" <<he>> hisses. "You brought me back here with that thing on! That... damned mockery! It's between me and... I can't..." <<He>> dives to the floor and begins tearing at your $worn.genitals.name, digging <<his>> fingernails into it with a feverish passion.
 		<<set $worn.genitals.integrity -= 100>>
@@ -1211,7 +1211,7 @@ You find yourself in a small hexagonal room, the edges ringed with steps leading
 			<br><br>
 			A phantom howl fills the room as it comes back into focus around you. You feel your consciousness slipping, and your body gives in to exhaustion.
 			<br><br>
-			<<link [[Forever, as one...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
+			<<link [[Forever, As One...|Sydney Temple Corrupt End]]>><<endcombat>><<npc "Sydney">><<person1>><<pass 30>><</link>>
 		<</if>>
 	<<else>>
 		<<ejaculation>>
@@ -1418,7 +1418,7 @@ After a few minutes that feel too long, Jordan finishes <<nnpc_his "Jordan">> wo
 <br><br>
 <<He>> starts to pace. "The sex happened- I know it happened, it felt too good. And my chastity belt is gone. But somehow, I'm still a virgin<<if $player.virginity.vaginal isnot true or $player.virginity.penile isnot true>>, and I bet you still are too<</if>>. If we do it in that room... does it not... count?"
 <br><br>
-Sydney comes to a stop, and grabs your shoulders again. "It... kinda sucks that you didn't actually defile me, but do you know what this means?" <<He>> leans <<his>> forehead against yours and lets out a breathless laugh. "We can have all the sex we want in that room, and the temple won't know! <span class="gold">We can cheat the fucking system!</span>"
+Sydney comes to a stop, and grabs your shoulders again. "It... kinda sucks that you didn't actually defile me, but do you know what this means?" <<He>> leans <<his>> forehead against yours and lets out a breathless laugh. "We can have all the sex we want in that room, and the temple won't know! <span class="gold">We can cheat the system!</span>"
 <<if !$real_fallenangel and $fallenangel>>
 	You rush to a small reflecting pool to look at your reflection. The feeling of loss quickly fades. <span class="gold">You still look pure.</span>
 <</if>>
@@ -1593,7 +1593,7 @@ You creep up to the door.
 		<<case "libRescue">>
 			"I... we met when..." There's a brief pause. "I found <<phim>> unconscious at the school, and carried <<phim>> somewhere safe. That's where we first met."
 			<br>
-			"I'm sorry, that must have been traumatizing. I'm glad you've come this far with <<phim>>."
+			"I'm sorry, that must have been traumatising. I'm glad you've come this far with <<phim>>."
 		<<case "science">>
 			"We met in our shared science class."
 			<br>
