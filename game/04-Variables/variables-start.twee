@@ -893,4 +893,8 @@
 <</if>>
 
 <<set $templePromised to "">>
+
+<<if $sleepStat is undefined>>
+	<<set $sleepStat to 0>>
+<</if>>
 <</widget>>
