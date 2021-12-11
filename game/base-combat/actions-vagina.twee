@@ -203,7 +203,7 @@
 	<</if>>
 <</if>>
 <<set _vaginaaction["Tease the tip"] to "penistease">>
-<<if _secondtarget is true and ($anusause is 0 or ($anusause isnot 0 and $anusause isnot "penisdouble")) and $awareness gte 300>>
+<<if _secondtarget is true and ($anususe is 0 or ($anususe isnot 0 and $anususe isnot "penisdouble")) and $awareness gte 300>>
 	<<if $npc.includes($NPCList[$vaginadoubletarget].fullDescription)>>
 		<<set _vaginaaction["Straddle " + $NPCList[$vaginadoubletarget].fullDescription + "'s " + $NPCList[$vaginadoubletarget].penisdesc] to "vaginatopenisdouble">>
 	<<else>>

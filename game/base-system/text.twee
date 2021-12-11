@@ -6330,3 +6330,7 @@ $worn.genitals.name
 	<</silently>>
 	<<print _text_output>>
 <</widget>>
+
+<<widget "vulva">>
+<<print either("vulva","vulva","quim","flange","pussy")>>
+<</widget>>
