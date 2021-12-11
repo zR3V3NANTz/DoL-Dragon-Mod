@@ -247,7 +247,7 @@
 
 	<<elseif $player.vaginaExist>>
 		<<if $player.penisExist>>
-			<<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position. "As you can see, <<pshe>> is someone who is rather unique in having both a penis and a vagina.
+			<<person1>><<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position. "As you can see, <<pshe>> is someone who is rather unique in having both a penis and a vagina.
 			<br><br>
 			<<person2>>"<<pShes>><<if $penissize lt 0>> not<</if>> getting hard!" exclaims the <<person>>, redoubling your humiliation. Sirris ignores the interjection and continues.
 			<br><br>
@@ -285,7 +285,7 @@
 		<<person2>>"<<pShes>> getting wet!" exclaims the <<person>>, redoubling your humiliation. Sirris ignores the interjection and commences <<person1>><<his>> explanation of female anatomy, using your displayed womanhood as a prop.
 		<br><br>
 	<<else>>
-		<<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position.
+		<<person1>><<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position.
 		<br><br>
 
 		<<if $wolfgirl gte 4 and !["hidden", "disabled"].includes($transformationParts.wolf.pubes)>>
@@ -310,7 +310,7 @@
 		<br><br>
 	<<elseif $player.vaginaExist>>
 		<<if $player.penisExist>>
-			<<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position. "As you can see, <<pshe>> is someone who is rather unique in having both a penis and a vagina.
+			<<person1>><<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position. "As you can see, <<pshe>> is someone who is rather unique in having both a penis and a vagina.
 			<br><br>
 			<<person2>>"<<pShes>><<if $penissize lt 0>> not<</if>> getting hard!" exclaims the <<person>>, redoubling your humiliation. Sirris ignores the interjection and continues.
 			<br><br>
@@ -320,7 +320,7 @@
 		<<person2>>"<<pShes>> getting wet!" exclaims the <<person>>, redoubling your humiliation. Sirris ignores the interjection and commences <<person1>><<his>> explanation of female anatomy, using your displayed womanhood as a prop.
 		<br><br>
 	<<else>>
-		<<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position.
+		<<person1>><<He>> gently takes hold of the end of your penis with <<his>> thumb and forefinger. Your classmates crowd round for a closer look, shoving each other for a better position.
 		<br><br>
 		<<person2>>"<<pShes>><<if $penissize lt 0>> not<</if>> getting hard!" exclaims the <<person>>, redoubling your humiliation. Sirris ignores the interjection and commences <<person1>><<his>> explanation of male anatomy, using your displayed manhood as a prop.
 		<br><br>
