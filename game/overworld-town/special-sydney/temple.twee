@@ -64,7 +64,7 @@ You sit beside Sydney. You notice a pile of neatly folded clothes sat next to <<
 		<<if $sydneyromance is 1>>
 			"Oh! Uhm... g... good day, my beloved." <<He>> looks around, nervous. "I... I'll let this slide, this time. I don't think anyone else saw you." <<npcincr Sydney lust 3>><<npcincr Sydney purity -2>><<ggslust>><<lspurity>>
 			<br><br>
-			<<link [[Seduce Sydney|Sydney Temple Seduce]]>><</link>><<promiscuous1>><<sydneyWarning true>>
+			<<link [[Seduce Sydney|Sydney Temple Seduce]]>><</link>><<promiscuous1>><<sydneyWarning corrupt>>
 			<br>
 			<<link [[Stop|Sydney Temple Masturbation End]]>><</link>>
 			<br>	
@@ -86,7 +86,7 @@ You sit beside Sydney. You notice a pile of neatly folded clothes sat next to <<
 		<<if $sydneyromance is 1>>
 			"Oh! Uhm... g... good day, my beloved." <<He>> looks around, nervous. "You... you seem to be having difficulties containing the sin of lust." <<He>> clears <<his>> throat and begins to whisper. "As... an... initiate, it's... my job to help those taken by sin. There's a... room over there, we won't be interrupted... if you want..." <<npcincr Sydney lust 1>><<npcincr Sydney purity -5>><<gslust>><<llspurity>>
 			<br><br>
-			<<link [[Accept|Sydney Temple Sex]]>><<set $sexstart to 1>><</link>><<promiscuous1>><<sydneyWarning true>>
+			<<link [[Accept|Sydney Temple Sex]]>><<set $sexstart to 1>><</link>><<promiscuous1>><<sydneyWarning corrupt>>
 			<br>
 			<<link [[Refuse|Sydney Temple Masturbation End]]>><</link>>
 			<br>

@@ -387,7 +387,7 @@
 		<br>
 	<</if>>
 	<<if $promiscuity gte 55 and $sydneyromance is 1 and !$sydneyDaily.crawl>>
-		<<link [[Crawl under the counter|Sydney Crawl]]>><<set $sydneyDaily.crawl to true>><</link>><<promiscuous4>><<llspurity>><<sydneyWarning true>>
+		<<link [[Crawl under the counter|Sydney Crawl]]>><<set $sydneyDaily.crawl to true>><</link>><<promiscuous4>><<llspurity>><<sydneyWarning corrupt>>
 		<br>
 	<</if>>
 <</if>>

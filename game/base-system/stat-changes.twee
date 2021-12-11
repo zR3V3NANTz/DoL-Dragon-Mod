@@ -325,6 +325,12 @@
 	<</if>>
 <</widget>>
 
+<<widget "delinquency">>
+	<<if $args[0] and $statFreeze isnot true>>
+		<<set $delinquency += ($args[0] * 4)>>
+	<</if>>
+<</widget>>
+
 <<widget "status">>
 	<<if $args[0] and $statFreeze isnot true>>
 		<<if $args[0] gt 0>>
