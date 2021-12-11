@@ -29,7 +29,7 @@
 <<if $NPCList[_nn].vagina isnot "none" and $NPCList[_nn].penis is "none">>
 	<<if $consensual is 1>>
 		<<if $NPCList[_nn].vagina is "mouthentrance" or $NPCList[_nn].vagina is "mouth" or $NPCList[_nn].vagina is "mouthimminent">>
-			<<switch random(1, 4)>>
+			<<switch random(1, 5)>>
 			<<case 1 2>>
 				<<He>> groans and rubs <<his>> crotch against your face with <<his>> hips, small thighs shaking with orgasm.
 				
@@ -140,7 +140,7 @@
 				<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.goo += 1>>
 			<</switch>>
 		<<elseif $NPCList[_nn].vagina is "penis">>
-			<<switch random(1, 6)>>
+			<<switch random(1, 5)>>
 			<<case 1 2>>
 				<<He>> grabs your shoulders with <<his>> small hands as <<he>> cums, bouncing down hard against your cock as <<he>> shudders with pleasure. "You make me feel so good."
 				
@@ -159,7 +159,7 @@
 			<<He>> gasps as <<he>> cums against your $worn.genitals.name. "Isn't that uncomfortable?" <<he>> asks. "It's really hard."
 		<<elseif $NPCList[_nn].vagina is "penisimminent" or $NPCList[_nn].vagina is "penisentrance">>
 			<<He>> cums on your <<penis>> as you rub against the entrance and moans with pleasure.
-		<<elseif $NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance" and $worn.genitals.type.includes("chastity")>>
+		<<elseif ($NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance") and $worn.genitals.type.includes("chastity")>>
 			<<He>> gasps as <<he>> cums against your $worn.genitals.name. "Isn't that uncomfortable?" <<he>> asks. "It's really hard."
 		<<elseif $NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance">>
 			<<He>> bucks <<his>> ass against your cock as <<he>> cums, body shaking involuntarily.

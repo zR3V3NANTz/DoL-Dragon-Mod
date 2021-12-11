@@ -78,7 +78,7 @@
 		<</if>>
 	<<elseif $NPCList[_nn].vagina is "vagina">>
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
-			<<if random(0,1)>>
+			<<if random(1)>>
 				<<He>> screams into your mouth, <<his>> legs shaking.
 			<<else>>
 				<<He>> scissors your pussies together with a feverish passion, moaning into your mouth.
@@ -126,7 +126,7 @@
 		<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.goo += 1>>
 	<<elseif $NPCList[_nn].vagina is "otheranus">>
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
-			<<if random(0,1)>>
+			<<if random(1)>>
 				<<He>> gasps into your mouth, thrusting <<himself>> on your <<penis>>.
 			<<else>>
 				<<He>> wraps <<his>> arms around your neck and <<his>> legs around your waist, moaning into your mouth as <<he>> cums.
@@ -144,7 +144,7 @@
 		<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.goo += 1>>
 	<<elseif $NPCList[_nn].vagina is "penis">>
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
-			<<if random(0,1)>>
+			<<if random(1)>>
 				<<He>> shudders around your <<penis>>, thrusting <<himself>> onto you. "You're way better than a vine," <<he>> murmers into your mouth.
 			<<else>>
 				<<He>> wraps <<his>> arms around your neck and <<his>> legs around your waist, moaning into your mouth as <<he>> cums.
@@ -298,7 +298,7 @@
 				<<case 1>>
 					<<He>> moans as a dribble of nectar leaks from <<his>> $NPCList[_nn].penisdesc into your <<pussy>>. You snicker into <<his>> mouth. "Shut up," <<he>> mumbles into yours. "Don't laugh."
 				<<default>>
-					<<if random(0,1)>>
+					<<if random(1)>>
 						<<He>> squeals into your mouth as <<he>> cums, <<his>> $NPCList[_nn].penisdesc pumping nectar into your <<pussy>>.
 					<<else>>
 						<<He>> shudders as <<he>> cums, streams of nectar flooding into your <<pussy>>. <<He>> pulls away from you and licks <<his>> lips. "Can I keep you?"
@@ -319,7 +319,7 @@
 				<<case 1>>
 					<<He>> moans as a dribble of nectar leaks from <<his>> $NPCList[_nn].penisdesc into your <<pussy>>. You restrain a snicker. "Shut up," <<he>> mutters. "I-I have vines, okay? Don't laugh."
 				<<default>>
-					<<switch random(1,5)>>
+					<<switch random(1, 5)>>
 						<<case 1 2>>
 							<<He>> moans and thrusts deep into your <<pussy>> as <<he>> cums, holding <<his>> $NPCList[_nn].penisdesc against your womb. You feel warm as nectar fills you.
 						<<case 3 4>>
@@ -357,7 +357,7 @@
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
 			<<He>> leans into you and mashes <<his>> lips against yours, ejaculating sticky nectar onto your <<bottom>>.
 		<<else>>
-			<<switch random(1,5)>>
+			<<switch random(1, 5)>>
 			<<case 1 2>>
 				<<He>> holds your ass cheek with one hand and strokes <<his>> $NPCList[_nn].penisdesc with the other as <<he>> ejaculates onto your <<bottom>>. Nectar drips down, pooling beneath you.
 			<<case 3 4>>
@@ -399,7 +399,7 @@
 				<<case 1>>
 					<<He>> moans as a dribble of nectar leaks from <<his>> $NPCList[_nn].penisdesc into your anus. "Shut up," <<he>> mumbles into your mouth. "Don't laugh."
 				<<default>>
-					<<if random(0,1)>>
+					<<if random(1)>>
 						<<He>> squeals into your mouth as <<he>> cums, <<his>> $NPCList[_nn].penisdesc pumping nectar into your anus.
 					<<else>>
 						<<He>> shudders as <<he>> cums, streams of nectar flooding into your <<bottom>>. <<He>> pulls away from you and licks <<his>> lips. "Can I keep you?"
@@ -415,7 +415,7 @@
 				<<case 1>>
 					<<He>> moans as a dribble of nectar leaks from <<his>> $NPCList[_nn].penisdesc into your anus. "Shut up," <<he>> mutters. "I-I have vines, okay? Don't laugh."
 				<<default>>
-					<<switch random(1,5)>>
+					<<switch random(1, 5)>>
 						<<case 1 2>>
 							<<He>> moans and thrusts deep into your <<bottom>> as <<he>> cums. You gasp as you take <<his>> entire length and nectar fills your insides. 
 						<<case 3 4>>
@@ -521,7 +521,7 @@
 		<<handejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.leftarm.goo += 1>><<set $player.bodyliquid.rightarm.goo += 1>>
 	<<elseif $NPCList[_nn].penis is "leftarm" or $NPCList[_nn].penis is "rightarm">>
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
-			<<if random(0,1)>>
+			<<if random(1)>>
 				<<He>> moans into your mouth as you pump <<his>> length. Your hand gets covered in _nectar.
 			<<else>>
 				<<He>> wraps <<his>> arms around your neck as <<he>> cums, squealing into your mouth. _Nectar sprays out and coats your hand.
@@ -541,7 +541,7 @@
 		<<if $NPCList[_nn].penis is "leftarm">><<set $player.bodyliquid.leftarm.goo += 1>><<else>><<set $player.bodyliquid.rightarm.goo += 1>><</if>>
 	<<elseif $NPCList[_nn].penis is "otheranus">>
 		<<if $NPCList[_nn].mouth is "kissimminent" or $NPCList[_nn].mouth is "kiss">>
-			<<if random(0,1)>>
+			<<if random(1)>>
 				<<He>> gasps into your mouth, thrusting <<himself>> on your <<penis>>. _Nectar sprays onto your stomach.
 				<<tummyejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.tummy.goo += 1>>
 			<<else>>
@@ -727,9 +727,9 @@
 		<</if>>
 		<br><br>
 		<<He>> thrusts <<his>> mouth back around your penis, swirling <<his>> tongue around the tip. Slick nectar coats your penis, <span class="lewd">magnifying your sensitivity</span>.
-		<<if $player.gender is "h" and random(0,1)>>
+		<<if $player.gender is "h" and random(1)>>
 			<<He>> uses <<his>> free hand to thrust two fingers into your <<pussy>>, pistoning in and out.
-		<<elseif $analdisable is "f" and random(0,1)>>
+		<<elseif $analdisable is "f" and random(1)>>
 			<<He>> uses <<his>> free hand to thrust a finger into your <<bottom>>, pistoning in and out.
 		<<else>>
 			<<He>> uses <<his>> free hands to caress and tweak your <<breasts>>, reaching up.

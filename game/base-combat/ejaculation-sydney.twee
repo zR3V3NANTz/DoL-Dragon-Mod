@@ -29,7 +29,7 @@
 <<if $NPCList[_nn].vagina isnot "none" and $NPCList[_nn].penis is "none">>
 	<<if $consensual is 1>>
 		<<if $NPCList[_nn].vagina is "mouthentrance" or $NPCList[_nn].vagina is "mouth" or $NPCList[_nn].vagina is "mouthimminent">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> lets out a gasp as <<he>> finishes, <<his>> legs instinctively wrapping around your head and neck for a moment.
 			<<else>>
 				<<switch _sydneyStatus>>
@@ -43,7 +43,7 @@
 			<</if>>
 			<br><br>
 		<<elseif $NPCList[_nn].vagina is "leftarm">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> tightly grabs your arm and pulls you closer as <<he>> convulses in pleasure. You can feel <<his>> rapid heartbeat and breathing.
 			<<else>>
 				<<switch _sydneyStatus>>
@@ -62,7 +62,7 @@
 				<</switch>>
 			<</if>>
 		<<elseif $NPCList[_nn].vagina is "rightarm">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> tightly grabs your hand as <<he>> convulses in pleasure. <<takeHandholdingVirginity "Sydney" "romantic">>
 			<<else>>
 				<<switch _sydneyStatus>>
@@ -81,7 +81,7 @@
 				<</switch>>
 			<</if>>
 		<<elseif $NPCList[_nn].vagina is "lefthand" or $NPCList[_nn].vagina is "righthand">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> tightly grabs your arm and pulls you closer as <<he>> convulses in pleasure. You can feel <<his>> rapid heartbeat and breathing.
 			<<else>>
 				<<switch _sydneyStatus>>
@@ -95,7 +95,7 @@
 			<</if>>
 			<br><br>
 		<<elseif $NPCList[_nn].vagina is "feet">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> lets out a long breath as <<he>> climaxes and shakes against your foot.
 				<br><br>
 				<<feetejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.feet.goo += 1>>
@@ -126,7 +126,7 @@
 		<<elseif $NPCList[_nn].vagina is "vagina" and _sydneyChastity>>
 			<<He>> moans loudly as <<he>> climaxes. "Hmph," <<he>> pouts, giving <<his>> chastity belt a useless tug.
 		<<elseif $NPCList[_nn].vagina is "vagina">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> wraps <<his>> arms around you as <<he>> finishes, and you hold each other tightly as you continue to grind together. You only slow down once <<he>>'s done shaking.
 			<<else>>
 				<<switch _sydneyStatus>>
@@ -144,7 +144,7 @@
 			<</if>>
 			<br><br>
 		<<elseif $NPCList[_nn].vagina is "othermouth">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> shudders in pleasure beneath you, before gasping as <<he>> pulls <<his>> head away from your <<pussy>>.
 				<br><br>
 				<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.goo += 1>>
@@ -173,7 +173,7 @@
 			<</if>>
 			<br><br>
 		<<elseif $NPCList[_nn].vagina is "otheranus">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> arches <<his>> back and moans out loud as you fuck <<him>> to climax.
 				<br><br>
 			<<else>>
@@ -190,7 +190,7 @@
 				<</switch>>
 			<</if>>
 		<<elseif $NPCList[_nn].vagina is "penis">>
-			<<if random (1, 2) is 1>>
+			<<if random (1)>>
 				<<He>> arches <<his>> back and moans out loud as you fuck <<him>> to climax. <<if $internalejac>><<He>> pats <<his>> belly. "It feels so warm." <<npcincr Sydney purity -5>><<llspurity>><<set $sydneyDaily.sydneyCum to true>><<else>><<npcincr Sydney purity -2>><<lspurity>><</if>>
 				<br><br>
 			<<else>>
@@ -222,7 +222,7 @@
 		<<elseif $NPCList[_nn].vagina is "penisimminent" or $NPCList[_nn].vagina is "penisentrance">>
 			<<He>> cums on your <<penis>> as you rub against the entrance, and <<he>> moans with pleasure.
 			<br><br>
-		<<elseif $NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance" and $worn.genitals.type.includes("chastity")>>
+		<<elseif ($NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance") and $worn.genitals.type.includes("chastity")>>
 			<<He>> gasps as <<he>> cums against your $worn.genitals.name. 
 			<<if _sydneyChastity>>
 				"How can it still feel so good through two devices?" <<he>> asks.
@@ -338,7 +338,7 @@
 				<</if>>
 			<</if>>			
 			<br><br>
-		<<elseif $NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance" and $worn.genitals.type.includes("chastity")>>
+		<<elseif ($NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance") and $worn.genitals.type.includes("chastity")>>
 			<<He>> gasps as <<he>> cums against your $worn.genitals.name. 
 			<<if _sydneyChastity>>
 				"I'll break both of these things one day," <<he>> says. "I need you inside me."
@@ -403,7 +403,7 @@
 		<<He>> groans as a wet patch forms on <<his>> trousers. You giggle at the sight.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "thighs">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans as <<he>> cums, ejaculating a massive load that covers your thighs and tummy.
 			<br><br>
 			<<thighejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.thigh.semen += 1>>
@@ -436,7 +436,7 @@
 		<<He>> cums into <<his>> chastity belt, unable to penetrate you. <<He>> makes a few frustrated noises, but quickly composes <<himself>>.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "vaginaentrance">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans as <<he>> cums, sending thick ropes of semen onto your <<pussy>> and ass.
 			<br><br>
 			<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
@@ -469,7 +469,7 @@
 	<<elseif $NPCList[_nn].penis is "vaginaimminent" and _sydneyChastity>>
 		<<He>> cums into <<his>> chastity belt, unable to penetrate you. <<He>> makes a few frustrated noises, but quickly composes <<himself>>.
 	<<elseif $NPCList[_nn].penis is "vaginaimminent">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans as <<he>> cums, sending thick ropes of semen onto your <<pussy>> and ass.
 			<br><br>
 			<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>>
@@ -491,7 +491,7 @@
 		<</if>>
 	<<elseif $NPCList[_nn].penis is "vagina">>
 		<<set $sydneyDaily.cum to true>>
-		<<if random (1, 2) is 1>>
+		<<if random (1)>>
 			<<He>> arches <<his>> back and moans out loud as you fuck <<him>> to climax. <<He>> pats your belly. "Was it good for you, too?" <<npcincr Sydney purity -5>><<llspurity>>
 			<br><br>
 		<<else>>
@@ -521,7 +521,7 @@
 		<</if>>
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "cheeks">>
-		<<if random (1, 2) is 1>>
+		<<if random (1)>>
 			<<He>> lets out a long breath as <<he>> cums between your cheeks.
 			<br><br>
 			<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
@@ -553,7 +553,7 @@
 		<<He>> cums into <<his>> chastity belt, unable to penetrate you. <<He>> makes a few frustrated noises, but quickly composes <<himself>>.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "anusentrance">>
-		<<if random (1, 2) is 1>>
+		<<if random (1)>>
 			<<He>> lets out a long breath as <<he>> cums between your cheeks.
 			<br><br>
 			<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
@@ -585,7 +585,7 @@
 		<<He>> cums into <<his>> chastity belt, unable to penetrate you. <<He>> makes a few frustrated noises, but quickly composes <<himself>>.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "anusimminent">>
-		<<if random (1, 2) is 1>>
+		<<if random (1)>>
 			<<He>> lets out a long breath as <<he>> cums between your cheeks.
 			<br><br>
 			<<bottomejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.bottom.semen += 1>>
@@ -606,7 +606,7 @@
 			<</switch>>
 		<</if>>
 	<<elseif $NPCList[_nn].penis is "anus">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans loudly as <<he>> releases a full load into your bowels. "Well... at least you can still be considered pure." <<npcincr Sydney purity -5>><<llspurity>>
 			<br><br>
 			<<analejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.anus.semen += 1>>
@@ -628,7 +628,7 @@
 			<</switch>>
 		<</if>>
 	<<elseif $NPCList[_nn].penis is "chest">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans loudly as <<he>> releases a full load onto your chest.
 			<br><br>
 			<<chestejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.chest.semen += 1>>
@@ -652,7 +652,7 @@
 		<<He>> moans loudly as <<he>> cums in <<his>> chastity belt. "Hmph," <<he>> pouts, giving it a useless tug.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "mouthentrance">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans loudly as <<he>> releases a full load onto your face.
 			<br><br>
 			<<faceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.face.semen += 1>>
@@ -676,7 +676,7 @@
 		<<He>> moans loudly as <<he>> cums in <<his>> chastity belt. "Hmph," <<he>> pouts, giving it a useless tug.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "mouthimminent">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans loudly as <<he>> releases a full load onto your face. <<His>> face flushes as <<he>> beholds your face, now covered in <<his>> cum. <<He>> helps you clean it off.
 			<br><br>
 		<<else>>
@@ -697,7 +697,7 @@
 			<</switch>>
 		<</if>>
 	<<elseif $NPCList[_nn].penis is "mouth">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> moans loudly as you pull <<him>> all the way in. You open your mouth to show <<him>> <<his>> semen. <<His>> face goes red. <<npcincr Sydney purity -2>><<lspurity>>
 			<br><br>
 			<<oralejacstat>><<ejacstat>><<set $hunger -= 200>><<set $thirst -= 200>><<set $player.bodyliquid.mouth.semen += 1>>
@@ -719,7 +719,7 @@
 			<</switch>>
 		<</if>>
 	<<elseif $NPCList[_nn].penis is "feet">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> lets out a long breath as <<he>> climaxes and shakes against your foot.
 			<br><br>
 			<<feetejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.feet.semen += 1>>
@@ -788,7 +788,7 @@
 				<<handejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.rightarm.semen += 1>>
 		<</switch>>
 	<<elseif $NPCList[_nn].penis is "otheranus">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> arches <<his>> back and moans out loud as you fuck <<him>> to climax. <<He>> cums all over the ground.
 			<br><br>
 		<<else>>
@@ -816,7 +816,7 @@
 		<<He>> cums into <<his>> chastity belt. <<He>> makes a few frustrated noises, but quickly composes <<himself>>.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "otheranusfrot" or $NPCList[_nn].penis is "otheranusentrance" or $NPCList[_nn].penis is "otheranusimminent">>
-		<<if random(1, 2) is 1>>
+		<<if random(1)>>
 			<<He>> arches <<his>> back and moans out loud as you fuck <<his>> cheeks, cumming all over the ground. "How am I that sensitive there?"
 			<br><br>
 		<<else>>
@@ -844,7 +844,7 @@
 	<<elseif $NPCList[_nn].penis isnot 0 and $NPCList[_nn].penis.startsWith("penis") and _sydneyChastity>>
 		<<He>> moans loudly as <<he>> climaxes. "Hmph," <<he>> pouts, giving <<his>> chastity belt a useless tug.
 	<<elseif $NPCList[_nn].penis is "penis">>
-		<<if random (1, 2) is 1>>
+		<<if random (1)>>
 			<<He>> wraps <<his>> arms around you as <<he>> finishes, and you hold each other tightly as you continue to grind together. You only slow down once <<he>>'s done shaking.
 		<<else>>
 			<<switch _sydneyStatus>>
