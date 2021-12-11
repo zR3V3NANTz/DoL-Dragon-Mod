@@ -1072,11 +1072,11 @@
 						<br>
 					<<elseif $NPCList[_nn].penis is "vaginadoubleimminent" and $worn.genitals.type.includes("chastity")>>
 						<<set _otherNPCIndex to (_nn is $vaginatarget ? $vaginatarget : $vaginadoubletarget)>>
-						<<switch random(0,2)>>
+						<<switch random(2)>>
 							<<case 0>>
 								<<He>> ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs. "Wish you weren't wearing that thing."
 								<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
-							<<case 0>>
+							<<case 1>>
 								<<He>> ejaculates onto your $worn.genitals.name, sending white streams of semen running down your thighs and <<personselect _otherNPCIndex>><<combatpersons>> <<npcPenisSimple _otherNPCIndex>>. "Fucking whore, look what I've done."
 								<<vaginalentranceejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.vaginaoutside.semen += 1>><<set $player.bodyliquid.thigh.semen += 1>>
 							<<default>>

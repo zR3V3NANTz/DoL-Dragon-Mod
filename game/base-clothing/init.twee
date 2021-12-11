@@ -22,7 +22,7 @@
 <<run Object.keys(setup.clothes).forEach(slot => setup.clothes[slot].forEach((item, i) => {if (item.index !== i) throw new Error("The index of "+item.name+" should be "+i+", not "+item.index)}))>>
 
 <!-- Find all unique traits (types) clothes can have -->
-<<set $clothingTraits = [...new Set(Object.keys(setup.clothes).flatMap(x => setup.clothes[x]).flatMap(x => x.type))]>>
+<<set setup.clothingTraits = [...new Set(Object.keys(setup.clothes).flatMap(x => setup.clothes[x]).flatMap(x => x.type))]>>
 
 <</widget>>
 

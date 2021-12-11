@@ -193,6 +193,7 @@
 <<set $blackjack_won to 0>>
 <<set $blackjack_streak to 0>>
 <<set $blackjack_streak_high to 0>>
+<<set $cardcover = { style: 0, colour: 'red' }>>
 <<set $hoodDown to 0>>
 <<set $prof to {}>>
 <<set $prof.spray to 0>>

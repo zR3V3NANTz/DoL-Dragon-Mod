@@ -101,7 +101,7 @@
 		<<elseif $NPCList[_nn].vagina is "penisimminent" or $NPCList[_nn].vagina is "penisentrance">>
 			<<He>> moans as <<he>> cums on your throbbing cock.
 			<br><br>
-		<<elseif $NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance" and $worn.genitals.type.includes("chastity")>>
+		<<elseif ($NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance") and $worn.genitals.type.includes("chastity")>>
 			<<He>> gasps as <<he>> cums against your $worn.genitals.name. "Shame someone locked you up so tight," <<he>> says, giving your <<bottom>> a little smack.
 			<br><br>
 		<<elseif $NPCList[_nn].vagina is "otheranusfrot" or $NPCList[_nn].vagina is "otheranusentrance">>
@@ -490,7 +490,7 @@
 			<<He>> sighs as <<he>> ejaculates onto <<his>> own chest.
 			<br><br>
 		<</switch>>
-	<<elseif $NPCList[_nn].penis is "otheranusfrot" or $NPCList[_nn].penis is "otheranusentrance" or $NPCList[_nn].penis is "otheranusimminent" and $worn.genitals.type.includes("chastity")>>
+	<<elseif ($NPCList[_nn].penis is "otheranusfrot" or $NPCList[_nn].penis is "otheranusentrance" or $NPCList[_nn].penis is "otheranusimminent") and $worn.genitals.type.includes("chastity")>>
 		<<He>> gasps as <<he>> cums onto your $worn.genitals.name. "Shame someone locked you up so tight," <<he>> says, giving your <<bottom>> a little smack.
 		<br><br>
 	<<elseif $NPCList[_nn].penis is "otheranusfrot" or $NPCList[_nn].penis is "otheranusentrance" or $NPCList[_nn].penis is "otheranusimminent">>

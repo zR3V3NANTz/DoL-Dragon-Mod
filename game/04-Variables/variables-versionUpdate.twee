@@ -2659,6 +2659,9 @@
 	/* for versions <= 0.3.4.8, run old version handler */
 		<<variablesVersionUpdate>>
 	<</if>>
+	<<if $saveVersions.last() isnot StartConfig.version>>
+		<<set $saveVersions.push(StartConfig.version)>>
+	<</if>>
 	/* * * * * * * * * * * * * * * * * * * * * * *
 	* new backwards compatibility code goes here
 	*/
@@ -2695,6 +2698,9 @@
 	<</if>>
 	<<if $chef_state gte 5 and $photo_known is undefined>>
 		<<set $photo_known to 1>>
+	<</if>>
+	<<if $cardcover is undefined>>
+		<<set $cardcover = { style: 0, colour: 'red' }>>
 	<</if>>
 
 	<<if $sleepStat is undefined>>

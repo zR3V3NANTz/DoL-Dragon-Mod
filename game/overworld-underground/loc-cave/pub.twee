@@ -185,10 +185,9 @@ Being so exposed is humiliating, but there's nothing you can do.
 
 <<endcombat>>
 
-<<npc Wren>><<person1>>
-<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<personsimple>>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> It's coming from above. "I think that's a good enough show. Besides, we don't know who <<pshe>> is. Someone might come looking."
+<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<nnpc_gender "Wren">>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> It's coming from above. "I think that's a good enough show. Besides, we don't know who <<pshe>> is. Someone might come looking."
 <br><br>
-The owner of the voice doesn't sound much older than you, but the others heed <<him>>.
+The owner of the voice doesn't sound much older than you, but the others heed <<nnpc_him "Wren">>.
 <br><br>
 
 <<link [[Next|Smuggler Pub Blindfold]]>><</link>>
@@ -244,10 +243,9 @@ The owner of the voice doesn't sound much older than you, but the others heed <<
 
 	<<endcombat>>
 
-	<<npc Wren>><<person1>>
-	<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<personsimple>>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> It's coming from above. "Putting up a fight like that, I think <<pshe>>s earned a chance."
+	<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<nnpc_gender "Wren">>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> It's coming from above. "Putting up a fight like that, I think <<pshe>>s earned a chance."
 	<br><br>
-	The owner of the voice doesn't sound much older than you, but the others heed <<him>>.
+	The owner of the voice doesn't sound much older than you, but the others heed <<nnpc_him "Wren">>.
 	<br><br>
 
 	<<link [[Next|Smuggler Pub Blindfold]]>><</link>>
@@ -296,10 +294,9 @@ The owner of the voice doesn't sound much older than you, but the others heed <<
 
 	<<endcombat>>
 
-	<<npc Wren>><<person1>>
-	<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<personsimple>>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> "We don't know who <<pshe>> is. Someone might come looking for <<phim>>."
+	<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<nnpc_gender "Wren">>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> "We don't know who <<pshe>> is. Someone might come looking for <<phim>>."
 	<br><br>
-	The owner of the voice doesn't sound much older than you, but the others heed <<him>>.
+	The owner of the voice doesn't sound much older than you, but the others heed <<nnpc_him "Wren">>.
 	<br><br>
 
 	<<link [[Next|Smuggler Pub Blindfold]]>><</link>>
@@ -311,10 +308,9 @@ The owner of the voice doesn't sound much older than you, but the others heed <<
 
 	<<endcombat>>
 
-	<<npc Wren>><<person1>>
-	<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<personsimple>>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> It's coming from above. "Putting up a fight like that, I think <<pshe>>s earned some leniency."
+	<span class="blue">You hear a whistle,</span> and the room quiets. "Calm down guys," says a <<nnpc_gender "Wren">>'s voice. <<if $wren_seen>><span class="blue">A voice you recognise, but can't place.</span><</if>> It's coming from above. "Putting up a fight like that, I think <<pshe>>s earned some leniency."
 	<br><br>
-	The owner of the voice doesn't sound much older than you, but the others heed <<him>>.
+	The owner of the voice doesn't sound much older than you, but the others heed <<nnpc_him "Wren">>.
 	<br><br>
 
 	<<link [[Next|Smuggler Pub Blindfold]]>><</link>>
@@ -332,7 +328,7 @@ They leave the blindfold on as they push you down another tunnel. You hear the s
 
 <<set $stress -= 3000>>
 
-"Climb," says the young <<personsimple>>. "Before I change my mind." You reach forward, and feel a ladder.
+"Climb," says the young <<nnpc_gender "Wren">>. "Before I change my mind." You reach forward, and feel a ladder.
 <br><br>
 
 You climb until your head bumps against something. "Watch your head," laughs the voice. "Just push it." You do so, and climb atop the ladder. You feel a breeze, and hear traffic all around. There's a metallic thud behind you

@@ -3839,7 +3839,7 @@ plural - widget will output "are" if 1, and "is" if 0. eg - Your hat <<upperplur
 	femininity: 200,
 	warmth: 35,
 	cost: 4000,
-	description: "Show's off your belly, and a fair bit more.",
+	description: "Shows off your belly, and a fair bit more.",
 	shop: ["clothing"],
 	accessory: 0,
 	accessory_colour: 0,

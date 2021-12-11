@@ -483,7 +483,7 @@ Forth argument - item index*/
 <<widget "shoptraits">>
 Traits:
 <br>
-<<for _trait range $clothingTraits>>
+<<for _trait range setup.clothingTraits>>
 	<<if _temp_choice.type.includes(_trait)>>
 		<div class="trait-description">
 			<<shopTraitDescription _trait>>
