@@ -70,7 +70,7 @@
 <<if _slots.map(x => $tryOn.tryingOn[x]).some(x => x != null)>>
 	Clothes you are trying on total to <<printmoney $tryOn.value>>. This includes:
 	<br>
-	<<if $passage is "Clothing Shop" or $passage is "School Library Shop">>
+	<<if $passage is "Clothing Shop" or $passage is "School Library Shop" or $passage is "Forest Shop">>
 		<<set _slots to ["over_upper","over_lower","upper", "lower", "under_upper", "under_lower","over_head","head", "face", "neck", "hands", "legs", "feet"]>>
 		<ul>
 		<<for _tryon range _slots.map(x => [x, $tryOn.tryingOn[x]]).filter(x => x[1] != null && x[1].outfitSecondary is undefined)>>
