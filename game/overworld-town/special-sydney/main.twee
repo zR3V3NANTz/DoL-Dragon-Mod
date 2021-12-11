@@ -1476,7 +1476,7 @@ Leighton drops Sydney's arm, and gives you a glare. Sydney mouths <<his>> thanks
 Sydney looks to you with tearful, pleading eyes.
 <br><br>
 <<if $sydneyLeightonPlayerGuilty is 1>>
-	<<link [[Confess to stealing|Sydney Leighton Spank]]>><<set $phase to 1>><</link>><<gdelinquency>>
+	<<link [[Confess to stealing|Sydney Leighton Spank]]>><<set $phase to 1>><<delinquency 5>><</link>><<gdelinquency>>
 	<br>
 <<else>>
 	<<link [[Lie and say you're responsible|Sydney Leighton Spank]]>><<set $phase to 2>><</link>><<gdelinquency>>
@@ -1723,7 +1723,7 @@ Leighton takes Sydney by the arm again. You spring into action.
 	<<case 1>>
 		"I did it," you say. "I'm the thief." They both freeze. Sydney looks betrayed, but relieved.
 		<br><br>
-		A smile creeps across Leighton's face. "Thank you for your candor. Instead of one severe punishment for one student, I'll be punishing both of you with less severe methods. <<if $studyBooks.stolen isnot "none">><<set $studyBooks.stolen to "none">><<unset $sydneyStolenKnown>><<set $bookStolenKnown += 1>><<set $recentReturnTimer to 14>> Oh, and I'll be taking that stolen book back.<</if>>"
+		A smile creeps across Leighton's face. "Thank you for your candor. Instead of one severe punishment for one student, I'll be punishing both of you with less severe methods.<<if $studyBooks.stolen isnot "none">><<set $studyBooks.stolen to "none">><<unset $sydneyStolenKnown>><<set $bookStolenKnown += 1>><<set $recentReturnTimer to 14>> Oh, and I'll be taking that stolen book back.<</if>>"
 		<<nnpc_He "Leighton">> raises <<nnpc_his "Leighton">> voice. "Everyone please exit the library at once. A pair of students are about to be disciplined." You hear the students around the library comply, packing up their things and shuffling out.
 		<br><br>
 	<<case 2>>
@@ -1774,11 +1774,11 @@ Leighton takes Sydney by the arm again. You spring into action.
 <<link [[Reluctantly spank Sydney|Sydney Leighton Spank 2]]>><<npcincr Sydney love 1>><<npcincr Sydney purity 2>><</link>><<glove>><<gspurity>>
 <br>
 <<if $promiscuity gte 15>>
-	<<link [[Spank Sydney hard|Sydney Leighton Spank 2]]>><<set $phase to 1>><<npcincr Sydney purity -5>><</link>><<llspurity>><<sydneyWarning true>><<promiscuous2>>
+	<<link [[Spank Sydney hard|Sydney Leighton Spank 2]]>><<set $phase to 1>><<npcincr Sydney purity -5>><</link>><<llspurity>><<sydneyWarning corrupt>><<promiscuous2>>
 	<br>
 <</if>>
 <<if $promiscuity gte 35>>
-	<<link [[Grope Sydney while spanking|Sydney Leighton Spank 2]]>><<set $phase to 2>><<npcincr Sydney love 1>><<npcincr Sydney lust 3>><<npcincr Sydney purity -5>><</link>><<glove>><<ggslust>><<llspurity>><<sydneyWarning true>><<promiscuous3>>
+	<<link [[Grope Sydney while spanking|Sydney Leighton Spank 2]]>><<set $phase to 2>><<npcincr Sydney love 1>><<npcincr Sydney lust 3>><<npcincr Sydney purity -5>><</link>><<glove>><<ggslust>><<llspurity>><<sydneyWarning corrupt>><<promiscuous3>>
 	<br> 
 <</if>>
 <<link [[Refuse|Sydney Leighton Spank Refuse]]>><<npcincr Sydney love -1>><</link>><<llove>>
@@ -2045,11 +2045,11 @@ You watch as Leighton brings down <<nnpc_his "Leighton">> hand on Sydney's botto
 <<link [[Reluctantly spank Sydney|Sydney Leighton Spank 2]]>><<npcincr Sydney love 1>><<npcincr Sydney purity 2>><</link>><<glove>><<gspurity>><<sydneyWarning>>
 <br>
 <<if $promiscuity gte 15>>
-	<<link [[Spank Sydney hard|Sydney Leighton Spank 2]]>><<set $phase to 1>><<npcincr Sydney purity -5>><</link>><<llspurity>><<sydneyWarning true>><<promiscuous2>>
+	<<link [[Spank Sydney hard|Sydney Leighton Spank 2]]>><<set $phase to 1>><<npcincr Sydney purity -5>><</link>><<llspurity>><<sydneyWarning corrupt>><<promiscuous2>>
 	<br>
 <</if>>
 <<if $promiscuity gte 35>>
-	<<link [[Grope Sydney while spanking|Sydney Leighton Spank 2]]>><<set $phase to 2>><<npcincr Sydney love 1>><<npcincr Sydney lust 3>><<npcincr Sydney purity -5>><</link>><<glove>><<ggslust>><<llspurity>><<sydneyWarning true>><<promiscuous3>>
+	<<link [[Grope Sydney while spanking|Sydney Leighton Spank 2]]>><<set $phase to 2>><<npcincr Sydney love 1>><<npcincr Sydney lust 3>><<npcincr Sydney purity -5>><</link>><<glove>><<ggslust>><<llspurity>><<sydneyWarning corrupt>><<promiscuous3>>
 	<br> 
 <</if>>
 <<link [[Refuse again|Sydney Leighton Spank Refuse 2]]>><<npcincr Sydney love -5>><</link>><<lllove>>
@@ -2374,7 +2374,7 @@ Sydney leaves first, peeking to make sure no one will see you both leave. Once t
 	<<link [[Thank Sydney|Sydney Library Rescue 2]]>><<set $phase to 1>><<npcincr Sydney love 1>><</link>><<glove>>
 	<br>
 	<<if $sydneyromance is 1>>
-		<<link [[Reward Sydney|Sydney Library Rescue Reward]]>><</link>><<promiscuous1>><<sydneyWarning true>>
+		<<link [[Reward Sydney|Sydney Library Rescue Reward]]>><</link>><<promiscuous1>><<sydneyWarning corrupt>>
 		<br>
 		<<link [[Rest (0:30)|Sydney Library Rescue Rest]]>><<pass 30>><<npcincr Sydney love 1>><<npcincr Sydney lust 1>><<tiredness -3>><</link>><<glove>><<glust>><<ltiredness>>
 		<br>

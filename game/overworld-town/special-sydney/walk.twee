@@ -924,7 +924,7 @@ You approach the shelves of folded up swimwear. You can't help but think that so
 	<<link [[Peek in on Sydney (0:05)|Sydney Shopping Swim Peek]]>><<npcincr Sydney lust 1>><<pass 5>><</link>><<glust>><<promiscuous1>>
 	<br>
 	<<if $promiscuity gte 35>>
-		<<link [[Walk in on Sydney|Sydney Shopping Swim Enter]]>><<npcincr Sydney lust 1>><</link>><<glust>><<promiscuous3>><<sydneyWarning true>>
+		<<link [[Walk in on Sydney|Sydney Shopping Swim Enter]]>><<npcincr Sydney lust 1>><</link>><<glust>><<promiscuous3>><<sydneyWarning corrupt>>
 		<br>
 	<</if>>
 <<else>>
@@ -956,7 +956,7 @@ You cross your arms. "I'd really like to see you wear this. You'd look really cu
 	<<link [[Peek in on Sydney (0:05)|Sydney Shopping Swim Peek]]>><<npcincr Sydney lust 1>><<pass 5>><</link>><<glust>><<promiscuous1>>
 	<br>
 	<<if $promiscuity gte 35>>
-		<<link [[Walk in on Sydney|Sydney Shopping Swim Enter]]>><</link>><<glust>><<promiscuous3>><<sydneyWarning true>>
+		<<link [[Walk in on Sydney|Sydney Shopping Swim Enter]]>><</link>><<glust>><<promiscuous3>><<sydneyWarning corrupt>>
 		<br>
 	<</if>>
 <<else>>
@@ -983,7 +983,7 @@ You wait for Sydney. After a few minutes,
 	<<if $sydneyromance is 1 and _sydneyStatus.includes("Lust")>>
 		<<He>> bends forward, and <<his>> hands touch your shoulders as <<he>> does a few exaggerated stretches. "I seem to be sore for some reason. I don't suppose you could come help me get back into my <<if $exit is "library">>school clothes<<else>>robes<</if>>?" <<He>> winks. <<arousal 50>><<garousal>>
 		<br><br>
-		<<link [[Accept|Sydney Shopping Sex]]>><<npcincr Sydney purity -2>><<set $sexstart to 1>><<set $phase2 to 1>><</link>><<lspurity>><<sydneyWarning true>>
+		<<link [[Accept|Sydney Shopping Sex]]>><<npcincr Sydney purity -2>><<set $sexstart to 1>><<set $phase2 to 1>><</link>><<lspurity>><<sydneyWarning corrupt>>
 		<br>
 		<<link [[Refuse|Sydney Shopping Sex Refuse]]>><<npcincr Sydney purity 2>><</link>><<gspurity>>
 		<br>
