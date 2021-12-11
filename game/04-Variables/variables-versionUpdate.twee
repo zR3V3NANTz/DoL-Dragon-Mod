@@ -2697,4 +2697,8 @@
 		<<set $photo_known to 1>>
 	<</if>>
 
+	<<if $sleepStat is undefined>>
+		<<set $sleepStat to 0>>
+	<</if>>
+
 <</widget>>

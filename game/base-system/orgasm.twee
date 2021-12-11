@@ -431,7 +431,7 @@
 			<<elseif $exposed gte 1>>
 				<<set $_hidden to true>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the hallway. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the hallway. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "emptyClassroom">>
@@ -471,32 +471,32 @@
 			<<elseif $exposed gte 1>>
 				<<set $_hidden to true>>
 			<<elseif _sydney_location is "library">>
-				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the hallway.
+				The sight and sound of a <<girl>> convulsing in climax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run through the library.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 				<br><br>
-				Sydney clears <<his>> throat. The other students get the message and the whispers stop.
+				Sydney clears <<nnpc_his "Sydney">> throat. The other students get the message and the whispers stop.
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the Library. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the Library. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "boyChangingRoom">>
 			<<if $changingroomstate is "empty">>
 				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
 			<<elseif $player.gender_appearance is "f">>
-				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
+				The sight and sound of a <<girl>> convulsing in climax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the room. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the room. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "girlChangingRoom">>
 			<<if $changingroomstate is "empty">>
 				You steady yourself as your spasms subside. You feel fortunate that the room is empty right now, and hope the noise hasn't attracted attention.
 			<<elseif $player.gender_appearance is "m">>
-				The sight and sound of a <<girl>> convulsing in clímax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
+				The sight and sound of a <<girl>> convulsing in climax incites the <<boys>>. Their reactions vary. Some cheer you on. Some try to look away. And some shout all kinds of insults at you.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the room. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws attention, and as you regain control you find yourself stared at from all directions by your fellow students. A few whispers start to run down the room. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "policeStation">>
@@ -527,7 +527,7 @@
 			<<elseif $exposed gte 1>>
 				<<set $_hidden to true>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the patrons. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the cafe has become. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of the patrons. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the cafe has become. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "arcade">>
@@ -559,27 +559,27 @@
 			<<elseif $exposed gte 1>>
 				<<set $_hidden to true>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the other shoppers. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of the other shoppers. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "museum">>
 			<<if $daystate is "night">>
 				<<set $_quiet to "museum">>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the other visitors. As you regain control, you feel yourself stared from all directions. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of the other visitors. As you regain control, you feel yourself stared from all directions. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "brothel">>
-			The sight and sound of a <<girl>> convulsing in clímax draws attention. Those in the brothel cheer you on, while shouting all kinds of profanities. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+			The sight and sound of a <<girl>> convulsing in climax draws attention. Those in the brothel cheer you on, while shouting all kinds of profanities. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
 			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 		<<case "pub">>
-			The sight and sound of a <<girl>> convulsing in clímax draws attention. Those in the pub cheer you on, while shouting all kinds of profanities. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+			The sight and sound of a <<girl>> convulsing in climax draws attention. Those in the pub cheer you on, while shouting all kinds of profanities. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
 			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 		<<case "spa">>
 			<<if $openinghours is 0 and $hour isnot $closinghour>>
 				<<set $_quiet to "spa">>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the patrons. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the spa has become. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of the patrons. Their reaction is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the spa has become. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "temple">>
@@ -588,7 +588,7 @@
 			<<elseif $exposed gte 1>>
 				<<set $_hidden to true>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws attention. The prevalent silence only makes your moans more obvious. Most look at you with disdain, but some shower you with a lustful gaze. As you regain control, you noticed yourself stared at from all directions. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws attention. The prevalent silence only makes your moans more obvious. Most look at you with disdain, but some shower you with a lustful gaze. As you regain control, you noticed yourself stared at from all directions. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "hospital">>
@@ -597,7 +597,7 @@
 			<<elseif $exposed gte 1>>
 				<<set $_hidden to true>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws attention. The reaction of those in the hospital is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws attention. The reaction of those in the hospital is mixed. Some avoid looking. Some stare at you with displease. But some also cheer you on. As you regain control of yourself, you notice how rowdy the place has become. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "countryside">>
@@ -620,9 +620,9 @@
 			<<elseif ($exposed gte 2 and $uncomfortable.nude is true) or ($exposed is 1 and $uncomfortable.underwear is true)>>
 				<<set $_hidden to true>>
 			<<elseif ["shower","tending","admin","clearing"].includes($farm_work.alex)>>
-				The sight and sound of a <<girl>> convulsing in clímax agitate the animals around you. Fortunately, Alex is not around to see you in such a state. You steady yourself and go back to work.
+				The sight and sound of a <<girl>> convulsing in climax agitate the animals around you. Fortunately, Alex is not around to see you in such a state. You steady yourself and go back to work.
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax agitate the animals around you. Alex takes notice of the small commotion, looking at you as your orgasm starts to subside. Face deep red, you both avoid eye contact, and try to act like nothing happened.
+				The sight and sound of a <<girl>> convulsing in climax agitate the animals around you. Alex takes notice of the small commotion, looking at you as your orgasm starts to subside. Face deep red, you both avoid eye contact, and try to act like nothing happened.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<npcincr Alex lust 1>><<glust>>
 			<</if>>
 		<<case "alexFarmTending">>
@@ -654,7 +654,7 @@
 			<<elseif $exposed gte 1>>
 				<<set $_hidden to true>>
 			<<else>>
-				The sight and sound of a <<girl>> convulsing in clímax draws the attention of the campers. They look surprised for a moment, but soon smile at your lewd display. As you regain control of yourself, you notice their lustful gaze. Face red, you flee the scene.
+				The sight and sound of a <<girl>> convulsing in climax draws the attention of the campers. They look surprised for a moment, but soon smile at your lewd display. As you regain control of yourself, you notice their lustful gaze. Face red, you flee the scene.
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>
 		<<case "moor">>

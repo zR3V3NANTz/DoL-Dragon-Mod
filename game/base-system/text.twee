@@ -1176,8 +1176,10 @@ in dev alternative to current "breasts" widget
 	Should help keep the chill off.
 <<elseif $args[0] gte 10>>
 	Should help keep the chill off.
-<<else>>
+<<elseif $args[0] gte 1>>
 	Light and cool.
+<<else>>
+	No effect on warmth.
 <</if>>
 <<if $images is 1>>
 	(<span class="cold-resist-icon">$args[0]</span>)
