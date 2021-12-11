@@ -1295,7 +1295,7 @@
 			<<if $vaginadoubletarget is undefined>>
 				<<set $vaginadoubletarget to _firstdoubletarget>>
 			<</if>>
-			Target: <span onchange="actionsreplace('anus')">
+			Target: <span onchange="actionsreplace('vagina')">
 			<<listbox "$vaginadoubletarget" autoselect>>
 				<<optionsfrom _doubletargetlist>>
 			<</listbox>>
@@ -1312,7 +1312,7 @@
 			<<if $vaginadoubletarget is undefined>>
 				<<set $vaginadoubletarget to _firstdoubletarget>>
 			<</if>>
-			Target: <span onchange="actionsreplace('anus')">
+			Target: <span onchange="actionsreplace('vagina')">
 			<<listbox "$vaginadoubletarget" autoselect>>
 				<<optionsfrom _doubletargetlist>>
 			<</listbox>>
@@ -1329,7 +1329,7 @@
 			<<if $vaginadoubletarget is undefined>>
 				<<set $vaginadoubletarget to _firstdoubletarget>>
 			<</if>>
-			Target: <span onchange="actionsreplace('anus')">
+			Target: <span onchange="actionsreplace('vagina')">
 			<<listbox "$vaginadoubletarget" autoselect>>
 				<<optionsfrom _doubletargetlist>>
 			<</listbox>>
@@ -1345,34 +1345,48 @@
 		<<set _vaginaOptions to "vaginaPenetrated">><<selectNpcWithPartInPosition "vagina" "vagina">><<set $vaginatarget to _j>>
 		<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<combatPerson>>'s pussy presses against yours.</span>
 	<<case "doubleentrance">>
-			<<set _vaginaOptions to "penisDoubleEntrance">>
-				<<if $NPCList[$vaginatarget].penis is "vaginadoubleentrance" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleentrance">>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks hover near your <<pussy>>.</span>
-				<<elseif ($NPCList[$vaginatarget].penis is "anusdouble" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleentrance") or ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
-					<<selectNpcWithPartInPosition "penis" "vagina">><<combatPerson>>'s penis penetrates your vagina while the other penis hovers nearby.
-					</span>
-				<<else>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks hover near your <<pussy>>.</span>
-				<</if>>
-		<<case "doubleimminent">>
-			<<set _vaginaOptions to "penisDoubleImminent">>
-				<<if $NPCList[$vaginatarget].penis is "vaginadoubleimminent" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleimminent">>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks press against your anus.</span>
-				<<elseif ($NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleimminent") or ($NPCList[$vaginatarget].penis is "vaginadoubleimminent" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
-					<<selectNpcWithPartInPosition "penis" "vagina">><<combatPerson>>'s penis penetrates your vagina while the other penis presses against the flange.
-					</span>
-				<<else>>
-					<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks press against your vagina.</span>
-				<</if>>
-		<<case "doublepenetrated">>
-			<<set _vaginaOptions to "penisDoublePenetration">>
-			<<if $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
-				<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks penetrate your vagina.</span>
-			<<else>>
-				<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')"><<selectNpcWithPartInPosition "penis" "vagina">><<combatPerson>>'s cock penetrates your vagina while the other hovers nearby.</span>
-			<</if>>
+		<<set _vaginaOptions to "penisDoubleEntrance">>
+		<<set $_npcA to ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" ? $vaginatarget : $vaginadoubletarget)>>
+		<<set $_npcB to ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" ? $vaginadoubletarget : $vaginatarget)>>
+		<<if $NPCList[$vaginatarget].penis is "vaginadoubleentrance" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleentrance">>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks hover near your <<pussy>>.</span>
+		<<elseif ($NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleentrance") or ($NPCList[$vaginatarget].penis is "vaginadoubleentrance" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
+			<<personselect $_npcA>><<combatPerson>>'s <<npcPenisSimple $_npcA>> presses against your <<vulva>> while <<personselect $_npcB>><<combatperson>>'s <<npcPenisSimple $_npcB>> hovers nearby.
+			</span>
+		<<else>>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks hover near your <<pussy>>.</span>
+		<</if>>
+	<<case "doubleimminent">>
+		<<set _vaginaOptions to "penisDoubleImminent">>
+		<<set $_npcA to ($NPCList[$vaginatarget].penis is "vaginadoubleimminent" ? $vaginatarget : $vaginadoubletarget)>>
+		<<set $_npcB to ($NPCList[$vaginatarget].penis is "vaginadoubleimminent" ? $vaginadoubletarget : $vaginatarget)>>
+		<<if $NPCList[$vaginatarget].penis is "vaginadoubleimminent" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleimminent">>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks press against your <<pussy>>.</span>
+		<<elseif ($NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleimminent") or ($NPCList[$vaginatarget].penis is "vaginadoubleimminent" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
+			<<personselect $_npcA>><<combatPerson>>'s <<npcPenisSimple $_npcA>> penetrates your vagina while <<personselect $_npcB>><<combatperson>>'s <<npcPenisSimple $_npcB>> presses against your <<vulva>>.
+			</span>
+		<<else>>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
+			<<personselect $_npcA>><<combatPerson>>'s <<npcPenisSimple $_npcA>> presses against your <<vulva>> while <<personselect $_npcB>><<combatperson>>'s <<npcPenisSimple $_npcB>> hovers nearby.
+			</span>
+		<</if>>
+	<<case "doublepenetrated">>
+		<<set _vaginaOptions to "penisDoublePenetration">>
+		<<set $_npcA to ($NPCList[$vaginatarget].penis is "vaginadouble" ? $vaginatarget : $vaginadoubletarget)>>
+		<<set $_npcB to ($NPCList[$vaginatarget].penis is "vaginadouble" ? $vaginadoubletarget : $vaginatarget)>>
+		<<if $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">Their cocks penetrate your <<pussy>>.</span>
+		<<elseif ($NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadoubleimminent") or ($NPCList[$vaginatarget].penis is "vaginadoubleimminent" and $NPCList[$vaginadoubletarget].penis is "vaginadouble")>>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
+			<<personselect $_npcA>><<combatPerson>>'s <<npcPenisSimple $_npcA>> penetrates your vagina while <<personselect $_npcB>><<combatperson>>'s <<npcPenisSimple $_npcB>> presses against your <<vulva>>.
+			</span>
+		<<else>>
+			<span @class="($lastOptions.vagina isnot _vaginaOptions or _vaginaGold is true ?'gold':'')">
+			<<personselect $_npcA>><<combatPerson>>'s <<npcPenisSimple $_npcA>> penetrates your vagina while the other hovers nearby.
+			</span>
+		<</if>>
 	<<case "tentacleentrance" "tentacleimminent" "tentacle" "tentacledeep" "tentaclerub">>
 		<<set $_changetype to true>><<vaginaActionInitTentacle>>
 	<<case "struggle" "struggle_pen">>
