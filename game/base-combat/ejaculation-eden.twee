@@ -477,7 +477,7 @@
 	<<elseif $NPCList[_nn].penis is "leftarm">>
 		<<switch random(1, 7)>>
 		<<case 1 2 3>>
-			<<He>> moans as <<he>> cums, <<his>> hot $NPCList[_nn].penisdesc ejaculting over your hand. "You should clean up. You can't work with a hand like that."
+			<<He>> moans as <<he>> cums, <<his>> hot $NPCList[_nn].penisdesc ejaculating over your hand. "You should clean up. You can't work with a hand like that."
 			<<handejacstat>><<ejacstat>><<set $hygiene += 500>><<set $player.bodyliquid.leftarm.semen += 1>>
 		<<case 4 5 6>>
 			<<He>> cums onto your hand, slickening your fingers. "You can't work like that. You should wash up."

@@ -836,6 +836,7 @@ You are in Alex's bedroom. It's similar to yours. Clothes tumble from the wardro
 		<<npc Alex>><<person1>>
 		Alex snores in <<his>> bed.
 		<<if $hour is 5>>
+			<br><br>
 			<<set $alex_bed to "none">>
 			<<He>> throws the sheets to the floor. <<covered>> "Breakfast," <<He>> yawns.
 			<<if $exposed gte 1>>
