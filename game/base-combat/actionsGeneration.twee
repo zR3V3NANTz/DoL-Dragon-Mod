@@ -127,7 +127,7 @@
 	<<case "beast">><<set $defaultsType to "Animals">>
 	<<case "tentacles" "vore">>
 		<<set $defaultsType to "Tentacles">>
-		<<set $regrab = DefaultActions.get($defaultsCombatType, 'Tentacles', 'regrab', 0)[0]>>
+		<<set $regrab = DefaultActions.get($defaultsCombatType, 'Tentacles', 'regrab', $actionDefaults, 0)[0]>>
 	<<default>><<set $defaultsType to "Everyone">>
 <</switch>>
 <</widget>>
