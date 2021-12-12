@@ -785,13 +785,13 @@ One of the hunters, a <<beasttype>>,
 	<<if $wolfpackharmony gte 10>>
 		Yelping from pain, the <<beasttype>> takes a few steps back before turning and presenting <<bhis>> backside to you.
 		<<if $monster is 1>>
-			"<<pPackbrother>> may take <<bhis>> reward."
+			"<<pPackbrother>> may take <<phis>> reward."
 		<</if>>
 		<br><br>
 		<<if $deviancy gte 35>>
 			<<link [[Accept the invitation|Wolf Cave Spar Sex]]>><<set $sexstart to 1>><</link>><<deviant3>>
 		<<else>>
-			<span class="blue">You are not deviant enough to fuck a <<beasttype>> as a reward.</span>
+			<span class="blue">You are not deviant enough to accept such a thing.</span>
 		<</if>>
 		<br>
 		<<link [[Refuse|Wolf Cave Clearing]]>><<endevent>><</link>>

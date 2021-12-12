@@ -188,7 +188,7 @@ You shake your head. <<He>> freezes in an unnatural position, and grins. Your pu
 	<</switch>>
 	<br><br>
 
-	<<link [[Next|Wraith Caught]]>><</link>>
+	<<link [[Next|Wraith Caught]]>><<set $wraith.exit to "forest">><</link>>
 	<br>
 <<else>>
 	"<span class="wraith">Clever.</span>" The voice seems to come from all around you. Your vision goes fuzzy for a brief moment, and when it clears, <<hes>> gone. You look around in a panic. <<stress 6>><<gstress>><<trauma 12>><<ggtrauma>>
@@ -548,7 +548,7 @@ You hear a harsh whipping sound. A pale tendril springs from a drainage grate, a
 	<<generateWraith>><<initWraith "abomination">>
 	<<startWraith>>
 	<br><br>
-	<<link [[Next|Wraith Caught]]>><</link>>
+	<<link [[Next|Wraith Caught]]>><<set $wraith.exit to "town">><</link>>
 	<br>
 <</if>>
 

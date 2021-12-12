@@ -3505,8 +3505,8 @@ plural - widget will output "are" if 1, and "is" if 0. eg - Your hat <<upperplur
 	breast_img: 0,
 	cursed: 0,
 	location: 0,
-	iconFile: "",
-	accIcon: 0,
+	iconFile: "Retro top.png",
+	accIcon: "Retro top_acc.png",
 	notuck: 0
 },
 
@@ -3547,7 +3547,7 @@ plural - widget will output "are" if 1, and "is" if 0. eg - Your hat <<upperplur
 	breast_img: 0,
 	cursed: 0,
 	location: 0,
-	iconFile: "",
+	iconFile: "Utility vest.png",
 	accIcon: 0,
 	notuck: 0
 },
@@ -3590,8 +3590,8 @@ plural - widget will output "are" if 1, and "is" if 0. eg - Your hat <<upperplur
 	breast_img: 0,
 	cursed: 0,
 	location: 0,
-	iconFile: "",
-	accIcon: "",
+	iconFile: "Utility shirt.png",
+	accIcon: "Utility shirt_acc.png",
 	accIcon: 0,
 	notuck: 0
 },
@@ -3633,7 +3633,7 @@ plural - widget will output "are" if 1, and "is" if 0. eg - Your hat <<upperplur
 	breast_img: 1,
 	cursed: 0,
 	location: 0,
-	iconFile: "",
+	iconFile: "Monster hoodie.png",
 	accIcon: 0,
 	outfitPrimary:{lower:"monster skirt", head:"monster hood"},
 	notuck: 0
@@ -3839,7 +3839,7 @@ plural - widget will output "are" if 1, and "is" if 0. eg - Your hat <<upperplur
 	femininity: 200,
 	warmth: 35,
 	cost: 4000,
-	description: "Show's off your belly, and a fair bit more.",
+	description: "Shows off your belly, and a fair bit more.",
 	shop: ["clothing"],
 	accessory: 0,
 	accessory_colour: 0,
@@ -3848,7 +3848,7 @@ plural - widget will output "are" if 1, and "is" if 0. eg - Your hat <<upperplur
 	breast_img: 0,
 	cursed: 0,
 	location: 0,
-	iconFile: "",
+	iconFile: "Cropped hoodie.png",
 	accIcon: 0,
 	notuck: 1
 }

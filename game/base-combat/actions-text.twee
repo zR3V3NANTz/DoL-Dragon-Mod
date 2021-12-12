@@ -193,7 +193,6 @@
 			<</if>>
 		<</if>>
 	<</if>>
-	<<set $penisstate to "otherpenis">>
 <</widget>>
 
 <<widget "actionsothermouthpenisthrust">>
@@ -5148,6 +5147,22 @@ You <<peniletext>> tease <<their $args[0]>> anus with your <<penis>>.
 <</if>>
 <</widget>>
 
+<<widget "actionsvaginadoubleescape">>
+	<<set $_penises to "penises">>
+	<<if $NPCList[$vaginatarget].penisdesc.includes("strap-on") and $NPCList[$vaginadoubletarget].penisdesc.includes("strap-on")>>
+		<<set $_penises to "strap-ons">>
+	<<elseif $NPCList[$vaginatarget].penisdesc.includes("strap-on") and $NPCList[$vaginadoubletarget].penisdesc.includes("strap-on")>>
+		<<set $_penises to "cocks">>
+	<</if>>
+	<<if $pain lte 20>>
+		<span class="blue">You shift your pelvis, moving your <<pussy>> away from their $_penises.</span>
+	<<elseif $pain lte 60>>
+		<span class="blue">You shift your pelvis, moving your <<pussy>> away from their $_penises.</span>
+	<<else>>
+		<span class="blue">You shift your pelvis in desperation, moving your <<pussy>> away from their $_penises.</span>
+	<</if>>
+<</widget>>
+
 <<widget "actionstribescape">>
 <<if $enemytype is "beast">>
 	<<if $enemyanger lte 20>>
@@ -5229,12 +5244,18 @@ You <<peniletext>> tease <<their $args[0]>> anus with your <<penis>>.
 <</widget>>
 
 <<widget "actionsanusdoubleescape">>
+	<<set $_penises to "penises">>
+	<<if $NPCList[$anustarget].penisdesc.includes("strap-on") and $NPCList[$anusdoubletarget].penisdesc.includes("strap-on")>>
+		<<set $_penises to "strap-ons">>
+	<<elseif $NPCList[$anustarget].penisdesc.includes("strap-on") and $NPCList[$anusdoubletarget].penisdesc.includes("strap-on")>>
+		<<set $_penises to "cocks">>
+	<</if>>
 	<<if $pain lte 20>>
-		<span class="blue">You shift your pelvis, moving your <<bottom>> away from <<their>> penises.</span>
+		<span class="blue">You shift your pelvis, moving your <<bottom>> away from <<their>> $_penises.</span>
 	<<elseif $pain lte 60>>
-		<span class="blue">You shift your pelvis, moving your <<bottom>> away from <<their>> penises.</span>
+		<span class="blue">You shift your pelvis, moving your <<bottom>> away from <<their>> $_penises.</span>
 	<<else>>
-		<span class="blue">You shift your pelvis in desperation, moving your <<bottom>> away from <<their>> penises.</span>
+		<span class="blue">You shift your pelvis in desperation, moving your <<bottom>> away from <<their>> $_penises.</span>
 	<</if>>
 <</widget>>
 

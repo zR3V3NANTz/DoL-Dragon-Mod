@@ -1176,8 +1176,10 @@ in dev alternative to current "breasts" widget
 	Should help keep the chill off.
 <<elseif $args[0] gte 10>>
 	Should help keep the chill off.
-<<else>>
+<<elseif $args[0] gte 1>>
 	Light and cool.
+<<else>>
+	No effect on warmth.
 <</if>>
 <<if $images is 1>>
 	(<span class="cold-resist-icon">$args[0]</span>)
@@ -1910,34 +1912,34 @@ in dev alternative to current "breasts" widget
 <</widget>>
 
 <<widget "sydneyWarning">>
-<<if $args[0]>>
-	<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 10) lt 0>>
-		| <span class="purple">This action might corrupt Sydney</span>
-	<</if>>
+<<if $args[0] is "corrupt" and $corruptionEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 10) lt 0>>
+	| <span class="purple">This action might corrupt Sydney</span>
+<<elseif $args[0] is "purify" and $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].purity is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 10) lt 0>>
+	| <span class="teal">This action might purify Sydney</span>
 <<else>>
 	<<switch _warnstate>>
 		<<case 1>>
-			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption isnot 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 2) lt 0>>
+			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].purity is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 2)>>
 				| <span class="teal">This action will purify Sydney</span>
 			<</if>>
 		<<case 2>>
-			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption isnot 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 5) lt 0>>
+			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].purity is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 5)>>
 				| <span class="teal">This action will purify Sydney</span>
 			<</if>>
 		<<case 3>>
-			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption isnot 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 10) lt 0>>
+			<<if $purityEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].purity is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].corruption - 10)>>
 				| <span class="teal">This action will purify Sydney</span>
 			<</if>>
 		<<case -1>>
-			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 2) lt 0>>
+			<<if $corruptionEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 2) lt 0>>
 				| <span class="purple">This action will corrupt Sydney</span>
 			<</if>>
 		<<case -2>>
-			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 5) lt 0>>
+			<<if $corruptionEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 5) lt 0>>
 				| <span class="purple">This action will corrupt Sydney</span>
 			<</if>>
 		<<case -3>>
-			<<if $corruptionEvent is 1 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 10) lt 0>>
+			<<if $corruptionEvent is 1 and $NPCName[$NPCNameList.indexOf("Sydney")].corruption is 0 and ($NPCName[$NPCNameList.indexOf("Sydney")].purity - 10) lt 0>>
 				| <span class="purple">This action will corrupt Sydney</span>
 			<</if>>
 	<</switch>>
@@ -6332,4 +6334,8 @@ $worn.genitals.name
 	<</if>>
 	<</silently>>
 	<<print _text_output>>
+<</widget>>
+
+<<widget "vulva">>
+<<print either("vulva","vulva","quim","flange","pussy")>>
 <</widget>>

@@ -373,13 +373,13 @@ Something brushes against your leg, then grabs you by the waist. Several tentacl
 :: Widgets Sea Docks [widget]
 <<widget "seadocks">>
 
-<<link [[Swim to the docks (0:10)|Sea Docks]]>><<pass 10>><<tiredness 2>><</link>><<gtiredness>>
+<<docksicon>><<link [[Swim to the docks (0:10)|Sea Docks]]>><<pass 10>><<tiredness 2>><</link>><<gtiredness>>
 
 <</widget>>
 
 <<widget "seadocksquick">>
 
-<<link [[Swim to the docks|Sea Docks]]>><</link>>
+<<docksicon>><<link [[Swim to the docks|Sea Docks]]>><</link>>
 
 <</widget>>
 

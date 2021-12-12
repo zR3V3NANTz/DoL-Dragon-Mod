@@ -2109,13 +2109,16 @@ removed unused:
 	z-index: 106;
 }
 .layer-sexupper {
-	z-index: 107;
+	z-index: 108;
 }
 .layer-sexaboveclothes {
 	z-index: 108;
 }
 .layer-sexarmsskin {
-	z-index: 108;
+	z-index: 107;
+}
+.layer-sexrightarmsskin {
+	z-index: 109;
 }
 .layer-sexhands {
 	z-index: 110;

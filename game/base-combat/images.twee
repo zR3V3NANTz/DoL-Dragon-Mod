@@ -1133,7 +1133,7 @@ and _stanceCheck isnot "top">>
 			<<else>>
 				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xraybeastvaginal.png">
 			<</if>>
-		<<elseif $NPCList[0].skincolour is "black">>
+		<<elseif $vaginatarget isnot undefined and $NPCList[$vaginatarget].skincolour is "black">>
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayvaginal.png">
 		<<else>>
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayvaginal.png">
@@ -1149,6 +1149,29 @@ and _stanceCheck isnot "top">>
 		<<xraycum>>
 		<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayvaginaltentaclecum.png">
 	</div>
+<<elseif $vaginastate is "doublepenetrated">>
+	<<xraycum>>
+	<<if $NPCList[$vaginatarget].penis is "vaginadouble" and $NPCList[$vaginadoubletarget].penis is "vaginadouble">>
+		<<if $NPCList[$vaginatarget].skincolour is "black">>
+			<div @class="_vagClass" @id="_vagID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayvaginaldoubleblack.png">
+			</div>
+		<<else>>
+			<div @class="_vagClass" @id="_vagID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayvaginaldouble.png">
+			</div>
+		<</if>>
+	<<else>>
+		<<if $vaginatarget isnot undefined and $NPCList[$vaginatarget].skincolour is "black">>
+			<div @class="_vagClass" @id="_vagID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayvaginal.png">
+			</div>
+		<<else>>
+			<div @class="_vagClass" @id="_vagID">
+				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xrayvaginal.png">
+			</div>
+		<</if>>
+	<</if>>
 <</if>>
 
 <<set _anusClass to "i256" + (_wide ? " height64" : "")>>
@@ -1166,7 +1189,7 @@ and _stanceCheck isnot "top">>
 				<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/xraybeastanal.png">
 			<</if>>
 		</div>
-	<<elseif $NPCList[0].skincolour is "black">>
+	<<elseif $anustarget isnot undefined and $NPCList[$anustarget].skincolour is "black">>
 		<div @class="_anusClass" @id="_anusID">
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayanal.png">
 		</div>
@@ -1278,6 +1301,15 @@ and _stanceCheck isnot "top">>
 	<<elseif $vaginastate is "penetrated">>
 		<div class="i256" @id="_vagID">
 			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayvaginalcum.png">
+		</div>
+	<</if>>
+	<<if $condomVaginalImg and $vaginastate is "doublepenetrated">>
+		<div class="i256" @id="_vagID">
+			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayvaginaldoubleblack.png">
+		</div>
+	<<elseif $vaginastate is "doublepenetrated">>
+		<div class="i256" @id="_vagID">
+			<img @class="'anim-xray-8f-'+_animspeed" src="img/sex/black/xrayvaginaldoublecumblack.png">
 		</div>
 	<</if>>
 	<<if $condomAnalImg and $anusstate is "penetrated">>

@@ -3029,8 +3029,8 @@
 <</if>>
 
 <<if $vaginaaction is "doubleescape">>
-	<<set $anusaction to 0>>
-	<<set $vaginaactiondefault to "doubleescape">><<actionsanusdoubleescape>><<brat 10>><<set $vaginause to "penisdouble">><<set $vaginastate to "doubleentrance">>
+	<<set $vaginaaction to 0>>
+	<<set $vaginaactiondefault to "doubleescape">><<actionsvaginadoubleescape>><<brat 10>><<set $vaginause to "penisdouble">><<set $vaginastate to "doubleentrance">>
 	<<set $enemyanger += 5>>
 	<<set _otherNPCindex to "f">>
 	<<set _actiontext to "You escape ">>
@@ -3331,9 +3331,11 @@
 	<<analskilluse>>
 <</if>>
 
-<<if $anusaction is "doubleescape">><<set $anusaction to 0>><<set $anusactiondefault to "doubleescape">><<actionsanusdoubleescape $anustarget $anusdoubletarget>><<brat 10 $anustarget $anusdoubletarget>><<set $anususe to "penisdouble">><<set $anusstate to "doubleentrance">>
+<<if $anusaction is "doubleescape">>
+	<<set $anusaction to 0>><<set $anusactiondefault to "doubleescape">><<actionsanusdoubleescape $anustarget $anusdoubletarget>><<brat 10 $anustarget $anusdoubletarget>><<set $anususe to "penisdouble">><<set $anusstate to "doubleentrance">>
 	<<set $enemyanger += 5>>
 	<<set _otherNPCindex to "f">>
+	<<set _actiontext to "You escape ">>
 	<<set _npcA to $anustarget>>
 	<<set _npcB to $anusdoubletarget>>
 

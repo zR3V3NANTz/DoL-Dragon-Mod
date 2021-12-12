@@ -508,64 +508,64 @@ A sudden impact from behind knocks you over. You struggle, but the sound of a <<
 <<widget "destinationbondage">>
 	<<switch $bus>>
 	<<case "nightingale">>
-		<<link [[Next|Bondage Nightingale]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Nightingale]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "domus">>
-		<<link [[Next|Bondage Domus]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Domus]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "elk">>
-		<<link [[Next|Bondage Elk]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Elk]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "high">>
-		<<link [[Next|Bondage High]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage High]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "starfish">>
-		<<link [[Next|Bondage Starfish]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Starfish]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "barb">>
-		<<link [[Next|Bondage Barb]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Barb]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "connudatus">>
-		<<link [[Next|Bondage Connudatus]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Connudatus]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "wolf">>
-		<<link [[Next|Bondage Wolf]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Wolf]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "harvest">>
-		<<link [[Next|Bondage Harvest]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Harvest]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "oxford">>
-		<<link [[Next|Bondage Oxford]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Oxford]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "danube">>
-		<<link [[Next|Bondage Danube]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Danube]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "mer">>
-		<<link [[Next|Bondage Mer]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Mer]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "cliff">>
-		<<link [[Next|Bondage Cliff]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Cliff]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "industrial">>
-		<<link [[Next|Bondage Industrial]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Industrial]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "residential">>
-		<<link [[Next|Bondage Residential]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Residential]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "commercial">>
-		<<link [[Next|Bondage Commercial]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Commercial]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "park">>
-		<<link [[Next|Bondage Park]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Park]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "industrialdrain">>
-		<<link [[Next|Bondage Industrial]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Industrial]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "residentialdrain">>
-		<<link [[Next|Bondage Residential]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Residential]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<<case "commercialdrain">>
-		<<link [[Next|Bondage Commercial]]>><<endevent>><<set $eventskip to 1>><</link>>
+		<<link [[Next|Bondage Commercial]]>><<endevent "phaseless">><<set $eventskip to 1>><</link>>
 		<br>
 	<</switch>>
 	<br><br>

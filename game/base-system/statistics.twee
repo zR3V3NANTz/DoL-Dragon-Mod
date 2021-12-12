@@ -158,7 +158,7 @@ Nectar drank: $nectar_drank_stat mL
 	<br>
 <</if>>
 <<if $player.vaginaExist>>
-	Lewd fluid produced: $lube_produced_stat mL
+	Lewd fluid produced: <<print Math.floor($lube_produced_stat)>> mL
 	<br>
 <</if>>
 Fluid forcibly milked: $fluid_forced_stat mL

@@ -105,32 +105,32 @@ There's a path leading down to the beach.
 		Places of interest
 		<br>
 		<<if $scienceproject is "ongoing" and $scienceprojectdays is 0 and $daystate is "day" and $exposed lte 0>>
-			<<link [[Attend science fair|Science Fair]]>><</link>>
+			<<scienceicon>><<link [[Attend science fair|Science Fair]]>><</link>>
 			<br>
 		<</if>>
 		<<if $mathsproject is "ongoing" and $mathsprojectdays is 0 and $daystate is "day" and $exposed lte 0>>
-			<<link [[Attend maths competition|Maths Competition]]>><</link>>
+			<<mathicon>><<link [[Attend maths competition|Maths Competition]]>><</link>>
 			<br>
 		<</if>>
 		<<if $pillory_tenant.exists is 1 and $exposed lte 0>>
-			<<link [[Watch pillory (0:10)|Cliff Street Pillory]]>><<pass 10>><</link>>
+			<<pilloryicon>><<link [[Watch pillory (0:10)|Cliff Street Pillory]]>><<pass 10>><</link>>
 			<br>
 		<</if>>
 		<<beachicon>><<link [[Beach (0:05)|Beach]]>><<pass 5>><</link>>
 		<br>
 		<<if $chef_state is 8 and $daystate is "dusk">>
-		<<link [[Attend opening event (5:00)|Chef Opening]]>><</link>>
-		<br>
+			<<cafeicon>><<link [[Attend opening event (5:00)|Chef Opening]]>><</link>>
+			<br>
 		<<elseif $chef_state is 7 and $chef_rework gte 1 and $chef_rework lte 30>>
 
 		<<elseif $chef_state is 7 and $chef_rework lte 0>>
 			<<if $exposed lte 0>>
-				<<link [[Cafe (0:01)|Ocean Breeze Rework]]>><<pass 1>><</link>>
+				<<cafeicon>><<link [[Cafe (0:01)|Ocean Breeze Rework]]>><<pass 1>><</link>>
 				<br>
 			<</if>>
 		<<elseif $openinghours is 1>>
 			<<if $exposed lte 0>>
-				<<link [[Cafe (0:01)|Ocean Breeze]]>><<pass 1>><</link>>
+				<<cafeicon>><<link [[Cafe (0:01)|Ocean Breeze]]>><<pass 1>><</link>>
 				<br>
 			<<else>>
 			<</if>>
@@ -138,7 +138,7 @@ There's a path leading down to the beach.
 			<span class="blue">People are leaving the cafe.</span> It must be closing time.
 			<br>
 		<<else>>
-			<<link [[Cafe|Ocean Breeze Lock]]>><</link>>
+			<<cafeicon>><<link [[Cafe|Ocean Breeze Lock]]>><</link>>
 			<br>
 		<</if>>
 		<br>

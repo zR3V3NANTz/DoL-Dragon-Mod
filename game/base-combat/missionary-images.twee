@@ -337,13 +337,13 @@ Same as above, but with eyelashes.
 			<<if $rightarm is "bound" or $rightarm is "grappled" or $rightarm is "behind">>
 				<img class="layer-sexarmsboundskin anim-idle-2f" src="img/sex/missionary/bodywriting/right_shoulder_bound.png">
 			<<else>>
-				<img class="layer-sexarmsskin anim-idle-2f" src="img/sex/missionary/bodywriting/right_shoulder.png">
+				<img class="layer-sexrightarmsskin anim-idle-2f" src="img/sex/missionary/bodywriting/right_shoulder.png">
 			<</if>>
 		<<elseif $skin.right_shoulder.type is "object">>
 			<<if $rightarm is "bound" or $rightarm is "grappled" or $rightarm is "behind">>
 				<img class="layer-sexarmsboundskin anim-idle-2f" @src="'img/sex/missionary/bodywriting/' + $skin.right_shoulder.writing + '/right_shoulder.png'">
 			<<else>>
-				<img class="layer-sexarmsskin anim-idle-2f" @src="'img/sex/missionary/bodywriting/' + $skin.right_shoulder.writing + '/right_shoulder.png'">
+				<img class="layer-sexrightarmsskin anim-idle-2f" @src="'img/sex/missionary/bodywriting/' + $skin.right_shoulder.writing + '/right_shoulder.png'">
 			<</if>>
 		<</if>>
 	<</if>>
@@ -809,13 +809,13 @@ Same as above, but with eyelashes.
 			<<if $rightarm is "bound" or $rightarm is "grappled" or $rightarm is "behind">>
 				<img @class="'layer-sexarmsboundskin anim-doggy-4f-'+_animspeed" src="img/sex/missionary/bodywriting/right_shoulder_bound.png">
 			<<else>>
-				<img @class="'layer-sexarmsskin anim-doggy-4f-'+_animspeed" src="img/sex/missionary/bodywriting/right_shoulder.png">
+				<img @class="'layer-sexrightarmsskin anim-doggy-4f-'+_animspeed" src="img/sex/missionary/bodywriting/right_shoulder.png">
 			<</if>>
 		<<elseif $skin.right_shoulder.type is "object">>
 			<<if $rightarm is "bound" or $rightarm is "grappled" or $rightarm is "behind">>
 				<img @class="'layer-sexarmsboundskin anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/bodywriting/' + $skin.right_shoulder.writing + '/right_shoulder.png'">
 			<<else>>
-				<img @class="'layer-sexarmsskin anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/bodywriting/' + $skin.right_shoulder.writing + '/right_shoulder.png'">
+				<img @class="'layer-sexrightarmsskin anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/bodywriting/' + $skin.right_shoulder.writing + '/right_shoulder.png'">
 			<</if>>
 		<</if>>
 	<</if>>

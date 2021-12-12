@@ -1072,9 +1072,10 @@ Your sides are in the "$hairtype" style, and positioned <<if $hairposition is "f
 <br><br>
 Your fringe is in the "$fringetype" style.
 
-<<if $fringetype is "default">>
-	Changing your fringe from natural will set your sides to messy.
-<</if>>
+/*<<if $fringetype is "default">>
+ *	Changing your fringe from natural will set your sides to messy.
+ *<</if>>
+*/
 <br>
 
 <<linkradiogroup "$fringetype" _fringeTypeByName>>

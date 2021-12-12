@@ -2167,68 +2167,7 @@
 <</if>>
 
 <<if $NPCVirginityTypes is undefined>>
-	<<set $NPCVirginityTypes to {anal:false, oral:false, penile:false, vaginal:false, handholding:false, temple: false, kiss:false}>>
-	<<set _allVirginitiesPresent to {anal:true, oral:true, penile:true, vaginal:true, handholding:true, temple: false, kiss:true}>>
-	<<if $NPCList[0].chastity is undefined>>
-		<<for _i to 0; _i lt $NPCList.length; _i++>>
-			<<set $NPCList[_i].chastity to {penis:"", vagina:"", anus:""}>>
-		<</for>>
-	<</if>>
-	<<for _i to 0; _i lt $NPCNameList.length; _i++>>
-		<<set $NPCName[_i].purity to 0>>
-		<<set $NPCName[_i].corruption to 0>>
-		<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
-		<<set $NPCName[_i].chastity to {penis:"", vagina:"", anus:""}>>
-		<<generatePronouns $NPCName[_i]>>
-		<<switch $NPCNameList[_i]>>
-			<<case "Sydney">>
-				/* Has all virginities + temple virginity. */
-				<<set $NPCName[_i].virginity to {anal:true, oral:true, penile:true, vaginal:true, temple:true, handholding:true, kiss:true}>>
-			<<case "Robin" "Kylar" "Great Hawk">>
-				/* Has all virginities. */
-				<<set $NPCName[_i].virginity to clone(_allVirginitiesPresent)>>
-			<<case "Jordan">>
-				/* Has anal, oral, penile/vaginal, and kiss virginities. Missing handholding. */
-				<<set $NPCName[_i].virginity.handholding to false>>
-			<<case "Black Wolf">>
-				/* Has anal, oral, kiss, and handholding virginities. Missing penile/vaginal. */
-				<<set $NPCName[_i].virginity.penile to false>>
-				<<set $NPCName[_i].virginity.vaginal to false>>				
-			<<case "Gwylan">>
-				/* Missing all virginities. */
-				<<set $NPCName[_i].virginity.oral to false>>
-				<<set $NPCName[_i].virginity.handholding to false>>
-				<<set $NPCName[_i].virginity.penile to false>>
-				<<set $NPCName[_i].virginity.vaginal to false>>
-				<<set $NPCName[_i].virginity.anal to false>>
-				<<set $NPCName[_i].virginity.kiss to false>>
-			<<case "Charlie">>
-				/* Has oral, anal, and vaginal/penile virginities. Missing kiss and handholding. */
-				<<set $NPCName[_i].virginity.kiss to false>>
-				<<set $NPCName[_i].virginity.handholding to false>>
-			<<case "Eden">>
-				/* Has anal, oral and handholding virginity. Missing penile/vaginal and kiss. */
-				<<set $NPCName[_i].virginity.penile to false>>
-				<<set $NPCName[_i].virginity.vaginal to false>>
-				<<set $NPCName[_i].virginity.kiss to false>>
-			<<case "Sam" "Mason">>
-				/* Has anal and oral virginity. Missing penile/vaginal, kiss, and handholding. */
-				<<set $NPCName[_i].virginity.penile to false>>
-				<<set $NPCName[_i].virginity.vaginal to false>>
-				<<set $NPCName[_i].virginity.kiss to false>>
-				<<set $NPCName[_i].virginity.handholding to false>>
-			<<case "Alex" "Darryl" "Sirris" "Briar" "Wren">>
-				/* Missing all virginities. */
-				<<set $NPCName[_i].virginity to clone($NPCVirginityTypes)>>
-			<<default>>
-				/* Defaults to only having anal virginity. */
-				<<set $NPCName[_i].virginity.oral to false>>
-				<<set $NPCName[_i].virginity.penile to false>>
-				<<set $NPCName[_i].virginity.vaginal to false>>
-				<<set $NPCName[_i].virginity.kiss to false>>
-				<<set $NPCName[_i].virginity.handholding to false>>
-		<</switch>>
-	<</for>>
+	<<initNPCVirginities>>
 	<<set $templePromised to "">>
 <</if>>
 
@@ -2664,6 +2603,9 @@
 	/* for versions <= 0.3.4.8, run old version handler */
 		<<variablesVersionUpdate>>
 	<</if>>
+	<<if $saveVersions.last() isnot StartConfig.version>>
+		<<set $saveVersions.push(StartConfig.version)>>
+	<</if>>
 	/* * * * * * * * * * * * * * * * * * * * * * *
 	* new backwards compatibility code goes here
 	*/
@@ -2700,6 +2642,33 @@
 	<</if>>
 	<<if $chef_state gte 5 and $photo_known is undefined>>
 		<<set $photo_known to 1>>
+	<</if>>
+	<<if $cardcover is undefined>>
+		<<set $cardcover = { style: 0, colour: 'red' }>>
+	<</if>>
+
+	<<if $sleepStat is undefined>>
+		<<set $sleepStat to 0>>
+	<</if>>
+	
+	<<if $NPCName[0].virginity is undefined>>
+		<<initNPCVirginities>>
+	<</if>>
+
+	<!-- Jimmy: Reset NPC slots if necessary by checking .type === 0 
+			Old versions prior to 3.4.* did not have empty slots properly set to baseNPC. -->
+	<<for $_i = 0; $_i < $NPCList.length; $_i++>>
+		<<if $NPCList[$_i].type is 0>>
+			<<set $NPCList[$_i] to clone(setup.baseNPC)>>
+		<</if>>
+	<</for>>
+	<<unset $_i>>
+
+	<<if $player.virginity.vaginal is "Harper" or $player.virginity.penile is "Harper">>
+		<<earnFeat "Harper the Hypnotist">>
+	<</if>>
+	<<if $player.virginity.vaginal is "Morgan" or $player.virginity.penile is "Morgan">>
+		<<earnFeat "Morgan the Lost">>
 	<</if>>
 
 <</widget>>

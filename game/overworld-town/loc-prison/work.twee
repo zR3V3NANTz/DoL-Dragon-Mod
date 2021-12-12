@@ -421,6 +421,7 @@ You rest your hand on the <<persons>> ass in turn. <<He>> gives you a squeeze, a
 :: Prison Laundry Work Anus
 <<effects>>
 
+/* $NPCList[0] is relaxed quard, [1] is a random inmate, currently active as <<person>>, as generated on :: Prison Laundry Work Socialise */
 The <<person>> inserts <<his>> finger, pushing deeper.
 <<if $player.penisExist>>
     You shiver as <<he>> reaches your prostate.
@@ -430,9 +431,9 @@ No one seems to have noticed <<his>> violating you in the middle of the room.
 <<arousal 3000>>
 <<if $arousal gte 10000>>
     <<orgasm>>
-    You lean forward, out of breath, as the <<person>> withdraws <<his>> hand. <<generate_relaxed_guard 1>><<person2>><<relaxed_guard 1 cap>> looks over with a frown.<<gsuspicion>><<gattention>><<prison_attention 1>><<prison_guards -1>>
+    You lean forward, out of breath, as the <<person>> withdraws <<his>> hand. <<person1>><<relaxed_guard 0 cap>> looks over with a frown.<<gsuspicion>><<gattention>><<prison_attention 1>><<prison_guards -1>>
 <<else>>
-    <<generate_relaxed_guard 1>><<person2>><<relaxed_guard 1 cap>> stirs, and the <<person1>><<person>> withdraws <<his>> hand.
+    <<person1>><<relaxed_guard 0 cap>> stirs, and the <<person2>><<person>> withdraws <<his>> hand.
 <</if>>
 <br><br>
 

@@ -663,7 +663,7 @@
 <div class="i256">
 
 <<if $worn.head.name is "mini snowman">>
-	<img @class="'layer-sexlower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/head/minisnowman/active.png">>
+	<img @class="'layer-sexlower anim-doggy-4f-'+_animspeed" src="img/sex/doggy/active/head/minisnowman/active.png">
 <</if>>
 
 <<if $worn.upper.set is $worn.lower.set and setup.clothes.lower[$worn.lower.index].skirt is 1>>
@@ -727,7 +727,7 @@
 	<<elseif $worn.lower.state is "waist">>
 		<<if $worn.lower.name is "jeans">>
 			<img @class="'layer-sexlower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'waist.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'waist.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'waist.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -735,7 +735,7 @@
 	<<elseif $worn.lower.state is "thighs">>
 		<<if $worn.lower.name is "jeans">>
 			<img @class="'layer-sexlower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'thighs.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'thighs.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'thighs.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -743,7 +743,7 @@
 	<<elseif $worn.lower.state is "knees">>
 		<<if $worn.lower.name is "jeans">>
 			<img @class="'layer-sexlower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'knees.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'knees.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'knees.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -751,7 +751,7 @@
 	<<elseif $worn.lower.state is "ankles">>
 		<<if $worn.lower.name is "jeans">>
 			<img @class="'layer-sexlower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'ankles.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'ankles.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'ankles.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -1172,7 +1172,7 @@
 	<<elseif $worn.lower.state is "waist">>
 		<<if $worn.lower.name is "jeans">>
 			<img class="layer-sexlower anim-idle-2f" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'waist.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'waist.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'waist.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -1180,7 +1180,7 @@
 	<<elseif $worn.lower.state is "thighs">>
 		<<if $worn.lower.name is "jeans">>
 			<img class="layer-sexlower anim-idle-2f" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'thighs.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'thighs.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'thighs.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -1188,7 +1188,7 @@
 	<<elseif $worn.lower.state is "knees">>
 		<<if $worn.lower.name is "jeans">>
 			<img class="layer-sexlower anim-idle-2f" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'knees.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'knees.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'knees.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -1196,7 +1196,7 @@
 	<<elseif $worn.lower.state is "ankles">>
 		<<if $worn.lower.name is "jeans">>
 			<img class="layer-sexlower anim-idle-2f" @src="'img/sex/doggy/active/jeans/' + _feet_pos + 'ankles.png'">
-		<<elseif $worn.lower.short is 1>>
+		<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/shorts/' + _feet_pos + 'ankles.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 		<<else>>
 			<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/doggy/active/trousers/' + _feet_pos + 'ankles.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -1783,7 +1783,7 @@
 <<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set>>
 	<<if $worn.lower.name is "jeans">>
 		<img class="layer-sexlower anim-idle-2f" @src="'img/sex/missionary/active/jeans/' + $worn.lower.state + _feet_pos + '.png'">
-	<<elseif $worn.lower.short is 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 		<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/missionary/active/shorts/' + $worn.lower.state + _feet_pos + '.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 	<<else>>
 		<img class="layer-sexlower colour-lower anim-idle-2f" @src="'img/sex/missionary/active/trousers/' + $worn.lower.state + _feet_pos + '.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
@@ -2223,7 +2223,7 @@
 <<elseif !$worn.lower.type.includes("naked") and $worn.upper.set isnot $worn.lower.set>>
 	<<if $worn.lower.name is "jeans">>
 		<img @class="'layer-sexlower anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/active/jeans/' + $worn.lower.state + _feet_pos + '.png'">
-	<<elseif $worn.lower.short is 1>>
+	<<elseif setup.clothes.lower[$worn.lower.index].short is 1>>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/active/shorts/' + $worn.lower.state + _feet_pos + '.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">
 	<<else>>
 		<img @class="'layer-sexlower colour-lower anim-doggy-4f-'+_animspeed" @src="'img/sex/missionary/active/trousers/' + $worn.lower.state + _feet_pos + '.png'" @style="($worn.lower.colour is 'custom'? $worn.lower.colourCustom + _lowerOpacity : '')">

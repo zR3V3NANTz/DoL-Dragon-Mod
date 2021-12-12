@@ -4,6 +4,7 @@
 
 
 
+
 :: Robin
 <<set $NPCName[$NPCNameList.indexOf("Robin")].love to 50>>
 <<if $NPCName[$NPCNameList.indexOf("Robin")].love gte 50>>

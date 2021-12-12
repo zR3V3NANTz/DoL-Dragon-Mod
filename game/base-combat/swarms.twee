@@ -584,11 +584,12 @@
 <<widget "swarmName">>
 	<<if $args[0] is undefined or $args[0] gt 1>>
 		<<if $swarm.name.endsWith(" mass")>>
-			<<print ($swarm.name + "es")>>
+			<<set _swarmname to $swarm.name + "es">>
 		<<else>>
-			<<print ($swarm.name + "s")>>
+			<<set _swarmname to $swarm.name + "s">>
 		<</if>>
 	<<else>>
-		$swarm.name
+		<<set _swarmname to $swarm.name>>
 	<</if>>
+	_swarmname
 <</widget>>

@@ -40,7 +40,7 @@ You are on Mer Street. The street is dominated by the docks and shipping industr
 		<</if>>
 		Places of interest
 		<br>
-		<<link [[Docks|Docks]]>><</link>>
+		<<docksicon>><<link [[Docks|Docks]]>><</link>>
 		<br>
 		<<if $historytrait gte 2>>
 			<<link [[Coastal path (0:30)|Coast Path Mer]]>><<pass 30>><</link>>

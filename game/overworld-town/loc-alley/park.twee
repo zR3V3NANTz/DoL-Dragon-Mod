@@ -201,7 +201,7 @@ Tulips grow in great patches near the riverbank.
 				<<link [[Cross flyover to the industrial district (0:05)|Flyover Ex Naked]]>><</link>><<if $ex_flyover is undefined>><<exhibitionist5>><</if>>
 				<br>
 			<<elseif $exposed is 1 and $exhibitionism gte 35>>
-				<<link [[Cross flyover to the industrial district (0:05)|Flyover Ex Undies]]>><</link>><<if $ex_flyober is undefined>><<exhibitionist3>><</if>>
+				<<link [[Cross flyover to the industrial district (0:05)|Flyover Ex Undies]]>><</link>><<if $ex_flyover is undefined>><<exhibitionist3>><</if>>
 				<br>
 			<</if>>
 		<<else>>

@@ -126,7 +126,8 @@
 	<<if $rightarm is "swarmgrappled" and ($lefttarget is "self" or $targetYourself is false or _targetnumber is 1)>>
 		<<set _leftaction["Free your right arm"] to "leftfree">>
 	<<elseif _swarmamounts.active[2] gte 1 and $lefttarget isnot "self">>
-		<<set _leftaction[_swarmsteady + " one of the " + $swarm["name"]] to "leftswarm">>
+		<<silently>><<swarmName>><</silently>>
+		<<set _leftaction[_swarmsteady + " one of the " + _swarmname] to "leftswarm">>
 	<</if>>
 	<<if _swarmamounts.genital[0] lte 0 and _swarmamounts.genital[1] lte 0 and ($lefttarget is "self" or $targetYourself is false or _targetnumber is 1)>>
 		<<silently>><<genitals>><</silently>>
@@ -272,7 +273,8 @@
 	<<if $leftarm is "swarmgrappled" and ($righttarget is "self" or $targetYourself is false or _targetnumber is 1)>>
 		<<set _rightaction["Free your left arm"] to "rightfree">>
 	<<elseif _swarmamounts.active[2] gte 1 and $righttarget isnot "self">>
-		<<set _rightaction[_swarmsteady + " one of the " + $swarm["name"]] to "rightswarm">>
+		<<silently>><<swarmName>><</silently>>
+		<<set _rightaction[_swarmsteady + " one of the " + _swarmname] to "rightswarm">>
 	<</if>>
 	<<if _swarmamounts.genital[0] lte 0 and _swarmamounts.genital[1] lte 0 and ($righttarget is "self" or $targetYourself is false or _targetnumber is 1)>>
 		<<silently>><<genitals>><</silently>>
@@ -412,7 +414,8 @@
 <<widget "feetActionsSwarm">>
 <<set _feetaction to {}>>
 <<if $swarm.amount.active[2] gte 1 and $feettarget isnot "self">>
-	<<set _feetaction[_swarmsteady + " one of the " + $swarm["name"]] to "feetswarm">>
+	<<silently>><<swarmName>><</silently>>
+	<<set _feetaction[_swarmsteady + " one of the " + _swarmname] to "feetswarm">>
 <</if>>
 <<if _feetOptions is "free">>
 	<<if $water is 1 and $vorecreature is 0 and $swimmingskill gt 700 and $consensual isnot 1 and ($feettarget is "self" or $targetYourself is false or _targetnumber is 1)>>

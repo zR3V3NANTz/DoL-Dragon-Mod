@@ -238,7 +238,7 @@
 <</widget>>
 
 <<widget "leg_position_basic">>
-<<if $anususe is "penis" or $vaginause is "penis" or $anususe is 1 or $vaginause is 1>>
+<<if $anususe is "penis" or $vaginause is "penis" or $anususe is 1 or $vaginause is 1 or $chestuse is "penis" or $chestuse is 1 or $mouthuse is 1 or $mouthuse is "penis">>
 	<<set _leg_position to "up">>
 <<else>>
 	<<set _leg_position to "down">>
