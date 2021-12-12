@@ -2,7 +2,7 @@
 
 
 <<widget "flywait">>
-    <<add_link "<<dragonwingsicon>><<link [[Fly somewhere|Fly]]>><<pass 2>><</link>><br>">><<hideDisplay>>
+    <<add_link "<<dragonwingsicon>><<link [[Fly somewhere|Fly]]>><</link>><<dragon>><br>">><<hideDisplay>>
 <</widget>>
 
 :: Widgets Destination [widget]

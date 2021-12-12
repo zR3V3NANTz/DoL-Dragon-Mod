@@ -914,7 +914,7 @@
 <</silently>>_text_output<</widget>>
 
 <<widget "animals">>
-<<print either("bees", "elephants", "bunnies", "octopi", "chimps", "squid", "molluscs", "monkeys", "wasps", "baboons", "wolves", "bears", "elk", "seals", "dolphins", "whales", "jellyfish", "cats", "lions", "tigers", "cheetahs", "wild dogs", "panthers", "moles", "badgers", "honey badgers", "ducks", "geese", "sparrows", "robins", "perch", "pike", "salmon", "sturgeon", "frogs", "newts", "crocodiles", "toads", "hawks", "eagles", "cuttlefish", "pythons", "anacondas", "adders", "cobras", "sturgeon", "trout", "salmon", "tuna", "deer", "robins")>>
+<<print either("bees", "elephants", "bunnies", "octopi", "chimps", "squid", "molluscs", "monkeys", "wasps", "baboons", "wolves", "bears", "elk", "seals", "dolphins", "whales", "jellyfish", "cats", "lions", "tigers", "cheetahs", "wild dogs", "panthers", "moles", "badgers", "honey badgers", "ducks", "geese", "sparrows", "robins", "perch", "pike", "salmon", "sturgeon", "frogs", "newts", "crocodiles", "toads", "hawks", "eagles", "cuttlefish", "pythons", "anacondas", "adders", "cobras", "sturgeon", "trout", "salmon", "tuna", "deer", "robins", "dragons")>>
 <</widget>>
 
 <<widget "garden">>
@@ -5098,6 +5098,10 @@ School finishes on the first Monday of December.
 
 <<widget "cat">>
  | <span class="blue">Cat</span>
+<</widget>>
+
+<<widget "dragon">>
+ | <span class="blue">Dragon</span>
 <</widget>>
 
 <<widget "cow">>
