@@ -2650,4 +2650,13 @@
 		<<initNPCVirginities>>
 	<</if>>
 
+	<!-- Jimmy: Reset NPC slots if necessary by checking .type === 0 
+			Old versions prior to 3.4.* did not have empty slots properly set to baseNPC. -->
+	<<for $_i = 0; $_i < $NPCList.length; $_i++>>
+		<<if $NPCList[$_i].type is 0>>
+			<<set $NPCList[$_i] to clone(setup.baseNPC)>>
+		<</if>>
+	<</for>>
+	<<unset $_i>>
+
 <</widget>>
