@@ -224,7 +224,7 @@
 <<if _upgrades.impurity gt 0>>
 	<<set $featsPurityBoost to _upgrades.impurity / _details.impurity.cost * -1>>
 <</if>>
-<<if _upgrades.newLife gt 0>>
+<<if _upgrades.newLife gt 0 and $analpregdisable is "f">>
 	<<impregnate "tentacle" 400>>
 	<<fertilise>>
 	<<set _pregnancy to $sexStats.anus.pregnancy>>

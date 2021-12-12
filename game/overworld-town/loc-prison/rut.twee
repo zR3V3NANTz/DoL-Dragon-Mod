@@ -462,7 +462,7 @@ The darkness swallows the tentacles once more.
 	<<set $enemytype to "swarm">>
 
 
-	<<swarminit "slimes" "slime masses" "moving towards you" "encircle you" "fend off" 4 2>>
+	<<swarminit "slimes" "slime mass" "moving towards you" "encircle you" "fend off" 4 2>>
 	<<set $timer to 8>>
 <</if>>
 

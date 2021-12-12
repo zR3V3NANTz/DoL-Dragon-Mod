@@ -9,7 +9,9 @@
 Degrees of Lewdity
 
 :: Start [nosave]
-<<gameStartOnly>>
+<<if $intro is undefined>>
+	<<gameStartOnly>>
+<</if>>
 <<effects>>
 
 <<if $images is 1>>

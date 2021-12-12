@@ -5,9 +5,20 @@
 			<<set _looks to ($enemyno is 1? "looks" : "look")>>
 			<<set _doesntlook to ($enemyno is 1? "doesn't look" : "don't look")>>
 			<<set _is to ($enemyno is 1? "is" : "are")>>
-
-			<<if ["m", "f", "i", "n", "t"].includes($NPCList[0].pronoun)>>
-				<<set $pronoun to $NPCList[0].pronoun>>
+			<<if $enemyno is 1>>
+				<<if $enemynomax is 1>>
+					<<set _n to 0>>
+				<<else>>
+					<<for $_i to 0; $_i lt $enemynomax; $_i++>>
+						<<if $NPCList[$_i].active is "active" and $NPCList[$_i].stance isnot "defeated">>
+							<<set _n to $_i>>
+							<<break>>
+						<</if>>
+					<</for>>
+				<</if>>
+			<</if>>
+			<<if ["m", "f", "i", "n", "t"].includes($NPCList[_n].pronoun)>>
+				<<set $pronoun to $NPCList[_n].pronoun>>
 			<<elseif $debugdisable is "f">>
 				<span class="red">ERROR: Unexpected $$NPCList[0].pronoun: [$NPCList[0].pronoun]</span>
 			<</if>>
