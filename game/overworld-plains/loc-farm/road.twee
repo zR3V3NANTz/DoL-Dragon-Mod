@@ -1436,7 +1436,7 @@ You spur your steed to a trot, and ride into the countryside.
 <<if $thighskill gte random(1, 1200)>>
 	You direct the horse away from the ditch with your knees, <span class="green">and your surety calms <<bhim>>.</span>
 	<<if $monster is 1>>
-		"Sorry," <<bhe>> says. "I'm acting like a foal. Thank you."<<llrespect>><<farm_horses -3>>
+		"Sorry," <<bhe>> says. "I'm acting like a foal. Thank you."
 	<</if>>
 	<br><br>
 <<else>>

@@ -3154,7 +3154,7 @@
 		<<set $anusaction to 0>><<meek 10 $anustarget>><<analskilluse>><<set $anusactiondefault to "penispussy">>
 		<<if (1000 - ($rng * 10) - ($enemytrust * 10) - $vaginalskill + $enemyanger) lte (($enemyarousalmax / ($enemyarousal + 1)) * 100)>>
 			<<personselect $anustarget>>
-			<<submission 2 $anustarget>><<set $vaginause to "penis">><<set $NPCList[$anustarget].penis to "vaginaentrance">><<set $anususe to 0>><<set $vaginastate to "entrance">><<set $anusstate to 0>>
+			<<submission 2 $anustarget>><<set $vaginause to "penis">><<set $NPCList[$anustarget].penis to "vaginaentrance">><<set $anususe to 0>><<set $vaginastate to "entrance">><<set $anusstate to 0>><<set $vaginatarget to $anustarget>><<set $anustarget to 0>>
 			<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
 		<<else>>
 			You spread your thighs, but fail to garner interest.
@@ -3193,7 +3193,7 @@
 			<</if>>
 			<<personselect _npcA>>
 
-			<<submission 2 _npcA>><<set $vaginause to "penis">><<set $NPCList[_npcA].penis to "vaginaentrance">><<set $anususe to "penis">><<set $vaginastate to "entrance">>
+			<<submission 2 _npcA>><<set $vaginause to "penis">><<set $NPCList[_npcA].penis to "vaginaentrance">><<set $anususe to "penis">><<set $vaginastate to "entrance">><<set $vaginatarget to _npcA>>
 			<span class="lblue">You spread your thighs, giving clear access to your pussy, and <<combatperson>> takes advantage and moves <<his>> penis away from your butt.</span>
 		<<else>>
 			You spread your thighs, but fail to garner interest.
