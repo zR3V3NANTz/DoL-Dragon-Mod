@@ -80,7 +80,7 @@
 	Landry wants you to find a young hacker living at the Domus street orphanage.
 	<br>
 <<elseif $pub_hack_job is 2>>
-	Convince the hacker kid to work with you.
+	Convince the hacker to work with you.
 	<br>
 <<elseif $pub_hack_job is 3>>
 	<<if not $hacker_tasks.includes("bailey")>>
