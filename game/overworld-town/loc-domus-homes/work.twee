@@ -109,7 +109,7 @@ You walk up to one of the homes and knock on the door.
 
 	<<elseif $rng gte 11>>
 
-	<<generate1>><<generate2>><<person1>>A <<person>> answers the door. "Yes?" <<he>> says.
+	<<generate1>><<generatep2>><<person1>>A <<person>> answers the door. "Yes?" <<he>> says.
 	<br><br>
 
 	Before you can respond, a <<person2>><<person>> calls out, <<his>> head buried in a newspaper. "Who is it?"
@@ -126,9 +126,9 @@ You walk up to one of the homes and knock on the door.
 		<br><br>
 		"Shut up," <<he>> rolls <<his>> eyes. "Yeah?"
 		<br><br>
-	<<elseif $fameexhibitionism gte 600 and $rng%2>>"It's that flasher kid from the orphanage," the <<person1>><<person>> says.
+	<<elseif $fameexhibitionism gte 600 and $rng%2>>"It's that flasher <<girl>> from the orphanage," the <<person1>><<person>> says.
 	<br><br>
-	<<else>>"Just some kid," the <<person1>><<person>> says.
+	<<else>>"Just some <<girl>>," the <<person1>><<person>> says.
 	<br><br>
 	<</if>>
 

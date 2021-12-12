@@ -1009,12 +1009,12 @@ You chat with the other patients.
 	"So this is where you've been hiding away?" <<he>> says.
 	<<if $chef_state gte 7 and ($chef_rework is undefined or $chef_rework is 0)>>
 		<<if $NPCName[$NPCNameList.indexOf("Sam")].gender>>"That man,<<else>>"That lady,<</if>>
-		Sam, the owner at Ocean Breeze, was offering the orphan kids money to find you.
+		Sam, the owner at Ocean Breeze, was offering the orphans money to find you.
 		The customers are furious about the lack of cream buns.
-	<<elseif $orphan_hope gte 25>>"Those orphan kids were looking for you. Making search parties along the beach.
-	<<elseif $orphan_hope lte -10>>"I don't blame you. The kids in that orphanage seem miserable these days.
+	<<elseif $orphan_hope gte 25>>"Those orphans were looking for you. Making search parties along the beach.
+	<<elseif $orphan_hope lte -10>>"I don't blame you. The orphans seem miserable these days.
 	<<elseif $NPCName[$NPCNameList.indexOf("Kylar")].love gte 30 and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
-		"That shy kid you hang out with was skulking around the street looking for you.
+		"That shy <<nnpc_gendery "Kylar">> you hang out with was skulking around the street looking for you.
 	<<elseif $fameexhibitionism gte 500>>"I think the town's pervs have missed you. Some creep in a car offered me money to strip!
 	<<else>>I thought I hadn't seen you around lately.
 	<</if>>
