@@ -2659,4 +2659,11 @@
 	<</for>>
 	<<unset $_i>>
 
+	<<if $player.virginity.vaginal is "Harper" or $player.virginity.penile is "Harper">>
+		<<earnFeat "Harper the Hypnotist">>
+	<</if>>
+	<<if $player.virginity.vaginal is "Morgan" or $player.virginity.penile is "Morgan">>
+		<<earnFeat "Morgan the Lost">>
+	<</if>>
+
 <</widget>>
