@@ -2162,7 +2162,7 @@
 <</if>>
 
 <<if $NPCVirginityTypes is undefined>>
-	<<initNPCVirginities>>
+	<<initAllNPCVirginities>>
 	<<set $templePromised to "">>
 <</if>>
 
@@ -2647,8 +2647,14 @@
 	<</if>>
 	
 	<<if $NPCName[0].virginity is undefined>>
-		<<initNPCVirginities>>
+		<<initAllNPCVirginities>>
 	<</if>>
+
+	<<for $_i = 0; $_i < $NPCName.length; $_i++>>
+		<<if $NPCName[$_i].virginity is undefined>>
+			<<InitNPCVirginity $_i>>
+		<</if>>
+	<</for>>
 
 	<!-- Jimmy: Reset NPC slots if necessary by checking .type === 0 
 			Old versions prior to 3.4.* did not have empty slots properly set to baseNPC. -->

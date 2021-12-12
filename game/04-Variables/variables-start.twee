@@ -835,7 +835,7 @@
 }>>
 
 <<if $NPCVirginityTypes is undefined>>
-	<<initNPCVirginities>>
+	<<initAllNPCVirginities>>
 <</if>>
 
 <<set $templePromised to "">>
