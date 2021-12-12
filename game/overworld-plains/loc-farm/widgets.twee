@@ -1209,7 +1209,7 @@
 		"Here's a little extra." <<He>> hands you <<printmoney $farm.wage>>.
 	<</if>>
 	<br><br>
-	"I'll close up," <<he>> says as you walk outside. "Have a safe journey."
+	"I'll close up," <<he>> says as you walk outside. <<if $farm_stage lt 7>>"Have a safe journey."<</if>>
 	<br><br>
 
 <<elseif $farm_work.cattle_need gte 1>>

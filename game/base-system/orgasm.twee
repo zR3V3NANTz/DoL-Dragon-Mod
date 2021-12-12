@@ -550,7 +550,7 @@
 			<<if $daystate isnot "night" and $daystate isnot "dusk" and $hour isnot 6>>
 				<<set $_quiet to "club">>
 			<<else>>
-				You steady yourself as your spasms subside. Fortunately, the loud ambient noise has stifled your moans, and the dim lights made your spasms almost imperceptible. Still, as you look around, you notice a patron staring at you. <<generate1>><<He>> grins and give you a wink, before getting up and leaving.
+				You steady yourself as your spasms subside. Fortunately, the loud ambient noise has stifled your moans, and the dim lights made your spasms almost imperceptible. Still, as you look around, you notice a patron staring at you. <<generate1>><<person1>><<He>> grins and give you a wink, before getting up and leaving.
 				<<endevent>>
 				<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<fameexhibitionism 10>>
 			<</if>>	

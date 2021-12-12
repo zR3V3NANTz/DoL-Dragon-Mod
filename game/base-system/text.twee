@@ -6249,7 +6249,7 @@ $worn.genitals.name
 	<</if>>
 <</silently>><<if $args[1] isnot "silent">><<print _text_output>><</if>><</widget>>
 
-<<widget "Number">><<number $args[0] silent>><<capitalise>>
+<<widget "Number">><<number $args[0] silent>><<capitalise>><</widget>>
 
 <<widget "location_text">>
 <<switch $location>>

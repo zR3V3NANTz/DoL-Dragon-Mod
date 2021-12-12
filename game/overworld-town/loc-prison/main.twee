@@ -1698,11 +1698,11 @@ Panting, <<veteran_guard 0>> steps away from the curled <<person2>><<person>>. Y
                     <<link [[Soar to the mainland|Prison Soar]]>><</link>>
                     <br><br>
                 <</if>>
-                <<link [[Leave (0:05)|Prison Yard]]>><<pass 6>><</link>>
+                <<link [[Leave (0:05)|Prison Yard]]>><<pass 5>><</link>>
                 <br>
             <</if>>
         <<else>>
-            <<link [[Leave (0:05)|Prison Yard]]>><<pass 6>><</link>>
+            <<link [[Leave (0:05)|Prison Yard]]>><<pass 5>><</link>>
             <br>
         <</if>>
         <<prison_map spire>>
