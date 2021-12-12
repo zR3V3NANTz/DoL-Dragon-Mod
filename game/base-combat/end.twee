@@ -445,13 +445,7 @@
 <<widget "clearnpc">>
 
 <<for _i = 0; _i < $NPCList.length; _i++>>
-	<<set $NPCList[_i] to {
-		"chastity": { penis: "", vagina: "", anus: "" },
-		"location": {},
-		"skills": {},
-		"pronouns": {},
-		"traits": []
-	}>>
+	<<set $NPCList[_i] to clone(setup.baseNPC)>>
 <</for>>
 
 <<set $pronoun to 0>>
@@ -486,13 +480,7 @@
 <</if>>
 
 <<set _i to $args[0]>>
-<<set $NPCList[_i] to {
-	"chastity": { penis: "", vagina: "", anus: "" },
-	"location": {},
-	"skills": {},
-	"pronouns": {},
-	"traits": []
-}>>
+<<set $NPCList[_i] to clone(setup.baseNPC)>>
 <<if $enemyno gt 0>>
 	<<set $enemyno -= 1>>
 	<<set $enemynomax -= 1>>
