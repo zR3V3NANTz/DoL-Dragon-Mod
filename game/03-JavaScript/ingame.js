@@ -719,7 +719,7 @@ window.DefaultActions = {
 			to.value[type][person][part].pushUnique(action);
 		});
 	},
-	get: function (type, person, part, defaultValue = 'rest', from = V.actionDefaults) {
+	get: function (type, person, part, from = V.actionDefaults, defaultValue = 'rest') {
 		if (from[type] === undefined
 			|| from[type][person] === undefined
 			|| from[type][person][part] === undefined) {

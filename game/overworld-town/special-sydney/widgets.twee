@@ -801,7 +801,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "sydneyMum">><<silently>>
-<<sydneymum>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<sydneymum>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "sydneymother">><<silently>>
@@ -813,7 +813,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "sydneyMother">><<silently>>
-<<sydneymother>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<sydneymother>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "sydneyOtherParent">><<silently>>

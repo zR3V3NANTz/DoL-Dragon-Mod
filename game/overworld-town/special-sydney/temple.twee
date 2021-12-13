@@ -1398,7 +1398,7 @@ After a few minutes that feel too long, Jordan finishes <<nnpc_his "Jordan">> wo
 	<br><br>
 	Sydney lets out a long breath.
 	<<if $examSafe is 2>>
-		"Good thing neither of us has a penis, right? I guess we never had anything to worry about." Syndey hugs you, and the two of you head back into the temple.
+		"Good thing neither of us has a penis, right? I guess we never had anything to worry about." Sydney hugs you, and the two of you head back into the temple.
 	<<else>>
 		"I guess we're fine, as long as we don't go sticking our dicks where they don't belong." <<He>> gives your <<bottom>> a playful slap, then laughs as <<he>> pulls you into a hug. You head back into the temple with a smile on your face.
 	<</if>>
@@ -2361,7 +2361,7 @@ After a few minutes, you emerge in a small round room with no windows. Various i
 <</if>>
 <<set $sydneySeen.pushUnique("punishment")>>
 The <<monks>> strip you and Sydney bare, leaving only your gags and collars.
-You're lead to the padding and forced down onto your knees. The <<priest>> pulls out some belts and grabs ahold of your arms. Your arms are wrapped around Syndey's waist, and your wrists are bound behind <<person1>><<him>>. Sydney's arms are restrained similarly. The <<person2>><<priest>> acquires more belts and wraps them around you and Sydney's waists, pressing the two of your together. One more belt wraps around both of your backs, leaving little wriggle room. Finally, a pair of shackles bind your legs together.
+You're led to the padding and forced down onto your knees. The <<priest>> pulls out some belts and grabs ahold of your arms. Your arms are wrapped around Sydney's waist, and your wrists are bound behind <<person1>><<him>>. Sydney's arms are restrained similarly. The <<person2>><<priest>> acquires more belts and wraps them around you and Sydney's waists, pressing the two of you together. One more belt wraps around both of your backs, leaving little wriggle room. Finally, a pair of shackles bind your legs together.
 <br><br>
 "<<if $templePromised is "Sydney">>You have broken your promise to one another,<<else>>The both of you have succumbed to pleasure and desire with one another,<</if>>" the <<priest>> speaks, brandishing a whip with nine chords hanging from the cudgel. "Given your special bond, you'll experience pain with one another as the first step to make amends." You can feel Sydney's heart race. You're overcome with fear yourself at what's coming<<if $masochism_level gte 1>>, along with a hint of excitement<</if>>.
 <br><br>
@@ -2403,7 +2403,7 @@ There's comfort in being alone like this, but it doesn't last.
 You and Sydney both hold to each other tight as the doors open and light floods back into the room.
 <br><br>
 <<if $punishmentCounter gte 10>>
-	<<person2>>The <<priest>> bows to you.<<He>> slowly approaches you, and raises <<his>> hand, causing both you and Sydney to flinch in fear.
+	<<person2>>The <<priest>> bows to you. <<He>> slowly approaches you, and raises <<his>> hand, causing both you and Sydney to flinch in fear.
 	<br><br>
 	The strike never comes. Instead, you hear metal clattering to the ground. "Congratulations, my children," <<he>> drawls. "You have endured much suffering, and although you failed time and time again, you've shown your bond to be strong enough to last. <span class="green">You are pure once more.</span>" Your bindings are all released. A <<monk>> steps behind you and unties your gags. <<He>> also removes your collars. <<tearful>> you and Sydney remain clinging to each other, supporting each other to a standing position. Your knees tremble.
 	<br><br>
@@ -2588,7 +2588,7 @@ You're led through the tunnel and back to the temple. Sydney clings to you the w
 <br><br>
 "We... we made it..." <<he>> looks up to you with tears running down <<his>> face. "I love you."
 <br><br>
-You continue to hold each other. Eventually, though <<he>> stills shakes, Sydney stands. "I... I need to go home. <<sydneyMum>> is probably worried sick. I'll... I'll see you tomorrow..." <<He>> walks away, your hands slowly parting from each other. <<He>> looks back to you before leaving the temple, and blows you a weak kiss. <<stress -3>><<lstress>>
+You continue to hold each other. Eventually, though <<he>> still shakes, Sydney stands. "I... I need to go home. <<sydneyMum>> is probably worried sick. I'll... I'll see you tomorrow..." <<He>> walks away, your hands slowly parting from each other. <<He>> looks back to you before leaving the temple, and blows you a weak kiss. <<stress -3>><<lstress>>
 <br><br>
 <<link [[Next|Temple]]>><<endevent>><<set $eventskip to 1>><</link>>
 <br>

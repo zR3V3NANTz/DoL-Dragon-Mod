@@ -459,7 +459,7 @@
 <<else>>
 	<<bhimself>>
 <</if>>
-<<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "bhes">><<silently>>
@@ -483,7 +483,7 @@
 <<else>>
 	<<bhes>>
 <</if>>
-<<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "hes">><<silently>>
@@ -750,7 +750,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "Him">><<silently>>
-<<him>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<him>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "hisselect">>
@@ -1269,7 +1269,7 @@ in dev alternative to current "breasts" widget
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "combatPerson">><<silently>>
-	<<combatperson>><<set _text_output to _text_output.toLocaleUpperFirst()>>	
+	<<combatperson>><<capitalise>>	
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "personselect">>
@@ -1361,7 +1361,7 @@ in dev alternative to current "breasts" widget
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "Wife">><<silently>>
-<<wife>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<wife>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "victimgirl">>
@@ -5327,7 +5327,7 @@ a teacher
 	<<set _text_output to "eleventh">>
 <</if>>
 <<if $args[1]>>
-	<<print _text_output.toLocaleUpperFirst()>>
+	<<capitalise>>
 <<else>>
 	<<print _text_output>>
 <</if>>
@@ -5806,7 +5806,7 @@ a teacher
 <</silently>>_text_output<</widget>>
 
 <<widget "Master">><<silently>>
-<<master>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<master>><<capitalise>>
 <</silently>>_text_output<</widget>>
 
 <<widget "daughter">><<silently>>
@@ -5823,7 +5823,7 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_He">><<silently>>
-<<nnpc_he $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<nnpc_he $args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_him">><<silently>>
@@ -5832,7 +5832,7 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_Him">><<silently>>
-<<nnpc_him $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<nnpc_him $args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_his">><<silently>>
@@ -5841,7 +5841,7 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_His">><<silently>>
-<<nnpc_his $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<nnpc_his $args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_hers">><<silently>>
@@ -5855,7 +5855,7 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_Hes">><<silently>>
-<<nnpc_hes $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<nnpc_hes $args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_himself">><<silently>>
@@ -5899,7 +5899,7 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_Brother">><<silently>>
-<<nnpc_brother $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<nnpc_brother $args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_title">><<silently>>
@@ -5907,7 +5907,7 @@ a teacher
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "nnpc_Title">><<silently>>
-<<nnpc_title $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<nnpc_title $args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "daylight">>
@@ -6254,7 +6254,7 @@ $worn.genitals.name
 	<</if>>
 <</silently>><<if $args[1] isnot "silent">><<print _text_output>><</if>><</widget>>
 
-<<widget "Number">><<number $args[0] silent>><<print _text_output.toLocaleUpperFirst()>><</widget>>
+<<widget "Number">><<number $args[0] silent>><<capitalise>><</widget>>
 
 <<widget "location_text">>
 <<switch $location>>
@@ -6322,7 +6322,7 @@ $worn.genitals.name
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "Plant_details">><<silently>>
-<<plant_details $args[0]>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<plant_details $args[0]>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "tower_creature_text">>

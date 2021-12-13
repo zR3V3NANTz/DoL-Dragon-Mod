@@ -1398,7 +1398,7 @@ The snakes slither off of you, escaping through nooks and crannies all around th
 	<<violence 1>>
 	<<neutral 1>>
 	<<molested>>
-	<<beastNEWinit 1 bear>>
+	
 	<<beastCombatInit>><<set $enemytrust -= 40>><<set $enemyanger += 40>><<set $enemyhealthmax to 400>><<set $enemyhealth to 400>><<set $enemyarousalmax to 1000>>
 	You continue on your path. You don't get far before hearing a roar behind you.
 	<<if $monster is 1>>
@@ -1513,7 +1513,7 @@ The snakes slither off of you, escaping through nooks and crannies all around th
 
 :: Forest Wolf Mate
 <<location "forest">><<effects>>
-<<beastNEWinit 1 wolf>>
+
 
 You drop to the ground and adopt a mating posture.
 <<deviancy2>>
@@ -1530,7 +1530,7 @@ The <<beasttype>> paces towards you and sniffs.
 
 :: Forest Wolf Mate2
 <<location "forest">><<effects>>
-<<beastNEWinit 2 wolf>>
+
 
 You drop to the ground and adopt a mating posture.
 <<deviancy3>>
@@ -1560,7 +1560,7 @@ They growl at each other. After a brief tussle, with many scratches and bites, t
 	<<if $monster is 1>>
 		"<<pPackbrother>>. Good to see." <br><br>
 	<</if>>
-
+	<<if $monster is 1 or $bestialitydisable is "f">>
 		<<if $phase is 1>>
 			<<if $deviancy gte 35>>
 			<<link [[Mate|Forest Wolf Sex2]]>><<set $phase to 2>><<set $sexstart to 1>><</link>><<deviant3>>
@@ -1572,6 +1572,7 @@ They growl at each other. After a brief tussle, with many scratches and bites, t
 			<br>
 			<</if>>
 		<</if>>
+	<</if>>
 	<<link [[Pat and depart|Forest Pat]]>><<trauma -6>><<stress -12>><</link>><<ltrauma>><<lstress>>
 	<br>
 
@@ -2468,7 +2469,7 @@ The pair share a grin. "We'll be happy to oblige," <<he>> says, stepping closer.
 
 :: Forest Slime Wolf Submit willingly
 <<location "forest">><<effects>>
-<<beastNEWinit 1 wolf>>
+
 In one motion, you turn and drop to your hands and knees. You wiggle provocatively, and growl.
 <br>
 <<deviancy4>>
@@ -2481,7 +2482,7 @@ A <<beasttype>> steps out from the forest, sniffs you, then mounts.
 
 :: Forest Slime Wolf Obey
 <<location "forest">><<effects>>
-<<beastNEWinit 1 wolf>>
+
 In one motion, you turn and drop to your hands and knees. You wiggle provocatively, and growl.
 <br><br>
 
@@ -2493,7 +2494,7 @@ A <<beasttype>> steps out from the forest, sniffs you, then mounts.
 
 :: Forest Slime Wolf Defy
 <<location "forest">><<effects>>
-<<beastNEWinit 1 wolf>>
+
 
 <<if $slimeDefyCooldown>>
 	You turn and run into the forest. The slime tries to overpower your will, and feel a jolt of pain as the slime punishes you for defiance. However, <span class="teal">it's still worn out from overpowering you earlier.</span> You feel it try, <span class="green">but fail,</span> to force your steps in the opposite direction.

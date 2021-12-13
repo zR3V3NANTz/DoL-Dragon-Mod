@@ -79,7 +79,7 @@
 		<<elseif $gwylan_aborted is 3>>
 			<<set $gwylan_aborted to 0>>
 			<br><br>
-			"Hey," Gwylan says as you walk in. <<He>> looks concerned. "Are you feeling okay? You look a little pale, and I thought I heard you screaming the other night..."	
+			"Hey," Gwylan says as you walk in. <<nnpc_He "Gwylan">> looks concerned. "Are you feeling okay? You look a little pale, and I thought I heard you screaming the other night..."	
 		
 		<<else>>
 			You hear Gwylan shuffling somewhere in the gloom.

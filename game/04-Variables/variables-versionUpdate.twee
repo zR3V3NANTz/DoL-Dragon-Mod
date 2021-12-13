@@ -2167,7 +2167,7 @@
 <</if>>
 
 <<if $NPCVirginityTypes is undefined>>
-	<<initNPCVirginities>>
+	<<initAllNPCVirginities>>
 	<<set $templePromised to "">>
 <</if>>
 
@@ -2652,8 +2652,14 @@
 	<</if>>
 	
 	<<if $NPCName[0].virginity is undefined>>
-		<<initNPCVirginities>>
+		<<initAllNPCVirginities>>
 	<</if>>
+
+	<<for $_i = 0; $_i < $NPCName.length; $_i++>>
+		<<if $NPCName[$_i].virginity is undefined>>
+			<<InitNPCVirginity $_i>>
+		<</if>>
+	<</for>>
 
 	<!-- Jimmy: Reset NPC slots if necessary by checking .type === 0 
 			Old versions prior to 3.4.* did not have empty slots properly set to baseNPC. -->
@@ -2670,5 +2676,16 @@
 	<<if $player.virginity.vaginal is "Morgan" or $player.virginity.penile is "Morgan">>
 		<<earnFeat "Morgan the Lost">>
 	<</if>>
+
+	<!-- DefaultActions JS routine for error correction. -->
+	<<run
+		/* Test 1 - If regrab[0] is an object, there was a failure. */
+		let temp = DefaultActions.get('rape', 'Everyone', 'regrab')[0];
+		if (typeof temp === 'object') {
+			/* Reset everything as a final step, the error is consumed. */
+			V.actionDefaults = temp;
+			V.actionDefaults = DefaultActions.check(DefaultActions.setup())
+		}
+	>>
 
 <</widget>>

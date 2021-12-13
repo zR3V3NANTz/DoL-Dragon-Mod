@@ -393,7 +393,7 @@
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "pPackbrother">><<silently>>
-<<ppackbrother>><<set _text_output to _text_output.toLocaleUpperFirst()>>
+<<ppackbrother>><<capitalise>>
 <</silently>><<print _text_output>><</widget>>
 
 <<widget "pheat">><<silently>>

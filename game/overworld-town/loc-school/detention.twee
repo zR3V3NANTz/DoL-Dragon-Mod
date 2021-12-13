@@ -1283,7 +1283,7 @@ Leighton puts the paddle down on the desk and gives the <<person2>><<person>> on
 		<<case 4>>
 			Leighton looks over <<his>> shoulder at the <<print $paddle_other_student>>. <<He>> smirks. "Maybe I'll let our friend have a go with you when I'm done."<<set $stress += 6>><<gstress>>
 		<<case 5>>
-			Leighton doesn't let up, bullying your <<bottom>> with a vicious barrage of whacks. The <<print $paddle_other_student_A>> watches with excitement.<<violence 5>><<combattrauma 5>><<ggstress>><<ggtrauma>><<ggpain>>
+			Leighton doesn't let up, bullying your <<bottom>> with a vicious barrage of whacks. The <<print $paddle_other_student>> watches with excitement.<<violence 5>><<combattrauma 5>><<ggstress>><<ggtrauma>><<ggpain>>
 		<<case 6>>
 			<<if $worn.under_lower.exposed gte 1>>
 				Your bare butt stings more and more with each blow of the paddle, the skin turning an angry shade of red.<<violence 4>><<ggpain>>
