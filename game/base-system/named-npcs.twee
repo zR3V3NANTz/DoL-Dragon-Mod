@@ -630,8 +630,8 @@ alternative way to write that:
 			<<set $NPCList[0].monster to 0>>
 			<<set $NPCList[0].pronoun to "i">>
 		<</if>>
-	<<elseif $blackwolfmonster gte 1 or $bestialitydisable is "t">>
-		<<if ($monsterchance gte $rng and ($hallucinations gte 1 or $monsterhallucinations is "f")) or ($blackwolfmonster is 2) or ($bestialitydisable is "t")>>
+	<<elseif $blackwolfmonster gte 1>>
+		<<if ($monsterchance gte $rng and ($hallucinations gte 1 or $monsterhallucinations is "f")) or ($blackwolfmonster is 2)>>
 			<<set $blackWolfMonsterRoll to true>>
 			<<set $NPCList[0].monster to "monster">>
 			<<set $monster to 1>>

@@ -785,7 +785,7 @@ One of the hunters, a <<beasttype>>,
 	<<if $wolfpackharmony gte 10>>
 		Yelping from pain, the <<beasttype>> takes a few steps back before turning and presenting <<bhis>> backside to you.
 		<<if $monster is 1>>
-			"<<pPackbrother>> may take <<phis>> reward."
+			"<<pPackbrother>> may take <<pher>> reward."
 		<</if>>
 		<br><br>
 		<<if $deviancy gte 35>>

@@ -453,6 +453,7 @@
 					<<print '<div class="goldbar" style="width:' + $percent + '%"></div>'>>
 				</div>
 		</div>
+		<br>
 	<</if>>
 
 	<<if $dockwork gte 2>>
@@ -471,6 +472,7 @@
 					<span class="purple">The other workers view you with contempt.</span>
 				<</if>>
 		</div>
+		<br>
 	<</if>>
 
 </div>

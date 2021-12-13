@@ -1169,7 +1169,7 @@ You walk through the cave, and emerge at the pier. The boat awaits. You sit bene
             <br>
             <<veteran_guard 2 cap>><<person3>> shakes <<his>> head. "With you kids around?" <<he>> replies. "Nah. Even the odd inmate is good company. Like this one."
             <br>
-            "Gonna miss <<phis>> help," <<anxious_guard 0>> adds.
+            "Gonna miss <<pher>> help," <<anxious_guard 0>> adds.
             <br><br>
         <<else>>
             "Ever miss your family?" <<relaxed_guard 0>> asks.
