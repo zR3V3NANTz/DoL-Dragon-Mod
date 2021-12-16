@@ -1,0 +1,15 @@
+:: Dragon Grove
+<<set $location to "lostgrove">><<effects>>
+
+You are in the Lost Grove. A dragon approaches you. It looks as if it had died many years ago.
+<br>
+Its flesh is rotten and its scales are flaking.
+<br><br>
+"You are not supposed to be here," it says to you. "Leave."
+<br><br>
+Dev note: This location's not finished, this event is a test event so that people don't
+<br>
+get softlocked and ruin their save files. Sorry guys.
+<br><br>
+<<link [[Leave|Moor]]>><<set $moor to 80>><</link>>
+<br>
